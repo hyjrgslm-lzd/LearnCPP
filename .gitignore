@@ -5,6 +5,7 @@
 
 # ── 构建产物（CMake / VS）────────────────────────────────
 build/
+Build/
 build-*/
 out/
 cmake-build-*/
@@ -13,6 +14,8 @@ CMakeCache.txt
 CMakeFiles/
 cmake_install.cmake
 compile_commands.json
+Makefile
+install_manifest.txt
 CMakeUserPresets.json
 
 # ── Visual Studio / VSCode ────────────────────────────────
@@ -24,15 +27,35 @@ CMakeUserPresets.json
 *.vcxproj.filters
 
 # ── 编译中间产物 ──────────────────────────────────────────
-*.obj
+*.d
+*.slo
+*.lo
 *.o
-*.pdb
+*.obj
+*.gch
+*.pch
 *.ilk
 *.idb
 *.exp
+*.pdb
+*.dwo
+*.mod
+*.smod
+
+# ── 库文件 ────────────────────────────────────────────────
 *.lib
-*.exe
+*.a
+*.la
+*.lai
+*.so
+*.so.*
+*.dylib
 *.dll
+
+# ── 可执行文件 ────────────────────────────────────────────
+*.exe
+*.out
+*.app
 
 # ── CUDA 编译产物 ─────────────────────────────────────────
 *.cubin
@@ -56,6 +79,9 @@ Saved/
 *.VC.db
 *.VC.opendb
 
+# ── 包管理器 ──────────────────────────────────────────────
+vcpkg_installed/
+
 # ── 压缩归档（练习副本，冗余）─────────────────────────────
 *.7z
 *.zip
@@ -64,6 +90,14 @@ Saved/
 
 # ── OMC 工具会话状态 ──────────────────────────────────────
 .omc/
+
+# ── 临时与缓存 ────────────────────────────────────────────
+*.tmp
+*.log
+*.bak
+*.swp
+Testing/
+.cache/
 
 # ── 操作系统 ──────────────────────────────────────────────
 Thumbs.db
