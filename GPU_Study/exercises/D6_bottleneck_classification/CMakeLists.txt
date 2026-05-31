@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.28)
+project(D6_bottleneck_classification LANGUAGES CXX CUDA)
+
+add_executable(D6_bottleneck_classification main.cu)
+target_link_libraries(D6_bottleneck_classification PRIVATE gpu_study_common)
+set_target_properties(D6_bottleneck_classification PROPERTIES
+    CUDA_SEPARABLE_COMPILATION ON)

@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(\"G:/Unreal Engine/Source/UnrealEngine/Engine/Build/BatchFiles/Build.bat\" UELearnEditor Win64 Development -Project=\"P:/C++Code/UELearn/exercises/UELearn.uproject\" -WaitMutex)"
+    ]
+  }
+}

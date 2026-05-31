@@ -1,0 +1,50 @@
+// 对应章节: ../../../09-模块G-RHI与着色器.md §练习 G-2
+// 文件: ExG2.usf  — 最小 compute shader 骨架
+//
+// 注意：不需要在此处声明 cbuffer 或 register。
+// BEGIN_SHADER_PARAMETER_STRUCT 在 C++ 侧构建元数据后，
+// shader 编译器会在本文件前自动注入以下代码（通过 r.DumpShaderDebugInfo=1 可见）：
+//
+//   cbuffer Parameters
+//   {
+//       uint ThreadCount;           // SHADER_PARAMETER(uint32, ThreadCount)
+//   };
+//   RWBuffer<uint> OutputBuffer : register(u0);  // SHADER_PARAMETER_UAV
+//
+// 直接在下方使用 ThreadCount 和 OutputBuffer 即可。
+
+#include "/Engine/Public/Platform.ush"
+
+// ══════════════════════════════════════════════════════
+// TODO [必做] 1: 取消注释下方 uint 声明（C++ 侧 FParameters 完成后对应变量会自动注入）
+// 骨架阶段保留声明占位，方便观察"C++ 侧声明驱动 HLSL 侧绑定"的代码生成过程
+// ══════════════════════════════════════════════════════
+
+// 由 C++ 侧 SHADER_PARAMETER(uint32, ThreadCount) 自动注入，此处勿重复声明
+// uint ThreadCount;
+// 由 C++ 侧 SHADER_PARAMETER_UAV(RWBuffer<uint32>, OutputBuffer) 自动注入
+// RWBuffer<uint> OutputBuffer;
+
+// ══════════════════════════════════════════════════════
+// TODO [必做] 2: 实现 MainCS 函数体
+//   每个线程将 DispatchThreadId.x 的平方写入 OutputBuffer
+// ══════════════════════════════════════════════════════
+[numthreads(64, 1, 1)]
+void MainCS(uint3 DispatchThreadId : SV_DispatchThreadID)
+{
+    // TODO: if (DispatchThreadId.x < ThreadCount)
+    // {
+    //     OutputBuffer[DispatchThreadId.x] = DispatchThreadId.x * DispatchThreadId.x;
+    // }
+
+    // 骨架占位：无操作
+}
+
+// ══════════════════════════════════════════════════════
+// TODO [进阶]: 添加 permutation 宏开关
+//   #if ENABLE_SQUARED
+//       OutputBuffer[DispatchThreadId.x] = DispatchThreadId.x * DispatchThreadId.x;
+//   #else
+//       OutputBuffer[DispatchThreadId.x] = DispatchThreadId.x;
+//   #endif
+// ══════════════════════════════════════════════════════

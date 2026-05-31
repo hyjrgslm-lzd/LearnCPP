@@ -1,0 +1,110 @@
+{
+    "version": 6,
+    "cmakeMinimumRequired": { "major": 3, "minor": 28, "patch": 0 },
+    "configurePresets": [
+        {
+            "name": "default",
+            "displayName": "Default (auto-detect generator)",
+            "description": "让 CMake 自动检测本地可用的编译器和生成器",
+            "binaryDir": "${sourceDir}/build",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "debug",
+            "displayName": "Debug (auto-detect generator)",
+            "description": "自动检测生成器，Debug 构建",
+            "binaryDir": "${sourceDir}/build-debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "ninja-release",
+            "displayName": "Ninja (Release)",
+            "description": "Ninja 生成器，Release 构建，适合命令行用户",
+            "binaryDir": "${sourceDir}/build-ninja-release",
+            "generator": "Ninja",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "ninja-debug",
+            "displayName": "Ninja (Debug)",
+            "description": "Ninja 生成器，Debug 构建",
+            "binaryDir": "${sourceDir}/build-ninja-debug",
+            "generator": "Ninja",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "ncu-profile",
+            "displayName": "Ninja (Nsight Compute profiling)",
+            "description": "继承 ninja-release，打开 --generate-line-info 供 Nsight Compute source-SASS 对应",
+            "inherits": "ninja-release",
+            "binaryDir": "${sourceDir}/build-ncu-profile",
+            "cacheVariables": {
+                "GPU_STUDY_LINEINFO": "ON"
+            }
+        },
+        {
+            "name": "vs2026",
+            "displayName": "Visual Studio 18 2026",
+            "description": "VS 2026 多配置生成器（Windows）",
+            "binaryDir": "${sourceDir}/build-vs2026",
+            "generator": "Visual Studio 18 2026",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        },
+        {
+            "name": "vs2022",
+            "displayName": "Visual Studio 17 2022",
+            "description": "VS 2022 多配置生成器（Windows）",
+            "binaryDir": "${sourceDir}/build-vs2022",
+            "generator": "Visual Studio 17 2022",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "default",
+            "configurePreset": "default"
+        },
+        {
+            "name": "debug",
+            "configurePreset": "debug"
+        },
+        {
+            "name": "ninja-release",
+            "configurePreset": "ninja-release"
+        },
+        {
+            "name": "ninja-debug",
+            "configurePreset": "ninja-debug"
+        },
+        {
+            "name": "ncu-profile",
+            "configurePreset": "ncu-profile"
+        },
+        {
+            "name": "vs2026",
+            "configurePreset": "vs2026",
+            "configuration": "Release"
+        },
+        {
+            "name": "vs2022",
+            "configurePreset": "vs2022",
+            "configuration": "Release"
+        }
+    ]
+}

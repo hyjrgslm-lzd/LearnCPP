@@ -1,0 +1,66 @@
+// 对应章节: ../../../09-模块G-RHI与着色器.md §练习 G-3
+// 文件: ExG3.usf  — 最小全屏 draw pass shader 骨架（VS + PS）
+//
+// 与 G2 同理：C++ 侧 FParameters 的字段由编译器自动注入，
+// 此处直接使用 ViewProjection / InputTexture / InputSampler 即可。
+
+#include "/Engine/Public/Platform.ush"
+
+// ══════════════════════════════════════════════════════
+// Vertex Shader
+// 技巧：全屏三角形不需要 vertex buffer，
+//       通过 SV_VertexID 在 shader 内部生成三角形坐标
+// ══════════════════════════════════════════════════════
+
+// 由 C++ 侧 FExG3PassVS::FParameters 自动注入：
+// float4x4 ViewProjection;
+
+struct FVSOutput
+{
+    float4 Position : SV_POSITION;
+    float2 UV       : TEXCOORD0;
+};
+
+// TODO [必做] 1: 实现 MainVS
+//   全屏三角形坐标（SV_VertexID 方案，无需 vertex buffer）：
+//     uint VtxId 0 → (-1, -1)
+//     uint VtxId 1 → ( 3, -1)
+//     uint VtxId 2 → (-1,  3)
+FVSOutput MainVS(uint VtxId : SV_VertexID)
+{
+    FVSOutput Out;
+    // 骨架占位
+    Out.Position = float4(0, 0, 0, 1);
+    Out.UV       = float2(0, 0);
+
+    // TODO: 生成全屏三角形坐标并应用 ViewProjection
+    // float2 Pos = float2((VtxId & 1) ? 3.0 : -1.0, (VtxId & 2) ? 3.0 : -1.0);
+    // Out.Position = mul(float4(Pos, 0, 1), ViewProjection);
+    // Out.UV = Pos * 0.5 + 0.5;
+
+    return Out;
+}
+
+// ══════════════════════════════════════════════════════
+// Pixel Shader
+// ══════════════════════════════════════════════════════
+
+// 由 C++ 侧 FExG3PassPS::FParameters 自动注入：
+// Texture2D InputTexture;
+// SamplerState InputSampler;
+
+// TODO [必做] 2: 实现 MainPS
+//   采样 InputTexture 并输出颜色
+float4 MainPS(FVSOutput In) : SV_Target0
+{
+    // 骨架占位：输出纯红色
+    return float4(1, 0, 0, 1);
+
+    // TODO: return InputTexture.Sample(InputSampler, In.UV);
+}
+
+// ══════════════════════════════════════════════════════
+// 观察点：与 RDG pass 对比
+//   传统路径：你在 .cpp 里手动 BeginRenderPass / barrier / DrawPrimitive
+//   RDG 路径（模块 H）：你只描述 pass，Execute 期自动处理 barrier 和 RT 设置
+// ══════════════════════════════════════════════════════

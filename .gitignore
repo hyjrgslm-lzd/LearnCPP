@@ -1,0 +1,75 @@
+# =====================================================================
+# LearnCPP — C++ 学习练习仓库
+# 仅追踪学习文档与练习源码，排除一切编译产物与工具临时文件
+# =====================================================================
+
+# ── 构建产物（CMake / VS）────────────────────────────────
+build/
+build-*/
+out/
+cmake-build-*/
+_deps/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+compile_commands.json
+CMakeUserPresets.json
+
+# ── Visual Studio / VSCode ────────────────────────────────
+.vs/
+.vscode/
+*.user
+*.suo
+*.sdf
+*.vcxproj.filters
+
+# ── 编译中间产物 ──────────────────────────────────────────
+*.obj
+*.o
+*.pdb
+*.ilk
+*.idb
+*.exp
+*.lib
+*.exe
+*.dll
+
+# ── CUDA 编译产物 ─────────────────────────────────────────
+*.cubin
+*.ptx
+*.fatbin
+*.sass
+
+# ── Nsight 性能分析报告 ───────────────────────────────────
+*.nsys-rep
+*.ncu-rep
+*.qdrep
+*.qdstrm
+
+# ── Unreal Engine 生成产物 ────────────────────────────────
+# 保留：Config/ Content/ Source/ *.uproject *.Build.cs *.Target.cs
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+*.sln
+*.VC.db
+*.VC.opendb
+
+# ── 压缩归档（练习副本，冗余）─────────────────────────────
+*.7z
+*.zip
+*.rar
+*.tar.gz
+
+# ── OMC 工具会话状态 ──────────────────────────────────────
+.omc/
+
+# ── 操作系统 ──────────────────────────────────────────────
+Thumbs.db
+.DS_Store
+
+# ── Python（Triton / 辅助脚本）────────────────────────────
+__pycache__/
+*.pyc
+.ipynb_checkpoints/

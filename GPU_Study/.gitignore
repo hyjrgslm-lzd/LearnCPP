@@ -1,0 +1,60 @@
+# ── 构建产物 ──────────────────────────────────────────────
+build/
+build-*/
+out/
+cmake-build-*/
+
+# ── Visual Studio / VSCode ────────────────────────────────
+.vs/
+.vscode/
+*.user
+*.suo
+*.sdf
+*.vcxproj.filters
+CMakeUserPresets.json
+
+# ── CMake 中间文件 ────────────────────────────────────────
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+compile_commands.json
+
+# ── FetchContent 缓存 ─────────────────────────────────────
+exercises/third_party/
+_deps/
+
+# ── 编译中间产物 ──────────────────────────────────────────
+*.obj
+*.o
+*.pdb
+*.ilk
+*.idb
+*.exp
+*.lib
+*.exe
+*.dll
+
+# ── CUDA 编译产物 ─────────────────────────────────────────
+*.cubin
+*.ptx
+*.fatbin
+*.sass
+
+# ── Nsight 性能分析报告 ───────────────────────────────────
+*.nsys-rep
+*.ncu-rep
+*.qdrep
+*.qdstrm
+
+# ── OMC 会话临时产物（保留 notepad.md 和 project-memory.json）
+.omc/state/sessions/
+.omc/logs/
+
+# ── 操作系统 ──────────────────────────────────────────────
+Thumbs.db
+.DS_Store
+
+# ── Python（Triton / 辅助脚本）────────────────────────────
+__pycache__/
+*.pyc
+.ipynb_checkpoints/

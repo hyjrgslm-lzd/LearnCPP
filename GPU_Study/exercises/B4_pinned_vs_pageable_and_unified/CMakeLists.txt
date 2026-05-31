@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.28)
+project(B4_pinned_vs_pageable_and_unified LANGUAGES CXX CUDA)
+
+add_executable(B4_pinned_vs_pageable_and_unified main.cu)
+target_link_libraries(B4_pinned_vs_pageable_and_unified PRIVATE gpu_study_common)
+set_target_properties(B4_pinned_vs_pageable_and_unified PROPERTIES
+    CUDA_SEPARABLE_COMPILATION ON
+)

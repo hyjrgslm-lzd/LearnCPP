@@ -1,0 +1,28 @@
+# UE 标准忽略
+Binaries/
+Build/
+DerivedDataCache/
+Intermediate/
+Saved/
+
+# IDE / 编译产物
+.vs/
+.vscode/
+.idea/
+*.sln
+*.suo
+*.xcodeproj
+*.xcworkspace
+*.VC.db
+*.VC.opendb
+*.sdf
+*.opensdf
+*.user
+*.userprefs
+
+# UHT / 缓存
+*.generated.h
+*.generated.cpp
+
+# 本地覆盖配置
+Config/*Local*.ini

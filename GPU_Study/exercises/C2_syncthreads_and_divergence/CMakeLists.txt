@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.28)
+project(C2_syncthreads_and_divergence LANGUAGES CXX CUDA)
+
+add_executable(C2_syncthreads_and_divergence main.cu)
+target_link_libraries(C2_syncthreads_and_divergence PRIVATE gpu_study_common)
+set_target_properties(C2_syncthreads_and_divergence PROPERTIES
+    CUDA_SEPARABLE_COMPILATION ON)

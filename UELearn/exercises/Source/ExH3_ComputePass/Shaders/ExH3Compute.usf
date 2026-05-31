@@ -1,0 +1,26 @@
+// 对应章节: ../../../../10-模块H-RenderGraph与场景渲染.md §练习 H-3
+// ExH3 占位 compute shader — 骨架阶段不提交任何写入; 学员完成 TODO 后填实际逻辑
+//
+// 如何映射到 UE:
+//   1. cpp 里 StartupModule 调 AddShaderSourceDirectoryMapping("/Project", FPaths::ProjectDir()/TEXT("Shaders"))
+//      但本题 Shader 放 Source/ExH3_ComputePass/Shaders/; 可映射到独立虚拟路径如 "/ExH3"
+//      AddShaderSourceDirectoryMapping(TEXT("/ExH3"), FPaths::GetPath(FPaths::ConvertRelativePathToFull(
+//          IPluginManager::Get().FindPlugin(...) / TEXT("..."))));
+//      简化: 也可把 .usf 放 Project 根 Shaders/ 下, 用 "/Project/ExH3Compute.usf"
+//
+//   2. IMPLEMENT_GLOBAL_SHADER(FExH3ComputeShader, "/ExH3/ExH3Compute.usf", "MainCS", SF_Compute);
+
+#include "/Engine/Public/Platform.ush"
+
+// TODO [必做] 1: 声明与 cpp 端 BEGIN_SHADER_PARAMETER_STRUCT 对应的字段
+// 例如: RWStructuredBuffer<uint> OutBuffer;
+//       uint NumElements;
+
+[numthreads(64, 1, 1)]
+void MainCS(uint3 DispatchThreadId : SV_DispatchThreadID)
+{
+    // TODO [必做] 2: 实现写入逻辑
+    // uint Index = DispatchThreadId.x;
+    // if (Index >= NumElements) return;
+    // OutBuffer[Index] = Index;
+}

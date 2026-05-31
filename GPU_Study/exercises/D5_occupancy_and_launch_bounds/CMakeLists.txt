@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.28)
+project(D5_occupancy_and_launch_bounds LANGUAGES CXX CUDA)
+
+add_executable(D5_occupancy_and_launch_bounds main.cu)
+target_link_libraries(D5_occupancy_and_launch_bounds PRIVATE gpu_study_common)
+set_target_properties(D5_occupancy_and_launch_bounds PROPERTIES
+    CUDA_SEPARABLE_COMPILATION ON)
