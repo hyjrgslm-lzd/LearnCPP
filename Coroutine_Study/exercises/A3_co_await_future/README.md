@@ -32,3 +32,9 @@
 - 你能说清 awaiter 三方法各自被谁、何时调用。
 - 你能解释为什么 `await_suspend` 中 `h.resume()` 是合法的（编译器保证此时帧已稳定）。
 - 你能画出从 `co_await fut` 到拿到 `result` 的完整数据流图。
+
+## Starter / Reference
+
+- `main.cpp` 是练习骨架，保留 TODO 和最小可编译 awaiter。
+- `solution.cpp` 是可运行参考实现，`ctest --preset verify-core -C Release -R A3_co_await_future_reference`
+  会校验结果 84、`future.get()` 异常传播，以及 awaiter 三方法的数据流。

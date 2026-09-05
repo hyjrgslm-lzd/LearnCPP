@@ -32,3 +32,9 @@ promise、参数副本、resume_index、局部变量 spill 区——把"协程�
 - GCC `.coro` dump 文件名形如 `main.cpp.022t.coro`，需到 build 目录下找。
 - 极简协程的帧 dump 通常更易读——先用 `observed_minimal` 练手再去看 `observed`。
 - Godbolt 上可以即时跑这些 flag，省去本地配环境。
+
+## 本轮练习契约
+
+Starter 要求观察状态和局部生命周期，不猜测编译器私有 frame 字段。Reference 用 RAII marker 断言 initial_suspend 前不构造协程体局部，跨 suspend 的局部在 frame 中保持生命周期，最终按作用域销毁。
+
+命令：``cmake -S . -B build/dg-lane -DCOROUTINE_STUDY_BUILD_REFERENCE=ON``，然后构建 ``F1_frame_layout`` 与 ``F1_frame_layout_reference``，再用 ``ctest -R F1_frame_layout_reference`` 跑稳定验收。

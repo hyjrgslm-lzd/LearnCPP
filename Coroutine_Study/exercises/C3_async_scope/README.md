@@ -30,3 +30,9 @@
 - 最小实现只需 `atomic<int> in_flight + condition_variable`。
 - 析构循环等齐前必须保证所有 spawn 的 task 都通过某种方式被 resume。
 - UB 场景仅用于观察，请勿在生产中复制。
+
+## Starter / Reference
+
+- `main.cpp` 是练习骨架，保留 TODO 和最小 scope 形状。
+- `solution.cpp` 是可运行参考实现，`ctest --preset verify-core -C Release -R C3_async_scope_reference`
+  会校验 scope join、异常传播和禁止裸 detach 的生命周期边界。

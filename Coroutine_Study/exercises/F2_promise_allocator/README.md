@@ -32,3 +32,9 @@
   静默 fallback 到默认 `::operator new`。
 - 不要在 `op new` 里跑重逻辑（如 flush）——会破坏后续性能测量。
 - 如果想让协程在异常路径上退出，先实现 `unhandled_exception()` 不要 `std::terminate`。
+
+## 本轮练习契约
+
+Starter 要求正确配对 promise operator new/delete。Reference 覆盖 aligned allocation、delete 配对、nothrow allocation failure 到空 task。要点：get_return_object_on_allocation_failure 必须和 non-throwing allocation function 一起使用。
+
+命令：``cmake -S . -B build/dg-lane -DCOROUTINE_STUDY_BUILD_REFERENCE=ON``，然后构建 ``F2_promise_allocator`` 与 ``F2_promise_allocator_reference``，再用 ``ctest -R F2_promise_allocator_reference`` 跑稳定验收。

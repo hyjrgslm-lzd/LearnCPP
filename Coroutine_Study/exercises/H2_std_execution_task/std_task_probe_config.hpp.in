@@ -1,0 +1,3 @@
+#pragma once
+
+#cmakedefine01 H2_HAS_STD_EXECUTION_TASK

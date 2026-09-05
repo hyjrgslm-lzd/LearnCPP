@@ -5,8 +5,8 @@
 前面模块 D 和 E 让你写出了一个最小 `lazy_task<T>`、理解了 promise_type 全貌和 co_await 的三步变换。这个模块要把 task 从"只能一个等一个"推进到"真正的高级异步原语"：
 
 - 实现 `shared_task<T>`：允许多个协程同时 `co_await` 同一个 task，理解引用计数、多 awaiter 链表、以及 frame 销毁与计数之间的竞态窗口。
-- 实现 `when_all<T...>`：N 个子 task 并行执行，最后一个完成时自动唤醒等待者，用 tuple 汇合结果。理解原子计数与错误合并策略。
-- 实现 `sync_wait`：用 condition_variable + 内置 receiver 风格，在非协程上下文中驱动 task 到完成。理解为什么 `main` 不能是协程。
+- 实现 `when_all<T...>`：N 个子 task 并行执行，所有子 task 到达完成状态后唤醒等待者，用 tuple 汇合成功结果。理解原子计数、停止传播与错误合并策略。
+- 实现 `sync_wait`：在非协程上下文中启动 root task 一次，然后通过完成通知阻塞等待结果。理解为什么 `main` 不能是协程。
 
 如果你跳过这一层，你就只能用单协程串行——无法实现真正的并行组合和跨协程/线程同步。
 
@@ -15,9 +15,9 @@
 做完本模块，你至少要能稳定说清楚：
 
 - shared_task 的引用计数为什么必须在对 frame 有任何操作之前完成增减，以及 final_suspend 中多 awaiter 的链表唤醒如何避免竞态。
-- when_all 的原子计数如何保证"最后一个完成的子 task 唤醒等待者"——这本质上是一个 barrier 协议。
+- when_all 的原子计数如何保证"所有子 task 都到达完成状态后才唤醒等待者"——这本质上是一个 barrier 协议。
 - when_all 中错误处理策略（谁的异常胜出、如何传播、如何不丢异常）的设计权衡。
-- sync_wait 如何通过 condvar 将协程挂起/恢复转化为阻塞-唤醒——这是"把协程世界桥接回同步世界"的标准模式。
+- sync_wait 如何通过 condvar/run_loop/receiver 将协程完成信号转化为阻塞-唤醒——这是"把协程世界桥接回同步世界"的标准模式。
 - 为什么 `main` 不能是协程——因为标准未规定谁负责驱动 main 协程的启动和最终销毁。
 
 ## 类型骨架桥接段
@@ -89,7 +89,7 @@ struct lazy_task {
 
 ### 目标
 
-把 `lazy_task<T>` 升级为 `shared_task<T>`：允许多个协程同时 `co_await` 同一个 shared_task，每个等待者都能拿到结果（值语义）或异常。实现引用计数管理、final_suspend 的多 awaiter 链表唤醒、并妥善处理 frame 销毁与计数之间的竞态窗口。
+把 `lazy_task<T>` 升级为 `shared_task<T>`：允许多个协程同时 `co_await` 同一个 shared_task，每个等待者都能拿到结果（值语义）或异常。实现引用计数管理、final_suspend 的多 awaiter 链表唤醒，并明确教学单线程版本与生产多线程版本之间的竞态边界。
 
 ### 前置理解
 
@@ -98,8 +98,8 @@ struct lazy_task {
 - 关键语义差异：
   - **lazy_task**：move 后源变空。`co_await` 后 task 被"消耗"（协程帧最终被 `await_suspend` 交出去）。
   - **shared_task**：拷贝增加计数。`co_await` 不消耗 task——多个协程各自拿到一份结果的拷贝。
-- 生命周期挑战：`co_await shared_task` 时，如果 task 尚未完成，当前协程需要把自己注册到 shared_task 的等待者链表中。当 task 完成（final_suspend）时，需要遍历链表唤醒所有等待者。同时，等待者链表的节点可能在 task 完成前就被销毁（如果等待者协程被外部 destroy），需要安全处理。
-- 竞态窗口：shared_task 的引用计数和协程帧的销毁之间存在竞态——最后一个外部引用释放时，协程帧必须还在；但协程帧的释放又依赖于等待者链表中没有遗留的悬空引用。
+- 生命周期挑战：`co_await shared_task` 时，如果 task 尚未完成，当前协程需要把自己注册到 shared_task 的等待者链表中。当 task 完成（final_suspend）时，需要遍历链表唤醒所有等待者。同时，等待者链表的节点可能在 task 完成前就被销毁（如果等待者协程被外部 destroy），生产实现必须能注销或安全跳过。
+- 竞态窗口：shared_task 的引用计数、等待者链表和协程帧销毁之间存在竞态。教学版可以限制为单线程、等待者不提前销毁；多线程版必须用互斥锁或原子链表保护插入/完成/注销，并明确最后一个引用释放时是否允许销毁尚未完成的协程。
 
 ### 必做任务
 
@@ -296,8 +296,8 @@ struct lazy_task {
 5. **在笔记中标注竞态窗口**：
 
    - 竞态 1：两个线程同时拷贝 shared_task → `add_ref` 必须用 atomic（已满足）。
-   - 竞态 2：一个线程在 `co_await` 后读取结果，另一个线程在 `final_suspend` 中销毁了帧 → 通过 `done_` 标志 + `await_ready` 检查协调。
-   - 竞态 3：等待者链表的插入与遍历 → 需要保证 `final_suspend` 时链表已完全构建。由于 final_suspend 在协程体结束后才执行，而 `await_suspend` 在协程体结束前执行（因为 await_ready 检查 `done_`），在单线程模式下天然安全；多线程模式需要更复杂的同步。
+   - 竞态 2：一个线程在 `co_await` 后读取结果，另一个线程释放最后一个 shared_task 引用 → control_block 必须保证结果仍可读，直到所有等待者完成 `await_resume`。
+   - 竞态 3：等待者链表的插入与 final_suspend 遍历并发 → 单线程教学版可假设不并发；多线程模式必须加锁或用原子链表，并处理“注册时已经完成”的双检查。
 
 ### 进阶任务
 
@@ -310,7 +310,7 @@ struct lazy_task {
 
 - 你的 shared_task 支持拷贝语义，且拷贝后引用计数正确增加。
 - 多个协程能同时 `co_await` 同一个 shared_task，且每个都能正确拿到结果。
-- 最后一个 shared_task 实例销毁时，协程帧被正确释放。
+- 最后一个 shared_task 实例销毁时，协程帧被正确释放；如果 task 尚未完成，你能说明是取消并收束后释放，还是按 `shared_ptr` 语义直接销毁挂起帧。
 - `await_resume` 返回的是值的拷贝而非移动——确保多等待者正确性。
 - 你能画出引用计数从 1 到 N 再到 0 的生命周期图，并标注每一步谁持有引用。
 
@@ -347,7 +347,7 @@ struct lazy_task {
 
 - Lewis Baker "C++ coroutines: Sharing coroutines"（系列第 7 篇）
 - cppcoro `shared_task.hpp` 完整实现
-- P3175R0 中 shared task 的语义讨论
+- P3552R3 prior-work 中 `cppcoro::shared_task` 与 sender `split` 的语义对照
 
 ---
 
@@ -364,7 +364,7 @@ struct lazy_task {
   1. **计数问题**：如何原子地追踪"还剩几个未完成"。
   2. **汇合问题**：如何将 N 个不同类型的结果放入一个 tuple 中。
 - 错误处理有三种典型策略：
-  - **Fail-fast**：第一个子 task 失败时立即取消其他子 task，传播该错误。
+  - **Fail-fast request-stop**：第一个子 task 失败时请求停止其他子 task，但仍要收束所有子 task 后再完成整体操作。
   - **Fail-delay**：所有子 task 都完成后，如果有任何失败，传播第一个错误。
   - **Exception aggregation**：收集所有异常，一起传播（如 `std::nested_exception` 或 `std::exception_list`）。
   - 本练习默认采用**Fail-delay**策略（最简单、C++标准最倾向的方向），进阶任务可以尝试其他策略。
@@ -430,17 +430,21 @@ struct lazy_task {
 
 3. **实现 when_all 的主协程（先做固定 2-task 版）**：
 
-   以下先给出可编译的 2-task 固定类型版作为主任务起点：
+   以下先给出 2-task 固定类型版的设计骨架。成员名按你的 `lazy_task` 调整；关键是每个子 task 只启动一次，完成后通过 barrier 递减计数，不靠外层循环 drain。
 
    ```cpp
    template<typename T0, typename T1>
    lazy_task<std::tuple<T0, T1>> when_all_2(lazy_task<T0> t0, lazy_task<T1> t1) {
-       // 启动两个 task
-       t0.resume(); t1.resume();
-       // 逐个 resume 直到各自完成（单线程简单驱动）
-       while (!t0.h_.done()) t0.h_.resume();
-       while (!t1.h_.done()) t1.h_.resume();
-       co_return std::tuple{t0.await_resume(), t1.await_resume()};
+       auto state = std::make_shared<shared_state_2<T0, T1>>();
+       auto c0 = when_all_child<0>(state, std::move(t0));
+       auto c1 = when_all_child<1>(state, std::move(t1));
+
+       c0.start();          // 只启动一次
+       c1.start();          // 只启动一次
+       co_await state->done_awaiter();
+
+       if (state->error) std::rethrow_exception(state->error);
+       co_return std::tuple{std::move(*state->r0), std::move(*state->r1)};
    }
    ```
 
@@ -507,7 +511,7 @@ struct lazy_task {
 
 - 实现真正的并行 `when_all`：将所有子 task 的 `coroutine_handle` 提交到线程池或 run_loop，让它们在不同线程上并行执行。
 - 支持异构类型的子 sender/awaitable（不仅仅是 `lazy_task<T>`）——任何可以 `co_await` 的东西都应该能成为 `when_all` 的输入。
-- 实现 `when_any`：第一个完成的子 task 触发等待者，其余子 task 被取消/丢弃。
+- 实现 `when_any`：第一个完成的子 task 触发等待者，其余子 task 被请求取消，并被等待到完成/停止后再释放。
 - 实现 `when_all` 的 cancel 传播：如果 waiter 被取消（stop_token 触发），所有未完成的子 task 收到取消信号。
 - 让 `when_all` 支持编译期推导 `result_tuple`：通过 `decltype(co_await task)` 而非显式指定 `Task::value_type`。
 
@@ -523,7 +527,7 @@ struct lazy_task {
 
 - `when_all` 的核心是一个 barrier + 结果槽位数组。每一个子 task 完成时原子减一，最后一个触发唤醒。
 - 结果的汇合需要编译期"知道每个槽位的类型"——`std::tuple` 天然支持这一点，因为每个位置类型在编译期确定。
-- 错误处理策略是 when_all 设计中最有争议的部分——标准库 (`std::execution::when_all`) 倾向于 fail-fast + 取消传播，但具体实现仍在演进中。
+- 错误处理策略是 when_all 设计中最有争议的部分——当前 `std::execution::when_all` 草案在 error/stopped 时请求停止其他输入，并在全部到达后按 value/error/stopped disposition 完成；具体库实现仍在演进中。
 - 在单线程模式中，`when_all` 等价于"顺序 co_await"——没有真正的并行。要并行，必须有多线程调度基础设施。
 
 ### 常见坑
@@ -545,7 +549,7 @@ struct lazy_task {
 ### 复盘问题
 
 - 为什么 `when_all` 不能简单地用 N 个 `co_await` 串行实现——如果串行的话，第二个 task 必须在第一个完成后才开始，这就不是"并行"了？
-- 如果 `when_all` 中的一个子 task 永不完成，整个系统会怎样？如何用 timeout 机制保护？
+- 如果 `when_all` 中的一个子 task 永不完成，整个系统会怎样？如何用 timeout + stop request + loser 收束机制保护？
 - 你选择的错误合并策略在什么场景下最优？在什么场景下会丢重要信息？
 - `when_all` 和 `when_any` 在底层实现上有什么本质区别？谁更复杂？
 
@@ -554,7 +558,6 @@ struct lazy_task {
 - Lewis Baker "C++ coroutines: Composing coroutines"（系列第 8 篇）
 - Lewis Baker "C++ coroutines: Concurrency with coroutines"（系列第 9 篇）
 - cppcoro `when_all.hpp` 完整实现
-- P3175R0：sender-receiver 中的 when_all 语义
 - P2300R10：`std::execution::when_all` 规范
 
 ---
@@ -574,176 +577,59 @@ struct lazy_task {
 
 ### 必做任务
 
-1. **实现 `sync_wait` 的基础版本**（针对 `lazy_task<T>`）：
+1. **实现 `sync_wait(lazy_task<T>&&)` 的基础版本**：
 
    ```cpp
    template<typename T>
-   T sync_wait(lazy_task<T> task) {
-       // 1. 创建共享状态
-       struct shared_state {
-           std::mutex mtx;
-           std::condition_variable cv;
-           bool done = false;
-           std::exception_ptr error;
-           std::optional<T> result;  // optional 以支持 void 返回
-       };
-       auto state = std::make_shared<shared_state>();
+   T sync_wait(lazy_task<T>&& task) {
+       lazy_task<T> owned = std::move(task);  // sync_wait 独占 root task
+       if (!owned.valid()) throw std::bad_alloc{};
 
-       // 2. 将原始 task 与"完成通知"包装在一起
-       //    我们使用一个包装协程，完成后设置 state->done 并 notify
-       struct notifier {
-           std::shared_ptr<shared_state> state_;
+       sync_wait_state state;                 // mutex + condition_variable + done
+       owned.promise().set_completion_callback(&state, notify_sync_wait);
+       owned.start();                         // 只启动一次，不循环 resume
 
-           // 在独立的协程中运行 task，然后通知
-           // 注意：这里需要一个 fire-and-forget 协程，或直接用 task.resume()
-           void operator()(lazy_task<T> t) {
-               try {
-                   // 手动驱动 task 的非协程方式
-                   // （需要在 sync_wait 中直接驱动，不经过包装协程）
-               } catch (...) {
-                   state_->error = std::current_exception();
-               }
-               {
-                   std::lock_guard lk(state_->mtx);
-                   state_->done = true;
-               }
-               state_->cv.notify_one();
-           }
-       };
+       std::unique_lock lock(state.mutex);
+       state.cv.wait(lock, [&] { return state.done; });
+       lock.unlock();
 
-       // 3. 在独立线程或手动驱动协程，然后阻塞等待
-       // 简化方案：在我们自己的线程中驱动协程到完成
-       std::thread driver([&task, state]() {
-           try {
-               // 驱动协程：resume 直到完成
-               task.resume();  // 从 initial_suspend 挂起后执行协程体
-               // 协程体在执行过程中可能 co_await 其他 awaitable
-               // 在 single-thread 环境下，所有 await_suspend 都会
-               // 把 handle 存下来，由外部循环 resume
-               while (!task.h_.done()) {
-                   task.h_.resume();
-               }
-               auto& p = task.h_.promise();
-               if (p.result_exception) {
-                   state->error = p.result_exception;
-               } else {
-                   state->result = std::move(p.result_value);
-               }
-           } catch (...) {
-               state->error = std::current_exception();
-           }
-           {
-               std::lock_guard lk(state->mtx);
-               state->done = true;
-           }
-           state->cv.notify_one();
-       });
-
-       // 4. 阻塞等待
-       {
-           std::unique_lock lk(state->mtx);
-           state->cv.wait(lk, [&] { return state->done; });
-       }
-       driver.join();
-
-       // 5. 返回结果或重抛异常
-       if (state->error) {
-           std::rethrow_exception(state->error);
-       }
-       return std::move(*state->result);
+       return owned.take_result_or_rethrow(); // 读取 promise 中的 result/exception
    }
    ```
 
-2. **实现更完善的版本：内联驱动**。
+   这段是结构骨架，成员名可按你的 `lazy_task` 实现调整。关键契约只有三条：`sync_wait` 接管 task 所有权；root task 只 `start()` 一次；完成通知来自 `final_suspend` 或等价 receiver/run_loop，不靠 `while (!done) resume()` 硬推状态机。
 
-   上面的实现用了一个额外的 `std::thread`，在真正的工程实现中，更好的做法是在调用 sync_wait 的线程上直接驱动协程——协程的执行和 sync_wait 的等待交替进行：
+2. **在 `promise_type::final_suspend()` 中接入完成通知**：
 
    ```cpp
-   template<typename T>
-   T sync_wait(lazy_task<T> task) {
-       struct state_t {
-           std::mutex mtx;
-           std::condition_variable cv;
-           bool done = false;
-           bool started = false;
-           std::exception_ptr error;
-           std::optional<T> result;
-       };
-       auto state = std::make_shared<state_t>();
-
-       // 方案 B：用 condvar 在内联模式中交替
-       // 每次协程挂起时 notify，sync_wait 醒来后决定是否继续 resume
-       // 这是更"协程原生"的模式
-
-       // 自定义 awaiter：挂起时通知 condvar
-       struct sync_awaiter {
-           std::shared_ptr<state_t> state_;
-
+   auto final_suspend() noexcept {
+       struct final_awaiter {
            bool await_ready() noexcept { return false; }
-           void await_suspend(std::coroutine_handle<> h) noexcept {
-               {
-                   std::lock_guard lk(state_->mtx);
-                   state_->started = true;
-               }
-               state_->cv.notify_one();
-               // 不在 await_suspend 中 resume——让 sync_wait 的循环来 resume
-               // 注意：handle 需要保存下来供后续 resume
-               // 简化版：存在 state 中
+
+           std::coroutine_handle<> await_suspend(handle_t h) noexcept {
+               auto& p = h.promise();
+               if (p.continuation) return p.continuation;
+               if (p.notify_completion) p.notify_completion(p.completion_state);
+               return std::noop_coroutine();
            }
+
            void await_resume() noexcept {}
        };
-
-       // 包装协程：在 co_await 点之前先 co_await sync_awaiter
-       // ... 完整实现较复杂，骨架省略，核心思想如上
+       return final_awaiter{};
    }
    ```
 
-   实际上，最简单的内联版本是**完全不依赖 condvar，直接用 while 循环驱动协程**：
+   `continuation` 路径服务 `co_await task`；`notify_completion` 路径服务 `sync_wait(std::move(task))`。两者都不要二次恢复同一个协程。
+
+3. **禁止 blind-resume 版本进入最终实现**：
 
    ```cpp
-   template<typename T>
-   T sync_wait(lazy_task<T> task) {
-       task.resume();  // 启动
-
-       // 驱动循环：只要协程未完成，就 resume
-       // 协程在各种 co_await 点挂起后，await_suspend 不自己 resume
-       // 本循环不断 resume 直到 final_suspend 被执行
-       while (!task.h_.done()) {
-           task.h_.resume();
-       }
-
-       auto& p = task.h_.promise();
-       if (p.result_exception) {
-           std::rethrow_exception(p.result_exception);
-       }
-       return std::move(p.result_value);
+   while (!task.h_.done()) {
+       task.h_.resume(); // 只允许出现在 manual_coroutine 练习或受控调试代码
    }
    ```
 
-   这个简化版在**所有 await_suspend 都返回 void 且没有旁路 resume** 的场景下是正确的。它每个 iteration 对应一次"从挂起到恢复"的驱动。
-
-3. **实现更健壮的内联驱动**：
-
-   上面的简化版有一个致命问题：如果某个 awaiter 的 `await_suspend` 中又 resume 了当前协程（或 symmetric transfer 到了其他协程），那么简单的 while 循环会乱。完整实现需要跟踪"当前活跃的协程 handle"。
-
-   ```cpp
-   template<typename T>
-   T sync_wait(lazy_task<T> task) {
-       auto handle = task.h_;
-       handle.resume();  // 从 initial_suspend 开始
-
-       while (!handle.done()) {
-           handle.resume();  // 从上次挂起点恢复
-       }
-
-       auto& p = handle.promise();
-       if (p.result_exception)
-           std::rethrow_exception(p.result_exception);
-       return std::move(p.result_value);
-   }
-   ```
-
-   这个版本在 simples 的嵌套协程链上工作良好：`coro_A co_await coro_B`——coro_A 的 `await_suspend`（返回 `coro_B`的 handle）将控制权以 symmetric transfer 方式交给 coro_B，但因为我们没有运行在协程框架内，我们需要主动检测并 resume。
+   这种循环只适合你完全控制所有 awaiter、且 awaiter 从不跨线程/事件循环/symmetric transfer 恢复的玩具场景。真实 `sync_wait` 不能偷懒 drain 任意协程。
 
 4. **写测试验证 sync_wait**：
 
@@ -756,7 +642,7 @@ struct lazy_task {
 
    // 在 main 中
    int main() {
-       int result = sync_wait(async_compute());
+       int result = sync_wait(async_compute()); // 或 sync_wait(std::move(task))
        std::println("result = {}", result);  // 期望 30
        return 0;
    }
@@ -765,7 +651,7 @@ struct lazy_task {
 5. **在笔记中回答**：
    - 为什么 `main` 不能是协程？——C++ 标准没有定义"main 协程"的启动机制：谁负责创建 main 协程的 frame？谁负责在 main 协程的 initial_suspend 之后调用 resume？谁负责在 main 协程结束后销毁 frame？这些在标准中都没有规定。
    - `sync_wait` 承担了什么角色？——它是"协程世界"和"同步世界"之间的翻译器。它把协程的挂起/恢复转换为 block/wake，把 `co_return` 的值传递给同步调用者的返回语句。
-   - condvar + receiver 模式和手动循环驱动模式各自的适用场景是什么？——condvar 适合协程可能在另一个线程上完成的场景（如 io_uring completion）。手动循环适合单线程全协程环境（如 asio io_context 中的协程）。
+   - condvar/run_loop + receiver 模式和手动 resume 调试模式各自的适用场景是什么？——前者适合生产 `sync_wait`，后者只适合 manual coroutine 或教学观察。
 
 ### 进阶任务
 
@@ -779,26 +665,26 @@ struct lazy_task {
 - 你的 `sync_wait` 能在 `main` 中正确驱动一个协程 task 到完成。
 - 协程体中的异常能被 `sync_wait` 正确捕获并重新抛出。
 - 你能解释为什么 `main` 不能是协程——从协程帧的分配、启动、销毁三个角度说明。
-- 你能说明 condvar 版本和手动循环版本各自的适用场景和局限性。
+- 你能说明 condvar/run_loop 版本和手动 resume 调试版本各自的适用场景和局限性。
 
 ### 观察点
 
-- `sync_wait` 在概念上非常简单——驱动协程直到完成并取出结果。但它的实现暴露了协程和同步世界之间的根本张力：协程期望有人"异步地"resume 它，而 sync_wait 要求"同步地"等待。
+- `sync_wait` 在概念上非常简单——启动异步操作并阻塞等待完成结果。但它的实现暴露了协程和同步世界之间的根本张力：协程期望有人在完成时 resume/notify，而 sync_wait 要求当前线程同步等待。
 - condvar 版本的 `sync_wait` 是生产代码中最常见的模式——它支持多线程调度，不浪费 CPU 自旋。
-- 手动循环驱动版本在单线程事件循环（如 asio io_context）中更自然——因为 resumer 和 awaiter 在同一个线程上交替执行。
+- 手动循环 resume 不是通用事件循环；真实单线程事件循环（如 asio io_context 或 run_loop）应由队列调度 ready operation，而不是外层反复 resume 同一个 handle。
 - `sync_wait` 让协程"看起来像一个同步函数"——这是异步代码测试的基础设施。
 
 ### 常见坑
 
 - 协程在 `sync_wait` 之前就已经完成（eager 启动），condvar 在 wait 之后永远不会被 notify——需要用 `done` 标志 + 锁做双重检查。
-- 手动循环版在 `await_suspend` 返回 `bool` 时行为正确吗？——如果返回 `true`（不挂起），协程继续执行，下一次 while 的 `done()` 检查将返回 false（尚未到 final_suspend），会错误地再 resume 一次。
+- blind-resume 循环在 `await_suspend` 返回 `bool`、跨线程回调、同步完成、symmetric transfer 时都可能错误恢复同一个协程。最终实现不要使用它。
 - `handle.done()` 只在 final_suspend 的 `await_suspend` 返回后才返回 `true`——在此之前，即使协程体执行完了，`done()` 也返回 `false`。
-- 在 manual 循环中 resume 协程后，没有检查协程是否在 resume 内部就完成了——导致多余的 resume 调用（不过多余的 resume 通常无副作用）。
+- 在 manual 循环中 resume 已经处于 final suspend 或未挂起状态的协程，可能触发 UB；“多 resume 一次通常无副作用”这个说法不要写进实现假设。
 
 ### 提示
 
-- 从手动循环版本开始实现——它最简单，适合理解基本流程。
-- 然后升级到 condvar 版本——理解多线程同步的挑战。
+- 从仓库已有 `lazy_task` 的 `start()` + final-suspend 通知契约开始实现。
+- 如需观察状态机，另写 `manual_coroutine` 调试练习，不要污染 `sync_wait`。
 - `sync_wait` 的代码量很小（约 30-60 行），不要在辅助设施上过度设计。
 - 这道题的关键不是代码量，而是对"协程执行模型 vs 同步阻塞模型"之间转换的理解。
 
@@ -806,14 +692,14 @@ struct lazy_task {
 
 - 如果 `sync_wait` 在一个协程内部被调用（即从协程 A 调用 sync_wait 驱动协程 B），会发生什么？会阻塞 A 吗？有没有更好的方式？
 - 为什么标准没有规定 main 可以是一个协程？如果需要 main 协程，哪个实体来驱动它？
-- `sync_wait` 的 condvar 版本和 `std::latch` / `std::barrier` 有什么本质区别？
+- `sync_wait` 的 condvar/run_loop 版本和 `std::latch` / `std::barrier` 有什么本质区别？
 - 如果你要在生产代码中实现 `sync_wait`，你希望它支持哪些额外特性？
 
 ### 对应官方参考
 
 - cppcoro `sync_wait.hpp` 实现
 - Lewis Baker "C++ coroutines: Building a sync_wait"（系列第 9 篇）
-- P3175R0 中 `this_thread::sync_wait` 的语义
+- P2300R10 / working draft `[exec.sync.wait]` 中 `this_thread::sync_wait` 的语义
 - `stdexec` 中 `sync_wait` 的实现
 
 ---
@@ -824,5 +710,5 @@ struct lazy_task {
 
 - `shared_task<T>` 通过独立的 control_block + 引用计数实现多线程共享。final_suspend 遍历等待者链表唤醒所有 `co_await` 它的协程。结果必须返回拷贝而非移动——这是共享语义的代价。
 - `when_all<T...>` 的核心是一个原子 barrier：每个子 task 完成时减一，最后一个触发 waiter 恢复。结果的编译期类型汇合依赖 `std::tuple`。错误处理的策略选择（fail-fast / fail-delay / aggregation）直接决定了组合子的容错语义。
-- `sync_wait` 是协程世界向同步世界的桥接：condvar + 互斥锁替代了挂起/恢复，让 `main` 这类不能是协程的函数也能消费协程结果。它的实现揭示了协程"挂起-恢复"与线程"阻塞-唤醒"之间的精确对应关系。
+- `sync_wait` 是协程世界向同步世界的桥接：final-suspend 通知 + condvar/run_loop 让 `main` 这类不能是协程的函数也能消费协程结果。它的实现揭示了协程完成信号与线程阻塞等待之间的对应关系。
 - 这三道题共同展示了"协程不只是写线性异步代码"——shared_task 涉及共享所有权与并发安全，when_all 涉及并行组合与错误策略，sync_wait 涉及跨模型桥接。这些是工程级协程基础设施的核心构件。

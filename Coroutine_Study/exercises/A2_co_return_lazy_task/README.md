@@ -4,8 +4,7 @@
 > 本 README 仅摘抄"目标 / 必做任务 / 验收点"。
 >
 > 注：本题用到的 `lazy_task<T>` 头文件位于 `../include/coroutine_study/lazy_task.hpp`，
-> 已统一放到题目项目的 include 路径中。文档原文随附了一个 30 行版本，本仓库提供的实现
-> 在功能上一致，并额外支持了 `operator co_await`（B-2 顺序组合需要）。
+> 已统一放到题目项目的 include 路径中，并支持 `operator co_await`（B-2 顺序组合需要）。
 
 ## 目标
 
@@ -34,3 +33,9 @@ sync_wait 时才执行"与普通函数的区别。
 - 你能解释 `initial_suspend` 返回 `suspend_always` 是惰性启动的根源。
 - 你能说明 `co_return step3` 是怎么经过 `promise.return_value` 到达 `sync_wait` 返回值的。
 - 你能解释为什么 `lazy_task` 必须禁止拷贝（协程帧所有权唯一性）。
+
+## Starter / Reference
+
+- `main.cpp` 是练习骨架，保留 TODO 和可编译占位，重点让你亲手补三步变换。
+- `solution.cpp` 是可运行参考实现，`ctest --preset verify-core -C Release -R A2_co_return_lazy_task_reference`
+  会校验 lazy 启动、`co_return` 值流和同步版本对照。

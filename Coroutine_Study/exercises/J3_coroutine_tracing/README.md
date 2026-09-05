@@ -29,11 +29,17 @@
    `log()` 应记录：时间戳、awaitable 名称、协程帧地址、当前线程 ID。
 4. 把它套在至少 3 个 co_await 点上，运行并输出 trace 日志。
 5. 进阶：实现 `traced_task<T>`，在 `initial_suspend` / `final_suspend`
-   也打 trace；实现全局协程注册表（key = 帧地址）。
+   也打 trace；实现全局协程注册表（key = 帧地址，输出只显示 opaque id）。
 6. 用 trace 日志回答：
    - 同时挂起的协程数量；
    - 哪些 co_await 点最长；
    - 是否存在跨线程恢复的协程。
+
+## Starter / Reference
+
+- `main.cpp` 是 starter：展示 `traced_awaitable` 形状和三层调用链。
+- `solution.cpp` 是参考答案：实现线程安全 registry、`traced_task<T>`、3 个 `co_await` trace 点，并在结束时断言 registry 为空。
+- `COROUTINE_STUDY_BUILD_REFERENCE=ON` 时会生成 `J3_coroutine_tracing_reference` 并加入 CTest。
 
 ## 验收点
 
@@ -48,10 +54,10 @@
 - 不在 tracing wrapper 的内存分配路径上打 trace（避免无限递归）；
 - 注册表必须线程安全；
 - Release 构建中通过宏关闭 trace（避免性能影响）；
-- `frame_addr_` 仅作为协程实例标识，不要解引用 —— 帧布局是编译器内部细节。
+- `frame_addr_` 仅作为 registry key，不要解引用；日志中显示 `coro#N` 这种 opaque id，而不是鼓励读帧内存。
 
 ## 提示
 
-- 单 awaitable 的 trace 开销 ~100-500ns（主要在日志 I/O），帧地址记录几乎零开销；
+- trace 开销必须以本机编译器、日志后端、优化级别实测；不要复用别人的 ns 数字；
 - `__PRETTY_FUNCTION__` / `__FUNCSIG__` 可在 Debug 模式下自动生成 awaitable 名；
 - 注册表在协程析构后必须 unregister，否则会发生 use-after-free。

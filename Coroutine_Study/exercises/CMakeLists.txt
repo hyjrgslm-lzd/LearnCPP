@@ -1,89 +1,121 @@
 cmake_minimum_required(VERSION 3.28)
 project(coroutine_study_exercises LANGUAGES CXX)
 
-# ============================================================
-# C++ 标准（协程 + std::generator 需要 C++23/26）
-# ============================================================
+include(CTest)
+
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# MSVC: 启用 __cplusplus 正确报告 + UTF-8 源码 + 标准 conformant 预处理器
-# 同时通过 /std:c++latest 启用最新 C++26 特性预览（CMake 4.x 在 MSVC 下尚未稳定识别 CXX_STANDARD 26）
 if(MSVC)
-    add_compile_options(/Zc:__cplusplus /utf-8 /Zc:preprocessor /std:c++latest)
-endif()
-# GCC/Clang 通过 -std=c++2c 启用 C++26 预览
-if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-    add_compile_options(-std=c++2c)
+    add_compile_options(/Zc:__cplusplus /utf-8 /Zc:preprocessor /FS)
 endif()
 
-# ============================================================
-# 引入第三方依赖（stage1/2 基本不依赖；stage3 需要 stdexec / asio / liburing / folly / cobalt）
-# ============================================================
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
-include(cmake/ThirdPartySetup.cmake)
+set(COROUTINE_STUDY_EXERCISES_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+include(AddExercise)
+include(ThirdPartySetup)
 
-# ============================================================
-# stage 3 闸门：默认开启，但首次配置较慢；可以 -DCOROUTINE_STUDY_ENABLE_STAGE3=OFF 跳过
-# ============================================================
-option(COROUTINE_STUDY_ENABLE_STAGE3 "Enable stage 3 exercises (modules H/I/J + capstones 4/5)" ON)
+option(COROUTINE_STUDY_BUILD_REFERENCE "Build reference answer targets when reference sources exist." OFF)
+option(COROUTINE_STUDY_FETCH_DEPS "Allow CMake to fetch light third-party dependencies." OFF)
+option(COROUTINE_STUDY_ENABLE_STDEXEC "Enable stdexec-based H exercises and capstone bridge code." OFF)
+option(COROUTINE_STUDY_ENABLE_ASIO "Enable standalone Asio exercises." OFF)
+option(COROUTINE_STUDY_ENABLE_CPPCORO "Enable cppcoro exercises if present." OFF)
+option(COROUTINE_STUDY_ENABLE_IO_URING "Enable Linux io_uring exercises." OFF)
+option(COROUTINE_STUDY_ENABLE_IOCP "Enable Windows IOCP exercises." OFF)
+option(COROUTINE_STUDY_ENABLE_FOLLY "Enable Folly coroutine exercises." OFF)
+option(COROUTINE_STUDY_ENABLE_COBALT "Enable Boost.Cobalt coroutine exercises." OFF)
+option(COROUTINE_STUDY_ENABLE_UNSAFE_DEMOS "Build demos that intentionally show unsafe coroutine behavior." OFF)
+option(COROUTINE_STUDY_ENABLE_STAGE3 "Compatibility umbrella: enable light stage3 deps; prefer per-dependency options." OFF)
 
-# ============================================================
-# 第一阶段：模块 A / B / C + 第一阶段结课
-# ============================================================
+if(COROUTINE_STUDY_ENABLE_STAGE3)
+    message(WARNING "COROUTINE_STUDY_ENABLE_STAGE3 is deprecated; use COROUTINE_STUDY_ENABLE_STDEXEC/ASIO/CPPCORO/IO_URING/IOCP instead.")
+    set(COROUTINE_STUDY_ENABLE_STDEXEC ON CACHE BOOL "" FORCE)
+    set(COROUTINE_STUDY_ENABLE_ASIO ON CACHE BOOL "" FORCE)
+    set(COROUTINE_STUDY_ENABLE_CPPCORO ON CACHE BOOL "" FORCE)
+    if(WIN32)
+        set(COROUTINE_STUDY_ENABLE_IOCP ON CACHE BOOL "" FORCE)
+    elseif(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+        set(COROUTINE_STUDY_ENABLE_IO_URING ON CACHE BOOL "" FORCE)
+    endif()
+endif()
+
+if(COROUTINE_STUDY_ENABLE_STDEXEC)
+    coroutine_study_setup_stdexec(REQUIRED)
+endif()
+if(COROUTINE_STUDY_ENABLE_ASIO)
+    coroutine_study_setup_asio(REQUIRED)
+endif()
+if(COROUTINE_STUDY_ENABLE_CPPCORO)
+    coroutine_study_setup_cppcoro(REQUIRED)
+endif()
+if(COROUTINE_STUDY_ENABLE_IO_URING)
+    coroutine_study_setup_liburing(REQUIRED)
+endif()
+if(COROUTINE_STUDY_ENABLE_FOLLY)
+    coroutine_study_setup_folly(REQUIRED)
+endif()
+if(COROUTINE_STUDY_ENABLE_COBALT)
+    coroutine_study_setup_cobalt(REQUIRED)
+endif()
+
 add_subdirectory(A1_first_generator)
 add_subdirectory(A2_co_return_lazy_task)
 add_subdirectory(A3_co_await_future)
-
 add_subdirectory(B1_recursive_generator)
 add_subdirectory(B2_task_sequential)
 add_subdirectory(B3_callback_to_awaiter)
-
 add_subdirectory(C1_stop_token_cancel)
 add_subdirectory(C2_when_all_when_any)
 add_subdirectory(C3_async_scope)
-
 add_subdirectory(Capstone1_async_crawler)
-
-# ============================================================
-# 第二阶段：模块 D / E / F / G
-# ============================================================
 add_subdirectory(D1_promise_8_hooks)
 add_subdirectory(D2_eager_vs_lazy)
 add_subdirectory(D3_final_suspend_symmetric)
-
 add_subdirectory(E1_co_await_lookup)
 add_subdirectory(E2_await_suspend_three)
 add_subdirectory(E3_trivial_awaitable)
-
 add_subdirectory(F1_frame_layout)
 add_subdirectory(F2_promise_allocator)
 add_subdirectory(F3_halo_diagnose)
-
 add_subdirectory(G1_shared_task)
 add_subdirectory(G2_when_all_impl)
 add_subdirectory(G3_sync_wait_impl)
 
-# ============================================================
-# 第三阶段：模块 H / I / J + 第三阶段两个结课
-# ============================================================
-if(COROUTINE_STUDY_ENABLE_STAGE3)
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/runtime_tests/CMakeLists.txt")
+    add_subdirectory(runtime_tests)
+endif()
+
+if(COROUTINE_STUDY_ENABLE_STDEXEC)
     add_subdirectory(H1_as_awaitable)
     add_subdirectory(H2_std_execution_task)
     add_subdirectory(H3_bidirectional_bridge)
-
-    add_subdirectory(I1_asio_echo)
-    add_subdirectory(I2_io_uring_iocp)
-    if(NOT WIN32)
-        add_subdirectory(I3_folly_safe_task)
-        add_subdirectory(I4_cobalt_channel)
-    endif()
-
-    add_subdirectory(J1_eight_pitfalls)
-    add_subdirectory(J2_cross_compiler_abi)
-    add_subdirectory(J3_coroutine_tracing)
-
-    add_subdirectory(Capstone4_rpc_framework)
-    add_subdirectory(Capstone5_mini_corolib)
 endif()
+
+if(COROUTINE_STUDY_ENABLE_ASIO)
+    add_subdirectory(I1_asio_echo)
+    add_subdirectory(Capstone4_rpc_framework)
+endif()
+
+if(COROUTINE_STUDY_ENABLE_IOCP AND WIN32)
+    add_subdirectory(I2_io_uring_iocp)
+elseif(COROUTINE_STUDY_ENABLE_IO_URING AND CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    add_subdirectory(I2_io_uring_iocp)
+endif()
+
+if(COROUTINE_STUDY_ENABLE_FOLLY AND NOT WIN32)
+    add_subdirectory(I3_folly_safe_task)
+endif()
+
+if(COROUTINE_STUDY_ENABLE_COBALT AND NOT WIN32)
+    add_subdirectory(I4_cobalt_channel)
+endif()
+
+if(COROUTINE_STUDY_ENABLE_CPPCORO AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/I5_cppcoro_patterns/CMakeLists.txt")
+    add_subdirectory(I5_cppcoro_patterns)
+endif()
+
+add_subdirectory(J1_eight_pitfalls)
+add_subdirectory(J2_cross_compiler_abi)
+add_subdirectory(J3_coroutine_tracing)
+add_subdirectory(Capstone5_mini_corolib)

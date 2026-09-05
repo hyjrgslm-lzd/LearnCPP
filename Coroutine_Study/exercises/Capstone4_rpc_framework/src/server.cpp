@@ -1,39 +1,34 @@
 // =============================================================================
-// src/server.cpp —— RPC server（accept 循环 + handler 注册 + 协程 dispatch）
+// src/server.cpp —— RPC server（accept loop + handler dispatch + drain）
 //
 // 对应文档：13-第三阶段结课-RPC框架.md
 //   §"必做任务 5 / 6 / 7"
 //
-// 设计要点：
-//   - acceptor 在 server scope 中 spawn handle_connection；
+// Starter 设计要点：
+//   - acceptor 用 asio::awaitable 写 accept_loop；
+//   - 每个后台协程由 co_spawn completion handler 维护 in_flight；
 //   - handle_connection 内部循环：读请求 -> 查表 -> 调 handler -> 写响应；
 //   - method 不存在时统一返回 Response{status:"unknown_method"}，不崩溃；
 //   - server handler 是协程，可继续 co_await（如 delay_add）；
-//   - 不允许 detach；不允许全局可变状态。
+//   - 不使用 asio::detached，不使用全局可变状态。
 //
 // 关键类型形状（13-RPC §"Server 接口形状"）：
 //   class RpcServer {
 //       using Handler = std::function<task<Response>(Request)>;
 //       std::unordered_map<std::string, Handler> handlers_;
-//       async_scope scope_;
+//       in_flight_scope scope_;
 //       task<void> serve(uint16_t port);
 //   };
 // =============================================================================
 
 #include "rpc/protocol.hpp"
 #include "rpc/scope.hpp"
-#include "rpc/stop_token.hpp"
 #include "rpc/task.hpp"
 
 #include <chrono>
 #include <functional>
-#include <iostream>
 #include <string>
 #include <unordered_map>
-
-// stdexec / asio 头文件按需引入（CMakeLists 链接 stage3 deps）
-// #include <stdexec/execution.hpp>
-// #include <asio.hpp>
 
 namespace rpc {
 
@@ -51,11 +46,12 @@ inline task<Response> handler_add(Request req) {
 
 // delay_add: 异步等待后返回 —— 验证 co_await asio_timer
 inline task<Response> handler_delay_add(Request req) {
-    // TODO[必做]: 用 asio::steady_timer + as_awaitable 等待 args[0] 毫秒
-    //            参考 H-1 桥接 / 模块 I 的 asio_awaitable_t；
+    // TODO[必做]: 用 asio::steady_timer + asio::use_awaitable 等待 args[0] 毫秒
     //            真实实现示例：
+    //              auto ex = co_await asio::this_coro::executor;
+    //              asio::steady_timer timer{ex, std::chrono::milliseconds{delay_ms}};
     //              co_await timer.async_wait(asio::use_awaitable);
-    //            为了 stage3 通用性，这里给出占位逻辑。
+    //            这里先保留占位逻辑，让 Starter smoke 可编译。
     int delay_ms = req.args.empty() ? 0 : req.args[0];
     (void)delay_ms;
     int sum = 0;
@@ -73,7 +69,7 @@ inline task<Response> handler_error_method(Request req) {
 // ============ RpcServer ============
 class RpcServer {
     std::unordered_map<std::string, Handler> handlers_;
-    async_scope                              scope_;
+    in_flight_scope                         scope_;
 
 public:
     RpcServer() {
@@ -91,18 +87,19 @@ public:
     task<void> serve(std::uint16_t port) {
         (void)port;
         // TODO[必做]: 用 asio::ip::tcp::acceptor 接收连接：
-        //   while (!stop_token.stop_requested()) {
+        //   for (;;) {
         //       auto sock = co_await acceptor.async_accept(asio::use_awaitable);
-        //       scope_.spawn(handle_connection(std::move(sock)));
+        //       auto shared = std::make_shared<tcp::socket>(std::move(sock));
+        //       scope_.on_spawn();
+        //       asio::co_spawn(ex, handle_connection(shared),
+        //           [this](std::exception_ptr) { scope_.on_complete(); });
         //   }
-        // 提示：use_awaitable 是 Asio 的标准 completion token；
-        //       如果你用自写 task<T>，需在 H-1 完成 as_awaitable 适配；
-        //       本骨架默认两条路线都写好了。
+        // completion handler 是所有权边界；不要用 asio::detached。
         co_return;
     }
 
     // 单连接 handler：循环读请求 -> 调度 -> 写响应
-    task<void> handle_connection(/* asio::ip::tcp::socket sock */) {
+    task<void> handle_connection(/* std::shared_ptr<asio::ip::tcp::socket> sock */) {
         // TODO[必做]: 完整实现：
         //   while (true) {
         //       auto req_str = co_await async_read_until(sock, '\n', asio::use_awaitable);
@@ -117,7 +114,7 @@ public:
         //           catch (...) { resp = {req->req_id, 0, "error"}; }
         //       }
         //       auto wire = serialize(resp);
-        //       co_await async_write(sock, asio::buffer(wire), asio::use_awaitable);
+        //       co_await asio::async_write(*sock, asio::buffer(wire), asio::use_awaitable);
         //   }
         co_return;
     }

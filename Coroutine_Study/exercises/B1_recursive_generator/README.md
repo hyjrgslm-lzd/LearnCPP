@@ -34,3 +34,9 @@
 - 日志能展示深层左子树先 yield，浅层节点处于"等待下一个值"的冻结状态。
 - 你能说明版本 B 在退化树上为什么爆栈、版本 A 为什么不爆栈。
 - 你能画出退化树遍历时协程帧之间的 resume 链。
+
+## Starter / Reference
+
+- `main.cpp` 是练习骨架，保留 TODO，用于对比 `elements_of` 与普通递归 yield。
+- `solution.cpp` 是可运行参考实现，`ctest --preset verify-core -C Release -R B1_recursive_generator_reference`
+  会校验中序遍历输出稳定正确。

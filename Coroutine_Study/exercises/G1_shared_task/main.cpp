@@ -3,7 +3,7 @@
 // 官方参考：
 //   - Lewis Baker "C++ coroutines: Sharing coroutines"
 //   - cppcoro shared_task.hpp
-//   - P3175R0 shared task 语义讨论
+//   - P3552R3 prior work: cppcoro::shared_task 与 sender split 对照
 //
 // 目标：把 lazy_task<T> 升级为 shared_task<T>——拷贝即增加引用计数；多个协程
 //      可以同时 co_await 同一个 shared_task，每个等待者各拿到一份结果（值拷贝）。

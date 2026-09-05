@@ -25,3 +25,9 @@
 - task 的析构必须避免对已销毁帧 destroy；本骨架未做完整 done 检查，进阶时补。
 - 测量耗时建议 `chrono::high_resolution_clock` + 多次平均。
 - 不要混用 lazy / eager 同一份对象——状态语义不同。
+
+## 本轮练习契约
+
+Starter 要求记录事件顺序。Reference 用同一 task 只切换 initial_suspend：suspend_always 表示 lazy，suspend_never 表示 eager，并断言 eager body 在创建表达式返回前执行。学习目标：知道 task 组合通常偏 lazy，因为启动前还要接 continuation/cancellation/context。
+
+命令：``cmake -S . -B build/dg-lane -DCOROUTINE_STUDY_BUILD_REFERENCE=ON``，然后构建 ``D2_eager_vs_lazy`` 与 ``D2_eager_vs_lazy_reference``，再用 ``ctest -R D2_eager_vs_lazy_reference`` 跑稳定验收。

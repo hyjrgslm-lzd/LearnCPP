@@ -35,3 +35,9 @@
 - 所有协程帧的拥有者明确（scope 或调用者）。
 - generator 正确惰性产出，不一次性加载全部行。
 - 你能不看代码描述整个项目的协程拓扑。
+
+## Starter / Reference
+
+- `main.cpp` 是结课骨架，保留 TODO，串起 fetch / parse / aggregate / timeout。
+- `solution.cpp` 是可运行参考实现，`ctest --preset verify-core -C Release -R Capstone1_async_crawler_reference`
+  会校验本地模拟 crawler 并发抓取、超时取消、逐行解析、聚合统计和整体收束。

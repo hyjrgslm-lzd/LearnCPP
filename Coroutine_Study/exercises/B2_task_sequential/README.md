@@ -33,3 +33,9 @@
 - 当 `fetch_user` 抛异常时，`parse / validate` 日志完全不出现，异常被 `sync_wait` 重新抛出。
 - 你能说清回调版的"错误处理散落在每层"为什么是结构性问题。
 - 你能指出每个 `co_await` 既是挂起点又是异常通道入口。
+
+## Starter / Reference
+
+- `main.cpp` 是练习骨架，保留 TODO 和可编译串联流程。
+- `solution.cpp` 是可运行参考实现，`ctest --preset verify-core -C Release -R B2_task_sequential_reference`
+  会校验 `fetch -> parse -> validate` 顺序、最终文本和异常短路传播。

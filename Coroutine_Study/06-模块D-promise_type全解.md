@@ -6,8 +6,8 @@
 
 - 协程的 8 个 promise_type hook 各自在什么时机被调用
 - eager 和 lazy 启动策略只差一个 `initial_suspend` 的返回值
-- `final_suspend` 为什么不能返回 `suspend_never`（除非你很清楚自己在做什么）
-- symmetric transfer 是怎么用 `await_suspend` 返回 `coroutine_handle` 来避免栈溢出的
+- `final_suspend` 为什么通常要挂起以保留结果消费窗口（除非你很清楚自己在做什么）
+- `await_suspend` 返回 `coroutine_handle` 是怎么把控制转交给 continuation，从而避免库代码直接嵌套 `.resume()` 的
 
 如果你跳过这一层，协程就永远是一个"黑盒语法糖"。
 
@@ -16,10 +16,10 @@
 做完本模块，你至少要能稳定说清楚：
 
 - promise_type 的 8 个 hook 分别在什么时机被框架调用，以及它们之间如何协作构成一条完整协程生命周期。
-- `initial_suspend` 是 lazy 和 eager 的唯一开关。
+- `initial_suspend` 是 lazy 和 eager 启动语义的核心开关。
 - `final_suspend` 返回 `suspend_always` 是为了让协程帧的销毁晚于最终结果被取走。
-- `unhandled_exception` 为什么不能再 throw——它只能存储异常然后等待外部捕获。
-- symmetric transfer 如何通过在 `await_suspend` 中返回 `coroutine_handle` 来转交控制权，从而避免嵌套 resume 导致的栈溢出。
+- 为什么教学 task 通常让 `unhandled_exception` 存储异常并 `noexcept`，以及标准允许它抛出时会进入怎样的异常传播路径。
+- `await_suspend` 返回 `coroutine_handle` 如何转交控制权，从而避免库代码层层直接 `.resume()` 导致的栈增长风险。
 
 ## 类型骨架桥接段
 
@@ -76,7 +76,7 @@ struct lazy_task {
 
         // ---- 5. unhandled_exception ----
         // 协程体抛出未捕获异常时被调用。
-        // 存储异常，注意不能再次 throw——那会导致 std::terminate。
+        // 教学 task 选择存储异常；标准允许该函数抛出，但会把完成路径复杂化。
         void unhandled_exception() noexcept {
             result_exception = std::current_exception();
         }
@@ -84,7 +84,7 @@ struct lazy_task {
         // ---- 6. yield_value (仅 generator 用, lazy_task 可省略) ----
         // 本 task 不涉及 co_yield，如需 generator 则实现此 hook。
 
-        // ---- 7. operator new (可选, P0912R5 allocator 定制) ----
+        // ---- 7. operator new（可选，[dcl.fct.def.coroutine] allocation 定制） ----
         // 自定义协程帧的分配。配合 operator delete 使用。
         // 若不定义，编译器使用全局 operator new。
         static void* operator new(std::size_t size) {
@@ -95,10 +95,10 @@ struct lazy_task {
         }
 
         // ---- 8. get_return_object_on_allocation_failure (可选) ----
-        // 当 operator new 失败时的回退路径。
-        // 若未定义，operator new 抛 std::bad_alloc 会导致协程失败。
-        static lazy_task get_return_object_on_allocation_failure() {
-            throw std::bad_alloc();
+        // 当 promise scope 中找到该 hook 时，协程分配走 nothrow 失败路径；
+        // allocation function 返回 nullptr 后调用本 hook 返回失败态 task。
+        static lazy_task get_return_object_on_allocation_failure() noexcept {
+            return lazy_task{};
         }
 
         // ---- 可选: await_transform ----
@@ -175,9 +175,9 @@ struct lazy_task {
 |------|------|------|
 | `yield_value` | `co_yield expr` 时产生中间值 | 与 `return_value` 互斥，仅 generator 使用 |
 | `await_transform` | `co_await expr` 前转换 awaitable | 可拦截、包装或拒绝特定类型的 awaitable |
-| `operator new` | 协程帧分配时 | 自定义分配器入口（P0912R5） |
+| `operator new` | coroutine state 需要额外存储且分配未被消除时 | `[dcl.fct.def.coroutine]` 规定的 promise allocation 定制入口 |
 | `operator delete` | 协程帧释放时 | 与 operator new 配对 |
-| `get_return_object_on_allocation_failure` | `operator new` 抛异常时 | 分配失败回退路径 |
+| `get_return_object_on_allocation_failure` | 分配函数按 nothrow 语义失败并返回 null 时 | 分配失败回退路径 |
 
 ---
 
@@ -256,22 +256,22 @@ struct lazy_task {
 - 你的 `lazy_task<T>` 能重新抛出协程体内的异常到 `get()` 调用者。
 - 你的 `lazy_task<T>` 支持嵌套 `co_await`。
 - 你能说明每个 hook 在协程生命周期中的位置和职责。
-- 你没有在 `unhandled_exception` 中再次 throw。
+- 你没有在教学 task 的 `unhandled_exception` 中再次 throw；异常通过 `exception_ptr` 延迟交给消费者。
 
 ### 观察点
 
 - `get_return_object` 在协程体执行**之前**就被调用。这意味着此时返回值还不存在——它只是返回一个"遥控器"。
 - `initial_suspend` 返回 `suspend_always` 意味着协程体一行代码都没执行时就已经挂起了。控制权回到 `compute()` 的调用者，调用者拿到的是"未开始的 task"。
 - `final_suspend` 挂起后，协程帧还在。`get()` 此时才能安全地读取 `result_value`。如果 `final_suspend` 返回 `suspend_never`，协程帧在 `get()` 读取前就销毁了——UB。
-- `unhandled_exception` 中再次 throw 会导致程序直接 terminate。所以只能存储，不能重抛。
+- 教学 task 的 `unhandled_exception` 中再次 throw 会绕开你设计的 `exception_ptr` 消费通道，并让 final-suspend/调用者传播路径变难维护。课程要求这里存储，不重抛。
 
 ### 常见坑
 
 - `final_suspend` 写了 `suspend_never`——结果 `get()` 读到了已销毁帧上的值。
-- `unhandled_exception` 里写 `throw;`——直接 terminate。
+- `unhandled_exception` 里写 `throw;`——标准允许异常传播给 caller/resumer，但这会破坏本题通过 `exception_ptr` 统一消费异常的契约。
 - `get_return_object` 中用 `coroutine_handle<promise_type>::from_promise(*this)`，但忘了此时 promise 还没有被构造完成（实际上 `get_return_object` 被调用时 promise 已构造，所以这个写法是对的。但要注意不要在构造函数中依赖协程体执行——它还没有开始）。
 - `lazy_task` 的移动构造忘记清空源的 `h_`，导致两个 task 都认为自己拥有协程帧——双重 destroy。
-- 析构函数中直接 `h_.destroy()` 但没有检查协程是否已完成——在协程挂起状态下 destroy 是 UB。
+- 析构函数中直接 `h_.destroy()` 但对象可能正处于运行中或被别处 resume——`destroy()` 的前提是 handle 指向的协程处于挂起状态；对未挂起协程 destroy 是 UB。
 
 ### 提示
 
@@ -282,7 +282,7 @@ struct lazy_task {
 ### 复盘问题
 
 - 为什么 `get_return_object` 能在协程体执行之前被调用？框架是怎么知道该返回什么类型的？
-- 如果 `initial_suspend` 返回 `suspend_never`，协程体在 `get_return_object` 返回前还是返回后开始执行？
+- 如果 `initial_suspend` 返回 `suspend_never`，协程体在 `get_return_object` 已经构造出返回对象之后、协程函数调用返回给调用者之前开始执行吗？日志如何证明？
 - 为什么 `final_suspend` 几乎总是需要挂起（返回非 `suspend_never`）？
 - `unhandled_exception` 中存储的 `std::exception_ptr` 为什么能在 `get()` 中被安全地 `rethrow_exception`？
 
@@ -291,7 +291,7 @@ struct lazy_task {
 - Lewis Baker "Understanding the promise type"（系列第 5 篇）
 - Lewis Baker "C++ coroutines: Managing the coroutine frame"（系列第 6 篇）
 - cppcoro `task.hpp` 的 promise_type 实现
-- P0913R1：Add symmetric coroutine control transfer (Lewis Baker)
+- P0913R1：Add symmetric coroutine control transfer (Gor Nishanov)
 
 ---
 
@@ -398,13 +398,13 @@ struct lazy_task {
 
 ### 目标
 
-在 `final_suspend` 的 `await_suspend` 中返回 `coroutine_handle` 实现 symmetric transfer，让协程完成时自动将控制权转交给等待者，避免"resume 调用 resume"导致的栈溢出风险。
+在 `final_suspend` 的 `await_suspend` 中返回 `coroutine_handle` 实现控制权转交，让协程完成时把等待者交给 `co_await` 变换恢复，避免库代码直接写成"resume 调用 resume"导致栈增长。
 
 ### 前置理解
 
 - 你已经完成 D-1，实现了 `final_suspend` 中 continuation 的基本逻辑。
 - 你知道 `await_suspend` 有三种合法返回类型：`void`、`bool`、`std::coroutine_handle<>`。本题聚焦第三种。
-- 关键概念：**symmetric transfer**——当协程 A 完成时（`final_suspend`），它不直接 `resume` 等待者 B，而是把 B 的 `coroutine_handle` 返回给调度器/运行时。调度器随后 resume B。这避免了'A 栈帧内 resume B'的嵌套开销，在深层嵌套或循环嵌套协程场景下防止栈溢出。
+- 关键概念：**symmetric transfer**——当协程 A 完成时（`final_suspend`），它不直接 `resume` 等待者 B，而是从 `await_suspend` 返回 B 的 `coroutine_handle`。标准 `co_await` 变换会恢复这个 handle；优秀实现通常会把这条路径优化成不累积调用栈的控制转交。在深层嵌套或循环嵌套协程场景下，它避免的是库代码直接递归 `.resume()` 的栈增长风险。
 - 相比之下，如果在 `final_suspend` 中直接写 `continuation.resume()`，你就是在 A 的栈帧中调用 B 的恢复。每嵌套一层，栈就深一层。
 
 ### 必做任务
@@ -434,12 +434,12 @@ struct lazy_task {
 
 4. 画一张图描绘 symmetric transfer 的控制流：
    - 协程 A 完成 -> `final_suspend` -> `await_suspend` 返回 B 的 handle
-   - 框架收到这个返回的 handle -> 不通过 A 的栈帧，直接 resume B
+   - 标准 `co_await` 变换收到这个返回的 handle -> 恢复 B；具体是否生成机器级 tail call 由实现决定
    - B 的 `await_resume` 被调用，拿到 A 的结果
 
 5. 在笔记中明确记录：
    - symmetric transfer 消除了哪种类型的栈增长？
-   - 为什么 `await_suspend` 返回 `coroutine_handle` 是唯一能实现 symmetric transfer 的方式？
+   - 为什么 `await_suspend` 返回 `coroutine_handle` 是标准层面表达这种控制转交的方式？
    - 这和 `await_suspend` 返回 `void`（框架在 suspend 后就返回调用者，调用者手动 resume 等待者）的差异是什么？
 
 ### 进阶任务
@@ -450,16 +450,16 @@ struct lazy_task {
 
 ### 验收点
 
-- 你的 `final_suspend` 通过 symmetric transfer 将控制权转交给 continuation。
-- 你能跑通 1000 层嵌套协程链而不栈溢出。
+- 你的 `final_suspend` 通过返回 continuation handle 将控制权转交给等待者。
+- 你能在目标编译器上跑通足够深的嵌套协程链，并记录是否出现栈增长/栈溢出。
 - 你能画出 symmetric transfer 的控制流图。
 - 你能对比三种 `await_suspend` 返回值（void / bool / coroutine_handle）的语义差异。
 
 ### 观察点
 
-- symmetric transfer 就像"接力棒"——A 不直接把棒递给 B，而是放回地面，让 B 自己捡起来（恢复）。
+- symmetric transfer 的重点是：A 不在自己的库代码里直接调用 B 的 `.resume()`，而是把下一个要恢复的 handle 作为 awaiter 结果交给 `co_await` 变换。
 - 如果没有 symmetric transfer，`await_suspend` 返回 void 时，框架在挂起 A 后控制权返回给"启动 resume 的那个调用者"。这个调用者再手动 resume B。这一来一去，栈就不会增长——但需要额外一层调度。
-- symmetric transfer 提供了"不回到调度器的直接跳转"，同时保持了栈安全。
+- symmetric transfer 提供了"把下一个恢复目标作为返回值交出去"的直接控制转交模式；机器栈表现仍要用目标编译器实测确认。
 - 在 `final_suspend` 中使用 symmetric transfer 是最关键的场合，因为这里是一个协程生命周期的终结 + 下一个协程的开始。
 
 ### 常见坑
@@ -468,7 +468,7 @@ struct lazy_task {
 - `return continuation;` 时忘记检查 continuation 是否为空——空 handle 的 resume 是 UB（好在 `std::noop_coroutine()` 可以兜底）。
 - 混淆三种返回值的语义：
   - `void` = 框架挂起我，控制权回到调用 resume 的人手里。之后由别人 resume 等待者。
-  - `bool` = 返回 false 等同于 void（挂起），返回 true 等同于不挂起（立刻 resume 当前协程）。
+  - `bool` = 返回 true 表示当前协程保持挂起，返回 false 表示不挂起并立即继续当前协程。
   - `coroutine_handle` = 不回到调用 resume 的人，直接去跑这个 handle 指向的协程。
 - 在 `final_suspend` 返回 `suspend_never` — 协程帧立即销毁，continuation 没机会被用上。
 
@@ -481,8 +481,8 @@ struct lazy_task {
 
 ### 复盘问题
 
-- symmetric transfer 解决的核心问题是"A resume B"时的栈增长吗？如果不是，那是什么？
-- 为什么 symmetric transfer 不叫"tail-call optimization for coroutines"（虽然它确实很像）？
+- symmetric transfer 解决的核心问题是库代码层层直接 `.resume()` 造成的栈增长吗？请画出调用栈证明。
+- 为什么 symmetric transfer 不等于标准强制的"tail-call optimization for coroutines"？
 - 在 `await_suspend` 中返回 `std::noop_coroutine()` 和返回空 handle 有什么区别？
 - 如果你要在 `lazy_task` 的 `operator co_await` 中也使用 symmetric transfer，应该怎么写？
 
@@ -499,8 +499,8 @@ struct lazy_task {
 至少把下面几句话说顺：
 
 - promise_type 的 8 个 hook 各有固定调用时机，构成完整的协程生命周期。
-- `initial_suspend` 是 lazy 和 eager 的唯一开关——改一行即可切换语义。
-- `final_suspend` 必须挂起，否则协程帧在被消费前就已销毁。
-- `unhandled_exception` 不能再 throw，只能存储并等待外部捕获。
-- symmetric transfer 通过 `await_suspend` 返回 `coroutine_handle` 实现安全控制权转交。
+- `initial_suspend` 是协程体初始是否执行的核心开关；完整 lazy/eager API 语义还取决于返回对象何时取得所有权、谁能 start/await，以及重复启动如何拒绝。
+- `final_suspend` 通常必须挂起，否则协程帧可能在结果被消费前就已销毁。
+- 教学 task 的 `unhandled_exception` 存储异常并等待外部捕获；标准层面允许抛出但要理解其传播路径。
+- `await_suspend` 返回 `coroutine_handle` 实现控制权转交，但不要把机器级 tail call 当成标准保证。
 - 理解了这些之后，你看 cppcoro / folly coro / stdexec task 的源码时，不会再被 promise_type 的实现细节吓住。

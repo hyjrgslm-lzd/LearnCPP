@@ -4,7 +4,7 @@
 // 官方参考：
 //   - Lewis Baker, "Structured Concurrency" CppCon 2019
 //   - cppcoro when_all.hpp / when_any.hpp 设计
-//   - P3296R1: async_scope 与并发组合
+//   - P2300R10: when_all 与三通道完成语义
 // 学习要点：
 //   1. when_all 汇合：所有子 task 完成后取一个 tuple。
 //   2. when_any 竞速：第一个完成者决定结果，其余应被取消。
@@ -32,10 +32,8 @@ struct async_sleep {
     std::chrono::milliseconds dur;
     bool await_ready() const noexcept { return dur <= 0ms; }
     void await_suspend(std::coroutine_handle<> h) const {
-        std::thread([h, d = dur] {
-            std::this_thread::sleep_for(d);
-            h.resume();
-        }).detach();
+        std::this_thread::sleep_for(dur);
+        h.resume();
     }
     void await_resume() const noexcept {}
 };
@@ -67,10 +65,10 @@ when_all(T1 t1, T2 t2, T3 t3) {
     //   分别 .get()，再用 atomic 计数 + 条件变量等齐结果），
     //   最后 co_return std::make_tuple(r1, r2, r3)。
     //
-    //   骨架占位：当前直接顺序 .get()，请改为并行版本。
-    int r1 = t1.get();
-    int r2 = t2.get();
-    int r3 = t3.get();
+    //   骨架占位：当前直接顺序 sync_wait，请改为并行版本。
+    int r1 = coroutine_study::sync_wait(std::move(t1));
+    int r2 = coroutine_study::sync_wait(std::move(t2));
+    int r3 = coroutine_study::sync_wait(std::move(t3));
     co_return std::make_tuple(r1, r2, r3);
 }
 
@@ -91,8 +89,8 @@ coroutine_study::lazy_task<int> when_any(TA ta, TB tb) {
     //   用 atomic_flag 选第一个完成者，立刻 co_return 它的值；
     //   并向另一方发起 stop_source.request_stop() 释放资源。
     //
-    //   骨架占位：直接返回 ta.get()，请改写。
-    int v = ta.get();
+    //   骨架占位：直接等待 ta，请改写为真正竞速并收束 loser。
+    int v = coroutine_study::sync_wait(std::move(ta));
     (void)tb; // unused in skeleton
     co_return v;
 }
@@ -104,7 +102,7 @@ int main() {
     {
         auto start = std::chrono::steady_clock::now();
         auto t = when_all(fetch_cache(), fetch_db(), fetch_remote());
-        auto [a, b, c] = t.get();
+        auto [a, b, c] = coroutine_study::sync_wait(std::move(t));
         auto dur = std::chrono::steady_clock::now() - start;
         std::println("[when_all] cache={} db={} remote={} 总耗时 {}ms",
                      a, b, c,
@@ -116,7 +114,7 @@ int main() {
     // ------------------ when_any 超时 ------------------
     {
         auto t = when_any(fetch_remote(), timeout_after(200ms));
-        int v = t.get();
+        int v = coroutine_study::sync_wait(std::move(t));
         if (v == timeout_marker::value) {
             std::println("[when_any] 超时（remote 在 200ms 内未完成）");
         } else {

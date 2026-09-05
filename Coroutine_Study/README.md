@@ -2,61 +2,21 @@
 
 ## 这套文档要解决什么问题
 
-这不是一套"背关键字"的笔记，而是一套"通过亲手编码理解协程设计"的练习包。
+通过编码练习，依次学习协程的使用、语言协议与工程应用。
 
-协程是 C++20 引入、C++23/C++26 持续完善的核心异步原语。截至本练习包整理时，市面上的 C++ 协程教程大多存在两个问题：
+协程是 C++20 引入的无栈、可挂起/恢复函数机制。语言本身不提供 task、scheduler、事件循环或异步 I/O；C++23/C++26 的库设施与第三方框架在这套语言协议上补齐这些能力。
 
-- 要么停在 `co_yield` 和 `co_return` 的语法讲解，缺少对协程帧、promise 钩子、awaiter 三层协议等底层机制的系统拆解。
-- 要么直接跳到 cppcoro 或 folly 源码阅读，中间缺少"从应用到原理到工程"的递进路径。
+标准边界先看这份索引：[`references/标准条款与版本状态.md`](references/标准条款与版本状态.md)。课程正文会讲实践模型，但所有"标准已规定 / 工作草案 / 历史 paper / 实现细节 / 教学简化"的边界以该索引为准。
 
-这套文档的目标就是填补这个空白：让你从"会写 co_await"出发，经过编译器变换、promise_type 8 个 hook、awaiter 三方法、symmetric transfer、HALO 等原理层面拆解，最终能在生产工程中正确使用 asio coroutine、folly coro、stdexec task，并独立实现一个 mini 协程库与 RPC 框架。
+## 课程地图
 
-## 三阶段定位
+| 阶段 | 知道是什么 | 知道为什么 | 知道怎么实现 | 知道怎么用 |
+| --- | --- | --- | --- | --- |
+| A-C + Capstone1 | 三关键字、generator、task、awaiter、stop_token、when_all/when_any、async_scope | 为什么协程适合表达异步控制流，为什么取消必须协作，为什么并发需要收束边界 | 写最小 awaiter、最小 lazy task、最小取消/组合/scope 练习 | 在应用层把回调、延迟、并发抓取和解析流水线组织成可读协程代码 |
+| D-G | promise 生命周期、`co_await` 变换、协程状态、分配、HALO、shared_task、sync_wait | 为什么 hook 顺序决定语义，为什么 final suspend 要保留消费窗口，为什么返回 handle 能避免嵌套 resume 的栈增长风险 | 从零实现 task、shared_task、when_all、sync_wait、promise allocator，并用编译器输出验证帧/状态 | 在库层设计协程 return type、组合子、同步入口和帧分配策略 |
+| H-J + Capstone4/5 | sender/receiver 桥接、真实 I/O、跨编译器 ABI、陷阱诊断、RPC 与 mini 协程库 | 为什么现代 C++ 项目把协程用于 I/O、RPC、任务图、结构化并发和异步资源管理 | 实现 sender-to-awaitable、Asio/folly/cobalt 风格模式、RPC 超时/取消/重试、mini corolib | 在生产边界决定哪里用协程、哪里只暴露普通 API、如何测试/诊断/隔离 ABI 风险 |
 
-### 第一阶段：你会学到"怎么用"
-
-你不需要理解协程帧在堆上的布局细节，也不需要知道 `await_suspend` 为什么能返回 `coroutine_handle`。你只需要做到：能用 `std::generator<T>` 写惰性序列，能用附带的最小 `lazy_task<T>` 写顺序异步组合，能用 `co_await` 把回调 API 包成协程可消费的 awaiter，能用 `stop_token` 写出协作式取消，能用 `when_all` / `when_any` / `async_scope` 管理并发生命周期。
-
-这个阶段的核心目标是建立"协程是表达异步控制流的语法糖"这一直觉，同时让 `co_await`、`co_yield`、`co_return` 三个关键字的语义刻进肌肉记忆。
-
-### 第二阶段：你会学到"怎么实现"
-
-这个阶段你会正面面对编译器替你生成的那些代码：`promise_type` 的 8 个 hook 分别在什么时间点被调用、`await_suspend` 的三种返回类型（void / bool / coroutine_handle）分别对应什么调度语义、symmetric transfer 如何解决多层协程互相 resume 导致的栈溢出、协程帧在堆上的布局到底是怎样的、HALO 在什么条件下能被编译器触发。
-
-你会从零实现一个 `lazy_task<T>`（不再是第一阶段的"附带 30 行"），然后逐步加上 `shared_task`、`when_all`、`sync_wait`、`async_scope` 等基础设施。到这个阶段结束，你就不再"用 cppcoro"，而是"知道 cppcoro 为什么这样写"。
-
-### 第三阶段：你会学到"怎么在工程里用"
-
-协程真正走进生产代码时，问题就不只是"怎么写对"了。你会面对：协程如何与 stdexec sender-receiver 模型互操作（P3175 桥接）、协程如何绑定到 Asio 的 io_context 上做真正的异步 I/O、协程帧的分配如何通过自定义 allocator（P0912）进行池化优化、跨编译器的 ABI 差异如何影响你的库边界设计、协程中的生命周期陷阱（lambda 引用跨 co_await 悬挂、临时量在 co_await 表达式中析构、lock_guard + co_await 的 mutex UB）如何系统地诊断和规避。
-
-到这个阶段，你就不只是"会用协程写异步代码"，而是能在生产工程中设计协程 API、诊断协程性能问题、并独立实现一个带超时/取消/重试的 RPC 框架。
-
-## 你会得到什么
-
-这套练习包分为三个阶段：
-
-### 第一阶段：会用协程
-
-- 1 份心智模型总说明。
-- 3 个模块（A/B/C），共 9 道练习题。
-- 1 个结课项目（异步小爬虫）。
-- 每题统一的复盘框架。
-
-### 第二阶段：懂协程实现
-
-- 4 个模块（D/E/F/G），共 12 道练习题。
-- 全程手写实现，不再依赖附带头文件。
-- 逐层扩展 task、shared_task、when_all、sync_wait。
-
-### 第三阶段：工程价值
-
-- 3 个模块（H/I/J），共 12 道练习题（含结课）。
-- 2 个结课项目（RPC 框架 + mini 协程库实现）。
-- 1 份源码阅读路线。
-
-### 总计
-
-- **33 道练习题 + 5 个结课项目**
+规模：当前是 **32 道普通练习题 + 3 个结课项目**。Capstone1/4/5 是稳定项目 ID，不代表项目数量；I-5 已完成并计入第三阶段 11 道普通练习题。
 
 ## 阅读顺序
 
@@ -88,9 +48,9 @@
 
 本练习包默认你已经具备本地编码条件，因此这里不写安装和工程搭建，只固定练习边界。
 
-- 语言基线：C++20，**强制要求 C++23**（需要 `<generator>`），**期望 C++26**（关注 P2300/P3552 进展）
-- 编译器：MSVC 17.10+、Clang 17+、GCC 14+ 至少其一
-- 第一阶段：禁止任何第三方依赖，仅使用 C++23 标准库 `<generator>` + 每篇题目随附的 30 行 minimal `lazy_task<T>` 头文件
+- 语言基线：C++20；涉及 `std::generator` 的题目需要 C++23 标准库支持；涉及 `std::execution` / `task` / `async_scope` 的题目按 C++26 工作草案学习设计，通常需要 stdexec 等参考实现。
+- 编译器与标准库：以构建期 feature probe 为准；编译器版本号不能单独证明 `<generator>`、`<print>` 或 execution 支持。
+- 第一阶段：禁止第三方依赖，仅使用 C++23 标准库 `<generator>` 与练习包共享的 minimal `lazy_task<T>` 教学实现。
 - 第二阶段：全程手写实现，不使用第三方库，不使用附带头文件
 - 第三阶段：允许使用 stdexec、Asio、folly coro、Boost.Cobalt 等第三方框架
 - 排除范围：GPU 协程、Unity/UE 协程、JS/Python 协程类比超过半页的讨论
@@ -144,75 +104,46 @@
 
 ### 第二阶段验收
 
-- 你能从零写出 `promise_type` 的 8 个 hook，并解释每个 hook 被调用的时机和目的。
+- 你能从零写出本课程 task 所需的 promise hooks，并解释标准 replacement body 中每个调用的时机和目的。
 - 你能实现 eager 版和 lazy 版的 task，并解释 `initial_suspend` 的 `suspend_always` vs `suspend_never` 对协程启动语义的影响。
-- 你能实现 `await_suspend` 返回 `coroutine_handle` 的 symmetric transfer，并解释它为何能避免栈溢出。
+- 你能实现 `await_suspend` 返回 `coroutine_handle` 的控制转交，解释它如何避免库代码显式递归 `.resume()`，并区分标准语义与编译器的栈/尾调用实现。
 - 你能写出通过 `promise_type::operator new` 接管协程帧分配的自定义 allocator（P0912 风格）。
-- 你能用编译器 flag（Clang `-Rpass=coroutine-elide` 或 GCC `-fdump-tree-coro`）诊断 HALO 是否触发，并解释 HALO 的前提条件（"帧不逃逸"）。
+- 你能结合编译器诊断、IR/汇编和 allocation 计数观察动态分配是否被消除，并说明任何单一 flag 都不是跨编译器 HALO 保证。
 - 你能从零实现 `shared_task`、`when_all`、`sync_wait`，并解释 shared_task 的引用计数与 final_suspend 多 resumer 链表之间的关系。
 
 ### 第三阶段验收
 
-- 你能实现 sender-to-awaitable 桥接（P3175 风格），让任意 stdexec sender 可以被 `co_await` 消费。
+- 你能基于本课程固定的 stdexec 版本实现 sender-to-awaitable 桥接，并说明它与 current working draft `execution::as_awaitable` 的差异。
 - 你能使用 Asio `awaitable<T>` 写出单线程多协程的回声服务器，并用 `cancellation_slot` 优雅关停。
-- 你能系统地重现协程的 8 大经典陷阱（lambda 引用悬挂、临时量提前析构、lock_guard + co_await UB 等），并解释每个陷阱的根因。
-- 你能跨 MSVC/Clang/GCC 分别编译同一份协程代码，对比帧大小、HALO 触发差异、调试信息差异，并说明为什么协程 ABI 不在标准内导致"不要跨 DLL 传 coroutine_handle"。
-- 你能从零实现一个 mini 协程库，包含 `task<T>`、`generator<T>`、`shared_task<T>`、`when_all`、`when_any`、`sync_wait`、`async_scope`、`stop_token`、`single_thread_executor`、sender-awaitable 桥接，且 `sync_wait` 入口可触发 HALO。
+- 你能系统地重现并分类协程陷阱：lambda/引用悬挂、异步 API 保存短命指针、持锁挂起、重复 resume/destroy、detached 生命周期等，并解释哪些是 UB、哪些是死锁或工程风险。
+- 你能跨 MSVC/Clang/GCC 编译同一份协程代码，记录实现差异，并为跨模块边界设计同工具链 ABI 契约或 opaque C API，而不把“跨 DLL 必崩”当作标准结论。
+- 你能从零实现一个 mini 协程库，包含 `task<T>`、`generator<T>`、`shared_task<T>`、`when_all`、`when_any`、`sync_wait`、scope、`stop_token`、`single_thread_executor` 和可选 sender-awaitable 桥接；HALO 单独作为实现观察项。
 
 ## 术语速查表
 
 | 术语 | 你在练习里会看到什么 | 你应该问自己的问题 |
 | --- | --- | --- |
 | 协程 (coroutine) | 一个包含 `co_await/co_yield/co_return` 的函数 | 这个函数的执行是"调用即完成"还是"挂起-恢复"？ |
-| 协程帧 (coroutine frame) | 编译器在堆上（或 HALO 优化后在栈上）分配的状态存储 | 哪些变量会进入帧？帧的大小谁决定？帧什么时候销毁？ |
-| promise_type | 协程内部用于定制行为的对象，由编译器自动创建 | 它的 8 个 hook 分别在什么时间点被调用？ |
+| 协程帧 / 协程状态 (coroutine state) | 标准意义上的 coroutine state；实现通常以帧对象保存 promise、参数副本和跨挂起点仍需存活的对象 | 哪些变量会进入帧？帧的大小谁决定？帧什么时候销毁？ |
+| promise_type | 协程内部用于定制行为的对象，由编译器自动创建 | 必需与可选定制点分别在什么时间调用，哪些只适用于 generator 或分配失败？ |
 | coroutine_handle | 指向协程帧的轻量句柄，可用 `.resume()` 恢复执行 | 谁拥有这个 handle？谁负责调用 `.destroy()`？ |
 | awaitable | 可被 `co_await` 消费的对象（实现了 `operator co_await` 或被 `await_transform` 识别） | 这个对象的生命周期在 co_await 期间如何保障？ |
 | awaiter | awaitable 经 `co_await` 变换后得到的实际控制对象 | 它的 `await_ready/await_suspend/await_resume` 分别在什么时机被调用？ |
 | co_await | 挂起当前协程，将执行权转交给 awaiter 的关键字 | co_await 表达式返回什么值？挂起后谁继续执行？ |
 | co_yield | 挂起并产出一个值给调用方/消费者 | `co_yield expr` 等价于哪两步的合写？ |
 | co_return | 正常完成协程，向 promise 传递最终值（或 void） | final_suspend 之后，协程帧是否还存在？ |
-| symmetric transfer | `await_suspend` 返回 `coroutine_handle`，让编译器用尾调用跳转到下一个协程 | 为什么 symmetric transfer 能避免多层 resume 的栈溢出？ |
-| HALO (Heap Allocation eLision Optimization) | 编译器在可证明帧不逃逸时，将协程帧从堆分配优化为栈分配 | HALO 的前提条件是什么？为什么不依赖 HALO 做正确性假设？ |
-| unhandled_exception | promise_type 的异常入口，协程体内未捕获的异常会走到这里 | 为什么 unhandled_exception 中不能再 throw？ |
-| sender 桥接 | 把 stdexec sender 包装为 awaitable，或把协程 task 包装为 sender（P3175/P3552） | bridge receiver 的三个 completion channel 分别对应协程的哪些路径？ |
+| symmetric transfer | `await_suspend` 返回 `coroutine_handle`，标准规定会恢复该 handle 指向的协程 | 为什么它能避免库代码直接递归 `.resume()` 带来的栈增长风险？哪些栈/尾调用细节不能假设？ |
+| HALO (Heap Allocation eLision Optimization) | 编译器在可证明协程状态生命周期被调用方严格嵌套时，可能省略动态分配 | HALO 的前提条件是什么？为什么不依赖 HALO 做正确性假设？ |
+| unhandled_exception | promise_type 的异常入口，协程体内未捕获的异常会走到这里 | 为什么教学 task 通常在这里存 `exception_ptr`，而不是直接传播？标准允许什么异常路径？ |
+| sender 桥接 | 按 `[exec.as.awaitable]` 把 sender 适配为 awaitable，或按 P3552 把协程 task 设计为 sender | bridge receiver 的三个 completion channel 分别对应协程的哪些路径？ |
 
 ## 一个非常重要的现实提醒
 
-协程在 C++20 引入时，标准委员会特意将 ABI 留在实现定义域，没有强制规定协程帧的布局、HALO 的触发条件、或者 coroutine_handle 的跨库传递语义。这意味着：
+协程在 C++20 引入时，标准规定了语言变换和库接口，但没有规定协程帧的具体布局、HALO 的触发条件、或者不同编译器/ABI 之间裸 `coroutine_handle` 的兼容性。这意味着：
 
-- **协程 ABI 不稳定**：同一份协程代码，MSVC 和 Clang 生成的帧布局可能不同，HALO 触发条件可能不同，连调试信息的格式都不同。如果你把协程写成库的边界 API，跨编译器调用时不要传裸的 `coroutine_handle`，而应该在库内部封装好消费逻辑。
-- **HALO 是优化，不是语义**：永远不要在代码逻辑里假设"协程帧一定在堆上"或"协程帧一定在栈上"。HALO 的触发条件会随编译器版本变化。正确的做法是：逻辑上就当帧在堆上，性能上期待 HALO 但不依赖它。
-- **编译器支持仍在演进**：C++23 `<generator>` 的 MSVC 实现、Clang 17+ 的 symmetric transfer 优化、GCC 14+ 的 coroutine 调试符号，每个版本都在改进。如果你的代码在某个编译器版本上行为异常，先确认不是编译器 bug，再怀疑自己的理解。
-
-## 学完后你应该达到什么水平
-
-### 第一阶段完成后
-
-- 解释为什么协程不等于线程，协程是一次可以暂停和恢复的函数。
-- 解释 `co_await` 导致挂起时，当前协程的栈帧被"冻结"到哪里（协程帧），而执行流又去了哪里（交给 awaiter）。
-- 解释为什么 `std::generator<T>` 的 `co_yield` 是惰性的——每次 `begin()` 迭代器推进时才执行到下一个 `co_yield`。
-- 解释为什么 async 代码中 `co_await` 串联看起来像同步代码，但背后的执行可以是非阻塞的。
-- 用附带的最小 `lazy_task<T>` 完成多步异步顺序组合，并画出一张清晰的 await-suspend-resume 链。
-- 给一个回调式异步 API 写出 awaiter 适配，使之可被协程消费。
-
-### 第二阶段完成后
-
-- 从零实现 `promise_type` 的 8 个 hook，解释每个 hook 的调用时机。
-- 实现 eager 和 lazy 两种 task 启动策略，并解释 `initial_suspend` 的选择如何影响整个协程的启动语义。
-- 实现 symmetric transfer（`await_suspend` 返回 `coroutine_handle`），并解释它如何解决协程互相 resume 的栈深度问题。
-- 通过编译器诊断输出观察协程帧布局和 HALO，解释 HALO 的前提条件。
-- 实现自定义 allocator（P0912 风格）来接管协程帧的分配。
-- 从零实现 `shared_task`、`when_all`、`sync_wait`，并解释其中的并发控制和生命周期管理。
-
-### 第三阶段完成后
-
-- 实现 sender-to-awaitable 桥接，让 stdexec sender 可被 `co_await` 消费。
-- 使用 Asio coroutine 写出单线程多协程的回声服务器，管理 cancellation 和 async_scope。
-- 系统地诊断和规避协程的 8 大陷阱（lambda 悬挂、临时量析构、锁 + co_await 死锁等）。
-- 跨编译器编译同一份协程代码，分析 ABI 差异并制定跨库边界策略。
-- 从零实现一个 mini 协程库（task/generator/shared_task/when_all/when_any/sync_wait/async_scope/桥接），不依赖任何第三方库。
-- 实现一个带超时/取消/重试的 RPC 框架。
+- **协程 ABI 不稳定**：同一份协程代码，MSVC 和 Clang 生成的帧布局可能不同，HALO 触发条件可能不同，连调试信息的格式都不同。如果你把协程写成库的边界 API，跨编译器/跨运行时调用时不要传裸的 `coroutine_handle`，而应该在库内部封装好消费逻辑和销毁所有权。
+- **HALO 是优化，不是语义**：永远不要在代码逻辑里假设"协程帧一定在堆上"或"协程帧一定在栈上"。HALO 的触发条件会随编译器版本变化。正确的做法是：逻辑上只依赖返回对象和 handle 的生命周期契约，性能上期待 HALO 但不依赖它。
+- **编译器和标准库支持仍在演进**：同一个 Clang/GCC/MSVC 前端搭配不同标准库时，`<generator>`、execution 和诊断能力可能不同。先记录完整工具链，再区分课程代码、库实现与编译器问题。
 
 ## 参考资料入口
 
@@ -225,14 +156,14 @@
 
 ### 标准提案
 
-- P2502R2：`std::generator<T>` —— C++23 标准 generator
+- P2502R2：`std::generator: Synchronous Coroutine Generator for Ranges` —— C++23 标准 generator
 - P2300R10：`std::execution` —— sender-receiver 异步模型
-- P3552R3：`std::execution::task<T>` —— C++26 协程与 sender 的统一 task
-- P3175R0：sender 与 coroutine awaitable 的桥接设计
-- P3296R1：`async_scope` —— 结构化并发的作用域对象
-- P3149R4：`std::execution` 的 when_all/when_any 相关设计
-- P0912R5：协程帧的自定义 allocator 支持
-- P2786R0：Trivial Awaitables —— 简化 awaitable 协议
+- P3552R3：`Add a Coroutine Task Type`；当前规范性学习入口是 working draft `[exec.task]`
+- working draft [`[exec.as.awaitable]`](https://eel.is/c++draft/exec.as.awaitable)：sender 到 coroutine awaitable 的适配规则
+- P3296R1：`let_async_scope` —— 创建并保证 join 的 scope adaptor；与 P3149 配套阅读
+- P3149R4：`async_scope — Creating scopes for non-sequential concurrency`、`spawn`、`spawn_future` 与 counting scope
+- P0912R5：`Merge Coroutines TS into C++20 working draft`；其中包含 coroutine state 分配规则
+- C++20 [`[coroutine.trivial.awaitables]`](https://eel.is/c++draft/coroutine.trivial.awaitables)：`suspend_always` / `suspend_never`
 
 ### 演讲与教程
 
@@ -243,7 +174,7 @@
 ### 参考实现
 
 - cppcoro：`task.hpp`、`generator.hpp`、`when_all.hpp`、`async_scope.hpp`
-- folly：`folly/experimental/coro/Task.h`、`SafeTask.h`、`AsyncScope.h`
+- folly：`folly/coro/Task.h`、`folly/coro/safe/SafeTask.h`、`folly/coro/AsyncScope.h`
 - stdexec：`exec/task.hpp`、`__connect_awaitable.hpp`
 - Boost.Cobalt：`channel`、`race`、`gather`
 - Asio：coroutines 文档与 `awaitable<T>` 示例
@@ -251,11 +182,3 @@
 ### 手册
 
 - cppreference.com：`<coroutine>`、`<generator>`、`coroutine_handle`、`std::stop_token`
-
-## 最后一句提醒
-
-不要把这套练习当成"我要赶快学会 co_await"。
-
-把它当成三层训练：第一层是语法使用训练——你在学习用三个关键字表达异步控制流。第二层是编译器/运行时理解训练——你在学习协程帧、promise hooks、awaiter 协议、symmetric transfer 等在编译器和运行时层面真正发生的事情。第三层是工程判断训练——你在学习"这里该不该用协程""这个协程的生命周期谁负责""这个协程的帧应该走堆还是走池"这些问题。
-
-三层都练透，你对 C++ 协程的理解就不再停留在"能用 co_await"，而是到达"能设计协程 API、能诊断协程性能问题、能看懂协程库实现"。

@@ -32,3 +32,9 @@ shared_task，每个等待者都能拿到结果（值拷贝）或异常。实现
   无法做"最后一个 release 才 destroy"的判断。
 - 如果只用 `std::list<coroutine_handle<>>` 也能跑通，但 intrusive list 更高效。
 - 多线程版需要把 `waiters_head` 的头插改成 atomic CAS，参考 cppcoro 实现。
+
+## 本轮练习契约
+
+Starter 要求实现一个 producer、多 awaiter 共享结果。Reference 验证两个 awaiter 都拿到值且 producer 只执行一次；教学重点是 control block、结果缓存、异常缓存和多等待者唤醒。
+
+命令：``cmake -S . -B build/dg-lane -DCOROUTINE_STUDY_BUILD_REFERENCE=ON``，然后构建 ``G1_shared_task`` 与 ``G1_shared_task_reference``，再用 ``ctest -R G1_shared_task_reference`` 跑稳定验收。

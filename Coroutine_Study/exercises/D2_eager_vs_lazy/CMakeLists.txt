@@ -1,13 +1,1 @@
-cmake_minimum_required(VERSION 3.25)
-project(D2_eager_vs_lazy LANGUAGES CXX)
-
-set(CMAKE_CXX_STANDARD 23)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
-
-if(MSVC)
-    add_compile_options(/Zc:__cplusplus /utf-8 /await:strict)
-endif()
-
-# D 模块"从零写"——不依赖 include/coroutine_study/lazy_task.hpp
-add_executable(D2_eager_vs_lazy main.cpp)
+coroutine_study_add_exercise(D2_eager_vs_lazy REFERENCE_SOURCES solution.cpp)

@@ -15,7 +15,7 @@ awaiter，让它可以被 `co_await` 消费。这是协程工程化的"第一道
 2. 写 `AsyncAddAwaiter`：
    - `await_ready()` 返回 `false`。
    - `await_suspend(h)` 调用 `async_add(a, b, [this, h](int r){ result_ = r; h.resume(); });`
-     **注意：先写 `result_`，后 `h.resume()`**——`resume` 充当内存屏障。
+     **注意：先写 `result_`，后 `h.resume()`**；跨线程版本还必须有明确的生命周期所有权和同步关系。
    - `await_resume()` 返回 `result_`。
 3. 写协程 `compute_with_callback(x, y) -> lazy_task<int>`，`int sum = co_await AsyncAddAwaiter{x,y}; co_return sum*3;`。
 4. main 中 `sync_wait` 取走结果。
@@ -35,3 +35,9 @@ awaiter，让它可以被 `co_await` 消费。这是协程工程化的"第一道
 - 你能解释为什么 `await_ready` 返回 `false`、为什么必须"先写 result 后 resume"。
 - 你能画出完整的 awaiter + async_add + callback + resume 时序图。
 - 你能说出真实库（Asio `awaitable<T>`、Folly `Future::to_task`）为什么要把这个模式封装起来。
+
+## Starter / Reference
+
+- `main.cpp` 是练习骨架，保留 TODO 和最小 callback awaiter。
+- `solution.cpp` 是可运行参考实现，`ctest --preset verify-core -C Release -R B3_callback_to_awaiter_reference`
+  会校验 callback 先写结果再 resume，最终结果为 36。

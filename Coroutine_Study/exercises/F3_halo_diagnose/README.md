@@ -28,6 +28,12 @@
 
 ## 提示
 
-- HALO 在 -O0 下几乎不会触发——一定要 -O1 以上。
+- HALO 属于 QoI：优先用 Release/-O2 观察，但任何优化级别都不保证触发；必须以目标编译器的 remark、IR 或汇编为证。
 - 如果你的 stdlib 还没有 `std::generator`，本题骨架内置了一个 demo::generator 仿制版。
 - 性能实测时不要用 printf 计时——I/O 会把 HALO 的优化幅度淹没。
+
+## 本轮练习契约
+
+Starter 要求收集 HALO 诊断。Reference 是稳定可编译 fixture；通过 compiler remark/dump/disassembly 判断是否 elide heap allocation，不能以微基准时间作为通过条件。
+
+命令：``cmake -S . -B build/dg-lane -DCOROUTINE_STUDY_BUILD_REFERENCE=ON``，然后构建 ``F3_halo_diagnose`` 与 ``F3_halo_diagnose_reference``，再用 ``ctest -R F3_halo_diagnose_reference`` 跑稳定验收。

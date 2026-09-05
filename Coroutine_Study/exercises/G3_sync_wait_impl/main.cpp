@@ -3,7 +3,7 @@
 // 官方参考：
 //   - cppcoro sync_wait.hpp
 //   - Lewis Baker "C++ coroutines: Building a sync_wait"
-//   - P3175R0 this_thread::sync_wait 语义
+//   - P2300R10 / [exec.sync.wait]: this_thread::sync_wait 语义
 //   - stdexec sync_wait 实现
 //
 // 目标：实现 sync_wait——在非协程上下文中驱动 task 到完成，把"协程世界"翻译为

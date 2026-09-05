@@ -2,14 +2,14 @@
 // 练习 E-3：Trivial Awaitable 与短路优化
 // 文档参考：Coroutine_Study/07-模块E-awaitable三层与co_await变换.md  -> 练习 E-3
 // 官方参考：
-//   - P2786R0 Trivial Awaitables
+//   - C++20 [expr.await] / [coroutine.trivial.awaitables]
 //   - Lewis Baker, "C++ coroutines: Understanding the co_await operator"
 //   - Gor Nishanov, "HALO: Heap Allocation eLision Optimization" CppCon 2018
 //   - cppreference: std::suspend_never / std::suspend_always
 // 学习要点：
 //   1. await_ready -> true 让 co_await 退化为对 await_resume 的直接调用。
-//   2. 优化模式下整个挂起逻辑可被消除（与 HALO 同源）。
-//   3. P2786R0 想标准化"trivial awaitable 不需要 await_suspend"的简化接口。
+//   2. 优化器可能消除不可达挂起分支；这不是固定优化级别保证。
+//   3. ready 短路与 HALO 分别验证：前者控制 await_suspend，后者控制 frame allocation。
 // =====================================================================
 #include <chrono>
 #include <coroutine>
@@ -62,7 +62,7 @@ struct always_ready {
 };
 
 // ---------------------------------------------------------------------
-// conditional_ready：按运行时参数决定是否挂起
+// conditional_ready：按运行时参数决定是否进入 await_suspend；本例随后返回 false 继续
 // ---------------------------------------------------------------------
 struct conditional_ready {
     bool should_suspend;
@@ -70,9 +70,9 @@ struct conditional_ready {
         // TODO [必做 2]：should_suspend 为 false 时返回 true，跳过挂起。
         return !should_suspend;
     }
-    void await_suspend(std::coroutine_handle<> h) const noexcept {
-        std::println("    [conditional] suspending ... and immediately resuming");
-        h.resume();
+    bool await_suspend(std::coroutine_handle<>) const noexcept {
+        std::println("    [conditional] await_suspend reached; return false to continue safely");
+        return false;
     }
     int await_resume() const noexcept {
         return should_suspend ? 1 : 0;
@@ -80,13 +80,12 @@ struct conditional_ready {
 };
 
 // ---------------------------------------------------------------------
-// trivial_awaitable：P2786 风格的极简愿景
-//   愿景下编译器只看 await_ready/await_resume 即可消除整段挂起
+// trivial_awaitable：标准三方法接口；计数验证 await_suspend 不执行
 // ---------------------------------------------------------------------
 struct trivial_awaitable {
     bool await_ready() const noexcept { return true; }
     void await_suspend(std::coroutine_handle<>) const noexcept {
-        // P2786 愿景下编译器无需此函数；当前规范仍要求其存在。
+        // await_ready 恒真时不执行，但当前标准仍要求表达式良构。
     }
     std::string await_resume() const { return "trivial-result"; }
 };
@@ -111,7 +110,7 @@ simple_task with_conditional() {
     std::println("    => {} (期望 0，未挂起)", v);
     std::println("  [task] co_await conditional_ready{{true}}:");
     int w = co_await conditional_ready{true};
-    std::println("    => {} (期望 1，经历了挂起+resume)", w);
+    std::println("    => {} (期望 1，调用 await_suspend，但 bool=false 不保持挂起)", w);
     co_return;
 }
 
@@ -156,7 +155,7 @@ int main() {
     }
     std::println("");
 
-    std::println("--- 实验 3：trivial_awaitable (P2786 风格) ---");
+    std::println("--- 实验 3：标准三方法 trivial_awaitable ---");
     {
         auto t = with_trivial();
         t.run_to_end();

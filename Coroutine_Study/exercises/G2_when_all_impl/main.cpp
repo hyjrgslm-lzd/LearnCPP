@@ -5,7 +5,7 @@
 //   - cppcoro when_all.hpp
 //   - P2300R10 std::execution::when_all
 //
-// 目标：让 N 个子 task 并行执行（单线程下逐个 resume），最后一个完成的子 task
+// 目标：让 N 个子 task 先全部启动，再统一等待完成；最后一个完成的子 task
 //      唤醒等待者；用 std::tuple 汇合结果；错误处理采用 fail-delay：所有子 task
 //      完成后若有任何异常，传播第一个。
 //
@@ -76,12 +76,12 @@ struct lazy_task {
 };
 
 // ============ when_all_2：可编译的 2-task 固定版（主任务） ============
-// 设计：先把两个 task drain 到 done，然后从各自 promise 取出结果汇合到 tuple。
-//      单线程模式下没有真正并行，但语义上等价——每个子 task 跑到完成后再合流。
+// 设计：这里仍是 starter 的顺序 drain 待改造起点；它只能证明顺序收束，
+//      不能证明真正 fan-out。目标实现应先启动所有子 task，再由 barrier 汇合。
 template <typename T0, typename T1>
 lazy_task<std::tuple<T0, T1>> when_all_2(lazy_task<T0> t0, lazy_task<T1> t1)
 {
-    // 启动两个 task 并 drain 到 done
+    // Starter 占位：顺序 drain 两个 task；请改造成先启动所有分支再等待。
     if (!t0.done()) t0.resume();
     while (!t0.done()) t0.h_.resume();
 
@@ -169,12 +169,12 @@ int main()
     }
 
     // TODO [必做]：在笔记中画 when_all 的状态转换图：
-    //   remaining=N → ... → remaining=0 → waiter.resume() → await_resume 返回 tuple
+    //   remaining=N → 每个分支完成时 -1 → remaining=0 → waiter.resume() → await_resume 返回 tuple
     // TODO [必做]：列出三种错误合并策略（fail-fast / fail-delay / aggregation）
     //   各自适合的场景。
     // TODO [进阶]：实现变参 when_all——用 std::index_sequence_for 把索引带入 fold。
     // TODO [进阶]：实现 when_any（第一个完成胜出，其余取消）。
-    // TODO [进阶]：把单线程 drain 改为多线程并行（提交到线程池）。
+    // TODO [进阶]：把 run_loop/manual_event 版改为多线程并行（提交到线程池）。
 
     std::printf("\n===== Done =====\n");
     return 0;

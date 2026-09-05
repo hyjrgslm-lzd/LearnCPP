@@ -83,8 +83,8 @@ int main() {
     auto task = compute_async(5);
     log("main", "task 构造完毕（此前不应看到任何 [coro] 日志）");
 
-    log("main", "调用 task.sync_wait()");
-    int result = task.sync_wait();
+    log("main", "调用 sync_wait(std::move(task))");
+    int result = coroutine_study::sync_wait(std::move(task));
     log("main", "sync_wait 返回，result = ", result);
 
     // ─ 必做 6：对照同步版本 ─────────────────────────────────────────

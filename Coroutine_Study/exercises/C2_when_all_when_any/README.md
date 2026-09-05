@@ -28,3 +28,9 @@
 - 学习版可以为每个 task 起一条 `std::jthread` 单独驱动 `.get()`。
 - 超时 task 实现极简：`co_await async_sleep{N}; co_return timeout_marker;`
 - when_any 的"取消未完成 task"可以用 `std::stop_source` 通知。
+
+## Starter / Reference
+
+- `main.cpp` 是练习骨架，保留 TODO 和串行占位，便于对比耗时。
+- `solution.cpp` 是可运行参考实现，`ctest --preset verify-core -C Release -R C2_when_all_when_any_reference`
+  会校验 `when_all` 并发汇合、`when_any` 超时胜出，以及 loser 收到取消并被 join。

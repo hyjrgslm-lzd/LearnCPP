@@ -4,7 +4,7 @@
 
 前面模块让你看懂了 promise_type 的 8 个 hook 和 co_await 的三步变换。这个模块要把你拉到编译器底层：
 
-- 亲手用编译器 flag 打印协程帧（coroutine frame）的布局，看清楚的参数、局部变量、resume-point 索引在帧内的排布
+- 亲手用编译器 flag 观察协程状态（coroutine state）的实现布局，看清楚参数副本、局部变量、resume-point 索引等信息通常如何被保存
 - 实现 P0912 风格的自定义 promise allocator，把帧分配到预分配 pool 上，统计分配/释放次数
 - 触发并诊断 HALO（Heap Allocation eLision Optimization），理解"帧不逃逸"是如何让编译器把堆分配直接优化为栈分配的
 
@@ -16,8 +16,8 @@
 
 - 协程帧不是黑盒：promise、参数副本、局部变量 spill 区、resume-point 索引，在编译器中都是有明确布局的。
 - P0912 的 `operator new`/`operator delete` 重载机制让 promise 可以参与帧分配决策，而不是被动接受默认的 `::operator new`。
-- HALO 的触发前提是"协程帧在所有 co_await 点之后的调用图中都不逃逸"。破坏任何一个前提，HALO 就静默失败。
-- HALO 的性能差异是数量级的：无 HALO 单次协程调用 50-200ns，有 HALO 可以压到 5-20ns。
+- HALO 的常见触发前提是协程状态生命周期能被证明严格嵌套在调用方生命周期内，且状态大小在调用点可知。破坏任何一个前提，编译器通常会放弃省略动态分配。
+- HALO 可能带来数量级性能差异，但具体收益取决于帧大小、优化级别、allocator、标准库实现和目标硬件，必须实测。
 - 跨编译器的 frame 布局和 HALO 触发能力差异显著，工程中必须针对目标编译器实测。
 
 ## 使用建议
@@ -38,7 +38,7 @@
 ### 前置理解
 
 - 你已经完成模块 D 和 E，理解协程体的每一步都会编译为一个状态机的状态转换。
-- 你知道每个协程调用都会在堆上（或经过 HALO 后在栈上）分配一个 coroutine frame。
+- 你知道每个协程调用都会创建一个 coroutine state；实现通常需要动态分配，若满足优化前提则可能省略这次分配。
 - 你知道 co_await 表达式是"挂起点"——编译器在挂起点前后插入状态保存和恢复代码。
 - 你接受这题的重点是观察帧布局的结构，不是记住某个特定编译器的 flag 语法。
 
@@ -112,7 +112,7 @@
    - 追踪 co_await 点数量与 resume_index 可能值的对应关系。
    - 思考：为什么 resume_index 必须是 frame 内的一个字段，而不能是"当前 IP 算出来的"？（提示：协程可以被 resume 执行后又被 destroy，resume 时协程体内的代码不一定在运行。）
 
-8. **为什么会默认堆分配**：协程帧的大小在编译期确定，但帧必须在多次 suspend/resume 之间存活——这意味着它的生命周期跨越了创建函数的栈帧。因此编译器默认走 `operator new`。
+8. **为什么通常需要动态分配**：协程状态的大小在编译期确定，但它必须在多次 suspend/resume 之间存活，生命周期常常跨越创建函数的栈帧。因此实现通常走 allocation function。若实现能证明生命周期被调用方严格包含，则可能省略动态分配。
 
 ### 进阶任务
 
@@ -126,13 +126,13 @@
 - 你能从编译器 dump 中找到协程帧的结构体定义。
 - 你能在帧中标注出 promise、参数副本、resume_index、局部变量 spill 区四个区域。
 - 你能解释参数按值传递时，参数副本为什么必须存在于帧中。
-- 你能解释为什么协程帧默认走堆分配，而不可能完全在栈上。
+- 你能解释为什么协程帧通常需要动态分配，以及什么时候可能被 HALO 省略。
 - 你至少做了一个编译器 flag 的帧 dump 并完成标注。
 
 ### 观察点
 
-- 协程帧本质上是编译器为你自动生成的一个 struct——你把 co_await 前后的代码想象成这个 struct 的成员函数，而结构体本身会存活到协程结束。
-- 帧的大小 = promise 大小 + resume_index + 所有参数副本大小 + 所有溢出到帧的局部变量大小 + 对齐 padding。不同编译器的 padding 策略不同，所以帧大小也不同。
+- 协程帧可以近似想象成编译器生成的一个状态对象——你把 co_await 前后的代码想象成围绕这个状态对象运行的 resume/destroy 函数；具体是不是可见 struct、字段如何排列，都是实现细节。
+- 帧大小通常受 promise、参数副本、跨挂起点存活的局部对象、状态索引、异常/销毁簿记和对齐 padding 影响。不同编译器可保留的字段、重排方式和 padding 策略不同，所以帧大小也不同。
 - resume_index 的重要性怎么强调都不为过——没有它，协程被 resume 时根本不知道应该跳到哪个 co_await 之后继续执行。
 - 非平凡类型（如 `std::string`）的析构函数必须在帧销毁时被调用，这就是为什么帧的析构函数是编译器生成的——它遍历所有活跃的局部变量并调用析构。
 
@@ -178,8 +178,8 @@
 ### 前置理解
 
 - 你已经完成 F-1，理解协程帧的结构和默认堆分配路径。
-- 你知道 P0912R5 的机制：promise_type 可以重载 `static void* operator new(size_t size)`，编译器在分配 frame 时会优先调用这个重载而非全局 `::operator new`。
-- 你知道 `get_return_object_on_allocation_failure()` 是 P0912 的兜底——如果 `operator new` 抛异常或返回 nullptr（nothrow 版本），promise 可以通过这个函数返回一个"失败态"的 task。
+- 你知道 `[dcl.fct.def.coroutine]` 的分配查找规则：promise type 可以提供 `operator new`，实现需要额外存储且未消除分配时会按标准顺序查找并调用它。
+- 你知道 `get_return_object_on_allocation_failure()` 是 P0912 的兜底——如果 promise scope 中能找到这个 hook，协程分配走 nothrow 失败路径；allocation function 返回 nullptr 时，promise 可以通过这个函数返回一个"失败态"的 task。
 - 你接受这题先做单线程 pool，不追求多线程安全或复杂分配策略。
 
 ### 必做任务
@@ -270,12 +270,11 @@
    ```cpp
    static pool_task get_return_object_on_allocation_failure() {
        // 分配失败时返回一个"错误态"的 task
-       // 或者抛异常
-       throw std::bad_alloc();
+       return pool_task::failed_allocation();
    }
    ```
 
-   这个函数在 `operator new` 失败（抛异常或返回 nullptr）后被自动调用。它让你有机会返回一个"失败态"task。
+   这个函数在 nothrow 分配路径返回 nullptr 后被自动调用。它让你有机会返回一个"失败态"task；若没有这个 hook，普通分配失败通常按 `std::bad_alloc` 传播。
 
 5. **观测帧大小**：在 `operator new(size_t size)` 中打印 `size`，对不同的协程体观测帧大小：
    - 只有一个 co_await + 一个 int 的协程，帧大小约多少？
@@ -305,7 +304,7 @@
 ### 观察点
 
 - P0912 的设计精妙之处在于：allocator 附着在 promise_type 上，而不是附着在 task 类型上。这意味着同一个 task 类型的不同 promise_type 可以对帧分配做出不同决定。
-- 帧大小在编译期是完全确定的（虽然 HALO 会在运行期消除分配）。因此 pool 可以预分配精确匹配帧大小的槽位。
+- 对一个具体协程实例，编译器传给 `operator new(std::size_t)` 的 size 是该实现计算出的状态大小。因此 pool 可以按实际传入 size 选择槽位，而不是假设跨编译器固定大小。
 - 帧分配是协程性能的一个重要因素，但不是唯一的因素——非平凡局部变量的析构、resume 时的状态分发、多级 indirect call 都可能更贵。
 - 在"大量短生命周期协程"的场景（如 HTTP 请求处理），pool allocator 可以显著降低 malloc/free 开销。
 
@@ -334,7 +333,7 @@
 
 ### 对应官方参考
 
-- P0912R5: "Coroutines with allocator support"
+- P0912R5: "Merge Coroutines TS into C++20 working draft"（对照现行 `[dcl.fct.def.coroutine]` 的 allocation paragraphs）
 - cppreference: `coroutine_traits` 和 `promise_type::operator new`
 - Lewis Baker "Custom allocators for C++ coroutines" blog
 - Andreas Fertig 《Programming with C++20》第 8.5 节（allocator）
@@ -350,15 +349,13 @@
 ### 前置理解
 
 - 你已经完成 F-1 和 F-2，理解协程帧的布局和分配机制。
-- 你知道 HALO（Heap Allocation eLision Optimization）的原理：如果编译器能够证明协程帧的地址不会逃逸到 co_await 之后的外部代码，就可以把帧分配从堆移到调用者的栈帧中。
-- HALO 的触发前提（必要条件，不是充分条件）：
-  1. 协程返回类型不是拥有 frame 的类型（如 `std::generator` 不拥有 frame，但 `co_await` 它的函数可能有自己的帧）。
-  2. 协程帧的地址从未传递给任何"可能逃逸"的上下文（如存到全局变量、传给 opaque 函数、作为返回值的一部分）。
-  3. 所有 co_await 点之后的调用路径中，帧地址不逃逸。
+- 你知道 HALO（Heap Allocation eLision Optimization）的原理：如果实现能证明协程状态的生命周期严格嵌套在调用方生命周期内，并且状态大小在调用点可知，就可以省略动态分配。很多资料说“移到调用者栈帧”，但标准不承诺具体存放位置。
+- HALO 的常见前提（必要条件，不是充分条件）：
+  1. 调用方能看见并内联分析协程创建与消费路径。
+  2. 协程返回对象、`coroutine_handle` 或 awaiter 不会逃逸到比调用方更长的生命周期。
+  3. 所有挂起后的恢复/销毁路径都能被证明不会在调用方生命周期外访问该状态。
 - 你接受这题的目标是"触发 HALO 或诊断为什么没触发"，而不是"保证每台机器上一定会触发 HALO"。跨编译器的 HALO 能力差异很大。
-- 关键性能数据点（来自 Gor Nishanov CppCon 2018）：
-  - **无 HALO**：协程创建 + destroy = 50-200ns（取决于帧大小和 malloc 实现）
-  - **有 HALO**：协程创建 + destroy = 5-20ns（本质上是调整栈指针 + 几个 mov）
+关键性能数据点只能当作量级参考：历史演讲中短协程示例展示过“无 HALO 受 malloc/free 主导、有 HALO 接近普通函数”的差异；你的结果取决于编译器版本、优化级别、stdlib、allocator、硬件和 benchmark 写法。
 
 ### 必做任务
 
@@ -375,8 +372,8 @@
        }
    }
 
-   // 关键：generator 本身不持有 frame 地址，
-   // 且在消费代码中 frame 地址从未逃逸到外部
+   // 关键：generator 对象留在局部作用域内消费，
+   // 不把返回对象或内部 handle 交给更长生命周期的地方
    void consumer_A() {
        for (int val : simple_range(10)) {   // 范围 for —— 局部消费
            printf("%d\n", val);             // 帧地址不逃逸
@@ -387,7 +384,7 @@
 2. **写版本 B：故意破坏 HALO 前提**：
 
    ```cpp
-   // 版本 B：把 generator 引用存到全局——帧地址逃逸
+   // 版本 B：把 generator 对象地址存到全局——返回对象逃逸，优化会更保守
    std::generator<int>* g_storage = nullptr;
 
    std::generator<int> leaker() {
@@ -398,7 +395,7 @@
 
    void consumer_B() {
        auto g = leaker();
-       g_storage = &g;    // 帧地址逃逸到全局变量！HALO 无法触发
+       g_storage = &g;    // generator 对象逃逸到全局，优化会变得保守
        for (int val : g) {
            printf("%d\n", val);
        }
@@ -434,10 +431,10 @@
    - 如果版本 A 显著更快（5-10x），说明 HALO 发挥了作用。
 
 7. **更多破坏 HALO 的模式**：
-   - 把协程的 `coroutine_handle` 存到一个容器中（如 `std::vector`）
+   - 把协程的 `coroutine_handle` 或拥有它的返回对象存到一个更长生命周期的容器中（如 `std::vector`）
    - 在 co_await 之后访问一个通过引用捕获的外部变量
-   - 协程返回类型中包含 `std::coroutine_handle<>` 作为成员
-   - 每个模式都对应一条"帧地址逃逸"的路径
+   - 协程返回类型把 `std::coroutine_handle<>` 暴露给调用方，并允许调用方跨作用域保存
+   - 每个模式都对应一条"返回对象或 handle 逃逸"的路径
 
 8. **记录诊断结论**：你的编译器在哪些条件下可以触发 HALO？哪些条件是你预期会触发但实际上没触发？
 
@@ -445,7 +442,7 @@
 
 - 尝试在不同优化级别（-O0、-O1、-O2、-O3）下观察 HALO 的触发情况。你可能会发现 -O0 下 HALO 几乎从不触发。
 - 如果你有多个编译器可用（Clang 和 GCC），对比两者的 HALO 诊断能力差异。
-- 研究 `std::generator` 的源码实现（libstdc++ 或 libc++），观察它为什么被设计为不持有 frame 所有权——这正是 HALO 的关键前提之一。
+- 研究 `std::generator` 的源码实现（libstdc++ 或 libc++），观察它如何拥有并销毁协程状态、如何维护 active stack，以及哪些局部消费模式更容易被优化。
 - 用 `perf stat` 或硬件计数器统计两版代码的 L1 cache miss 和 branch misprediction——HALO 的好处不仅仅是省了 malloc，还包括更好的局部性。
 
 ### 验收点
@@ -459,7 +456,7 @@
 ### 观察点
 
 - HALO 的本质是逃逸分析（escape analysis）——编译器要证明帧地址不会逃逸到比协程寿命更长的上下文。这和 Java 的逃逸分析、Go 的 escape analysis 是同一个思路。
-- C++ 需要 HALO 的核心原因是"协程帧默认堆分配"，而其他语言（如 Rust）的协程帧本来就是放在调用栈上的。C++ 历史包袱导致了 HALO 是一个"补偿性优化"。
+- C++ 允许实现为 coroutine state 获取动态存储，也允许在标准条件满足时省略这次分配。其他语言的 async lowering 与固定/移动语义不同，不能用“都在调用栈上”作一一类比；本题只讨论 C++ 标准与目标编译器的可观察结果。
 - HALO 的触发条件非常脆弱——哪怕是一个看似无害的 `std::vector::push_back(coro_handle)` 调用，都可能导致 HALO 静默失败。
 - `std::generator` 的 `begin()`/`end()` 返回迭代器而不暴露 `coroutine_handle`，这不是偶然的设计——它就是为了最大化 HALO 的触发机会。
 
@@ -474,7 +471,7 @@
 
 ### 提示
 
-- 如果你的编译器不支持 HALO 诊断 flag，可以从"版本 A 和 B 的性能是否有显著差异"来反推 HALO 状态。
+- 如果你的编译器不支持 HALO 诊断 flag，可以从"版本 A 和 B 的性能是否有显著差异"初步推断 HALO 状态；最终仍要看汇编或 allocation hook 是否被调用。
 - 用 Godbolt 写版本 A，看生成的汇编：如果在协程创建点看不到 `call operator new`，说明 HALO 触发了。
 - 尝试在协程体里不写任何 co_await 之外的东西——极简的协程体最容易触发 HALO。然后再逐步加代码，观察哪一步让 HALO 消失。
 - 性能数据点 50-200ns vs 5-20ns 来自 CppCon 2018 的 benchmark。你的实际数字可能因为硬件和编译器版本有所不同，但数量级差异应该一致。
@@ -500,7 +497,7 @@
 
 至少把下面几句话说顺：
 
-- 协程帧不是黑盒。用编译器 flag 可以打印完整的帧布局：promise 在前，然后是 resume_index、参数副本、局部变量 spill 区。帧的析构函数由编译器生成，负责按顺序析构所有已构造的局部变量。
+- 协程帧不是完全黑盒。用编译器 flag 可以观察某个实现的帧布局：通常能看到 promise、状态索引、参数副本、局部变量 spill 区和销毁簿记。帧的析构路径由编译器生成，负责析构所有已构造且仍活跃的对象。
 - P0912 通过 promise_type 的 `operator new`/`operator delete` 重载实现了帧分配定制。同一个 task 类型的不同 promise_type 可以使用不同的 allocator，而框架不需要感知这一层。
-- HALO 让编译器在"帧不逃逸"的前提下把堆分配优化为栈分配。性能差异是数量级的（50-200ns vs 5-20ns），但触发条件脆弱——任何一个帧地址逃逸路径都会静默破坏 HALO。
+- HALO 让编译器在生命周期严格嵌套、状态大小可知等前提下省略动态分配。性能差异可能很大，但触发条件脆弱——任何一个返回对象或 handle 逃逸路径都可能让优化消失。
 - 跨编译器的 frame 布局和 HALO 能力差异显著。工程中不能假设"某个编译器会 HALO"，必须对目标编译器实测。

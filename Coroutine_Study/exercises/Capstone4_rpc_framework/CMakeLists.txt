@@ -1,9 +1,11 @@
 cmake_minimum_required(VERSION 3.25)
 project(Capstone4_rpc_framework LANGUAGES CXX)
 
+include(CTest)
+
 # 如本目录被独立打开（不通过顶层 add_subdirectory），跳过
-if(NOT TARGET stdexec::stdexec AND NOT COROUTINE_STUDY_STANDALONE)
-    message(WARNING "Capstone4_rpc_framework requires stage3 deps; configure via top-level CMakeLists.txt")
+if(NOT TARGET asio::asio AND NOT COROUTINE_STUDY_STANDALONE)
+    message(WARNING "Capstone4_rpc_framework requires asio; configure via top-level CMakeLists.txt")
     return()
 endif()
 
@@ -22,11 +24,10 @@ add_executable(Capstone4_rpc_framework
     src/client.cpp
 )
 
-# stage3 依赖：stdexec + asio（asio 通常作为 stage3 helper 的一部分）
 if(COMMAND coroutine_study_link_stage3_deps)
     coroutine_study_link_stage3_deps(Capstone4_rpc_framework)
 else()
-    target_link_libraries(Capstone4_rpc_framework PRIVATE stdexec::stdexec)
+    target_link_libraries(Capstone4_rpc_framework PRIVATE asio::asio)
 endif()
 
 # 工程内 include 优先（rpc/*.hpp）；同时也允许全局 include/
@@ -34,3 +35,14 @@ target_include_directories(Capstone4_rpc_framework PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${CMAKE_SOURCE_DIR}/include
 )
+
+if(COROUTINE_STUDY_BUILD_REFERENCE)
+    add_executable(Capstone4_rpc_framework_reference
+        reference/tests/rpc_reference_test.cpp
+    )
+    target_include_directories(Capstone4_rpc_framework_reference PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}/reference/include
+    )
+    target_link_libraries(Capstone4_rpc_framework_reference PRIVATE asio::asio)
+    add_test(NAME Capstone4_rpc_framework_reference COMMAND Capstone4_rpc_framework_reference)
+endif()

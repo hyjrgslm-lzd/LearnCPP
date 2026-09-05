@@ -1,7 +1,7 @@
 // F-2 自定义 promise allocator（P0912）
 // 文档参考：08-模块F-协程帧与allocator.md 「练习 F-2」
 // 官方参考：
-//   - P0912R5 "Coroutines with allocator support"
+//   - P0912R5 "Merge Coroutines TS into C++20 working draft"
 //   - cppreference: coroutine_traits / promise_type::operator new
 //   - Lewis Baker "Custom allocators for C++ coroutines"
 //

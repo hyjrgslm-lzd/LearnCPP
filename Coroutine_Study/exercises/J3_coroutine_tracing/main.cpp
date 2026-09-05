@@ -12,7 +12,7 @@
 //     https://learn.microsoft.com/en-us/visualstudio/debugger/debug-coroutines
 //   - GDB 14+ "info coroutines"
 //     https://sourceware.org/gdb/onlinedocs/gdb/Coroutines.html
-//   - folly/experimental/coro tracing 基础设施
+//   - folly/coro 相关 tracing 基础设施
 //   - Andreas Weis CppCon 2024 "How to Debug C++ Coroutines"
 // =============================================================================
 
@@ -98,6 +98,15 @@ inline std::mutex& mtx() {
     return m;
 }
 
+inline std::size_t opaque_id(void* frame_addr) {
+    static std::unordered_map<void*, std::size_t> ids;
+    static std::size_t next_id = 1;
+    if (!frame_addr) return 0;
+    auto [it, inserted] = ids.emplace(frame_addr, next_id);
+    if (inserted) ++next_id;
+    return it->second;
+}
+
 inline void log(std::string_view event,
                 std::string_view name,
                 void* frame_addr) {
@@ -109,11 +118,15 @@ inline void log(std::string_view event,
     tid << std::this_thread::get_id();
 
     std::lock_guard<std::mutex> lk(mtx());
+    auto id = opaque_id(frame_addr);
     std::cerr << '[' << us << "us]"
               << " [tid=" << tid.str() << ']'
               << ' ' << event
               << ' ' << name
-              << " frame=" << frame_addr
+              << " coro#";
+    if (id == 0) std::cerr << "ready";
+    else std::cerr << id;
+    std::cerr
               << '\n';
 }
 
@@ -203,7 +216,8 @@ public:
         std::lock_guard<std::mutex> lk(mtx_);
         std::cerr << "----- CoroutineRegistry dump (" << map_.size() << " entries) -----\n";
         for (auto& [frame, info] : map_) {
-            std::cerr << "  frame=" << frame
+            (void)frame;
+            std::cerr << "  coroutine=<opaque>"
                       << " name=" << info.name
                       << " state=" << info.state << '\n';
         }
@@ -242,9 +256,7 @@ inline task<int> task_c() {
 // =============================================================================
 template <typename T>
 struct traced_task {
-    // TODO[进阶]：复制 task<T> 后在 initial_suspend / final_suspend 中调用
-    //           trace_log::log("INIT" / "FINAL", ...) 即可。
-    //           本骨架不展开，留作 §J-3 进阶任务。
+    // 进阶练习入口：复制 task<T>，在 initial_suspend/final_suspend 写 trace。
 };
 
 int main() {
@@ -253,7 +265,7 @@ int main() {
     // --- 主任务：跑一遍嵌套协程，观察 SUSPEND / RESUME trace 顺序 ---
     auto t = task_c();
     int  result = t.blocking_run();
-    std::cout << "[main] task_c result = " << result << " (expect 26)\n";
+    std::cout << "[main] task_c result = " << result << " (expect 26)\n" << std::flush;
 
     // --- 进阶：用注册表查询当前活跃协程 ---
     registry().dump();

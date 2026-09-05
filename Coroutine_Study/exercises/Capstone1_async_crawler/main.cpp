@@ -3,7 +3,7 @@
 // 文档参考：Coroutine_Study/05-第一阶段结课-异步小爬虫.md
 // 官方参考：
 //   - cppreference <stop_token>, <generator>, <coroutine>
-//   - P3296R1 async_scope
+//   - P3149R4 async scope；P3296R1 let_async_scope
 //   - Lewis Baker, "Structured Concurrency" CppCon 2019
 //
 // 项目目标：
@@ -51,10 +51,8 @@ struct async_sleep {
     std::chrono::milliseconds dur;
     bool await_ready() const noexcept { return dur <= 0ms; }
     void await_suspend(std::coroutine_handle<> h) const {
-        std::thread([h, d = dur] {
-            std::this_thread::sleep_for(d);
-            h.resume();
-        }).detach();
+        std::this_thread::sleep_for(dur);
+        h.resume();
     }
     void await_resume() const noexcept {}
 };
@@ -104,13 +102,13 @@ public:
     template <typename Fn>
     void spawn_with(Fn&& fn) {
         in_flight_.fetch_add(1, std::memory_order_relaxed);
-        std::thread([this, fn = std::forward<Fn>(fn)]() mutable {
+        workers_.emplace_back([this, fn = std::forward<Fn>(fn)]() mutable {
             try { fn(); } catch (...) {}
             if (in_flight_.fetch_sub(1, std::memory_order_acq_rel) == 1) {
                 std::lock_guard<std::mutex> lk(mu_);
                 cv_.notify_all();
             }
-        }).detach();
+        });
     }
     ~async_scope() {
         std::unique_lock<std::mutex> lk(mu_);
@@ -120,11 +118,12 @@ private:
     std::atomic<int> in_flight_{0};
     std::mutex mu_;
     std::condition_variable cv_;
+    std::vector<std::jthread> workers_;
 };
 
 // ---------------------------------------------------------------------
 // 简化版 when_all：等齐 N 个 fetch_one。
-// 学习版直接顺序 .get()，请改写为并行版本。
+// 学习版直接顺序 sync_wait，请改写为并行版本。
 // ---------------------------------------------------------------------
 lazy_task<std::vector<FetchResult>>
 when_all_fetch(std::vector<capstone1::UrlRecord> recs, std::stop_token st) {
@@ -134,7 +133,7 @@ when_all_fetch(std::vector<capstone1::UrlRecord> recs, std::stop_token st) {
     //   收集结果到 out（注意线程安全），最后 co_return out。
     for (auto& r : recs) {
         auto task = fetch_one(r, st);
-        out.push_back(task.get()); // 占位：串行。请并行化。
+        out.push_back(coroutine_study::sync_wait(std::move(task))); // 占位：串行。请并行化。
     }
     co_return out;
 }
@@ -218,7 +217,7 @@ int main() {
 
     // ------------------ 主流程 ------------------
     auto task = aggregate(recs, token);
-    Report rep = task.get();
+    Report rep = coroutine_study::sync_wait(std::move(task));
     print_report(rep);
 
     // ------------------ 进阶任务 ------------------

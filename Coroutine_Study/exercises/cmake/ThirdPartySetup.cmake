@@ -1,183 +1,186 @@
-# exercises/cmake/ThirdPartySetup.cmake
-#
-# 统一的 stage 3 第三方依赖引入逻辑。
-# - stage 1/2（模块 A/B/C/D/E/F/G）：不需要任何第三方依赖，仅 C++23 <generator> + 随附 lazy_task.hpp。
-# - stage 3：需要 stdexec / asio / liburing / folly / cobalt。
-#
-# 当子目录作为独立项目打开时（VS Code 打开单个习题），
-# 由该子目录的 CMakeLists.txt include 此文件来拉取依赖；
-# 当子目录作为顶层项目的子目录时，顶层已经 include 过本文件，重复 include 会被守卫跳过。
-
 include_guard(GLOBAL)
 
 include(FetchContent)
 
-# ============================================================
-# stdexec —— stage 3 模块 H 协程 ↔ sender/receiver 桥接
-# ============================================================
-function(_coroutine_study_setup_stdexec)
-    if(TARGET stdexec::stdexec)
+function(_coroutine_study_bridge_target public_name real_name)
+    if(TARGET ${public_name})
         return()
     endif()
-    if(TARGET STDEXEC::stdexec)
-        if(NOT TARGET stdexec::stdexec)
-            add_library(stdexec::stdexec ALIAS stdexec)
-        endif()
+    if(TARGET ${real_name})
+        string(REPLACE "::" "_" bridge_name "coroutine_study_bridge_${public_name}")
+        add_library(${bridge_name} INTERFACE)
+        target_link_libraries(${bridge_name} INTERFACE ${real_name})
+        add_library(${public_name} ALIAS ${bridge_name})
+    endif()
+endfunction()
+
+function(_coroutine_study_require target feature)
+    if(NOT TARGET ${target})
+        message(FATAL_ERROR "${feature} is enabled but ${target} is unavailable. Install it, set CMAKE_PREFIX_PATH/pkg-config paths, set FETCHCONTENT_SOURCE_DIR_*, or enable COROUTINE_STUDY_FETCH_DEPS for light deps.")
+    endif()
+endfunction()
+
+function(coroutine_study_setup_stdexec)
+    cmake_parse_arguments(ARG "REQUIRED" "" "" ${ARGN})
+    if(TARGET stdexec::stdexec)
         return()
     endif()
 
     find_package(stdexec QUIET CONFIG)
-    if(stdexec_FOUND)
-        message(STATUS "[ThirdPartySetup] stdexec found via find_package.")
-        return()
-    endif()
+    _coroutine_study_bridge_target(stdexec::stdexec STDEXEC::stdexec)
 
-    message(STATUS "[ThirdPartySetup] stdexec not found — using FetchContent...")
-    FetchContent_Declare(
-        stdexec
-        GIT_REPOSITORY https://github.com/NVIDIA/stdexec.git
-        # 钉到已验证可用的 commit（MSVC 14.51 / C++26 实测编译通过）。
-        # 想追最新改回 main 即可。注意：按 SHA 拉取时 GIT_SHALLOW 须为 FALSE
-        # （GitHub 默认不支持对任意 commit 的 shallow want）。
-        GIT_TAG        02d671da624daafc63dc42f60bfba40f97161400
-        GIT_SHALLOW    FALSE
-        GIT_PROGRESS   TRUE
-    )
-    set(STDEXEC_BUILD_TESTS OFF CACHE BOOL "" FORCE)
-    set(STDEXEC_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
-    set(STDEXEC_BUILD_DOCS OFF CACHE BOOL "" FORCE)
-    FetchContent_MakeAvailable(stdexec)
-
-    if(NOT TARGET stdexec::stdexec)
-        add_library(stdexec::stdexec ALIAS stdexec)
-    endif()
-    message(STATUS "[ThirdPartySetup] stdexec ready.")
-endfunction()
-
-# ============================================================
-# Asio (standalone) —— stage 3 模块 I-1 真实异步 IO
-# Asio 没有原生 CMake 支持，需要手动创建 INTERFACE target 指向其 include。
-# ============================================================
-function(_coroutine_study_setup_asio)
-    if(TARGET asio::asio)
-        return()
-    endif()
-
-    message(STATUS "[ThirdPartySetup] asio (standalone) — using FetchContent...")
-    FetchContent_Declare(
-        asio
-        GIT_REPOSITORY https://github.com/chriskohlhoff/asio.git
-        # 钉到已验证可用的 commit（实测随 stdexec 一起编译通过）。想追最新改回 master。
-        GIT_TAG        bd500f0a018db9a845ebaaed5c0318343ae9f497
-        GIT_SHALLOW    FALSE
-        GIT_PROGRESS   TRUE
-    )
-    FetchContent_MakeAvailable(asio)
-
-    add_library(asio_standalone INTERFACE)
-    # asio 仓库新旧布局兼容：master 直接放 include/，老版本放 asio/include/
-    if(EXISTS "${asio_SOURCE_DIR}/asio/include/asio.hpp")
-        set(_asio_include_dir "${asio_SOURCE_DIR}/asio/include")
-    elseif(EXISTS "${asio_SOURCE_DIR}/include/asio.hpp")
-        set(_asio_include_dir "${asio_SOURCE_DIR}/include")
-    else()
-        message(FATAL_ERROR "[ThirdPartySetup] cannot find asio.hpp under ${asio_SOURCE_DIR}")
-    endif()
-    target_include_directories(asio_standalone INTERFACE "${_asio_include_dir}")
-    target_compile_definitions(asio_standalone INTERFACE ASIO_STANDALONE ASIO_NO_DEPRECATED)
-    if(WIN32)
-        target_compile_definitions(asio_standalone INTERFACE _WIN32_WINNT=0x0A00)
-    endif()
-    add_library(asio::asio ALIAS asio_standalone)
-
-    message(STATUS "[ThirdPartySetup] asio ready.")
-endfunction()
-
-# ============================================================
-# liburing —— stage 3 模块 I-2（io_uring/IOCP 的 Linux 分支），仅 Linux
-# 占位：依赖系统包管理器或源码编译，不在此处自动拉取。
-# ============================================================
-function(_coroutine_study_setup_liburing)
-    if(TARGET liburing::liburing)
-        return()
-    endif()
-    if(WIN32)
-        return()  # Windows 不支持 io_uring
-    endif()
-    # Stage 3 才需要：建议通过 `apt install liburing-dev` 或 `pkg-config --cflags --libs liburing` 提供
-    find_package(PkgConfig QUIET)
-    if(PkgConfig_FOUND)
-        pkg_check_modules(LIBURING QUIET IMPORTED_TARGET liburing)
-        if(TARGET PkgConfig::LIBURING)
-            add_library(liburing::liburing ALIAS PkgConfig::LIBURING)
-            message(STATUS "[ThirdPartySetup] liburing found via pkg-config.")
-            return()
+    if(NOT TARGET stdexec::stdexec AND COROUTINE_STUDY_FETCH_DEPS)
+        FetchContent_Declare(
+            stdexec
+            GIT_REPOSITORY https://github.com/NVIDIA/stdexec.git
+            GIT_TAG        nvhpc-26.05
+            GIT_SHALLOW    TRUE
+            GIT_PROGRESS   TRUE
+        )
+        set(STDEXEC_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+        set(STDEXEC_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+        set(STDEXEC_BUILD_DOCS OFF CACHE BOOL "" FORCE)
+        FetchContent_MakeAvailable(stdexec)
+        _coroutine_study_bridge_target(stdexec::stdexec STDEXEC::stdexec)
+        if(NOT TARGET stdexec::stdexec AND TARGET stdexec)
+            add_library(stdexec::stdexec ALIAS stdexec)
         endif()
     endif()
-    message(STATUS "[ThirdPartySetup] liburing NOT found — module I-2 will be skipped at link time.")
+
+    if(ARG_REQUIRED)
+        _coroutine_study_require(stdexec::stdexec "COROUTINE_STUDY_ENABLE_STDEXEC")
+    endif()
 endfunction()
 
-# ============================================================
-# folly —— stage 3 模块 I-3（Folly SafeTask），仅非 Windows
-# 占位：folly 依赖庞杂，建议通过系统包或 vcpkg 提供。
-# ============================================================
-function(_coroutine_study_setup_folly)
-    if(TARGET folly::folly)
+function(coroutine_study_setup_asio)
+    cmake_parse_arguments(ARG "REQUIRED" "" "" ${ARGN})
+    if(TARGET asio::asio)
         return()
     endif()
-    find_package(folly QUIET CONFIG)
-    if(folly_FOUND)
-        message(STATUS "[ThirdPartySetup] folly found via find_package.")
-        return()
+
+    find_path(ASIO_INCLUDE_DIR asio.hpp)
+    if(ASIO_INCLUDE_DIR)
+        add_library(asio_standalone INTERFACE)
+        target_include_directories(asio_standalone INTERFACE "${ASIO_INCLUDE_DIR}")
+        target_compile_definitions(asio_standalone INTERFACE ASIO_STANDALONE ASIO_NO_DEPRECATED)
+        add_library(asio::asio ALIAS asio_standalone)
+    elseif(COROUTINE_STUDY_FETCH_DEPS)
+        FetchContent_Declare(
+            asio
+            GIT_REPOSITORY https://github.com/chriskohlhoff/asio.git
+            GIT_TAG        asio-1-38-2
+            GIT_SHALLOW    TRUE
+            GIT_PROGRESS   TRUE
+        )
+        FetchContent_MakeAvailable(asio)
+        if(EXISTS "${asio_SOURCE_DIR}/asio/include/asio.hpp")
+            set(_asio_include_dir "${asio_SOURCE_DIR}/asio/include")
+        elseif(EXISTS "${asio_SOURCE_DIR}/include/asio.hpp")
+            set(_asio_include_dir "${asio_SOURCE_DIR}/include")
+        else()
+            message(FATAL_ERROR "COROUTINE_STUDY_ENABLE_ASIO is enabled but asio.hpp was not found in ${asio_SOURCE_DIR}.")
+        endif()
+        add_library(asio_standalone INTERFACE)
+        target_include_directories(asio_standalone INTERFACE "${_asio_include_dir}")
+        target_compile_definitions(asio_standalone INTERFACE ASIO_STANDALONE ASIO_NO_DEPRECATED)
+        add_library(asio::asio ALIAS asio_standalone)
     endif()
-    message(STATUS "[ThirdPartySetup] folly NOT found — module I-3 will be skipped at link time.")
+
+    if(TARGET asio::asio AND WIN32)
+        target_compile_definitions(asio_standalone INTERFACE _WIN32_WINNT=0x0A00)
+    endif()
+    if(ARG_REQUIRED)
+        _coroutine_study_require(asio::asio "COROUTINE_STUDY_ENABLE_ASIO")
+    endif()
 endfunction()
 
-# ============================================================
-# Boost.Cobalt —— stage 3 模块 I-4，仅非 Windows
-# 占位：通过 Boost find_package 引入。
-# ============================================================
-function(_coroutine_study_setup_cobalt)
-    if(TARGET Boost::cobalt)
+function(coroutine_study_setup_cppcoro)
+    cmake_parse_arguments(ARG "REQUIRED" "" "" ${ARGN})
+    if(TARGET cppcoro::cppcoro)
+        return()
+    endif()
+
+    find_package(cppcoro QUIET CONFIG)
+    _coroutine_study_bridge_target(cppcoro::cppcoro cppcoro)
+
+    if(NOT TARGET cppcoro::cppcoro AND COROUTINE_STUDY_FETCH_DEPS)
+        FetchContent_Declare(
+            cppcoro
+            GIT_REPOSITORY https://github.com/andreasbuhr/cppcoro.git
+            GIT_TAG        8642e98596a92be30a2b061d3ed306d959d3214e
+            GIT_SHALLOW    FALSE
+            GIT_PROGRESS   TRUE
+        )
+        set(CPPCORO_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+        set(_coroutine_study_saved_build_testing "${BUILD_TESTING}")
+        set(BUILD_TESTING OFF)
+        FetchContent_MakeAvailable(cppcoro)
+        set(BUILD_TESTING "${_coroutine_study_saved_build_testing}")
+        _coroutine_study_bridge_target(cppcoro::cppcoro cppcoro)
+    endif()
+
+    if(ARG_REQUIRED)
+        _coroutine_study_require(cppcoro::cppcoro "COROUTINE_STUDY_ENABLE_CPPCORO")
+    endif()
+endfunction()
+
+function(coroutine_study_setup_liburing)
+    cmake_parse_arguments(ARG "REQUIRED" "" "" ${ARGN})
+    if(TARGET liburing::liburing)
         return()
     endif()
     if(WIN32)
+        if(ARG_REQUIRED)
+            message(FATAL_ERROR "COROUTINE_STUDY_ENABLE_IO_URING is Linux-only.")
+        endif()
         return()
     endif()
-    find_package(Boost QUIET COMPONENTS cobalt)
-    if(Boost_FOUND AND TARGET Boost::cobalt)
-        message(STATUS "[ThirdPartySetup] Boost.Cobalt found.")
-        return()
+
+    find_package(PkgConfig QUIET)
+    if(PkgConfig_FOUND)
+        pkg_check_modules(LIBURING QUIET IMPORTED_TARGET liburing>=2.15)
+        if(TARGET PkgConfig::LIBURING)
+            add_library(liburing::liburing ALIAS PkgConfig::LIBURING)
+        endif()
     endif()
-    message(STATUS "[ThirdPartySetup] Boost.Cobalt NOT found — module I-4 will be skipped at link time.")
+    if(ARG_REQUIRED)
+        _coroutine_study_require(liburing::liburing "COROUTINE_STUDY_ENABLE_IO_URING")
+    endif()
 endfunction()
 
-# ============================================================
-# helper：让 stage3 题目子项目一行链接所有可用的 stage3 依赖
-# 用法：
-#   add_executable(H1_xxx main.cpp)
-#   coroutine_study_link_stage3_deps(H1_xxx)
-# ============================================================
-function(coroutine_study_link_stage3_deps target)
-    _coroutine_study_setup_stdexec()
-    _coroutine_study_setup_asio()
-    _coroutine_study_setup_liburing()
-    _coroutine_study_setup_folly()
-    _coroutine_study_setup_cobalt()
-
-    if(TARGET stdexec::stdexec)
-        target_link_libraries(${target} PRIVATE stdexec::stdexec)
-    endif()
-    if(TARGET asio::asio)
-        target_link_libraries(${target} PRIVATE asio::asio)
-    endif()
-    if(TARGET liburing::liburing)
-        target_link_libraries(${target} PRIVATE liburing::liburing)
-    endif()
+function(coroutine_study_setup_folly)
+    cmake_parse_arguments(ARG "REQUIRED" "" "" ${ARGN})
     if(TARGET folly::folly)
-        target_link_libraries(${target} PRIVATE folly::folly)
+        return()
     endif()
+    find_package(Folly QUIET CONFIG)
+    _coroutine_study_bridge_target(folly::folly Folly::folly)
+    if(ARG_REQUIRED)
+        _coroutine_study_require(folly::folly "COROUTINE_STUDY_ENABLE_FOLLY")
+    endif()
+endfunction()
+
+function(coroutine_study_setup_cobalt)
+    cmake_parse_arguments(ARG "REQUIRED" "" "" ${ARGN})
     if(TARGET Boost::cobalt)
+        return()
+    endif()
+    find_package(Boost 1.92 QUIET CONFIG COMPONENTS cobalt)
+    if(ARG_REQUIRED)
+        _coroutine_study_require(Boost::cobalt "COROUTINE_STUDY_ENABLE_COBALT")
+    endif()
+endfunction()
+
+function(coroutine_study_link_stage3_deps target)
+    if(target MATCHES "^H[123]_|^Capstone5_|^mini_as_awaitable_test$")
+        target_link_libraries(${target} PRIVATE stdexec::stdexec)
+    elseif(target STREQUAL "I1_asio_echo" OR target STREQUAL "Capstone4_rpc_framework")
+        target_link_libraries(${target} PRIVATE asio::asio)
+    elseif(target STREQUAL "I2_io_uring_iocp" AND TARGET liburing::liburing)
+        target_link_libraries(${target} PRIVATE liburing::liburing)
+    elseif(target STREQUAL "I3_folly_safe_task")
+        target_link_libraries(${target} PRIVATE folly::folly)
+    elseif(target STREQUAL "I4_cobalt_channel")
         target_link_libraries(${target} PRIVATE Boost::cobalt)
     endif()
 endfunction()

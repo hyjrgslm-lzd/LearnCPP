@@ -1,12 +1,5 @@
-cmake_minimum_required(VERSION 3.25)
-project(G2_when_all_impl LANGUAGES CXX)
+coroutine_study_add_exercise(G2_when_all_impl REFERENCE_SOURCES solution.cpp)
 
-set(CMAKE_CXX_STANDARD 23)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
-
-if(MSVC)
-    add_compile_options(/Zc:__cplusplus /utf-8)
+if(BUILD_TESTING AND COROUTINE_STUDY_BUILD_REFERENCE)
+    set_tests_properties(G2_when_all_impl_reference PROPERTIES TIMEOUT 5)
 endif()
-
-add_executable(G2_when_all_impl main.cpp)

@@ -2,23 +2,23 @@
 
 ## 模块目标
 
-前面模块 D 让你完整实现了 promise_type 的 8 个 hook，看到了协程的生命周期全貌。这个模块要把协程最核心的运行时动态——`co_await` 的编译器变换——彻底拆开：
+前面模块 D 让你实现了 promise type 的必需主干与可选定制点，看到了协程的生命周期全貌。这个模块要把协程最核心的运行时动态——`co_await` 的编译器变换——彻底拆开：
 
-- `co_await` 表达式在编译器内部经历了怎样的三步查找（await_transform / operator co_await / ADL operator co_await）
+- `co_await` 表达式在编译器内部经历了怎样的变换（await_transform / operator co_await 重载决议 / awaiter 三方法）
 - `await_suspend` 的三种返回值（void / bool / coroutine_handle）各自产生什么样的控制流和状态机
 - Trivial Awaitable（`await_ready` 直接返回 true）如何让编译器完全消除挂起——理解 HALO 的前置条件在 awaitable 层面的对应物
 
-如果你跳过这一层，`co_await` 就永远是一个"暂停然后继续"的魔法，你无法解释为什么有些 awaitable 不用堆分配、为什么 symmetric transfer 比 resume 更安全、以及 P2786/P3175 等提案在解决什么问题。
+如果你跳过这一层，`co_await` 就永远是一个“暂停然后继续”的魔法，你无法解释 ready 短路、awaiter 与 coroutine state 的不同生命周期，以及 P0913 symmetric transfer 和 `[exec.as.awaitable]` sender 桥接在解决什么问题。
 
 ## 模块完成标准
 
 做完本模块，你至少要能稳定说清楚：
 
 - `co_await expr` 的编译器变换过程：从表达式到 awaitable、到挂起/恢复决策、到结果提取的完整步骤。
-- 三步查找的优先顺序和执行逻辑——`promise.await_transform(expr)` 永远是第一步，如果不存在则依次尝试成员 `operator co_await()` 和 ADL `operator co_await()`。
-- `await_suspend` 三种返回值各自产生怎样不同的控制流，以及 symmetric transfer 为什么是最优方案。
-- Trivial Awaitable（`await_ready()` 返回 true）如何在编译器层面等价于不挂起——与 HALO 的帧逃逸分析有何关联。
-- P2786R0（Trivial Awaitables）试图标准化的是什么，以及它和 P2300/P3175 的关系。
+- `co_await` 变换的优先顺序和执行逻辑——普通 await expression 先查 promise scope 的 `await_transform`；再对结果做 `operator co_await` 重载决议；无可行 operator 时对象本身作为 awaiter。
+- `await_suspend` 三种返回值各自产生怎样不同的控制流，以及 symmetric transfer 如何表达控制权转交。
+- `await_ready()` 返回 true 时，标准如何保证跳过 `await_suspend`，以及优化器可能怎样消除对应分支。
+- 如何把 `await_ready` 的语义短路与 HALO 的 frame allocation elision 区分开：前者是控制流规则，后者是实现优化。
 
 ## 使用建议
 
@@ -33,20 +33,19 @@
 
 ### 目标
 
-写出三个不同的 awaitable 类型 / 协程 / 自由函数，分别触发 `co_await` 编译器查找的三条路径：promise.await_transform、成员 operator co_await、ADL operator co_await。亲手验证编译器在每种情况下的选择，理解"await_transform 是 promise 唯一的拦截钩子"的含义。
+写出三个不同的 awaitable 类型 / 协程 / 自由函数，分别触发 `co_await` 编译器变换的几条路径：promise.await_transform、成员 `operator co_await`、ADL 可见的自由 `operator co_await`、对象本身作为 awaiter。亲手验证编译器在每种情况下的选择，理解"await_transform 是 promise 唯一的拦截钩子"的含义。
 
 ### 前置理解
 
-- 当编译器在协程体内遇到 `co_await expr` 时，它不是直接把 `expr` 当作 awaitable。它先尝试把 `expr` 传给 promise 的一个特殊 hook：`promise.await_transform(expr)`。如果 promise 定义了这个函数，其返回值被用作实际的 awaitable。
-- 如果 promise 没有 `await_transform`（或者 `await_transform` 对 `expr` 的类型不可调用），编译器退而求其次：检查 `expr` 自身是否有成员函数 `operator co_await()`。如果有，调用它获得 awaitable。
-- 如果以上两条路径都不通，编译器尝试对 `expr` 做 ADL 查找自由函数 `operator co_await(expr)`。
-- 如果三条路径都失败，编译错误：`expr` 不是合法的 awaitable 表达式。
+- 当编译器在协程体内遇到普通 `co_await expr` 时，它不是直接把 `expr` 当作 awaiter。它先在 promise 类型作用域中查找 `await_transform`；如果找到可调用重载，其返回值进入下一步，否则原始 `expr` 进入下一步。
+- 下一步不是手写的“先成员后 ADL”流程，而是枚举适用的 `operator co_await` 候选并做重载决议。候选可能来自成员函数，也可能来自 ADL 找到的自由函数；如果决议歧义，程序 ill-formed。
+- 如果没有可行的 `operator co_await`，上一步对象本身作为 awaiter，必须提供 `await_ready/await_suspend/await_resume`。
 
 查找优先级总结（从高到低）：
 
-1. `promise.await_transform(expr)` —— 如果 promise 定义了这个函数且可以对 expr 调用
-2. `expr.operator co_await()` —— 如果 expr 的类型有成员函数
-3. `operator co_await(expr)` —— 通过 ADL 在 expr 关联命名空间中查找
+1. `promise.await_transform(expr)` —— 如果 promise scope 中找到可调用重载
+2. `operator co_await` 重载决议 —— 成员候选和 ADL 自由函数候选都在这里竞争
+3. 对象本身作为 awaiter —— 没有可行 `operator co_await` 时才走这一层
 
 理解这个优先级的关键含义：**即使 expr 自身是一个合法的 awaitable（有正确的三个 await 方法），如果 promise 定义了匹配的 `await_transform`，编译器也会先调用 `await_transform`，用它的返回值作为真正的 awaitable，而不是直接使用 expr。** 这意味着 `await_transform` 可以"拦截并改写"任何 `co_await` 表达式——这是 promise 对协程体内所有 await 行为的全局控制点。
 
@@ -182,24 +181,25 @@
 
 4. **写一个不定义 await_transform 的对照协程**，确保 awaitable_B 的成员 operator co_await 和 awaitable_C 的 ADL operator co_await 在无 promise 拦截时正常工作。
 
-5. **在笔记中画出三步查找的决策树**：
+5. **在笔记中画出 `co_await` 变换决策树**：
 
    ```
    co_await expr
      |
      v
    promise.await_transform(expr) 存在且可调用？
-     |-- 是 --> 使用 await_transform 的返回值作为 awaitable
-     |           （即使 expr 本身也可以是 awaitable，也被覆盖了）
+     |-- 是 --> 使用 await_transform 的返回值进入下一步
+     |           （即使 expr 本身也可以是 awaiter，也会先被覆盖）
      |
-     |-- 否 --> expr.operator co_await() 存在？
-     |            |-- 是 --> 使用其返回值作为 awaitable
-     |            |
-     |            |-- 否 --> operator co_await(expr) 通过 ADL 可见？
-     |                         |-- 是 --> 使用其返回值作为 awaitable
-     |                         |
-     |                         |-- 否 --> expr 自身作为 awaitable
-     |                                    （需满足 await_ready/await_suspend/await_resume）
+     |-- 否 --> 使用 expr 自身进入下一步
+                |
+                v
+   枚举并重载决议 operator co_await 候选
+     |-- 有唯一最佳候选 --> 使用其返回值作为 awaiter
+     |-- 候选歧义 -------> ill-formed
+     |
+     |-- 无可行候选 -----> 对象本身作为 awaiter
+                          （需满足 await_ready/await_suspend/await_resume）
    ```
 
 6. **讨论**：`await_transform` 为什么是"promise 唯一的拦截钩子"？——它让 promise 有能力在协程体内所有 `co_await` 点之前插入逻辑，比如注入调度上下文、包装错误处理、或者将 sender 翻译为 awaitable（这正是模块 H 要做的事）。
@@ -207,14 +207,14 @@
 ### 进阶任务
 
 - 实现一个 **logging promise**：`await_transform` 对所有类型都记录一条日志然后返回原始值（让它继续走后续查找路径）。这需要将 `await_transform` 设计为"泛型兜底 + 特定类型拦截"的组合。
-- 写一个类型同时有成员 `operator co_await()` 和所在命名空间的 ADL `operator co_await()`。在没有 `await_transform` 的情况下，观察编译器选哪一个。这在 C++ 标准中有明确规定（成员函数优先于 ADL 自由函数）。
+- 写一个类型同时有成员 `operator co_await()` 和所在命名空间的 ADL `operator co_await()`。在没有 `await_transform` 的情况下，观察重载决议选哪一个；如果两个候选同样好，程序应当歧义报错。
 - 在 `await_transform` 中返回一个比原始 awaitable 多一层计时的 wrapper，实现对协程体内所有 await 点的无侵入计时。
 
 ### 验收点
 
 - 你能通过日志输出确认 `await_transform` 在三条路径中优先被选择。
-- 你能在不定义 `await_transform` 的对照协程中，确认成员 `operator co_await()` 和 ADL `operator co_await()` 各自生效。
-- 你能画出完整的三步查找决策树，并标注每一步的编译器行为。
+- 你能在不定义 `await_transform` 的对照协程中，确认成员 `operator co_await()`、ADL `operator co_await()`、对象本身作为 awaiter 三种路径各自生效。
+- 你能画出完整的 `co_await` 变换决策树，并标注每一步的编译器行为。
 - 你能解释：如果 promise 定义了模板化的泛型 `await_transform(T&&)`，为什么它会拦截所有 co_await 表达式——因为任何类型都能匹配。
 
 ### 观察点
@@ -222,7 +222,7 @@
 - `await_transform` 的存在与否，决定了一个 promise 类型是"透明传输 co_await"还是"集中控制所有异步操作"。
 - 这正是 `stdexec::task` 的 promise 能够把 `co_await sender` 翻译为连接 sender 与 bridge receiver 的机制基础——`await_transform(sender)` 返回一个 `sender_awaitable`，而后者在 `await_suspend` 中执行 `connect + start`。
 - 成员 `operator co_await()` 和 ADL `operator co_await()` 的设计让第三方类型（你不拥有其源码）也能通过非侵入方式变为 awaitable。
-- 三步查找的优先级设计确保了 promise 的控制权最高、成员函数的控制权次之、ADL 的外部扩展最灵活。
+- 这套变换设计确保了 promise 的控制权最高，同时允许类型成员和非侵入 ADL 扩展通过同一套重载决议进入 awaiter。
 
 ### 常见坑
 
@@ -250,7 +250,7 @@
 - Lewis Baker "C++ coroutines: Understanding operator co_await"（系列第 3 篇）
 - Lewis Baker "C++ coroutines: The co_await operator"（系列第 4 篇）
 - Raymond Chen "The many meanings of co_await"（系列 7-9 篇）
-- P2786R0：Trivial Awaitables
+- C++20 `[expr.await]` 与 `[coroutine.trivial.awaitables]`
 - N4775：C++20 coroutines 标准文本中的 co_await 规范 (7.6.2.3)
 
 ---
@@ -259,11 +259,11 @@
 
 ### 目标
 
-完整实现并对比 `await_suspend` 的三种合法返回类型——`void`、`bool`、`std::coroutine_handle<>`——各自跑一遍完整的挂起-恢复流程。通过观察每种返回值的控制流差异，建立"symmetric transfer 为什么是嵌套协程的最优方案"的直觉。
+完整实现并对比 `await_suspend` 的三种合法返回类型——`void`、`bool`、`std::coroutine_handle<>`——各自跑一遍完整的挂起-恢复流程。通过观察每种返回值的控制流差异，建立"symmetric transfer 如何表达嵌套协程控制转交"的直觉。
 
 ### 前置理解
 
-- `await_suspend(coroutine_handle<P>)` 在 `await_ready()` 返回 `false` 之后被调用。此时当前协程尚未正式挂起——它处在"即将挂起"的状态。
+- `await_suspend(coroutine_handle<P>)` 在 `await_ready()` 返回 `false` 之后被调用。标准上，进入 `await_suspend` 前当前协程已经被视为挂起；这也是为什么 awaiter 可以把 handle 交给其他线程。但如果在 `await_suspend` 尚未返回时同步重入恢复同一个协程，库状态很容易被破坏，必须显式设计同步完成路径。
 - `await_suspend` 的返回值决定了挂起之后控制权流向哪里。
 
 三种返回值的语义：
@@ -272,7 +272,7 @@
 |--------|------|--------|
 | `void` | 无条件挂起当前协程。控制权返回给"resume 当前协程的那个调用者"（通常是上一级协程或 `sync_wait` 的驱动循环）。当前协程的恢复需要由外部代码通过 `handle.resume()` 触发。 | `await_suspend` 返回 → 框架执行挂起 → 控制权回到 caller。之后某处 `h.resume()` → 恢复执行 `await_resume()` |
 | `bool` | `true` = 挂起当前协程（同 `void` 行为）；`false` = 不挂起，当前协程立即继续执行 `await_resume()`。这是唯一允许 awaitable 在 `await_ready` 返回 `false` 之后"反悔"不挂起的机制。 | `true` → 挂起，控制权返回 caller。`false` → 即刻恢复当前协程 |
-| `coroutine_handle<>` | **symmetric transfer**：当前协程挂起，控制权直接跳转到返回的 handle 指向的协程。不经过"中间 caller"的栈帧。 | `await_suspend` 返回 handle → 框架跳过当前 caller 的栈帧，直接 resume 目标协程 |
+| `coroutine_handle<>` | **symmetric transfer**：当前协程挂起，标准 `co_await` 变换恢复返回的 handle 指向的协程。具体是否跳过中间 caller 的机器栈帧由实现决定。 | `await_suspend` 返回 handle → 恢复目标协程 |
 
 关键理解：返回 `void` 意味着"有一个人会来 resume 我"。返回 `coroutine_handle` 意味着"我不回去了，直接去另一个人那里"。返回 `bool` 意味着"我来决定是否挂起"——`true` 挂起（同 void），`false` 不挂起，立即继续。
 
@@ -390,15 +390,15 @@
 
    ```cpp
    // N 层嵌套，每层 co_await 下一层的结果
-   // 用 void 返回：栈深度随 N 线性增长
-   // 用 symmetric transfer：栈深度恒定（O(1)）
+   // 用直接 .resume() 链：栈深度可能随 N 线性增长
+   // 用返回 coroutine_handle 的控制转交：通常可避免库层栈增长，需实测确认
    ```
 
 5. **在笔记中画三张控制流图**，分别对应三种返回值。标注每个步骤中"谁的栈帧在执行"、"handle 被谁持有"、"谁负责 resume 谁"。
 
-6. **性能讨论**：为什么 symmetric transfer 是嵌套协程的最优方案？
-   - 无 symmetric transfer：A resume B 是在 A 的栈帧内调用 B 的 resume，深层嵌套导致栈溢出。
-   - 有 symmetric transfer：A 不 resume B——A 告诉框架"去跑 B"，框架直接跳转到 B。A 自己的栈帧在挂起时就已退出。这是"尾调用优化"在协程世界的等价物。
+6. **控制流讨论**：symmetric transfer 在嵌套协程中解决了什么问题？
+   - 无 symmetric transfer：A 的库代码直接调用 B 的 `.resume()`，深层嵌套可能导致栈溢出。
+   - 有 symmetric transfer：A 不直接 resume B——A 从 `await_suspend` 返回 B 的 handle，让 `co_await` 变换恢复它。这是协程世界表达控制转交的标准方式；机器级 tail call 或恒定机器栈不是标准保证。
 
 ### 进阶任务
 
@@ -413,7 +413,7 @@
 - 你能解释：为什么 `await_suspend` 返回 `void` 时，必须有"外部代码"负责 resume 当前协程——这个"外部代码"通常是调用者或事件循环。
 - 你能解释：`await_suspend` 返回 `false`（不挂起）时，`await_ready` 返回 `false` 有什么意义？为什么不让 `await_ready` 直接返回 `true`？
 - 你能画出三张控制流图并指出哪一段在哪个协程的栈帧中执行。
-- 你能向同事解释：symmetric transfer 为什么不是"A 调 B"而是"框架调 B，A 的帧已退栈"。
+- 你能向同事解释：symmetric transfer 为什么不是"A 的库代码直接调用 B"，而是"`await_suspend` 返回 B 的 handle，由 `co_await` 变换恢复 B"。
 
 ### 观察点
 
@@ -457,14 +457,13 @@
 
 ### 目标
 
-实现 `await_ready()` 直接返回 `true` 的 Trivial Awaitable，观察编译器如何在挂起决策阶段完全消除挂起-恢复开销。实现 P2786R0 风格的简化版 awaiter，建立"并非每次 co_await 都需要进入调度器"的直觉，理解 HALO 在 awaitable 层面的对应优化。
+实现 `await_ready()` 直接返回 `true` 的 awaitable，先证明标准保证的短路行为，再用编译器诊断/汇编观察优化器是否消除分支。建立“并非每次 `co_await` 都会挂起或进入调度器”的直觉，并把这件事与 HALO 的 frame allocation elision 分开验证。
 
 ### 前置理解
 
 - 正常情况下，`co_await expr` 的变换代码包含：调用 `await_ready()`；如果 false，调用 `await_suspend()` 挂起；恢复后调用 `await_resume()`。这是标准的三段式。
-- 但如果 `await_ready()` 返回 `true`，编译器会在编译期看到：挂起分支永远不会执行。在优化模式下（-O1 及以上），编译器可以**完全消除整个挂起逻辑**——不保存协程状态、不调用 `await_suspend`、不经过调度器。`co_await` 退化为对 `await_resume()` 的直接调用。
-- P2786R0 "Trivial Awaitables" 试图将这种优化标准化：如果一个 awaitable 的 `await_ready` 返回 `true`，且 `await_suspend` 和 `await_resume` 满足某些平凡性条件，编译器可以消除整个 co_await 表达式的状态机开销。
-- 这和 HALO（Heap Allocation eLision Optimization）是同一思路在两个不同层面的体现：HALO 消除帧的堆分配，Trivial Awaitable 消除挂起的状态机分支。两者都依赖于编译器能证明"某段代码不会走"。
+- 如果 `await_ready()` 求值为 `true`，`[expr.await]` 保证不求值 `await_suspend`，随后求值 `await_resume()`。若优化器还能证明它恒为 true，可能进一步消除判断和不可达分支；是否生成相同机器码不是标准保证，也不能用固定优化级别概括。
+- HALO（Heap Allocation eLision Optimization）处理 coroutine state 的 allocation elision；ready 短路处理单个 await-expression 的控制流。它们可能同时出现，但不是同一项语义或同一项优化，必须分别取证。
 - `std::suspend_never` 就是标准库中最典型的 Trivial Awaitable——它的 `await_ready()` 始终返回 `true`。
 
 ### 必做任务
@@ -486,22 +485,20 @@
        bool await_ready() const noexcept {
            return !should_suspend;  // should_suspend=false 时返回 true
        }
-       void await_suspend(std::coroutine_handle<> h) const noexcept {
-           std::println("  [conditional_ready] suspending...");
+       bool await_suspend(std::coroutine_handle<>) const noexcept {
+           std::println("  [conditional_ready] await_suspend reached");
+           return false; // 本练习只观察短路差异；返回 false 表示不保持挂起
        }
        int await_resume() const noexcept {
            return should_suspend ? 42 : 0;
        }
    };
 
-   // P2786 风格：极简接口（只有 await_ready + await_resume）
-   // 注意：这需要在协程框架增强后才合法。作为实验，我们仍定义完整的三方法，
-   // 但 await_suspend 体为空——P2786 愿景下编译器不需要这个函数，当前标准要求其存在
+   // 标准 C++20 awaiter：即使 await_ready 恒为 true，类型检查仍要求三方法都有效。
    struct trivial_awaitable {
        bool await_ready() const noexcept { return true; }
-       // P2786 愿景：编译器可以完全忽略 await_suspend 的存在
        void await_suspend(std::coroutine_handle<>) const noexcept {
-           // 此行永远不会被执行（await_ready 永远返回 true）
+           // 按 [expr.await]，运行时不会到达这里。
        }
        std::string await_resume() const { return "trivial-result"; }
    };
@@ -560,25 +557,12 @@
 
    记录两个版本的每次迭代耗时。版本 A 应该显著快于版本 B（数量级差异）。
 
-5. **讨论 P2786 简化版的动机**：
+5. **区分语义保证与优化证据**：
 
-   P2786R0 提出了一个简化版本的 awaitable 接口：
-
-   ```cpp
-   // P2786 愿景：只需要 await_ready 和 await_resume
-   struct trivial {
-       static constexpr bool await_ready() { return true; }
-       int await_resume();
-       // 不需要 await_suspend
-   };
-   ```
-
-   当前的 C++20 协程规范要求即使 `await_ready()` 返回 `true`，也必须定义 `await_suspend()`（即使它永远不会被调用）。这导致了样板代码和编译时间开销。P2786 试图让编译器在 `await_ready()` 静态返回 `true` 时，完全不需要 `await_suspend`。
-
-   在笔记中回答：
-   - 为什么即使 `await_ready` 返回 true，编译器在当前标准下仍然需要检查 `await_suspend` 的合法性？
-   - P2786 的"Trivial Awaitable"概念和 HALO 的"Frame does not escape"在本质上有什么共同点？
-   - 如果 P2786 被采纳，`std::suspend_never` 的定义可以简化多少？
+   当前 C++ 标准要求 awaiter 的 `await_ready`、`await_suspend`、`await_resume` 表达式都良构；运行时 `await_ready()==true` 只保证跳过 `await_suspend`。在笔记中分别回答：
+   - 哪一条是 `[expr.await]` 的可移植语义，哪一条只是编译器 as-if 优化？
+   - 为什么 `await_suspend` 虽不被求值，表达式仍需在模板实例化/语义分析阶段良构？
+   - HALO 消除的对象是什么？ready 短路消除的控制流是什么？怎样用不同证据验证二者？
 
 ### 进阶任务
 
@@ -589,16 +573,15 @@
 
 ### 验收点
 
-- 你能观察到 Trivial Awaitable 在优化模式下不产生挂起开销。
+- 你能用计数器证明 ready 路径不调用 `await_suspend`，再用汇编说明当前编译器是否消除了分支。
 - 你能解释 `std::suspend_never` 为什么是 Trivial Awaitable 的最典型代表——它的 `await_ready()` 永远返回 `true`。
-- 你理解了 P2786R0 提案试图解决的问题：消除"永远不挂起"场景下的 `await_suspend` 样板。
-- 你能说明：Trivial Awaitable + HALO 的组合可以让一个"看起来是协程"的函数实际上与普通函数一样高效。
+- 你能区分 ready 短路、编译器死代码消除、HALO 三件事，不把“可能生成相同机器码”写成标准承诺。
 
 ### 观察点
 
 - 并不是所有 `co_await` 都意味着昂贵的上下文切换。Trivial Awaitable 的 `await_ready` 返回 `true` 时，整个 `co_await` 表达式退化为对 `await_resume` 的直接调用——就像作用域守卫一样轻量。
 - 编译器优化视图：`if (await_ready()) { /* skip suspend */ } else { /* suspend */ }` ——如果编译器能证明 await_ready 恒为 true，则整个 else 分支是死代码，可以被消除。
-- P2786 的思路是把这种"显然不挂起"的情况从运行时检查提升到类型系统层面——如果类型系统就能证明不挂起，编译器甚至不需要生成检查代码。
+- 即使运行时语义固定，是否保留检查代码仍由优化器和可见性决定；以实际汇编或优化 remark 为证。
 - 工程启示：设计 awaiter 时，如果多数情况下不需要挂起，把 `await_ready` 优先设为 `true`——这能让编译器在 fast path 上做更多优化。
 
 ### 常见坑
@@ -606,7 +589,7 @@
 - 在 debug 或 -O0 模式下期望 Trivial Awaitable 产生优化——不会，编译器在无优化时保留完整的挂起路径。
 - 把 `await_ready` 实现为 `return some_global_flag;`——编译器做常量折叠时，如果 global_flag 的初始化在另一个编译单元，编译器无法证明它恒为 true/false，挂起路径会保留。
 - 以为 `await_ready` 返回 `true` 意味着 `await_resume` 不会被调用——恰恰相反，返回 `true` 意味着跳过 `await_suspend`，直接调用 `await_resume`。
-- 在 P2786 尚未被采纳的情况下，删掉了 `await_suspend` 方法——当前标准仍需完整的三方法接口。
+- 因为 `await_ready` 恒为 true 就删掉 `await_suspend`——当前标准仍要求该表达式良构。
 
 ### 提示
 
@@ -618,13 +601,13 @@
 ### 复盘问题
 
 - 如果 C++ 标准从最初就把 `await_ready` 设为 `constexpr` 而不是运行时函数，对协程优化有什么影响？
-- P2786 的"Trivial Awaitable"概念和 P3552（std::execution::task）中的 lazy 语义有没有冲突或互补？
+- ready fast path 与 P3552 `task` 的 lazy 启动语义如何组合？一个 lazy task 开始后，内部 awaiter 仍可能同步 ready 吗？
 - 在 HIGH 频繁 co_await 的热路径中，Trivial Awaitable 的优化对你的设计决策有什么影响？
 - 为什么 `std::suspend_never` 是标准库中唯一一个名字明确表达"不做任何事"的内置 awaiter？
 
 ### 对应官方参考
 
-- P2786R0：Trivial Awaitables
+- C++ working draft：`[expr.await]`、`[coroutine.trivial.awaitables]`
 - Lewis Baker "C++ coroutines: Understanding the co_await operator"（系列第 4 篇）
 - Raymond Chen "await_ready and the trivial awaitable"（系列第 7 篇）
 - Gor Nishanov "HALO: Heap Allocation eLision Optimization" CppCon 2018
@@ -636,7 +619,7 @@
 
 至少把下面几句话说顺：
 
-- `co_await expr` 在编译器中经历三步查找：`promise.await_transform(expr)` 优先级最高，然后是 `expr.operator co_await()`（成员函数），最后是 ADL `operator co_await(expr)`（自由函数）。`await_transform` 是 promise 唯一的全局拦截点——整个模块 H 的 sender 到协程的桥接都建立在这个机制之上。
-- `await_suspend` 的三种返回值不是"三种风格"而是"三种契约"：`void` 把恢复责任交给外部代码；`bool` 允许在最后一刻反悔；`coroutine_handle<>` 实现 symmetric transfer，让控制权不经中间栈帧直接跳转到目标协程。symmetric transfer 是嵌套协程不爆栈的根基。
-- Trivial Awaitable（`await_ready()` 返回 `true`）让编译器在优化模式下完全消除挂起逻辑——`co_await` 退化为对 `await_resume` 的直接调用。这与 HALO 同源：都依赖于编译器证明某条路径不会执行。P2786R0 试图将这种优化标准化，让类型系统直接表达"这不会挂起"。
+- `co_await expr` 在编译器中经历分层变换：普通 await expression 先查 promise scope 的 `await_transform`，再对结果做 `operator co_await` 重载决议；如果没有可行 operator，对象本身必须是 awaiter。`await_transform` 是 promise 唯一的全局拦截点——整个模块 H 的 sender 到协程的桥接都建立在这个机制之上。
+- `await_suspend` 的三种返回值不是"三种风格"而是"三种契约"：`void` 把恢复责任交给外部代码；`bool` 允许在最后一刻反悔；`coroutine_handle<>` 实现 symmetric transfer，让控制权交给返回的目标协程。它能避免库代码直接嵌套 `.resume()` 的栈增长风险，但不承诺机器级 tail call 或恒定机器栈。
+- `await_ready()` 返回 `true` 时，标准保证跳过 `await_suspend` 并调用 `await_resume`；优化器是否把分支完全消掉要看生成代码。HALO 则另行决定 coroutine state 的分配是否可消除。
 - 模块 H 的 sender-receiver 桥接、模块 G 的 shared_task/when_all/sync_wait、模块 I 的 io_uring/IOCP awaiter——这一切都建立在本模块的三层 co_await 机制之上。不理解这三个层次，就看不懂任何高级协程基础设施的源码。

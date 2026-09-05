@@ -1,38 +1,34 @@
 # third_party 离线依赖
 
-stage 3 的题目（模块 H / I / J + 两个第三阶段结课）需要以下第三方依赖：
+默认 `student` / `verify-core` 不需要本目录，也不会联网。
 
-| 依赖           | 用途                       | 默认获取方式                       | 平台限制       |
-| -------------- | -------------------------- | ---------------------------------- | -------------- |
-| stdexec        | 模块 H：协程↔sender 桥接   | FetchContent（NVIDIA/stdexec）     | 全平台         |
-| asio           | 模块 I-1：真实异步 IO      | FetchContent（chriskohlhoff/asio） | 全平台         |
-| folly          | 模块 I-2：folly::coro      | find_package                       | Linux/macOS 优先 |
-| liburing       | 模块 I-3：io_uring         | pkg-config                         | 仅 Linux       |
-| Boost.Cobalt   | 模块 I-4：Boost 协程       | find_package(Boost cobalt)         | 仅非 Windows   |
-
-## 离线放置
-
-如果机器无法访问 GitHub，可以预先把仓库克隆到本目录下：
+启用 light 依赖并允许 FetchContent：
 
 ```bash
-cd exercises/third_party
-git clone https://github.com/NVIDIA/stdexec.git
-git clone https://github.com/chriskohlhoff/asio.git
+cmake --preset full-linux-light
+cmake --preset full-windows
 ```
 
-然后修改 `cmake/ThirdPartySetup.cmake`：把对应的 `FetchContent_Declare` 段改为
-`SOURCE_DIR ${CMAKE_SOURCE_DIR}/third_party/stdexec` 这样的本地路径。
-
-## 锁定版本
-
-把 `GIT_TAG main` 改为具体的 commit hash 即可。建议在团队/课程环境中固定版本，避免上游变动导致用例失败。
-
-## 跳过 stage 3
-
-如果你暂时只想做 stage 1/2，配置时加：
+离线时把依赖放在任意目录，再用 CMake 标准覆盖变量指向源码：
 
 ```bash
-cmake --preset default -DCOROUTINE_STUDY_ENABLE_STAGE3=OFF
+cmake --preset full-linux-light \
+  -DFETCHCONTENT_SOURCE_DIR_STDEXEC=/deps/stdexec \
+  -DFETCHCONTENT_SOURCE_DIR_ASIO=/deps/asio \
+  -DFETCHCONTENT_SOURCE_DIR_CPPCORO=/deps/cppcoro
 ```
 
-stage 3 子目录将不被纳入构建，本目录里也不需要任何依赖。
+固定版本：
+
+| 依赖 | 获取方式 | 固定版本 |
+| --- | --- | --- |
+| stdexec | FetchContent / `FETCHCONTENT_SOURCE_DIR_STDEXEC` | `nvhpc-26.05` |
+| Asio | FetchContent / `FETCHCONTENT_SOURCE_DIR_ASIO` | `asio-1-38-2` |
+| cppcoro | FetchContent / `FETCHCONTENT_SOURCE_DIR_CPPCORO` | `8642e98596a92be30a2b061d3ed306d959d3214e` |
+| liburing | pkg-config | 2.15+ |
+| Folly | 外部安装 + `find_package(Folly CONFIG)` | `v2026.08.31.00` |
+| Boost.Cobalt | 外部 Boost + `find_package(Boost 1.92 COMPONENTS cobalt)` | 1.92 |
+
+显式打开某依赖后，如果 CMake 找不到它，会 `FATAL_ERROR`。这是故意的：避免某题被静默跳过。
+
+cppcoro 不是纯 header-only 依赖；CMake 会接入它的真实 `cppcoro` target，再桥接为 `cppcoro::cppcoro`。

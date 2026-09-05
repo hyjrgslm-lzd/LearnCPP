@@ -21,13 +21,13 @@
 //
 // 重要约束：
 //   - 本文件 **只是骨架**。每个陷阱给出了最小可编译复现 + 修复方案；
-//   - 不需要补 TODO 即可编译。要看见崩溃，请取消相应 trapN_run_unsafe() 调用注释。
+//   - 不需要补代码即可编译。要看见崩溃，请取消相应 trapN_run_unsafe() 调用注释。
 // =============================================================================
 
 #include <coroutine>
 #include <chrono>
+#include <cstddef>
 #include <exception>
-#include <format>
 #include <iostream>
 #include <memory>
 #include <mutex>
@@ -41,7 +41,7 @@
 // =============================================================================
 // 共用：极简 task<T> / generator<T>
 // 仅用于演示陷阱，**没有** symmetric transfer，**没有** 调度器线程切换，
-// 真实工程请用 stdexec::task 或 cppcoro::task。
+// 真实工程请用成熟协程库的 task 或本仓库后续练习实现。
 // =============================================================================
 template <typename T = void>
 struct task {
@@ -192,7 +192,11 @@ inline task<void> good_() {
 
 inline void run() {
     std::cout << "[trap1] lambda capture by reference\n";
+#ifdef COROUTINE_STUDY_ENABLE_UNSAFE_DEMOS
     bad_outer_().blocking_run();
+#else
+    std::cout << "  [trap1][starter] bad path disabled\n";
+#endif
     good_().blocking_run();
 }
 
@@ -236,8 +240,12 @@ inline task<void> good_() {
 }
 
 inline void run() {
-    std::cout << "[trap2] temporary destroyed inside co_await expression\n";
+    std::cout << "[trap2] awaiter stores pointer derived from temporary\n";
+#ifdef COROUTINE_STUDY_ENABLE_UNSAFE_DEMOS
     bad_().blocking_run();
+#else
+    std::cout << "  [trap2][starter] bad path disabled\n";
+#endif
     good_().blocking_run();
 }
 
@@ -283,22 +291,24 @@ inline task<void> good_() {
 
 inline void run() {
     std::cout << "[trap3] lock_guard crosses co_await\n";
+#ifdef COROUTINE_STUDY_ENABLE_UNSAFE_DEMOS
     bad_().blocking_run();
+#else
+    std::cout << "  [trap3][starter] bad path disabled\n";
+#endif
     good_().blocking_run();
 }
 
 } // namespace trap3
 
 // =============================================================================
-// 陷阱 4：initial_suspend 抛异常的 frame 泄漏
+// 陷阱 4：initial_suspend 抛异常的清理路径不可作为设计依赖
 // =============================================================================
 //
 // 根本原因：
-//   编译器先分配 frame 再调用 initial_suspend()。若它抛异常，
-//   get_return_object() 尚未返回 task，handle 没人持有 → 帧泄漏。
-//   MSVC 17.10+/Clang 17+/GCC 14+ 已能在该路径上调用 promise 析构与
-//   operator delete，但具体保证因 promise 是否完成构造而异。
-//   工程上仍应保证 initial_suspend 不抛异常。
+//   编译器先分配 coroutine state、构造 promise、调用 get_return_object()，
+//   再 co_await initial_suspend()。若这里抛异常，清理和诊断细节会受实现影响；
+//   工程上应保证 initial_suspend/final_suspend 都不抛异常。
 // -----------------------------------------------------------------------------
 
 namespace trap4 {
@@ -321,8 +331,19 @@ inline leaking_task bad_() { co_return; }
 
 // GOOD: initial_suspend 始终 noexcept
 struct safe_task {
+    struct promise_type;
+    std::coroutine_handle<promise_type> h_{};
+
+    explicit safe_task(std::coroutine_handle<promise_type> h) : h_(h) {}
+    safe_task(safe_task&& o) noexcept : h_(std::exchange(o.h_, {})) {}
+    safe_task(const safe_task&) = delete;
+    safe_task& operator=(const safe_task&) = delete;
+    ~safe_task() noexcept { if (h_) h_.destroy(); }
+
     struct promise_type {
-        safe_task get_return_object() { return {}; }
+        safe_task get_return_object() {
+            return safe_task{std::coroutine_handle<promise_type>::from_promise(*this)};
+        }
         std::suspend_always initial_suspend() noexcept { return {}; } // ← noexcept
         std::suspend_always final_suspend() noexcept { return {}; }
         void return_void() noexcept {}
@@ -333,8 +354,12 @@ struct safe_task {
 inline safe_task good_() { co_return; }
 
 inline void run() {
-    std::cout << "[trap4] initial_suspend throws -> frame leak\n";
+    std::cout << "[trap4] initial_suspend throws -> cleanup path\n";
+#ifdef COROUTINE_STUDY_ENABLE_UNSAFE_DEMOS
     (void)bad_();
+#else
+    std::cout << "  [trap4][starter] bad path disabled\n";
+#endif
     (void)good_();
 }
 
@@ -363,12 +388,16 @@ inline task<void> fire_and_forget_(int* maybe_dangling) {
 // BAD：把 task 移交给另一线程 detach，caller 立即返回 → local 已悬空，
 //      detached 线程上的协程仍可能去读 *maybe_dangling。
 inline void bad_() {
+#ifdef COROUTINE_STUDY_ENABLE_UNSAFE_DEMOS
     int local = 42;
     std::thread([t = fire_and_forget_(&local)]() mutable {
         // detached 协程在 caller 死后还跑：把它跑完以演示帧仍存活但 local 已死
         t.blocking_run();
     }).detach();
     // 此处 caller 立即返回，local 出作用域；detached 线程读 *maybe_dangling 即 UB
+#else
+    std::cout << "  [trap5][starter] unsafe detach disabled\n";
+#endif
 }
 
 // GOOD：交给 async_scope 等价物（此骨架用同步 blocking_run 演示）
@@ -380,21 +409,23 @@ inline void good_() {
 
 inline void run() {
     std::cout << "[trap5] detached coroutine outlives creator\n";
+#ifdef COROUTINE_STUDY_ENABLE_UNSAFE_DEMOS
     bad_();
+#else
+    std::cout << "  [trap5][starter] bad path disabled\n";
+#endif
     good_();
 }
 
 } // namespace trap5
 
 // =============================================================================
-// 陷阱 6：generator 返回引用的 dangling
+// 陷阱 6：消费者把 yield 窗口内的指针持久化
 // =============================================================================
 //
 // 根本原因：
-//   generator<T&> 的 co_yield 会把引用透传给消费者；如果 yield 的是临时量，
-//   临时量在 co_yield 表达式结束时析构，引用立即悬空。
-//   标准 std::generator 的 promise 默认拷贝/移动 yield 值，因此临时量是安全的；
-//   但自写 generator 如果只存引用，就会爆雷。
+//   当前 yield 窗口内的借用值可以读取；消费者如果保存指针/view，再推进
+//   generator，上一轮 block/full-expression 结束后，保存的借用就可能悬空。
 // -----------------------------------------------------------------------------
 
 namespace trap6 {
@@ -421,22 +452,27 @@ struct ref_generator {
     ~ref_generator() { if (h_) h_.destroy(); }
 };
 
-// BAD：yield 临时量 → 引用悬空
+// BAD：消费者若把 current_ 保存到下一次 resume 之后，就越过了 yield 窗口
 inline ref_generator<int> bad_() {
-    co_yield std::max(1, 2);              // ← prvalue 临时量，地址即将失效
+    int value = std::max(1, 2);
+    co_yield value;
     co_return;
 }
 
-// GOOD：用按值返回（与 std::generator 一致），或先拷贝到帧内变量
+// GOOD：用按值返回，或让消费者复制后再推进 generator
 inline ref_generator<int> good_() {
     int max_val = std::max(1, 2);
-    co_yield max_val;                     // ← 帧内变量，安全
+    co_yield max_val;
     co_return;
 }
 
 inline void run() {
-    std::cout << "[trap6] generator yielding reference to temporary\n";
+    std::cout << "[trap6] consumer persists pointer past yield window\n";
+#ifdef COROUTINE_STUDY_ENABLE_UNSAFE_DEMOS
     auto a = bad_();  (void)a;
+#else
+    std::cout << "  [trap6][starter] bad path disabled\n";
+#endif
     auto b = good_(); (void)b;
 }
 
@@ -454,9 +490,20 @@ inline void run() {
 namespace trap7 {
 
 struct bad_task {
+    struct promise_type;
+    std::coroutine_handle<promise_type> h_{};
+
+    explicit bad_task(std::coroutine_handle<promise_type> h) : h_(h) {}
+    bad_task(bad_task&& o) noexcept : h_(std::exchange(o.h_, {})) {}
+    bad_task(const bad_task&) = delete;
+    bad_task& operator=(const bad_task&) = delete;
+    ~bad_task() { if (h_) h_.destroy(); }
+
     struct promise_type {
         bool has_error{false};
-        bad_task get_return_object() { return {}; }
+        bad_task get_return_object() {
+            return bad_task{std::coroutine_handle<promise_type>::from_promise(*this)};
+        }
         std::suspend_always initial_suspend() noexcept { return {}; }
         std::suspend_always final_suspend() noexcept { return {}; }
         void return_void() noexcept {}
@@ -469,8 +516,33 @@ struct bad_task {
 };
 
 struct good_task {
+    struct promise_type;
+    std::coroutine_handle<promise_type> h_{};
+
+    explicit good_task(std::coroutine_handle<promise_type> h) : h_(h) {}
+    good_task(good_task&& o) noexcept : h_(std::exchange(o.h_, {})) {}
+    good_task(const good_task&) = delete;
+    good_task& operator=(const good_task&) = delete;
+    ~good_task() noexcept { if (h_) h_.destroy(); }
+
     struct promise_type {
-        good_task get_return_object() { return {}; }
+        static inline int allocations{0};
+        static inline int deallocations{0};
+
+        static void* operator new(std::size_t size) {
+            ++allocations;
+            return ::operator new(size);
+        }
+
+        static void operator delete(void* ptr, std::size_t size) noexcept {
+            (void)size;
+            ++deallocations;
+            ::operator delete(ptr);
+        }
+
+        good_task get_return_object() {
+            return good_task{std::coroutine_handle<promise_type>::from_promise(*this)};
+        }
         std::suspend_always initial_suspend() noexcept { return {}; }
         std::suspend_always final_suspend() noexcept { return {}; }
         void return_void() noexcept {}
@@ -487,19 +559,29 @@ inline good_task good_() { co_return; }
 
 inline void run() {
     std::cout << "[trap7] promise destructor throws -> terminate\n";
+#ifdef COROUTINE_STUDY_ENABLE_UNSAFE_DEMOS
     (void)bad_();
-    (void)good_();
+#else
+    std::cout << "  [trap7][starter] bad path disabled\n";
+#endif
+    {
+        auto t = good_();
+    }
+    if (good_task::promise_type::allocations != good_task::promise_type::deallocations) {
+        std::cerr << "  [trap7][starter] good_task leaked coroutine frame\n";
+        std::terminate();
+    }
+    std::cout << "  [trap7][good] good_task frame released\n";
 }
 
 } // namespace trap7
 
 // =============================================================================
-// 陷阱 8：自写 generator 的 co_yield 临时量引用
+// 陷阱 8：自写 generator 把 string_view 持久暴露到 yield 窗口之后
 // =============================================================================
 //
-// 与陷阱 6 同源但更细。区别：标准 std::generator 默认拷贝 yield 值，
-// 因此 co_yield "hello"s 在标准版里是安全的；如果你写 generator 时
-// promise::yield_value 只存指针/引用，就会出问题。
+// 与陷阱 6 同源但更细：co_yield full-expression 覆盖当前挂起窗口；
+// 消费者若保存 string_view 并推进 generator，上一轮 view 可能悬空。
 // -----------------------------------------------------------------------------
 
 namespace trap8 {
@@ -527,8 +609,8 @@ struct sv_generator {
 
 inline sv_generator bad_() {
     using namespace std::string_literals;
-    co_yield "hello"s;                    // ← std::string 临时量
-    co_yield std::format("v{}", 1);       // ← std::string 临时量
+    co_yield "hello"s;                    // 当前 yield 窗口内可读
+    co_yield std::string("v") + std::to_string(1);
     co_return;
 }
 
@@ -555,14 +637,18 @@ struct str_generator {
 
 inline str_generator good_() {
     using namespace std::string_literals;
-    co_yield "hello"s;                    // ← 按值进帧，安全
-    co_yield std::format("v{}", 1);
+    co_yield "hello"s;                    // 消费者拿到 string 值
+    co_yield std::string("v") + std::to_string(1);
     co_return;
 }
 
 inline void run() {
-    std::cout << "[trap8] custom generator stores reference to temporary\n";
+    std::cout << "[trap8] custom generator persists string_view after yield\n";
+#ifdef COROUTINE_STUDY_ENABLE_UNSAFE_DEMOS
     auto a = bad_();  (void)a;
+#else
+    std::cout << "  [trap8][starter] bad path disabled\n";
+#endif
     auto b = good_(); (void)b;
 }
 

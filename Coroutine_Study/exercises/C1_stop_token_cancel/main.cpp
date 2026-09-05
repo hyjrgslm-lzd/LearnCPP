@@ -104,7 +104,7 @@ int main() {
         std::this_thread::sleep_for(std::chrono::milliseconds(120));
         src.request_stop();
     });
-    int done = t.get();
+    int done = coroutine_study::sync_wait(std::move(t));
     std::println("已处理批次：{} (含因取消停止)", done);
 
     // ------------------ 进阶任务 ------------------

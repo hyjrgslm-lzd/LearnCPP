@@ -27,3 +27,9 @@
 - 用 `std::println` 在每个 `await_ready/await_suspend/await_resume` 中打印来源信息。
 - 对照实验最有说服力：先看到 `await_transform` 拦截，再看到不拦截时的差异。
 - ADL 的 `operator co_await` 必须放进 awaitable 类型所在的命名空间。
+
+## 本轮练习契约
+
+Starter 要求追踪 co_await 转换。Reference 同时覆盖 promise.await_transform、member operator co_await、free operator co_await。歧义和重载选择按普通 overload resolution；await_transform 只在当前协程 promise 存在对应成员时先参与。
+
+命令：``cmake -S . -B build/dg-lane -DCOROUTINE_STUDY_BUILD_REFERENCE=ON``，然后构建 ``E1_co_await_lookup`` 与 ``E1_co_await_lookup_reference``，再用 ``ctest -R E1_co_await_lookup_reference`` 跑稳定验收。

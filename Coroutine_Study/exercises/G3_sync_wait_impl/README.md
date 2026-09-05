@@ -37,3 +37,9 @@
 - 简易版只 30 行——不要在辅助设施上过度设计。
 - 关键不是代码量，而是理解"协程挂起恢复 → 线程阻塞唤醒"的精确对应关系。
 - condvar 版要小心 task 所有权——move 后由 driver 线程负责 destroy 帧。
+
+## 本轮练习契约
+
+Starter 要求实现同步边界。Reference 复用公共 lazy_task/sync_wait，验证 root start once、nested completion、二次 start 拒绝、异常重抛。sync_wait 的职责是把协程 completion 转成阻塞等待，不是盲目 resume 循环。
+
+命令：``cmake -S . -B build/dg-lane -DCOROUTINE_STUDY_BUILD_REFERENCE=ON``，然后构建 ``G3_sync_wait_impl`` 与 ``G3_sync_wait_impl_reference``，再用 ``ctest -R G3_sync_wait_impl_reference`` 跑稳定验收。

@@ -37,11 +37,9 @@ void log(const char* tag, Args&&... args) {
 // ─────────────────────────────────────────────────────────────────────
 template <class Callback>
 void async_add(int a, int b, Callback&& cb) {
-    std::thread([a, b, cb = std::forward<Callback>(cb)]() mutable {
-        log("async_add.thread", "compute ", a, " + ", b);
-        std::this_thread::sleep_for(100ms);
-        cb(a + b);
-    }).detach();
+    log("async_add", "compute ", a, " + ", b);
+    std::this_thread::sleep_for(100ms);
+    cb(a + b);
 }
 
 // ─────────────────────────────────────────────────────────────────────
@@ -62,7 +60,7 @@ struct AsyncAddAwaiter {
         //   log("await_suspend", "tid=...");
         //   async_add(a_, b_, [this, h](int r) {
         //       result_ = r;          // 先写 result
-        //       h.resume();           // 后 resume —— 充当内存屏障
+        //       h.resume();           // 后 resume；真实跨线程版本还要保证生命周期与同步
         //   });
         log("await_suspend", "schedule async_add(", a_, ",", b_, ")");
         async_add(a_, b_, [this, h](int r) mutable {
@@ -105,7 +103,7 @@ int main() {
     log("main", "─── B-3：把回调 API 包成 awaiter ───");
 
     auto t = compute_with_callback(7, 5);
-    int v = t.sync_wait();
+    int v = coroutine_study::sync_wait(std::move(t));
 
     log("main", "final = ", v, "  (期望 (7+5)*3 = 36)");
     return 0;

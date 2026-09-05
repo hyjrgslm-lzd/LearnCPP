@@ -4,7 +4,7 @@
 
 模块 A 让你建立了三个关键字的肌肉记忆。模块 B 要把 generator 和 task 的使用技能向前推一步：
 
-- generator 不只是线性 yield，递归 generator 可以表达树形遍历，而 symmetric transfer 让递归不爆栈。
+- generator 不只是线性 yield，递归 generator 可以表达树形遍历；`std::ranges::elements_of` 递归产出能使用标准 generator 的嵌套恢复机制降低栈增长风险。
 - task 不只是单步 `co_return`，多个 task 的 `co_await` 串联可以表达顺序异步组合，且异常沿 `co_await` 链自然传播。
 - 真实工程中大量的回调式 API（如文件读取、网络请求、定时器）可以通过写出最小 awaiter 适配器，变成可 `co_await` 的协程友好接口。
 
@@ -12,7 +12,7 @@
 
 做完本模块，你至少要能稳定说清楚：
 
-- 递归 generator 中每次 `co_yield` 停在哪一层协程帧上，symmetric transfer 如何保证树遍历的栈不爆炸。
+- 递归 generator 中每次 `co_yield` 停在哪一层协程帧上，`elements_of` 与普通 `for + co_yield` 的恢复链有什么差异。
 - `co_await task1(); co_await task2(); co_return combine(...)` 与回调金字塔相比，好在哪（异常传播、值流显式、控制流线性）。
 - 如何把"传入回调 + 异步启动"模式的 C API，仅通过 ~25 行 awaiter 代码变成协程可消费的 `co_await`。
 
@@ -29,13 +29,13 @@
 
 ### 目标
 
-用递归 generator 实现二叉树的中序遍历（惰性 yield 每个节点值），亲手观察对称传输（symmetric transfer）如何在编译器层面防止递归 yield 爆栈。
+用递归 generator 实现二叉树的中序遍历（惰性 yield 每个节点值），亲手观察 `std::ranges::elements_of` 如何让嵌套 generator 的控制转交更接近 symmetric transfer 模型，并对比普通 `for + co_yield` 的栈行为。
 
 ### 前置理解
 
 - 你知道 `std::generator<T>` 可以用递归函数实现：在协程内部 `co_yield` 当前节点值，然后递归遍历子树。
 - 你知道朴素递归函数遍历一棵深层树时，每一层递归都会压栈，深度树可能爆栈。
-- 你听过"symmetric transfer"这个词，但请特别留意：**仅 `co_yield std::ranges::elements_of(inner_gen)` 这一 P2502R2 recursive yield 语法才能触发 symmetric transfer。普通的 `for (int v : recurse(node)) co_yield v;` 不触发 symmetric transfer——它是普通迭代器层层 resume，深度退化树仍爆栈。**
+- 你听过"symmetric transfer"这个词，但请特别留意：`co_yield std::ranges::elements_of(inner_gen)` 才是标准 generator 支持递归产出的路径。普通的 `for (int v : recurse(node)) co_yield v;` 是用户层循环转发，每层 `operator++` 都可能参与调用链，不能把它当成同一种栈行为。
 - 你接受本题的重点是观察递归 yield 的栈行为，并亲手对比两种写法的栈安全差异。
 
 ### 必做任务
@@ -50,8 +50,8 @@
    ```
 2. 构造一棵深度至少 5 层的满二叉树（节点值可以简单设为 1 到 2^depth-1），但至少包含 20+ 个节点。
 3. 写两个版本的递归 generator 函数 `inorder(Node* root)`，返回 `std::generator<int>`：
-   - **版本 A（推荐，P2502 symmetric transfer）**：左子树用 `co_yield std::ranges::elements_of(inorder(root->left));` 递归 yield。这是 C++23 P2502R2 的 recursive yield 语法，能触发 symmetric transfer——编译器直接跳转到子 generator 的帧，深度树不爆栈。
-   - **版本 B（反例）**：左子树用 `for (int v : inorder(root->left)) co_yield v;` 递归 yield——这是普通迭代器层层 resume，每层 generator 的 `++it` 都进入 caller 栈帧，深度退化树仍爆栈。
+   - **版本 A（推荐，P2502 `elements_of`）**：左子树用 `co_yield std::ranges::elements_of(inorder(root->left));` 递归 yield。这是 C++23 标准 generator 的 recursive yield 语法，标准库实现会维护 active stack 并恢复嵌套 generator，避免用户代码手写层层循环转发。
+   - **版本 B（反例）**：左子树用 `for (int v : inorder(root->left)) co_yield v;` 递归 yield——这是普通迭代器层层 resume，每层 generator 的 `++it` 都可能进入 caller 栈帧，深度退化树有栈增长风险。
    - 两个版本都通过 `co_yield root->value;` 产出当前节点值，然后用相同方式处理右子树。
 4. 在 `main()` 中用 range-based for 遍历这个 generator，打印所有值，验证输出是正确的中序遍历序列。
 5. 在递归 generator 函数入口和每个 `co_yield` 前后加日志。观察：当递归进入深层左子树并开始 yield 最左叶子时，日志的顺序是怎样的。
@@ -59,7 +59,7 @@
 
 ### 进阶任务
 
-- 构造一棵退化树（每个节点只有右子树或只有左子树），深度达到 200 或 500。用普通递归函数遍历这棵树——观察是否爆栈。然后用版本 A（`elements_of`，symmetric transfer）和版本 B（`for` + `co_yield`）分别遍历同一棵树——**验证版本 A 不爆栈，版本 B 爆栈**。记录两者的栈行为差异和对 P2502 准确理解的重要性。
+- 构造一棵退化树（每个节点只有右子树或只有左子树），深度达到 200、500，必要时继续增加。用普通递归函数、版本 A（`elements_of`）和版本 B（`for` + `co_yield`）分别遍历同一棵树，记录最大可运行深度和栈行为。不要把“某次没爆栈”写成标准保证。
 - 不用 `for (int v : recurse(left)) co_yield v;` 这种"用户层递归"方式，而是直接在 `promise_type` 层面给 generator 加一个 `yield_from(generator&&)` 方法（类似 Python 的 `yield from`）。这要求你在 generator 的 `promise_type` 中实现 `await_transform` 来拦截对另一个 generator 的 `co_await`。这是一个接近二级难度的任务，做不出来可以先跳过，但思考其设计意图。
 - 在 GCC 上用 `-fdump-tree-coro`，或在 Clang 上用 `-Xclang -ast-dump -fsyntax-only`，观察编译器为递归 generator 生成的协程帧结构。尝试从中辨认出：哪些字段是你写的局部变量，哪些是编译器生成的簿记字段（如当前状态点、resume 地址等）。
 
@@ -67,22 +67,22 @@
 
 - 你能用中序遍历的正确输出证明递归 generator 的逻辑正确性。
 - 你能在日志中清晰地看到：深层左子树的 `co_yield` 在浅层节点的 `co_yield` 之前被执行（符合中序遍历语义），并且浅层节点的 for 循环被"冻结"在等待下一个值的状态。
-- 你能解释：为什么版本 B（`for` + `co_yield`，不触发 symmetric transfer）在深度退化树上会和普通递归函数一样爆栈——它的每一层 `++it` 都进入 caller 栈帧。版本 A（`elements_of`，触发 P2502 symmetric transfer）才不爆栈。
+- 你能解释：为什么版本 B（`for` + `co_yield`）不能获得 `elements_of` 的递归 generator 支持，它的每一层 `++it` 都可能进入 caller 栈帧；版本 A 的 active stack/控制转交机制为什么更适合深度树。
 - 你能画出退化树遍历时协程帧之间的 resume 链。
 
 ### 观察点
 
 - 递归 generator 的每一层递归调用都会创建一个新的协程帧（每一层都是一个独立的协程实例，有自己的 coroutine_handle，独立分配在堆上）。
-- 版本 A 中使用 `co_yield std::ranges::elements_of(inner_gen)` 时，子 generator 的 `final_suspend` 通过 symmetric transfer 直接跳回父帧——编译器在编译期识别 `elements_of` 语法并生成 symmetric transfer 路径。版本 B 的 `for (int v : ...) co_yield v;` 是普通迭代器 resume 链：每层 `operator++` 都进入上一层帧再返回，栈深度随树深线性增长。
-- 如果你在进阶任务中试了退化树，你会亲眼看到：普通递归和版本 B 都在几百层爆栈，而版本 A（`elements_of`）安然无恙——这是 P2502 symmetric transfer 最直观的价值证明。
+- 版本 A 中使用 `co_yield std::ranges::elements_of(inner_gen)` 时，`std::generator` 会把子 generator 纳入 active stack；嵌套 generator 完成后恢复外层 generator。版本 B 的 `for (int v : ...) co_yield v;` 是普通迭代器 resume 链：每层 `operator++` 都可能进入上一层帧再返回，栈深度随树深增长。
+- 如果你在进阶任务中试了退化树，通常会看到普通递归和版本 B 更早达到栈深限制，而版本 A 能撑得更深。这是 `elements_of` 设计价值的可观察证据，但最终以你的标准库实现和编译器为准。
 - 注意：`elements_of` 语法的 symmetric transfer 支持取决于编译器和版本。MSVC 17.10+、Clang 17+、GCC 14+ 通常都支持，但如果你的编译器较旧，可能需要确认。
 
 ### 常见坑
 
 - `for (int v : inorder(left)) co_yield v;` 这种写法的前提是 `inorder(left)` 返回的 generator 临时对象的生命周期要覆盖整个 for 循环。幸运的是，range-based for 的规范保证了这一点（临时对象存活到循环结束）。
 - 递归 generator 中，每一层递归都会创建一个独立的 generator。如果不对这些临时 generator 的生命周期有清楚认识，很容易写出 dangling reference。
-- 在退化树实验中，如果使用版本 B（`for` + `co_yield`）则爆栈是必然的——这不是编译器限制，而是 `for` + `co_yield` 本来就不触发 symmetric transfer。只有版本 A（`elements_of`）能在退化树上安全遍历。请务必区分两者。
-- 把"for 循环展开递归 yield"等同于"symmetric transfer"——这是本模块最核心的纠正点。P2502R2 的 symmetric transfer 仅由 `co_yield std::ranges::elements_of(...)` 触发，`for (int v : inner_gen) co_yield v;` 不触发。
+- 在退化树实验中，如果版本 B（`for` + `co_yield`）没有立刻爆栈，也不能推出它具有 `elements_of` 的栈行为；继续增加深度并看调用栈。
+- 把"for 循环展开递归 yield"等同于"`elements_of` 递归产出"——这是本模块最核心的纠正点。两者语义结果相似，但恢复链和栈行为不是同一种机制。
 
 ### 提示
 
@@ -100,7 +100,7 @@
 
 ### 对应官方参考
 
-- P2502R2：`std::generator` 中 symmetric transfer 的使用
+- P2502R2：`std::generator: Synchronous Coroutine Generator for Ranges` 中 `elements_of` 的递归产出与 symmetric transfer
 - Lewis Baker 协程系列第 5 篇：symmetric transfer 详解
 - Raymond Chen 协程系列第 6 篇：generator 的嵌套与递归
 
@@ -206,23 +206,38 @@
 
 1. 写一个模拟的回调式异步 API：
    ```cpp
+   class worker_group {
+   public:
+       template <class F>
+       void submit(F&& f) {
+           threads_.emplace_back(std::forward<F>(f));
+       }
+       void join() {
+           for (auto& t : threads_) {
+               if (t.joinable()) t.join();
+           }
+       }
+   private:
+       std::vector<std::jthread> threads_;
+   };
+
    template <typename Callback>
-   void async_add(int a, int b, Callback cb) {
-       // 模拟异步：在新线程中计算 a+b，然后调用 cb(result)
-       std::thread([=] {
+   void async_add(worker_group& workers, int a, int b, Callback cb) {
+       // 模拟异步：提交到由 main 持有并在退出前 join 的 worker 组。
+       workers.submit([=] {
            std::this_thread::sleep_for(std::chrono::milliseconds(100));
            cb(a + b);
-       }).detach();
+       });
    }
    ```
 2. 写一个 awaiter 类型 `AsyncAddAwaiter`：
    - 构造函数接收 `int a, int b`。
    - `await_ready()`：返回 `false`（因为结果一定还在计算中）。
-   - `await_suspend(std::coroutine_handle<> h)`：保存 `h`，然后调用 `async_add(a, b, [this, h](int result) { this->result_ = result; h.resume(); })`。回调中将结果存储到 awaiter 的成员 `result_` 中，然后 resume 协程。注意：这里需要线程安全——回调在另一个线程运行，对 awaiter 成员 `result_` 的写入和 resume 之后协程体内对 `result_` 的读取形成了跨线程 happens-before 关系。最简单的保证方式是确保 `h.resume()` 在写入 `result_` 之后调用。
+   - `await_suspend(std::coroutine_handle<> h)`：保存 `h`，然后调用 `async_add(workers, a, b, [this, h](int result) { this->result_ = result; h.resume(); })`。回调中将结果存储到 awaiter 的成员 `result_` 中，然后 resume 协程。注意：这里需要清楚恢复线程和可见性——本例中 `result_` 的写入与随后的 `h.resume()` 在同一个 worker 线程内按顺序发生；更通用的跨线程完成路径要由底层 API、mutex/atomic、事件队列或 join 建立同步关系。
    - `await_resume()`：返回 `result_`。
-3. 写一个协程 `compute_with_callback(int x, int y)`，返回 `lazy_task<int>`：
+3. 写一个协程 `compute_with_callback(worker_group& workers, int x, int y)`，返回 `coroutine_study::lazy_task<int>`：
    ```cpp
-   AsyncAddAwaiter awaiter{x, y};
+   AsyncAddAwaiter awaiter{workers, x, y};
    int sum = co_await awaiter;
    co_return sum * 3;
    ```
@@ -254,17 +269,17 @@
 ### 常见坑
 
 - 回调中调用了 `h.resume()` 但没有确保 `result_` 已经写好了（比如先 resume 再写 result），导致协程恢复后在 `await_resume` 中读到旧值或未初始化的内存。正确处理：**先写 result_，后 resume**。
-- 使用 `detach()` 的线程在 awaiter 被提前销毁时仍然持有 `this` 指针，造成 use-after-free。这个问题在本练习的简单场景下不会出现（因为 awaiter 在协程帧中，协程帧在 resume 之前不会被销毁），但在后续自己写通用 awaiter 模板时要特别警惕。
+- 让后台线程脱离所有者后仍然持有 `this` 指针，awaiter 被提前销毁时会造成 use-after-free。本题用 main 持有的 worker_group 管理线程，退出前 join，避免把生命周期问题藏起来。
 - 在 `await_suspend` 中捕获了局部变量的引用而不是拷贝——比如 `[&a, &b]` 而不是 `[=]`，导致异步操作启动后引用悬挂。
 - 在 `await_ready` 中错误地返回了 `true`，导致 `await_suspend` 不会被调用，异步操作从未启动，`await_resume` 中读取到未初始化的值。
-- `async_add` 的回调在 `await_suspend` 返回前就执行了（如果底层 API 支持同步完成），导致 `h.resume()` 在一个还没完全挂起的协程上被调用——UB。这在 C++20 协程规范中是受保护的（`resume()` 在协程尚未挂起时的行为是实现定义的），但在实践中最安全的做法是在 `await_suspend` 返回前不要调用 `h.resume()`。如果 API 可能同步完成，在 `await_ready` 中检查并直接返回 `true`。
+- `async_add` 的回调在 `await_suspend` 返回前就执行了（如果底层 API 支持同步完成），导致同步重入：协程在 `await_suspend` 还没返回时被恢复，awaiter 对象和外层逻辑很容易被二次进入。标准在调用 `await_suspend` 前已经把协程视为挂起，但对同一协程做重入恢复会把库实现推入 UB 或竞态边缘。安全做法是：同步完成走 `await_ready`/`await_suspend` 返回 `false`，异步完成才保存 handle 稍后 resume。
 
 ### 提示
 
 - A-3 中的 `future_awaiter` 是本练习的前置——确保你已经理解了 awaiter 三方法，再进入本题。
 - 回调可以是 lambda，也可以是函数指针、`std::function`、或者任何可调用对象。先用 lambda 做，跑通后再尝试泛化。
-- 如果你对线程安全不确定，记住一条简单规则：在 `h.resume()` 之前，所有要传给协程的数据（通过 `result_` 等字段）都必须已经写完。`h.resume()` 本身充当了内存屏障的角色。
-- 如果你使用 `std::jthread` 代替 `std::thread` + `detach()`，代码会更简洁安全：`std::jthread t([=]{ h.resume(); });` 不需要手动 detach。但要注意 jthread 的析构会在主线程中 join，注意不要形成死锁。
+- 如果你对线程安全不确定，记住一条简单规则：在调用 `h.resume()` 之前，所有要传给协程的数据（通过 `result_` 等字段）都必须已经写完，并且跨线程可见性要由底层 API、mutex/atomic、事件队列或线程同步保证。`h.resume()` 本身不是内存屏障。
+- 如果你使用 `std::jthread`，要把它放进外层拥有者中统一 join。不要在 `await_suspend` 的局部变量里创建 `jthread` 后立刻离开作用域，否则析构 join 会把异步等待变成同步阻塞，甚至形成死锁。
 
 ### 复盘问题
 
@@ -278,7 +293,7 @@
 - Lewis Baker 协程系列第 1 篇：awaiter 协议与回调适配
 - Raymond Chen 协程系列第 7 篇：把 Windows 回调 API 适配为 awaiter
 - Asio 文档：`awaitable<T>` 与回调包装
-- Folly：`folly/experimental/coro/` 中 `to_task()` 和 `to_future()` 的实现
+- Folly：`folly/coro/Task.h`、`folly/coro/BlockingWait.h` 中 task / future 桥接相关实现
 
 ---
 
@@ -286,7 +301,7 @@
 
 至少把下面几句话说顺：
 
-- 递归 generator 的每一层子树对应一个独立的协程帧。P2502R2 的 `co_yield std::ranges::elements_of(inner_gen)` 触发 symmetric transfer——子帧完成后编译器直接跳回父帧的恢复点，不通过普通函数调用链返回，因此栈不会线性增长。普通的 `for (int v : inner_gen) co_yield v;` 不触发 symmetric transfer，深度退化树仍爆栈。
+- 递归 generator 的每一层子树对应一个独立的协程帧。P2502R2 的 `co_yield std::ranges::elements_of(inner_gen)` 使用标准 generator 的递归产出机制，子 generator 被纳入 active stack；普通的 `for (int v : inner_gen) co_yield v;` 是用户层循环转发，不能假设同样的栈行为。
 - task 的 `co_await` 链让顺序异步组合读起来像同步代码。值沿 `co_await` 的返回值流动（不是全局共享状态），异常沿 `co_await` 的异常路径自动传播。
 - 回调 API 适配为 awaiter 的模式是固定的：`await_suspend` 中保存 `coroutine_handle`，启动异步操作，在回调中填充结果并 resume。这个模式让你可以把任意老式回调 API 拉进协程的世界。
 - generator、task、awaiter 这三个概念构成了协程日常使用的完整工具箱：generator 负责惰性数据生产，task 负责异步计算表达，awaiter 负责桥接外部异步世界。

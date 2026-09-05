@@ -6,15 +6,19 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 if(MSVC)
-    add_compile_options(/Zc:__cplusplus /utf-8)
+    add_compile_options(/Zc:__cplusplus /utf-8 /Zc:preprocessor)
 endif()
 
-add_executable(H1_as_awaitable main.cpp)
-target_include_directories(H1_as_awaitable PRIVATE ${CMAKE_SOURCE_DIR}/include)
-
-# Agent 1 提供的 helper：连接 stdexec 等 stage3 依赖
-if(COMMAND coroutine_study_link_stage3_deps)
-    coroutine_study_link_stage3_deps(H1_as_awaitable)
+if(COMMAND coroutine_study_add_exercise)
+    coroutine_study_add_exercise(
+        H1_as_awaitable
+        SOURCES main.cpp
+        REFERENCE_SOURCES solution.cpp
+        LIBRARIES stdexec::stdexec
+    )
 else()
+    add_executable(H1_as_awaitable main.cpp)
     target_link_libraries(H1_as_awaitable PRIVATE stdexec::stdexec)
+    add_executable(H1_as_awaitable_reference solution.cpp)
+    target_link_libraries(H1_as_awaitable_reference PRIVATE stdexec::stdexec)
 endif()

@@ -5,7 +5,7 @@
 //   - Lewis Baker, "C++ coroutines: Understanding operator co_await"
 //   - Raymond Chen, "The many meanings of co_await"
 //   - N4775 7.6.2.3 (co_await spec)
-//   - P2786R0 Trivial Awaitables
+//   - C++20 [expr.await] / [coroutine.trivial.awaitables]
 // 学习要点：
 //   优先级（从高到低）：
 //     1) promise.await_transform(expr)

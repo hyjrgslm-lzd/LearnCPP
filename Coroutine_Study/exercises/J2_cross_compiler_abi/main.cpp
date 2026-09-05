@@ -18,7 +18,7 @@
 //     https://sourceware.org/gdb/onlinedocs/gdb/Coroutines.html
 //   - Clang `-Rpass=coroutine-elide`
 //   - GCC `-fdump-tree-coro` / `-fdump-ipa-coro`
-//   - P0912R5 Coroutines TS
+//   - P0912R5 Merge Coroutines TS into C++20 working draft
 //
 // 编译诊断 flag（CMakeLists 中已注入）：
 //   - MSVC : /d1reportSingleClassLayoutminimal_promise /Zi /await:strict

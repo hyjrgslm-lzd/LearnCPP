@@ -33,3 +33,9 @@
 - 你能解释为什么 generator 对象（含协程帧）不能作为临时对象立即析构。
 - 你能画出从 `auto gen = fibonacci(10)` 到 `for (auto v : gen)` 这条链上协程帧的
   创建、第一次 resume、每次 `co_yield` 后等待的全过程。
+
+## Starter / Reference
+
+- `main.cpp` 是练习骨架，保留 TODO 和可编译占位，方便逐步补全。
+- `solution.cpp` 是可运行参考实现，`ctest --preset verify-core -C Release -R A1_first_generator_reference`
+  会校验前 10 项 Fibonacci、无限 generator 前缀，以及 generator 构造后不立即执行。

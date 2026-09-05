@@ -27,3 +27,9 @@
 - `async_sleep` 已给出最小实现；真实工程应交给定时器线程驱动。
 - `batch_process` 内部不要 `throw` 取消——`co_return processed` 让 stopped 路径自然成立。
 - 进阶部分关注 `stop_callback`、stop_token 沿调用链向下传播。
+
+## Starter / Reference
+
+- `main.cpp` 是练习骨架，保留 TODO 和可运行取消演示。
+- `solution.cpp` 是可运行参考实现，`ctest --preset verify-core -C Release -R C1_stop_token_cancel_reference`
+  会校验协作式 stopped 返回与异常式取消两条路径。

@@ -3,7 +3,7 @@
 ## 目标
 
 完整实现并对比 `await_suspend` 的三种合法返回类型——`void`、`bool`、`std::coroutine_handle<>`，
-通过控制流差异建立"symmetric transfer 是嵌套协程的最优方案"的直觉。
+通过控制流差异建立"symmetric transfer 是嵌套协程控制转交方式"的直觉。
 
 ## 必做任务
 
@@ -18,10 +18,16 @@
 - 通过日志看到三种返回值的不同控制流。
 - 你能解释 void 模式下"必须有外部代码 resume"的含义。
 - 你能解释 bool=false 与 await_ready=true 的语义差异（前者已经决定挂起又反悔）。
-- 你能说明 symmetric transfer 不是"A 调 B"，而是"框架调 B、A 帧已退栈"。
+- 你能说明 symmetric transfer 不是"A 的库代码直接调用 B"，而是"`await_suspend` 返回 B handle，`co_await` 变换恢复 B"；A 的 coroutine frame 仍按所有权规则保留。
 
 ## 提示
 
 - 每种返回值用一个独立 awaiter 类型 + 独立协程，避免控制流混淆。
 - 注意：`bool=true` = 挂起（同 void），`bool=false` = 不挂起（立即继续）。务必对照 cppreference。
 - symmetric transfer 实验需要先创建 B 拿到 handle 再传给 A 的 awaiter。
+
+## 本轮练习契约
+
+Starter 要求分别实现 void/bool/coroutine_handle 三种 await_suspend。Reference 断言 void 可自行 resume，bool false 立即继续，bool true 保持挂起，handle 返回值把控制权交给目标 handle。
+
+命令：``cmake -S . -B build/dg-lane -DCOROUTINE_STUDY_BUILD_REFERENCE=ON``，然后构建 ``E2_await_suspend_three`` 与 ``E2_await_suspend_three_reference``，再用 ``ctest -R E2_await_suspend_three_reference`` 跑稳定验收。

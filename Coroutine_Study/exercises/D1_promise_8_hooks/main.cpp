@@ -9,7 +9,7 @@
 // 学习要点：
 //   1. 8 个可定制点的调用时机。
 //   2. final_suspend 必须挂起，否则协程帧在被消费前已销毁。
-//   3. unhandled_exception 中只能存储 exception_ptr，不能再 throw。
+//   3. 本练习让 unhandled_exception 存储 exception_ptr，再由消费者重抛。
 //
 // 注意：本练习从 0 开始，不允许 include 顶层提供的 lazy_task.hpp。
 //       请在每个 hook 函数体内填写 TODO，类型层骨架已给出。
@@ -73,7 +73,7 @@ struct lazy_task {
         // ---- 5. unhandled_exception ----
         void unhandled_exception() noexcept {
             // TODO [必做 6]：把 std::current_exception() 存入 result_exception。
-            //   注意：不能再次 throw —— 那会触发 std::terminate。
+            //   本 task 选择 noexcept + 存储异常；直接 throw 会改变驱动端的异常传播契约。
             result_exception = std::current_exception();
         }
 

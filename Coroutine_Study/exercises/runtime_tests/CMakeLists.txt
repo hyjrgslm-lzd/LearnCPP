@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 3.28)
+project(coroutine_study_runtime_tests LANGUAGES CXX)
+enable_testing()
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+function(add_runtime_test name source)
+    add_executable(${name} ${source})
+    target_include_directories(${name} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../include)
+    add_test(NAME ${name} COMMAND ${name})
+endfunction()
+
+add_runtime_test(runtime_lazy_task_reference_test lazy_task_reference_test.cpp)
+add_runtime_test(runtime_sync_wait_reference_test sync_wait_reference_test.cpp)
+add_runtime_test(runtime_run_loop_reference_test run_loop_reference_test.cpp)
+add_runtime_test(runtime_task_scope_reference_test task_scope_reference_test.cpp)
+add_runtime_test(runtime_when_any_cancel_join_reference_test when_any_cancel_join_reference_test.cpp)
+add_runtime_test(runtime_sync_completion_reference_test sync_completion_reference_test.cpp)
+add_runtime_test(runtime_allocator_reference_test allocator_reference_test.cpp)

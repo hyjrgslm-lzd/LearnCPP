@@ -38,3 +38,9 @@ D-1 起不再使用 `include/coroutine_study/lazy_task.hpp`。
 - final_suspend 必须挂起；否则在 get() 读取 result 前帧已销毁 -> UB。
 - get_return_object 中可以安全地 `from_promise(*this)`，
   因为 promise 已构造完成。
+
+## 本轮练习契约
+
+Starter 只保留入口提示；在本目录从零实现 task/promise。Reference 验证 value、exception_ptr、nested co_await 和 final_suspend continuation。注意：所谓 hook 数量是教学分组，不是标准固定八个；allocation failure 只有在 promise 提供 non-throwing operator new 时才走 get_return_object_on_allocation_failure。标准来源：coroutine promise lookup、initial/final suspend、return_value、unhandled_exception、allocation failure rules。
+
+命令：``cmake -S . -B build/dg-lane -DCOROUTINE_STUDY_BUILD_REFERENCE=ON``，然后构建 ``D1_promise_8_hooks`` 与 ``D1_promise_8_hooks_reference``，再用 ``ctest -R D1_promise_8_hooks_reference`` 跑稳定验收。

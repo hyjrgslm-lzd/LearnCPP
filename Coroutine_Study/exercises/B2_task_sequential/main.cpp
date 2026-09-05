@@ -123,7 +123,7 @@ int main() {
 
     try {
         auto t = process_user(/*user_id=*/42);
-        std::string s = t.sync_wait();
+        std::string s = coroutine_study::sync_wait(std::move(t));
         log("main", "result = ", s);
     } catch (const std::exception& e) {
         log("main", "[exception] ", e.what(),

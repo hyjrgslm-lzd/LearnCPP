@@ -2,8 +2,8 @@
 // 练习 C-3：async_scope 与生命周期收束
 // 文档参考：Coroutine_Study/04-模块C-取消与组合.md  -> 练习 C-3
 // 官方参考：
-//   - P3296R1: async_scope 提案
-//   - P3149R4: std::execution 中的结构化并发
+//   - P3149R4: async scope、spawn 与 counting scope
+//   - P3296R1: 自动 join 的 let_async_scope adaptor
 //   - Lewis Baker, "Structured Concurrency" CppCon 2019
 //   - cppcoro async_scope.hpp 设计
 // 学习要点：
@@ -29,17 +29,15 @@ struct async_sleep {
     std::chrono::milliseconds dur;
     bool await_ready() const noexcept { return dur <= 0ms; }
     void await_suspend(std::coroutine_handle<> h) const {
-        std::thread([h, d = dur] {
-            std::this_thread::sleep_for(d);
-            h.resume();
-        }).detach();
+        std::this_thread::sleep_for(dur);
+        h.resume();
     }
     void await_resume() const noexcept {}
 };
 
 // ---------------------------------------------------------------------
 // 极简 async_scope：维护一个待完成 task 列表，析构时等齐。
-// 实战中应使用 P3296R1 的实现。
+// 实战中应使用成熟库实现；标准化方向见 P3149R4，异常安全 adaptor 见 P3296R1。
 // ---------------------------------------------------------------------
 class async_scope {
 public:
@@ -49,19 +47,19 @@ public:
 
     // TODO [必做 1]：实现 spawn(lazy_task<void>)
     //   - 增加 in_flight_ 计数
-    //   - 起一条线程（或调度器任务）.get() 这个 task
+    //   - 起一条线程（或调度器任务）消费这个 task
     //   - task 完成时减少计数，notify 等待者
     void spawn(coroutine_study::lazy_task<void> task) {
         in_flight_.fetch_add(1, std::memory_order_relaxed);
-        std::thread([this, t = std::move(task)]() mutable {
+        workers_.emplace_back([this, t = std::move(task)]() mutable {
             try {
-                t.get();
+                coroutine_study::sync_wait(std::move(t));
             } catch (...) { /* TODO：异常归属策略 */ }
             if (in_flight_.fetch_sub(1, std::memory_order_acq_rel) == 1) {
                 std::lock_guard<std::mutex> lk(mu_);
                 cv_.notify_all();
             }
-        }).detach();
+        });
     }
 
     // TODO [必做 2]：实现析构等齐语义
@@ -79,6 +77,7 @@ private:
     std::atomic<int> in_flight_{0};
     std::mutex mu_;
     std::condition_variable cv_;
+    std::vector<std::jthread> workers_;
 };
 
 // ---------------------------------------------------------------------
@@ -86,7 +85,7 @@ private:
 // ---------------------------------------------------------------------
 void detach(coroutine_study::lazy_task<void> task) {
     std::thread([t = std::move(task)]() mutable {
-        try { t.get(); } catch (...) {}
+        try { coroutine_study::sync_wait(std::move(t)); } catch (...) {}
     }).detach();
 }
 

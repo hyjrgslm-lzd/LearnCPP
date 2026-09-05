@@ -51,17 +51,11 @@ struct future_awaiter {
     void await_suspend(std::coroutine_handle<> h) {
         // TODO [必做]:
         //   1) log 当前线程 id（"await_suspend tid=..."）
-        //   2) 启动一个 std::jthread / std::thread，在新线程里 fut_.wait()，然后 h.resume();
-        //   3) 注意线程的析构：用 jthread 自动 join 不安全（会死锁），常用做法是 detach
-        //      或把 jthread 存到 awaiter 成员里、由 await_resume 之后清理。
-        //   下面是一个能编译运行的占位实现：先 fut_.wait() 等就绪再 resume，
-        //   这样 await_resume 里的 fut_.get() 不再阻塞——更贴近正确语义。
-        //   (this 指向的 awaiter 临时对象存活到 await_resume 返回，捕获安全。)
-        std::thread([this, h]() mutable {
-            fut_.wait();
-            log("await_suspend.thread", "future ready, before resume");
-            h.resume();
-        }).detach();
+        //   2) 把等待工作交给一个有明确 owner 的 worker，future ready 后 h.resume();
+        //   3) worker 必须在协程帧销毁前 join；参考实现见 solution.cpp。
+        //   骨架占位：同步等待后恢复，安全但看不到跨线程恢复。
+        fut_.wait();
+        h.resume();
     }
 
     T await_resume() {
@@ -109,7 +103,7 @@ int main() {
     log("main", "─── A-3：co_await std::future ───");
 
     auto task = test_future_await();
-    int v = task.sync_wait();
+    int v = coroutine_study::sync_wait(std::move(task));
 
     log("main", "final result = ", v, " (期望 84)");
     return 0;
