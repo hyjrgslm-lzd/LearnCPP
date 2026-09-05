@@ -62,7 +62,7 @@ cmake --preset heavy-cobalt-linux
 cmake --build --preset heavy-cobalt-linux
 ```
 
-`full-windows`、`full-linux-light` 和 heavy preset 默认打开 `COROUTINE_STUDY_BUILD_REFERENCE=ON`，用于 CI 验证参考实现。
+`full-windows`、`full-linux-light` 和 heavy preset 默认打开 `COROUTINE_STUDY_BUILD_REFERENCE=ON`，用于在本机验证参考实现。
 
 ## 锁定依赖
 
