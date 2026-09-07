@@ -59,6 +59,8 @@ if(COROUTINE_STUDY_ENABLE_COBALT)
     coroutine_study_setup_cobalt(REQUIRED)
 endif()
 
+add_subdirectory(P1_future_basics)
+add_subdirectory(P2_generator_basics)
 add_subdirectory(A1_first_generator)
 add_subdirectory(A2_co_return_lazy_task)
 add_subdirectory(A3_co_await_future)
