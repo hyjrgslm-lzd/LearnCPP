@@ -1,16 +1,4 @@
-cmake_minimum_required(VERSION 3.25)
+cmake_minimum_required(VERSION 3.28)
 project(J2_interference_size LANGUAGES CXX)
-
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
-
-if(MSVC)
-    add_compile_options(/Zc:__cplusplus /utf-8 /EHsc)
-endif()
-
-# 让本题既能作为顶层子目录、也能被独立打开时找到 cmake/*Setup.cmake
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../cmake")
-
-add_executable(J2_interference_size main.cpp)
-target_include_directories(J2_interference_size PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../include)
+include(../cmake/StudySetup.cmake)
+cs_add_exercise(J2_interference_size OBSERVATION)

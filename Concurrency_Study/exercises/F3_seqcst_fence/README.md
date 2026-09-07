@@ -1,43 +1,42 @@
-# 练习 F-3：seq_cst 与内存栅栏
+# F3：SC 禁止结果与三种 fence 桥
 
-> 详尽版见 `../../08-模块F-内存模型与memory_order.md` 的 练习 F-3。
+完整正文见[SC 禁止结果与三种 fence 桥](../../topics/atomics/06-fences.md)。[main.cpp](main.cpp) 是安全、有限结束的 Starter；[solution.cpp](solution.cpp) 是含运行检查的 Reference。默认 C++23。
 
-## 目标
+先读[relaxed 与 SC](../../topics/atomics/05-relaxed-and-sc.md)，再读上方独立 fence 正文。Starter 是一次安全 SC store-buffering；Reference 为每个变体执行 4000 轮。
 
-复现经典的 **store-load 重排**现象（Dekker / store-buffer 模式）：两个线程各自“先 store 自己、再 load 对方”，在 relaxed 下**可能都读到对方的旧值（0）**。然后用 `memory_order_seq_cst` 修复，并用 `std::atomic_thread_fence(memory_order_seq_cst)` 替代“每操作 seq_cst”达到同样效果。
+## Part 1：比较 relaxed、RA 与 SC
 
-## 前置理解
+实现 `store_load` 和 `store_buffering`。两端分别先写自身原子为 1，再读对方。relaxed 及 release-store/acquire-load 的双零计数均允许为零或正数；SC 双零必须为零。
 
-- **store-load（StoreLoad）重排**：同一线程内“写 x 再读 y”可能被观测成“先读 y（旧值）再写 x”。x86（TSO）唯一允许的硬件重排就是它，所以**本现象在 x86 上能真实复现**。
-- **release/acquire 修不了它**：release/acquire 只管 message-passing 方向的可见性（一个变量的写被另一线程读到），不禁止 StoreLoad 重排。
-- **seq_cst 的额外保证**：在 acquire/release 之上，所有 `seq_cst` 操作还服从**单一全序（single total order）**。这条全序保证“至少一个线程的 store 排在另一线程的 load 之前”，于是“两边都读到 0”被禁止。
-- **`atomic_thread_fence(seq_cst)`**：一道参与全局 seq_cst 全序的全栅栏。在“写自己之后、读对方之前”插一道，可把 relaxed store/load 在全序上隔开，等效修复，且把屏障集中到关键点。
+答案：RA 双零时读自初值，没有跨线程发布 SW。全部 SC 若双零，则要求 Sx<Ly<Sy<Lx<Sx，形成全序矛盾。不要从 RA 字样直接推导两次读必有一次观察对方。
 
-## 必做任务
+## Part 2：两侧 SC fence
 
-1. `// TODO [必做 1]`：实现 store-load 模式；relaxed 版统计 `both==0`（应 >0，复现重排），seq_cst 版统计 `both==0`（应恒为 0，修复）。
+用 relaxed store，SC fence，relaxed load 的顺序替换两端 body。Reference 的 mode::sc_fence 验证双零为零。
 
-## 进阶任务
+答案：若双零，读与对方写的 coherence-ordered-before 关系，结合两侧 fence 的 HB 位置，会同时迫使 F0<F1 和 F1<F0。relaxed 访问本身并没有加入 SC 全序。删掉一侧 fence 后不能沿用这条证明。
 
-- `// TODO [进阶 1]`：store/load 改回 relaxed，在两者之间插 `std::atomic_thread_fence(memory_order_seq_cst)`，验证 `both==0` 同样恒为 0。
+## Part 3：release/acquire fence 发布
 
-## 验收点
+`fence_publication(0/1/2)` 分别验证 fence→atomic、atomic→fence、fence→fence 三种桥，全部读取普通 data=42。data 读取位于 producer.get 之前。
 
-- 能复现 store-load 重排（relaxed 版出现 both==0），并解释它是哪种重排。
-- 能用 seq_cst 修复，并讲清“单一全序”为何禁止 both==0。
-- 能说清 release/acquire 为何修不了 store-load 重排。
-- 能用 seq_cst fence 替代每操作 seq_cst，理解“屏障集中到关键点”的取舍。
+答案：指出 ready 是桥、最终读取来源是唯一的 true 写；分别建立 Frel SW acquire-load、release-store SW Facq、Frel SW Facq。fence 前后的放置方向决定哪些普通访问被覆盖；两个孤立 fence 不自动同步。
 
-## 对应官方参考
+## 小模型与运行边界
 
-- cppreference [`std::memory_order`](https://en.cppreference.com/w/cpp/atomic/memory_order)（seq_cst ordering）
-- cppreference [`std::atomic_thread_fence`](https://en.cppreference.com/w/cpp/atomic/atomic_thread_fence)
-- 《C++ Concurrency in Action, 2nd ed.》(Williams) 第 5 章 5.3.3
-- Herb Sutter, "atomic<> Weapons"（SC 全序与 StoreLoad 重排）
+[atomic_protocol_test.cpp](../runtime_tests/atomic_protocol_test.cpp) 枚举六种 SC 四步排列，检查结果恰为 01、10、11，同时验证 SC 拆分自增仍可丢更新。它不是完整 C++ 内存模型求解器。
 
-## 构建运行
+从 exercises 可单独配置 runtime_tests，构建目标 `runtime_atomic_protocol_test`，CTest 用 `-R '^runtime_atomic_protocol_test$'` 限定运行。所有 litmus 断言在双方完成后执行，窗口中没有 logger 锁、sleep 或用于强迫特定输出的附加同步。
 
-```bash
-cmake --build build-vs2026 --target F3_seqcst_fence --config Release
-./build-vs2026/F3_seqcst_fence/Release/F3_seqcst_fence.exe
+## 构建与验收
+
+从 `Concurrency_Study/exercises` 执行：
+
+```powershell
+cmake -S F3_seqcst_fence -B build/F3_seqcst_fence -G "Visual Studio 18 2026" -A x64
+cmake --build build/F3_seqcst_fence --config Release
+./build/F3_seqcst_fence/Release/F3_seqcst_fence.exe
+ctest --test-dir build/F3_seqcst_fence -C Release --output-on-failure
 ```
+
+VS2026 生成器需要 CMake 4.2 或更新版。CTest 运行 `F3_seqcst_fence_reference` 并设进程超时；cs::check 在 Release 仍有效。通过表示本次检查成功，不替代正文中的协议证明。规范链接与版本说明见对应正文。

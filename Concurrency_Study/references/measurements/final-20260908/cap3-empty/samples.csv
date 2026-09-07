@@ -1,0 +1,11 @@
+suite,variant,size,threads,milliseconds,completed,details,repetition
+cap3_reduce,reduce_threaded,0,1,0.0003,0,"double accumulation; creation/join included; validation excluded; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",0
+cap3_gemm,threaded,0,1,0.0004,0,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",0
+cap3_gemm,threaded,0,1,0.0004,0,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",1
+cap3_reduce,reduce_threaded,0,1,0.0002,0,"double accumulation; creation/join included; validation excluded; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",1
+cap3_reduce,reduce_threaded,0,1,0.0002,0,"double accumulation; creation/join included; validation excluded; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",2
+cap3_gemm,threaded,0,1,0.0004,0,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",2
+cap3_reduce,reduce_threaded,0,1,0.0002,0,"double accumulation; creation/join included; validation excluded; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",3
+cap3_gemm,threaded,0,1,0.0005,0,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",3
+cap3_reduce,reduce_threaded,0,1,0.0002,0,"double accumulation; creation/join included; validation excluded; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",4
+cap3_gemm,threaded,0,1,0.0004,0,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",4

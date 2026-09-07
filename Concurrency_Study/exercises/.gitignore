@@ -1,7 +1,3 @@
-build/
-build-*/
-.cache/
-out/
-.vs/
-*.user
-CMakeUserPresets.json
+build*/
+__pycache__/
+*.py[cod]

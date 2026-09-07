@@ -1,37 +1,34 @@
-# 练习 G-3：SPSC 无锁环形缓冲
+# G3：SPSC 环、双向交接与缓存下标
 
-> 详尽版见 `../../09-模块G-无锁数据结构.md` 的 练习 G-3。
+完整正文：[SPSC](../../topics/queues/03-spsc.md)。[queue_versions.hpp](../include/concurrency_study/queue_versions.hpp) 中 spsc_ring<T,false/true> 是两版真实实现，[solution.cpp](solution.cpp) 为 Reference。
 
-## 目标
+## Part 1：容量与两条同步链
 
-实现单生产者单消费者（single-producer single-consumer，SPSC）的无锁环形缓冲：定长数组 + 两个原子下标 `head` / `tail`，生产者只写 `tail`、消费者只写 `head`，用 release/acquire 配对传递数据可见性。验证 FIFO（先进先出）顺序与不丢数据。
+构造参数是可用容量，内部多分配一格。答案：空为 head==tail，满为 next(tail)==head；容量 2 能存两个元素，第三次 push 失败且不改变原数据。Reference 检查容量 1、2、7、64 的填满、拒绝、清空与 FIFO；容量 0 被拒绝。
 
-## 前置理解
+生产者 release 发布 tail、消费者 acquire 读取，传递数据；消费者读完后 release 更新 head、生产者 acquire 读取，传递可复用空间。读自己独占写入的下标用 relaxed。赋值必须在发布/归还之前完成。每个下标只有一个合法写者，所以不需要 CAS；不能直接用于多生产者或多消费者。
 
-- **SPSC 的灵魂假设**：`tail` 只被生产者写、`head` 只被消费者写。两个写者**各自独占**一个原子下标 → 没有写-写竞争 → 无需 CAS，只要 `load`/`store`。
-- **release/acquire 配对**：生产者先写槽位数据、再 `release` 提交 `tail`；消费者 `acquire` 读 `tail`，从而“看到新 tail 时槽位数据也已可见”（happens-before）。`pop` 同理用 `release` 提交 `head` 通知生产者空出位置。
-- 满/空判定（留一格法）：空 = `head == tail`；满 = `(tail+1)%N == head`，实际可用容量 `N-1`。
+## Part 2：完整序列与存储复用
 
-## 必做任务
+每种容量、每个版本各传输 20003 个元素。Reference 记录唯一消费者的完整序列，核对 ID 集合与严格顺序。消费者记录在线程私有存储中，异常通过共享驱动取消并回传，不能只打印错误后仍返回 0。
 
-1. `// TODO [必做 1]`：实现 `push`/`pop`，含满/空判定与正确的 release/acquire 内存序（读自己写的下标用 relaxed，读对方写的下标用 acquire，提交用 release）。
-2. `// TODO [必做 2]`：单生产者单消费者各跑大量元素，验证消费总数 == 生产总数（不丢），且消费序列严格递增（FIFO 正确）。
+T 要求可默认构造；默认构造只在队列建立时发生，可以失败。复制赋值和析构的 noexcept 由静态断言约束。只可移动类型不在这个接口范围，槽位 T 一直活到队列析构。
 
-## 验收点
+bool 保持合法：底层用 `unique_ptr<T[]>` 管理真实独立对象，避免 vector<bool> 压位导致不同槽位共享存储字。普通、缓存两版都在容量 1、2、7、64 下各做 20003 项 bool 回归，逐位检查非恒定序列、满空与复用。另用 const 赋值不抛而可变源赋值会抛的双重载类型验证两版出队均从 const 源复制。bool 回归不使用 vector<bool> 保存输出，也不把 ASan 通过当作 TSan 证据。
 
-- 单生产者单消费者跑通，不丢数据、FIFO 顺序正确。
-- 能说清为何 SPSC 不需要 CAS（每个下标只有一个写者）。
-- 能指出哪一对 release/acquire 在传递槽位数据的可见性。
+## Part 3：缓存对方下标
 
-## 对应官方参考
+缓存版在即将跨过已确认边界时才重新 acquire 读取对方下标。旧缓存只少给许可，不允许越过未经确认的边界；因此两版在本课程失败观察契约下保持相同容量和成功 FIFO。Reference 同时检查两版，不把性能提升设为通过条件。
 
-- cppreference [`std::atomic`](https://en.cppreference.com/w/cpp/atomic/atomic) / [`memory_order`](https://en.cppreference.com/w/cpp/atomic/memory_order)
-- 《C++ Concurrency in Action, 2nd ed.》(Williams) 第 7 章
-- moodycamel 博客 "A Fast Lock-Free Queue for C++"
+每次 try 的核心没有重试循环，但整个 while 重试传输依赖对方推进。is_lock_free 只报告 head/tail 原子，不证明任意 T 或任意平台的完整 wait-free。
 
-## 构建运行
+## 构建
 
-```bash
-cmake --build build-vs2026 --target G3_spsc_ringbuffer --config Release
-./build-vs2026/G3_spsc_ringbuffer/Release/G3_spsc_ringbuffer.exe
+```powershell
+# 从 Concurrency_Study/exercises 执行
+cmake -S G3_spsc_ringbuffer -B build/g3 -G "Visual Studio 18 2026" -A x64
+cmake --build build/g3 --config Release
+ctest --test-dir build/g3 -C Release --output-on-failure
 ```
+
+基准 variant 为 spsc 和 spsc-cached，必须 --producers 1 --consumers 1；可用容量与基线一致，具体外部采样见[验证与基准](../../topics/queues/08-validation-and-benchmark.md)。

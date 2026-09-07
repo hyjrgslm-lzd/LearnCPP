@@ -1,36 +1,42 @@
-# 练习 A-3：线程中的异常传播
+# A3：异常从 worker 回到调用者
 
-> 详尽版见 `../../02-模块A-线程生命周期与jthread.md` 的 练习 A-3。
+先读 [02 结果通道](../../chapters/02-result-channels.md)及 [03 的异常通道推导](../../chapters/03-threads-and-execution.md)。[main.cpp](main.cpp) 已安全捕获一个真实 worker 异常，作为修改起点；[solution.cpp](solution.cpp) 检查正常、业务失败和放弃路径。
 
-## 目标
+## Part 与答案
 
-理解“线程函数让异常逃逸顶层 → `std::terminate()`”这条铁律，并掌握安全跨线程传播异常的两条路：`std::exception_ptr` + `std::current_exception` / `std::rethrow_exception` 手动通道，以及 `std::promise::set_exception` + `future.get()` 的正式通道。
+### Part 1：手动 exception_ptr 通道
 
-## 前置理解
+扩展 Starter 为成功/失败两个输入，worker catch(...) 写入 captured，主线程 join 后读。对应 `part1_manual(false/true)`。
 
-- 你知道异常**不会自动跨线程传播**：主线程的 `try/catch` 接不住子线程里抛出的异常（不在同一调用栈）。
-- 你知道 `std::current_exception()` 在 catch 块内返回指向当前异常的 `std::exception_ptr`，可安全跨线程传递；`std::rethrow_exception(ptr)` 在任意线程把它重新抛出。
-- 你知道 `std::promise::set_exception` 让 `future.get()` 在取值处自动重抛异常。
+答案：成功时 value=42 且无业务异常；失败时重抛 job_failure，消息为 manual failure。只有一个 worker 写槽，第一次读在 join 后，因此没有该槽上的数据竞争。多个 worker 不能同时无锁写同一槽。current_exception 在活动 handler 中取得当前异常；没有活动 handler 时为空。
 
-## 必做任务
+### Part 2：将业务结果与错误交给同一 future
 
-1. 在 worker 的 catch 块里用 `std::current_exception()` 把异常打包进共享的 `exception_ptr`（`main.cpp` 的 `// TODO [必做 1]`）。
-2. 主线程 join 后检查该 `exception_ptr`，用 `std::rethrow_exception` 重抛并 catch 处理（`// TODO [必做 2]`）。
+对应 `part2_promise(false/true)`。promise 移进 worker；正常 set_value(42)，业务 catch 中 set_exception；调用者 get 取得值或指定 job_failure，之后 future 无效。
 
-## 进阶任务
+外层 transport_error 只接结果通道操作本身的异常，主线程先 join 再读。Reference 不用一个宽泛 catch 吞掉检查失败，不把所有异常都视为预期业务错误。
 
-- 改走 promise/future 通道：worker 在 catch 里 `set_exception(std::current_exception())`，主线程 `fut.get()` 用 try/catch 接住重抛的异常（`// TODO [进阶 1]` 与 `// TODO [进阶 2]`）。
+### Part 3：放弃与原异常不是同一件事
 
-## 验收点
+对应 `part3_abandoned()`。销毁未满足 promise，再检查 get 抛 future_error 且码为 broken_promise。它说明 provider 放弃责任，不能代替传送实际的 job_failure。进程 terminate 不保证这套正常析构还能让主线程继续消费结果。
 
-- 你能解释为什么子线程未捕获的异常会导致 `std::terminate()`，且主线程 try/catch 无效。
-- 你能用 `exception_ptr` 把异常从 worker 安全搬运到主线程并重抛处理。
-- 你能说出 promise/future 通道相对手动 `exception_ptr` 的优势（取值与错误走同一接口、`get()` 自动重抛）。
+## 自测与验收
 
-## 对应官方参考
+主线程 try/catch 为何接不住裸 worker 的顶层异常？因为它们不处于同一调用栈；必须先在 worker 内捕获，再通过通道在主线程重抛。这个错误情形只作为 Starter 注释，不进入测试。
 
-- cppreference：`std::exception_ptr` — https://en.cppreference.com/w/cpp/error/exception_ptr
-- cppreference：`std::current_exception` — https://en.cppreference.com/w/cpp/error/current_exception
-- cppreference：`std::rethrow_exception` — https://en.cppreference.com/w/cpp/error/rethrow_exception
-- cppreference：`std::promise::set_exception` — https://en.cppreference.com/w/cpp/thread/promise/set_exception
-- Anthony Williams《C++ Concurrency in Action, 2nd ed.》第 8.4.1 节（异常与并发）、第 4.2 节（future 传播异常）。
+join 后是否还能再显式 join？不能，第二次会出错；jthread 析构看到不再 joinable 才安全跳过。Reference 应输出手动/自动通道各两个分支、放弃分支和 `A3_reference OK`。异常的类型、消息及正常值都参与检查。
+
+规范：[线程入口与构造](https://eel.is/c++draft/thread.thread.constr)、[共享状态](https://eel.is/c++draft/futures.state)。固定规范版本见正文 N5050 链接。
+
+## 构建与运行
+
+从 `Concurrency_Study/exercises` 执行（VS2026 生成器需要 CMake 4.2+）：
+
+```powershell
+cmake -S A3_thread_exception -B build/A3_thread_exception -G "Visual Studio 18 2026" -A x64
+cmake --build build/A3_thread_exception --config Release
+./build/A3_thread_exception/Release/A3_thread_exception.exe
+ctest --test-dir build/A3_thread_exception -C Release --output-on-failure
+```
+
+统一构建注册的检查目标是 `A3_thread_exception_reference`，CTest 使用进程级超时。

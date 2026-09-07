@@ -1,38 +1,32 @@
-# 练习 G-2：ABA 问题
+# G2：安全复现 ABA，并验证有限标签的边界
 
-> 详尽版见 `../../09-模块G-无锁数据结构.md` 的 练习 G-2。
+完整正文：[Treiber 与 ABA](../../topics/queues/07-treiber-and-aba.md)。[reference.hpp](reference.hpp) 是固定活数组的逻辑模型，[solution.cpp](solution.cpp) 执行全部三部分；它不声称是一个通用标签栈。
 
-## 目标
+## Part 1：原子 CAS 为什么错误地成功
 
-亲手构造 ABA 场景并演示它如何击穿朴素指针 CAS，然后用带版本号的标签指针（tagged pointer / version counter）破解它。
+初始 A->B->C，慢线程记录根 A 与旧 next B。快线程实际 pop A、pop B、重接 A->C 并 push A。慢线程 CAS(A,B) 成功，错误地把已移出的 B 又接成根。
 
-## 前置理解
+答案由返回值与最终根检查，而不是只打印故事。节点用活数组下标表示，普通 next 的读取与修改由两个 release/acquire 信号排序；因此没有悬空访问、数据竞争或内存泄漏。B 还活着，不应把这个模型描述成释放后访问。默认运行安全，不需要开启故意 UB。
 
-- **ABA**：线程读到 `head == A` 后挂起；其间别的线程 pop A、pop B、又把 A（被释放后复用的同址节点）push 回来，`head` 再次 == A，但 `A->next` 已变。原线程恢复后 `compare_exchange` 发现“还是 A”便误判“没人动过”而成功提交，把基于陈旧假设算出的新值写入 → 链表损坏 / 丢节点。
-- 根因：CAS 只比较**值（指针）**，不比较**值的历史**。
-- 解法一（本题演示）：把 `(指针, version)` 打包成一个原子整体做 CAS，每次成功改动 `version += 1`；“变回 A”也骗不过版本号，旧 CAS 必然失败、强制重试。
-- 解法二：hazard pointer / RCU（从“别让被复用的同址节点出现”角度，管住何时能安全回收），详见模块 I。
+## Part 2：带标签比较同一段实际变化
 
-## 必做任务
+将数组下标与 32 位版本打包为一个 uint64_t 原子。实际根变化是 (A,0)->(B,1)->(C,2)->(A,3)，慢线程的旧 (A,0) 比较失败，根保留为 A。Reference 检查相同拓扑变换的结果；不是只修改版本号来冒充 pop/push。
 
-1. `// TODO`（第一部分）：构造 `C->B->A` 栈，用两个原子信号严格编排线程交错，**确定性复现** ABA——受害者朴素 CAS 误判成功，head 被改成已弹出的 B。
-2. `// TODO`（第二部分）：用 64 位整数打包 `(下标, 版本号)`，演示同样的交错下带版本号的 CAS 失败（正确），并说明 hazard pointer / RCU 是另一类解法。
+这里只压缩数组下标，不能截断真实指针来复用打包函数。is_lock_free 是运行时观测，uint64_t 不在所有平台都必然无锁。
 
-## 验收点
+## Part 3：版本也会绕回原值
 
-- 能复现并解释 ABA 为何让朴素 CAS“错误地成功”。
-- 能说清版本号为何能根除 ABA：CAS 比较的是 `(指针, 版本)` 整体。
-- 能区分“标签指针”与“安全回收（hazard pointer/RCU）”两类思路的着力点。
+两位版本经历 A->B->A->B->A 四次变化后回到零，旧 CAS 再次成功。答案是有限标签只在旧观察不会活过一个版本周期的前提下排除这种 ABA；宽位数增加余量，不等于数学上的永久根除。
 
-## 对应官方参考
+HP 管节点何时可以释放/复用，标签管 CAS 比较什么。标签不能保护被释放的节点；HP 也不阻止应用主动把仍活着的节点重新接入并改 next。G1 的节点只发布一次、退休后不重插，正是额外协议。
 
-- cppreference [`compare_exchange`](https://en.cppreference.com/w/cpp/atomic/atomic/compare_exchange)
-- 《C++ Concurrency in Action, 2nd ed.》(Williams) 第 7 章 7.2.2
-- Fedor Pikus, "Lock-free Programming" — ABA 一节
+## 构建
 
-## 构建运行
-
-```bash
-cmake --build build-vs2026 --target G2_aba_problem --config Release
-./build-vs2026/G2_aba_problem/Release/G2_aba_problem.exe
+```powershell
+# 从 Concurrency_Study/exercises 执行
+cmake -S G2_aba_problem -B build/g2 -G "Visual Studio 18 2026" -A x64
+cmake --build build/g2 --config Release
+ctest --test-dir build/g2 -C Release --output-on-failure
 ```
+
+Reference 不靠 sleep 安排时序，future.get 回传 worker 异常。strong 能去掉伪失败，不能识别值的历史；全 SC 也无法消除这个合法逻辑交错。

@@ -1,0 +1,1247 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "source_root": "P:\\C++Code\\LearnCPP\\Concurrency_Study",
+  "source_sha256": "9ec7e92b69a9860f33f40bba0d6eb5d18d58065011ae4d4b159a23ffa066dcb6",
+  "environment": {
+    "python": "3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]",
+    "os": "Windows-11-10.0.26220-SP0",
+    "machine": "AMD64",
+    "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+    "logical_cpus": 32,
+    "executable_sha256": "66a3ef05ddf72dfa46cc737cae42e14cc6ea008c1a2b1e3c5b7cf7d751b06f6a",
+    "cmake_cache": "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\CMakeCache.txt",
+    "cmake_settings": [
+      "CMAKE_CXX_FLAGS:STRING=/DWIN32 /D_WINDOWS /EHsc",
+      "CMAKE_CXX_FLAGS_DEBUG:STRING=/Ob0 /Od /RTC1",
+      "CMAKE_CXX_FLAGS_MINSIZEREL:STRING=/O1 /Ob1 /DNDEBUG",
+      "CMAKE_CXX_FLAGS_RELEASE:STRING=/O2 /Ob2 /DNDEBUG",
+      "CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=/O2 /Ob1 /DNDEBUG",
+      "CMAKE_GENERATOR_INSTANCE:UNINITIALIZED=G:/Visual Studio 2026 Community",
+      "CONCURRENCY_STUDY_BUILD_BENCHMARKS:BOOL=ON",
+      "CONCURRENCY_STUDY_BUILD_REFERENCE:BOOL=ON",
+      "CONCURRENCY_STUDY_ENABLE_CXX26:BOOL=OFF",
+      "CONCURRENCY_STUDY_ENABLE_STDEXEC:BOOL=ON",
+      "CONCURRENCY_STUDY_ENABLE_UNSAFE_DEMOS:BOOL=OFF",
+      "CONCURRENCY_STUDY_ENABLE_XSIMD:BOOL=ON",
+      "CONCURRENCY_STUDY_FETCH_DEPS:BOOL=ON",
+      "CONCURRENCY_STUDY_STDEXEC_SOURCE_DIR:PATH=P:/C++Code/LearnCPP/Concurrency_Study/exercises/cmake/../third_party/stdexec",
+      "CONCURRENCY_STUDY_TEST_FAST_MATH:BOOL=ON",
+      "CONCURRENCY_STUDY_TEST_STARTERS:BOOL=OFF",
+      "CONCURRENCY_STUDY_XSIMD_SOURCE_DIR:PATH=P:/C++Code/LearnCPP/Concurrency_Study/exercises/cmake/../third_party/xsimd",
+      "CMAKE_CXX_FLAGS-ADVANCED:INTERNAL=1",
+      "CMAKE_CXX_FLAGS_DEBUG-ADVANCED:INTERNAL=1",
+      "CMAKE_CXX_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1",
+      "CMAKE_CXX_FLAGS_RELEASE-ADVANCED:INTERNAL=1",
+      "CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1",
+      "CMAKE_GENERATOR:INTERNAL=Visual Studio 18 2026",
+      "CONCURRENCY_STUDY_STDEXEC_REVISION:INTERNAL=6d7ad689f4d4831c5136e4abe1c601f9a3b64e43",
+      "CONCURRENCY_STUDY_XSIMD_REVISION:INTERNAL=1f8dd9c8e162968d9b4ff0251c56d431b8777f36",
+      "CS_HAS_PARALLEL_ALGORITHMS:INTERNAL=1"
+    ],
+    "compiler_configuration": "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\CMakeFiles\\4.2.3\\CMakeCXXCompiler.cmake",
+    "compiler_identity": [
+      "set(CMAKE_CXX_COMPILER \"G:/Visual Studio 2026 Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe\")",
+      "set(CMAKE_CXX_COMPILER_ID \"MSVC\")",
+      "set(CMAKE_CXX_COMPILER_VERSION \"19.51.36256.0\")",
+      "set(CMAKE_CXX_PLATFORM_ID \"Windows\")"
+    ]
+  },
+  "runner_command": [
+    "Concurrency_Study/exercises/tools/run_benchmarks.py",
+    "--exe",
+    "Concurrency_Study/exercises/build/full-windows/L3_par_vs_seq_bench/Release/L3_par_vs_seq_bench_benchmark.exe",
+    "--check",
+    "Concurrency_Study/exercises/build/full-windows/L3_par_vs_seq_bench/Release/L3_par_vs_seq_bench_reference.exe",
+    "--check",
+    "Concurrency_Study/exercises/build/full-windows/runtime_tests/Release/runtime_numeric_test.exe",
+    "--variant",
+    "plain",
+    "--variant",
+    "seq",
+    "--variant",
+    "par",
+    "--variant",
+    "unseq",
+    "--variant",
+    "par_unseq",
+    "--samples",
+    "5",
+    "--warmups",
+    "1",
+    "--seed",
+    "42",
+    "--timeout",
+    "30",
+    "--output",
+    "Concurrency_Study/references/measurements/final-20260908/policy-light-1024",
+    "--",
+    "--workload",
+    "light",
+    "--size",
+    "1024"
+  ],
+  "seed": 42,
+  "allow_partial": false,
+  "timing": "C++ reported interval; external process duration recorded separately",
+  "threads_field": "positive: reported thread count; zero: implementation-managed count was not measured",
+  "checks": [
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\L3_par_vs_seq_bench\\Release\\L3_par_vs_seq_bench_reference.exe"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.02458939999996801,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"policy_map_light\",\"plain\",17,1,0.0002,17,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n\"policy_map_light\",\"seq\",17,1,0.0001,17,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n\"policy_map_light\",\"par\",17,0,0.0028,17,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n\"policy_map_light\",\"unseq\",17,1,0.0001,17,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n\"policy_map_light\",\"par_unseq\",17,0,0.0014,17,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "executable_sha256": "d8b4a9f5d88844d58e5af57bb6650723230293971e1ad671f075b46c99861558"
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\runtime_tests\\Release\\runtime_numeric_test.exe"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.021469299999807845,
+      "stdout": "SKIP backend 3\nnumeric_test OK: lengths, tails, alignment, permutations, precision, IEEE policy, GEMM, workers\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "executable_sha256": "b514640b817882fadde8f7ab5807190235a7c0fb48e4ca50e6b20a792581b9ec"
+    }
+  ],
+  "runs": [
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\L3_par_vs_seq_bench\\Release\\L3_par_vs_seq_bench_benchmark.exe",
+        "--variant",
+        "unseq",
+        "--workload",
+        "light",
+        "--size",
+        "1024"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.06120370000098774,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"policy_map_light\",\"unseq\",1024,1,0.0004,1024,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "unseq",
+      "repetition": 0,
+      "warmup": true,
+      "rows": [
+        {
+          "suite": "policy_map_light",
+          "variant": "unseq",
+          "size": 1024,
+          "threads": 1,
+          "milliseconds": 0.0004,
+          "completed": 1024,
+          "details": "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\L3_par_vs_seq_bench\\Release\\L3_par_vs_seq_bench_benchmark.exe",
+        "--variant",
+        "seq",
+        "--workload",
+        "light",
+        "--size",
+        "1024"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.017878499998914776,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"policy_map_light\",\"seq\",1024,1,0.0003,1024,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "seq",
+      "repetition": 0,
+      "warmup": true,
+      "rows": [
+        {
+          "suite": "policy_map_light",
+          "variant": "seq",
+          "size": 1024,
+          "threads": 1,
+          "milliseconds": 0.0003,
+          "completed": 1024,
+          "details": "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\L3_par_vs_seq_bench\\Release\\L3_par_vs_seq_bench_benchmark.exe",
+        "--variant",
+        "par",
+        "--workload",
+        "light",
+        "--size",
+        "1024"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.018046099999992293,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"policy_map_light\",\"par\",1024,0,0.0258,1024,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "par",
+      "repetition": 0,
+      "warmup": true,
+      "rows": [
+        {
+          "suite": "policy_map_light",
+          "variant": "par",
+          "size": 1024,
+          "threads": 0,
+          "milliseconds": 0.0258,
+          "completed": 1024,
+          "details": "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\L3_par_vs_seq_bench\\Release\\L3_par_vs_seq_bench_benchmark.exe",
+        "--variant",
+        "par_unseq",
+        "--workload",
+        "light",
+        "--size",
+        "1024"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.017348100000162958,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"policy_map_light\",\"par_unseq\",1024,0,0.0297,1024,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "par_unseq",
+      "repetition": 0,
+      "warmup": true,
+      "rows": [
+        {
+          "suite": "policy_map_light",
+          "variant": "par_unseq",
+          "size": 1024,
+          "threads": 0,
+          "milliseconds": 0.0297,
+          "completed": 1024,
+          "details": "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\L3_par_vs_seq_bench\\Release\\L3_par_vs_seq_bench_benchmark.exe",
+        "--variant",
+        "plain",
+        "--workload",
+        "light",
+        "--size",
+        "1024"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01803490000020247,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"policy_map_light\",\"plain\",1024,1,0.0002,1024,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "plain",
+      "repetition": 0,
+      "warmup": true,
+      "rows": [
+        {
+          "suite": "policy_map_light",
+          "variant": "plain",
+          "size": 1024,
+          "threads": 1,
+          "milliseconds": 0.0002,
+          "completed": 1024,
+          "details": "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\L3_par_vs_seq_bench\\Release\\L3_par_vs_seq_bench_benchmark.exe",
+        "--variant",
+        "unseq",
+        "--workload",
+        "light",
+        "--size",
+        "1024"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.015648200000214274,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"policy_map_light\",\"unseq\",1024,1,0.0003,1024,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "unseq",
+      "repetition": 1,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "policy_map_light",
+          "variant": "unseq",
+          "size": 1024,
+          "threads": 1,
+          "milliseconds": 0.0003,
+          "completed": 1024,
+          "details": "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\L3_par_vs_seq_bench\\Release\\L3_par_vs_seq_bench_benchmark.exe",
+        "--variant",
+        "par",
+        "--workload",
+        "light",
+        "--size",
+        "1024"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.015742800000225543,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"policy_map_light\",\"par\",1024,0,0.0263,1024,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "par",
+      "repetition": 1,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "policy_map_light",
+          "variant": "par",
+          "size": 1024,
+          "threads": 0,
+          "milliseconds": 0.0263,
+          "completed": 1024,
+          "details": "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\L3_par_vs_seq_bench\\Release\\L3_par_vs_seq_bench_benchmark.exe",
+        "--variant",
+        "plain",
+        "--workload",
+        "light",
+        "--size",
+        "1024"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.015475500000320608,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"policy_map_light\",\"plain\",1024,1,0.0004,1024,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "plain",
+      "repetition": 1,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "policy_map_light",
+          "variant": "plain",
+          "size": 1024,
+          "threads": 1,
+          "milliseconds": 0.0004,
+          "completed": 1024,
+          "details": "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\L3_par_vs_seq_bench\\Release\\L3_par_vs_seq_bench_benchmark.exe",
+        "--variant",
+        "par_unseq",
+        "--workload",
+        "light",
+        "--size",
+        "1024"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01627609999923152,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"policy_map_light\",\"par_unseq\",1024,0,0.0263,1024,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "par_unseq",
+      "repetition": 1,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "policy_map_light",
+          "variant": "par_unseq",
+          "size": 1024,
+          "threads": 0,
+          "milliseconds": 0.0263,
+          "completed": 1024,
+          "details": "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\L3_par_vs_seq_bench\\Release\\L3_par_vs_seq_bench_benchmark.exe",
+        "--variant",
+        "seq",
+        "--workload",
+        "light",
+        "--size",
+        "1024"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.015800299999682466,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"policy_map_light\",\"seq\",1024,1,0.0004,1024,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "seq",
+      "repetition": 1,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "policy_map_light",
+          "variant": "seq",
+          "size": 1024,
+          "threads": 1,
+          "milliseconds": 0.0004,
+          "completed": 1024,
+          "details": "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\L3_par_vs_seq_bench\\Release\\L3_par_vs_seq_bench_benchmark.exe",
+        "--variant",
+        "unseq",
+        "--workload",
+        "light",
+        "--size",
+        "1024"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01624219999939669,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"policy_map_light\",\"unseq\",1024,1,0.0003,1024,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "unseq",
+      "repetition": 2,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "policy_map_light",
+          "variant": "unseq",
+          "size": 1024,
+          "threads": 1,
+          "milliseconds": 0.0003,
+          "completed": 1024,
+          "details": "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\L3_par_vs_seq_bench\\Release\\L3_par_vs_seq_bench_benchmark.exe",
+        "--variant",
+        "seq",
+        "--workload",
+        "light",
+        "--size",
+        "1024"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.015877800000453135,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"policy_map_light\",\"seq\",1024,1,0.0003,1024,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "seq",
+      "repetition": 2,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "policy_map_light",
+          "variant": "seq",
+          "size": 1024,
+          "threads": 1,
+          "milliseconds": 0.0003,
+          "completed": 1024,
+          "details": "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\L3_par_vs_seq_bench\\Release\\L3_par_vs_seq_bench_benchmark.exe",
+        "--variant",
+        "par",
+        "--workload",
+        "light",
+        "--size",
+        "1024"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.015594399999827147,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"policy_map_light\",\"par\",1024,0,0.026,1024,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "par",
+      "repetition": 2,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "policy_map_light",
+          "variant": "par",
+          "size": 1024,
+          "threads": 0,
+          "milliseconds": 0.026,
+          "completed": 1024,
+          "details": "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\L3_par_vs_seq_bench\\Release\\L3_par_vs_seq_bench_benchmark.exe",
+        "--variant",
+        "plain",
+        "--workload",
+        "light",
+        "--size",
+        "1024"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01729669999986072,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"policy_map_light\",\"plain\",1024,1,0.0003,1024,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "plain",
+      "repetition": 2,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "policy_map_light",
+          "variant": "plain",
+          "size": 1024,
+          "threads": 1,
+          "milliseconds": 0.0003,
+          "completed": 1024,
+          "details": "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\L3_par_vs_seq_bench\\Release\\L3_par_vs_seq_bench_benchmark.exe",
+        "--variant",
+        "par_unseq",
+        "--workload",
+        "light",
+        "--size",
+        "1024"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.019056900000578025,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"policy_map_light\",\"par_unseq\",1024,0,0.0279,1024,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "par_unseq",
+      "repetition": 2,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "policy_map_light",
+          "variant": "par_unseq",
+          "size": 1024,
+          "threads": 0,
+          "milliseconds": 0.0279,
+          "completed": 1024,
+          "details": "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\L3_par_vs_seq_bench\\Release\\L3_par_vs_seq_bench_benchmark.exe",
+        "--variant",
+        "seq",
+        "--workload",
+        "light",
+        "--size",
+        "1024"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.017090400000597583,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"policy_map_light\",\"seq\",1024,1,0.0004,1024,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "seq",
+      "repetition": 3,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "policy_map_light",
+          "variant": "seq",
+          "size": 1024,
+          "threads": 1,
+          "milliseconds": 0.0004,
+          "completed": 1024,
+          "details": "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\L3_par_vs_seq_bench\\Release\\L3_par_vs_seq_bench_benchmark.exe",
+        "--variant",
+        "par",
+        "--workload",
+        "light",
+        "--size",
+        "1024"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.017061099999409635,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"policy_map_light\",\"par\",1024,0,0.0332,1024,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "par",
+      "repetition": 3,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "policy_map_light",
+          "variant": "par",
+          "size": 1024,
+          "threads": 0,
+          "milliseconds": 0.0332,
+          "completed": 1024,
+          "details": "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\L3_par_vs_seq_bench\\Release\\L3_par_vs_seq_bench_benchmark.exe",
+        "--variant",
+        "unseq",
+        "--workload",
+        "light",
+        "--size",
+        "1024"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.016554700001506717,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"policy_map_light\",\"unseq\",1024,1,0.0004,1024,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "unseq",
+      "repetition": 3,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "policy_map_light",
+          "variant": "unseq",
+          "size": 1024,
+          "threads": 1,
+          "milliseconds": 0.0004,
+          "completed": 1024,
+          "details": "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\L3_par_vs_seq_bench\\Release\\L3_par_vs_seq_bench_benchmark.exe",
+        "--variant",
+        "par_unseq",
+        "--workload",
+        "light",
+        "--size",
+        "1024"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.015425199999299366,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"policy_map_light\",\"par_unseq\",1024,0,0.0248,1024,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "par_unseq",
+      "repetition": 3,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "policy_map_light",
+          "variant": "par_unseq",
+          "size": 1024,
+          "threads": 0,
+          "milliseconds": 0.0248,
+          "completed": 1024,
+          "details": "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\L3_par_vs_seq_bench\\Release\\L3_par_vs_seq_bench_benchmark.exe",
+        "--variant",
+        "plain",
+        "--workload",
+        "light",
+        "--size",
+        "1024"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.016293399999995017,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"policy_map_light\",\"plain\",1024,1,0.0002,1024,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "plain",
+      "repetition": 3,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "policy_map_light",
+          "variant": "plain",
+          "size": 1024,
+          "threads": 1,
+          "milliseconds": 0.0002,
+          "completed": 1024,
+          "details": "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\L3_par_vs_seq_bench\\Release\\L3_par_vs_seq_bench_benchmark.exe",
+        "--variant",
+        "par_unseq",
+        "--workload",
+        "light",
+        "--size",
+        "1024"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.016112699999212055,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"policy_map_light\",\"par_unseq\",1024,0,0.0256,1024,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "par_unseq",
+      "repetition": 4,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "policy_map_light",
+          "variant": "par_unseq",
+          "size": 1024,
+          "threads": 0,
+          "milliseconds": 0.0256,
+          "completed": 1024,
+          "details": "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\L3_par_vs_seq_bench\\Release\\L3_par_vs_seq_bench_benchmark.exe",
+        "--variant",
+        "unseq",
+        "--workload",
+        "light",
+        "--size",
+        "1024"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01696029999948223,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"policy_map_light\",\"unseq\",1024,1,0.0004,1024,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "unseq",
+      "repetition": 4,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "policy_map_light",
+          "variant": "unseq",
+          "size": 1024,
+          "threads": 1,
+          "milliseconds": 0.0004,
+          "completed": 1024,
+          "details": "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\L3_par_vs_seq_bench\\Release\\L3_par_vs_seq_bench_benchmark.exe",
+        "--variant",
+        "par",
+        "--workload",
+        "light",
+        "--size",
+        "1024"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.016451399998913985,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"policy_map_light\",\"par\",1024,0,0.0265,1024,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "par",
+      "repetition": 4,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "policy_map_light",
+          "variant": "par",
+          "size": 1024,
+          "threads": 0,
+          "milliseconds": 0.0265,
+          "completed": 1024,
+          "details": "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\L3_par_vs_seq_bench\\Release\\L3_par_vs_seq_bench_benchmark.exe",
+        "--variant",
+        "plain",
+        "--workload",
+        "light",
+        "--size",
+        "1024"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.015561599999273312,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"policy_map_light\",\"plain\",1024,1,0.0002,1024,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "plain",
+      "repetition": 4,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "policy_map_light",
+          "variant": "plain",
+          "size": 1024,
+          "threads": 1,
+          "milliseconds": 0.0002,
+          "completed": 1024,
+          "details": "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\L3_par_vs_seq_bench\\Release\\L3_par_vs_seq_bench_benchmark.exe",
+        "--variant",
+        "seq",
+        "--workload",
+        "light",
+        "--size",
+        "1024"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.016886899999008165,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"policy_map_light\",\"seq\",1024,1,0.0003,1024,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "seq",
+      "repetition": 4,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "policy_map_light",
+          "variant": "seq",
+          "size": 1024,
+          "threads": 1,
+          "milliseconds": 0.0003,
+          "completed": 1024,
+          "details": "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\L3_par_vs_seq_bench\\Release\\L3_par_vs_seq_bench_benchmark.exe",
+        "--variant",
+        "par",
+        "--workload",
+        "light",
+        "--size",
+        "1024"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01646470000014233,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"policy_map_light\",\"par\",1024,0,0.0246,1024,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "par",
+      "repetition": 5,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "policy_map_light",
+          "variant": "par",
+          "size": 1024,
+          "threads": 0,
+          "milliseconds": 0.0246,
+          "completed": 1024,
+          "details": "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\L3_par_vs_seq_bench\\Release\\L3_par_vs_seq_bench_benchmark.exe",
+        "--variant",
+        "seq",
+        "--workload",
+        "light",
+        "--size",
+        "1024"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01577709999946819,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"policy_map_light\",\"seq\",1024,1,0.0003,1024,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "seq",
+      "repetition": 5,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "policy_map_light",
+          "variant": "seq",
+          "size": 1024,
+          "threads": 1,
+          "milliseconds": 0.0003,
+          "completed": 1024,
+          "details": "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\L3_par_vs_seq_bench\\Release\\L3_par_vs_seq_bench_benchmark.exe",
+        "--variant",
+        "plain",
+        "--workload",
+        "light",
+        "--size",
+        "1024"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01690729999972973,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"policy_map_light\",\"plain\",1024,1,0.0002,1024,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "plain",
+      "repetition": 5,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "policy_map_light",
+          "variant": "plain",
+          "size": 1024,
+          "threads": 1,
+          "milliseconds": 0.0002,
+          "completed": 1024,
+          "details": "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\L3_par_vs_seq_bench\\Release\\L3_par_vs_seq_bench_benchmark.exe",
+        "--variant",
+        "unseq",
+        "--workload",
+        "light",
+        "--size",
+        "1024"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01571929999954591,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"policy_map_light\",\"unseq\",1024,1,0.0003,1024,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "unseq",
+      "repetition": 5,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "policy_map_light",
+          "variant": "unseq",
+          "size": 1024,
+          "threads": 1,
+          "milliseconds": 0.0003,
+          "completed": 1024,
+          "details": "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\L3_par_vs_seq_bench\\Release\\L3_par_vs_seq_bench_benchmark.exe",
+        "--variant",
+        "par_unseq",
+        "--workload",
+        "light",
+        "--size",
+        "1024"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.017453099999329424,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"policy_map_light\",\"par_unseq\",1024,0,0.0259,1024,\"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "par_unseq",
+      "repetition": 5,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "policy_map_light",
+          "variant": "par_unseq",
+          "size": 1024,
+          "threads": 0,
+          "milliseconds": 0.0259,
+          "completed": 1024,
+          "details": "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+        }
+      ]
+    }
+  ],
+  "summaries": [
+    {
+      "case": {
+        "suite": "policy_map_light",
+        "variant": "unseq",
+        "size": 1024,
+        "threads": 1,
+        "completed": 1024
+      },
+      "sample_details": [
+        "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy",
+        "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy",
+        "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy",
+        "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy",
+        "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+      ],
+      "samples_ms": [
+        0.0003,
+        0.0003,
+        0.0004,
+        0.0004,
+        0.0003
+      ],
+      "median_ms": 0.0003,
+      "min_ms": 0.0003,
+      "max_ms": 0.0004,
+      "stdev_ms": 5.4772255750516634e-05
+    },
+    {
+      "case": {
+        "suite": "policy_map_light",
+        "variant": "par",
+        "size": 1024,
+        "threads": 0,
+        "completed": 1024
+      },
+      "sample_details": [
+        "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy",
+        "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy",
+        "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy",
+        "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy",
+        "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+      ],
+      "samples_ms": [
+        0.0263,
+        0.026,
+        0.0332,
+        0.0265,
+        0.0246
+      ],
+      "median_ms": 0.0263,
+      "min_ms": 0.0246,
+      "max_ms": 0.0332,
+      "stdev_ms": 0.003370014836762592
+    },
+    {
+      "case": {
+        "suite": "policy_map_light",
+        "variant": "plain",
+        "size": 1024,
+        "threads": 1,
+        "completed": 1024
+      },
+      "sample_details": [
+        "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy",
+        "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy",
+        "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy",
+        "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy",
+        "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+      ],
+      "samples_ms": [
+        0.0004,
+        0.0003,
+        0.0002,
+        0.0002,
+        0.0002
+      ],
+      "median_ms": 0.0002,
+      "min_ms": 0.0002,
+      "max_ms": 0.0004,
+      "stdev_ms": 8.944271909999159e-05
+    },
+    {
+      "case": {
+        "suite": "policy_map_light",
+        "variant": "par_unseq",
+        "size": 1024,
+        "threads": 0,
+        "completed": 1024
+      },
+      "sample_details": [
+        "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy",
+        "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy",
+        "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy",
+        "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy",
+        "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+      ],
+      "samples_ms": [
+        0.0263,
+        0.0279,
+        0.0248,
+        0.0256,
+        0.0259
+      ],
+      "median_ms": 0.0259,
+      "min_ms": 0.0248,
+      "max_ms": 0.0279,
+      "stdev_ms": 0.0011467344941179722
+    },
+    {
+      "case": {
+        "suite": "policy_map_light",
+        "variant": "seq",
+        "size": 1024,
+        "threads": 1,
+        "completed": 1024
+      },
+      "sample_details": [
+        "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy",
+        "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy",
+        "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy",
+        "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy",
+        "map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+      ],
+      "samples_ms": [
+        0.0004,
+        0.0003,
+        0.0004,
+        0.0003,
+        0.0003
+      ],
+      "median_ms": 0.0003,
+      "min_ms": 0.0003,
+      "max_ms": 0.0004,
+      "stdev_ms": 5.4772255750516634e-05
+    }
+  ]
+}

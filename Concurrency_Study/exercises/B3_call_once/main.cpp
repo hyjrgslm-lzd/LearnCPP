@@ -1,165 +1,65 @@
-// =====================================================================
-// 练习 B3_call_once：call_once 一次性初始化
-//   对应文档：Concurrency_Study/03-模块B-互斥与锁.md 的「练习 B-3」
-//
-//   官方参考：
-//     std::call_once   https://en.cppreference.com/w/cpp/thread/call_once
-//     std::once_flag   https://en.cppreference.com/w/cpp/thread/once_flag
-//     局部静态线程安全初始化(magic statics)：
-//       https://en.cppreference.com/w/cpp/language/storage_duration
-//
-//   学习目标：
-//     1. 用 std::call_once + std::once_flag 做线程安全惰性初始化。
-//     2. N 个线程并发触发，验证初始化「恰好只执行一次」。
-//     3. 与「函数内 static 局部变量(magic statics, C++11 线程安全)」对比取舍。
-//     4. (进阶) call_once 初始化抛异常时不翻转 once_flag 的语义；
-//        以及为什么不该手写 double-checked locking。
-//
-//   本文件用 stdout 测试驱动；未完成 TODO 用最小占位保证 MSVC 可编译可运行。
-// =====================================================================
-#include "concurrency_study/log.hpp"
-
+#include "concurrency_study/exercise_check.hpp"
 #include <atomic>
-#include <exception>
+#include <future>
+#include <iostream>
 #include <memory>
 #include <mutex>
-#include <stdexcept>
-#include <string>
-#include <thread>
 #include <vector>
 
-namespace {
-
-constexpr int kThreads = 8;
-
-// 用一个原子计数器记录「初始化体被真正执行了几次」，最终应为 1。
-std::atomic<int> g_init_count{0};
-
-// ---------------------------------------------------------------------
-// 必做 1 + 2：call_once 惰性初始化，并发触发验证只执行一次。
-// ---------------------------------------------------------------------
-struct Widget {
-    int value = 0;
-};
-
-std::once_flag g_flag;
-std::unique_ptr<Widget> g_widget;
-
-Widget& get_resource() {
-    // TODO [必做 1]: 用 std::call_once(g_flag, ...) 做惰性初始化。
-    //   保证：对同一个 once_flag，传入的可调用对象在所有线程中总共只成功执行一次。
-    //   参考实现：
-    //     std::call_once(g_flag, [] {
-    //         cs::log("正在初始化 Widget ...（应只出现一次）");
-    //         g_init_count.fetch_add(1, std::memory_order_relaxed);
-    //         g_widget = std::make_unique<Widget>(Widget{123});
-    //     });
-    //     return *g_widget;
-    //
-    // 最小占位（等价正确实现，已可运行）：
-    std::call_once(g_flag, [] {
-        cs::log("正在初始化 Widget ...（应只出现一次）");
-        g_init_count.fetch_add(1, std::memory_order_relaxed);
-        g_widget = std::make_unique<Widget>(Widget{123});
-    });
-    return *g_widget;
-}
-
-void scenario_call_once() {
-    cs::println("\n=== 场景1：call_once 并发触发，验证只初始化一次（必做1+2） ===");
-    std::atomic<bool> go{false};
-    std::vector<std::thread> ts;
-    for (int i = 0; i < kThreads; ++i) {
-        ts.emplace_back([&go, i] {
-            while (!go.load(std::memory_order_acquire)) { /* 起跑栅栏自旋 */ }
-            Widget& w = get_resource();
-            cs::logf("thread#", i, " 拿到 Widget.value=", w.value);
-        });
-    }
-    go.store(true, std::memory_order_release); // 统一放行，制造并发竞争
-    for (auto& t : ts) t.join();
-    cs::logf("g_init_count=", g_init_count.load(), "  (必须 == 1)");
-}
-
-// ---------------------------------------------------------------------
-// 必做 3：magic statics 对照 —— 函数内 static 局部变量(C++11 线程安全)。
-// ---------------------------------------------------------------------
-std::atomic<int> g_ctor_count{0};
-
-struct MagicWidget {
-    MagicWidget() {
-        g_ctor_count.fetch_add(1, std::memory_order_relaxed);
-        cs::log("MagicWidget 构造 ...（应只出现一次）");
-    }
-    int value = 456;
-};
-
-MagicWidget& get_resource2() {
-    // TODO [必做 3]: 用「函数内 static 局部变量」做惰性初始化。
-    //   C++11 起标准保证其初始化线程安全：首个线程构造，其余阻塞等待。
-    //   参考实现：
-    //     static MagicWidget w;   // 线程安全的局部静态初始化(magic statics)
-    //     return w;
-    //
-    // 最小占位（等价正确实现）：
-    static MagicWidget w;
-    return w;
-}
-
-void scenario_magic_statics() {
-    cs::println("\n=== 场景2：magic statics 对照，构造也只一次（必做3） ===");
-    std::atomic<bool> go{false};
-    std::vector<std::thread> ts;
-    for (int i = 0; i < kThreads; ++i) {
-        ts.emplace_back([&go, i] {
-            while (!go.load(std::memory_order_acquire)) {}
-            MagicWidget& w = get_resource2();
-            cs::logf("thread#", i, " 拿到 MagicWidget.value=", w.value);
-        });
-    }
-    go.store(true, std::memory_order_release);
-    for (auto& t : ts) t.join();
-    cs::logf("g_ctor_count=", g_ctor_count.load(), "  (必须 == 1)");
-}
-
-// ---------------------------------------------------------------------
-// 进阶 1：初始化抛异常时 once_flag 不翻转，下次会重试。
-// ---------------------------------------------------------------------
-void scenario_call_once_throws() {
-    cs::println("\n=== 场景3：call_once 初始化抛异常 -> 不翻转，下次重试（进阶1） ===");
+constexpr bool part1_once_done = false;
+constexpr bool part2_retry_done = false;
+constexpr bool part3_static_done = false;
+constexpr bool part4_argument_done = false;
+struct first_attempt_failed {};
+struct student_resource {
     std::once_flag flag;
-    std::atomic<int> attempts{0};
-    bool fail_first = true;
-
-    auto try_init = [&] {
-        // TODO [进阶 1]: 第一次故意抛异常，观察 once_flag 不翻转、第二次重试。
-        //   参考实现见下方占位（已是正确实现）：
-        try {
-            std::call_once(flag, [&] {
-                attempts.fetch_add(1, std::memory_order_relaxed);
-                if (fail_first) {
-                    fail_first = false;
-                    throw std::runtime_error("首次初始化故意失败");
-                }
-                cs::log("初始化成功（第二次尝试）");
-            });
-        } catch (const std::exception& e) {
-            cs::logf("捕获初始化异常: ", e.what(), "（once_flag 未翻转，可重试）");
-        }
-    };
-
-    try_init(); // 第一次：抛异常
-    try_init(); // 第二次：因 flag 未翻转，会再次进入初始化体并成功
-    cs::logf("attempts=", attempts.load(), "  (应 == 2：首次失败 + 二次成功)");
+    std::unique_ptr<int> value;
+    int attempts = 0; // 只能在序列化的 active 初始化体里修改；join 后读。
+    void initialize(int initial) {
+        // TODO Part 2/4：第一次 attempts 增为1时抛 first_attempt_failed，
+        // 第二次用 initial 构造完整资源并发布，失败不发布半成品。
+        (void)initial;
+        throw std::logic_error("TODO Part 2/4: initialize");
+    }
+    int get(int initial) {
+        // TODO Part 1/4：call_once(flag, 初始化函数, initial)，成功后按值读资源。
+        // 不要在锁外手工检查普通指针，也不要吞掉第一次初始化的异常。
+        (void)initial;
+        throw std::logic_error("TODO Part 1: call_once");
+    }
+};
+std::atomic<int> static_constructions{0};
+int student_local_resource() {
+    // TODO Part 3：函数内 static，用初始化 lambda 令计数+1并返回456。
+    throw std::logic_error("TODO Part 3: local static");
 }
-
-} // namespace
-
 int main() {
-    cs::println("==== B3_call_once: 线程安全一次性初始化 ====");
-    scenario_call_once();        // 必做1+2：call_once 只一次
-    scenario_magic_statics();    // 必做3：magic statics 对照
-    scenario_call_once_throws(); // 进阶1：抛异常重试语义
-    cs::println("\n==== 跑完。对照 README / 03-模块B 文档自检验收点。 ====");
-    return 0;
+    if (!(part1_once_done && part2_retry_done && part3_static_done && part4_argument_done)) {
+        std::cerr << "STARTER INCOMPLETE: B3 Part 1-4 未完成；未创建任何线程。\n";
+        return 1;
+    }
+    try {
+        student_resource resource;
+        std::atomic<int> failures{0};
+        std::vector<std::future<void>> readers;
+        for (int i = 0; i < 8; ++i)
+            readers.push_back(std::async(std::launch::async, [&] {
+                // 只重试明确的教学异常，最多两次；其他错误原样进入 future。
+                bool success = false;
+                for (int retry = 0; retry < 2 && !success; ++retry) {
+                    try {
+                        cs::check(resource.get(123) == 123, "Part 1/4: published argument");
+                        success = true;
+                    } catch (const first_attempt_failed&) { ++failures; }
+                }
+                cs::check(success, "Part 2: retry eventually succeeds");
+                cs::check(student_local_resource() == 456, "Part 3: static value");
+            }));
+        for (auto& reader : readers) reader.get();
+        cs::check(resource.attempts == 2 && failures == 1, "Part 2: exactly one failure then success");
+        cs::check(resource.get(999) == 123 && resource.attempts == 2, "Part 4: success is not reinitialized");
+        cs::check(static_constructions == 1, "Part 3: static initialized once");
+        std::cout << "B3 student OK\n";
+        return 0;
+    } catch (const std::exception& e) { std::cerr << e.what() << '\n'; return 1; }
 }

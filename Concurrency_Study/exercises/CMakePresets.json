@@ -1,72 +1,301 @@
 {
-    "version": 6,
-    "cmakeMinimumRequired": { "major": 3, "minor": 25, "patch": 0 },
-    "configurePresets": [
-        {
-            "name": "vs2026",
-            "displayName": "Visual Studio 18 2026 (主推荐)",
-            "description": "Windows 主战场：VS2026 / MSVC。无需额外配置即可构建阶段一/二全部题目",
-            "binaryDir": "${sourceDir}/build-vs2026",
-            "generator": "Visual Studio 18 2026",
-            "condition": {
-                "type": "equals",
-                "lhs": "${hostSystemName}",
-                "rhs": "Windows"
-            }
-        },
-        {
-            "name": "vs2022",
-            "displayName": "Visual Studio 17 2022",
-            "binaryDir": "${sourceDir}/build-vs2022",
-            "generator": "Visual Studio 17 2022",
-            "condition": {
-                "type": "equals",
-                "lhs": "${hostSystemName}",
-                "rhs": "Windows"
-            }
-        },
-        {
-            "name": "default",
-            "displayName": "Default (auto-detect generator)",
-            "description": "让 CMake 自动检测本地可用的编译器和生成器",
-            "binaryDir": "${sourceDir}/build",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release"
-            }
-        },
-        {
-            "name": "debug",
-            "displayName": "Debug (auto-detect generator)",
-            "binaryDir": "${sourceDir}/build-debug",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug"
-            }
-        },
-        {
-            "name": "ninja",
-            "displayName": "Ninja (Release)",
-            "binaryDir": "${sourceDir}/build-ninja",
-            "generator": "Ninja",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release"
-            }
-        },
-        {
-            "name": "ninja-debug",
-            "displayName": "Ninja (Debug)",
-            "binaryDir": "${sourceDir}/build-ninja-debug",
-            "generator": "Ninja",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug"
-            }
-        }
-    ],
-    "buildPresets": [
-        { "name": "vs2026", "configurePreset": "vs2026", "configuration": "Release" },
-        { "name": "vs2022", "configurePreset": "vs2022", "configuration": "Release" },
-        { "name": "default", "configurePreset": "default" },
-        { "name": "debug", "configurePreset": "debug" },
-        { "name": "ninja", "configurePreset": "ninja" },
-        { "name": "ninja-debug", "configurePreset": "ninja-debug" }
-    ]
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 28,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "base",
+      "hidden": true,
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "BUILD_TESTING": "ON",
+        "CONCURRENCY_STUDY_BUILD_REFERENCE": "ON",
+        "CONCURRENCY_STUDY_TEST_FAST_MATH": "OFF",
+        "CONCURRENCY_STUDY_FETCH_DEPS": "OFF",
+        "CONCURRENCY_STUDY_ENABLE_XSIMD": "OFF",
+        "CONCURRENCY_STUDY_ENABLE_STDEXEC": "OFF",
+        "CONCURRENCY_STUDY_ENABLE_CXX26": "OFF",
+        "CONCURRENCY_STUDY_BUILD_BENCHMARKS": "OFF",
+        "CONCURRENCY_STUDY_ENABLE_UNSAFE_DEMOS": "OFF"
+      }
+    },
+    {
+      "name": "verify-core",
+      "inherits": "base",
+      "displayName": "Offline C++23 core and checked references"
+    },
+    {
+      "name": "student",
+      "inherits": "base",
+      "cacheVariables": {
+        "CONCURRENCY_STUDY_BUILD_REFERENCE": "OFF",
+        "BUILD_TESTING": "OFF"
+      }
+    },
+    {
+      "name": "bench",
+      "inherits": "verify-core",
+      "cacheVariables": {
+        "CONCURRENCY_STUDY_BUILD_BENCHMARKS": "ON"
+      }
+    },
+    {
+      "name": "full-windows",
+      "inherits": "bench",
+      "generator": "Visual Studio 18 2026",
+      "architecture": "x64",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      },
+      "cacheVariables": {
+        "CONCURRENCY_STUDY_ENABLE_XSIMD": "ON",
+        "CONCURRENCY_STUDY_ENABLE_STDEXEC": "ON",
+        "CONCURRENCY_STUDY_TEST_FAST_MATH": "ON",
+        "CONCURRENCY_STUDY_FETCH_DEPS": "ON"
+      }
+    },
+    {
+      "name": "native-cxx26",
+      "inherits": "verify-core",
+      "cacheVariables": {
+        "CONCURRENCY_STUDY_ENABLE_CXX26": "ON"
+      }
+    },
+    {
+      "name": "vs2026",
+      "inherits": "verify-core",
+      "generator": "Visual Studio 18 2026",
+      "architecture": "x64",
+      "binaryDir": "${sourceDir}/build-vs2026",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      }
+    },
+    {
+      "name": "vs2022",
+      "inherits": "verify-core",
+      "generator": "Visual Studio 17 2022",
+      "architecture": "x64",
+      "binaryDir": "${sourceDir}/build-vs2022",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      }
+    },
+    {
+      "name": "default",
+      "inherits": "verify-core",
+      "binaryDir": "${sourceDir}/build"
+    },
+    {
+      "name": "debug",
+      "inherits": "verify-core",
+      "binaryDir": "${sourceDir}/build-debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "ninja",
+      "inherits": "verify-core",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build-ninja"
+    },
+    {
+      "name": "ninja-debug",
+      "inherits": "ninja",
+      "binaryDir": "${sourceDir}/build-ninja-debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "verify-core",
+      "configurePreset": "verify-core",
+      "configuration": "Release"
+    },
+    {
+      "name": "student",
+      "configurePreset": "student",
+      "configuration": "Release"
+    },
+    {
+      "name": "bench",
+      "configurePreset": "bench",
+      "configuration": "Release"
+    },
+    {
+      "name": "full-windows",
+      "configurePreset": "full-windows",
+      "configuration": "Release"
+    },
+    {
+      "name": "native-cxx26",
+      "configurePreset": "native-cxx26",
+      "configuration": "Release"
+    },
+    {
+      "name": "vs2026",
+      "configurePreset": "vs2026",
+      "configuration": "Release"
+    },
+    {
+      "name": "vs2022",
+      "configurePreset": "vs2022",
+      "configuration": "Release"
+    },
+    {
+      "name": "default",
+      "configurePreset": "default",
+      "configuration": "Release"
+    },
+    {
+      "name": "debug",
+      "configurePreset": "debug",
+      "configuration": "Debug"
+    },
+    {
+      "name": "ninja",
+      "configurePreset": "ninja",
+      "configuration": "Release"
+    },
+    {
+      "name": "ninja-debug",
+      "configurePreset": "ninja-debug",
+      "configuration": "Debug"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "verify-core",
+      "configurePreset": "verify-core",
+      "configuration": "Release",
+      "output": {
+        "outputOnFailure": true
+      },
+      "execution": {
+        "timeout": 30,
+        "noTestsAction": "error"
+      }
+    },
+    {
+      "name": "bench",
+      "configurePreset": "bench",
+      "configuration": "Release",
+      "output": {
+        "outputOnFailure": true
+      },
+      "execution": {
+        "timeout": 30,
+        "noTestsAction": "error"
+      }
+    },
+    {
+      "name": "full-windows",
+      "configurePreset": "full-windows",
+      "configuration": "Release",
+      "output": {
+        "outputOnFailure": true
+      },
+      "execution": {
+        "timeout": 30,
+        "noTestsAction": "error"
+      }
+    },
+    {
+      "name": "native-cxx26",
+      "configurePreset": "native-cxx26",
+      "configuration": "Release",
+      "output": {
+        "outputOnFailure": true
+      },
+      "execution": {
+        "timeout": 30,
+        "noTestsAction": "error"
+      }
+    },
+    {
+      "name": "vs2026",
+      "configurePreset": "vs2026",
+      "configuration": "Release",
+      "output": {
+        "outputOnFailure": true
+      },
+      "execution": {
+        "timeout": 30,
+        "noTestsAction": "error"
+      }
+    },
+    {
+      "name": "vs2022",
+      "configurePreset": "vs2022",
+      "configuration": "Release",
+      "output": {
+        "outputOnFailure": true
+      },
+      "execution": {
+        "timeout": 30,
+        "noTestsAction": "error"
+      }
+    },
+    {
+      "name": "default",
+      "configurePreset": "default",
+      "configuration": "Release",
+      "output": {
+        "outputOnFailure": true
+      },
+      "execution": {
+        "timeout": 30,
+        "noTestsAction": "error"
+      }
+    },
+    {
+      "name": "debug",
+      "configurePreset": "debug",
+      "configuration": "Debug",
+      "output": {
+        "outputOnFailure": true
+      },
+      "execution": {
+        "timeout": 30,
+        "noTestsAction": "error"
+      }
+    },
+    {
+      "name": "ninja",
+      "configurePreset": "ninja",
+      "configuration": "Release",
+      "output": {
+        "outputOnFailure": true
+      },
+      "execution": {
+        "timeout": 30,
+        "noTestsAction": "error"
+      }
+    },
+    {
+      "name": "ninja-debug",
+      "configurePreset": "ninja-debug",
+      "configuration": "Debug",
+      "output": {
+        "outputOnFailure": true
+      },
+      "execution": {
+        "timeout": 30,
+        "noTestsAction": "error"
+      }
+    }
+  ]
 }

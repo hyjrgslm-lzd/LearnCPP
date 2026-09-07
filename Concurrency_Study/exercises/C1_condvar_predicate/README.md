@@ -1,40 +1,66 @@
-# 练习 C-1：条件变量与谓词等待
+# C1：谓词、无关通知与固定期限
 
-> 详尽版见 `../../04-模块C-条件变量.md` 的 练习 C-1。
+先读 [正文](../../chapters/05-waiting-and-channels.md)，再对照 [完整 Reference](solution.cpp)。本题默认 C++23，所有检查使用 Release 下仍有效的 cs::check；Starter 默认在启动并发前以 1 退出，学生实现的等待由外部 CTest 超时限制。
 
-## 目标
+## 必做 Parts
 
-用 `std::condition_variable` + `std::mutex` + 谓词（predicate）实现一次“主线程置位 `ready` 后通知 worker 开工”的交接（handoff），并亲手写出不带谓词的错误版本观察其丢失唤醒（lost wakeup），建立“CV 的 wait 永远要配谓词”的肌肉记忆。
+1. 实现 ready/payload 交接，检查通知早于 wait 时仍能读取 payload=42。
+2. 启动三个等待者，持锁登记报到并等待；发送 ready=false 的通知，确认发生了多次谓词检查，再发布 99 并 notify_all。
+3. 用同一个 steady_clock deadline 检查谓词 false 的期限失败，以及过期期限但谓词已真的成功。
+4. 解释裸 wait 丢失早期通知的原因；可选用独立有期限诊断，不把虚假唤醒或 timeout 中某一种写成必然输出。
 
-## 前置理解
+## Reference 对照与运行观察
 
-- 条件变量（condition variable，CV，`<condition_variable>`，C++11）总是与一把 mutex + 一个共享谓词状态绑定。
-- `wait` 会原子地释放锁并睡去，被唤醒后重新取锁。期间锁是放开的，别的线程才能改谓词、发通知。
-- 谓词版 `wait(lk, pred)` 等价于 `while (!pred()) wait(lk);`，同时防住**虚假唤醒（spurious wakeup）**与**丢失唤醒**。
+solution.cpp 的三个安全代码段逐项检查早发布、广播与期限。predicate_checks 的条件变量握手用于确认重新检查，完全不依赖 sleep。
 
-## 必做任务
+## 学生入口与检查
 
-1. `// TODO [必做 1]`：用谓词版 wait 实现正确 handoff（worker `wait(lk, [&]{return ready;})`，主线程持锁置位后 `notify_one`）。
-2. `// TODO [必做 2]`：写反面版本——主线程抢先 notify、worker 后进入裸 wait，用带超时的 `wait_for` 把“丢失唤醒”暴露成超时。
+[main.cpp](main.cpp) 提供独立 Starter，按中文 TODO 完成对应学生函数或方法；不要直接包含 solution.cpp。完成一个 Part 后把该项 `part*_done` 改为 true。标记仅解除启动保护，不代替验收：只有实际调用学生实现的检查通过才返回 0。未完成时输出 `STARTER INCOMPLETE` 并返回 1，发生在任何线程创建之前。
 
-## 进阶任务
+Part 1 实现 `student_wait`；Part 2 实现 `student_broadcast`；Part 3 实现 `student_wait_until`；Part 4 填写遗漏通知说明。检查早发布的 42、false 条件下多次谓词检查、三名等待者收到 99，以及同一期限的 false/true 分支；说明文字仍需人工核对。
 
-- `// TODO [进阶 1]`：3 个 worker 等同一谓词，用 `notify_all` 广播；思考误用 `notify_one` 的后果。
+改动 main.cpp 后必须运行下面的 student 命令。Reference 的通过不说明学生实现正确。若只改标记、没有补全函数，TODO 或检查仍会失败；错误同步协议也可能被 CTest 的 30 秒超时终止。
 
-## 验收点
+`--unsafe-notify` 只在 unsafe 编译选项开启时执行；它有有限期限，但不验证某一种裸等待返回原因必然发生。普通运行不进入该诊断。
 
-- 正确 handoff 跑通，能解释 wait 期间锁被释放。
-- 反面版本观测到丢失唤醒（超时），并说清谓词版为何不会丢。
-- 能区分 `notify_one` 与 `notify_all`。
+危险诊断参数只由 `C1_condvar_predicate_reference` 可执行文件处理，Starter 不运行这些路径。
 
-## 对应官方参考
+## 复盘答案
 
-- cppreference [`std::condition_variable`](https://en.cppreference.com/w/cpp/thread/condition_variable) / [`wait`](https://en.cppreference.com/w/cpp/thread/condition_variable/wait)
-- 《C++ Concurrency in Action, 2nd ed.》(Williams) 第 4 章
+**wait 解锁期间谁保护状态？** 其他访问者继续遵守同一 mutex；wait 返回前重新获得它，之后再使用谓词及 payload。
 
-## 构建运行
+**无关 notify_all 为何不误放行？** 每次重新持锁都检查 ready，false 就继续等。通知不是业务令牌。
 
-```bash
-cmake --build build-vs2026 --target C1_condvar_predicate --config Release
-./build-vs2026/C1_condvar_predicate/Release/C1_condvar_predicate.exe
+**为什么不循环 wait_for(100ms)？** 每次重新给足预算可能把总等待无限延长；计算一次 deadline，或用标准谓词版 wait_for。
+
+**false 是否说明接下来没有数据？** 只说明返回时持锁观察到谓词为假；解锁后状态可以立即变化。
+
+**notify_one 为什么不够广播？** 已在等待的其他线程没有全部重新检查的保证；虚假唤醒不能作为协议依赖。
+
+## 构建与验证
+
+以下两套命令都在 `Concurrency_Study/exercises` 工作目录运行；Windows 示例使用 Release，构建目录分开以避免缓存选项混淆。
+
+Reference 基准答案门禁（不运行 main）：
+
+```powershell
+cmake -S C1_condvar_predicate -B build/reference-C1_condvar_predicate -G "Visual Studio 18 2026" -A x64 -DBUILD_TESTING=ON -DCONCURRENCY_STUDY_TEST_STARTERS=OFF
+cmake --build build/reference-C1_condvar_predicate --config Release --target C1_condvar_predicate_reference
+ctest --test-dir build/reference-C1_condvar_predicate -C Release -R "^C1_condvar_predicate_reference$" --no-tests=error --output-on-failure
 ```
+
+学生实现验收（实际运行 main）：
+
+```powershell
+cmake -S C1_condvar_predicate -B build/student-C1_condvar_predicate -G "Visual Studio 18 2026" -A x64 -DBUILD_TESTING=ON -DCONCURRENCY_STUDY_TEST_STARTERS=ON
+cmake --build build/student-C1_condvar_predicate --config Release --target C1_condvar_predicate
+ctest --test-dir build/student-C1_condvar_predicate -C Release -R "^C1_condvar_predicate_student$" --no-tests=error --output-on-failure
+```
+
+原样 Starter 返回 1，student CTest 报 Failed 是预期；不能把它标为 SKIP 或 WILL_FAIL 来制造通过。默认 `CONCURRENCY_STUDY_TEST_STARTERS=OFF`，未完成学生测试不进入 Reference 门禁。可选直接有界运行：
+
+```powershell
+python tools/run_diagnostic.py --timeout 5 -- ./build/student-C1_condvar_predicate/Release/C1_condvar_predicate.exe
+```
+
+成功只说明本次输入与实际交错通过相应检查；文字推导、一般交错、未测平台仍须单独核验。规范和完整答案见正文；不要求特定加速。

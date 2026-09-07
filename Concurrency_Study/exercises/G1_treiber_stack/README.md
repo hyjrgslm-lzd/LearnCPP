@@ -1,38 +1,35 @@
-# 练习 G-1：Treiber 无锁栈
+# G1：Treiber 栈的 CAS、保护与实际回收
 
-> 详尽版见 `../../09-模块G-无锁数据结构.md` 的 练习 G-1。
+完整正文：[Treiber 与 ABA](../../topics/queues/07-treiber-and-aba.md)。实现来自 [queue_linked.hpp](../include/concurrency_study/queue_linked.hpp)，main.cpp 是顺序观察程序，[solution.cpp](solution.cpp) 是所有必做 Part 的 Reference。
 
-## 目标
+## Part 1：从串行 LIFO 到根 CAS
 
-用单个原子指针 `head` + CAS 循环（compare-and-swap loop）实现一个无锁（lock-free）后进先出（LIFO）栈：`push`（new node，CAS 接到 head）与 `pop`（CAS 摘 head）。多线程压测验证不丢不重，并讲清每一步的内存序（memory order）。
+先预测 push 10、push 20、pop、pop 的结果，再解释成功操作在哪里生效。答案是 20、10，线性化点分别是 head CAS。push 的新节点在发布前私有，next 在发布后不变；pop 在读取 next 之前通过 HP 保护 head。Reference 检查空失败不修改输出以及两个成功值。
 
-## 前置理解
+CAS 失败会改写 expected，但不授予该指针解引用权；pop 必须重新 protect。当前头指针使用全 SC，这是共享教学 HP 的契约，不能只改成 acquire/release 而忽略回收握手。
 
-- CAS 循环范式：读旧值 → 基于旧值算新值 → `compare_exchange_weak` 提交；失败说明别人抢先改了 `head`，旧值被自动刷新，重试即可。`compare_exchange_weak` 的第一个参数是**引用**，失败时被写回最新值。
-- 内存序：`push` 成功用 `release`（发布新节点内容），`pop` 成功用 `acquire`（与 push 的 release 配对，看到完整节点）；失败分支取回最新 `head` 即可。
-- lock-free 进展保证：没有任何线程持锁，CAS 失败的线程重试，但总有线程能前进（区别于 wait-free 的“每线程有界步数”）。
+## Part 2：真正重叠的生产与消费
 
-## 必做任务
+Reference 让 3 个生产者与 4 个消费者同时传输 12007 个唯一 ID，合并消费者私有记录后逐项检查集合。总数相等不足以证明不丢不重；一个丢失加一个重复就能骗过计数。并发 LIFO 的调用/返回解释由 [queue_history_test.cpp](../runtime_tests/queue_history_test.cpp) 另行检查。
 
-1. `// TODO [必做 1]`：实现 `push` 与 `pop` 的 CAS 循环（用 `compare_exchange_weak` 操作 `head`），并按注释标注每步内存序。
-2. `// TODO [必做 1/必做 2]`：多线程压测（N 线程并发 push，再并发 pop），统计弹出总数 == 压入总数。
-3. **注明 pop 的节点释放**：本题刻意**泄漏**未 `delete`——无锁下直接释放会 use-after-free，安全回收（hazard pointer / RCU）留模块 I。
+worker 异常保存在各自 exception_ptr 中并发出取消，主线程 join 后重抛。线程创建失败同样会打开启动门，让已创建线程能够退出。
 
-## 验收点
+## Part 3：退休与析构
 
-- 多线程压测下弹出总数严格等于压入总数（不丢不重）。
-- 能说清 push 用 release、pop 用 acquire 的理由，以及失败分支为何可用 relaxed。
-- 能解释为什么本题必须泄漏节点，以及它和模块 I 的关系。
+Reference 使用带 live 计数的非平凡元素，完成 1000 次入栈/出栈后主动 cleanup，确认只剩输入、输出两个对象；再保留一个未弹出节点，检查栈析构后 live 归零。答案不是泄漏：弹出节点 retire，仍在栈上的活节点在停止后删除。
 
-## 对应官方参考
+每次 pop 需要一个 HP 槽，push 不解引用旧 head。完整调用包含 new、退休表分配与域锁，不能从 pointer.is_lock_free 为真推出完整栈无锁。T 可复制构造；复制构造可在发布前抛异常。复制赋值和析构被静态约束为 noexcept，不要求默认构造。
 
-- cppreference [`std::atomic`](https://en.cppreference.com/w/cpp/atomic/atomic) / [`compare_exchange`](https://en.cppreference.com/w/cpp/atomic/atomic/compare_exchange)
-- 《C++ Concurrency in Action, 2nd ed.》(Williams) 第 7 章 7.2.1
-- Fedor Pikus, "Lock-free Programming" (CppCon)
+类型回归使用 `copy_overload_probe`：它的 const 源赋值不抛，可变源赋值会抛。pop 必须从 `std::as_const(old->value)` 复制，避免在已经摘除节点后误选抛异常重载而跳过 retire。Reference 检查可变重载调用次数为零，并检查出栈及非空析构后全部对象归零。
 
-## 构建运行
+## 构建
 
-```bash
-cmake --build build-vs2026 --target G1_treiber_stack --config Release
-./build-vs2026/G1_treiber_stack/Release/G1_treiber_stack.exe
+从 Concurrency_Study/exercises 执行：
+
+```powershell
+cmake -S G1_treiber_stack -B build/g1 -G "Visual Studio 18 2026" -A x64
+cmake --build build/g1 --config Release
+ctest --test-dir build/g1 -C Release --output-on-failure
 ```
+
+默认 C++23，Release 使用 cs::check，CTest 由公共配置设置超时。核心指针协议与整个含回收操作的进展保证见正文，原子属性由运行程序实测输出。

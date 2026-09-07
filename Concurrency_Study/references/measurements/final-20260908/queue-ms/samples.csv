@@ -1,0 +1,6 @@
+suite,variant,size,threads,milliseconds,completed,details,repetition
+queue,ms,100003,7,32.0777,100003,P=3;C=4;capacity=0;batch=1;unbounded;strict-try;HP-locks+allocation-included;atomic_lock_free=true;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded,0
+queue,ms,100003,7,32.5017,100003,P=3;C=4;capacity=0;batch=1;unbounded;strict-try;HP-locks+allocation-included;atomic_lock_free=true;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded,1
+queue,ms,100003,7,40.4303,100003,P=3;C=4;capacity=0;batch=1;unbounded;strict-try;HP-locks+allocation-included;atomic_lock_free=true;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded,2
+queue,ms,100003,7,34.8822,100003,P=3;C=4;capacity=0;batch=1;unbounded;strict-try;HP-locks+allocation-included;atomic_lock_free=true;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded,3
+queue,ms,100003,7,35.6971,100003,P=3;C=4;capacity=0;batch=1;unbounded;strict-try;HP-locks+allocation-included;atomic_lock_free=true;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded,4

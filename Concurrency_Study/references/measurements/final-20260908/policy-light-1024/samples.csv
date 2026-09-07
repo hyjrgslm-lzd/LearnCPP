@@ -1,0 +1,26 @@
+suite,variant,size,threads,milliseconds,completed,details,repetition
+policy_map_light,unseq,1024,1,0.0003,1024,map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy,0
+policy_map_light,par,1024,0,0.0263,1024,map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy,0
+policy_map_light,plain,1024,1,0.0004,1024,map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy,0
+policy_map_light,par_unseq,1024,0,0.0263,1024,map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy,0
+policy_map_light,seq,1024,1,0.0004,1024,map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy,0
+policy_map_light,unseq,1024,1,0.0003,1024,map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy,1
+policy_map_light,seq,1024,1,0.0003,1024,map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy,1
+policy_map_light,par,1024,0,0.026,1024,map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy,1
+policy_map_light,plain,1024,1,0.0003,1024,map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy,1
+policy_map_light,par_unseq,1024,0,0.0279,1024,map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy,1
+policy_map_light,seq,1024,1,0.0004,1024,map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy,2
+policy_map_light,par,1024,0,0.0332,1024,map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy,2
+policy_map_light,unseq,1024,1,0.0004,1024,map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy,2
+policy_map_light,par_unseq,1024,0,0.0248,1024,map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy,2
+policy_map_light,plain,1024,1,0.0002,1024,map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy,2
+policy_map_light,par_unseq,1024,0,0.0256,1024,map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy,3
+policy_map_light,unseq,1024,1,0.0004,1024,map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy,3
+policy_map_light,par,1024,0,0.0265,1024,map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy,3
+policy_map_light,plain,1024,1,0.0002,1024,map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy,3
+policy_map_light,seq,1024,1,0.0003,1024,map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy,3
+policy_map_light,par,1024,0,0.0246,1024,map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy,4
+policy_map_light,seq,1024,1,0.0003,1024,map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy,4
+policy_map_light,plain,1024,1,0.0002,1024,map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy,4
+policy_map_light,unseq,1024,1,0.0003,1024,map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy,4
+policy_map_light,par_unseq,1024,0,0.0259,1024,map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy,4

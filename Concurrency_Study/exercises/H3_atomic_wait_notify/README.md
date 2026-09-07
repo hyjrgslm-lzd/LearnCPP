@@ -1,41 +1,36 @@
-# 练习 H-3：atomic wait / notify
+# H3：等待值改变与保存事件历史
 
-> 详尽版见 `../../10-模块H-高级同步原语.md` 的 练习 H-3。
+完整正文见[等待值改变与保存事件历史](../../topics/atomics/08-wait-and-generation.md)。[main.cpp](main.cpp) 是安全、有限结束的 Starter；[solution.cpp](solution.cpp) 是含运行检查的 Reference。默认 C++23。
 
-## 目标
+## Part 1：一次性事件，分别用 wait 与轮询
 
-掌握 C++20 的 `std::atomic<T>::wait(old)` / `notify_one()` / `notify_all()`：用它替代忙等自旋（busy-wait / spin），实现一个高效的“一次性事件 / flag”，并讲清相对自旋的优势。
+Reference 的 `one_shot(true/false)` 实现相同的普通 payload 发布，检查 42。主线程先写 payload，再 release 改 ready，随后 notify；读者 acquire wait 或 load。
 
-## 前置理解
+答案：发布来自 release/acquire，notify 不独立发布数据。ready 单调 false→true，业务条件正好是“不同于 false”，单次 wait 足够。对复杂谓词才需要外层循环继续判断；atomic wait 内部伪唤醒不意味着对外伪返回。
 
-- **`wait(old, mo)`**：若当前原子值**等于** `old`，则**阻塞**本线程（睡眠）；被 `notify` 唤醒且值发生改变后返回。若调用时已不等于 `old`，立即返回（不阻塞）。
-- **`notify_one()` / `notify_all()`**：唤醒一个 / 全部正在 `wait` 的线程。
-- **相对 spin 的优势**：自旋反复 `load` 复查，持续占满 CPU、浪费功耗、与别人抢核；`wait` 让线程**真正睡眠**，平台上常借 **futex / `WaitOnAddress`** 之类“按地址等待”原语实现，几乎不烧 CPU。
-- **使用范式（务必 while 而非 if）**：
-  - 等待方：`while (flag.load(mo) == old) flag.wait(old, mo);`
-  - 通知方：`flag.store(new, mo); flag.notify_one();`
-  - 用 `while` 是因为存在伪唤醒（spurious wakeup）/“值变了又变回”——醒来后必须复查谓词。顺序铁律：通知方**先改值、再 notify**。
+## Part 2：可控 ABA 与 generation
 
-## 必做任务
+`generation_history()` 先让读者保存 old，再让生产者完成 false→true→false 和 generation 0→1→2，最后才允许观察。检查 bool 已与旧值相同，而 generation 增量是 2。
 
-1. `// TODO [必做 1]`：用 atomic flag + `wait/notify` 实现高效等待——waiter 在 `while (flag==0) flag.wait(0, acquire)` 里睡眠等待。
-2. `// TODO [必做 2]`：signaler 先 `store(1, release)`（顺带发布 payload）再 `notify_one()` 唤醒。
-3. 对比第二部分的朴素自旋版本：观察事件来临前 spinner 白白自旋的圈数，体会 CPU 浪费。
+答案：多套 while 不能恢复被 bool 丢失的历史，wait(false) 甚至可能等不到未来变化；Reference 不运行这个可能永久阻塞的调用。inspect 门只证明受控时序，不能用该场景声称 generation 是 payload 的唯一发布边。
 
-## 验收点
+## Part 3：允许通知合并，保留事件总数
 
-- wait/notify 版本中 waiter 被正确唤醒并读到 signaler 发布的 payload（release/acquire 配对建立可见性）。
-- 能说清 `atomic::wait` 相对自旋的优势（不烧 CPU、省功耗、平台多用 futex 实现），以及为何要在 `while` 谓词里复查（防伪唤醒）、为何通知方要“先改值再 notify”。
+`generation_stream()` 发布 1000 次递增；读者累计 current-seen，最终检查 1000。它只处理计数，没有普通共享 payload，因此 relaxed 足够。
 
-## 对应官方参考
+答案：一次观察可跨过多个 generation，唤醒次数不等于事件次数。有限计数器仍有回绕上限，需要规定最大落后范围；若每次事件携带不同内容，应另用队列或确认交接存储内容。
 
-- cppreference [`std::atomic<T>::wait`](https://en.cppreference.com/w/cpp/atomic/atomic/wait) / [`notify_one`](https://en.cppreference.com/w/cpp/atomic/atomic/notify_one) / [`notify_all`](https://en.cppreference.com/w/cpp/atomic/atomic/notify_all)
-- 《C++ Concurrency in Action, 2nd ed.》(Williams) 第 4 / 5 章
-- 提案 P1135R6（The C++20 Synchronization Library）
+不要求 wait 实际进入内核、不宣称零 CPU、不要求忙等更慢。没有 sleep 证明时序；线程异常由 future 回传，所有等待结束后才销毁状态。
 
-## 构建运行
+## 构建与验收
 
-```bash
-cmake --build build-vs2026 --target H3_atomic_wait_notify --config Release
-./build-vs2026/H3_atomic_wait_notify/Release/H3_atomic_wait_notify.exe
+从 `Concurrency_Study/exercises` 执行：
+
+```powershell
+cmake -S H3_atomic_wait_notify -B build/H3_atomic_wait_notify -G "Visual Studio 18 2026" -A x64
+cmake --build build/H3_atomic_wait_notify --config Release
+./build/H3_atomic_wait_notify/Release/H3_atomic_wait_notify.exe
+ctest --test-dir build/H3_atomic_wait_notify -C Release --output-on-failure
 ```
+
+VS2026 生成器需要 CMake 4.2 或更新版。CTest 运行 `H3_atomic_wait_notify_reference` 并设进程超时；cs::check 在 Release 仍有效。通过表示本次检查成功，不替代正文中的协议证明。规范链接与版本说明见对应正文。

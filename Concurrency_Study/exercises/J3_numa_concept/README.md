@@ -1,39 +1,35 @@
-# 练习 J-3：NUMA 概念与线程亲和性
+# J3：拓扑、允许 CPU 与实际执行位置
 
-> 详尽版见 `../../13-模块J-缓存与伪共享.md` 的 练习 J-3。
+完整正文是 [NUMA 拓扑](../../topics/numa/01-topology.md) 和 [线程亲和](../../topics/numa/02-affinity.md)。[main.cpp](main.cpp) 探测并验证一个允许 CPU，[solution.cpp](solution.cpp) 检查列表解析和至多四个 CPU 的 before/after 样本；平台实现复用 [numa.hpp](../include/concurrency_study/numa.hpp)。
 
-## 目标
+入口类型：main 是已实现的平台诊断探针，不是待填 C++ 算法 Starter。启动时输出 PLATFORM PROBE ONLY，0 仅表示实际执行的拓扑/单 CPU 绑定检查通过；本题各 Part 要求解释探测证据。页面能力及完整放置 Part 必须另跑 N1，不能由这个退出码推断。
 
-以概念 + 小实验为主（不强求真 NUMA 硬件）：说清 NUMA（Non-Uniform Memory Access，非一致内存访问）的访问代价与 first-touch（首次接触）策略，并用 Windows 的 `SetThreadAffinityMask`（`#ifdef _WIN32` 包裹）演示把线程绑定到指定核（线程亲和性，thread affinity）。
+## 构建
 
-## 前置理解
+从 `Concurrency_Study/exercises`：
 
-- **NUMA**：内存按节点（node）划分，每节点贴着一组 CPU 核。核心访问**本地节点**内存快，访问**远端节点**要走处理器互联，延迟更高、带宽更低 —— 访问代价随“数据在哪个节点”而**不一致**。
-- **first-touch**：物理页在被某线程**首次写入**时，被分配到**该线程当时所在 CPU 的本地节点**。推论：让“将来读写某数据的线程”去**亲手初始化**那块数据，数据才落在它的本地节点。
-- **线程亲和性**：把线程**绑定**到指定核，减少跨核迁移导致的缓存损失，也是“让线程稳定待在某 NUMA 节点、配合 first-touch 拿本地内存”的前提。Windows 用 `SetThreadAffinityMask`（亲和性掩码每一位对应一个逻辑核）；Linux 用 `pthread_setaffinity_np`；macOS 仅有建议性策略。
-
-## 必做任务
-
-1. `// TODO [必做 1]`：开 N 个线程，各调 `pin_current_thread_to_cpu(i)` 绑到第 i 号核，跑一段热负载并由各线程**亲手初始化**本地数据（first-touch 微缩演示），打印绑核成功与否。非 Windows 平台会打印“跳过”。
-
-## 验收点
-
-- 在 Windows 上能成功把多个线程分别绑到不同核（本机实测 4/4 成功）。
-- 能讲清 NUMA 的本地/远端访问代价，以及 first-touch“谁先写、分给谁的本地节点”。
-- 能说清亲和性为何是 NUMA 局部性优化的前提；理解单 NUMA 节点机器上 first-touch 无可测差异（无远端节点）。
-
-## 对应官方参考
-
-- Windows [`SetThreadAffinityMask`](https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-setthreadaffinitymask)
-- Windows [NUMA Support](https://learn.microsoft.com/windows/win32/procthread/numa-support)
-- Ulrich Drepper, *What Every Programmer Should Know About Memory*（NUMA / first-touch）
-- 《C++ Concurrency in Action, 2nd ed.》(Williams) 第 8 章（数据局部性）
-
-## 构建运行
-
-```bash
-cmake --build build-vs2026 --target J3_numa_concept --config Release
-./build-vs2026/J3_numa_concept/Release/J3_numa_concept.exe
+```powershell
+cmake -S J3_numa_concept -B build/j3 -G "Visual Studio 18 2026" -A x64
+cmake --build build/j3 --config Release
+ctest --test-dir build/j3 -C Release -V
 ```
 
-> 运行时可打开任务管理器/资源监视器，观察各线程是否分别压在不同核上。
+Windows 由统一配置链接 Psapi。Linux 分支使用 sched_getaffinity、sysfs、/proc 和内核查询接口，不链接 libnuma；作者当前环境没有 Linux 运行证据。API 不可用或范围无法可靠确定时返回 77 并说明原因。
+
+## Part 1：读懂探测表
+
+记录 group/cpu/socket/core/node、allowed memory nodes 和页大小。回答 socket 是否等于 node、相邻 CPU ID 是否一定是两个独立 core。
+
+答案：都不是必然关系。以完整拓扑键判断 SMT 兄弟；hardware_concurrency 不是允许 CPU 列表。Windows 仅枚举调用者 primary group 的候选 mask/CPU set 交集，不由 GetThreadGroupAffinity 推断原线程已限制单组，也不能用该范围推断整个服务器拓扑。Linux 的 Mems_allowed_list 与 CPU allowed 集合分别记录。
+
+## Part 2：请求与观测
+
+用表中允许的 CPU 建立 affinity，在 worker 的操作前后各查询 actual CPU，检查与请求一致。Reference 使用同一 on_cpus 路径；没有 sleep，也不靠任务管理器肉眼观察取代检查。
+
+答案：成功请求只是设置被接收，实际采样是另一份证据。两次 CPU 样本不能证明中间从未抢占，也不能证明页面位于该 CPU 的 node。on_cpus 只在专用新线程中永久绑定，操作结束或抛出后让它退出并 join，不修改调用者 affinity；它不提供复用 worker 的通用恢复 guard。Reference 检查正常/异常路径均在不同于调用者的线程中执行，异常回传。单个旧 GROUP_AFFINITY 不足以恢复 Win11 默认跨组状态。
+
+## Part 3：单节点也能完成什么
+
+作者本次探测得到 group 0、32 个逻辑 CPU、16 组 SMT 核心关系、一个 node、4096 字节基础页。J3 的四个目标 CPU 均通过前后观测。这是本次证据，不是所有桌面的固定结果。
+
+答案：单节点仍能验证拓扑过滤、亲和、异常回传和页查询；它不能给出 remote 时间。J3 不把 CPU 检查冒充页面检查，后者在 [N1](../N1_numa_placement/README.md) 完成。后续改变 reader 数时优先明确选择不同 core 还是 SMT 兄弟，再解释结果。

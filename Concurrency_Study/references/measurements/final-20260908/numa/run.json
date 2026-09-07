@@ -1,0 +1,999 @@
+{
+  "schema": 1,
+  "status": "PARTIAL_SKIP",
+  "source_root": "P:\\C++Code\\LearnCPP\\Concurrency_Study",
+  "source_sha256": "9ec7e92b69a9860f33f40bba0d6eb5d18d58065011ae4d4b159a23ffa066dcb6",
+  "environment": {
+    "python": "3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]",
+    "os": "Windows-11-10.0.26220-SP0",
+    "machine": "AMD64",
+    "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+    "logical_cpus": 32,
+    "executable_sha256": "19b6d91931567742d4746894eea2337cd64194b17b304f28e82aa213345fd427",
+    "cmake_cache": "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\CMakeCache.txt",
+    "cmake_settings": [
+      "CMAKE_CXX_FLAGS:STRING=/DWIN32 /D_WINDOWS /EHsc",
+      "CMAKE_CXX_FLAGS_DEBUG:STRING=/Ob0 /Od /RTC1",
+      "CMAKE_CXX_FLAGS_MINSIZEREL:STRING=/O1 /Ob1 /DNDEBUG",
+      "CMAKE_CXX_FLAGS_RELEASE:STRING=/O2 /Ob2 /DNDEBUG",
+      "CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=/O2 /Ob1 /DNDEBUG",
+      "CMAKE_GENERATOR_INSTANCE:UNINITIALIZED=G:/Visual Studio 2026 Community",
+      "CONCURRENCY_STUDY_BUILD_BENCHMARKS:BOOL=ON",
+      "CONCURRENCY_STUDY_BUILD_REFERENCE:BOOL=ON",
+      "CONCURRENCY_STUDY_ENABLE_CXX26:BOOL=OFF",
+      "CONCURRENCY_STUDY_ENABLE_STDEXEC:BOOL=ON",
+      "CONCURRENCY_STUDY_ENABLE_UNSAFE_DEMOS:BOOL=OFF",
+      "CONCURRENCY_STUDY_ENABLE_XSIMD:BOOL=ON",
+      "CONCURRENCY_STUDY_FETCH_DEPS:BOOL=ON",
+      "CONCURRENCY_STUDY_STDEXEC_SOURCE_DIR:PATH=P:/C++Code/LearnCPP/Concurrency_Study/exercises/cmake/../third_party/stdexec",
+      "CONCURRENCY_STUDY_TEST_FAST_MATH:BOOL=ON",
+      "CONCURRENCY_STUDY_TEST_STARTERS:BOOL=OFF",
+      "CONCURRENCY_STUDY_XSIMD_SOURCE_DIR:PATH=P:/C++Code/LearnCPP/Concurrency_Study/exercises/cmake/../third_party/xsimd",
+      "CMAKE_CXX_FLAGS-ADVANCED:INTERNAL=1",
+      "CMAKE_CXX_FLAGS_DEBUG-ADVANCED:INTERNAL=1",
+      "CMAKE_CXX_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1",
+      "CMAKE_CXX_FLAGS_RELEASE-ADVANCED:INTERNAL=1",
+      "CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1",
+      "CMAKE_GENERATOR:INTERNAL=Visual Studio 18 2026",
+      "CONCURRENCY_STUDY_STDEXEC_REVISION:INTERNAL=6d7ad689f4d4831c5136e4abe1c601f9a3b64e43",
+      "CONCURRENCY_STUDY_XSIMD_REVISION:INTERNAL=1f8dd9c8e162968d9b4ff0251c56d431b8777f36",
+      "CS_HAS_PARALLEL_ALGORITHMS:INTERNAL=1"
+    ],
+    "compiler_configuration": "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\CMakeFiles\\4.2.3\\CMakeCXXCompiler.cmake",
+    "compiler_identity": [
+      "set(CMAKE_CXX_COMPILER \"G:/Visual Studio 2026 Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe\")",
+      "set(CMAKE_CXX_COMPILER_ID \"MSVC\")",
+      "set(CMAKE_CXX_COMPILER_VERSION \"19.51.36256.0\")",
+      "set(CMAKE_CXX_PLATFORM_ID \"Windows\")"
+    ]
+  },
+  "runner_command": [
+    "Concurrency_Study/exercises/tools/run_benchmarks.py",
+    "--exe",
+    "Concurrency_Study/exercises/build/full-windows/benchmarks/Release/numa_bench.exe",
+    "--check",
+    "Concurrency_Study/exercises/build/full-windows/J3_numa_concept/Release/J3_numa_concept_reference.exe",
+    "--check",
+    "Concurrency_Study/exercises/build/full-windows/N1_numa_placement/Release/N1_numa_placement.exe",
+    "--variant",
+    "local",
+    "--variant",
+    "firsttouch",
+    "--variant",
+    "parallel-init",
+    "--variant",
+    "remote",
+    "--variant",
+    "interleaved",
+    "--samples",
+    "5",
+    "--warmups",
+    "1",
+    "--seed",
+    "42",
+    "--timeout",
+    "30",
+    "--output",
+    "Concurrency_Study/references/measurements/final-20260908/numa",
+    "--",
+    "--size",
+    "1048576"
+  ],
+  "seed": 42,
+  "allow_partial": false,
+  "timing": "C++ reported interval; external process duration recorded separately",
+  "threads_field": "positive: reported thread count; zero: implementation-managed count was not measured",
+  "checks": [
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\J3_numa_concept\\Release\\J3_numa_concept_reference.exe"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.020109000000957167,
+      "stdout": "Windows: candidate subset in caller primary group intersect process mask/CPU sets; not complete cross-group affinity; fresh workers only\nbase_page_bytes=4096 allowed_memory_nodes=0 \ngroup,cpu,socket,core,node (same group/socket/core rows are SMT siblings)\n0,0,0,0,0\n0,1,0,0,0\n0,2,0,2,0\n0,3,0,2,0\n0,4,0,4,0\n0,5,0,4,0\n0,6,0,6,0\n0,7,0,6,0\n0,8,0,8,0\n0,9,0,8,0\n0,10,0,10,0\n0,11,0,10,0\n0,12,0,12,0\n0,13,0,12,0\n0,14,0,14,0\n0,15,0,14,0\n0,16,0,16,0\n0,17,0,16,0\n0,18,0,18,0\n0,19,0,18,0\n0,20,0,20,0\n0,21,0,20,0\n0,22,0,22,0\n0,23,0,22,0\n0,24,0,24,0\n0,25,0,24,0\n0,26,0,26,0\n0,27,0,26,0\n0,28,0,28,0\n0,29,0,28,0\n0,30,0,30,0\n0,31,0,30,0\nrequested=0:0 actual-before=0:0 actual-after=0:0 node=0\nrequested=0:1 actual-before=0:1 actual-after=0:1 node=0\nrequested=0:2 actual-before=0:2 actual-after=0:2 node=0\nrequested=0:3 actual-before=0:3 actual-after=0:3 node=0\nJ3 topology/affinity OK; page placement is checked separately in N1\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "executable_sha256": "20566200b212af953edb1c6b847e098d89d682bad52c9bbf0b2d3045e5a2c033"
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\N1_numa_placement\\Release\\N1_numa_placement.exe"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.026052200000776793,
+      "stdout": "OBSERVATION / PLATFORM PROBE ONLY: local pages; exit 0 does not complete remote/interleaved/shared-reader Parts.\nWindows: candidate subset in caller primary group intersect process mask/CPU sets; not complete cross-group affinity; fresh workers only\nbase_page_bytes=4096 allowed_memory_nodes=0 \ngroup,cpu,socket,core,node (same group/socket/core rows are SMT siblings)\n0,0,0,0,0\n0,1,0,0,0\n0,2,0,2,0\n0,3,0,2,0\n0,4,0,4,0\n0,5,0,4,0\n0,6,0,6,0\n0,7,0,6,0\n0,8,0,8,0\n0,9,0,8,0\n0,10,0,10,0\n0,11,0,10,0\n0,12,0,12,0\n0,13,0,12,0\n0,14,0,14,0\n0,15,0,14,0\n0,16,0,16,0\n0,17,0,16,0\n0,18,0,18,0\n0,19,0,18,0\n0,20,0,20,0\n0,21,0,20,0\n0,22,0,22,0\n0,23,0,22,0\n0,24,0,24,0\n0,25,0,24,0\n0,26,0,26,0\n0,27,0,26,0\n0,28,0,28,0\n0,29,0,28,0\n0,30,0,30,0\n0,31,0,30,0\nlayout=independent-base-page-reservations; reservations=16; allocation_granularity=65536; page_bytes=4096\nbefore-touch: node=-1 pages=16 (-1=not resident/unverifiable)\nafter-touch: node=0 pages=16 (-1=not resident/unverifiable)\nbefore-timing: node=0 pages=16 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\nafter-timing: node=0 pages=16 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\nPredict remote/parallel-init page maps, then run the Reference.\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "executable_sha256": "402bcd7fff54707563ace68f484fc0dcf6b50768c7af49a420f1952fc28f72d7"
+    }
+  ],
+  "runs": [
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\numa_bench.exe",
+        "--variant",
+        "remote",
+        "--size",
+        "1048576"
+      ],
+      "exit_code": 77,
+      "timeout": false,
+      "process_seconds": 0.056854200000088895,
+      "stdout": "",
+      "stderr": "Windows: candidate subset in caller primary group intersect process mask/CPU sets; not complete cross-group affinity; fresh workers only\nbase_page_bytes=4096 allowed_memory_nodes=0 \ngroup,cpu,socket,core,node (same group/socket/core rows are SMT siblings)\n0,0,0,0,0\n0,1,0,0,0\n0,2,0,2,0\n0,3,0,2,0\n0,4,0,4,0\n0,5,0,4,0\n0,6,0,6,0\n0,7,0,6,0\n0,8,0,8,0\n0,9,0,8,0\n0,10,0,10,0\n0,11,0,10,0\n0,12,0,12,0\n0,13,0,12,0\n0,14,0,14,0\n0,15,0,14,0\n0,16,0,16,0\n0,17,0,16,0\n0,18,0,18,0\n0,19,0,18,0\n0,20,0,20,0\n0,21,0,20,0\n0,22,0,22,0\n0,23,0,22,0\n0,24,0,24,0\n0,25,0,24,0\n0,26,0,26,0\n0,27,0,26,0\n0,28,0,28,0\n0,29,0,28,0\n0,30,0,30,0\n0,31,0,30,0\nSKIP: only one eligible memory node; remote/interleave comparison unavailable\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "SKIP",
+      "variant": "remote",
+      "repetition": 0,
+      "warmup": true
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\numa_bench.exe",
+        "--variant",
+        "firsttouch",
+        "--size",
+        "1048576"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.020573599998897407,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"numa\",\"firsttouch\",1048576,2,0.2044,131072,\"size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\"\n",
+      "stderr": "Windows: candidate subset in caller primary group intersect process mask/CPU sets; not complete cross-group affinity; fresh workers only\nbase_page_bytes=4096 allowed_memory_nodes=0 \ngroup,cpu,socket,core,node (same group/socket/core rows are SMT siblings)\n0,0,0,0,0\n0,1,0,0,0\n0,2,0,2,0\n0,3,0,2,0\n0,4,0,4,0\n0,5,0,4,0\n0,6,0,6,0\n0,7,0,6,0\n0,8,0,8,0\n0,9,0,8,0\n0,10,0,10,0\n0,11,0,10,0\n0,12,0,12,0\n0,13,0,12,0\n0,14,0,14,0\n0,15,0,14,0\n0,16,0,16,0\n0,17,0,16,0\n0,18,0,18,0\n0,19,0,18,0\n0,20,0,20,0\n0,21,0,20,0\n0,22,0,22,0\n0,23,0,22,0\n0,24,0,24,0\n0,25,0,24,0\n0,26,0,26,0\n0,27,0,26,0\n0,28,0,28,0\n0,29,0,28,0\n0,30,0,30,0\n0,31,0,30,0\nlayout=independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\nbefore-touch: node=-1 pages=256 (-1=not resident/unverifiable)\nafter-touch: node=0 pages=256 (-1=not resident/unverifiable)\nbefore-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\nreader=1 requested=0:2 actual-before=0:2 node=0 actual-after=0:2 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\nafter-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\nreader=1 requested=0:2 actual-before=0:2 node=0 actual-after=0:2 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "firsttouch",
+      "repetition": 0,
+      "warmup": true,
+      "rows": [
+        {
+          "suite": "numa",
+          "variant": "firsttouch",
+          "size": 1048576,
+          "threads": 2,
+          "milliseconds": 0.2044,
+          "completed": 131072,
+          "details": "size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\numa_bench.exe",
+        "--variant",
+        "parallel-init",
+        "--size",
+        "1048576"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.02222530000108236,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"numa\",\"parallel-init\",1048576,2,0.1821,131072,\"size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\"\n",
+      "stderr": "Windows: candidate subset in caller primary group intersect process mask/CPU sets; not complete cross-group affinity; fresh workers only\nbase_page_bytes=4096 allowed_memory_nodes=0 \ngroup,cpu,socket,core,node (same group/socket/core rows are SMT siblings)\n0,0,0,0,0\n0,1,0,0,0\n0,2,0,2,0\n0,3,0,2,0\n0,4,0,4,0\n0,5,0,4,0\n0,6,0,6,0\n0,7,0,6,0\n0,8,0,8,0\n0,9,0,8,0\n0,10,0,10,0\n0,11,0,10,0\n0,12,0,12,0\n0,13,0,12,0\n0,14,0,14,0\n0,15,0,14,0\n0,16,0,16,0\n0,17,0,16,0\n0,18,0,18,0\n0,19,0,18,0\n0,20,0,20,0\n0,21,0,20,0\n0,22,0,22,0\n0,23,0,22,0\n0,24,0,24,0\n0,25,0,24,0\n0,26,0,26,0\n0,27,0,26,0\n0,28,0,28,0\n0,29,0,28,0\n0,30,0,30,0\n0,31,0,30,0\nlayout=independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\nbefore-touch: node=-1 pages=256 (-1=not resident/unverifiable)\nafter-touch: node=0 pages=256 (-1=not resident/unverifiable)\nbefore-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\nreader=1 requested=0:2 actual-before=0:2 node=0 actual-after=0:2 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\ninitializer=1 actual-before=0:2 node=0 actual-after=0:2 node=0\nafter-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\nreader=1 requested=0:2 actual-before=0:2 node=0 actual-after=0:2 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\ninitializer=1 actual-before=0:2 node=0 actual-after=0:2 node=0\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "parallel-init",
+      "repetition": 0,
+      "warmup": true,
+      "rows": [
+        {
+          "suite": "numa",
+          "variant": "parallel-init",
+          "size": 1048576,
+          "threads": 2,
+          "milliseconds": 0.1821,
+          "completed": 131072,
+          "details": "size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\numa_bench.exe",
+        "--variant",
+        "interleaved",
+        "--size",
+        "1048576"
+      ],
+      "exit_code": 77,
+      "timeout": false,
+      "process_seconds": 0.01959809999971185,
+      "stdout": "",
+      "stderr": "Windows: candidate subset in caller primary group intersect process mask/CPU sets; not complete cross-group affinity; fresh workers only\nbase_page_bytes=4096 allowed_memory_nodes=0 \ngroup,cpu,socket,core,node (same group/socket/core rows are SMT siblings)\n0,0,0,0,0\n0,1,0,0,0\n0,2,0,2,0\n0,3,0,2,0\n0,4,0,4,0\n0,5,0,4,0\n0,6,0,6,0\n0,7,0,6,0\n0,8,0,8,0\n0,9,0,8,0\n0,10,0,10,0\n0,11,0,10,0\n0,12,0,12,0\n0,13,0,12,0\n0,14,0,14,0\n0,15,0,14,0\n0,16,0,16,0\n0,17,0,16,0\n0,18,0,18,0\n0,19,0,18,0\n0,20,0,20,0\n0,21,0,20,0\n0,22,0,22,0\n0,23,0,22,0\n0,24,0,24,0\n0,25,0,24,0\n0,26,0,26,0\n0,27,0,26,0\n0,28,0,28,0\n0,29,0,28,0\n0,30,0,30,0\n0,31,0,30,0\nSKIP: only one eligible memory node; remote/interleave comparison unavailable\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "SKIP",
+      "variant": "interleaved",
+      "repetition": 0,
+      "warmup": true
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\numa_bench.exe",
+        "--variant",
+        "local",
+        "--size",
+        "1048576"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.02038189999984752,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"numa\",\"local\",1048576,1,0.1555,131072,\"size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\"\n",
+      "stderr": "Windows: candidate subset in caller primary group intersect process mask/CPU sets; not complete cross-group affinity; fresh workers only\nbase_page_bytes=4096 allowed_memory_nodes=0 \ngroup,cpu,socket,core,node (same group/socket/core rows are SMT siblings)\n0,0,0,0,0\n0,1,0,0,0\n0,2,0,2,0\n0,3,0,2,0\n0,4,0,4,0\n0,5,0,4,0\n0,6,0,6,0\n0,7,0,6,0\n0,8,0,8,0\n0,9,0,8,0\n0,10,0,10,0\n0,11,0,10,0\n0,12,0,12,0\n0,13,0,12,0\n0,14,0,14,0\n0,15,0,14,0\n0,16,0,16,0\n0,17,0,16,0\n0,18,0,18,0\n0,19,0,18,0\n0,20,0,20,0\n0,21,0,20,0\n0,22,0,22,0\n0,23,0,22,0\n0,24,0,24,0\n0,25,0,24,0\n0,26,0,26,0\n0,27,0,26,0\n0,28,0,28,0\n0,29,0,28,0\n0,30,0,30,0\n0,31,0,30,0\nlayout=independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\nbefore-touch: node=-1 pages=256 (-1=not resident/unverifiable)\nafter-touch: node=0 pages=256 (-1=not resident/unverifiable)\nbefore-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\nafter-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "local",
+      "repetition": 0,
+      "warmup": true,
+      "rows": [
+        {
+          "suite": "numa",
+          "variant": "local",
+          "size": 1048576,
+          "threads": 1,
+          "milliseconds": 0.1555,
+          "completed": 131072,
+          "details": "size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\numa_bench.exe",
+        "--variant",
+        "remote",
+        "--size",
+        "1048576"
+      ],
+      "exit_code": 77,
+      "timeout": false,
+      "process_seconds": 0.01599259999966307,
+      "stdout": "",
+      "stderr": "Windows: candidate subset in caller primary group intersect process mask/CPU sets; not complete cross-group affinity; fresh workers only\nbase_page_bytes=4096 allowed_memory_nodes=0 \ngroup,cpu,socket,core,node (same group/socket/core rows are SMT siblings)\n0,0,0,0,0\n0,1,0,0,0\n0,2,0,2,0\n0,3,0,2,0\n0,4,0,4,0\n0,5,0,4,0\n0,6,0,6,0\n0,7,0,6,0\n0,8,0,8,0\n0,9,0,8,0\n0,10,0,10,0\n0,11,0,10,0\n0,12,0,12,0\n0,13,0,12,0\n0,14,0,14,0\n0,15,0,14,0\n0,16,0,16,0\n0,17,0,16,0\n0,18,0,18,0\n0,19,0,18,0\n0,20,0,20,0\n0,21,0,20,0\n0,22,0,22,0\n0,23,0,22,0\n0,24,0,24,0\n0,25,0,24,0\n0,26,0,26,0\n0,27,0,26,0\n0,28,0,28,0\n0,29,0,28,0\n0,30,0,30,0\n0,31,0,30,0\nSKIP: only one eligible memory node; remote/interleave comparison unavailable\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "SKIP",
+      "variant": "remote",
+      "repetition": 1,
+      "warmup": false
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\numa_bench.exe",
+        "--variant",
+        "parallel-init",
+        "--size",
+        "1048576"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.018345099999351078,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"numa\",\"parallel-init\",1048576,2,0.6051,131072,\"size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\"\n",
+      "stderr": "Windows: candidate subset in caller primary group intersect process mask/CPU sets; not complete cross-group affinity; fresh workers only\nbase_page_bytes=4096 allowed_memory_nodes=0 \ngroup,cpu,socket,core,node (same group/socket/core rows are SMT siblings)\n0,0,0,0,0\n0,1,0,0,0\n0,2,0,2,0\n0,3,0,2,0\n0,4,0,4,0\n0,5,0,4,0\n0,6,0,6,0\n0,7,0,6,0\n0,8,0,8,0\n0,9,0,8,0\n0,10,0,10,0\n0,11,0,10,0\n0,12,0,12,0\n0,13,0,12,0\n0,14,0,14,0\n0,15,0,14,0\n0,16,0,16,0\n0,17,0,16,0\n0,18,0,18,0\n0,19,0,18,0\n0,20,0,20,0\n0,21,0,20,0\n0,22,0,22,0\n0,23,0,22,0\n0,24,0,24,0\n0,25,0,24,0\n0,26,0,26,0\n0,27,0,26,0\n0,28,0,28,0\n0,29,0,28,0\n0,30,0,30,0\n0,31,0,30,0\nlayout=independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\nbefore-touch: node=-1 pages=256 (-1=not resident/unverifiable)\nafter-touch: node=0 pages=256 (-1=not resident/unverifiable)\nbefore-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\nreader=1 requested=0:2 actual-before=0:2 node=0 actual-after=0:2 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\ninitializer=1 actual-before=0:2 node=0 actual-after=0:2 node=0\nafter-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\nreader=1 requested=0:2 actual-before=0:2 node=0 actual-after=0:2 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\ninitializer=1 actual-before=0:2 node=0 actual-after=0:2 node=0\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "parallel-init",
+      "repetition": 1,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "numa",
+          "variant": "parallel-init",
+          "size": 1048576,
+          "threads": 2,
+          "milliseconds": 0.6051,
+          "completed": 131072,
+          "details": "size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\numa_bench.exe",
+        "--variant",
+        "local",
+        "--size",
+        "1048576"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.017851300000984338,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"numa\",\"local\",1048576,1,0.1607,131072,\"size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\"\n",
+      "stderr": "Windows: candidate subset in caller primary group intersect process mask/CPU sets; not complete cross-group affinity; fresh workers only\nbase_page_bytes=4096 allowed_memory_nodes=0 \ngroup,cpu,socket,core,node (same group/socket/core rows are SMT siblings)\n0,0,0,0,0\n0,1,0,0,0\n0,2,0,2,0\n0,3,0,2,0\n0,4,0,4,0\n0,5,0,4,0\n0,6,0,6,0\n0,7,0,6,0\n0,8,0,8,0\n0,9,0,8,0\n0,10,0,10,0\n0,11,0,10,0\n0,12,0,12,0\n0,13,0,12,0\n0,14,0,14,0\n0,15,0,14,0\n0,16,0,16,0\n0,17,0,16,0\n0,18,0,18,0\n0,19,0,18,0\n0,20,0,20,0\n0,21,0,20,0\n0,22,0,22,0\n0,23,0,22,0\n0,24,0,24,0\n0,25,0,24,0\n0,26,0,26,0\n0,27,0,26,0\n0,28,0,28,0\n0,29,0,28,0\n0,30,0,30,0\n0,31,0,30,0\nlayout=independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\nbefore-touch: node=-1 pages=256 (-1=not resident/unverifiable)\nafter-touch: node=0 pages=256 (-1=not resident/unverifiable)\nbefore-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\nafter-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "local",
+      "repetition": 1,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "numa",
+          "variant": "local",
+          "size": 1048576,
+          "threads": 1,
+          "milliseconds": 0.1607,
+          "completed": 131072,
+          "details": "size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\numa_bench.exe",
+        "--variant",
+        "interleaved",
+        "--size",
+        "1048576"
+      ],
+      "exit_code": 77,
+      "timeout": false,
+      "process_seconds": 0.01566819999970903,
+      "stdout": "",
+      "stderr": "Windows: candidate subset in caller primary group intersect process mask/CPU sets; not complete cross-group affinity; fresh workers only\nbase_page_bytes=4096 allowed_memory_nodes=0 \ngroup,cpu,socket,core,node (same group/socket/core rows are SMT siblings)\n0,0,0,0,0\n0,1,0,0,0\n0,2,0,2,0\n0,3,0,2,0\n0,4,0,4,0\n0,5,0,4,0\n0,6,0,6,0\n0,7,0,6,0\n0,8,0,8,0\n0,9,0,8,0\n0,10,0,10,0\n0,11,0,10,0\n0,12,0,12,0\n0,13,0,12,0\n0,14,0,14,0\n0,15,0,14,0\n0,16,0,16,0\n0,17,0,16,0\n0,18,0,18,0\n0,19,0,18,0\n0,20,0,20,0\n0,21,0,20,0\n0,22,0,22,0\n0,23,0,22,0\n0,24,0,24,0\n0,25,0,24,0\n0,26,0,26,0\n0,27,0,26,0\n0,28,0,28,0\n0,29,0,28,0\n0,30,0,30,0\n0,31,0,30,0\nSKIP: only one eligible memory node; remote/interleave comparison unavailable\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "SKIP",
+      "variant": "interleaved",
+      "repetition": 1,
+      "warmup": false
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\numa_bench.exe",
+        "--variant",
+        "firsttouch",
+        "--size",
+        "1048576"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.017927699998836033,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"numa\",\"firsttouch\",1048576,2,0.1593,131072,\"size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\"\n",
+      "stderr": "Windows: candidate subset in caller primary group intersect process mask/CPU sets; not complete cross-group affinity; fresh workers only\nbase_page_bytes=4096 allowed_memory_nodes=0 \ngroup,cpu,socket,core,node (same group/socket/core rows are SMT siblings)\n0,0,0,0,0\n0,1,0,0,0\n0,2,0,2,0\n0,3,0,2,0\n0,4,0,4,0\n0,5,0,4,0\n0,6,0,6,0\n0,7,0,6,0\n0,8,0,8,0\n0,9,0,8,0\n0,10,0,10,0\n0,11,0,10,0\n0,12,0,12,0\n0,13,0,12,0\n0,14,0,14,0\n0,15,0,14,0\n0,16,0,16,0\n0,17,0,16,0\n0,18,0,18,0\n0,19,0,18,0\n0,20,0,20,0\n0,21,0,20,0\n0,22,0,22,0\n0,23,0,22,0\n0,24,0,24,0\n0,25,0,24,0\n0,26,0,26,0\n0,27,0,26,0\n0,28,0,28,0\n0,29,0,28,0\n0,30,0,30,0\n0,31,0,30,0\nlayout=independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\nbefore-touch: node=-1 pages=256 (-1=not resident/unverifiable)\nafter-touch: node=0 pages=256 (-1=not resident/unverifiable)\nbefore-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\nreader=1 requested=0:2 actual-before=0:2 node=0 actual-after=0:2 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\nafter-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\nreader=1 requested=0:2 actual-before=0:2 node=0 actual-after=0:2 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "firsttouch",
+      "repetition": 1,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "numa",
+          "variant": "firsttouch",
+          "size": 1048576,
+          "threads": 2,
+          "milliseconds": 0.1593,
+          "completed": 131072,
+          "details": "size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\numa_bench.exe",
+        "--variant",
+        "remote",
+        "--size",
+        "1048576"
+      ],
+      "exit_code": 77,
+      "timeout": false,
+      "process_seconds": 0.016760399999839137,
+      "stdout": "",
+      "stderr": "Windows: candidate subset in caller primary group intersect process mask/CPU sets; not complete cross-group affinity; fresh workers only\nbase_page_bytes=4096 allowed_memory_nodes=0 \ngroup,cpu,socket,core,node (same group/socket/core rows are SMT siblings)\n0,0,0,0,0\n0,1,0,0,0\n0,2,0,2,0\n0,3,0,2,0\n0,4,0,4,0\n0,5,0,4,0\n0,6,0,6,0\n0,7,0,6,0\n0,8,0,8,0\n0,9,0,8,0\n0,10,0,10,0\n0,11,0,10,0\n0,12,0,12,0\n0,13,0,12,0\n0,14,0,14,0\n0,15,0,14,0\n0,16,0,16,0\n0,17,0,16,0\n0,18,0,18,0\n0,19,0,18,0\n0,20,0,20,0\n0,21,0,20,0\n0,22,0,22,0\n0,23,0,22,0\n0,24,0,24,0\n0,25,0,24,0\n0,26,0,26,0\n0,27,0,26,0\n0,28,0,28,0\n0,29,0,28,0\n0,30,0,30,0\n0,31,0,30,0\nSKIP: only one eligible memory node; remote/interleave comparison unavailable\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "SKIP",
+      "variant": "remote",
+      "repetition": 2,
+      "warmup": false
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\numa_bench.exe",
+        "--variant",
+        "firsttouch",
+        "--size",
+        "1048576"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.018315999999686028,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"numa\",\"firsttouch\",1048576,2,0.3388,131072,\"size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\"\n",
+      "stderr": "Windows: candidate subset in caller primary group intersect process mask/CPU sets; not complete cross-group affinity; fresh workers only\nbase_page_bytes=4096 allowed_memory_nodes=0 \ngroup,cpu,socket,core,node (same group/socket/core rows are SMT siblings)\n0,0,0,0,0\n0,1,0,0,0\n0,2,0,2,0\n0,3,0,2,0\n0,4,0,4,0\n0,5,0,4,0\n0,6,0,6,0\n0,7,0,6,0\n0,8,0,8,0\n0,9,0,8,0\n0,10,0,10,0\n0,11,0,10,0\n0,12,0,12,0\n0,13,0,12,0\n0,14,0,14,0\n0,15,0,14,0\n0,16,0,16,0\n0,17,0,16,0\n0,18,0,18,0\n0,19,0,18,0\n0,20,0,20,0\n0,21,0,20,0\n0,22,0,22,0\n0,23,0,22,0\n0,24,0,24,0\n0,25,0,24,0\n0,26,0,26,0\n0,27,0,26,0\n0,28,0,28,0\n0,29,0,28,0\n0,30,0,30,0\n0,31,0,30,0\nlayout=independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\nbefore-touch: node=-1 pages=256 (-1=not resident/unverifiable)\nafter-touch: node=0 pages=256 (-1=not resident/unverifiable)\nbefore-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\nreader=1 requested=0:2 actual-before=0:2 node=0 actual-after=0:2 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\nafter-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\nreader=1 requested=0:2 actual-before=0:2 node=0 actual-after=0:2 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "firsttouch",
+      "repetition": 2,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "numa",
+          "variant": "firsttouch",
+          "size": 1048576,
+          "threads": 2,
+          "milliseconds": 0.3388,
+          "completed": 131072,
+          "details": "size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\numa_bench.exe",
+        "--variant",
+        "parallel-init",
+        "--size",
+        "1048576"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.018585599998914404,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"numa\",\"parallel-init\",1048576,2,0.128,131072,\"size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\"\n",
+      "stderr": "Windows: candidate subset in caller primary group intersect process mask/CPU sets; not complete cross-group affinity; fresh workers only\nbase_page_bytes=4096 allowed_memory_nodes=0 \ngroup,cpu,socket,core,node (same group/socket/core rows are SMT siblings)\n0,0,0,0,0\n0,1,0,0,0\n0,2,0,2,0\n0,3,0,2,0\n0,4,0,4,0\n0,5,0,4,0\n0,6,0,6,0\n0,7,0,6,0\n0,8,0,8,0\n0,9,0,8,0\n0,10,0,10,0\n0,11,0,10,0\n0,12,0,12,0\n0,13,0,12,0\n0,14,0,14,0\n0,15,0,14,0\n0,16,0,16,0\n0,17,0,16,0\n0,18,0,18,0\n0,19,0,18,0\n0,20,0,20,0\n0,21,0,20,0\n0,22,0,22,0\n0,23,0,22,0\n0,24,0,24,0\n0,25,0,24,0\n0,26,0,26,0\n0,27,0,26,0\n0,28,0,28,0\n0,29,0,28,0\n0,30,0,30,0\n0,31,0,30,0\nlayout=independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\nbefore-touch: node=-1 pages=256 (-1=not resident/unverifiable)\nafter-touch: node=0 pages=256 (-1=not resident/unverifiable)\nbefore-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\nreader=1 requested=0:2 actual-before=0:2 node=0 actual-after=0:2 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\ninitializer=1 actual-before=0:2 node=0 actual-after=0:2 node=0\nafter-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\nreader=1 requested=0:2 actual-before=0:2 node=0 actual-after=0:2 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\ninitializer=1 actual-before=0:2 node=0 actual-after=0:2 node=0\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "parallel-init",
+      "repetition": 2,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "numa",
+          "variant": "parallel-init",
+          "size": 1048576,
+          "threads": 2,
+          "milliseconds": 0.128,
+          "completed": 131072,
+          "details": "size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\numa_bench.exe",
+        "--variant",
+        "local",
+        "--size",
+        "1048576"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.017416200000297977,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"numa\",\"local\",1048576,1,0.1511,131072,\"size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\"\n",
+      "stderr": "Windows: candidate subset in caller primary group intersect process mask/CPU sets; not complete cross-group affinity; fresh workers only\nbase_page_bytes=4096 allowed_memory_nodes=0 \ngroup,cpu,socket,core,node (same group/socket/core rows are SMT siblings)\n0,0,0,0,0\n0,1,0,0,0\n0,2,0,2,0\n0,3,0,2,0\n0,4,0,4,0\n0,5,0,4,0\n0,6,0,6,0\n0,7,0,6,0\n0,8,0,8,0\n0,9,0,8,0\n0,10,0,10,0\n0,11,0,10,0\n0,12,0,12,0\n0,13,0,12,0\n0,14,0,14,0\n0,15,0,14,0\n0,16,0,16,0\n0,17,0,16,0\n0,18,0,18,0\n0,19,0,18,0\n0,20,0,20,0\n0,21,0,20,0\n0,22,0,22,0\n0,23,0,22,0\n0,24,0,24,0\n0,25,0,24,0\n0,26,0,26,0\n0,27,0,26,0\n0,28,0,28,0\n0,29,0,28,0\n0,30,0,30,0\n0,31,0,30,0\nlayout=independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\nbefore-touch: node=-1 pages=256 (-1=not resident/unverifiable)\nafter-touch: node=0 pages=256 (-1=not resident/unverifiable)\nbefore-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\nafter-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "local",
+      "repetition": 2,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "numa",
+          "variant": "local",
+          "size": 1048576,
+          "threads": 1,
+          "milliseconds": 0.1511,
+          "completed": 131072,
+          "details": "size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\numa_bench.exe",
+        "--variant",
+        "interleaved",
+        "--size",
+        "1048576"
+      ],
+      "exit_code": 77,
+      "timeout": false,
+      "process_seconds": 0.01545559999976831,
+      "stdout": "",
+      "stderr": "Windows: candidate subset in caller primary group intersect process mask/CPU sets; not complete cross-group affinity; fresh workers only\nbase_page_bytes=4096 allowed_memory_nodes=0 \ngroup,cpu,socket,core,node (same group/socket/core rows are SMT siblings)\n0,0,0,0,0\n0,1,0,0,0\n0,2,0,2,0\n0,3,0,2,0\n0,4,0,4,0\n0,5,0,4,0\n0,6,0,6,0\n0,7,0,6,0\n0,8,0,8,0\n0,9,0,8,0\n0,10,0,10,0\n0,11,0,10,0\n0,12,0,12,0\n0,13,0,12,0\n0,14,0,14,0\n0,15,0,14,0\n0,16,0,16,0\n0,17,0,16,0\n0,18,0,18,0\n0,19,0,18,0\n0,20,0,20,0\n0,21,0,20,0\n0,22,0,22,0\n0,23,0,22,0\n0,24,0,24,0\n0,25,0,24,0\n0,26,0,26,0\n0,27,0,26,0\n0,28,0,28,0\n0,29,0,28,0\n0,30,0,30,0\n0,31,0,30,0\nSKIP: only one eligible memory node; remote/interleave comparison unavailable\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "SKIP",
+      "variant": "interleaved",
+      "repetition": 2,
+      "warmup": false
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\numa_bench.exe",
+        "--variant",
+        "firsttouch",
+        "--size",
+        "1048576"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.017779899999368354,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"numa\",\"firsttouch\",1048576,2,0.1532,131072,\"size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\"\n",
+      "stderr": "Windows: candidate subset in caller primary group intersect process mask/CPU sets; not complete cross-group affinity; fresh workers only\nbase_page_bytes=4096 allowed_memory_nodes=0 \ngroup,cpu,socket,core,node (same group/socket/core rows are SMT siblings)\n0,0,0,0,0\n0,1,0,0,0\n0,2,0,2,0\n0,3,0,2,0\n0,4,0,4,0\n0,5,0,4,0\n0,6,0,6,0\n0,7,0,6,0\n0,8,0,8,0\n0,9,0,8,0\n0,10,0,10,0\n0,11,0,10,0\n0,12,0,12,0\n0,13,0,12,0\n0,14,0,14,0\n0,15,0,14,0\n0,16,0,16,0\n0,17,0,16,0\n0,18,0,18,0\n0,19,0,18,0\n0,20,0,20,0\n0,21,0,20,0\n0,22,0,22,0\n0,23,0,22,0\n0,24,0,24,0\n0,25,0,24,0\n0,26,0,26,0\n0,27,0,26,0\n0,28,0,28,0\n0,29,0,28,0\n0,30,0,30,0\n0,31,0,30,0\nlayout=independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\nbefore-touch: node=-1 pages=256 (-1=not resident/unverifiable)\nafter-touch: node=0 pages=256 (-1=not resident/unverifiable)\nbefore-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\nreader=1 requested=0:2 actual-before=0:2 node=0 actual-after=0:2 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\nafter-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\nreader=1 requested=0:2 actual-before=0:2 node=0 actual-after=0:2 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "firsttouch",
+      "repetition": 3,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "numa",
+          "variant": "firsttouch",
+          "size": 1048576,
+          "threads": 2,
+          "milliseconds": 0.1532,
+          "completed": 131072,
+          "details": "size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\numa_bench.exe",
+        "--variant",
+        "parallel-init",
+        "--size",
+        "1048576"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.017588999999134103,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"numa\",\"parallel-init\",1048576,2,0.1587,131072,\"size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\"\n",
+      "stderr": "Windows: candidate subset in caller primary group intersect process mask/CPU sets; not complete cross-group affinity; fresh workers only\nbase_page_bytes=4096 allowed_memory_nodes=0 \ngroup,cpu,socket,core,node (same group/socket/core rows are SMT siblings)\n0,0,0,0,0\n0,1,0,0,0\n0,2,0,2,0\n0,3,0,2,0\n0,4,0,4,0\n0,5,0,4,0\n0,6,0,6,0\n0,7,0,6,0\n0,8,0,8,0\n0,9,0,8,0\n0,10,0,10,0\n0,11,0,10,0\n0,12,0,12,0\n0,13,0,12,0\n0,14,0,14,0\n0,15,0,14,0\n0,16,0,16,0\n0,17,0,16,0\n0,18,0,18,0\n0,19,0,18,0\n0,20,0,20,0\n0,21,0,20,0\n0,22,0,22,0\n0,23,0,22,0\n0,24,0,24,0\n0,25,0,24,0\n0,26,0,26,0\n0,27,0,26,0\n0,28,0,28,0\n0,29,0,28,0\n0,30,0,30,0\n0,31,0,30,0\nlayout=independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\nbefore-touch: node=-1 pages=256 (-1=not resident/unverifiable)\nafter-touch: node=0 pages=256 (-1=not resident/unverifiable)\nbefore-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\nreader=1 requested=0:2 actual-before=0:2 node=0 actual-after=0:2 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\ninitializer=1 actual-before=0:2 node=0 actual-after=0:2 node=0\nafter-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\nreader=1 requested=0:2 actual-before=0:2 node=0 actual-after=0:2 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\ninitializer=1 actual-before=0:2 node=0 actual-after=0:2 node=0\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "parallel-init",
+      "repetition": 3,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "numa",
+          "variant": "parallel-init",
+          "size": 1048576,
+          "threads": 2,
+          "milliseconds": 0.1587,
+          "completed": 131072,
+          "details": "size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\numa_bench.exe",
+        "--variant",
+        "remote",
+        "--size",
+        "1048576"
+      ],
+      "exit_code": 77,
+      "timeout": false,
+      "process_seconds": 0.01657820000036736,
+      "stdout": "",
+      "stderr": "Windows: candidate subset in caller primary group intersect process mask/CPU sets; not complete cross-group affinity; fresh workers only\nbase_page_bytes=4096 allowed_memory_nodes=0 \ngroup,cpu,socket,core,node (same group/socket/core rows are SMT siblings)\n0,0,0,0,0\n0,1,0,0,0\n0,2,0,2,0\n0,3,0,2,0\n0,4,0,4,0\n0,5,0,4,0\n0,6,0,6,0\n0,7,0,6,0\n0,8,0,8,0\n0,9,0,8,0\n0,10,0,10,0\n0,11,0,10,0\n0,12,0,12,0\n0,13,0,12,0\n0,14,0,14,0\n0,15,0,14,0\n0,16,0,16,0\n0,17,0,16,0\n0,18,0,18,0\n0,19,0,18,0\n0,20,0,20,0\n0,21,0,20,0\n0,22,0,22,0\n0,23,0,22,0\n0,24,0,24,0\n0,25,0,24,0\n0,26,0,26,0\n0,27,0,26,0\n0,28,0,28,0\n0,29,0,28,0\n0,30,0,30,0\n0,31,0,30,0\nSKIP: only one eligible memory node; remote/interleave comparison unavailable\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "SKIP",
+      "variant": "remote",
+      "repetition": 3,
+      "warmup": false
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\numa_bench.exe",
+        "--variant",
+        "interleaved",
+        "--size",
+        "1048576"
+      ],
+      "exit_code": 77,
+      "timeout": false,
+      "process_seconds": 0.016711900001610047,
+      "stdout": "",
+      "stderr": "Windows: candidate subset in caller primary group intersect process mask/CPU sets; not complete cross-group affinity; fresh workers only\nbase_page_bytes=4096 allowed_memory_nodes=0 \ngroup,cpu,socket,core,node (same group/socket/core rows are SMT siblings)\n0,0,0,0,0\n0,1,0,0,0\n0,2,0,2,0\n0,3,0,2,0\n0,4,0,4,0\n0,5,0,4,0\n0,6,0,6,0\n0,7,0,6,0\n0,8,0,8,0\n0,9,0,8,0\n0,10,0,10,0\n0,11,0,10,0\n0,12,0,12,0\n0,13,0,12,0\n0,14,0,14,0\n0,15,0,14,0\n0,16,0,16,0\n0,17,0,16,0\n0,18,0,18,0\n0,19,0,18,0\n0,20,0,20,0\n0,21,0,20,0\n0,22,0,22,0\n0,23,0,22,0\n0,24,0,24,0\n0,25,0,24,0\n0,26,0,26,0\n0,27,0,26,0\n0,28,0,28,0\n0,29,0,28,0\n0,30,0,30,0\n0,31,0,30,0\nSKIP: only one eligible memory node; remote/interleave comparison unavailable\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "SKIP",
+      "variant": "interleaved",
+      "repetition": 3,
+      "warmup": false
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\numa_bench.exe",
+        "--variant",
+        "local",
+        "--size",
+        "1048576"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.017552799999975832,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"numa\",\"local\",1048576,1,0.1312,131072,\"size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\"\n",
+      "stderr": "Windows: candidate subset in caller primary group intersect process mask/CPU sets; not complete cross-group affinity; fresh workers only\nbase_page_bytes=4096 allowed_memory_nodes=0 \ngroup,cpu,socket,core,node (same group/socket/core rows are SMT siblings)\n0,0,0,0,0\n0,1,0,0,0\n0,2,0,2,0\n0,3,0,2,0\n0,4,0,4,0\n0,5,0,4,0\n0,6,0,6,0\n0,7,0,6,0\n0,8,0,8,0\n0,9,0,8,0\n0,10,0,10,0\n0,11,0,10,0\n0,12,0,12,0\n0,13,0,12,0\n0,14,0,14,0\n0,15,0,14,0\n0,16,0,16,0\n0,17,0,16,0\n0,18,0,18,0\n0,19,0,18,0\n0,20,0,20,0\n0,21,0,20,0\n0,22,0,22,0\n0,23,0,22,0\n0,24,0,24,0\n0,25,0,24,0\n0,26,0,26,0\n0,27,0,26,0\n0,28,0,28,0\n0,29,0,28,0\n0,30,0,30,0\n0,31,0,30,0\nlayout=independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\nbefore-touch: node=-1 pages=256 (-1=not resident/unverifiable)\nafter-touch: node=0 pages=256 (-1=not resident/unverifiable)\nbefore-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\nafter-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "local",
+      "repetition": 3,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "numa",
+          "variant": "local",
+          "size": 1048576,
+          "threads": 1,
+          "milliseconds": 0.1312,
+          "completed": 131072,
+          "details": "size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\numa_bench.exe",
+        "--variant",
+        "interleaved",
+        "--size",
+        "1048576"
+      ],
+      "exit_code": 77,
+      "timeout": false,
+      "process_seconds": 0.01668519999839191,
+      "stdout": "",
+      "stderr": "Windows: candidate subset in caller primary group intersect process mask/CPU sets; not complete cross-group affinity; fresh workers only\nbase_page_bytes=4096 allowed_memory_nodes=0 \ngroup,cpu,socket,core,node (same group/socket/core rows are SMT siblings)\n0,0,0,0,0\n0,1,0,0,0\n0,2,0,2,0\n0,3,0,2,0\n0,4,0,4,0\n0,5,0,4,0\n0,6,0,6,0\n0,7,0,6,0\n0,8,0,8,0\n0,9,0,8,0\n0,10,0,10,0\n0,11,0,10,0\n0,12,0,12,0\n0,13,0,12,0\n0,14,0,14,0\n0,15,0,14,0\n0,16,0,16,0\n0,17,0,16,0\n0,18,0,18,0\n0,19,0,18,0\n0,20,0,20,0\n0,21,0,20,0\n0,22,0,22,0\n0,23,0,22,0\n0,24,0,24,0\n0,25,0,24,0\n0,26,0,26,0\n0,27,0,26,0\n0,28,0,28,0\n0,29,0,28,0\n0,30,0,30,0\n0,31,0,30,0\nSKIP: only one eligible memory node; remote/interleave comparison unavailable\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "SKIP",
+      "variant": "interleaved",
+      "repetition": 4,
+      "warmup": false
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\numa_bench.exe",
+        "--variant",
+        "remote",
+        "--size",
+        "1048576"
+      ],
+      "exit_code": 77,
+      "timeout": false,
+      "process_seconds": 0.01650359999985085,
+      "stdout": "",
+      "stderr": "Windows: candidate subset in caller primary group intersect process mask/CPU sets; not complete cross-group affinity; fresh workers only\nbase_page_bytes=4096 allowed_memory_nodes=0 \ngroup,cpu,socket,core,node (same group/socket/core rows are SMT siblings)\n0,0,0,0,0\n0,1,0,0,0\n0,2,0,2,0\n0,3,0,2,0\n0,4,0,4,0\n0,5,0,4,0\n0,6,0,6,0\n0,7,0,6,0\n0,8,0,8,0\n0,9,0,8,0\n0,10,0,10,0\n0,11,0,10,0\n0,12,0,12,0\n0,13,0,12,0\n0,14,0,14,0\n0,15,0,14,0\n0,16,0,16,0\n0,17,0,16,0\n0,18,0,18,0\n0,19,0,18,0\n0,20,0,20,0\n0,21,0,20,0\n0,22,0,22,0\n0,23,0,22,0\n0,24,0,24,0\n0,25,0,24,0\n0,26,0,26,0\n0,27,0,26,0\n0,28,0,28,0\n0,29,0,28,0\n0,30,0,30,0\n0,31,0,30,0\nSKIP: only one eligible memory node; remote/interleave comparison unavailable\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "SKIP",
+      "variant": "remote",
+      "repetition": 4,
+      "warmup": false
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\numa_bench.exe",
+        "--variant",
+        "parallel-init",
+        "--size",
+        "1048576"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.019957399999839254,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"numa\",\"parallel-init\",1048576,2,0.2211,131072,\"size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\"\n",
+      "stderr": "Windows: candidate subset in caller primary group intersect process mask/CPU sets; not complete cross-group affinity; fresh workers only\nbase_page_bytes=4096 allowed_memory_nodes=0 \ngroup,cpu,socket,core,node (same group/socket/core rows are SMT siblings)\n0,0,0,0,0\n0,1,0,0,0\n0,2,0,2,0\n0,3,0,2,0\n0,4,0,4,0\n0,5,0,4,0\n0,6,0,6,0\n0,7,0,6,0\n0,8,0,8,0\n0,9,0,8,0\n0,10,0,10,0\n0,11,0,10,0\n0,12,0,12,0\n0,13,0,12,0\n0,14,0,14,0\n0,15,0,14,0\n0,16,0,16,0\n0,17,0,16,0\n0,18,0,18,0\n0,19,0,18,0\n0,20,0,20,0\n0,21,0,20,0\n0,22,0,22,0\n0,23,0,22,0\n0,24,0,24,0\n0,25,0,24,0\n0,26,0,26,0\n0,27,0,26,0\n0,28,0,28,0\n0,29,0,28,0\n0,30,0,30,0\n0,31,0,30,0\nlayout=independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\nbefore-touch: node=-1 pages=256 (-1=not resident/unverifiable)\nafter-touch: node=0 pages=256 (-1=not resident/unverifiable)\nbefore-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\nreader=1 requested=0:2 actual-before=0:2 node=0 actual-after=0:2 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\ninitializer=1 actual-before=0:2 node=0 actual-after=0:2 node=0\nafter-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\nreader=1 requested=0:2 actual-before=0:2 node=0 actual-after=0:2 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\ninitializer=1 actual-before=0:2 node=0 actual-after=0:2 node=0\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "parallel-init",
+      "repetition": 4,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "numa",
+          "variant": "parallel-init",
+          "size": 1048576,
+          "threads": 2,
+          "milliseconds": 0.2211,
+          "completed": 131072,
+          "details": "size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\numa_bench.exe",
+        "--variant",
+        "local",
+        "--size",
+        "1048576"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01861520000056771,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"numa\",\"local\",1048576,1,0.1639,131072,\"size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\"\n",
+      "stderr": "Windows: candidate subset in caller primary group intersect process mask/CPU sets; not complete cross-group affinity; fresh workers only\nbase_page_bytes=4096 allowed_memory_nodes=0 \ngroup,cpu,socket,core,node (same group/socket/core rows are SMT siblings)\n0,0,0,0,0\n0,1,0,0,0\n0,2,0,2,0\n0,3,0,2,0\n0,4,0,4,0\n0,5,0,4,0\n0,6,0,6,0\n0,7,0,6,0\n0,8,0,8,0\n0,9,0,8,0\n0,10,0,10,0\n0,11,0,10,0\n0,12,0,12,0\n0,13,0,12,0\n0,14,0,14,0\n0,15,0,14,0\n0,16,0,16,0\n0,17,0,16,0\n0,18,0,18,0\n0,19,0,18,0\n0,20,0,20,0\n0,21,0,20,0\n0,22,0,22,0\n0,23,0,22,0\n0,24,0,24,0\n0,25,0,24,0\n0,26,0,26,0\n0,27,0,26,0\n0,28,0,28,0\n0,29,0,28,0\n0,30,0,30,0\n0,31,0,30,0\nlayout=independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\nbefore-touch: node=-1 pages=256 (-1=not resident/unverifiable)\nafter-touch: node=0 pages=256 (-1=not resident/unverifiable)\nbefore-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\nafter-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "local",
+      "repetition": 4,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "numa",
+          "variant": "local",
+          "size": 1048576,
+          "threads": 1,
+          "milliseconds": 0.1639,
+          "completed": 131072,
+          "details": "size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\numa_bench.exe",
+        "--variant",
+        "firsttouch",
+        "--size",
+        "1048576"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.018260300001202268,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"numa\",\"firsttouch\",1048576,2,0.1452,131072,\"size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\"\n",
+      "stderr": "Windows: candidate subset in caller primary group intersect process mask/CPU sets; not complete cross-group affinity; fresh workers only\nbase_page_bytes=4096 allowed_memory_nodes=0 \ngroup,cpu,socket,core,node (same group/socket/core rows are SMT siblings)\n0,0,0,0,0\n0,1,0,0,0\n0,2,0,2,0\n0,3,0,2,0\n0,4,0,4,0\n0,5,0,4,0\n0,6,0,6,0\n0,7,0,6,0\n0,8,0,8,0\n0,9,0,8,0\n0,10,0,10,0\n0,11,0,10,0\n0,12,0,12,0\n0,13,0,12,0\n0,14,0,14,0\n0,15,0,14,0\n0,16,0,16,0\n0,17,0,16,0\n0,18,0,18,0\n0,19,0,18,0\n0,20,0,20,0\n0,21,0,20,0\n0,22,0,22,0\n0,23,0,22,0\n0,24,0,24,0\n0,25,0,24,0\n0,26,0,26,0\n0,27,0,26,0\n0,28,0,28,0\n0,29,0,28,0\n0,30,0,30,0\n0,31,0,30,0\nlayout=independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\nbefore-touch: node=-1 pages=256 (-1=not resident/unverifiable)\nafter-touch: node=0 pages=256 (-1=not resident/unverifiable)\nbefore-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\nreader=1 requested=0:2 actual-before=0:2 node=0 actual-after=0:2 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\nafter-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\nreader=1 requested=0:2 actual-before=0:2 node=0 actual-after=0:2 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "firsttouch",
+      "repetition": 4,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "numa",
+          "variant": "firsttouch",
+          "size": 1048576,
+          "threads": 2,
+          "milliseconds": 0.1452,
+          "completed": 131072,
+          "details": "size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\numa_bench.exe",
+        "--variant",
+        "parallel-init",
+        "--size",
+        "1048576"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.017943499999091728,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"numa\",\"parallel-init\",1048576,2,0.2389,131072,\"size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\"\n",
+      "stderr": "Windows: candidate subset in caller primary group intersect process mask/CPU sets; not complete cross-group affinity; fresh workers only\nbase_page_bytes=4096 allowed_memory_nodes=0 \ngroup,cpu,socket,core,node (same group/socket/core rows are SMT siblings)\n0,0,0,0,0\n0,1,0,0,0\n0,2,0,2,0\n0,3,0,2,0\n0,4,0,4,0\n0,5,0,4,0\n0,6,0,6,0\n0,7,0,6,0\n0,8,0,8,0\n0,9,0,8,0\n0,10,0,10,0\n0,11,0,10,0\n0,12,0,12,0\n0,13,0,12,0\n0,14,0,14,0\n0,15,0,14,0\n0,16,0,16,0\n0,17,0,16,0\n0,18,0,18,0\n0,19,0,18,0\n0,20,0,20,0\n0,21,0,20,0\n0,22,0,22,0\n0,23,0,22,0\n0,24,0,24,0\n0,25,0,24,0\n0,26,0,26,0\n0,27,0,26,0\n0,28,0,28,0\n0,29,0,28,0\n0,30,0,30,0\n0,31,0,30,0\nlayout=independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\nbefore-touch: node=-1 pages=256 (-1=not resident/unverifiable)\nafter-touch: node=0 pages=256 (-1=not resident/unverifiable)\nbefore-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\nreader=1 requested=0:2 actual-before=0:2 node=0 actual-after=0:2 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\ninitializer=1 actual-before=0:2 node=0 actual-after=0:2 node=0\nafter-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\nreader=1 requested=0:2 actual-before=0:2 node=0 actual-after=0:2 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\ninitializer=1 actual-before=0:2 node=0 actual-after=0:2 node=0\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "parallel-init",
+      "repetition": 5,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "numa",
+          "variant": "parallel-init",
+          "size": 1048576,
+          "threads": 2,
+          "milliseconds": 0.2389,
+          "completed": 131072,
+          "details": "size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\numa_bench.exe",
+        "--variant",
+        "firsttouch",
+        "--size",
+        "1048576"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.018157000000428525,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"numa\",\"firsttouch\",1048576,2,0.1406,131072,\"size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\"\n",
+      "stderr": "Windows: candidate subset in caller primary group intersect process mask/CPU sets; not complete cross-group affinity; fresh workers only\nbase_page_bytes=4096 allowed_memory_nodes=0 \ngroup,cpu,socket,core,node (same group/socket/core rows are SMT siblings)\n0,0,0,0,0\n0,1,0,0,0\n0,2,0,2,0\n0,3,0,2,0\n0,4,0,4,0\n0,5,0,4,0\n0,6,0,6,0\n0,7,0,6,0\n0,8,0,8,0\n0,9,0,8,0\n0,10,0,10,0\n0,11,0,10,0\n0,12,0,12,0\n0,13,0,12,0\n0,14,0,14,0\n0,15,0,14,0\n0,16,0,16,0\n0,17,0,16,0\n0,18,0,18,0\n0,19,0,18,0\n0,20,0,20,0\n0,21,0,20,0\n0,22,0,22,0\n0,23,0,22,0\n0,24,0,24,0\n0,25,0,24,0\n0,26,0,26,0\n0,27,0,26,0\n0,28,0,28,0\n0,29,0,28,0\n0,30,0,30,0\n0,31,0,30,0\nlayout=independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\nbefore-touch: node=-1 pages=256 (-1=not resident/unverifiable)\nafter-touch: node=0 pages=256 (-1=not resident/unverifiable)\nbefore-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\nreader=1 requested=0:2 actual-before=0:2 node=0 actual-after=0:2 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\nafter-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\nreader=1 requested=0:2 actual-before=0:2 node=0 actual-after=0:2 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "firsttouch",
+      "repetition": 5,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "numa",
+          "variant": "firsttouch",
+          "size": 1048576,
+          "threads": 2,
+          "milliseconds": 0.1406,
+          "completed": 131072,
+          "details": "size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\numa_bench.exe",
+        "--variant",
+        "local",
+        "--size",
+        "1048576"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01873660000092059,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"numa\",\"local\",1048576,1,0.1187,131072,\"size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\"\n",
+      "stderr": "Windows: candidate subset in caller primary group intersect process mask/CPU sets; not complete cross-group affinity; fresh workers only\nbase_page_bytes=4096 allowed_memory_nodes=0 \ngroup,cpu,socket,core,node (same group/socket/core rows are SMT siblings)\n0,0,0,0,0\n0,1,0,0,0\n0,2,0,2,0\n0,3,0,2,0\n0,4,0,4,0\n0,5,0,4,0\n0,6,0,6,0\n0,7,0,6,0\n0,8,0,8,0\n0,9,0,8,0\n0,10,0,10,0\n0,11,0,10,0\n0,12,0,12,0\n0,13,0,12,0\n0,14,0,14,0\n0,15,0,14,0\n0,16,0,16,0\n0,17,0,16,0\n0,18,0,18,0\n0,19,0,18,0\n0,20,0,20,0\n0,21,0,20,0\n0,22,0,22,0\n0,23,0,22,0\n0,24,0,24,0\n0,25,0,24,0\n0,26,0,26,0\n0,27,0,26,0\n0,28,0,28,0\n0,29,0,28,0\n0,30,0,30,0\n0,31,0,30,0\nlayout=independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096\nbefore-touch: node=-1 pages=256 (-1=not resident/unverifiable)\nafter-touch: node=0 pages=256 (-1=not resident/unverifiable)\nbefore-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\nafter-timing: node=0 pages=256 (-1=not resident/unverifiable)\nreader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0\ninitializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "local",
+      "repetition": 5,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "numa",
+          "variant": "local",
+          "size": 1048576,
+          "threads": 1,
+          "milliseconds": 0.1187,
+          "completed": 131072,
+          "details": "size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\numa_bench.exe",
+        "--variant",
+        "remote",
+        "--size",
+        "1048576"
+      ],
+      "exit_code": 77,
+      "timeout": false,
+      "process_seconds": 0.016258399999060202,
+      "stdout": "",
+      "stderr": "Windows: candidate subset in caller primary group intersect process mask/CPU sets; not complete cross-group affinity; fresh workers only\nbase_page_bytes=4096 allowed_memory_nodes=0 \ngroup,cpu,socket,core,node (same group/socket/core rows are SMT siblings)\n0,0,0,0,0\n0,1,0,0,0\n0,2,0,2,0\n0,3,0,2,0\n0,4,0,4,0\n0,5,0,4,0\n0,6,0,6,0\n0,7,0,6,0\n0,8,0,8,0\n0,9,0,8,0\n0,10,0,10,0\n0,11,0,10,0\n0,12,0,12,0\n0,13,0,12,0\n0,14,0,14,0\n0,15,0,14,0\n0,16,0,16,0\n0,17,0,16,0\n0,18,0,18,0\n0,19,0,18,0\n0,20,0,20,0\n0,21,0,20,0\n0,22,0,22,0\n0,23,0,22,0\n0,24,0,24,0\n0,25,0,24,0\n0,26,0,26,0\n0,27,0,26,0\n0,28,0,28,0\n0,29,0,28,0\n0,30,0,30,0\n0,31,0,30,0\nSKIP: only one eligible memory node; remote/interleave comparison unavailable\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "SKIP",
+      "variant": "remote",
+      "repetition": 5,
+      "warmup": false
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\numa_bench.exe",
+        "--variant",
+        "interleaved",
+        "--size",
+        "1048576"
+      ],
+      "exit_code": 77,
+      "timeout": false,
+      "process_seconds": 0.016477199998917058,
+      "stdout": "",
+      "stderr": "Windows: candidate subset in caller primary group intersect process mask/CPU sets; not complete cross-group affinity; fresh workers only\nbase_page_bytes=4096 allowed_memory_nodes=0 \ngroup,cpu,socket,core,node (same group/socket/core rows are SMT siblings)\n0,0,0,0,0\n0,1,0,0,0\n0,2,0,2,0\n0,3,0,2,0\n0,4,0,4,0\n0,5,0,4,0\n0,6,0,6,0\n0,7,0,6,0\n0,8,0,8,0\n0,9,0,8,0\n0,10,0,10,0\n0,11,0,10,0\n0,12,0,12,0\n0,13,0,12,0\n0,14,0,14,0\n0,15,0,14,0\n0,16,0,16,0\n0,17,0,16,0\n0,18,0,18,0\n0,19,0,18,0\n0,20,0,20,0\n0,21,0,20,0\n0,22,0,22,0\n0,23,0,22,0\n0,24,0,24,0\n0,25,0,24,0\n0,26,0,26,0\n0,27,0,26,0\n0,28,0,28,0\n0,29,0,28,0\n0,30,0,30,0\n0,31,0,30,0\nSKIP: only one eligible memory node; remote/interleave comparison unavailable\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "SKIP",
+      "variant": "interleaved",
+      "repetition": 5,
+      "warmup": false
+    }
+  ],
+  "summaries": [
+    {
+      "case": {
+        "suite": "numa",
+        "variant": "parallel-init",
+        "size": 1048576,
+        "threads": 2,
+        "completed": 131072
+      },
+      "sample_details": [
+        "size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096",
+        "size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096",
+        "size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096",
+        "size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096",
+        "size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096"
+      ],
+      "samples_ms": [
+        0.6051,
+        0.128,
+        0.1587,
+        0.2211,
+        0.2389
+      ],
+      "median_ms": 0.2211,
+      "min_ms": 0.128,
+      "max_ms": 0.6051,
+      "stdev_ms": 0.19248472147160148
+    },
+    {
+      "case": {
+        "suite": "numa",
+        "variant": "local",
+        "size": 1048576,
+        "threads": 1,
+        "completed": 131072
+      },
+      "sample_details": [
+        "size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096",
+        "size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096",
+        "size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096",
+        "size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096",
+        "size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096"
+      ],
+      "samples_ms": [
+        0.1607,
+        0.1511,
+        0.1312,
+        0.1639,
+        0.1187
+      ],
+      "median_ms": 0.1511,
+      "min_ms": 0.1187,
+      "max_ms": 0.1639,
+      "stdev_ms": 0.01951261130653711
+    },
+    {
+      "case": {
+        "suite": "numa",
+        "variant": "firsttouch",
+        "size": 1048576,
+        "threads": 2,
+        "completed": 131072
+      },
+      "sample_details": [
+        "size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096",
+        "size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096",
+        "size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096",
+        "size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096",
+        "size=bytes; completed=uint64 words; includes reader creation binding page-pointer scan join; excludes allocation initial touch pre-read queries; independent-base-page-reservations; reservations=256; allocation_granularity=65536; page_bytes=4096"
+      ],
+      "samples_ms": [
+        0.1593,
+        0.3388,
+        0.1532,
+        0.1452,
+        0.1406
+      ],
+      "median_ms": 0.1532,
+      "min_ms": 0.1406,
+      "max_ms": 0.3388,
+      "stdev_ms": 0.08492980631085885
+    }
+  ]
+}

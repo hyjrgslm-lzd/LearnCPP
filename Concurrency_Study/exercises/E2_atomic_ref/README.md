@@ -1,45 +1,34 @@
-# 练习 E-2：atomic_ref 引用既有对象
+# E2：对齐与原子访问阶段
 
-> 详尽版见 `../../07-模块E-原子操作基础.md` 的 练习 E-2。
+完整正文见[对齐与原子访问阶段](../../topics/atomics/03-atomic-ref.md)。[main.cpp](main.cpp) 是安全、有限结束的 Starter；[solution.cpp](solution.cpp) 是含运行检查的 Reference。默认 C++23。
 
-## 目标
+## Part 1：并发阶段只经 atomic_ref 访问
 
-理解 `std::atomic_ref<T>`（原子引用，`<atomic>`，**C++20**）：给一个“本来就是普通非原子类型”的既有对象（数组元素、结构体字段）临时套上原子访问，而**无需把该类型本身声明成 `std::atomic`**。用 `atomic_ref` 对普通 `int` 数组的某元素做多线程并发累加（结果精确无丢更新），并讲清它的对齐（alignment）与生命周期（lifetime）要求。
+将 Starter 的单个 cell 扩展为四个 cell 的数组。四个 worker 各引用 data[2].value 并做 2000 次 relaxed fetch_add；全部结束后检查目标为 8000、其余元素为 0。Reference 在 main 的第一段完整实现。
 
-## 前置理解
+答案：每个 cell 都按 required_alignment 对齐，value 是起始字段；多个 worker 的 ref 指向同一普通对象，RMW 保留每次更新。把 alignas 只加在 int 数组首地址上不普遍保证各元素符合更严格的对齐。
 
-- `atomic_ref` 是**引用语义**：它不拥有数据，只是把原子操作叠加到一个既有对象上。多个线程各自构造指向同一对象的 `atomic_ref` 是合法且预期的用法。
-- 它解决的痛点：你有一片大的普通 `int[]`（别处当普通数组高效使用），只想在某个并发阶段对个别元素做原子访问——不必把整个数组改成 `atomic<int>[]`。
-- 两条硬性要求：
-  - **可平凡复制（trivially copyable）**：`T` 必须满足；`int` 满足。
-  - **对齐**：被引用对象至少要满足 `atomic_ref<T>::required_alignment`，否则是 UB。对“可能未对齐”的对象（打包结构体字段等）要特别小心。
-- **生命周期约束**：`atomic_ref` 不延长对象寿命；只要还有 `atomic_ref` 活着，被引用对象就必须存活，且对它的**全部访问都要经由 `atomic_ref`**（不能一边 `atomic_ref` 一边普通读写同一对象）。
-- 默认内存序仍是 `seq_cst`，理由同 E-1，细节留模块 F。
+## Part 2：证明普通访问恢复点
 
-## 必做任务
+Reference 检查所有元素地址，打印 required_alignment、alignof(int) 与运行期无锁属性。另开作用域复制 ref，通过 const 包装器 store(123)，通过另一个 ref.load 读取，作用域结束后再普通读字段。
 
-1. `// TODO [必做 1]`：对普通 `int data[4]` 的热点元素 `data[2]`，在 8 个线程里各自构造 `std::atomic_ref<int>` 并 `fetch_add(1)` 累加 10 万次，验证结果精确、其余元素不受影响。
-2. `// TODO [必做 2]`：打印 `required_alignment` / `alignof` / `is_always_lock_free`；用“先经 `atomic_ref` 原子写、待其析构后再普通读”的合法顺序体会生命周期边界。
+答案：ref 不拥有目标，也不延长目标寿命。有任一 ref 存活时，目标所有访问都应经这些 ref；不是“只要没有同时写就可以随便普通读”。worker 局部 ref 在返回前销毁，全部 get 后才可恢复本题的普通访问。
 
-## 进阶任务
+## 复盘答案
 
-- 思考：把 `atomic_ref` 用在 `std::vector<int>` 的元素上要注意什么（重新分配 reallocation 会使引用失效）？什么场景下 `atomic_ref` 比 `atomic<T>` 更合适？
+vector 扩容可能移动目标使 ref 悬垂，erase/clear 也可能结束寿命；reserve 不能包办全部保护。同一个结构体的整体 ref 与它的成员 ref 不能同时重叠引用。若字段从始至终都是共享原子状态且能控制声明，直接 atomic 通常更容易维护。
 
-## 验收点
+这两个 Part 的数值、地址与访问阶段都在 Reference 中有检查；不尝试构造未对齐 ref 来“看会不会崩溃”。
 
-- 能解释 `atomic_ref` 与 `atomic<T>` 的区别：前者是引用语义、套在既有对象上，后者拥有存储。
-- 能用 `atomic_ref` 对普通数组元素做无丢更新的并发累加。
-- 能说出 `atomic_ref` 的对齐要求与生命周期约束（存活期间只经 ref 访问、对象不能更早销毁）。
+## 构建与验收
 
-## 对应官方参考
+从 `Concurrency_Study/exercises` 执行：
 
-- cppreference [`std::atomic_ref`](https://en.cppreference.com/w/cpp/atomic/atomic_ref) / [`fetch_add`](https://en.cppreference.com/w/cpp/atomic/atomic_ref/fetch_add)
-- 提案 P0019R8 "Atomic Ref"
-- 《C++ Concurrency in Action, 2nd ed.》(Williams) 第 5 章 5.2.5
-
-## 构建运行
-
-```bash
-cmake --build build-vs2026 --target E2_atomic_ref --config Release
-./build-vs2026/E2_atomic_ref/Release/E2_atomic_ref.exe
+```powershell
+cmake -S E2_atomic_ref -B build/E2_atomic_ref -G "Visual Studio 18 2026" -A x64
+cmake --build build/E2_atomic_ref --config Release
+./build/E2_atomic_ref/Release/E2_atomic_ref.exe
+ctest --test-dir build/E2_atomic_ref -C Release --output-on-failure
 ```
+
+VS2026 生成器需要 CMake 4.2 或更新版。CTest 运行 `E2_atomic_ref_reference` 并设进程超时；cs::check 在 Release 仍有效。通过表示本次检查成功，不替代正文中的协议证明。规范链接与版本说明见对应正文。

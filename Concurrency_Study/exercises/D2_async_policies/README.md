@@ -1,43 +1,48 @@
-# 练习 D-2：std::async 启动策略
+# D2：用事件关系检查 async 策略和最后引用释放
 
-> 详尽版见 `../../05-模块D-future与异步任务.md` 的 练习 D-2。
+完整推导见 [03 第 6—8 节](../../chapters/03-threads-and-execution.md)。[main.cpp](main.cpp) 是 deferred 的安全起点；[solution.cpp](solution.cpp) 是全部必做内容。不要用 sleep、固定启动先后或指定加速倍数作为答案。
 
-## 目标
+## Part 与答案
 
-用 `std::async` 拿回 `future`，对比三种启动策略在**执行线程**与**执行时机**上的差异；正面演示并解释 future 模型最著名的陷阱：**`std::async` 返回的 future 析构会阻塞**，不保存返回值（临时 future）会让多个 async 调用退化成串行。
+### Part 1：显式策略与默认观察
 
-## 前置理解
+对应 `part1_policies()`。deferred 的零时长查询返回 deferred 且调用计数为零；wait 在等待线程执行任务一次，get 不重跑。显式 async 用 entered promise 发出“函数体已开始”的信号，再等待 release；主线程先收到 entered，检查任务仍未完成，开放门闩后 get 得到另一个线程 ID。
 
-- 三种策略：
-  - `std::launch::async`：**保证**新线程、**立即**开跑（不等 `get()`）。
-  - `std::launch::deferred`：**惰性**；直到 `get()`/`wait()` 才在**调用线程**上**同步**执行（无新线程）。
-  - 默认（`async | deferred`）：实现自选，**不可假设是异步**。
-- **析构阻塞陷阱**：与 `launch::async` 关联的 future，其析构函数会阻塞到任务结束（仿佛隐式 `wait()`）。临时 future 在语句分号处即析构 → 当场阻塞 → 多个调用串行。要并行须把每个 future 存进变量（如 `std::vector<std::future<T>>`）。
-- 只有 `std::async` 返回的（async 策略）future 有此特例；普通 promise/future、packaged_task 的 future 析构**不**阻塞。
+这是同步协议推导，不是 async 返回前必已执行的保证。默认策略只打印本次状态与线程 ID，不要求固定选择，亦不把实现扩展错误地归为某个强制结果。
 
-## 必做任务
+### Part 2：临时句柄和保存句柄
 
-1. `// TODO [必做 1]`：用三种策略各调一次，打印执行线程 id 与 `wait_for(0s)` 状态，对比线程与时机差异。
-2. `// TODO [必做 2]`：反面（不保存 future → 串行，计时 ≈ N×单任务耗时）vs 正面（存进 vector → 并行，计时 ≈ 单任务耗时）。
+对应 `part2_temporary_and_retained()`。不保存 async future 的循环在每轮完整表达式结束时释放最后关联，下一轮前任务已完成，所以普通 completed 可以逐轮核验。任务只做不抛异常的有界递增；实际业务应保留 future 并 get 处理错误。
 
-## 进阶任务
+保存三个 future 的版本先完成三个发起调用；每个任务的完成必须经过尚未释放的 gate，因此结果均未就绪。这里没有逐任务 entered 握手，timeout 不能说明任务是否已经开始，更不能定位它正在 gate.wait 内。随后放行，逐项得到 0、10、20。答案是“允许重叠未完成任务”，不能写成“一定三倍快”。
 
-- `// TODO [进阶 1]`：对 deferred future 多次 `wait_for(0s)` 始终为 `deferred`，`get()` 才在主线程触发；并让 async 任务抛异常，观察 `get()` 重新抛出。
+### Part 3：释放第一份与最后一份
 
-## 验收点
+对应 `part3_last_reference()`。async future.share 后复制为两个句柄，先清空第一份仍能继续打开 gate；清空最后一份后，普通 completed 必为 1。这里的释放通过赋值发生，说明等待边界不限于析构。
 
-- 能用三种策略各跑一次并解释“线程/时机”差异。
-- 能用计时数据证明“不保存 future → 串行”“保存 → 并行”，并指出根因是 future 析构阻塞。
-- 能说清 `deferred` 是在 `get()` 调用线程上的同步惰性求值，及默认策略的不确定性。
+再对照普通 promise 的 future：它可以在设值前销毁，随后 provider.set_value 仍能执行。未触发的 deferred future 销毁也不会执行闭包。不能推广成“shared_future 析构从不等”或“所有 future 析构都等”。
 
-## 对应官方参考
+### Part 4：两种策略的业务异常
 
-- cppreference [`std::async`](https://en.cppreference.com/w/cpp/thread/async) / [`std::launch`](https://en.cppreference.com/w/cpp/thread/launch) / [`std::future::wait_for`](https://en.cppreference.com/w/cpp/thread/future/wait_for)
-- 《C++ Concurrency in Action, 2nd ed.》(Williams) 第 4 章 4.2.1；Meyers《Effective Modern C++》Item 35–36
+对应 `part4_exceptions()`。async 与 deferred 都让被调用函数抛 task_failure；wait 不重抛存储异常，get 重抛指定消息并使普通 future 无效。调用方创建 async 本身时的异常属于另一个阶段。
 
-## 构建运行
+## 退出协议与验收
 
-```bash
-cmake --build build-vs2026 --target D2_async_policies --config Release
-./build-vs2026/D2_async_policies/Release/D2_async_policies.exe
+保存 futures 的拥有者在 release promise 之前声明。异常展开时 release 先销毁，gate.wait 因 broken_promise 状态 ready 而返回；任务完成后才释放 async 句柄。gate 只用 wait，不用 get，故放弃也可作为展开时放行。修改声明顺序可能制造“join 等 gate、gate 等 join”的环。
+
+Reference 输出四个 Part 与 `D2_reference OK`。进程级超时会抓住等待协议回归。程序不报告性能提升；临时 future 语义对照是定义良好的运行，不是开启 UB 的错误实验。
+
+规范：[async](https://eel.is/c++draft/futures.async)、[共享状态](https://eel.is/c++draft/futures.state)。按正文说明用 N5050 固定条款核对，eel 为滚动页。
+
+## 构建与运行
+
+从 `Concurrency_Study/exercises` 执行（VS2026 生成器需要 CMake 4.2+）：
+
+```powershell
+cmake -S D2_async_policies -B build/D2_async_policies -G "Visual Studio 18 2026" -A x64
+cmake --build build/D2_async_policies --config Release
+./build/D2_async_policies/Release/D2_async_policies.exe
+ctest --test-dir build/D2_async_policies -C Release --output-on-failure
 ```
+
+统一构建注册的检查目标是 `D2_async_policies_reference`，CTest 使用进程级超时。

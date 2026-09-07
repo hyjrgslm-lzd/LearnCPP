@@ -1,0 +1,2626 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "source_root": "P:\\C++Code\\LearnCPP\\Concurrency_Study",
+  "source_sha256": "9ec7e92b69a9860f33f40bba0d6eb5d18d58065011ae4d4b159a23ffa066dcb6",
+  "environment": {
+    "python": "3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]",
+    "os": "Windows-11-10.0.26220-SP0",
+    "machine": "AMD64",
+    "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+    "logical_cpus": 32,
+    "executable_sha256": "5a1bbac05eea9955870ed80ca5b081570e3b97b25cccb75a4cceeb05a6c69d73",
+    "cmake_cache": "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\CMakeCache.txt",
+    "cmake_settings": [
+      "CMAKE_CXX_FLAGS:STRING=/DWIN32 /D_WINDOWS /EHsc",
+      "CMAKE_CXX_FLAGS_DEBUG:STRING=/Ob0 /Od /RTC1",
+      "CMAKE_CXX_FLAGS_MINSIZEREL:STRING=/O1 /Ob1 /DNDEBUG",
+      "CMAKE_CXX_FLAGS_RELEASE:STRING=/O2 /Ob2 /DNDEBUG",
+      "CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=/O2 /Ob1 /DNDEBUG",
+      "CMAKE_GENERATOR_INSTANCE:UNINITIALIZED=G:/Visual Studio 2026 Community",
+      "CONCURRENCY_STUDY_BUILD_BENCHMARKS:BOOL=ON",
+      "CONCURRENCY_STUDY_BUILD_REFERENCE:BOOL=ON",
+      "CONCURRENCY_STUDY_ENABLE_CXX26:BOOL=OFF",
+      "CONCURRENCY_STUDY_ENABLE_STDEXEC:BOOL=ON",
+      "CONCURRENCY_STUDY_ENABLE_UNSAFE_DEMOS:BOOL=OFF",
+      "CONCURRENCY_STUDY_ENABLE_XSIMD:BOOL=ON",
+      "CONCURRENCY_STUDY_FETCH_DEPS:BOOL=ON",
+      "CONCURRENCY_STUDY_STDEXEC_SOURCE_DIR:PATH=P:/C++Code/LearnCPP/Concurrency_Study/exercises/cmake/../third_party/stdexec",
+      "CONCURRENCY_STUDY_TEST_FAST_MATH:BOOL=ON",
+      "CONCURRENCY_STUDY_TEST_STARTERS:BOOL=OFF",
+      "CONCURRENCY_STUDY_XSIMD_SOURCE_DIR:PATH=P:/C++Code/LearnCPP/Concurrency_Study/exercises/cmake/../third_party/xsimd",
+      "CMAKE_CXX_FLAGS-ADVANCED:INTERNAL=1",
+      "CMAKE_CXX_FLAGS_DEBUG-ADVANCED:INTERNAL=1",
+      "CMAKE_CXX_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1",
+      "CMAKE_CXX_FLAGS_RELEASE-ADVANCED:INTERNAL=1",
+      "CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1",
+      "CMAKE_GENERATOR:INTERNAL=Visual Studio 18 2026",
+      "CONCURRENCY_STUDY_STDEXEC_REVISION:INTERNAL=6d7ad689f4d4831c5136e4abe1c601f9a3b64e43",
+      "CONCURRENCY_STUDY_XSIMD_REVISION:INTERNAL=1f8dd9c8e162968d9b4ff0251c56d431b8777f36",
+      "CS_HAS_PARALLEL_ALGORITHMS:INTERNAL=1"
+    ],
+    "compiler_configuration": "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\CMakeFiles\\4.2.3\\CMakeCXXCompiler.cmake",
+    "compiler_identity": [
+      "set(CMAKE_CXX_COMPILER \"G:/Visual Studio 2026 Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe\")",
+      "set(CMAKE_CXX_COMPILER_ID \"MSVC\")",
+      "set(CMAKE_CXX_COMPILER_VERSION \"19.51.36256.0\")",
+      "set(CMAKE_CXX_PLATFORM_ID \"Windows\")"
+    ]
+  },
+  "runner_command": [
+    "Concurrency_Study/exercises/tools/run_benchmarks.py",
+    "--exe",
+    "Concurrency_Study/exercises/build/full-windows/Capstone3_parallel_compute/Release/Capstone3_parallel_compute_benchmark.exe",
+    "--check",
+    "Concurrency_Study/exercises/build/full-windows/Capstone3_parallel_compute/Release/Capstone3_parallel_compute_reference.exe",
+    "--check",
+    "Concurrency_Study/exercises/build/full-windows/runtime_tests/Release/runtime_numeric_test.exe",
+    "--variant",
+    "naive",
+    "--variant",
+    "tiled",
+    "--variant",
+    "threaded",
+    "--variant",
+    "sse2",
+    "--variant",
+    "reduce_plain",
+    "--variant",
+    "reduce_threaded",
+    "--variant",
+    "sort_plain",
+    "--variant",
+    "par",
+    "--variant",
+    "reduce_par",
+    "--variant",
+    "sort_par",
+    "--samples",
+    "5",
+    "--warmups",
+    "1",
+    "--seed",
+    "42",
+    "--timeout",
+    "30",
+    "--output",
+    "Concurrency_Study/references/measurements/final-20260908/cap3",
+    "--",
+    "--size",
+    "48",
+    "--block",
+    "16",
+    "--threads",
+    "2",
+    "--items",
+    "65537"
+  ],
+  "seed": 42,
+  "allow_partial": false,
+  "timing": "C++ reported interval; external process duration recorded separately",
+  "threads_field": "positive: reported thread count; zero: implementation-managed count was not measured",
+  "checks": [
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_reference.exe"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.026001299998824834,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_gemm\",\"naive\",7,1,0.0003,49,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n\"cap3_gemm\",\"tiled\",7,1,0.0003,49,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n\"cap3_gemm\",\"threaded\",7,2,0.116,49,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n\"cap3_gemm\",\"par\",7,0,0.0006,49,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n\"cap3_gemm\",\"sse2\",7,1,0.0003,49,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n\"cap3_reduce\",\"reduce_plain\",257,1,0.0002,257,\"double accumulation; creation/join included; validation excluded; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n\"cap3_reduce\",\"reduce_par\",257,0,0.004,257,\"double accumulation; creation/join included; validation excluded; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n\"cap3_reduce\",\"reduce_threaded\",257,2,0.1203,257,\"double accumulation; creation/join included; validation excluded; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n\"cap3_sort\",\"sort_plain\",257,1,0.005,257,\"sort only; copy/check excluded; caller=1; workers=0; threads=1: caller\"\n\"cap3_sort\",\"sort_par\",257,0,0.0443,257,\"sort only; copy/check excluded; caller=1; workers=unmeasured; threads=0: backend unmeasured\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "executable_sha256": "7e99c7a087a2e2b17ecef738f84fc4cf46805fb18dab057466325dfbcffc2f2c"
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\runtime_tests\\Release\\runtime_numeric_test.exe"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.021711900000809692,
+      "stdout": "SKIP backend 3\nnumeric_test OK: lengths, tails, alignment, permutations, precision, IEEE policy, GEMM, workers\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "executable_sha256": "b514640b817882fadde8f7ab5807190235a7c0fb48e4ca50e6b20a792581b9ec"
+    }
+  ],
+  "runs": [
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "par",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.06494289999864122,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_gemm\",\"par\",48,0,0.0674,2304,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "par",
+      "repetition": 0,
+      "warmup": true,
+      "rows": [
+        {
+          "suite": "cap3_gemm",
+          "variant": "par",
+          "size": 48,
+          "threads": 0,
+          "milliseconds": 0.0674,
+          "completed": 2304,
+          "details": "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "sse2",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01932449999912933,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_gemm\",\"sse2\",48,1,0.0142,2304,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "sse2",
+      "repetition": 0,
+      "warmup": true,
+      "rows": [
+        {
+          "suite": "cap3_gemm",
+          "variant": "sse2",
+          "size": 48,
+          "threads": 1,
+          "milliseconds": 0.0142,
+          "completed": 2304,
+          "details": "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "threaded",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01749539999946137,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_gemm\",\"threaded\",48,2,0.4161,2304,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "threaded",
+      "repetition": 0,
+      "warmup": true,
+      "rows": [
+        {
+          "suite": "cap3_gemm",
+          "variant": "threaded",
+          "size": 48,
+          "threads": 2,
+          "milliseconds": 0.4161,
+          "completed": 2304,
+          "details": "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "reduce_par",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.0183324999998149,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_reduce\",\"reduce_par\",65537,0,0.0607,65537,\"double accumulation; creation/join included; validation excluded; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "reduce_par",
+      "repetition": 0,
+      "warmup": true,
+      "rows": [
+        {
+          "suite": "cap3_reduce",
+          "variant": "reduce_par",
+          "size": 65537,
+          "threads": 0,
+          "milliseconds": 0.0607,
+          "completed": 65537,
+          "details": "double accumulation; creation/join included; validation excluded; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "reduce_threaded",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.018300499999895692,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_reduce\",\"reduce_threaded\",65537,2,0.3811,65537,\"double accumulation; creation/join included; validation excluded; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "reduce_threaded",
+      "repetition": 0,
+      "warmup": true,
+      "rows": [
+        {
+          "suite": "cap3_reduce",
+          "variant": "reduce_threaded",
+          "size": 65537,
+          "threads": 2,
+          "milliseconds": 0.3811,
+          "completed": 65537,
+          "details": "double accumulation; creation/join included; validation excluded; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "sort_plain",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01874359999965236,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_sort\",\"sort_plain\",65537,1,0.7738,65537,\"sort only; copy/check excluded; caller=1; workers=0; threads=1: caller\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "sort_plain",
+      "repetition": 0,
+      "warmup": true,
+      "rows": [
+        {
+          "suite": "cap3_sort",
+          "variant": "sort_plain",
+          "size": 65537,
+          "threads": 1,
+          "milliseconds": 0.7738,
+          "completed": 65537,
+          "details": "sort only; copy/check excluded; caller=1; workers=0; threads=1: caller"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "sort_par",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.018858499999623746,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_sort\",\"sort_par\",65537,0,0.3907,65537,\"sort only; copy/check excluded; caller=1; workers=unmeasured; threads=0: backend unmeasured\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "sort_par",
+      "repetition": 0,
+      "warmup": true,
+      "rows": [
+        {
+          "suite": "cap3_sort",
+          "variant": "sort_par",
+          "size": 65537,
+          "threads": 0,
+          "milliseconds": 0.3907,
+          "completed": 65537,
+          "details": "sort only; copy/check excluded; caller=1; workers=unmeasured; threads=0: backend unmeasured"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "reduce_plain",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.018149199999243137,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_reduce\",\"reduce_plain\",65537,1,0.0363,65537,\"double accumulation; creation/join included; validation excluded; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "reduce_plain",
+      "repetition": 0,
+      "warmup": true,
+      "rows": [
+        {
+          "suite": "cap3_reduce",
+          "variant": "reduce_plain",
+          "size": 65537,
+          "threads": 1,
+          "milliseconds": 0.0363,
+          "completed": 65537,
+          "details": "double accumulation; creation/join included; validation excluded; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "naive",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.019911599998522433,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_gemm\",\"naive\",48,1,0.0393,2304,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "naive",
+      "repetition": 0,
+      "warmup": true,
+      "rows": [
+        {
+          "suite": "cap3_gemm",
+          "variant": "naive",
+          "size": 48,
+          "threads": 1,
+          "milliseconds": 0.0393,
+          "completed": 2304,
+          "details": "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "tiled",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.017939100000148755,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_gemm\",\"tiled\",48,1,0.0428,2304,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "tiled",
+      "repetition": 0,
+      "warmup": true,
+      "rows": [
+        {
+          "suite": "cap3_gemm",
+          "variant": "tiled",
+          "size": 48,
+          "threads": 1,
+          "milliseconds": 0.0428,
+          "completed": 2304,
+          "details": "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "sse2",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.016567900000154623,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_gemm\",\"sse2\",48,1,0.0142,2304,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "sse2",
+      "repetition": 1,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_gemm",
+          "variant": "sse2",
+          "size": 48,
+          "threads": 1,
+          "milliseconds": 0.0142,
+          "completed": 2304,
+          "details": "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "reduce_threaded",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.016801699999632547,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_reduce\",\"reduce_threaded\",65537,2,0.4009,65537,\"double accumulation; creation/join included; validation excluded; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "reduce_threaded",
+      "repetition": 1,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_reduce",
+          "variant": "reduce_threaded",
+          "size": 65537,
+          "threads": 2,
+          "milliseconds": 0.4009,
+          "completed": 65537,
+          "details": "double accumulation; creation/join included; validation excluded; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "threaded",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01770089999990887,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_gemm\",\"threaded\",48,2,0.4351,2304,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "threaded",
+      "repetition": 1,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_gemm",
+          "variant": "threaded",
+          "size": 48,
+          "threads": 2,
+          "milliseconds": 0.4351,
+          "completed": 2304,
+          "details": "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "reduce_plain",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.017392100000506616,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_reduce\",\"reduce_plain\",65537,1,0.0362,65537,\"double accumulation; creation/join included; validation excluded; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "reduce_plain",
+      "repetition": 1,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_reduce",
+          "variant": "reduce_plain",
+          "size": 65537,
+          "threads": 1,
+          "milliseconds": 0.0362,
+          "completed": 65537,
+          "details": "double accumulation; creation/join included; validation excluded; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "tiled",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.017188600000736187,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_gemm\",\"tiled\",48,1,0.0432,2304,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "tiled",
+      "repetition": 1,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_gemm",
+          "variant": "tiled",
+          "size": 48,
+          "threads": 1,
+          "milliseconds": 0.0432,
+          "completed": 2304,
+          "details": "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "reduce_par",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.016935200001171324,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_reduce\",\"reduce_par\",65537,0,0.0593,65537,\"double accumulation; creation/join included; validation excluded; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "reduce_par",
+      "repetition": 1,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_reduce",
+          "variant": "reduce_par",
+          "size": 65537,
+          "threads": 0,
+          "milliseconds": 0.0593,
+          "completed": 65537,
+          "details": "double accumulation; creation/join included; validation excluded; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "par",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.018120299999281997,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_gemm\",\"par\",48,0,0.0721,2304,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "par",
+      "repetition": 1,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_gemm",
+          "variant": "par",
+          "size": 48,
+          "threads": 0,
+          "milliseconds": 0.0721,
+          "completed": 2304,
+          "details": "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "naive",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.016774900001109927,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_gemm\",\"naive\",48,1,0.0439,2304,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "naive",
+      "repetition": 1,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_gemm",
+          "variant": "naive",
+          "size": 48,
+          "threads": 1,
+          "milliseconds": 0.0439,
+          "completed": 2304,
+          "details": "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "sort_plain",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01729909999994561,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_sort\",\"sort_plain\",65537,1,0.7821,65537,\"sort only; copy/check excluded; caller=1; workers=0; threads=1: caller\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "sort_plain",
+      "repetition": 1,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_sort",
+          "variant": "sort_plain",
+          "size": 65537,
+          "threads": 1,
+          "milliseconds": 0.7821,
+          "completed": 65537,
+          "details": "sort only; copy/check excluded; caller=1; workers=0; threads=1: caller"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "sort_par",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.016507199999978184,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_sort\",\"sort_par\",65537,0,0.394,65537,\"sort only; copy/check excluded; caller=1; workers=unmeasured; threads=0: backend unmeasured\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "sort_par",
+      "repetition": 1,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_sort",
+          "variant": "sort_par",
+          "size": 65537,
+          "threads": 0,
+          "milliseconds": 0.394,
+          "completed": 65537,
+          "details": "sort only; copy/check excluded; caller=1; workers=unmeasured; threads=0: backend unmeasured"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "par",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.016635300000416464,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_gemm\",\"par\",48,0,0.0673,2304,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "par",
+      "repetition": 2,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_gemm",
+          "variant": "par",
+          "size": 48,
+          "threads": 0,
+          "milliseconds": 0.0673,
+          "completed": 2304,
+          "details": "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "reduce_threaded",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01645269999971788,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_reduce\",\"reduce_threaded\",65537,2,0.399,65537,\"double accumulation; creation/join included; validation excluded; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "reduce_threaded",
+      "repetition": 2,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_reduce",
+          "variant": "reduce_threaded",
+          "size": 65537,
+          "threads": 2,
+          "milliseconds": 0.399,
+          "completed": 65537,
+          "details": "double accumulation; creation/join included; validation excluded; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "naive",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01631489999999758,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_gemm\",\"naive\",48,1,0.0394,2304,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "naive",
+      "repetition": 2,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_gemm",
+          "variant": "naive",
+          "size": 48,
+          "threads": 1,
+          "milliseconds": 0.0394,
+          "completed": 2304,
+          "details": "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "threaded",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.017228099999556434,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_gemm\",\"threaded\",48,2,0.3935,2304,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "threaded",
+      "repetition": 2,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_gemm",
+          "variant": "threaded",
+          "size": 48,
+          "threads": 2,
+          "milliseconds": 0.3935,
+          "completed": 2304,
+          "details": "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "reduce_plain",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01606730000094103,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_reduce\",\"reduce_plain\",65537,1,0.0364,65537,\"double accumulation; creation/join included; validation excluded; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "reduce_plain",
+      "repetition": 2,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_reduce",
+          "variant": "reduce_plain",
+          "size": 65537,
+          "threads": 1,
+          "milliseconds": 0.0364,
+          "completed": 65537,
+          "details": "double accumulation; creation/join included; validation excluded; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "sort_par",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01728209999964747,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_sort\",\"sort_par\",65537,0,0.3983,65537,\"sort only; copy/check excluded; caller=1; workers=unmeasured; threads=0: backend unmeasured\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "sort_par",
+      "repetition": 2,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_sort",
+          "variant": "sort_par",
+          "size": 65537,
+          "threads": 0,
+          "milliseconds": 0.3983,
+          "completed": 65537,
+          "details": "sort only; copy/check excluded; caller=1; workers=unmeasured; threads=0: backend unmeasured"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "tiled",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01670870000089053,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_gemm\",\"tiled\",48,1,0.0422,2304,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "tiled",
+      "repetition": 2,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_gemm",
+          "variant": "tiled",
+          "size": 48,
+          "threads": 1,
+          "milliseconds": 0.0422,
+          "completed": 2304,
+          "details": "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "sort_plain",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01902210000116611,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_sort\",\"sort_plain\",65537,1,0.7913,65537,\"sort only; copy/check excluded; caller=1; workers=0; threads=1: caller\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "sort_plain",
+      "repetition": 2,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_sort",
+          "variant": "sort_plain",
+          "size": 65537,
+          "threads": 1,
+          "milliseconds": 0.7913,
+          "completed": 65537,
+          "details": "sort only; copy/check excluded; caller=1; workers=0; threads=1: caller"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "sse2",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01715920000060578,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_gemm\",\"sse2\",48,1,0.0145,2304,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "sse2",
+      "repetition": 2,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_gemm",
+          "variant": "sse2",
+          "size": 48,
+          "threads": 1,
+          "milliseconds": 0.0145,
+          "completed": 2304,
+          "details": "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "reduce_par",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.016863100001501152,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_reduce\",\"reduce_par\",65537,0,0.0632,65537,\"double accumulation; creation/join included; validation excluded; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "reduce_par",
+      "repetition": 2,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_reduce",
+          "variant": "reduce_par",
+          "size": 65537,
+          "threads": 0,
+          "milliseconds": 0.0632,
+          "completed": 65537,
+          "details": "double accumulation; creation/join included; validation excluded; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "par",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01690700000108336,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_gemm\",\"par\",48,0,0.0986,2304,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "par",
+      "repetition": 3,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_gemm",
+          "variant": "par",
+          "size": 48,
+          "threads": 0,
+          "milliseconds": 0.0986,
+          "completed": 2304,
+          "details": "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "reduce_par",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.017218000000866596,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_reduce\",\"reduce_par\",65537,0,0.062,65537,\"double accumulation; creation/join included; validation excluded; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "reduce_par",
+      "repetition": 3,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_reduce",
+          "variant": "reduce_par",
+          "size": 65537,
+          "threads": 0,
+          "milliseconds": 0.062,
+          "completed": 65537,
+          "details": "double accumulation; creation/join included; validation excluded; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "sse2",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01774920000025304,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_gemm\",\"sse2\",48,1,0.0142,2304,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "sse2",
+      "repetition": 3,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_gemm",
+          "variant": "sse2",
+          "size": 48,
+          "threads": 1,
+          "milliseconds": 0.0142,
+          "completed": 2304,
+          "details": "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "naive",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.016817199999422883,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_gemm\",\"naive\",48,1,0.0396,2304,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "naive",
+      "repetition": 3,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_gemm",
+          "variant": "naive",
+          "size": 48,
+          "threads": 1,
+          "milliseconds": 0.0396,
+          "completed": 2304,
+          "details": "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "threaded",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01741059999949357,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_gemm\",\"threaded\",48,2,0.4085,2304,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "threaded",
+      "repetition": 3,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_gemm",
+          "variant": "threaded",
+          "size": 48,
+          "threads": 2,
+          "milliseconds": 0.4085,
+          "completed": 2304,
+          "details": "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "sort_par",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01743960000021616,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_sort\",\"sort_par\",65537,0,0.4163,65537,\"sort only; copy/check excluded; caller=1; workers=unmeasured; threads=0: backend unmeasured\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "sort_par",
+      "repetition": 3,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_sort",
+          "variant": "sort_par",
+          "size": 65537,
+          "threads": 0,
+          "milliseconds": 0.4163,
+          "completed": 65537,
+          "details": "sort only; copy/check excluded; caller=1; workers=unmeasured; threads=0: backend unmeasured"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "tiled",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01715200000035111,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_gemm\",\"tiled\",48,1,0.0432,2304,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "tiled",
+      "repetition": 3,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_gemm",
+          "variant": "tiled",
+          "size": 48,
+          "threads": 1,
+          "milliseconds": 0.0432,
+          "completed": 2304,
+          "details": "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "reduce_plain",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.017408900001100847,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_reduce\",\"reduce_plain\",65537,1,0.0385,65537,\"double accumulation; creation/join included; validation excluded; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "reduce_plain",
+      "repetition": 3,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_reduce",
+          "variant": "reduce_plain",
+          "size": 65537,
+          "threads": 1,
+          "milliseconds": 0.0385,
+          "completed": 65537,
+          "details": "double accumulation; creation/join included; validation excluded; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "reduce_threaded",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.019886800000676885,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_reduce\",\"reduce_threaded\",65537,2,0.4726,65537,\"double accumulation; creation/join included; validation excluded; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "reduce_threaded",
+      "repetition": 3,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_reduce",
+          "variant": "reduce_threaded",
+          "size": 65537,
+          "threads": 2,
+          "milliseconds": 0.4726,
+          "completed": 65537,
+          "details": "double accumulation; creation/join included; validation excluded; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "sort_plain",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.019862900000589434,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_sort\",\"sort_plain\",65537,1,0.7949,65537,\"sort only; copy/check excluded; caller=1; workers=0; threads=1: caller\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "sort_plain",
+      "repetition": 3,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_sort",
+          "variant": "sort_plain",
+          "size": 65537,
+          "threads": 1,
+          "milliseconds": 0.7949,
+          "completed": 65537,
+          "details": "sort only; copy/check excluded; caller=1; workers=0; threads=1: caller"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "sort_par",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.017965199998798198,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_sort\",\"sort_par\",65537,0,0.3985,65537,\"sort only; copy/check excluded; caller=1; workers=unmeasured; threads=0: backend unmeasured\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "sort_par",
+      "repetition": 4,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_sort",
+          "variant": "sort_par",
+          "size": 65537,
+          "threads": 0,
+          "milliseconds": 0.3985,
+          "completed": 65537,
+          "details": "sort only; copy/check excluded; caller=1; workers=unmeasured; threads=0: backend unmeasured"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "sort_plain",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.017815500001233886,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_sort\",\"sort_plain\",65537,1,0.7589,65537,\"sort only; copy/check excluded; caller=1; workers=0; threads=1: caller\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "sort_plain",
+      "repetition": 4,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_sort",
+          "variant": "sort_plain",
+          "size": 65537,
+          "threads": 1,
+          "milliseconds": 0.7589,
+          "completed": 65537,
+          "details": "sort only; copy/check excluded; caller=1; workers=0; threads=1: caller"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "par",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01592969999910565,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_gemm\",\"par\",48,0,0.0652,2304,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "par",
+      "repetition": 4,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_gemm",
+          "variant": "par",
+          "size": 48,
+          "threads": 0,
+          "milliseconds": 0.0652,
+          "completed": 2304,
+          "details": "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "sse2",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.0166893000005075,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_gemm\",\"sse2\",48,1,0.0272,2304,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "sse2",
+      "repetition": 4,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_gemm",
+          "variant": "sse2",
+          "size": 48,
+          "threads": 1,
+          "milliseconds": 0.0272,
+          "completed": 2304,
+          "details": "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "naive",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.017681100000118022,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_gemm\",\"naive\",48,1,0.0394,2304,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "naive",
+      "repetition": 4,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_gemm",
+          "variant": "naive",
+          "size": 48,
+          "threads": 1,
+          "milliseconds": 0.0394,
+          "completed": 2304,
+          "details": "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "threaded",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.016694899999492918,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_gemm\",\"threaded\",48,2,0.4082,2304,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "threaded",
+      "repetition": 4,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_gemm",
+          "variant": "threaded",
+          "size": 48,
+          "threads": 2,
+          "milliseconds": 0.4082,
+          "completed": 2304,
+          "details": "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "reduce_plain",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.016055099998993683,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_reduce\",\"reduce_plain\",65537,1,0.0363,65537,\"double accumulation; creation/join included; validation excluded; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "reduce_plain",
+      "repetition": 4,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_reduce",
+          "variant": "reduce_plain",
+          "size": 65537,
+          "threads": 1,
+          "milliseconds": 0.0363,
+          "completed": 65537,
+          "details": "double accumulation; creation/join included; validation excluded; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "reduce_par",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.015578599999571452,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_reduce\",\"reduce_par\",65537,0,0.0604,65537,\"double accumulation; creation/join included; validation excluded; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "reduce_par",
+      "repetition": 4,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_reduce",
+          "variant": "reduce_par",
+          "size": 65537,
+          "threads": 0,
+          "milliseconds": 0.0604,
+          "completed": 65537,
+          "details": "double accumulation; creation/join included; validation excluded; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "reduce_threaded",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.016279100000247126,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_reduce\",\"reduce_threaded\",65537,2,0.3698,65537,\"double accumulation; creation/join included; validation excluded; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "reduce_threaded",
+      "repetition": 4,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_reduce",
+          "variant": "reduce_threaded",
+          "size": 65537,
+          "threads": 2,
+          "milliseconds": 0.3698,
+          "completed": 65537,
+          "details": "double accumulation; creation/join included; validation excluded; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "tiled",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.016333000001395703,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_gemm\",\"tiled\",48,1,0.0423,2304,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "tiled",
+      "repetition": 4,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_gemm",
+          "variant": "tiled",
+          "size": 48,
+          "threads": 1,
+          "milliseconds": 0.0423,
+          "completed": 2304,
+          "details": "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "reduce_par",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.0157219000011537,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_reduce\",\"reduce_par\",65537,0,0.0596,65537,\"double accumulation; creation/join included; validation excluded; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "reduce_par",
+      "repetition": 5,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_reduce",
+          "variant": "reduce_par",
+          "size": 65537,
+          "threads": 0,
+          "milliseconds": 0.0596,
+          "completed": 65537,
+          "details": "double accumulation; creation/join included; validation excluded; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "naive",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.016456600000310573,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_gemm\",\"naive\",48,1,0.0523,2304,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "naive",
+      "repetition": 5,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_gemm",
+          "variant": "naive",
+          "size": 48,
+          "threads": 1,
+          "milliseconds": 0.0523,
+          "completed": 2304,
+          "details": "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "sse2",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.022334700001010788,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_gemm\",\"sse2\",48,1,0.0143,2304,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "sse2",
+      "repetition": 5,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_gemm",
+          "variant": "sse2",
+          "size": 48,
+          "threads": 1,
+          "milliseconds": 0.0143,
+          "completed": 2304,
+          "details": "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "threaded",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.016583600001467858,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_gemm\",\"threaded\",48,2,0.4741,2304,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "threaded",
+      "repetition": 5,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_gemm",
+          "variant": "threaded",
+          "size": 48,
+          "threads": 2,
+          "milliseconds": 0.4741,
+          "completed": 2304,
+          "details": "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "par",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.016363499998988118,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_gemm\",\"par\",48,0,0.0975,2304,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "par",
+      "repetition": 5,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_gemm",
+          "variant": "par",
+          "size": 48,
+          "threads": 0,
+          "milliseconds": 0.0975,
+          "completed": 2304,
+          "details": "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "reduce_threaded",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01680799999849114,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_reduce\",\"reduce_threaded\",65537,2,0.3845,65537,\"double accumulation; creation/join included; validation excluded; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "reduce_threaded",
+      "repetition": 5,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_reduce",
+          "variant": "reduce_threaded",
+          "size": 65537,
+          "threads": 2,
+          "milliseconds": 0.3845,
+          "completed": 65537,
+          "details": "double accumulation; creation/join included; validation excluded; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "sort_par",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01578180000069551,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_sort\",\"sort_par\",65537,0,0.3693,65537,\"sort only; copy/check excluded; caller=1; workers=unmeasured; threads=0: backend unmeasured\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "sort_par",
+      "repetition": 5,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_sort",
+          "variant": "sort_par",
+          "size": 65537,
+          "threads": 0,
+          "milliseconds": 0.3693,
+          "completed": 65537,
+          "details": "sort only; copy/check excluded; caller=1; workers=unmeasured; threads=0: backend unmeasured"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "reduce_plain",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01585270000032324,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_reduce\",\"reduce_plain\",65537,1,0.036,65537,\"double accumulation; creation/join included; validation excluded; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "reduce_plain",
+      "repetition": 5,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_reduce",
+          "variant": "reduce_plain",
+          "size": 65537,
+          "threads": 1,
+          "milliseconds": 0.036,
+          "completed": 65537,
+          "details": "double accumulation; creation/join included; validation excluded; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "tiled",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.017029200000251876,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_gemm\",\"tiled\",48,1,0.044,2304,\"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "tiled",
+      "repetition": 5,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_gemm",
+          "variant": "tiled",
+          "size": 48,
+          "threads": 1,
+          "milliseconds": 0.044,
+          "completed": 2304,
+          "details": "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Capstone3_parallel_compute\\Release\\Capstone3_parallel_compute_benchmark.exe",
+        "--variant",
+        "sort_plain",
+        "--size",
+        "48",
+        "--block",
+        "16",
+        "--threads",
+        "2",
+        "--items",
+        "65537"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.017344699999739532,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"cap3_sort\",\"sort_plain\",65537,1,0.7585,65537,\"sort only; copy/check excluded; caller=1; workers=0; threads=1: caller\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "sort_plain",
+      "repetition": 5,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "cap3_sort",
+          "variant": "sort_plain",
+          "size": 65537,
+          "threads": 1,
+          "milliseconds": 0.7585,
+          "completed": 65537,
+          "details": "sort only; copy/check excluded; caller=1; workers=0; threads=1: caller"
+        }
+      ]
+    }
+  ],
+  "summaries": [
+    {
+      "case": {
+        "suite": "cap3_gemm",
+        "variant": "sse2",
+        "size": 48,
+        "threads": 1,
+        "completed": 2304
+      },
+      "sample_details": [
+        "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",
+        "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",
+        "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",
+        "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",
+        "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+      ],
+      "samples_ms": [
+        0.0142,
+        0.0145,
+        0.0142,
+        0.0272,
+        0.0143
+      ],
+      "median_ms": 0.0143,
+      "min_ms": 0.0142,
+      "max_ms": 0.0272,
+      "stdev_ms": 0.005770355275024233
+    },
+    {
+      "case": {
+        "suite": "cap3_reduce",
+        "variant": "reduce_threaded",
+        "size": 65537,
+        "threads": 2,
+        "completed": 65537
+      },
+      "sample_details": [
+        "double accumulation; creation/join included; validation excluded; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)",
+        "double accumulation; creation/join included; validation excluded; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)",
+        "double accumulation; creation/join included; validation excluded; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)",
+        "double accumulation; creation/join included; validation excluded; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)",
+        "double accumulation; creation/join included; validation excluded; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+      ],
+      "samples_ms": [
+        0.4009,
+        0.399,
+        0.4726,
+        0.3698,
+        0.3845
+      ],
+      "median_ms": 0.399,
+      "min_ms": 0.3698,
+      "max_ms": 0.4726,
+      "stdev_ms": 0.03962704884293051
+    },
+    {
+      "case": {
+        "suite": "cap3_gemm",
+        "variant": "threaded",
+        "size": 48,
+        "threads": 2,
+        "completed": 2304
+      },
+      "sample_details": [
+        "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)",
+        "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)",
+        "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)",
+        "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)",
+        "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+      ],
+      "samples_ms": [
+        0.4351,
+        0.3935,
+        0.4085,
+        0.4082,
+        0.4741
+      ],
+      "median_ms": 0.4085,
+      "min_ms": 0.3935,
+      "max_ms": 0.4741,
+      "stdev_ms": 0.0318327190167601
+    },
+    {
+      "case": {
+        "suite": "cap3_reduce",
+        "variant": "reduce_plain",
+        "size": 65537,
+        "threads": 1,
+        "completed": 65537
+      },
+      "sample_details": [
+        "double accumulation; creation/join included; validation excluded; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",
+        "double accumulation; creation/join included; validation excluded; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",
+        "double accumulation; creation/join included; validation excluded; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",
+        "double accumulation; creation/join included; validation excluded; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",
+        "double accumulation; creation/join included; validation excluded; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+      ],
+      "samples_ms": [
+        0.0362,
+        0.0364,
+        0.0385,
+        0.0363,
+        0.036
+      ],
+      "median_ms": 0.0363,
+      "min_ms": 0.036,
+      "max_ms": 0.0385,
+      "stdev_ms": 0.00102810505299799
+    },
+    {
+      "case": {
+        "suite": "cap3_gemm",
+        "variant": "tiled",
+        "size": 48,
+        "threads": 1,
+        "completed": 2304
+      },
+      "sample_details": [
+        "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",
+        "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",
+        "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",
+        "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",
+        "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+      ],
+      "samples_ms": [
+        0.0432,
+        0.0422,
+        0.0432,
+        0.0423,
+        0.044
+      ],
+      "median_ms": 0.0432,
+      "min_ms": 0.0422,
+      "max_ms": 0.044,
+      "stdev_ms": 0.0007429670248402681
+    },
+    {
+      "case": {
+        "suite": "cap3_reduce",
+        "variant": "reduce_par",
+        "size": 65537,
+        "threads": 0,
+        "completed": 65537
+      },
+      "sample_details": [
+        "double accumulation; creation/join included; validation excluded; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)",
+        "double accumulation; creation/join included; validation excluded; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)",
+        "double accumulation; creation/join included; validation excluded; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)",
+        "double accumulation; creation/join included; validation excluded; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)",
+        "double accumulation; creation/join included; validation excluded; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+      ],
+      "samples_ms": [
+        0.0593,
+        0.0632,
+        0.062,
+        0.0604,
+        0.0596
+      ],
+      "median_ms": 0.0604,
+      "min_ms": 0.0593,
+      "max_ms": 0.0632,
+      "stdev_ms": 0.001658312395177702
+    },
+    {
+      "case": {
+        "suite": "cap3_gemm",
+        "variant": "par",
+        "size": 48,
+        "threads": 0,
+        "completed": 2304
+      },
+      "sample_details": [
+        "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)",
+        "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)",
+        "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)",
+        "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)",
+        "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+      ],
+      "samples_ms": [
+        0.0721,
+        0.0673,
+        0.0986,
+        0.0652,
+        0.0975
+      ],
+      "median_ms": 0.0721,
+      "min_ms": 0.0652,
+      "max_ms": 0.0986,
+      "stdev_ms": 0.01654427393390233
+    },
+    {
+      "case": {
+        "suite": "cap3_gemm",
+        "variant": "naive",
+        "size": 48,
+        "threads": 1,
+        "completed": 2304
+      },
+      "sample_details": [
+        "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",
+        "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",
+        "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",
+        "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",
+        "C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+      ],
+      "samples_ms": [
+        0.0439,
+        0.0394,
+        0.0396,
+        0.0394,
+        0.0523
+      ],
+      "median_ms": 0.0396,
+      "min_ms": 0.0394,
+      "max_ms": 0.0523,
+      "stdev_ms": 0.005584532209594641
+    },
+    {
+      "case": {
+        "suite": "cap3_sort",
+        "variant": "sort_plain",
+        "size": 65537,
+        "threads": 1,
+        "completed": 65537
+      },
+      "sample_details": [
+        "sort only; copy/check excluded; caller=1; workers=0; threads=1: caller",
+        "sort only; copy/check excluded; caller=1; workers=0; threads=1: caller",
+        "sort only; copy/check excluded; caller=1; workers=0; threads=1: caller",
+        "sort only; copy/check excluded; caller=1; workers=0; threads=1: caller",
+        "sort only; copy/check excluded; caller=1; workers=0; threads=1: caller"
+      ],
+      "samples_ms": [
+        0.7821,
+        0.7913,
+        0.7949,
+        0.7589,
+        0.7585
+      ],
+      "median_ms": 0.7821,
+      "min_ms": 0.7585,
+      "max_ms": 0.7949,
+      "stdev_ms": 0.017469058360426896
+    },
+    {
+      "case": {
+        "suite": "cap3_sort",
+        "variant": "sort_par",
+        "size": 65537,
+        "threads": 0,
+        "completed": 65537
+      },
+      "sample_details": [
+        "sort only; copy/check excluded; caller=1; workers=unmeasured; threads=0: backend unmeasured",
+        "sort only; copy/check excluded; caller=1; workers=unmeasured; threads=0: backend unmeasured",
+        "sort only; copy/check excluded; caller=1; workers=unmeasured; threads=0: backend unmeasured",
+        "sort only; copy/check excluded; caller=1; workers=unmeasured; threads=0: backend unmeasured",
+        "sort only; copy/check excluded; caller=1; workers=unmeasured; threads=0: backend unmeasured"
+      ],
+      "samples_ms": [
+        0.394,
+        0.3983,
+        0.4163,
+        0.3985,
+        0.3693
+      ],
+      "median_ms": 0.3983,
+      "min_ms": 0.3693,
+      "max_ms": 0.4163,
+      "stdev_ms": 0.016866594202742884
+    }
+  ]
+}

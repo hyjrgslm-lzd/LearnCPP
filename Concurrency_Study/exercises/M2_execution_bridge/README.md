@@ -1,45 +1,49 @@
-# 练习 M-2：std::execution 桥接（sender/receiver 取代裸线程）
+# M2：执行管线的 value、error 和 stopped
 
-> 详尽版见 `../../16-模块M-工作窃取与结构化并发桥接.md` 的 练习 M-2。
+完整正文：[执行桥接](../../topics/scheduling/03-execution-bridge.md)。[main.cpp](main.cpp) 运行 schedule/then 的值管线，[solution.cpp](solution.cpp) 是包含所有 Part 的独立 Reference。
 
-## 目标
+实际代码使用 NVIDIA stdexec nvhpc-26.05 固定 commit `6d7ad689f4d4831c5136e4abe1c601f9a3b64e43`。标准层对照 C++26 N5050；默认编译标准仍为 C++23。使用 `#if CS_HAS_STDEXEC`，缺依赖时 main 和 Reference 均说明原因并返回 77。
 
-用 **std::execution（P2300，C++26）** 的 sender/receiver 演示如何**取代裸 thread + future**：用 `schedule(scheduler) | then(...) | then(...)` 组一条异步管线、`sync_wait` 取结果，用 `when_all` 并发汇合两个 sender。讲清相对手写线程的好处（结构化、可组合、错误/取消通道）。本模块对 senders **只作桥接演示**，深入见 `Execution_Study\`。
+入口类型：main 是 OBSERVATION 驱动，只运行并检查独立的值管线 42，没有直接 include solution.cpp。0 仅表示这条管线通过，不完成 when_all/error/stopped 等其他 Part；相应实现练习按下文重写并另跑独立 Reference。缺依赖返回 77。保留 baseline 观察与预测任务，不把完整答案执行伪装成未填学生实现，也不另建评分框架。
 
-## 前置理解（核心抽象）
+## 构建
 
-- **scheduler**：工作**在哪执行**的抽象（线程池/GPU/单线程）。本题用 `exec::static_thread_pool` 提供。
-- **sender**：一段**将要**产出「值/错误/停止」的异步工作**描述**——惰性、可组合（不是立刻跑的线程）。
-- **receiver**：sender 完成时的回调接收端，有**三条通道**：value / error / stopped。
-- **算法**：`schedule(sched)`（在 sched 上起头）、`just(v)`（已就绪值）、`then(f)`（接上游值做变换，像 `future.then`）、`when_all(a,b)`（并发汇合）、`sync_wait(s)`（在当前线程阻塞取结果，返回 `optional<tuple<...>>`，是「异步世界」与「同步 main」的桥）。
+从 `Concurrency_Study/exercises` 使用已经下载的依赖：
 
-## 工具链说明（务必先读）
-
-- std::execution 是 **C++26 标准**（头 `<execution>`，命名空间 `std::execution`），但截至 2026-05 **MSVC 未实现**。
-- 本题用 NVIDIA 参考实现 **stdexec** 回退：命名空间 **`stdexec`**，核心头 `<stdexec/execution.hpp>`，线程池在 `<exec/static_thread_pool.hpp>`。
-- **MSVC 必须加 `/Zc:preprocessor`**（stdexec 头文件强制要求符合标准的预处理器）——本题 `CMakeLists.txt` 已加。
-
-## 必做任务
-
-1. `// TODO [必做 1]`：`schedule(sched) | then | then` 组管线，`sync_wait` 取值（期望 42）。
-2. `// TODO [必做 2]`：`when_all` 并发两个 sender，下游 `then(va, vb)` 汇合（期望 123）。
-3. `// TODO [进阶 1]`：`just(v)` 起头链 `then`；演示 `then` 内抛异常如何走 **error 通道**被 `sync_wait` 重新抛出。
-
-## 验收点
-
-- 三段管线结果与期望一致（42 / 123 / 15），异常经 `sync_wait` 重抛被正常 `try/catch` 接住。
-- 你能说清 scheduler / sender / receiver 三者关系，及相对裸 thread+future 的四点好处：**结构化、可组合、三通道（value/error/stopped）、调度可换**。
-- 你知道 MSVC 上要 stdexec 回退 + `/Zc:preprocessor`，并知道深入内容在 `Execution_Study\`。
-
-## 对应官方参考
-
-- [P2300R10 std::execution](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2024/p2300r10.html)
-- [NVIDIA/stdexec](https://github.com/NVIDIA/stdexec)
-- cppreference [std::execution](https://en.cppreference.com/w/cpp/execution)
-
-## 构建运行（VS2026, C++20；需 stdexec，CMake 已用 StdexecSetup 拉取）
-
-```bash
-cmake --build build-vs2026 --target M2_execution_bridge --config Release
-./build-vs2026/M2_execution_bridge/Release/M2_execution_bridge.exe
+```powershell
+cmake -S M2_execution_bridge -B build/m2 -G "Visual Studio 18 2026" -A x64 -DCONCURRENCY_STUDY_ENABLE_STDEXEC=ON -DCONCURRENCY_STUDY_STDEXEC_SOURCE_DIR="$PWD/build/full-windows/_deps/stdexec-src"
+cmake --build build/m2 --config Release
+ctest --test-dir build/m2 -C Release --output-on-failure
 ```
+
+不开启依赖的默认配置用于验证 SKIP 分支，不是完整 execution 实验。统一 CMake 提供 MSVC 必要的预处理器设置，不修改下载源码。
+
+## Part 1：成功值与惰性描述
+
+遮住 main 的两个 then，重写无参产出 21、接收 int 并翻倍的管线。Reference 检查 optional 有值且 tuple 中为 42。
+
+答案：schedule 产出调度完成，then 消费成功值；管线描述本身不等于已经起线程。sync_wait 负责连接、启动并等完成。不要假设 optional 总是有值，也不要把 just 当成新建线程。
+
+## Part 2：汇合和执行资源
+
+组合两个 schedule/then 分支产出 100 与 23，when_all 后相加，Reference 同时检查 123 与两个业务函数的完成计数。
+
+答案：when_all 组合全部子操作的完成；执行资源决定它们是否并行。这个任务汇合不关闭 pool。所有 sync_wait 都放在外部 main，pool 存活到全部管线完成以后，才由作用域析构回收资源。
+
+## Part 3：error
+
+Reference 的一个 then 抛出 `pipeline-error`，与另一个分支 when_all 汇合，main 检查 sync_wait 重抛的明确消息。
+
+答案：错误沿 error 通道传播，普通 then 不处理它。兄弟分支可能收到停止请求，但不会被强杀；已经运行且不响应停止的业务代码仍要自行结束。错误路径不能要求兄弟 then 一定执行，可能在 schedule 阶段已经停止。
+
+## Part 4：stopped 与显式恢复
+
+Reference 的 stopped_int 声明一个 int 成功签名及 stopped 签名，在 operation.start 中真实调用 set_stopped。依次检查：下游 then 未执行、sync_wait 返回空 optional、when_all 汇合后仍为停止、upon_stopped 显式恢复成成功值 7。
+
+答案：运行时的停止不等于错误，也不是默认值 0。声明可能的成功签名使 sync_wait 可以形成结果类型，即使此次只发送 stopped。这个测试没有伪造“模拟取消”输出；它真实经过 stdexec 的 connect/start/receiver 协议。停止请求与停止完成仍是不同概念，本例直接制造后者来检查消费行为。
+
+## 必须说清的标准边界
+
+N5050 的标准 consumer 是 `std::this_thread::sync_wait`，不是 `std::execution::sync_wait`。本题运行的是 `stdexec::sync_wait`；`exec::static_thread_pool` 是具体库资源。二者不能仅凭相似名字认定逐字等价。源码与正文参考链接均固定版本，滚动 eel 不作为 C++26 定版证据。
+
+作者已运行固定依赖的 Release Reference，value/error/stopped/join/recovery 全部检查通过；依赖头自身有 MSVC 对齐及局部名称遮蔽警告。最新验证和不可测项见[记录](../../topics/scheduling/verification.md)。

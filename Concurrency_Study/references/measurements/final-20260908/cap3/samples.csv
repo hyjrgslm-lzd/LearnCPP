@@ -1,0 +1,51 @@
+suite,variant,size,threads,milliseconds,completed,details,repetition
+cap3_gemm,sse2,48,1,0.0142,2304,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",0
+cap3_reduce,reduce_threaded,65537,2,0.4009,65537,"double accumulation; creation/join included; validation excluded; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)",0
+cap3_gemm,threaded,48,2,0.4351,2304,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)",0
+cap3_reduce,reduce_plain,65537,1,0.0362,65537,"double accumulation; creation/join included; validation excluded; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",0
+cap3_gemm,tiled,48,1,0.0432,2304,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",0
+cap3_reduce,reduce_par,65537,0,0.0593,65537,"double accumulation; creation/join included; validation excluded; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)",0
+cap3_gemm,par,48,0,0.0721,2304,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)",0
+cap3_gemm,naive,48,1,0.0439,2304,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",0
+cap3_sort,sort_plain,65537,1,0.7821,65537,sort only; copy/check excluded; caller=1; workers=0; threads=1: caller,0
+cap3_sort,sort_par,65537,0,0.394,65537,sort only; copy/check excluded; caller=1; workers=unmeasured; threads=0: backend unmeasured,0
+cap3_gemm,par,48,0,0.0673,2304,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)",1
+cap3_reduce,reduce_threaded,65537,2,0.399,65537,"double accumulation; creation/join included; validation excluded; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)",1
+cap3_gemm,naive,48,1,0.0394,2304,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",1
+cap3_gemm,threaded,48,2,0.3935,2304,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)",1
+cap3_reduce,reduce_plain,65537,1,0.0364,65537,"double accumulation; creation/join included; validation excluded; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",1
+cap3_sort,sort_par,65537,0,0.3983,65537,sort only; copy/check excluded; caller=1; workers=unmeasured; threads=0: backend unmeasured,1
+cap3_gemm,tiled,48,1,0.0422,2304,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",1
+cap3_sort,sort_plain,65537,1,0.7913,65537,sort only; copy/check excluded; caller=1; workers=0; threads=1: caller,1
+cap3_gemm,sse2,48,1,0.0145,2304,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",1
+cap3_reduce,reduce_par,65537,0,0.0632,65537,"double accumulation; creation/join included; validation excluded; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)",1
+cap3_gemm,par,48,0,0.0986,2304,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)",2
+cap3_reduce,reduce_par,65537,0,0.062,65537,"double accumulation; creation/join included; validation excluded; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)",2
+cap3_gemm,sse2,48,1,0.0142,2304,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",2
+cap3_gemm,naive,48,1,0.0396,2304,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",2
+cap3_gemm,threaded,48,2,0.4085,2304,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)",2
+cap3_sort,sort_par,65537,0,0.4163,65537,sort only; copy/check excluded; caller=1; workers=unmeasured; threads=0: backend unmeasured,2
+cap3_gemm,tiled,48,1,0.0432,2304,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",2
+cap3_reduce,reduce_plain,65537,1,0.0385,65537,"double accumulation; creation/join included; validation excluded; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",2
+cap3_reduce,reduce_threaded,65537,2,0.4726,65537,"double accumulation; creation/join included; validation excluded; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)",2
+cap3_sort,sort_plain,65537,1,0.7949,65537,sort only; copy/check excluded; caller=1; workers=0; threads=1: caller,2
+cap3_sort,sort_par,65537,0,0.3985,65537,sort only; copy/check excluded; caller=1; workers=unmeasured; threads=0: backend unmeasured,3
+cap3_sort,sort_plain,65537,1,0.7589,65537,sort only; copy/check excluded; caller=1; workers=0; threads=1: caller,3
+cap3_gemm,par,48,0,0.0652,2304,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)",3
+cap3_gemm,sse2,48,1,0.0272,2304,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",3
+cap3_gemm,naive,48,1,0.0394,2304,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",3
+cap3_gemm,threaded,48,2,0.4082,2304,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)",3
+cap3_reduce,reduce_plain,65537,1,0.0363,65537,"double accumulation; creation/join included; validation excluded; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",3
+cap3_reduce,reduce_par,65537,0,0.0604,65537,"double accumulation; creation/join included; validation excluded; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)",3
+cap3_reduce,reduce_threaded,65537,2,0.3698,65537,"double accumulation; creation/join included; validation excluded; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)",3
+cap3_gemm,tiled,48,1,0.0423,2304,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",3
+cap3_reduce,reduce_par,65537,0,0.0596,65537,"double accumulation; creation/join included; validation excluded; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)",4
+cap3_gemm,naive,48,1,0.0523,2304,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",4
+cap3_gemm,sse2,48,1,0.0143,2304,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",4
+cap3_gemm,threaded,48,2,0.4741,2304,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)",4
+cap3_gemm,par,48,0,0.0975,2304,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)",4
+cap3_reduce,reduce_threaded,65537,2,0.3845,65537,"double accumulation; creation/join included; validation excluded; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)",4
+cap3_sort,sort_par,65537,0,0.3693,65537,sort only; copy/check excluded; caller=1; workers=unmeasured; threads=0: backend unmeasured,4
+cap3_reduce,reduce_plain,65537,1,0.036,65537,"double accumulation; creation/join included; validation excluded; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",4
+cap3_gemm,tiled,48,1,0.044,2304,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)",4
+cap3_sort,sort_plain,65537,1,0.7585,65537,sort only; copy/check excluded; caller=1; workers=0; threads=1: caller,4

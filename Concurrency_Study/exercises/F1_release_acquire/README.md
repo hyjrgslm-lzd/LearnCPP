@@ -1,43 +1,36 @@
-# 练习 F-1：release-acquire 同步
+# F1：直接发布与 release sequence
 
-> 详尽版见 `../../08-模块F-内存模型与memory_order.md` 的 练习 F-1。
+完整正文见[直接发布与 release sequence](../../topics/atomics/04-happens-before.md)。[main.cpp](main.cpp) 是安全、有限结束的 Starter；[solution.cpp](solution.cpp) 是含运行检查的 Reference。默认 C++23。
 
-## 目标
+## Part 1：逐边证明普通 payload 的发布
 
-用 `std::atomic<bool>` 的 **release 写 / acquire 读** 配对，安全发布一块**非原子（non-atomic）** payload：生产方先写好数据、再 release 写标志；消费方 acquire 读到标志后再读数据。你要能画出这条 happens-before 链，并解释为什么把 acquire 换成 relaxed 会破坏可见性、构成数据竞争（data race）→ 未定义行为（UB）。
+从 Starter 的一个 int 扩展为 Reference 的 payload。发布者先赋值，再 ready.store(true,release)；主线程 acquire wait 后，在 producer.get 之前复制数据。检查 id=7、数组={11,22,33}。
 
-## 前置理解
+答案：普通写 SB release store；wait 内部终止的 acquire load 读自唯一的 true 写，因此建立 SW；该 load SB 普通复制。传递得写 HB 读，且发布后没有其他写者。先 get 再读会引入另一条完成同步，可能掩盖 ready 协议的缺失。
 
-- **sequenced-before（先序于）**：单线程内按求值顺序确定的先后。
-- **synchronizes-with（同步于）**：当线程 B 的 acquire 读**读到了**线程 A 的 release 写所写的值，A 的那次 release 写 synchronizes-with B 的那次 acquire 读。
-- **happens-before（先行于）**：sequenced-before 与 synchronizes-with 的传递闭包。一旦 A happens-before B，A 之前的写对 B 之后的读可见。
-- 因此：A release 写之前（sequenced-before）的所有写 → happens-before → B acquire 读之后的所有读。这就是“用一个原子标志发布一整片非原子数据”的原理。
-- relaxed 读**不**与 release 写建立 synchronizes-with，故**不**产生 happens-before；此时读非原子 payload 与生产方的写无先后关系 = data race = UB。
+## Part 2：加入只做 relaxed CAS 的中继
 
-## 必做任务
+运行 `release_sequence()`：发布者写 payload 后 release store phase=1，中继只允许 CAS 1→2，接收者 acquire 读到 2 后检查 id=9、数组={4,5,6}。
 
-1. `// TODO [必做 1]`：生产方写好 `g_payload` 各字段后，用 `g_ready.store(true, memory_order_release)` 发布；消费方用 `while(!g_ready.load(memory_order_acquire))` 自旋，读到后再读 payload。画出 happens-before 边。
+答案：成功 CAS 是紧接 release 头的 RMW，接收者读它仍与 release 头同步。中继每次失败须重置 expected=1，否则失败回填 0 后可能错误完成 0→2。中继自己的普通写不会仅凭 relaxed CAS 自动发布。
 
-## 进阶任务
+## 反事实与答案
 
-- `// TODO [进阶 1]`：把消费方的 acquire 改成 `memory_order_relaxed`，讲清为何理论上可能读到未初始化/陈旧 payload（x86 TSO 上常“碰巧正确”，但 ARM/POWER 或编译器重排下会暴露——代码本身是 UB）。
+把中继改成普通 relaxed store，并不能继续沿用 C++20 后的 release sequence。即使由原发布线程执行普通 store，也会截断旧序列；另一个 release store 可以独立成为新的发布来源。
 
-## 验收点
+将接收者的 acquire 改成 relaxed 后，普通 payload 读取会失去本题依赖的同步，可能构成 UB；默认不运行这个错误变体。若要研究有定义的旧值结果，请运行 F2 的 atomic-only litmus。
 
-- 能用 release/acquire 配对安全发布非原子数据，并画出完整 happens-before 链。
-- 能解释 synchronizes-with 是“acquire 读到了 release 写的值”才建立。
-- 能说清把 acquire 换成 relaxed 为何破坏可见性、为何是 data race / UB。
-- 理解“x86 上看不出错 ≠ 代码正确”，应按标准 happens-before 推理。
+Reference 用不抛异常的固定字段赋值，保证发布路径不会因分配失败漏发终态；等待不依赖 sleep。程序退出前取得所有 future，后台异常不被吞掉。
 
-## 对应官方参考
+## 构建与验收
 
-- cppreference [`std::memory_order`](https://en.cppreference.com/w/cpp/atomic/memory_order)（release-acquire ordering）
-- 《C++ Concurrency in Action, 2nd ed.》(Williams) 第 5 章 5.3
-- Herb Sutter, "atomic<> Weapons"；Mara Bos《Rust Atomics and Locks》第 3 章
+从 `Concurrency_Study/exercises` 执行：
 
-## 构建运行
-
-```bash
-cmake --build build-vs2026 --target F1_release_acquire --config Release
-./build-vs2026/F1_release_acquire/Release/F1_release_acquire.exe
+```powershell
+cmake -S F1_release_acquire -B build/F1_release_acquire -G "Visual Studio 18 2026" -A x64
+cmake --build build/F1_release_acquire --config Release
+./build/F1_release_acquire/Release/F1_release_acquire.exe
+ctest --test-dir build/F1_release_acquire -C Release --output-on-failure
 ```
+
+VS2026 生成器需要 CMake 4.2 或更新版。CTest 运行 `F1_release_acquire_reference` 并设进程超时；cs::check 在 Release 仍有效。通过表示本次检查成功，不替代正文中的协议证明。规范链接与版本说明见对应正文。

@@ -1,0 +1,11 @@
+suite,variant,size,threads,milliseconds,completed,details,repetition
+queue,spsc-cached,100003,2,0.8828,100003,P=1;C=1;capacity=64;batch=1;bounded;observed-empty-full;atomic_lock_free=true;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded,0
+queue,spsc,100003,2,0.9259,100003,P=1;C=1;capacity=64;batch=1;bounded;observed-empty-full;atomic_lock_free=true;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded,0
+queue,spsc,100003,2,0.8368,100003,P=1;C=1;capacity=64;batch=1;bounded;observed-empty-full;atomic_lock_free=true;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded,1
+queue,spsc-cached,100003,2,1.128,100003,P=1;C=1;capacity=64;batch=1;bounded;observed-empty-full;atomic_lock_free=true;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded,1
+queue,spsc-cached,100003,2,0.7839,100003,P=1;C=1;capacity=64;batch=1;bounded;observed-empty-full;atomic_lock_free=true;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded,2
+queue,spsc,100003,2,0.8584,100003,P=1;C=1;capacity=64;batch=1;bounded;observed-empty-full;atomic_lock_free=true;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded,2
+queue,spsc-cached,100003,2,0.9324,100003,P=1;C=1;capacity=64;batch=1;bounded;observed-empty-full;atomic_lock_free=true;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded,3
+queue,spsc,100003,2,0.8166,100003,P=1;C=1;capacity=64;batch=1;bounded;observed-empty-full;atomic_lock_free=true;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded,3
+queue,spsc-cached,100003,2,1.8106,100003,P=1;C=1;capacity=64;batch=1;bounded;observed-empty-full;atomic_lock_free=true;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded,4
+queue,spsc,100003,2,0.8393,100003,P=1;C=1;capacity=64;batch=1;bounded;observed-empty-full;atomic_lock_free=true;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded,4

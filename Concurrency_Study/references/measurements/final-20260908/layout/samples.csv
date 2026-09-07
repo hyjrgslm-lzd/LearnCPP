@@ -1,0 +1,21 @@
+suite,variant,size,threads,milliseconds,completed,details,repetition
+layout,batched,100000,2,0.4016,200000,includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=782; hint=64; packed_same_hint_region=1; atomic_lock_free=1,0
+layout,shared,100000,2,1.2037,200000,includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1,0
+layout,packed,100000,2,1.4313,200000,includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1,0
+layout,padded,100000,2,0.4737,200000,includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1,0
+layout,padded,100000,2,0.4732,200000,includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1,1
+layout,batched,100000,2,0.469,200000,includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=782; hint=64; packed_same_hint_region=1; atomic_lock_free=1,1
+layout,shared,100000,2,1.2564,200000,includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1,1
+layout,packed,100000,2,1.1767,200000,includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1,1
+layout,padded,100000,2,0.5217,200000,includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1,2
+layout,shared,100000,2,1.2116,200000,includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1,2
+layout,packed,100000,2,1.2153,200000,includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1,2
+layout,batched,100000,2,0.4071,200000,includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=782; hint=64; packed_same_hint_region=1; atomic_lock_free=1,2
+layout,padded,100000,2,0.4796,200000,includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1,3
+layout,shared,100000,2,1.4205,200000,includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1,3
+layout,batched,100000,2,0.4107,200000,includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=782; hint=64; packed_same_hint_region=1; atomic_lock_free=1,3
+layout,packed,100000,2,1.2563,200000,includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1,3
+layout,padded,100000,2,0.4892,200000,includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1,4
+layout,batched,100000,2,0.4062,200000,includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=782; hint=64; packed_same_hint_region=1; atomic_lock_free=1,4
+layout,shared,100000,2,1.3814,200000,includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1,4
+layout,packed,100000,2,1.4828,200000,includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1,4

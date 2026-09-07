@@ -1,40 +1,33 @@
-# 练习 L-1：并行算法与执行策略
+# L1：四种策略的真实合同
 
-> 详尽版见 `../../15-模块L-并行算法与执行策略.md` 的 练习 L-1。
+本题 main.cpp 分类为 OBSERVATION：运行给定基线并进行本程序实际列出的观察/检查。退出成功只说明这些检查通过，不表示下面全部实现、推导或测量 Part 已完成；完整答案与更广检查见独立 solution.cpp。需要实现的 Part 请在自己的函数中完成后对照 Reference，不把运行答案视为完成作业。
 
-## 目标
+完整连续正文：[课程正文](../../topics/performance/02-execution-policies.md)。
 
-把串行的 `std::for_each` / `std::transform` / `std::sort` 加上执行策略（execution policy）`std::execution::par` 升级为并行，验证并行结果与串行**完全一致**并做计时对比。讲清四种策略的语义与 `par_unseq`/`unseq` 的约束。
+main 演示普通 transform；[solution.cpp](solution.cpp) 验证 plain/seq/par/unseq/par_unseq 的可用分支，以及 for_each、sort 和普通回调异常。所有策略映射使用共用 numeric::map。
 
-## 前置理解
+## 必做 Part 与答案
 
-- 执行策略在 `<execution>`，作为算法的**第一个实参**传入：
-  - `std::execution::seq`（C++17）串行、不向量化；
-  - `std::execution::par`（C++17）多线程并行；
-  - `std::execution::par_unseq`（C++17）多线程并行 + 允许向量化（SIMD）；
-  - `std::execution::unseq`（**C++20**）单线程但允许向量化。
-- **约束**：`par_unseq` / `unseq` 下元素函数体内**禁止加锁、禁止分配内存、禁止相邻元素调用相互依赖**（允许交错执行，interleaving），否则未定义行为；`par` 不向量化，单个元素调用是完整的，约束较松（但仍不能有数据竞争）。
-- **工具链差异**：MSVC 并行算法**内置完整支持、无需链接任何库**；GCC/libstdc++ 历史上把并行后端委托 Intel TBB，需 `-ltbb` 才真正并行（否则退化串行）。本仓库 CMake 用 `TbbSetup` 守卫非 MSVC 平台。
+1. 输入 [-16,16] 内的小整数 float，映射 x*x+2，整数公式生成独立真值。测试空、单项、7 项与 4097 项。输出已分配且与输入分离，回调不读写共享状态。
+2. 用 par for_each 就地把独立 int 元素乘二。不同元素各有一个写者，不需要锁；不要推广到 vector<bool> 的位代理存储。
+3. 对包含重复值的整数数组排序，期望 {-1,-1,0,2,2,3,3}。带 key/payload 的非稳定排序不能要求相等 key 保留原顺序。
+4. 区分异常：普通 for_each 的异常被 catch；标准策略回调未捕获异常会 terminate，seq 也一样，因此该错误情形默认不运行。尺寸检查与结果检查在主线程。
+5. 解释 unseq 的交错和 par 的回退。等待另一个元素推进不构成合法完成协议；par 可能串行，不能靠 sleep 验证调度。
 
-## 必做任务
+## 验收边界
 
-1. `// TODO [必做 1]`：把串行 `std::transform` 改成 `std::execution::par` 版本，验证 `out_seq == out_par`（确定性映射，逐元素相等）+ 计时。
-2. `// TODO [必做 2]`：把 `std::sort` 改成 `std::execution::par` 版本，验证 `v_seq == v_par`（排序结果唯一）+ 计时。
+Reference 验证功能，不检测是否真的创建线程。CS_HAS_PARALLEL_ALGORITHMS 表示接口/链接可用，实际运行并行度需另测。无能力时普通基线仍运行，可选策略跳过；没有把串行占位函数命名为 par。
 
-## 验收点
+seq 不等于禁止所有机器向量化；unseq 也不保证生成 SIMD。有关分配调用的例外和 vectorization-unsafe 定义按固定 N5050 正文核对，本题选择无分配回调以简化证明。
 
-- 并行 `transform` / `for_each` / `sort` 的结果与串行**逐元素一致**。
-- 能说清 `seq`/`par`/`par_unseq`/`unseq` 的语义差异，以及 `par_unseq`/`unseq` 为何禁止加锁/分配。
-- 能说出 MSVC 内置 vs GCC 需 TBB 的差异。
+## 构建与运行
 
-## 对应官方参考
+从 `Concurrency_Study/exercises` 执行：
 
-- cppreference [`std::execution` 策略](https://en.cppreference.com/w/cpp/algorithm/execution_policy_tag_t) / [`for_each`](https://en.cppreference.com/w/cpp/algorithm/for_each) / [`transform`](https://en.cppreference.com/w/cpp/algorithm/transform) / [`sort`](https://en.cppreference.com/w/cpp/algorithm/sort)
-- 《C++ Concurrency in Action, 2nd ed.》(Williams) 第 10 章
-
-## 构建运行
-
-```bash
-cmake --build build-vs2026 --target L1_par_algorithms --config Release
-./build-vs2026/L1_par_algorithms/Release/L1_par_algorithms.exe
+```powershell
+cmake -S L1_par_algorithms -B build/L1_par_algorithms -G "Visual Studio 18 2026" -A x64
+cmake --build build/L1_par_algorithms --config Release
+ctest --test-dir build/L1_par_algorithms -C Release --output-on-failure
 ```
+
+C++ 默认 23，cs::check 在 Release 中保持有效。可选能力缺失不阻止普通基线；平台及标准事实的官方链接、完整推导见本题对应正文。

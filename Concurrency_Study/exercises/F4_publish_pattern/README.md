@@ -1,38 +1,38 @@
-# 练习 F-4：发布-订阅内存序模式
+# F4：可复用单槽需要双向交接
 
-> 详尽版见 `../../08-模块F-内存模型与memory_order.md` 的 练习 F-4。
+完整正文见[可复用单槽需要双向交接](../../topics/atomics/07-publication-and-lifetime.md)。[main.cpp](main.cpp) 是安全、有限结束的 Starter；[solution.cpp](solution.cpp) 是含运行检查的 Reference。默认 C++23。
 
-## 目标
+## Part 1：指出原版本号覆盖方案缺少的边
 
-把 F-1 的“一个 bool 标志发布一个 payload”推广为通用模式：单生产者反复发布**新版本**的一整块结构体/缓冲，用一个原子**版本号（version / sequence number）**作发布点；消费者 acquire 读版本号、读到新版本后再读数据。这正是无锁（lock-free）数据结构的发布骨架。
+Starter 只安全地交接一次。若生产者继续覆盖 slot，读者即使 acquire 看见上一版，下一次写也可能与当前读竞争。不要把 Starter 直接包进生产者循环。
 
-## 前置理解
+答案：现有链只给 Wv HB Rv，缺少 Rv HB W(v+1)。提高版本号序强度或读前后重查版本，都不能撤销已经发生的普通读写数据竞争。旧方案不作为可运行错误演示。
 
-- 发布的数据 `g_data` 是**非原子**结构体；它的可见性完全由版本号 `g_version` 的 release/acquire 配对担保。
-- 生产者不变式：先写好新一版 `g_data`（这些写 sequenced-before 后面的 release 写），再 `g_version.store(v, release)` 发布。
-- 消费者不变式：`g_version.load(acquire)` 读到版本 V ⇒ 与生产者写 V 的那次 release 写 synchronizes-with ⇒ 生产者在那之前对 `g_data` 的全部写 happens-before 我随后对 `g_data` 的读 ⇒ 我读到的必是与 V 配套的完整数据。
-- 单写者下，读者可能跳过中间版本直接看到最新版——这正常；要的是“看到的那一版数据自洽完整”，而非每版都见。
-- 无锁结构的共同骨架：先在“别人看不到”时把新状态准备好，再用一次 release 原子写（版本号/指针/标志）一举发布；读者 acquire 读到发布点即 happens-before 全部新数据。
+## Part 2：实现每版确认并完成 2000 次交接
 
-## 必做任务
+Reference 使用 published 与 acknowledged 两个原子版本号。生产者 acquire 观察 ack==v-1 才写第 v 版，release 发布；消费者 acquire 接收，复制检查，release 确认。检查版本 1..2000 每版恰好一次，字段为 {v,2v,-v}。
 
-1. `// TODO [必做 1]`：生产者每轮写好新版 `g_data` 后用 `g_version.store(v, release)` 发布；多个消费者 `g_version.load(acquire)` 追版本，读到新版本后读 `g_data` 并校验自洽（`value == id*1000+id`、`label == "snapshot-v"+id`）。
+答案：发布方向保证初始化可见；确认方向保证旧读先于槽位覆盖。两条链共同形成安全复用。容量 1、SPSC、固定次数，不承诺任意数量消费者、非阻塞调用或无锁进展。
 
-## 验收点
+## Part 3：异常与收尾
 
-- 能用一个原子版本号 release/acquire 发布整片非原子数据，读者读到的版本与数据自洽。
-- 能复述消费者那条 happens-before 推理链。
-- 能说出这就是无锁/单写多读结构的发布骨架，并指出“发布指针 + RCU/引用计数”是其自然延伸。
+消费者累积检查结果，发送完全部确认后再 cs::check；主线程 consumer.get 接收失败。为何不在发现字段错误时立即抛出？因为生产者可能仍等待下一次确认，提前退出会留下等待者。
 
-## 对应官方参考
+本题字段复制不抛异常。推广到 string、回调或外部资源时，需设计关闭/错误终态及唤醒，不能只复制这段循环。所有使用者结束后才销毁原子和 slot。
 
-- cppreference [`std::memory_order`](https://en.cppreference.com/w/cpp/atomic/memory_order)（release-acquire；release sequence）
-- 《C++ Concurrency in Action, 2nd ed.》(Williams) 第 5 章 5.3 / 第 7 章
-- Mara Bos《Rust Atomics and Locks》第 3 章（release/acquire）
+## 场景切换题答案
 
-## 构建运行
+若读者允许跳版、只需某个自洽的配置快照，运行 I1 的不可变 atomic<shared_ptr<const T>>。它保留旧对象寿命，减少对“读完才可改同一个槽”的依赖，但引入分配和共享所有权成本，也不提供逐版送达承诺。不能作为同契约的无条件替换。
 
-```bash
-cmake --build build-vs2026 --target F4_publish_pattern --config Release
-./build-vs2026/F4_publish_pattern/Release/F4_publish_pattern.exe
+## 构建与验收
+
+从 `Concurrency_Study/exercises` 执行：
+
+```powershell
+cmake -S F4_publish_pattern -B build/F4_publish_pattern -G "Visual Studio 18 2026" -A x64
+cmake --build build/F4_publish_pattern --config Release
+./build/F4_publish_pattern/Release/F4_publish_pattern.exe
+ctest --test-dir build/F4_publish_pattern -C Release --output-on-failure
 ```
+
+VS2026 生成器需要 CMake 4.2 或更新版。CTest 运行 `F4_publish_pattern_reference` 并设进程超时；cs::check 在 Release 仍有效。通过表示本次检查成功，不替代正文中的协议证明。规范链接与版本说明见对应正文。

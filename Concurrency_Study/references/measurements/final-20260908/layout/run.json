@@ -1,0 +1,1070 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "source_root": "P:\\C++Code\\LearnCPP\\Concurrency_Study",
+  "source_sha256": "9ec7e92b69a9860f33f40bba0d6eb5d18d58065011ae4d4b159a23ffa066dcb6",
+  "environment": {
+    "python": "3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]",
+    "os": "Windows-11-10.0.26220-SP0",
+    "machine": "AMD64",
+    "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+    "logical_cpus": 32,
+    "executable_sha256": "fcd9725788b601ff3abc0707d62752284fa571e0ffcb93db48fa7d987f62d82d",
+    "cmake_cache": "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\CMakeCache.txt",
+    "cmake_settings": [
+      "CMAKE_CXX_FLAGS:STRING=/DWIN32 /D_WINDOWS /EHsc",
+      "CMAKE_CXX_FLAGS_DEBUG:STRING=/Ob0 /Od /RTC1",
+      "CMAKE_CXX_FLAGS_MINSIZEREL:STRING=/O1 /Ob1 /DNDEBUG",
+      "CMAKE_CXX_FLAGS_RELEASE:STRING=/O2 /Ob2 /DNDEBUG",
+      "CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=/O2 /Ob1 /DNDEBUG",
+      "CMAKE_GENERATOR_INSTANCE:UNINITIALIZED=G:/Visual Studio 2026 Community",
+      "CONCURRENCY_STUDY_BUILD_BENCHMARKS:BOOL=ON",
+      "CONCURRENCY_STUDY_BUILD_REFERENCE:BOOL=ON",
+      "CONCURRENCY_STUDY_ENABLE_CXX26:BOOL=OFF",
+      "CONCURRENCY_STUDY_ENABLE_STDEXEC:BOOL=ON",
+      "CONCURRENCY_STUDY_ENABLE_UNSAFE_DEMOS:BOOL=OFF",
+      "CONCURRENCY_STUDY_ENABLE_XSIMD:BOOL=ON",
+      "CONCURRENCY_STUDY_FETCH_DEPS:BOOL=ON",
+      "CONCURRENCY_STUDY_STDEXEC_SOURCE_DIR:PATH=P:/C++Code/LearnCPP/Concurrency_Study/exercises/cmake/../third_party/stdexec",
+      "CONCURRENCY_STUDY_TEST_FAST_MATH:BOOL=ON",
+      "CONCURRENCY_STUDY_TEST_STARTERS:BOOL=OFF",
+      "CONCURRENCY_STUDY_XSIMD_SOURCE_DIR:PATH=P:/C++Code/LearnCPP/Concurrency_Study/exercises/cmake/../third_party/xsimd",
+      "CMAKE_CXX_FLAGS-ADVANCED:INTERNAL=1",
+      "CMAKE_CXX_FLAGS_DEBUG-ADVANCED:INTERNAL=1",
+      "CMAKE_CXX_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1",
+      "CMAKE_CXX_FLAGS_RELEASE-ADVANCED:INTERNAL=1",
+      "CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1",
+      "CMAKE_GENERATOR:INTERNAL=Visual Studio 18 2026",
+      "CONCURRENCY_STUDY_STDEXEC_REVISION:INTERNAL=6d7ad689f4d4831c5136e4abe1c601f9a3b64e43",
+      "CONCURRENCY_STUDY_XSIMD_REVISION:INTERNAL=1f8dd9c8e162968d9b4ff0251c56d431b8777f36",
+      "CS_HAS_PARALLEL_ALGORITHMS:INTERNAL=1"
+    ],
+    "compiler_configuration": "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\CMakeFiles\\4.2.3\\CMakeCXXCompiler.cmake",
+    "compiler_identity": [
+      "set(CMAKE_CXX_COMPILER \"G:/Visual Studio 2026 Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe\")",
+      "set(CMAKE_CXX_COMPILER_ID \"MSVC\")",
+      "set(CMAKE_CXX_COMPILER_VERSION \"19.51.36256.0\")",
+      "set(CMAKE_CXX_PLATFORM_ID \"Windows\")"
+    ]
+  },
+  "runner_command": [
+    "Concurrency_Study/exercises/tools/run_benchmarks.py",
+    "--exe",
+    "Concurrency_Study/exercises/build/full-windows/benchmarks/Release/layout_bench.exe",
+    "--check",
+    "Concurrency_Study/exercises/build/full-windows/runtime_tests/Release/runtime_numeric_test.exe",
+    "--check",
+    "Concurrency_Study/exercises/build/full-windows/J1_false_sharing/Release/J1_false_sharing_reference.exe",
+    "--variant",
+    "packed",
+    "--variant",
+    "padded",
+    "--variant",
+    "shared",
+    "--variant",
+    "batched",
+    "--samples",
+    "5",
+    "--warmups",
+    "1",
+    "--seed",
+    "42",
+    "--timeout",
+    "30",
+    "--output",
+    "Concurrency_Study/references/measurements/final-20260908/layout",
+    "--",
+    "--size",
+    "100000",
+    "--threads",
+    "2",
+    "--batch",
+    "256"
+  ],
+  "seed": 42,
+  "allow_partial": false,
+  "timing": "C++ reported interval; external process duration recorded separately",
+  "threads_field": "positive: reported thread count; zero: implementation-managed count was not measured",
+  "checks": [
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\runtime_tests\\Release\\runtime_numeric_test.exe"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.022153699999762466,
+      "stdout": "SKIP backend 3\nnumeric_test OK: lengths, tails, alignment, permutations, precision, IEEE policy, GEMM, workers\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "executable_sha256": "b514640b817882fadde8f7ab5807190235a7c0fb48e4ca50e6b20a792581b9ec"
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\J1_false_sharing\\Release\\J1_false_sharing_reference.exe"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.02533700000094541,
+      "stdout": "J1 OK: private counts, true sharing, batched tail and publication count\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "executable_sha256": "90dbba4bce8b0adbc1cf5666c3b9bbc82d4a041e930b811da7be5c9b719ee06a"
+    }
+  ],
+  "runs": [
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\layout_bench.exe",
+        "--variant",
+        "shared",
+        "--size",
+        "100000",
+        "--threads",
+        "2",
+        "--batch",
+        "256"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.05603209999935643,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"layout\",\"shared\",100000,2,1.2169,200000,\"includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "shared",
+      "repetition": 0,
+      "warmup": true,
+      "rows": [
+        {
+          "suite": "layout",
+          "variant": "shared",
+          "size": 100000,
+          "threads": 2,
+          "milliseconds": 1.2169,
+          "completed": 200000,
+          "details": "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\layout_bench.exe",
+        "--variant",
+        "padded",
+        "--size",
+        "100000",
+        "--threads",
+        "2",
+        "--batch",
+        "256"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.017742600000929087,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"layout\",\"padded\",100000,2,0.5012,200000,\"includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "padded",
+      "repetition": 0,
+      "warmup": true,
+      "rows": [
+        {
+          "suite": "layout",
+          "variant": "padded",
+          "size": 100000,
+          "threads": 2,
+          "milliseconds": 0.5012,
+          "completed": 200000,
+          "details": "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\layout_bench.exe",
+        "--variant",
+        "batched",
+        "--size",
+        "100000",
+        "--threads",
+        "2",
+        "--batch",
+        "256"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.017571500000485685,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"layout\",\"batched\",100000,2,0.4067,200000,\"includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=782; hint=64; packed_same_hint_region=1; atomic_lock_free=1\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "batched",
+      "repetition": 0,
+      "warmup": true,
+      "rows": [
+        {
+          "suite": "layout",
+          "variant": "batched",
+          "size": 100000,
+          "threads": 2,
+          "milliseconds": 0.4067,
+          "completed": 200000,
+          "details": "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=782; hint=64; packed_same_hint_region=1; atomic_lock_free=1"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\layout_bench.exe",
+        "--variant",
+        "packed",
+        "--size",
+        "100000",
+        "--threads",
+        "2",
+        "--batch",
+        "256"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01773010000033537,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"layout\",\"packed\",100000,2,1.1443,200000,\"includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "packed",
+      "repetition": 0,
+      "warmup": true,
+      "rows": [
+        {
+          "suite": "layout",
+          "variant": "packed",
+          "size": 100000,
+          "threads": 2,
+          "milliseconds": 1.1443,
+          "completed": 200000,
+          "details": "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\layout_bench.exe",
+        "--variant",
+        "batched",
+        "--size",
+        "100000",
+        "--threads",
+        "2",
+        "--batch",
+        "256"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01584000000002561,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"layout\",\"batched\",100000,2,0.4016,200000,\"includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=782; hint=64; packed_same_hint_region=1; atomic_lock_free=1\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "batched",
+      "repetition": 1,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "layout",
+          "variant": "batched",
+          "size": 100000,
+          "threads": 2,
+          "milliseconds": 0.4016,
+          "completed": 200000,
+          "details": "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=782; hint=64; packed_same_hint_region=1; atomic_lock_free=1"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\layout_bench.exe",
+        "--variant",
+        "shared",
+        "--size",
+        "100000",
+        "--threads",
+        "2",
+        "--batch",
+        "256"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.016248400001131813,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"layout\",\"shared\",100000,2,1.2037,200000,\"includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "shared",
+      "repetition": 1,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "layout",
+          "variant": "shared",
+          "size": 100000,
+          "threads": 2,
+          "milliseconds": 1.2037,
+          "completed": 200000,
+          "details": "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\layout_bench.exe",
+        "--variant",
+        "packed",
+        "--size",
+        "100000",
+        "--threads",
+        "2",
+        "--batch",
+        "256"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.016673799998898176,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"layout\",\"packed\",100000,2,1.4313,200000,\"includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "packed",
+      "repetition": 1,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "layout",
+          "variant": "packed",
+          "size": 100000,
+          "threads": 2,
+          "milliseconds": 1.4313,
+          "completed": 200000,
+          "details": "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\layout_bench.exe",
+        "--variant",
+        "padded",
+        "--size",
+        "100000",
+        "--threads",
+        "2",
+        "--batch",
+        "256"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01572879999912402,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"layout\",\"padded\",100000,2,0.4737,200000,\"includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "padded",
+      "repetition": 1,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "layout",
+          "variant": "padded",
+          "size": 100000,
+          "threads": 2,
+          "milliseconds": 0.4737,
+          "completed": 200000,
+          "details": "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\layout_bench.exe",
+        "--variant",
+        "padded",
+        "--size",
+        "100000",
+        "--threads",
+        "2",
+        "--batch",
+        "256"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.015787899999850197,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"layout\",\"padded\",100000,2,0.4732,200000,\"includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "padded",
+      "repetition": 2,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "layout",
+          "variant": "padded",
+          "size": 100000,
+          "threads": 2,
+          "milliseconds": 0.4732,
+          "completed": 200000,
+          "details": "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\layout_bench.exe",
+        "--variant",
+        "batched",
+        "--size",
+        "100000",
+        "--threads",
+        "2",
+        "--batch",
+        "256"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.016059199999290286,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"layout\",\"batched\",100000,2,0.469,200000,\"includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=782; hint=64; packed_same_hint_region=1; atomic_lock_free=1\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "batched",
+      "repetition": 2,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "layout",
+          "variant": "batched",
+          "size": 100000,
+          "threads": 2,
+          "milliseconds": 0.469,
+          "completed": 200000,
+          "details": "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=782; hint=64; packed_same_hint_region=1; atomic_lock_free=1"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\layout_bench.exe",
+        "--variant",
+        "shared",
+        "--size",
+        "100000",
+        "--threads",
+        "2",
+        "--batch",
+        "256"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01672379999945406,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"layout\",\"shared\",100000,2,1.2564,200000,\"includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "shared",
+      "repetition": 2,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "layout",
+          "variant": "shared",
+          "size": 100000,
+          "threads": 2,
+          "milliseconds": 1.2564,
+          "completed": 200000,
+          "details": "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\layout_bench.exe",
+        "--variant",
+        "packed",
+        "--size",
+        "100000",
+        "--threads",
+        "2",
+        "--batch",
+        "256"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.016994999999951688,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"layout\",\"packed\",100000,2,1.1767,200000,\"includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "packed",
+      "repetition": 2,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "layout",
+          "variant": "packed",
+          "size": 100000,
+          "threads": 2,
+          "milliseconds": 1.1767,
+          "completed": 200000,
+          "details": "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\layout_bench.exe",
+        "--variant",
+        "padded",
+        "--size",
+        "100000",
+        "--threads",
+        "2",
+        "--batch",
+        "256"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01577530000031402,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"layout\",\"padded\",100000,2,0.5217,200000,\"includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "padded",
+      "repetition": 3,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "layout",
+          "variant": "padded",
+          "size": 100000,
+          "threads": 2,
+          "milliseconds": 0.5217,
+          "completed": 200000,
+          "details": "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\layout_bench.exe",
+        "--variant",
+        "shared",
+        "--size",
+        "100000",
+        "--threads",
+        "2",
+        "--batch",
+        "256"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.016884600001503713,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"layout\",\"shared\",100000,2,1.2116,200000,\"includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "shared",
+      "repetition": 3,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "layout",
+          "variant": "shared",
+          "size": 100000,
+          "threads": 2,
+          "milliseconds": 1.2116,
+          "completed": 200000,
+          "details": "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\layout_bench.exe",
+        "--variant",
+        "packed",
+        "--size",
+        "100000",
+        "--threads",
+        "2",
+        "--batch",
+        "256"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.016438799999377807,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"layout\",\"packed\",100000,2,1.2153,200000,\"includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "packed",
+      "repetition": 3,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "layout",
+          "variant": "packed",
+          "size": 100000,
+          "threads": 2,
+          "milliseconds": 1.2153,
+          "completed": 200000,
+          "details": "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\layout_bench.exe",
+        "--variant",
+        "batched",
+        "--size",
+        "100000",
+        "--threads",
+        "2",
+        "--batch",
+        "256"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01595869999982824,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"layout\",\"batched\",100000,2,0.4071,200000,\"includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=782; hint=64; packed_same_hint_region=1; atomic_lock_free=1\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "batched",
+      "repetition": 3,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "layout",
+          "variant": "batched",
+          "size": 100000,
+          "threads": 2,
+          "milliseconds": 0.4071,
+          "completed": 200000,
+          "details": "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=782; hint=64; packed_same_hint_region=1; atomic_lock_free=1"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\layout_bench.exe",
+        "--variant",
+        "padded",
+        "--size",
+        "100000",
+        "--threads",
+        "2",
+        "--batch",
+        "256"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.015694499999881373,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"layout\",\"padded\",100000,2,0.4796,200000,\"includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "padded",
+      "repetition": 4,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "layout",
+          "variant": "padded",
+          "size": 100000,
+          "threads": 2,
+          "milliseconds": 0.4796,
+          "completed": 200000,
+          "details": "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\layout_bench.exe",
+        "--variant",
+        "shared",
+        "--size",
+        "100000",
+        "--threads",
+        "2",
+        "--batch",
+        "256"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.017062700000678888,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"layout\",\"shared\",100000,2,1.4205,200000,\"includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "shared",
+      "repetition": 4,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "layout",
+          "variant": "shared",
+          "size": 100000,
+          "threads": 2,
+          "milliseconds": 1.4205,
+          "completed": 200000,
+          "details": "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\layout_bench.exe",
+        "--variant",
+        "batched",
+        "--size",
+        "100000",
+        "--threads",
+        "2",
+        "--batch",
+        "256"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.016112400000565685,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"layout\",\"batched\",100000,2,0.4107,200000,\"includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=782; hint=64; packed_same_hint_region=1; atomic_lock_free=1\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "batched",
+      "repetition": 4,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "layout",
+          "variant": "batched",
+          "size": 100000,
+          "threads": 2,
+          "milliseconds": 0.4107,
+          "completed": 200000,
+          "details": "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=782; hint=64; packed_same_hint_region=1; atomic_lock_free=1"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\layout_bench.exe",
+        "--variant",
+        "packed",
+        "--size",
+        "100000",
+        "--threads",
+        "2",
+        "--batch",
+        "256"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.016637100001389626,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"layout\",\"packed\",100000,2,1.2563,200000,\"includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "packed",
+      "repetition": 4,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "layout",
+          "variant": "packed",
+          "size": 100000,
+          "threads": 2,
+          "milliseconds": 1.2563,
+          "completed": 200000,
+          "details": "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\layout_bench.exe",
+        "--variant",
+        "padded",
+        "--size",
+        "100000",
+        "--threads",
+        "2",
+        "--batch",
+        "256"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.016599200000200653,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"layout\",\"padded\",100000,2,0.4892,200000,\"includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "padded",
+      "repetition": 5,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "layout",
+          "variant": "padded",
+          "size": 100000,
+          "threads": 2,
+          "milliseconds": 0.4892,
+          "completed": 200000,
+          "details": "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\layout_bench.exe",
+        "--variant",
+        "batched",
+        "--size",
+        "100000",
+        "--threads",
+        "2",
+        "--batch",
+        "256"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01600460000008752,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"layout\",\"batched\",100000,2,0.4062,200000,\"includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=782; hint=64; packed_same_hint_region=1; atomic_lock_free=1\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "batched",
+      "repetition": 5,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "layout",
+          "variant": "batched",
+          "size": 100000,
+          "threads": 2,
+          "milliseconds": 0.4062,
+          "completed": 200000,
+          "details": "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=782; hint=64; packed_same_hint_region=1; atomic_lock_free=1"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\layout_bench.exe",
+        "--variant",
+        "shared",
+        "--size",
+        "100000",
+        "--threads",
+        "2",
+        "--batch",
+        "256"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.01625649999914458,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"layout\",\"shared\",100000,2,1.3814,200000,\"includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "shared",
+      "repetition": 5,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "layout",
+          "variant": "shared",
+          "size": 100000,
+          "threads": 2,
+          "milliseconds": 1.3814,
+          "completed": 200000,
+          "details": "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\layout_bench.exe",
+        "--variant",
+        "packed",
+        "--size",
+        "100000",
+        "--threads",
+        "2",
+        "--batch",
+        "256"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.017678600001090672,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"layout\",\"packed\",100000,2,1.4828,200000,\"includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "packed",
+      "repetition": 5,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "layout",
+          "variant": "packed",
+          "size": 100000,
+          "threads": 2,
+          "milliseconds": 1.4828,
+          "completed": 200000,
+          "details": "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1"
+        }
+      ]
+    }
+  ],
+  "summaries": [
+    {
+      "case": {
+        "suite": "layout",
+        "variant": "batched",
+        "size": 100000,
+        "threads": 2,
+        "completed": 200000
+      },
+      "sample_details": [
+        "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=782; hint=64; packed_same_hint_region=1; atomic_lock_free=1",
+        "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=782; hint=64; packed_same_hint_region=1; atomic_lock_free=1",
+        "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=782; hint=64; packed_same_hint_region=1; atomic_lock_free=1",
+        "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=782; hint=64; packed_same_hint_region=1; atomic_lock_free=1",
+        "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=782; hint=64; packed_same_hint_region=1; atomic_lock_free=1"
+      ],
+      "samples_ms": [
+        0.4016,
+        0.469,
+        0.4071,
+        0.4107,
+        0.4062
+      ],
+      "median_ms": 0.4071,
+      "min_ms": 0.4016,
+      "max_ms": 0.469,
+      "stdev_ms": 0.028182742946704087
+    },
+    {
+      "case": {
+        "suite": "layout",
+        "variant": "shared",
+        "size": 100000,
+        "threads": 2,
+        "completed": 200000
+      },
+      "sample_details": [
+        "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1",
+        "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1",
+        "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1",
+        "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1",
+        "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1"
+      ],
+      "samples_ms": [
+        1.2037,
+        1.2564,
+        1.2116,
+        1.4205,
+        1.3814
+      ],
+      "median_ms": 1.2564,
+      "min_ms": 1.2037,
+      "max_ms": 1.4205,
+      "stdev_ms": 0.09999503487673778
+    },
+    {
+      "case": {
+        "suite": "layout",
+        "variant": "packed",
+        "size": 100000,
+        "threads": 2,
+        "completed": 200000
+      },
+      "sample_details": [
+        "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1",
+        "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1",
+        "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1",
+        "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1",
+        "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1"
+      ],
+      "samples_ms": [
+        1.4313,
+        1.1767,
+        1.2153,
+        1.2563,
+        1.4828
+      ],
+      "median_ms": 1.2563,
+      "min_ms": 1.1767,
+      "max_ms": 1.4828,
+      "stdev_ms": 0.13616483393299456
+    },
+    {
+      "case": {
+        "suite": "layout",
+        "variant": "padded",
+        "size": 100000,
+        "threads": 2,
+        "completed": 200000
+      },
+      "sample_details": [
+        "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1",
+        "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1",
+        "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1",
+        "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1",
+        "includes zeroing/spawn/join; final-total contract; batch=256; atomic_updates=200000; hint=64; packed_same_hint_region=1; atomic_lock_free=1"
+      ],
+      "samples_ms": [
+        0.4737,
+        0.4732,
+        0.5217,
+        0.4796,
+        0.4892
+      ],
+      "median_ms": 0.4796,
+      "min_ms": 0.4732,
+      "max_ms": 0.5217,
+      "stdev_ms": 0.02018581184892004
+    }
+  ]
+}

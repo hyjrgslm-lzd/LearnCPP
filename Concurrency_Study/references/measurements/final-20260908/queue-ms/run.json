@@ -1,0 +1,381 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "source_root": "P:\\C++Code\\LearnCPP\\Concurrency_Study",
+  "source_sha256": "9ec7e92b69a9860f33f40bba0d6eb5d18d58065011ae4d4b159a23ffa066dcb6",
+  "environment": {
+    "python": "3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]",
+    "os": "Windows-11-10.0.26220-SP0",
+    "machine": "AMD64",
+    "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+    "logical_cpus": 32,
+    "executable_sha256": "20612984fa06b9e9a40cb7911fc312527a86768a4ecd32644da27b820f0cc60d",
+    "cmake_cache": "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\CMakeCache.txt",
+    "cmake_settings": [
+      "CMAKE_CXX_FLAGS:STRING=/DWIN32 /D_WINDOWS /EHsc",
+      "CMAKE_CXX_FLAGS_DEBUG:STRING=/Ob0 /Od /RTC1",
+      "CMAKE_CXX_FLAGS_MINSIZEREL:STRING=/O1 /Ob1 /DNDEBUG",
+      "CMAKE_CXX_FLAGS_RELEASE:STRING=/O2 /Ob2 /DNDEBUG",
+      "CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=/O2 /Ob1 /DNDEBUG",
+      "CMAKE_GENERATOR_INSTANCE:UNINITIALIZED=G:/Visual Studio 2026 Community",
+      "CONCURRENCY_STUDY_BUILD_BENCHMARKS:BOOL=ON",
+      "CONCURRENCY_STUDY_BUILD_REFERENCE:BOOL=ON",
+      "CONCURRENCY_STUDY_ENABLE_CXX26:BOOL=OFF",
+      "CONCURRENCY_STUDY_ENABLE_STDEXEC:BOOL=ON",
+      "CONCURRENCY_STUDY_ENABLE_UNSAFE_DEMOS:BOOL=OFF",
+      "CONCURRENCY_STUDY_ENABLE_XSIMD:BOOL=ON",
+      "CONCURRENCY_STUDY_FETCH_DEPS:BOOL=ON",
+      "CONCURRENCY_STUDY_STDEXEC_SOURCE_DIR:PATH=P:/C++Code/LearnCPP/Concurrency_Study/exercises/cmake/../third_party/stdexec",
+      "CONCURRENCY_STUDY_TEST_FAST_MATH:BOOL=ON",
+      "CONCURRENCY_STUDY_TEST_STARTERS:BOOL=OFF",
+      "CONCURRENCY_STUDY_XSIMD_SOURCE_DIR:PATH=P:/C++Code/LearnCPP/Concurrency_Study/exercises/cmake/../third_party/xsimd",
+      "CMAKE_CXX_FLAGS-ADVANCED:INTERNAL=1",
+      "CMAKE_CXX_FLAGS_DEBUG-ADVANCED:INTERNAL=1",
+      "CMAKE_CXX_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1",
+      "CMAKE_CXX_FLAGS_RELEASE-ADVANCED:INTERNAL=1",
+      "CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1",
+      "CMAKE_GENERATOR:INTERNAL=Visual Studio 18 2026",
+      "CONCURRENCY_STUDY_STDEXEC_REVISION:INTERNAL=6d7ad689f4d4831c5136e4abe1c601f9a3b64e43",
+      "CONCURRENCY_STUDY_XSIMD_REVISION:INTERNAL=1f8dd9c8e162968d9b4ff0251c56d431b8777f36",
+      "CS_HAS_PARALLEL_ALGORITHMS:INTERNAL=1"
+    ],
+    "compiler_configuration": "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\CMakeFiles\\4.2.3\\CMakeCXXCompiler.cmake",
+    "compiler_identity": [
+      "set(CMAKE_CXX_COMPILER \"G:/Visual Studio 2026 Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe\")",
+      "set(CMAKE_CXX_COMPILER_ID \"MSVC\")",
+      "set(CMAKE_CXX_COMPILER_VERSION \"19.51.36256.0\")",
+      "set(CMAKE_CXX_PLATFORM_ID \"Windows\")"
+    ]
+  },
+  "runner_command": [
+    "Concurrency_Study/exercises/tools/run_benchmarks.py",
+    "--exe",
+    "Concurrency_Study/exercises/build/full-windows/benchmarks/Release/queue_bench.exe",
+    "--check",
+    "Concurrency_Study/exercises/build/full-windows/runtime_tests/Release/runtime_queue_history_test.exe",
+    "--check",
+    "Concurrency_Study/exercises/build/full-windows/Q2_ms_queue/Release/Q2_ms_queue_reference.exe",
+    "--variant",
+    "ms",
+    "--samples",
+    "5",
+    "--warmups",
+    "1",
+    "--seed",
+    "42",
+    "--timeout",
+    "30",
+    "--output",
+    "Concurrency_Study/references/measurements/final-20260908/queue-ms",
+    "--",
+    "--size",
+    "100003",
+    "--producers",
+    "3",
+    "--consumers",
+    "4",
+    "--capacity",
+    "0",
+    "--batch",
+    "1"
+  ],
+  "seed": 42,
+  "allow_partial": false,
+  "timing": "C++ reported interval; external process duration recorded separately",
+  "threads_field": "positive: reported thread count; zero: implementation-managed count was not measured",
+  "checks": [
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\runtime_tests\\Release\\runtime_queue_history_test.exe"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.021069399999760208,
+      "stdout": "queue_history OK: actual small histories, oracle counterexamples, gap/wrap models\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "executable_sha256": "398bc908a74c756ac8589e505e25e266e085bf471d6526a95a628beb32ca6db5"
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\Q2_ms_queue\\Release\\Q2_ms_queue_reference.exe"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.039310800000748714,
+      "stdout": "MS pointer atomics lock-free=1; whole operation may allocate and acquire HP locks\nQ2 OK: FIFO, MPSC/SPMC/MPMC IDs, in-run reclamation and final drain\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "executable_sha256": "5bbd06aeab338cb5cfb16f9e72c6225114f7b6d1372c083b24914b75b2ee786e"
+    }
+  ],
+  "runs": [
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\queue_bench.exe",
+        "--variant",
+        "ms",
+        "--size",
+        "100003",
+        "--producers",
+        "3",
+        "--consumers",
+        "4",
+        "--capacity",
+        "0",
+        "--batch",
+        "1"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.054037899999457295,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"queue\",\"ms\",100003,7,36.3991,100003,\"P=3;C=4;capacity=0;batch=1;unbounded;strict-try;HP-locks+allocation-included;atomic_lock_free=true;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "ms",
+      "repetition": 0,
+      "warmup": true,
+      "rows": [
+        {
+          "suite": "queue",
+          "variant": "ms",
+          "size": 100003,
+          "threads": 7,
+          "milliseconds": 36.3991,
+          "completed": 100003,
+          "details": "P=3;C=4;capacity=0;batch=1;unbounded;strict-try;HP-locks+allocation-included;atomic_lock_free=true;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\queue_bench.exe",
+        "--variant",
+        "ms",
+        "--size",
+        "100003",
+        "--producers",
+        "3",
+        "--consumers",
+        "4",
+        "--capacity",
+        "0",
+        "--batch",
+        "1"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.048216400000455906,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"queue\",\"ms\",100003,7,32.0777,100003,\"P=3;C=4;capacity=0;batch=1;unbounded;strict-try;HP-locks+allocation-included;atomic_lock_free=true;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "ms",
+      "repetition": 1,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "queue",
+          "variant": "ms",
+          "size": 100003,
+          "threads": 7,
+          "milliseconds": 32.0777,
+          "completed": 100003,
+          "details": "P=3;C=4;capacity=0;batch=1;unbounded;strict-try;HP-locks+allocation-included;atomic_lock_free=true;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\queue_bench.exe",
+        "--variant",
+        "ms",
+        "--size",
+        "100003",
+        "--producers",
+        "3",
+        "--consumers",
+        "4",
+        "--capacity",
+        "0",
+        "--batch",
+        "1"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.0481500000005326,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"queue\",\"ms\",100003,7,32.5017,100003,\"P=3;C=4;capacity=0;batch=1;unbounded;strict-try;HP-locks+allocation-included;atomic_lock_free=true;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "ms",
+      "repetition": 2,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "queue",
+          "variant": "ms",
+          "size": 100003,
+          "threads": 7,
+          "milliseconds": 32.5017,
+          "completed": 100003,
+          "details": "P=3;C=4;capacity=0;batch=1;unbounded;strict-try;HP-locks+allocation-included;atomic_lock_free=true;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\queue_bench.exe",
+        "--variant",
+        "ms",
+        "--size",
+        "100003",
+        "--producers",
+        "3",
+        "--consumers",
+        "4",
+        "--capacity",
+        "0",
+        "--batch",
+        "1"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.05980690000069444,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"queue\",\"ms\",100003,7,40.4303,100003,\"P=3;C=4;capacity=0;batch=1;unbounded;strict-try;HP-locks+allocation-included;atomic_lock_free=true;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "ms",
+      "repetition": 3,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "queue",
+          "variant": "ms",
+          "size": 100003,
+          "threads": 7,
+          "milliseconds": 40.4303,
+          "completed": 100003,
+          "details": "P=3;C=4;capacity=0;batch=1;unbounded;strict-try;HP-locks+allocation-included;atomic_lock_free=true;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\queue_bench.exe",
+        "--variant",
+        "ms",
+        "--size",
+        "100003",
+        "--producers",
+        "3",
+        "--consumers",
+        "4",
+        "--capacity",
+        "0",
+        "--batch",
+        "1"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.050865800001702155,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"queue\",\"ms\",100003,7,34.8822,100003,\"P=3;C=4;capacity=0;batch=1;unbounded;strict-try;HP-locks+allocation-included;atomic_lock_free=true;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "ms",
+      "repetition": 4,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "queue",
+          "variant": "ms",
+          "size": 100003,
+          "threads": 7,
+          "milliseconds": 34.8822,
+          "completed": 100003,
+          "details": "P=3;C=4;capacity=0;batch=1;unbounded;strict-try;HP-locks+allocation-included;atomic_lock_free=true;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded"
+        }
+      ]
+    },
+    {
+      "command": [
+        "P:\\C++Code\\LearnCPP\\Concurrency_Study\\exercises\\build\\full-windows\\benchmarks\\Release\\queue_bench.exe",
+        "--variant",
+        "ms",
+        "--size",
+        "100003",
+        "--producers",
+        "3",
+        "--consumers",
+        "4",
+        "--capacity",
+        "0",
+        "--batch",
+        "1"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.05232830000022659,
+      "stdout": "suite,variant,size,threads,milliseconds,completed,details\n\"queue\",\"ms\",100003,7,35.6971,100003,\"P=3;C=4;capacity=0;batch=1;unbounded;strict-try;HP-locks+allocation-included;atomic_lock_free=true;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded\"\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "variant": "ms",
+      "repetition": 5,
+      "warmup": false,
+      "rows": [
+        {
+          "suite": "queue",
+          "variant": "ms",
+          "size": 100003,
+          "threads": 7,
+          "milliseconds": 35.6971,
+          "completed": 100003,
+          "details": "P=3;C=4;capacity=0;batch=1;unbounded;strict-try;HP-locks+allocation-included;atomic_lock_free=true;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded"
+        }
+      ]
+    }
+  ],
+  "summaries": [
+    {
+      "case": {
+        "suite": "queue",
+        "variant": "ms",
+        "size": 100003,
+        "threads": 7,
+        "completed": 100003
+      },
+      "sample_details": [
+        "P=3;C=4;capacity=0;batch=1;unbounded;strict-try;HP-locks+allocation-included;atomic_lock_free=true;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded",
+        "P=3;C=4;capacity=0;batch=1;unbounded;strict-try;HP-locks+allocation-included;atomic_lock_free=true;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded",
+        "P=3;C=4;capacity=0;batch=1;unbounded;strict-try;HP-locks+allocation-included;atomic_lock_free=true;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded",
+        "P=3;C=4;capacity=0;batch=1;unbounded;strict-try;HP-locks+allocation-included;atomic_lock_free=true;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded",
+        "P=3;C=4;capacity=0;batch=1;unbounded;strict-try;HP-locks+allocation-included;atomic_lock_free=true;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded"
+      ],
+      "samples_ms": [
+        32.0777,
+        32.5017,
+        40.4303,
+        34.8822,
+        35.6971
+      ],
+      "median_ms": 34.8822,
+      "min_ms": 32.0777,
+      "max_ms": 40.4303,
+      "stdev_ms": 3.342900661102571
+    }
+  ]
+}

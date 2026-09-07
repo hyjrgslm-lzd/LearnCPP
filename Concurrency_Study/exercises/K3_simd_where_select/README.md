@@ -1,40 +1,32 @@
-# 练习 K-3：SIMD select / where 掩码
+# K3：选择语义、NaN 与零符号
 
-> 详尽版见 `../../14-模块K-数据并行与std-simd.md` 的 练习 K-3。
+本题 main.cpp 分类为 OBSERVATION：运行给定基线并进行本程序实际列出的观察/检查。退出成功只说明这些检查通过，不表示下面全部实现、推导或测量 Part 已完成；完整答案与更广检查见独立 solution.cpp。需要实现的 Part 请在自己的函数中完成后对照 Reference，不把运行答案视为完成作业。
 
-## 目标
+完整连续正文：[课程正文](../../topics/simd/02-explicit-vectors.md)。
 
-解决 SIMD 里的“if 怎么办”：向量一次处理 `W` 条 lane，但每条 lane 的条件可能不同，CPU 无法对一个向量“分叉跳转”。改用**分支无关（branch-free）**做法——比较得**掩码（mask）**、用 **select（条件选择）** 按掩码逐 lane 挑值。用 `abs` / `clamp` / `relu` 三种条件运算练手，并与标量对照。
+本题名保留旧 ID，但 N5050 实现使用自由 select 与 load/store，不混入旧 TS 的 where/copy_from 写法。main 是 relu 基线，[solution.cpp](solution.cpp) 包含三种条件运算的手写答案表，使用共用 SIMD 内核。
 
-## 前置理解
+## 必做 Part 与答案
 
-- **比较得掩码**：`va < vb` 得到 `xsimd::batch_bool<float>`（每 lane 一个 bool）。
-- **select 选值**：`xsimd::select(mask, x, y)` 逐 lane——mask 真取 `x`、假取 `y`。本质是 then/else **两边都算**再按掩码挑，没有真正跳转，因此**无分支预测失败**，对随机条件常比标量 `if` 更快。
-- **min/max** 本身就是分支无关的逐 lane 运算，clamp 用 `min(max(x,lo),hi)` 即可。
-- 标准目标：C++26 `std::simd` 用 **where 表达式 / `std::simd::select`** + `basic_mask<T>`（别名 `mask<T,N>`）。本题用 `batch_bool` + `xsimd::select` 等价实现。
-- select/min/max 不改变数值，故对照可**严格相等**（与 K-2 的容差不同）。
+1. absolute：普通 abs(-0) 应为 +0。x<0?-x:x 会保留 -0，不能当作完整替代。SSE2 清除符号位，xsimd 调 abs，原生分支专门将零选为 +0。
+2. clamp：先选择小于 -1 的值，再选择大于 1 的值。quiet NaN 保持 NaN 分类，-0 保持符号，不擅自使用 NaN 行为不同的 min/max 代替。
+3. relu：x>0 时取 x，否则取 +0。因此 NaN、-Inf、-0 都得到 +0，+Inf 保留。不要把数学 max 的模糊表述代替精确条件。
+4. 分别验证 NaN 分类与零符号。NaN 不等于自身，必须用 isnan；-0 等于 +0，必须用 signbit 补充。Reference 取九项强制尾部，主测试还逐长度截断并覆盖 subnormal。
 
-## 必做任务
+## 为什么不是逐通道短路
 
-1. `// TODO [必做 1]`：`abs` = `select(x<0, -x, x)`。
-2. `// TODO [必做 2]`：`clamp` 到 `[lo,hi]` = `min(max(x,lo),hi)`。
-3. `// TODO [必做 3]`：`relu` 条件赋值 = `select(x>0, x, 0)`；三者均与标量逐元素对照、计时。
+select 的实参先求值。select(mask,1/x,0) 不能保证零通道没有执行除法；memory mask 也不能撤回之前已越界的 load。错误访问案例只作推理题，默认程序不会运行 UB。
 
-## 验收点
+默认严格策略要求 FTZ/DAZ 关闭，不承诺 signaling NaN 异常标志或 NaN payload 保持。完整输入政策见 [精度正文](../../topics/simd/03-reductions-and-precision.md)。缺可选库时仍验证标量与主机 SSE2，不让整个 K 模块因缺 xsimd 而无法运行。
 
-- 三种条件运算的 SIMD 结果与标量结果逐元素完全一致（不一致数 = 0）。
-- 能说清“为什么 SIMD 不能逐 lane 跳转”，以及“掩码 + select 如何替代 if”。
-- 能把 `batch_bool` ↔ `basic_mask`、`select` ↔ `where/select` 对应起来。
+## 构建与运行
 
-## 对应官方参考
+从 `Concurrency_Study/exercises` 执行：
 
-- 提案 [`P1928R15`](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2024/p1928r15.pdf)（`where` / `select` / `mask`）
-- cppreference [`<simd>`](https://en.cppreference.com/w/cpp/header/simd)
-- [xsimd select 文档](https://xsimd.readthedocs.io/en/latest/api/cond_index.html)
-
-## 构建运行
-
-```bash
-cmake --build build-vs2026 --target K3_simd_where_select --config Release
-./build-vs2026/K3_simd_where_select/Release/K3_simd_where_select.exe
+```powershell
+cmake -S K3_simd_where_select -B build/K3_simd_where_select -G "Visual Studio 18 2026" -A x64
+cmake --build build/K3_simd_where_select --config Release
+ctest --test-dir build/K3_simd_where_select -C Release --output-on-failure
 ```
+
+C++ 默认 23，cs::check 在 Release 中保持有效。可选能力缺失不阻止普通基线；平台及标准事实的官方链接、完整推导见本题对应正文。

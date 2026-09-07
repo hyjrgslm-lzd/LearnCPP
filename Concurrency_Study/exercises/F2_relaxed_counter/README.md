@@ -1,41 +1,34 @@
-# 练习 F-2：relaxed 计数器
+# F2：relaxed 的数值保证与发布边界
 
-> 详尽版见 `../../08-模块F-内存模型与memory_order.md` 的 练习 F-2。
+完整正文见[relaxed 的数值保证与发布边界](../../topics/atomics/05-relaxed-and-sc.md)。[main.cpp](main.cpp) 是安全、有限结束的 Starter；[solution.cpp](solution.cpp) 是含运行检查的 Reference。默认 C++23。
 
-## 目标
+## Part 1：精确计数与完成同步
 
-论证为什么纯计数器用 `memory_order_relaxed` 的 `fetch_add` 是**正确**的——计数只依赖**原子性（atomicity）**与**单变量的修改顺序（modification order）**，不需要任何跨变量可见性顺序。再反向理解：用 relaxed 做“标志位发布数据”为何**错误**——relaxed 不建立 synchronizes-with / happens-before，两个独立变量的写在别的线程看来可被重排观测到。
+将 Starter 扩展为四个 worker，每人做 2000 次 relaxed fetch_add，同时维护独占的 local[t]。全部 get 后，检查共享计数为 8000，每个局部计数为 2000。完整实现为 `count_after_join()`。
 
-## 前置理解
+答案：每个 RMW 基于同一计数器 MO 的紧邻前驱，不丢更新；最终完成同步使读取发生在工作结束之后。local 元素彼此独立且并发阶段不被主线程读取，无需 atomic。计数达到某值不能自动发布不相关的普通 payload。
 
-- **修改顺序（modification order）**：每个原子变量都有一条全线程一致的写序列；任何内存序下，所有对该变量的 RMW（如 `fetch_add`）都串在这条序列上，不会丢更新。
-- relaxed 的能力边界：**只**保证“这一个原子变量自己”的原子性与修改顺序；**不**保证不同变量之间的先后可见性。
-- 计数器不关心“别的变量是否已可见”，因此 relaxed 足够，且最省（无多余内存屏障）。
-- “发布数据”需要跨变量的可见性顺序（flag 可见 ⇒ data 可见），那是 release/acquire 的活，relaxed 做不到。
+## Part 2：有限 message-passing litmus
 
-## 必做任务
+`message_passing(false)` 使用 atomic data 与 atomic flag。每轮清零后，发布者先写 data=1 再写 flag=1；接收者只读一次 flag 和 data，统计 (1,0)。再将 flag 改为 release/acquire，保持其他工作相同。
 
-1. `// TODO [必做 1]`：多线程对 `std::atomic<long long>` 用 `fetch_add(1, memory_order_relaxed)` 自增，验证最终求和精确等于 `线程数 × 每线程次数`。
+答案：relaxed 版本允许 (1,0)，但不要求出现。RA 版本若读到 flag=1，就有 data 写 HB data 读，排除旧值；Reference 检查 RA 统计为零。普通 payload 的缺序版本是 UB，与这里的原子旧值实验不同。
 
-## 进阶任务
+barrier 只界定轮次，不在两次被测访问中间。循环次数固定为 4000，既不等到某个结果出现才退出，也不使用 logger 给实验窗口添加同步。
 
-- `// TODO [进阶 1]`：构造 message-passing 反例——生产线程 relaxed 写 `data` 再 relaxed 写 `flag`，消费线程读到 `flag==1` 后读 `data`。统计“看到 flag=1 却读到 data=0”的次数；并用 release/acquire 版本作对照（理论恒为 0）。x86 上 relaxed 版可能统计为 0（TSO 难复现 store-store 重排），但这不代表 relaxed 用作标志位是对的。
+## 结果记录
 
-## 验收点
+记录编译器、标准、轮数和两项统计；0/0 是可以接受的输出。不要由某台机器没有观察到旧值推出 relaxed 可以发布普通数据，也不要由 elapsed time 推出某内存序必然更快，本题不是性能排名。
 
-- 能说清 relaxed 计数为何正确：原子性 + 修改顺序，无需跨变量顺序。
-- 能说清 relaxed 用作标志位为何错误：不建立 happens-before。
-- 能用一句话给出 relaxed 的适用边界：纯计数/统计可以，发布数据不行。
+## 构建与验收
 
-## 对应官方参考
+从 `Concurrency_Study/exercises` 执行：
 
-- cppreference [`std::memory_order`](https://en.cppreference.com/w/cpp/atomic/memory_order)（relaxed ordering / modification order）
-- 《C++ Concurrency in Action, 2nd ed.》(Williams) 第 5 章 5.3.3
-- Mara Bos《Rust Atomics and Locks》第 3 章（Relaxed）
-
-## 构建运行
-
-```bash
-cmake --build build-vs2026 --target F2_relaxed_counter --config Release
-./build-vs2026/F2_relaxed_counter/Release/F2_relaxed_counter.exe
+```powershell
+cmake -S F2_relaxed_counter -B build/F2_relaxed_counter -G "Visual Studio 18 2026" -A x64
+cmake --build build/F2_relaxed_counter --config Release
+./build/F2_relaxed_counter/Release/F2_relaxed_counter.exe
+ctest --test-dir build/F2_relaxed_counter -C Release --output-on-failure
 ```
+
+VS2026 生成器需要 CMake 4.2 或更新版。CTest 运行 `F2_relaxed_counter_reference` 并设进程超时；cs::check 在 Release 仍有效。通过表示本次检查成功，不替代正文中的协议证明。规范链接与版本说明见对应正文。

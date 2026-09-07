@@ -1,34 +1,44 @@
-# 练习 A-1：jthread 生命周期与自动 join
+# A1：线程关联、join 与输入所有权
 
-> 详尽版见 `../../02-模块A-线程生命周期与jthread.md` 的 练习 A-1。
+先读 [03 线程与执行方式](../../chapters/03-threads-and-execution.md)第 1—3 节，并完成 [P1](../P1_object_lifetime/README.md)。[main.cpp](main.cpp) 保留安全的 thread/jthread 基线；[solution.cpp](solution.cpp) 覆盖四个必做 Part。
 
-## 目标
+## Part 与答案
 
-用 `std::thread`（C++11）与 `std::jthread`（C++20）各起一个 worker，亲手观察 `jthread` 离开作用域时**自动 `request_stop()` + `join()`**，并理解“未 join/detach 的 `std::thread` 析构会调用 `std::terminate()`”这条铁律（用不真的崩溃的方式演示）。
+### Part 1：显式 join 是一次关联的收尾
 
-## 前置理解
+扩展 Starter，检查 worker 写入的 42 与 joinable 状态，再捕获第二次显式 join 的 system_error。对应 `part1_thread_join()`。线程完成同步于成功 join 返回，因此主线程在 join 后读取结果与异常槽安全。第二次显式 join 是错误；“jthread 已 join 后析构安全”来自析构不再调用 join，不能混为一谈。
 
-- 你知道 `std::thread` 创建后处于「可结合（joinable）」状态，析构前必须 `join()` 或 `detach()`，否则 `~thread()` 调用 `std::terminate()`。
-- 你知道 `std::jthread` 是带 RAII 自动 join 的线程：析构时先 `request_stop()` 再 `join()`。
-- 你能用 `cs::log` / `cs::logf` 打印带线程 id 与时间戳的日志，从时间线读出事件先后。
+### Part 2：作用域退出与移动
 
-## 必做任务
+对应 `part2_scope_and_move()`。把 original 移到 owner，检查 original 不再 joinable，owner 仍 joinable。作用域结束后结果为 7。关联状态不等于线程函数仍在运行：函数早已返回的线程也可能尚未 join。
 
-1. 用 `std::thread` 起一个 worker 并**手动 `join()`**（`main.cpp` 的 `// TODO [必做 1]`）。
-2. 用 `std::jthread` 起一个 worker，**不手动 join**，从日志确认它离开作用域时自动 join（`// TODO [必做 2]`）。
+### Part 3：先请求停止，再等待结束
 
-## 进阶任务
+对应 `part3_automatic_stop()`。worker 接收 stop_token 并查询停止请求；主线程直接离开作用域，不先睡眠。保存 token 和结果标记，在作用域结束后检查两者。worker 可能一次循环也没执行，仍是正确结果：只要求观察请求后返回，不要求某个迭代次数。
 
-- 让 jthread 的 worker 把 `std::stop_token` 作为第一个形参，循环条件改为 `!st.stop_requested()`，观察析构时自动 `request_stop()` 触发协作式退出（`// TODO [进阶 1]`）。
+yield 是调度提示，停止依据是 token，同步依据是 join。若改变实验让 worker 永远不结束，自动 join 也会一直等待。完整取消与唤醒协议继续 [A2](../A2_stop_token_cancellation/README.md)。
 
-## 验收点
+### Part 4：参数副本、引用、独占捕获
 
-- 你能解释为什么忘记 join 的 `std::thread` 析构会 `terminate`，而 `jthread` 不会。
-- 你能从日志时间戳论证：jthread worker 的“干完了”一定早于其作用域结束。
-- 你能说出 jthread 析构的两步顺序：先 `request_stop()`，后 `join()`。
+对应 `part4_arguments()`。按值传 10 得到副本 11，原值不变；std::ref 使 worker 修改原值，主线程 join 后才读；移动 unique_ptr 到闭包后原指针为空，结果为 42。借用不延寿，移动不意味着所有类型的源对象都为空。
 
-## 对应官方参考
+## 验收与失败边界
 
-- cppreference：`std::jthread` — https://en.cppreference.com/w/cpp/thread/jthread
-- cppreference：`std::thread::~thread` — https://en.cppreference.com/w/cpp/thread/thread/~thread
-- Anthony Williams《C++ Concurrency in Action, 2nd ed.》第 2 章（线程管理）、第 9.2 节（中断线程 / jthread）。
+Reference 使用 cs::check；会抛异常的 worker 逻辑捕获到专属 exception_ptr，主线程 join 后重抛。只做无抛出的标量操作与 token 查询的入口无需另造异常机制。输出四个 Part 与 `A1_reference OK`。
+
+未 join 的 std::thread 析构和线程顶层异常只作为注释阅读；不要删掉 Starter 的清理调用来运行默认测试。本题没有 sleep，也不以日志毫秒数证明同步。
+
+规范：[thread 成员](https://eel.is/c++draft/thread.thread.member)、[thread 构造](https://eel.is/c++draft/thread.thread.constr)、[jthread 构造析构](https://eel.is/c++draft/thread.jthread.cons)。版本基准见正文 N5050 说明。
+
+## 构建与运行
+
+从 `Concurrency_Study/exercises` 执行（VS2026 生成器需要 CMake 4.2+）：
+
+```powershell
+cmake -S A1_jthread_lifecycle -B build/A1_jthread_lifecycle -G "Visual Studio 18 2026" -A x64
+cmake --build build/A1_jthread_lifecycle --config Release
+./build/A1_jthread_lifecycle/Release/A1_jthread_lifecycle.exe
+ctest --test-dir build/A1_jthread_lifecycle -C Release --output-on-failure
+```
+
+统一构建注册的检查目标是 `A1_jthread_lifecycle_reference`，CTest 使用进程级超时。

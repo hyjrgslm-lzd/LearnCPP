@@ -1,0 +1,46 @@
+suite,variant,size,threads,milliseconds,completed,details,repetition
+simd_dot,dot_scalar,262147,1,0.1493,262147,double accumulation; logical read bytes=8*n; allocation/check excluded,0
+simd_add,tail_mask,262147,1,0.0727,262147,logical read+write bytes=12*n; allocation/init/check excluded; includes shape checks,0
+simd_add,xsimd,262147,1,0.0476,262147,logical read+write bytes=12*n; allocation/init/check excluded; includes shape checks,0
+simd_dot,dot_sse2,262147,1,0.0486,262147,double accumulation; logical read bytes=8*n; allocation/check excluded,0
+simd_add,sse2,262147,1,0.0496,262147,logical read+write bytes=12*n; allocation/init/check excluded; includes shape checks,0
+layout_update,aos,262147,1,0.0908,262147,update x += mass; record stride=16; allocation/init/check excluded,0
+layout_update,soa,262147,1,0.0295,262147,logical read+write bytes=12*n; allocation/init/check excluded; includes shape checks,0
+simd_add,scalar,262147,1,0.0486,262147,logical read+write bytes=12*n; allocation/init/check excluded; includes shape checks,0
+simd_dot,dot_xsimd,262147,1,0.7964,262147,double accumulation; logical read bytes=8*n; allocation/check excluded,0
+simd_dot,dot_sse2,262147,1,0.0443,262147,double accumulation; logical read bytes=8*n; allocation/check excluded,1
+simd_add,sse2,262147,1,0.0696,262147,logical read+write bytes=12*n; allocation/init/check excluded; includes shape checks,1
+simd_add,scalar,262147,1,0.0632,262147,logical read+write bytes=12*n; allocation/init/check excluded; includes shape checks,1
+simd_add,xsimd,262147,1,0.0479,262147,logical read+write bytes=12*n; allocation/init/check excluded; includes shape checks,1
+simd_dot,dot_scalar,262147,1,0.1466,262147,double accumulation; logical read bytes=8*n; allocation/check excluded,1
+layout_update,aos,262147,1,0.1048,262147,update x += mass; record stride=16; allocation/init/check excluded,1
+simd_add,tail_mask,262147,1,0.0599,262147,logical read+write bytes=12*n; allocation/init/check excluded; includes shape checks,1
+simd_dot,dot_xsimd,262147,1,0.8029,262147,double accumulation; logical read bytes=8*n; allocation/check excluded,1
+layout_update,soa,262147,1,0.0333,262147,logical read+write bytes=12*n; allocation/init/check excluded; includes shape checks,1
+layout_update,aos,262147,1,0.0633,262147,update x += mass; record stride=16; allocation/init/check excluded,2
+simd_add,sse2,262147,1,0.0504,262147,logical read+write bytes=12*n; allocation/init/check excluded; includes shape checks,2
+simd_add,scalar,262147,1,0.0575,262147,logical read+write bytes=12*n; allocation/init/check excluded; includes shape checks,2
+layout_update,soa,262147,1,0.0326,262147,logical read+write bytes=12*n; allocation/init/check excluded; includes shape checks,2
+simd_dot,dot_xsimd,262147,1,0.8216,262147,double accumulation; logical read bytes=8*n; allocation/check excluded,2
+simd_add,tail_mask,262147,1,0.0595,262147,logical read+write bytes=12*n; allocation/init/check excluded; includes shape checks,2
+simd_add,xsimd,262147,1,0.0468,262147,logical read+write bytes=12*n; allocation/init/check excluded; includes shape checks,2
+simd_dot,dot_scalar,262147,1,0.1451,262147,double accumulation; logical read bytes=8*n; allocation/check excluded,2
+simd_dot,dot_sse2,262147,1,0.0499,262147,double accumulation; logical read bytes=8*n; allocation/check excluded,2
+simd_add,xsimd,262147,1,0.0532,262147,logical read+write bytes=12*n; allocation/init/check excluded; includes shape checks,3
+simd_dot,dot_xsimd,262147,1,0.7858,262147,double accumulation; logical read bytes=8*n; allocation/check excluded,3
+simd_add,sse2,262147,1,0.0649,262147,logical read+write bytes=12*n; allocation/init/check excluded; includes shape checks,3
+layout_update,aos,262147,1,0.0967,262147,update x += mass; record stride=16; allocation/init/check excluded,3
+layout_update,soa,262147,1,0.0295,262147,logical read+write bytes=12*n; allocation/init/check excluded; includes shape checks,3
+simd_add,tail_mask,262147,1,0.0565,262147,logical read+write bytes=12*n; allocation/init/check excluded; includes shape checks,3
+simd_add,scalar,262147,1,0.0467,262147,logical read+write bytes=12*n; allocation/init/check excluded; includes shape checks,3
+simd_dot,dot_scalar,262147,1,0.1455,262147,double accumulation; logical read bytes=8*n; allocation/check excluded,3
+simd_dot,dot_sse2,262147,1,0.0479,262147,double accumulation; logical read bytes=8*n; allocation/check excluded,3
+simd_add,xsimd,262147,1,0.0528,262147,logical read+write bytes=12*n; allocation/init/check excluded; includes shape checks,4
+layout_update,aos,262147,1,0.112,262147,update x += mass; record stride=16; allocation/init/check excluded,4
+simd_add,sse2,262147,1,0.0618,262147,logical read+write bytes=12*n; allocation/init/check excluded; includes shape checks,4
+simd_dot,dot_xsimd,262147,1,0.7933,262147,double accumulation; logical read bytes=8*n; allocation/check excluded,4
+simd_add,scalar,262147,1,0.0558,262147,logical read+write bytes=12*n; allocation/init/check excluded; includes shape checks,4
+simd_add,tail_mask,262147,1,0.0782,262147,logical read+write bytes=12*n; allocation/init/check excluded; includes shape checks,4
+simd_dot,dot_sse2,262147,1,0.0488,262147,double accumulation; logical read bytes=8*n; allocation/check excluded,4
+simd_dot,dot_scalar,262147,1,0.1532,262147,double accumulation; logical read bytes=8*n; allocation/check excluded,4
+layout_update,soa,262147,1,0.0538,262147,logical read+write bytes=12*n; allocation/init/check excluded; includes shape checks,4
