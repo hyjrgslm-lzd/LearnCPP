@@ -39,6 +39,8 @@ void log(const char* tag, Args&&... args) {
 //   - await_suspend: 起一个线程跑 future.wait()，回来 h.resume()
 //   - await_resume : future.get() —— 此时已 ready，不会阻塞
 // ─────────────────────────────────────────────────────────────────────
+namespace coroutine_study_user {
+
 template <class T>
 struct future_awaiter {
     std::future<T> fut_;
@@ -64,10 +66,17 @@ struct future_awaiter {
     }
 };
 
-// ADL/成员形式都可以；这里用自由函数作为 operator co_await 适配
 template <class T>
-future_awaiter<T> operator co_await(std::future<T>&& f) noexcept {
+future_awaiter<T> await_future(std::future<T> f) noexcept {
     return future_awaiter<T>{std::move(f)};
+}
+
+} // namespace coroutine_study_user
+
+// 包装函数在用户自己的命名空间里；调用点显式把 std::future 转成 awaitable。
+template <class T>
+auto await_future(std::future<T> f) noexcept {
+    return coroutine_study_user::await_future(std::move(f));
 }
 
 // ─────────────────────────────────────────────────────────────────────
@@ -82,9 +91,9 @@ lazy_task<int> test_future_await() {
         return 42;
     });
 
-    // TODO [必做]: int result = co_await std::move(fut);
+    // TODO [必做]: int result = co_await await_future(std::move(fut));
     // 占位实现（同步取值）以便骨架默认可跑：
-    int result = co_await std::move(fut);
+    int result = co_await await_future(std::move(fut));
 
     log("coro", "after co_await, result = ", result);
     co_return result * 2;
@@ -94,7 +103,8 @@ lazy_task<int> test_future_await() {
 // 进阶任务
 // ─────────────────────────────────────────────────────────────────────
 // TODO [进阶 A]: 给 future_awaiter 加 std::stop_token 支持，cancel 时走异常路径。
-// TODO [进阶 B]: 用模板特化把 operator co_await 直接挂在 std::future<T> 上。
+// TODO [进阶 B]: 写 future_awaitable<T> 包装类，并在包装类上提供 operator co_await()。
+//   调用点仍保持 co_await await_future(std::move(fut))，把扩展集中在用户包装类型里。
 // TODO [进阶 C]: 改用 std::shared_future<T>，思考 get() 的语义差异。
 
 }  // namespace

@@ -2,6 +2,8 @@
 
 #include <generator>
 #include <iostream>
+#include <ranges>
+#include <string>
 #include <vector>
 
 namespace {
@@ -31,6 +33,14 @@ std::generator<int> fibonacci_inf() {
     }
 }
 
+std::generator<std::string> read_lines() {
+    co_yield "alpha";
+    co_yield "beta";
+    co_yield "gamma";
+    co_yield "delta";
+    co_yield "epsilon";
+}
+
 } // namespace
 
 int main() {
@@ -45,12 +55,12 @@ int main() {
     check(resumed == 1, "first iteration resumes the generator");
 
     got.clear();
-    int count = 0;
-    for (int v : fibonacci_inf()) {
-        got.push_back(v);
-        if (++count == 10) break;
-    }
+    for (int v : fibonacci_inf() | std::views::take(10)) got.push_back(v);
     check((got == std::vector<int>{0, 1, 1, 2, 3, 5, 8, 13, 21, 34}), "infinite fibonacci prefix");
+
+    std::vector<std::string> lines;
+    for (auto line : read_lines()) lines.push_back(std::move(line));
+    check((lines == std::vector<std::string>{"alpha", "beta", "gamma", "delta", "epsilon"}), "read_lines yields text lazily");
 
     std::cout << "A1_reference OK\n";
 }

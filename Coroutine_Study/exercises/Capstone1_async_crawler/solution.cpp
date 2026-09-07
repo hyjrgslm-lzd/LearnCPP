@@ -13,9 +13,20 @@
 #include <string>
 #include <string_view>
 #include <thread>
+#include <utility>
 #include <vector>
 
 using namespace std::chrono_literals;
+
+namespace capstone1 {
+
+struct Record {
+    std::string name;
+    int score = 0;
+    bool ok = true;
+};
+
+} // namespace capstone1
 
 namespace {
 
@@ -41,38 +52,34 @@ struct worker_group {
     std::vector<std::jthread> workers;
 };
 
-struct csv_record {
-    std::string name;
-    int score = 0;
-    bool ok = true;
-};
-
-std::generator<csv_record> parse_csv(std::string_view body) {
+std::generator<capstone1::Record> parse_lines(std::string body) {
     std::size_t pos = 0;
     bool header = true;
     while (pos <= body.size()) {
         std::size_t nl = body.find('\n', pos);
-        std::string_view line = nl == std::string_view::npos ? body.substr(pos) : body.substr(pos, nl - pos);
+        std::string_view line = nl == std::string_view::npos
+            ? std::string_view{body}.substr(pos)
+            : std::string_view{body}.substr(pos, nl - pos);
         pos = nl == std::string_view::npos ? body.size() + 1 : nl + 1;
         if (line.empty()) continue;
         if (header) {
             header = false;
-            if (line != "name,score") co_yield csv_record{"", 0, false};
+            if (line != "name,score") co_yield capstone1::Record{"", 0, false};
             continue;
         }
         std::size_t comma = line.find(',');
         if (comma == std::string_view::npos || comma == 0 || comma + 1 == line.size()) {
-            co_yield csv_record{std::string{line}, 0, false};
+            co_yield capstone1::Record{std::string{line}, 0, false};
             continue;
         }
         int score = 0;
         auto score_text = line.substr(comma + 1);
         auto [ptr, ec] = std::from_chars(score_text.data(), score_text.data() + score_text.size(), score);
         if (ec != std::errc{} || ptr != score_text.data() + score_text.size()) {
-            co_yield csv_record{std::string{line.substr(0, comma)}, 0, false};
+            co_yield capstone1::Record{std::string{line.substr(0, comma)}, 0, false};
             continue;
         }
-        co_yield csv_record{std::string{line.substr(0, comma)}, score, true};
+        co_yield capstone1::Record{std::string{line.substr(0, comma)}, score, true};
     }
 }
 
@@ -160,7 +167,7 @@ coroutine_study::lazy_task<report> aggregate(worker_group& workers, std::vector<
         switch (f.status) {
             case fetch_status::ok:
                 ++rep.ok_count;
-                for (auto line : parse_csv(f.body)) {
+                for (auto line : parse_lines(f.body)) {
                     if (line.ok) {
                         ++rep.total_lines;
                         rep.total_score += line.score;
@@ -186,8 +193,8 @@ coroutine_study::lazy_task<report> aggregate(worker_group& workers, std::vector<
 int main() {
     using coroutine_study::check;
 
-    std::vector<csv_record> parsed;
-    for (auto row : parse_csv("name,score\nAlice,85\nbad\nEve,nope\nBob,92\n")) parsed.push_back(row);
+    std::vector<capstone1::Record> parsed;
+    for (auto row : parse_lines(std::string{"name,score\nAlice,85\nbad\nEve,nope\nBob,92\n"})) parsed.push_back(row);
     check(parsed.size() == 4, "parser yields all non-empty data rows");
     check(parsed[0].ok && parsed[0].name == "Alice" && parsed[0].score == 85, "parser reads name and score");
     check(!parsed[1].ok && !parsed[2].ok, "parser marks malformed rows");

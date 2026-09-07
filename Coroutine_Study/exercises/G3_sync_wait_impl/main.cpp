@@ -7,15 +7,18 @@
 //   - stdexec sync_wait 实现
 //
 // 目标：实现 sync_wait——在非协程上下文中驱动 task 到完成，把"协程世界"翻译为
-//      "同步阻塞世界"。给两个版本：
-//        1. 手动循环驱动（简易版，单线程协程链）
-//        2. condvar + 内置 receiver 风格（生产版，支持跨线程完成）
+//      "同步阻塞世界"。本 starter 保留两个手动推进模型：
+//        1. 当前线程手动循环驱动（只适合本文件 yield_once 这种同步占位 awaiter）
+//        2. driver 线程手动循环驱动 + condvar 通知（仍是同步占位模型）
+//      通用异步版本应按 reference 实现：root task 只 start 一次，完成通知来自
+//      promise.final_suspend 的 callback/receiver；手动循环恢复只保留为反例观察。
 
 #include <condition_variable>
 #include <coroutine>
 #include <cstdio>
 #include <exception>
 #include <mutex>
+#include <memory>
 #include <optional>
 #include <string>
 #include <thread>
@@ -72,8 +75,8 @@ struct lazy_task {
 };
 
 // ============ 版本 1：手动循环驱动版 sync_wait ============
-// 适合：单线程全协程环境（asio io_context 内的协程链）
-// 假设：所有 await_suspend 都返回 void 或 coroutine_handle，不旁路 resume
+// 适合：本文件 yield_once 这种完全同步、不会保存 handle 到外部的占位 awaiter。
+// 通用 awaiter 可能由事件循环或其他线程恢复；这种 blind-resume 循环会破坏协议。
 template <typename T>
 T sync_wait_simple(lazy_task<T> task)
 {
@@ -86,9 +89,10 @@ T sync_wait_simple(lazy_task<T> task)
     return std::move(p.result_value);
 }
 
-// ============ 版本 2：condvar + 工作线程驱动版 sync_wait ============
-// 适合：协程可能在另一个线程上完成（io_uring completion / IOCP / 线程池）
-// 此版本把 task 的 drain 放到独立 std::thread 上，主线程 condvar wait
+// ============ 版本 2：driver 线程手动推进 + condvar 通知 ============
+// 这个版本只把同一个手动 drain 放到工作线程，再用 condvar 通知主线程。
+// 它仍然只适合同步占位 awaiter。支持外部事件源或线程池完成的实现，需要把
+// completion callback 接到 promise.final_suspend，参考公共 runtime/reference。
 template <typename T>
 T sync_wait_condvar(lazy_task<T> task)
 {
@@ -180,7 +184,7 @@ int main()
         }
     }
 
-    std::printf("\n--- 测试 3：sync_wait_condvar 成功路径（独立线程驱动）---\n");
+    std::printf("\n--- 测试 3：sync_wait_condvar 成功路径（driver 线程手动推进）---\n");
     {
         int r = sync_wait_condvar(async_compute());
         std::printf("  result = %d (expect 30)\n", r);
@@ -189,7 +193,7 @@ int main()
     // TODO [必做]：在笔记中回答：
     //   1. 为什么 main 不能是协程？（从帧分配/启动/销毁三角度）
     //   2. sync_wait 在协程世界 ↔ 同步世界之间承担了什么角色？
-    //   3. 简易版 vs condvar 版各自适合什么场景？
+    //   3. 手动推进占位版与 final-notification reference 各自适合什么场景？
     // TODO [进阶]：实现 timeout 版 sync_wait_with_timeout。
     // TODO [进阶]：用 std::atomic_flag 实现 spin-wait 版本。
 

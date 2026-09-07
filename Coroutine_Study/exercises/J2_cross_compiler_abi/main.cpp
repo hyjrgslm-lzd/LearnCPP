@@ -17,13 +17,17 @@
 //   - GDB 14+ coroutine support
 //     https://sourceware.org/gdb/onlinedocs/gdb/Coroutines.html
 //   - Clang `-Rpass=coroutine-elide`
-//   - GCC `-fdump-tree-coro` / `-fdump-ipa-coro`
+//   - GCC `-fdump-tree-coro`
 //   - P0912R5 Merge Coroutines TS into C++20 working draft
 //
-// 编译诊断 flag（CMakeLists 中已注入）：
-//   - MSVC : /d1reportSingleClassLayoutminimal_promise /Zi /await:strict
-//   - Clang: -Rpass=coroutine-elide -Xclang -fdump-record-layouts
-//   - GCC  : -fdump-tree-coro -fdump-ipa-coro
+// 当前 CMakeLists 注入的诊断/调试 flag：
+//   - MSVC : /Zc:__cplusplus /utf-8 /await:strict /Zi
+//   - Clang: -Rpass=coroutine-elide -Rpass-missed=coroutine-elide
+//   - GCC  : -fdump-tree-coro
+//
+// 更细的帧布局 dump 可在本地临时命令额外加入：
+//   - MSVC : /d1reportSingleClassLayout...
+//   - Clang: -Xclang -fdump-record-layouts
 // =============================================================================
 
 #include <coroutine>
@@ -126,7 +130,8 @@ inline task<int> with_await() {
 //
 // 在真实工程中，把 make_task() 编进一个 DLL，把 main() 编进 EXE；
 // 观察当两端编译器/STL/Optimization Level 不一致时是否崩溃。
-// 本骨架仅给出函数声明，实际跨模块构建脚本见 CMakeLists 注释。
+// 本骨架只提供同一翻译单元内的观察入口。跨模块实验可按需要
+// 单独拆分 DLL/so 与 EXE 工程，不依赖本练习 CMake 自动生成。
 //
 // ⚠️ ABI 要点：协程**不能**有 C 链接（extern "C"）。协程会生成编译器内部的
 //    ramp/resume/destroy 函数与 promise，依赖 C++ name mangling 与 ABI；
@@ -165,9 +170,9 @@ inline void print_size_report() {
 // | coroutine_handle<>::sizeof          |   ?  |   ?   |  ?  |
 //
 // 备注：
-//   - MSVC 帧大小：用 `/d1reportSingleClassLayout<promise_type>` 读 promise 偏移；
-//   - Clang HALO：编译时若看见 "remark: coroutine frame elided" 即触发；
-//   - GCC HALO ：用 `-fdump-ipa-coro` dump 后查 "elided"。
+//   - MSVC 当前保留 /Zi 调试信息，可用 Parallel Stacks 观察协程；
+//   - Clang HALO：编译时若看见 coroutine-elide remark 即触发；
+//   - GCC lowering：读取 -fdump-tree-coro 生成的 dump。
 // =============================================================================
 
 int main() {

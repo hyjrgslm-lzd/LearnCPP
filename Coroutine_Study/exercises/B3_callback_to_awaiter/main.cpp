@@ -15,8 +15,11 @@
 #include <chrono>
 #include <coroutine>
 #include <iostream>
+#include <mutex>
 #include <syncstream>
 #include <thread>
+#include <utility>
+#include <vector>
 
 using namespace std::chrono_literals;
 using coroutine_study::lazy_task;
@@ -33,12 +36,48 @@ void log(const char* tag, Args&&... args) {
 
 // ─────────────────────────────────────────────────────────────────────
 // 必做 1：模拟一个回调式异步 API
-//   把 (a + b) 在新线程 sleep 100ms 后通过 cb(result) 通知调用方
+//   worker_group 是后台线程 owner；async_add 提交后台任务，完成后 cb(result)。
 // ─────────────────────────────────────────────────────────────────────
+struct worker_group {
+    ~worker_group() { join(); }
+
+    template <class Fn>
+    void submit(Fn&& fn) {
+        std::lock_guard lock(mutex_);
+        workers_.emplace_back(std::forward<Fn>(fn));
+    }
+
+    void join() {
+        for (;;) {
+            std::vector<std::jthread> local;
+            {
+                std::lock_guard lock(mutex_);
+                if (workers_.empty()) break;
+                local.swap(workers_);
+            }
+            for (auto& worker : local) {
+                if (worker.joinable()) worker.join();
+            }
+        }
+    }
+
+private:
+    std::mutex mutex_;
+    std::vector<std::jthread> workers_;
+};
+
 template <class Callback>
-void async_add(int a, int b, Callback&& cb) {
+void async_add(worker_group& workers, int a, int b, Callback&& cb) {
     log("async_add", "compute ", a, " + ", b);
-    std::this_thread::sleep_for(100ms);
+    workers.submit([a, b, cb = std::forward<Callback>(cb)]() mutable {
+        std::this_thread::sleep_for(100ms);
+        cb(a + b);
+    });
+}
+
+template <class Callback>
+void async_add_immediate(int a, int b, Callback&& cb) {
+    // 进阶观察：同步立即回调应走单独 ready/return-false 设计，本题主线使用 async_add。
     cb(a + b);
 }
 
@@ -46,6 +85,7 @@ void async_add(int a, int b, Callback&& cb) {
 // 必做 2：AsyncAddAwaiter
 // ─────────────────────────────────────────────────────────────────────
 struct AsyncAddAwaiter {
+    worker_group& workers_;
     int a_;
     int b_;
     int result_{};
@@ -58,12 +98,12 @@ struct AsyncAddAwaiter {
     void await_suspend(std::coroutine_handle<> h) {
         // TODO [必做 2.b]:
         //   log("await_suspend", "tid=...");
-        //   async_add(a_, b_, [this, h](int r) {
+        //   async_add(workers_, a_, b_, [this, h](int r) {
         //       result_ = r;          // 先写 result
-        //       h.resume();           // 后 resume；真实跨线程版本还要保证生命周期与同步
+        //       h.resume();           // 后 resume；worker_group 负责线程 join
         //   });
         log("await_suspend", "schedule async_add(", a_, ",", b_, ")");
-        async_add(a_, b_, [this, h](int r) mutable {
+        async_add(workers_, a_, b_, [this, h](int r) mutable {
             result_ = r;
             h.resume();
         });
@@ -78,11 +118,11 @@ struct AsyncAddAwaiter {
 // ─────────────────────────────────────────────────────────────────────
 // 必做 3：使用上面的 awaiter 的协程
 // ─────────────────────────────────────────────────────────────────────
-lazy_task<int> compute_with_callback(int x, int y) {
+lazy_task<int> compute_with_callback(worker_group& workers, int x, int y) {
     log("coro", "before co_await");
 
-    // TODO [必做 3]: int sum = co_await AsyncAddAwaiter{x, y};
-    AsyncAddAwaiter awaiter{x, y};
+    // TODO [必做 3]: int sum = co_await AsyncAddAwaiter{workers, x, y};
+    AsyncAddAwaiter awaiter{workers, x, y};
     int sum = co_await awaiter;
 
     log("coro", "after co_await, sum=", sum);
@@ -102,8 +142,10 @@ lazy_task<int> compute_with_callback(int x, int y) {
 int main() {
     log("main", "─── B-3：把回调 API 包成 awaiter ───");
 
-    auto t = compute_with_callback(7, 5);
+    worker_group workers;
+    auto t = compute_with_callback(workers, 7, 5);
     int v = coroutine_study::sync_wait(std::move(t));
+    workers.join();
 
     log("main", "final = ", v, "  (期望 (7+5)*3 = 36)");
     return 0;

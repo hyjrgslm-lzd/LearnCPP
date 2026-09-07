@@ -49,11 +49,16 @@ batch_process(std::stop_token st, int total_batches) {
         //   以 stopped 语义看到部分结果。
         //
         //   提示：if (st.stop_requested()) { co_return processed; }
+        if (st.stop_requested()) co_return processed;
 
         // 必做 2（已给默认实现）：co_await 一个 50ms 的 async_sleep，模拟 I/O 延迟，
         //   也是天然的 cancellation point。保留它，骨架开箱即可观察到挂起；
         //   配合上面必做 1 的 stop 检查，就能跑出协作式取消。
         co_await async_sleep{50ms};
+
+        // TODO [必做 2.b]：在 co_await 之后再次检查 token。
+        //   取消可能发生在等待期间，此时提前返回已完成批次数。
+        if (st.stop_requested()) co_return processed;
 
         ++processed;
         std::println("  [batch_process] 完成第 {} 批", processed);
@@ -73,9 +78,11 @@ coroutine_study::lazy_task<int>
 batch_process_throwing(std::stop_token st, int total_batches) {
     int processed = 0;
     for (int i = 0; i < total_batches; ++i) {
-        // TODO [必做 3]：取消后改为 throw task_cancelled{}，
-        //   对比 set_stopped 路径的 API 差异。
+        // TODO [必做 3.a]：co_await 前检查取消，取消后 throw task_cancelled{}。
+        if (st.stop_requested()) throw task_cancelled{};
         co_await async_sleep{50ms};
+        // TODO [必做 3.b]：co_await 后再次检查取消，对比普通返回路径的 API 差异。
+        if (st.stop_requested()) throw task_cancelled{};
         ++processed;
     }
     co_return processed;
