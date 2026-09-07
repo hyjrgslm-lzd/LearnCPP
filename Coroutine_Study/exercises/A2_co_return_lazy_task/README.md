@@ -1,41 +1,55 @@
-# 练习 A-2：co_return 与 lazy task
+# 练习 A-2：`co_return` 与 lazy task
 
-> 详尽版本见 `../../02-模块A-三关键字与最小协程.md` 的 `练习 A-2` 章节。
-> 本 README 仅摘抄"目标 / 必做任务 / 验收点"。
->
-> 注：本题用到的 `lazy_task<T>` 头文件位于 `../include/coroutine_study/lazy_task.hpp`，
-> 已统一放到题目项目的 include 路径中，并支持 `operator co_await`（B-2 顺序组合需要）。
+先读 [模块 A 的 co_return 章节](../../02-模块A-三关键字与最小协程.md#a2)。本题使用共享 [lazy_task.hpp](../include/coroutine_study/lazy_task.hpp)，不要复制旧版 task。
 
-## 目标
+本题验证：调用协程函数只创建 `lazy_task` 和协程状态；`coroutine_study::sync_wait(std::move(task))` 才启动 root 协程；`co_return` 的值先进入 promise，再由消费者取走。
 
-使用随附的 minimal `lazy_task<T>` 头文件，写一段三步值变换的协程，用 `co_return` 产出
-最终结果，并在 main 中通过 sync 方式取走值。体会 lazy task 的"创建时不执行，被 await 或
-sync_wait 时才执行"与普通函数的区别。
+## Part 1：异步版本
 
-## 必做任务
+打开 [main.cpp](main.cpp)，补全 `compute_async(int x)`：
 
-1. 写一个协程函数 `compute_async(int x)`，返回 `lazy_task<int>`。
-2. 协程体内做三步值变换：`step1 = x + 10; step2 = step1 * 2; step3 = step2 - 5;` 然后 `co_return step3;`。
-3. 在每一步前后都加日志（步骤名 + 当前值）。
-4. 在 main 中先 `auto task = compute_async(5);` 加日志，确认协程体此时未执行。
-5. 然后调用 `task.sync_wait()` 取走结果，打印最终值。
-6. 写一个普通函数 `int compute_sync(int x)` 做完全相同的三步计算，对比日志顺序。
-7. 画一张协程帧状态图：initial_suspend、协程体三步、final_suspend、sync_wait 的 resume 入口。
+```cpp
+int step1 = x + 10;
+int step2 = step1 * 2;
+int step3 = step2 - 5;
+co_return step3;
+```
 
-## 进阶任务
+每一步前后都打印日志。运行前先预测：`auto task = compute_async(5);` 后不会出现 `[coro]` 日志。
 
-- 在三步之间插入一个 `co_await std::suspend_always{}`，观察 `sync_wait` 循环 resume 几次。
-- 把输入/输出换成结构体 `Request{id, payload}` / `Response{id, result}`，验证非平凡类型支持。
+**答案解析：** 预测结论是不会出现 `[coro]`。lazy task 的 `initial_suspend()` 先挂起，调用 `compute_async(5)` 时只完成协程帧、promise 和返回对象的创建。`[coro]` 日志要等 `sync_wait(std::move(task))` 恢复 root 协程后才会打印。
 
-## 验收点
+## Part 2：同步对照
 
-- 你能用日志证明：`auto task = compute_async(5)` 这一行不触发协程体的执行。
-- 你能解释 `initial_suspend` 返回 `suspend_always` 是惰性启动的根源。
-- 你能说明 `co_return step3` 是怎么经过 `promise.return_value` 到达 `sync_wait` 返回值的。
-- 你能解释为什么 `lazy_task` 必须禁止拷贝（协程帧所有权唯一性）。
+补全 `compute_sync(int x)`，做同样三步。同步函数调用即执行，日志会出现在调用表达式内部；lazy task 的日志会集中出现在 `sync_wait(std::move(task))` 之后。
 
-## Starter / Reference
+## Part 3：返回值与所有权
 
-- `main.cpp` 是练习骨架，保留 TODO 和可编译占位，重点让你亲手补三步变换。
-- `solution.cpp` 是可运行参考实现，`ctest --preset verify-core -C Release -R A2_co_return_lazy_task_reference`
-  会校验 lazy 启动、`co_return` 值流和同步版本对照。
+观察 `sync_wait` 返回值应为 25。解释这条路径：
+
+```text
+co_return step3
+  -> promise.return_value(step3)
+  -> final_suspend 通知等待者
+  -> sync_wait 取出值
+```
+
+`lazy_task` 是 move-only。`coroutine_handle` 是非拥有句柄；真正拥有协程状态的是 task/runtime 契约。把 task 移进 `sync_wait` 表示消费这一次结果入口。
+
+## 验收
+
+- `auto task = compute_async(5)` 不执行协程体。
+
+  **答案解析：** `compute_async` 的返回类型是 lazy task，promise 的 `initial_suspend()` 会先挂起。调用表达式只创建协程帧和 task 返回对象，协程体里的 `[coro]` 日志要等 task 被消费时才出现。这个现象证明 task 是惰性启动。
+
+- `sync_wait(std::move(task))` 返回 25。
+
+  **答案解析：** 三步计算是 `5 + 10 = 15`，`15 * 2 = 30`，`30 - 5 = 25`。`co_return step3` 把 25 存进 promise，`final_suspend` 通知等待者，`sync_wait` 完成等待后取出这个值。因此返回 25 同时验证了计算值和结果通道。
+
+- 同步版本和 lazy task 版本日志时机不同。
+
+  **答案解析：** `compute_sync(5)` 是普通函数，调用那一刻就执行三步并打印日志。`compute_async(5)` 创建后先不执行，日志集中出现在 `sync_wait(std::move(task))` 启动 root 协程之后。两组日志的差异就是 eager 普通调用和 lazy 协程调用的差异。
+
+- 你能画出 initial suspend、三步计算、final suspend、取值的位置。
+
+  **答案解析：** 示例链可以画成：`compute_async(5)` -> 创建帧和返回对象 -> `initial_suspend` 挂起 -> `sync_wait` 恢复 root -> 执行三步计算 -> `co_return 25` -> `final_suspend` -> `sync_wait` 取值。图里还要标出 task 是协程帧 owner，`sync_wait` 消费这个 owner，handle 只是恢复控制入口。

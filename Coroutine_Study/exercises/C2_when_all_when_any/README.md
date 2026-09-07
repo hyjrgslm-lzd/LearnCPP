@@ -1,36 +1,53 @@
-# 练习 C-2：when_all / when_any
+# 练习 C-2：`when_all` / `when_any`
 
-## 目标
+先读 [模块 C 的组合章节](../../04-模块C-取消与组合.md#c2)。本题用最小实现观察组合语义，不追求通用库。
 
-用 `when_all` 并行启动 3 个 task 并汇合结果，用 `when_any` 实现超时竞速模式，
-建立并行组合与取消传播的直觉。
+## Part 1：三个模拟 task
 
-## 必做任务
+打开 [main.cpp](main.cpp)，确认三个 fetch 都接收可选 `std::stop_token`，延迟不同：
 
-1. 实现简化版 `when_all(t1, t2, t3)`：并行驱动 3 个 task，
-   最后将结果合并成 `std::tuple<int, int, int>`。
-2. 写 3 个延迟不同的模拟 fetch（cache/db/remote）。
-3. 实现简化版 `when_any(t, timeout)`：
-   返回第一个完成者，其余被取消。
-4. 用 `when_any(fetch_remote(), timeout_after(Nms))` 做超时模式，
-   观察阈值变化对结果的影响。
-5. 画串行 / when_all / when_any 三种模式的时序图。
+- cache：50ms，返回 100。
+- db：150ms，返回 200。
+- remote：300ms，返回 300。
 
-## 验收点
+串行等待约等于三者相加。并发汇合应接近最慢那个任务。
 
-- 你能区分 `when_all`（汇合）与 `when_any`（竞速）的语义。
-- 你能用 `when_any` 正确实现超时模式。
-- 你能解释一个子 task 抛异常时，其余 task 应该如何被通知取消。
-- 你能说明并行组合相对手写 mutex+cv 在表达力上的优势。
+## Part 2：`when_all`
 
-## 提示
+把串行占位改成并发驱动：为每个 task 起一条 `std::jthread`，在线程中调用 `coroutine_study::sync_wait(std::move(task))`，保存结果，join 三条线程后 `co_return std::make_tuple(...)`。
 
-- 学习版可以为每个 task 起一条 `std::jthread` 单独驱动 `.get()`。
-- 超时 task 实现极简：`co_await async_sleep{N}; co_return timeout_marker;`
-- when_any 的"取消未完成 task"可以用 `std::stop_source` 通知。
+异常路径要保存第一个异常，并通过同一个 `std::stop_source` 请求其它 task 停止。main 已示例把 `all_src.get_token()` 传给 cache/db/remote；你完成并发版时要把这个 source 接进失败路径。请求取消后仍要等齐线程，避免 loser 继续访问资源。
 
-## Starter / Reference
+## Part 3：`when_any`
 
-- `main.cpp` 是练习骨架，保留 TODO 和串行占位，便于对比耗时。
-- `solution.cpp` 是可运行参考实现，`ctest --preset verify-core -C Release -R C2_when_all_when_any_reference`
-  会校验 `when_all` 并发汇合、`when_any` 超时胜出，以及 loser 收到取消并被 join。
+超时模式由两个 task 竞速：
+
+```cpp
+when_any(fetch_remote(), timeout_after(200ms))
+```
+
+当前 starter 的 `when_any(stop_source, ta, tb)` 已把 source 参数摆到接口上；占位实现只等待第一条任务。完成时需要并行驱动两条任务，winner 写结果后调用 `stop_source.request_stop()`，再 join loser。本仓库共享 [runtime.hpp](../include/coroutine_study/runtime.hpp) 已提供二选一 helper `coroutine_study::when_any_cancel_join(stop_source, first, second)`，可先用它观察 winner/loser 收束。
+
+## Part 4：改阈值观察
+
+先用 200ms，timeout 应先赢；再改成 400ms，remote 应先赢。解释变化时不要只看返回值，要指出 stop 请求和 join 发生在哪里。
+
+**答案解析：** 200ms 阈值小于 remote 的 300ms 延迟，所以 timeout 分支先完成，组合器记录 timeout marker 后请求 stop，并等待 remote 在检查点收束。400ms 阈值大于 remote 延迟，remote 先返回 300，组合器再请求 stop 让 timeout 分支退出或收束。两次实验的关键差异是 winner 改变，收尾动作仍是“请求 stop + join loser”。
+
+## 验收
+
+- `when_all` 返回 `(100, 200, 300)`，耗时接近 300ms。
+
+  **答案解析：** cache/db/remote 三条任务分别延迟 50ms、150ms、300ms。并发启动后总耗时由最慢的 remote 决定，所以应接近 300ms，而不是串行相加的约 500ms。返回 tuple 保持 `(cache, db, remote)` 的结果槽顺序，即 `(100, 200, 300)`。
+
+- `when_any` 能表达超时竞速。
+
+  **答案解析：** 超时模式把真实任务和 `timeout_after(Nms)` 放进同一个竞速组合。N=200ms 时，remote 需要 300ms，timeout 先完成并返回超时标记；N=400ms 时，remote 会先返回 300。这个结果说明 winner 由完成时间决定，调用者不用把超时逻辑塞进 remote 自己的实现。
+
+- loser 收到 stop 请求并被收束。
+
+  **答案解析：** 当前 starter 的目标是 winner 写入结果后调用同一个 `stop_source.request_stop()`，再等待 loser 完成。共享 `runtime.hpp` 的 `when_any_cancel_join(stop_source, first, second)` 已提供这个二选一观察 helper：首个 value 或 exception 完成者成为 winner，helper 请求取消并 join 另一条任务。stop 只是请求，所以 loser 仍要在自己的检查点响应，组合器仍要等它收束。
+
+- 子 task 抛异常时，整体传播异常，同时请求其它 task 停止。
+
+  **答案解析：** `when_all` 中任一 child 失败时，组合器保存第一个异常，并通过共享 `stop_source` 通知其它 child 尽快停止。它不能立刻丢下其它线程或协程，因为 loser 可能还持有资源或 handle；必须 join 等齐后再把异常重新抛给父协程。这样异常传播和生命周期收束同时成立。

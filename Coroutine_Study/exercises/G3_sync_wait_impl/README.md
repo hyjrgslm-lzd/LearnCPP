@@ -1,45 +1,64 @@
-# G-3 实现 sync_wait
+# G-3 实现 `sync_wait`
 
-对应文档：`09-模块G-symmetric_transfer与高级task.md` 「练习 G-3」。
+对应正文：[09 模块 G](../../09-模块G-symmetric_transfer与高级task.md#g3)。
 
-## 目标
+`sync_wait` 是普通线程进入协程世界的入口。最终实现应启动 root task 一次，然后等待 final completion 通知；手动循环 resume 只适合受控演示。
 
-实现 `sync_wait`：在非协程上下文中驱动 task 到完成，把"协程世界"翻译为"同步阻塞
-世界"。这是 main 函数能消费协程结果的标准入口。给两个版本：
-1. **手动循环驱动版** —— 适合单线程全协程环境（asio io_context 内的协程链）。
-2. **condvar + 独立线程驱动版** —— 适合协程可能在其它线程完成的场景。
+## Part 1：理解 blind-resume 的边界
 
-## 必做任务
+下面这种代码只能驱动最简单的 toy awaiter：
 
-1. 阅读骨架：`sync_wait_simple` 和 `sync_wait_condvar` 已给出。
-2. 跑通测试 1（成功路径）和测试 2（错误重抛）。
-3. 跑通测试 3：condvar 版本——观察 driver 线程独立运行，主线程 wait。
-4. 在笔记中回答：
-   - 为什么 `main` 不能是协程？（从帧分配 / 启动 / 销毁三个角度）
-   - `sync_wait` 在协程世界与同步世界之间承担什么角色？
-   - 简易版 vs condvar 版分别适合什么场景？
+```cpp
+h.resume();
+while (!h.done()) h.resume();
+```
 
-## 进阶任务
+它假设所有挂起点都能由当前线程继续恢复。遇到跨线程完成、`await_suspend` 同步恢复、symmetric transfer 或外部事件循环时，这个循环可能重复 resume、早读结果或访问已销毁状态。
 
-- 实现 timeout 版本：`sync_wait_with_timeout(task, 5s)`，超时抛异常并销毁帧。
-- 实现 spin-wait 版本：用 `std::atomic_flag` 替代 condvar，对比 CPU 使用率。
-- 让 sync_wait 同时支持 `lazy_task<void>`（需偏特化或 if constexpr 路径）。
+## Part 2：final completion + condvar
 
-## 验收点
+生产形状：
 
-- 简易版能正确驱动 task 跑到完成并取出结果。
-- 错误路径能正确把协程内异常重抛到 sync_wait 调用者。
-- condvar 版能跨线程驱动 task。
-- 你能解释 `sync_wait` 不能在协程内调用（会阻塞当前线程，浪费协程优势）。
+```text
+sync_wait 创建 state { mutex, cv, done=false }
+promise 设置 completion callback
+task.start() 一次
+当前线程 cv.wait(done)
+final_suspend 调用 callback
+callback 设置 done=true 并 notify
+sync_wait 醒来读取 value/error
+```
 
-## 提示
+异常存放在 promise 中，`sync_wait` 醒来后重新抛出。`task<void>` 返回空 tuple。
 
-- 简易版只 30 行——不要在辅助设施上过度设计。
-- 关键不是代码量，而是理解"协程挂起恢复 → 线程阻塞唤醒"的精确对应关系。
-- condvar 版要小心 task 所有权——move 后由 driver 线程负责 destroy 帧。
+## Part 3：回答 main 为什么不能是协程
 
-## 本轮练习契约
+C++ 标准没有定义 main 协程的启动和销毁实体：谁分配 main frame，谁在 initial suspend 后 resume，谁最终 destroy。`sync_wait` 就是普通 `main()` 自己可以调用的桥接入口。
 
-Starter 要求实现同步边界。Reference 复用公共 lazy_task/sync_wait，验证 root start once、nested completion、二次 start 拒绝、异常重抛。sync_wait 的职责是把协程 completion 转成阻塞等待，不是盲目 resume 循环。
+## 验收
 
-命令：``cmake -S . -B build/dg-lane -DCOROUTINE_STUDY_BUILD_REFERENCE=ON``，然后构建 ``G3_sync_wait_impl`` 与 ``G3_sync_wait_impl_reference``，再用 ``ctest -R G3_sync_wait_impl_reference`` 跑稳定验收。
+- 成功路径返回正确值。
+
+  **答案解析：** `sync_wait` 先把 completion callback 接到 root promise，再调用一次 `start()`。协程正常 `co_return` 时把值存在 promise 中，`final_suspend` 通知等待线程，线程醒来后读取 promise value。G-3 的 `nested()` 还验证了嵌套 task 完成也会回到 root final path。
+- 错误路径把协程内异常重新抛到 `sync_wait` 调用者。
+
+  **答案解析：** 协程体异常先由 `unhandled_exception()` 保存到 promise，不直接穿过异步边界。`sync_wait` 被 final completion 唤醒后检查 promise 的 error 并重新抛出。reference 的 `fail()` 场景捕获 `std::runtime_error`。
+- root task 只启动一次，二次 start 被拒绝。
+
+  **答案解析：** `sync_wait` 要求传入未启动 task，并只调用一次 `start()`。启动后 promise 中的 started 标志已建立，手动再次 `start()` 会抛 `logic_error`，防止同一 frame 被重复 resume。G-3 的 `auto t = value(); t.start(); t.start();` 验证这个保护。
+- 跨线程完成能唤醒等待线程。
+
+  **答案解析：** 跨线程 awaiter 可能在另一个线程恢复 root task 或其子链。只要最终 root 进入 `final_suspend`，completion callback 就会加锁设置 done 并通知 condition_variable。等待线程不需要知道哪个线程完成了协程，只等 final path 的统一信号。
+- 你能说明手动循环和 condvar/run_loop 方案的适用边界。
+
+  **答案解析：** 手动循环 `resume()` 只适合完全由当前线程推进的 toy coroutine，用来观察状态机。真实异步 task 可能由外部事件、跨线程回调或 symmetric transfer 恢复，循环 resume 会造成早读、重复恢复或破坏同步完成窗口。condvar 适合阻塞普通线程等最终完成，run_loop 适合事件循环式恢复队列中的 handle。
+
+## Reference
+
+Reference 复用公共 `lazy_task/sync_wait`，验证 root start once、nested completion、二次 start 拒绝、异常重抛和跨线程完成。
+
+```powershell
+cmake -S . -B build/dg-lane -DCOROUTINE_STUDY_BUILD_REFERENCE=ON
+cmake --build build/dg-lane --config Release --target G3_sync_wait_impl G3_sync_wait_impl_reference
+ctest --test-dir build/dg-lane -C Release -R G3_sync_wait_impl_reference
+```

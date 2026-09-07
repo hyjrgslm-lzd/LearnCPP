@@ -1,307 +1,158 @@
 # 03 模块 B：generator 与 task 的使用
 
-## 模块目标
+模块 A 讲清了三个关键字各自触发什么机制。模块 B 开始把这些机制组合起来：generator 可以嵌套生产，task 可以顺序等待另一个 task，回调 API 可以被包装成 awaiter。
 
-模块 A 让你建立了三个关键字的肌肉记忆。模块 B 要把 generator 和 task 的使用技能向前推一步：
+这三件事的共同点是“把后续工作保存到某个明确对象里”。递归 generator 把子生产者保存进父生产者的推进过程；父 task 在 `co_await child` 时保存自己的恢复点；callback awaiter 把当前协程的非拥有 handle 接到回调完成事件上。
 
-- generator 不只是线性 yield，递归 generator 可以表达树形遍历；`std::ranges::elements_of` 递归产出能使用标准 generator 的嵌套恢复机制降低栈增长风险。
-- task 不只是单步 `co_return`，多个 task 的 `co_await` 串联可以表达顺序异步组合，且异常沿 `co_await` 链自然传播。
-- 真实工程中大量的回调式 API（如文件读取、网络请求、定时器）可以通过写出最小 awaiter 适配器，变成可 `co_await` 的协程友好接口。
+<a id="b1"></a>
 
-## 模块完成标准
+## 一、递归 generator：生产者里还有生产者
 
-做完本模块，你至少要能稳定说清楚：
+先从一棵二叉树看起。中序遍历的同步写法是：遍历左子树，访问当前节点，遍历右子树。generator 写法也表达同一件事，只是每个“访问节点”变成一次 `co_yield`。
 
-- 递归 generator 中每次 `co_yield` 停在哪一层协程帧上，`elements_of` 与普通 `for + co_yield` 的恢复链有什么差异。
-- `co_await task1(); co_await task2(); co_return combine(...)` 与回调金字塔相比，好在哪（异常传播、值流显式、控制流线性）。
-- 如何把"传入回调 + 异步启动"模式的 C API，仅通过 ~25 行 awaiter 代码变成协程可消费的 `co_await`。
+```cpp
+std::generator<int> inorder(Node* root) {
+    if (!root) co_return;
+    for (int v : inorder(root->left)) co_yield v;
+    co_yield root->value;
+    for (int v : inorder(root->right)) co_yield v;
+}
+```
 
-## 使用约定
+每次递归调用都会创建一个新的 generator 对象和一份新的协程状态。父 generator 运行到左子树循环时，会驱动子 generator 产出值；子树产出的每个值再由父 generator 转发给外层消费者。
 
-- 本模块沿用模块 A 的 `lazy_task.hpp` 头文件。
-- generator 使用 C++23 `<generator>`。
-- 所有日志都建议打印：阶段名、协程标识、线程 ID。
-- 注意观察点中的栈行为和协程帧归属问题。
+```text
+main 推进 root generator
+  root generator 正在等待 left generator 的下一个值
+    left generator 正在等待更深 left generator 的下一个值
+      leaf generator co_yield leaf.value
+```
 
----
+每一层都有独立的协程帧。父层并未丢失状态，它停在“等待子 generator 下一个值”的循环位置。消费者继续推进时，恢复链会从外层一路触达当前活跃的内层生产者。
 
-## 练习 B-1：递归 generator 与栈
+### `elements_of` 表达递归产出
 
-### 目标
+C++23 `std::generator` 提供 `std::ranges::elements_of`，用于把一个内层 range 的元素作为外层 generator 的产出序列：
 
-用递归 generator 实现二叉树的中序遍历（惰性 yield 每个节点值），亲手观察 `std::ranges::elements_of` 如何让嵌套 generator 的控制转交更接近 symmetric transfer 模型，并对比普通 `for + co_yield` 的栈行为。
+```cpp
+std::generator<int> inorder(Node* root) {
+    if (!root) co_return;
+    co_yield std::ranges::elements_of(inorder(root->left));
+    co_yield root->value;
+    co_yield std::ranges::elements_of(inorder(root->right));
+}
+```
 
-### 前置理解
+这表达的是“从这里开始，当前 generator 的输出接上子 generator 的输出”。标准 generator 为嵌套 generator 维护 active stack，让控制在父子 generator 间转交。它和手写 `for + co_yield` 的输出可以相同，但库能把递归产出作为 generator 协议的一部分处理，避免让用户代码层层循环转发成为主要机制。
 
-- 你知道 `std::generator<T>` 可以用递归函数实现：在协程内部 `co_yield` 当前节点值，然后递归遍历子树。
-- 你知道朴素递归函数遍历一棵深层树时，每一层递归都会压栈，深度树可能爆栈。
-- 你听过"symmetric transfer"这个词，但请特别留意：`co_yield std::ranges::elements_of(inner_gen)` 才是标准 generator 支持递归产出的路径。普通的 `for (int v : recurse(node)) co_yield v;` 是用户层循环转发，每层 `operator++` 都可能参与调用链，不能把它当成同一种栈行为。
-- 你接受本题的重点是观察递归 yield 的栈行为，并亲手对比两种写法的栈安全差异。
+本仓库 reference 当前采用两个可运行路径：普通递归 generator 和显式栈 flattening。starter 里保留 `elements_of` 练习入口，适合在支持该语法的标准库上补全。若当前编译器或标准库暂不支持，先用 reference 的普通递归与显式栈版本确认中序语义，再把 `elements_of` 作为版本能力实验。
 
-### 必做任务
+在 [练习 B-1](exercises/B1_recursive_generator/README.md) 中，关键观察是每个父帧停在哪：左子树未结束前，当前节点的 `co_yield root->value` 尚未执行；左子树结束后，父帧才继续产出当前节点。
 
-1. 定义一个简单的二叉树节点结构：
-   ```cpp
-   struct Node {
-       int value;
-       Node* left;
-       Node* right;
-   };
-   ```
-2. 构造一棵深度至少 5 层的满二叉树（节点值可以简单设为 1 到 2^depth-1），但至少包含 20+ 个节点。
-3. 写两个版本的递归 generator 函数 `inorder(Node* root)`，返回 `std::generator<int>`：
-   - **版本 A（推荐，P2502 `elements_of`）**：左子树用 `co_yield std::ranges::elements_of(inorder(root->left));` 递归 yield。这是 C++23 标准 generator 的 recursive yield 语法，标准库实现会维护 active stack 并恢复嵌套 generator，避免用户代码手写层层循环转发。
-   - **版本 B（反例）**：左子树用 `for (int v : inorder(root->left)) co_yield v;` 递归 yield——这是普通迭代器层层 resume，每层 generator 的 `++it` 都可能进入 caller 栈帧，深度退化树有栈增长风险。
-   - 两个版本都通过 `co_yield root->value;` 产出当前节点值，然后用相同方式处理右子树。
-4. 在 `main()` 中用 range-based for 遍历这个 generator，打印所有值，验证输出是正确的中序遍历序列。
-5. 在递归 generator 函数入口和每个 `co_yield` 前后加日志。观察：当递归进入深层左子树并开始 yield 最左叶子时，日志的顺序是怎样的。
-6. 画一张调用图：标注最左叶子被 yield 时，协程帧栈上每一层父 generator 分别挂起在哪个 `co_yield` / `for` 循环的哪个迭代位置。
+<a id="b2"></a>
 
-### 进阶任务
+## 二、task 顺序链：父协程暂停，子协程完成后回来
 
-- 构造一棵退化树（每个节点只有右子树或只有左子树），深度达到 200、500，必要时继续增加。用普通递归函数、版本 A（`elements_of`）和版本 B（`for` + `co_yield`）分别遍历同一棵树，记录最大可运行深度和栈行为。不要把“某次没爆栈”写成标准保证。
-- 不用 `for (int v : recurse(left)) co_yield v;` 这种"用户层递归"方式，而是直接在 `promise_type` 层面给 generator 加一个 `yield_from(generator&&)` 方法（类似 Python 的 `yield from`）。这要求你在 generator 的 `promise_type` 中实现 `await_transform` 来拦截对另一个 generator 的 `co_await`。这是一个接近二级难度的任务，做不出来可以先跳过，但思考其设计意图。
-- 在 GCC 上用 `-fdump-tree-coro`，或在 Clang 上用 `-Xclang -ast-dump -fsyntax-only`，观察编译器为递归 generator 生成的协程帧结构。尝试从中辨认出：哪些字段是你写的局部变量，哪些是编译器生成的簿记字段（如当前状态点、resume 地址等）。
+`lazy_task<T>` 可以被另一个协程 `co_await`。父协程写出线性代码：
 
-### 验收点
+```cpp
+auto user = co_await fetch_user(id);
+auto profile = co_await parse_profile(user);
+auto result = co_await validate_profile(profile);
+co_return format(result);
+```
 
-- 你能用中序遍历的正确输出证明递归 generator 的逻辑正确性。
-- 你能在日志中清晰地看到：深层左子树的 `co_yield` 在浅层节点的 `co_yield` 之前被执行（符合中序遍历语义），并且浅层节点的 for 循环被"冻结"在等待下一个值的状态。
-- 你能解释：为什么版本 B（`for` + `co_yield`）不能获得 `elements_of` 的递归 generator 支持，它的每一层 `++it` 都可能进入 caller 栈帧；版本 A 的 active stack/控制转交机制为什么更适合深度树。
-- 你能画出退化树遍历时协程帧之间的 resume 链。
+执行上，它是一条父子 task 链。父协程运行到 `co_await fetch_user(id)` 时暂停，把自己的恢复点交给 child task 的 awaiter；child task 运行并 `co_return User`；child 的 final suspend 通知父协程；父协程恢复，`await_resume()` 返回 `User`。后两步重复同样模式。
 
-### 观察点
+这条链的价值是数据流和错误流都在代码里保持线性。`User` 通过第一个 `co_await` 的返回值进入父协程；`Profile` 通过第二个 `co_await` 进入父协程。中间值不需要塞进全局状态，也不需要拆成多层回调参数。
 
-- 递归 generator 的每一层递归调用都会创建一个新的协程帧（每一层都是一个独立的协程实例，有自己的 coroutine_handle，独立分配在堆上）。
-- 版本 A 中使用 `co_yield std::ranges::elements_of(inner_gen)` 时，`std::generator` 会把子 generator 纳入 active stack；嵌套 generator 完成后恢复外层 generator。版本 B 的 `for (int v : ...) co_yield v;` 是普通迭代器 resume 链：每层 `operator++` 都可能进入上一层帧再返回，栈深度随树深增长。
-- 如果你在进阶任务中试了退化树，通常会看到普通递归和版本 B 更早达到栈深限制，而版本 A 能撑得更深。这是 `elements_of` 设计价值的可观察证据，但最终以你的标准库实现和编译器为准。
-- 注意：`elements_of` 语法的 symmetric transfer 支持取决于编译器和版本。MSVC 17.10+、Clang 17+、GCC 14+ 通常都支持，但如果你的编译器较旧，可能需要确认。
+异常也是同一条链。若 `fetch_user` 抛出，它自己的 promise 保存异常；父协程恢复到 `co_await fetch_user` 时，`await_resume()` 重新抛出。父协程可以在这行外层用 `try/catch` 处理；如果不处理，父协程的 `unhandled_exception()` 会继续保存，最终由 `sync_wait` 抛给 main。
 
-### 常见坑
+对照回调写法，差异就清楚了：
 
-- `for (int v : inorder(left)) co_yield v;` 这种写法的前提是 `inorder(left)` 返回的 generator 临时对象的生命周期要覆盖整个 for 循环。幸运的是，range-based for 的规范保证了这一点（临时对象存活到循环结束）。
-- 递归 generator 中，每一层递归都会创建一个独立的 generator。如果不对这些临时 generator 的生命周期有清楚认识，很容易写出 dangling reference。
-- 在退化树实验中，如果版本 B（`for` + `co_yield`）没有立刻爆栈，也不能推出它具有 `elements_of` 的栈行为；继续增加深度并看调用栈。
-- 把"for 循环展开递归 yield"等同于"`elements_of` 递归产出"——这是本模块最核心的纠正点。两者语义结果相似，但恢复链和栈行为不是同一种机制。
+```cpp
+fetch_user(id, [](User user) {
+    parse_profile(user, [](Profile profile) {
+        validate_profile(profile, [](ValidatedProfile result) {
+            use(result);
+        });
+    });
+});
+```
 
-### 提示
+回调版本把后续逻辑拆进闭包对象。每一层都要决定如何传递错误和中间值。协程版本仍然有状态保存，只是状态在协程帧中，恢复点由 awaiter 管理，源代码保留顺序结构。
 
-- 树节点的构造可以用简单的 `new`（在教学代码中），但注意不用时别忘了 `delete`，或者直接用 `std::unique_ptr<Node>` 管理。
-- 日志可以用一个全局递增计数器来追踪执行顺序，让交叉的协程执行序更容易读懂。
-- 如果没有条件使用 GCC/Clang 的 dump 功能，可以先关注 MSVC 的汇编输出，用 `/d1reportSingleClassLayout` 观察帧结构。
-- 如果 symmetric transfer 部分理解困难，先确保你理解了模块 A 中的 awaiter 三方法，特别是 `await_suspend` 可以返回 `coroutine_handle` 这一点——symmetric transfer 就是 `std::generator` 的 final_suspend 内部做了这件事。
+在 [练习 B-2](exercises/B2_task_sequential/README.md) 中，用日志确认 `fetch;parse;validate;` 顺序，再用负 id 触发 `fetch_user` 异常。验收时要能解释为什么 parse/validate 没有执行：异常在第一个 `co_await` 点重新抛出，父协程没有进入后续语句。
 
-### 复盘问题
+<a id="b3"></a>
 
-- 递归 generator 中，每一层子树对应一个独立的协程帧。当树有 100 层深时，内存中有多少个 generator 对象？多少个协程帧？
-- P2502R2 的 `elements_of` 语法如何触发 symmetric transfer？版本 B（`for` + `co_yield`）为什么做不到？
-- 为什么说 `for (int v : inner_gen) co_yield v;` 和 `co_yield std::ranges::elements_of(inner_gen);` 在栈行为上有本质差异？哪个更接近尾调用优化（tail call optimization）的协程等价物？
-- 这题中的 generator 递归模式，和 Python 的 `yield from` 语法有什么异同？
+## 三、回调 API 到 awaiter：把完成事件接到 `resume()`
 
-### 对应官方参考
+很多旧接口形状是“启动操作，完成时调用回调”：
 
-- P2502R2：`std::generator: Synchronous Coroutine Generator for Ranges` 中 `elements_of` 的递归产出与 symmetric transfer
-- Lewis Baker 协程系列第 5 篇：symmetric transfer 详解
-- Raymond Chen 协程系列第 6 篇：generator 的嵌套与递归
+```cpp
+template <class Callback>
+void async_add(worker_group& workers, int a, int b, Callback cb);
+```
 
----
+协程要等待这种操作，只需要一个 awaiter 作为适配层。awaiter 在 `await_suspend` 中启动异步操作，并把当前协程 handle 接进回调：
 
-## 练习 B-2：task<T> 顺序异步组合
+```cpp
+struct async_add_awaiter {
+    worker_group& workers;
+    int a;
+    int b;
+    int result = 0;
 
-### 目标
+    bool await_ready() const noexcept { return false; }
 
-用 `lazy_task<T>` 串联多个"伪异步"操作（`fetch` -> `parse` -> `validate`），每个操作都是一个独立的协程 task。通过 `co_await` 把三个任务串起来，让最终结果自然流到 `co_return`。对比等效的回调金字塔写法，体会协程如何让异步顺序看起来像同步代码。
+    void await_suspend(std::coroutine_handle<> h) {
+        async_add(workers, a, b, [this, h](int value) {
+            result = value;
+            h.resume();
+        });
+    }
 
-### 前置理解
+    int await_resume() const noexcept { return result; }
+};
+```
 
-- 你已经从 A-2 理解了 `lazy_task<T>` 的基本用法。
-- 你知道 `co_await some_task` 的语义是：挂起自己，等 `some_task` 完成后取走它的返回值。
-- 你理解"异常沿 co_await 链自然传播"的含义：如果子 task 抛出了异常（进入了 `unhandled_exception`），那么父协程的 `co_await` 表达式会重新抛出这个异常，父协程可以选择 `try-catch` 处理或让异常继续向上传播。
-- 你接受本题的"异步操作"全部用纯计算模拟（`std::this_thread::sleep_for` 仅用于模拟耗时），不需要真正的网络或 I/O。
+这个模式短，但要理解两个生命期。第一，awaiter 对象位于挂起协程的协程状态里，`co_await` 尚未完成时它保持存活，所以回调能在恢复前写 `result`。第二，回调里保存的 `h` 是非拥有 handle；它只允许恢复协程，不能独立保证帧还活着。协程帧的拥有者必须覆盖这次异步操作。
 
-### 必做任务
+本仓库 B3 reference 用 `worker_group` 拥有所有 `std::jthread`，main 在检查后 `join()`。这样后台工作不会脱离 owner。不要用 `detach()` 隐藏问题；一旦 detach 的线程还拿着 awaiter 的 `this` 或协程 handle，而外部已经销毁 task，就会形成悬挂。
 
-1. 写三个独立的协程函数，每个返回 `lazy_task<SomeType>`（类型自定）：
-   - `fetch_user(int user_id)`：返回 `User` 结构体（含 `id`、`name`、`email`）。模拟耗时：在协程体内加一个 ~50ms 的 sleep。
-   - `parse_profile(User user)`：返回 `Profile` 结构体（含 `user_id`、`display_name`、`bio`）。模拟耗时：~30ms sleep。
-   - `validate_profile(Profile profile)`：返回 `ValidatedProfile` 结构体（含原始 profile 字段 + `is_valid: bool` + `score: int`）。模拟耗时：~20ms sleep。
-2. 写一个顶层协程 `process_user(int user_id)`，返回 `lazy_task<std::string>`：
-   ```cpp
-   auto user    = co_await fetch_user(user_id);
-   auto profile = co_await parse_profile(user);
-   auto result  = co_await validate_profile(profile);
-   if (result.is_valid)
-       co_return std::format("User {} ({}) validated with score {}", result.user_id, result.display_name, result.score);
-   else
-       co_return std::format("User {} ({}) failed validation", result.user_id, result.display_name);
-   ```
-3. 在 `main()` 中用 `sync_wait` 消费 `process_user`，打印最终结果字符串。
-4. 在每个协程的入口和 `co_return` 前都加日志（含协程名、线程 ID）。构造一条清晰的日志时间线。
-5. 给 `fetch_user` 加一个"30% 概率抛异常"的逻辑（随机数）。当它抛异常时，观察异常是否沿 `co_await` 链自然传播到了 `sync_wait`（`sync_wait` 中 `std::rethrow_exception` 重新抛出）。
-6. 写等效的回调版本（嵌套 lambda 或 `std::function` 链）做对比：`fetch_user(id, [](User u){ parse_profile(u, [](Profile p){ validate_profile(p, [](auto r){ ... }); }); });`。比较两者在处理错误路径和中间值的差异。
-7. 画一张协程调用树：`process_user` 在 `co_await fetch_user` 处挂起，`fetch_user` 被 resume 并执行；`fetch_user` 完成后 `process_user` 恢复并在 `co_await parse_profile` 处再次挂起……直到最终的 `co_return`。
-
-### 进阶任务
-
-- 把上面三个操作由纯顺序改成"同时启动、再分别等待"的并发模式，用 `lazy_task` 配合 `when_all` 的等价物。由于第一阶段的 `lazy_task` 不支持直接 when_all，你需要模拟：先创建三个 task，再用 `co_await` 分别等待。思考：这样做的并发效果如何？每个 task 是何时被第一次 resume 的？
-- 在 `process_user` 的顶层加 `try-catch`，捕获 `fetch_user` 或 `parse_profile` 可能抛出的异常，并降级返回一个默认字符串。验证：协程体内的 `try-catch` 是否能像同步代码一样工作。
-- 把其中一个操作的返回类型改为 `lazy_task<std::optional<T>>`（模拟"可能无结果"），在 `process_user` 中用 `if (!result.has_value()) co_return "failed";` 处理无结果情况。体会 `co_await` 链上类型的变化。
-
-### 验收点
-
-- 你的日志顺序清楚地展示了：`fetch_user` 先打印，完成；然后 `parse_profile` 打印，完成；最后 `validate_profile` 打印，完成——完全是顺序执行。
-- 你证明了当 `fetch_user` 抛异常时，异常沿 `co_await` 链传播到 `sync_wait`，`parse_profile` 和 `validate_profile` 的日志完全没有出现。
-- 你能说明回调版本中，"错误处理"分散在每一层回调的参数里，而协程版本中，错误处理可以集中在 `try-catch` 块中——就像同步代码一样。
-- 你能指出每个 `co_await` 点是当前协程的潜在挂起点，也是异常传播的通道入口。
-
-### 观察点
-
-- `co_await task1(); co_await task2(); co_await task3();` 这行代码读起来像三个同步函数调用，但实际每一步都伴随着挂起-恢复循环。这种"看起来像同步，本质是异步"的体验，是协程最大的工程价值。
-- 如果你在进阶任务中做了"同时启动三个 task"的版本，你会发现虽然创建 task 时不执行（lazy），但你需要在 `co_await` 之前手动第一次 resume 它们才能让它们开始并发运行。这引出了一个核心问题：lazy task 在并发场景下的局限性——这也是为什么 C++26 `std::execution::task<T>` 和 Folly 的 `Task<T>` 选择了不同的启动策略。
-- 异常在 `co_await` 链上的传播是自动的：子协程的 `unhandled_exception` 保存了 `exception_ptr`，父协程的 `co_await` 在 `await_resume` 中重新抛出。这个机制由 promise_type 和 awaiter 协作完成，不是语言层面的魔法。
-
-### 常见坑
-
-- 在 `process_user` 中忘了 `co_await`，写成了 `auto user = fetch_user(id);`——这样 `user` 会是一个 `lazy_task<User>` 对象，而不是 `User`。编译器可能不会报错（如果 `User` 可以从 `lazy_task<User>` 构造），但运行时会错乱。
-- `fetch_user` 中抛异常后，忘记在 `process_user` 中 `try-catch` 或让异常继续传播，导致程序 `std::terminate`（因为异常从一个 `noexcept` 的 context 中逃逸）。注意：A-2 的 `lazy_task` 头文件中的 `sync_wait` 会 `std::rethrow_exception`，这是有意为之——让调用方决定如何处理异常。
-- 在 `validate_profile` 的必做任务中，用 `sleep_for` 模拟耗时时，忘了 sleep 不释放 CPU 线程——这会让整个过程变成完全的串行堵塞。这用于本题的练习目的完全可以接受，但要意识到真实工程中的 `co_await` 是有真正的异步等待语义的。
-- 认为"co_await 链上的协程一定在同一个线程执行"。实际上线程取决于每个子 task 的 awaiter 如何实现 `await_suspend`。在 `lazy_task` 的最小实现中，`final_suspend` 的 awaiter 是 `suspend_always`，没有跨线程 resume——所以本题中所有协程都跑在同一个线程（调用 `sync_wait` 的主线程）。这在模块 C 和模块 I 中会改变。
-
-### 提示
-
-- 上面的代码示例用了 `fmt::format`（C++20 的 `std::format` 或 `{fmt}` 库），如果你还在用 C++17 风格，可以用 `std::ostringstream` 替代。
-- 异常测试中，用 `rand() % 100 < 30` 即可，不需要真随机分发库。
-- 回调版本不需要写完整的异步框架，用 `std::function` 嵌套即可看清控制流差异。
-- 如果你觉得三个操作太简单，可以加第四个操作（比如 `enrich_profile` 或 `audit_log`），但不要增加太多让复盘走偏。
-
-### 复盘问题
-
-- 为什么"三个 co_await 串行"读起来像同步代码，但执行时每步之间有挂起-恢复循环？这种"同写异步"的能力是由协程帧和 awaiter 的哪些机制支撑的？
-- 回调版本中，错误处理分布在每一层回调里。协程版本中，错误处理可以集中在顶层的 `try-catch`。造成这种差异的根本原因是什么？
-- 如果你需要 `fetch_user` 和 `parse_profile` 并发执行（两者没有数据依赖），当前的 `co_await` 串行写法能满足吗？如果不能，缺少什么？
-- `lazy_task` 的哪种设计导致了"创建 task 时不执行，只有被 co_await 才第一次 resume"？如果把这个设计改成创建时就执行（eager），对并发组合的写法有什么影响？
-
-### 对应官方参考
-
-- Lewis Baker 协程系列第 4 篇：task 的异步组合
-- Raymond Chen 协程系列第 4-5 篇：co_await 链与异常传播
-- cppcoro：`task.hpp` 中 `await_suspend` 的实现
-
----
-
-## 练习 B-3：把回调 API 包成 awaiter
-
-### 目标
-
-给定一个典型的老式回调异步 API（`void async_read(Args..., Callback)`），写出一个最小 awaiter，让它可以被 `co_await` 消费。这是协程工程化的"第一道坎"——把任何回调世界里的异步操作，拉进协程世界的 `co_await`。
-
-### 前置理解
-
-- 你已经从 A-3 亲手写过一个 awaiter（`future_awaiter`），知道三方法的签名和调用时机。
-- 你知道回调 API 的通用模式：你传入一个 callback，库在操作完成时调用这个 callback。
-- 你理解本题的核心技巧：`await_suspend` 中保存当前协程的 `coroutine_handle`，在 callback 中调用 `handle.resume()`。
-- 你接受本题的"回调 API"是模拟的（纯计算+回调），不需要真实的网络或文件 I/O。
-
-### 必做任务
-
-1. 写一个模拟的回调式异步 API：
-   ```cpp
-   class worker_group {
-   public:
-       template <class F>
-       void submit(F&& f) {
-           threads_.emplace_back(std::forward<F>(f));
-       }
-       void join() {
-           for (auto& t : threads_) {
-               if (t.joinable()) t.join();
-           }
-       }
-   private:
-       std::vector<std::jthread> threads_;
-   };
-
-   template <typename Callback>
-   void async_add(worker_group& workers, int a, int b, Callback cb) {
-       // 模拟异步：提交到由 main 持有并在退出前 join 的 worker 组。
-       workers.submit([=] {
-           std::this_thread::sleep_for(std::chrono::milliseconds(100));
-           cb(a + b);
-       });
-   }
-   ```
-2. 写一个 awaiter 类型 `AsyncAddAwaiter`：
-   - 构造函数接收 `int a, int b`。
-   - `await_ready()`：返回 `false`（因为结果一定还在计算中）。
-   - `await_suspend(std::coroutine_handle<> h)`：保存 `h`，然后调用 `async_add(workers, a, b, [this, h](int result) { this->result_ = result; h.resume(); })`。回调中将结果存储到 awaiter 的成员 `result_` 中，然后 resume 协程。注意：这里需要清楚恢复线程和可见性——本例中 `result_` 的写入与随后的 `h.resume()` 在同一个 worker 线程内按顺序发生；更通用的跨线程完成路径要由底层 API、mutex/atomic、事件队列或 join 建立同步关系。
-   - `await_resume()`：返回 `result_`。
-3. 写一个协程 `compute_with_callback(worker_group& workers, int x, int y)`，返回 `coroutine_study::lazy_task<int>`：
-   ```cpp
-   AsyncAddAwaiter awaiter{workers, x, y};
-   int sum = co_await awaiter;
-   co_return sum * 3;
-   ```
-4. 在 main 中用 `sync_wait` 取走结果并打印。
-5. 在 `await_suspend`、回调 lambda、`await_resume`、以及协程体内都打印线程 ID，验证执行流的跨线程转移。
-6. 画一张交互图：协程挂起 -> `await_suspend` 调用 `async_add` -> 新线程中 `sleep` -> 回调中 `h.resume()` -> 协程恢复 -> `await_resume` 返回 `result`。
-
-### 进阶任务
-
-- 给 `AsyncAddAwaiter` 加上错误处理：模拟回调 API 有时会失败（比如 20% 概率回调一个错误码而不是结果）。在 awaiter 内部把错误码转换为 `std::exception_ptr`，在 `await_resume` 中检查并 `std::rethrow_exception`。验证异常能自然传播到协程体的 `co_await` 点。
-- 不是写独立 awaiter 类，而是实现一个通用模板 `callback_awaiter<AsyncFunc, Args...>`，它接受一个异步函数对象和参数，自动完成 awaiter 三方法的包装。这是"一次适配、处处 co_await"的工程实践。
-- 替换模拟 API 为真实的异步回调 API——例如 Boost.Asio 的 `async_read` 或 Windows 的 `ReadFileEx`，将它们的完成回调接到 awaiter 中。尽量让外部依赖最小化，仅做概念验证。
-- 给 awaiter 加上 `std::stop_token` 支持：在 `await_suspend` 中注册一个 stop_callback，当取消被请求时，尝试取消底层异步操作（如果它支持取消的话）。
-
-### 验收点
-
-- 你能在日志中看到明确的跨线程执行：`await_suspend` 在线程 A，回调 lambda 在线程 B，协程恢复后的代码也在线程 B（因为 `h.resume()` 是在线程 B 中调用的）。
-- 你能解释为什么 `await_ready` 在本场景返回 `false`——因为异步操作还没完成，协程必须挂起等待。
-- 你能画出一张完整的 awaiter 三方法 + 异步操作 + 回调 + resume 的时序图。
-- 你能说清楚回调中调用 `h.resume()` 和 awaiter 中 `result_` 写入之间的顺序保证。
-
-### 观察点
-
-- 回调式 API 适配为 awaiter 的模式非常固定："在 `await_suspend` 中保存 handle，启动异步操作，在回调中填充结果并 resume"。一旦你理解了这个模式，几乎所有回调 API 都可以用同样的方式拉进协程。
-- 这个模式下，awaiter 对象本身在挂起点一直存活（它通常分配在协程帧中），直到 `await_resume` 返回后才析构。所以回调中可以安全地用 `this` 指针引用 awaiter 的成员。
-- 跨线程 resume 意味着协程的后续代码可能跑在与调用 `co_await` 时不同的线程上——这就是为什么协程不是线程亲和（thread-affine）的，除非显式地通过 scheduler/executor 约束执行上下文。
-- 如果你在进阶任务中实现了 `callback_awaiter` 模板，你会注意到：不同类型的回调 API（不同的参数个数、不同的回调签名）需要不同的模板特化或重载——C++ 的模板系统此时展现了强大的适配能力。
-
-### 常见坑
-
-- 回调中调用了 `h.resume()` 但没有确保 `result_` 已经写好了（比如先 resume 再写 result），导致协程恢复后在 `await_resume` 中读到旧值或未初始化的内存。正确处理：**先写 result_，后 resume**。
-- 让后台线程脱离所有者后仍然持有 `this` 指针，awaiter 被提前销毁时会造成 use-after-free。本题用 main 持有的 worker_group 管理线程，退出前 join，避免把生命周期问题藏起来。
-- 在 `await_suspend` 中捕获了局部变量的引用而不是拷贝——比如 `[&a, &b]` 而不是 `[=]`，导致异步操作启动后引用悬挂。
-- 在 `await_ready` 中错误地返回了 `true`，导致 `await_suspend` 不会被调用，异步操作从未启动，`await_resume` 中读取到未初始化的值。
-- `async_add` 的回调在 `await_suspend` 返回前就执行了（如果底层 API 支持同步完成），导致同步重入：协程在 `await_suspend` 还没返回时被恢复，awaiter 对象和外层逻辑很容易被二次进入。标准在调用 `await_suspend` 前已经把协程视为挂起，但对同一协程做重入恢复会把库实现推入 UB 或竞态边缘。安全做法是：同步完成走 `await_ready`/`await_suspend` 返回 `false`，异步完成才保存 handle 稍后 resume。
-
-### 提示
-
-- A-3 中的 `future_awaiter` 是本练习的前置——确保你已经理解了 awaiter 三方法，再进入本题。
-- 回调可以是 lambda，也可以是函数指针、`std::function`、或者任何可调用对象。先用 lambda 做，跑通后再尝试泛化。
-- 如果你对线程安全不确定，记住一条简单规则：在调用 `h.resume()` 之前，所有要传给协程的数据（通过 `result_` 等字段）都必须已经写完，并且跨线程可见性要由底层 API、mutex/atomic、事件队列或线程同步保证。`h.resume()` 本身不是内存屏障。
-- 如果你使用 `std::jthread`，要把它放进外层拥有者中统一 join。不要在 `await_suspend` 的局部变量里创建 `jthread` 后立刻离开作用域，否则析构 join 会把异步等待变成同步阻塞，甚至形成死锁。
-
-### 复盘问题
-
-- 为什么说"awaiter 是协程和任何异步世界之间的适配器"？从本题看，awaiter 做了哪几件适配工作？
-- 如果回调 API 支持错误和取消两种 completion 路径，你的 awaiter 应该如何在 `await_resume` 中区分这三种情况？
-- 协程帧在这个过程中充当了"保存现场"的角色——协程挂起时，所有局部变量和执行位置都被保存。回调 API 适配的关键就是把"恢复现场"的动作（`h.resume()`）接到异步操作完成的通知上。这个描述准确吗？
-- 为什么真实工程中，这种适配模式会被封装成库（如 Asio 的 `awaitable<T>`、Folly 的 `Future<T>::to_task()`）而不是每个回调都手写一次？
-
-### 对应官方参考
-
-- Lewis Baker 协程系列第 1 篇：awaiter 协议与回调适配
-- Raymond Chen 协程系列第 7 篇：把 Windows 回调 API 适配为 awaiter
-- Asio 文档：`awaitable<T>` 与回调包装
-- Folly：`folly/coro/Task.h`、`folly/coro/BlockingWait.h` 中 task / future 桥接相关实现
-
----
-
-## 做完模块 B 之后，你现在应该能说清楚什么
-
-至少把下面几句话说顺：
-
-- 递归 generator 的每一层子树对应一个独立的协程帧。P2502R2 的 `co_yield std::ranges::elements_of(inner_gen)` 使用标准 generator 的递归产出机制，子 generator 被纳入 active stack；普通的 `for (int v : inner_gen) co_yield v;` 是用户层循环转发，不能假设同样的栈行为。
-- task 的 `co_await` 链让顺序异步组合读起来像同步代码。值沿 `co_await` 的返回值流动（不是全局共享状态），异常沿 `co_await` 的异常路径自动传播。
-- 回调 API 适配为 awaiter 的模式是固定的：`await_suspend` 中保存 `coroutine_handle`，启动异步操作，在回调中填充结果并 resume。这个模式让你可以把任意老式回调 API 拉进协程的世界。
-- generator、task、awaiter 这三个概念构成了协程日常使用的完整工具箱：generator 负责惰性数据生产，task 负责异步计算表达，awaiter 负责桥接外部异步世界。
+### 同步完成窗口
+
+真实回调 API 可能在 `async_add(...)` 返回前就调用回调。也就是说，`await_suspend` 内部可能发生同步完成。如果回调直接 `h.resume()`，协程会在 `await_suspend` 还没返回时重入，库代码很容易写错。
+
+安全设计通常把“已经完成”放进 `await_ready()` 快路径，或让 `await_suspend` 返回 `false` 表示不挂起、由当前调用链继续。模块 B 的 starter 不要求实现完整同步完成处理，但 README 和复盘必须能指出这个窗口。A3 的 future ready 快路径就是同类问题的简单版本。
+
+### 结果同步
+
+回调先写 `result`，再调用 `h.resume()`。在同一个 worker 线程内，这个顺序保证协程恢复后进入 `await_resume()` 时能读到刚写的值。跨线程场景还要依赖底层 API、mutex/atomic、事件队列或 join 建立可见性。本题 reference 用 mutex 保护状态，教学上更容易看出“写结果”和“恢复协程”是两个动作。
+
+在 [练习 B-3](exercises/B3_callback_to_awaiter/README.md) 中，先按最小 `async_add_awaiter` 跑通，再画出四个点：`await_suspend` 在线程 A，`async_add` 的 worker 在线程 B，回调先写结果，`h.resume()` 后协程的剩余代码在线程 B 继续。
+
+**答案解析：** 图上应把 `await_suspend(h)` 标在启动协程的线程，表示当前协程已经暂停且 handle 被交给 awaiter。`async_add` 提交 worker 后，worker 线程先执行回调、写入 result，再调用 `h.resume()`；恢复后的 `await_resume()` 和后续协程语句也在这个 worker 线程继续。图中还要标出 `h` 非拥有、awaiter 在协程帧内，避免把回调里的 handle 画成 owner。
+
+## 模块 B 完成后
+
+你应该能解释：
+
+- 递归 generator 的每一层是独立生产者，父帧停在等待子生产者的位置。
+
+  **答案解析：** B1 递归到最左叶子时，root generator、left generator、leaf generator 分别有自己的协程帧。父层没有继续执行当前节点输出，而是停在转发左子 generator 的循环或 `elements_of` 上；叶子 `co_yield value` 后，值沿转发链回到最外层消费者。这个图能解释为什么递归 generator 仍要关心嵌套恢复链。
+
+- `co_await task` 让父 task 暂停，子 task 的完成值或异常通过 `await_resume()` 回到父协程。
+
+  **答案解析：** B2 的 `process_user` 先 `co_await fetch_user`，拿到 `User` 后才进入 `parse_profile`，再进入 `validate_profile`。如果 `fetch_user(-1)` 抛异常，子 promise 保存异常，父协程在第一个 `await_resume()` 处重新抛出，因此 parse/validate 没有启动。值路径和异常路径都回到同一行 `co_await`。
+
+- 回调 awaiter 的核心是保存当前协程 handle，并在完成回调中先写结果、再恢复协程。
+
+  **答案解析：** B3 的 `await_suspend(h)` 把 `h` 放进 `async_add` 的回调，后台 worker 算出 `7 + 5` 后先写 result，再调用 `h.resume()`。恢复后协程执行 `await_resume()` 读取 result，随后继续做乘法得到 36。先写结果再恢复，是因为恢复后的代码马上会读这个结果。
+
+- 每条跨挂起点的引用、指针和 handle 都要有清楚的 owner 覆盖其使用期。
+
+  **答案解析：** awaiter 对象通常在协程帧中，回调里捕获的 `this` 或 handle 都依赖这块帧在恢复前仍然活着。frame owner 由 task 或 `sync_wait` 契约负责；后台线程 owner 由 `worker_group` 负责。B3 当前路径里，回调写结果并 `resume()` 后不再访问 awaiter，随后线程退出并由 `worker_group.join()` 收束；若用 `detach()` 或让外部引用先析构，就会把问题推迟到恢复点爆出。
+
+下一模块把这些能力放进并发拓扑：取消如何传播，多个 task 如何汇合，动态任务如何被 scope 收束。

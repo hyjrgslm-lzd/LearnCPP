@@ -1,32 +1,53 @@
 # 练习 E-3：Trivial Awaitable 与短路优化
 
-## 目标
+对应正文：[07 模块 E](../../07-模块E-awaitable三层与co_await变换.md#e3)。
 
-实现 `await_ready()` 直接返回 `true` 的 Trivial Awaitable，证明标准要求的短路行为；再用优化 remark/汇编观察当前编译器是否消除分支，并与 HALO 的 frame allocation elision 分开取证。
+本练习把三件事分开：ready 短路是标准语义，挂起分支消除是优化器结果，HALO 是 coroutine state 分配优化。
 
-## 必做任务
+## Part 1：恒 ready awaiter
 
-1. 实现 `always_ready`：`await_ready` 恒为 true。
-2. 实现 `conditional_ready`：`await_ready = !should_suspend`；slow path 进入 bool-returning `await_suspend`，再返回 false，不引入外部调度器。
-3. 实现标准三方法 `trivial_awaitable`：`await_resume` 返回 std::string，计数证明 `await_suspend` 未执行。
-4. 在 Clang 下用 `-O2 -Rpass=coroutine-elide` 观察是否触发 elide remark；
-   在 Godbolt 上观察是否还产生 `call operator new`。
-5. 对比 `always_ready` 与 `suspend_always` 的连续 co_await 次数下的开销。
+实现 `always_ready`：
 
-## 验收点
+```cpp
+bool await_ready() noexcept { return true; }
+void await_suspend(std::coroutine_handle<>) noexcept { ++suspend_calls; }
+int await_resume() noexcept { return 7; }
+```
 
-- 你能证明多次 `co_await always_ready{}` 不调用 `await_suspend`，并单独观察当前编译器的代码生成。
-- 你能解释 `std::suspend_never` 是 trivial awaitable 的最典型代表。
-- 你能区分 ready 短路、死代码消除与 HALO，不把 QoI 结果写成标准承诺。
+运行后预期 `await_resume` 的值被使用，`suspend_calls == 0`。这证明 `await_ready()==true` 时不求值 `await_suspend()`。
 
-## 提示
+## Part 2：条件 ready awaiter
 
-- debug / -O0 下通常保留更多代码；优化级别不是 HALO 或死代码消除的可移植保证。
-- 对照 `await_ready=true` 时 `await_resume` 仍会被调用——它跳过的是 `await_suspend`。
-- 当前标准下不能因 `await_ready` 恒真就删除 `await_suspend`。
+`conditional_ready` 用运行时字段决定：
 
-## 本轮练习契约
+```cpp
+bool await_ready() const noexcept { return !should_suspend; }
+bool await_suspend(std::coroutine_handle<>) noexcept { return false; }
+```
 
-Starter 要求证明 await_ready 短路。Reference 断言 await_ready=true 时 await_suspend 调用次数为 0，结果直接来自 await_resume。HALO 只能通过编译器诊断/反汇编观察，不能用耗时当作证明。
+`should_suspend=false` 时直接走 ready fast path。`should_suspend=true` 时进入 `await_suspend`，但返回 `false`，立即继续。两个路径都不长期挂起，但能证明 ready 判断与 bool-returning suspend 判断发生在不同阶段。
 
-命令：``cmake -S . -B build/dg-lane -DCOROUTINE_STUDY_BUILD_REFERENCE=ON``，然后构建 ``E3_trivial_awaitable`` 与 ``E3_trivial_awaitable_reference``，再用 ``ctest -R E3_trivial_awaitable_reference`` 跑稳定验收。
+## Part 3：三方法仍需良构
+
+即使 `await_suspend` 运行时不会调用，表达式仍要在语义分析中良构。不要因为 ready 恒真就删除 `await_suspend` 或把签名写错。
+
+## Part 4：观察优化，不当作语义
+
+用 Clang remark、GCC dump、MSVC 反汇编或 Godbolt 看两件事：
+
+- 挂起分支是否被删除。
+- coroutine frame allocation 是否被 HALO 省略。
+
+它们都依赖编译器、优化级别和代码形状。计数器证明标准行为，汇编证明当前实现结果。
+
+## Reference
+
+Reference 断言 `await_ready=true` 时 `await_suspend` 调用次数为 0，结果直接来自 `await_resume`。HALO 只能通过编译器诊断/反汇编观察。
+
+**答案解析：** `await_ready()` 返回 true 是标准语义上的 ready 短路，运行计数器应显示 `await_suspend` 没有被调用，但 `await_resume()` 仍交付 7。挂起分支是否被优化器删除、coroutine frame allocation 是否被 HALO 省略，都属于当前工具链实现观察。记录时用计数器证明控制流，用 remark/dump/汇编证明优化，别用时间差当唯一证据。
+
+```powershell
+cmake -S . -B build/dg-lane -DCOROUTINE_STUDY_BUILD_REFERENCE=ON
+cmake --build build/dg-lane --config Release --target E3_trivial_awaitable E3_trivial_awaitable_reference
+ctest --test-dir build/dg-lane -C Release -R E3_trivial_awaitable_reference
+```

@@ -1,63 +1,40 @@
 # 练习 J-3：协程调试与 tracing
 
-对应文档：`12-模块J-陷阱诊断与跨编译器.md` §J-3
+知识讲解：[J3 对应章节](../../12-模块J-陷阱诊断与跨编译器.md#j3)。
 
-## 目标
+对应主讲义：`12-模块J-陷阱诊断与跨编译器.md` 的 J-3。
 
-用 GDB 14+ / MSVC Parallel Stacks 调试挂起的协程；实现一个轻量
-`traced_awaitable<Inner>` 包装器，在 `await_suspend` / `await_resume`
-时自动打 trace。建立"协程调试有章可循"的信心。
+协程挂起后，普通线程栈只显示当前 handler 或调度器位置；逻辑上的 `task_c -> task_b -> task_a` 链在协程帧和 continuation 中。`traced_awaitable` 的价值是把每个 `co_await` 的挂起、恢复、线程和 frame id 打出来。
 
-## 必做任务
+reference 中的调用链：
 
-1. 在 MSVC（Visual Studio 2022+）中创建包含 3 个嵌套协程调用的程序：
-   `task_c() -> task_b() -> task_a()`，在 `task_a` 内 `co_await` 一个永不
-   ready 的 awaitable，调试器暂停后用 Parallel Stacks "Tasks" 视图观察。
-2. 在 GDB 14+ / WSL 上验证 `info coroutines` 命令。
-3. 实现 `traced_awaitable<Inner>`：
-   ```cpp
-   template <typename Inner>
-   struct traced_awaitable {
-       Inner inner_;
-       const char* name_;
-       void* frame_addr_ = nullptr;
-       bool await_ready();
-       auto await_suspend(std::coroutine_handle<> h);
-       decltype(auto) await_resume();
-   };
-   ```
-   `log()` 应记录：时间戳、awaitable 名称、协程帧地址、当前线程 ID。
-4. 把它套在至少 3 个 co_await 点上，运行并输出 trace 日志。
-5. 进阶：实现 `traced_task<T>`，在 `initial_suspend` / `final_suspend`
-   也打 trace；实现全局协程注册表（key = 帧地址，输出只显示 opaque id）。
-6. 用 trace 日志回答：
-   - 同时挂起的协程数量；
-   - 哪些 co_await 点最长；
-   - 是否存在跨线程恢复的协程。
+```text
+task_c()
+  -> co_await traced(task_b(), "c.calls_b")
+      task_b()
+        -> co_await traced(task_a(), "b.calls_a")
+            task_a()
+              -> co_await traced(inline_resume_int{1}, "a.step1")
+              -> co_await traced(inline_resume_int{2}, "a.step2")
+        -> co_await traced(inline_resume_int{10}, "b.step2")
+```
 
-## Starter / Reference
+预测结果：`task_a` 得 3，`task_b` 得 13，`task_c` 得 26。Debug 构建会在 stderr 输出 `INIT`、`SUSPEND`、`RESUME`、`FINAL`；每个 frame 只显示 `coro#N`，不鼓励解引用 frame 地址。reference 结束时检查 registry 为空，说明已完成协程和提前丢弃的协程都注销了。
 
-- `main.cpp` 是 starter：展示 `traced_awaitable` 形状和三层调用链。
-- `solution.cpp` 是参考答案：实现线程安全 registry、`traced_task<T>`、3 个 `co_await` trace 点，并在结束时断言 registry 为空。
-- `COROUTINE_STUDY_BUILD_REFERENCE=ON` 时会生成 `J3_coroutine_tracing_reference` 并加入 CTest。
+**答案解析：** `task_a` 两次 inline await 分别得到 1 和 2，所以返回 3；`task_b` 等到 `task_a` 后再加 10，得到 13；`task_c` 等到 `task_b` 后乘 2，得到 26。trace 的 frame id 是调试标识，帮助看逻辑链和恢复线程；registry 为空才说明 tracing 元数据跟随 frame 生命周期清理，没有留下悬空记录。
 
-## 验收点
+运行：
 
-- 至少在 MSVC 或 GDB 中观察过一次完整的协程逻辑调用链；
-- `traced_awaitable` 输出清晰的 `SUSPEND` / `RESUME` 日志，包含协程标识 +
-  线程 ID + 帧地址；
-- 能解释为什么协程调试需要同时观察"线程栈 + 协程链"两层；
-- 知道 MSVC Parallel Stacks "Tasks" 视图依赖编译器生成的元数据。
+```powershell
+cmake -S Coroutine_Study/exercises -B build/coroutine-j3 -DCOROUTINE_STUDY_BUILD_REFERENCE=ON
+cmake --build build/coroutine-j3 --target J3_coroutine_tracing_reference
+ctest --test-dir build/coroutine-j3 -R J3_coroutine_tracing_reference --output-on-failure
+```
 
-## 约束
+回读路径：先看 `Registry` 的 `set/mark/erase`，再看 `log_event` 如何产生 opaque id，然后看 `traced_awaitable::await_suspend/await_resume`。最后看 `traced_task::initial_suspend/final_suspend`，确认注册和注销都在 frame 生命周期内。
 
-- 不在 tracing wrapper 的内存分配路径上打 trace（避免无限递归）；
-- 注册表必须线程安全；
-- Release 构建中通过宏关闭 trace（避免性能影响）；
-- `frame_addr_` 仅作为 registry key，不要解引用；日志中显示 `coro#N` 这种 opaque id，而不是鼓励读帧内存。
+**答案解析：** `Registry` 是 frame id 和状态的外部索引，`set/mark/erase` 对应注册、状态变化和注销。`traced_awaitable` 记录每个等待点的 suspend/resume，`traced_task` 在 initial/final 边界包住整个协程生命周期；这两层合起来才能回答“谁在等谁、何时恢复、哪个 frame 已经结束”。
 
-## 提示
+调试器实验：MSVC 用 Parallel Stacks 的 Tasks 视图；GDB 14+ 用 `info coroutines`。日志告诉你发生过什么，调试器告诉你暂停瞬间停在哪里。
 
-- trace 开销必须以本机编译器、日志后端、优化级别实测；不要复用别人的 ns 数字；
-- `__PRETTY_FUNCTION__` / `__FUNCSIG__` 可在 Debug 模式下自动生成 awaitable 名；
-- 注册表在协程析构后必须 unregister，否则会发生 use-after-free。
+**答案解析：** trace 日志是时间线证据，适合复盘已经发生的 await 链和耗时阶段。调试器是现场证据，适合在断点处查看当前 coroutine frame、continuation 和线程栈；两者结合能把逻辑调用链和物理执行线程分开。

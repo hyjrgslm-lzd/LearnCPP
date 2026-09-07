@@ -1,35 +1,68 @@
-# 练习 E-1：co_await 三步查找
+# 练习 E-1：`co_await` 三层查找
 
-## 目标
+对应正文：[07 模块 E](../../07-模块E-awaitable三层与co_await变换.md#e1)。
 
-通过三种 awaitable 各自触发 `co_await` 查找的三条路径，
-亲手验证 `await_transform` / 成员 `operator co_await` / ADL `operator co_await`
-的优先级，理解"`await_transform` 是 promise 唯一的全局拦截钩子"。
+本练习用日志证明 `co_await expr` 怎样从原始表达式变成最终 awaiter。不要只记“优先级”；要看每个分支的 `await_suspend` 和 `await_resume` 是否真的被调用。
 
-## 必做任务
+## 做题前先画决策树
 
-1. 准备三种 awaitable：A（被拦截）、B（含成员 operator co_await）、C（靠 ADL）。
-2. 定义带 `await_transform` 的 `transform_task`：
-   - 拦截 A，返回的 awaitable `await_resume()==100`。
-   - 拦截 B，返回 `await_resume()==200`（验证它覆盖成员 operator co_await）。
-   - 不拦截 C，让它走 ADL。
-3. 写不含 `await_transform` 的 `plain_task` 做对照：B 走成员，C 走 ADL。
-4. 在笔记中画完整的三步查找决策树，标出每一步编译器的判断。
+普通 `co_await expr` 的查找顺序：
 
-## 验收点
+```text
+promise scope 找 await_transform
+  -> 找到：调用 promise.await_transform(expr)，不可调用则 ill-formed
+  -> 没找到：expr 自身进入下一层
 
-- 通过日志输出确认 `await_transform` 优先于成员、成员优先于 ADL。
-- 在对照协程中确认成员 / ADL 路径在无拦截时能正常工作。
-- 你能解释为什么 promise 中泛型 `await_transform(T&&)` 会"贪婪"地拦截所有 co_await。
+operator co_await 重载决议
+  -> 成员候选与 ADL 自由函数候选一起决议
+  -> 无可行候选时，对象本身必须是 awaiter
+```
 
-## 提示
+重点：`await_transform` 找到但不可调用时不会静默回退。
 
-- 用 `std::println` 在每个 `await_ready/await_suspend/await_resume` 中打印来源信息。
-- 对照实验最有说服力：先看到 `await_transform` 拦截，再看到不拦截时的差异。
-- ADL 的 `operator co_await` 必须放进 awaitable 类型所在的命名空间。
+## Part 1：A/B/C 三种源对象
 
-## 本轮练习契约
+- A 本身有 awaiter 三方法，但在 `transform_task` 中会被 `await_transform` 改写。
+- B 有成员 `operator co_await()`，在没有 promise 拦截时返回 wrapper。
+- C 位于自定义命名空间，通过 ADL 自由 `operator co_await(C)` 返回 wrapper。
 
-Starter 要求追踪 co_await 转换。Reference 同时覆盖 promise.await_transform、member operator co_await、free operator co_await。歧义和重载选择按普通 overload resolution；await_transform 只在当前协程 promise 存在对应成员时先参与。
+每个 wrapper 都要打印自己的来源，并返回不同数值。数值比文字更可靠：A 返回 100 表示 promise 拦截，B 返回 20 表示成员路径，C 返回 30 表示 ADL 路径。
 
-命令：``cmake -S . -B build/dg-lane -DCOROUTINE_STUDY_BUILD_REFERENCE=ON``，然后构建 ``E1_co_await_lookup`` 与 ``E1_co_await_lookup_reference``，再用 ``ctest -R E1_co_await_lookup_reference`` 跑稳定验收。
+## Part 2：带 `await_transform` 的协程
+
+`transform_task::promise_type` 对 A 和 B 定义 `await_transform`。运行后应看到：
+
+```text
+A -> await_transform -> 100
+B -> await_transform -> 200
+C -> ADL operator co_await -> 30
+```
+
+B 的成员 `operator co_await` 没有机会生效，因为 promise 已经先把 B 改写成另一个 awaitable。
+
+## Part 3：无 `await_transform` 的对照
+
+`plain_task` 没有 promise 拦截。运行后应看到：
+
+```text
+B -> member operator co_await -> 20
+C -> ADL operator co_await -> 30
+```
+
+这证明成员/自由 operator 属于第二层查找，发生在 promise 拦截之后。
+
+## 复盘
+
+泛型 `await_transform(T&&)` 会拦截几乎所有 await expression。它可以作为日志、调度、sender 桥接入口，也可能意外吞掉第三方类型的 ADL 扩展。写协程框架时要把这个全局影响写清楚。
+
+**答案解析：** 普通 `co_await` 先查 promise scope 的 `await_transform` 名字；一旦找到就先尝试 `promise.await_transform(expr)`，不可调用时程序不良构。只有没有 promise 拦截时，表达式才进入成员/ADL `operator co_await` 的重载决议。E-1 的 reference 用 transform、member、free 三条日志证明这个顺序。
+
+## Reference
+
+Reference 同时覆盖 promise `await_transform`、member `operator co_await`、free `operator co_await`。
+
+```powershell
+cmake -S . -B build/dg-lane -DCOROUTINE_STUDY_BUILD_REFERENCE=ON
+cmake --build build/dg-lane --config Release --target E1_co_await_lookup E1_co_await_lookup_reference
+ctest --test-dir build/dg-lane -C Release -R E1_co_await_lookup_reference
+```

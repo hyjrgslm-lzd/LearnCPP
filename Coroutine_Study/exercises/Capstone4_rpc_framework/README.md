@@ -1,73 +1,76 @@
 # 结课项目 4：mini RPC 框架
 
-对应文档：`13-第三阶段结课-RPC框架.md`
+对应主讲义：`13-第三阶段结课-RPC框架.md`。
 
-## 项目目标
+这个项目用纯 Asio `awaitable` 实现最小 RPC reference。`src/` 是学生 starter，只保证 compile-only；`reference/` 是可运行答案。先读 reference，再补 starter；完成状态以真实请求结果和 drain 断言为准。
 
-用 **纯 Asio awaitable** 实现一个最小但骨架完整的 RPC reference；自写 `task<T>` 与 stdexec bridge 放在模块 H / Capstone5 中练。
-重点不在协议完备性，而在同时管理：
+## 项目链路
 
-- 协程化的 client 调用 `co_await rpc.call(req)`；
-- 协程化的 server handler；
-- 超时 / 取消 / 重试的组合编排；
-- `co_spawn` 后台协程的 completion handler / future 所有权；
-- client/server `in_flight()` 归零，证明 shutdown drain 完整。
+```text
+client.call(req, timeout, retries)
+  -> request_id
+  -> encode length-prefixed frame
+  -> pending[id] = timer/result state
+  -> queued_writer.send
+  -> read_loop 收 response 或 timer 到点
+  -> expected<response, error>
 
-## 固定题面
-
-实现"远程计算服务"。协议：
-
-- Request  : `{req_id: u32, method: string, args: [int]}`；
-- Response : `{req_id: u32, result: int, status: "ok"|"error"|"unknown_method"}`；timeout 是 client 本地 `RpcError`。
-
-至少实现五层：
-
-1. **Protocol 层** —— 序列化 / 反序列化（`include/rpc/protocol.hpp`）；
-2. **Transport 层** —— Asio TCP，单连接复用（`src/client.cpp` 内 Connection）；
-3. **Client 层** —— `asio::awaitable<std::expected<Response, RpcError>> call(Request, ms, retries)`；
-4. **Server 层** —— accept 循环 + handler 注册 + 协程 dispatch；
-5. **Drain 层** —— completion handler 维护 `in_flight`，禁 `asio::detached` 和裸 `detach()`。
-
-## 必做任务（含 6 张图要求）
-
-1. **画 6 张图，再写代码**（强烈建议保留为项目文档的一部分）：
-   - **图 1：Client 调用图** —— `co_await rpc.call(req)` 到 response 的完整对象链：
-     Asio awaitable -> pending map -> queued writer -> `async_write` / read loop -> timer -> resume；
-   - **图 2：Server handler 树** —— 协程 handler 调用子协程的关系，标注每个 co_await 点；
-   - **图 3：Protocol 状态机** —— 一条 TCP 连接上请求/响应交错的状态：空闲、读 header、读 body、dispatch、写 header、写 body、复用；
-   - **图 4：Cancellation 传播路径** —— client timer 超时 -> pending map 移除 -> cancel frame -> server handler 检查点 -> 终止；
-   - **图 5：Drain 拓扑** —— accept loop、connection loop、writer loop、handler、client read loop 如何维护 `in_flight`；
-   - **图 6：性能 trace** —— traced_awaitable（J-3）对一次请求打 trace，标注每阶段耗时。
-
-2. 实现 Protocol 层（约 50-80 行）；
-3. 实现 Transport 层（约 80-120 行）；
-4. 实现 Client RPC 接口（约 80-120 行）；
-5. 实现 Server handler（约 60-100 行）；
-6. 实现 Server accept 循环（约 50-80 行）；
-7. 编写测试场景：
-   - 6 个并发请求：3 个 add（正常）、1 个 delay_add（100ms 超时 / 500ms 实际） -> Timeout、1 个 error_method -> ServerError、1 个 missing -> UnknownMethod；
-   - shutdown 后等待 client/server `in_flight()` 归零；
-   - 验证拿到 6 个结果（3 ok / 1 timeout / 1 server_error / 1 unknown_method）；
-8. 验证结构化收束：`io_context` 停止前 client/server `in_flight()` 都为 0，无 detached 协程。
-
-## 项目骨架
-
-```
-Capstone4_rpc_framework/
-  include/rpc/
-    task.hpp         # starter 练习占位；reference 不使用自写 task
-    scope.hpp        # starter 练习占位；reference 用 in_flight drain
-    stop_token.hpp   # starter 练习占位；reference 用 cancel frame
-    protocol.hpp     # Request / Response / RpcError + serialize/parse
-  src/
-    server.cpp       # RpcServer + 三个 handler
-    client.cpp       # RpcClient + PendingMap + Connection
-    main.cpp         # demo driver: 6 并发请求
-  CMakeLists.txt     # 启用 ASIO starter/reference target
-  README.md
+server
+  -> accept_loop
+  -> handle_connection
+  -> read_frame
+  -> dispatch(add/delay_add/error/unknown)
+  -> queued_writer.send(response)
 ```
 
-`src/` 是学生 starter，只保证能编译，不输出假成功结果。`reference/` 是可运行答案：
+协议 body：
+
+- `Q|id|idempotent|method|args`
+- `C|id`
+- `R|id|result|status`
+
+长度头固定 8 字节十进制。这样 TCP 粘包/拆包不会破坏帧边界。
+
+## 先画 6 张图
+
+1. Client 调用图：`co_await rpc.call` 到 response/error。
+   **答案解析：** 图中要包含 request id 分配、`pending[id]`、queued writer、read loop 和 timer。response 先到时 read loop 写 result 并 cancel timer；timeout 先到时 call erase pending、发送 cancel frame，并根据 idempotent/retry 返回 timeout 或重试。
+2. Server handler 树：accept、connection、request handler、`dispatch`。
+   **答案解析：** accept loop 拥有连接入口，connection loop 持续读同一 socket，request handler 按 id 独立处理请求。`dispatch` 把 `add`、`delay_add`、`error_method`、未知 method 转成 response status，`delay_add` 还要在 timer 检查点观察 cancel flag。
+3. Protocol 状态机：读 header、读 body、parse、dispatch、写 frame。
+   **答案解析：** 状态机从 8 字节长度头开始，长度合法后再读 body。body 的首字段决定 Q/C/R 路径，解析失败是 protocol error；写 response 时仍经过 length-prefixed frame，保持同一连接可复用。
+4. Cancellation 路径：timeout、pending erase、cancel frame、server cancel flag。
+   **答案解析：** client timeout 后本地 pending 已经不存在，随后写 `C|id` 通知 server。server 收到 cancel frame 只设置对应 `cancel_state`，handler 在自己的检查点停下；晚到 response 会被 client read loop 因找不到 pending 而丢弃。
+5. Drain 拓扑：accept/read/write/handler 每个后台协程的 in-flight 加减。
+   **答案解析：** 每个 `co_spawn` 后台路径都要有对应计数：server accept、connection、request handler、writer loop 和 client read loop。shutdown 后 client/server `in_flight()` 都为 0，才说明后台协程没有继续访问 socket、pending 或 cancel map。
+6. Trace 图：用 J-3 的 trace 思路标一次请求耗时。
+   **答案解析：** 参考路径可以标 `call start -> writer.send -> async_write -> server read_frame -> dispatch -> response write -> client read_loop -> timer.cancel -> call return`。每个节点附 request id 和耗时，就能定位慢在排队、server handler、网络读写还是 timeout 分支。
+
+## Reference 覆盖
+
+6 个并发请求：
+
+- 3 个 `add` 正常返回。
+  **答案解析：** 三个请求分别走同步求和路径，response status 为 `ok`，测试只统计 ok 个数为 3。它们覆盖同一连接上的多个并发 request id 和 response 路由。
+- 1 个 `delay_add`，100ms timeout，server 侧协作取消。
+  **答案解析：** client 给 `delay_add{500}` 设置 100ms deadline 且允许一次 retry；每次 timeout 都移除 pending 并发送 cancel frame。server handler 每 10ms 检查 cancel flag，看到取消后自然返回且不写 response，最终 client 统计一个 timeout。
+- 1 个 `error_method`，映射到 `server_error`。
+  **答案解析：** server dispatch 把 `error_method` 的 response status 设为 `"error"`。client 收到 response 后在 `call` 中把非 ok 且非 unknown 的 status 映射成 `error::server_error`。
+- 1 个未知 method，映射到 `unknown_method`。
+  **答案解析：** dispatch 对未识别 method 返回 status `"unknown_method"`。client 在读取 result 后把这个业务状态映射成 `error::unknown_method`，和协议解析错误、断连错误分开。
+
+额外检查：
+
+- protocol parse error。
+  **答案解析：** 测试覆盖 request args 非整数、response id 非 u32、非法 body 等路径，确保解析失败不会进入业务 handler。client 侧协议错误会通过 `fail_all(protocol)` 唤醒 pending。
+- frame 超过 `max_frame_size`。
+  **答案解析：** `frame()` 编码和 `read_frame()` 解码都守住 4096 字节上限。超过上限返回 protocol error，避免无界 body 分配。
+- raw server 断开连接后 `pending.fail_all(connection_lost)`。
+  **答案解析：** read loop 读帧失败后遍历所有 pending，写入 `connection_lost` 并 cancel timer。等待中的 call 被唤醒后读到错误，pending map 清空，不会永久挂起。
+- client/server shutdown 后 `in_flight()` 都是 0。
+  **答案解析：** 这是 drain 证据，不只是清理结果。client shutdown 关闭 socket 并 fail pending，server stop 关闭 acceptor；runner 退出后计数归零，说明所有后台 read/write/handler/accept 路径都完成。
+
+## 运行
 
 ```powershell
 cmake -S Coroutine_Study/exercises -B Coroutine_Study/exercises/build/capstone4-asio -DCOROUTINE_STUDY_ENABLE_ASIO=ON -DCOROUTINE_STUDY_BUILD_REFERENCE=ON -DCOROUTINE_STUDY_FETCH_DEPS=ON
@@ -75,40 +78,15 @@ cmake --build Coroutine_Study/exercises/build/capstone4-asio --config Release --
 ctest --test-dir Coroutine_Study/exercises/build/capstone4-asio -C Release -R Capstone4_rpc_framework_reference --output-on-failure
 ```
 
-## 验收点
+## 阅读顺序
 
-- 6 个并发请求全部收到结果，结果分布正确（3 ok / 1 timeout / 1 server_error / 1 unknown_method）；
-- 6 张图各自标注了核心对象的拥有关系和生命周期边界；
-- 没有 `asio::detached`、没有全局可变状态、没有裸 `detach()`；
-- `shutdown()/stop()` 后 client/server `in_flight()` 都归零；
-- 能解释：把 `rpc.call()` 返回类型从 Asio awaitable 改为 sender 时，
-  client 代码哪些需要改、哪些不变；
-- 能解释 cancellation 从 client 到 server handler 的完整传播路径。
+1. `reference/include/rpc_ref/rpc.hpp`：先读 `frame/encode/read_frame/parse_*`。
+2. `queued_writer`：看为什么同一 socket 写入要串行化。
+3. `client::call`：看 timer 如何同时表示 timeout 和 response arrival 的唤醒点。
+4. `client::read_loop`：看 response 如何路由到 pending state。
+5. `server::accept_loop/handle_connection/handle_request`：看后台协程 ownership 和 cancel map。
+6. `reference/tests/rpc_reference_test.cpp`：看 6 请求分布和 drain 断言。
 
-## 设计约束（再次强调）
+实现 starter 时先跑通单请求，再加 pending map，再加超时，再加 cancel frame 和 retry。每加一步都回读 `in_flight()` 是否还能归零。
 
-1. Client 端调用接口必须是 `co_await rpc.call(req, timeout, retries)` 形式；
-2. Server handler 必须是协程；
-3. 至少包含 value / timeout / error 三种完成路径；
-4. 所有 in-flight 请求和后台协程都必须可观察并在 shutdown 时 drain；
-5. **不允许全局可变状态**存储请求计数 / 连接池 / pending map；
-6. **必须**画 6 张图；
-7. Client reference 发起 6 个并发请求，含 1 个超时、1 个 server_error、1 个 unknown_method。
-
-## 提示
-
-- 先用单连接跑通一个请求-响应全路径，再加并发；
-- request_id 用自增整数即可（4 字节够）；
-- 序列化推荐 JSON 单行 + `\n` 分隔；如需性能对比，预留 Serializer 接口；
-- 超时实现：reference 使用 `asio::steady_timer`；如果另写 stdexec 对比版，再单独验证 loser 取消行为；
-- 卡点最常见 3 个：① `co_spawn` 后台协程必须有 completion handler 或 future 所有者；
-  ② PendingMap 的线程安全（建议整个 RPC 跑在同一个 io_context）；
-  ③ 连接断开后清理（必须 `pending.fail_all(ConnectionLost)`）。
-
-## 进阶任务（可选）
-
-- 重试策略：超时后自动重试最多 2 次，每次单独受超时控制；
-- 请求级 cancellation：client 超时后通过 TCP 发送 cancel 帧，server handler 在检查点协作返回；不要 destroy 正在运行或可能恢复的 handler；
-- 用 traced_awaitable 收集 latencies，输出 p50 / p99 / max；
-- 对比实现：纯 sender-receiver 版（不用 task），观察代码行数与可读性差异；
-- transport 层从 TCP 替换为 Unix domain socket 或 in-memory channel。
+**答案解析：** 单请求先验证协议和 dispatch；pending map 加入后验证 response 能按 id 回到正确 call；timeout 加入后验证 timer 能唤醒等待者；cancel frame 和 retry 加入后验证 loser handler 能协作停止。每一步都检查 in-flight，能及时发现 writer loop、read loop 或 handler 没有收束。

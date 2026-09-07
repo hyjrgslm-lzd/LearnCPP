@@ -1,76 +1,115 @@
 # 结课项目 5：mini 协程库实现
 
-对应文档：`14-第三阶段结课-mini协程库实现.md`
+对应正文：[14 第三阶段结课：mini 协程库实现](../../14-第三阶段结课-mini协程库实现.md)。
 
-## 项目目标
+这个项目把模块 D 到 G 的机制组合成一个教学 mini 库。核心路径只用 C++ 标准库；stdexec sender 桥接是可选扩展，只有相关 target 可用时才构建。
 
-从零实现一个最小但功能完整的协程库。核心库 **禁第三方依赖**（仅 C++23 标准库）；
-stdexec 仅用于可选 sender -> awaitable 桥接验证。本项目是模块 D~G 的综合考试，
-也是后续阅读 cppcoro / folly coro / stdexec 协程源码时最可靠的"对照坐标"。
+项目稳定 ID：`Capstone5_mini_corolib`。
 
-## 必须包含的 10 个组件
+## 你要实现的组件
 
-| # | 组件 | 头文件 | 说明 |
-|---|---|---|---|
-| 1 | `mini::task<T>`              | `task.hpp`                    | lazy 启动的协程任务 |
-| 2 | `mini::generator<T>`         | `generator.hpp`               | 同步惰性序列 |
-| 3 | `mini::shared_task<T>`       | `shared_task.hpp`             | 多 awaiter 共享结果 |
-| 4 | `mini::when_all`             | `when_all.hpp`                | 并发等待 |
-| 5 | `mini::when_any`             | `when_any.hpp`                | 竞速等待 |
-| 6 | `mini::sync_wait`            | `sync_wait.hpp`               | 同步阻塞等待 |
-| 7 | `mini::async_scope`          | `async_scope.hpp`             | 结构化并发 |
-| 8 | `mini::stop_token`           | `stop_token.hpp`              | 协作式取消 |
-| 9 | `mini::single_thread_executor` | `single_thread_executor.hpp` | 单线程调度器 |
-| 10 | `mini::as_awaitable(sender)` | `as_awaitable.hpp`            | sender -> awaitable 桥接 |
+| 组件 | 文件 | 核心能力 |
+| --- | --- | --- |
+| `mini::task<T>` | `include/mini/task.hpp` | lazy 启动、单 owner、单次结果消费 |
+| `mini::generator<T>` | `include/mini/generator.hpp` | 同步惰性序列，input iterator |
+| `mini::shared_task<T>` | `include/mini/shared_task.hpp` | 多 awaiter 共享一次 producer 结果 |
+| `mini::when_all` | `include/mini/when_all.hpp` | 二元 barrier，全部分支收束后返回 tuple |
+| `mini::when_any` | `include/mini/when_any.hpp` | 首个成功 value 获胜，全部分支收束后返回 |
+| `mini::sync_wait` | `include/mini/sync_wait.hpp` | final completion 转 condition_variable 唤醒 |
+| `mini::async_scope` | `include/mini/async_scope.hpp` | 结构化等待 in-flight task |
+| `mini::stop_token` | `include/mini/stop_token.hpp` | 基于标准停止源/令牌的协作取消 |
+| `mini::single_thread_executor` | `include/mini/single_thread_executor.hpp` | 队列保存待恢复 handle |
+| `mini::as_awaitable` | `include/mini/as_awaitable.hpp` | 可选 sender 到 awaiter 桥接 |
 
-## 三个设计约束（**必须满足**）
+## 实现顺序
 
-1. **operation_state 等价物 non-movable**
-   coroutine state / frame 不会因为外层 `task` wrapper move 而移动；move
-   移动的是 owning handle。真正的风险是 `start()` 之后 operation_state、
-   receiver、等待者链和唯一所有权已经建立，再移动 wrapper 会让生命周期难以证明。
-   **最简单方案**：禁 copy，允许未启动 move；`start()` / `co_await` / `connect`
-   后禁止再移动。
+先完成 `task<T>` 和 `sync_wait`。它们是后续测试入口。然后写 `generator` 与 `run_loop`，再写 `when_all/when_any`。`shared_task`、`async_scope` 和可选 stdexec bridge 放在后面，因为它们依赖前面的完成通知和生命周期约定。
 
-2. **completion_signatures 编译期可查询**
-   每个 sender-like 组件（task / generator / when_all 等）能通过元编程在
-   编译期回答"我会产生什么类型的结果"。用 `static_assert` 验证至少 task 与
-   when_all。
+每一层完成后跑对应测试。协程生命周期错误通常来自上一层协议没有锁住，例如二次启动、完成后重复消费、或 loser 尚未收束时提前析构 operation。
 
-3. **HALO 在 sync_wait 入口可触发**
-   用 Clang `-Rpass=coroutine-elide` 编译，简单路径
-   `sync_wait(just(42))` 有机会出现 "coroutine frame elided"。HALO 是实现观察项，
-   不是标准保证；记录触发/未触发的工具链和原因即可。
+## 必须保持的契约
 
-## 项目骨架
+`task`：
 
+- 禁 copy，move 转移 owning handle。
+- `start()` / `co_await` 后标记为已启动。
+- 二次 `start()` 拒绝。
+- `await_resume()` 只允许在完成后消费一次。
+- 异常由 promise 保存，消费端重新抛出。
+
+`sync_wait`：
+
+- 只接受未启动 root task。
+- 只调用一次 `start()`。
+- 完成通知来自 `final_suspend` callback。
+- 成功返回 `std::optional<std::tuple<T>>` 或 `std::optional<std::tuple<>>`。
+- 错误路径重新抛出保存的异常。
+
+`when_all`：
+
+- 两个分支都先启动。
+- 每个分支完成时保存自己的结果或首个异常。
+- 最后一个分支完成后恢复父协程。
+- 任一失败时，全部分支收束后再传播首个异常。
+
+`when_any`：
+
+- 首个成功 value 写入 `std::variant<T1, T2>`。
+- winner 产生后调用 `stop_source.request_stop()`。
+- loser 仍要完成收束。
+- 两个分支都失败时传播首个异常。
+
+`shared_task`：
+
+- producer 只启动一次。
+- 结果缓存在 shared state 中。
+- 多个 awaiter 都能读到结果拷贝。
+- 异常同样缓存在 shared state 中。
+
+## 对象关系
+
+`task`：
+
+```text
+task<T>
+  -> coroutine_handle<promise_type>
+       -> promise { value, error, continuation, completion callback, flags }
 ```
-Capstone5_mini_corolib/
-  include/mini/
-    task.hpp                    # task<T>（决策 1B / 决策 2B / 决策 4A）
-    generator.hpp               # generator<T>（按值存，免疫 J-1 trap 8）
-    shared_task.hpp             # shared_task<T>（最复杂，建议留到进阶）
-    when_all.hpp                # when_all（全分支收束后返回结果/首异常）
-    when_any.hpp                # when_any（首个成功 value 获胜，全部收束后返回）
-    sync_wait.hpp               # 返回 std::optional<std::tuple<Ts...>>
-    async_scope.hpp             # spawn / on_empty / 析构等待
-    stop_token.hpp              # std::stop_token/std::stop_source 包装 + mini::in_place_stop_source 进阶
-    single_thread_executor.hpp  # std::queue + condvar
-    as_awaitable.hpp            # bridge_receiver + sender 桥接
-  src/
-    main.cpp                    # demo driver: 4 个验证场景
-  tests/
-    task_test.cpp
-    generator_test.cpp
-    when_all_test.cpp
-    sync_wait_test.cpp
-    scope_test.cpp
-    as_awaitable_test.cpp
-  CMakeLists.txt
-  README.md
+
+`when_all`：
+
+```text
+when_all_op
+  -> left/right child task
+  -> left/right runner task<void>
+  -> result slots + first_error
+  -> remaining count
+  -> parent coroutine_handle
 ```
 
-`include/` 与 `src/` 是学生 starter；`reference/` 是可运行标准答案。核心 reference 不依赖第三方；stdexec adapter 是可选桥接验证，只在 `stdexec::stdexec` 可用时单独构建。
+`sync_wait`：
+
+```text
+sync_wait_state
+  -> mutex + cv + done
+promise.final_suspend
+  -> callback(state)
+  -> notify waiting thread
+```
+
+`as_awaitable` 可选桥接：
+
+```text
+await_suspend
+  -> connect sender receiver
+  -> start operation
+  -> atomic phase 处理同步完成
+receiver completion
+  -> 保存 value/error/stopped
+  -> resume caller 或记录已完成
+```
+
+## 核心 reference 验证
 
 ```powershell
 cmake -S Coroutine_Study/exercises --preset verify-core
@@ -78,120 +117,44 @@ cmake --build Coroutine_Study/exercises/build/verify-core --config Release --tar
 ctest --test-dir Coroutine_Study/exercises/build/verify-core -C Release -R "mini_reference_"
 ```
 
-Reference 教学契约：
+可选 stdexec 桥接 target 只在 `stdexec::stdexec` 存在时构建。核心 reference 不应因为缺少 stdexec 而配置失败。
 
-- `task` 由单一 owner 驱动；`start()` / `co_await` 后不得二次启动，完成后的重复 `co_await` / `await_resume` 也应拒绝。
-- `when_all` 先启动全部分支，等全部分支完结后返回 tuple；若有异常，传播首个异常。
-- `when_any` 首个成功 value 获胜并请求 stop，但仍等待全部分支收束后返回；若没有成功 value，传播首个异常。
-- 不同线程完成由每个 operation 自己的 `mutex` 或等价同步保护；runner 在 `final_suspend` 路径计入完成。
-- `sync_wait` 只 start root task 一次，完成通知来自 runner 的 `final_suspend` 后续路径，而不是 blind-resume 循环。
+## 各测试观察点
 
-## 必做任务
+- `task_test.cpp`：返回值、重复启动拒绝、重复消费拒绝。
+- `generator_test.cpp`：range-for 推进、当前值保存、移动 owner。
+- `sync_wait_test.cpp`：值、void、异常、跨线程完成、frame 析构。
+- `when_all_test.cpp`：同步完成、延迟完成、并发完成、fail-delay。
+- `when_any_test.cpp`：winner、同步完成、loser stop、全部失败。
+- `run_loop_test.cpp`：handle 入队后由 loop 恢复。
+- `task_scope_test.cpp`：spawn 后等待 in-flight 归零。
+- `stop_test.cpp`：停止源和令牌状态传播。
+- `shared_task_test.cpp`：一个 producer，多次 await，共享结果。
 
-按从底层到上层的顺序实现（顺序非常重要）：
+## 完成标准
 
-1. **CPO 与 concept 基础设施**（约 60-90 行） —— 在 task/sender concept 框架；
-2. **just / 基础 sender**（约 50-80 行） —— `mini::just(values...)`；
-3. **promise_type 与 task<T>**（约 120-180 行） —— 8 个 hook + symmetric transfer；
-4. **generator<T>**（约 60-100 行） —— iterator 接口；
-5. **when_all / when_any**（约 100-150 行） —— 二元 task 版，operation 内部 mutex 保护 remaining/winner；
-6. **sync_wait**（约 50-80 行） —— condvar + optional<tuple>；
-7. **single_thread_executor**（约 50-80 行） —— schedule sender；
-8. **async_scope + stop_token**（约 80-120 行） —— spawn / on_empty；
-9. **as_awaitable 桥接**（约 60-100 行） —— bridge receiver。
+完成后你应能从源码解释：
 
-## 最终验证（14-mini §"最终验证"）
+1. `task` 的 frame 谁拥有，谁销毁。
 
-**验证 1：task + sync_wait（可选：as_awaitable 桥接 stdexec::just）**
-```cpp
-mini::task<int> compute() {
-    int x = co_await mini::as_awaitable(stdexec::just(21));
-    co_return x * 2;
-}
-auto opt = mini::sync_wait(compute());
-auto [v] = *opt;   // v == 42
-```
+   **答案解析：** `task<T>` 持有 `std::coroutine_handle<promise_type>`，它是 frame 的单 owner。move 只转移 handle，copy 被禁止；析构时若 handle 非空就 `destroy()`。reference 的 `task` 用 started/consumed 标志保护启动和消费，但最终销毁仍归 owner wrapper。
+2. `final_suspend` 怎样通知 continuation 或 completion callback。
 
-**验证 2：generator + ranges**
-```cpp
-for (int v : fib() | std::views::take(10)) values.push_back(v);
-// values == {0,1,1,2,3,5,8,13,21,34}
-```
+   **答案解析：** 协程体完成后先把 value/error 存入 promise，再进入 `final_suspend`。reference 的 final awaiter 优先读取并调用 completion callback；没有 callback 时返回 continuation；都没有时返回 `std::noop_coroutine()`。callback、state、continuation 会在发布完成前读出，因为通知后其他线程可能销毁 frame。
+3. `sync_wait` 怎样把完成信号转成线程唤醒。
 
-**验证 3：when_all + 类型安全**
-```cpp
-auto opt = mini_ref::sync_wait(
-    mini_ref::when_all(make_task(2+3), make_task(2*3))
-);
-// opt 的类型是 std::optional<std::tuple<std::tuple<int, int>>>
-auto [sum, prod] = std::get<0>(*opt);
-// sum == 5, prod == 6
-```
+   **答案解析：** `sync_wait` 创建 `sync_wait_state`，把其地址和 `complete` callback 写进 root promise，然后 `start()` 一次并阻塞在 `cv.wait(done)`。root final path 调用 callback，设置 done 并 `notify_one()`。线程醒来后读取 promise 里的 tuple value 或重抛 error。
+4. `when_all` 为什么等全部分支完成后才返回。
 
-**验证 4：async_scope + stop_token**
-```cpp
-mini::async_scope scope;
-for (int i = 0; i < 10; ++i) scope.spawn(work_i());
-// scope 析构时等待所有任务完成
-```
+   **答案解析：** `when_all` 是 barrier：两个 runner 都要写完各自结果或错误，remaining 到 0 后父协程才能恢复。若某分支失败，reference 保存首个 error，但仍等待另一分支收束后再传播。这样 operation 中的结果槽、错误槽和子 task 生命周期都不会提前失效。
+5. `when_any` 为什么 winner 产生后仍等待 loser 收束。
 
-**验证 5：HALO**
-```bash
-clang++ -std=c++23 -O2 -Rpass=coroutine-elide main.cpp
-# 记录 stderr 里是否有 "remark: coroutine frame elided"
-```
+   **答案解析：** winner 只表示第一个成功 value 已写入 `std::variant<T1, T2>`；loser 仍可能持有 operation 状态并继续运行。reference 在 winner 后调用 `stop_source.request_stop()`，帮助支持取消的 loser 尽快退出，再等 remaining 到 0 才恢复 parent。`when_any_test.cpp` 覆盖了 winner 已触发 stop 但 loser 尚未 release 的窗口。
+6. `shared_task` 为什么返回拷贝。
 
-**验证 6：valgrind / ASan 无 leak**
-```bash
-g++ -std=c++23 -O2 -fsanitize=address mini_task_test.cpp -o test
-./test    # 通过时记录 ASan 0 errors；失败时先修生命周期问题
-```
+   **答案解析：** `shared_task` 让多个 awaiter 读取同一个 producer 结果，结果缓存在 shared state 里。若 `await_resume()` move 返回，第一次消费会改变缓存，后续 awaiter 得到的值就不可靠。reference 返回 `*state->value` 的拷贝，保证所有 awaiter 看到同一成功值。
+7. stdexec bridge 为什么需要 atomic phase 处理同步完成。
 
-## 验收点
+   **答案解析：** stdexec sender 的 `start()` 可以同步调用 receiver completion，也可能异步完成，还可能在等待协程销毁后才完成。atomic phase 把 `starting/suspended/completed/abandoned` 四种状态分开：同步完成时 `await_suspend` 返回 false，异步完成时 completion 恢复 caller，abandoned 时避免恢复已销毁 caller。reference 的 `stdexec_awaitable.hpp` 正是为这个窗口写的。
 
-- 10 个组件全部实现，至少 4 条最终验证通过；
-- operation_state non-movable 约束满足（编译期或运行时检查均可）；
-- `completion_signatures` 编译期可查（用 `static_assert` 验证 task 与 when_all）；
-- HALO 观察有记录：触发或未触发都要说明编译器、优化级别和原因分析；
-- valgrind / ASan 验证有记录；没有这些工具时明确写下未验证原因；
-- 能画出 task / when_all / sync_wait / as_awaitable 的完整对象关系图；
-- 能解释每一层的设计选择（lazy vs eager、symmetric transfer、operation_state non-movable 的根因）。
-
-## 关键设计决策（14-mini §"关键设计决策参考"）
-
-| 决策 | 方案 | 本骨架默认 | 理由 |
-|---|---|---|---|
-| task 移动语义                  | A 运行时检查 / **B 禁 copy，允许未启动 move** | B | 保留返回值移动，同时禁止已启动对象所有权漂移 |
-| final_suspend symmetric trans  | A 普通 / **B 对称转移**          | B | 标准层面转交 continuation；机器栈表现需实测 |
-| when_all 错误策略              | **A 全分支收束后首异常** / B 收集所有 | A | 结果/错误生命周期清楚，和 reference 一致 |
-| operation_state 存储           | **A 内联** / B unique_ptr        | A | 不分配，HALO 友好 |
-
-## 进阶任务（可选）
-
-- 实现 `mini::on(scheduler, sender)`；
-- 实现 `mini::let_value(sender, factory)`；
-- 把二元 `when_all` / `when_any` 泛化为三元或 variadic 版本；
-- 给 task 加 allocator 感知（P0912 风格）；
-- generator symmetric transfer 优化；
-- `mini::task` vs cppcoro `task` 的 `when_all` 性能对比（1000 次）；
-- 实现 `mini::split(sender)` —— 多 consumer 共享 sender 结果。
-
-## 提示
-
-- 先死 `T = int` 跑通所有组件，再泛化模板；
-- 每个组件一个独立 `_test.cpp`，改一个组件只重编一个 TU；
-- `completion_signatures` 推导可先用 `static_assert + 手写期望类型`；
-- `when_all` 取消传播复杂，reference 先做"全部分支收束后返回结果/首异常"；
-- `shared_task` 是最复杂的组件，建议留到进阶；
-- 不要在 tracing wrapper 的内存分配路径上再打 trace（无限递归）。
-
-## 项目复盘问题（14-mini §"项目复盘问题"）
-
-- 哪一层最出乎你意料地复杂？
-- `when_all` 的 `std::tuple` 结果推导造成什么困难？
-- operation_state non-movable 对 `async_scope` 实现的影响？
-- 你的 final_suspend symmetric transfer 在目标编译器上呈现怎样的机器栈表现？哪些不是标准保证？
-- 把 `mini::task<T>` 扩展为 `mini::eager_task<T>` 需要改哪些地方？
-- 完成本项目后，对 P3552（std::execution::task）的设计选择有了什么新理解？
-- 与 cppcoro 相比的最大简化在哪里？这些简化在什么场景下出问题？
-- 给本库加 "coroutine frame pool allocator"，最自然的插入点在哪？
+本项目完成后，再读 cppcoro、folly coro 或 stdexec task 时，可以把它们的复杂代码映射回这些小组件。

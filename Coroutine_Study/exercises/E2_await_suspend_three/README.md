@@ -1,33 +1,60 @@
-# 练习 E-2：await_suspend 三种返回值
+# 练习 E-2：`await_suspend` 三种返回值
 
-## 目标
+对应正文：[07 模块 E](../../07-模块E-awaitable三层与co_await变换.md#e2)。
 
-完整实现并对比 `await_suspend` 的三种合法返回类型——`void`、`bool`、`std::coroutine_handle<>`，
-通过控制流差异建立"symmetric transfer 是嵌套协程控制转交方式"的直觉。
+本练习只观察控制权。每个 awaiter 都要能回答两个问题：当前协程是否保持挂起；挂起后谁负责让它继续。
 
-## 必做任务
+## Part 1：`void`
 
-1. 实现 `awaiter_void`：返回 void，保存 handle，外部手动 resume。
-2. 实现 `awaiter_bool_true`：返回 true，行为与 void 一致。
-3. 实现 `awaiter_bool_false`：返回 false，不挂起，await_resume 立即被调用。
-4. 实现 `awaiter_symmetric`：返回 `coroutine_handle<>`，框架直接跳转到目标。
-5. 写两个相互配合的协程 `coro_A / coro_B`，观察 symmetric transfer 控制流。
+`awaiter_void::await_suspend(h)` 保存当前 handle 并返回 `void`。当前协程保持挂起，控制权回到调用 `resume()` 的外部代码。
 
-## 验收点
+随后 `main` 调用保存的 handle：
 
-- 通过日志看到三种返回值的不同控制流。
-- 你能解释 void 模式下"必须有外部代码 resume"的含义。
-- 你能解释 bool=false 与 await_ready=true 的语义差异（前者已经决定挂起又反悔）。
-- 你能说明 symmetric transfer 不是"A 的库代码直接调用 B"，而是"`await_suspend` 返回 B handle，`co_await` 变换恢复 B"；A 的 coroutine frame 仍按所有权规则保留。
+```cpp
+awaiter_void::saved_handle.resume();
+```
 
-## 提示
+此时协程从 `await_resume()` 继续。若没有保存 handle，这个协程就没有恢复入口。
 
-- 每种返回值用一个独立 awaiter 类型 + 独立协程，避免控制流混淆。
-- 注意：`bool=true` = 挂起（同 void），`bool=false` = 不挂起（立即继续）。务必对照 cppreference。
-- symmetric transfer 实验需要先创建 B 拿到 handle 再传给 A 的 awaiter。
+## Part 2：`bool true`
 
-## 本轮练习契约
+`bool true` 与 `void` 一样表示保持挂起。区别是返回类型给 awaiter 一个运行时选择机会。它要保存 handle，再返回 `true`。
 
-Starter 要求分别实现 void/bool/coroutine_handle 三种 await_suspend。Reference 断言 void 可自行 resume，bool false 立即继续，bool true 保持挂起，handle 返回值把控制权交给目标 handle。
+日志应显示：第一次 `start()` 后停住，外部 `resume()` 后才打印 after-await。
 
-命令：``cmake -S . -B build/dg-lane -DCOROUTINE_STUDY_BUILD_REFERENCE=ON``，然后构建 ``E2_await_suspend_three`` 与 ``E2_await_suspend_three_reference``，再用 ``ctest -R E2_await_suspend_three_reference`` 跑稳定验收。
+## Part 3：`bool false`
+
+`bool false` 表示不保持挂起。虽然 `await_ready()` 已经返回 `false`，但 `await_suspend()` 拿到 handle 后又发现可以立即继续，于是返回 `false`，协程马上执行 `await_resume()`。
+
+这和 `await_ready()==true` 的差别在时机：`await_suspend` 已经拿到了当前协程 handle，可以基于登记后的共享状态做最终决定。
+
+## Part 4：`coroutine_handle<>`
+
+`awaiter_symmetric` 返回目标协程 handle。当前协程挂起后，`co_await` 变换恢复目标协程。
+
+观察 A/B 两个协程时，先创建 B，取得 B 的 handle，再让 A 的 awaiter 返回它。日志应显示 A 在 await 点把控制权交给 B，B 运行后，A 的后续执行依赖 B 的完成路径恢复。
+
+## 验收
+
+- `void` 和 `bool true` 都需要外部恢复。
+
+  **答案解析：** 这两种返回都表示当前协程保持挂起。awaiter 必须保存当前 handle，之后由 `main`、事件循环、回调或其他完成路径调用 `resume()`。E-2 的日志中，挂起后不会继续打印 after-await，直到外部恢复。
+- `bool false` 立即继续到 `await_resume()`。
+
+  **答案解析：** `await_ready()` 已经返回 false，所以当前协程进入了 `await_suspend()`；但 `await_suspend()` 返回 false 表示取消本次挂起。控制流立即回到当前协程并执行 `await_resume()`，适合表达“登记时发现结果已经可用”的同步完成场景。
+- `coroutine_handle<>` 把控制权交给返回的目标 handle。
+
+  **答案解析：** 返回 handle 的 `await_suspend` 表示当前协程挂起后，接下来恢复另一个协程。task 的 child/continuation 模型就靠这个机制连接：caller 挂起，child 运行，child 完成后再返回 caller。E-2 的 handle awaiter 用 `std::noop_coroutine()` 观察这条返回值语义。
+- 你能标出每条日志由 main、awaiter、当前协程还是目标协程打印。
+
+  **答案解析：** 日志归属能防止把“谁调用 `resume()`”和“协程恢复后执行哪里”混在一起。`await_suspend` 的日志来自 awaiter，外部恢复来自 main 或调度器，`await_resume` 与 after-await 来自当前协程，handle-return 的目标协程日志来自被返回的 handle。能标清执行者，就能判断控制权是否真的转交。
+
+## Reference
+
+Reference 断言 `void` 可自行 resume，`bool false` 立即继续，`bool true` 保持挂起，handle 返回值把控制权交给目标 handle。
+
+```powershell
+cmake -S . -B build/dg-lane -DCOROUTINE_STUDY_BUILD_REFERENCE=ON
+cmake --build build/dg-lane --config Release --target E2_await_suspend_three E2_await_suspend_three_reference
+ctest --test-dir build/dg-lane -C Release -R E2_await_suspend_three_reference
+```

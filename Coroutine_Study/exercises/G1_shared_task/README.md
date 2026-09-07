@@ -1,40 +1,72 @@
 # G-1 从 task 到 shared_task
 
-对应文档：`09-模块G-symmetric_transfer与高级task.md` 「练习 G-1」。
+对应正文：[09 模块 G](../../09-模块G-symmetric_transfer与高级task.md#g1)。
 
-## 目标
+`task<T>` 是单 owner、单次消费。`shared_task<T>` 要让同一个 producer 执行一次，多个 awaiter 都读到同一个结果。本题重点是共享状态、结果缓存和多 waiter 唤醒。
 
-把 `lazy_task<T>` 升级为 `shared_task<T>`：允许多个协程同时 `co_await` 同一个
-shared_task，每个等待者都能拿到结果（值拷贝）或异常。实现引用计数 + control_block
-解耦、final_suspend 的多 awaiter 链表唤醒、并妥善处理 frame 销毁与计数之间的竞态。
+## Part 1：对象关系
 
-## 必做任务
+先画：
 
-1. 阅读骨架——重点是 `control_block`（引用计数与帧解耦）、`promise_type::final_suspend`
-   （前 N-1 个 .resume()，最后一个 symmetric transfer）、`awaiter`（intrusive list node）。
-2. 跑通测试 1：拷贝构造增加引用计数，作用域结束统一释放。
-3. 跑通测试 2：两个 waiter 协程同时 co_await 同一个 shared_task，slow_compute 的
-   final_suspend 会唤醒它们俩。
-4. 在笔记中画出引用计数从 1 → 3 → 0 的生命周期图。
-5. 标注 3 处竞态窗口：(a) 多线程拷贝 → atomic add；(b) 完成与 await_ready 之间 →
-   double-check；(c) 链表头插 vs final_suspend 遍历 → 单线程模式天然安全。
+```text
+shared_task<T> copies
+  -> shared_ptr<shared_state<T>>
+       mutex
+       started/done
+       optional<T> value
+       exception_ptr error
+       waiters
+       source task
+       runner task
+```
 
-## 验收点
+shared state 独立于 producer frame。producer 完成后，结果缓存在 state 中，后续 awaiter 可直接读取。
 
-- 拷贝构造能正确增加引用计数；作用域结束时计数归零并销毁帧。
-- 两个等待者都能拿到结果，且没有任何 handle 被 resume 两次。
-- 你能解释为什么 `await_resume` 必须返回 **拷贝**而非 move。
-- 你能列出 control_block 设计的 3 个理由（与 std::shared_ptr 同源）。
+## Part 2：首次等待启动 producer
 
-## 提示
+第一个 awaiter：
 
-- 不要试图把引用计数直接放在 promise 里——一旦 frame 销毁，计数信息也随之消失，
-  无法做"最后一个 release 才 destroy"的判断。
-- 如果只用 `std::list<coroutine_handle<>>` 也能跑通，但 intrusive list 更高效。
-- 多线程版需要把 `waiters_head` 的头插改成 atomic CAS，参考 cppcoro 实现。
+```text
+lock state
+done=false
+登记 caller 到 waiters
+started=false -> true
+创建 runner 并 start
+当前协程挂起
+```
 
-## 本轮练习契约
+第二个 awaiter 只登记 waiter，不重复启动 producer。
 
-Starter 要求实现一个 producer、多 awaiter 共享结果。Reference 验证两个 awaiter 都拿到值且 producer 只执行一次；教学重点是 control block、结果缓存、异常缓存和多等待者唤醒。
+## Part 3：完成后唤醒全部 waiter
 
-命令：``cmake -S . -B build/dg-lane -DCOROUTINE_STUDY_BUILD_REFERENCE=ON``，然后构建 ``G1_shared_task`` 与 ``G1_shared_task_reference``，再用 ``ctest -R G1_shared_task_reference`` 跑稳定验收。
+runner `co_await source`，成功时保存 value，失败时保存 error，然后设置 done 并取出 waiters 逐个恢复。每个 waiter 在 `await_resume()` 中读取缓存。返回值要拷贝，不能 move。
+
+## 验收
+
+以下解析对应本目录的 [solution.cpp](solution.cpp)：`control_block` 共同拥有 producer frame，结果保存在该帧的 promise 中。前面介绍的独立 shared state 与 runner 形状，可在 [Capstone5 reference](../Capstone5_mini_corolib/reference/include/mini_ref/mini.hpp) 中对照；两种形状都把一次生产结果提供给多个消费者。
+
+- producer 只执行一次。
+
+  **答案解析：** 本目录 `control_block::started` 记录 producer 是否已经启动。第一个 awaiter 登记后，用 `std::exchange` 把标记置为 true，并返回 producer 的 handle 以转交执行；后续 awaiter 只登记自己并返回 noop handle。当前示例在同一线程上依次登记等待者，`producer_runs == 1` 对应共享 producer 只进入函数体一次。
+- 两个 waiter 都拿到相同值。
+
+  **答案解析：** `co_return 42` 把值存入 producer promise 的 `value`。共享 control block 持有该 frame，两个 waiter 在 `await_resume()` 中通过 `cb->h.promise()` 访问同一结果，并各自取得拷贝。Reference 中 `a == 42 && b == 42` 展示了这次结果保存和重复消费。
+- 异常能从每个 waiter 的 `await_resume()` 传播。
+
+  **答案解析：** 本题 promise 的 `unhandled_exception()` 把异常存入 `error`，每个 waiter 的 `await_resume()` 都会检查该字段并重新抛出。观察错误路径时，在各等待者的 `co_await` 周围捕获并记录异常，就能看到共享的失败结果；各等待者仍按自己的异常策略处理它。Capstone5 的另一种实现把 `error` 放在独立 `shared_state<T>` 中。
+- 没有 handle 被 resume 两次。
+
+  **答案解析：** 本题 final awaiter 先设置 `completed=true`，再将登记的 waiters 移出 control block；它显式恢复后面的等待者，并返回首个等待者 handle 做控制转交。后来登记的 awaiter 看到 completed 会直接取值。这个单线程示例依靠“每个 waiter 登记一次、完成列表处理一次”组织恢复；并发登记还需要独立同步设计。
+- 能指出生产实现还需处理提前销毁 waiter 与并发完成窗口。
+
+  **答案解析：** G1 的 `control_block` 使用 vector 保存 waiters；Capstone5 的实现进一步用 mutex 保护等待者登记与完成状态。扩大使用范围时，需要处理等待者提前销毁后的注销、登记与完成同时发生，以及最后一个共享 owner 释放时 producer 的存活关系。这些条件决定了共享状态、producer frame 和各等待者之间的生命周期安排。
+
+## Reference
+
+Reference 验证两个 awaiter 都拿到值且 producer 只执行一次；教学重点是 control block、结果缓存、异常缓存和多等待者唤醒。
+
+```powershell
+cmake -S . -B build/dg-lane -DCOROUTINE_STUDY_BUILD_REFERENCE=ON
+cmake --build build/dg-lane --config Release --target G1_shared_task G1_shared_task_reference
+ctest --test-dir build/dg-lane -C Release -R G1_shared_task_reference
+```

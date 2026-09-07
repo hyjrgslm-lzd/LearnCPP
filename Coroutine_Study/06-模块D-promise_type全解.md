@@ -1,506 +1,465 @@
 # 06 模块 D：promise_type 全解
 
-## 模块目标
+模块 A 到 C 先让你用现成的 `lazy_task`、future awaiter 和组合器写出可观察的协程程序。从本模块开始，重点切到协程类型本身：一个返回 `task<T>` 的函数，为什么只写了 `co_return`，编译器却知道要分配哪块状态、构造哪个返回对象、在哪里挂起、怎样保存异常、完成后恢复谁。
 
-前面三个模块在使用现成的 `lazy_task<T>` 和 `std::generator`。这个模块要把"编译器到底在帮你生成什么"彻底拆开：
+答案集中在 `promise_type`。这里的 promise 表示协程返回类型交给编译器的协议对象，和业务层 promise 只是名字相近。编译器在识别到函数体中有 `co_await`、`co_yield` 或 `co_return` 后，会根据函数签名求出 promise 类型，再把原函数改写成一段围绕 promise、coroutine state 和 awaiter 的状态机代码。
 
-- 协程的 8 个 promise_type hook 各自在什么时机被调用
-- eager 和 lazy 启动策略只差一个 `initial_suspend` 的返回值
-- `final_suspend` 为什么通常要挂起以保留结果消费窗口（除非你很清楚自己在做什么）
-- `await_suspend` 返回 `coroutine_handle` 是怎么把控制转交给 continuation，从而避免库代码直接嵌套 `.resume()` 的
+本模块的三道练习都围绕同一条主线展开：
 
-如果你跳过这一层，协程就永远是一个"黑盒语法糖"。
+- D-1 从零写 `lazy_task<T>`，把创建、返回对象、初始挂起、结果保存、异常保存、最终挂起、销毁全部跑通。
+- D-2 只改 `initial_suspend` 的返回值，观察 lazy 与 eager 的执行时机。
+- D-3 在 `final_suspend` 中返回 continuation handle，观察 symmetric transfer 表达的控制权转交。
 
-## 模块完成标准
+读完本模块后，你应该能从任意一个 `task` 实现里直接指出：谁拥有协程帧，谁启动它，谁消费结果，谁在完成时恢复等待者，哪一步如果写错会变成 use-after-free 或重复 resume。
 
-做完本模块，你至少要能稳定说清楚：
+<a id="d1"></a>
 
-- promise_type 的 8 个 hook 分别在什么时机被框架调用，以及它们之间如何协作构成一条完整协程生命周期。
-- `initial_suspend` 是 lazy 和 eager 启动语义的核心开关。
-- `final_suspend` 返回 `suspend_always` 是为了让协程帧的销毁晚于最终结果被取走。
-- 为什么教学 task 通常让 `unhandled_exception` 存储异常并 `noexcept`，以及标准允许它抛出时会进入怎样的异常传播路径。
-- `await_suspend` 返回 `coroutine_handle` 如何转交控制权，从而避免库代码层层直接 `.resume()` 导致的栈增长风险。
+## 一、协程函数调用时，返回值先于函数体产生
 
-## 类型骨架桥接段
-
-从"使用现成 task"到"从零实现 promise_type"是这个学习包中最大的跳跃。为了降低摩擦，这里给出一个完整的 `lazy_task<T>` 的 promise_type 8 个 hook 骨架。你不需要背它们，但每当你遇到"编译器说 promise_type 缺什么"时，回来对照这段骨架。
-
-### promise_type 完整 8 hook 骨架
+普通函数调用中，调用方等函数体跑完再拿到返回值：
 
 ```cpp
-template <typename T>
+int f() {
+    return 42;
+}
+
+int x = f();
+```
+
+协程函数的调用顺序不同：
+
+```cpp
+lazy_task<int> f() {
+    co_return 42;
+}
+
+auto task = f();
+```
+
+`f()` 这个调用表达式返回时，函数体通常还没有执行到 `co_return 42`。在 lazy task 中，函数体甚至一行都没开始跑。调用方拿到的是一个拥有或引用协程帧的返回对象。它像一个启动入口和结果入口的组合，真正的计算要等之后 `start()`、`get()` 或 `co_await` 才推进。
+
+编译器大致生成这样的控制流程：
+
+```text
+调用协程函数
+  -> 确定 promise_type
+  -> replacement body 开始处创建参数副本
+  -> 构造 promise
+  -> 调用 promise.get_return_object() 生成返回给调用方的 task
+  -> co_await promise.initial_suspend()
+     -> 挂起：协程函数调用返回，调用方拿到未启动 task
+     -> 不挂起：继续执行协程体，直到下一次挂起或完成
+```
+
+参数副本的顺序很关键。协程被调用时，每个参数都会在 replacement body 开始处创建副本。原声明为引用类型的参数副本仍绑定到同一个外部对象；非引用参数副本是一个新变量，并由原参数直接初始化。协程体里使用这个参数名时，命名的是这份副本。参数副本的初始化先于 promise 构造；副本之间的相对初始化顺序没有固定先后。销毁时，promise 生命周期先结束，参数副本紧随其后结束。协程体内已经构造的局部对象，则按它们各自作用域和当前销毁路径清理。
+
+这里最重要的因果关系是：`get_return_object()` 在协程体执行前调用，所以它不能返回最终结果。它只能返回一个能找到协程帧的对象。常见做法是在返回对象中保存 `std::coroutine_handle<promise_type>`。
+
+```cpp
+lazy_task get_return_object() {
+    auto h = std::coroutine_handle<promise_type>::from_promise(*this);
+    return lazy_task{h};
+}
+```
+
+`from_promise(*this)` 安全成立，因为此时 promise 已经构造完成。协程体局部变量还没有按源码顺序开始构造；不要在返回对象构造时假设函数体已经运行。
+
+## 二、promise_type 从哪里来
+
+对一个协程函数，编译器通过 `std::coroutine_traits<R, Args...>::promise_type` 找 promise。`R` 是函数声明的返回类型，`Args...` 是函数形参类型，成员函数还会把隐式对象参数纳入匹配。
+
+对下面的函数：
+
+```cpp
+lazy_task<int> compute(int x);
+```
+
+默认情况下，编译器会找：
+
+```cpp
+std::coroutine_traits<lazy_task<int>, int>::promise_type
+```
+
+如果 `lazy_task<int>` 里有嵌套的 `promise_type`，标准库默认 traits 会使用它：
+
+```cpp
+template <class T>
 struct lazy_task {
     struct promise_type {
-        T result_value;                           // 存储 co_return 的值
-        std::exception_ptr result_exception;       // 存储未捕获异常
-        std::coroutine_handle<> continuation;      // 等待本协程的调用者
-
-        // ---- 1. get_return_object ----
-        // 协程帧创建后第一个被调用的 hook。
-        // 返回给调用者的 task 对象，它持有 coroutine_handle。
-        lazy_task get_return_object() {
-            return lazy_task{
-                std::coroutine_handle<promise_type>::from_promise(*this)
-            };
-        }
-
-        // ---- 2. initial_suspend ----
-        // 决定协程体是否立即开始执行。
-        // suspend_always -> lazy（调用者手动 resume）
-        // suspend_never  -> eager（协程创建即开始执行）
-        std::suspend_always initial_suspend() noexcept { return {}; }
-
-        // ---- 3. final_suspend ----
-        // 协程体执行完后被调用。
-        // 必须挂起，否则协程帧在 continuation 被设置前就销毁了。
-        // 如果 continuation 存在，可利用 symmetric transfer 跳过去。
-        auto final_suspend() noexcept {
-            struct final_awaiter {
-                bool await_ready() noexcept { return false; }
-                auto await_suspend(std::coroutine_handle<promise_type> h) noexcept {
-                    if (h.promise().continuation)
-                        return h.promise().continuation; // symmetric transfer
-                    return std::noop_coroutine();
-                }
-                void await_resume() noexcept {}
-            };
-            return final_awaiter{};
-        }
-
-        // ---- 4. return_value ----
-        // co_return expr; 时被调用。
-        // 保存值，等待调用者通过 task.get() 取出。
-        void return_value(T value) {
-            result_value = std::move(value);
-        }
-
-        // ---- 5. unhandled_exception ----
-        // 协程体抛出未捕获异常时被调用。
-        // 教学 task 选择存储异常；标准允许该函数抛出，但会把完成路径复杂化。
-        void unhandled_exception() noexcept {
-            result_exception = std::current_exception();
-        }
-
-        // ---- 6. yield_value (仅 generator 用, lazy_task 可省略) ----
-        // 本 task 不涉及 co_yield，如需 generator 则实现此 hook。
-
-        // ---- 7. operator new（可选，[dcl.fct.def.coroutine] allocation 定制） ----
-        // 自定义协程帧的分配。配合 operator delete 使用。
-        // 若不定义，编译器使用全局 operator new。
-        static void* operator new(std::size_t size) {
-            return ::operator new(size);
-        }
-        static void operator delete(void* ptr, std::size_t size) {
-            ::operator delete(ptr);
-        }
-
-        // ---- 8. get_return_object_on_allocation_failure (可选) ----
-        // 当 promise scope 中找到该 hook 时，协程分配走 nothrow 失败路径；
-        // allocation function 返回 nullptr 后调用本 hook 返回失败态 task。
-        static lazy_task get_return_object_on_allocation_failure() noexcept {
-            return lazy_task{};
-        }
-
-        // ---- 可选: await_transform ----
-        // 当协程体内出现 co_await expr 时，编译器会先尝试
-        // promise.await_transform(expr)。如果定义了，用其返回值作为
-        // 真正的 awaitable；否则直接用 expr 自身。
-        // 一般 lazy_task 不定义，留空即可。
-        // 模块 E 会详细介绍这个 hook。
+        // 协程协议写在这里。
     };
-
-    // ---- task 自身 ----
-    std::coroutine_handle<promise_type> h_;
-
-    explicit lazy_task(std::coroutine_handle<promise_type> h) : h_(h) {}
-    lazy_task(lazy_task&& other) noexcept : h_(std::exchange(other.h_, {})) {}
-    lazy_task& operator=(lazy_task&& other) noexcept {
-        if (this != &other) {
-            if (h_) h_.destroy();
-            h_ = std::exchange(other.h_, {});
-        }
-        return *this;
-    }
-    lazy_task(const lazy_task&) = delete;
-    lazy_task& operator=(const lazy_task&) = delete;
-
-    ~lazy_task() {
-        if (h_) h_.destroy();
-    }
-
-    // ---- 对外接口 ----
-    // get()：驱动协程直到完成，然后返回结果或重新抛异常。
-    T get() {
-        if (!h_) throw std::logic_error("empty task");
-        h_.resume();                          // 启动/继续协程
-        auto& p = h_.promise();
-        if (p.result_exception)
-            std::rethrow_exception(p.result_exception);
-        return std::move(p.result_value);
-    }
-
-    // 让 task 可以被 co_await（支持嵌套协程）
-    // 优化：若 task 已完成（或为空），直接走 ready 路径，免一次挂起
-    bool await_ready() noexcept { return !h_ || h_.done(); }
-    auto await_suspend(std::coroutine_handle<> caller) noexcept {
-        h_.promise().continuation = caller;
-        return h_;                           // symmetric transfer
-    }
-    T await_resume() {
-        auto& p = h_.promise();
-        if (p.result_exception)
-            std::rethrow_exception(p.result_exception);
-        return std::move(p.result_value);
-    }
 };
 ```
 
-### 8 个可定制点调用时序一览
-
-以下为协程框架的 8 个可定制点，按调用时序排列。注意："8 个 hook"的说法有歧义——`yield_value` 和 `return_value` 互斥（一个协程不会同时使用两者），`await_transform` 虽然属于可定制点但不占用固定时序位置。
-
-**必有 hook（按调用时序）**：
-
-| 序号 | Hook | 调用时机 | 关键作用 |
-|------|------|----------|----------|
-| 1 | `get_return_object` | 协程帧分配后、协程体执行前 | 构造返回给调用者的 task 对象 |
-| 2 | `initial_suspend` | `get_return_object` 之后 | 决定是否立即执行协程体 |
-| 3 | `return_void` 或 `return_value` | `co_return` 处 | 保存返回值（互斥二选一） |
-| 4 | `final_suspend` | 协程体结束/`co_return` 执行后 | 挂起并通知等待者 |
-| 5 | `unhandled_exception` | 协程体抛出未捕获异常时 | 存储异常 |
-
-**可选 hook（按职责）**：
-
-| Hook | 职责 | 说明 |
-|------|------|------|
-| `yield_value` | `co_yield expr` 时产生中间值 | 与 `return_value` 互斥，仅 generator 使用 |
-| `await_transform` | `co_await expr` 前转换 awaitable | 可拦截、包装或拒绝特定类型的 awaitable |
-| `operator new` | coroutine state 需要额外存储且分配未被消除时 | `[dcl.fct.def.coroutine]` 规定的 promise allocation 定制入口 |
-| `operator delete` | 协程帧释放时 | 与 operator new 配对 |
-| `get_return_object_on_allocation_failure` | 分配函数按 nothrow 语义失败并返回 null 时 | 分配失败回退路径 |
-
----
-
-## 练习 D-1：从零写 lazy_task<T>
-
-### 目标
-
-完整实现 `lazy_task<T>` 的 promise_type 可定制点（get_return_object / initial_suspend / final_suspend / return_value / unhandled_exception 及其余可选 hook），验证 `co_return` 值被外部 `get()` 正确取出、协程体内抛异常被外部 `get()` 重新抛出。
-
-### 前置理解
-
-- 你已经会使用附带的 `lazy_task<T>` 写协程函数。
-- 你知道协程体在遇到 `co_return` / `co_await` / `co_yield` 时编译器会为你生成状态机，状态机的"控制器"就是 `promise_type`。
-- 你接受本题的重点是实现 8 个 hook 的最小正确版本，不追求高性能或无锁。
-- 关键概念：`coroutine_handle<promise_type>` 是协程帧的句柄。`from_promise(p)` 可以从 promise 对象获取句柄。`h.resume()` 启动或恢复协程执行。`h.destroy()` 销毁协程帧。`h.promise()` 获取帧内的 promise 对象。
-
-### 必做任务
-
-1. 参照上面的骨架代码，从头写出完整的 `lazy_task<T>`。必须实现以下可定制点：
-   - `get_return_object`
-   - `initial_suspend`（返回 `suspend_always`）
-   - `final_suspend`（返回自定义 final_awaiter）
-   - `return_value`
-   - `unhandled_exception`
-   - `yield_value`（即使不用，也要声明或明确省略）
-   - `operator new` / `operator delete`
-   - `get_return_object_on_allocation_failure`
-
-2. 写测试协程函数验证正常流程：
-   ```cpp
-   lazy_task<int> compute() {
-       int x = 10;
-       int y = 20;
-       co_return x + y;
-   }
-   auto task = compute();
-   int result = task.get();  // 期望 30
-   ```
-
-3. 写测试协程函数验证异常流程：
-   ```cpp
-   lazy_task<int> faulty() {
-       throw std::runtime_error("boom");
-       co_return 0;  // 永远不会执行到这里
-   }
-   auto task = faulty();
-   try {
-       task.get();
-   } catch (const std::runtime_error& e) {
-       // 应该捕获到 "boom"
-   }
-   ```
-
-4. 验证多重 `co_await` 嵌套调用：
-   ```cpp
-   lazy_task<int> inner() { co_return 42; }
-   lazy_task<int> outer() {
-       int v = co_await inner();
-       co_return v * 2;
-   }
-   auto task = outer();
-   int result = task.get();  // 期望 84
-   ```
-
-5. 在笔记中画出：协程帧何时分配、`get_return_object` 何时被调用、`initial_suspend` 挂起后控制权回到哪、`get()` 调用 `resume()` 后在哪个 hook 继续执行、`final_suspend` 时 continuation 是谁。
-
-### 进阶任务
-
-- 用 `-fdump-tree-coro`(GCC) 或 `/d1reportSingleClassLayout`(MSVC) 打印你的 `lazy_task<int>` 协程帧布局，数一数帧里包含多少字段（promise + 参数拷贝 + 局部变量）。
-- 在多线程环境下验证：一个线程创建 task，另一个线程调用 `get()`。观察 `coroutine_handle` 的线程安全性——它的 `resume()` 可以在任意线程调用。
-- 给 `lazy_task` 添加 `operator co_await`，让它可以被 `co_await task` 使用。对比直接调用 `get()` 和 `co_await` 的差异。
-
-### 验收点
-
-- 你的 `lazy_task<T>` 能正确返回 `co_return` 的值。
-- 你的 `lazy_task<T>` 能重新抛出协程体内的异常到 `get()` 调用者。
-- 你的 `lazy_task<T>` 支持嵌套 `co_await`。
-- 你能说明每个 hook 在协程生命周期中的位置和职责。
-- 你没有在教学 task 的 `unhandled_exception` 中再次 throw；异常通过 `exception_ptr` 延迟交给消费者。
+这解释了为什么返回类型能决定协程行为。同样写 `co_return 42`，返回 `lazy_task<int>` 与返回 `generator<int>` 会触发不同 promise 协议。前者需要保存最终值，后者需要在每次 `co_yield` 保存当前元素。
 
-### 观察点
+## 三、最小 task 的生命周期
 
-- `get_return_object` 在协程体执行**之前**就被调用。这意味着此时返回值还不存在——它只是返回一个"遥控器"。
-- `initial_suspend` 返回 `suspend_always` 意味着协程体一行代码都没执行时就已经挂起了。控制权回到 `compute()` 的调用者，调用者拿到的是"未开始的 task"。
-- `final_suspend` 挂起后，协程帧还在。`get()` 此时才能安全地读取 `result_value`。如果 `final_suspend` 返回 `suspend_never`，协程帧在 `get()` 读取前就销毁了——UB。
-- 教学 task 的 `unhandled_exception` 中再次 throw 会绕开你设计的 `exception_ptr` 消费通道，并让 final-suspend/调用者传播路径变难维护。课程要求这里存储，不重抛。
+一个教学 `lazy_task<T>` 至少需要保存三类状态：
 
-### 常见坑
+```cpp
+template <class T>
+class lazy_task {
+public:
+    struct promise_type {
+        std::optional<T> value;
+        std::exception_ptr error;
+        std::coroutine_handle<> continuation;
 
-- `final_suspend` 写了 `suspend_never`——结果 `get()` 读到了已销毁帧上的值。
-- `unhandled_exception` 里写 `throw;`——标准允许异常传播给 caller/resumer，但这会破坏本题通过 `exception_ptr` 统一消费异常的契约。
-- `get_return_object` 中用 `coroutine_handle<promise_type>::from_promise(*this)`，但忘了此时 promise 还没有被构造完成（实际上 `get_return_object` 被调用时 promise 已构造，所以这个写法是对的。但要注意不要在构造函数中依赖协程体执行——它还没有开始）。
-- `lazy_task` 的移动构造忘记清空源的 `h_`，导致两个 task 都认为自己拥有协程帧——双重 destroy。
-- 析构函数中直接 `h_.destroy()` 但对象可能正处于运行中或被别处 resume——`destroy()` 的前提是 handle 指向的协程处于挂起状态；对未挂起协程 destroy 是 UB。
+        lazy_task get_return_object();
+        std::suspend_always initial_suspend() noexcept;
+        auto final_suspend() noexcept;
+        void return_value(T);
+        void unhandled_exception() noexcept;
+    };
 
-### 提示
+private:
+    std::coroutine_handle<promise_type> h_;
+};
+```
 
-- 先让正常 return 流程跑通（只需 `get_return_object` + `initial_suspend` + `final_suspend` + `return_value`），再补异常处理和其他 hook。
-- `final_suspend` 的 `await_suspend` 中，如果 `continuation` 为空（没人等待这个 task），返回 `std::noop_coroutine()` 即可。
-- 抄骨架代码时注意类型名——你的 `lazy_task`、`promise_type`、`final_awaiter` 之间的嵌套关系必须严格一致。
+`value` 保存 `co_return expr` 的结果。`error` 保存协程体未捕获异常。`continuation` 保存正在 `co_await` 本 task 的调用者协程。
 
-### 复盘问题
+协程帧由返回对象最终负责销毁：
 
-- 为什么 `get_return_object` 能在协程体执行之前被调用？框架是怎么知道该返回什么类型的？
-- 如果 `initial_suspend` 返回 `suspend_never`，协程体在 `get_return_object` 已经构造出返回对象之后、协程函数调用返回给调用者之前开始执行吗？日志如何证明？
-- 为什么 `final_suspend` 几乎总是需要挂起（返回非 `suspend_never`）？
-- `unhandled_exception` 中存储的 `std::exception_ptr` 为什么能在 `get()` 中被安全地 `rethrow_exception`？
+```cpp
+~lazy_task() {
+    if (h_) h_.destroy();
+}
+```
 
-### 对应官方参考
+`destroy()` 的前提是 handle 指向的协程处于挂起状态。这个条件在教学 `lazy_task` 中靠协议保证：创建后停在 `initial_suspend`，完成后停在 `final_suspend`，中间挂起点也必须由 awaiter 明确管理。对正在执行的协程调用 `destroy()` 是未定义行为。
 
-- Lewis Baker "Understanding the promise type"（系列第 5 篇）
-- Lewis Baker "C++ coroutines: Managing the coroutine frame"（系列第 6 篇）
-- cppcoro `task.hpp` 的 promise_type 实现
-- P0913R1：Add symmetric coroutine control transfer (Gor Nishanov)
+停在 final suspend 的协程帧可以由 owner 调用 `destroy()` 清理。对已经停在 final suspend 的协程调用 `resume()` 会进入未定义行为；完成态只保留给读取 promise 状态和销毁 frame，不再允许继续执行协程体。
 
----
+移动构造要把源对象清空：
 
-## 练习 D-2：eager vs lazy 切换
+```cpp
+lazy_task(lazy_task&& other) noexcept
+    : h_(std::exchange(other.h_, {})) {}
+```
 
-### 目标
+这表达唯一所有权：同一个协程帧只能有一个 owner 负责销毁。忘记清空源对象会导致两个 task 析构时都调用 `destroy()`。
 
-只改 `initial_suspend` 一行代码，把 lazy task 变成 eager task，观察两种语义的差异。再实现混合策略：在惰性启动的基础上提供"立即启动"的变体。
+<a id="d2"></a>
 
-### 前置理解
+## 四、`initial_suspend` 决定启动时机
 
-- 你已经完整实现了 D-1 的 `lazy_task<T>`。
-- 你知道 `initial_suspend` 返回 `suspend_always`（内置 awaiter，`await_ready` 返回 false）意味着协程创建后立即挂起，等待第一次 `resume()`。
-- 你知道 `suspend_never`（`await_ready` 返回 true）意味着协程创建后立即开始执行协程体。
-- 关键差异：**lazy**（惰性）——协程创建 = 获得描述对象，需要显式 `resume()` 才开始执行。**eager**（立即）——协程创建 = 立即开始执行到第一个挂起点。
-- P3552R3 中 `std::execution::task<T>` 选择 lazy 语义，因为这个 task 本身可能被传给 `when_all` 等组合子——组合子需要先拿到 task 对象，再决定何时启动它。
+`initial_suspend()` 返回一个 awaiter。编译器会对它执行一次 `co_await` 变换。教学中最常见的两个返回值是：
 
-### 必做任务
+```cpp
+std::suspend_always initial_suspend() noexcept { return {}; } // lazy
+std::suspend_never  initial_suspend() noexcept { return {}; } // eager
+```
 
-1. 在 D-1 的 `lazy_task<T>` 上做最小修改：将 `initial_suspend` 的返回类型从 `suspend_always` 改为 `suspend_never`。
-2. 写对比实验：
-   ```cpp
-   // 版本 A：lazy（initial_suspend = suspend_always）
-   auto t = lazy_compute();  // 此时协程还未执行
-   // ... 这里可以做其他事 ...
-   int r = t.get();           // 此时才真正开始执行协程体
+`std::suspend_always` 的 `await_ready()` 返回 `false`。因此协程创建后立刻挂起，调用方拿到返回对象。协程体第一行还没执行。
 
-   // 版本 B：eager（initial_suspend = suspend_never）
-   auto t = eager_compute();  // 协程体已开始执行，可能已经跑完了
-   int r = t.get();           // 只是取走结果
-   ```
-   在两个版本中分别在协程体开始处和 `get()` 调用处插入时间戳打印，观察执行时机的差异。
+`std::suspend_never` 的 `await_ready()` 返回 `true`。因此初始挂起被短路，协程体立即开始执行。它会跑到第一个真正挂起点，或者一路跑到 `co_return`。
 
-3. 写一个协程体包含多个 `co_await` 点的 eager task。观察：eager task 在创建后会执行到第一个 `co_await` 挂起，还是跑到 `co_return`？
-   ```cpp
-   lazy_task<int> multi_step() {  // 注意：即使改了 initial_suspend，函数仍返回 lazy_task
-       std::print("step 1\n");
-       co_await async_sleep(50ms);
-       std::print("step 2\n");
-       co_return 42;
-   }
-   ```
+下面的日志能直接观察差异：
 
-4. 实现混合策略：保留基础版 `lazy_task<T>`（`initial_suspend = suspend_always`），同时提供一个工厂函数 `eager_start(task)`：
-   ```cpp
-   template <typename T>
-   lazy_task<T> eager_start(lazy_task<T> t) {
-       t.h_.resume();  // 立即启动
-       return t;        // 返回已启动的 task
-   }
-   ```
-   验证：调用 `eager_start(multi_step())` 后，在 `get()` 之前协程已经执行到第一个挂起点。
+```cpp
+lazy_task<int> lazy_compute() {
+    std::println("body");
+    co_return 1;
+}
 
-5. 在笔记中写清楚：eager 语义的真实代价是什么？为什么制定中的 P3552R3 选择 lazy 作为 `std::execution::task<T>` 的默认？
+std::println("before call");
+auto t = lazy_compute();
+std::println("after call");
+auto v = t.get();
+```
 
-### 进阶任务
+如果 `initial_suspend` 是 `suspend_always`，输出顺序是：
 
-- 测量 eager vs lazy 在"创建 1000 个 task 但不全部消费"场景下的帧分配开销差异。
-- 研究 cppcoro 的 `task<T>` 是如何处理 `initial_suspend` 的——它用了 lazy 还是 eager？
-- 思考：如果 task 的协程体中有 `co_await` 一个外部资源（如 socket），eager 启动意味着什么？safety 方面有什么隐患？
+```text
+before call
+after call
+body
+```
 
-### 验收点
+如果改成 `suspend_never`，输出顺序变成：
 
-- 你能只改一行代码切换 lazy / eager 行为。
-- 你能观察到 lazy 时协程体在 `get()` 调用后才执行。
-- 你能解释为什么框架级 task（P3552）倾向于 lazy，应用级 task 有时需要 eager。
-- 你能说明 eager 启动"跑到第一个挂起点再停"的行为对资源使用的影响。
+```text
+before call
+body
+after call
+```
 
-### 观察点
+这个实验说明 lazy 与 eager 的差别是启动语义。lazy task 适合组合器：`when_all` 可以先收集多个 task，接好 continuation、stop token 和结果槽，再统一启动。eager task 适合创建即应开始的应用级操作，但它让启动发生在调用表达式内部，组合器没有机会先注入上下文。
 
-- lazy 是"先拿到遥控器，再决定什么时候按开关"。eager 是"创建即开始"。
-- lazy 组合性更强：`when_all` 可以先收集所有 task，再统一启动。
-- eager 让"启动"变得隐式，可能导致在组合子还没来得及设置上下文（如 stop_token）时协程已经开始跑了。
-- `suspend_always` 和 `suspend_never` 是内置的 trivial awaitable，它们的存在说明"挂起与否"只取决于 `await_ready` 的返回值。
+初始挂起还有一条异常规则。标准的 replacement body 中有一个 `initial-await-resume-called` 标志，初始值为 false，并在 initial await expression 的 `await_resume()` 求值前立刻设为 true。若 `initial_suspend()` 返回的 awaiter 在到达这一步前失败，例如 awaiter 构造、`await_ready()` 或 `await_suspend()` 抛出，异常会直接传播给协程调用者。若 `initial_suspend` 的 `await_resume()` 自身抛出，此时标志已经为 true，异常会进入协程体外层 catch，再调用 `promise.unhandled_exception()`，随后进入完成路径。
 
-### 常见坑
+## 五、`co_return` 怎样进入 promise
 
-- 把 eager 当成"性能更好"的 lazy——两者性能差异在绝大多数场景下可忽略。lazy 多了一次 `resume()` 调用，但 eager 在"task 创建后可能被丢弃"的场景下浪费了一次帧分配和执行。
-- eager task 创建后立即执行，但调用者还没有机会设置 continuation——如果协程体快速 `co_return`，`final_suspend` 中 continuation 为空，协程帧就销毁了。之后 `get()` 访问已销毁帧 -> UB。
-- 混合使用 lazy 和 eager 时，不注意"task 是否已经启动"这个状态，导致重复 resume 或遗漏 resume。
+协程体执行：
 
-### 提示
+```cpp
+co_return expr;
+```
 
-- 测量 lazy 和 eager 时差时，用 `std::chrono::high_resolution_clock` 并取多次平均值。
-- 混合策略的 `eager_start` 不改变 task 类型——它只是立即 resume 一次。这保持了接口一致性。
-- 思考题：如果你的 `lazy_task` 不支持 `operator co_await`，`eager_start` 和 `co_await` 会不会有语义冲突？
+对非 `void` task，会调用：
 
-### 复盘问题
+```cpp
+promise.return_value(expr);
+```
 
-- 什么场景下 eager 是合理的默认行为？什么场景下 lazy 更安全？
-- 如果协程体抛出异常且 unhandled_exception 已经存储了异常，eager task 的 `get()` 是在什么时候发现这个异常的？
-- P3552R3 选择 lazy 的理由中，你认为哪一条最有说服力？
-- 你的 `lazy_task<T>` 是 movable 的。如果 `eager_start` 后 task 被移动到另一个线程，会发生什么？
+教学 task 通常写成：
 
-### 对应官方参考
+```cpp
+template <class U>
+void return_value(U&& v) {
+    value.emplace(std::forward<U>(v));
+}
+```
 
-- Lewis Baker "C++ coroutines: Understanding the promise type"（initial_suspend 部分）
-- P3552R3：`std::execution::task<T>` 的 lazy 语义设计
-- cppcoro `task.hpp` 中 `initial_suspend` 的实现
+这一步只保存结果，不负责恢复调用者。恢复动作属于完成路径，也就是 `final_suspend`。把保存结果和通知完成分开，能让异常、取消、同步等待和嵌套 `co_await` 都走同一条完成协议。
 
----
+`void` task 则提供：
 
-## 练习 D-3：final_suspend + symmetric transfer
+```cpp
+void return_void() noexcept {}
+```
 
-### 目标
+一个协程体使用 `co_return expr` 时需要 `return_value`；使用无表达式的 `co_return` 或自然流到末尾时需要 `return_void`。课程里把它们都列在 hook 清单中，是为了教学完整性；真实类型按返回语义选择。
 
-在 `final_suspend` 的 `await_suspend` 中返回 `coroutine_handle` 实现控制权转交，让协程完成时把等待者交给 `co_await` 变换恢复，避免库代码直接写成"resume 调用 resume"导致栈增长。
+## 六、未捕获异常怎样保存
 
-### 前置理解
+协程体如果抛出未捕获异常，编译器会进入 promise 的异常通道：
 
-- 你已经完成 D-1，实现了 `final_suspend` 中 continuation 的基本逻辑。
-- 你知道 `await_suspend` 有三种合法返回类型：`void`、`bool`、`std::coroutine_handle<>`。本题聚焦第三种。
-- 关键概念：**symmetric transfer**——当协程 A 完成时（`final_suspend`），它不直接 `resume` 等待者 B，而是从 `await_suspend` 返回 B 的 `coroutine_handle`。标准 `co_await` 变换会恢复这个 handle；优秀实现通常会把这条路径优化成不累积调用栈的控制转交。在深层嵌套或循环嵌套协程场景下，它避免的是库代码直接递归 `.resume()` 的栈增长风险。
-- 相比之下，如果在 `final_suspend` 中直接写 `continuation.resume()`，你就是在 A 的栈帧中调用 B 的恢复。每嵌套一层，栈就深一层。
+```cpp
+void unhandled_exception() noexcept {
+    error = std::current_exception();
+}
+```
 
-### 必做任务
+随后协程仍会走完成路径，进入 `final_suspend`。消费者在 `await_resume()` 或 `get()` 中检查 `error` 并重新抛出：
 
-1. 在 D-1 的 `final_awaiter::await_suspend` 中，确认你的实现已经使用了 symmetric transfer：
-   ```cpp
-   auto await_suspend(std::coroutine_handle<promise_type> h) noexcept {
-       if (h.promise().continuation)
-           return h.promise().continuation;  // symmetric transfer
-       return std::noop_coroutine();
-   }
-   ```
-   注意这里的返回值类型是 `std::coroutine_handle<>`，不是 void。
+```cpp
+T await_resume() {
+    auto& p = h_.promise();
+    if (p.error) std::rethrow_exception(p.error);
+    return std::move(*p.value);
+}
+```
 
-2. 写一个嵌套调用链实验：创建 N 层嵌套的协程，最内层 `co_return` 一个值，观察控制权从最内层一路传递到最外层：
-   ```cpp
-   lazy_task<int> chain(int n) {
-       if (n == 0) co_return 0;
-       int v = co_await chain(n - 1);
-       co_return v + 1;
-   }
-   auto task = chain(1000);  // 1000 层嵌套
-   int result = task.get();   // 期望 1000。如果栈没爆，symmetric transfer 生效
-   ```
+这种设计让成功和失败都在消费结果的位置被观察。同步函数在调用栈上抛异常；协程可能稍后、甚至在另一个线程完成，所以需要先把异常保存进协程帧。
 
-3. 写对比实验：故意在 `final_suspend` 中直接调用 `continuation.resume()`（不用 symmetric transfer），同样跑 1000 层嵌套，观察是否能完成。如果你的编译器和平台有小栈限制，可能在 100 层以内就栈溢出。
+标准允许 `unhandled_exception()` 本身抛出异常。若它抛出，协程被视为已经停在 final suspend point，这个异常传播给调用者或 resumer。教学 task 选择 `noexcept` 保存异常，让协程体失败成为 task 的一类完成结果。
 
-4. 画一张图描绘 symmetric transfer 的控制流：
-   - 协程 A 完成 -> `final_suspend` -> `await_suspend` 返回 B 的 handle
-   - 标准 `co_await` 变换收到这个返回的 handle -> 恢复 B；具体是否生成机器级 tail call 由实现决定
-   - B 的 `await_resume` 被调用，拿到 A 的结果
+<a id="d3"></a>
 
-5. 在笔记中明确记录：
-   - symmetric transfer 消除了哪种类型的栈增长？
-   - 为什么 `await_suspend` 返回 `coroutine_handle` 是标准层面表达这种控制转交的方式？
-   - 这和 `await_suspend` 返回 `void`（框架在 suspend 后就返回调用者，调用者手动 resume 等待者）的差异是什么？
+## 七、为什么 `final_suspend` 通常要挂起
 
-### 进阶任务
+协程体正常 `co_return` 或异常通道完成后，编译器会执行：
 
-- 用 `-fsanitize=address` 和显式的栈深度计数器，测量 symmetric transfer 版和非 symmetric transfer 版在 1000 层嵌套下的**实际栈使用量**差异。
-- 研究 `std::noop_coroutine()`：它是什么？为什么在 continuation 为空时返回它而不是返回空 handle？
-- 在 `lazy_task::await_suspend`（让 task 可被 co_await 的那个）中也使用 symmetric transfer。验证嵌套 `co_await` 链的控制流完全通过 symmetric transfer 完成。
+```cpp
+co_await promise.final_suspend();
+```
 
-### 验收点
+这个阶段有两个任务：
 
-- 你的 `final_suspend` 通过返回 continuation handle 将控制权转交给等待者。
-- 你能在目标编译器上跑通足够深的嵌套协程链，并记录是否出现栈增长/栈溢出。
-- 你能画出 symmetric transfer 的控制流图。
-- 你能对比三种 `await_suspend` 返回值（void / bool / coroutine_handle）的语义差异。
+1. 让协程帧保持存在，直到 owner 或消费者读取结果。
+2. 通知等待者继续执行。
 
-### 观察点
+如果 `final_suspend` 返回 `std::suspend_never`，协程完成后会自动销毁 coroutine state。对一个把结果保存在 promise 中的 task，这会让外部随后读取已销毁帧中的 `value` 或 `error`。
 
-- symmetric transfer 的重点是：A 不在自己的库代码里直接调用 B 的 `.resume()`，而是把下一个要恢复的 handle 作为 awaiter 结果交给 `co_await` 变换。
-- 如果没有 symmetric transfer，`await_suspend` 返回 void 时，框架在挂起 A 后控制权返回给"启动 resume 的那个调用者"。这个调用者再手动 resume B。这一来一去，栈就不会增长——但需要额外一层调度。
-- symmetric transfer 提供了"把下一个恢复目标作为返回值交出去"的直接控制转交模式；机器栈表现仍要用目标编译器实测确认。
-- 在 `final_suspend` 中使用 symmetric transfer 是最关键的场合，因为这里是一个协程生命周期的终结 + 下一个协程的开始。
+因此教学 task 的 `final_suspend` 返回自定义 awaiter：
 
-### 常见坑
+```cpp
+auto final_suspend() noexcept {
+    struct final_awaiter {
+        bool await_ready() noexcept { return false; }
 
-- 在 `await_suspend` 中直接 `h.resume()` 而不是 `return continuation;`——失去了 symmetric transfer 的全部意义。
-- `return continuation;` 时忘记检查 continuation 是否为空——空 handle 的 resume 是 UB（好在 `std::noop_coroutine()` 可以兜底）。
-- 混淆三种返回值的语义：
-  - `void` = 框架挂起我，控制权回到调用 resume 的人手里。之后由别人 resume 等待者。
-  - `bool` = 返回 true 表示当前协程保持挂起，返回 false 表示不挂起并立即继续当前协程。
-  - `coroutine_handle` = 不回到调用 resume 的人，直接去跑这个 handle 指向的协程。
-- 在 `final_suspend` 返回 `suspend_never` — 协程帧立即销毁，continuation 没机会被用上。
+        std::coroutine_handle<> await_suspend(
+            std::coroutine_handle<promise_type> h) noexcept {
+            auto continuation = h.promise().continuation;
+            return continuation ? continuation : std::noop_coroutine();
+        }
 
-### 提示
+        void await_resume() noexcept {}
+    };
+    return final_awaiter{};
+}
+```
 
-- 先用 D-1 的骨架确认 symmetric transfer 已正确实现，再去做 1000 层嵌套实验。
-- 嵌套实验如果不确定，可以先用 10 层验证流程，再逐步增加到 100、1000。
-- 比较三种 `await_suspend` 返回值时，不要只记区别——各写一个最小示例跑一遍，看控制流差异。
-- `std::noop_coroutine()` 返回一个 `resume()` 和 `destroy()` 都是 no-op 的协程句柄，用于避免空 handle 操作。
+`await_ready()` 返回 `false`，保证最终挂起。`await_suspend()` 返回等待者 handle，表达 symmetric transfer。没有等待者时返回 `std::noop_coroutine()`，这是一个恢复和销毁都无副作用的协程句柄，避免返回空 handle 后被恢复造成未定义行为。
 
-### 复盘问题
+`co_await promise.final_suspend()` 还有一个硬性限制：这个表达式不得是 potentially-throwing。最终挂起用于发布完成状态和保留销毁入口；把可抛异常放在这里会让完成协议没有稳定落点。
 
-- symmetric transfer 解决的核心问题是库代码层层直接 `.resume()` 造成的栈增长吗？请画出调用栈证明。
-- 为什么 symmetric transfer 不等于标准强制的"tail-call optimization for coroutines"？
-- 在 `await_suspend` 中返回 `std::noop_coroutine()` 和返回空 handle 有什么区别？
-- 如果你要在 `lazy_task` 的 `operator co_await` 中也使用 symmetric transfer，应该怎么写？
+## 八、`co_await task` 的 continuation 从哪里来
 
-### 对应官方参考
+让 task 可以被另一个协程等待，需要 task 自己也是 awaitable：
 
-- Lewis Baker "C++ coroutines: Symmetric transfer"（系列第 5-6 篇）
-- P0913R1 中对称转移的设计动机
-- cppcoro `task.hpp` 中 `final_suspend` 的 symmetric transfer 用法
+```cpp
+bool await_ready() const noexcept {
+    return !h_ || h_.done();
+}
 
----
+std::coroutine_handle<> await_suspend(std::coroutine_handle<> caller) {
+    h_.promise().continuation = caller;
+    return h_;
+}
 
-## 做完模块 D 之后，你现在应该能说清楚什么
+T await_resume() {
+    auto& p = h_.promise();
+    if (p.error) std::rethrow_exception(p.error);
+    return std::move(*p.value);
+}
+```
 
-至少把下面几句话说顺：
+假设 `outer()` 等待 `inner()`：
 
-- promise_type 的 8 个 hook 各有固定调用时机，构成完整的协程生命周期。
-- `initial_suspend` 是协程体初始是否执行的核心开关；完整 lazy/eager API 语义还取决于返回对象何时取得所有权、谁能 start/await，以及重复启动如何拒绝。
-- `final_suspend` 通常必须挂起，否则协程帧可能在结果被消费前就已销毁。
-- 教学 task 的 `unhandled_exception` 存储异常并等待外部捕获；标准层面允许抛出但要理解其传播路径。
-- `await_suspend` 返回 `coroutine_handle` 实现控制权转交，但不要把机器级 tail call 当成标准保证。
-- 理解了这些之后，你看 cppcoro / folly coro / stdexec task 的源码时，不会再被 promise_type 的实现细节吓住。
+```cpp
+lazy_task<int> inner() { co_return 42; }
+
+lazy_task<int> outer() {
+    int v = co_await inner();
+    co_return v * 2;
+}
+```
+
+时序是：
+
+```text
+outer 被启动
+  -> outer 遇到 co_await inner()
+  -> inner task.await_suspend(outer_handle)
+     -> inner.promise.continuation = outer_handle
+     -> 返回 inner_handle
+  -> 编译器恢复 inner
+  -> inner co_return 42，进入 final_suspend
+  -> final_awaiter 返回 outer_handle
+  -> outer 从 await_resume 取得 42，继续执行
+```
+
+这条链解释了 continuation 的来源。全局调度器不会自动知道等待者；`await_suspend(caller)` 被调用时，当前被挂起的协程 handle 会显式交给被等待的 task。
+
+## 九、symmetric transfer 解决哪种栈增长
+
+`await_suspend` 可以返回 `void`、`bool` 或 `std::coroutine_handle<>`。返回 handle 时，标准层面表达的是：当前协程已经挂起，接下来恢复这个返回的 handle。
+
+在 `final_suspend` 中直接写：
+
+```cpp
+continuation.resume();
+```
+
+意味着库代码在当前恢复调用栈里再调用下一层恢复。深层 `task` 链会形成嵌套 `.resume()`。
+
+返回 handle：
+
+```cpp
+return continuation;
+```
+
+则把下一个恢复目标交给 `co_await` 变换。优秀实现通常能把这条路径降成不累积库层调用栈的控制转交。标准保证的是控制流语义，不保证某个编译器一定生成机器级 tail call，也不保证所有平台上机器栈恒定。D-3 的实验只声明 handle-return control transfer 能沿 continuation 链恢复，实际栈表现要用目标编译器观察。
+
+## 十、D-1：从零写 `lazy_task<T>`
+
+进入 [练习 D-1](exercises/D1_promise_8_hooks/README.md) 前，先把本节的生命周期图画出来：
+
+```text
+compute() 调用
+  -> 分配 coroutine state
+  -> 创建参数副本
+  -> 构造 promise
+  -> promise.get_return_object() 返回 lazy_task(handle)
+  -> initial_suspend 挂起
+  -> 调用方拿到 task
+  -> task.get() 或 co_await task 启动
+  -> 协程体执行
+  -> return_value 或 unhandled_exception 保存结果
+  -> final_suspend 挂起并通知 continuation
+  -> task owner 析构时 destroy frame
+```
+
+D-1 的 starter 在 `main.cpp` 中让你补齐 `lazy_task<T>`。不要只把 TODO 填成能编译的代码；每写一个 hook 都在旁边标出它服务哪一步：
+
+- `get_return_object`：把 promise 地址变成 handle，再把 handle 放进返回对象。
+- `initial_suspend`：选择 lazy。
+- `return_value`：保存最终值。
+- `unhandled_exception`：保存异常。
+- `final_suspend`：保留帧并恢复等待者。
+- `operator new/delete`：参与 coroutine state 分配与释放。
+- `get_return_object_on_allocation_failure`：只有 non-throwing 分配路径返回 null 时才使用。
+
+Reference 会验证三件事：值能取出，异常能从 `get()` 重新抛出，嵌套 `co_await` 能通过 continuation 恢复。通过这些断言后，再回头解释每个断言为什么成立。
+
+## 十一、D-2：lazy 与 eager 的一行差别
+
+[练习 D-2](exercises/D2_eager_vs_lazy/README.md) 使用同一类 task，只切换 `initial_suspend`。实验需要看三组输出：
+
+1. lazy：调用协程函数后，body 日志尚未出现。
+2. eager：调用表达式返回前，body 日志已经出现。
+3. eager + 内部 `co_await`：创建后执行到第一个挂起点，随后等待外部恢复。
+
+`eager_start(lazy_task<T>)` 是一个中间策略：类型仍是 lazy task，但工厂函数在返回前主动 `resume()` 一次。
+
+```cpp
+template <class T>
+lazy_task<T> eager_start(lazy_task<T> t) {
+    t.start();
+    return t;
+}
+```
+
+这个函数看起来很小，语义变化很大：调用者收到的是已经启动过的 task。后续 `get()` 或 `co_await` 必须知道它不能二次启动同一帧。Capstone5 reference 因此把 `start()` 后的重复启动视为逻辑错误。
+
+## 十二、D-3：完成时把控制权交回等待者
+
+[练习 D-3](exercises/D3_final_suspend_symmetric/README.md) 聚焦 `final_suspend` 的最后一跳。用 1000 层嵌套链：
+
+```cpp
+task chain(int n) {
+    if (n == 0) co_return 0;
+    co_return 1 + co_await chain(n - 1);
+}
+```
+
+当最内层完成时，它的 continuation 是上一层协程；上一层恢复后也会很快完成，再把 continuation 交给更上一层。这个过程重复 1000 次。
+
+你的笔记要把两种写法分开：
+
+```text
+直接 resume:
+  A.final_suspend.await_suspend
+    -> B.resume()
+       -> B.final_suspend.await_suspend
+          -> C.resume()
+
+返回 handle:
+  A.final_suspend.await_suspend -> return B
+  co_await 变换恢复 B
+  B.final_suspend.await_suspend -> return C
+```
+
+第一种在库代码中嵌套恢复。第二种把恢复目标作为返回值交出去。Reference 验证第二种能跑通深链；它不把机器栈一定恒定写成可移植承诺。
+
+## 本模块完成后应能说清楚
+
+完成 D-1 到 D-3 后，你应该能回答：
+
+1. 协程返回对象为什么能在协程体执行前返回。
+
+   **答案解析：** 编译器识别协程后会先分配 coroutine state、创建参数副本、构造 promise，再调用 `promise.get_return_object()` 把返回对象交给调用方。若 `initial_suspend()` 返回 `std::suspend_always`，函数体会停在初始挂起点，所以返回对象先出现，`co_return` 的结果还没有产生。本模块 D-1 的 `lazy_task` 正是通过 `std::coroutine_handle<promise_type>::from_promise(*this)` 让返回对象先拿到 frame 入口。
+2. `promise_type` 如何由函数返回类型和参数推导得到。
+
+   **答案解析：** promise 类型来自 `std::coroutine_traits<R, Args...>::promise_type`，其中 `R` 是协程函数声明返回类型，`Args...` 是形参类型，成员函数还包含隐式对象参数。返回 `lazy_task<int>` 与返回 `generator<int>` 会选到不同 promise，因此同样的 `co_return` 或 `co_yield` 会进入不同协议。D-1 的源码把 `promise_type` 嵌在 `lazy_task<T>` 内，默认 traits 会直接使用这个嵌套类型。
+3. `initial_suspend` 怎样决定 lazy/eager 启动时机。
+
+   **答案解析：** `initial_suspend()` 的返回 awaiter 会在协程体前被等待。`std::suspend_always` 的 `await_ready()` 为 false，调用表达式返回时协程体尚未执行；`std::suspend_never` 的 `await_ready()` 为 true，初始挂起被短路，协程体会在调用表达式返回前开始执行。初始 await 的 `await_resume()` 求值前会设置 `initial-await-resume-called` 标志；因此它自己抛出的异常进入 promise 的 `unhandled_exception()`，而更早的 awaiter 构造、`await_ready()`、`await_suspend()` 异常直接传给调用者。D-2 的日志用 `before/after create` 与 `body` 顺序直接证明启动时机。
+4. `co_return` 与未捕获异常怎样进入 promise。
+
+   **答案解析：** 非 void `co_return expr` 会调用 `promise.return_value(expr)`，无表达式 `co_return` 或自然结束会调用 `return_void()`。协程体未捕获异常会进入 `promise.unhandled_exception()`，教学 task 把 `std::current_exception()` 存进 promise，之后由 `get()` 或 `await_resume()` 重新抛出。D-1 的 `value_task()` 和 `fail_task()` 分别覆盖这两条通道。
+5. `final_suspend` 为什么保留结果消费窗口。
+
+   **答案解析：** 结果和异常通常存放在 promise，也就是 coroutine state 内。`final_suspend()` 返回会挂起的 awaiter 后，frame 仍存在，外部 owner 才能读取 promise 状态并调用 `destroy()`；若最终挂起选择 `std::suspend_never`，完成时 frame 可能被自动销毁，随后读取结果会变成悬空访问。D-1/D-3 的 task 都让 final awaiter 返回 false 的 `await_ready()` 来保留这个窗口。
+6. `co_await task` 的 continuation 在哪一步被保存。
+
+   **答案解析：** continuation 在被等待 task 的 `await_suspend(caller)` 中保存，`caller` 就是当前挂起的等待者协程 handle。随后 `await_suspend` 返回子 task 的 handle 启动它；子 task 完成时，`final_suspend` 再返回保存的 continuation。D-1 的 `outer()` 等待 `inner()`，`inner.promise().continuation` 保存的就是 `outer` 的恢复入口。
+7. `await_suspend` 返回 handle 表达怎样的控制权转交，以及哪些机器级优化只是实现观察。
+
+   **答案解析：** 返回 `std::coroutine_handle<>` 表达当前协程挂起后，下一个要恢复的是这个 handle；这就是标准层面的 symmetric transfer 控制流语义。编译器是否把它降成机器级 tail call、机器栈是否恒定、汇编长什么样，都属于目标工具链的实现观察。D-3 的 `chain(1000)` 只证明 handle-return 链路能恢复到最外层，不承诺所有平台的栈表现相同。
+
+继续阅读：[07 模块 E：awaitable 三层与 co_await 变换](07-模块E-awaitable三层与co_await变换.md)。

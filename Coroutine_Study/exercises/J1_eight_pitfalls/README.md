@@ -1,52 +1,44 @@
 # 练习 J-1：八大经典陷阱重现
 
-对应文档：`12-模块J-陷阱诊断与跨编译器.md` §J-1
+知识讲解：[J1 对应章节](../../12-模块J-陷阱诊断与跨编译器.md#j1)。
 
-## 目标
+对应主讲义：`12-模块J-陷阱诊断与跨编译器.md` 的 J-1。
 
-亲手重现 C++ 协程工程中最常见的八个生命周期陷阱，每个陷阱给出最小复现、
-分类和修复方案。默认 starter/reference 只跑安全路径；真正的 UB 用显式 unsafe
-开关或单独 sanitizer 目标观察。
+这题练的是协程生命周期诊断。默认 starter/reference 只跑安全路径；危险路径以注释或 `COROUTINE_STUDY_ENABLE_UNSAFE_DEMOS` 保护。先读机制，再跑 reference，再挑 1-2 个陷阱单独打开 unsafe 观察。
 
-## 必做任务
+八类陷阱按排错关键词记：
 
-逐一重现以下八个陷阱（每个不超过 30 行最小复现）：
+- 引用捕获：外部栈对象没有进入协程帧。
+  **答案解析：** lambda 或函数返回 task 后，按引用捕获的对象仍由外部栈帧拥有。协程稍后恢复时外部栈帧可能已经结束，安全修复是按值捕获或把共享状态移动进协程帧。
+- 临时派生指针：awaiter 活着，指针指向的对象可能死了。
+  **答案解析：** `c_str()`、`data()`、`string_view`、span 这类对象经常只借用底层存储。awaiter 跨挂起存活只能保证 awaiter 自己没死，不能保证它保存的裸指针仍有效；安全修复是按值保存需要的数据，或让被借用对象成为跨挂起存活的协程局部变量。
+- 锁跨挂起：恢复线程可能变，锁也会阻塞其他协程。
+  **答案解析：** `std::mutex` 的加锁/解锁绑定线程，协程在 `co_await` 后可能从另一个线程恢复，析构 `lock_guard` 时就可能跨线程解锁。即使恢复线程没变，挂起期间持锁也会挡住其他 completion 和取消路径；安全修复是锁内复制数据，挂起前释放锁。
+- `initial_suspend` 抛异常：清理路径受实现影响，不适合作库契约。
+  **答案解析：** 协程创建时已经分配 frame、构造 promise 并拿到返回对象，`initial_suspend` 抛异常会进入很早的清理窗口。不同编译器对诊断和返回对象状态的表现可能不同；安全修复是让 `initial_suspend/final_suspend` 都保持 `noexcept`，把可能失败的工作移到协程体或启动前。
+- detached：后台协程没有完成所有者。
+  **答案解析：** detached 启动后调用方没有 future、scope 或 in-flight 计数来等待完成。异常可能丢失，shutdown 后 callback 还可能访问已销毁对象；安全修复是用 `use_future`、scope、completion handler 或显式 drain 证明后台协程都结束。
+- yield 指针：当前 yield 窗口内可借用，推进后可能悬空。
+  **答案解析：** generator 的当前 yield 值只在本轮暂停窗口内稳定。消费者把指针或引用保存起来，再执行下一次 `++it` 后，上一轮局部对象或 promise 中的当前槽可能已经被覆盖；需要跨窗口保存时复制值。
+- promise 析构 throw：直接 `std::terminate`。
+  **答案解析：** `coroutine_handle::destroy()` 会销毁 frame 内 promise，析构函数抛异常没有普通恢复路径。安全修复是析构保持 `noexcept`，清理失败提前显式处理或只记录状态。
+- `string_view` generator：view 不拥有字符缓冲。
+  **答案解析：** 如果 `yield_value` 只保存 `string_view`，而 yield 表达式来自临时 string，view 指向的 buffer 会在生命周期结束后失效。安全修复是 promise 按值保存 `std::string`，或者 API 明确 view 只能在当前 yield 窗口内使用。
 
-1. **lambda capture by reference 跨 co_await** —— 引用捕获外部栈变量；
-2. **awaiter 保存临时对象派生指针** —— `foo(std::string("x").c_str())`；
-3. **co_await 期间 lock_guard 跨挂起点** —— 跨线程恢复时可触发非 owner unlock UB；
-4. **initial_suspend 抛异常** —— 清理/诊断路径不能作为库设计依赖；
-5. **detached coroutine 越过创建者生命周期** —— 永远不要 detach；
-6. **消费者把 yield 窗口内的指针持久化** —— 推进 generator 后旧指针悬空；
-7. **promise destructor throw** —— 进入 `std::terminate`，不可恢复；
-8. **自写 generator 持久暴露 string_view** —— view 只在当前 yield 窗口内有效。
+运行：
 
-骨架文件中每个 trap 拆为一个 namespace，各含 `bad_()` / `good_()` 两个 demo
-协程；`main()` 按陷阱编号串行调用。
+```powershell
+cmake -S Coroutine_Study/exercises -B build/coroutine-j1 -DCOROUTINE_STUDY_BUILD_REFERENCE=ON
+cmake --build build/coroutine-j1 --target J1_eight_pitfalls_reference
+ctest --test-dir build/coroutine-j1 -R J1_eight_pitfalls_reference --output-on-failure
+```
 
-## Starter / Reference
+预期：reference 打印八条分类，然后所有安全修复路径通过，末尾输出 `J1 reference: all safe invariants passed`。
 
-- `main.cpp` 是安全 starter：可以直接编译运行，危险代码默认只以注释展示。
-- `solution.cpp` 是参考答案：输出八类陷阱分类，并用 `coroutine_study::check` 验证安全修复路径。
-- `COROUTINE_STUDY_BUILD_REFERENCE=ON` 时会生成 `J1_eight_pitfalls_reference` 并加入 CTest。
+**答案解析：** reference 默认跑安全路径，八条分类用于对照机制和排错关键词。安全断言覆盖按值捕获、临时对象生命周期、锁边界和 frame 分配释放等不变量；unsafe demo 需要单独开启，避免一次运行混入多个 UB 症状。
 
-## 验收点
+回读路径：先看 `traps` 表里的分类和 safe_rule；再看 `good_lambda_capture`、`good_temporary_lifetime`、`good_lock_boundary` 三个安全例子；最后看 frame 分配/释放计数，确认安全路径没有泄漏。
 
-- 八个陷阱中独立重现至少六个，并能解释崩溃根因；
-- 在 Code Review 中能识别这八类模式；
-- 看到 `lock_guard + co_await` 立即条件反射地指出：如果跨线程恢复是 UB，即使同线程也通常是工程禁用模式；
-- 能解释为什么标准没规定协程帧布局——这正是跨编译器陷阱难统一检测的根因。
+**答案解析：** `traps` 表回答“这类 bug 是什么、症状是什么、怎么修”。三个 good 示例分别把最常见的引用、临时对象和同步锁问题改成可维护生命周期；分配/释放计数则证明安全路径没有把协程帧遗留到 owner 之外。
 
-## 约束
-
-- 骨架代码无需补代码即可编译。要看见真正的崩溃/泄漏，请取消相应
-  `// throw` / `// 危险代码` 行的注释，并配 ASan / MSVC `/RTC1` 运行；
-- 中文注释保留，禁止把陷阱的"修复版"误改回 BAD 版；
-- 八个陷阱中至少跑一遍 `-fsanitize=address`，记录哪些能被 ASan 抓到，
-  哪些抓不到（陷阱 3 / 5 通常 ASan 抓不到，须靠 TSan / 静态分析）。
-
-## 提示
-
-- 单线程测试不会触发陷阱 3，请用至少两线程的执行环境；
-- 陷阱 4 在 MSVC / Clang / GCC 上的清理与诊断差异是 J-2 的素材；
-- 陷阱 6/8 的关键不是"临时量立即悬空"，而是把当前 yield 窗口内才有效的借用值保存到下一次 resume 之后。
+观察 UB 时一次只打开一个陷阱，配 ASan/TSan 或 MSVC 运行时检查记录症状。陷阱 3/5 常常不会被 ASan 抓到，需要线程调度或静态分析证据。
