@@ -1,0 +1,18 @@
+{
+  "command": [
+    "D:\\cmake\\install\\bin\\cmake.EXE",
+    "--build",
+    "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\final-matrix-r3\\verify-core",
+    "--config",
+    "Release",
+    "--parallel",
+    "4",
+    "--verbose"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 16.554944900097325,
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

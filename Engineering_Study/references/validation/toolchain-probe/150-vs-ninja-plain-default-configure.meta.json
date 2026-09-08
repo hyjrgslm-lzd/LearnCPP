@@ -1,0 +1,9 @@
+﻿{
+    "name":  "150-vs-ninja-plain-default-configure",
+    "command":  "call \"D:\\VisualStudio2026\\Installed\\Common7\\Tools\\VsDevCmd.bat\" -arch=x64 \u003enul \u0026\u0026 \"D:\\cmake\\install\\bin\\cmake.exe\" -S \"F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\toolchain-probe\\cmake-plain\" -B \"F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\toolchain-probe\\out\\diag-vs-ninja-plain-default\" -G Ninja -DCMAKE_MAKE_PROGRAM=\"D:\\VisualStudio2026\\Installed\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja\\ninja.exe\" -DCMAKE_BUILD_TYPE=Release",
+    "exit_code":  null,
+    "timed_out":  true,
+    "timeout_seconds":  90,
+    "stdout":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\150-vs-ninja-plain-default-configure.stdout.txt",
+    "stderr":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\150-vs-ninja-plain-default-configure.stderr.txt"
+}

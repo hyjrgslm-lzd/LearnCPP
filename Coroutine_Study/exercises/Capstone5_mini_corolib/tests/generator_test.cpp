@@ -6,7 +6,9 @@
 
 #include "mini/generator.hpp"
 
-#include <cassert>
+#include "coroutine_study/exercise_check.hpp"
+
+#include <exception>
 #include <iostream>
 #include <numeric>
 #include <vector>
@@ -15,12 +17,12 @@ static mini::generator<int> seq(int n) {
     for (int i = 0; i < n; ++i) co_yield i;
 }
 
-int main() {
+static void run() {
     std::cout << "[test] mini::generator<T> basic\n";
 
     int sum = 0;
     for (int x : seq(5)) sum += x;
-    assert(sum == 0 + 1 + 2 + 3 + 4);
+    coroutine_study::check(sum == 0 + 1 + 2 + 3 + 4, "generator sum mismatch");
     std::cout << "  ok: sum(0..4) = " << sum << "\n";
 
     // J-1 陷阱 8 验证：yield 临时量是否安全（promise 必须按值存）
@@ -30,8 +32,16 @@ int main() {
     }();
     std::vector<int> vs;
     for (int v : g) vs.push_back(v);
-    assert(vs == (std::vector<int>{2, 4}));
+    coroutine_study::check(vs == (std::vector<int>{2, 4}), "generator prvalue yield mismatch");
     std::cout << "  ok: yield prvalue (J-1 trap 8 immune)\n";
+}
 
-    return 0;
+int main() {
+    try {
+        run();
+        return 0;
+    } catch (const std::exception& e) {
+        std::cerr << "starter check failed: " << e.what() << "\n";
+        return 1;
+    }
 }

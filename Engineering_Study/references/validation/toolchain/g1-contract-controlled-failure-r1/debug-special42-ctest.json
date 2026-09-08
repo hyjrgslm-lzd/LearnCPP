@@ -1,0 +1,14 @@
+{
+  "name": "debug-special42-ctest",
+  "command": [
+    "ctest",
+    "--test-dir",
+    "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\foundations-independent-review\\g1-contract-controlled-failure-r1\\Debug-special42-build",
+    "-R",
+    "^G1_diagnostics_student$",
+    "--output-on-failure"
+  ],
+  "exit_code": 8,
+  "timeout": false,
+  "elapsed_seconds": 0.36802244186401367
+}

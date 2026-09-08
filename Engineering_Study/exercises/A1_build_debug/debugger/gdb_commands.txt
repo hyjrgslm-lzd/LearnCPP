@@ -1,0 +1,12 @@
+set pagination off
+break main
+break add_offset
+run
+next
+continue
+next
+backtrace
+info args
+info locals
+continue
+quit

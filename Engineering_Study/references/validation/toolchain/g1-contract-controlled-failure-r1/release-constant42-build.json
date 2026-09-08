@@ -1,0 +1,14 @@
+{
+  "name": "release-constant42-build",
+  "command": [
+    "D:\\cmake\\install\\bin\\cmake.exe",
+    "--build",
+    "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\foundations-independent-review\\g1-contract-controlled-failure-r1\\Release-constant42-build",
+    "--target",
+    "G1_diagnostics_student",
+    "--verbose"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "elapsed_seconds": 1.1088817119598389
+}

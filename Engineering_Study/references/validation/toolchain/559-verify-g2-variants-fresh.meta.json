@@ -1,0 +1,6 @@
+{
+  "command": "cmd.exe /d /c Engineering_Study\\references\\validation\\toolchain\\559-verify-g2-variants-fresh.command.cmd > Engineering_Study\\references\\validation\\toolchain\\559-verify-g2-variants-fresh.stdout.txt 2> Engineering_Study\\references\\validation\\toolchain\\559-verify-g2-variants-fresh.stderr.txt",
+  "exit_code": 0,
+  "execution_surface": "require_escalated normal local process",
+  "claims": ["fresh build directory configures and builds current public G2 source", "baseline, PCH and LTO variants independently compile the same five source files", "CTest runs and passes all three variants, confirming current answer is 42", "PCH uses /Yc and /Yu; LTO uses /GL and /LTCG"]
+}

@@ -1,0 +1,17 @@
+{
+  "captured_after_sampling": "2026-09-08T18:20:37.8574865+08:00",
+  "cpu": [
+    {
+      "Name": "AMD Ryzen 9 9900X 12-Core Processor            ",
+      "NumberOfCores": 12,
+      "NumberOfLogicalProcessors": 24,
+      "L2CacheSize": 12288,
+      "L3CacheSize": 65536,
+      "MaxClockSpeed": 4400
+    }
+  ],
+  "memory_bytes": 203533176832,
+  "sampling_policy": "All builds and tests launched by this task were stopped before sampling; ordinary system services remained active. No affinity, NUMA placement, cache flush, or power policy change was requested.",
+  "cmake": "cmake version 4.2.3",
+  "ninja": "1.13.2"
+}

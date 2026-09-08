@@ -1,0 +1,14 @@
+Test project F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/abc-v3-ninja-B1_preprocessor
+    Start 1: B1_preprocessor_reference
+1/2 Test #1: B1_preprocessor_reference ........   Passed    0.25 sec
+    Start 2: B1_preprocessor_preprocess
+2/2 Test #2: B1_preprocessor_preprocess .......   Passed    0.20 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Label Time Summary:
+observation    =   0.20 sec*proc (1 test)
+reference      =   0.25 sec*proc (1 test)
+
+Total Test time (real) =   0.45 sec
+

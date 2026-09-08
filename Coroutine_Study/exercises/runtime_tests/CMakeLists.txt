@@ -10,6 +10,10 @@ function(add_runtime_test name source)
     add_executable(${name} ${source})
     target_include_directories(${name} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../include)
     add_test(NAME ${name} COMMAND ${name})
+    set_tests_properties(${name} PROPERTIES
+        LABELS "reference;runtime"
+        TIMEOUT 30
+    )
 endfunction()
 
 add_runtime_test(runtime_lazy_task_reference_test lazy_task_reference_test.cpp)

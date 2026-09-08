@@ -1,0 +1,6 @@
+{
+  "command": "cmd.exe /d /c Engineering_Study\\references\\validation\\toolchain\\525-verify-static-analysis.command.cmd > Engineering_Study\\references\\validation\\toolchain\\525-verify-static-analysis.stdout.txt 2> Engineering_Study\\references\\validation\\toolchain\\525-verify-static-analysis.stderr.txt",
+  "exit_code": 0,
+  "execution_surface": "require_escalated normal local process",
+  "claims": ["reference parser analyzed and plist emitted", "deliberate null dereference sample reports core.NullDereference"]
+}

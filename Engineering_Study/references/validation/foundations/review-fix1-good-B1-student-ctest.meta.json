@@ -1,0 +1,10 @@
+{
+  "name": "good-B1-student-ctest",
+  "exit_code": 0,
+  "expected": [
+    0
+  ],
+  "ok": true,
+  "timeout": false,
+  "command": "call \"D:\\VisualStudio2026\\Installed\\Common7\\Tools\\VsDevCmd.bat\" -arch=x64 >nul && \"D:\\cmake\\install\\bin\\ctest.exe\" --test-dir \"F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\review-fix1-good-B1-build\" -L student --output-on-failure"
+}

@@ -1,0 +1,6 @@
+{
+  "exit_code": 0,
+  "timed_out": false,
+  "stdout": "Engineering_Study\\references\\validation\\odr\\04-msvc-ctest-negative.stdout.txt",
+  "stderr": "Engineering_Study\\references\\validation\\odr\\04-msvc-ctest-negative.stderr.txt"
+}

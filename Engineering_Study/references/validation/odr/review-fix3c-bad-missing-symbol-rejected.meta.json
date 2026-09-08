@@ -1,0 +1,9 @@
+{
+  "name": "bad-missing-symbol-rejected",
+  "exit_code": 1,
+  "expected": [
+    1
+  ],
+  "ok": true,
+  "command": "call \"D:\\VisualStudio2026\\Installed\\Common7\\Tools\\VsDevCmd.bat\" -arch=x64 >nul && \"D:\\cmake\\install\\bin\\cmake.exe\" -DCASE_SOURCE=\"F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\C1_odr\\review_variants\\negative_missing_symbol\" -DCASE_BUILD=\"F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\sample-odr-review-fix3c-bad\\negative_missing_symbol\" -DOBJECT_TARGET=C1_odr_review_negative_missing_symbol_objects -DLINK_TARGET=C1_odr_review_negative_missing_symbol_link -DGENERATOR=Ninja -DMAKE_PROGRAM=\"D:\\VisualStudio2026\\Installed\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja\\ninja.exe\" -P \"F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\C1_odr\\cmake\\expect_build_failure.cmake\""
+}

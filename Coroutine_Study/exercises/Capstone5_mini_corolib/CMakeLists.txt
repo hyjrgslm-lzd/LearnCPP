@@ -17,6 +17,19 @@ function(_mini_add_executable target source)
         ${CMAKE_CURRENT_SOURCE_DIR}/include
         ${CMAKE_SOURCE_DIR}/include
     )
+    if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/../include")
+        target_include_directories(${target} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../include)
+    endif()
+endfunction()
+
+function(_mini_register_test target label timeout)
+    if(BUILD_TESTING)
+        add_test(NAME ${target} COMMAND ${target})
+        set_tests_properties(${target} PROPERTIES
+            LABELS "${label}"
+            TIMEOUT ${timeout}
+        )
+    endif()
 endfunction()
 
 # 主 demo
@@ -28,9 +41,19 @@ _mini_add_executable(mini_generator_test  tests/generator_test.cpp)
 _mini_add_executable(mini_when_all_test   tests/when_all_test.cpp)
 _mini_add_executable(mini_sync_wait_test  tests/sync_wait_test.cpp)
 _mini_add_executable(mini_scope_test      tests/scope_test.cpp)
+if(COROUTINE_STUDY_TEST_STARTERS)
+    _mini_register_test(mini_task_test starter 30)
+    _mini_register_test(mini_generator_test starter 30)
+    _mini_register_test(mini_when_all_test starter 30)
+    _mini_register_test(mini_sync_wait_test starter 30)
+    _mini_register_test(mini_scope_test starter 30)
+endif()
 if(TARGET stdexec::stdexec)
     _mini_add_executable(mini_as_awaitable_test tests/as_awaitable_test.cpp)
     target_link_libraries(mini_as_awaitable_test PRIVATE stdexec::stdexec)
+    if(COROUTINE_STUDY_TEST_STARTERS)
+        _mini_register_test(mini_as_awaitable_test starter 30)
+    endif()
 endif()
 
 if(COROUTINE_STUDY_BUILD_REFERENCE)
@@ -39,7 +62,7 @@ if(COROUTINE_STUDY_BUILD_REFERENCE)
         target_include_directories(${target} PRIVATE
             ${CMAKE_CURRENT_SOURCE_DIR}/reference/include
         )
-        add_test(NAME ${target} COMMAND ${target})
+        _mini_register_test(${target} reference 30)
     endfunction()
 
     _mini_add_reference_test(mini_reference_task        reference/tests/task_test.cpp)

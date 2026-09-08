@@ -1,0 +1,37 @@
+适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
+
+  1>Checking Build System
+  Building Custom Rule F:/CPPTrain/LearnCPP/Engineering_Study/exercises/C1_odr/CMakeLists.txt
+  observer_a.cpp
+  observer_b.cpp
+  正在生成代码...
+observer_a.obj : warning LNK4006: "int __cdecl lesson_value(void)" (?lesson_value@@YAHXZ) 已在 observer_b.obj 中定义；已忽略第二个定义 [F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\sample-odr-review-fix3b-vs\C1_odr_observation_objects.vcxproj]
+  C1_odr_observation_objects.vcxproj -> F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\sample-odr-review-fix3b-vs\C1_odr_observation_objects.dir\Release\C1_odr_observation_objects.lib
+  Building Custom Rule F:/CPPTrain/LearnCPP/Engineering_Study/exercises/C1_odr/CMakeLists.txt
+  main.cpp
+  C1_odr_observation_single.vcxproj -> F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\sample-odr-review-fix3b-vs\Release\C1_odr_observation_single.exe
+  Building Custom Rule F:/CPPTrain/LearnCPP/Engineering_Study/exercises/C1_odr/CMakeLists.txt
+  caller_a.cpp
+  caller_b.cpp
+  lesson.cpp
+  正在生成代码...
+  C1_odr_reference_impl.vcxproj -> F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\sample-odr-review-fix3b-vs\Release\C1_odr_reference_impl.lib
+  Building Custom Rule F:/CPPTrain/LearnCPP/Engineering_Study/exercises/C1_odr/CMakeLists.txt
+  reference_check.cpp
+  C1_odr_reference.vcxproj -> F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\sample-odr-review-fix3b-vs\Release\C1_odr_reference.exe
+  Building Custom Rule F:/CPPTrain/LearnCPP/Engineering_Study/exercises/C1_odr/CMakeLists.txt
+  main.cpp
+  caller_a.cpp
+  caller_b.cpp
+  正在生成代码...
+  C1_odr_reference_inline.vcxproj -> F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\sample-odr-review-fix3b-vs\Release\C1_odr_reference_inline.exe
+  Building Custom Rule F:/CPPTrain/LearnCPP/Engineering_Study/exercises/C1_odr/CMakeLists.txt
+  caller_a.cpp
+  caller_b.cpp
+  lesson.cpp
+  正在生成代码...
+  C1_odr_student_impl.vcxproj -> F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\sample-odr-review-fix3b-vs\Release\C1_odr_student_impl.lib
+  Building Custom Rule F:/CPPTrain/LearnCPP/Engineering_Study/exercises/C1_odr/CMakeLists.txt
+  student_check.cpp
+  C1_odr_student.vcxproj -> F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\sample-odr-review-fix3b-vs\Release\C1_odr_student.exe
+  Building Custom Rule F:/CPPTrain/LearnCPP/Engineering_Study/exercises/C1_odr/CMakeLists.txt

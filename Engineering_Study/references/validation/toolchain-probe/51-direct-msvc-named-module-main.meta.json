@@ -1,0 +1,9 @@
+﻿{
+    "name":  "51-direct-msvc-named-module-main",
+    "command":  "call \"D:\\VisualStudio2026\\Installed\\Common7\\Tools\\VsDevCmd.bat\" -arch=x64 \u003enul \u0026\u0026 pushd \"F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\toolchain-probe\\out\\direct\\named\" \u0026\u0026 cl /nologo /std:c++latest /EHsc /c \"F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\toolchain-probe\\msvc-named-modules\\src\\main.cpp\" /reference arithmetic=arithmetic.ifc /Fomain.obj",
+    "exit_code":  0,
+    "timed_out":  false,
+    "timeout_seconds":  45,
+    "stdout":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\51-direct-msvc-named-module-main.stdout.txt",
+    "stderr":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\51-direct-msvc-named-module-main.stderr.txt"
+}

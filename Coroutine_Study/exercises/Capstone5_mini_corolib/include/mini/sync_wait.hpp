@@ -25,9 +25,12 @@
 #include <exception>
 #include <mutex>
 #include <optional>
+#include <stdexcept>
 #include <tuple>
 #include <utility>
 #include <variant>
+
+#include "mini/task.hpp"
 
 namespace mini {
 
@@ -78,15 +81,15 @@ public:
 
 // 同步等待一个返回 task<T> 的协程
 //
-// 注意：本函数是【骨架占位】，永远返回 std::nullopt。
+// 注意：本函数是【骨架占位】，当前会抛 logic_error 明确失败。
 // 必做任务要求实现完整 sender → optional<tuple> 转换：
 //   - 构造 sync_wait_receiver<T>；
 //   - connect(s, receiver) -> op_state；
 //   - start(op_state)；
 //   - state.wait() 阻塞至 done，按 set_value/set_error/set_stopped 分流。
-// 在补全前，依赖本 sync_wait 的测试都会以 nullopt 短路；这是预期。
+// 在补全前，依赖本 sync_wait 的测试必须明确失败，不能以 nullopt 冒充 stopped。
 template <typename T>
-inline std::optional<std::tuple<T>> sync_wait(/* sender or awaitable */ auto&& s) {
+[[noreturn]] inline std::optional<std::tuple<T>> sync_wait(/* sender */ auto&& s) {
     // TODO[必做]: 完整实现：
     //   - 构造 sync_wait_receiver<T>；
     //   - connect(s, receiver) -> op_state；
@@ -98,9 +101,20 @@ inline std::optional<std::tuple<T>> sync_wait(/* sender or awaitable */ auto&& s
     //     auto inner = [&]() -> task<T> { co_return co_await std::move(s); }();
     //     直接 inner.h_.resume()，等 done 后取 promise.result_。
     //
-    // 本骨架返回空 optional 占位 —— 必做任务要求替换为完整 sender→optional<tuple> 转换。
+    // 本骨架明确失败，避免把 stopped/nullopt 伪装成通过。
     (void)s;
-    return std::nullopt;
+    throw std::logic_error{"TODO: implement mini::sync_wait"};
+}
+
+template <typename T>
+inline std::optional<std::tuple<T>> sync_wait(task<T>&& t) {
+    (void)t;
+    throw std::logic_error{"TODO: implement mini::sync_wait(task<T>)"};
+}
+
+inline std::optional<std::tuple<>> sync_wait(task<void>&& t) {
+    (void)t;
+    throw std::logic_error{"TODO: implement mini::sync_wait(task<void>)"};
 }
 
 } // namespace mini

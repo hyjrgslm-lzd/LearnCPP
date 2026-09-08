@@ -1,0 +1,9 @@
+﻿{
+    "name":  "61-direct-msvc-import-std-main",
+    "command":  "call \"D:\\VisualStudio2026\\Installed\\Common7\\Tools\\VsDevCmd.bat\" -arch=x64 \u003enul \u0026\u0026 pushd \"F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\toolchain-probe\\out\\direct\\std\" \u0026\u0026 cl /nologo /std:c++latest /EHsc /c \"F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\toolchain-probe\\msvc-import-std\\src\\main.cpp\" /reference std=std.ifc /Fomain.obj",
+    "exit_code":  0,
+    "timed_out":  false,
+    "timeout_seconds":  45,
+    "stdout":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\61-direct-msvc-import-std-main.stdout.txt",
+    "stderr":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\61-direct-msvc-import-std-main.stderr.txt"
+}

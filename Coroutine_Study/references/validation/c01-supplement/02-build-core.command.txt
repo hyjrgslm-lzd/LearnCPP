@@ -1,0 +1,2 @@
+D:\cmake\install\bin\cmake.exe --build Coroutine_Study/exercises/build/c01-supplement --config Release
+timeout_seconds=600

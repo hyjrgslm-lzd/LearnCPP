@@ -1,0 +1,15 @@
+Test project F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/foundations-independent-review/g1-contract-controlled-failure-r1/Release-constant42-build
+    Start 2: G1_diagnostics_student
+1/1 Test #2: G1_diagnostics_student ...........***Failed    0.23 sec
+check failed: parser must accept every two-digit ASCII input from 00 to 99
+
+
+0% tests passed, 1 tests failed out of 1
+
+Label Time Summary:
+student    =   0.23 sec*proc (1 test)
+
+Total Test time (real) =   0.24 sec
+
+The following tests FAILED:
+	  2 - G1_diagnostics_student (Failed)                   student

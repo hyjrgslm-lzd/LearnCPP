@@ -1,0 +1,19 @@
+
+
+
+
+
+int lesson_value()
+{
+    return 42;
+}
+
+
+
+
+
+int observed_a()
+{
+    return lesson_value();
+}
+

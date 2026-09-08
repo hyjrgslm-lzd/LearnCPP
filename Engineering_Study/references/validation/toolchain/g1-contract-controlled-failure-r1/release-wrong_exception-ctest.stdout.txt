@@ -1,0 +1,15 @@
+Test project F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/foundations-independent-review/g1-contract-controlled-failure-r1/Release-wrong_exception-build
+    Start 2: G1_diagnostics_student
+1/1 Test #2: G1_diagnostics_student ...........***Failed    0.25 sec
+check failed: parser must reject invalid input with invalid_argument, not another exception
+
+
+0% tests passed, 1 tests failed out of 1
+
+Label Time Summary:
+student    =   0.25 sec*proc (1 test)
+
+Total Test time (real) =   0.26 sec
+
+The following tests FAILED:
+	  2 - G1_diagnostics_student (Failed)                   student

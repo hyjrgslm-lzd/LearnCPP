@@ -1,0 +1,3 @@
+@PACKAGE_INIT@
+include("${CMAKE_CURRENT_LIST_DIR}/F2ProviderTargets.cmake")
+check_required_components(F2Provider)

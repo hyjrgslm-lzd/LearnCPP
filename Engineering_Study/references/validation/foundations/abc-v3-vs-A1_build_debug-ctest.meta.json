@@ -1,0 +1,10 @@
+{
+  "name": "vs-A1_build_debug-ctest",
+  "exit_code": 0,
+  "expected": [
+    0
+  ],
+  "ok": true,
+  "timeout": false,
+  "command": "call \"D:\\VisualStudio2026\\Installed\\Common7\\Tools\\VsDevCmd.bat\" -arch=x64 >nul && \"D:\\cmake\\install\\bin\\ctest.exe\" --test-dir \"F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\abc-v3-vs-A1_build_debug\" -C Release --output-on-failure"
+}

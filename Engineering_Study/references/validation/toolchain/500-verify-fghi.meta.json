@@ -1,0 +1,9 @@
+{
+  "command": "cmd.exe /d /c Engineering_Study\\references\\validation\\toolchain\\500-verify-fghi.command.cmd > Engineering_Study\\references\\validation\\toolchain\\500-verify-fghi.stdout.txt 2> Engineering_Study\\references\\validation\\toolchain\\500-verify-fghi.stderr.txt",
+  "exit_code": 0,
+  "execution_surface": "require_escalated normal local process",
+  "writes": ["Engineering_Study/exercises/build/verify-*", "Engineering_Study/references/validation/toolchain/500-verify-fghi.stdout.txt", "Engineering_Study/references/validation/toolchain/500-verify-fghi.stderr.txt"],
+  "claims": ["F1/F2/G1/H1/I1 reference checks pass", "G2 baseline/PCH/LTO all build and pass CTest", "H1 module package consumer passes", "I1 CMake import std passes"],
+  "expected_warnings": ["CMake 4.2 experimental import std developer warning"],
+  "unexpected_warnings": []
+}

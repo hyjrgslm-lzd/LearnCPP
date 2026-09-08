@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "output": "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain\\g2-r4-subset-smoke",
+  "summary": [
+    {
+      "variant": "baseline",
+      "scenario": "noop",
+      "valid_samples": 1,
+      "requested_samples": 1,
+      "samples_ms": [
+        93.93489989452064
+      ],
+      "median_ms": 93.93489989452064,
+      "min_ms": 93.93489989452064,
+      "max_ms": 93.93489989452064,
+      "range_ms": 0.0
+    }
+  ]
+}

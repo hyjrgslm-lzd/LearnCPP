@@ -1,0 +1,16 @@
+{
+  "command": [
+    "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain\\g1-r6-fuzz-after-safe-starter\\bin\\g1_bad_parser_fuzz.exe",
+    "-runs=16",
+    "-seed=20260908",
+    "-max_total_time=5",
+    "-artifact_prefix=F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain\\g1-r6-fuzz-after-safe-starter\\artifacts/",
+    "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain\\g1-r6-fuzz-after-safe-starter\\input-corpus-bad"
+  ],
+  "exit_code": 3221225477,
+  "timeout": false,
+  "process_seconds": 4.078816500026733,
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL"
+}

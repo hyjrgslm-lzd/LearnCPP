@@ -1,0 +1,19 @@
+Test project F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/binary-package-author-ninja/D1-Release
+    Start 1: D1_static_reference
+1/5 Test #1: D1_static_reference ..............   Passed    0.03 sec
+    Start 2: D1_shared_reference
+2/5 Test #2: D1_shared_reference ..............   Passed    0.03 sec
+    Start 3: D1_loader_reference
+3/5 Test #3: D1_loader_reference ..............   Passed    0.03 sec
+    Start 4: D1_negative_missing_dll
+4/5 Test #4: D1_negative_missing_dll ..........   Passed    0.17 sec
+    Start 5: D1_negative_missing_export
+5/5 Test #5: D1_negative_missing_export .......   Passed    0.11 sec
+
+100% tests passed, 0 tests failed out of 5
+
+Label Time Summary:
+negative     =   0.28 sec*proc (2 tests)
+reference    =   0.09 sec*proc (3 tests)
+
+Total Test time (real) =   0.38 sec

@@ -1,0 +1,1 @@
+﻿call "D:\VisualStudio2026\Installed\Common7\Tools\VsDevCmd.bat" -arch=x64 >nul && pushd "F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\toolchain-probe\out\direct\std" && link /nologo main.obj std.obj /out:import_std_direct.exe

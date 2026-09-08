@@ -1,0 +1,2 @@
+'"F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\toolchain-probe\out\msvc-import-std\import_std_probe.exe"' is not recognized as an internal or external command,
+operable program or batch file.

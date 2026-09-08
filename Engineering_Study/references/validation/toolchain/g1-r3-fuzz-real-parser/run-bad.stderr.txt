@@ -1,0 +1,7 @@
+INFO: Running with entropic power schedule (0xFF, 100).
+INFO: Seed: 20260908
+INFO: Loaded 1 modules   (49 inline 8-bit counters): 49 [00007FF7852D6588, 00007FF7852D65B9), 
+INFO: Loaded 1 PC tables (49 PCs): 49 [00007FF7852B8E20,00007FF7852B9130), 
+INFO:        6 files found in F:\CPPTrain\LearnCPP\Engineering_Study\references\validation\toolchain\g1-r3-fuzz-real-parser\input-corpus
+INFO: -max_len is not provided; libFuzzer will not generate inputs larger than 4096 bytes
+==110216== ERROR: libFuzzer: deadly signal

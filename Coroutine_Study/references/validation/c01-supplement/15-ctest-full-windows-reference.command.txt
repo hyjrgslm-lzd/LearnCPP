@@ -1,0 +1,2 @@
+D:\cmake\install\bin\ctest.exe --test-dir Coroutine_Study/exercises/build/full-windows -C Release -R Capstone4_rpc_framework_reference|mini_reference_as_awaitable --output-on-failure
+timeout_seconds=120

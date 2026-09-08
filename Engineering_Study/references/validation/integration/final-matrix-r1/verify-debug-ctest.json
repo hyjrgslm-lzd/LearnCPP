@@ -1,0 +1,18 @@
+{
+  "command": [
+    "D:\\cmake\\install\\bin\\ctest.EXE",
+    "--test-dir",
+    "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\final-matrix-r1\\verify-debug",
+    "-C",
+    "Debug",
+    "--output-on-failure",
+    "--output-junit",
+    "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\integration\\final-matrix-r1\\verify-debug.xml"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 46.42366989981383,
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

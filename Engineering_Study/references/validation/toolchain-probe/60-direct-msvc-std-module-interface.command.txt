@@ -1,0 +1,1 @@
+﻿call "D:\VisualStudio2026\Installed\Common7\Tools\VsDevCmd.bat" -arch=x64 >nul && pushd "F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\toolchain-probe\out\direct\std" && cl /nologo /std:c++latest /EHsc /c /interface "D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\modules\std.ixx" /ifcOutput std.ifc /Fostd.obj

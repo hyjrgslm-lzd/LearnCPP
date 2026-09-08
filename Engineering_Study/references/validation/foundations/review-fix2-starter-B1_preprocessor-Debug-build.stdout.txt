@@ -1,0 +1,10 @@
+[1/9] Building CXX object CMakeFiles\B1_preprocessor_reference_impl.dir\src\reference\macro_b.cpp.obj
+[2/9] Building CXX object CMakeFiles\B1_preprocessor_reference_impl.dir\src\reference\macro_a.cpp.obj
+[3/9] Building CXX object CMakeFiles\B1_preprocessor_student_impl.dir\src\student\student_value.cpp.obj
+[4/9] Linking CXX static library B1_preprocessor_reference_impl.lib
+[5/9] Linking CXX static library B1_preprocessor_student_impl.lib
+[6/9] Building CXX object CMakeFiles\B1_preprocessor_reference.dir\checks\reference_check.cpp.obj
+[7/9] Building CXX object CMakeFiles\B1_preprocessor_student.dir\checks\student_check.cpp.obj
+[8/9] Linking CXX executable B1_preprocessor_reference.exe
+[9/9] Linking CXX executable B1_preprocessor_student.exe
+

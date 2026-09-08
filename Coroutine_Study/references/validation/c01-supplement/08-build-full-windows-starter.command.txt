@@ -1,0 +1,2 @@
+D:\cmake\install\bin\cmake.exe --build Coroutine_Study/exercises/build/full-windows --config Release --target mini_as_awaitable_test
+timeout_seconds=180

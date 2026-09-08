@@ -57,6 +57,10 @@ if(H2_STDEXEC_TASK_REFERENCE_SUPPORTED)
     target_link_libraries(H2_std_execution_task_reference PRIVATE stdexec::stdexec)
     if(BUILD_TESTING)
         add_test(NAME H2_std_execution_task_reference COMMAND H2_std_execution_task_reference)
+        set_tests_properties(H2_std_execution_task_reference PROPERTIES
+            LABELS "reference;stdexec"
+            TIMEOUT 30
+        )
     endif()
 else()
     message(STATUS

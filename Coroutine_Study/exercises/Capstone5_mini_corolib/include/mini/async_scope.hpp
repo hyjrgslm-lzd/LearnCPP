@@ -21,6 +21,7 @@
 #include <coroutine>
 #include <memory>
 #include <mutex>
+#include <stdexcept>
 #include <vector>
 
 namespace mini {
@@ -42,9 +43,11 @@ public:
     //   - completed 时 on_done()；
     //   - 把 op_state 放入 states_。
     template <typename Sender>
-    void spawn(Sender&&) {
-        ++in_flight_;
-        // TODO: connect/start 并存 unique_ptr<op_state_base>
+    void spawn(Sender&& sender) {
+        (void)sender;
+        // TODO: connect/start 并存 unique_ptr<op_state_base>。
+        // 未完成时在修改 in_flight_ 前失败，避免析构 wait_empty() 永久等待。
+        throw std::logic_error{"TODO: implement mini::async_scope::spawn"};
     }
 
     void on_done() {

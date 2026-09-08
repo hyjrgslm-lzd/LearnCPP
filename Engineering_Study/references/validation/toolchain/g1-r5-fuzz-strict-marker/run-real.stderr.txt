@@ -1,0 +1,12 @@
+INFO: Running with entropic power schedule (0xFF, 100).
+INFO: Seed: 20260908
+INFO: Loaded 1 modules   (56 inline 8-bit counters): 56 [00007FF6770C6588, 00007FF6770C65C0), 
+INFO: Loaded 1 PC tables (56 PCs): 56 [00007FF6770A8E20,00007FF6770A91A0), 
+INFO:        4 files found in F:\CPPTrain\LearnCPP\Engineering_Study\references\validation\toolchain\g1-r5-fuzz-strict-marker\input-corpus-real
+INFO: -max_len is not provided; libFuzzer will not generate inputs larger than 4096 bytes
+INFO: seed corpus: files: 4 min: 1b max: 2b total: 7b rss: 27Mb
+#5	INITED cov: 26 ft: 27 corp: 3/5b exec/s: 0 rss: 28Mb
+#12	NEW    cov: 29 ft: 32 corp: 4/7b lim: 4 exec/s: 0 rss: 28Mb L: 2/2 MS: 2 ChangeBit-ChangeByte-
+#16	NEW    cov: 30 ft: 34 corp: 5/9b lim: 4 exec/s: 0 rss: 28Mb L: 2/2 MS: 4 InsertByte-ChangeASCIIInt-EraseBytes-ChangeByte-
+#16	DONE   cov: 30 ft: 34 corp: 5/9b lim: 4 exec/s: 0 rss: 28Mb
+Done 16 runs in 0 second(s)

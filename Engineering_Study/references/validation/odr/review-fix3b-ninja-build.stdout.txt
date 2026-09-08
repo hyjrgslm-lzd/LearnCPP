@@ -1,0 +1,20 @@
+[1/20] Building CXX object CMakeFiles\C1_odr_reference_impl.dir\reference\split_definition\lesson.cpp.obj
+[2/20] Building CXX object CMakeFiles\C1_odr_reference_inline.dir\reference\inline_definition\caller_a.cpp.obj
+[3/20] Building CXX object CMakeFiles\C1_odr_student_impl.dir\support\student_callers\caller_a.cpp.obj
+[4/20] Building CXX object CMakeFiles\C1_odr_reference_inline.dir\reference\inline_definition\caller_b.cpp.obj
+[5/20] Building CXX object CMakeFiles\C1_odr_reference_impl.dir\reference\split_definition\caller_a.cpp.obj
+[6/20] Building CXX object CMakeFiles\C1_odr_student_impl.dir\support\student_callers\caller_b.cpp.obj
+[7/20] Building CXX object CMakeFiles\C1_odr_reference_impl.dir\reference\split_definition\caller_b.cpp.obj
+[8/20] Building CXX object CMakeFiles\C1_odr_student_impl.dir\src\student\lesson.cpp.obj
+[9/20] Building CXX object CMakeFiles\C1_odr_observation_objects.dir\observation\two_tu_symbols\observer_b.cpp.obj
+[10/20] Building CXX object CMakeFiles\C1_odr_observation_objects.dir\observation\two_tu_symbols\observer_a.cpp.obj
+[11/20] Linking CXX static library C1_odr_reference_impl.lib
+[12/20] Linking CXX static library C1_odr_student_impl.lib
+[13/20] Building CXX object CMakeFiles\C1_odr_reference_inline.dir\reference\inline_definition\main.cpp.obj
+[14/20] Building CXX object CMakeFiles\C1_odr_observation_single.dir\observation\single_consumer\main.cpp.obj
+[15/20] Building CXX object CMakeFiles\C1_odr_reference.dir\checks\reference_check.cpp.obj
+[16/20] Building CXX object CMakeFiles\C1_odr_student.dir\checks\student_check.cpp.obj
+[17/20] Linking CXX executable C1_odr_reference_inline.exe
+[18/20] Linking CXX executable C1_odr_observation_single.exe
+[19/20] Linking CXX executable C1_odr_reference.exe
+[20/20] Linking CXX executable C1_odr_student.exe

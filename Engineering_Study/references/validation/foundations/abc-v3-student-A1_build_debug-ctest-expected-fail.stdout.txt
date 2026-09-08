@@ -1,0 +1,15 @@
+Test project F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/abc-v3-ninja-student-A1_build_debug
+    Start 3: A1_build_debug_student
+1/1 Test #3: A1_build_debug_student ...........Exit code 0xc0000409***Exception:   4.76 sec
+
+
+0% tests passed, 1 tests failed out of 1
+
+Label Time Summary:
+student    =   4.76 sec*proc (1 test)
+
+Total Test time (real) =   4.76 sec
+
+The following tests FAILED:
+	  3 - A1_build_debug_student (Exit code 0xc0000409)     student
+

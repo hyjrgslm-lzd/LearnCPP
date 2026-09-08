@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.28)
+project(C2_archive_negative_missing_definition LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+add_library(C2_archive_negative_missing_definition_objects OBJECT caller.cpp)
+add_executable(C2_archive_negative_missing_definition_link $<TARGET_OBJECTS:C2_archive_negative_missing_definition_objects> main.cpp)

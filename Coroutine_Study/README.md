@@ -12,6 +12,8 @@
 
 正文代码块突出正在讲的机制；练习目录中的完整文件提供头文件、入口函数和可运行示例。`main.cpp` 是供你观察、修改和补全的 Starter，`solution.cpp` 是完整 Reference。项目采用各自的 `src/` 与 `reference/` 目录。你可以先运行已有日志建立直觉，再完成 TODO，并用参考实现核对自己的推理。
 
+通用构建、链接、ABI 与工具能力的背景见 [C01 工程课程](../Engineering_Study/README.md)，按当前练习需要选择阅读，不要求先学完整门工程课。[覆盖登记](references/coverage.md)与[质量报告](references/quality-report.md)记录37单元的入口、验证范围和非作者审查；Student 的 TODO 状态与 Reference 通过状态分别看待。
+
 本机编译与运行方式见 [构建指南](exercises/BUILD_GUIDE.md)。首次使用可在 `Coroutine_Study/exercises` 执行：
 
 ```powershell

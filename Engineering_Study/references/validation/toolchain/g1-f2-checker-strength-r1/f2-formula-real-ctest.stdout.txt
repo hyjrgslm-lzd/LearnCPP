@@ -1,0 +1,10 @@
+Test project F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/g1-f2-checker-strength-r1-work/f2-formula-mutant-build
+    Start 2: F2_dependencies_student
+1/1 Test #2: F2_dependencies_student ..........   Passed    0.26 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Label Time Summary:
+student    =   0.26 sec*proc (1 test)
+
+Total Test time (real) =   0.27 sec

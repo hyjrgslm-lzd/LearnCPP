@@ -1,0 +1,11 @@
+{
+  "command": [
+    "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\g2-formal-r1-work\\sample-04-baseline-noop\\build\\G2_build_cost_baseline.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.28232460003346205,
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

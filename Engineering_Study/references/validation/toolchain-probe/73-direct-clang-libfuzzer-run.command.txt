@@ -1,0 +1,1 @@
+﻿call "D:\VisualStudio2026\Installed\Common7\Tools\VsDevCmd.bat" -arch=x64 >nul && "F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\toolchain-probe\out\direct\clang\fuzz_probe.exe" -runs=8

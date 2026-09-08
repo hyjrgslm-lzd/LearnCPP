@@ -1,0 +1,79 @@
+Test project F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/final-matrix-r1/verify-core
+      Start  1: engineering_check_success
+ 1/34 Test  #1: engineering_check_success .....................   Passed    0.26 sec
+      Start  2: engineering_check_failure
+ 2/34 Test  #2: engineering_check_failure .....................   Passed    0.08 sec
+      Start  3: A1_build_debug_reference
+ 3/34 Test  #3: A1_build_debug_reference ......................   Passed    0.26 sec
+      Start  4: A1_build_debug_observation
+ 4/34 Test  #4: A1_build_debug_observation ....................   Passed    0.25 sec
+      Start  5: B1_preprocessor_reference
+ 5/34 Test  #5: B1_preprocessor_reference .....................   Passed    0.23 sec
+      Start  6: B1_preprocessor_preprocess
+ 6/34 Test  #6: B1_preprocessor_preprocess ....................   Passed    0.19 sec
+      Start  7: C1_odr_reference
+ 7/34 Test  #7: C1_odr_reference ..............................   Passed    0.24 sec
+      Start  8: C1_odr_reference_inline
+ 8/34 Test  #8: C1_odr_reference_inline .......................   Passed    0.23 sec
+      Start  9: C1_odr_observation_single
+ 9/34 Test  #9: C1_odr_observation_single .....................   Passed    0.25 sec
+      Start 10: C1_odr_observation_preprocess
+10/34 Test #10: C1_odr_observation_preprocess .................   Passed    0.10 sec
+      Start 11: C1_odr_observation_symbols
+11/34 Test #11: C1_odr_observation_symbols ....................   Passed    0.78 sec
+      Start 12: C1_odr_negative_duplicate_header_definition
+12/34 Test #12: C1_odr_negative_duplicate_header_definition ...   Passed    5.70 sec
+      Start 13: C1_odr_negative_include_guard_same_failure
+13/34 Test #13: C1_odr_negative_include_guard_same_failure ....   Passed    5.30 sec
+      Start 14: C2_archive_reference
+14/34 Test #14: C2_archive_reference ..........................   Passed    0.26 sec
+      Start 15: C2_archive_symbols
+15/34 Test #15: C2_archive_symbols ............................   Passed    0.74 sec
+      Start 16: C2_archive_negative_missing_definition
+16/34 Test #16: C2_archive_negative_missing_definition ........   Passed    5.06 sec
+      Start 17: C2_archive_negative_direct_objects
+17/34 Test #17: C2_archive_negative_direct_objects ............   Passed    4.97 sec
+      Start 18: D1_static_reference
+18/34 Test #18: D1_static_reference ...........................   Passed    0.25 sec
+      Start 19: D1_shared_reference
+19/34 Test #19: D1_shared_reference ...........................   Passed    0.25 sec
+      Start 20: D1_loader_reference
+20/34 Test #20: D1_loader_reference ...........................   Passed    0.25 sec
+      Start 21: D1_negative_missing_dll
+21/34 Test #21: D1_negative_missing_dll .......................   Passed    0.08 sec
+      Start 22: D1_negative_missing_export
+22/34 Test #22: D1_negative_missing_export ....................   Passed    0.07 sec
+      Start 23: E1_abi_reference_static
+23/34 Test #23: E1_abi_reference_static .......................   Passed    0.24 sec
+      Start 24: E1_abi_reference_shared
+24/34 Test #24: E1_abi_reference_shared .......................   Passed    0.25 sec
+      Start 25: E1_abi_bad_alloc
+25/34 Test #25: E1_abi_bad_alloc ..............................   Passed    0.24 sec
+      Start 26: E1_abi_c_consumer
+26/34 Test #26: E1_abi_c_consumer .............................   Passed    0.25 sec
+      Start 27: E1_abi_observation_layout
+27/34 Test #27: E1_abi_observation_layout .....................   Passed    0.25 sec
+      Start 28: F1_cmake_targets_reference
+28/34 Test #28: F1_cmake_targets_reference ....................   Passed    0.26 sec
+      Start 29: F2_dependencies_reference
+29/34 Test #29: F2_dependencies_reference .....................   Passed    0.26 sec
+      Start 30: G1_diagnostics_reference
+30/34 Test #30: G1_diagnostics_reference ......................   Passed    0.25 sec
+      Start 31: G2_build_cost_baseline
+31/34 Test #31: G2_build_cost_baseline ........................   Passed    0.26 sec
+      Start 32: G2_build_cost_pch
+32/34 Test #32: G2_build_cost_pch .............................   Passed    0.25 sec
+      Start 33: G2_build_cost_lto
+33/34 Test #33: G2_build_cost_lto .............................   Passed    0.25 sec
+      Start 34: J1_package_roundtrip
+34/34 Test #34: J1_package_roundtrip ..........................   Passed   16.52 sec
+
+100% tests passed, 0 tests failed out of 34
+
+Label Time Summary:
+negative       =  21.19 sec*proc (6 tests)
+observation    =   2.55 sec*proc (7 tests)
+reference      =  20.99 sec*proc (19 tests)
+tooling        =   0.33 sec*proc (2 tests)
+
+Total Test time (real) =  45.18 sec

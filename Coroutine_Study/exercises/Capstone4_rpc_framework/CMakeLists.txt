@@ -45,4 +45,8 @@ if(COROUTINE_STUDY_BUILD_REFERENCE)
     )
     target_link_libraries(Capstone4_rpc_framework_reference PRIVATE asio::asio)
     add_test(NAME Capstone4_rpc_framework_reference COMMAND Capstone4_rpc_framework_reference)
+    set_tests_properties(Capstone4_rpc_framework_reference PROPERTIES
+        LABELS "reference;rpc"
+        TIMEOUT 60
+    )
 endif()

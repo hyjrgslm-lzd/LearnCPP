@@ -1,0 +1,68 @@
+CMake Error at Engineering_Study/exercises/C1_odr/cmake/expect_build_failure.cmake:70 (message):
+  negative case failed, but not as a duplicate-symbol link failure for
+  lesson_value:
+
+  [1/4] Scanning
+  F:\CPPTrain\LearnCPP\Engineering_Study\exercises\C1_odr\review_variants\negative_missing_symbol\main.cpp
+  for CXX dependencies
+
+  [2/4] Generating CXX dyndep file
+  CMakeFiles\C1_odr_review_negative_missing_symbol_link.dir\CXX.dd
+
+  [3/4] Building CXX object
+  CMakeFiles\C1_odr_review_negative_missing_symbol_link.dir\main.cpp.obj
+
+  [4/4] Linking CXX executable C1_odr_review_negative_missing_symbol_link.exe
+
+  FAILED: [code=4294967295] C1_odr_review_negative_missing_symbol_link.exe
+
+  C:\WINDOWS\system32\cmd.exe /C "cd .  && D:\cmake\install\bin\cmake.exe -E
+  vs_link_exe --msvc-ver=1951
+  --intdir=CMakeFiles\C1_odr_review_negative_missing_symbol_link.dir
+  --rc="C:\PROGRA~2\Windows Kits\10\bin\100261~1.0\x64\rc.exe"
+  --mt="C:\PROGRA~2\Windows Kits\10\bin\100261~1.0\x64\mt.exe" --manifests --
+  D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\link.exe
+  /nologo
+  CMakeFiles\C1_odr_review_negative_missing_symbol_objects.dir\caller_a.cpp.obj
+  CMakeFiles\C1_odr_review_negative_missing_symbol_objects.dir\caller_b.cpp.obj
+  CMakeFiles\C1_odr_review_negative_missing_symbol_link.dir\main.cpp.obj
+  /out:C1_odr_review_negative_missing_symbol_link.exe
+  /implib:C1_odr_review_negative_missing_symbol_link.lib
+  /pdb:C1_odr_review_negative_missing_symbol_link.pdb /version:0.0
+  /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib
+  gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib
+  comdlg32.lib advapi32.lib && cd ."
+
+  LINK Pass 1: command
+  "D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\link.exe
+  /nologo
+  CMakeFiles\C1_odr_review_negative_missing_symbol_objects.dir\caller_a.cpp.obj
+  CMakeFiles\C1_odr_review_negative_missing_symbol_objects.dir\caller_b.cpp.obj
+  CMakeFiles\C1_odr_review_negative_missing_symbol_link.dir\main.cpp.obj
+  /out:C1_odr_review_negative_missing_symbol_link.exe
+  /implib:C1_odr_review_negative_missing_symbol_link.lib
+  /pdb:C1_odr_review_negative_missing_symbol_link.pdb /version:0.0
+  /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib
+  gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib
+  comdlg32.lib advapi32.lib /MANIFEST
+  /MANIFESTFILE:CMakeFiles\C1_odr_review_negative_missing_symbol_link.dir/intermediate.manifest
+  CMakeFiles\C1_odr_review_negative_missing_symbol_link.dir/manifest.res"
+  failed (exit code 1120) with the following output:
+
+  caller_a.cpp.obj : error LNK2019: 无法解析的外部符号 "int __cdecl
+  lesson_value(void)" (?lesson_value@@YAHXZ)，函数 "int __cdecl
+  call_lesson_from_a(void)" (?call_lesson_from_a@@YAHXZ)
+  中引用了该符号
+
+  caller_b.cpp.obj : error LNK2001: 无法解析的外部符号 "int __cdecl
+  lesson_value(void)" (?lesson_value@@YAHXZ)
+
+  C1_odr_review_negative_missing_symbol_link.exe : fatal error LNK1120: 1
+  个无法解析的外部命令
+
+  ninja: build stopped: subcommand failed.
+
+
+
+
+

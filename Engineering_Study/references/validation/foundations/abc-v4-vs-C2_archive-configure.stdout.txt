@@ -1,0 +1,10 @@
+-- The CXX compiler identification is MSVC 19.51.36256.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (3.1s)
+-- Generating done (0.1s)
+-- Build files have been written to: F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/abc-v4-vs-C2_archive
+

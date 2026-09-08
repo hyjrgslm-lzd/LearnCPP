@@ -1,0 +1,16 @@
+Test project F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/review-fix2-starter-B1_preprocessor-Release
+    Start 3: B1_preprocessor_student
+1/1 Test #3: B1_preprocessor_student ..........***Failed    0.24 sec
+check failed: student configured_value must use the requested preprocessing-safe value
+
+
+0% tests passed, 1 tests failed out of 1
+
+Label Time Summary:
+student    =   0.24 sec*proc (1 test)
+
+Total Test time (real) =   0.25 sec
+
+The following tests FAILED:
+	  3 - B1_preprocessor_student (Failed)                  student
+

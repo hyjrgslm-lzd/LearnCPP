@@ -1,0 +1,95 @@
+Test project F:/CPPTrain/LearnCPP/Coroutine_Study/exercises/build/c01-supplement
+      Start  1: P1_future_basics_reference
+ 1/43 Test  #1: P1_future_basics_reference ....................   Passed    0.04 sec
+      Start  2: P2_generator_basics_reference
+ 2/43 Test  #2: P2_generator_basics_reference .................   Passed    0.03 sec
+      Start  3: A1_first_generator_reference
+ 3/43 Test  #3: A1_first_generator_reference ..................   Passed    0.03 sec
+      Start  4: A2_co_return_lazy_task_reference
+ 4/43 Test  #4: A2_co_return_lazy_task_reference ..............   Passed    0.03 sec
+      Start  5: A3_co_await_future_reference
+ 5/43 Test  #5: A3_co_await_future_reference ..................   Passed    0.03 sec
+      Start  6: B1_recursive_generator_reference
+ 6/43 Test  #6: B1_recursive_generator_reference ..............   Passed    0.03 sec
+      Start  7: B2_task_sequential_reference
+ 7/43 Test  #7: B2_task_sequential_reference ..................   Passed    0.03 sec
+      Start  8: B3_callback_to_awaiter_reference
+ 8/43 Test  #8: B3_callback_to_awaiter_reference ..............   Passed    0.07 sec
+      Start  9: C1_stop_token_cancel_reference
+ 9/43 Test  #9: C1_stop_token_cancel_reference ................   Passed    0.15 sec
+      Start 10: C2_when_all_when_any_reference
+10/43 Test #10: C2_when_all_when_any_reference ................   Passed    0.48 sec
+      Start 11: C3_async_scope_reference
+11/43 Test #11: C3_async_scope_reference ......................   Passed    0.10 sec
+      Start 12: Capstone1_async_crawler_reference
+12/43 Test #12: Capstone1_async_crawler_reference .............   Passed    0.26 sec
+      Start 13: D1_promise_8_hooks_reference
+13/43 Test #13: D1_promise_8_hooks_reference ..................   Passed    0.03 sec
+      Start 14: D2_eager_vs_lazy_reference
+14/43 Test #14: D2_eager_vs_lazy_reference ....................   Passed    0.03 sec
+      Start 15: D3_final_suspend_symmetric_reference
+15/43 Test #15: D3_final_suspend_symmetric_reference ..........   Passed    0.03 sec
+      Start 16: E1_co_await_lookup_reference
+16/43 Test #16: E1_co_await_lookup_reference ..................   Passed    0.03 sec
+      Start 17: E2_await_suspend_three_reference
+17/43 Test #17: E2_await_suspend_three_reference ..............   Passed    0.03 sec
+      Start 18: E3_trivial_awaitable_reference
+18/43 Test #18: E3_trivial_awaitable_reference ................   Passed    0.03 sec
+      Start 19: F1_frame_layout_reference
+19/43 Test #19: F1_frame_layout_reference .....................   Passed    0.03 sec
+      Start 20: F2_promise_allocator_reference
+20/43 Test #20: F2_promise_allocator_reference ................   Passed    0.03 sec
+      Start 21: F3_halo_diagnose_reference
+21/43 Test #21: F3_halo_diagnose_reference ....................   Passed    0.03 sec
+      Start 22: G1_shared_task_reference
+22/43 Test #22: G1_shared_task_reference ......................   Passed    0.03 sec
+      Start 23: G2_when_all_impl_reference
+23/43 Test #23: G2_when_all_impl_reference ....................   Passed    0.03 sec
+      Start 24: G3_sync_wait_impl_reference
+24/43 Test #24: G3_sync_wait_impl_reference ...................   Passed    0.03 sec
+      Start 25: runtime_lazy_task_reference_test
+25/43 Test #25: runtime_lazy_task_reference_test ..............   Passed    0.03 sec
+      Start 26: runtime_sync_wait_reference_test
+26/43 Test #26: runtime_sync_wait_reference_test ..............   Passed    0.03 sec
+      Start 27: runtime_run_loop_reference_test
+27/43 Test #27: runtime_run_loop_reference_test ...............   Passed    0.03 sec
+      Start 28: runtime_task_scope_reference_test
+28/43 Test #28: runtime_task_scope_reference_test .............   Passed    0.05 sec
+      Start 29: runtime_when_any_cancel_join_reference_test
+29/43 Test #29: runtime_when_any_cancel_join_reference_test ...   Passed    0.11 sec
+      Start 30: runtime_sync_completion_reference_test
+30/43 Test #30: runtime_sync_completion_reference_test ........   Passed    0.03 sec
+      Start 31: runtime_allocator_reference_test
+31/43 Test #31: runtime_allocator_reference_test ..............   Passed    0.03 sec
+      Start 32: J1_eight_pitfalls_reference
+32/43 Test #32: J1_eight_pitfalls_reference ...................   Passed    0.03 sec
+      Start 33: J2_cross_compiler_abi_reference
+33/43 Test #33: J2_cross_compiler_abi_reference ...............   Passed    0.03 sec
+      Start 34: J3_coroutine_tracing_reference
+34/43 Test #34: J3_coroutine_tracing_reference ................   Passed    0.03 sec
+      Start 35: mini_reference_task
+35/43 Test #35: mini_reference_task ...........................   Passed    0.03 sec
+      Start 36: mini_reference_generator
+36/43 Test #36: mini_reference_generator ......................   Passed    0.02 sec
+      Start 37: mini_reference_sync_wait
+37/43 Test #37: mini_reference_sync_wait ......................   Passed    0.03 sec
+      Start 38: mini_reference_when_all
+38/43 Test #38: mini_reference_when_all .......................   Passed    0.03 sec
+      Start 39: mini_reference_when_any
+39/43 Test #39: mini_reference_when_any .......................   Passed    0.03 sec
+      Start 40: mini_reference_run_loop
+40/43 Test #40: mini_reference_run_loop .......................   Passed    0.03 sec
+      Start 41: mini_reference_task_scope
+41/43 Test #41: mini_reference_task_scope .....................   Passed    0.03 sec
+      Start 42: mini_reference_stop
+42/43 Test #42: mini_reference_stop ...........................   Passed    0.03 sec
+      Start 43: mini_reference_shared_task
+43/43 Test #43: mini_reference_shared_task ....................   Passed    0.06 sec
+
+100% tests passed, 0 tests failed out of 43
+
+Label Time Summary:
+reference    =   2.29 sec*proc (43 tests)
+runtime      =   0.30 sec*proc (7 tests)
+
+Total Test time (real) =   2.46 sec

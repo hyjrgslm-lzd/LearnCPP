@@ -1,0 +1,22 @@
+适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
+
+  1>Checking Build System
+  task_test.cpp
+  mini_task_test.vcxproj -> F:\CPPTrain\LearnCPP\Coroutine_Study\exercises\build\c01-supplement-starters\Capstone5_mini_corolib\Release\mini_task_test.exe
+适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
+
+  mini_generator_test.vcxproj -> F:\CPPTrain\LearnCPP\Coroutine_Study\exercises\build\c01-supplement-starters\Capstone5_mini_corolib\Release\mini_generator_test.exe
+适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
+
+  sync_wait_test.cpp
+  mini_sync_wait_test.vcxproj -> F:\CPPTrain\LearnCPP\Coroutine_Study\exercises\build\c01-supplement-starters\Capstone5_mini_corolib\Release\mini_sync_wait_test.exe
+适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
+
+  mini_when_all_test.vcxproj -> F:\CPPTrain\LearnCPP\Coroutine_Study\exercises\build\c01-supplement-starters\Capstone5_mini_corolib\Release\mini_when_all_test.exe
+适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
+
+  mini_scope_test.vcxproj -> F:\CPPTrain\LearnCPP\Coroutine_Study\exercises\build\c01-supplement-starters\Capstone5_mini_corolib\Release\mini_scope_test.exe
+适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
+
+  正在扫描源以查找模块依赖项...
+  J1_eight_pitfalls.vcxproj -> F:\CPPTrain\LearnCPP\Coroutine_Study\exercises\build\c01-supplement-starters\J1_eight_pitfalls\Release\J1_eight_pitfalls.exe

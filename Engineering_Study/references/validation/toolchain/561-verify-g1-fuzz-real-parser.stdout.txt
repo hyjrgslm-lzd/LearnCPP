@@ -1,0 +1,2 @@
+=== real parser fuzz harness finite run ===
+=== bad always-42 parser must be rejected ===

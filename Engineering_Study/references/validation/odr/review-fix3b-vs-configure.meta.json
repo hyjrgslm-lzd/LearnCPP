@@ -1,0 +1,9 @@
+{
+  "name": "vs-configure",
+  "exit_code": 0,
+  "expected": [
+    0
+  ],
+  "ok": true,
+  "command": "call \"D:\\VisualStudio2026\\Installed\\Common7\\Tools\\VsDevCmd.bat\" -arch=x64 >nul && \"D:\\cmake\\install\\bin\\cmake.exe\" -S \"F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\C1_odr\" -B \"F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\sample-odr-review-fix3b-vs\" -G \"Visual Studio 18 2026\" -A x64 -DCMAKE_TRY_COMPILE_TARGET_TYPE=STATIC_LIBRARY -DENGINEERING_STUDY_TEST_STUDENTS=ON"
+}

@@ -20,7 +20,9 @@
 #include <coroutine>
 #include <exception>
 #include <optional>
+#include <stdexcept>
 #include <tuple>
+#include <type_traits>
 #include <utility>
 
 namespace mini {
@@ -48,10 +50,9 @@ struct when_all_two {
             caller_ = caller;
             // TODO
         }
-        auto await_resume() {
+        std::tuple<int, int> await_resume() {
             // TODO[必做]: 返回 std::tuple<A_result, B_result>
-            return std::make_tuple(*std::get<0>(results_),
-                                   *std::get<1>(results_));
+            throw std::logic_error{"TODO: implement mini::when_all"};
         }
     };
 
@@ -64,8 +65,9 @@ auto when_all(Awaitables&&... aws) {
     //            fail-delay：全部分支完成后再传播首个异常。
     //            建议先写死 N=2 跑通，再用 std::index_sequence 泛化。
     static_assert(sizeof...(Awaitables) >= 2, "when_all needs >= 2 args");
-    // 占位返回，仅保证模板可实例化
-    return std::tuple<>{};
+    static_assert(sizeof...(Awaitables) == 2,
+                  "starter skeleton only has the two-argument exercise shape");
+    return when_all_two<std::decay_t<Awaitables>...>{std::forward<Awaitables>(aws)...};
 }
 
 } // namespace mini

@@ -241,6 +241,8 @@ receiver.set_value/error/stopped
 
 这里的 operation state 放在 shared state 里，保证 sender 完成前仍存活。awaiter 析构时若协程被放弃，会把 phase 标为 abandoned，避免稍后恢复已销毁的 caller。
 
+当前 `task<T>` 没有独立 stopped 完成通道，所以 Reference 把 stdexec `set_stopped` 映射为 `await_resume()` 中的 `runtime_error`。这和 P2300 `sync_wait(sender)` 的 stopped 返回空 optional 不是同一层契约；若以后要让 core task 支持 stopped，需要同时扩展 task、sync_wait、Reference、正文和测试。
+
 本章保留 H 模块的 sender 桥接入口，但不要把它写成 Capstone5 core 的必需依赖。核心 9 个 reference target 应该在没有 stdexec 时照常构建。
 
 ## 十一、建议实现顺序
@@ -259,6 +261,8 @@ receiver.set_value/error/stopped
 
 每层的验证都已有 reference test。学生 starter 可以先补最小 int 版本，再泛化到模板。不要新增第三方依赖；核心路径只用标准库。
 
+学生 `tests/` 会实际调用 `include/mini` 中的当前实现。未完成时应明确失败，而不是打印 skip 后返回 0；补完后同一检查覆盖 value、void、error、scope 非空 drain 和组合错误传播；可选 stdexec 桥接检查 stopped 映射异常。默认核心验证不注册学生 starter；要检查 TODO，用 `student` preset 或 `COROUTINE_STUDY_TEST_STARTERS=ON`。Reference 测试用 `mini_reference_` 前缀和 `reference` 标签独立筛选，不能用 starter 的预期失败冒充答案通过。
+
 ## 十二、Reference 验收入口
 
 核心 reference target：
@@ -269,7 +273,7 @@ cmake --build Coroutine_Study/exercises/build/verify-core --config Release --tar
 ctest --test-dir Coroutine_Study/exercises/build/verify-core -C Release -R "mini_reference_"
 ```
 
-stdexec 桥接 target 只在 `stdexec::stdexec` 可用时构建。它验证 value、error、stopped、同步完成和 abandoned waiter 窗口。缺少 stdexec 时，核心 mini 库验收不应失败。
+stdexec 桥接 target 只在 `stdexec::stdexec` 可用时构建。它验证 value、error、stopped 映射异常、同步完成和 abandoned waiter 窗口。缺少 stdexec 时，核心 mini 库验收不应失败。
 
 ## 本项目完成后应能说清楚
 

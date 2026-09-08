@@ -1,0 +1,9 @@
+﻿{
+    "name":  "113-vs-ninja-plain-run",
+    "command":  "call \"D:\\VisualStudio2026\\Installed\\Common7\\Tools\\VsDevCmd.bat\" -arch=x64 \u003enul \u0026\u0026 \"F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\toolchain-probe\\out\\vs-ninja-plain\\cmake_plain_probe.exe\"",
+    "exit_code":  1,
+    "timed_out":  false,
+    "timeout_seconds":  180,
+    "stdout":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\113-vs-ninja-plain-run.stdout.txt",
+    "stderr":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\113-vs-ninja-plain-run.stderr.txt"
+}

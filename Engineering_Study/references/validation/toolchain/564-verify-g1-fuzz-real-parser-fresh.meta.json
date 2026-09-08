@@ -1,0 +1,8 @@
+{
+  "command": "cmd.exe /d /c Engineering_Study\\references\\validation\\toolchain\\564-verify-g1-fuzz-real-parser-fresh.command.cmd > Engineering_Study\\references\\validation\\toolchain\\564-verify-g1-fuzz-real-parser-fresh.stdout.txt 2> Engineering_Study\\references\\validation\\toolchain\\564-verify-g1-fuzz-real-parser-fresh.stderr.txt",
+  "exit_code": 0,
+  "execution_surface": "require_escalated normal local process",
+  "output": "Engineering_Study/references/validation/toolchain/g1-r3-fuzz-real-parser",
+  "claims": ["fuzz_parse.cpp links the real reference parser", "fixed seed corpus contains valid 42, valid 00, invalid 4x, and invalid one-digit input", "real parser passes finite libFuzzer run with -runs=16 -seed=20260908 -max_total_time=5", "representative bad parser that always returns 42 is rejected with nonzero process exit"],
+  "notes": ["libFuzzer may add generated inputs to the copied output corpus; the repository source corpus remains fixed", "-fsanitize=fuzzer,address hit MSVC STL annotate_string link mismatch in earlier 560a evidence, so this formal fuzzer check uses -fsanitize=fuzzer while ASan is verified separately"]
+}

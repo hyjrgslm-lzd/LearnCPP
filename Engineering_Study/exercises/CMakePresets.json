@@ -1,0 +1,50 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {"major": 3, "minor": 28, "patch": 0},
+  "configurePresets": [
+    {
+      "name": "base",
+      "hidden": true,
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "BUILD_TESTING": "ON",
+        "ENGINEERING_STUDY_BUILD_REFERENCE": "ON",
+        "ENGINEERING_STUDY_TEST_STUDENTS": "OFF",
+        "ENGINEERING_STUDY_ENABLE_MODULES": "OFF",
+        "ENGINEERING_STUDY_ENABLE_IMPORT_STD": "OFF",
+        "ENGINEERING_STUDY_ENABLE_UNSAFE_DEMOS": "OFF"
+      }
+    },
+    {"name": "verify-core", "inherits": "base", "displayName": "Offline core and independent references"},
+    {"name": "verify-debug", "inherits": "base", "cacheVariables": {"CMAKE_BUILD_TYPE": "Debug"}},
+    {
+      "name": "student", "inherits": "base",
+      "cacheVariables": {"ENGINEERING_STUDY_BUILD_REFERENCE": "OFF", "ENGINEERING_STUDY_TEST_STUDENTS": "ON"}
+    },
+    {
+      "name": "modules-msvc-ninja", "inherits": "base", "generator": "Ninja",
+      "condition": {"type": "equals", "lhs": "${hostSystemName}", "rhs": "Windows"},
+      "cacheVariables": {"CMAKE_C_COMPILER": "cl", "CMAKE_CXX_COMPILER": "cl", "ENGINEERING_STUDY_ENABLE_MODULES": "ON"}
+    },
+    {
+      "name": "import-std-msvc-ninja", "inherits": "modules-msvc-ninja",
+      "cacheVariables": {"ENGINEERING_STUDY_ENABLE_IMPORT_STD": "ON"}
+    }
+  ],
+  "buildPresets": [
+    {"name": "verify-core", "configurePreset": "verify-core", "configuration": "Release"},
+    {"name": "verify-debug", "configurePreset": "verify-debug", "configuration": "Debug"},
+    {"name": "student", "configurePreset": "student", "configuration": "Release"},
+    {"name": "modules-msvc-ninja", "configurePreset": "modules-msvc-ninja"},
+    {"name": "import-std-msvc-ninja", "configurePreset": "import-std-msvc-ninja"}
+  ],
+  "testPresets": [
+    {"name": "verify-core", "configurePreset": "verify-core", "configuration": "Release", "output": {"outputOnFailure": true}},
+    {"name": "verify-debug", "configurePreset": "verify-debug", "configuration": "Debug", "output": {"outputOnFailure": true}},
+    {"name": "student", "configurePreset": "student", "configuration": "Release", "output": {"outputOnFailure": true}},
+    {"name": "modules-msvc-ninja", "configurePreset": "modules-msvc-ninja", "output": {"outputOnFailure": true}},
+    {"name": "import-std-msvc-ninja", "configurePreset": "import-std-msvc-ninja", "output": {"outputOnFailure": true}}
+  ]
+}

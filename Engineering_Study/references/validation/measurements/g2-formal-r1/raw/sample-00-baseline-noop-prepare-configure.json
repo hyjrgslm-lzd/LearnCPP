@@ -1,0 +1,19 @@
+{
+  "command": [
+    "D:\\cmake\\install\\bin\\cmake.exe",
+    "-S",
+    "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\g2-formal-r1-work\\sample-00-baseline-noop\\source\\Engineering_Study\\exercises\\G2_build_cost",
+    "-B",
+    "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\g2-formal-r1-work\\sample-00-baseline-noop\\build",
+    "-G",
+    "Ninja",
+    "-DCMAKE_MAKE_PROGRAM=D:\\VisualStudio2026\\Installed\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja\\ninja.exe",
+    "-DCMAKE_BUILD_TYPE=Release"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 1.9120067998301238,
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

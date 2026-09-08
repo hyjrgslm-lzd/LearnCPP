@@ -1,0 +1,9 @@
+﻿{
+    "name":  "260-vs-cmake-version",
+    "command_file":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\260-vs-cmake-version.command.cmd",
+    "exit_code":  0,
+    "timed_out":  false,
+    "timeout_seconds":  120,
+    "stdout":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\260-vs-cmake-version.stdout.txt",
+    "stderr":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\260-vs-cmake-version.stderr.txt"
+}

@@ -1,0 +1,6 @@
+{
+  "command": "cmd.exe /d /c Engineering_Study\\references\\validation\\toolchain\\550-verify-g2-driver-selftest.command.cmd > Engineering_Study\\references\\validation\\toolchain\\550-verify-g2-driver-selftest.stdout.txt 2> Engineering_Study\\references\\validation\\toolchain\\550-verify-g2-driver-selftest.stderr.txt",
+  "exit_code": 0,
+  "execution_surface": "require_escalated normal local process",
+  "claims": ["driver rejects existing output directory", "driver records failed commands as FAIL", "driver records timeout as FAIL and timeout=true"]
+}

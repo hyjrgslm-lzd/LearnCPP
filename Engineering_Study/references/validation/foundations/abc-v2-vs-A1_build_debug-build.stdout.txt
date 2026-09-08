@@ -1,0 +1,20 @@
+适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
+
+  1>Checking Build System
+  Building Custom Rule F:/CPPTrain/LearnCPP/Engineering_Study/exercises/A1_build_debug/CMakeLists.txt
+  observation_check.cpp
+  A1_build_debug_observation.vcxproj -> F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\abc-v2-vs-A1_build_debug\Release\A1_build_debug_observation.exe
+  Building Custom Rule F:/CPPTrain/LearnCPP/Engineering_Study/exercises/A1_build_debug/CMakeLists.txt
+  debug_story.cpp
+  A1_build_debug_reference_impl.vcxproj -> F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\abc-v2-vs-A1_build_debug\Release\A1_build_debug_reference_impl.lib
+  Building Custom Rule F:/CPPTrain/LearnCPP/Engineering_Study/exercises/A1_build_debug/CMakeLists.txt
+  reference_check.cpp
+  A1_build_debug_reference.vcxproj -> F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\abc-v2-vs-A1_build_debug\Release\A1_build_debug_reference.exe
+  Building Custom Rule F:/CPPTrain/LearnCPP/Engineering_Study/exercises/A1_build_debug/CMakeLists.txt
+  debug_story.cpp
+  A1_build_debug_student_impl.vcxproj -> F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\abc-v2-vs-A1_build_debug\Release\A1_build_debug_student_impl.lib
+  Building Custom Rule F:/CPPTrain/LearnCPP/Engineering_Study/exercises/A1_build_debug/CMakeLists.txt
+  student_check.cpp
+  A1_build_debug_student.vcxproj -> F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\abc-v2-vs-A1_build_debug\Release\A1_build_debug_student.exe
+  Building Custom Rule F:/CPPTrain/LearnCPP/Engineering_Study/exercises/A1_build_debug/CMakeLists.txt
+

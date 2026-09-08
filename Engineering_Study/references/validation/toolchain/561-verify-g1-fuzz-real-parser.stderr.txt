@@ -1,0 +1,29 @@
+lld-link: warning: clang_rt.ubsan_standalone-x86_64.lib(sanitizer_win.cpp.obj): locally defined symbol imported: _errno (defined in libucrt.lib(errno.obj)) [LNK4217]
+lld-link: warning: clang_rt.ubsan_standalone-x86_64.lib(sanitizer_win.cpp.obj): locally defined symbol imported: qsort (defined in libucrt.lib(qsort.obj)) [LNK4217]
+lld-link: warning: clang_rt.ubsan_standalone-x86_64.lib(sanitizer_symbolizer.cpp.obj): locally defined symbol imported: _errno (defined in libucrt.lib(errno.obj)) [LNK4217]
+lld-link: warning: clang_rt.ubsan_standalone-x86_64.lib(sanitizer_symbolizer_win.cpp.obj): locally defined symbol imported: wcslen (defined in libucrt.lib(strnlen.obj)) [LNK4217]
+lld-link: warning: clang_rt.ubsan_standalone-x86_64.lib(sanitizer_symbolizer_win.cpp.obj): locally defined symbol imported: wcscat_s (defined in libucrt.lib(wcscat_s.obj)) [LNK4217]
+INFO: Running with entropic power schedule (0xFF, 100).
+INFO: Seed: 20260908
+INFO: Loaded 1 modules   (55 inline 8-bit counters): 55 [00007FF725D16588, 00007FF725D165BF), 
+INFO: Loaded 1 PC tables (55 PCs): 55 [00007FF725CF8E00,00007FF725CF9170), 
+INFO:        4 files found in F:\CPPTrain\LearnCPP\Engineering_Study\exercises\G1_diagnostics\fuzz_corpus
+INFO: -max_len is not provided; libFuzzer will not generate inputs larger than 4096 bytes
+INFO: seed corpus: files: 4 min: 1b max: 2b total: 7b rss: 27Mb
+#5	INITED cov: 26 ft: 27 corp: 3/5b exec/s: 0 rss: 28Mb
+#12	NEW    cov: 29 ft: 32 corp: 4/7b lim: 4 exec/s: 0 rss: 28Mb L: 2/2 MS: 2 ChangeBit-ChangeByte-
+#16	NEW    cov: 30 ft: 34 corp: 5/9b lim: 4 exec/s: 0 rss: 28Mb L: 2/2 MS: 4 InsertByte-ChangeASCIIInt-EraseBytes-ChangeByte-
+#16	DONE   cov: 30 ft: 34 corp: 5/9b lim: 4 exec/s: 0 rss: 28Mb
+Done 16 runs in 0 second(s)
+lld-link: warning: clang_rt.ubsan_standalone-x86_64.lib(sanitizer_win.cpp.obj): locally defined symbol imported: _errno (defined in libucrt.lib(errno.obj)) [LNK4217]
+lld-link: warning: clang_rt.ubsan_standalone-x86_64.lib(sanitizer_win.cpp.obj): locally defined symbol imported: qsort (defined in libucrt.lib(qsort.obj)) [LNK4217]
+lld-link: warning: clang_rt.ubsan_standalone-x86_64.lib(sanitizer_symbolizer.cpp.obj): locally defined symbol imported: _errno (defined in libucrt.lib(errno.obj)) [LNK4217]
+lld-link: warning: clang_rt.ubsan_standalone-x86_64.lib(sanitizer_symbolizer_win.cpp.obj): locally defined symbol imported: wcslen (defined in libucrt.lib(strnlen.obj)) [LNK4217]
+lld-link: warning: clang_rt.ubsan_standalone-x86_64.lib(sanitizer_symbolizer_win.cpp.obj): locally defined symbol imported: wcscat_s (defined in libucrt.lib(wcscat_s.obj)) [LNK4217]
+INFO: Running with entropic power schedule (0xFF, 100).
+INFO: Seed: 20260908
+INFO: Loaded 1 modules   (49 inline 8-bit counters): 49 [00007FF751E06588, 00007FF751E065B9), 
+INFO: Loaded 1 PC tables (49 PCs): 49 [00007FF751DE8E00,00007FF751DE9110), 
+INFO:        6 files found in F:\CPPTrain\LearnCPP\Engineering_Study\exercises\G1_diagnostics\fuzz_corpus
+INFO: -max_len is not provided; libFuzzer will not generate inputs larger than 4096 bytes
+==100404== ERROR: libFuzzer: deadly signal

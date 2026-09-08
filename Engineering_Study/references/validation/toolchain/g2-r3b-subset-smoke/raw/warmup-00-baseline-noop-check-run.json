@@ -1,0 +1,11 @@
+{
+  "command": [
+    "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\g2-r3b-subset-smoke-work\\warmup-00-baseline-noop\\build\\G2_build_cost_baseline.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.2812365998979658,
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

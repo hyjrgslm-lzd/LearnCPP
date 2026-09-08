@@ -1,0 +1,31 @@
+Test project F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/abc-v3-ninja-C2_archive
+    Start 1: C2_archive_reference
+1/4 Test #1: C2_archive_reference .....................   Passed    0.25 sec
+    Start 2: C2_archive_symbols
+2/4 Test #2: C2_archive_symbols .......................***Failed    0.13 sec
+CMake Error at F:/CPPTrain/LearnCPP/Engineering_Study/exercises/C2_archive/cmake/check_symbols.cmake:37 (message):
+  expected one used_member object for config Release, found 0 matching config
+  out of 2:
+  F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/abc-v3-ninja-C2_archive/CMakeFiles/C2_archive_library.dir/src/reference/unused_member.cpp.obj;F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/abc-v3-ninja-C2_archive/CMakeFiles/C2_archive_library.dir/src/reference/used_member.cpp.obj
+Call Stack (most recent call first):
+  F:/CPPTrain/LearnCPP/Engineering_Study/exercises/C2_archive/cmake/check_symbols.cmake:39 (_select_config)
+
+
+
+    Start 3: C2_archive_negative_missing_definition
+3/4 Test #3: C2_archive_negative_missing_definition ...   Passed    2.27 sec
+    Start 4: C2_archive_negative_direct_objects
+4/4 Test #4: C2_archive_negative_direct_objects .......   Passed    2.39 sec
+
+75% tests passed, 1 tests failed out of 4
+
+Label Time Summary:
+negative       =   4.66 sec*proc (2 tests)
+observation    =   0.13 sec*proc (1 test)
+reference      =   0.25 sec*proc (1 test)
+
+Total Test time (real) =   5.05 sec
+
+The following tests FAILED:
+	  2 - C2_archive_symbols (Failed)                       observation
+

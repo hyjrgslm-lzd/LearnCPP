@@ -1,0 +1,16 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\g1-f2-checker-strength-r1-work\\f2-formula-mutant-build",
+    "-R",
+    "^F2_dependencies_student$",
+    "--output-on-failure"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.355847799917683,
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

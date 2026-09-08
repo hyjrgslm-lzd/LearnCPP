@@ -1,0 +1,1 @@
+﻿call "D:\VisualStudio2026\Installed\Common7\Tools\VsDevCmd.bat" -arch=x64 >nul && pushd "F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\toolchain-probe\out\direct\named" && link /nologo main.obj arithmetic.obj /out:named_direct.exe

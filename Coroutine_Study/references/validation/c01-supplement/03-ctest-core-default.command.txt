@@ -1,0 +1,2 @@
+D:\cmake\install\bin\ctest.exe --test-dir Coroutine_Study/exercises/build/c01-supplement -C Release --output-on-failure
+timeout_seconds=300

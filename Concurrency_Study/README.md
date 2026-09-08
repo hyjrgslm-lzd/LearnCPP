@@ -18,6 +18,8 @@ ctest --preset verify-core
 
 核心路径不下载第三方依赖。完整环境、单题构建、C++26 探测、基准运行和平台限制见[构建指南](exercises/BUILD_GUIDE.md)。
 
+通用构建、编译链接、符号、ABI 和工具能力探测的连续讲解见 [C01 工程课程](../Engineering_Study/README.md)。本课在全局版图中主讲 C08：共享状态、同步、发布和安全回收；现有 CPU 性能、SIMD 与 NUMA 实验同时是 C13 的可复用输入，不代表完整 C13 已交付。各专项先修和未验证边界仍以本课[覆盖表](references/coverage.md)与[质量报告](references/quality-report.md)为准。
+
 ## 学习路线
 
 | 顺序 | 阅读入口 | 逐步解决的问题 |

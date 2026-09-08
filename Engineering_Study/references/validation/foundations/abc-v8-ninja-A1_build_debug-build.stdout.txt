@@ -1,0 +1,11 @@
+[1/10] Building CXX object CMakeFiles\A1_build_debug_reference_impl.dir\src\reference\debug_story.cpp.obj
+[2/10] Building CXX object CMakeFiles\A1_build_debug_student_impl.dir\src\student\debug_story.cpp.obj
+[3/10] Linking CXX static library A1_build_debug_reference_impl.lib
+[4/10] Linking CXX static library A1_build_debug_student_impl.lib
+[5/10] Building CXX object CMakeFiles\A1_build_debug_reference.dir\checks\reference_check.cpp.obj
+[6/10] Building CXX object CMakeFiles\A1_build_debug_observation.dir\checks\observation_check.cpp.obj
+[7/10] Building CXX object CMakeFiles\A1_build_debug_student.dir\checks\student_check.cpp.obj
+[8/10] Linking CXX executable A1_build_debug_reference.exe
+[9/10] Linking CXX executable A1_build_debug_student.exe
+[10/10] Linking CXX executable A1_build_debug_observation.exe
+

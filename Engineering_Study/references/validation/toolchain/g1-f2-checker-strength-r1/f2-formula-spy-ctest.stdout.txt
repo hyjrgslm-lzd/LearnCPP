@@ -1,0 +1,15 @@
+Test project F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/g1-f2-checker-strength-r1-work/f2-formula-mutant-build
+    Start 3: F2_dependencies_student_delegation
+1/1 Test #3: F2_dependencies_student_delegation ...***Failed    0.25 sec
+check failed: student must return the provider result without recomputing or adjusting it
+
+
+0% tests passed, 1 tests failed out of 1
+
+Label Time Summary:
+student    =   0.25 sec*proc (1 test)
+
+Total Test time (real) =   0.26 sec
+
+The following tests FAILED:
+	  3 - F2_dependencies_student_delegation (Failed)       student

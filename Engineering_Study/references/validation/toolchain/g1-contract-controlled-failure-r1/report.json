@@ -1,0 +1,85 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "config": "Debug",
+      "case": "good",
+      "passed": true,
+      "configure_exit": 0,
+      "build_exit": 0,
+      "ctest_exit": 0,
+      "ctest_timeout": false,
+      "expect": "pass"
+    },
+    {
+      "config": "Debug",
+      "case": "constant42",
+      "passed": true,
+      "configure_exit": 0,
+      "build_exit": 0,
+      "ctest_exit": 8,
+      "ctest_timeout": false,
+      "expect": "controlled_fail"
+    },
+    {
+      "config": "Debug",
+      "case": "special42",
+      "passed": true,
+      "configure_exit": 0,
+      "build_exit": 0,
+      "ctest_exit": 8,
+      "ctest_timeout": false,
+      "expect": "controlled_fail"
+    },
+    {
+      "config": "Debug",
+      "case": "wrong_exception",
+      "passed": true,
+      "configure_exit": 0,
+      "build_exit": 0,
+      "ctest_exit": 8,
+      "ctest_timeout": false,
+      "expect": "controlled_fail"
+    },
+    {
+      "config": "Release",
+      "case": "good",
+      "passed": true,
+      "configure_exit": 0,
+      "build_exit": 0,
+      "ctest_exit": 0,
+      "ctest_timeout": false,
+      "expect": "pass"
+    },
+    {
+      "config": "Release",
+      "case": "constant42",
+      "passed": true,
+      "configure_exit": 0,
+      "build_exit": 0,
+      "ctest_exit": 8,
+      "ctest_timeout": false,
+      "expect": "controlled_fail"
+    },
+    {
+      "config": "Release",
+      "case": "special42",
+      "passed": true,
+      "configure_exit": 0,
+      "build_exit": 0,
+      "ctest_exit": 8,
+      "ctest_timeout": false,
+      "expect": "controlled_fail"
+    },
+    {
+      "config": "Release",
+      "case": "wrong_exception",
+      "passed": true,
+      "configure_exit": 0,
+      "build_exit": 0,
+      "ctest_exit": 8,
+      "ctest_timeout": false,
+      "expect": "controlled_fail"
+    }
+  ]
+}

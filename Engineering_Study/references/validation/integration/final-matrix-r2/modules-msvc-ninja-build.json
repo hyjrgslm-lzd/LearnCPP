@@ -1,0 +1,18 @@
+{
+  "command": [
+    "D:\\cmake\\install\\bin\\cmake.EXE",
+    "--build",
+    "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\final-matrix-r2\\modules-msvc-ninja",
+    "--config",
+    "Release",
+    "--parallel",
+    "4",
+    "--verbose"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 15.993779300013557,
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

@@ -1,0 +1,19 @@
+{
+  "command": [
+    "D:\\cmake\\install\\bin\\cmake.EXE",
+    "--preset",
+    "verify-core",
+    "-B",
+    "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\final-matrix-r3\\verify-core",
+    "-G",
+    "Visual Studio 18 2026",
+    "-A",
+    "x64"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 10.19641360011883,
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

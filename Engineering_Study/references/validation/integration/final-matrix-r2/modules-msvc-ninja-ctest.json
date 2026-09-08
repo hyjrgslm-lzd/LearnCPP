@@ -1,0 +1,18 @@
+{
+  "command": [
+    "D:\\cmake\\install\\bin\\ctest.EXE",
+    "--test-dir",
+    "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\final-matrix-r2\\modules-msvc-ninja",
+    "-C",
+    "Release",
+    "--output-on-failure",
+    "--output-junit",
+    "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\integration\\final-matrix-r2\\modules-msvc-ninja.xml"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 37.93834950006567,
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

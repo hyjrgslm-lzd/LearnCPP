@@ -1,0 +1,1 @@
+call "D:\VisualStudio2026\Installed\Common7\Tools\VsDevCmd.bat" -arch=x64 >nul && "D:\cmake\install\bin\cmake.exe" --build "F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\sample-odr-review-fix3-ninja" --config Release

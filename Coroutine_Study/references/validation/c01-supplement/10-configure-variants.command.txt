@@ -1,0 +1,2 @@
+D:\cmake\install\bin\cmake.exe -S Coroutine_Study/exercises/build/c01-supplement/validation_variants -B Coroutine_Study/exercises/build/c01-supplement/validation_variants/build -G "Visual Studio 18 2026"
+timeout_seconds=120

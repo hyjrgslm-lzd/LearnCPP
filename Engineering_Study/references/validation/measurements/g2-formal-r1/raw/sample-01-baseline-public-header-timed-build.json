@@ -1,0 +1,18 @@
+{
+  "command": [
+    "D:\\cmake\\install\\bin\\cmake.exe",
+    "--build",
+    "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\g2-formal-r1-work\\sample-01-baseline-public-header\\build",
+    "--target",
+    "G2_build_cost_baseline",
+    "--parallel",
+    "1",
+    "--verbose"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 3.5679498999379575,
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

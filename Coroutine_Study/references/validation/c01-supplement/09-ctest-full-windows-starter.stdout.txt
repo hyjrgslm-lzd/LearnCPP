@@ -1,0 +1,16 @@
+Test project F:/CPPTrain/LearnCPP/Coroutine_Study/exercises/build/full-windows
+    Start 48: mini_as_awaitable_test
+1/1 Test #48: mini_as_awaitable_test ...........***Failed    0.29 sec
+[test] mini::as_awaitable bridge
+starter check failed: TODO: implement mini::sync_wait(task<T>)
+
+
+0% tests passed, 1 tests failed out of 1
+
+Label Time Summary:
+starter    =   0.29 sec*proc (1 test)
+
+Total Test time (real) =   0.33 sec
+
+The following tests FAILED:
+	 48 - mini_as_awaitable_test (Failed)                   starter

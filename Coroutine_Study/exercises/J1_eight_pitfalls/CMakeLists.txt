@@ -12,8 +12,12 @@ coroutine_study_add_exercise(
     REFERENCE_SOURCES solution.cpp
 )
 
-if(BUILD_TESTING AND NOT COROUTINE_STUDY_ENABLE_UNSAFE_DEMOS)
+if(BUILD_TESTING AND COROUTINE_STUDY_TEST_STARTERS AND NOT COROUTINE_STUDY_ENABLE_UNSAFE_DEMOS)
     add_test(NAME J1_eight_pitfalls COMMAND J1_eight_pitfalls)
+    set_tests_properties(J1_eight_pitfalls PROPERTIES
+        LABELS "starter"
+        TIMEOUT 30
+    )
 endif()
 
 foreach(target J1_eight_pitfalls J1_eight_pitfalls_reference)

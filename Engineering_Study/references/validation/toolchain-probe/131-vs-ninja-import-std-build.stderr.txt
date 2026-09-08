@@ -1,0 +1,2 @@
+﻿Error: not a CMake build directory (missing CMakeCache.txt)
+

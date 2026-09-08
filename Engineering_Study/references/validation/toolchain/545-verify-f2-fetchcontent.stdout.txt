@@ -1,0 +1,31 @@
+-- The CXX compiler identification is MSVC 19.51.36256.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (1.4s)
+-- Generating done (0.1s)
+-- Build files have been written to: F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-f2-fetchcontent-fresh
+Change Dir: 'F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-f2-fetchcontent-fresh'
+
+Run Build Command(s): D:\VisualStudio2026\Installed\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja\ninja.exe -v F2_dependencies_reference
+[1/6] D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\cl.exe -DF2_PROVIDER_VERSION=100 -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\F2_dependencies\provider_fixture\include /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++latest -MD F:\CPPTrain\LearnCPP\Engineering_Study\exercises\F2_dependencies\provider_fixture\src\provider.cpp -nologo -TP -showIncludes -scanDependencies _deps\f2_provider_fixture-build\CMakeFiles\f2_provider_fixture.dir\src\provider.cpp.obj.ddi -Fo_deps\f2_provider_fixture-build\CMakeFiles\f2_provider_fixture.dir\src\provider.cpp.obj
+注意: 包含文件:  F:\CPPTrain\LearnCPP\Engineering_Study\exercises\F2_dependencies\provider_fixture\include\f2_provider/provider.hpp
+[2/6] D:\cmake\install\bin\cmake.exe -E cmake_ninja_dyndep --tdi=_deps\f2_provider_fixture-build\CMakeFiles\f2_provider_fixture.dir\CXXDependInfo.json --lang=CXX --modmapfmt=msvc --dd=_deps\f2_provider_fixture-build\CMakeFiles\f2_provider_fixture.dir\CXX.dd @_deps\f2_provider_fixture-build\CMakeFiles\f2_provider_fixture.dir\CXX.dd.rsp
+[3/6] D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\cl.exe  /nologo /TP -DF2_PROVIDER_VERSION=100 -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\F2_dependencies\provider_fixture\include /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++latest -MD /showIncludes @_deps\f2_provider_fixture-build\CMakeFiles\f2_provider_fixture.dir\src\provider.cpp.obj.modmap /Fo_deps\f2_provider_fixture-build\CMakeFiles\f2_provider_fixture.dir\src\provider.cpp.obj /Fd_deps\f2_provider_fixture-build\CMakeFiles\f2_provider_fixture.dir\f2_provider_fixture.pdb /FS -c F:\CPPTrain\LearnCPP\Engineering_Study\exercises\F2_dependencies\provider_fixture\src\provider.cpp
+[4/6] C:\WINDOWS\system32\cmd.exe /C "cd . && D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\lib.exe /nologo /machine:x64 /out:_deps\f2_provider_fixture-build\f2_provider_fixture.lib _deps\f2_provider_fixture-build\CMakeFiles\f2_provider_fixture.dir\src\provider.cpp.obj && cd ."
+[5/6] D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\cl.exe  /nologo /TP -DF2_PROVIDER_VERSION=100 -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\cmake\..\include -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\F2_dependencies\provider_fixture\include /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++latest -MD /utf-8 /EHsc /W4 /Zc:__cplusplus /Zc:preprocessor /showIncludes /FoCMakeFiles\F2_dependencies_reference.dir\checks\reference_check.cpp.obj /FdCMakeFiles\F2_dependencies_reference.dir\ /FS -c F:\CPPTrain\LearnCPP\Engineering_Study\exercises\F2_dependencies\checks\reference_check.cpp
+[6/6] C:\WINDOWS\system32\cmd.exe /C "cd . && D:\cmake\install\bin\cmake.exe -E vs_link_exe --msvc-ver=1951 --intdir=CMakeFiles\F2_dependencies_reference.dir --rc="C:\PROGRA~2\Windows Kits\10\bin\100261~1.0\x64\rc.exe" --mt="C:\PROGRA~2\Windows Kits\10\bin\100261~1.0\x64\mt.exe" --manifests  -- D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\link.exe /nologo CMakeFiles\F2_dependencies_reference.dir\checks\reference_check.cpp.obj  /out:F2_dependencies_reference.exe /implib:F2_dependencies_reference.lib /pdb:F2_dependencies_reference.pdb /version:0.0 /machine:x64 /INCREMENTAL:NO /subsystem:console  _deps\f2_provider_fixture-build\f2_provider_fixture.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+
+Test project F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-f2-fetchcontent-fresh
+    Start 1: F2_dependencies_reference
+1/1 Test #1: F2_dependencies_reference ........   Passed    0.61 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Label Time Summary:
+reference    =   0.61 sec*proc (1 test)
+
+Total Test time (real) =   0.61 sec
+=== done ===

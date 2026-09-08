@@ -1,0 +1,124 @@
+{
+  "status": "PASS",
+  "presets": [
+    "modules-msvc-ninja",
+    "import-std-msvc-ninja"
+  ],
+  "steps": [
+    {
+      "name": "modules-msvc-ninja-configure",
+      "command": [
+        "D:\\cmake\\install\\bin\\cmake.EXE",
+        "--preset",
+        "modules-msvc-ninja",
+        "-B",
+        "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\final-matrix-r2\\modules-msvc-ninja",
+        "-DCMAKE_MAKE_PROGRAM=D:\\VisualStudio2026\\Installed\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja\\ninja.exe"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 6.209635200211778,
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS"
+    },
+    {
+      "name": "modules-msvc-ninja-build",
+      "command": [
+        "D:\\cmake\\install\\bin\\cmake.EXE",
+        "--build",
+        "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\final-matrix-r2\\modules-msvc-ninja",
+        "--config",
+        "Release",
+        "--parallel",
+        "4",
+        "--verbose"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 15.993779300013557,
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS"
+    },
+    {
+      "name": "modules-msvc-ninja-ctest",
+      "command": [
+        "D:\\cmake\\install\\bin\\ctest.EXE",
+        "--test-dir",
+        "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\final-matrix-r2\\modules-msvc-ninja",
+        "-C",
+        "Release",
+        "--output-on-failure",
+        "--output-junit",
+        "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\integration\\final-matrix-r2\\modules-msvc-ninja.xml"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 37.93834950006567,
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS"
+    },
+    {
+      "name": "import-std-msvc-ninja-configure",
+      "command": [
+        "D:\\cmake\\install\\bin\\cmake.EXE",
+        "--preset",
+        "import-std-msvc-ninja",
+        "-B",
+        "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\final-matrix-r2\\import-std-msvc-ninja",
+        "-DCMAKE_MAKE_PROGRAM=D:\\VisualStudio2026\\Installed\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja\\ninja.exe"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 6.519958300050348,
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS"
+    },
+    {
+      "name": "import-std-msvc-ninja-build",
+      "command": [
+        "D:\\cmake\\install\\bin\\cmake.EXE",
+        "--build",
+        "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\final-matrix-r2\\import-std-msvc-ninja",
+        "--config",
+        "Release",
+        "--parallel",
+        "4",
+        "--verbose"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 15.891325499862432,
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS"
+    },
+    {
+      "name": "import-std-msvc-ninja-ctest",
+      "command": [
+        "D:\\cmake\\install\\bin\\ctest.EXE",
+        "--test-dir",
+        "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\final-matrix-r2\\import-std-msvc-ninja",
+        "-C",
+        "Release",
+        "--output-on-failure",
+        "--output-junit",
+        "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\integration\\final-matrix-r2\\import-std-msvc-ninja.xml"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 31.0723143001087,
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS"
+    }
+  ],
+  "platform": "Windows-11-10.0.26100-SP0",
+  "python": "3.13.11 (main, Jan 14 2026, 19:29:23) [MSC v.1944 64 bit (AMD64)]",
+  "runner_sha256": "1852204e4ddf31b58f74518e09fdda872f3061e6bf665afdc8439034c3b2cf2a",
+  "process_runner_sha256": "77f7aa8a86ff5fa4fdb933c8bb9929d637748a1aa00fb7afb3dac941e47d936b",
+  "build_root": "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\final-matrix-r2"
+}

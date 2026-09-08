@@ -1,0 +1,18 @@
+{
+  "command": [
+    "D:\\cmake\\install\\bin\\cmake.EXE",
+    "--build",
+    "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\final-matrix-r3\\verify-debug",
+    "--config",
+    "Debug",
+    "--parallel",
+    "4",
+    "--verbose"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 16.635210499865934,
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

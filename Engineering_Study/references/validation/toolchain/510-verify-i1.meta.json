@@ -1,0 +1,8 @@
+{
+  "command": "cmd.exe /d /c Engineering_Study\\references\\validation\\toolchain\\510-verify-i1.command.cmd > Engineering_Study\\references\\validation\\toolchain\\510-verify-i1.stdout.txt 2> Engineering_Study\\references\\validation\\toolchain\\510-verify-i1.stderr.txt",
+  "exit_code": 0,
+  "execution_surface": "require_escalated normal local process",
+  "claim": "I1 CMake import std path builds and runs after removing inherited /utf-8 MSVC warning source",
+  "expected_warnings": ["CMake 4.2 experimental import std developer warning"],
+  "unexpected_warnings": []
+}

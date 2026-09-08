@@ -4,6 +4,8 @@
 
 这个项目用纯 Asio `awaitable` 实现最小 RPC reference。`src/` 是学生 starter，只保证 compile-only；`reference/` 是可运行答案。先读 reference，再补 starter；完成状态以真实请求结果和 drain 断言为准。
 
+`Capstone4_rpc_framework` starter 可执行文件运行时返回 2，表示 `src/` 尚未完成；不要把它当作行为验收。`Capstone4_rpc_framework_reference` 才是当前可运行检查，CTest 标签为 `reference;rpc`，超时 60 秒。
+
 ## 项目链路
 
 ```text

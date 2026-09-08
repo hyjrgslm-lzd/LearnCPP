@@ -1,0 +1,9 @@
+﻿{
+    "name":  "200-v2-vs-ninja-version",
+    "command_file":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\200-v2-vs-ninja-version.command.cmd",
+    "exit_code":  0,
+    "timed_out":  false,
+    "timeout_seconds":  180,
+    "stdout":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\200-v2-vs-ninja-version.stdout.txt",
+    "stderr":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\200-v2-vs-ninja-version.stderr.txt"
+}

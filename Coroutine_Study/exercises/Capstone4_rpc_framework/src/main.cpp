@@ -29,5 +29,6 @@ int main() {
     std::cout << "ownership rule: every co_spawn has a completion handler or a stored future.\n";
     std::cout << "drain rule: shutdown waits until client/server in_flight() is zero.\n";
     std::cout << "reference check: build target Capstone4_rpc_framework_reference.\n";
-    return 0;
+    std::cerr << "not implemented: this starter is compile-only until you complete src/.\n";
+    return 2;
 }

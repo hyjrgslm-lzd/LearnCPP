@@ -5,6 +5,7 @@
 //
 // 设计要点（参照模块 H-1）：
 //   - bridge_receiver 的 set_value/error/stopped 保存结果并完成 phase 转换；
+//   - 当前 task<T> 没有独立 stopped 通道，stdexec stopped 在 await_resume 映射为异常。
 //   - operation_state 必须存活到 sender 完成，可放在 awaitable state 中；
 //   - phase 使用 starting/suspended/completed/abandoned 握手；
 //   - start 同步完成时 await_suspend 返回 false；
@@ -23,6 +24,7 @@
 #include <coroutine>
 #include <exception>
 #include <optional>
+#include <stdexcept>
 #include <type_traits>
 #include <utility>
 #include <variant>
@@ -58,9 +60,8 @@ struct sender_awaitable {
         //   若仍是 starting，CAS 为 suspended 并返回 true；
         //   析构时若 phase 是 suspended，CAS 为 abandoned。
         //
-        // 本实现的同步完成路径只记录 completed，由返回 false 继续当前协程。
-        // CAS 发布 suspended 后，completion 可以恢复并销毁 awaiter；随后只使用 keep。
-        return true;
+        // 本骨架明确失败，避免挂起后无人恢复导致测试卡死。
+        throw std::logic_error{"TODO: implement mini::as_awaitable"};
     }
 
     T await_resume() {
@@ -91,7 +92,8 @@ auto as_awaitable(Sender&& s) {
 //           // 同上：通过 phase 决定是否恢复 caller。
 //       }
 //       friend void tag_invoke(set_stopped_t, bridge_receiver&& self) noexcept {
-//           // TODO: 标记 stopped，并通过 phase 决定是否恢复 caller。
+//           // TODO: 保存 stopped 状态，await_resume 中按本项目契约抛 runtime_error。
+//           // 同样通过 phase 决定是否恢复 caller。
 //       }
 //       friend auto tag_invoke(get_env_t, const bridge_receiver&) noexcept {
 //           return stdexec::empty_env{};

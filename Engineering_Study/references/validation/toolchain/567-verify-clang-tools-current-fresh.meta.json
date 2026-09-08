@@ -1,0 +1,8 @@
+{
+  "command": "cmd.exe /d /c Engineering_Study\\references\\validation\\toolchain\\567-verify-clang-tools-current-fresh.command.cmd > Engineering_Study\\references\\validation\\toolchain\\567-verify-clang-tools-current-fresh.stdout.txt 2> Engineering_Study\\references\\validation\\toolchain\\567-verify-clang-tools-current-fresh.stderr.txt",
+  "exit_code": 0,
+  "execution_surface": "require_escalated normal local process",
+  "claims": ["ASan safe parser build/run exits 0", "ASan unsafe fault exits nonzero with heap-buffer-overflow report", "current G1 libFuzzer command links fuzz_parse.cpp with reference/parser.cpp and runs fixed copied corpus for 16 runs", "G2 -ftime-trace emits JSON files for alpha/beta/gamma/common/main translation units"],
+  "expected_warnings": ["LNK4217 warnings from clang_rt.ubsan_standalone during libFuzzer link on this MSVC/Clang runtime combination"],
+  "unexpected_warnings": []
+}

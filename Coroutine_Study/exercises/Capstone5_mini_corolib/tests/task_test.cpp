@@ -8,26 +8,37 @@
 
 #include "mini/task.hpp"
 
-#include <cassert>
+#include "coroutine_study/exercise_check.hpp"
+
+#include <exception>
 #include <iostream>
 
 static mini::task<int> compute() {
     co_return 42;
 }
 
-int main() {
+static void run() {
     std::cout << "[test] mini::task<T> basic\n";
 
     auto t = compute();
     // TODO[必做]: 等 sync_wait 实现后改为：
     //   auto opt = mini::sync_wait(std::move(t));
-    //   assert(opt && std::get<0>(*opt) == 42);
+    //   coroutine_study::check(opt && std::get<0>(*opt) == 42, "task value mismatch");
     //
     // 当前用最朴素的方式跑：直接 resume，再读 promise.result_。
     t.h_.resume();
     auto& r = t.h_.promise().result_;
-    assert(r.index() == 1);
-    assert(std::get<1>(r) == 42);
+    coroutine_study::check(r.index() == 1, "task did not store a value");
+    coroutine_study::check(std::get<1>(r) == 42, "task value mismatch");
     std::cout << "  ok: result = 42\n";
-    return 0;
+}
+
+int main() {
+    try {
+        run();
+        return 0;
+    } catch (const std::exception& e) {
+        std::cerr << "starter check failed: " << e.what() << "\n";
+        return 1;
+    }
 }

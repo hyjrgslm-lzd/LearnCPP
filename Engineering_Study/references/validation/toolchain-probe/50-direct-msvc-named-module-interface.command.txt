@@ -1,0 +1,1 @@
+﻿call "D:\VisualStudio2026\Installed\Common7\Tools\VsDevCmd.bat" -arch=x64 >nul && pushd "F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\toolchain-probe\out\direct\named" && cl /nologo /std:c++latest /EHsc /c /interface "F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\toolchain-probe\msvc-named-modules\src\arithmetic.ixx" /ifcOutput arithmetic.ifc /Foarithmetic.obj

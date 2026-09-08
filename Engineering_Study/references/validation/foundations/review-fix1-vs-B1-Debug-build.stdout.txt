@@ -1,0 +1,19 @@
+适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
+
+  1>Checking Build System
+  Building Custom Rule F:/CPPTrain/LearnCPP/Engineering_Study/exercises/B1_preprocessor/CMakeLists.txt
+  macro_a.cpp
+  macro_b.cpp
+  正在生成代码...
+  B1_preprocessor_reference_impl.vcxproj -> F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\review-fix1-vs-B1\Debug\B1_preprocessor_reference_impl.lib
+  Building Custom Rule F:/CPPTrain/LearnCPP/Engineering_Study/exercises/B1_preprocessor/CMakeLists.txt
+  reference_check.cpp
+  B1_preprocessor_reference.vcxproj -> F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\review-fix1-vs-B1\Debug\B1_preprocessor_reference.exe
+  Building Custom Rule F:/CPPTrain/LearnCPP/Engineering_Study/exercises/B1_preprocessor/CMakeLists.txt
+  student_value.cpp
+  B1_preprocessor_student_impl.vcxproj -> F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\review-fix1-vs-B1\Debug\B1_preprocessor_student_impl.lib
+  Building Custom Rule F:/CPPTrain/LearnCPP/Engineering_Study/exercises/B1_preprocessor/CMakeLists.txt
+  student_check.cpp
+  B1_preprocessor_student.vcxproj -> F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\review-fix1-vs-B1\Debug\B1_preprocessor_student.exe
+  Building Custom Rule F:/CPPTrain/LearnCPP/Engineering_Study/exercises/B1_preprocessor/CMakeLists.txt
+

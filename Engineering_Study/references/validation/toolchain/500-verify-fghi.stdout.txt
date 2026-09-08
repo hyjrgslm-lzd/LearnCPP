@@ -1,0 +1,142 @@
+=== F1 configure/build/test ===
+-- Configuring done (0.2s)
+-- Generating done (0.1s)
+-- Build files have been written to: F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-f1
+Change Dir: 'F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-f1'
+
+Run Build Command(s): D:\VisualStudio2026\Installed\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja\ninja.exe -v F1_cmake_targets_reference
+ninja: no work to do.
+
+Test project F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-f1
+    Start 1: F1_cmake_targets_reference
+1/1 Test #1: F1_cmake_targets_reference .......   Passed    0.03 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Label Time Summary:
+reference    =   0.03 sec*proc (1 test)
+
+Total Test time (real) =   0.03 sec
+=== F2 configure/build/test ===
+-- Configuring done (0.2s)
+-- Generating done (0.1s)
+-- Build files have been written to: F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-f2
+Change Dir: 'F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-f2'
+
+Run Build Command(s): D:\VisualStudio2026\Installed\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja\ninja.exe -v F2_dependencies_reference
+[1/4] D:\cmake\install\bin\cmake.exe -E cmake_ninja_dyndep --tdi=_deps\f2_provider_fixture-build\CMakeFiles\f2_provider_fixture.dir\CXXDependInfo.json --lang=CXX --modmapfmt=msvc --dd=_deps\f2_provider_fixture-build\CMakeFiles\f2_provider_fixture.dir\CXX.dd @_deps\f2_provider_fixture-build\CMakeFiles\f2_provider_fixture.dir\CXX.dd.rsp
+
+Test project F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-f2
+    Start 1: F2_dependencies_reference
+1/1 Test #1: F2_dependencies_reference ........   Passed    0.02 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Label Time Summary:
+reference    =   0.02 sec*proc (1 test)
+
+Total Test time (real) =   0.03 sec
+=== G1 configure/build/test ===
+-- Configuring done (0.2s)
+-- Generating done (0.1s)
+-- Build files have been written to: F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-g1
+Change Dir: 'F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-g1'
+
+Run Build Command(s): D:\VisualStudio2026\Installed\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja\ninja.exe -v G1_diagnostics_reference
+ninja: no work to do.
+
+Test project F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-g1
+    Start 1: G1_diagnostics_reference
+1/1 Test #1: G1_diagnostics_reference .........   Passed    0.02 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Label Time Summary:
+reference    =   0.02 sec*proc (1 test)
+
+Total Test time (real) =   0.03 sec
+=== G2 configure/build/test ===
+-- Configuring done (0.2s)
+-- Generating done (0.1s)
+-- Build files have been written to: F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-g2
+Change Dir: 'F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-g2'
+
+Run Build Command(s): D:\VisualStudio2026\Installed\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja\ninja.exe -v G2_build_cost_baseline G2_build_cost_pch G2_build_cost_lto
+[1/19] D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\cl.exe  /nologo /TP  -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\G2_build_cost\reference\include -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\cmake\..\include /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++latest -MD /GL /utf-8 /EHsc /W4 /Zc:__cplusplus /Zc:preprocessor /showIncludes /FoCMakeFiles\G2_build_cost_lto.dir\reference\beta.cpp.obj /FdCMakeFiles\G2_build_cost_lto.dir\ /FS -c F:\CPPTrain\LearnCPP\Engineering_Study\exercises\G2_build_cost\reference\beta.cpp
+[2/19] D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\cl.exe  /nologo /TP  -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\G2_build_cost\reference\include -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\cmake\..\include /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++latest -MD /GL /utf-8 /EHsc /W4 /Zc:__cplusplus /Zc:preprocessor /showIncludes /FoCMakeFiles\G2_build_cost_lto.dir\reference\alpha.cpp.obj /FdCMakeFiles\G2_build_cost_lto.dir\ /FS -c F:\CPPTrain\LearnCPP\Engineering_Study\exercises\G2_build_cost\reference\alpha.cpp
+[3/19] D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\cl.exe  /nologo /TP  -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\G2_build_cost\reference\include -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\cmake\..\include /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++latest -MD /GL /utf-8 /EHsc /W4 /Zc:__cplusplus /Zc:preprocessor /showIncludes /FoCMakeFiles\G2_build_cost_lto.dir\reference\gamma.cpp.obj /FdCMakeFiles\G2_build_cost_lto.dir\ /FS -c F:\CPPTrain\LearnCPP\Engineering_Study\exercises\G2_build_cost\reference\gamma.cpp
+[4/19] D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\cl.exe  /nologo /TP  -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\G2_build_cost\reference\include -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\cmake\..\include /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++latest -MD /utf-8 /EHsc /W4 /Zc:__cplusplus /Zc:preprocessor /showIncludes /FoCMakeFiles\G2_build_cost_baseline.dir\reference\gamma.cpp.obj /FdCMakeFiles\G2_build_cost_baseline.dir\ /FS -c F:\CPPTrain\LearnCPP\Engineering_Study\exercises\G2_build_cost\reference\gamma.cpp
+[5/19] D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\cl.exe  /nologo /TP  -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\G2_build_cost\reference\include -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\cmake\..\include /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++latest -MD /GL /utf-8 /EHsc /W4 /Zc:__cplusplus /Zc:preprocessor /showIncludes /FoCMakeFiles\G2_build_cost_lto.dir\reference\common.cpp.obj /FdCMakeFiles\G2_build_cost_lto.dir\ /FS -c F:\CPPTrain\LearnCPP\Engineering_Study\exercises\G2_build_cost\reference\common.cpp
+[6/19] D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\cl.exe  /nologo /TP  -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\G2_build_cost\reference\include -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\cmake\..\include /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++latest -MD /utf-8 /EHsc /W4 /Zc:__cplusplus /Zc:preprocessor /YcF:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-g2/CMakeFiles/G2_build_cost_pch.dir/cmake_pch.hxx /FpF:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-g2/CMakeFiles/G2_build_cost_pch.dir/.//cmake_pch.cxx.pch /FIF:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-g2/CMakeFiles/G2_build_cost_pch.dir/cmake_pch.hxx /showIncludes /FoCMakeFiles\G2_build_cost_pch.dir\cmake_pch.cxx.obj /FdCMakeFiles\G2_build_cost_pch.dir\ /FS -c F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\verify-g2\CMakeFiles\G2_build_cost_pch.dir\cmake_pch.cxx
+[7/19] D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\cl.exe  /nologo /TP  -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\G2_build_cost\reference\include -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\cmake\..\include /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++latest -MD /utf-8 /EHsc /W4 /Zc:__cplusplus /Zc:preprocessor /showIncludes /FoCMakeFiles\G2_build_cost_baseline.dir\reference\alpha.cpp.obj /FdCMakeFiles\G2_build_cost_baseline.dir\ /FS -c F:\CPPTrain\LearnCPP\Engineering_Study\exercises\G2_build_cost\reference\alpha.cpp
+[8/19] D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\cl.exe  /nologo /TP  -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\G2_build_cost\reference\include -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\cmake\..\include /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++latest -MD /utf-8 /EHsc /W4 /Zc:__cplusplus /Zc:preprocessor /showIncludes /FoCMakeFiles\G2_build_cost_baseline.dir\reference\common.cpp.obj /FdCMakeFiles\G2_build_cost_baseline.dir\ /FS -c F:\CPPTrain\LearnCPP\Engineering_Study\exercises\G2_build_cost\reference\common.cpp
+[9/19] D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\cl.exe  /nologo /TP  -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\G2_build_cost\reference\include -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\cmake\..\include /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++latest -MD /utf-8 /EHsc /W4 /Zc:__cplusplus /Zc:preprocessor /showIncludes /FoCMakeFiles\G2_build_cost_baseline.dir\reference\beta.cpp.obj /FdCMakeFiles\G2_build_cost_baseline.dir\ /FS -c F:\CPPTrain\LearnCPP\Engineering_Study\exercises\G2_build_cost\reference\beta.cpp
+[10/19] D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\cl.exe  /nologo /TP  -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\G2_build_cost\reference\include -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\cmake\..\include /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++latest -MD /GL /utf-8 /EHsc /W4 /Zc:__cplusplus /Zc:preprocessor /showIncludes /FoCMakeFiles\G2_build_cost_lto.dir\reference\main.cpp.obj /FdCMakeFiles\G2_build_cost_lto.dir\ /FS -c F:\CPPTrain\LearnCPP\Engineering_Study\exercises\G2_build_cost\reference\main.cpp
+[11/19] D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\cl.exe  /nologo /TP  -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\G2_build_cost\reference\include -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\cmake\..\include /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++latest -MD /utf-8 /EHsc /W4 /Zc:__cplusplus /Zc:preprocessor /showIncludes /FoCMakeFiles\G2_build_cost_baseline.dir\reference\main.cpp.obj /FdCMakeFiles\G2_build_cost_baseline.dir\ /FS -c F:\CPPTrain\LearnCPP\Engineering_Study\exercises\G2_build_cost\reference\main.cpp
+[12/19] D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\cl.exe  /nologo /TP  -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\G2_build_cost\reference\include -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\cmake\..\include /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++latest -MD /utf-8 /EHsc /W4 /Zc:__cplusplus /Zc:preprocessor /YuF:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-g2/CMakeFiles/G2_build_cost_pch.dir/cmake_pch.hxx /FpF:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-g2/CMakeFiles/G2_build_cost_pch.dir/.//cmake_pch.cxx.pch /FIF:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-g2/CMakeFiles/G2_build_cost_pch.dir/cmake_pch.hxx /showIncludes /FoCMakeFiles\G2_build_cost_pch.dir\reference\beta.cpp.obj /FdCMakeFiles\G2_build_cost_pch.dir\ /FS -c F:\CPPTrain\LearnCPP\Engineering_Study\exercises\G2_build_cost\reference\beta.cpp
+[13/19] D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\cl.exe  /nologo /TP  -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\G2_build_cost\reference\include -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\cmake\..\include /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++latest -MD /utf-8 /EHsc /W4 /Zc:__cplusplus /Zc:preprocessor /YuF:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-g2/CMakeFiles/G2_build_cost_pch.dir/cmake_pch.hxx /FpF:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-g2/CMakeFiles/G2_build_cost_pch.dir/.//cmake_pch.cxx.pch /FIF:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-g2/CMakeFiles/G2_build_cost_pch.dir/cmake_pch.hxx /showIncludes /FoCMakeFiles\G2_build_cost_pch.dir\reference\alpha.cpp.obj /FdCMakeFiles\G2_build_cost_pch.dir\ /FS -c F:\CPPTrain\LearnCPP\Engineering_Study\exercises\G2_build_cost\reference\alpha.cpp
+[14/19] D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\cl.exe  /nologo /TP  -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\G2_build_cost\reference\include -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\cmake\..\include /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++latest -MD /utf-8 /EHsc /W4 /Zc:__cplusplus /Zc:preprocessor /YuF:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-g2/CMakeFiles/G2_build_cost_pch.dir/cmake_pch.hxx /FpF:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-g2/CMakeFiles/G2_build_cost_pch.dir/.//cmake_pch.cxx.pch /FIF:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-g2/CMakeFiles/G2_build_cost_pch.dir/cmake_pch.hxx /showIncludes /FoCMakeFiles\G2_build_cost_pch.dir\reference\gamma.cpp.obj /FdCMakeFiles\G2_build_cost_pch.dir\ /FS -c F:\CPPTrain\LearnCPP\Engineering_Study\exercises\G2_build_cost\reference\gamma.cpp
+[15/19] D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\cl.exe  /nologo /TP  -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\G2_build_cost\reference\include -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\cmake\..\include /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++latest -MD /utf-8 /EHsc /W4 /Zc:__cplusplus /Zc:preprocessor /YuF:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-g2/CMakeFiles/G2_build_cost_pch.dir/cmake_pch.hxx /FpF:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-g2/CMakeFiles/G2_build_cost_pch.dir/.//cmake_pch.cxx.pch /FIF:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-g2/CMakeFiles/G2_build_cost_pch.dir/cmake_pch.hxx /showIncludes /FoCMakeFiles\G2_build_cost_pch.dir\reference\common.cpp.obj /FdCMakeFiles\G2_build_cost_pch.dir\ /FS -c F:\CPPTrain\LearnCPP\Engineering_Study\exercises\G2_build_cost\reference\common.cpp
+[16/19] D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\cl.exe  /nologo /TP  -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\G2_build_cost\reference\include -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\cmake\..\include /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++latest -MD /utf-8 /EHsc /W4 /Zc:__cplusplus /Zc:preprocessor /YuF:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-g2/CMakeFiles/G2_build_cost_pch.dir/cmake_pch.hxx /FpF:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-g2/CMakeFiles/G2_build_cost_pch.dir/.//cmake_pch.cxx.pch /FIF:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-g2/CMakeFiles/G2_build_cost_pch.dir/cmake_pch.hxx /showIncludes /FoCMakeFiles\G2_build_cost_pch.dir\reference\main.cpp.obj /FdCMakeFiles\G2_build_cost_pch.dir\ /FS -c F:\CPPTrain\LearnCPP\Engineering_Study\exercises\G2_build_cost\reference\main.cpp
+[17/19] C:\WINDOWS\system32\cmd.exe /C "cd . && D:\cmake\install\bin\cmake.exe -E vs_link_exe --msvc-ver=1951 --intdir=CMakeFiles\G2_build_cost_baseline.dir --rc="C:\PROGRA~2\Windows Kits\10\bin\100261~1.0\x64\rc.exe" --mt="C:\PROGRA~2\Windows Kits\10\bin\100261~1.0\x64\mt.exe" --manifests  -- D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\link.exe /nologo CMakeFiles\G2_build_cost_baseline.dir\reference\alpha.cpp.obj CMakeFiles\G2_build_cost_baseline.dir\reference\beta.cpp.obj CMakeFiles\G2_build_cost_baseline.dir\reference\gamma.cpp.obj CMakeFiles\G2_build_cost_baseline.dir\reference\common.cpp.obj CMakeFiles\G2_build_cost_baseline.dir\reference\main.cpp.obj  /out:G2_build_cost_baseline.exe /implib:G2_build_cost_baseline.lib /pdb:G2_build_cost_baseline.pdb /version:0.0 /machine:x64 /INCREMENTAL:NO /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+[18/19] C:\WINDOWS\system32\cmd.exe /C "cd . && D:\cmake\install\bin\cmake.exe -E vs_link_exe --msvc-ver=1951 --intdir=CMakeFiles\G2_build_cost_lto.dir --rc="C:\PROGRA~2\Windows Kits\10\bin\100261~1.0\x64\rc.exe" --mt="C:\PROGRA~2\Windows Kits\10\bin\100261~1.0\x64\mt.exe" --manifests  -- D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\link.exe /nologo CMakeFiles\G2_build_cost_lto.dir\reference\alpha.cpp.obj CMakeFiles\G2_build_cost_lto.dir\reference\beta.cpp.obj CMakeFiles\G2_build_cost_lto.dir\reference\gamma.cpp.obj CMakeFiles\G2_build_cost_lto.dir\reference\common.cpp.obj CMakeFiles\G2_build_cost_lto.dir\reference\main.cpp.obj  /out:G2_build_cost_lto.exe /implib:G2_build_cost_lto.lib /pdb:G2_build_cost_lto.pdb /version:0.0 /machine:x64 /INCREMENTAL:NO /subsystem:console /INCREMENTAL:NO /LTCG  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+[19/19] C:\WINDOWS\system32\cmd.exe /C "cd . && D:\cmake\install\bin\cmake.exe -E vs_link_exe --msvc-ver=1951 --intdir=CMakeFiles\G2_build_cost_pch.dir --rc="C:\PROGRA~2\Windows Kits\10\bin\100261~1.0\x64\rc.exe" --mt="C:\PROGRA~2\Windows Kits\10\bin\100261~1.0\x64\mt.exe" --manifests  -- D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\link.exe /nologo CMakeFiles\G2_build_cost_pch.dir\cmake_pch.cxx.obj CMakeFiles\G2_build_cost_pch.dir\reference\alpha.cpp.obj CMakeFiles\G2_build_cost_pch.dir\reference\beta.cpp.obj CMakeFiles\G2_build_cost_pch.dir\reference\gamma.cpp.obj CMakeFiles\G2_build_cost_pch.dir\reference\common.cpp.obj CMakeFiles\G2_build_cost_pch.dir\reference\main.cpp.obj  /out:G2_build_cost_pch.exe /implib:G2_build_cost_pch.lib /pdb:G2_build_cost_pch.pdb /version:0.0 /machine:x64 /INCREMENTAL:NO /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+
+Test project F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-g2
+    Start 1: G2_build_cost_baseline
+1/3 Test #1: G2_build_cost_baseline ...........   Passed    0.28 sec
+    Start 2: G2_build_cost_pch
+2/3 Test #2: G2_build_cost_pch ................   Passed    0.26 sec
+    Start 3: G2_build_cost_lto
+3/3 Test #3: G2_build_cost_lto ................   Passed    0.27 sec
+
+100% tests passed, 0 tests failed out of 3
+
+Label Time Summary:
+reference    =   0.80 sec*proc (3 tests)
+
+Total Test time (real) =   0.81 sec
+=== H1 configure/build/test ===
+-- Configuring done (0.1s)
+-- Generating done (0.1s)
+-- Build files have been written to: F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-h1
+Change Dir: 'F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-h1'
+
+Run Build Command(s): D:\VisualStudio2026\Installed\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja\ninja.exe -v
+[1/6] D:\cmake\install\bin\cmake.exe -E cmake_ninja_dyndep --tdi=CMakeFiles\H1_modules_reference.dir\CXXDependInfo.json --lang=CXX --modmapfmt=msvc --dd=CMakeFiles\H1_modules_reference.dir\CXX.dd @CMakeFiles\H1_modules_reference.dir\CXX.dd.rsp
+
+Test project F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-h1
+    Start 1: H1_header_baseline
+1/3 Test #1: H1_header_baseline ...............   Passed    0.02 sec
+    Start 2: H1_modules_reference
+2/3 Test #2: H1_modules_reference .............   Passed    0.02 sec
+    Start 3: H1_modules_package_consumer
+3/3 Test #3: H1_modules_package_consumer ......   Passed    0.82 sec
+
+100% tests passed, 0 tests failed out of 3
+
+Label Time Summary:
+reference    =   0.86 sec*proc (3 tests)
+
+Total Test time (real) =   0.87 sec
+=== I1 configure/build/test ===
+-- Configuring done (0.2s)
+-- Generating done (0.1s)
+-- Build files have been written to: F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-i1
+Change Dir: 'F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-i1'
+
+Run Build Command(s): D:\VisualStudio2026\Installed\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja\ninja.exe -v
+[1/7] D:\cmake\install\bin\cmake.exe -E cmake_ninja_dyndep --tdi=CMakeFiles\__cmake_cxx23.dir\CXXDependInfo.json --lang=CXX --modmapfmt=msvc --dd=CMakeFiles\__cmake_cxx23.dir\CXX.dd @CMakeFiles\__cmake_cxx23.dir\CXX.dd.rsp
+[2/4] D:\cmake\install\bin\cmake.exe -E cmake_ninja_dyndep --tdi=CMakeFiles\I1_import_std_reference.dir\CXXDependInfo.json --lang=CXX --modmapfmt=msvc --dd=CMakeFiles\I1_import_std_reference.dir\CXX.dd @CMakeFiles\I1_import_std_reference.dir\CXX.dd.rsp
+
+Test project F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/verify-i1
+    Start 1: I1_import_std_reference
+1/1 Test #1: I1_import_std_reference ..........   Passed    0.02 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Label Time Summary:
+reference    =   0.02 sec*proc (1 test)
+
+Total Test time (real) =   0.03 sec
+=== done ===

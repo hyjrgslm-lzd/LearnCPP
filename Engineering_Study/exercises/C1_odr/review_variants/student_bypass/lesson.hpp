@@ -1,0 +1,7 @@
+#ifndef C1_ODR_REVIEW_STUDENT_BYPASS_LESSON_HPP
+#define C1_ODR_REVIEW_STUDENT_BYPASS_LESSON_HPP
+
+int lesson_value();
+
+#endif
+

@@ -1,0 +1,8 @@
+CMake Error at Engineering_Study/exercises/B1_preprocessor/cmake/check_preprocess.cmake:38 (message):
+  macro_a preprocess output does not show generated_value returning ((100) +
+  11):
+
+   static inline int generated_value() { const char* misleading_marker = "11 22"; (void)misleading_marker; return 0; } #pragma once inline int pragma_once_example_value() { return 7; } int macro_value_from_a() { return generated_value() + pragma_once_example_value(); } 
+
+
+

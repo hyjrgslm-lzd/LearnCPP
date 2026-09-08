@@ -1,0 +1,1 @@
+call "D:\VisualStudio2026\Installed\Common7\Tools\VsDevCmd.bat" -arch=x64 >nul && "D:\cmake\install\bin\ctest.exe" --test-dir "F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\review-fix2-starter-A1_build_debug-Release" -L student --output-on-failure

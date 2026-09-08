@@ -1,0 +1,10 @@
+{
+  "name": "400-normal-cmake-chain",
+  "command_file": "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\400-normal-cmake-chain.command.cmd",
+  "exit_code": 0,
+  "timed_out": false,
+  "timeout_seconds": null,
+  "stdout": "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\400-normal-cmake-chain.stdout.txt",
+  "stderr": "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\400-normal-cmake-chain.stderr.txt",
+  "execution_surface": "functions.exec_command with sandbox_permissions=require_escalated, matching root-normal-ninja.cmd style"
+}

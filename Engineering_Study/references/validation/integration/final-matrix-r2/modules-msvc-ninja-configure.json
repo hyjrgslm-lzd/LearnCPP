@@ -1,0 +1,16 @@
+{
+  "command": [
+    "D:\\cmake\\install\\bin\\cmake.EXE",
+    "--preset",
+    "modules-msvc-ninja",
+    "-B",
+    "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\final-matrix-r2\\modules-msvc-ninja",
+    "-DCMAKE_MAKE_PROGRAM=D:\\VisualStudio2026\\Installed\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja\\ninja.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 6.209635200211778,
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

@@ -1,0 +1,1 @@
+call "D:\VisualStudio2026\Installed\Common7\Tools\VsDevCmd.bat" -arch=x64 >nul && "D:\cmake\install\bin\cmake.exe" -S "F:\CPPTrain\LearnCPP\Engineering_Study\exercises\A1_build_debug" -B "F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\abc-v8-vs-A1_build_debug" -G "Visual Studio 18 2026" -A x64 -DENGINEERING_STUDY_TEST_STUDENTS=OFF

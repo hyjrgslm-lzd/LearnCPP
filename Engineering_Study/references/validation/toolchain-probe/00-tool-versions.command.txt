@@ -1,0 +1,1 @@
+﻿"call "D:\VisualStudio2026\Installed\Common7\Tools\VsDevCmd.bat" -arch=x64 >nul && "D:\cmake\install\bin\cmake.exe" --version && "D:\Perl\c\bin\ninja.exe" --version && cl /Bv && "D:\VisualStudio2026\Installed\VC\Tools\Llvm\x64\bin\clang++.exe" --version"

@@ -1,0 +1,7 @@
+{
+  "command": "cmd.exe /d /c Engineering_Study\\references\\validation\\toolchain\\558-verify-g2-subset-smoke-fresh.command.cmd > Engineering_Study\\references\\validation\\toolchain\\558-verify-g2-subset-smoke-fresh.stdout.txt 2> Engineering_Study\\references\\validation\\toolchain\\558-verify-g2-subset-smoke-fresh.stderr.txt",
+  "exit_code": 0,
+  "execution_surface": "require_escalated normal local process",
+  "output": "Engineering_Study/references/validation/toolchain/g2-r3b-subset-smoke",
+  "claims": ["scoped driver run requested only variant=baseline and scenario=noop", "report status PASS", "summary length is 1 and contains only baseline/noop", "no unrequested variant/scenario entries are marked INVALID"]
+}

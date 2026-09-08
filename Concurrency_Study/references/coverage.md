@@ -2,6 +2,8 @@
 
 本表用于核对课程知识是否实际落到正文、程序及检查。每个练习链接进入其 Part、完整解析及复现命令；Reference 目标为该 ID 加 `_reference`。实际构建与独立审查状态统一见[质量报告](quality-report.md)，本表不把“存在文件”当作“已经验证”。
 
+全局归属：本课主讲 C08，CPU 性能/SIMD/NUMA 作为 C13 的已有实验资产；通用编译、链接、ABI、CMake 和能力探测由 [C01](../../Engineering_Study/README.md)主讲。C++29 线程属性与 HP batches 的新增索引和未实施状态见[版本索引](standards-and-implementations.md#c29-增量的独立状态)，没有改变以下50题的完成含义。
+
 ## 1. 逐练习覆盖
 
 | 练习 | 主要知识 | 正文入口 |

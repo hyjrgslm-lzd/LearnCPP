@@ -27,6 +27,7 @@ option(COROUTINE_STUDY_ENABLE_FOLLY "Enable Folly coroutine exercises." OFF)
 option(COROUTINE_STUDY_ENABLE_COBALT "Enable Boost.Cobalt coroutine exercises." OFF)
 option(COROUTINE_STUDY_ENABLE_UNSAFE_DEMOS "Build demos that intentionally show unsafe coroutine behavior." OFF)
 option(COROUTINE_STUDY_ENABLE_STAGE3 "Compatibility umbrella: enable light stage3 deps; prefer per-dependency options." OFF)
+option(COROUTINE_STUDY_TEST_STARTERS "Register starter checks that fail until students complete TODOs." OFF)
 
 if(COROUTINE_STUDY_ENABLE_STAGE3)
     message(WARNING "COROUTINE_STUDY_ENABLE_STAGE3 is deprecated; use COROUTINE_STUDY_ENABLE_STDEXEC/ASIO/CPPCORO/IO_URING/IOCP instead.")

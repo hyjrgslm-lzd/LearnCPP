@@ -1,0 +1,7 @@
+{
+  "command": "cmd.exe /d /c Engineering_Study\\references\\validation\\toolchain\\540-verify-f2-package.command.cmd > Engineering_Study\\references\\validation\\toolchain\\540-verify-f2-package.stdout.txt 2> Engineering_Study\\references\\validation\\toolchain\\540-verify-f2-package.stderr.txt",
+  "exit_code": 0,
+  "execution_surface": "require_escalated normal local process",
+  "claims": ["provider_fixture installs F2Provider 1.0.0 package config and target export", "F2 consumer finds installed F2Provider::provider with find_package", "find_package(F2Provider 2.0 CONFIG REQUIRED) fails at configure against installed version 1.0.0"],
+  "expected_stderr": ["CMake package version mismatch diagnostic for requested version 2.0"]
+}

@@ -1,0 +1,51 @@
+{
+  "status": "PASS",
+  "scope": "normal exit, nonzero exit, owned-process timeout/cleanup",
+  "steps": [
+    {
+      "command": [
+        "C:\\Users\\zhidan.li\\AppData\\Roaming\\uv\\python\\cpython-3.13.11-windows-x86_64-none\\python.exe",
+        "-c",
+        "print(\"PROCESS_RUNNER_OK\")"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.08690669992938638,
+      "stdout": "PROCESS_RUNNER_OK\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "C:\\Users\\zhidan.li\\AppData\\Roaming\\uv\\python\\cpython-3.13.11-windows-x86_64-none\\python.exe",
+        "-c",
+        "raise SystemExit(7)"
+      ],
+      "exit_code": 7,
+      "timeout": false,
+      "process_seconds": 0.06971099996007979,
+      "stdout": "",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "FAIL"
+    },
+    {
+      "command": [
+        "C:\\Users\\zhidan.li\\AppData\\Roaming\\uv\\python\\cpython-3.13.11-windows-x86_64-none\\python.exe",
+        "-c",
+        "import time; time.sleep(20)"
+      ],
+      "exit_code": 1,
+      "timeout": true,
+      "process_seconds": 0.8358240998350084,
+      "stdout": "",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "TimeoutExpired: Command '['C:\\\\Users\\\\zhidan.li\\\\AppData\\\\Roaming\\\\uv\\\\python\\\\cpython-3.13.11-windows-x86_64-none\\\\python.exe', '-c', 'import time; time.sleep(20)']' timed out after 0.2 seconds",
+      "status": "FAIL"
+    }
+  ]
+}

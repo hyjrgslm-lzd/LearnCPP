@@ -1,0 +1,15 @@
+{
+  "command": [
+    "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain\\g1-r2-fuzz-real-parser\\bin\\g1_real_parser_fuzz.exe",
+    "-runs=16",
+    "-seed=20260908",
+    "-max_total_time=5",
+    "-artifact_prefix=F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain\\g1-r2-fuzz-real-parser\\artifacts\\",
+    "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain\\g1-r2-fuzz-real-parser\\input-corpus"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "seconds": 0.3344129999168217,
+  "cleanup_error": "",
+  "error": ""
+}

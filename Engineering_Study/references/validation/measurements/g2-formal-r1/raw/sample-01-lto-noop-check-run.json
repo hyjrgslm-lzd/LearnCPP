@@ -1,0 +1,11 @@
+{
+  "command": [
+    "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\g2-formal-r1-work\\sample-01-lto-noop\\build\\G2_build_cost_lto.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.27629209985025227,
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

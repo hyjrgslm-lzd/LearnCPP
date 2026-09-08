@@ -1,0 +1,31 @@
+Reading symbols from F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\abc-v6-a1-gdb.exe...
+Breakpoint 1 at 0x140001732: file F:\CPPTrain\LearnCPP\Engineering_Study\exercises\A1_build_debug\debugger\gdb_lesson.cpp, line 19.
+Breakpoint 2 at 0x1400016de: file F:\CPPTrain\LearnCPP\Engineering_Study\exercises\A1_build_debug\debugger\gdb_lesson.cpp, line 5.
+[New Thread 33348.0x1fed4]
+[New Thread 33348.0x2243c]
+[New Thread 33348.0x16f9c]
+
+Thread 1 hit Breakpoint 1, main ()
+    at F:\CPPTrain\LearnCPP\Engineering_Study\exercises\A1_build_debug\debugger\gdb_lesson.cpp:19
+19	    int seed = 19;
+20	    int answer = compute_answer(seed);
+
+Thread 1 hit Breakpoint 2, add_offset (seed=19, offset=2)
+    at F:\CPPTrain\LearnCPP\Engineering_Study\exercises\A1_build_debug\debugger\gdb_lesson.cpp:5
+5	    int adjusted = seed + offset;
+6	    return adjusted;
+#0  add_offset (seed=19, offset=2)
+    at F:\CPPTrain\LearnCPP\Engineering_Study\exercises\A1_build_debug\debugger\gdb_lesson.cpp:6
+#1  0x00007ff79c331711 in compute_answer (seed=19)
+    at F:\CPPTrain\LearnCPP\Engineering_Study\exercises\A1_build_debug\debugger\gdb_lesson.cpp:12
+#2  0x00007ff79c331743 in main ()
+    at F:\CPPTrain\LearnCPP\Engineering_Study\exercises\A1_build_debug\debugger\gdb_lesson.cpp:20
+seed = 19
+offset = 2
+adjusted = 21
+42
+[Thread 33348.0x2243c exited with code 0]
+[Thread 33348.0x1fed4 exited with code 0]
+[Thread 33348.0x16f9c exited with code 0]
+[Inferior 1 (process 33348) exited normally]
+

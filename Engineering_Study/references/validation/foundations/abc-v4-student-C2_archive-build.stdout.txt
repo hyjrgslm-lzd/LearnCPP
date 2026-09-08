@@ -1,0 +1,10 @@
+[1/9] Building CXX object CMakeFiles\C2_archive_library.dir\src\reference\used_member.cpp.obj
+[2/9] Building CXX object CMakeFiles\C2_archive_student_impl.dir\src\student\archive_value.cpp.obj
+[3/9] Building CXX object CMakeFiles\C2_archive_library.dir\src\reference\unused_member.cpp.obj
+[4/9] Linking CXX static library C2_archive_student_impl.lib
+[5/9] Linking CXX static library C2_archive_library.lib
+[6/9] Building CXX object CMakeFiles\C2_archive_reference.dir\checks\reference_check.cpp.obj
+[7/9] Building CXX object CMakeFiles\C2_archive_student.dir\checks\student_check.cpp.obj
+[8/9] Linking CXX executable C2_archive_reference.exe
+[9/9] Linking CXX executable C2_archive_student.exe
+

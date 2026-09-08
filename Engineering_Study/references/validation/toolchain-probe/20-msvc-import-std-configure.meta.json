@@ -1,0 +1,9 @@
+﻿{
+    "name":  "20-msvc-import-std-configure",
+    "command":  "\"call \"D:\\VisualStudio2026\\Installed\\Common7\\Tools\\VsDevCmd.bat\" -arch=x64 \u003enul \u0026\u0026 \"D:\\cmake\\install\\bin\\cmake.exe\" -S \"F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\toolchain-probe\\msvc-import-std\" -B \"F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\toolchain-probe\\out\\msvc-import-std\" -G Ninja -DCMAKE_MAKE_PROGRAM=\"D:\\Perl\\c\\bin\\ninja.exe\" -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPERIMENTAL_CXX_IMPORT_STD=d0edc3af-4c50-42ea-a356-e2862fe7a444\"",
+    "exit_code":  null,
+    "timed_out":  true,
+    "timeout_seconds":  120,
+    "stdout":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\20-msvc-import-std-configure.stdout.txt",
+    "stderr":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\20-msvc-import-std-configure.stderr.txt"
+}

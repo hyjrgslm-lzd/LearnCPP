@@ -1,0 +1,20 @@
+{
+  "command": [
+    "D:/cmake/install/bin/cmake.exe",
+    "-S",
+    "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\g1-f2-checker-strength-r1-work\\g1-constant42\\Engineering_Study\\exercises\\G1_diagnostics",
+    "-B",
+    "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\g1-f2-checker-strength-r1-work\\g1-constant42-build",
+    "-G",
+    "Ninja",
+    "-DCMAKE_MAKE_PROGRAM=D:/VisualStudio2026/Installed/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe",
+    "-DCMAKE_BUILD_TYPE=Release",
+    "-DENGINEERING_STUDY_TEST_STUDENTS=ON"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 1.9262840000446886,
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

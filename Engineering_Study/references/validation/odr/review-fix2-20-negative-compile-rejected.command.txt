@@ -1,0 +1,1 @@
+call D:\VisualStudio2026\Installed\Common7\Tools\VsDevCmd.bat -arch=x64 >nul && D:\cmake\install\bin\cmake.exe -DCASE_SOURCE=Engineering_Study/exercises/C1_odr/review_variants/negative_compile -DCASE_BUILD=Engineering_Study\exercises\build\review-fix2-negative-compile -DGENERATOR=Ninja -P Engineering_Study/exercises/C1_odr/cmake/expect_build_failure.cmake

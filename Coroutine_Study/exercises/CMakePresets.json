@@ -18,13 +18,15 @@
         "COROUTINE_STUDY_ENABLE_IOCP": "OFF",
         "COROUTINE_STUDY_ENABLE_FOLLY": "OFF",
         "COROUTINE_STUDY_ENABLE_COBALT": "OFF",
-        "COROUTINE_STUDY_ENABLE_UNSAFE_DEMOS": "OFF"
+        "COROUTINE_STUDY_ENABLE_UNSAFE_DEMOS": "OFF",
+        "COROUTINE_STUDY_TEST_STARTERS": "OFF"
       }
     },
     {
       "name": "student",
       "displayName": "Student core (no third-party deps)",
-      "inherits": "base"
+      "inherits": "base",
+      "cacheVariables": { "COROUTINE_STUDY_TEST_STARTERS": "ON" }
     },
     {
       "name": "verify-core",

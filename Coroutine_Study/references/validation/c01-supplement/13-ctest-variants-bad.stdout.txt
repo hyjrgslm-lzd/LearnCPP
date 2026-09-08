@@ -1,0 +1,37 @@
+Test project F:/CPPTrain/LearnCPP/Coroutine_Study/exercises/build/c01-supplement/validation_variants/build
+    Start 5: sync_wait_bad_nullopt_sync_wait
+1/5 Test #5: sync_wait_bad_nullopt_sync_wait .........***Failed    0.27 sec
+[test] mini::sync_wait basic
+starter check failed: sync_wait did not return a value
+
+    Start 6: sync_wait_bad_error_channel_sync_wait
+2/5 Test #6: sync_wait_bad_error_channel_sync_wait ...***Failed    0.27 sec
+[test] mini::sync_wait basic
+starter check failed: sync_wait did not rethrow task error
+
+    Start 7: scope_bad_noop_scope
+3/5 Test #7: scope_bad_noop_scope ....................***Failed    0.03 sec
+[test] mini::async_scope basic
+starter check failed: scope did not run all spawned tasks
+
+    Start 8: when_all_bad_error_when_all
+4/5 Test #8: when_all_bad_error_when_all .............***Failed    0.03 sec
+[test] mini::when_all basic
+starter check failed: when_all did not propagate an error
+
+    Start 9: bridge_bad_stopped_value_bridge
+5/5 Test #9: bridge_bad_stopped_value_bridge .........***Failed    0.29 sec
+[test] mini::as_awaitable bridge
+starter check failed: as_awaitable stopped path did not throw
+
+
+0% tests passed, 5 tests failed out of 5
+
+Total Test time (real) =   0.91 sec
+
+The following tests FAILED:
+	  5 - sync_wait_bad_nullopt_sync_wait (Failed)
+	  6 - sync_wait_bad_error_channel_sync_wait (Failed)
+	  7 - scope_bad_noop_scope (Failed)
+	  8 - when_all_bad_error_when_all (Failed)
+	  9 - bridge_bad_stopped_value_bridge (Failed)

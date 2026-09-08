@@ -96,3 +96,13 @@ Descartes 已独立重算全部统计、核对 CSV/JSON、随机顺序、23个�
 代码、正文、最终公开数据及本报告均已完成非作者独立复验，已知阻断关闭。通用重构指引按本次要求在课程完成后另行编写和审查；提交、推送核验及正常关机按授权顺序执行，实际发布与系统操作由最终交付消息确认，不在本报告中预先宣称。
 
 保留用户原有 Coroutine 学习代码。专题里的本机构建归档不冒充随仓库发布；可随源码读取的证据在 measurements 目录。
+
+## 8. C01 衔接补充（2026-09-08）
+
+本批仅补 README/覆盖表的 C01 先修、C08 主讲/C13 实验资产归属，以及标准索引的 C++29 线程属性与 HP batches。50题、算法、原测量没有改动；上述历史批准仍只对应原来列明的范围，新索引不代表两项前沿接口已经实现。
+
+主负责人从新目录 `build/c01-concurrency-check` 配置、构建并运行核心验证，显式使用已安装 Python 3.13.11，实际编译器 MSVC 19.51.36256.0。结果为60项中的 **58 PASS、2 SKIP、0 FAIL**，包括材料检查和工具自检。M2未请求固定stdexec，N1仍缺多节点条件；没有重采未改动的benchmark。
+
+本轮命令、退出码和输出见 [configure](validation/c01-supplement/configure.json)、[build](validation/c01-supplement/build.json)、[CTest](validation/c01-supplement/ctest.json)与[JUnit](validation/c01-supplement/ctest.xml)。构建输出由既有runner按UTF-8收集，部分本地化MSBuild诊断含替换字符；返回码、英文目标与测试结果完整，这份文本不用于还原原始中文诊断字节。
+
+本批新增文字及证据已由非作者独立核对并 APPROVE，见[本批独立审查](validation/c01-supplement-independent-review.md)：复核了官方入稿依据、60项计数/两项SKIP、工具检查和文件指纹。该审查没有重新批准未改动的全部历史算法或外部平台；全仓新增课程的最终集成审查另行进行。本段是取得审查后的状态回填，与报告中记录的被审快照区分。

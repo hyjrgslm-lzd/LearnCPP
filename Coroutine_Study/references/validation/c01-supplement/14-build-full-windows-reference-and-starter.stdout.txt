@@ -1,0 +1,16 @@
+适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
+
+  Checking File Globs
+  Capstone4_rpc_framework.vcxproj -> F:\CPPTrain\LearnCPP\Coroutine_Study\exercises\build\full-windows\Capstone4_rpc_framework\Release\Capstone4_rpc_framework.exe
+适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
+
+  Checking File Globs
+  Capstone4_rpc_framework_reference.vcxproj -> F:\CPPTrain\LearnCPP\Coroutine_Study\exercises\build\full-windows\Capstone4_rpc_framework\Release\Capstone4_rpc_framework_reference.exe
+适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
+
+  Checking File Globs
+  mini_reference_as_awaitable.vcxproj -> F:\CPPTrain\LearnCPP\Coroutine_Study\exercises\build\full-windows\Capstone5_mini_corolib\Release\mini_reference_as_awaitable.exe
+适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
+
+  Checking File Globs
+  mini_as_awaitable_test.vcxproj -> F:\CPPTrain\LearnCPP\Coroutine_Study\exercises\build\full-windows\Capstone5_mini_corolib\Release\mini_as_awaitable_test.exe

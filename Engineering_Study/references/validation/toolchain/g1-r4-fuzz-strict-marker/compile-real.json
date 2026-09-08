@@ -1,0 +1,18 @@
+{
+  "command": [
+    "D:\\VisualStudio2026\\Installed\\VC\\Tools\\Llvm\\x64\\bin\\clang++.exe",
+    "-std=c++23",
+    "-fsanitize=fuzzer",
+    "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\G1_diagnostics\\fuzz_parse.cpp",
+    "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\G1_diagnostics\\reference\\parser.cpp",
+    "-IF:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\G1_diagnostics\\reference",
+    "-o",
+    "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain\\g1-r4-fuzz-strict-marker\\bin\\g1_real_parser_fuzz.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 1.062166600022465,
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

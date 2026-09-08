@@ -1,0 +1,7 @@
+@echo off
+call "D:\VisualStudio2026\Installed\Common7\Tools\VsDevCmd.bat" -arch=x64 >nul
+"D:\cmake\install\bin\cmake.exe" --version
+"D:\VisualStudio2026\Installed\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja\ninja.exe" --version
+where ninja
+cl /Bv
+exit /b 0

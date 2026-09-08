@@ -1,0 +1,6 @@
+===== Capstone 4: mini RPC Framework demo =====
+starter skeleton: pure Asio awaitable RPC, not a completed implementation.
+exercise shape: 3 ok calls + timeout + server_error + unknown_method.
+ownership rule: every co_spawn has a completion handler or a stored future.
+drain rule: shutdown waits until client/server in_flight() is zero.
+reference check: build target Capstone4_rpc_framework_reference.

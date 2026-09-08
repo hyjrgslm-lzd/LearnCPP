@@ -1,0 +1,17 @@
+{
+  "command": [
+    "D:/cmake/install/bin/cmake.exe",
+    "--build",
+    "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\g1-f2-checker-strength-r1-work\\g1-good-build",
+    "--target",
+    "G1_diagnostics_reference",
+    "G1_diagnostics_student",
+    "--verbose"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 1.326537200016901,
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

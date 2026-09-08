@@ -1,0 +1,22 @@
+Test project F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/abc-v2-ninja-B1_preprocessor
+    Start 1: B1_preprocessor_reference
+1/2 Test #1: B1_preprocessor_reference ........   Passed    0.58 sec
+    Start 2: B1_preprocessor_preprocess
+2/2 Test #2: B1_preprocessor_preprocess .......***Failed    0.54 sec
+CMake Error at F:/CPPTrain/LearnCPP/Engineering_Study/exercises/B1_preprocessor/cmake/check_preprocess.cmake:34 (message):
+  macro_a preprocess output does not show offset 11 expansion
+
+
+
+
+50% tests passed, 1 tests failed out of 2
+
+Label Time Summary:
+observation    =   0.54 sec*proc (1 test)
+reference      =   0.58 sec*proc (1 test)
+
+Total Test time (real) =   1.13 sec
+
+The following tests FAILED:
+	  2 - B1_preprocessor_preprocess (Failed)               observation
+

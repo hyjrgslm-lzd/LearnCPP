@@ -1,0 +1,1 @@
+call D:\VisualStudio2026\Installed\Common7\Tools\VsDevCmd.bat -arch=x64 >nul && D:\cmake\install\bin\ctest.exe --test-dir Engineering_Study\exercises\build\sample-odr -LE student --output-on-failure

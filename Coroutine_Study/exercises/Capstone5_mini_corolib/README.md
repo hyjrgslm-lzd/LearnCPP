@@ -27,6 +27,10 @@
 
 每一层完成后跑对应测试。协程生命周期错误通常来自上一层协议没有锁住，例如二次启动、完成后重复消费、或 loser 尚未收束时提前析构 operation。
 
+`tests/` 是学生实现检查，不是占位 demo。未完成 TODO 时，相关测试会运行到学生接口并以普通失败结束；补完后同一测试应覆盖 value、void、error、组合收束和 scope 非空 drain；可选 stdexec 桥接还覆盖 stopped 映射异常。`reference/tests/` 独立验证完整答案，可用 `ctest -L reference` 或 `-R mini_reference_` 单独运行。
+
+默认核心验证不注册学生 starter 测试。要检查自己的 TODO，请用 `student` preset，或配置时显式设置 `-DCOROUTINE_STUDY_TEST_STARTERS=ON`。
+
 ## 必须保持的契约
 
 `task`：
@@ -118,6 +122,8 @@ ctest --test-dir Coroutine_Study/exercises/build/verify-core -C Release -R "mini
 ```
 
 可选 stdexec 桥接 target 只在 `stdexec::stdexec` 存在时构建。核心 reference 不应因为缺少 stdexec 而配置失败。
+
+学生 starter 测试只在 `COROUTINE_STUDY_TEST_STARTERS=ON` 时注册为 `starter` 标签，未完成时不标记 `WILL_FAIL`。这能避免“预期失败”被误读成课程 Reference 通过。
 
 ## 各测试观察点
 

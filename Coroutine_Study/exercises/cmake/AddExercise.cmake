@@ -16,6 +16,15 @@ function(coroutine_study_enable_cxx26_preview target)
     endif()
 endfunction()
 
+function(coroutine_study_set_test_defaults name label timeout)
+    if(TEST ${name})
+        set_tests_properties(${name} PROPERTIES
+            LABELS "${label}"
+            TIMEOUT ${timeout}
+        )
+    endif()
+endfunction()
+
 function(coroutine_study_add_exercise name)
     cmake_parse_arguments(ARG "" "STANDARD" "SOURCES;REFERENCE_SOURCES;LIBRARIES" ${ARGN})
     if(NOT ARG_SOURCES)
@@ -43,6 +52,7 @@ function(coroutine_study_add_exercise name)
         endif()
         if(BUILD_TESTING)
             add_test(NAME ${name}_reference COMMAND ${name}_reference)
+            coroutine_study_set_test_defaults(${name}_reference reference 30)
         endif()
     endif()
 endfunction()

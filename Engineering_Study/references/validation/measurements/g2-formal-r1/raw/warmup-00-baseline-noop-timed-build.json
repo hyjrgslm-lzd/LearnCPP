@@ -1,0 +1,18 @@
+{
+  "command": [
+    "D:\\cmake\\install\\bin\\cmake.exe",
+    "--build",
+    "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\g2-formal-r1-work\\warmup-00-baseline-noop\\build",
+    "--target",
+    "G2_build_cost_baseline",
+    "--parallel",
+    "1",
+    "--verbose"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.13025839999318123,
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

@@ -1,0 +1,1 @@
+﻿call "D:\VisualStudio2026\Installed\Common7\Tools\VsDevCmd.bat" -arch=x64 >nul && "D:\cmake\install\bin\cmake.exe" --install "F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\toolchain-probe\out\vs-ninja-module-install"

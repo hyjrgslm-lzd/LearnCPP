@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "steps": [
+    {
+      "name": "compile-real",
+      "expectation": "must_pass",
+      "passed": true,
+      "exit_code": 0,
+      "timeout": false,
+      "status": "PASS"
+    },
+    {
+      "name": "run-real",
+      "expectation": "must_pass",
+      "passed": true,
+      "exit_code": 0,
+      "timeout": false,
+      "status": "PASS"
+    },
+    {
+      "name": "compile-bad",
+      "expectation": "must_pass",
+      "passed": true,
+      "exit_code": 0,
+      "timeout": false,
+      "status": "PASS"
+    },
+    {
+      "name": "run-bad",
+      "expectation": "must_fail_with_marker",
+      "passed": true,
+      "exit_code": 3221225477,
+      "timeout": false,
+      "status": "FAIL"
+    }
+  ],
+  "seed_corpus": [
+    "invalid_4x.txt",
+    "invalid_one_digit.txt",
+    "valid_00.txt",
+    "valid_42.txt"
+  ],
+  "marker": "G1_ORACLE_MISMATCH:",
+  "failures": []
+}

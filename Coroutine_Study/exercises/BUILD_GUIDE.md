@@ -47,6 +47,16 @@ Ninja、Unix Makefiles 等单配置 CMake 生成器通常直接将程序放在�
 
 先运行 Starter，按正文预测并观察输出，然后逐步补全 TODO。Reference 提供完整结果；许多示例也用 `coroutine_study::check` 检查关键行为，失败时会指出观察条件。课程正文说明各个结果为什么出现。
 
+`student` preset 会显式开启 `COROUTINE_STUDY_TEST_STARTERS=ON`。默认核心验证不注册未完成 starter，避免 `verify-core` 的 Reference 结果被学生 TODO 污染。
+
+`ctest` 标签区分检查含义：
+
+- `reference`：完整答案或课程运行时检查，应该通过。
+- `starter`：学生起点检查。未完成 TODO 时可以失败，但必须安全、有限、明确失败，不能用 skip 文本返回 0；需要通过 `COROUTINE_STUDY_TEST_STARTERS=ON` 显式注册。
+- `runtime`、`rpc`、`stdexec`：对应运行时、RPC 或可选 stdexec 覆盖。
+
+默认自动测试有进程外 `TIMEOUT`。普通课程和 mini 库测试为 30 秒，RPC reference 为 60 秒；个别题目可按自身 CMake 保留更短限制。
+
 项目的可执行目标名与目录结构见各项目 README：
 
 - [异步小爬虫](Capstone1_async_crawler/README.md)

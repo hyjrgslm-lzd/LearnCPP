@@ -1,0 +1,52 @@
+UpdateCTestConfiguration  from :F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/sample-odr/DartConfiguration.tcl
+Parse Config file:F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/sample-odr/DartConfiguration.tcl
+Test project F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/sample-odr
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 7
+    Start 7: C1_odr_negative_duplicate_header_definition
+
+7: Test command: D:\cmake\install\bin\cmake.exe "-DCASE_SOURCE=F:/CPPTrain/LearnCPP/Engineering_Study/exercises/C1_odr/negative/duplicate_header_definition" "-DCASE_BUILD=F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/sample-odr/negative/duplicate_header_definition" "-DGENERATOR=Ninja" "-DEXPECT_REGEX=lesson_value" "-P" "F:/CPPTrain/LearnCPP/Engineering_Study/exercises/C1_odr/cmake/expect_build_failure.cmake"
+7: Working Directory: F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/sample-odr
+7: Test timeout computed to be: 180
+7: -- negative case failed as expected
+7: -- [1/5] Generating CXX dyndep file CMakeFiles\C1_odr_negative_duplicate_header_definition.dir\CXX.dd
+7: [2/2] Linking CXX executable C1_odr_negative_duplicate_header_definition.exe
+7: FAILED: C1_odr_negative_duplicate_header_definition.exe 
+7: C:\WINDOWS\system32\cmd.exe /C "cd . && D:\cmake\install\bin\cmake.exe -E vs_link_exe --msvc-ver=1951 --intdir=CMakeFiles\C1_odr_negative_duplicate_header_definition.dir --rc="C:\PROGRA~2\Windows Kits\10\bin\100261~1.0\x64\rc.exe" --mt="C:\PROGRA~2\Windows Kits\10\bin\100261~1.0\x64\mt.exe" --manifests  -- D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\link.exe /nologo CMakeFiles\C1_odr_negative_duplicate_header_definition.dir\caller_a.cpp.obj CMakeFiles\C1_odr_negative_duplicate_header_definition.dir\caller_b.cpp.obj CMakeFiles\C1_odr_negative_duplicate_header_definition.dir\main.cpp.obj  /out:C1_odr_negative_duplicate_header_definition.exe /implib:C1_odr_negative_duplicate_header_definition.lib /pdb:C1_odr_negative_duplicate_header_definition.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+7: LINK Pass 1: command "D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\link.exe /nologo CMakeFiles\C1_odr_negative_duplicate_header_definition.dir\caller_a.cpp.obj CMakeFiles\C1_odr_negative_duplicate_header_definition.dir\caller_b.cpp.obj CMakeFiles\C1_odr_negative_duplicate_header_definition.dir\main.cpp.obj /out:C1_odr_negative_duplicate_header_definition.exe /implib:C1_odr_negative_duplicate_header_definition.lib /pdb:C1_odr_negative_duplicate_header_definition.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\C1_odr_negative_duplicate_header_definition.dir/intermediate.manifest CMakeFiles\C1_odr_negative_duplicate_header_definition.dir/manifest.res" failed (exit code 1169) with the following output:
+7: caller_b.cpp.obj : error LNK2005: "int __cdecl lesson_value(void)" (?lesson_value@@YAHXZ) 宸茬粡鍦?caller_a.cpp.obj 涓畾涔?
+7: C1_odr_negative_duplicate_header_definition.exe : fatal error LNK1169: 鎵惧埌涓€涓垨澶氫釜澶氶噸瀹氫箟鐨勭鍙?
+7: ninja: build stopped: subcommand failed.
+7: 
+7: 
+1/2 Test #7: C1_odr_negative_duplicate_header_definition ...   Passed    0.55 sec
+test 8
+    Start 8: C1_odr_negative_include_guard_same_failure
+
+8: Test command: D:\cmake\install\bin\cmake.exe "-DCASE_SOURCE=F:/CPPTrain/LearnCPP/Engineering_Study/exercises/C1_odr/negative/include_guard_same_failure" "-DCASE_BUILD=F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/sample-odr/negative/include_guard_same_failure" "-DGENERATOR=Ninja" "-DEXPECT_REGEX=lesson_value" "-P" "F:/CPPTrain/LearnCPP/Engineering_Study/exercises/C1_odr/cmake/expect_build_failure.cmake"
+8: Working Directory: F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/sample-odr
+8: Test timeout computed to be: 180
+8: -- negative case failed as expected
+8: -- [1/5] Generating CXX dyndep file CMakeFiles\C1_odr_negative_include_guard_same_failure.dir\CXX.dd
+8: [2/2] Linking CXX executable C1_odr_negative_include_guard_same_failure.exe
+8: FAILED: C1_odr_negative_include_guard_same_failure.exe 
+8: C:\WINDOWS\system32\cmd.exe /C "cd . && D:\cmake\install\bin\cmake.exe -E vs_link_exe --msvc-ver=1951 --intdir=CMakeFiles\C1_odr_negative_include_guard_same_failure.dir --rc="C:\PROGRA~2\Windows Kits\10\bin\100261~1.0\x64\rc.exe" --mt="C:\PROGRA~2\Windows Kits\10\bin\100261~1.0\x64\mt.exe" --manifests  -- D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\link.exe /nologo CMakeFiles\C1_odr_negative_include_guard_same_failure.dir\caller_a.cpp.obj CMakeFiles\C1_odr_negative_include_guard_same_failure.dir\caller_b.cpp.obj CMakeFiles\C1_odr_negative_include_guard_same_failure.dir\main.cpp.obj  /out:C1_odr_negative_include_guard_same_failure.exe /implib:C1_odr_negative_include_guard_same_failure.lib /pdb:C1_odr_negative_include_guard_same_failure.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+8: LINK Pass 1: command "D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\link.exe /nologo CMakeFiles\C1_odr_negative_include_guard_same_failure.dir\caller_a.cpp.obj CMakeFiles\C1_odr_negative_include_guard_same_failure.dir\caller_b.cpp.obj CMakeFiles\C1_odr_negative_include_guard_same_failure.dir\main.cpp.obj /out:C1_odr_negative_include_guard_same_failure.exe /implib:C1_odr_negative_include_guard_same_failure.lib /pdb:C1_odr_negative_include_guard_same_failure.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\C1_odr_negative_include_guard_same_failure.dir/intermediate.manifest CMakeFiles\C1_odr_negative_include_guard_same_failure.dir/manifest.res" failed (exit code 1169) with the following output:
+8: caller_b.cpp.obj : error LNK2005: "int __cdecl lesson_value(void)" (?lesson_value@@YAHXZ) 宸茬粡鍦?caller_a.cpp.obj 涓畾涔?
+8: C1_odr_negative_include_guard_same_failure.exe : fatal error LNK1169: 鎵惧埌涓€涓垨澶氫釜澶氶噸瀹氫箟鐨勭鍙?
+8: ninja: build stopped: subcommand failed.
+8: 
+8: 
+2/2 Test #8: C1_odr_negative_include_guard_same_failure ....   Passed    0.61 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Label Time Summary:
+negative    =   1.16 sec*proc (2 tests)
+
+Total Test time (real) =   1.17 sec

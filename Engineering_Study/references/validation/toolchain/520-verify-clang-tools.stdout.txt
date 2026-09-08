@@ -1,0 +1,10 @@
+=== asan safe build/run ===
+=== asan unsafe build/run expected failure ===
+=== libfuzzer finite runs ===
+=== ftime trace ===
+g2_trace.exe-alpha.json
+g2_trace.exe-beta.json
+g2_trace.exe-common.json
+g2_trace.exe-gamma.json
+g2_trace.exe-main.json
+=== done ===

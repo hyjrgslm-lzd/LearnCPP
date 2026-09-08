@@ -1,0 +1,6 @@
+{
+  "command": "cmd.exe /d /c Engineering_Study\\references\\validation\\toolchain\\565-verify-g1-cmake-fresh.command.cmd > Engineering_Study\\references\\validation\\toolchain\\565-verify-g1-cmake-fresh.stdout.txt 2> Engineering_Study\\references\\validation\\toolchain\\565-verify-g1-cmake-fresh.stderr.txt",
+  "exit_code": 0,
+  "execution_surface": "require_escalated normal local process",
+  "claims": ["fresh G1 CMake configure/build/test passes with root-updated check.hpp", "reference parser builds and validates valid parse plus invalid_argument rejection"]
+}

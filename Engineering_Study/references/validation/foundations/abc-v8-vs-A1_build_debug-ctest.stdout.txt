@@ -1,0 +1,14 @@
+Test project F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/abc-v8-vs-A1_build_debug
+    Start 1: A1_build_debug_reference
+1/2 Test #1: A1_build_debug_reference .........   Passed    0.27 sec
+    Start 2: A1_build_debug_observation
+2/2 Test #2: A1_build_debug_observation .......   Passed    0.25 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Label Time Summary:
+observation    =   0.25 sec*proc (1 test)
+reference      =   0.27 sec*proc (1 test)
+
+Total Test time (real) =   0.52 sec
+

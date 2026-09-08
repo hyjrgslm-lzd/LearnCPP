@@ -1,0 +1,15 @@
+Test project F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/foundations-independent-review/g1-contract-controlled-failure-r1/Release-special42-build
+    Start 2: G1_diagnostics_student
+1/1 Test #2: G1_diagnostics_student ...........***Failed    0.24 sec
+check failed: parser must not throw for valid two-digit ASCII input
+
+
+0% tests passed, 1 tests failed out of 1
+
+Label Time Summary:
+student    =   0.24 sec*proc (1 test)
+
+Total Test time (real) =   0.25 sec
+
+The following tests FAILED:
+	  2 - G1_diagnostics_student (Failed)                   student

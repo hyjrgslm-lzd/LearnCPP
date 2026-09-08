@@ -1,0 +1,10 @@
+{
+  "name": "student-B1_preprocessor-ctest-expected-fail",
+  "exit_code": 8,
+  "expected": [
+    8
+  ],
+  "ok": true,
+  "timeout": false,
+  "command": "call \"D:\\VisualStudio2026\\Installed\\Common7\\Tools\\VsDevCmd.bat\" -arch=x64 >nul && \"D:\\cmake\\install\\bin\\ctest.exe\" --test-dir \"F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\abc-v3-ninja-student-B1_preprocessor\" -L student --output-on-failure"
+}

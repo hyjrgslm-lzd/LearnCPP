@@ -1,0 +1,17 @@
+[1/10] Building CXX object CMakeFiles\A1_build_debug_student_impl.dir\src\student\debug_story.cpp.obj
+FAILED: [code=2] CMakeFiles/A1_build_debug_student_impl.dir/src/student/debug_story.cpp.obj 
+D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\cl.exe  /nologo /TP  -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\review-fix2-good-A1_build_debug-Debug-srcroot\A1_build_debug\src\student -IF:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\review-fix2-good-A1_build_debug-Debug-srcroot\cmake\..\include /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -std:c++latest -MDd -Zi /utf-8 /EHsc /W4 /Zc:__cplusplus /Zc:preprocessor /showIncludes /FoCMakeFiles\A1_build_debug_student_impl.dir\src\student\debug_story.cpp.obj /FdCMakeFiles\A1_build_debug_student_impl.dir\A1_build_debug_student_impl.pdb /FS -c F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\review-fix2-good-A1_build_debug-Debug-srcroot\A1_build_debug\src\student\debug_story.cpp
+F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\review-fix2-good-A1_build_debug-Debug-srcroot\A1_build_debug\src\student\debug_story.cpp(1): error C2001: �ַ����������еĻ��з�
+F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\review-fix2-good-A1_build_debug-Debug-srcroot\A1_build_debug\src\student\debug_story.cpp(1): error C2015: �����е��ַ�̫��
+F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\review-fix2-good-A1_build_debug-Debug-srcroot\A1_build_debug\src\student\debug_story.cpp(1): error C2059: �﷨����:��������
+F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\review-fix2-good-A1_build_debug-Debug-srcroot\A1_build_debug\src\student\debug_story.cpp(2): error C2143: �﷨����: ȱ�١�;��(�ڡ�{����ǰ��)
+F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\review-fix2-good-A1_build_debug-Debug-srcroot\A1_build_debug\src\student\debug_story.cpp(2): error C2447: ��{��: ȱ�ٺ�������(�Ƿ�����ʽ����ʽ��?)
+F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\review-fix2-good-A1_build_debug-Debug-srcroot\A1_build_debug\src\student\debug_story.cpp(3): error C2001: �ַ����������еĻ��з�
+F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\review-fix2-good-A1_build_debug-Debug-srcroot\A1_build_debug\src\student\debug_story.cpp(3): error C2137: ���ַ�����
+F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\review-fix2-good-A1_build_debug-Debug-srcroot\A1_build_debug\src\student\debug_story.cpp(3): error C2059: �﷨����:��������
+[2/10] Building CXX object CMakeFiles\A1_build_debug_reference_impl.dir\src\reference\debug_story.cpp.obj
+[3/10] Building CXX object CMakeFiles\A1_build_debug_observation.dir\checks\observation_check.cpp.obj
+[4/10] Building CXX object CMakeFiles\A1_build_debug_reference.dir\checks\reference_check.cpp.obj
+[5/10] Building CXX object CMakeFiles\A1_build_debug_student.dir\checks\student_check.cpp.obj
+ninja: build stopped: subcommand failed.
+

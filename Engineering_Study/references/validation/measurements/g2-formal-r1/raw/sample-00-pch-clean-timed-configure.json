@@ -1,0 +1,19 @@
+{
+  "command": [
+    "D:\\cmake\\install\\bin\\cmake.exe",
+    "-S",
+    "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\g2-formal-r1-work\\sample-00-pch-clean\\source\\Engineering_Study\\exercises\\G2_build_cost",
+    "-B",
+    "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\g2-formal-r1-work\\sample-00-pch-clean\\build",
+    "-G",
+    "Ninja",
+    "-DCMAKE_MAKE_PROGRAM=D:\\VisualStudio2026\\Installed\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja\\ninja.exe",
+    "-DCMAKE_BUILD_TYPE=Release"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 1.8773759000469,
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

@@ -1,0 +1,253 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "repo": "F:\\CPPTrain\\LearnCPP",
+  "script": "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\G2_build_cost\\scripts\\measure_build.py",
+  "environment": {
+    "python": "3.13.11 (main, Jan 14 2026, 19:29:23) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26100-SP0",
+    "machine": "AMD64",
+    "logical_cpus": 24
+  },
+  "arguments": {
+    "samples": 1,
+    "warmups": 1,
+    "seed": 20260908,
+    "parallel": 1,
+    "timeout": 180.0,
+    "cmake": "D:/cmake/install/bin/cmake.exe",
+    "ninja": "D:/VisualStudio2026/Installed/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe",
+    "variants": [
+      "baseline"
+    ],
+    "scenarios": [
+      "noop"
+    ],
+    "work_root": "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\g2-r4-subset-smoke-work"
+  },
+  "fixture_source_sha256": "7f47cdd93f9c4044f96eb9015de2e643929fd821b73bd4c9b5fbd822fd078662",
+  "process_runner_sha256": "77f7aa8a86ff5fa4fdb933c8bb9929d637748a1aa00fb7afb3dac941e47d936b",
+  "schedule": [
+    {
+      "phase": "warmup",
+      "repetition": 0,
+      "variant": "baseline",
+      "scenario": "noop"
+    },
+    {
+      "phase": "sample",
+      "repetition": 0,
+      "variant": "baseline",
+      "scenario": "noop"
+    }
+  ],
+  "rounds": [
+    {
+      "phase": "warmup",
+      "repetition": 0,
+      "variant": "baseline",
+      "target": "G2_build_cost_baseline",
+      "scenario": "noop",
+      "status": "PASS",
+      "failure": "",
+      "elapsed_seconds": 0.09502990008331835,
+      "prepare_commands": [
+        {
+          "name": "configure",
+          "command": [
+            "D:/cmake/install/bin/cmake.exe",
+            "-S",
+            "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\g2-r4-subset-smoke-work\\warmup-00-baseline-noop\\source\\Engineering_Study\\exercises\\G2_build_cost",
+            "-B",
+            "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\g2-r4-subset-smoke-work\\warmup-00-baseline-noop\\build",
+            "-G",
+            "Ninja",
+            "-DCMAKE_MAKE_PROGRAM=D:/VisualStudio2026/Installed/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe",
+            "-DCMAKE_BUILD_TYPE=Release"
+          ],
+          "exit_code": 0,
+          "timeout": false,
+          "process_seconds": 1.8309557000175118,
+          "status": "PASS",
+          "error": "",
+          "cleanup_error": ""
+        },
+        {
+          "name": "build",
+          "actions": {
+            "compiled_sources_seen": [
+              "alpha.cpp",
+              "beta.cpp",
+              "common.cpp",
+              "gamma.cpp",
+              "main.cpp"
+            ],
+            "compile_line_count": 5,
+            "link_seen": true,
+            "ninja_no_work": false,
+            "dyndep_seen": false
+          },
+          "command": [
+            "D:/cmake/install/bin/cmake.exe",
+            "--build",
+            "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\g2-r4-subset-smoke-work\\warmup-00-baseline-noop\\build",
+            "--target",
+            "G2_build_cost_baseline",
+            "--parallel",
+            "1",
+            "--verbose"
+          ],
+          "exit_code": 0,
+          "timeout": false,
+          "process_seconds": 3.3646790999919176,
+          "status": "PASS",
+          "error": "",
+          "cleanup_error": ""
+        }
+      ],
+      "timed_commands": [
+        {
+          "name": "build",
+          "actions": {
+            "compiled_sources_seen": [],
+            "compile_line_count": 0,
+            "link_seen": false,
+            "ninja_no_work": true,
+            "dyndep_seen": false
+          },
+          "command": [
+            "D:/cmake/install/bin/cmake.exe",
+            "--build",
+            "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\g2-r4-subset-smoke-work\\warmup-00-baseline-noop\\build",
+            "--target",
+            "G2_build_cost_baseline",
+            "--parallel",
+            "1",
+            "--verbose"
+          ],
+          "exit_code": 0,
+          "timeout": false,
+          "process_seconds": 0.09357509994879365,
+          "status": "PASS",
+          "error": "",
+          "cleanup_error": ""
+        }
+      ],
+      "mutated_file": "",
+      "source_sha256": "7f47cdd93f9c4044f96eb9015de2e643929fd821b73bd4c9b5fbd822fd078662",
+      "exe_sha256": "d39e8b688ebbb39a1a7dc1daee424f8669365be75c0f15760bb507d7dd8e553e",
+      "round_dir": "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\g2-r4-subset-smoke-work\\warmup-00-baseline-noop"
+    },
+    {
+      "phase": "sample",
+      "repetition": 0,
+      "variant": "baseline",
+      "target": "G2_build_cost_baseline",
+      "scenario": "noop",
+      "status": "PASS",
+      "failure": "",
+      "elapsed_seconds": 0.09393489989452064,
+      "prepare_commands": [
+        {
+          "name": "configure",
+          "command": [
+            "D:/cmake/install/bin/cmake.exe",
+            "-S",
+            "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\g2-r4-subset-smoke-work\\sample-00-baseline-noop\\source\\Engineering_Study\\exercises\\G2_build_cost",
+            "-B",
+            "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\g2-r4-subset-smoke-work\\sample-00-baseline-noop\\build",
+            "-G",
+            "Ninja",
+            "-DCMAKE_MAKE_PROGRAM=D:/VisualStudio2026/Installed/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe",
+            "-DCMAKE_BUILD_TYPE=Release"
+          ],
+          "exit_code": 0,
+          "timeout": false,
+          "process_seconds": 1.7798242000862956,
+          "status": "PASS",
+          "error": "",
+          "cleanup_error": ""
+        },
+        {
+          "name": "build",
+          "actions": {
+            "compiled_sources_seen": [
+              "alpha.cpp",
+              "beta.cpp",
+              "common.cpp",
+              "gamma.cpp",
+              "main.cpp"
+            ],
+            "compile_line_count": 5,
+            "link_seen": true,
+            "ninja_no_work": false,
+            "dyndep_seen": false
+          },
+          "command": [
+            "D:/cmake/install/bin/cmake.exe",
+            "--build",
+            "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\g2-r4-subset-smoke-work\\sample-00-baseline-noop\\build",
+            "--target",
+            "G2_build_cost_baseline",
+            "--parallel",
+            "1",
+            "--verbose"
+          ],
+          "exit_code": 0,
+          "timeout": false,
+          "process_seconds": 3.4065747000277042,
+          "status": "PASS",
+          "error": "",
+          "cleanup_error": ""
+        }
+      ],
+      "timed_commands": [
+        {
+          "name": "build",
+          "actions": {
+            "compiled_sources_seen": [],
+            "compile_line_count": 0,
+            "link_seen": false,
+            "ninja_no_work": true,
+            "dyndep_seen": false
+          },
+          "command": [
+            "D:/cmake/install/bin/cmake.exe",
+            "--build",
+            "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\g2-r4-subset-smoke-work\\sample-00-baseline-noop\\build",
+            "--target",
+            "G2_build_cost_baseline",
+            "--parallel",
+            "1",
+            "--verbose"
+          ],
+          "exit_code": 0,
+          "timeout": false,
+          "process_seconds": 0.09242570004425943,
+          "status": "PASS",
+          "error": "",
+          "cleanup_error": ""
+        }
+      ],
+      "mutated_file": "",
+      "source_sha256": "7f47cdd93f9c4044f96eb9015de2e643929fd821b73bd4c9b5fbd822fd078662",
+      "exe_sha256": "31de14519538706e693d64457ada07aafdf7f21e80306fb161c3d4a147a7c2b2",
+      "round_dir": "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\g2-r4-subset-smoke-work\\sample-00-baseline-noop"
+    }
+  ],
+  "summary": [
+    {
+      "variant": "baseline",
+      "scenario": "noop",
+      "valid_samples": 1,
+      "requested_samples": 1,
+      "samples_ms": [
+        93.93489989452064
+      ],
+      "median_ms": 93.93489989452064,
+      "min_ms": 93.93489989452064,
+      "max_ms": 93.93489989452064,
+      "range_ms": 0.0
+    }
+  ]
+}
