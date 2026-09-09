@@ -1,0 +1,23 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "build/c02-owner-l10-r1b-release",
+    "--config",
+    "Release"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 2.327999999979511,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L10_control_block/CMakeLists.txt\n  observation_check.cpp\n  L10_control_block_observation.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-owner-l10-r1b-release\\Release\\L10_control_block_observation.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L10_control_block/CMakeLists.txt\n  reference_check.cpp\nF:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L10_control_block\\src\\reference\\rc.hpp(217,21): error C2248: “l10::rc_ptr<l10_checks::tracked>::rc_ptr”: 无法访问 private 成员(在“l10::rc_ptr<l10_checks::tracked>”类中声明) [F:\\CPPTrain\\LearnCPP\\build\\c02-owner-l10-r1b-release\\L10_control_block_reference.vcxproj]\n  (编译源文件“../../Core_Study/exercises/L10_control_block/checks/reference_check.cpp”)\n      F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L10_control_block\\src\\reference\\rc.hpp(111,5):\n      参见“l10::rc_ptr<l10_checks::tracked>::rc_ptr”的声明\n      F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L10_control_block\\src\\reference\\rc.hpp(64,7):\n      参见“l10::rc_ptr<l10_checks::tracked>”的声明\n      F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L10_control_block\\src\\reference\\rc.hpp(217,21):\n      模板实例化上下文(最早的实例化上下文)为\n          F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L10_control_block\\checks\\rc_checks.hpp(35,27):\n          查看对正在编译的函数 模板 实例化“l10::rc_ptr<l10_checks::tracked> l10::make_rc<l10_checks::tracked,int>(int &&)”的引用\n  \n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    "L10_control_block_reference.vcxproj ->"
+  ],
+  "verdict": "FAIL"
+}

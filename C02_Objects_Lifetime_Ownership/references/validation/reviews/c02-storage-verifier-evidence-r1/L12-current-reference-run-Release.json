@@ -1,0 +1,20 @@
+{
+  "command": [
+    "F:\\CPPTrain\\LearnCPP\\build/c02-storage-verifier-r1/L12-current\\Release\\L12_storage_reference.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.031999999890103936,
+  "stdout": "L12_storage_contract OK\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [
+    "L12_storage_contract OK"
+  ],
+  "verdict": "PASS"
+}

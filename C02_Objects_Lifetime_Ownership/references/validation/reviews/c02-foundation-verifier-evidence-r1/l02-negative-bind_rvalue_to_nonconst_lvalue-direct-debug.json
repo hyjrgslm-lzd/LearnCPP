@@ -1,0 +1,24 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "build/c02-foundation-verifier-r1/L02-default/negative/bind_rvalue_to_nonconst_lvalue",
+    "--config",
+    "Debug",
+    "--clean-first"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 1.3599999998696148,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L02_value_categories/negative/bind_rvalue_to_nonconst_lvalue/CMakeLists.txt\n  正在扫描源以查找模块依赖项...\n  main.cpp\n  正在编译...\n  main.cpp\nF:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L02_value_categories\\negative\\bind_rvalue_to_nonconst_lvalue\\main.cpp(2,14): error C2440: “初始化”: 无法从“int”转换为“int &” [F:\\CPPTrain\\LearnCPP\\build\\c02-foundation-verifier-r1\\L02-default\\negative\\bind_rvalue_to_nonconst_lvalue\\L02_negative_bind_rvalue.vcxproj]\n      F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L02_value_categories\\negative\\bind_rvalue_to_nonconst_lvalue\\main.cpp(2,14):\n      非常量引用只能绑定到左值\n  \n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 1,
+  "required_text": [
+    "C2440"
+  ],
+  "verdict": "PASS"
+}

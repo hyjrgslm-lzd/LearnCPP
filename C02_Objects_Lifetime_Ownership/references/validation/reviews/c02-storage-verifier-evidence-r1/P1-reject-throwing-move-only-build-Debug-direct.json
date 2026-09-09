@@ -1,0 +1,25 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "build/c02-storage-verifier-r1/P1",
+    "--config",
+    "Debug",
+    "--target",
+    "P1_object_buffer_reject_throwing_move_only"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 1.452999999979511,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  reject_throwing_move_only.cpp\nF:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\P1_object_buffer\\src\\reference\\object_buffer.hpp(17,51): error C2338: static assertion failed: 'T must be copy constructible or nothrow move constructible' [F:\\CPPTrain\\LearnCPP\\build\\c02-storage-verifier-r1\\P1\\P1_object_buffer_reject_throwing_move_only.vcxproj]\n  (编译源文件“../../../Core_Study/exercises/P1_object_buffer/checks/reject_throwing_move_only.cpp”)\n      F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\P1_object_buffer\\src\\reference\\object_buffer.hpp(17,51):\n      模板实例化上下文(最早的实例化上下文)为\n          F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\P1_object_buffer\\checks\\reject_throwing_move_only.cpp(10,37):\n          查看对正在编译的 类 模板 实例化“p1::object_buffer<ThrowingMoveOnly>”的引用\n  \n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 1,
+  "required_text": [
+    "copy constructible or nothrow move constructible"
+  ],
+  "verdict": "PASS"
+}

@@ -1,0 +1,27 @@
+{
+  "command": [
+    "cmake",
+    "-S",
+    "Core_Study/exercises/L04_construction",
+    "-B",
+    "Core_Study/exercises/L04_construction/build/c02-foundation-author-student",
+    "-G",
+    "Visual Studio 18 2026",
+    "-A",
+    "x64",
+    "-DCORE_STUDY_TEST_STUDENTS=ON"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.18799999984912574,
+  "stdout": "-- Configuring done (0.1s)\n-- Generating done (0.1s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/Core_Study/exercises/L04_construction/build/c02-foundation-author-student\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "expected_exit": 0,
+  "required_text": [
+    "Configuring done"
+  ],
+  "verdict": "PASS"
+}

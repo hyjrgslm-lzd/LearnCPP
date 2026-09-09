@@ -1,0 +1,21 @@
+{
+  "command": [
+    "python",
+    "C02_Objects_Lifetime_Ownership/references/validation/tools/check_record_process.py",
+    "--output",
+    "C02_Objects_Lifetime_Ownership/references/validation/directory-migration/recorder-contracts"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.0630000000819564,
+  "stdout": "PASS: 7 recorder contracts\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

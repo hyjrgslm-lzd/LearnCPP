@@ -1,0 +1,23 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "F:\\CPPTrain\\LearnCPP\\build\\c02-wiring-verifier-r1\\good",
+    "--config",
+    "Release",
+    "--clean-first",
+    "--target",
+    "wiring_student"
+  ],
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "exit_code": 0,
+  "expected_exit": 0,
+  "timeout": false,
+  "duration_seconds": 0.01,
+  "stdout": "",
+  "stderr": "",
+  "contains": [],
+  "missing_contains": [],
+  "error": "",
+  "cleanup_error": ""
+}

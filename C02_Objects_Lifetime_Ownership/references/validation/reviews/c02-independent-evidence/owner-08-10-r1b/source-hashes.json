@@ -1,0 +1,94 @@
+[
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\quality-report.md",
+    "Hash": "1404CEC0E9555ADF5A52414C9460BA6CD5E92B4BE2CC2649A50130D8D4354263"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\author-owner-08-10-r1-report.md",
+    "Hash": "54F698F38A71B15BA827B75577AB244E052BED2ADE570A8986C8A32717D4E0FB"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\chapters\\08-unique-ownership.md",
+    "Hash": "108F067583D9A5B0CE5A5634DFBFE824018C503613CC35BE723EE3E1D52656EF"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\chapters\\09-shared-ownership.md",
+    "Hash": "5D89380EDEC7A8EB36EC390D4ADEAFDD7831682A6120C8FAD20D33A0389F98A9"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\chapters\\10-control-block.md",
+    "Hash": "AD9D0B637EEB512B03C5B68198B321592CCEBE34F4868D5C31450643E65CA6DE"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L08_unique\\README.md",
+    "Hash": "24860108908F7AC3CC893878FBD62FE70B5B63A25053CDCE84407850B65F3C62"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L09_shared\\README.md",
+    "Hash": "534DC7D46C7AB3FD328356BEFE0756FF31A67E8AB48C4A33A342C7E2CCB72FAE"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L10_control_block\\README.md",
+    "Hash": "674DD543E1DCF1B6D3FEBF202CF4931529A84E2BACD3BEA7EDB2117ACCABA396"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L08_unique\\CMakeLists.txt",
+    "Hash": "09AB85D1C9628357162AE3FA742E53B9027DF4AFC832219C4C5A20317DD13038"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L09_shared\\CMakeLists.txt",
+    "Hash": "B0A8187EF976559BC6428256C32359F97AFEB1874249AA8F70CF661935F86A73"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L10_control_block\\CMakeLists.txt",
+    "Hash": "7304563DF9C0C4EA8269D6EDD38E137442899CDA26BD7E63D6DCCEFED5F1E021"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L08_unique\\checks\\owner_checks.hpp",
+    "Hash": "882F517BADEEA42A3D7668476A10A54D8135FCCA08BC296369474FF791D72691"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L09_shared\\checks\\owner_checks.hpp",
+    "Hash": "BC2B200F08D74B63E7AF42477B6BCB12C1207369984A7B014F3257B65E5DFED9"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L10_control_block\\checks\\rc_checks.hpp",
+    "Hash": "D79869745DAEA612D94EA9B0339AA54AA91A730D8DCE81472F83905FB3FF3FA4"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L08_unique\\checks\\support\\unique_support.hpp",
+    "Hash": "59028AF6FF443617E2F9BA93E5A969F4CCFA502953E9B45780AF5863B4C61921"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L09_shared\\checks\\support\\shared_support.hpp",
+    "Hash": "2992078D461C0DF637FC1E71D4120A03F7B0CF8BB6E09F569BC767B91CB0AA13"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L10_control_block\\checks\\support\\rc_support.hpp",
+    "Hash": "B5D3973ED2D984586475D5AF1F220F9753FF43D6A8AEDBDF0995C07960548826"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L08_unique\\src\\reference\\owner.hpp",
+    "Hash": "C2A8B0DC9E2C34E3DCE4EDCEA6DA9F52C8CC8408A7752EB192C0DAE8FE4AC690"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L09_shared\\src\\reference\\owner.hpp",
+    "Hash": "4C25483D3B4EEA1A43D9E27B5E4D1BCDE4868D193F1A3FB216B7BB3F444B6BE4"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L10_control_block\\src\\reference\\rc.hpp",
+    "Hash": "8B472959A9AD0EDF4F33B8DBD6532B4CDFA50A07BE27BC37ECA6A4ECFB36207C"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L08_unique\\src\\student\\owner.hpp",
+    "Hash": "E8EB8687135FE681BB96EDDE568A5012803937DDD5D7270DDA71DE920D5A14B0"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L09_shared\\src\\student\\owner.hpp",
+    "Hash": "6039DB92115200467179A94765CECB7BE5ABAB401E1A3D3BEB63092BDD8B4611"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L10_control_block\\src\\student\\rc.hpp",
+    "Hash": "196586EAB54B5988EADC3ED219571F7379F450B1126B5D093D811E4D5C5D9D8C"
+  }
+]

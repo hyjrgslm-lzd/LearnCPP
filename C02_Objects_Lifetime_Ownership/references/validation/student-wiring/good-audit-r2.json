@@ -1,0 +1,16 @@
+{
+  "verdict": "PASS",
+  "failures": [],
+  "students": [
+    "wiring_student"
+  ],
+  "configuration": "Release",
+  "build": "F:\\CPPTrain\\LearnCPP\\build\\c02-wiring-good",
+  "actual_include_count": 10,
+  "source_sha256": {
+    "F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\student-wiring\\src\\student\\main.cpp": "7494f6cc3bf055ef9a2e843681545820a7f4b9415ae5c02b6090680ce07b983c",
+    "F:\\CPPTrain\\LearnCPP\\build\\c02-wiring-good\\CMakeFiles\\c893703c012ad75ecbb6b496b77fd666\\generate.stamp.rule": "6d2663216bb5708992dad2784a833f449113afd00fd431274ca956fb2530d391"
+  },
+  "trace_sha256": "b56143a5ac5723daa719b5b51fe6ac963685875b1781c9463e89a487041196e9",
+  "scope": "declared answer targets/paths, recorded includes and literal local includes; not plagiarism proof"
+}

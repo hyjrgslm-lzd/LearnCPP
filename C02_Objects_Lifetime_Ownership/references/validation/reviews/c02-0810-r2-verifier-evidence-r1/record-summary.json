@@ -1,0 +1,322 @@
+[
+  {
+    "file": "build-alias-asan-r2.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "required_text": "clang version 22.1.3",
+    "command": "cmd /c .\\Core_Study\\references\\validation\\reviews\\c02-0810-r2-verifier-evidence-r1\\build-alias-asan-r2.cmd"
+  },
+  {
+    "file": "run-copy-asan-r2.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "required_text": "copy alias assignment OK",
+    "command": "cmd /c .\\Core_Study\\references\\validation\\reviews\\c02-0810-r2-verifier-evidence-r1\\run-copy-asan-r2.cmd"
+  },
+  {
+    "file": "run-move-asan-r2.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "required_text": "move alias assignment OK",
+    "command": "cmd /c .\\Core_Study\\references\\validation\\reviews\\c02-0810-r2-verifier-evidence-r1\\run-move-asan-r2.cmd"
+  },
+  {
+    "file": "l10-configure-default-r2.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "required_text": "Configuring done",
+    "command": "cmake -S Core_Study/exercises/L10_control_block -B build/c02-0810-r2-verifier-r1/L10-default -G Visual Studio 18 2026 -A x64 -DL10_CONTROL_BLOCK_BUILD_VALIDATION_VARIANTS=ON"
+  },
+  {
+    "file": "l10-build-default-debug-r2.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "required_text": ".vcxproj",
+    "command": "cmake --build build/c02-0810-r2-verifier-r1/L10-default --config Debug --clean-first"
+  },
+  {
+    "file": "l10-ctest-default-debug-r2.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "required_text": "100% tests passed",
+    "command": "ctest --test-dir build/c02-0810-r2-verifier-r1/L10-default -C Debug --output-on-failure"
+  },
+  {
+    "file": "l10-build-default-release-r2.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "required_text": ".vcxproj",
+    "command": "cmake --build build/c02-0810-r2-verifier-r1/L10-default --config Release --clean-first"
+  },
+  {
+    "file": "l10-ctest-default-release-r2.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "required_text": "100% tests passed",
+    "command": "ctest --test-dir build/c02-0810-r2-verifier-r1/L10-default -C Release --output-on-failure"
+  },
+  {
+    "file": "l09-configure-default-r2.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "required_text": "Configuring done",
+    "command": "cmake -S Core_Study/exercises/L09_shared -B build/c02-0810-r2-verifier-r1/L09-default -G Visual Studio 18 2026 -A x64 -DL09_SHARED_BUILD_VALIDATION_VARIANTS=ON"
+  },
+  {
+    "file": "l09-build-default-debug-r2.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "required_text": ".vcxproj",
+    "command": "cmake --build build/c02-0810-r2-verifier-r1/L09-default --config Debug --clean-first"
+  },
+  {
+    "file": "l09-ctest-default-debug-r2.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "required_text": "100% tests passed",
+    "command": "ctest --test-dir build/c02-0810-r2-verifier-r1/L09-default -C Debug --output-on-failure"
+  },
+  {
+    "file": "l09-run-L09_shared_validation_good-debug-r2.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "required_text": "L09_shared_validation_contract OK",
+    "command": "F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L09-default\\Debug\\L09_shared_validation_good.exe"
+  },
+  {
+    "file": "l09-run-L09_shared_validation_bad_hardcoded_noop-debug-r2.json",
+    "verdict": "PASS",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "required_text": "parent owns child through shared next",
+    "command": "F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L09-default\\Debug\\L09_shared_validation_bad_hardcoded_noop.exe"
+  },
+  {
+    "file": "l09-run-L09_shared_validation_bad_cycle-debug-r2-corrected.json",
+    "verdict": "PASS",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "required_text": "parent weak expires after graph scope",
+    "command": "F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L09-default\\Debug\\L09_shared_validation_bad_cycle.exe"
+  },
+  {
+    "file": "l09-run-L09_shared_validation_bad_weak_resurrect-debug-r2.json",
+    "verdict": "PASS",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "required_text": "lock fails after destruction",
+    "command": "F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L09-default\\Debug\\L09_shared_validation_bad_weak_resurrect.exe"
+  },
+  {
+    "file": "l09-build-default-release-r2.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "required_text": ".vcxproj",
+    "command": "cmake --build build/c02-0810-r2-verifier-r1/L09-default --config Release --clean-first"
+  },
+  {
+    "file": "l09-ctest-default-release-r2.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "required_text": "100% tests passed",
+    "command": "ctest --test-dir build/c02-0810-r2-verifier-r1/L09-default -C Release --output-on-failure"
+  },
+  {
+    "file": "l09-run-L09_shared_validation_good-release-r2.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "required_text": "L09_shared_validation_contract OK",
+    "command": "F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L09-default\\Release\\L09_shared_validation_good.exe"
+  },
+  {
+    "file": "l09-run-L09_shared_validation_bad_hardcoded_noop-release-r2.json",
+    "verdict": "PASS",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "required_text": "parent owns child through shared next",
+    "command": "F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L09-default\\Release\\L09_shared_validation_bad_hardcoded_noop.exe"
+  },
+  {
+    "file": "l09-run-L09_shared_validation_bad_cycle-release-r2-corrected.json",
+    "verdict": "PASS",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "required_text": "parent weak expires after graph scope",
+    "command": "F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L09-default\\Release\\L09_shared_validation_bad_cycle.exe"
+  },
+  {
+    "file": "l09-run-L09_shared_validation_bad_weak_resurrect-release-r2.json",
+    "verdict": "PASS",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "required_text": "lock fails after destruction",
+    "command": "F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L09-default\\Release\\L09_shared_validation_bad_weak_resurrect.exe"
+  },
+  {
+    "file": "l09-configure-student-ref-off-r2.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "required_text": "Configuring done",
+    "command": "cmake -S Core_Study/exercises/L09_shared -B build/c02-0810-r2-verifier-r1/L09-student-ref-off -G Visual Studio 18 2026 -A x64 -DCORE_STUDY_BUILD_REFERENCE=OFF -DCORE_STUDY_TEST_STUDENTS=ON"
+  },
+  {
+    "file": "l09-build-student-ref-off-debug-r2.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "required_text": ".vcxproj",
+    "command": "cmake --build build/c02-0810-r2-verifier-r1/L09-student-ref-off --config Debug --clean-first --target L09_shared_student"
+  },
+  {
+    "file": "l09-student-placeholder-ref-off-debug-r2.json",
+    "verdict": "PASS",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "required_text": "make_node returns shared owner",
+    "command": "F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L09-student-ref-off\\Debug\\L09_shared_student.exe"
+  },
+  {
+    "file": "l09-build-student-ref-off-release-r2.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "required_text": ".vcxproj",
+    "command": "cmake --build build/c02-0810-r2-verifier-r1/L09-student-ref-off --config Release --clean-first --target L09_shared_student"
+  },
+  {
+    "file": "l09-student-placeholder-ref-off-release-r2.json",
+    "verdict": "PASS",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "required_text": "make_node returns shared owner",
+    "command": "F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L09-student-ref-off\\Release\\L09_shared_student.exe"
+  },
+  {
+    "file": "l09-reference-target-absent-ref-off-r2.json",
+    "verdict": "PASS",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "required_text": "项目文件不存在",
+    "command": "cmake --build build/c02-0810-r2-verifier-r1/L09-student-ref-off --config Debug --target L09_shared_reference"
+  },
+  {
+    "file": "l08-configure-smoke-r2.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "required_text": "Configuring done",
+    "command": "cmake -S Core_Study/exercises/L08_unique -B build/c02-0810-r2-verifier-r1/L08-smoke -G Visual Studio 18 2026 -A x64 -DL08_UNIQUE_BUILD_VALIDATION_VARIANTS=ON"
+  },
+  {
+    "file": "l08-build-smoke-debug-r2.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "required_text": ".vcxproj",
+    "command": "cmake --build build/c02-0810-r2-verifier-r1/L08-smoke --config Debug --clean-first"
+  },
+  {
+    "file": "l08-ctest-smoke-debug-r2.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "required_text": "100% tests passed",
+    "command": "ctest --test-dir build/c02-0810-r2-verifier-r1/L08-smoke -C Debug --output-on-failure"
+  },
+  {
+    "file": "l08-good-smoke-debug-r2.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "required_text": "L08_unique_validation_contract OK",
+    "command": "F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L08-smoke\\Debug\\L08_unique_validation_good.exe"
+  },
+  {
+    "file": "build-private-adopt-ctor-r2.json",
+    "verdict": "PASS",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "required_text": "private",
+    "command": "cmd /c F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\reviews\\c02-0810-r2-verifier-evidence-r1\\build-private-adopt-ctor-r2.cmd"
+  }
+]

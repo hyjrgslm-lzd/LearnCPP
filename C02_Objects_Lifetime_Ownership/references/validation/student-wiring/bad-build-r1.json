@@ -1,0 +1,23 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "build/c02-wiring-bad",
+    "--config",
+    "Release",
+    "--clean-first",
+    "--target",
+    "wiring_student"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 1.8130000000819564,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/references/validation/student-wiring/CMakeLists.txt\n  正在扫描源以查找模块依赖项...\n  bad.cpp\n  娉ㄦ剰: 鍖呭惈鏂囦欢:  F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\student-wiring\\src\\student\\../../reference/answer.hpp\n  正在编译...\n  bad.cpp\n  注意: 包含文件:  F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\student-wiring\\src\\student\\../../reference/answer.hpp\n  wiring_student.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-wiring-bad\\Release\\wiring_student.exe\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

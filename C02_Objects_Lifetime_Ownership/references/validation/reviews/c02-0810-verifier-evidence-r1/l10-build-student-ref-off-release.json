@@ -1,0 +1,26 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "build/c02-0810-verifier-r1/L10-student-ref-off",
+    "--config",
+    "Release",
+    "--clean-first",
+    "--target",
+    "L10_control_block_student"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.25,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L10_control_block/CMakeLists.txt\n  student_check.cpp\nF:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L10_control_block\\checks\\rc_checks.hpp(116,1): warning C4702: 无法访问的代码 [F:\\CPPTrain\\LearnCPP\\build\\c02-0810-verifier-r1\\L10-student-ref-off\\L10_control_block_student.vcxproj]\nF:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L10_control_block\\checks\\rc_checks.hpp(117,1): warning C4702: 无法访问的代码 [F:\\CPPTrain\\LearnCPP\\build\\c02-0810-verifier-r1\\L10-student-ref-off\\L10_control_block_student.vcxproj]\nF:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L10_control_block\\checks\\rc_checks.hpp(118,1): warning C4702: 无法访问的代码 [F:\\CPPTrain\\LearnCPP\\build\\c02-0810-verifier-r1\\L10-student-ref-off\\L10_control_block_student.vcxproj]\nF:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L10_control_block\\checks\\rc_checks.hpp(119,1): warning C4702: 无法访问的代码 [F:\\CPPTrain\\LearnCPP\\build\\c02-0810-verifier-r1\\L10-student-ref-off\\L10_control_block_student.vcxproj]\nF:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L10_control_block\\checks\\student_check.cpp(7,1): warning C4702: 无法访问的代码 [F:\\CPPTrain\\LearnCPP\\build\\c02-0810-verifier-r1\\L10-student-ref-off\\L10_control_block_student.vcxproj]\n  L10_control_block_student.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-0810-verifier-r1\\L10-student-ref-off\\Release\\L10_control_block_student.exe\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    ".vcxproj"
+  ],
+  "verdict": "PASS"
+}

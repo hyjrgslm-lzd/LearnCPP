@@ -1,0 +1,24 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "Core_Study/exercises/L02_value_categories/build/foundation-final-r2-ref-off",
+    "-C",
+    "Debug",
+    "--output-on-failure"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 6.625,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/Core_Study/exercises/L02_value_categories/build/foundation-final-r2-ref-off\n    Start 1: L02_value_categories_observation\n1/3 Test #1: L02_value_categories_observation ...............................   Passed    0.24 sec\n    Start 2: L02_value_categories_negative_bind_rvalue_to_nonconst_lvalue\n2/3 Test #2: L02_value_categories_negative_bind_rvalue_to_nonconst_lvalue ...   Passed    3.13 sec\n    Start 3: L02_value_categories_negative_forward_lvalue_to_rvalue\n3/3 Test #3: L02_value_categories_negative_forward_lvalue_to_rvalue .........   Passed    3.20 sec\n\n100% tests passed, 0 tests failed out of 3\n\nLabel Time Summary:\nnegative       =   6.32 sec*proc (2 tests)\nobservation    =   0.24 sec*proc (1 test)\n\nTotal Test time (real) =   6.58 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    "100% tests passed"
+  ],
+  "verdict": "PASS"
+}

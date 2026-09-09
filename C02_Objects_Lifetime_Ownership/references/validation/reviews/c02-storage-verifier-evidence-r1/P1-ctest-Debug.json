@@ -1,0 +1,24 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "build/c02-storage-verifier-r1/P1",
+    "-C",
+    "Debug",
+    "--output-on-failure"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 3.202999999979511,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/build/c02-storage-verifier-r1/P1\n    Start 1: P1_object_buffer_reference\n1/5 Test #1: P1_object_buffer_reference ...........................   Passed    0.42 sec\n    Start 2: P1_object_buffer_validation_good\n2/5 Test #2: P1_object_buffer_validation_good .....................   Passed    0.43 sec\n    Start 3: P1_object_buffer_validation_bad_noop_check\n3/5 Test #3: P1_object_buffer_validation_bad_noop_check ...........   Passed    0.47 sec\n    Start 4: P1_object_buffer_validation_bad_early_commit_check\n4/5 Test #4: P1_object_buffer_validation_bad_early_commit_check ...   Passed    0.49 sec\n    Start 5: P1_object_buffer_reject_throwing_move_only_check\n5/5 Test #5: P1_object_buffer_reject_throwing_move_only_check .....   Passed    1.28 sec\n\n100% tests passed, 0 tests failed out of 5\n\nLabel Time Summary:\nnegative      =   2.24 sec*proc (3 tests)\nreference     =   0.42 sec*proc (1 test)\nvalidation    =   0.43 sec*proc (1 test)\n\nTotal Test time (real) =   3.12 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    "100% tests passed"
+  ],
+  "verdict": "PASS"
+}

@@ -1,0 +1,40 @@
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:3:if(NOT DEFINED BUILD_DIR OR NOT DEFINED TARGET OR NOT DEFINED CASE OR NOT DEFINED EXPECT OR NOT DEFINED OUT_DIR)
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:9:if(NOT DEFINED SOURCE_MARKER)
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:10:    set(SOURCE_MARKER "")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:12:if(NOT DEFINED EXPECTED_FAILURE)
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:13:    set(EXPECTED_FAILURE "")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:15:if(NOT DEFINED ACCEPTED_DIAGNOSTIC)
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:16:    set(ACCEPTED_DIAGNOSTIC "")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:19:file(MAKE_DIRECTORY "${OUT_DIR}")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:21:set(base_out "${OUT_DIR}/${CASE}-${stamp}.txt")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:26:    set(out_file "${OUT_DIR}/${CASE}-${stamp}-${counter}.txt")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:28:set(index_file "${OUT_DIR}/index.txt")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:41:    TIMEOUT 60
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:49:"source_marker=${SOURCE_MARKER}\n"
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:50:"expected_failure=${EXPECTED_FAILURE}\n"
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:51:"accepted_diagnostic=${ACCEPTED_DIAGNOSTIC}\n"
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:63:    if(NOT "${SOURCE_MARKER}" STREQUAL "" AND NOT combined MATCHES "${SOURCE_MARKER}")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:64:        message(FATAL_ERROR "${CASE}: failure did not mention expected source '${SOURCE_MARKER}'; see ${out_file}")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:70:    if("${EXPECTED_FAILURE}" STREQUAL "")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:73:    if(NOT combined MATCHES "${EXPECTED_FAILURE}")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:74:        message(FATAL_ERROR "${CASE}: failure did not match expected diagnostic '${EXPECTED_FAILURE}'; see ${out_file}")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:78:if(EXPECT STREQUAL "must_pass")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:84:elseif(EXPECT STREQUAL "capability_compile")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:89:        message(STATUS "SKIP: ${CASE} capability unavailable with expected diagnostic; see ${out_file}")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:91:elseif(EXPECT STREQUAL "capability_reject")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:93:        if(NOT "${ACCEPTED_DIAGNOSTIC}" STREQUAL "" AND combined MATCHES "${ACCEPTED_DIAGNOSTIC}")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:94:            message(STATUS "SKIP: ${CASE} accepted after expected diagnostic; see ${out_file}")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:100:        message(STATUS "PASS: ${CASE} rejected with expected diagnostic; see ${out_file}")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:102:elseif(EXPECT STREQUAL "observe_compile")
+Core_Study/exercises/L14_ub/CMakeLists.txt:10:    add_library(${target} OBJECT EXCLUDE_FROM_ALL ${source})
+Core_Study/exercises/L14_ub/CMakeLists.txt:27:            -DSOURCE_MARKER=${source_marker}
+Core_Study/exercises/L14_ub/CMakeLists.txt:28:            -DEXPECTED_FAILURE=${expected_failure}
+Core_Study/exercises/L14_ub/CMakeLists.txt:29:            -DACCEPTED_DIAGNOSTIC=${accepted_diagnostic}
+Core_Study/exercises/L14_ub/CMakeLists.txt:30:            -DOUT_DIR=${CMAKE_BINARY_DIR}/frontier
+Core_Study/exercises/L14_ub/CMakeLists.txt:36:            RESOURCE_LOCK L14_frontier_build_tree
+Core_Study/exercises/L14_ub/CMakeLists.txt:37:            SKIP_REGULAR_EXPRESSION "SKIP:")
+Core_Study/exercises/L14_ub/CMakeLists.txt:44:        must_pass
+Core_Study/exercises/L14_ub/CMakeLists.txt:53:        capability_compile
+Core_Study/exercises/L14_ub/CMakeLists.txt:62:        capability_reject
+Core_Study/exercises/L14_ub/CMakeLists.txt:71:        capability_reject
+Core_Study/exercises/L14_ub/CMakeLists.txt:80:        observe_compile

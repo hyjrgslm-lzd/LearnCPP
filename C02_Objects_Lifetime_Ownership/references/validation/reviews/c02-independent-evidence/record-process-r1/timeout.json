@@ -1,0 +1,18 @@
+{
+  "command": [
+    "C:\\Users\\zhidan.li\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+    "-c",
+    "import time; time.sleep(2)"
+  ],
+  "exit_code": 1,
+  "timeout": true,
+  "process_seconds": 0.28100000019185245,
+  "stdout": "",
+  "stderr": "",
+  "cleanup_error": "tree termination: 错误: 拒绝访问\n\n",
+  "error": "TimeoutExpired: Command '['C:\\\\Users\\\\zhidan.li\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python310\\\\python.exe', '-c', 'import time; time.sleep(2)']' timed out after 0.2 seconds",
+  "status": "FAIL",
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "FAIL"
+}

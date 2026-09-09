@@ -1,0 +1,75 @@
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp-17-class weak_rc;
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp-18-
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp-19-namespace detail {
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp:20:struct rc_access;
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp-21-}
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp-22-
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp-23-class control_block_base {
+--
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp-74-        add_strong();
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp-75-    }
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp-76-
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp:77:    rc_ptr& operator=(const rc_ptr& other) noexcept {
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp-78-        auto* incoming = other.block_;
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp-79-        if (incoming != nullptr) {
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp-80-            ++incoming->strong;
+--
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp-86-
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp-87-    rc_ptr(rc_ptr&& other) noexcept : block_(std::exchange(other.block_, nullptr)) {}
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp-88-
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp:89:    rc_ptr& operator=(rc_ptr&& other) noexcept {
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp-90-        if (this != &other) {
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp-91-            auto* incoming = std::exchange(other.block_, nullptr);
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp-92-            release();
+--
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp-113-
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp-114-private:
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp-115-    friend class weak_rc<T>;
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp:116:    friend struct detail::rc_access;
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp-117-
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp:118:    explicit rc_ptr(control_block_base* block, bool add_ref) noexcept : block_(block) {
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp-119-        if (add_ref) {
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp-120-            add_strong();
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp-121-        }
+--
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp-146-};
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp-147-
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp-148-namespace detail {
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp:149:struct rc_access {
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp-150-    template <class T>
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp:151:    [[nodiscard]] static rc_ptr<T> adopt(control_block_base* block, bool add_ref) noexcept {
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp-152-        return rc_ptr<T>(block, add_ref);
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp-153-    }
+Core_Study/exercises/L10_control_block/src/reference/rc.hpp-154-};
+--
+Core_Study/exercises/L10_control_block/validation\bad_weak_resurrect\rc.hpp-35-public:
+Core_Study/exercises/L10_control_block/validation\bad_weak_resurrect\rc.hpp-36-    rc_ptr() = default;
+Core_Study/exercises/L10_control_block/validation\bad_weak_resurrect\rc.hpp-37-    rc_ptr(const rc_ptr& other) noexcept : block_(other.block_) { add_strong(); }
+Core_Study/exercises/L10_control_block/validation\bad_weak_resurrect\rc.hpp:38:    rc_ptr& operator=(const rc_ptr& other) noexcept {
+Core_Study/exercises/L10_control_block/validation\bad_weak_resurrect\rc.hpp-39-        auto* incoming = other.block_;
+Core_Study/exercises/L10_control_block/validation\bad_weak_resurrect\rc.hpp-40-        if (incoming) {
+Core_Study/exercises/L10_control_block/validation\bad_weak_resurrect\rc.hpp-41-            ++incoming->strong;
+--
+Core_Study/exercises/L10_control_block/validation\bad_weak_resurrect\rc.hpp-45-        return *this;
+Core_Study/exercises/L10_control_block/validation\bad_weak_resurrect\rc.hpp-46-    }
+Core_Study/exercises/L10_control_block/validation\bad_weak_resurrect\rc.hpp-47-    rc_ptr(rc_ptr&& other) noexcept : block_(std::exchange(other.block_, nullptr)) {}
+Core_Study/exercises/L10_control_block/validation\bad_weak_resurrect\rc.hpp:48:    rc_ptr& operator=(rc_ptr&& other) noexcept {
+Core_Study/exercises/L10_control_block/validation\bad_weak_resurrect\rc.hpp-49-        if (this != &other) {
+Core_Study/exercises/L10_control_block/validation\bad_weak_resurrect\rc.hpp-50-            auto* incoming = std::exchange(other.block_, nullptr);
+Core_Study/exercises/L10_control_block/validation\bad_weak_resurrect\rc.hpp-51-            release();
+--
+Core_Study/exercises/L10_control_block/validation\bad_leak_control_block\rc.hpp-22-            ++*strong_;
+Core_Study/exercises/L10_control_block/validation\bad_leak_control_block\rc.hpp-23-        }
+Core_Study/exercises/L10_control_block/validation\bad_leak_control_block\rc.hpp-24-    }
+Core_Study/exercises/L10_control_block/validation\bad_leak_control_block\rc.hpp:25:    rc_ptr& operator=(const rc_ptr& other) noexcept {
+Core_Study/exercises/L10_control_block/validation\bad_leak_control_block\rc.hpp-26-        if (this != &other) {
+Core_Study/exercises/L10_control_block/validation\bad_leak_control_block\rc.hpp-27-            release();
+Core_Study/exercises/L10_control_block/validation\bad_leak_control_block\rc.hpp-28-            ptr_ = other.ptr_;
+--
+Core_Study/exercises/L10_control_block/validation\bad_leak_control_block\rc.hpp-36-    rc_ptr(rc_ptr&& other) noexcept
+Core_Study/exercises/L10_control_block/validation\bad_leak_control_block\rc.hpp-37-        : ptr_(std::exchange(other.ptr_, nullptr)),
+Core_Study/exercises/L10_control_block/validation\bad_leak_control_block\rc.hpp-38-          strong_(std::exchange(other.strong_, nullptr)) {}
+Core_Study/exercises/L10_control_block/validation\bad_leak_control_block\rc.hpp:39:    rc_ptr& operator=(rc_ptr&& other) noexcept {
+Core_Study/exercises/L10_control_block/validation\bad_leak_control_block\rc.hpp-40-        if (this != &other) {
+Core_Study/exercises/L10_control_block/validation\bad_leak_control_block\rc.hpp-41-            release();
+Core_Study/exercises/L10_control_block/validation\bad_leak_control_block\rc.hpp-42-            ptr_ = std::exchange(other.ptr_, nullptr);

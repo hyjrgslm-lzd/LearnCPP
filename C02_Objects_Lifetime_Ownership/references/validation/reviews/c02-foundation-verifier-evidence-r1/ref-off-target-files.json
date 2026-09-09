@@ -1,0 +1,34 @@
+[
+  {
+    "lesson": "L03",
+    "build": "F:\\CPPTrain\\LearnCPP\\build\\c02-foundation-verifier-r1\\L03-student-ref-off",
+    "student_vcxproj_exists": true,
+    "reference_vcxproj_exists": false,
+    "vcxproj": [
+      "ALL_BUILD.vcxproj",
+      "Continuous.vcxproj",
+      "Experimental.vcxproj",
+      "L03_lifetimes_student.vcxproj",
+      "Nightly.vcxproj",
+      "NightlyMemoryCheck.vcxproj",
+      "RUN_TESTS.vcxproj",
+      "ZERO_CHECK.vcxproj"
+    ]
+  },
+  {
+    "lesson": "L05",
+    "build": "F:\\CPPTrain\\LearnCPP\\build\\c02-foundation-verifier-r1\\L05-student-ref-off",
+    "student_vcxproj_exists": true,
+    "reference_vcxproj_exists": false,
+    "vcxproj": [
+      "ALL_BUILD.vcxproj",
+      "Continuous.vcxproj",
+      "Experimental.vcxproj",
+      "L05_special_members_student.vcxproj",
+      "Nightly.vcxproj",
+      "NightlyMemoryCheck.vcxproj",
+      "RUN_TESTS.vcxproj",
+      "ZERO_CHECK.vcxproj"
+    ]
+  }
+]

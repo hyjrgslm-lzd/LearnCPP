@@ -1,0 +1,23 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "build/c02-p1-author-r2-msvc",
+    "--config",
+    "Debug",
+    "--parallel",
+    "2"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 3.202999999979511,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/P1_object_buffer/CMakeLists.txt\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/P1_object_buffer/CMakeLists.txt\n  run_checks.cpp\n  run_checks.cpp\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/P1_object_buffer/CMakeLists.txt\n  run_checks.cpp\n  P1_object_buffer_validation_bad_early_commit.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-p1-author-r2-msvc\\Debug\\P1_object_buffer_validation_bad_early_commit.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/P1_object_buffer/CMakeLists.txt\n  run_checks.cpp\n  P1_object_buffer_validation_bad_noop.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-p1-author-r2-msvc\\Debug\\P1_object_buffer_validation_bad_noop.exe\n  P1_object_buffer_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-p1-author-r2-msvc\\Debug\\P1_object_buffer_reference.exe\n  P1_object_buffer_validation_good.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-p1-author-r2-msvc\\Debug\\P1_object_buffer_validation_good.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/P1_object_buffer/CMakeLists.txt\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

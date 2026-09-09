@@ -1,0 +1,45 @@
+## record-process-self-check-final-corrected.json
+verdict=PASS status=PASS exit=0 timeout=False inherited_windows_error_mode=32771
+PASS: 7 recorder contracts
+## L12-clangcl-asan-reference-release-build-target.json
+verdict=PASS status=PASS exit=0 timeout=False inherited_windows_error_mode=32771
+clang-cl : warning : unknown argument ignored in clang-cl: '-fno-omit-frame-pointer' [-Wunknown-argument] [F:\CPPTrain\LearnCPP\build\c02-storage-final-fix-verifier-r1\L12-clangcl-asan-reference-release\L12_storage_reference.vcxproj]
+  L12_storage_reference.vcxproj -> F:\CPPTrain\LearnCPP\build\c02-storage-final-fix-verifier-r1\L12-clangcl-asan-reference-release\Release\L12_storage_reference.exe
+## L12-clangcl-asan-reference-release-run-target.json
+verdict=PASS status=PASS exit=0 timeout=False inherited_windows_error_mode=32771
+L12_storage_contract OK
+## P1-clangcl-asan-reference-release-build-target.json
+verdict=PASS status=PASS exit=0 timeout=False inherited_windows_error_mode=32771
+clang-cl : warning : unknown argument ignored in clang-cl: '-fno-omit-frame-pointer' [-Wunknown-argument] [F:\CPPTrain\LearnCPP\build\c02-storage-final-fix-verifier-r1\P1-clangcl-asan-reference-release\P1_object_buffer_reference.vcxproj]
+  P1_object_buffer_reference.vcxproj -> F:\CPPTrain\LearnCPP\build\c02-storage-final-fix-verifier-r1\P1-clangcl-asan-reference-release\Release\P1_object_buffer_reference.exe
+## P1-clangcl-asan-reference-release-run-target.json
+verdict=PASS status=PASS exit=0 timeout=False inherited_windows_error_mode=32771
+P1_object_buffer_contract OK
+## L14-clangcl-asan-reference-release-build-target.json
+verdict=PASS status=PASS exit=0 timeout=False inherited_windows_error_mode=32771
+clang-cl : warning : unknown argument ignored in clang-cl: '-fno-omit-frame-pointer' [-Wunknown-argument] [F:\CPPTrain\LearnCPP\build\c02-storage-final-fix-verifier-r1\L14-clangcl-asan-reference-release\L14_ub_observation.vcxproj]
+  L14_ub_observation.vcxproj -> F:\CPPTrain\LearnCPP\build\c02-storage-final-fix-verifier-r1\L14-clangcl-asan-reference-release\Release\L14_ub_observation.exe
+## L14-clangcl-asan-reference-release-run-target.json
+verdict=PASS status=PASS exit=0 timeout=False inherited_windows_error_mode=32771
+L14_ub_observation OK
+## L12-final-diagnostic-ctest-debug-verbose.json
+verdict=PASS status=PASS exit=0 timeout=False inherited_windows_error_mode=32771
+4: Test command: D:\cmake\install\bin\cmake.exe "-DEXECUTABLE=F:/CPPTrain/LearnCPP/build/c02-storage-final-fix-verifier-r1/L12-current-diagnostic/Debug/L12_storage_validation_bad_noop.exe" "-DEXPECTED_TEXT=slot must report engaged after successful construct" "-P" "F:/CPPTrain/LearnCPP/Core_Study/exercises/L12_storage/checks/expect_failure.cmake"
+100% tests passed, 0 tests failed out of 1
+## L12-final-fake-slot-unrelated-negative.json
+verdict=PASS status=FAIL exit=1 timeout=False inherited_windows_error_mode=32771
+  expected diagnostic not found: slot must report engaged after successful
+## L14-final-frontier-ctest-debug-verbose.json
+verdict=PASS status=PASS exit=0 timeout=False inherited_windows_error_mode=32771
+2: -- PASS: L14_frontier_baseline_compile baseline compiled; see F:/CPPTrain/LearnCPP/build/c02-storage-final-fix-verifier-r1/L14-frontier-strict/frontier/L14_frontier_baseline_compile-20260909-024613.txt
+3: -- SKIP: L14_frontier_p2287_base_member_designator_compile capability unavailable with expected diagnostic; see F:/CPPTrain/LearnCPP/build/c02-storage-final-fix-verifier-r1/L14-frontier-strict/frontier/L14_frontier_p2287_base_member_designator_compile-20260909-024614.txt
+4: -- SKIP: L14_frontier_p2748_return_temp_ref_compile accepted after expected diagnostic; see F:/CPPTrain/LearnCPP/build/c02-storage-final-fix-verifier-r1/L14-frontier-strict/frontier/L14_frontier_p2748_return_temp_ref_compile-20260909-024615.txt
+5: -- SKIP: L14_frontier_p2953_defaulted_assignment_compile accepted without expected rejection diagnostic; see F:/CPPTrain/LearnCPP/build/c02-storage-final-fix-verifier-r1/L14-frontier-strict/frontier/L14_frontier_p2953_defaulted_assignment_compile-20260909-024616.txt
+6: -- PASS: L14_frontier_provenance_lifetime_end_model_compile compile-only review model built; no runtime support claim; see F:/CPPTrain/LearnCPP/build/c02-storage-final-fix-verifier-r1/L14-frontier-strict/frontier/L14_frontier_provenance_lifetime_end_model_compile-20260909-024617.txt
+100% tests passed, 0 tests failed out of 5
+## L14-final-frontier-missing-target-negative.json
+verdict=PASS status=FAIL exit=1 timeout=False inherited_windows_error_mode=32771
+  missing_target_probe: failure did not mention expected source
+## L14-final-frontier-bad-diagnostic-negative.json
+verdict=PASS status=FAIL exit=1 timeout=False inherited_windows_error_mode=32771
+  bad_diag_probe: failure did not match expected diagnostic

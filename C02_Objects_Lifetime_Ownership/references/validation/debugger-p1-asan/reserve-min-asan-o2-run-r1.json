@@ -1,0 +1,17 @@
+{
+  "command": [
+    "build/c02-asan-debugger/p1_reserve_min_asan_o2.exe"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.3440000000409782,
+  "stdout": "",
+  "stderr": "=================================================================\n==88680==ERROR: AddressSanitizer: access-violation on unknown address 0x000000000074 (pc 0x7ff6ae64261f bp 0x003fc76fd260 sp 0x003fc76fba30 T0)\n==88680==The signal is caused by a READ memory access.\n==88680==Hint: address points to the zero page.\n    #0 0x7ff6ae64261e in __FrameHandler3::GetUnwindTryBlock(unsigned __int64 *, struct _xDISPATCHER_CONTEXT *, struct _s_FuncInfo const *) D:\\a\\_work\\1\\s\\src\\vctools\\crt\\vcruntime\\src\\eh\\ehstate.cpp:183\n    #1 0x7ff6ae6451ae in FindHandler<__FrameHandler3> D:\\a\\_work\\1\\s\\src\\vctools\\crt\\vcruntime\\src\\eh\\frame.cpp:547\n    #2 0x7ff6ae644eb0 in __InternalCxxFrameHandler<class __FrameHandler3>(struct EHExceptionRecord *, unsigned __int64 *, struct _CONTEXT *, struct _xDISPATCHER_CONTEXT *, struct _s_FuncInfo const *, int, unsigned __int64 *, unsigned char) D:\\a\\_work\\1\\s\\src\\vctools\\crt\\vcruntime\\src\\eh\\frame.cpp:396\n    #3 0x7ff6ae636ac7 in __CxxFrameHandler3 D:\\a\\_work\\1\\s\\src\\vctools\\crt\\vcruntime\\src\\eh\\risctrnsctrl.cpp:281\n    #4 0x7ffa0d1647ae  (C:\\WINDOWS\\SYSTEM32\\ntdll.dll+0x1801647ae)\n    #5 0x7ffa0d0221c6  (C:\\WINDOWS\\SYSTEM32\\ntdll.dll+0x1800221c6)\n    #6 0x7ffa0d096ea0  (C:\\WINDOWS\\SYSTEM32\\ntdll.dll+0x180096ea0)\n    #7 0x7ffa0c9e1b69  (C:\\WINDOWS\\System32\\KERNELBASE.dll+0x1800c1b69)\n    #8 0x7ff6ae6358b8 in _CxxThrowException D:\\a\\_work\\1\\s\\src\\vctools\\crt\\vcruntime\\src\\eh\\throw.cpp:79\n    #9 0x7ff6ae632f1e in p1::object_buffer<`anonymous namespace'::CopyFallback>::reserve F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\P1_object_buffer\\src\\reference\\object_buffer.hpp:78\n\n==88680==Register values:\nrax = 70  rbx = 7ff6ae6b2d48  rcx = 0  rdx = 0  \nrdi = 0  rsi = 3fc76fc460  rbp = 3fc76fd260  rsp = 3fc76fba30  \nr8  = 1  r9  = 7ff6ae6b2d94  r10 = 2ee0  r11 = 5a  \nr12 = 7ff6ae632f1f  r13 = 3fc76fc280  r14 = 3fc76fbca0  r15 = 7ff6ae6b2d48  \nAddressSanitizer can not provide additional info.\nSUMMARY: AddressSanitizer: access-violation D:\\a\\_work\\1\\s\\src\\vctools\\crt\\vcruntime\\src\\eh\\ehstate.cpp:183 in __FrameHandler3::GetUnwindTryBlock(unsigned __int64 *, struct _xDISPATCHER_CONTEXT *, struct _s_FuncInfo const *)\n==88680==ABORTING\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "FAIL"
+}

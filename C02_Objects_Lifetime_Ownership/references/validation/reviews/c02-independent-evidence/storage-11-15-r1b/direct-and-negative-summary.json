@@ -1,0 +1,89 @@
+{
+  "l11-observation-direct": {
+    "exe": "build/c02-reviewer-storage-r1b-l11/Debug/L11_layout_observation.exe",
+    "argv": [],
+    "exit": 0,
+    "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1b\\l11-observation-direct.stdout.txt",
+    "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1b\\l11-observation-direct.stderr.txt"
+  },
+  "l12-reference-direct": {
+    "exe": "build/c02-reviewer-storage-r1b-l12/Debug/L12_storage_reference.exe",
+    "argv": [],
+    "exit": 0,
+    "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1b\\l12-reference-direct.stdout.txt",
+    "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1b\\l12-reference-direct.stderr.txt"
+  },
+  "l12-start-lifetime-direct": {
+    "exe": "build/c02-reviewer-storage-r1b-l12/Debug/L12_storage_start_lifetime_as.exe",
+    "argv": [],
+    "exit": 0,
+    "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1b\\l12-start-lifetime-direct.stdout.txt",
+    "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1b\\l12-start-lifetime-direct.stderr.txt"
+  },
+  "l13-observation-direct": {
+    "exe": "build/c02-reviewer-storage-r1b-l13/Debug/L13_aliasing_observation.exe",
+    "argv": [],
+    "exit": 0,
+    "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1b\\l13-observation-direct.stdout.txt",
+    "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1b\\l13-observation-direct.stderr.txt"
+  },
+  "l14-observation-direct": {
+    "exe": "build/c02-reviewer-storage-r1b-l14/Debug/L14_ub_observation.exe",
+    "argv": [],
+    "exit": 0,
+    "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1b\\l14-observation-direct.stdout.txt",
+    "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1b\\l14-observation-direct.stderr.txt"
+  },
+  "p1-reference-direct": {
+    "exe": "build/c02-reviewer-storage-r1b-p1/Debug/P1_object_buffer_reference.exe",
+    "argv": [],
+    "exit": 0,
+    "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1b\\p1-reference-direct.stdout.txt",
+    "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1b\\p1-reference-direct.stderr.txt"
+  },
+  "l12-negative-verbose": {
+    "exe": "ctest",
+    "argv": [
+      "--test-dir",
+      "build/c02-reviewer-storage-r1b-l12",
+      "-C",
+      "Debug",
+      "-R",
+      "bad_noop",
+      "-V"
+    ],
+    "exit": 0,
+    "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1b\\l12-negative-verbose.stdout.txt",
+    "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1b\\l12-negative-verbose.stderr.txt"
+  },
+  "p1-negative-verbose": {
+    "exe": "ctest",
+    "argv": [
+      "--test-dir",
+      "build/c02-reviewer-storage-r1b-p1",
+      "-C",
+      "Debug",
+      "-R",
+      "bad",
+      "-V"
+    ],
+    "exit": 0,
+    "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1b\\p1-negative-verbose.stdout.txt",
+    "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1b\\p1-negative-verbose.stderr.txt"
+  },
+  "p1-throwing-move-verbose": {
+    "exe": "ctest",
+    "argv": [
+      "--test-dir",
+      "build/c02-reviewer-storage-r1b-p1",
+      "-C",
+      "Debug",
+      "-R",
+      "throwing",
+      "-V"
+    ],
+    "exit": 0,
+    "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1b\\p1-throwing-move-verbose.stdout.txt",
+    "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1b\\p1-throwing-move-verbose.stderr.txt"
+  }
+}

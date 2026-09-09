@@ -27,18 +27,18 @@
 
 | 现有课程 | 应保留的核心覆盖 | 在全局体系中的主讲责任与衔接 |
 |---|---|---|
-| [Concurrency_Study](Concurrency_Study/README.md) | 线程、同步、原子、内存模型、并发结构、安全回收、调度、CPU 性能、SIMD、NUMA 与实验 | 主讲共享状态与并发正确性；保留已有 CPU 性能系列作为性能路线的实际入口，通用测量和数值知识补齐后互链。 |
-| [Coroutine_Study](Coroutine_Study/README.md) | 执行背景、generator/task、promise/await、帧与分配、取消组合、I/O、RPC、mini 协程库、诊断与源码 | 主讲语言协议、控制流和生命周期。原 I/O/RPC 项目保留为协程应用；网络协议与服务机制由网络主课深入讲解。 |
-| [Execution_Study](Execution_Study/README.md) | sender/receiver、scheduler、环境与作用域、错误取消、类型级技术、adaptor、run_loop 与桥接 | 主讲工作组合、执行资源和运行时。刷新标准与上游版本关系，在现有 CPU 路线之后增加 I/O、协程及异构桥接。 |
-| [Ranges_Study](Ranges_Study/README.md) | 视图、算法、迭代器、sentinel、borrowed_range、投影、定制机制、自定义视图与源码 | 主讲序列与惰性求值。通用模板机制转由公共课程深讲，具体 range 语义和实现仍在本课展开；历史术语与协议须按版本复核。 |
-| [GPU_Study](GPU_Study/README.md) | CUDA、设备内存、同步、性能分析、Tensor Core、CUTLASS、AI 算子、OptiX | 主讲设备执行和算子实现。接入通用数值与性能基础，补充异构运行时和多设备通信路线；不把 CPU 与 GPU 模型混为一谈。 |
-| [UELearn](UELearn/README.md) | UBT/UHT、容器、内存、委托、UObject/GC、Actor/World、资源、任务、RHI/RDG、UI、网络与源码 | 主讲 UE 专有架构及其使用和实现。通过桥接说明它与通用所有权、语言反射、并发、图形和网络的关系。 |
+| [C08_Concurrency](C08_Concurrency/README.md) | 线程、同步、原子、内存模型、并发结构、安全回收、调度、CPU 性能、SIMD、NUMA 与实验 | 主讲共享状态与并发正确性；保留已有 CPU 性能系列作为性能路线的实际入口，通用测量和数值知识补齐后互链。 |
+| [C09_Coroutines](C09_Coroutines/README.md) | 执行背景、generator/task、promise/await、帧与分配、取消组合、I/O、RPC、mini 协程库、诊断与源码 | 主讲语言协议、控制流和生命周期。原 I/O/RPC 项目保留为协程应用；网络协议与服务机制由网络主课深入讲解。 |
+| [C10_Execution](C10_Execution/README.md) | sender/receiver、scheduler、环境与作用域、错误取消、类型级技术、adaptor、run_loop 与桥接 | 主讲工作组合、执行资源和运行时。刷新标准与上游版本关系，在现有 CPU 路线之后增加 I/O、协程及异构桥接。 |
+| [C06_Ranges](C06_Ranges/README.md) | 视图、算法、迭代器、sentinel、borrowed_range、投影、定制机制、自定义视图与源码 | 主讲序列与惰性求值。通用模板机制转由公共课程深讲，具体 range 语义和实现仍在本课展开；历史术语与协议须按版本复核。 |
+| [C14_GPU](C14_GPU/README.md) | CUDA、设备内存、同步、性能分析、Tensor Core、CUTLASS、AI 算子、OptiX | 主讲设备执行和算子实现。接入通用数值与性能基础，补充异构运行时和多设备通信路线；不把 CPU 与 GPU 模型混为一谈。 |
+| [C15_Unreal_Engine](C15_Unreal_Engine/README.md) | UBT/UHT、容器、内存、委托、UObject/GC、Actor/World、资源、任务、RHI/RDG、UI、网络与源码 | 主讲 UE 专有架构及其使用和实现。通过桥接说明它与通用所有权、语言反射、并发、图形和网络的关系。 |
 
-现有知识默认保留。重复先通过主讲归属与桥接修订解决，不为目录统一而先搬动整门课程。未来确需迁移或合并时，建立“旧知识点/入口 → 新主讲位置 → 保留深度 → 练习与证据”的对应关系，保留有效迁移入口。删除必须说明教学理由及替代位置，不能以已有另一个相似标题代替内容核对。
+现有知识默认保留。重复先通过主讲归属与桥接修订解决，目录现按用户确认的命名方案统一迁移，旧路径映射与历史记录说明见[根导航](README.md#目录迁移与旧记录)。未来确需迁移或合并时，建立“旧知识点/入口 → 新主讲位置 → 保留深度 → 练习与证据”的对应关系，保留有效迁移入口。删除必须说明教学理由及替代位置，不能以已有另一个相似标题代替内容核对。
 
 ## 3. 完整课程版图
 
-下列编号是稳定的逻辑课程标识，不强制对应同名目录，也不是一条必须从头读到尾的顺序。每个课程族可以拆成连续系列；其入门部分和实现部分的先修要求分别说明。
+下列编号是稳定的课程标识。自2026-09-09起，已交付目录统一使用`C编号_具体主题`，按编号排列默认阅读次序；尚未建设的课程保留空号。公共基础、专题进阶与领域应用的路线见[根导航](README.md#从哪里开始)。编号不是强制串行依赖，每个课程族可拆成连续系列，其入门与实现部分的先修要求分别说明。
 
 | 标识 | 课程族 | 应完整展开的主线与边界 |
 |---|---|---|
@@ -187,17 +187,20 @@ N5051（2026-06-01）说明 N5050 是 C++26 最终草案及 DIS 的基础；N505
 
 交接应足以让下一位 AI 从当前状态继续：提供精确文件/接口与版本、已完成和未完成项、命令与原始结果位置、失败复现及剩余问题。公共修改由指定负责人集成并复验消费者，审查者不批准自己创作的同一内容。
 
-### 7.2 当前实施切片（2026-09-08）
+### 7.2 当前实施切片（更新于2026-09-09）
 
-本批已获明确实施授权：完整建设 C01，补齐 Coroutine/Concurrency 已证实的缺口并保留旧课主线。Windows 实测；其他平台保留完整内容、代码和命令并标未验证。具体规格见 [C01 实施规格](Engineering_Study/references/implementation-spec.md)，本表记录进度，不替代课程正文或独立审查。
+本批已获明确实施授权：完整建设 C01，补齐 Coroutine/Concurrency 已证实的缺口并保留旧课主线。Windows 实测；其他平台保留完整内容、代码和命令并标未验证。具体规格见 [C01 实施规格](C01_Build_Compile_Link/references/implementation-spec.md)，本表记录进度，不替代课程正文或独立审查。
+
+后续已明确批准完整建设 C02，采用分专题与综合项目、样章先审及非作者复验。规格见 [C02 实施规格](C02_Objects_Lifetime_Ownership/references/implementation-spec.md)；该切片仅增加 C02 与五课 README 先修回链，保留旧课正文、源码和用户学习文件。
 
 | 目标/单元 | 当前状态 | 输入及先修 | 交付/证据入口 | 阻断与下一步 |
 |---|---|---|---|---|
 | G0 本批 C01/C08/C09 切片 | 本批盘点、覆盖与先修衔接已核对 | 本计划首版、当前两门旧课及通用指引；保留用户学习代码 | 根课程导航、C01 实施规格；C08/C09 各课覆盖表 | 本批导航和下游反向路线已纳独立审查；不代表六课全量 G0 完成 |
-| G1 / C01 | Windows范围实现与验证完成 | 基础 C++；先构建调试，再翻译/链接，之后 ABI/构建系统/Modules/交付 | [Engineering_Study](Engineering_Study/README.md)、[质量与终审记录](Engineering_Study/references/quality-report.md) | 11章/13练习；四配置147项通过，G1最后修复另经Debug/Release正反复验，G2正式72轮通过；非作者终审及冻结指纹见质量报告。其他平台保留未测边界 |
-| G2 / C09 本批补修 | 定点修复独立审查通过 | 既有37单元；学生代码、Reference 和观察型结果分别登记 | [Coroutine 质量报告](Coroutine_Study/references/quality-report.md)及独立记录 | 核心43项通过；RPC/bridge2项通过；公开完成体4通过/坏变体5拒绝。保留未测平台及ASan范围，跨课桥接纳入最终导航审查 |
-| G2 / C08 本批补充 | 定点补充独立审查通过 | 既有50题及其历史审查；本批未改算法/测量 | [Concurrency 本批记录](Concurrency_Study/references/quality-report.md#8-c01-衔接补充2026-09-08) | 本次核心60项=58 PASS/2 SKIP/0 FAIL；新增索引与证据获非作者APPROVE，保留原环境边界；跨课桥接纳入最终导航审查 |
-| C08 C++29 前沿增量 | 索引已登记，正文/练习/独立实验待后续目标 | 固定 N5055 对线程属性与 HP batches 的入稿记录；不可用已有旧接口测试替代 | [规范与实现索引](Concurrency_Study/references/standards-and-implementations.md#c29-增量的独立状态) | 保留完整后续教学义务，不因登记而宣称前沿已实现 |
+| G1 / C01 | Windows范围实现与验证完成 | 基础 C++；先构建调试，再翻译/链接，之后 ABI/构建系统/Modules/交付 | [C01_Build_Compile_Link](C01_Build_Compile_Link/README.md)、[质量与终审记录](C01_Build_Compile_Link/references/quality-report.md) | 11章/13练习；四配置147项通过，G1最后修复另经Debug/Release正反复验，G2正式72轮通过；非作者终审及冻结指纹见质量报告。其他平台保留未测边界 |
+| G1 / C02 | Windows范围实施、验证与独立终审完成 | C01基本构建与基础C++；专题内部先修由本课补齐 | [C02_Objects_Lifetime_Ownership](C02_Objects_Lifetime_Ownership/README.md)、[覆盖表](C02_Objects_Lifetime_Ownership/references/coverage.md)、[质量报告](C02_Objects_Lifetime_Ownership/references/quality-report.md) | 16章/15练习单元；Debug/Release各40通过，ASan安全19通过/1能力跳过，前沿42通过/3能力跳过；分批与最终非作者审查均批准。保留未测平台及历史证据缺口说明 |
+| G2 / C09 本批补修 | 定点修复独立审查通过 | 既有37单元；学生代码、Reference 和观察型结果分别登记 | [Coroutine 质量报告](C09_Coroutines/references/quality-report.md)及独立记录 | 核心43项通过；RPC/bridge2项通过；公开完成体4通过/坏变体5拒绝。保留未测平台及ASan范围，跨课桥接纳入最终导航审查 |
+| G2 / C08 本批补充 | 定点补充独立审查通过 | 既有50题及其历史审查；本批未改算法/测量 | [Concurrency 本批记录](C08_Concurrency/references/quality-report.md#8-c01-衔接补充2026-09-08) | 本次核心60项=58 PASS/2 SKIP/0 FAIL；新增索引与证据获非作者APPROVE，保留原环境边界；跨课桥接纳入最终导航审查 |
+| C08 C++29 前沿增量 | 索引已登记，正文/练习/独立实验待后续目标 | 固定 N5055 对线程属性与 HP batches 的入稿记录；不可用已有旧接口测试替代 | [规范与实现索引](C08_Concurrency/references/standards-and-implementations.md#c29-增量的独立状态) | 保留完整后续教学义务，不因登记而宣称前沿已实现 |
 
 输入版本与用户文件保护指纹在本批交接记录中保存；每批最终证据另绑定其实际代码/文档/数据版本。状态区分“材料存在、作者完成、审查通过、环境受限”；coverage、quality-report、validation 和 benchmark 文件的存在本身不能证明课程完成。C01 或旧课补充完成不意味着 G1、G2、完整 C13 或18课全局完成。
 

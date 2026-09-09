@@ -1,0 +1,26 @@
+15:    if(MSVC)
+22:            if(CMAKE_CXX_COMPILER_FRONTEND_VARIANT STREQUAL "MSVC")
+24:                set_target_properties(${target} PROPERTIES MSVC_RUNTIME_LIBRARY MultiThreadedDLL)
+25:                target_compile_options(${target} PRIVATE /fsanitize=address -fno-omit-frame-pointer)
+28:                target_compile_options(${target} PRIVATE -fsanitize=address -fno-omit-frame-pointer)
+29:                target_link_options(${target} PRIVATE -fsanitize=address)
+31:        elseif(MSVC)
+32:            target_compile_options(${target} PRIVATE /fsanitize=address /Zi)
+35:            message(FATAL_ERROR "This ASan profile requires the documented Clang or MSVC toolchain")
+45:                if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+47:                    set(_core_runtime "${_core_compiler_dir}/clang_rt.asan_dynamic-${_core_arch}.dll")
+49:                    execute_process(COMMAND "${CMAKE_CXX_COMPILER}" --print-resource-dir
+50:                        RESULT_VARIABLE _core_resource_result OUTPUT_VARIABLE _core_resource_dir
+52:                    if(NOT _core_resource_result EQUAL 0)
+53:                        message(FATAL_ERROR "Cannot query this Clang compiler's resource directory")
+55:                    find_file(_core_runtime NAMES "clang_rt.asan_dynamic-${_core_arch}.dll"
+56:                        PATHS "${_core_resource_dir}/lib/windows"
+57:                              "${_core_resource_dir}/lib/${_core_arch}-pc-windows-msvc"
+58:                        NO_DEFAULT_PATH NO_CACHE)
+64:                   CMAKE_CXX_COMPILER_FRONTEND_VARIANT STREQUAL "MSVC")
+66:                    set(_core_import "${_core_runtime_dir}/clang_rt.asan_dynamic-${_core_arch}.lib")
+67:                    set(_core_thunk "${_core_runtime_dir}/clang_rt.asan_dynamic_runtime_thunk-${_core_arch}.lib")
+72:                    target_link_options(${target} PRIVATE "/WHOLEARCHIVE:${_core_thunk}")
+74:                        target_link_options(${target} PRIVATE /INCLUDE:__asan_seh_interceptor)
+76:                        target_link_options(${target} PRIVATE /INCLUDE:___asan_seh_interceptor)
+80:                    COMMAND "${CMAKE_COMMAND}" -E copy_if_different

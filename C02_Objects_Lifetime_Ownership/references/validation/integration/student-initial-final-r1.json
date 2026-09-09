@@ -1,0 +1,28 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "Core_Study/exercises/build/student",
+    "-C",
+    "Release",
+    "-L",
+    "student",
+    "--output-on-failure",
+    "--output-junit",
+    "F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\integration\\student-initial-final-r1.xml"
+  ],
+  "exit_code": 8,
+  "timeout": false,
+  "process_seconds": 3.9850000001024455,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/Core_Study/exercises/build/student\n    Start  7: L03_lifetimes_student\n1/9 Test  #7: L03_lifetimes_student ............***Failed    0.45 sec\ncheck failed: borrow from live owner must be valid\n\n    Start  8: L04_construction_student\n2/9 Test  #8: L04_construction_student .........***Failed    0.43 sec\ncheck failed: both resources should be live inside the complete object scope\n\n    Start  9: L05_special_members_student\n3/9 Test  #9: L05_special_members_student ......***Failed    0.42 sec\ncheck failed: copy must have independent storage\n\n    Start 14: L07_raii_student\n4/9 Test #14: L07_raii_student .................***Failed    0.43 sec\ncheck failed: normal owner must own first\n\n    Start 16: L08_unique_student\n5/9 Test #16: L08_unique_student ...............***Failed    0.44 sec\ncheck failed: make_tracked returns owner\n\n    Start 18: L09_shared_student\n6/9 Test #18: L09_shared_student ...............***Failed    0.44 sec\ncheck failed: make_node returns shared owner\n\n    Start 20: L10_control_block_student\n7/9 Test #20: L10_control_block_student ........***Failed    0.42 sec\ncheck failed: make_rc returns owner\n\n    Start 22: L12_storage_student\n8/9 Test #22: L12_storage_student ..............***Failed    0.42 sec\ncheck failed: slot must report engaged after successful construct\n\n    Start 25: P1_object_buffer_student\n9/9 Test #25: P1_object_buffer_student .........***Failed    0.43 sec\ncheck failed: reserve grows capacity\n\n\n0% tests passed, 9 tests failed out of 9\n\nLabel Time Summary:\nstudent    =   3.88 sec*proc (9 tests)\n\nTotal Test time (real) =   3.90 sec\n\nThe following tests FAILED:\n\t  7 - L03_lifetimes_student (Failed)                    student\n\t  8 - L04_construction_student (Failed)                 student\n\t  9 - L05_special_members_student (Failed)              student\n\t 14 - L07_raii_student (Failed)                         student\n\t 16 - L08_unique_student (Failed)                       student\n\t 18 - L09_shared_student (Failed)                       student\n\t 20 - L10_control_block_student (Failed)                student\n\t 22 - L12_storage_student (Failed)                      student\n\t 25 - P1_object_buffer_student (Failed)                 student\n",
+  "stderr": "Errors while running CTest\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 8,
+  "required_text": [
+    "9 tests failed out of 9"
+  ],
+  "verdict": "PASS"
+}

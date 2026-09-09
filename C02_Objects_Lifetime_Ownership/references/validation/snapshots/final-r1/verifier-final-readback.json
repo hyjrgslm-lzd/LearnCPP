@@ -1,0 +1,44 @@
+{
+  "generated_at": "2026-09-09T11:05:58.8502595+08:00",
+  "snapshot": "Core_Study/references/validation/snapshots/final-r1",
+  "summary": {
+    "source_files": 299,
+    "evidence_files": 1266,
+    "source_manifest_sha256": "4f68ffcd3df82868431d11acc23561ec3bbecccc1a637121ed7bdd57cbe941bd",
+    "evidence_manifest_sha256": "594949caae1fee71ba366f775c8761b95ec9986490f0aa5c3ac5a3bc322675d8"
+  },
+  "manifest_rehash": {
+    "source_line_count": 299,
+    "evidence_line_count": 1266,
+    "source_manifest_sha256": "4f68ffcd3df82868431d11acc23561ec3bbecccc1a637121ed7bdd57cbe941bd",
+    "evidence_manifest_sha256": "594949caae1fee71ba366f775c8761b95ec9986490f0aa5c3ac5a3bc322675d8",
+    "source_count_matches_summary": true,
+    "evidence_count_matches_summary": true,
+    "source_sha_matches_summary": true,
+    "evidence_sha_matches_summary": true,
+    "source_malformed_count": 0,
+    "evidence_malformed_count": 0,
+    "source_missing_count": 0,
+    "evidence_missing_count": 0,
+    "source_content_mismatch_count": 0,
+    "evidence_content_mismatch_count": 0
+  },
+  "compare_candidate_r2": {
+    "source_diff_count": 3,
+    "source_diff_paths": [
+      "Core_Study/README.md",
+      "Core_Study/references/quality-report.md",
+      "LEARNCPP_GLOBAL_PLAN.md"
+    ],
+    "expected_source_diff_paths": [
+      "Core_Study/README.md",
+      "Core_Study/references/quality-report.md",
+      "LEARNCPP_GLOBAL_PLAN.md"
+    ],
+    "source_diff_only_expected": true,
+    "evidence_diff_count": 0,
+    "evidence_same_as_candidate_r2": true,
+    "evidence_manifest_same_sha_as_candidate_r2": true
+  },
+  "verdict": "PASS"
+}

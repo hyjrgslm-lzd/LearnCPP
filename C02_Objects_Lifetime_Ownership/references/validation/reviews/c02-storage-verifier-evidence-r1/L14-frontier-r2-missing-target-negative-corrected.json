@@ -1,0 +1,30 @@
+{
+  "command": [
+    "cmake",
+    "-DBUILD_DIR=build/c02-storage-verifier-r1/L14-frontier-r2",
+    "-DCONFIG=Debug",
+    "-DTARGET=DefinitelyMissingFrontierTarget",
+    "-DCASE=missing_target_probe",
+    "-DEXPECT=capability_reject",
+    "-DSOURCE_MARKER=definitely_missing_source.cpp",
+    "-DEXPECTED_FAILURE=definitely_missing_diagnostic",
+    "-DACCEPTED_DIAGNOSTIC=",
+    "-DOUT_DIR=F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\reviews\\c02-storage-verifier-evidence-r1\\l14-frontier-missing-target-r2-corrected",
+    "-P",
+    "Core_Study/exercises/L14_ub/checks/frontier_compile.cmake"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.17199999978765845,
+  "stdout": "",
+  "stderr": "CMake Error at Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:64 (message):\n  missing_target_probe: failure did not mention expected source\n  'definitely_missing_source.cpp'; see\n  F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\reviews\\c02-storage-verifier-evidence-r1\\l14-frontier-missing-target-r2-corrected/missing_target_probe-20260909-021856.txt\nCall Stack (most recent call first):\n  Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:69 (require_source_marker)\n  Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:99 (require_expected_failure)\n\n\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 1,
+  "required_text": [
+    "failure did not mention expected source"
+  ],
+  "verdict": "PASS"
+}

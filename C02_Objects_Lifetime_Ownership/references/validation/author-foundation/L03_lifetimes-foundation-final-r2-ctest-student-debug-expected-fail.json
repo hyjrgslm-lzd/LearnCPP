@@ -1,0 +1,24 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "Core_Study/exercises/L03_lifetimes/build/foundation-final-r2-student",
+    "-C",
+    "Debug",
+    "--output-on-failure"
+  ],
+  "exit_code": 8,
+  "timeout": false,
+  "process_seconds": 1.0619999999180436,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/Core_Study/exercises/L03_lifetimes/build/foundation-final-r2-student\n    Start 1: L03_lifetimes_student\n1/4 Test #1: L03_lifetimes_student ..............................***Failed    0.23 sec\ncheck failed: borrow from live owner must be valid\n\n    Start 2: L03_lifetimes_reference\n2/4 Test #2: L03_lifetimes_reference ............................   Passed    0.24 sec\n    Start 3: L03_lifetimes_validation_good\n3/4 Test #3: L03_lifetimes_validation_good ......................   Passed    0.25 sec\n    Start 4: L03_lifetimes_validation_bad_dangling_view_check\n4/4 Test #4: L03_lifetimes_validation_bad_dangling_view_check ...   Passed    0.27 sec\n\n75% tests passed, 1 tests failed out of 4\n\nLabel Time Summary:\nnegative      =   0.27 sec*proc (1 test)\nreference     =   0.24 sec*proc (1 test)\nstudent       =   0.23 sec*proc (1 test)\nvalidation    =   0.25 sec*proc (1 test)\n\nTotal Test time (real) =   1.01 sec\n\nThe following tests FAILED:\n\t  1 - L03_lifetimes_student (Failed)                    student\n",
+  "stderr": "Errors while running CTest\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 8,
+  "required_text": [
+    "check failed: borrow from live owner must be valid"
+  ],
+  "verdict": "PASS"
+}

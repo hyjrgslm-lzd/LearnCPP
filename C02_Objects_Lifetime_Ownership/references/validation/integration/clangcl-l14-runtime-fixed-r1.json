@@ -1,0 +1,18 @@
+{
+  "command": [
+    "build/c02-storage-verifier-r1/L14-clangcl-asan-reference-release-current/Release/L14_ub_observation.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.4839999999385327,
+  "stdout": "dangling reference: undefined_behavior\nODR no diagnostic case: ifndr\nplain char signedness: implementation_defined\nsome evaluation orders: unspecified\nC++26 erroneous values: erroneous\nL14_ub_observation OK\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

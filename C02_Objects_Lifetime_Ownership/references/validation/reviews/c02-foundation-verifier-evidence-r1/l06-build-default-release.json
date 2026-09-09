@@ -1,0 +1,24 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "build/c02-foundation-verifier-r1/L06-default",
+    "--config",
+    "Release",
+    "--clean-first"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.327999999979511,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L06_move_return/CMakeLists.txt\n  observation.cpp\n  L06_move_return_observation.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-foundation-verifier-r1\\L06-default\\Release\\L06_move_return_observation.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L06_move_return/CMakeLists.txt\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    ".vcxproj"
+  ],
+  "verdict": "PASS"
+}

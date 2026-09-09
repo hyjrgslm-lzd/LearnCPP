@@ -1,0 +1,21 @@
+{
+  "command": [
+    "cmd",
+    "/c",
+    "Core_Study\\references\\validation\\reviews\\c02-student-wiring-verifier-evidence-r1\\no-student-project\\configure-build.cmd"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 5.843000000109896,
+  "stdout": "-- The CXX compiler identification is MSVC 19.51.36256.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring done (1.8s)\n-- Generating done (0.0s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/build/c02-verifier-wiring-no-student-r1\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/references/validation/reviews/c02-student-wiring-verifier-evidence-r1/no-student-project/CMakeLists.txt\n  main.cpp\n  注意: 包含文件:  D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\cstddef\n  注意: 包含文件:   D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\yvals_core.h\n  注意: 包含文件:    D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\vcruntime.h\n  注意: 包含文件:     D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\sal.h\n  注意: 包含文件:      D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\concurrencysal.h\n  注意: 包含文件:     D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\vadefs.h\n  注意: 包含文件:    D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xkeycheck.h\n  注意: 包含文件:   C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\ucrt\\stddef.h\n  注意: 包含文件:    C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\ucrt\\corecrt.h\n  注意: 包含文件:   D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xtr1common\n  plain_target.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-verifier-wiring-no-student-r1\\Release\\plain_target.exe\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    "plain_target.vcxproj"
+  ],
+  "verdict": "PASS"
+}

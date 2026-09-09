@@ -1,0 +1,31 @@
+{
+  "command": [
+    "cmake",
+    "-DBUILD_DIR=build/c02-storage-final-fix-verifier-r1/L14-frontier-strict",
+    "-DCONFIG=Debug",
+    "-DTARGET=L14_frontier_p2287_base_member_designator",
+    "-DCASE=bad_diag_probe",
+    "-DEXPECT=capability_compile",
+    "-DSOURCE_MARKER=p2287_base_member_designator.cpp",
+    "-DEXPECTED_FAILURE=definitely_not_the_real_diagnostic",
+    "-DACCEPTED_DIAGNOSTIC=",
+    "-DOUT_DIR=F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\reviews\\c02-storage-final-fix-verifier-evidence-r1\\l14-final-frontier-bad-diagnostic",
+    "-P",
+    "Core_Study/exercises/L14_ub/checks/frontier_compile.cmake"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.75,
+  "stdout": "",
+  "stderr": "CMake Error at Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:80 (message):\n  bad_diag_probe: failure did not match expected diagnostic\n  'definitely_not_the_real_diagnostic'; see\n  F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\reviews\\c02-storage-final-fix-verifier-evidence-r1\\l14-final-frontier-bad-diagnostic/bad_diag_probe-20260909-024619.txt\nCall Stack (most recent call first):\n  Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:94 (require_expected_failure)\n\n\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 1,
+  "required_text": [
+    "failure did not match expected diagnostic"
+  ],
+  "verdict": "PASS"
+}

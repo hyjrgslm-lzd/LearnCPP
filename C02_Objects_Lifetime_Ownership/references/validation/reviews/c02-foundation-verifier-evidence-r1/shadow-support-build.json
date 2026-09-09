@@ -1,0 +1,25 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "build/c02-foundation-verifier-r1/shadow-support",
+    "--config",
+    "Debug",
+    "--clean-first"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 2.452999999979511,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/references/validation/reviews/c02-foundation-verifier-evidence-r1/shadow-support-project/CMakeLists.txt\n  lifetime_checks.cpp\n  borrowed_int.cpp\nF:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\reviews\\c02-foundation-verifier-evidence-r1\\shadow-support-project\\l03_impl\\support\\lifetime_model.hpp(1,1): error C1189: #error:  fake lifetime_model.hpp from implementation dir should not replace trusted fixture [F:\\CPPTrain\\LearnCPP\\build\\c02-foundation-verifier-r1\\shadow-support\\shadow_l03.vcxproj]\n  正在生成代码...\n  (编译源文件“../../../Core_Study/exercises/L03_lifetimes/checks/lifetime_checks.cpp”)\n  \nF:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\reviews\\c02-foundation-verifier-evidence-r1\\shadow-support-project\\l03_impl\\support\\lifetime_model.hpp(1,1): error C1189: #error:  fake lifetime_model.hpp from implementation dir should not replace trusted fixture [F:\\CPPTrain\\LearnCPP\\build\\c02-foundation-verifier-r1\\shadow-support\\shadow_l03.vcxproj]\n  (编译源文件“../../../Core_Study/references/validation/reviews/c02-foundation-verifier-evidence-r1/shadow-support-project/l03_impl/borrowed_int.cpp”)\n  \n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/references/validation/reviews/c02-foundation-verifier-evidence-r1/shadow-support-project/CMakeLists.txt\n  buffer_checks.cpp\nF:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\reviews\\c02-foundation-verifier-evidence-r1\\shadow-support-project\\l05_impl\\support\\memory_model.hpp(1,1): error C1189: #error:  fake memory_model.hpp from implementation dir should not replace trusted fixture [F:\\CPPTrain\\LearnCPP\\build\\c02-foundation-verifier-r1\\shadow-support\\shadow_l05.vcxproj]\n  int_buffer.cpp\n  (编译源文件“../../../Core_Study/exercises/L05_special_members/checks/buffer_checks.cpp”)\n  \nF:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\reviews\\c02-foundation-verifier-evidence-r1\\shadow-support-project\\l05_impl\\support\\memory_model.hpp(1,1): error C1189: #error:  fake memory_model.hpp from implementation dir should not replace trusted fixture [F:\\CPPTrain\\LearnCPP\\build\\c02-foundation-verifier-r1\\shadow-support\\shadow_l05.vcxproj]\n  (编译源文件“../../../Core_Study/references/validation/reviews/c02-foundation-verifier-evidence-r1/shadow-support-project/l05_impl/int_buffer.cpp”)\n  \n  正在生成代码...\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 1,
+  "required_text": [
+    "fake lifetime_model.hpp",
+    "fake memory_model.hpp"
+  ],
+  "verdict": "PASS"
+}

@@ -1,0 +1,6 @@
+{
+  "oldInterfaceScanExit": 1,
+  "newInterfaceScanExit": 0,
+  "oldInterfaceScan": "old-interface-scan.stdout.txt",
+  "newInterfaceScan": "new-interface-scan.stdout.txt"
+}

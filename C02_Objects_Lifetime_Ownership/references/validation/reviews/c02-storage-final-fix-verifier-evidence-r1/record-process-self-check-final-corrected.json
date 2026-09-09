@@ -1,0 +1,23 @@
+{
+  "command": [
+    "python",
+    "Core_Study/references/validation/tools/check_record_process.py",
+    "--output",
+    "F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\reviews\\c02-storage-final-fix-verifier-evidence-r1\\record-process-self-check-final-corrected"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 1.7339999999385327,
+  "stdout": "PASS: 7 recorder contracts\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [
+    "PASS: 7 recorder contracts"
+  ],
+  "verdict": "PASS"
+}

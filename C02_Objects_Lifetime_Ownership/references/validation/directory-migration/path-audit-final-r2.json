@@ -1,0 +1,1175 @@
+{
+  "baseline_files": 6147,
+  "historical_files": 4488,
+  "missing": [],
+  "historical_content_changes": [
+    "C01_Build_Compile_Link/references/validation/final-teaching-review.md",
+    "C01_Build_Compile_Link/references/validation/final-technical-review.md",
+    "C01_Build_Compile_Link/references/validation/foundations/abc-v5-a1-gdb-script.stdout.txt",
+    "C01_Build_Compile_Link/references/validation/foundations/abc-v6-a1-gdb-script.stdout.txt",
+    "C01_Build_Compile_Link/references/validation/odr/01-msvc-build.stdout.txt",
+    "C01_Build_Compile_Link/references/validation/odr/06-msvc-rebuild-after-checker.stdout.txt",
+    "C01_Build_Compile_Link/references/validation/odr/review-fix-01-msvc-build.stdout.txt",
+    "C01_Build_Compile_Link/references/validation/odr/review-fix-31-student-bypass-build.stdout.txt",
+    "C01_Build_Compile_Link/references/validation/odr/review-fix2-01-msvc-build.stdout.txt",
+    "C01_Build_Compile_Link/references/validation/odr/review-fix2-31-student-bypass-build.stdout.txt",
+    "C01_Build_Compile_Link/references/validation/odr/review-fix3-ninja-build.stdout.txt",
+    "C01_Build_Compile_Link/references/validation/odr/review-fix3c-bad-missing-symbol-rejected.stderr.txt",
+    "C01_Build_Compile_Link/references/validation/toolchain-probe/400-normal-cmake-chain.stdout.txt",
+    "C01_Build_Compile_Link/references/validation/toolchain/500-verify-fghi.stdout.txt",
+    "C01_Build_Compile_Link/references/validation/toolchain/510-verify-i1.stdout.txt",
+    "C01_Build_Compile_Link/references/validation/toolchain/520-verify-clang-tools.command.cmd",
+    "C01_Build_Compile_Link/references/validation/toolchain/540-verify-f2-package.stdout.txt",
+    "C01_Build_Compile_Link/references/validation/toolchain/545-verify-f2-fetchcontent.stdout.txt",
+    "C01_Build_Compile_Link/references/validation/toolchain/556-r3-verify-g2-variants.stdout.txt",
+    "C01_Build_Compile_Link/references/validation/toolchain/556-verify-g2-variants.stdout.txt",
+    "C01_Build_Compile_Link/references/validation/toolchain/559-verify-g2-variants-fresh.stdout.txt",
+    "C01_Build_Compile_Link/references/validation/toolchain/565-verify-g1-cmake-fresh.stdout.txt",
+    "C01_Build_Compile_Link/references/validation/toolchain/566-verify-clang-tools-current.command.cmd",
+    "C01_Build_Compile_Link/references/validation/toolchain/567-verify-clang-tools-current-fresh.command.cmd",
+    "C01_Build_Compile_Link/references/validation/toolchain/569-verify-g1-cmake-current.stdout.txt",
+    "C01_Build_Compile_Link/references/validation/toolchain/572-verify-h1-boundaries.stdout.txt",
+    "C01_Build_Compile_Link/references/validation/toolchain/573-verify-h1-boundaries.stdout.txt"
+  ],
+  "unexpected_historical_changes": [],
+  "changed": [
+    {
+      "path": "CONTENT_REFACTORING_GUIDE.md",
+      "before": "6ed24d43193c9e9f6d111bb1fed9378d35b61e6336a9f6d92a88cdfad9d89bf3",
+      "after": "4df4307bd9c38ae02c65af966384230b76187f7a24a6818bc8c0484a88281665"
+    },
+    {
+      "path": "C08_Concurrency/README.md",
+      "before": "4797d1859140c4d7fafa6a7f4718c331cdbc7f70fdf25762b93faeb9cebc74cb",
+      "after": "4ced8b27d44c7edac5db30f8220b6d6c2c2c42306889ec5708212b1922a7232c"
+    },
+    {
+      "path": "C08_Concurrency/chapters/04-shared-state-and-locks.md",
+      "before": "12a7b856dd6601627d5bf3940ba36061a757d38784873f1991bad059cdfba5df",
+      "after": "9fbe8c0074391cb3a95773c11e1bd08e32ca88954970d5c5b954d0b1c215e900"
+    },
+    {
+      "path": "C08_Concurrency/chapters/05-waiting-and-channels.md",
+      "before": "e9938d6616dd9854971ba2984f1901eee1842888cecca6e351a44c86d7aba781",
+      "after": "a515e9fac3776528439f1ee3f208cfa589793a9643a3539bbd21f3136fcea5f8"
+    },
+    {
+      "path": "C08_Concurrency/chapters/06-cancellation-and-shutdown.md",
+      "before": "52bb2a6e16adf0ebec2a40bf6929db5a498f3bc6230e58bb6595542c22a464c9",
+      "after": "ed12331866aad8e1dc2711ebb79574b4a8c6731678af62ae508402952f21dd02"
+    },
+    {
+      "path": "C08_Concurrency/chapters/07-coordination.md",
+      "before": "20d80f2d2722edc367693958eaf22759452bba72fa58f2958f33ac9c2e9783fc",
+      "after": "9fd62d9ed91358ccaef79c344f2e1b0f13db8db95e177c698add57829982e090"
+    },
+    {
+      "path": "C08_Concurrency/chapters/17-diagnostics-and-sources.md",
+      "before": "f1de5fc3e561a15b382736643c9ab48256cd65a9642143a5f2a0f898363b1a77",
+      "after": "8d20bf57ae1ae47326d0f5f81af951699277902987c374a98d1f94c0bc5eabd5"
+    },
+    {
+      "path": "C08_Concurrency/exercises/A1_jthread_lifecycle/README.md",
+      "before": "9b4d89dd6920a8836910cee32e9a4ca631aee3f179ce2665cc05af580517ada4",
+      "after": "4d4096b830c15986e0de646160958a43d139845f115e928bb456e157959936d4"
+    },
+    {
+      "path": "C08_Concurrency/exercises/A2_stop_token_cancellation/README.md",
+      "before": "e8121a43a55ff3e1b04d43d7dea9e6da70bed9a60c6e96a69de21e662f787fe6",
+      "after": "9fbcd6baf6a4dd394d5400db434c49ae3d1cb36c2b102765abb50017eb6fd08b"
+    },
+    {
+      "path": "C08_Concurrency/exercises/A3_thread_exception/README.md",
+      "before": "fcae0d783b326d0163c1f28792a2770a6fe7793a31c931ff6000d162489d2bb1",
+      "after": "35aa0c74803b89b21873e6f05a5a0639d0bf6bc946a4d5924444dcd7092f4aa8"
+    },
+    {
+      "path": "C08_Concurrency/exercises/B1_mutex_family/README.md",
+      "before": "2598db3c2582b3c6dbe5539eaf3d39e4997c7a8980cbf333ed0152a7270013f5",
+      "after": "392998de0a2469bbfa2e505bb91211bdfefb44fe44d3d96765dc6e3cd08dc6ec"
+    },
+    {
+      "path": "C08_Concurrency/exercises/B2_deadlock_scoped_lock/README.md",
+      "before": "5b55f0a51ddaf30a5bad9b6e8e3b49f9426dfe7679a0441014105e64354f0562",
+      "after": "b10028273c1b6efa34253a50a70e2430ca40409ef0be4559835b22a91e2f9093"
+    },
+    {
+      "path": "C08_Concurrency/exercises/B3_call_once/README.md",
+      "before": "c445cca61449c2db84dce8572bdaa55854ac311a7dbf5c25c27e86357ed736c8",
+      "after": "11e3ec2412f869a8115869d1f8bc12b3e0582c542fcb44ad8c7c7ad8165545da"
+    },
+    {
+      "path": "C08_Concurrency/exercises/BUILD_GUIDE.md",
+      "before": "27947df7a73a4d674898bdb8eab4dc98b649d9cf8642eadfecd225fb8d0d4502",
+      "after": "6b579fd96f0e7c05b70f4f3de3647b7a5663d7c39287b86e6f27df991da56d84"
+    },
+    {
+      "path": "C08_Concurrency/exercises/C1_condvar_predicate/README.md",
+      "before": "367fb367ce398c3ef89198f300277422ada174377631778da70ece6779ad5de7",
+      "after": "f6f8c59952a003b335856005da2d19033f75a6a7af4c0a3fca24a10209f8cc91"
+    },
+    {
+      "path": "C08_Concurrency/exercises/C2_bounded_queue_condvar/README.md",
+      "before": "12417c0b64d117940bddbc142a1ec3d5fcad079aaa4ad73d491ee863db9687f3",
+      "after": "9d27236ec1973118b6e1b1e4b6eb622adf772203f15fed1a848b00cc1f92da8b"
+    },
+    {
+      "path": "C08_Concurrency/exercises/C3_interruptible_wait/README.md",
+      "before": "23a3c1f3e5d8688b1a8b3bb33d66c2a5524059daa629e68b5da2a6207824c3b2",
+      "after": "b6b55361e18f4def1f2408f88cb2ddef3c0b301dfea2b5746a132577ef131ae4"
+    },
+    {
+      "path": "C08_Concurrency/exercises/CMakeLists.txt",
+      "before": "342cf57a7b02a01b9fabf21590c573eec7df417ade3585d326e1cb2f89c7983e",
+      "after": "8cd6757c8481969d2e75e4fe9313491815f12e69269968e314daf5acb78bbadb"
+    },
+    {
+      "path": "C08_Concurrency/exercises/Capstone1_thread_pool/README.md",
+      "before": "0bf93a7b2784e4156d4a042e043360a80b251c87698a51588f2fdcee78e6d90f",
+      "after": "ef2ef19c626a36a468de85b4c5de8ea17e5fccbf2b0fe8b23404c5023e19e52e"
+    },
+    {
+      "path": "C08_Concurrency/exercises/Capstone2_lockfree_queue/README.md",
+      "before": "6a7c0f16dd469670d29dab737e3544b396e3e104e2b17cb4aee1cebc8fa021a5",
+      "after": "b02dc09f29dba550e7ecac5149325b31d2896af63de8a6375cab03ade9283ac3"
+    },
+    {
+      "path": "C08_Concurrency/exercises/Capstone3_parallel_compute/README.md",
+      "before": "30f86c86d0a17d244fc24f19ba4b3402d80b622ed890d07d1d0159559975acef",
+      "after": "820c2b10975b4fdd5c46eb8da997d53c7585ead28e70b741ca396212b7cc8bf2"
+    },
+    {
+      "path": "C08_Concurrency/exercises/D1_promise_future/README.md",
+      "before": "b2dbd8b97ff7507aad1aa7d266d90df942f4112ec224a470cc983d52bc14710b",
+      "after": "de792a1984ac7acc2dd79041399cde9a84ccccd60c1e797def756a81efc927d7"
+    },
+    {
+      "path": "C08_Concurrency/exercises/D2_async_policies/README.md",
+      "before": "307d6bc76b83eda61c217fa07ab0c5f50203e3129addf3515bb754775cde8124",
+      "after": "37b420971e7694a3bb2dcdd19978dbebd57cf50463971d57a72c05e7c942e75f"
+    },
+    {
+      "path": "C08_Concurrency/exercises/D3_packaged_task/README.md",
+      "before": "db530bdc23746debace0e5eab841b352f5a8089e89cd48c2e616579d99857c77",
+      "after": "48aa6ea50e9b749444d3d308f65503acb9ddb3b8a181542759d45ee7d7640fed"
+    },
+    {
+      "path": "C08_Concurrency/exercises/E1_atomic_basics/README.md",
+      "before": "39fdd0b158063b94cff0df9fc9bcc9a1bdafde2f80096261361ce8f3ddb09621",
+      "after": "ab01c1ae50f3ea64fe070788e110dae272f21ff242df430115f90fb0c83af580"
+    },
+    {
+      "path": "C08_Concurrency/exercises/E2_atomic_ref/README.md",
+      "before": "7ce54bf67128bc78d36997d3a8b68c83309c1a5864e6f787dd61b227385d769b",
+      "after": "9b1960bb3c0753449c77e6ec1567a7cd632fea6d09026fb385758b955af0b3e7"
+    },
+    {
+      "path": "C08_Concurrency/exercises/E3_cas_loop/README.md",
+      "before": "0f0a4ed84a915d7c7b8a520cdda117522cc7fe3c23495d3b2d58825ef8674d5b",
+      "after": "3f692eb707efec445523d0d121fa2eff1906edb91eaeb1ec6bbb3fda7e94b25a"
+    },
+    {
+      "path": "C08_Concurrency/exercises/F1_release_acquire/README.md",
+      "before": "c7ea75fe2d47ea4e9460ca6fd3b7ba18b9ece76f8363c4afc1e0c38b73899bd2",
+      "after": "bc8c891630231478266074eefaa55fb3afeb9851c074bef859d34fb65005c392"
+    },
+    {
+      "path": "C08_Concurrency/exercises/F2_relaxed_counter/README.md",
+      "before": "4e7fc4703b0838ddda5c5d39bdc359517d41bf5c21509d2470fb21c5f9510709",
+      "after": "fc0e67061f29feec20317dcbc08212d0cab42898acc4bbefd4ea5d8e50dcc619"
+    },
+    {
+      "path": "C08_Concurrency/exercises/F3_seqcst_fence/README.md",
+      "before": "82e3379e00c6506cdd8181d8094343ddccefaa58dfa864a931bbb576b344ee3f",
+      "after": "e5f19f760fa60ba4d08753cf1eb02387f4db73bac23941fa0c0eafe5d4f5c226"
+    },
+    {
+      "path": "C08_Concurrency/exercises/F4_publish_pattern/README.md",
+      "before": "61b1cae8f5c904529357df667825f50e63e0090e7e61275b5b0039519cd57730",
+      "after": "240d58944c93cd695c2b464c307d6ea9204a65969b00de46fc0fa0c19b39472e"
+    },
+    {
+      "path": "C08_Concurrency/exercises/G1_treiber_stack/README.md",
+      "before": "b6b6f37e7d2216a8f8474c896490b4a1e7c9464bc9f228161988b0433e9dc3d5",
+      "after": "665adc04b163fdea96f288dcda29221c27ebd5a4d2d4f27cae34f1ee99b0cb77"
+    },
+    {
+      "path": "C08_Concurrency/exercises/G2_aba_problem/README.md",
+      "before": "dfcf70bcf77f7b83545d01d5f7963ccc48c4244065feaa032b3df8f00ce3b7e8",
+      "after": "0719ae66ee83ae9483b7ab6ca5554a558ff39ad036315c681e1c4fce0ff55896"
+    },
+    {
+      "path": "C08_Concurrency/exercises/G3_spsc_ringbuffer/README.md",
+      "before": "88b3294af70dc96b981166eb488729d58b9f0e1c832dcf6104722e7ac6dd41c6",
+      "after": "0739efd2edc05213b4d54f94b240f2d89b47373485b1fb9463ee20fa2467020e"
+    },
+    {
+      "path": "C08_Concurrency/exercises/H1_latch_barrier/README.md",
+      "before": "80fe6a72cd26225ab75abad033da93f8621e4058b4fd92deb60cedd0e6659199",
+      "after": "384f478c1cf4bf131338c81b337ff0c59a3fca1eb7cc5281f1a8c989dfdacc95"
+    },
+    {
+      "path": "C08_Concurrency/exercises/H2_semaphore/README.md",
+      "before": "70a4d2e09bb79f33780a58e4dba4b15adfab950fdd6df9795c1c67cb71e0fef1",
+      "after": "e45291a15eacc1ea8fd237f4b27ff9b1fd69121e0b221e89235f4b75c54d5bcc"
+    },
+    {
+      "path": "C08_Concurrency/exercises/H3_atomic_wait_notify/README.md",
+      "before": "f90e28eda1c19745c5cf6b8a0dd89925d416da3dc80d31197dee67c1a917d73f",
+      "after": "2f6b361de18828614966fb0e2b641adfd68494401c2768b5222b3d545faf5f88"
+    },
+    {
+      "path": "C08_Concurrency/exercises/I1_atomic_shared_ptr/README.md",
+      "before": "ee4095537397b20f051e678ad57b90ae5ad568381d199fea6b8eb405f29d2a27",
+      "after": "5312b2f474fd6c3f6e78b1948427929b287b6269c017204a4e1c3dd0f4d476ad"
+    },
+    {
+      "path": "C08_Concurrency/exercises/I2_hazard_pointer/README.md",
+      "before": "e6ff6d6ba2019f5fb7c3c52257327112a15a23b60c4f132b50e526986842fd08",
+      "after": "81e9f6cd5b9cc6c21794147988cb8bf555cea51685a19aecc03825a3c7d53fc0"
+    },
+    {
+      "path": "C08_Concurrency/exercises/I3_rcu/README.md",
+      "before": "804f54caff746078486f36d7ef2199d89be1f254220935f1121553d5f7b125bc",
+      "after": "e5fd1c322fb36d9a0d639902b14a0b8de8dcffd8f246ac58ddc7bb3e6938319b"
+    },
+    {
+      "path": "C08_Concurrency/exercises/J1_false_sharing/README.md",
+      "before": "05458c6e650ef6e974da877c5aca18e439defe212d7993ab3950a6370df12860",
+      "after": "c31be987286aa96f25bafe2ffa0d2a6edfa987c721930898c7de3c6bf94ec82e"
+    },
+    {
+      "path": "C08_Concurrency/exercises/J2_interference_size/README.md",
+      "before": "6c425c8d7e557e9643ff8beb77004f2bd9cfbcee55f022dd2f81ab54feff94c9",
+      "after": "d6f2d20d12afb06228be8240f189275fd030eba9656271619987531c931385a8"
+    },
+    {
+      "path": "C08_Concurrency/exercises/J3_numa_concept/README.md",
+      "before": "89836526cbc9f1048b8be8cc0965ee0aad87bdaaf9e18117f458ab768552ed50",
+      "after": "9c0106aa95c27c787f109b35ce6a924f64408f0a4419bdb0eb9c6417c6ed5b5b"
+    },
+    {
+      "path": "C08_Concurrency/exercises/K1_simd_basics/README.md",
+      "before": "d0e36a74664393e0f17756a9defdb236a4407848180f03c03d8029a42e8766fb",
+      "after": "c36db802304d007f089b1943a6fa3b9c385b01373eff86f4791555fa379d0769"
+    },
+    {
+      "path": "C08_Concurrency/exercises/K2_simd_dotproduct/README.md",
+      "before": "b43e06bd0e05a6e2c816639c16aebc906f659bacb5985b80795e2caf3f48ce17",
+      "after": "4c6ed11dd3f58780b11742f282e4f12ded2e410680c9f155e368f8ed21af1c3a"
+    },
+    {
+      "path": "C08_Concurrency/exercises/K3_simd_where_select/README.md",
+      "before": "5080eb3dd7e5cefc44ba5b1fc8ff35d3769af6322ea9a7628d14de5aaf0865a2",
+      "after": "c59715cfed263c219022f5b6290304328cded3c624599b9fea4cbe0bef8e8ffc"
+    },
+    {
+      "path": "C08_Concurrency/exercises/L1_par_algorithms/README.md",
+      "before": "b95bad59ab50ee054f6d637a26674af2e6a39dfdb9f256bfa4492444acd51239",
+      "after": "3f11852b089b8f05e08d3e08dec687b70d4b84212a8e950c93ba0fdea62e79b5"
+    },
+    {
+      "path": "C08_Concurrency/exercises/L2_parallel_reduce_scan/README.md",
+      "before": "5020b967d8837c27a56ea9f350a6c036566786f8403ef178169f3df874cce8e9",
+      "after": "9f419e3b7e8c6f53ffd6a3c80e53684a3400966bc0e2864af24ce3e1a6cf784b"
+    },
+    {
+      "path": "C08_Concurrency/exercises/L3_par_vs_seq_bench/README.md",
+      "before": "cf63db8c6d8c7fac293b4117c6dd5478363fd0ac74b1a72a4da404c6783bc269",
+      "after": "1b87891b986434a8d81644e4843b88279301e92ba4102bfad78df064281c0181"
+    },
+    {
+      "path": "C08_Concurrency/exercises/M1_work_stealing_pool/README.md",
+      "before": "a8ed5a697197a4d4122caf4a4c248f23c68b310dd60162c793933c4b719a4681",
+      "after": "1ada1213e497960bd80d780ab736d0bc03d99682af7707673f47f233540bd546"
+    },
+    {
+      "path": "C08_Concurrency/exercises/M2_execution_bridge/README.md",
+      "before": "7387cc6ea478908b5381f28c241f62deb7dd237a49a377d5fb674ae99433db7f",
+      "after": "726b5711c781786f34f6d87ab43f058ce0f78e66de2d5afc0d961040b9a37f10"
+    },
+    {
+      "path": "C08_Concurrency/exercises/N1_numa_placement/README.md",
+      "before": "b73c542ec762fa97f2a7fa68e329e361174a474a5b371277ab13e56dde80a183",
+      "after": "1c9cdf90c4b1378abe4b56ee9b350426a7a4385537a1a1b768567b60495c50cc"
+    },
+    {
+      "path": "C08_Concurrency/exercises/P1_object_lifetime/README.md",
+      "before": "9927165bdc91734f1ebabdcfc58f5985e55e6ea2d8f8685f52843b87e450dd32",
+      "after": "9c00ae35dfd3effe118d14bfe5ac4e6a444e8e5f499bd17c688b2118700da734"
+    },
+    {
+      "path": "C08_Concurrency/exercises/P2_result_states/README.md",
+      "before": "6cd0570c69647e225e904c6336323bb505fc631bf4214e3bcb065b4c99aea4f5",
+      "after": "c8dc59acf51e9af693772d8fbb11a82e90610b2ea366fa1806592c58b831ba91"
+    },
+    {
+      "path": "C08_Concurrency/exercises/Q0_queue_baseline/README.md",
+      "before": "8015fac586a8ed4bbc84be1251ec79f645df59f847e7f634aba94af5a78fec87",
+      "after": "e4279a9944c0f2165c0ae1caf4052a4f694aa457d3260aa113645eb3e17dd6c1"
+    },
+    {
+      "path": "C08_Concurrency/exercises/R1_epoch_reclamation/README.md",
+      "before": "b996f545a5fac01904edba69ea0a527f0b3a992190c3180613972b2f45318f42",
+      "after": "b5a3ab946ade3dea090bb279c25cee6088ef9dcc2ad160d36142062388068c65"
+    },
+    {
+      "path": "C08_Concurrency/exercises/R2_qsbr/README.md",
+      "before": "cac56e727a2d1b693fa6234948a925e75d7ecea255bb2d75da5d1cbb793baad2",
+      "after": "8d521c0107997459cd915f1bd3c2ec12f807e4216c7deefe115afa2100cbef78"
+    },
+    {
+      "path": "C08_Concurrency/references/coverage.md",
+      "before": "691af7d39a639e129b7fe15d1b76031d81d935cfc69ed0ea970ce9200822fb69",
+      "after": "f15ceb6ee19c44e325448c30c7755f694ae8d0cd7051f6ae1b7bc52682bdadcf"
+    },
+    {
+      "path": "C08_Concurrency/references/standards-and-implementations.md",
+      "before": "13aaea46ef5ee272a33c8d28342de122d65d997e2d768562049c7a33b41cb0da",
+      "after": "528700f5c93875f2b2a7b843810a9234544f529320007605f7f636893099d5a5"
+    },
+    {
+      "path": "C08_Concurrency/topics/atomics/01-atomic-operations.md",
+      "before": "c4ee5efadc9014b03dbd68f0a364156ad7b27b3f2826eac385cb26655d930e90",
+      "after": "9e82d7b6587afb1ab50488ff0d6598181b1cd47be76e88a3ed6ea0d90bfac0ee"
+    },
+    {
+      "path": "C08_Concurrency/topics/atomics/02-cas-and-minmax.md",
+      "before": "9138bd1e216c5a5b548e609672c0b565a92d6f79e6f6d1582ace5b08f670d859",
+      "after": "d42d4c675eb4ff762d15c9aaa522490cf3f7cf2c46a04eb8c733e523449dff96"
+    },
+    {
+      "path": "C08_Concurrency/topics/atomics/03-atomic-ref.md",
+      "before": "eda6d1e6e014f3d985d452465f7f920c59812e8a5c72fc32df1fccdf24da4a7c",
+      "after": "4914a9e002a41b743de9ec6c5e7bead9fbae8387621b2f507190b6ace8c77287"
+    },
+    {
+      "path": "C08_Concurrency/topics/atomics/04-happens-before.md",
+      "before": "d58b70306c5c06bd3f788241755baa6226e8bcaa699877a4f18ec3073fcbc93b",
+      "after": "2c8295a9d5c530f7d0779b1645d4a4547cfc3daf74c9e8833f3c412139a735bd"
+    },
+    {
+      "path": "C08_Concurrency/topics/atomics/05-relaxed-and-sc.md",
+      "before": "626fa14e30ef004829e757840a373c06cdc11de0e71862dc701faf502f595b00",
+      "after": "3900d0b3035b8d6fcf7a6102c7517a2905b474f74cee15e671107f02c36836f1"
+    },
+    {
+      "path": "C08_Concurrency/topics/atomics/06-fences.md",
+      "before": "cb19152feb13889ac9e90bb2d193bfb075158690d92702563a2b103f37395132",
+      "after": "cd77e766e1238ca0c9ca97dd521f1db6b92d044731571df87dd6cfb2cb4ac4cf"
+    },
+    {
+      "path": "C08_Concurrency/topics/atomics/07-publication-and-lifetime.md",
+      "before": "9bb0af58dee03282d1e59591810c7ac2f8562b107d929febd5ff5a54296c1b29",
+      "after": "59fa3c934770627dfbead5026f03fbf0e8ac181211c307debc515e1d68d811bb"
+    },
+    {
+      "path": "C08_Concurrency/topics/atomics/08-wait-and-generation.md",
+      "before": "aef1ecdafb0c6f04877482da680c7028db3ea16617a360dd022e05f920104833",
+      "after": "0c9fdb5a31a50eb363b5744d904184c49a50b0a8118e7f36234863dd06b5d911"
+    },
+    {
+      "path": "C08_Concurrency/topics/numa/01-topology.md",
+      "before": "5c495527927627330dac4ff2945ec330f6e9b6c6fa2549d31a016cf1eb257ee2",
+      "after": "f01c8647b4eaa2c6fa168ffdaed8280c5208e14b79563a4edfd818eed2ad4699"
+    },
+    {
+      "path": "C08_Concurrency/topics/performance/01-cache-layout.md",
+      "before": "69b3d71a639e59d3c91e623df8474e289c7ef97bd6f3d0b2f095c92dd2c50e6c",
+      "after": "b816263352fefa62d89024f5bb83c8e913d8a488758cb20c26602823146ba620"
+    },
+    {
+      "path": "C08_Concurrency/topics/performance/03-reduce-scan.md",
+      "before": "f29b2da9ed25185def6dfbffd43cc02fc1c44bccda667e50af22f468056bffcf",
+      "after": "4d9a5403c044978dd3e940386c4da5883ffa083fee829bc973035e76f9574d58"
+    },
+    {
+      "path": "C08_Concurrency/topics/performance/04-parallel-compute.md",
+      "before": "ea04787ef6791bbf297fb23a759a15623ba04b0d38559d853c9d840828eb770a",
+      "after": "27fc91de3219af24839f053f5f3a9b77f7e8fd377ab937131c5022dbd23e2ef2"
+    },
+    {
+      "path": "C08_Concurrency/topics/queues/01-mutex-baseline.md",
+      "before": "998855b6991b6bb94bb2472cd3396814cef670c341d350b28f9b6ebe53c59e83",
+      "after": "457b2ffb68dea2be1031248d7a6b6c0ab1700de7134e553d09cd51cd398f269d"
+    },
+    {
+      "path": "C08_Concurrency/topics/queues/02-bounded-and-batch.md",
+      "before": "cbefd0aa4c393dbd60e55d8139354c9a15cbf475540c6b1bb8aa8e3292768776",
+      "after": "eff9cd949006cb81e66a5776634d604466c90a12ca4d2a2b4eeb73c7a74aa9f7"
+    },
+    {
+      "path": "C08_Concurrency/topics/queues/03-spsc.md",
+      "before": "60f39a08f06ab1b155493f26a5ec770137b617b53cd49ad5df1c72966253b2cf",
+      "after": "98fd1e7af64650bb616912c672bed4e132a1b0e25b535befaf076ae3eccccfc4"
+    },
+    {
+      "path": "C08_Concurrency/topics/queues/04-mpsc.md",
+      "before": "85411c3dec44a2dca7b55964ba7536003bc23d343041c6f10c727e43f9816d32",
+      "after": "4d7caacff038b38390fa91257f092b17c73aa0500eefe80b7bb660c501c47b79"
+    },
+    {
+      "path": "C08_Concurrency/topics/queues/05-vyukov-mpmc.md",
+      "before": "fbd0a0fe3df7e2b82b2dd7ab41db3a523bd0c759912268c1eb8caecc629e8e50",
+      "after": "8ce27aba99bfe81add0270d3e7c6ef5b324c3be5440303621bc834f00aa37e77"
+    },
+    {
+      "path": "C08_Concurrency/topics/queues/06-michael-scott.md",
+      "before": "b3c705351a3c2cdaba2a661111ae19cb4ba76f0a9873035d3b2e2c0dcef4ded9",
+      "after": "b3c630ce29d3bc0208211d65b3418d03730e5eefbb14f05c4307eb00d8d3867f"
+    },
+    {
+      "path": "C08_Concurrency/topics/queues/07-treiber-and-aba.md",
+      "before": "8c87bfaf028bbafad091f5e3b815c61c7ba03b1c71c3bd6d53fab917bab9d52b",
+      "after": "10dae286fc437ddff70859441d60d2db713b4f7f57f8219a8e8b60b2ac690473"
+    },
+    {
+      "path": "C08_Concurrency/topics/queues/08-validation-and-benchmark.md",
+      "before": "862844b47d354a2810c1c03d1f5ae68c0f6ad07d50e1f8b394c52af924b79348",
+      "after": "f6bb5a69e57c65935085901fda689cf2c36f53d50abb82d367eedf3150375265"
+    },
+    {
+      "path": "C08_Concurrency/topics/queues/VALIDATION.md",
+      "before": "340dc7e833582686238d863efe181116ea692c8a328660537bd29ac0050dcb86",
+      "after": "0a832552fc5d10cb4a8c8f8a90541570a511cd5267588d990543ff95dfd8fbf1"
+    },
+    {
+      "path": "C08_Concurrency/topics/reclamation/06-validation.md",
+      "before": "3f5e0036d9312cc45d1f00dda56542c812ef5129f81ac882fe15b8d9fdcac24b",
+      "after": "84211486a5f6406f7de11b0a2d16c01717e40474b521c49f96970f1fc89003e7"
+    },
+    {
+      "path": "C08_Concurrency/topics/scheduling/01-static-dynamic.md",
+      "before": "2d28ae987bcc9b5de2c95d4c7721cf3ac3ca627f97e2c464ea365b0f05a9fc83",
+      "after": "cf20c618890f4bd2c12e6ee7313b6ae566acbb30ad619c16a86c4cff2be36532"
+    },
+    {
+      "path": "C08_Concurrency/topics/scheduling/03-execution-bridge.md",
+      "before": "db6754ec699831306802b444fc292138bb9420c8a3305064ad6617c7d6052fab",
+      "after": "0cf2ee494955079dd3cf8cc832d6d16e97f47901a8d8f6026276e208248c00b5"
+    },
+    {
+      "path": "C08_Concurrency/topics/scheduling/verification.md",
+      "before": "ff7abf506bfb3c4294b8c85c8ed58f390d5594ec5cdde2df364c34d87bcf7321",
+      "after": "2e9f2e91f13cb5661818fff4500b77be897fb474eb1a88a27372ecafd498199f"
+    },
+    {
+      "path": "C08_Concurrency/topics/simd/01-scalar-and-layout.md",
+      "before": "5a11991b34b81c578d64e7e8201f761d449a5fecf654f193b92918f1414366cb",
+      "after": "180f9a593342e88378fc49ac75ff84d55fd1934691105c3e0096cf42450eb7ab"
+    },
+    {
+      "path": "C08_Concurrency/topics/simd/04-diagnostics-and-bandwidth.md",
+      "before": "c8b6173e73a3a5f31f96b67f74af23613bd56cddb417641b8867dc18d6932cfe",
+      "after": "a80ed002088db408b0e049da47bd91c95cd6d50fd6d248d5b753e61d802f1753"
+    },
+    {
+      "path": "C08_Concurrency/topics/simd/fast-math-build.md",
+      "before": "2e8eb7f328480186af2afdde15bfa336c1df08187370c923b19437d31371896a",
+      "after": "177b0ac909d97ee9a19d7ee9a898caa2ec72bf473042c760b9b34a2b00655f72"
+    },
+    {
+      "path": "C08_Concurrency/topics/source-reading/06-senders-and-execution.md",
+      "before": "176ac66100747f2f5e3e2b05842b95193fc96e4e65d16ee9dd3abe6c152723db",
+      "after": "29d47a9d8922d0704017b4052d9784df7a7bd5c42d32c1881b65a5c6a8c1738e"
+    },
+    {
+      "path": "C08_Concurrency/topics/synchronization/01-bounded-thread-pool.md",
+      "before": "6648525ea57f7648523954a8dad10b4dbe84eaf785f669b9e872b3c2c9071611",
+      "after": "3b6ef75f0a33cc7216dcc0a7d26b47ad9032311d17bd2aad1c822365494cb96f"
+    },
+    {
+      "path": "C08_Concurrency/topics/synchronization/VALIDATION.md",
+      "before": "facfd229e227d19186c628899eb63d48d41a70a4ac1992e77358f801b18debae",
+      "after": "8f0a338522dbb536c22f3085901748f4c465f3d6589f3b31aeb595fbe0132bb9"
+    },
+    {
+      "path": "C02_Objects_Lifetime_Ownership/README.md",
+      "before": "28440a07e41e7ea71cdc5ee59782413a4a88deb2b640f56b023d39a1a447ba86",
+      "after": "75c7f97715ec72d93ba22604a0604d0c42ba5cec1d68c3105746ec0d3479f834"
+    },
+    {
+      "path": "C02_Objects_Lifetime_Ownership/exercises/BUILD_GUIDE.md",
+      "before": "baf7d6ecb9ac10ed216ef506bf31acd1549d2de65f1ac5724aa8094d1206a1fa",
+      "after": "5efa287f069d6a30bcc4c16378c4ee3f18dfb79da794474124560b1da8d4bf67"
+    },
+    {
+      "path": "C02_Objects_Lifetime_Ownership/exercises/CMakeLists.txt",
+      "before": "38c7cac5f8b0953d8df9639747f58a1438726ae81250e8990e5a0598f28eb4ba",
+      "after": "ae69f49ff454887dba60cced1a810b4758ab9401c14e3ebe1bc96b3f5abbb8f3"
+    },
+    {
+      "path": "C02_Objects_Lifetime_Ownership/exercises/L01_initialization/README.md",
+      "before": "86c386313da4ed611bc505484a3eacdc27b4cc8874f7bc6717347c23016615a3",
+      "after": "4a8193fd2a327c078512ffa43240a8e0dbff34e39ea4cf3d458ab115b9183eb1"
+    },
+    {
+      "path": "C02_Objects_Lifetime_Ownership/exercises/L02_value_categories/README.md",
+      "before": "3a14464df0eab45953b7be120653c254097150ebd02434583dd01cdabc5ebbfd",
+      "after": "c02a99b66c470f5a92fe145979e6a5c2b2588e143a319e7af7cef78ae4a2c65e"
+    },
+    {
+      "path": "C02_Objects_Lifetime_Ownership/exercises/L03_lifetimes/README.md",
+      "before": "f265aec689bf237ceeac0fa77319e053c860f3f9f841ebc9bec7426ec1ed8af7",
+      "after": "5856f87e06deb98e80f59c3a4056c87916a59f1aa1566229db3d57f0bdbeaf8b"
+    },
+    {
+      "path": "C02_Objects_Lifetime_Ownership/exercises/L04_construction/README.md",
+      "before": "35f81a1b5d044fd46b620e1815b16296eb5b4382cc6f58ec5a18e2357da6d8dd",
+      "after": "17962074abd87e09d3828e43d8383e5290dfbd9c06476bed1682e410f72453ad"
+    },
+    {
+      "path": "C02_Objects_Lifetime_Ownership/exercises/L05_special_members/README.md",
+      "before": "736322878fa712321995c2c81bc73c456b1299e9825ee722aaefffdafbb5748f",
+      "after": "a5ebc6ad6874b2a9ddcd6e333490d5bf25489ead3bb31135de85ead4a83e6a66"
+    },
+    {
+      "path": "C02_Objects_Lifetime_Ownership/exercises/L06_move_return/README.md",
+      "before": "e4ea1f5228294772544be2eefbd685ad8495a5467285fa3bec2f5b6ee614eb7d",
+      "after": "bacd818ef4cfcc330d4bd35e548dc499fb842f2d8c244bc912e08966bd522ba4"
+    },
+    {
+      "path": "C02_Objects_Lifetime_Ownership/exercises/L07_raii/README.md",
+      "before": "4cb57317fe241a606c390b7f33927d13f3389d72ac9b22f3e77ab5d65ff476d3",
+      "after": "431b455a365e4905762b81c60ffc89f304d31fa23d90b6dea2d5b581173287b0"
+    },
+    {
+      "path": "C02_Objects_Lifetime_Ownership/exercises/L08_unique/README.md",
+      "before": "c0f112430e8eac0fae31b4d67cf71f1200a032de8874f7b1a9d1608faaeba8cb",
+      "after": "4c863666446c4036f7e6db73aac5917be4ff7f515064ecb650519660d137bc20"
+    },
+    {
+      "path": "C02_Objects_Lifetime_Ownership/exercises/L09_shared/README.md",
+      "before": "83c02c69fb01e98df441e5e7baa6b67eae14648a90ae378df49f00b819243142",
+      "after": "81660f7b24f1f9bae580b20d0337243600a46cca6026cc646b4e2dda33a6a8b0"
+    },
+    {
+      "path": "C02_Objects_Lifetime_Ownership/exercises/L10_control_block/README.md",
+      "before": "6350e27d0a2d019c4cd346e957848cc04b842a650bceaafe484a5d0d943b8d66",
+      "after": "fc2371e93a13f53254d3b6596ab4d1532d537115932d3b9247647250e7d3c092"
+    },
+    {
+      "path": "C02_Objects_Lifetime_Ownership/exercises/L11_layout/README.md",
+      "before": "99feed8ab8efa2943ff2433e24b6bad2d317d4f49eb558935a4607be28d27ba6",
+      "after": "ecd1b8ff6606225452db082d8888a1b4a1c81e1c1cb2763c198ea9b702cb52cc"
+    },
+    {
+      "path": "C02_Objects_Lifetime_Ownership/exercises/L12_storage/README.md",
+      "before": "e0660172cf9856ba3e89fdb4bad066ed50fe44969752f38671fb1df60fca8577",
+      "after": "50f8f48e85879e9bad3b92373f2cee69cfc9e399f5dd7f949fc2bc3e94e83b3c"
+    },
+    {
+      "path": "C02_Objects_Lifetime_Ownership/exercises/L13_aliasing/README.md",
+      "before": "17d2941830ab22aad192ec70df5fcc1621516a075a38cabf97fd8eb8d13cca6b",
+      "after": "b43c83d57d65fb5e4cd09a786c4576bcef4daa898f9a3aade5640856a3b7025b"
+    },
+    {
+      "path": "C02_Objects_Lifetime_Ownership/exercises/L14_ub/README.md",
+      "before": "e8b5b6126a5e5329f1b6e5e02c3500641a61ae5fba6a49030af66fff542ae398",
+      "after": "55596ea43f65a23630b7e726180b5436692db69cb24ea7324a2e69bdd0162dd6"
+    },
+    {
+      "path": "C02_Objects_Lifetime_Ownership/exercises/P1_object_buffer/README.md",
+      "before": "3e0689892fe6330d26278315274b74bbcfb5e5776adbea39bcf73558db5cf357",
+      "after": "b3958464089c81c2d16658e69615a461e58a981370e4f3133250e8a9afc0c21f"
+    },
+    {
+      "path": "C02_Objects_Lifetime_Ownership/exercises/cmake/StudySetup.cmake",
+      "before": "3d5f0edb294012c2465af14634bb3179703af085b2c6b166674211e0f41fc26c",
+      "after": "3e8f5e0dbe87264ae28f210cee804368352644fa3cd8f19d64d8d3fc7edc9690"
+    },
+    {
+      "path": "C02_Objects_Lifetime_Ownership/exercises/tools/record_process.py",
+      "before": "a6cbe3e05a8a9845843254e17656e24c6f90e259f0ad93151a8aa09571246002",
+      "after": "8537ea16489d3193c7db6ea1635c14aea8adf8a5150994971009f475f91f098f"
+    },
+    {
+      "path": "C02_Objects_Lifetime_Ownership/references/implementation-spec.md",
+      "before": "2eb445384ae32fd123c95abc455d7921e347cb625b252af9bd5776023a4fc24a",
+      "after": "4dcbcac781b10a6fceec48a9c847681ab0a9a56413592a181d8abf0000008da0"
+    },
+    {
+      "path": "C02_Objects_Lifetime_Ownership/references/validation/freeze_delivery.py",
+      "before": "932fddcf4da8f1d0e37ce3e069cac22bd9e16a095bb0c58643da32ade4027635",
+      "after": "4c32d1e1c78dee9275faa6d7c648282476c18f5c886c179dc5c56b953592ea35"
+    },
+    {
+      "path": "C09_Coroutines/10-模块H-协程与sender_receiver桥接.md",
+      "before": "260fdb8f9a33c8707ec584ff07e9bb45b58a154f5b86373d55f8f0a86b66276e",
+      "after": "2ec4d5e104b59597911ab40349bc1dd9b6020863520b8c7de996346c839ae46c"
+    },
+    {
+      "path": "C09_Coroutines/13-第三阶段结课-RPC框架.md",
+      "before": "010ec27777a312c0d1c46e44bf474a2291261e2ec4f5107aa65da4b5374b691f",
+      "after": "3fe8f643c49377aa75dd963b8b9ca609f1a5681e9f2ddf99b1c7befa55240733"
+    },
+    {
+      "path": "C09_Coroutines/14-第三阶段结课-mini协程库实现.md",
+      "before": "a8e3984629e4c077d1efa8fb40c48b10589fecaa8a77bf8aa8ccb3804d1d94ea",
+      "after": "0ea418c4881bfbf48c72c9f3b29388ad9f176bab77a36bbe6768a946c9577ca6"
+    },
+    {
+      "path": "C09_Coroutines/README.md",
+      "before": "26bc49978e36b275aa2b2fc32827f67fae43b09f94fe11b44e8cebf36540ab3f",
+      "after": "f8ef8cc445fb84da5bb0eff4cee4d08ad0f21a676bbe7079b40ff46a4ee4d8c3"
+    },
+    {
+      "path": "C09_Coroutines/exercises/BUILD_GUIDE.md",
+      "before": "0b6ba5964cee053e8093cdde2b8cf05267cdc87ebb4b85f22390846bab1c2015",
+      "after": "1b308fbda9775004b3787b3e205b384b4c00c44c13d758303b0ed7f060b7982b"
+    },
+    {
+      "path": "C09_Coroutines/exercises/C1_stop_token_cancel/main.cpp",
+      "before": "6c4c63160ae418a3f6c69859c45c19979e60b80140f4ffca1a749ce051b7fb60",
+      "after": "caab0aa2b84ee0d87fe0878c0098db2367185e381a88851bd825fa0bdc527618"
+    },
+    {
+      "path": "C09_Coroutines/exercises/C2_when_all_when_any/main.cpp",
+      "before": "57857f07738da6a69ced5d12f314a9ce829f1f1814557f064707c8e20cede3ba",
+      "after": "39c95cc05b9753af9602140177f84d807e2e6ce9f868cf4a8e8840d9a7943ea6"
+    },
+    {
+      "path": "C09_Coroutines/exercises/C3_async_scope/main.cpp",
+      "before": "fc0c47c64c36c3dbf3b70554180b669dcc406dcedb8f9f14afcdadc433762791",
+      "after": "ce36aa99681d5a0a5714ed03ab3f7e745ffd94d8aad2b494e97f7c392b744f40"
+    },
+    {
+      "path": "C09_Coroutines/exercises/CMakeLists.txt",
+      "before": "c1f9e4210f2d07d4b87979a08f035aa81d70acc2683709db45ca658d249a4cc1",
+      "after": "cf08582dcb90cb2410a0e6eb1de4d02b9a41a8c011afd9e4c070b2d028609217"
+    },
+    {
+      "path": "C09_Coroutines/exercises/Capstone1_async_crawler/main.cpp",
+      "before": "b452e51e053663a2e7f2f934a874a441daef7d93d6177874797677fcd186d6c9",
+      "after": "1da36b8a33b2ac94cb046c2d5c81908f36eeede7eb9ea4cc08e70a4a52621375"
+    },
+    {
+      "path": "C09_Coroutines/exercises/Capstone4_rpc_framework/README.md",
+      "before": "f2ae024a42e867b140bba5451dadfacb502bc572cf303b3dd320ec5ed9ff9d80",
+      "after": "267c0e55b30adbb1bf452f160028cfb0ad4678ce7cdf160b830a98fb146085d8"
+    },
+    {
+      "path": "C09_Coroutines/exercises/Capstone5_mini_corolib/README.md",
+      "before": "32fb77e6caa6531dfab68dff316f4d7060940b60f2164f045758c7dece4a23f0",
+      "after": "19e712fab0b97e20a156b5caba00674bed5b09934bd5040c1048796d99cabeb1"
+    },
+    {
+      "path": "C09_Coroutines/exercises/D1_promise_8_hooks/main.cpp",
+      "before": "29531f81028beb971567a8ead0369ec97a0182ff7eefb3c20c557ad76397a783",
+      "after": "6a5ceacf3b6b8b0c2284defb25025da8a1528acebc630cb6203f5384a3fabe8b"
+    },
+    {
+      "path": "C09_Coroutines/exercises/D2_eager_vs_lazy/main.cpp",
+      "before": "bab178651683ccd54a5d5f766606ae47161473e7a577dacaa3985585016db714",
+      "after": "f983d9b1618e40af55c4a0fabd45a0aa0ae24558e7865c7f86c1c0698e7f3689"
+    },
+    {
+      "path": "C09_Coroutines/exercises/D3_final_suspend_symmetric/main.cpp",
+      "before": "1c2e7856089e66551b24319f876917485c07a84c1fdea5ff85555c72f78e246b",
+      "after": "9e479531cf9dbb863c0add875c4e55554a99bd4d29b90325058db509fde74a11"
+    },
+    {
+      "path": "C09_Coroutines/exercises/E1_co_await_lookup/main.cpp",
+      "before": "9a5cf24aab2716afaaed98619dafb2692b0725c641e430f398c2251cd2c3828c",
+      "after": "11f9c7804adb24a7ffefea7a8607571c89675a62763482a2553f0518106b017d"
+    },
+    {
+      "path": "C09_Coroutines/exercises/E2_await_suspend_three/main.cpp",
+      "before": "964665ba0972d71aba306814ed7e6f69f91e9dabecbe5d8d5bedefbd095b5af7",
+      "after": "98ee787759b4dd78ddd4a9fd5534a2d393471ec76198cd5eba71fb896394c425"
+    },
+    {
+      "path": "C09_Coroutines/exercises/E3_trivial_awaitable/main.cpp",
+      "before": "0d3a1af102555a60e06fd45da638e763791eec0466ca8318c291251cccbcd969",
+      "after": "d4f7f7aff62aa3364ad5643b1ce152d0c0b47633d008c19259291ee01870f1d0"
+    },
+    {
+      "path": "C09_Coroutines/exercises/H1_as_awaitable/README.md",
+      "before": "7eef7389579f809199528252e954428fa7272b91f3bb4f4c08e2df5b8e7aaebb",
+      "after": "a06d6fa91ce631c50424d11a4301923d58037649c9fee8b2cb038542eaaa9d24"
+    },
+    {
+      "path": "C09_Coroutines/exercises/H2_std_execution_task/README.md",
+      "before": "8297051637e987f8d75d5295cf3d28ce9538b84fdb5c86d1c565cfa5aa88dbc7",
+      "after": "8dd382b3ee7b2bb61478652e9f94e45dbc88bdefeb715f4cc900303555b17822"
+    },
+    {
+      "path": "C09_Coroutines/exercises/H3_bidirectional_bridge/README.md",
+      "before": "4a1ff1514d6f9f992f886bfc64e90d4a9aee15d03c1d6c4f88245dbcd2edfe97",
+      "after": "96a91728ca2248e0e388bcb79606629063e96bb5e1ef2956642a94b82802d9a3"
+    },
+    {
+      "path": "C09_Coroutines/exercises/I1_asio_echo/README.md",
+      "before": "237945be5cf24b14a6918e7e198d181d6caaa49bcfad92b4cba0636f873ec195",
+      "after": "047bff47124b25b481a6458e263bd920c14bf5c421b9033e4a2d38fcdfaa3d4e"
+    },
+    {
+      "path": "C09_Coroutines/exercises/I2_io_uring_iocp/README.md",
+      "before": "604a88691d8e3f48d07571aad8a6681687d7cf38c1cdc64532f85cc450756fc7",
+      "after": "af1f77999f0ea28174c6bf83084644ec5a7a907a1d4d1bdf887386d2980926f1"
+    },
+    {
+      "path": "C09_Coroutines/exercises/I3_folly_safe_task/README.md",
+      "before": "1871fe89e45d3792a614ffa8d911a4e3e9ba9dd469ed09d07011bc52a97edaca",
+      "after": "ee92ae05137b4e30b0f63069f4a5f3efd1d3257380641bb6d1ad74f9ab4eac9c"
+    },
+    {
+      "path": "C09_Coroutines/exercises/I4_cobalt_channel/README.md",
+      "before": "19e838c7ad6e694e626cd0c56d3f1b7dc2c17876dd3f029cacf10699245c19b1",
+      "after": "48d1bb0b258f40ced24c7c1cc1b373923e2a5596fc6ea667c31f070e80c73257"
+    },
+    {
+      "path": "C09_Coroutines/exercises/I5_cppcoro_patterns/README.md",
+      "before": "907ab8db692dd4a7a3857af3f495cdb826c1704d7556dc770838b9bca7ffe5ba",
+      "after": "cbd7869f87a28dfd8c346d4be3348ef3ccbaf31424011ad94ddf2a07ef08ad29"
+    },
+    {
+      "path": "C09_Coroutines/exercises/J1_eight_pitfalls/README.md",
+      "before": "62b81c930c0bf225440d49f80064a1a8d3afaf2711c1056aeaca617d74743075",
+      "after": "8c0751d3be6aaa445bab1f301c602043a84a9c606922484e79744cd3dac5a253"
+    },
+    {
+      "path": "C09_Coroutines/exercises/J2_cross_compiler_abi/README.md",
+      "before": "610eef356196484c416e06953a080d768a97da95252886beba8852fdcbaa5498",
+      "after": "70306a12295941006909ba85f01045248ee2661dc928240713c68ac40a7227c6"
+    },
+    {
+      "path": "C09_Coroutines/exercises/J3_coroutine_tracing/README.md",
+      "before": "9ccf6ef41f534aa8ec4fad6381e1e13df86a0f16262366af41e6a39d643833a8",
+      "after": "c928c0120a37d29505cc18e94a19d5163f559277e8fc2a67000f8b0c37f5f92d"
+    },
+    {
+      "path": "C09_Coroutines/exercises/P1_future_basics/README.md",
+      "before": "81f5ec917933689a98d4ee8518c09c4ea267ef89bb472115df955bb3e944e3ce",
+      "after": "cf5bb480fcbf239344c98df536784f23e0e02b69d007252dbd8421c7f62ffe2e"
+    },
+    {
+      "path": "C09_Coroutines/exercises/P2_generator_basics/README.md",
+      "before": "ce4f7c46da8ef65117cc05b67d75f48a52e49cfd5eae03d8b94f4b1e56d7d7cb",
+      "after": "5d23b274f2f652bbaab62916510c2bda4e2e30f1f967338f03a297ce95727502"
+    },
+    {
+      "path": "C09_Coroutines/exercises/cmake/AddExercise.cmake",
+      "before": "812bf5bca5680fa22d4cb1435c4e743a18e7482bc5320f5e777cd9b274c134a7",
+      "after": "90cd3428a26946588af1b4711c433d812a3fe918e2684c04ecfbab3f962a3fe3"
+    },
+    {
+      "path": "C09_Coroutines/references/coverage.md",
+      "before": "e7dc84b50365856464da8e993cde692789011a2ba89ec87257f1e4dbdd4db7c3",
+      "after": "f7604c2c0eb5fa4d1f7233c6f6dcfa0b9455542e1cd4a8875f50392cdded3e3b"
+    },
+    {
+      "path": "C09_Coroutines/references/quality-report.md",
+      "before": "4eb9ced73bcd711153f018a53c10775d6b4298f864cd8340c58e3e9aa02ee94e",
+      "after": "6c47fc5589f6df9a7dd8ebd00f552b998dfb866b0c5d48e476c1fbb9b8b8f06e"
+    },
+    {
+      "path": "C01_Build_Compile_Link/README.md",
+      "before": "edf871fdc28cea4e0789e1936ae9aac7ef96325523337c71af02eef647ada515",
+      "after": "9fa65c9d20e06096b9a55763be9ee5ac0bc78e06ddcdcec965416d677f552de4"
+    },
+    {
+      "path": "C01_Build_Compile_Link/chapters/09-import-std.md",
+      "before": "075b6f7d67e543d07e2cd2fbd1d3811b51372e8ffbccbd2585bc736418dde0ce",
+      "after": "f89a6362f6a16b707b561dcfa48ab73319d80352ffa237975387a7cff9df5c65"
+    },
+    {
+      "path": "C01_Build_Compile_Link/exercises/C1_odr/README.md",
+      "before": "f161f9338dd96433218cc89c1a27d028a49a59fb32bab0ec991b9f8e5662d0f4",
+      "after": "ca471d5658a5ef0c3e1d497d36383b55d6d2bfb6ef3c258ea92f56541a7c3347"
+    },
+    {
+      "path": "C01_Build_Compile_Link/exercises/CMakeLists.txt",
+      "before": "41001d2d8f174e4abe1c1f7d43fa26c47f966a6f2fe898bbc6181896c1143ee1",
+      "after": "1bf32863b01e59c84448d37068299e0d5854e02d37f3da5422c4336fff200cc4"
+    },
+    {
+      "path": "C01_Build_Compile_Link/exercises/F1_cmake_targets/README.md",
+      "before": "a319f0f63d8bc0c15ff0d154a030ce97741376444ade0f8c0bd6adbc9d208683",
+      "after": "13a96336efb4fef3eda343da76eafe9f09058c5629697650d42aa42a6b738489"
+    },
+    {
+      "path": "C01_Build_Compile_Link/exercises/F2_dependencies/README.md",
+      "before": "ae0e8abec514bb0d023bf5c2a76810988a741781faefe41d2f6daca8fe0b7d8b",
+      "after": "1aab4ca04f8a2bfc3e5b4c79e9e37333577930aeda6344305aef8963b0fecbc5"
+    },
+    {
+      "path": "C01_Build_Compile_Link/exercises/G1_diagnostics/README.md",
+      "before": "f6e0a6907f0d89719ee5027f40f20e1c9daf7700eaaf900bd55d010c1d7b2321",
+      "after": "f349e7caca54498052d61e2e8408354e8f15967acebd7a3a5628cbbe4d54e4e8"
+    },
+    {
+      "path": "C01_Build_Compile_Link/exercises/G2_build_cost/README.md",
+      "before": "db8c3f5e459178a77c39e81411c02630a9a78cbde5f02a8043c7ecbaf0744e21",
+      "after": "e20824b47f0c06f9d6671e6638dbef7869b5bc939731e8f52b120511a73917d0"
+    },
+    {
+      "path": "C01_Build_Compile_Link/exercises/G2_build_cost/scripts/measure_build.py",
+      "before": "e13e73623f4752aec9ef9980f3f3a3a79d5a2fb47d8dd5932e7b3032c626c093",
+      "after": "2e1cef73aa94918e960281bfcf7ea8d69343922f041b8025ed74de03a815b29e"
+    },
+    {
+      "path": "C01_Build_Compile_Link/exercises/H1_modules/README.md",
+      "before": "aca25e6447a37ae2c4672192ad630ac3206450182a5d14c78d46c4ade657930d",
+      "after": "2b8d31773a69ba986de346332e4aed05c0755d3db7858cc94624625598c8be74"
+    },
+    {
+      "path": "C01_Build_Compile_Link/exercises/I1_import_std/README.md",
+      "before": "4f7809060c088550091c17a22e9ddedbb312abfc7af1e1359e527aedd77acdcf",
+      "after": "6ecf74badb4cc54b12843baeea073e93899417b110d5054eb31e4dd078733a49"
+    },
+    {
+      "path": "C01_Build_Compile_Link/references/coverage.md",
+      "before": "9b8de43573d44375cfb8a9178a55b1e10cee34421808d42b0bacba2855f6544b",
+      "after": "88a7a41847e8e2d40e458939bff3229d8aff69dcdb3e34765561e31ef67a3217"
+    },
+    {
+      "path": "C01_Build_Compile_Link/references/validation/final-teaching-review.md",
+      "before": "4a3d0189ada072f474799f6eb04ed059313cd28de0a94e165bb8bc6b623cca62",
+      "after": "84c587263fd7f10202466000a2e9641e6b9999bd5e6da74513639768b71d836d"
+    },
+    {
+      "path": "C01_Build_Compile_Link/references/validation/final-technical-review.md",
+      "before": "cf64441e10e3ac41500db00c4043997444334f8d9bf1f3e878dc2a0ed7f740fe",
+      "after": "d16535bd90469c99d207e50197267043a0d31a68427562b4c21df7767fc04593"
+    },
+    {
+      "path": "C01_Build_Compile_Link/references/validation/foundations/abc-v5-a1-gdb-script.stdout.txt",
+      "before": "5f1dd3c5abdee2f65d46750353f8323076cec568fb6bbe9d20f0e94edb5d15f2",
+      "after": "4496a0c3f58f978740125e7ffbdc8037ad6e594924249d275f78385a6eae2555"
+    },
+    {
+      "path": "C01_Build_Compile_Link/references/validation/foundations/abc-v6-a1-gdb-script.stdout.txt",
+      "before": "240d4e4bd3e6b6412f4279b66437bc1588d866a09ded5a68ff689829129976a8",
+      "after": "bedbfb1beaed8bfbd7eef833cff423c3e9ebe41f45e215b0cbe3727afffd0b6a"
+    },
+    {
+      "path": "C01_Build_Compile_Link/references/validation/odr/01-msvc-build.stdout.txt",
+      "before": "ac2149311198e2311f4126fb8be7a14879bce5b07fd554f583bafea966fdcf05",
+      "after": "ad0e46aaa8751ba21dad7429f2a044397685314dac2457e566903d688a8ad322"
+    },
+    {
+      "path": "C01_Build_Compile_Link/references/validation/odr/06-msvc-rebuild-after-checker.stdout.txt",
+      "before": "dc56201388283afa042d82a75b1938942d884daf7358633eb88031c2a61a06da",
+      "after": "7854c8d26af90afcaff9dbba812385ffffb79a6f046f145989e73fcf2342dcfd"
+    },
+    {
+      "path": "C01_Build_Compile_Link/references/validation/odr/review-fix-01-msvc-build.stdout.txt",
+      "before": "40bdd9ff40ed5cbc15ae370c3e16b0a4f7a97c618aef6ca81a4a851d059f01b8",
+      "after": "fd6488df876fb3074dbea96d529828ea8d899e2da9e9faf2f13540d85e2ef82a"
+    },
+    {
+      "path": "C01_Build_Compile_Link/references/validation/odr/review-fix-31-student-bypass-build.stdout.txt",
+      "before": "9a6aacf9eb0c605ac3ec9d029071d30ef18646f48d230e09b11c05bab3316dc3",
+      "after": "18c0d60f24f240aaeb95147591f679105c775fb17bd54c9f69d4bf26bb3d1dd1"
+    },
+    {
+      "path": "C01_Build_Compile_Link/references/validation/odr/review-fix2-01-msvc-build.stdout.txt",
+      "before": "5ea6526b554d6a000fdcf82034747d4f75bb1c88cf1c1003415e54e000829be6",
+      "after": "f312d7620339879c43ff1b3b96e50a173ad496d8bfa7c9e368e291a2ea608f29"
+    },
+    {
+      "path": "C01_Build_Compile_Link/references/validation/odr/review-fix2-31-student-bypass-build.stdout.txt",
+      "before": "c0ed9d83512ac491f5f731e7b96dc17414b80724891ab18b9c8c461529fdad23",
+      "after": "2b35acfa4e1347f0fe0e8d8a18a0954aa2608ee1a12030a9b81f397eacb41ed9"
+    },
+    {
+      "path": "C01_Build_Compile_Link/references/validation/odr/review-fix3-ninja-build.stdout.txt",
+      "before": "125a7013767354f1e73cc682833513ada005cce21619016e6ed7c29502950c3b",
+      "after": "f0751a2c3d7564d1c7812f85e65f506ce5951ee0363372148ae3984451a9c0c1"
+    },
+    {
+      "path": "C01_Build_Compile_Link/references/validation/odr/review-fix3c-bad-missing-symbol-rejected.stderr.txt",
+      "before": "1df108edc27780dd926fb3cced3c08aeff586abf098281e0765f078e6db50deb",
+      "after": "87c4aaeb4664c954780276507dc8bc54e68b8715e7bbd7f3b89576386767c387"
+    },
+    {
+      "path": "C01_Build_Compile_Link/references/validation/toolchain-probe/400-normal-cmake-chain.stdout.txt",
+      "before": "7e5167465506a4ee97f1eeae8a74b47eddf80b2e9b78848b6b7aee5deb222cc0",
+      "after": "2de17e86fab44e7efb0e41e240a871fce5fbc7ba5a9eb1e3749cd4215fb603df"
+    },
+    {
+      "path": "C01_Build_Compile_Link/references/validation/toolchain/500-verify-fghi.stdout.txt",
+      "before": "9b5f315a3303971e15bb30dbe94d7ed75d8156d2601b450a47b6f10011566c55",
+      "after": "7382d2f97180ae84211e3b50ee34a49cc6d72a525be6f0f511e26bb3e385f7dc"
+    },
+    {
+      "path": "C01_Build_Compile_Link/references/validation/toolchain/510-verify-i1.stdout.txt",
+      "before": "7415f3e4bf3b5059abc17e8f3607d4ec9af9b758b529239a52a04cff31112f68",
+      "after": "b865a3d699af6a7d7efed20d6f4e1c4730f20300f232529dcb4c700a750cf719"
+    },
+    {
+      "path": "C01_Build_Compile_Link/references/validation/toolchain/520-verify-clang-tools.command.cmd",
+      "before": "6865ca20e8071091f95bf2980040f2a355da0e00202e6b80b23d29af2fed2f98",
+      "after": "badfca57b2883877c2d8dab07c068f78451672031a3b07d6397710e351e284db"
+    },
+    {
+      "path": "C01_Build_Compile_Link/references/validation/toolchain/540-verify-f2-package.stdout.txt",
+      "before": "70ce185c3b6a85a3574fd99a36a9f7253827c64d50ff3f6e83018f5c4a4c2f25",
+      "after": "3c7d8538e4fc542758f988b9beeff65d6d60bbd1ceae15e7ae1fe8669bf8588a"
+    },
+    {
+      "path": "C01_Build_Compile_Link/references/validation/toolchain/545-verify-f2-fetchcontent.stdout.txt",
+      "before": "79407a34b421220964ea98039e29f824afb8bb0b2cfbd531e906d1211c739ef0",
+      "after": "fb1bbc5f31ae1b4aa6c6487c9447b96077c89cd5fb14e9fecaf71f77fbdcafa8"
+    },
+    {
+      "path": "C01_Build_Compile_Link/references/validation/toolchain/556-r3-verify-g2-variants.stdout.txt",
+      "before": "a232df9cb0ef31acd4177d63d70aaf8b476d2ecf5d80f3115b16e0428522fb82",
+      "after": "902837b1634cc51a97e9ac20c6ad8f778ec190cbf5444961fcaf2a89e8268caa"
+    },
+    {
+      "path": "C01_Build_Compile_Link/references/validation/toolchain/556-verify-g2-variants.stdout.txt",
+      "before": "245ce62cc3de49244ffe5cf5467c42cb0844a70c72ac6b04981b02f0557e96e0",
+      "after": "33fbbe4fbd6d5f74cba033a93d5a7edd59cca435bdd99d0fc689d098fe58c00e"
+    },
+    {
+      "path": "C01_Build_Compile_Link/references/validation/toolchain/559-verify-g2-variants-fresh.stdout.txt",
+      "before": "afe9120662852b2e6cc7cf4f93cb5a3e9e11072169ad11be7a776e805ea64eb4",
+      "after": "2c27a835276a6f6a16bda488f584f772f882f3af798bd00c9bc01aa9ee28c6cc"
+    },
+    {
+      "path": "C01_Build_Compile_Link/references/validation/toolchain/565-verify-g1-cmake-fresh.stdout.txt",
+      "before": "3ff1915af56e2874199c5f7a16693a56e41b09dbda5caa7e807dc2c38dfffcc9",
+      "after": "925987dca1f89875f997c49c49002e9a87f9233fa6b0a7e3da17e48e954704d3"
+    },
+    {
+      "path": "C01_Build_Compile_Link/references/validation/toolchain/566-verify-clang-tools-current.command.cmd",
+      "before": "59459a0c9f5f8befda87ba1fedfb84a93d9a788bd382146b0ddfb77328aa9f81",
+      "after": "9c8c24cea4ff0f863cf6550ad5e32c80e9481779eab2cd46a074723987235465"
+    },
+    {
+      "path": "C01_Build_Compile_Link/references/validation/toolchain/567-verify-clang-tools-current-fresh.command.cmd",
+      "before": "6865ca20e8071091f95bf2980040f2a355da0e00202e6b80b23d29af2fed2f98",
+      "after": "badfca57b2883877c2d8dab07c068f78451672031a3b07d6397710e351e284db"
+    },
+    {
+      "path": "C01_Build_Compile_Link/references/validation/toolchain/569-verify-g1-cmake-current.stdout.txt",
+      "before": "0b609fa66f8897d35c3190f8d80ac3ce471684dbd970ab64b36aca24e72da457",
+      "after": "85d9a5affba1467513b3fea1a73e90d62df7a5f29cdb3081fea65edc9ca6dbdd"
+    },
+    {
+      "path": "C01_Build_Compile_Link/references/validation/toolchain/572-verify-h1-boundaries.stdout.txt",
+      "before": "8c7a4288fd342f7dec8d5102231676402f7b57454d0d83f1a7c6ac7dc18a0ad8",
+      "after": "bf6aade66a32c0c060f6fe33ac5ef5926b8acd279152fb80d6bb7731b7ee8419"
+    },
+    {
+      "path": "C01_Build_Compile_Link/references/validation/toolchain/573-verify-h1-boundaries.stdout.txt",
+      "before": "8e27e4b3a8a290e7fafe749b8032b7019f1faeb231ca75d717a909fe072c985f",
+      "after": "7c25b93ec5c5de7997b2e14932fa845b26c0bef37a57a475a77cb3e57e7fdd93"
+    },
+    {
+      "path": "C10_Execution/README.md",
+      "before": "21df8bd4f7bc94657b6629cdd0fcb7ab820474c3498d9f5d20defd7cf2d94b76",
+      "after": "696910159674838b613a67b6cbd17ca246fcb501b937184251cd1c69eb821677"
+    },
+    {
+      "path": "C10_Execution/exercises/CMakeLists.txt",
+      "before": "a66f0db96725a5c6c841e9287b4aa546b761ae83074826a8e752b01c6e7676f5",
+      "after": "5edfad8e3a4d15a499b20b53670bbfd9ac1df2529aa6ee28433429e7fa4627b4"
+    },
+    {
+      "path": "C14_GPU/AGENTS.md",
+      "before": "520817fbdc0b0f5b74cd3ea4ee4c8c6d4d5ac1e98ee43dc47f6d3ea7af0b4131",
+      "after": "cfc57b43a884789cb7ebde828cbd82aa6cea93a6b04052c9803416c89d6a5fdf"
+    },
+    {
+      "path": "C14_GPU/README.md",
+      "before": "4d5438df67d5a6d9eab16d7c1d191efdd0faac3fe29715970b903ceb5c58b2f6",
+      "after": "fd8d136c568be72e69f42cfbaf3a083fcda6e62f4707cb7d2f835d2c07286751"
+    },
+    {
+      "path": "C14_GPU/exercises/.claude/settings.local.json",
+      "before": "18b7ba738c1d4d6b7ac2bfbc4f335e148b761db91e959f2ede3aa980a506f539",
+      "after": "11bc8fe5c66e643bfb60029c13585abc2eb273f2808bbcde0c7e1fb8f874fe88"
+    },
+    {
+      "path": "C14_GPU/exercises/BUILD_GUIDE.md",
+      "before": "a2ce58f63f517c95dd0bf9ed4b6550207f2ce0bc9c52684c7530300068528bd4",
+      "after": "a5f4450ec3ba0e30b5aab4b9175768b0489932a0dca7a6d1cfca69acdfa33399"
+    },
+    {
+      "path": "C14_GPU/exercises/CAPSTONE1_image_pipeline/README.md",
+      "before": "ab43b91d2916dd7e0c3c77f091dceaa2617932b9c70cebaafba473c7237e534a",
+      "after": "b7bb2416fcce92b4ad8363d735bf42c0e5511dab189c44abc1fe6d6105525f11"
+    },
+    {
+      "path": "C14_GPU/exercises/CMakeLists.txt",
+      "before": "1983b5cf186269ecf95c6279d216c783a96e8f5adaaf96b06ad2aab265423b6a",
+      "after": "cdeb52157c33fc3779ba7ddeec2bb04b52271cf932ca648957620494c8b3bc74"
+    },
+    {
+      "path": "C14_GPU/exercises/README.md",
+      "before": "9354a37a0a1f8542388df54eab4da41925bf5bdc6a0fd8f64946e5dfaeaa1e68",
+      "after": "6649f84eb98c021692eed1728784d8edcaf84ce894d19d712b36ce193fad3296"
+    },
+    {
+      "path": "C14_GPU/exercises/cmake/GpuStudySetup.cmake",
+      "before": "b56c5624c4b57c83a42fa9f11e483be4d2a7d6307f0a4ade31a157b841f83671",
+      "after": "7fc9a3f09488b17f4cc970f9f2ee39ddef552da6c674dcc6801b1b669389fa8f"
+    },
+    {
+      "path": "LEARNCPP_GLOBAL_PLAN.md",
+      "before": "8e402ed43691efac8b202da168344ae2106c888e4d7c42a98965c810cd5d147a",
+      "after": "1906eeb2ab70221804b47c02a02664f020cf7543852e92b4e6bbc1dea4c0f871"
+    },
+    {
+      "path": "README.md",
+      "before": "dbc4e11b684321bd8cafd1fbaff1584396833830b042a3d457057136a1880f2a",
+      "after": "9ce0778a4830b799f543ba82fc0d80df6bb16fa060589b0e7f0d3600c120d733"
+    },
+    {
+      "path": "C06_Ranges/08-模块E-CPO与niebloid.md",
+      "before": "d6ba5ea3fb38402a1d487a2617333d189dc1409623eb65bb550c163842644557",
+      "after": "9550343ffd54ff059ec540e5d7c82b68feec7d4fb897e67a8a660a3bf19b744d"
+    },
+    {
+      "path": "C06_Ranges/12-结课项目2-实现级源码阅读.md",
+      "before": "b6d6946bd03b9ad614fb66173b9fbd076c566f81ba849df87f7e60a028c1d481",
+      "after": "af9e803472e056318198565de429e0a0a1a04de4ca6bb76cd13b3be221a32ab7"
+    },
+    {
+      "path": "C06_Ranges/README.md",
+      "before": "f62277e04bfcbfc1a1cfe26aaefa51a612aedf1aac8b3ccfd1c6b15637c23e1b",
+      "after": "8038cf71c5fef09567617754d10eb5766c19ed6587b14b2daa877dbe829e7e79"
+    },
+    {
+      "path": "C06_Ranges/exercises/.claude/settings.local.json",
+      "before": "3b178c7a687fb1a4fe2e61e905c93092ede6f24b4a0a0098e5cb9e055ec2dfb0",
+      "after": "73c95c7904912ecb89c5c3d2fab16bfd020fedbfc504148638555dd20dd24c6f"
+    },
+    {
+      "path": "C06_Ranges/exercises/BUILD_GUIDE.md",
+      "before": "d00e83cc01c9392d377b75b123af9e8eb34ebe5259f0a9052f19168392204498",
+      "after": "778272d45b7a06c3060315f96f7d8241821bde6d5218ea5dbf2752563820263b"
+    },
+    {
+      "path": "C06_Ranges/exercises/CMakeLists.txt",
+      "before": "f536257512ba678351845e213d0b21079f900a13935e9a737d527688d0af67e5",
+      "after": "bee2973b7c1c892b6576285c90d47252851a72b0ce699f050c3005a6fce5e5a2"
+    },
+    {
+      "path": "C06_Ranges/exercises/README.md",
+      "before": "8c376784b8256d7039ad520ddecde6cc703b7ef1017a3c47c3f4e004716209b7",
+      "after": "ef34f13c40ef2688c3d05c4d06f7313b918abd1df3f8f428aca8e7079365f96c"
+    },
+    {
+      "path": "C15_Unreal_Engine/00-课程大纲.md",
+      "before": "0171c75a866dc87ca83f982e9087d86f68ab0aedd5e289ae298a87a5e3e9cb17",
+      "after": "9a414f54394faecca5ecced3a1044ebfe24fcc2c6182d053b7ac590eb993dafe"
+    },
+    {
+      "path": "C15_Unreal_Engine/01-心智模型.md",
+      "before": "c25bda148ddfba7daba3db296115fd9fe1cffd0d2b0fba685f62083c53ae5d4c",
+      "after": "46bb27d05e832e7229de8fa8a4f858ab4f2c82a2fb865a28650764bab7c6507d"
+    },
+    {
+      "path": "C15_Unreal_Engine/02-模块A-构建系统与模块生命周期.md",
+      "before": "409b18a40d6e27cd7fff01d3185d467973151ee3ca40a2c1770473aed6a7b2f4",
+      "after": "2d83780d5224f161ce9e6438b10bd6b0df494dad7c48d526571a684e8269d8eb"
+    },
+    {
+      "path": "C15_Unreal_Engine/06-模块K-Actor-Component-World-Subsystem.md",
+      "before": "44c5a4f873e53f85bcef66001ca9883818938de326338342d79cdf998bd78dc6",
+      "after": "980931192f20d745d8441c9e121da2625e1e9c73456d6a4882bb3f68902ee9a0"
+    },
+    {
+      "path": "C15_Unreal_Engine/07-模块E-资产与加载.md",
+      "before": "e37591e5a3418820885d10a6c7c67fc5120c426ff5c9841f3de91d22dbcbde1c",
+      "after": "8b5fce4a808088f707054a3efac058a4ff315b7b7aa0cb7490bd230897d0d3ac"
+    },
+    {
+      "path": "C15_Unreal_Engine/10-模块H-RenderGraph与场景渲染.md",
+      "before": "e353cdf71a749fe345969d104e038fb52fd234747561c1575da55762e83a58e8",
+      "after": "22c106f88fa376a4536df35526cd15594725da2c6f87b6cb50de9d3fbaa38a6c"
+    },
+    {
+      "path": "C15_Unreal_Engine/11-模块I-Slate与UMG简介.md",
+      "before": "c384d2b6c8bdc493a20a51a3cd08aee7ba16a6a373ea48bb186e3f2f9016e252",
+      "after": "9b0815c3306716136f83f08eb794bf99f17b428f253462727735b941d2075f5f"
+    },
+    {
+      "path": "C15_Unreal_Engine/12-模块J-网络与Replication.md",
+      "before": "8eda147b6fe0beff6c0441aaba9dceba1b6505d1b7a7cd34374e42e03b6e6547",
+      "after": "6b9ac024f0061942bcdb3654f05f6d11b182512f99873f14acd6c34674356a18"
+    },
+    {
+      "path": "C15_Unreal_Engine/13-结课项目1-集成项目.md",
+      "before": "2df8152aeb80e271a901e75307a8a4d3a0cb490e66e534df50e1d8d03d798ef9",
+      "after": "935777ad12002ff2d346abfee52ad62b8d5279a05a657bb78d3f7329080d1d59"
+    },
+    {
+      "path": "C15_Unreal_Engine/README.md",
+      "before": "3c232827cd9812f12138b101c9883a565e8329d1c3ca0f528252d67e223ddf9f",
+      "after": "4ad22289e57f55e6f138cd80b050b15e88a6f6a812224285a76ef161867978e0"
+    },
+    {
+      "path": "C15_Unreal_Engine/exercises/.claude/settings.local.json",
+      "before": "c171d0501b76d424b7c1736e4b1fe14bddc43ea555cdddaeab64a5bfea6bd1c5",
+      "after": "b0158aa10e91fd43f9f4f3b46211ddaa6af0035ca5abf1e9ba4de0db9719bdb4"
+    },
+    {
+      "path": "C15_Unreal_Engine/exercises/BUILD_GUIDE.md",
+      "before": "6459d7d9260ddd0854fce14d8f5aad4983e55eaa3065a3d4a81c9f73978c8ec2",
+      "after": "e49796bbd27ce46b435825121433aface0aeccdf213fb32b1cb05b3816f35997"
+    },
+    {
+      "path": "C15_Unreal_Engine/exercises/Config/DefaultGame.ini",
+      "before": "afb32d434a6a3c91cf6bc7cf6db93796d869aa805959fcb041b7c63bf56b376a",
+      "after": "91284d9102629685b534184443f5ef12d82201a62eaef0e2ee729c0ecc4f7e53"
+    },
+    {
+      "path": "C15_Unreal_Engine/exercises/README.md",
+      "before": "2bb0710521113a9cd86e04691f29f59dc90cdaa74c59859ad9661fdf897e29f1",
+      "after": "5eb7f6e643bedcca86742c16e3152a24e2eeb9f11059f5685e6cb1e85816ff33"
+    },
+    {
+      "path": "C15_Unreal_Engine/exercises/Source/ExA1_HelloModule/README.md",
+      "before": "f612f483e2d025b198950464e9d535f95a2c8d8aa8af8cb97239ecf44ffe006a",
+      "after": "c3614321769301032d54bf8c03f29d1e66ddb1893f21db94a27c4fda4bae51b5"
+    },
+    {
+      "path": "C15_Unreal_Engine/exercises/Source/ExH1_RDGDescribe/README.md",
+      "before": "5f222fcce691b25f2280e85d2c50331cf1276f7076342e15f598710e58d39c0b",
+      "after": "3aeb48010a9ee385208e9c3fe2e46dff70b8d656449e175a6dcaf8ee8502abf4"
+    },
+    {
+      "path": "C15_Unreal_Engine/exercises/Source/C15_Unreal_Engine.Target.cs",
+      "before": "790990e3b1ce9454a1c64d43accd1a35283bf43fdc8c363385f3e969e442e8f2",
+      "after": "5bab1c681d46a5265d7ac5752c50cd26687ed736ff58e524376ffebdbc9456cb"
+    },
+    {
+      "path": "C15_Unreal_Engine/exercises/Source/C15_Unreal_Engine/C15_Unreal_Engine.Build.cs",
+      "before": "c33e090381db3d05e6254b5aaed0f8c7792966e9c5c0fef0de8225f5d63faac3",
+      "after": "02620fc0a3a1e0fe6815d4c2c20f179e0cf862d9a7d33743dd6b76295898220b"
+    },
+    {
+      "path": "C15_Unreal_Engine/exercises/Source/C15_Unreal_Engine/C15_Unreal_Engine.cpp",
+      "before": "ce3d558e389a9ace0dc0d47748abe9c635a408548e42b77e4f449dd241c12b77",
+      "after": "dd48c127acf81f3c0beefead47726bfef769f25acad74b0041e5cd64de283d75"
+    },
+    {
+      "path": "C15_Unreal_Engine/exercises/Source/C15_Unreal_EngineEditor.Target.cs",
+      "before": "6380b4b83bd02750a6819c28c96292cc3a937f31b8f4cb3c6cec929afde60128",
+      "after": "f48e11156fe8f57d9335065ed5e4fdcce720299bdbdd23c6c1b005f8312e820c"
+    },
+    {
+      "path": "C15_Unreal_Engine/exercises/C15_Unreal_Engine.uproject",
+      "before": "353e9ae7890274803ce0f2e49a6c8f54d5845b2adf5f2b10a6e047f9d4fa3754",
+      "after": "333b20de72f62ea0347cba25685a9f46558dec9e4df78314b7ffb37a5a10a974"
+    }
+  ],
+  "active_old_paths": [],
+  "documents": 498,
+  "link_errors": [],
+  "inline_code_false_positives": [
+    "F:\\CPPTrain\\LearnCPP\\C06_Ranges\\02-模块A-视图工厂与惰性.md:490: missing target: int",
+    "F:\\CPPTrain\\LearnCPP\\C06_Ranges\\10-模块G-自行实现视图.md:244: missing target: n",
+    "F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\A3_repeat_cartesian\\README.md:93: missing target: int",
+    "F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\D2_chunk_by_join_with_asconst\\README.md:19: missing target: a,b",
+    "F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\D2_chunk_by_join_with_asconst\\README.md:20: missing target: a,b",
+    "F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\D2_chunk_by_join_with_asconst\\README.md:53: missing target: a,b",
+    "F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\G1_my_take_view\\README.md:92: missing target: n"
+  ],
+  "old_course_directories_present": []
+}

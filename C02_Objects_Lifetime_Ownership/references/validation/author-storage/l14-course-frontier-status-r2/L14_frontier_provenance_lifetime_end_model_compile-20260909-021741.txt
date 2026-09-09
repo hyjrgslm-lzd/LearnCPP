@@ -1,0 +1,19 @@
+case=L14_frontier_provenance_lifetime_end_model_compile
+target=L14_frontier_provenance_lifetime_end_model
+expect=observe_compile
+source_marker=provenance_lifetime_end_model.cpp
+expected_failure=
+accepted_diagnostic=
+result=0
+command=D:/cmake/install/bin/cmake.exe;--build;F:/CPPTrain/LearnCPP/Core_Study/exercises/build/frontier;--config;Release;--target;L14_frontier_provenance_lifetime_end_model
+stdout<<EOF
+閫傜敤浜?.NET Framework MSBuild 鐗堟湰 18.9.1+a81b43525
+
+  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L14_ub/CMakeLists.txt
+  provenance_lifetime_end_model.cpp
+  L14_frontier_provenance_lifetime_end_model.vcxproj -> F:\CPPTrain\LearnCPP\Core_Study\exercises\build\frontier\L14_ub\L14_frontier_provenance_lifetime_end_model.dir\Release\L14_frontier_provenance_lifetime_end_model.lib
+
+EOF
+stderr<<EOF
+
+EOF

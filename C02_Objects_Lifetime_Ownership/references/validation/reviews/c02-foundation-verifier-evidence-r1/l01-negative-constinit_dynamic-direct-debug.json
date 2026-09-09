@@ -1,0 +1,24 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "build/c02-foundation-verifier-r1/L01-default/negative/constinit_dynamic",
+    "--config",
+    "Debug",
+    "--clean-first"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 1.531999999890104,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L01_initialization/negative/constinit_dynamic/CMakeLists.txt\n  正在扫描源以查找模块依赖项...\n  main.cpp\n  正在编译...\n  main.cpp\nF:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L01_initialization\\negative\\constinit_dynamic\\main.cpp(2,15): error C2127: \"value\"：无法用非常量表达式初始化 \"constinit\" 实体 [F:\\CPPTrain\\LearnCPP\\build\\c02-foundation-verifier-r1\\L01-default\\negative\\constinit_dynamic\\L01_negative_constinit_dynamic.vcxproj]\n      F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L01_initialization\\negative\\constinit_dynamic\\main.cpp(2,15):\n      表达式的计算结果不是常数\n          F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L01_initialization\\negative\\constinit_dynamic\\main.cpp(2,36):\n          对未定义的函数或为未声明为“constexpr”的函数的调用导致了故障\n          F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L01_initialization\\negative\\constinit_dynamic\\main.cpp(2,36):\n          请参见“runtime_value”的用法\n  \n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 1,
+  "required_text": [
+    "constinit"
+  ],
+  "verdict": "PASS"
+}

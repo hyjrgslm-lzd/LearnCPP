@@ -1,0 +1,220 @@
+Core_Study/exercises/P1_object_buffer/checks/reject_throwing_move_only.cpp:14:    return static_cast<int>(buffer.size());
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:19:          size_(std::exchange(other.size_, 0)),
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:20:          capacity_(std::exchange(other.capacity_, 0))
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:26:            clear();
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:28:                alloc_.deallocate(data_, capacity_);
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:31:            size_ = std::exchange(other.size_, 0);
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:32:            capacity_ = std::exchange(other.capacity_, 0);
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:38:        clear();
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:40:            alloc_.deallocate(data_, capacity_);
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:44:    [[nodiscard]] std::size_t size() const noexcept { return size_; }
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:45:    [[nodiscard]] std::size_t capacity() const noexcept { return capacity_; }
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:46:    [[nodiscard]] std::span<const T> view() const noexcept { return {data_, size_}; }
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:48:    void reserve(std::size_t requested)
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:50:        if (requested <= capacity_) {
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:54:        std::size_t built = 0;
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:56:            for (; built != size_; ++built) {
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:57:                if constexpr (std::is_nothrow_move_constructible_v<T>) {
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:58:                    std::construct_at(next + built, std::move(data_[built]));
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:66:                std::destroy_at(next + built);
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:69:            throw;
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:71:        clear();
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:73:            alloc_.deallocate(data_, capacity_);
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:76:        size_ = built;
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:77:        capacity_ = requested;
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:80:    void push_back(T value)
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:82:        if (size_ == capacity_) {
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:84:            const auto old_size = size_;
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:85:            const auto old_capacity = capacity_;
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:86:            const auto next_capacity = capacity_ == 0 ? 1 : capacity_ * 2;
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:87:            T* next = alloc_.allocate(next_capacity);
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:89:            capacity_ = next_capacity;
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:92:                    std::construct_at(data_ + old_size, std::as_const(value));
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:94:                    std::construct_at(data_ + old_size, std::move(value));
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:97:                alloc_.deallocate(next, next_capacity);
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:99:                size_ = old_size;
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:100:                capacity_ = next_capacity;
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:101:                throw;
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:103:            for (std::size_t index = 0; index != old_size; ++index) {
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:104:                if constexpr (std::is_nothrow_move_constructible_v<T>) {
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:105:                    std::construct_at(data_ + index, std::move(old_data[index]));
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:110:            for (std::size_t index = old_size; index != 0; --index) {
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:111:                std::destroy_at(old_data + index - 1);
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:114:                alloc_.deallocate(old_data, old_capacity);
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:116:            size_ = old_size + 1;
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:120:            std::construct_at(data_ + size_, std::as_const(value));
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:122:            std::construct_at(data_ + size_, std::move(value));
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:124:        ++size_;
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:127:    void pop_back()
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:129:        if (size_ == 0) {
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:130:            throw std::out_of_range("empty");
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:132:        --size_;
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:133:        std::destroy_at(data_ + size_);
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:136:    void clear() noexcept
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:138:        while (size_ != 0) {
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:139:            --size_;
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:140:            std::destroy_at(data_ + size_);
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:147:    std::size_t size_ = 0;
+Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp:148:    std::size_t capacity_ = 0;
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:16:    static_assert(std::is_nothrow_destructible_v<T>);
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:17:    static_assert(std::is_copy_constructible_v<T> || std::is_nothrow_move_constructible_v<T>,
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:18:        "T must be copy constructible or nothrow move constructible");
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:30:          size_(std::exchange(other.size_, 0)),
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:31:          capacity_(std::exchange(other.capacity_, 0))
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:42:        size_ = std::exchange(other.size_, 0);
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:43:        capacity_ = std::exchange(other.capacity_, 0);
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:52:    [[nodiscard]] std::size_t size() const noexcept { return size_; }
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:53:    [[nodiscard]] std::size_t capacity() const noexcept { return capacity_; }
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:57:        return {data_, size_};
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:60:    void reserve(std::size_t requested)
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:62:        if (requested <= capacity_) {
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:65:        if (requested > max_size()) {
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:66:            throw std::length_error("object_buffer capacity too large");
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:70:        std::size_t built = 0;
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:71:        auto rollback = [this, &built, requested](T* ptr) noexcept {
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:72:            destroy_prefix(ptr, built);
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:75:        std::unique_ptr<T, decltype(rollback)> cleanup(next, rollback);
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:77:        for (; built != size_; ++built) {
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:82:        destroy_prefix(data_, size_);
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:84:            traits::deallocate(alloc_, data_, capacity_);
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:87:        capacity_ = requested;
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:90:    void push_back(T value)
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:92:        if (size_ != capacity_) {
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:93:            traits::construct(alloc_, data_ + size_, append_source(value));
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:94:            ++size_;
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:100:    void pop_back()
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:102:        if (size_ == 0) {
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:103:            throw std::out_of_range("object_buffer::pop_back on empty buffer");
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:105:        --size_;
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:106:        traits::destroy(alloc_, data_ + size_);
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:109:    void clear() noexcept
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:111:        destroy_prefix(data_, size_);
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:112:        size_ = 0;
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:116:    static std::size_t max_size() noexcept
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:118:        return traits::max_size(std::allocator<T>{});
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:121:    std::size_t next_capacity() const
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:123:        if (capacity_ == max_size()) {
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:124:            throw std::length_error("object_buffer capacity too large");
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:126:        const std::size_t doubled = capacity_ > max_size() / 2 ? max_size() : capacity_ * 2;
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:127:        return std::max<std::size_t>(1, doubled);
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:132:        if constexpr (std::is_nothrow_move_constructible_v<T>) {
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:133:            return std::move(value);
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:141:        if constexpr (std::is_nothrow_move_constructible_v<T>) {
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:142:            traits::construct(alloc_, target, std::move(source));
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:150:        const std::size_t old_size = size_;
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:151:        const std::size_t requested = next_capacity();
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:154:        std::size_t prefix_built = 0;
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:155:        auto rollback = [this, &prefix_built, &tail_built, old_size, requested](T* ptr) noexcept {
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:156:            destroy_prefix(ptr, prefix_built);
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:158:                traits::destroy(alloc_, ptr + old_size);
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:162:        std::unique_ptr<T, decltype(rollback)> cleanup(next, rollback);
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:164:        traits::construct(alloc_, next + old_size, append_source(value));
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:166:        for (; prefix_built != old_size; ++prefix_built) {
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:167:            construct_relocated(next + prefix_built, data_[prefix_built]);
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:171:        destroy_prefix(data_, old_size);
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:173:            traits::deallocate(alloc_, data_, capacity_);
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:176:        size_ = old_size + 1;
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:177:        capacity_ = requested;
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:180:    void destroy_prefix(T* first, std::size_t count) noexcept
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:184:            traits::destroy(alloc_, first + count);
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:190:        clear();
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:192:            traits::deallocate(alloc_, data_, capacity_);
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:194:            capacity_ = 0;
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:200:    std::size_t size_ = 0;
+Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp:201:    std::size_t capacity_ = 0;
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:21:    static inline int moves = 0;
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:22:    static inline int destroys = 0;
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:23:    static inline int throw_on_copy = -1;
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:32:        if (throw_on_copy == copies) {
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:33:            throw std::runtime_error("planned copy failure");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:41:        ++moves;
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:51:        ++destroys;
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:58:        moves = 0;
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:59:        destroys = 0;
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:60:        throw_on_copy = -1;
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:66:        moves = 0;
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:67:        throw_on_copy = -1;
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:73:    static inline int moves = 0;
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:82:        ++moves;
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:87:    static void reset() { alive = 0; moves = 0; }
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:97:    check(buffer.size() == 0, "new buffer size");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:98:    check(buffer.capacity() == 0, "new buffer capacity");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:99:    buffer.reserve(2);
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:100:    check(buffer.size() == 0, "reserve keeps size");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:101:    check(buffer.capacity() >= 2, "reserve grows capacity");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:102:    const auto capacity = buffer.capacity();
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:103:    buffer.reserve(1);
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:104:    check(buffer.capacity() == capacity, "reserve no growth keeps capacity");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:105:    buffer.push_back(1);
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:106:    check(buffer.size() == 1, "size after first push");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:107:    buffer.push_back(2);
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:109:    check(view.size() == 2, "view sees two elements");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:110:    check(view[0] == 1 && view[1] == 2, "view preserves values");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:111:    buffer.pop_back();
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:112:    check(buffer.size() == 1 && buffer.view()[0] == 1, "pop removes last element");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:113:    buffer.clear();
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:114:    check(buffer.size() == 0, "clear removes all elements");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:115:    check(buffer.capacity() == capacity, "clear keeps capacity");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:118:        buffer.pop_back();
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:122:    check(threw, "pop empty throws out_of_range");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:125:void check_self_view_append()
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:128:    buffer.push_back(10);
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:130:    buffer.push_back(old[0]);
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:131:    check(buffer.view().size() == 2, "self const view append size");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:132:    check(buffer.view()[0] == 10 && buffer.view()[1] == 10, "self const view append value");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:135:void check_new_tail_failure_before_old_move()
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:139:    buffer.push_back(CopyFallback{1});
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:140:    const auto old_capacity = buffer.capacity();
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:141:    const auto old_size = buffer.size();
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:146:    CopyFallback::throw_on_copy = 1;
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:149:        buffer.push_back(std::move(value));
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:153:    check(threw, "new tail copy failure must throw");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:154:    check(buffer.capacity() == old_capacity, "new tail failure keeps capacity");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:155:    check(buffer.size() == old_size, "new tail failure keeps size");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:156:    check(buffer.view()[0].value == old_value, "new tail failure keeps old value");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:157:    check(CopyFallback::moves == 1, "new tail failure does not move old elements first");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:160:void check_reserve_copy_failure_keeps_old_storage()
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:164:    buffer.reserve(2);
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:165:    buffer.push_back(CopyFallback{1});
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:166:    buffer.push_back(CopyFallback{2});
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:168:    const auto old_capacity = buffer.capacity();
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:171:    CopyFallback::throw_on_copy = 2;
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:174:        buffer.reserve(8);
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:178:    check(threw, "reserve copy failure must throw");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:179:    check(buffer.capacity() == old_capacity, "reserve copy failure keeps capacity");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:180:    check(buffer.size() == 2, "reserve copy failure keeps size");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:181:    check(buffer.view().data() == old.data(), "reserve copy failure keeps old borrowing");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:182:    check(buffer.view()[0].value == 1 && buffer.view()[1].value == 2, "reserve copy failure keeps values");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:189:    buffer.reserve(1);
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:190:    buffer.push_back(CopyFallback{1});
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:192:    const auto old_capacity = buffer.capacity();
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:196:    CopyFallback::throw_on_copy = 2;
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:199:        buffer.push_back(std::move(value));
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:203:    check(threw, "old copy failure during growth must throw");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:204:    check(buffer.capacity() == old_capacity, "old copy failure keeps capacity");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:205:    check(buffer.size() == 1, "old copy failure keeps size");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:207:    check(CopyFallback::alive == alive_before + 1, "old copy failure cleans new prefix and new tail");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:210:void check_move_only_and_borrowing()
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:214:    source.push_back(MoveOnly{1});
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:215:    source.push_back(MoveOnly{2});
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:216:    auto borrowed = source.view();
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:217:    p1::object_buffer<MoveOnly> target(std::move(source));
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:218:    check(source.size() == 0 && source.capacity() == 0, "move source becomes empty");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:219:    check(target.size() == 2, "move target receives size");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:220:    check(borrowed.data() == target.view().data(), "move transfers allocation and old borrowing follows target");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:223:    target = std::move(same_target);
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:224:    check(target.size() == 2, "self move keeps size");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:225:    check(target.view()[0].value == 1 && target.view()[1].value == 2, "self move keeps values");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:228:    other.push_back(MoveOnly{9});
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:230:    other = std::move(target);
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:231:    check(other.size() == 2, "move assignment receives source");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:232:    check(target.size() == 0, "move assignment source empty");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:233:    check(old_target.data() != other.view().data(), "move assignment invalidates target old borrowing");
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:239:    buffer.push_back(OverAligned{7});
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:249:    static_assert(std::is_nothrow_move_constructible_v<p1::object_buffer<int>>);
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:250:    static_assert(std::is_nothrow_move_assignable_v<p1::object_buffer<int>>);
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:259:    check_self_view_append();
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:260:    check_new_tail_failure_before_old_move();
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:261:    check_reserve_copy_failure_keeps_old_storage();
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:263:    check_move_only_and_borrowing();
+Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp:266:    check(MoveOnly::alive == 0, "move-only tests leave no live objects");

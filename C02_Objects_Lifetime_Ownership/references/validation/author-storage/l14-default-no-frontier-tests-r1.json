@@ -1,0 +1,22 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "build/c02-l14-default-r1-msvc",
+    "-N"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.0470000000204891,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/build/c02-l14-default-r1-msvc\n  Test #1: L14_ub_observation\n\nTotal Tests: 1\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    "L14_ub_observation"
+  ],
+  "verdict": "PASS"
+}

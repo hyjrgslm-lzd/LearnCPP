@@ -1,0 +1,22 @@
+{
+  "command": [
+    "cmd.exe",
+    "/d",
+    "/c",
+    "build\\c02-p1-author-r2-asan\\run-good.cmd"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.7189999998081475,
+  "stdout": "P1_object_buffer_contract OK\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    "P1_object_buffer_contract OK"
+  ],
+  "verdict": "PASS"
+}

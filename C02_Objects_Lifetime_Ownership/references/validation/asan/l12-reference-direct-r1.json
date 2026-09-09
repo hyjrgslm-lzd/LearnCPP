@@ -1,0 +1,17 @@
+{
+  "command": [
+    "build/c02-l12-author-asan/L12_storage_reference.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.0470000000204891,
+  "stdout": "L12_storage_contract OK\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

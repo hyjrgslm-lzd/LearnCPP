@@ -1,0 +1,29 @@
+[
+  {
+    "Case": "l02-bind",
+    "Configure": 0,
+    "Build": 1,
+    "ContainsC2440": true,
+    "ContainsC2664": false,
+    "ContainsC2280": false,
+    "FirstLines": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L02_value_categories/negative/bind_rvalue_to_nonconst_lvalue/CMakeLists.txt\n  正在扫描源以查找模块依赖项...\n  main.cpp\n  正在编译...\n  main.cpp\nF:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L02_value_categories\\negative\\bind_rvalue_to_nonconst_lvalue\\main.cpp(2,14): error C2440: “初始化”: 无法从“int”转换为“int &” [F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\foundation-01-06-r1\\negative-manual\\build-l02-bind\\L02_negative_bind_rvalue.vcxproj]\n      F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L02_value_categories\\negative\\bind_rvalue_to_nonconst_lvalue\\main.cpp(2,14):\n      非常量引用只能绑定到左值\n  \n"
+  },
+  {
+    "Case": "l02-forward",
+    "Configure": 0,
+    "Build": 1,
+    "ContainsC2440": false,
+    "ContainsC2664": true,
+    "ContainsC2280": false,
+    "FirstLines": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L02_value_categories/negative/forward_lvalue_to_rvalue/CMakeLists.txt\n  正在扫描源以查找模块依赖项...\n  main.cpp\n  正在编译...\n  main.cpp\nF:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L02_value_categories\\negative\\forward_lvalue_to_rvalue\\main.cpp(7,5): error C2664: “void only_rvalue(int &&)”: 无法将参数 1 从“int”转换为“int &&” [F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\foundation-01-06-r1\\negative-manual\\build-l02-forward\\L02_negative_forward_lvalue.vcxproj]\n      F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L02_value_categories\\negative\\forward_lvalue_to_rvalue\\main.cpp(7,17):\n      无法将左值绑定到右值引用\n      F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L02_value_categories\\negative\\forward_lvalue_to_rvalue\\main.cpp(3,6):\n      参见“only_rvalue”的声明\n      F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L02_value_categories\\negative\\forward_lvalue_to_rvalue\\main.cpp(7,5):\n      尝试匹配参数列表“(int)”时\n      F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L02_value_categories\\negative\\forward_lvalue_to_rvalue\\main.cpp(7,5):\n      模板实例化上下文(最早的实例化上下文)为\n          F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L02_value_categories\\negative\\forward_lvalue_to_rvalue\\main.cpp(12,5):"
+  },
+  {
+    "Case": "l06-const-move",
+    "Configure": 0,
+    "Build": 1,
+    "ContainsC2440": false,
+    "ContainsC2664": false,
+    "ContainsC2280": true,
+    "FirstLines": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L06_move_return/negative/const_move_only/CMakeLists.txt\n  正在扫描源以查找模块依赖项...\n  main.cpp\n  正在编译...\n  main.cpp\nF:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L06_move_return\\negative\\const_move_only\\main.cpp(11,19): error C2280: “MoveOnly::MoveOnly(const MoveOnly &)”: 尝试引用已删除的函数 [F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\foundation-01-06-r1\\negative-manual\\build-l06-const-move\\L06_negative_const_move_only.vcxproj]\n      F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L06_move_return\\negative\\const_move_only\\main.cpp(5,5):\n      参见“MoveOnly::MoveOnly”的声明\n      F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L06_move_return\\negative\\const_move_only\\main.cpp(5,5):\n      “MoveOnly::MoveOnly(const MoveOnly &)”: 已隐式删除函数\n  \n"
+  }
+]

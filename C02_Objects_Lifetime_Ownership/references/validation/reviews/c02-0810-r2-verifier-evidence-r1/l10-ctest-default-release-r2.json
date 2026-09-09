@@ -1,0 +1,24 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "build/c02-0810-r2-verifier-r1/L10-default",
+    "-C",
+    "Release",
+    "--output-on-failure"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.5159999998286366,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/build/c02-0810-r2-verifier-r1/L10-default\n    Start 1: L10_control_block_observation\n1/2 Test #1: L10_control_block_observation ....   Passed    0.24 sec\n    Start 2: L10_control_block_reference\n2/2 Test #2: L10_control_block_reference ......   Passed    0.23 sec\n\n100% tests passed, 0 tests failed out of 2\n\nLabel Time Summary:\nobservation    =   0.24 sec*proc (1 test)\nreference      =   0.23 sec*proc (1 test)\n\nTotal Test time (real) =   0.47 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    "100% tests passed"
+  ],
+  "verdict": "PASS"
+}

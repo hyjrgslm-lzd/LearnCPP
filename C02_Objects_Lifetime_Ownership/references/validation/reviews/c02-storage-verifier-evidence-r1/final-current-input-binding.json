@@ -1,0 +1,114 @@
+{
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "git_head": "d81c136c342b62d66ceb8767ffc581e12ca2f5d2",
+  "git_status_scoped": [
+    "?? Core_Study/exercises/L11_layout/",
+    "?? Core_Study/exercises/L12_storage/",
+    "?? Core_Study/exercises/L13_aliasing/",
+    "?? Core_Study/exercises/L14_ub/",
+    "?? Core_Study/exercises/P1_object_buffer/",
+    "?? Core_Study/references/validation/author-storage-report.md",
+    "?? Core_Study/references/validation/reviews/"
+  ],
+  "cmake": "cmake version 4.2.3",
+  "python": "Python 3.10.11",
+  "clang_cl": "clang version 22.1.3 (https://github.com/llvm/llvm-project e9846648fd6183ee6d8cbdb4502213fcf902a211)",
+  "current_hashes": [
+    {
+      "path": "Core_Study/references/validation/author-storage-report.md",
+      "sha256": "C493EF13B0E641AF463F8FA4E2E4EA3FB23D023918C613B9E80008F30586CF32"
+    },
+    {
+      "path": "Core_Study/exercises/L11_layout/CMakeLists.txt",
+      "sha256": "9FF5213B5C1F4DF88E3220F2FD804CE3DB83ABB9F1C3AD6283F9D8C2B0259DD4"
+    },
+    {
+      "path": "Core_Study/exercises/L12_storage/CMakeLists.txt",
+      "sha256": "0304335D12D76FD788F200B18199E46C3E7FD51FB17E620EF1161EAC9B767B36"
+    },
+    {
+      "path": "Core_Study/exercises/L13_aliasing/CMakeLists.txt",
+      "sha256": "AC59CD348BD3B15D259D9A95449567CA643AE4513E312505ACAC20621088AB0E"
+    },
+    {
+      "path": "Core_Study/exercises/L14_ub/CMakeLists.txt",
+      "sha256": "89E7EEE5A94CDC09A6FFD226F75B3986C3B4EEE5116CE7FE291EE4A58AAAB910"
+    },
+    {
+      "path": "Core_Study/exercises/L14_ub/checks/frontier_compile.cmake",
+      "sha256": "36D12DAA9FF9D29D7A7B4985F2EBB1BF005E6FBB85B398131E1CA79F291A80CE"
+    },
+    {
+      "path": "Core_Study/exercises/L14_ub/checks/expect_asan_failure.cmake",
+      "sha256": "C9E43935AB950B932196EE60A16D96A9AF2B461DA994387D4C4A5D167DA39A42"
+    },
+    {
+      "path": "Core_Study/exercises/L14_ub/checks/asan_uaf_probe.cpp",
+      "sha256": "86BAD5C8F94BABA9048D7BAA6E1858A84F327F305AE0BB925C53642618D5BBE5"
+    },
+    {
+      "path": "Core_Study/exercises/P1_object_buffer/CMakeLists.txt",
+      "sha256": "6AC6862F60C7A09F40F296DF0376572B3FEDA3C5C7287B33F9BD7E5DC42F574D"
+    },
+    {
+      "path": "Core_Study/exercises/L12_storage/checks/run_checks.cpp",
+      "sha256": "EF847C6D2006C0FA2363419EB307567200322C88468760CE26E676B8CA6095C5"
+    },
+    {
+      "path": "Core_Study/exercises/L12_storage/checks/start_lifetime_as_capability.cpp",
+      "sha256": "46D762F9A5EAE60DAF76167DF99CF0F99B93EDA9000216CF46D0EC89EEEA7C36"
+    },
+    {
+      "path": "Core_Study/exercises/L12_storage/src/reference/storage_slot.hpp",
+      "sha256": "C2286B6E4B80A22F7EBC8EB9EEB12BFA713C7CEBD5064C938247D8E5416C53C9"
+    },
+    {
+      "path": "Core_Study/exercises/L12_storage/src/student/storage_slot.hpp",
+      "sha256": "3CB3B760514C53C5B26FB391FDBAB5AC828A8E57C2DFA28B8DC5305D92A3478C"
+    },
+    {
+      "path": "Core_Study/exercises/L12_storage/validation/good/storage_slot.hpp",
+      "sha256": "052691884C033237513E7917713A4D67B16E1433A30633AC853E56294AD30961"
+    },
+    {
+      "path": "Core_Study/exercises/L12_storage/validation/bad_noop/storage_slot.hpp",
+      "sha256": "16DBEA916AE9D1559683F0B47884A9C5F76C9D79C91DFEFF296F4C5DD0038CFD"
+    },
+    {
+      "path": "Core_Study/exercises/P1_object_buffer/checks/run_checks.cpp",
+      "sha256": "D0BD3E1650E1365C6521146807B49071362C0D136FEE970BDF6D171FB7C63092"
+    },
+    {
+      "path": "Core_Study/exercises/P1_object_buffer/checks/reject_throwing_move_only.cpp",
+      "sha256": "24F15F027BE22D71BEC376D3F60763EF2F8181768AD109DB3B4ABC948112EB64"
+    },
+    {
+      "path": "Core_Study/exercises/P1_object_buffer/checks/expect_compile_failure.cmake",
+      "sha256": "509CFB7DFCFA2AF1C55AD7C058A7647501BA1C95DB0ED209E44B12DFD9A57F62"
+    },
+    {
+      "path": "Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp",
+      "sha256": "11031B05BAF698837601183CD021AB24ED11014639E2F49053F0ACDBA9EE0861"
+    },
+    {
+      "path": "Core_Study/exercises/P1_object_buffer/src/student/object_buffer.hpp",
+      "sha256": "1B443162A26E077624569D80406AABE1BD144E03ED10996F880EB3395485F8CC"
+    },
+    {
+      "path": "Core_Study/exercises/P1_object_buffer/validation/good/object_buffer.hpp",
+      "sha256": "A79B3C3F05A472400E0BE3994062623647020238E85A8A59802FEA489CBA0B8A"
+    },
+    {
+      "path": "Core_Study/exercises/P1_object_buffer/validation/bad_noop/object_buffer.hpp",
+      "sha256": "53A3201341F72B9D80AC60E891CD04089C2D3408E5A119CBCC42A8464AE57442"
+    },
+    {
+      "path": "Core_Study/exercises/P1_object_buffer/validation/bad_early_commit/object_buffer.hpp",
+      "sha256": "E4141E3A315AED3AFBCD9C6B3E5983B248C4B6DFAC1039DAB23A8FFD65B5C89A"
+    },
+    {
+      "path": "Core_Study/exercises/cmake/StudySetup.cmake",
+      "sha256": "31184FF231653E03FDA46D257E482A147CD01DFEDF05D28CBC0FD3CD1D37F641"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "command": [
+    "rg",
+    "-n",
+    "capability unavailable; see|rejected by compiler; see|TIMEOUT 60$|file\\(WRITE \\",
+    "\\$\\",
+    "-encodedCommand",
+    "TwBVAFQAXwBGAEkATABFAFwA",
+    "\\",
+    "Core_Study/exercises/L14_ub/checks/frontier_compile.cmake",
+    "-inputFormat",
+    "xml",
+    "-outputFormat",
+    "text"
+  ],
+  "exit_code": 2,
+  "timeout": false,
+  "process_seconds": 0.06199999991804361,
+  "stdout": "",
+  "stderr": "rg: unrecognized file type: Format\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 1,
+  "required_text": [],
+  "verdict": "FAIL"
+}

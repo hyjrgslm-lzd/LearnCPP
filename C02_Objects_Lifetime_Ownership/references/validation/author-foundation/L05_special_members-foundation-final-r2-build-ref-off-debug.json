@@ -1,0 +1,21 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "Core_Study/exercises/L05_special_members/build/foundation-final-r2-ref-off",
+    "--config",
+    "Debug"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.077999999979511,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L05_special_members/CMakeLists.txt\n  buffer_checks.cpp\n  int_buffer.cpp\n  正在生成代码...\n  L05_special_members_student.vcxproj -> F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L05_special_members\\build\\foundation-final-r2-ref-off\\Debug\\L05_special_members_student.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L05_special_members/CMakeLists.txt\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

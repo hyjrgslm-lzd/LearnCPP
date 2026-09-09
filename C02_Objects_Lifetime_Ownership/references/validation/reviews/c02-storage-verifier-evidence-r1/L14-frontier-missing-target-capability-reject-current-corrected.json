@@ -1,0 +1,27 @@
+{
+  "command": [
+    "cmake",
+    "-DBUILD_DIR=build/c02-storage-verifier-r1/L14-frontier-current",
+    "-DCONFIG=Debug",
+    "-DTARGET=DefinitelyMissingFrontierTarget",
+    "-DCASE=missing_target_probe",
+    "-DEXPECT=capability_reject",
+    "-DOUT_FILE=F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\reviews\\c02-storage-verifier-evidence-r1\\L14-frontier-missing-target-output-corrected.txt",
+    "-P",
+    "Core_Study/exercises/L14_ub/checks/frontier_compile.cmake"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.0470000000204891,
+  "stdout": "",
+  "stderr": "CMake Error at Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:4 (message):\n  missing frontier probe argument\n\n\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    "PASS: missing_target_probe rejected by compiler"
+  ],
+  "verdict": "FAIL"
+}

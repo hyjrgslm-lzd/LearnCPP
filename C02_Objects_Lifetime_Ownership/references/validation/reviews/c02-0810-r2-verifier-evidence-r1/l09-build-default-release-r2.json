@@ -1,0 +1,24 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "build/c02-0810-r2-verifier-r1/L09-default",
+    "--config",
+    "Release",
+    "--clean-first"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 7.858999999938533,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L09_shared/CMakeLists.txt\n  observation_check.cpp\n  L09_shared_observation.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L09-default\\Release\\L09_shared_observation.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L09_shared/CMakeLists.txt\n  reference_check.cpp\n  L09_shared_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L09-default\\Release\\L09_shared_reference.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L09_shared/CMakeLists.txt\n  validation_check.cpp\n  L09_shared_validation_bad_cycle.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L09-default\\Release\\L09_shared_validation_bad_cycle.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L09_shared/CMakeLists.txt\n  validation_check.cpp\n  L09_shared_validation_bad_hardcoded_noop.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L09-default\\Release\\L09_shared_validation_bad_hardcoded_noop.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L09_shared/CMakeLists.txt\n  validation_check.cpp\nF:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L09_shared\\checks\\owner_checks.hpp(88,1): warning C4702: 无法访问的代码 [F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L09-default\\L09_shared_validation_bad_weak_resurrect.vcxproj]\nF:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L09_shared\\checks\\validation_check.cpp(7,1): warning C4702: 无法访问的代码 [F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L09-default\\L09_shared_validation_bad_weak_resurrect.vcxproj]\n  L09_shared_validation_bad_weak_resurrect.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L09-default\\Release\\L09_shared_validation_bad_weak_resurrect.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L09_shared/CMakeLists.txt\n  validation_check.cpp\n  L09_shared_validation_good.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L09-default\\Release\\L09_shared_validation_good.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L09_shared/CMakeLists.txt\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    ".vcxproj"
+  ],
+  "verdict": "PASS"
+}

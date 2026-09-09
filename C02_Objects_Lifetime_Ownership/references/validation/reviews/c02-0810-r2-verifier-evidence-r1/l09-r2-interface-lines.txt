@@ -1,0 +1,28 @@
+Core_Study/references/validation/author-owner-08-10-r2-report.md:21:修复点：旧 `CycleResult` / `EnableResult` 让 Student 可硬编码自报结果，非作者 fake Part4/5 已实测通过。
+Core_Study/references/validation/author-owner-08-10-r2-report.md:25:- 删除 `checks/support/shared_support.hpp` 中的 `CycleResult` / `EnableResult`。
+Core_Study/references/validation/author-owner-08-10-r2-report.md:27:- 新接口 `connect_parent_child(parent, child)` 只连真实节点；checker 直接检查 `parent->next == child`、`child->parent.lock() == parent`、外部 weak 过期和 fixture alive 计数。
+Core_Study/references/validation/author-owner-08-10-r2-report.md:28:- 新接口 `shared_from_existing(node&)` 必须从 checker 创建且已由 `shared_ptr` 管理的真实对象调用 `shared_from_this()`；checker 直接比较地址和 `owner.use_count()`。
+Core_Study/references/validation/author-owner-08-10-r2-report.md:29:- 新增 public bad `validation/bad_hardcoded_noop`：Part1-3 真实通过，Part4 不连边，必须被真实节点成员检查拒绝。
+Core_Study/references/validation/author-owner-08-10-r2-report.md:60:- `author-owner-l09-r2-bad-hardcoded-noop-debug.json`：PASS，expected exit 1，含 `parent owns child through shared next`。
+Core_Study/references/validation/author-owner-08-10-r2-report.md:62:- `author-owner-l09-r2-bad-weak-debug.json`：PASS，expected exit 1，含 `lock fails after destruction`。
+Core_Study/references/validation/author-owner-08-10-r2-report.md:92:- `rg "CycleResult|EnableResult|build_parent_child_without_cycle|shared_from_this_result|has_state|state_value|默认构造拥有|student_ready|student_placeholder_state|placeholder_state" ...`：无命中。
+Core_Study/exercises/L09_shared\validation\bad_weak_resurrect\owner.hpp:22:inline void connect_parent_child(const std::shared_ptr<node>& parent, const std::shared_ptr<node>& child) {
+Core_Study/exercises/L09_shared\validation\bad_weak_resurrect\owner.hpp:26:inline std::shared_ptr<node> shared_from_existing(node& object) {
+Core_Study/exercises/L09_shared\validation\bad_hardcoded_noop\owner.hpp:22:inline void connect_parent_child(const std::shared_ptr<node>&, const std::shared_ptr<node>&) {}
+Core_Study/exercises/L09_shared\validation\bad_hardcoded_noop\owner.hpp:24:inline std::shared_ptr<node> shared_from_existing(node& object) {
+Core_Study/exercises/L09_shared\checks\owner_checks.hpp:37:    check(!l09::lock_value(weak, value), "weak lock fails after destruction");
+Core_Study/exercises/L09_shared\checks\owner_checks.hpp:66:        l09::connect_parent_child(parent, child);
+Core_Study/exercises/L09_shared\checks\owner_checks.hpp:72:    check_no_live_nodes("weak backedge");
+Core_Study/exercises/L09_shared\checks\owner_checks.hpp:79:        auto again = l09::shared_from_existing(*owner);
+Core_Study/exercises/L09_shared\README.md:30:实现 `connect_parent_child(parent, child)`：把 checker 创建的真实父子节点连起来。父节点用 shared `next` 拥有子节点，子节点用 weak `parent` 观察父节点。函数不返回结果；checker 会直接检查节点成员、外部 weak 和 fixture alive 计数。
+Core_Study/exercises/L09_shared\README.md:36:实现 `shared_from_existing(node&)`：对象已由 checker 持有的 `shared_ptr` 管理后，从这个真实对象调用 `shared_from_this()`，返回共享同一控制块的新 strong。函数不返回自报计数；checker 会直接比较地址和 `owner.use_count()`。
+Core_Study/exercises/L09_shared\README.md:60:`validation/good` 应输出 `L09_shared_validation_contract OK`。bad hardcoded noop 应在真实节点连边检查处失败；bad cycle 应被 alive 计数拒绝；bad weak resurrect 应被 expired/lock 契约拒绝。
+Core_Study/exercises/L09_shared\CMakeLists.txt:39:    add_executable(L09_shared_validation_bad_hardcoded_noop checks/validation_check.cpp)
+Core_Study/exercises/L09_shared\CMakeLists.txt:40:    target_include_directories(L09_shared_validation_bad_hardcoded_noop PRIVATE checks/support validation/bad_hardcoded_noop checks)
+Core_Study/exercises/L09_shared\CMakeLists.txt:41:    core_configure_target(L09_shared_validation_bad_hardcoded_noop)
+Core_Study/exercises/L09_shared\validation\bad_cycle\owner.hpp:22:inline void connect_parent_child(const std::shared_ptr<node>& parent, const std::shared_ptr<node>& child) {
+Core_Study/exercises/L09_shared\validation\bad_cycle\owner.hpp:28:inline std::shared_ptr<node> shared_from_existing(node& object) {
+Core_Study/exercises/L09_shared\src\student\owner.hpp:15:inline void connect_parent_child(const std::shared_ptr<node>&, const std::shared_ptr<node>&) {}
+Core_Study/exercises/L09_shared\src\student\owner.hpp:16:inline std::shared_ptr<node> shared_from_existing(node&) { return {}; }
+Core_Study/exercises/L09_shared\src\reference\owner.hpp:31:inline void connect_parent_child(const std::shared_ptr<node>& parent, const std::shared_ptr<node>& child) {
+Core_Study/exercises/L09_shared\src\reference\owner.hpp:36:inline std::shared_ptr<node> shared_from_existing(node& object) {

@@ -1,0 +1,23 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "build/c02-owner-l10-r1d",
+    "--config",
+    "Debug"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 6.25,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L10_control_block/CMakeLists.txt\n  observation_check.cpp\n  L10_control_block_observation.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-owner-l10-r1d\\Debug\\L10_control_block_observation.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L10_control_block/CMakeLists.txt\n  reference_check.cpp\n  L10_control_block_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-owner-l10-r1d\\Debug\\L10_control_block_reference.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L10_control_block/CMakeLists.txt\n  validation_check.cpp\n  L10_control_block_validation_bad_leak_control_block.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-owner-l10-r1d\\Debug\\L10_control_block_validation_bad_leak_control_block.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L10_control_block/CMakeLists.txt\n  validation_check.cpp\n  L10_control_block_validation_bad_weak_resurrect.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-owner-l10-r1d\\Debug\\L10_control_block_validation_bad_weak_resurrect.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L10_control_block/CMakeLists.txt\n  validation_check.cpp\n  L10_control_block_validation_good.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-owner-l10-r1d\\Debug\\L10_control_block_validation_good.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L10_control_block/CMakeLists.txt\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    "L10_control_block_reference.vcxproj ->"
+  ],
+  "verdict": "PASS"
+}

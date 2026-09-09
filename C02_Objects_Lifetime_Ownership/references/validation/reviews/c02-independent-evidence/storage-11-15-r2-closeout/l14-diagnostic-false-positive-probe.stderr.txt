@@ -1,0 +1,8 @@
+CMake Error at Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:80 (message):
+  missing_assignment_word_target: failure did not match expected diagnostic
+  'assignment'; see
+  Core_Study/references/validation/reviews/c02-independent-evidence/storage-11-15-r2-closeout/l14-false-positive-frontier/missing_assignment_word_target-20260909-024520.txt
+Call Stack (most recent call first):
+  Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:105 (require_expected_failure)
+
+

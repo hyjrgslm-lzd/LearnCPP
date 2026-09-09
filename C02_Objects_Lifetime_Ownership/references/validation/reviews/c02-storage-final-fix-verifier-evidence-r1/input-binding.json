@@ -1,0 +1,45 @@
+{
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "git_head": "d81c136c342b62d66ceb8767ffc581e12ca2f5d2",
+  "cmake": "cmake version 4.2.3",
+  "python": "Python 3.10.11",
+  "clang_cl": "clang version 22.1.3 (https://github.com/llvm/llvm-project e9846648fd6183ee6d8cbdb4502213fcf902a211)",
+  "hashes": [
+    {
+      "path": "Core_Study/exercises/cmake/StudySetup.cmake",
+      "sha256": "3D5F0EDB294012C2465AF14634BB3179703AF085B2C6B166674211E0F41FC26C"
+    },
+    {
+      "path": "Core_Study/exercises/tools/record_process.py",
+      "sha256": "A6CBE3E05A8A9845843254E17656E24C6F90E259F0AD93151A8AA09571246002"
+    },
+    {
+      "path": "Core_Study/references/validation/tools/check_record_process.py",
+      "sha256": "56F5DB5D1D31EF6827CA3CAC0ADBDF523C0A88FCD3335619B8F8463E92B706BA"
+    },
+    {
+      "path": "Core_Study/exercises/L12_storage/CMakeLists.txt",
+      "sha256": "9E87001A142415F70376BB067C3F0870A69F36BC139BDCB3267F5EFD7D744AA2"
+    },
+    {
+      "path": "Core_Study/exercises/L12_storage/checks/expect_failure.cmake",
+      "sha256": "DC2EF83636017660B7810CB26E6C03D32E910D868CDBE3FAD36A3E785E63AFBD"
+    },
+    {
+      "path": "Core_Study/exercises/L14_ub/CMakeLists.txt",
+      "sha256": "9F1532AFBBC6F395F8AA38264C961346B2CB52CC481486FD76AA5D75FA2A6674"
+    },
+    {
+      "path": "Core_Study/exercises/L14_ub/checks/frontier_compile.cmake",
+      "sha256": "47E07F26B41D2A76A4F562B6EE15F9F3315CB098A259C3AFFC398513CD796058"
+    },
+    {
+      "path": "Core_Study/exercises/L14_ub/checks/expect_asan_failure.cmake",
+      "sha256": "C9E43935AB950B932196EE60A16D96A9AF2B461DA994387D4C4A5D167DA39A42"
+    },
+    {
+      "path": "Core_Study/exercises/P1_object_buffer/CMakeLists.txt",
+      "sha256": "6AC6862F60C7A09F40F296DF0376572B3FEDA3C5C7287B33F9BD7E5DC42F574D"
+    }
+  ]
+}

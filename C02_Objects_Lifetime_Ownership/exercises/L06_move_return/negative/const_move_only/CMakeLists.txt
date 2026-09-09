@@ -1,0 +1,4 @@
+cmake_minimum_required(VERSION 3.28)
+project(L06_negative_const_move_only LANGUAGES CXX)
+add_executable(L06_negative_const_move_only main.cpp)
+target_compile_features(L06_negative_const_move_only PRIVATE cxx_std_23)

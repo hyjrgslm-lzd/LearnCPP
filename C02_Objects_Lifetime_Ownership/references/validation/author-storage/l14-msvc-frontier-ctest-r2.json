@@ -1,0 +1,26 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "build/c02-l14-frontier-r1-msvc",
+    "-C",
+    "Debug",
+    "--output-on-failure",
+    "-R",
+    "L14_frontier"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 3.469000000040978,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/build/c02-l14-frontier-r1-msvc\n    Start 2: L14_frontier_baseline_compile\n1/5 Test #2: L14_frontier_baseline_compile ........................   Passed    0.64 sec\n    Start 3: L14_frontier_p2287_base_member_designator_compile\n2/5 Test #3: L14_frontier_p2287_base_member_designator_compile ....***Skipped   0.75 sec\n    Start 4: L14_frontier_p2748_return_temp_ref_compile\n3/5 Test #4: L14_frontier_p2748_return_temp_ref_compile ...........   Passed    0.75 sec\n    Start 5: L14_frontier_p2953_defaulted_assignment_compile\n4/5 Test #5: L14_frontier_p2953_defaulted_assignment_compile ......***Skipped   0.60 sec\n    Start 6: L14_frontier_provenance_lifetime_end_model_compile\n5/5 Test #6: L14_frontier_provenance_lifetime_end_model_compile ...   Passed    0.67 sec\n\n100% tests passed, 0 tests failed out of 5\n\nLabel Time Summary:\nfrontier    =   3.41 sec*proc (5 tests)\n\nTotal Test time (real) =   3.42 sec\n\nThe following tests did not run:\n\t  3 - L14_frontier_p2287_base_member_designator_compile (Skipped)\n\t  5 - L14_frontier_p2953_defaulted_assignment_compile (Skipped)\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    "L14_frontier_baseline_compile"
+  ],
+  "verdict": "PASS"
+}

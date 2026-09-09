@@ -1,0 +1,29 @@
+Core_Study\references\validation\student-wiring\README.md:13:`audit_student.py` 要求 trace 对应相同 build/config，显式 `--clean-first --target` 重建全部被审 Student，并且确实出现 include 输出；空日志或 no-op build 不通过。检查器定位本课程声明的 Reference target、目录和 include，配合人工源代码审查，不声称能自动识别任意拷贝粘贴的答案算法。
+Core_Study\exercises\tools\record_process.py:30:    result["cwd"] = str(Path.cwd())
+Core_Study\references\validation\student-wiring\check_wiring.ps1:22:        python Core_Study/exercises/tools/record_process.py --output $studyTrace -- cmake --build $studyBuild --config Release --clean-first --target wiring_student
+Core_Study\references\validation\student-wiring\check_wiring.ps1:25:        python Core_Study/exercises/tools/audit_student.py --build $studyBuild --config Release --trace $studyTrace --expect-target wiring_student --output $studyAudit
+Core_Study\references\validation\student-wiring\check_wiring.ps1:29:        if ($studyCase -eq 'bad' -and -not ($studyResult.failures -match 'Reference in actual include trace')) {
+Core_Study\references\validation\student-wiring\CMakeLists.txt:5:    add_executable(wiring_student src/student/bad.cpp)
+Core_Study\references\validation\student-wiring\CMakeLists.txt:7:    add_executable(wiring_student src/student/main.cpp)
+Core_Study\references\validation\student-wiring\CMakeLists.txt:9:target_compile_features(wiring_student PRIVATE cxx_std_23)
+Core_Study\references\validation\student-wiring\CMakeLists.txt:10:set_target_properties(wiring_student PROPERTIES CXX_SCAN_FOR_MODULES OFF)
+Core_Study\references\validation\student-wiring\CMakeLists.txt:12:    target_compile_options(wiring_student PRIVATE /showIncludes /utf-8)
+Core_Study\references\validation\student-wiring\CMakeLists.txt:14:    target_compile_options(wiring_student PRIVATE -H)
+Core_Study\exercises\tools\audit_student.py:1:"""Audit declared Reference dependencies, actual includes and local source wiring.
+Core_Study\exercises\tools\audit_student.py:3:Requires a successful --clean-first --target <all students> build with MSVC /showIncludes (English/Chinese)
+Core_Study\exercises\tools\audit_student.py:4:or Clang/GCC -H, recorded by record_process.py. Request codemodel-v2 before
+Core_Study\exercises\tools\audit_student.py:49:    students = [target for target in targets.values() if target["name"].endswith("_student")]
+Core_Study\exercises\tools\audit_student.py:51:        failures.append("no Student targets present")
+Core_Study\exercises\tools\audit_student.py:55:            failures.append(f"required Student target absent: {name}")
+Core_Study\exercises\tools\audit_student.py:57:        if "_reference" in target["name"].lower():
+Core_Study\exercises\tools\audit_student.py:88:        pending.extend(entry["id"] for entry in target.get("dependencies", []))
+Core_Study\exercises\tools\audit_student.py:94:        for fragment in target.get("link", {}).get("commandFragments", []):
+Core_Study\exercises\tools\audit_student.py:96:            if "/reference/" in value or "_reference" in value:
+Core_Study\exercises\tools\audit_student.py:106:    trace_cwd = Path(trace["cwd"])
+Core_Study\exercises\tools\audit_student.py:107:    if "--build" not in command or (trace_cwd / command[command.index("--build") + 1]).resolve() != build.resolve():
+Core_Study\exercises\tools\audit_student.py:109:    if "--clean-first" not in command or "--target" not in command or not names.issubset(command):
+Core_Study\exercises\tools\audit_student.py:110:        failures.append("trace must rebuild every Student target explicitly with --clean-first")
+Core_Study\exercises\tools\audit_student.py:114:        failures.append("include-trace configuration does not match the codemodel configuration")
+Core_Study\exercises\tools\audit_student.py:117:        match = re.search(r"(?:including file|包含文件):\s*(.+)$", line, re.IGNORECASE)
+Core_Study\exercises\tools\audit_student.py:123:        failures.append("no actual preprocessor include trace; a no-op build is insufficient")
+Core_Study\exercises\tools\audit_student.py:126:            failures.append(f"Reference in actual include trace: {path}")

@@ -269,4 +269,4 @@ profiling 工具不是唯一入口，能清晰隔离成本来源的最小对照�
 
 本指南依据参考课程的实际迭代、2026-09-08 获准的 Concurrency 最终计划及用户后续要求整理。代表性迭代包括补齐参考检查、修正所有权语义、重排教学正文和补足前置知识。本次随全局目标计划补充了下游需求反推深度、改动前证据与逐步推进门槛；第 6 节的教学参考由用户指定，引用边界同该节说明。
 
-此前 Concurrency 迭代的交付与证据见 [Concurrency 课程](Concurrency_Study/README.md)及[质量报告](Concurrency_Study/references/quality-report.md)，它们不自动成为后续课程的验证证据。后续项目替换自己的目录、规范版本、技术清单和环境，但保留上述流程与质量约束。需要更改约束时写明原因和验收影响，并接受独立审查。
+此前 Concurrency 迭代的交付与证据见 [Concurrency 课程](C08_Concurrency/README.md)及[质量报告](C08_Concurrency/references/quality-report.md)，它们不自动成为后续课程的验证证据。后续项目替换自己的目录、规范版本、技术清单和环境，但保留上述流程与质量约束。需要更改约束时写明原因和验收影响，并接受独立审查。

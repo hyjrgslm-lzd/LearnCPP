@@ -1,0 +1,28 @@
+{
+  "command": [
+    "rg",
+    "-n",
+    "implicit object creation|allocator<T>::allocate|start_lifetime_as|pointer provenance|erroneous behavior|copy fallback|新尾",
+    "Core_Study/chapters/12-storage-and-object-creation.md",
+    "Core_Study/chapters/13-aliasing-and-provenance.md",
+    "Core_Study/chapters/14-undefined-behavior-and-optimization.md",
+    "Core_Study/chapters/15-object-buffer.md"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.04600000008940697,
+  "stdout": "Core_Study/chapters/15-object-buffer.md:26:`std::allocator<T>::allocate(capacity_)` 给出足够对齐的存储，并按标准模型建立 `T[capacity_]` 数组对象边界；它不构造元素。只有 `[data_, data_ + size_)` 中的元素生命期已经开始。`[data_ + size_, data_ + capacity_)` 是可用槽，不是可读取对象。\nCore_Study/chapters/15-object-buffer.md:57:3. 把旧元素构造到新存储。若 `T` 的 move 构造是 `noexcept`，使用 move；否则使用 copy fallback。\nCore_Study/chapters/15-object-buffer.md:97:## 扩容插入：先新尾，再迁移旧元素\nCore_Study/chapters/15-object-buffer.md:99:`push_back` 触发扩容时，`value` 已经存在，但把它构造到新存储的动作仍可能抛异常。若先迁移旧元素，再构造新尾，新尾失败时你已经对旧元素做过 move/copy，清理和回滚更复杂，甚至破坏强保证。\nCore_Study/chapters/15-object-buffer.md:105:3. 在 `new_data + size_` 构造新尾元素。\nCore_Study/chapters/15-object-buffer.md:106:4. 若新尾构造失败，只释放 `new_data`；不要销毁 `new_data + size_`，因为对象没有构造成功；旧容器不动。\nCore_Study/chapters/15-object-buffer.md:107:5. 新尾成功后，迁移旧 `[0, size_)` 到 `new_data[0..size_)`。\nCore_Study/chapters/15-object-buffer.md:108:6. 若 copy fallback 第 k 个旧元素失败，销毁新前缀 `[0, k)` 和已经成功的新尾，释放 `new_data`；旧容器不动。\nCore_Study/chapters/15-object-buffer.md:111:这里的清理集合要精确。新尾失败时没有新尾对象，不能 destroy。旧元素迁移失败时，新尾已经成功，必须 destroy；新前缀只 destroy 成功构造的数量，不能按目标 `size_` 粗暴销毁。\nCore_Study/chapters/15-object-buffer.md:121:| copy 第 k 次失败 | 旧元素 3 个，copy fallback | copy 第 2 个旧元素抛 | 新前缀 1 个被销毁，旧 3 个仍活跃 |\nCore_Study/chapters/15-object-buffer.md:122:| 新尾失败 | 满容量，`push_back(value)` | 构造新尾抛 | 只释放新分配，旧状态不变，不 destroy 未构造尾 |\nCore_Study/chapters/15-object-buffer.md:123:| 迁移失败 | 新尾成功，copy 旧元素第 k 个失败 | copy 抛 | destroy 新尾和成功前缀，旧状态不变 |\nCore_Study/chapters/15-object-buffer.md:152:- 第 12 章：`allocator<T>::allocate` 不构造元素；每个元素由 `construct_at` 开始生命期，由 `destroy_at` 结束生命期。\nCore_Study/chapters/14-undefined-behavior-and-optimization.md:15:| erroneous behavior | C++26 诊断模型中的错误行为类别 | 允许/鼓励诊断，语义不同于 UB | 只用 compile-only 或安全模型讲解 |\nCore_Study/chapters/14-undefined-behavior-and-optimization.md:86:## C++26 erroneous behavior\nCore_Study/chapters/14-undefined-behavior-and-optimization.md:88:C++26 引入 erroneous behavior 用于描述一类错误值相关行为，并给诊断更多标准位置。它不是“未初始化读取现在安全”，也不是“所有 UB 都变成 erroneous”。\nCore_Study/chapters/14-undefined-behavior-and-optimization.md:108:这段代码不是标准 erroneous behavior 的实现，它是课堂安全替身，用来讨论诊断边界和状态传播。\nCore_Study/chapters/13-aliasing-and-provenance.md:61:第 12 章已经说明，某些 implicit-lifetime 类型可以由特定操作隐式创建，C++23 还有 `start_lifetime_as`。但判断依据是对象创建规则，不是 `reinterpret_cast` 本身。\nCore_Study/chapters/13-aliasing-and-provenance.md:159:N5055 把 pointer provenance、invalid pointer、lifetime-end 等 DR 列入 C++29 工作底稿相关变更。课程采用保守可移植模型：\nCore_Study/chapters/12-storage-and-object-creation.md:10:- `std::allocator<T>::allocate(n)` 会开始一个 `T[n]` 数组对象的生命期，但不会开始每个元素对象的生命期。\nCore_Study/chapters/12-storage-and-object-creation.md:46:`std::allocator<T>` 多了一层容易混淆的规则。`allocator<T>::allocate(n)` 返回能放下 `n` 个 `T` 的存储，并按标准要求开始一个 `T[n]` 数组对象的生命期。这个数组对象是为了让指针算术和容器内部模型有对象边界；它不表示 `n` 个元素都已经构造完成。\nCore_Study/chapters/12-storage-and-object-creation.md:51:data_ 指向 allocator<T>::allocate(capacity_) 返回的存储。\nCore_Study/chapters/12-storage-and-object-creation.md:92:## C++20 implicit object creation\nCore_Study/chapters/12-storage-and-object-creation.md:135:- `std::allocator<T>::allocate(n)`，但它创建的是 `T[n]` 数组对象边界，不是 `n` 个元素值。\nCore_Study/chapters/12-storage-and-object-creation.md:153:## `start_lifetime_as`\nCore_Study/chapters/12-storage-and-object-creation.md:155:C++23 的 `std::start_lifetime_as<T>(p)` 是显式请求：在 `p` 指向的存储中开始 implicit-lifetime 类型 `T` 的生命期，同时保留原对象表示。它不是构造函数调用，不执行初始化表达式，也不是别名规则豁免。\nCore_Study/chapters/12-storage-and-object-creation.md:163:- 对 `start_lifetime_as_array<T>(p, n)`，区域大小要能容纳 `n` 个 `T`，并满足数组边界和可达性要求。\nCore_Study/chapters/12-storage-and-object-creation.md:171:auto* p = std::start_lifetime_as<std::uint32_t>(bytes.data());\nCore_Study/chapters/12-storage-and-object-creation.md:176:本仓库能力探测记录了实际工具链状态：MSVC 19.51 + 当前 STL 定义 `__cpp_lib_start_lifetime_as=202207` 并能编译运行；Clang 22.1.3 使用当前 MSVC STL 时没有该 feature-test macro，`start_lifetime_as` 探针编译失败。教学材料按“规范存在”和“本机实现支持”分两轴记录。\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    "implicit object creation",
+    "allocator<T>::allocate",
+    "pointer provenance",
+    "erroneous behavior"
+  ],
+  "verdict": "PASS"
+}

@@ -1,0 +1,2 @@
+L12_start_lifetime_as OK macro=202207
+

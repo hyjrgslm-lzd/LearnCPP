@@ -1,0 +1,28 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "build/mig-c06-r1",
+    "--config",
+    "Release",
+    "--target",
+    "01_mental_model_warmup",
+    "--parallel",
+    "1",
+    "--",
+    "/nodeReuse:false"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.218000000109896,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/01_mental_model_warmup/CMakeLists.txt\n  正在扫描源以查找模块依赖项...\n  main.cpp\n  正在编译...\n  main.cpp\n  01_mental_model_warmup.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\mig-c06-r1\\01_mental_model_warmup\\Release\\01_mental_model_warmup.exe\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

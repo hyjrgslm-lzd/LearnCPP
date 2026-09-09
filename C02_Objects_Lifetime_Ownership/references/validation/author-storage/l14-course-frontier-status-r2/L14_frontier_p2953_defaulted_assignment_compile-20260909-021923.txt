@@ -1,0 +1,17 @@
+case=L14_frontier_p2953_defaulted_assignment_compile
+target=L14_frontier_p2953_defaulted_assignment
+expect=capability_reject
+source_marker=p2953_defaulted_assignment.cpp
+expected_failure=defaulted|assignment|operator=|ref-qualifier|C2280|C2679
+accepted_diagnostic=defaulted|assignment|operator=|ref-qualifier
+result=0
+command=D:/cmake/install/bin/cmake.exe;--build;F:/CPPTrain/LearnCPP/Core_Study/exercises/build/frontier;--config;Release;--target;L14_frontier_p2953_defaulted_assignment
+stdout<<EOF
+閫傜敤浜?.NET Framework MSBuild 鐗堟湰 18.9.1+a81b43525
+
+  L14_frontier_p2953_defaulted_assignment.vcxproj -> F:\CPPTrain\LearnCPP\Core_Study\exercises\build\frontier\L14_ub\L14_frontier_p2953_defaulted_assignment.dir\Release\L14_frontier_p2953_defaulted_assignment.lib
+
+EOF
+stderr<<EOF
+
+EOF

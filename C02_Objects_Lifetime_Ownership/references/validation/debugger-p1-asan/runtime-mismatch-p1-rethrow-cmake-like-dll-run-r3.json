@@ -1,0 +1,18 @@
+{
+  "command": [
+    "build/c02-asan-debugger/p1_rethrow_min_cmake_like_dll_r3.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.46899999980814755,
+  "stdout": "",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

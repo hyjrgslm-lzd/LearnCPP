@@ -1,0 +1,21 @@
+{
+  "command": [
+    "cmd",
+    "/c",
+    "F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\reviews\\c02-0810-r2-verifier-evidence-r1\\build-private-adopt-ctor-r2.cmd"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.4059999999590218,
+  "stdout": "",
+  "stderr": "F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\reviews\\c02-0810-r2-verifier-evidence-r1\\private-adopt-ctor-r2.cpp(4,22): error: calling a private constructor of class 'l10::rc_ptr<int>'\n    4 |     l10::rc_ptr<int> p(nullptr, false);\n      |                      ^\nF:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L10_control_block\\src\\reference\\rc.hpp(118,14): note: declared private here\n  118 |     explicit rc_ptr(control_block_base* block, bool add_ref) noexcept : block_(block) {\n      |              ^\n1 error generated.\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 1,
+  "required_text": [
+    "private"
+  ],
+  "verdict": "PASS"
+}

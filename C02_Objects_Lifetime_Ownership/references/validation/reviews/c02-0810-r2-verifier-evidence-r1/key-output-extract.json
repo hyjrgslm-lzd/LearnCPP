@@ -1,0 +1,194 @@
+{
+  "build-alias-asan-r2.json": {
+    "verdict": "PASS",
+    "exit_code": 0,
+    "stdout_excerpt": "D:\\VisualStudio2026\\Installed\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe\nclang version 22.1.3 (https://github.com/llvm/llvm-project e9846648fd6183ee6d8cbdb4502213fcf902a211)\nTarget: x86_64-pc-windows-msvc\nThread model: posix\nInstalledDir: D:\\VisualStudio2026\\Installed\\VC\\Tools\\Llvm\\x64\\bin\n",
+    "stderr_excerpt": ""
+  },
+  "run-copy-asan-r2.json": {
+    "verdict": "PASS",
+    "exit_code": 0,
+    "stdout_excerpt": "copy alias assignment OK\n",
+    "stderr_excerpt": ""
+  },
+  "run-move-asan-r2.json": {
+    "verdict": "PASS",
+    "exit_code": 0,
+    "stdout_excerpt": "move alias assignment OK\n",
+    "stderr_excerpt": ""
+  },
+  "l10-configure-default-r2.json": {
+    "verdict": "PASS",
+    "exit_code": 0,
+    "stdout_excerpt": "-- The CXX compiler identification is MSVC 19.51.36256.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring done (2.3s)\n-- Generating done (0.1s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/build/c02-0810-r2-verifier-r1/L10-default\n",
+    "stderr_excerpt": ""
+  },
+  "l10-build-default-debug-r2.json": {
+    "verdict": "PASS",
+    "exit_code": 0,
+    "stdout_excerpt": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L10_control_block/CMakeLists.txt\n  observation_check.cpp\n  L10_control_block_observation.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L10-default\\Debug\\L10_control_block_observation.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L10_control_block/CMakeLists.txt\n  reference_check.cpp\n  L10_control_block_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L10-default\\Debug\\L10_control_block_reference.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L10_control_block/CMakeLists.txt",
+    "stderr_excerpt": ""
+  },
+  "l10-ctest-default-debug-r2.json": {
+    "verdict": "PASS",
+    "exit_code": 0,
+    "stdout_excerpt": "Test project F:/CPPTrain/LearnCPP/build/c02-0810-r2-verifier-r1/L10-default\n    Start 1: L10_control_block_observation\n1/2 Test #1: L10_control_block_observation ....   Passed    0.25 sec\n    Start 2: L10_control_block_reference\n2/2 Test #2: L10_control_block_reference ......   Passed    0.23 sec\n\n100% tests passed, 0 tests failed out of 2\n\nLabel Time Summary:\nobservation    =   0.25 sec*proc (1 test)\nreference      =   0.23 sec*proc (1 test)\n",
+    "stderr_excerpt": ""
+  },
+  "l10-build-default-release-r2.json": {
+    "verdict": "PASS",
+    "exit_code": 0,
+    "stdout_excerpt": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L10_control_block/CMakeLists.txt\n  observation_check.cpp\n  L10_control_block_observation.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L10-default\\Release\\L10_control_block_observation.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L10_control_block/CMakeLists.txt\n  reference_check.cpp\n  L10_control_block_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L10-default\\Release\\L10_control_block_reference.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L10_control_block/CMakeLists.txt",
+    "stderr_excerpt": ""
+  },
+  "l10-ctest-default-release-r2.json": {
+    "verdict": "PASS",
+    "exit_code": 0,
+    "stdout_excerpt": "Test project F:/CPPTrain/LearnCPP/build/c02-0810-r2-verifier-r1/L10-default\n    Start 1: L10_control_block_observation\n1/2 Test #1: L10_control_block_observation ....   Passed    0.24 sec\n    Start 2: L10_control_block_reference\n2/2 Test #2: L10_control_block_reference ......   Passed    0.23 sec\n\n100% tests passed, 0 tests failed out of 2\n\nLabel Time Summary:\nobservation    =   0.24 sec*proc (1 test)\nreference      =   0.23 sec*proc (1 test)\n",
+    "stderr_excerpt": ""
+  },
+  "l09-configure-default-r2.json": {
+    "verdict": "PASS",
+    "exit_code": 0,
+    "stdout_excerpt": "-- The CXX compiler identification is MSVC 19.51.36256.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring done (2.3s)\n-- Generating done (0.1s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/build/c02-0810-r2-verifier-r1/L09-default\n",
+    "stderr_excerpt": ""
+  },
+  "l09-build-default-debug-r2.json": {
+    "verdict": "PASS",
+    "exit_code": 0,
+    "stdout_excerpt": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L09_shared/CMakeLists.txt\n  observation_check.cpp\n  L09_shared_observation.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L09-default\\Debug\\L09_shared_observation.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L09_shared/CMakeLists.txt\n  reference_check.cpp\n  L09_shared_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L09-default\\Debug\\L09_shared_reference.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L09_shared/CMakeLists.txt",
+    "stderr_excerpt": ""
+  },
+  "l09-ctest-default-debug-r2.json": {
+    "verdict": "PASS",
+    "exit_code": 0,
+    "stdout_excerpt": "Test project F:/CPPTrain/LearnCPP/build/c02-0810-r2-verifier-r1/L09-default\n    Start 1: L09_shared_observation\n1/2 Test #1: L09_shared_observation ...........   Passed    0.26 sec\n    Start 2: L09_shared_reference\n2/2 Test #2: L09_shared_reference .............   Passed    0.23 sec\n\n100% tests passed, 0 tests failed out of 2\n\nLabel Time Summary:\nobservation    =   0.26 sec*proc (1 test)\nreference      =   0.23 sec*proc (1 test)\n",
+    "stderr_excerpt": ""
+  },
+  "l09-run-L09_shared_validation_good-debug-r2.json": {
+    "verdict": "PASS",
+    "exit_code": 0,
+    "stdout_excerpt": "L09_shared_validation_contract OK\n",
+    "stderr_excerpt": ""
+  },
+  "l09-run-L09_shared_validation_bad_hardcoded_noop-debug-r2.json": {
+    "verdict": "PASS",
+    "exit_code": 1,
+    "stdout_excerpt": "",
+    "stderr_excerpt": "check failed: parent owns child through shared next\n"
+  },
+  "l09-run-L09_shared_validation_bad_cycle-debug-r2-corrected.json": {
+    "verdict": "PASS",
+    "exit_code": 1,
+    "stdout_excerpt": "",
+    "stderr_excerpt": "check failed: parent weak expires after graph scope\n"
+  },
+  "l09-run-L09_shared_validation_bad_weak_resurrect-debug-r2.json": {
+    "verdict": "PASS",
+    "exit_code": 1,
+    "stdout_excerpt": "",
+    "stderr_excerpt": "check failed: weak lock fails after destruction\n"
+  },
+  "l09-build-default-release-r2.json": {
+    "verdict": "PASS",
+    "exit_code": 0,
+    "stdout_excerpt": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L09_shared/CMakeLists.txt\n  observation_check.cpp\n  L09_shared_observation.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L09-default\\Release\\L09_shared_observation.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L09_shared/CMakeLists.txt\n  reference_check.cpp\n  L09_shared_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L09-default\\Release\\L09_shared_reference.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L09_shared/CMakeLists.txt",
+    "stderr_excerpt": ""
+  },
+  "l09-ctest-default-release-r2.json": {
+    "verdict": "PASS",
+    "exit_code": 0,
+    "stdout_excerpt": "Test project F:/CPPTrain/LearnCPP/build/c02-0810-r2-verifier-r1/L09-default\n    Start 1: L09_shared_observation\n1/2 Test #1: L09_shared_observation ...........   Passed    0.23 sec\n    Start 2: L09_shared_reference\n2/2 Test #2: L09_shared_reference .............   Passed    0.23 sec\n\n100% tests passed, 0 tests failed out of 2\n\nLabel Time Summary:\nobservation    =   0.23 sec*proc (1 test)\nreference      =   0.23 sec*proc (1 test)\n",
+    "stderr_excerpt": ""
+  },
+  "l09-run-L09_shared_validation_good-release-r2.json": {
+    "verdict": "PASS",
+    "exit_code": 0,
+    "stdout_excerpt": "L09_shared_validation_contract OK\n",
+    "stderr_excerpt": ""
+  },
+  "l09-run-L09_shared_validation_bad_hardcoded_noop-release-r2.json": {
+    "verdict": "PASS",
+    "exit_code": 1,
+    "stdout_excerpt": "",
+    "stderr_excerpt": "check failed: parent owns child through shared next\n"
+  },
+  "l09-run-L09_shared_validation_bad_cycle-release-r2-corrected.json": {
+    "verdict": "PASS",
+    "exit_code": 1,
+    "stdout_excerpt": "",
+    "stderr_excerpt": "check failed: parent weak expires after graph scope\n"
+  },
+  "l09-run-L09_shared_validation_bad_weak_resurrect-release-r2.json": {
+    "verdict": "PASS",
+    "exit_code": 1,
+    "stdout_excerpt": "",
+    "stderr_excerpt": "check failed: weak lock fails after destruction\n"
+  },
+  "l09-configure-student-ref-off-r2.json": {
+    "verdict": "PASS",
+    "exit_code": 0,
+    "stdout_excerpt": "-- The CXX compiler identification is MSVC 19.51.36256.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring done (2.2s)\n-- Generating done (0.1s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/build/c02-0810-r2-verifier-r1/L09-student-ref-off\n",
+    "stderr_excerpt": ""
+  },
+  "l09-build-student-ref-off-debug-r2.json": {
+    "verdict": "PASS",
+    "exit_code": 0,
+    "stdout_excerpt": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L09_shared/CMakeLists.txt\n  student_check.cpp\n  L09_shared_student.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L09-student-ref-off\\Debug\\L09_shared_student.exe\n",
+    "stderr_excerpt": ""
+  },
+  "l09-student-placeholder-ref-off-debug-r2.json": {
+    "verdict": "PASS",
+    "exit_code": 1,
+    "stdout_excerpt": "",
+    "stderr_excerpt": "check failed: make_node returns shared owner\n"
+  },
+  "l09-build-student-ref-off-release-r2.json": {
+    "verdict": "PASS",
+    "exit_code": 0,
+    "stdout_excerpt": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L09_shared/CMakeLists.txt\n  student_check.cpp\nF:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L09_shared\\checks\\owner_checks.hpp(88,1): warning C4702: 无法访问的代码 [F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L09-student-ref-off\\L09_shared_student.vcxproj]\nF:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L09_shared\\checks\\owner_checks.hpp(89,1): warning C4702: 无法访问的代码 [F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L09-student-ref-off\\L09_shared_student.vcxproj]\nF:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L09_shared\\checks\\student_check.cpp(7,1): warning C4702: 无法访问的代码 [F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L09-student-ref-off\\L09_shared_student.vcxproj]\n  L09_shared_student.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L09-student-ref-off\\Release\\L09_shared_student.exe\n",
+    "stderr_excerpt": ""
+  },
+  "l09-student-placeholder-ref-off-release-r2.json": {
+    "verdict": "PASS",
+    "exit_code": 1,
+    "stdout_excerpt": "",
+    "stderr_excerpt": "check failed: make_node returns shared owner\n"
+  },
+  "l09-reference-target-absent-ref-off-r2.json": {
+    "verdict": "PASS",
+    "exit_code": 1,
+    "stdout_excerpt": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\nMSBUILD : error MSB1009: 项目文件不存在。\n开关:L09_shared_reference.vcxproj\n",
+    "stderr_excerpt": ""
+  },
+  "l08-configure-smoke-r2.json": {
+    "verdict": "PASS",
+    "exit_code": 0,
+    "stdout_excerpt": "-- The CXX compiler identification is MSVC 19.51.36256.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring done (2.3s)\n-- Generating done (0.1s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/build/c02-0810-r2-verifier-r1/L08-smoke\n",
+    "stderr_excerpt": ""
+  },
+  "l08-build-smoke-debug-r2.json": {
+    "verdict": "PASS",
+    "exit_code": 0,
+    "stdout_excerpt": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L08_unique/CMakeLists.txt\n  observation_check.cpp\n  L08_unique_observation.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L08-smoke\\Debug\\L08_unique_observation.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L08_unique/CMakeLists.txt\n  reference_check.cpp\n  L08_unique_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-0810-r2-verifier-r1\\L08-smoke\\Debug\\L08_unique_reference.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L08_unique/CMakeLists.txt",
+    "stderr_excerpt": ""
+  },
+  "l08-ctest-smoke-debug-r2.json": {
+    "verdict": "PASS",
+    "exit_code": 0,
+    "stdout_excerpt": "Test project F:/CPPTrain/LearnCPP/build/c02-0810-r2-verifier-r1/L08-smoke\n    Start 1: L08_unique_observation\n1/2 Test #1: L08_unique_observation ...........   Passed    0.24 sec\n    Start 2: L08_unique_reference\n2/2 Test #2: L08_unique_reference .............   Passed    0.24 sec\n\n100% tests passed, 0 tests failed out of 2\n\nLabel Time Summary:\nobservation    =   0.24 sec*proc (1 test)\nreference      =   0.24 sec*proc (1 test)\n",
+    "stderr_excerpt": ""
+  },
+  "l08-good-smoke-debug-r2.json": {
+    "verdict": "PASS",
+    "exit_code": 0,
+    "stdout_excerpt": "L08_unique_validation_contract OK\n",
+    "stderr_excerpt": ""
+  },
+  "build-private-adopt-ctor-r2.json": {
+    "verdict": "PASS",
+    "exit_code": 1,
+    "stdout_excerpt": "",
+    "stderr_excerpt": "F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\reviews\\c02-0810-r2-verifier-evidence-r1\\private-adopt-ctor-r2.cpp(4,22): error: calling a private constructor of class 'l10::rc_ptr<int>'\n    4 |     l10::rc_ptr<int> p(nullptr, false);\n      |                      ^\nF:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L10_control_block\\src\\reference\\rc.hpp(118,14): note: declared private here\n  118 |     explicit rc_ptr(control_block_base* block, bool add_ref) noexcept : block_(block) {\n      |              ^\n1 error generated.\n"
+  }
+}

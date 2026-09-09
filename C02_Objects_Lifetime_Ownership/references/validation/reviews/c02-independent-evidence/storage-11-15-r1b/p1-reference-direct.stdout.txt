@@ -1,0 +1,2 @@
+P1_object_buffer_contract OK
+

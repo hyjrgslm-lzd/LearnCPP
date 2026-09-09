@@ -1,0 +1,22 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "Core_Study/exercises/L04_construction/build/c02-foundation-author-r4",
+    "--config",
+    "Release"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 1.5,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L04_construction/CMakeLists.txt\n  L04_construction_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L04_construction\\build\\c02-foundation-author-r4\\Release\\L04_construction_reference.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L04_construction/CMakeLists.txt\n  L04_construction_student.vcxproj -> F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L04_construction\\build\\c02-foundation-author-r4\\Release\\L04_construction_student.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L04_construction/CMakeLists.txt\n  L04_construction_validation_bad_leak.vcxproj -> F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L04_construction\\build\\c02-foundation-author-r4\\Release\\L04_construction_validation_bad_leak.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L04_construction/CMakeLists.txt\n  L04_construction_validation_bad_noop.vcxproj -> F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L04_construction\\build\\c02-foundation-author-r4\\Release\\L04_construction_validation_bad_noop.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L04_construction/CMakeLists.txt\n  L04_construction_validation_good.vcxproj -> F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L04_construction\\build\\c02-foundation-author-r4\\Release\\L04_construction_validation_good.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L04_construction/CMakeLists.txt\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "expected_exit": 0,
+  "required_text": [
+    "L04_construction_student"
+  ],
+  "verdict": "PASS"
+}

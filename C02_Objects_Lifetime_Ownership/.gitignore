@@ -1,0 +1,14 @@
+# Generated project/build files may occur in older isolated review trees.
+# Keep raw evidence JSON/TXT/XML and authored probe sources.
+*.vcxproj
+*.slnx
+*.dir/
+*.tlog
+*.lastbuildstate
+*.recipe
+CTestTestfile.cmake
+DartConfiguration.tcl
+build.ninja
+rules.ninja
+.ninja_deps
+.ninja_log

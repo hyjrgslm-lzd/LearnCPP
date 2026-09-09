@@ -1,0 +1,19 @@
+{
+  "command": [
+    "F:\\CPPTrain\\LearnCPP\\build\\c02-foundation-verifier-r1\\L05-student-ref-off\\Release\\L05_special_members_student.exe"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.25,
+  "stdout": "",
+  "stderr": "check failed: copy must have independent storage\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 1,
+  "required_text": [
+    "check failed"
+  ],
+  "verdict": "PASS"
+}

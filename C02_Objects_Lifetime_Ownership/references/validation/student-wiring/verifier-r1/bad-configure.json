@@ -1,0 +1,26 @@
+{
+  "command": [
+    "cmake",
+    "-S",
+    "F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\student-wiring",
+    "-B",
+    "F:\\CPPTrain\\LearnCPP\\build\\c02-wiring-verifier-r1\\bad",
+    "-G",
+    "Visual Studio 18 2026",
+    "-A",
+    "x64",
+    "-DC02_WIRING_BAD=ON"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.3590000001713634,
+  "stdout": "-- The CXX compiler identification is MSVC 19.51.36256.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring done (2.3s)\n-- Generating done (0.0s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/build/c02-wiring-verifier-r1/bad\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

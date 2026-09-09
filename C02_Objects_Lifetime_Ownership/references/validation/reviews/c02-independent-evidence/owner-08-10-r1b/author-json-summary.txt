@@ -1,0 +1,87 @@
+
+Name                                                   ExitCode Verdict Timeout HasRequiredText
+----                                                   -------- ------- ------- ---------------
+author-owner-l10-r1-bad-leak-control-block-debug.json           FAIL      False 
+author-owner-l10-r1-bad-weak-resurrect-debug.json               FAIL      False 
+author-owner-l10-r1-build-debug.json                   1        FAIL      False 
+author-owner-l10-r1-build-release-default.json         1        FAIL      False 
+author-owner-l10-r1-build-student-ref-off.json         1        FAIL      False 
+author-owner-l10-r1-configure-debug.json               0        PASS      False 
+author-owner-l10-r1-configure-release-default.json     0        PASS      False 
+author-owner-l10-r1-configure-student-ref-off.json     0        PASS      False 
+author-owner-l10-r1-ctest-debug.json                   8        FAIL      False 
+author-owner-l10-r1-ctest-release-default.json         8        FAIL      False 
+author-owner-l10-r1-good-debug.json                             FAIL      False 
+author-owner-l10-r1-student-placeholder.json                    FAIL      False 
+author-owner-l10-r1b-bad-leak-control-block-debug.json          FAIL      False 
+author-owner-l10-r1b-bad-weak-resurrect-debug.json              FAIL      False 
+author-owner-l10-r1b-build-debug.json                  1        FAIL      False 
+author-owner-l10-r1b-build-release-default.json        1        FAIL      False 
+author-owner-l10-r1b-build-student-ref-off.json        0        PASS      False 
+author-owner-l10-r1b-configure-debug.json              0        PASS      False 
+author-owner-l10-r1b-configure-release-default.json    0        PASS      False 
+author-owner-l10-r1b-configure-student-ref-off.json    0        PASS      False 
+author-owner-l10-r1b-ctest-debug.json                  8        FAIL      False 
+author-owner-l10-r1b-ctest-release-default.json        8        FAIL      False 
+author-owner-l10-r1b-good-debug.json                            FAIL      False 
+author-owner-l10-r1b-student-placeholder.json          1        PASS      False 
+author-owner-l10-r1c-bad-leak-control-block-debug.json          FAIL      False 
+author-owner-l10-r1c-bad-weak-resurrect-debug.json              FAIL      False 
+author-owner-l10-r1c-build-debug.json                  1        FAIL      False 
+author-owner-l10-r1c-build-release-default.json        0        PASS      False 
+author-owner-l10-r1c-build-student-ref-off.json        0        PASS      False 
+author-owner-l10-r1c-configure-debug.json              0        PASS      False 
+author-owner-l10-r1c-configure-release-default.json    0        PASS      False 
+author-owner-l10-r1c-configure-student-ref-off.json    0        PASS      False 
+author-owner-l10-r1c-ctest-debug.json                  0        PASS      False 
+author-owner-l10-r1c-ctest-release-default.json        0        PASS      False 
+author-owner-l10-r1c-good-debug.json                   0        PASS      False 
+author-owner-l10-r1c-student-placeholder.json          1        PASS      False 
+author-owner-l10-r1d-bad-leak-control-block-debug.json 1        PASS      False 
+author-owner-l10-r1d-bad-weak-resurrect-debug.json     1        PASS      False 
+author-owner-l10-r1d-build-debug.json                  0        PASS      False 
+author-owner-l10-r1d-build-release-default.json        0        PASS      False 
+author-owner-l10-r1d-build-student-ref-off.json        0        PASS      False 
+author-owner-l10-r1d-configure-debug.json              0        PASS      False 
+author-owner-l10-r1d-configure-release-default.json    0        PASS      False 
+author-owner-l10-r1d-configure-student-ref-off.json    0        PASS      False 
+author-owner-l10-r1d-ctest-debug.json                  0        PASS      False 
+author-owner-l10-r1d-ctest-release-default.json        0        PASS      False 
+author-owner-l10-r1d-good-debug.json                   0        PASS      False 
+author-owner-l10-r1d-student-placeholder.json          1        PASS      False 
+
+
+
+Name                                                             ExitCode Verdict Timeout HasRequiredText
+----                                                             -------- ------- ------- ---------------
+author-owner-l08-r1-bad-noop-debug.json                                 1 PASS      False 
+author-owner-l08-r1-bad-release-debug.json                              1 PASS      False 
+author-owner-l08-r1-build-debug-msbuild-localized.json                  0 PASS      False 
+author-owner-l08-r1-build-debug.json                                    0 FAIL      False 
+author-owner-l08-r1-build-release-default.json                          0 PASS      False 
+author-owner-l08-r1-build-release.json                                  0 FAIL      False 
+author-owner-l08-r1-build-student-ref-off-msbuild-localized.json        0 PASS      False 
+author-owner-l08-r1-build-student-ref-off.json                          0 FAIL      False 
+author-owner-l08-r1-configure-debug.json                                0 PASS      False 
+author-owner-l08-r1-configure-release-default.json                      0 PASS      False 
+author-owner-l08-r1-configure-student-ref-off.json                      0 PASS      False 
+author-owner-l08-r1-ctest-debug.json                                    0 PASS      False 
+author-owner-l08-r1-ctest-release-default.json                          0 PASS      False 
+author-owner-l08-r1-ctest-release.json                                  0 PASS      False 
+author-owner-l08-r1-good-debug.json                                     0 PASS      False 
+author-owner-l08-r1-student-placeholder.json                            1 PASS      False 
+author-owner-l09-r1-bad-cycle-debug-actual-diagnostic.json              1 PASS      False 
+author-owner-l09-r1-bad-cycle-debug.json                                1 FAIL      False 
+author-owner-l09-r1-bad-weak-debug.json                                 1 PASS      False 
+author-owner-l09-r1-build-debug.json                                    0 PASS      False 
+author-owner-l09-r1-build-release-default.json                          0 PASS      False 
+author-owner-l09-r1-build-student-ref-off.json                          0 PASS      False 
+author-owner-l09-r1-configure-debug.json                                0 PASS      False 
+author-owner-l09-r1-configure-release-default.json                      0 PASS      False 
+author-owner-l09-r1-configure-student-ref-off.json                      0 PASS      False 
+author-owner-l09-r1-ctest-debug.json                                    0 PASS      False 
+author-owner-l09-r1-ctest-release-default.json                          0 PASS      False 
+author-owner-l09-r1-good-debug.json                                     0 PASS      False 
+author-owner-l09-r1-student-placeholder.json                            1 PASS      False 
+
+

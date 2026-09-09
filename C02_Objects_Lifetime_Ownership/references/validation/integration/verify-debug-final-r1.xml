@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="(empty)"
+	tests="40"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname=""
+	time="39"
+	timestamp="2026-09-09T10:16:22"
+	>
+	<testcase name="L01_initialization_observation" classname="L01_initialization_observation" time="0.467882" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L01_initialization_negative_narrowing" classname="L01_initialization_negative_narrowing" time="4.03191" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L01_initialization_negative_constinit_dynamic" classname="L01_initialization_negative_constinit_dynamic" time="3.64732" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L02_value_categories_observation" classname="L02_value_categories_observation" time="0.422557" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L02_value_categories_negative_bind_rvalue_to_nonconst_lvalue" classname="L02_value_categories_negative_bind_rvalue_to_nonconst_lvalue" time="3.54986" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L02_value_categories_negative_forward_lvalue_to_rvalue" classname="L02_value_categories_negative_forward_lvalue_to_rvalue" time="4.02869" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L03_lifetimes_reference" classname="L03_lifetimes_reference" time="0.431613" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L03_lifetimes_validation_good" classname="L03_lifetimes_validation_good" time="0.444006" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L03_lifetimes_validation_bad_dangling_view_check" classname="L03_lifetimes_validation_bad_dangling_view_check" time="0.491429" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L04_construction_reference" classname="L04_construction_reference" time="0.423551" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L04_construction_validation_good" classname="L04_construction_validation_good" time="0.413422" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L04_construction_validation_bad_noop_check" classname="L04_construction_validation_bad_noop_check" time="0.45164" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L04_construction_validation_bad_leak_check" classname="L04_construction_validation_bad_leak_check" time="0.448145" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L05_special_members_reference" classname="L05_special_members_reference" time="0.424065" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L05_special_members_validation_good" classname="L05_special_members_validation_good" time="0.451123" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L05_special_members_validation_bad_shallow_copy_check" classname="L05_special_members_validation_bad_shallow_copy_check" time="0.456592" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L05_special_members_validation_bad_move_leak_check" classname="L05_special_members_validation_bad_move_leak_check" time="0.479575" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L06_move_return_observation" classname="L06_move_return_observation" time="0.482206" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L06_move_return_negative_return_named_deleted" classname="L06_move_return_negative_return_named_deleted" time="3.92499" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L06_move_return_negative_const_move_only" classname="L06_move_return_negative_const_move_only" time="3.71195" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L07_raii_observation" classname="L07_raii_observation" time="0.43857" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>L07_raii_observation OK
+</system-out>
+	</testcase>
+	<testcase name="L07_raii_reference" classname="L07_raii_reference" time="0.446224" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L07_raii_reference OK
+</system-out>
+	</testcase>
+	<testcase name="L08_unique_observation" classname="L08_unique_observation" time="0.432611" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>L08_unique_observation OK
+</system-out>
+	</testcase>
+	<testcase name="L08_unique_reference" classname="L08_unique_reference" time="0.536881" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L08_unique_reference OK
+</system-out>
+	</testcase>
+	<testcase name="L09_shared_observation" classname="L09_shared_observation" time="0.419079" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>L09_shared_observation OK
+</system-out>
+	</testcase>
+	<testcase name="L09_shared_reference" classname="L09_shared_reference" time="0.439326" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L09_shared_reference OK
+</system-out>
+	</testcase>
+	<testcase name="L10_control_block_observation" classname="L10_control_block_observation" time="0.453422" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>L10_control_block_observation OK
+</system-out>
+	</testcase>
+	<testcase name="L10_control_block_reference" classname="L10_control_block_reference" time="0.43459" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L10_control_block_reference OK
+</system-out>
+	</testcase>
+	<testcase name="L11_layout_observation" classname="L11_layout_observation" time="0.44965" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>sizeof(Packet)=8
+alignof(Packet)=4
+offsetof(Packet.value)=4
+sizeof(Empty)=1
+sizeof(UsesEmptyBase)=4
+sizeof(int)=4
+L11_layout_observation OK
+</system-out>
+	</testcase>
+	<testcase name="L12_storage_reference" classname="L12_storage_reference" time="0.418107" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L12_storage_contract OK
+</system-out>
+	</testcase>
+	<testcase name="L12_storage_start_lifetime_as" classname="L12_storage_start_lifetime_as" time="0.434283" status="run">
+		<properties>
+			<property name="cmake_labels" value="capability"/>
+		</properties>
+		<system-out>L12_start_lifetime_as OK macro=202207
+</system-out>
+	</testcase>
+	<testcase name="L12_storage_validation_good" classname="L12_storage_validation_good" time="0.417917" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation"/>
+		</properties>
+		<system-out>L12_storage_contract OK
+</system-out>
+	</testcase>
+	<testcase name="L12_storage_validation_bad_noop_check" classname="L12_storage_validation_bad_noop_check" time="0.454622" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L13_aliasing_observation" classname="L13_aliasing_observation" time="0.412693" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>bit_pattern_1_0f=0x3f800000
+L13_aliasing_observation OK
+</system-out>
+	</testcase>
+	<testcase name="L14_ub_observation" classname="L14_ub_observation" time="0.417651" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>dangling reference: undefined_behavior
+ODR no diagnostic case: ifndr
+plain char signedness: implementation_defined
+some evaluation orders: unspecified
+C++26 erroneous values: erroneous
+L14_ub_observation OK
+</system-out>
+	</testcase>
+	<testcase name="P1_object_buffer_reference" classname="P1_object_buffer_reference" time="0.435253" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>P1_object_buffer_contract OK
+</system-out>
+	</testcase>
+	<testcase name="P1_object_buffer_validation_good" classname="P1_object_buffer_validation_good" time="0.433167" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation"/>
+		</properties>
+		<system-out>P1_object_buffer_contract OK
+</system-out>
+	</testcase>
+	<testcase name="P1_object_buffer_validation_bad_noop_check" classname="P1_object_buffer_validation_bad_noop_check" time="0.45506" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="P1_object_buffer_validation_bad_early_commit_check" classname="P1_object_buffer_validation_bad_early_commit_check" time="0.503669" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="P1_object_buffer_reject_throwing_move_only_check" classname="P1_object_buffer_reject_throwing_move_only_check" time="2.08435" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+</testsuite>

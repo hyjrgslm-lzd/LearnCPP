@@ -1,0 +1,4 @@
+cmake_minimum_required(VERSION 3.28)
+project(L02_negative_forward_lvalue LANGUAGES CXX)
+add_executable(L02_negative_forward_lvalue main.cpp)
+target_compile_features(L02_negative_forward_lvalue PRIVATE cxx_std_23)

@@ -1,0 +1,36 @@
+case=L14_frontier_p2287_base_member_designator_compile
+target=L14_frontier_p2287_base_member_designator
+expect=capability_compile
+source_marker=p2287_base_member_designator.cpp
+expected_failure=designator|field designator|C7559|C2440
+accepted_diagnostic=
+result=1
+command=D:/cmake/install/bin/cmake.exe;--build;F:/CPPTrain/LearnCPP/Core_Study/exercises/build/frontier;--config;Release;--target;L14_frontier_p2287_base_member_designator
+stdout<<EOF
+閫傜敤浜?.NET Framework MSBuild 鐗堟湰 18.9.1+a81b43525
+
+  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L14_ub/CMakeLists.txt
+  p2287_base_member_designator.cpp
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier\p2287_base_member_designator.cpp(10,19): error C2440: 鈥?function-style-cast>鈥? 鏃犳硶浠庘€渋nitializer list鈥濊浆鎹负鈥淒erived鈥?[F:\CPPTrain\LearnCPP\Core_Study\exercises\build\frontier\L14_ub\L14_frontier_p2287_base_member_designator.vcxproj]
+      F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier\p2287_base_member_designator.cpp(10,19):
+      鏃犳晥鐨勮仛鍚堝垵濮嬪寲
+          F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier\p2287_base_member_designator.cpp(10,20):
+          鈥渂ase鈥? 鎸囩ず绗︿笉浼氬懡鍚嶁€淒erived鈥濈被鍨嬬殑鐩存帴闈為潤鎬佹暟鎹垚鍛?
+  
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier\p2287_base_member_designator.cpp(13,35): error C2131: 琛ㄨ揪寮忕殑璁＄畻缁撴灉涓嶆槸甯告暟 [F:\CPPTrain\LearnCPP\Core_Study\exercises\build\frontier\L14_ub\L14_frontier_p2287_base_member_designator.vcxproj]
+      F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier\p2287_base_member_designator.cpp(13,15):
+      鐢变簬鎺у埗鍒拌揪 constexpr 鍑芥暟鐨勬湯灏撅紝瀵艰嚧澶辫触
+      F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier\p2287_base_member_designator.cpp(13,15):
+      璇峰弬瑙佲€渕ake_derived鈥濈殑鐢ㄦ硶
+  
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier\p2287_base_member_designator.cpp(14,37): error C2131: 琛ㄨ揪寮忕殑璁＄畻缁撴灉涓嶆槸甯告暟 [F:\CPPTrain\LearnCPP\Core_Study\exercises\build\frontier\L14_ub\L14_frontier_p2287_base_member_designator.vcxproj]
+      F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier\p2287_base_member_designator.cpp(14,15):
+      鐢变簬鎺у埗鍒拌揪 constexpr 鍑芥暟鐨勬湯灏撅紝瀵艰嚧澶辫触
+      F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier\p2287_base_member_designator.cpp(14,15):
+      璇峰弬瑙佲€渕ake_derived鈥濈殑鐢ㄦ硶
+  
+
+EOF
+stderr<<EOF
+
+EOF

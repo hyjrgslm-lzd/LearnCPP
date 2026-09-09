@@ -1,0 +1,81 @@
+Core_Study/exercises/L09_shared\CMakeLists.txt-37-    core_configure_target(L09_shared_validation_bad_cycle)
+Core_Study/exercises/L09_shared\CMakeLists.txt-38-
+Core_Study/exercises/L09_shared\CMakeLists.txt:39:    add_executable(L09_shared_validation_bad_hardcoded_noop checks/validation_check.cpp)
+Core_Study/exercises/L09_shared\CMakeLists.txt:40:    target_include_directories(L09_shared_validation_bad_hardcoded_noop PRIVATE checks/support validation/bad_hardcoded_noop checks)
+Core_Study/exercises/L09_shared\CMakeLists.txt:41:    core_configure_target(L09_shared_validation_bad_hardcoded_noop)
+Core_Study/exercises/L09_shared\CMakeLists.txt-42-
+Core_Study/exercises/L09_shared\CMakeLists.txt-43-    add_executable(L09_shared_validation_bad_weak_resurrect checks/validation_check.cpp)
+--
+Core_Study/exercises/L09_shared\README.md-28-## Part 4：循环修复
+Core_Study/exercises/L09_shared\README.md-29-
+Core_Study/exercises/L09_shared\README.md:30:实现 `connect_parent_child(parent, child)`：把 checker 创建的真实父子节点连起来。父节点用 shared `next` 拥有子节点，子节点用 weak `parent` 观察父节点。函数不返回结果；checker 会直接检查节点成员、外部 weak 和 fixture alive 计数。
+Core_Study/exercises/L09_shared\README.md-31-
+Core_Study/exercises/L09_shared\README.md-32-解析：反向边若用 shared，会形成 cycle。外部局部变量释放后，两个节点仍互相持有 strong，析构不会运行。正确实现用 weak 打断所有权环。
+--
+Core_Study/exercises/L09_shared\README.md-34-## Part 5：enable_shared_from_this
+Core_Study/exercises/L09_shared\README.md-35-
+Core_Study/exercises/L09_shared\README.md:36:实现 `shared_from_existing(node&)`：对象已由 checker 持有的 `shared_ptr` 管理后，从这个真实对象调用 `shared_from_this()`，返回共享同一控制块的新 strong。函数不返回自报计数；checker 会直接比较地址和 `owner.use_count()`。
+Core_Study/exercises/L09_shared\README.md-37-
+Core_Study/exercises/L09_shared\README.md-38-解析：不要用 `std::shared_ptr<Node>(this)`。本题不在默认路径制造双控制块 UB，只验证正确前提。
+--
+Core_Study/exercises/L09_shared\validation\bad_weak_resurrect\owner.hpp-20-    return true;
+Core_Study/exercises/L09_shared\validation\bad_weak_resurrect\owner.hpp-21-}
+Core_Study/exercises/L09_shared\validation\bad_weak_resurrect\owner.hpp:22:inline void connect_parent_child(const std::shared_ptr<node>& parent, const std::shared_ptr<node>& child) {
+Core_Study/exercises/L09_shared\validation\bad_weak_resurrect\owner.hpp-23-    parent->next = child;
+Core_Study/exercises/L09_shared\validation\bad_weak_resurrect\owner.hpp-24-    child->parent = parent;
+Core_Study/exercises/L09_shared\validation\bad_weak_resurrect\owner.hpp-25-}
+Core_Study/exercises/L09_shared\validation\bad_weak_resurrect\owner.hpp:26:inline std::shared_ptr<node> shared_from_existing(node& object) {
+Core_Study/exercises/L09_shared\validation\bad_weak_resurrect\owner.hpp-27-    return object.shared_from_this();
+Core_Study/exercises/L09_shared\validation\bad_weak_resurrect\owner.hpp-28-}
+--
+Core_Study/exercises/L09_shared\checks\owner_checks.hpp-64-        weak_parent = parent;
+Core_Study/exercises/L09_shared\checks\owner_checks.hpp-65-        weak_child = child;
+Core_Study/exercises/L09_shared\checks\owner_checks.hpp:66:        l09::connect_parent_child(parent, child);
+Core_Study/exercises/L09_shared\checks\owner_checks.hpp:67:        check(parent->next == child, "parent owns child through shared next");
+Core_Study/exercises/L09_shared\checks\owner_checks.hpp-68-        check(child->parent.lock() == parent, "child observes parent through weak parent");
+Core_Study/exercises/L09_shared\checks\owner_checks.hpp-69-    }
+--
+Core_Study/exercises/L09_shared\checks\owner_checks.hpp-77-    {
+Core_Study/exercises/L09_shared\checks\owner_checks.hpp-78-        auto owner = l09::make_node(5);
+Core_Study/exercises/L09_shared\checks\owner_checks.hpp:79:        auto again = l09::shared_from_existing(*owner);
+Core_Study/exercises/L09_shared\checks\owner_checks.hpp:80:        check(again.get() == owner.get(), "shared_from_this returns same object");
+Core_Study/exercises/L09_shared\checks\owner_checks.hpp-81-        check(owner.use_count() == 2, "shared_from_this creates another shared owner");
+Core_Study/exercises/L09_shared\checks\owner_checks.hpp-82-    }
+--
+Core_Study/exercises/L09_shared\validation\bad_hardcoded_noop\owner.hpp-20-}
+Core_Study/exercises/L09_shared\validation\bad_hardcoded_noop\owner.hpp-21-
+Core_Study/exercises/L09_shared\validation\bad_hardcoded_noop\owner.hpp:22:inline void connect_parent_child(const std::shared_ptr<node>&, const std::shared_ptr<node>&) {}
+Core_Study/exercises/L09_shared\validation\bad_hardcoded_noop\owner.hpp-23-
+Core_Study/exercises/L09_shared\validation\bad_hardcoded_noop\owner.hpp:24:inline std::shared_ptr<node> shared_from_existing(node& object) {
+Core_Study/exercises/L09_shared\validation\bad_hardcoded_noop\owner.hpp-25-    return object.shared_from_this();
+Core_Study/exercises/L09_shared\validation\bad_hardcoded_noop\owner.hpp-26-}
+--
+Core_Study/exercises/L09_shared\validation\bad_cycle\owner.hpp-20-}
+Core_Study/exercises/L09_shared\validation\bad_cycle\owner.hpp-21-
+Core_Study/exercises/L09_shared\validation\bad_cycle\owner.hpp:22:inline void connect_parent_child(const std::shared_ptr<node>& parent, const std::shared_ptr<node>& child) {
+Core_Study/exercises/L09_shared\validation\bad_cycle\owner.hpp-23-    parent->next = child;
+Core_Study/exercises/L09_shared\validation\bad_cycle\owner.hpp-24-    child->parent = parent;
+--
+Core_Study/exercises/L09_shared\validation\bad_cycle\owner.hpp-26-}
+Core_Study/exercises/L09_shared\validation\bad_cycle\owner.hpp-27-
+Core_Study/exercises/L09_shared\validation\bad_cycle\owner.hpp:28:inline std::shared_ptr<node> shared_from_existing(node& object) {
+Core_Study/exercises/L09_shared\validation\bad_cycle\owner.hpp-29-    return object.shared_from_this();
+Core_Study/exercises/L09_shared\validation\bad_cycle\owner.hpp-30-}
+--
+Core_Study/exercises/L09_shared\src\student\owner.hpp-13-inline std::weak_ptr<node> observe(const std::shared_ptr<node>& owner) noexcept { return owner; }
+Core_Study/exercises/L09_shared\src\student\owner.hpp-14-inline bool lock_value(const std::weak_ptr<node>&, int&) { return false; }
+Core_Study/exercises/L09_shared\src\student\owner.hpp:15:inline void connect_parent_child(const std::shared_ptr<node>&, const std::shared_ptr<node>&) {}
+Core_Study/exercises/L09_shared\src\student\owner.hpp:16:inline std::shared_ptr<node> shared_from_existing(node&) { return {}; }
+Core_Study/exercises/L09_shared\src\student\owner.hpp-17-
+Core_Study/exercises/L09_shared\src\student\owner.hpp-18-} // namespace l09
+--
+Core_Study/exercises/L09_shared\src\reference\owner.hpp-29-}
+Core_Study/exercises/L09_shared\src\reference\owner.hpp-30-
+Core_Study/exercises/L09_shared\src\reference\owner.hpp:31:inline void connect_parent_child(const std::shared_ptr<node>& parent, const std::shared_ptr<node>& child) {
+Core_Study/exercises/L09_shared\src\reference\owner.hpp-32-    parent->next = child;
+Core_Study/exercises/L09_shared\src\reference\owner.hpp-33-    child->parent = parent;
+Core_Study/exercises/L09_shared\src\reference\owner.hpp-34-}
+Core_Study/exercises/L09_shared\src\reference\owner.hpp-35-
+Core_Study/exercises/L09_shared\src\reference\owner.hpp:36:inline std::shared_ptr<node> shared_from_existing(node& object) {
+Core_Study/exercises/L09_shared\src\reference\owner.hpp-37-    return object.shared_from_this();
+Core_Study/exercises/L09_shared\src\reference\owner.hpp-38-}

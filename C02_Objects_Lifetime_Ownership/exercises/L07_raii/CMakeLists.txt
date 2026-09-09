@@ -1,0 +1,50 @@
+cmake_minimum_required(VERSION 3.28)
+project(L07_raii LANGUAGES CXX)
+include(../cmake/StudySetup.cmake)
+
+option(L07_RAII_BUILD_VALIDATION_VARIANTS "Build local checker good/bad validation variants" OFF)
+
+add_executable(L07_raii_observation checks/observation_check.cpp)
+target_include_directories(L07_raii_observation PRIVATE checks checks/support)
+core_configure_target(L07_raii_observation)
+core_add_test(L07_raii_observation COMMAND L07_raii_observation LABELS observation TIMEOUT 30)
+
+if(CORE_STUDY_TEST_STUDENTS)
+    add_executable(L07_raii_student checks/student_check.cpp)
+else()
+    add_executable(L07_raii_student EXCLUDE_FROM_ALL checks/student_check.cpp)
+endif()
+target_include_directories(L07_raii_student PRIVATE checks/support src/student checks)
+core_configure_target(L07_raii_student)
+if(CORE_STUDY_TEST_STUDENTS)
+    core_add_test(L07_raii_student COMMAND L07_raii_student LABELS student TIMEOUT 30)
+endif()
+
+if(CORE_STUDY_BUILD_REFERENCE)
+    add_executable(L07_raii_reference checks/reference_check.cpp)
+    target_include_directories(L07_raii_reference PRIVATE checks/support src/reference checks)
+    core_configure_target(L07_raii_reference)
+    core_add_test(L07_raii_reference COMMAND L07_raii_reference LABELS reference TIMEOUT 30)
+endif()
+
+if(L07_RAII_BUILD_VALIDATION_VARIANTS)
+    add_executable(L07_raii_validation_good checks/validation_check.cpp)
+    target_include_directories(L07_raii_validation_good PRIVATE checks/support validation/good checks)
+    core_configure_target(L07_raii_validation_good)
+
+    add_executable(L07_raii_validation_bad_noop checks/validation_check.cpp)
+    target_include_directories(L07_raii_validation_bad_noop PRIVATE checks/support validation/bad_noop checks)
+    core_configure_target(L07_raii_validation_bad_noop)
+
+    add_executable(L07_raii_validation_bad_fake_completed checks/validation_check.cpp)
+    target_include_directories(L07_raii_validation_bad_fake_completed PRIVATE checks/support validation/bad_fake_completed checks)
+    core_configure_target(L07_raii_validation_bad_fake_completed)
+
+    add_executable(L07_raii_validation_bad_memberwise_move_order checks/validation_check.cpp)
+    target_include_directories(L07_raii_validation_bad_memberwise_move_order PRIVATE checks/support validation/bad_memberwise_move_order checks)
+    core_configure_target(L07_raii_validation_bad_memberwise_move_order)
+
+    add_executable(L07_raii_validation_bad_support_shadow checks/validation_check.cpp)
+    target_include_directories(L07_raii_validation_bad_support_shadow PRIVATE checks/support validation/bad_support_shadow checks)
+    core_configure_target(L07_raii_validation_bad_support_shadow)
+endif()

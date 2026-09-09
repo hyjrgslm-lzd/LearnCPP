@@ -1,0 +1,87 @@
+Core_Study/exercises/L10_control_block\validation\bad_weak_resurrect\rc.hpp:3:#include "../../checks/support/rc_support.hpp"
+Core_Study/exercises/L08_unique\validation\bad_release_keeps_owner\owner.hpp:3:#include "../../checks/support/unique_support.hpp"
+Core_Study/exercises/L10_control_block\validation\bad_leak_control_block\rc.hpp:3:#include "../../checks/support/rc_support.hpp"
+Core_Study/exercises/L08_unique\validation\bad_noop\owner.hpp:3:#include "../../checks/support/unique_support.hpp"
+Core_Study/exercises/L09_shared\validation\bad_weak_resurrect\owner.hpp:3:#include "../../checks/support/shared_support.hpp"
+Core_Study/exercises/L08_unique\README.md:5:checker 会先通过相对路径包含真实 fixture，再通过 `#include <owner.hpp>` 消费当前 target 的 include 路径。实现头若需要 fixture，也使用相对路径指向 `../../checks/support/unique_support.hpp`。Student 不提供计数、报告或 ready 标记。
+Core_Study/exercises/L10_control_block\checks\observation_check.cpp:1:#include "support/rc_support.hpp"
+Core_Study/exercises/L10_control_block\checks\observation_check.cpp:9:    l10_support::reset_model();
+Core_Study/exercises/L10_control_block\checks\observation_check.cpp:15:        check(l10_support::counters().objects_alive == 0, "std shared destroys object at strong zero");
+Core_Study/exercises/L10_control_block\checks\observation_check.cpp:18:    check(l10_support::counters().objects_alive == 0, "observation leaves no object");
+Core_Study/exercises/L09_shared\validation\bad_cycle\owner.hpp:3:#include "../../checks/support/shared_support.hpp"
+Core_Study/exercises/L09_shared\validation\bad_cycle\owner.hpp:23:    l09_support::reset_model();
+Core_Study/exercises/L09_shared\validation\bad_cycle\owner.hpp:32:    result.alive_after_scope = l09_support::counters().nodes_alive;
+Core_Study/exercises/L09_shared\validation\bad_cycle\owner.hpp:37:    l09_support::reset_model();
+Core_Study/exercises/L08_unique\checks\observation_check.cpp:1:#include "support/unique_support.hpp"
+Core_Study/exercises/L08_unique\checks\observation_check.cpp:9:    l08_support::reset_model();
+Core_Study/exercises/L08_unique\checks\observation_check.cpp:17:        check(l08_support::counters().alive == 1, "release does not delete");
+Core_Study/exercises/L08_unique\checks\observation_check.cpp:20:    check(l08_support::counters().alive == 0, "observation leaves no live object");
+Core_Study/exercises/L08_unique\checks\owner_checks.hpp:3:#include "support/unique_support.hpp"
+Core_Study/exercises/L08_unique\checks\owner_checks.hpp:4:#include <owner.hpp>
+Core_Study/exercises/L08_unique\checks\owner_checks.hpp:15:inline void check_empty(const char* scope) {
+Core_Study/exercises/L08_unique\checks\owner_checks.hpp:16:    const auto c = l08_support::counters();
+Core_Study/exercises/L08_unique\checks\owner_checks.hpp:31:    l08_support::reset_model();
+Core_Study/exercises/L08_unique\checks\owner_checks.hpp:37:        check(l08_support::counters().alive == 1, "tracked alive while owner lives");
+Core_Study/exercises/L08_unique\checks\owner_checks.hpp:39:    check_empty("basic unique lifetime");
+Core_Study/exercises/L08_unique\checks\owner_checks.hpp:40:    check(l08_support::counters().custom_deleted == 1, "custom deleter ran once");
+Core_Study/exercises/L08_unique\checks\owner_checks.hpp:44:    l08_support::reset_model();
+Core_Study/exercises/L08_unique\checks\owner_checks.hpp:48:    check(item == nullptr, "release leaves unique_ptr empty");
+Core_Study/exercises/L08_unique\checks\owner_checks.hpp:49:    check(l08_support::counters().alive == 1, "release does not delete object");
+Core_Study/exercises/L08_unique\checks\owner_checks.hpp:51:    check_empty("release transfer");
+Core_Study/exercises/L08_unique\checks\owner_checks.hpp:52:    check(l08_support::counters().custom_deleted == 1, "manual deleter after release");
+Core_Study/exercises/L08_unique\checks\owner_checks.hpp:56:    l08_support::reset_model();
+Core_Study/exercises/L08_unique\checks\owner_checks.hpp:62:        check(l08_support::counters().constructed == 2, "reset constructed replacement");
+Core_Study/exercises/L08_unique\checks\owner_checks.hpp:63:        check(l08_support::counters().destroyed == 1, "reset destroyed old object");
+Core_Study/exercises/L08_unique\checks\owner_checks.hpp:64:        check(l08_support::counters().alive == 1, "one object alive after reset");
+Core_Study/exercises/L08_unique\checks\owner_checks.hpp:66:    check_empty("reset");
+Core_Study/exercises/L08_unique\checks\owner_checks.hpp:70:    l08_support::reset_model(13);
+Core_Study/exercises/L08_unique\checks\owner_checks.hpp:78:    check(threw, "construction failure propagates");
+Core_Study/exercises/L08_unique\checks\owner_checks.hpp:79:    check_empty("construction failure");
+Core_Study/exercises/L08_unique\checks\owner_checks.hpp:109:    check_empty("all unique checks");
+Core_Study/exercises/L09_shared\src\student\owner.hpp:3:#include "../../checks/support/shared_support.hpp"
+Core_Study/exercises/L09_shared\src\reference\owner.hpp:3:#include "../../checks/support/shared_support.hpp"
+Core_Study/exercises/L09_shared\src\reference\owner.hpp:32:    l09_support::reset_model();
+Core_Study/exercises/L09_shared\src\reference\owner.hpp:41:    result.alive_after_scope = l09_support::counters().nodes_alive;
+Core_Study/exercises/L09_shared\src\reference\owner.hpp:46:    l09_support::reset_model();
+Core_Study/exercises/L10_control_block\src\student\rc.hpp:3:#include "../../checks/support/rc_support.hpp"
+Core_Study/exercises/L08_unique\src\student\owner.hpp:3:#include "../../checks/support/unique_support.hpp"
+Core_Study/exercises/L10_control_block\src\reference\rc.hpp:3:#include "../../checks/support/rc_support.hpp"
+Core_Study/exercises/L10_control_block\checks\rc_checks.hpp:3:#include "support/rc_support.hpp"
+Core_Study/exercises/L10_control_block\checks\rc_checks.hpp:4:#include <rc.hpp>
+Core_Study/exercises/L10_control_block\checks\rc_checks.hpp:17:inline void check_empty(const char* scope) {
+Core_Study/exercises/L10_control_block\checks\rc_checks.hpp:18:    const auto c = l10_support::counters();
+Core_Study/exercises/L10_control_block\checks\rc_checks.hpp:33:    l10_support::reset_model();
+Core_Study/exercises/L10_control_block\checks\rc_checks.hpp:40:        check(l10_support::counters().objects_alive == 1, "object alive");
+Core_Study/exercises/L10_control_block\checks\rc_checks.hpp:41:        check(l10_support::counters().control_blocks_alive == 1, "control block alive");
+Core_Study/exercises/L10_control_block\checks\rc_checks.hpp:43:    check_empty("last strong");
+Core_Study/exercises/L10_control_block\checks\rc_checks.hpp:47:    l10_support::reset_model();
+Core_Study/exercises/L10_control_block\checks\rc_checks.hpp:62:    check_empty("copy move reset");
+Core_Study/exercises/L10_control_block\checks\rc_checks.hpp:66:    l10_support::reset_model();
+Core_Study/exercises/L10_control_block\checks\rc_checks.hpp:76:    check(l10_support::counters().objects_alive == 0, "object destroyed after last strong");
+Core_Study/exercises/L10_control_block\checks\rc_checks.hpp:77:    check(l10_support::counters().control_blocks_alive == 1, "weak keeps control block alive");
+Core_Study/exercises/L10_control_block\checks\rc_checks.hpp:80:    check(!locked, "lock cannot resurrect object");
+Core_Study/exercises/L10_control_block\checks\rc_checks.hpp:82:    check_empty("weak reset");
+Core_Study/exercises/L10_control_block\checks\rc_checks.hpp:86:    l10_support::reset_model();
+Core_Study/exercises/L10_control_block\checks\rc_checks.hpp:91:        check(owner.weak_count() == 2, "weak copy increments weak count");
+Core_Study/exercises/L10_control_block\checks\rc_checks.hpp:97:    check_empty("weak copy move");
+Core_Study/exercises/L10_control_block\checks\rc_checks.hpp:101:    l10_support::reset_model(13);
+Core_Study/exercises/L10_control_block\checks\rc_checks.hpp:109:    check(threw, "make_rc propagates object construction failure");
+Core_Study/exercises/L10_control_block\checks\rc_checks.hpp:110:    check_empty("construction failure");
+Core_Study/exercises/L08_unique\checks\support\unique_support.hpp:19:inline void reset_model(int throw_value = -1) {
+Core_Study/exercises/L08_unique\checks\support\unique_support.hpp:27:[[nodiscard]] inline Counters counters() noexcept {
+Core_Study/exercises/L08_unique\src\reference\owner.hpp:3:#include "../../checks/support/unique_support.hpp"
+Core_Study/exercises/L09_shared\checks\observation_check.cpp:1:#include "support/shared_support.hpp"
+Core_Study/exercises/L09_shared\checks\observation_check.cpp:9:    l09_support::reset_model();
+Core_Study/exercises/L09_shared\checks\observation_check.cpp:20:    check(l09_support::counters().nodes_alive == 0, "observation leaves no nodes");
+Core_Study/exercises/L09_shared\checks\owner_checks.hpp:3:#include "support/shared_support.hpp"
+Core_Study/exercises/L09_shared\checks\owner_checks.hpp:4:#include <owner.hpp>
+Core_Study/exercises/L09_shared\checks\owner_checks.hpp:14:    check(l09_support::counters().nodes_alive == 0, std::string(scope) + ": node still alive");
+Core_Study/exercises/L09_shared\checks\owner_checks.hpp:18:    l09_support::reset_model();
+Core_Study/exercises/L09_shared\checks\owner_checks.hpp:27:            check(first.use_count() == 2, "copy shares control block");
+Core_Study/exercises/L09_shared\checks\owner_checks.hpp:33:        check(l09_support::counters().nodes_alive == 1, "node alive until last strong gone");
+Core_Study/exercises/L09_shared\checks\owner_checks.hpp:42:    l09_support::reset_model();
+Core_Study/exercises/L09_shared\checks\owner_checks.hpp:50:    check(l09_support::counters().nodes_alive == 1, "alias keeps whole node alive");
+Core_Study/exercises/L10_control_block\checks\support\rc_support.hpp:21:inline void reset_model(int throw_value = -1) {
+Core_Study/exercises/L10_control_block\checks\support\rc_support.hpp:29:[[nodiscard]] inline Counters counters() noexcept {
+Core_Study/exercises/L09_shared\checks\support\shared_support.hpp:17:inline void reset_model() noexcept {
+Core_Study/exercises/L09_shared\checks\support\shared_support.hpp:21:[[nodiscard]] inline Counters counters() noexcept {

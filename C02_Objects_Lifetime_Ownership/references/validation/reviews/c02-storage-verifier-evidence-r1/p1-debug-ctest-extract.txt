@@ -1,0 +1,11 @@
+    Start 1: P1_object_buffer_reference
+1/5 Test #1: P1_object_buffer_reference ...........................   Passed    0.42 sec
+    Start 2: P1_object_buffer_validation_good
+2/5 Test #2: P1_object_buffer_validation_good .....................   Passed    0.43 sec
+    Start 3: P1_object_buffer_validation_bad_noop_check
+3/5 Test #3: P1_object_buffer_validation_bad_noop_check ...........   Passed    0.47 sec
+    Start 4: P1_object_buffer_validation_bad_early_commit_check
+4/5 Test #4: P1_object_buffer_validation_bad_early_commit_check ...   Passed    0.49 sec
+    Start 5: P1_object_buffer_reject_throwing_move_only_check
+5/5 Test #5: P1_object_buffer_reject_throwing_move_only_check .....   Passed    1.28 sec
+100% tests passed, 0 tests failed out of 5

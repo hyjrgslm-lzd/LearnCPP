@@ -1,0 +1,24 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "build/c02-owner-l09-r2",
+    "-C",
+    "Debug",
+    "--output-on-failure"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.5619999999180436,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/build/c02-owner-l09-r2\n    Start 1: L09_shared_observation\n1/2 Test #1: L09_shared_observation ...........   Passed    0.25 sec\n    Start 2: L09_shared_reference\n2/2 Test #2: L09_shared_reference .............   Passed    0.24 sec\n\n100% tests passed, 0 tests failed out of 2\n\nLabel Time Summary:\nobservation    =   0.25 sec*proc (1 test)\nreference      =   0.24 sec*proc (1 test)\n\nTotal Test time (real) =   0.51 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    "100% tests passed"
+  ],
+  "verdict": "PASS"
+}

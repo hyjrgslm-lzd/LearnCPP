@@ -1,0 +1,59 @@
+[
+  {
+    "Lesson": "L08_unique",
+    "ConfigureExit": 1,
+    "BuildExit": 1,
+    "CtestExit": 1,
+    "GoodExit": 1,
+    "Bads": [
+      {
+        "Target": "L08_unique_validation_bad_noop",
+        "Exit": 1,
+        "Output": null
+      },
+      {
+        "Target": "L08_unique_validation_bad_release_keeps_owner",
+        "Exit": 1,
+        "Output": null
+      }
+    ]
+  },
+  {
+    "Lesson": "L09_shared",
+    "ConfigureExit": 1,
+    "BuildExit": 1,
+    "CtestExit": 1,
+    "GoodExit": 1,
+    "Bads": [
+      {
+        "Target": "L09_shared_validation_bad_cycle",
+        "Exit": 1,
+        "Output": null
+      },
+      {
+        "Target": "L09_shared_validation_bad_weak_resurrect",
+        "Exit": 1,
+        "Output": null
+      }
+    ]
+  },
+  {
+    "Lesson": "L10_control_block",
+    "ConfigureExit": 1,
+    "BuildExit": 1,
+    "CtestExit": 1,
+    "GoodExit": 1,
+    "Bads": [
+      {
+        "Target": "L10_control_block_validation_bad_leak_control_block",
+        "Exit": 1,
+        "Output": null
+      },
+      {
+        "Target": "L10_control_block_validation_bad_weak_resurrect",
+        "Exit": 1,
+        "Output": null
+      }
+    ]
+  }
+]

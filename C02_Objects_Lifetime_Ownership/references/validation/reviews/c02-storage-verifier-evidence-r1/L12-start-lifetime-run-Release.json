@@ -1,0 +1,17 @@
+{
+  "command": [
+    "F:\\CPPTrain\\LearnCPP\\build\\c02-storage-verifier-r1\\L12\\Release\\L12_storage_start_lifetime_as.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.0470000000204891,
+  "stdout": "L12_start_lifetime_as OK macro=202207\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

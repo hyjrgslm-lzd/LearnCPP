@@ -1,0 +1,31 @@
+{
+  "command": [
+    "python",
+    "Core_Study\\exercises\\tools\\audit_student.py",
+    "--build",
+    "build/c02-wiring-verifier-r1/good",
+    "--config",
+    "Release",
+    "--trace",
+    "Core_Study/references/validation/reviews/c02-student-wiring-verifier-evidence-r1/does-not-exist.json",
+    "--expect-target",
+    "wiring_student",
+    "--output",
+    "Core_Study\\references\\validation\\reviews\\c02-student-wiring-verifier-evidence-r1\\missing-trace-audit-result-corrected.json"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.07899999991059303,
+  "stdout": "FAIL: Core_Study\\references\\validation\\reviews\\c02-student-wiring-verifier-evidence-r1\\missing-trace-audit-result-corrected.json\naudit input error: [Errno 2] No such file or directory: 'Core_Study\\\\references\\\\validation\\\\reviews\\\\c02-student-wiring-verifier-evidence-r1\\\\does-not-exist.json'\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 1,
+  "required_text": [
+    "audit input error",
+    "No such file"
+  ],
+  "verdict": "PASS"
+}

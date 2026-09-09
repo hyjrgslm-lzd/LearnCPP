@@ -1,0 +1,19 @@
+{
+  "command": [
+    "cmd.exe",
+    "/d",
+    "/c",
+    "Core_Study\\references\\validation\\reviews\\c02-l07-verifier-evidence-r1\\fake-complete-bad\\configure-build.cmd"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 5.812000000150874,
+  "stdout": "-- The CXX compiler identification is Clang 22.1.3 with GNU-like command-line\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/Llvm/x64/bin/clang++.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring done (2.1s)\n-- Generating done (0.0s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/build/c02-verifier-l07-fake-complete-bad-r1\n[1/2] Building CXX object CMakeFiles/c02_l07_fake_complete_bad.dir/F_/CPPTrain/LearnCPP/Core_Study/exercises/L07_raii/checks/reference_check.cpp.obj\nIn file included from F:/CPPTrain/LearnCPP/Core_Study/exercises/L07_raii/checks/reference_check.cpp:1:\nF:/CPPTrain/LearnCPP/Core_Study/exercises/L07_raii/checks\\owner_checks.hpp:124:11: warning: explicitly moving variable of type 'l07::two_resource_owner' to itself [-Wself-move]\n  124 |     owner = std::move(owner);\n      |     ~~~~~ ^           ~~~~~\n1 warning generated.\n[2/2] Linking CXX executable c02_l07_fake_complete_bad.exe\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

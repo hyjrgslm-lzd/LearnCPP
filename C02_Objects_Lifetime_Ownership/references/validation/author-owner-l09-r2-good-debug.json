@@ -1,0 +1,19 @@
+{
+  "command": [
+    "build/c02-owner-l09-r2/Debug/L09_shared_validation_good.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.26599999982863665,
+  "stdout": "L09_shared_validation_contract OK\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    "L09_shared_validation_contract OK"
+  ],
+  "verdict": "PASS"
+}

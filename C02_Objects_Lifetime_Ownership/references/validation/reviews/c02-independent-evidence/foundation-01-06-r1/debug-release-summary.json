@@ -1,0 +1,47 @@
+[
+  {
+    "Lesson": "L01_initialization",
+    "DebugConfigure": 0,
+    "DebugBuild": 0,
+    "DebugCtest": 0,
+    "ReleaseConfigure": 0,
+    "ReleaseBuild": 0,
+    "ReleaseCtest": 0
+  },
+  {
+    "Lesson": "L02_value_categories",
+    "DebugConfigure": 0,
+    "DebugBuild": 0,
+    "DebugCtest": 8,
+    "ReleaseConfigure": 0,
+    "ReleaseBuild": 0,
+    "ReleaseCtest": 8
+  },
+  {
+    "Lesson": "L03_lifetimes",
+    "DebugConfigure": 0,
+    "DebugBuild": 0,
+    "DebugCtest": 0,
+    "ReleaseConfigure": 0,
+    "ReleaseBuild": 0,
+    "ReleaseCtest": 0
+  },
+  {
+    "Lesson": "L05_special_members",
+    "DebugConfigure": 0,
+    "DebugBuild": 0,
+    "DebugCtest": 0,
+    "ReleaseConfigure": 0,
+    "ReleaseBuild": 0,
+    "ReleaseCtest": 0
+  },
+  {
+    "Lesson": "L06_move_return",
+    "DebugConfigure": 0,
+    "DebugBuild": 0,
+    "DebugCtest": 8,
+    "ReleaseConfigure": 0,
+    "ReleaseBuild": 0,
+    "ReleaseCtest": 8
+  }
+]

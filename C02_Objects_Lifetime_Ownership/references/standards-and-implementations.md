@@ -1,0 +1,41 @@
+# 规范与实现：两条独立状态轴
+
+本课固定文本核对基线为2026-09-08。规范规定程序的语义；实现决定当前工具链实际接受和执行什么。编译器接受某段代码、头文件提供某个宏、程序运行一次成功，分别只是对应层的证据，不能合并成“完整支持某版标准”。
+
+## 固定文本与版本归属
+
+| 文本 | 本课用途 | 不应混淆的边界 |
+|---|---|---|
+| [N4950](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/n4950.pdf) | C++23稳定主线的固定公开文本 | 后续DR另记，不把滚动草案改动无条件回写成此快照原文 |
+| N5050及[N5051编辑报告](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2026/n5051.html) | C++26最终草案/DIS基础的固定参考 | 草案基线不等于宣布ISO版本已经发布；编辑稿与会议批准也不同 |
+| N5054及[N5055编辑报告](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2026/n5055.html) | C++29工作草案及具体入稿/DR清单 | 工作草案不保证未来最终标准的完整功能列表 |
+
+引用稳定条款名定位问题：初始化看 `[dcl.init]`，引用与临时对象看 `[dcl.init.ref]` / `[class.temporary]`，生命期看 `[basic.life]`，特殊成员与返回看 `[class.copy.ctor]` / `[class.copy.elision]` / `[stmt.return]`，字节表示和显式生命期看 `[basic.types]` / `[obj.lifetime]`。滚动网页只作为定位入口；正文的版本结论要回到相应固定文本与DR。
+
+## 主题落点
+
+| 主题 | 主讲位置 | 验证方法与边界 |
+|---|---|---|
+| 同类型prvalue结果对象、可选NRVO、implicit move | 02/06 | 分别用编译正反与允许结果观察；不能用可选NRVO使被删除操作变合法 |
+| 临时延长、range-for、返回引用 | 03/06 | 固定上下文和标准模式；宏记录与实际生命期实验分别标明 |
+| 初始化诊断与erroneous behavior | 01/14 | 对比C++23与C++26文本；危险读取不作为默认运行检查 |
+| 显式生命期管理与union | 12 | 检查类型/对齐/存储前提，再实例化、链接和运行；不能用reinterpret_cast替代规范要求 |
+| 基类designated初始化、默认赋值限制 | 01/05及前沿实验 | 按N5055具体入稿项标注，编译器接受/拒绝另记 |
+| provenance、invalid pointer、lifetime-end | 13/14 | 按N5055列出的DR及固定措辞解释；不把宏存在当作这些语义的实测 |
+| trivial relocation | 11—14的边界讨论 | [P3960R0历史说明](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2026/p3960r0.html)记录P2786已移出C++26；编译器扩展或库内部优化不自动成为标准语言能力 |
+
+## 已执行的前置能力调查
+
+[完整probe源码与结果](validation/author-storage-probes/results-20260908.md)记录：本机MSVC的C++23配置实际报告 `__cplusplus=202400`、`_MSVC_LANG=202400`；Clang `-std=c++23`报告202302。两者都报告implicit move和range-for对应宏，但本次range-for probe只检查宏，不能据此代替正文的行为实验。
+
+MSVC的 `start_lifetime_as` 样例实际完成编译、链接与运行；Clang22.1.3配合当前MSVC STL未提供对应宏，探针在明确的能力检查处拒绝编译。它是当前前端与库组合的限制，不是用另一API写一份样例就能填成PASS的分支。
+
+前沿compile-only试验中，基类designated initializer形态在两个编译器均拒绝；临时引用返回形态在MSVC latest仅告警而Clang c++2c拒绝。这里的“编译成功/失败”先是实际工具结果，再对照该案例期望解释支持状态；不能把所有非零退出统一当成“不支持”，也不能把告警后成功当成符合新规则。
+
+## 标准库源码导读输入
+
+本机MSVC头文件标识为 `_MSVC_STL_VERSION=145`、`_MSVC_STL_UPDATE=202604L`，固定的 `memory/vector/xmemory/xutility/utility/yvals_core.h` 输入SHA见[local-stl-inputs](validation/local-stl-inputs.json)。这是本次本地源码指纹，不承诺与某个在线上游提交字节相同。各章若采用固定上游版本，应另外写明提交、路径和阅读问题。
+
+08/09/10沿 `unique_ptr`、`_Ptr_base`、控制块的增减引用与销毁入口追踪对象/控制块两种责任；12从显式生命期接口追到前端builtin边界；15对照容器分配保护与迁移的提交时机。源码阅读要解释成功、失败和清理路径，不能只贴仓库首页或从某个私有字段名推导标准要求。
+
+最终整课验证必须另绑定实际完成的正文、练习和二进制；本页前置probe不能自动覆盖后续修改。当前各批次仍以[质量报告](quality-report.md)列出的独立审查范围为准。

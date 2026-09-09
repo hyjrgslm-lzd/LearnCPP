@@ -1,0 +1,238 @@
+[
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\chapters\\01-initialization.md",
+    "Hash": "B916EF9A444ED8560D681EF91789B1CD964AB775AC3B10B8E781A24DA8196AF1"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\chapters\\02-expressions-and-references.md",
+    "Hash": "ECC1147F1224D21A0EE0569E5CEE80F1A5EEDD70240343C6014BAF280207CDA4"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\chapters\\03-lifetime-and-borrowing.md",
+    "Hash": "777FF771D6157D47F152DE5C4B3531F739A3CC796B78F7D2D6016B9B00BFDAB8"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\chapters\\05-special-members.md",
+    "Hash": "3F046116324986B308771F0F19162B903CDF3F3FEC64902A0D6B54E38F60922E"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\chapters\\06-move-and-return.md",
+    "Hash": "B8351DB60E742201D8DC48A4CAC3F7CEF85FD65B733D5C1FFD1E2F8B55A95BEF"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\author-foundation\\foundation-final-r2-scan-no-student-report-marker.json",
+    "Hash": "D7DD865CA994E7F1973189367FD0EE9829521F9A6622FC3265E52FE2B8BD6D60"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\author-foundation\\foundation-final-r2c-scan-trusted-header-paths.json",
+    "Hash": "E0B0318FE788B3B3D6D14F565C301293710C2F42A4134BD08293C345947BC9C2"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L01_initialization\\checks\\expect_build_failure.cmake",
+    "Hash": "D67A93FE3B0D526705C78A24AE17F18E97956EA90FF95B364FC210A3DFCE1C5B"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L01_initialization\\checks\\observation.cpp",
+    "Hash": "F8C00222E9524F45F3BDC9A4140E7A3F03B6F234714CAC85CE33E28D9F75DAC5"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L01_initialization\\CMakeLists.txt",
+    "Hash": "CA1B86EB3CDF05D94AFDD0BAA15F9CAFC6866DBD4F73FF4D4AB1B81624F386EE"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L01_initialization\\negative\\constinit_dynamic\\CMakeLists.txt",
+    "Hash": "F37F2DD6E8DF6D79D9235F462F505B5FF68D8CB63C1C71333801D0BA2C9BB7C6"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L01_initialization\\negative\\constinit_dynamic\\main.cpp",
+    "Hash": "CE2A3FA3C3D4E466F0F347554A6C03173FC802AB5743EC3F747375A554DA5A6A"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L01_initialization\\negative\\narrowing\\CMakeLists.txt",
+    "Hash": "5333CED7B0D2AD19DA07D70CF2091991C2435070FC294B858451764EFD9BAD2C"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L01_initialization\\negative\\narrowing\\main.cpp",
+    "Hash": "544AFBC1A5F0B0FBECBF96E642FC0677E07F439BAE7DDCAB8F54D8424418330C"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L01_initialization\\README.md",
+    "Hash": "86C386313DA4ED611BC505484A3EACDC27B4CC8874F7BC6717347C23016615A3"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L02_value_categories\\checks\\expect_build_failure.cmake",
+    "Hash": "D67A93FE3B0D526705C78A24AE17F18E97956EA90FF95B364FC210A3DFCE1C5B"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L02_value_categories\\checks\\observation.cpp",
+    "Hash": "E68964987BF59243B39B5FE12BE302DC8A56BAF7CF2EE0FD5FE8FBCE4205344E"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L02_value_categories\\CMakeLists.txt",
+    "Hash": "90B0187279580F15FF23739A01266CAD02FC53720E02392E86EA7FC8E61D8199"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L02_value_categories\\negative\\bind_rvalue_to_nonconst_lvalue\\CMakeLists.txt",
+    "Hash": "AA749F2B7E17AF7881C8A6C89C819717CE7ACA11B40B0E921D0E68B6B532CD07"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L02_value_categories\\negative\\bind_rvalue_to_nonconst_lvalue\\main.cpp",
+    "Hash": "D0DB7C0DF74A81F504BFDE9E74EBC59D22F30BEF9B8B669BCDBEB2D29C8EBA1D"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L02_value_categories\\negative\\forward_lvalue_to_rvalue\\CMakeLists.txt",
+    "Hash": "C321ACB87462F45252CC8C5BD04FC54DC167401F279785872287DDC74F029099"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L02_value_categories\\negative\\forward_lvalue_to_rvalue\\main.cpp",
+    "Hash": "F33116D3A1FBC963C1A38F4D1248A610873F3DA851A4B22AB01FC0AA32CBBD56"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L02_value_categories\\README.md",
+    "Hash": "3A14464DF0EAB45953B7BE120653C254097150EBD02434583DD01CDABC5EBBFD"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L03_lifetimes\\checks\\expect_failure.cmake",
+    "Hash": "B422B920E0F83DCD5EE8174E4414AB45C1406254CCF22FE63E6C5ECD0E433E30"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L03_lifetimes\\checks\\lifetime_checks.cpp",
+    "Hash": "FDD4968966B20248D948847F5623BFE108D2498EEC4118A72F54EBA9F19DA244"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L03_lifetimes\\checks\\support\\lifetime_model.hpp",
+    "Hash": "16EDA52FC484C57906FB37F2DCB8D4535762B75EACAA31F95E4F5EDBA61BCF61"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L03_lifetimes\\CMakeLists.txt",
+    "Hash": "4D747EF22825BEB737A8DA86E336957290242055E259F0353F717C4864FF43D3"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L03_lifetimes\\README.md",
+    "Hash": "F265AEC689BF237CEEAC0FA77319E053C860F3F9F841EBC9BEC7426EC1ED8AF7"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L03_lifetimes\\reference\\borrowed_int.cpp",
+    "Hash": "698AA76F3C8BF8A67957976B277A182008C4F287CEA4C43967A6056B53FA1BAF"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L03_lifetimes\\reference\\borrowed_int.hpp",
+    "Hash": "094E9D094B24386EBBF71838E5880A8C4810FAFDFDD008E10E30834CB3F6F7EC"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L03_lifetimes\\src\\student\\borrowed_int.cpp",
+    "Hash": "3554801C27357DE08643147820C66D89B8CB53A3C4132B0B0296A7F1D18A5910"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L03_lifetimes\\src\\student\\borrowed_int.hpp",
+    "Hash": "094E9D094B24386EBBF71838E5880A8C4810FAFDFDD008E10E30834CB3F6F7EC"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L03_lifetimes\\validation\\bad_dangling_view\\borrowed_int.cpp",
+    "Hash": "4432552D4822DFB021625F409372AFBAF4B0D328EEB6739BC6D94D71509BBB22"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L03_lifetimes\\validation\\bad_dangling_view\\borrowed_int.hpp",
+    "Hash": "CF178142114A3FC1098AF48F50E5443177EDDC23604E98A56E0E609CA98D3E72"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L03_lifetimes\\validation\\good\\borrowed_int.cpp",
+    "Hash": "C3C8174240D139B9DF455B8047A00EB67ACC9738D4DAF8A050598BA0FD45859A"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L03_lifetimes\\validation\\good\\borrowed_int.hpp",
+    "Hash": "094E9D094B24386EBBF71838E5880A8C4810FAFDFDD008E10E30834CB3F6F7EC"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L05_special_members\\checks\\buffer_checks.cpp",
+    "Hash": "7721B07A4D9E0C6CECE3437B0646C94A689737D865C98DAB784DCD31981282DC"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L05_special_members\\checks\\expect_failure.cmake",
+    "Hash": "B422B920E0F83DCD5EE8174E4414AB45C1406254CCF22FE63E6C5ECD0E433E30"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L05_special_members\\checks\\support\\memory_model.hpp",
+    "Hash": "28E0DDE087B762D85ED8AA75AE2530DFA9F59A99AFABD732B235F056A7CA00D4"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L05_special_members\\CMakeLists.txt",
+    "Hash": "06CB2518BAB3686057424726D216D696960700230B6F61729D694CF30B3EEFBE"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L05_special_members\\README.md",
+    "Hash": "736322878FA712321995C2C81BC73C456B1299E9825EE722AAEFFFDAFBB5748F"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L05_special_members\\reference\\int_buffer.cpp",
+    "Hash": "971B14119D3A9622AC32D197B3CB89B9F8E72252B356B2D0210FB409D971FA67"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L05_special_members\\reference\\int_buffer.hpp",
+    "Hash": "D7548609B05440E12967B5301F6D1A512B4FD68183A0D4AFEBA40B93CD6A5E12"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L05_special_members\\src\\student\\int_buffer.cpp",
+    "Hash": "3BF57DA9C9B420DAF0CA0035BD94A02129D0EBFB5F9849800478A78BA420F998"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L05_special_members\\src\\student\\int_buffer.hpp",
+    "Hash": "D7548609B05440E12967B5301F6D1A512B4FD68183A0D4AFEBA40B93CD6A5E12"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L05_special_members\\validation\\bad_move_leak\\int_buffer.cpp",
+    "Hash": "C0739F5D359B56C85CE43C5031FF5B6221C63674B110CDADFA15F8BE604C8270"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L05_special_members\\validation\\bad_move_leak\\int_buffer.hpp",
+    "Hash": "D7548609B05440E12967B5301F6D1A512B4FD68183A0D4AFEBA40B93CD6A5E12"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L05_special_members\\validation\\bad_shallow_copy\\int_buffer.cpp",
+    "Hash": "F97FA66BA489A85949054C4E4B6AE570458FEEABF267C608D0744A5CC3C6E9D9"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L05_special_members\\validation\\bad_shallow_copy\\int_buffer.hpp",
+    "Hash": "D7548609B05440E12967B5301F6D1A512B4FD68183A0D4AFEBA40B93CD6A5E12"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L05_special_members\\validation\\good\\int_buffer.cpp",
+    "Hash": "971B14119D3A9622AC32D197B3CB89B9F8E72252B356B2D0210FB409D971FA67"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L05_special_members\\validation\\good\\int_buffer.hpp",
+    "Hash": "D7548609B05440E12967B5301F6D1A512B4FD68183A0D4AFEBA40B93CD6A5E12"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L06_move_return\\checks\\expect_build_failure.cmake",
+    "Hash": "D67A93FE3B0D526705C78A24AE17F18E97956EA90FF95B364FC210A3DFCE1C5B"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L06_move_return\\checks\\observation.cpp",
+    "Hash": "8BFAFDAECFA77A7EBE12D8061FA1B28BDBA4230290AD648845BFF588A63B88ED"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L06_move_return\\CMakeLists.txt",
+    "Hash": "8970C5407DEFFBA6B5B0732A690859782D25DBB60EEF744637A4D31B58979C52"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L06_move_return\\negative\\const_move_only\\CMakeLists.txt",
+    "Hash": "620F9FE68D08102253813BDD2084B615C3D7A6D5A10B233A344B8BC607B2DE1B"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L06_move_return\\negative\\const_move_only\\main.cpp",
+    "Hash": "B3E84D6648A35634C0C1A730E97C7DA2A70A5C75AE7D27F3851F27A91FB60E09"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L06_move_return\\negative\\return_named_deleted\\CMakeLists.txt",
+    "Hash": "6E2C4494BF0BC65BD1D851F118B305D5B48D5518985434188D6083E0B1649C37"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L06_move_return\\negative\\return_named_deleted\\main.cpp",
+    "Hash": "91642BA8B1CA1C1ADE2B116CD8BFA04453B2F312D0C2F576E164CB61EE3B9AFE"
+  },
+  {
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L06_move_return\\README.md",
+    "Hash": "E4EA1F5228294772544BE2EEFBD685AD8495A5467285FA3BEC2F5B6EE614EB7D"
+  }
+]

@@ -1,0 +1,24 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "Core_Study/exercises/L06_move_return/build/foundation-final-r2-default",
+    "-C",
+    "Release",
+    "--output-on-failure"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 4.0310000001918525,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/Core_Study/exercises/L06_move_return/build/foundation-final-r2-default\n    Start 1: L06_move_return_observation\n1/3 Test #1: L06_move_return_observation .....................   Passed    0.25 sec\n    Start 2: L06_move_return_negative_return_named_deleted\n2/3 Test #2: L06_move_return_negative_return_named_deleted ...   Passed    1.76 sec\n    Start 3: L06_move_return_negative_const_move_only\n3/3 Test #3: L06_move_return_negative_const_move_only ........   Passed    1.95 sec\n\n100% tests passed, 0 tests failed out of 3\n\nLabel Time Summary:\nnegative       =   3.70 sec*proc (2 tests)\nobservation    =   0.25 sec*proc (1 test)\n\nTotal Test time (real) =   3.97 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    "100% tests passed"
+  ],
+  "verdict": "PASS"
+}

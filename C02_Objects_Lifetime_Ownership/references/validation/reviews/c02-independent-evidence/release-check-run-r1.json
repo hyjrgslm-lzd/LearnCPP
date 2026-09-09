@@ -1,0 +1,18 @@
+{
+  "command": [
+    "build\\c02-verifier-release-check\\c02_release_check_probe.exe"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.28100000019185245,
+  "stdout": "",
+  "stderr": "check failed: C02_RELEASE_CHECK_ACTIVE\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "expected_exit": 1,
+  "required_text": [
+    "check failed: C02_RELEASE_CHECK_ACTIVE"
+  ],
+  "verdict": "PASS"
+}

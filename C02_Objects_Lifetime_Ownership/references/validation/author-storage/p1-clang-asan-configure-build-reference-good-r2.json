@@ -1,0 +1,20 @@
+{
+  "command": [
+    "cmd.exe",
+    "/d",
+    "/c",
+    "build\\c02-p1-author-r2-asan\\configure-build-reference-good.cmd"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 5.686999999918044,
+  "stdout": "-- The CXX compiler identification is Clang 22.1.3 with GNU-like command-line\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/Llvm/x64/bin/clang++.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring done (2.0s)\n-- Generating done (0.1s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/build/c02-p1-author-r2-asan\n[1/4] Building CXX object CMakeFiles/P1_object_buffer_reference.dir/checks/run_checks.cpp.obj\n[2/4] Building CXX object CMakeFiles/P1_object_buffer_validation_good.dir/checks/run_checks.cpp.obj\n[3/4] Linking CXX executable P1_object_buffer_reference.exe\n[4/4] Linking CXX executable P1_object_buffer_validation_good.exe\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

@@ -1,0 +1,24 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "build/c02-storage-verifier-r1/L14-asan-safe-default",
+    "--config",
+    "Debug",
+    "--clean-first"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.6090000001713634,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L14_ub/CMakeLists.txt\n  observation_check.cpp\n  L14_ub_observation.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-storage-verifier-r1\\L14-asan-safe-default\\Debug\\L14_ub_observation.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L14_ub/CMakeLists.txt\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    ".vcxproj"
+  ],
+  "verdict": "PASS"
+}

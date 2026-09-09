@@ -1,0 +1,23 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "build/c02-wiring-good",
+    "--config",
+    "Release",
+    "--clean-first",
+    "--target",
+    "wiring_student"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 1.6559999999590218,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/references/validation/student-wiring/CMakeLists.txt\n  正在扫描源以查找模块依赖项...\n  main.cpp\n  娉ㄦ剰: 鍖呭惈鏂囦欢:  D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\cstddef\n  娉ㄦ剰: 鍖呭惈鏂囦欢:   D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\yvals_core.h\n  娉ㄦ剰: 鍖呭惈鏂囦欢:    D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\vcruntime.h\n  娉ㄦ剰: 鍖呭惈鏂囦欢:     D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\sal.h\n  娉ㄦ剰: 鍖呭惈鏂囦欢:      D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\concurrencysal.h\n  娉ㄦ剰: 鍖呭惈鏂囦欢:     D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\vadefs.h\n  娉ㄦ剰: 鍖呭惈鏂囦欢:    D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xkeycheck.h\n  娉ㄦ剰: 鍖呭惈鏂囦欢:   C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\ucrt\\stddef.h\n  娉ㄦ剰: 鍖呭惈鏂囦欢:    C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\ucrt\\corecrt.h\n  娉ㄦ剰: 鍖呭惈鏂囦欢:   D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xtr1common\n  正在编译...\n  main.cpp\n  注意: 包含文件:  D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\cstddef\n  注意: 包含文件:   D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\yvals_core.h\n  注意: 包含文件:    D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\vcruntime.h\n  注意: 包含文件:     D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\sal.h\n  注意: 包含文件:      D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\concurrencysal.h\n  注意: 包含文件:     D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\vadefs.h\n  注意: 包含文件:    D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xkeycheck.h\n  注意: 包含文件:   C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\ucrt\\stddef.h\n  注意: 包含文件:    C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\ucrt\\corecrt.h\n  注意: 包含文件:   D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xtr1common\n  wiring_student.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-wiring-good\\Release\\wiring_student.exe\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

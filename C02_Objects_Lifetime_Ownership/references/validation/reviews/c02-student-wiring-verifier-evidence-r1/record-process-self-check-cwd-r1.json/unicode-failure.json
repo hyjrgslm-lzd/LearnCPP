@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Users\\zhidan.li\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+    "-c",
+    "import sys; sys.stdout.reconfigure(encoding='utf-8'); print('\\ufffd中文')"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.06199999991804361,
+  "stdout": "�中文\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    "MISSING"
+  ],
+  "verdict": "FAIL"
+}

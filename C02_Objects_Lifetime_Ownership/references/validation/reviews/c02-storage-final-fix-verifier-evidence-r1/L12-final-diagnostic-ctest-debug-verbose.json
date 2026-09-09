@@ -1,0 +1,27 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "build/c02-storage-final-fix-verifier-r1/L12-current-diagnostic",
+    "-C",
+    "Debug",
+    "-R",
+    "L12_storage_validation_bad_noop_check",
+    "-V"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.5470000000204891,
+  "stdout": "UpdateCTestConfiguration  from :F:/CPPTrain/LearnCPP/build/c02-storage-final-fix-verifier-r1/L12-current-diagnostic/DartConfiguration.tcl\nParse Config file:F:/CPPTrain/LearnCPP/build/c02-storage-final-fix-verifier-r1/L12-current-diagnostic/DartConfiguration.tcl\nTest project F:/CPPTrain/LearnCPP/build/c02-storage-final-fix-verifier-r1/L12-current-diagnostic\nConstructing a list of tests\nDone constructing a list of tests\nUpdating test list for fixtures\nAdded 0 tests to meet fixture requirements\nChecking test dependency graph...\nChecking test dependency graph end\ntest 4\n    Start 4: L12_storage_validation_bad_noop_check\n\n4: Test command: D:\\cmake\\install\\bin\\cmake.exe \"-DEXECUTABLE=F:/CPPTrain/LearnCPP/build/c02-storage-final-fix-verifier-r1/L12-current-diagnostic/Debug/L12_storage_validation_bad_noop.exe\" \"-DEXPECTED_TEXT=slot must report engaged after successful construct\" \"-P\" \"F:/CPPTrain/LearnCPP/Core_Study/exercises/L12_storage/checks/expect_failure.cmake\"\n4: Working Directory: F:/CPPTrain/LearnCPP/build/c02-storage-final-fix-verifier-r1/L12-current-diagnostic\n4: Test timeout computed to be: 30\n1/1 Test #4: L12_storage_validation_bad_noop_check ...   Passed    0.47 sec\n\nThe following tests passed:\n\tL12_storage_validation_bad_noop_check\n\n100% tests passed, 0 tests failed out of 1\n\nLabel Time Summary:\nnegative    =   0.47 sec*proc (1 test)\n\nTotal Test time (real) =   0.49 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [
+    "slot must report engaged after successful construct"
+  ],
+  "verdict": "PASS"
+}

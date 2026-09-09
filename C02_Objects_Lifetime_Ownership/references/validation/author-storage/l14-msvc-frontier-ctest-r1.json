@@ -1,0 +1,24 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "build/c02-l14-frontier-r1-msvc",
+    "-C",
+    "Debug",
+    "--output-on-failure"
+  ],
+  "exit_code": 8,
+  "timeout": false,
+  "process_seconds": 5.187000000150874,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/build/c02-l14-frontier-r1-msvc\n    Start 1: L14_ub_observation\nCould not find executable F:/CPPTrain/LearnCPP/build/c02-l14-frontier-r1-msvc/Debug/L14_ub_observation.exe\nLooked in the following places:\nF:/CPPTrain/LearnCPP/build/c02-l14-frontier-r1-msvc/Debug/L14_ub_observation.exe\nF:/CPPTrain/LearnCPP/build/c02-l14-frontier-r1-msvc/Debug/L14_ub_observation.exe.exe\nF:/CPPTrain/LearnCPP/build/c02-l14-frontier-r1-msvc/Debug/Debug/L14_ub_observation.exe\nF:/CPPTrain/LearnCPP/build/c02-l14-frontier-r1-msvc/Debug/Debug/L14_ub_observation.exe.exe\nDebug/F:/CPPTrain/LearnCPP/build/c02-l14-frontier-r1-msvc/Debug/L14_ub_observation.exe\nDebug/F:/CPPTrain/LearnCPP/build/c02-l14-frontier-r1-msvc/Debug/L14_ub_observation.exe.exe\n1/6 Test #1: L14_ub_observation ...................................***Not Run   0.00 sec\n    Start 2: L14_frontier_baseline_compile\n2/6 Test #2: L14_frontier_baseline_compile ........................   Passed    1.14 sec\n    Start 3: L14_frontier_p2287_base_member_designator_compile\n3/6 Test #3: L14_frontier_p2287_base_member_designator_compile ....***Skipped   0.91 sec\n    Start 4: L14_frontier_p2748_return_temp_ref_compile\n4/6 Test #4: L14_frontier_p2748_return_temp_ref_compile ...........   Passed    0.97 sec\n    Start 5: L14_frontier_p2953_defaulted_assignment_compile\n5/6 Test #5: L14_frontier_p2953_defaulted_assignment_compile ......***Skipped   1.00 sec\n    Start 6: L14_frontier_provenance_lifetime_end_model_compile\n6/6 Test #6: L14_frontier_provenance_lifetime_end_model_compile ...   Passed    1.11 sec\n\n83% tests passed, 1 tests failed out of 6\n\nLabel Time Summary:\nfrontier       =   5.13 sec*proc (5 tests)\nobservation    =   0.00 sec*proc (1 test)\n\nTotal Test time (real) =   5.13 sec\n\nThe following tests did not run:\n\t  3 - L14_frontier_p2287_base_member_designator_compile (Skipped)\n\t  5 - L14_frontier_p2953_defaulted_assignment_compile (Skipped)\n\nThe following tests FAILED:\n\t  1 - L14_ub_observation (Not Run)                      observation\n",
+  "stderr": "Unable to find executable: F:/CPPTrain/LearnCPP/build/c02-l14-frontier-r1-msvc/Debug/L14_ub_observation.exe\nErrors while running CTest\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    "L14_frontier_baseline_compile"
+  ],
+  "verdict": "FAIL"
+}

@@ -1,0 +1,53 @@
+[
+  {
+    "lesson": "L08",
+    "build": "F:\\CPPTrain\\LearnCPP\\build\\c02-0810-verifier-r1\\L08-student-ref-off",
+    "student_vcxproj_exists": true,
+    "reference_vcxproj_exists": false,
+    "files": [
+      "ALL_BUILD.vcxproj",
+      "Continuous.vcxproj",
+      "Experimental.vcxproj",
+      "L08_unique_observation.vcxproj",
+      "L08_unique_student.vcxproj",
+      "Nightly.vcxproj",
+      "NightlyMemoryCheck.vcxproj",
+      "RUN_TESTS.vcxproj",
+      "ZERO_CHECK.vcxproj"
+    ]
+  },
+  {
+    "lesson": "L09",
+    "build": "F:\\CPPTrain\\LearnCPP\\build\\c02-0810-verifier-r1\\L09-student-ref-off",
+    "student_vcxproj_exists": true,
+    "reference_vcxproj_exists": false,
+    "files": [
+      "ALL_BUILD.vcxproj",
+      "Continuous.vcxproj",
+      "Experimental.vcxproj",
+      "L09_shared_observation.vcxproj",
+      "L09_shared_student.vcxproj",
+      "Nightly.vcxproj",
+      "NightlyMemoryCheck.vcxproj",
+      "RUN_TESTS.vcxproj",
+      "ZERO_CHECK.vcxproj"
+    ]
+  },
+  {
+    "lesson": "L10",
+    "build": "F:\\CPPTrain\\LearnCPP\\build\\c02-0810-verifier-r1\\L10-student-ref-off",
+    "student_vcxproj_exists": true,
+    "reference_vcxproj_exists": false,
+    "files": [
+      "ALL_BUILD.vcxproj",
+      "Continuous.vcxproj",
+      "Experimental.vcxproj",
+      "L10_control_block_observation.vcxproj",
+      "L10_control_block_student.vcxproj",
+      "Nightly.vcxproj",
+      "NightlyMemoryCheck.vcxproj",
+      "RUN_TESTS.vcxproj",
+      "ZERO_CHECK.vcxproj"
+    ]
+  }
+]

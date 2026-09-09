@@ -1,0 +1,874 @@
+[
+  {
+    "name": "l08-bad-L08_unique_validation_bad_noop-debug.json",
+    "verdict": "PASS",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "check failed"
+    ]
+  },
+  {
+    "name": "l08-bad-L08_unique_validation_bad_noop-release.json",
+    "verdict": "PASS",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "check failed"
+    ]
+  },
+  {
+    "name": "l08-bad-L08_unique_validation_bad_release_keeps_owner-debug.json",
+    "verdict": "PASS",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "release leaves unique_ptr empty"
+    ]
+  },
+  {
+    "name": "l08-bad-L08_unique_validation_bad_release_keeps_owner-release.json",
+    "verdict": "PASS",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "release leaves unique_ptr empty"
+    ]
+  },
+  {
+    "name": "l08-build-default-debug.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      ".vcxproj"
+    ]
+  },
+  {
+    "name": "l08-build-default-release.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      ".vcxproj"
+    ]
+  },
+  {
+    "name": "l08-build-student-ref-off-release.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      ".vcxproj"
+    ]
+  },
+  {
+    "name": "l08-build-student-ref-off.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      ".vcxproj"
+    ]
+  },
+  {
+    "name": "l08-configure-default.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "Configuring done"
+    ]
+  },
+  {
+    "name": "l08-configure-student-ref-off.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "Configuring done"
+    ]
+  },
+  {
+    "name": "l08-ctest-default-debug.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "100% tests passed"
+    ]
+  },
+  {
+    "name": "l08-ctest-default-release.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "100% tests passed"
+    ]
+  },
+  {
+    "name": "l08-good-debug.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "validation_contract OK"
+    ]
+  },
+  {
+    "name": "l08-good-release.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "validation_contract OK"
+    ]
+  },
+  {
+    "name": "l08-reference-target-absent-ref-off-corrected.json",
+    "verdict": "PASS",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "项目文件不存在"
+    ]
+  },
+  {
+    "name": "l08-reference-target-absent-ref-off.json",
+    "verdict": "FAIL",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "does not exist"
+    ]
+  },
+  {
+    "name": "l08-student-placeholder-ref-off-release.json",
+    "verdict": "PASS",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "check failed"
+    ]
+  },
+  {
+    "name": "l08-student-placeholder-ref-off.json",
+    "verdict": "PASS",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "check failed"
+    ]
+  },
+  {
+    "name": "l09-bad-L09_shared_validation_bad_cycle-debug.json",
+    "verdict": "PASS",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "weak backedge does not keep cycle alive"
+    ]
+  },
+  {
+    "name": "l09-bad-L09_shared_validation_bad_cycle-release.json",
+    "verdict": "PASS",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "weak backedge does not keep cycle alive"
+    ]
+  },
+  {
+    "name": "l09-bad-L09_shared_validation_bad_weak_resurrect-debug.json",
+    "verdict": "PASS",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "lock fails after destruction"
+    ]
+  },
+  {
+    "name": "l09-bad-L09_shared_validation_bad_weak_resurrect-release.json",
+    "verdict": "PASS",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "lock fails after destruction"
+    ]
+  },
+  {
+    "name": "l09-build-default-debug.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      ".vcxproj"
+    ]
+  },
+  {
+    "name": "l09-build-default-release.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      ".vcxproj"
+    ]
+  },
+  {
+    "name": "l09-build-student-ref-off-release.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      ".vcxproj"
+    ]
+  },
+  {
+    "name": "l09-build-student-ref-off.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      ".vcxproj"
+    ]
+  },
+  {
+    "name": "l09-configure-default.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "Configuring done"
+    ]
+  },
+  {
+    "name": "l09-configure-student-ref-off.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "Configuring done"
+    ]
+  },
+  {
+    "name": "l09-ctest-default-debug.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "100% tests passed"
+    ]
+  },
+  {
+    "name": "l09-ctest-default-release.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "100% tests passed"
+    ]
+  },
+  {
+    "name": "l09-good-debug.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "validation_contract OK"
+    ]
+  },
+  {
+    "name": "l09-good-release.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "validation_contract OK"
+    ]
+  },
+  {
+    "name": "l09-reference-target-absent-ref-off-corrected.json",
+    "verdict": "PASS",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "项目文件不存在"
+    ]
+  },
+  {
+    "name": "l09-reference-target-absent-ref-off.json",
+    "verdict": "FAIL",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "does not exist"
+    ]
+  },
+  {
+    "name": "l09-student-placeholder-ref-off-release.json",
+    "verdict": "PASS",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "check failed"
+    ]
+  },
+  {
+    "name": "l09-student-placeholder-ref-off.json",
+    "verdict": "PASS",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "check failed"
+    ]
+  },
+  {
+    "name": "l10-bad-L10_control_block_validation_bad_leak_control_block-debug.json",
+    "verdict": "PASS",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "control block still alive"
+    ]
+  },
+  {
+    "name": "l10-bad-L10_control_block_validation_bad_leak_control_block-release.json",
+    "verdict": "PASS",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "control block still alive"
+    ]
+  },
+  {
+    "name": "l10-bad-L10_control_block_validation_bad_weak_resurrect-debug.json",
+    "verdict": "PASS",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "object destroyed after last strong"
+    ]
+  },
+  {
+    "name": "l10-bad-L10_control_block_validation_bad_weak_resurrect-release.json",
+    "verdict": "PASS",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "object destroyed after last strong"
+    ]
+  },
+  {
+    "name": "l10-build-default-debug.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      ".vcxproj"
+    ]
+  },
+  {
+    "name": "l10-build-default-release.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      ".vcxproj"
+    ]
+  },
+  {
+    "name": "l10-build-student-ref-off-release.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      ".vcxproj"
+    ]
+  },
+  {
+    "name": "l10-build-student-ref-off.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      ".vcxproj"
+    ]
+  },
+  {
+    "name": "l10-configure-default.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "Configuring done"
+    ]
+  },
+  {
+    "name": "l10-configure-student-ref-off.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "Configuring done"
+    ]
+  },
+  {
+    "name": "l10-ctest-default-debug.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "100% tests passed"
+    ]
+  },
+  {
+    "name": "l10-ctest-default-release.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "100% tests passed"
+    ]
+  },
+  {
+    "name": "l10-good-debug.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "validation_contract OK"
+    ]
+  },
+  {
+    "name": "l10-good-release.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "validation_contract OK"
+    ]
+  },
+  {
+    "name": "l10-reference-target-absent-ref-off-corrected.json",
+    "verdict": "PASS",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "项目文件不存在"
+    ]
+  },
+  {
+    "name": "l10-reference-target-absent-ref-off.json",
+    "verdict": "FAIL",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "does not exist"
+    ]
+  },
+  {
+    "name": "l10-student-placeholder-ref-off-release.json",
+    "verdict": "PASS",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "check failed"
+    ]
+  },
+  {
+    "name": "l10-student-placeholder-ref-off.json",
+    "verdict": "PASS",
+    "status": "FAIL",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "check failed"
+    ]
+  },
+  {
+    "name": "shadow-fixture-build-debug.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      ".vcxproj"
+    ]
+  },
+  {
+    "name": "shadow-fixture-configure.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "Configuring done"
+    ]
+  },
+  {
+    "name": "shadow-fixture-l08-run.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "L08_unique_validation_contract OK"
+    ]
+  },
+  {
+    "name": "shadow-fixture-l09-run.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "L09_shared_validation_contract OK"
+    ]
+  },
+  {
+    "name": "shadow-fixture-l10-run.json",
+    "verdict": "PASS",
+    "status": "PASS",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "timeout": false,
+    "cwd": "F:\\CPPTrain\\LearnCPP",
+    "required_text": [
+      "L10_control_block_validation_contract OK"
+    ]
+  },
+  {
+    "name": "source-hashes-0810.json",
+    "verdict": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "status": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "exit_code": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "expected_exit": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "timeout": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "cwd": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "required_text": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  }
+]

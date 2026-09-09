@@ -1,0 +1,24 @@
+{
+  "command": [
+    "powershell",
+    "-NoProfile",
+    "-File",
+    "Core_Study/references/validation/author-foundation/foundation-final-r2b-scan-trusted-header-paths.ps1"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.4369999999180436,
+  "stdout": "implementation trusted-header bare include scan: no matches\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    "implementation trusted-header bare include scan: no matches",
+    "support/lifetime_model.hpp",
+    "support/memory_model.hpp"
+  ],
+  "verdict": "FAIL"
+}

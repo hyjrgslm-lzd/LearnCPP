@@ -1,0 +1,32 @@
+[
+  {
+    "Lesson": "L08_unique",
+    "ReleaseConfigure": 0,
+    "ReleaseBuild": 0,
+    "ReleaseCtest": 0,
+    "StudentConfigure": 0,
+    "StudentBuild": 0,
+    "StudentCtest": 8,
+    "StudentOutput": "Test project F:/CPPTrain/LearnCPP/build/c02-reviewer-owner-r2-student-L08_unique\r\n    Start 1: L08_unique_observation\r\n1/2 Test #1: L08_unique_observation ...........   Passed    0.24 sec\r\n    Start 2: L08_unique_student\r\n2/2 Test #2: L08_unique_student ...............***Failed    0.23 sec\r\ncheck failed: make_tracked returns owner\r\n\r\n\r\n50% tests passed, 1 tests failed out of 2\r\n\r\nLabel Time Summary:\r\nobservation    =   0.24 sec*proc (1 test)\r\nstudent        =   0.23 sec*proc (1 test)\r\n\r\nTotal Test time (real) =   0.48 sec\r\n\r\nThe following tests FAILED:\r\n\t  2 - L08_unique_student (Failed)                       student\r\nErrors while running CTest\r\n"
+  },
+  {
+    "Lesson": "L09_shared",
+    "ReleaseConfigure": 0,
+    "ReleaseBuild": 0,
+    "ReleaseCtest": 0,
+    "StudentConfigure": 0,
+    "StudentBuild": 0,
+    "StudentCtest": 8,
+    "StudentOutput": "Test project F:/CPPTrain/LearnCPP/build/c02-reviewer-owner-r2-student-L09_shared\r\n    Start 1: L09_shared_observation\r\n1/2 Test #1: L09_shared_observation ...........   Passed    0.23 sec\r\n    Start 2: L09_shared_student\r\n2/2 Test #2: L09_shared_student ...............***Failed    0.23 sec\r\ncheck failed: make_node returns shared owner\r\n\r\n\r\n50% tests passed, 1 tests failed out of 2\r\n\r\nLabel Time Summary:\r\nobservation    =   0.23 sec*proc (1 test)\r\nstudent        =   0.23 sec*proc (1 test)\r\n\r\nTotal Test time (real) =   0.47 sec\r\n\r\nThe following tests FAILED:\r\n\t  2 - L09_shared_student (Failed)                       student\r\nErrors while running CTest\r\n"
+  },
+  {
+    "Lesson": "L10_control_block",
+    "ReleaseConfigure": 0,
+    "ReleaseBuild": 0,
+    "ReleaseCtest": 0,
+    "StudentConfigure": 0,
+    "StudentBuild": 0,
+    "StudentCtest": 8,
+    "StudentOutput": "Test project F:/CPPTrain/LearnCPP/build/c02-reviewer-owner-r2-student-L10_control_block\r\n    Start 1: L10_control_block_observation\r\n1/2 Test #1: L10_control_block_observation ....   Passed    0.23 sec\r\n    Start 2: L10_control_block_student\r\n2/2 Test #2: L10_control_block_student ........***Failed    0.25 sec\r\ncheck failed: make_rc returns owner\r\n\r\n\r\n50% tests passed, 1 tests failed out of 2\r\n\r\nLabel Time Summary:\r\nobservation    =   0.23 sec*proc (1 test)\r\nstudent        =   0.25 sec*proc (1 test)\r\n\r\nTotal Test time (real) =   0.48 sec\r\n\r\nThe following tests FAILED:\r\n\t  2 - L10_control_block_student (Failed)                student\r\nErrors while running CTest\r\n"
+  }
+]

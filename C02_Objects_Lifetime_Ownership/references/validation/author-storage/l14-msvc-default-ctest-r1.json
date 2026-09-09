@@ -1,0 +1,26 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "build/c02-l14-frontier-r1-msvc",
+    "-C",
+    "Debug",
+    "--output-on-failure",
+    "-R",
+    "L14_ub_observation"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.2809999999590218,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/build/c02-l14-frontier-r1-msvc\n    Start 1: L14_ub_observation\n1/1 Test #1: L14_ub_observation ...............   Passed    0.23 sec\n\n100% tests passed, 0 tests failed out of 1\n\nLabel Time Summary:\nobservation    =   0.23 sec*proc (1 test)\n\nTotal Test time (real) =   0.24 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    "L14_ub_observation"
+  ],
+  "verdict": "PASS"
+}

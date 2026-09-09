@@ -1,0 +1,27 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "build/c02-storage-final-fix-verifier-r1/L12-clangcl-asan-reference-release",
+    "--config",
+    "Release",
+    "--clean-first",
+    "--target",
+    "L12_storage_reference"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.4840000001713634,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L12_storage/CMakeLists.txt\nclang-cl : warning : unknown argument ignored in clang-cl: '-fno-omit-frame-pointer' [-Wunknown-argument] [F:\\CPPTrain\\LearnCPP\\build\\c02-storage-final-fix-verifier-r1\\L12-clangcl-asan-reference-release\\L12_storage_reference.vcxproj]\n  L12_storage_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-storage-final-fix-verifier-r1\\L12-clangcl-asan-reference-release\\Release\\L12_storage_reference.exe\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [
+    ".vcxproj"
+  ],
+  "verdict": "PASS"
+}

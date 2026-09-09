@@ -1,0 +1,29 @@
+{
+  "command": [
+    "rg",
+    "-n",
+    "EXCLUDE_FROM_ALL|RESOURCE_LOCK|TIMEOUT|require_expected_failure|SKIP:.*expected diagnostic|did not return a process exit code|accepted after expected diagnostic",
+    "Core_Study/exercises/L14_ub/CMakeLists.txt",
+    "Core_Study/exercises/L14_ub/checks/frontier_compile.cmake",
+    "Core_Study/exercises/L14_ub/checks/expect_asan_failure.cmake",
+    "Core_Study/exercises/L14_ub/README.md",
+    "Core_Study/references/validation/author-storage-report.md"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.06200000015087426,
+  "stdout": "Core_Study/exercises/L14_ub/README.md:17:- frontier probe target 使用 `EXCLUDE_FROM_ALL`，普通 `cmake --build --preset frontier` 不会因为某个未支持能力而失败；能力探测由 CTest 单独构建对应 target。\nCore_Study/exercises/L14_ub/README.md:19:- 每个 CTest probe 带 `RESOURCE_LOCK`，避免并发测试同时构建同一 build tree。\nCore_Study/references/validation/author-storage-report.md:83:- L14 frontier OBJECT targets are `EXCLUDE_FROM_ALL`, so unsupported draft features do not break ordinary `cmake --build --preset frontier`. Frontier CTest builds each probe target under `RESOURCE_LOCK`, writes a unique timestamped status file, and appends to `frontier/index.txt`.\nCore_Study/references/validation/author-storage-report.md:85:- L14 frontier and ASan wrapper both use internal `execute_process(TIMEOUT ...)` and reject timeout/non-process result before classifying diagnostics.\nCore_Study/exercises/L14_ub/CMakeLists.txt:7:core_add_test(L14_ub_observation COMMAND L14_ub_observation LABELS observation TIMEOUT 30)\nCore_Study/exercises/L14_ub/CMakeLists.txt:10:    add_library(${target} OBJECT EXCLUDE_FROM_ALL ${source})\nCore_Study/exercises/L14_ub/CMakeLists.txt:34:            TIMEOUT 90\nCore_Study/exercises/L14_ub/CMakeLists.txt:36:            RESOURCE_LOCK L14_frontier_build_tree\nCore_Study/exercises/L14_ub/CMakeLists.txt:95:    set_tests_properties(L14_ub_asan_uaf_diagnostic PROPERTIES TIMEOUT 30 LABELS \"unsafe;asan\")\nCore_Study/exercises/L14_ub/checks/frontier_compile.cmake:18:if(NOT DEFINED COMMAND_TIMEOUT_SECONDS)\nCore_Study/exercises/L14_ub/checks/frontier_compile.cmake:19:    set(COMMAND_TIMEOUT_SECONDS 60)\nCore_Study/exercises/L14_ub/checks/frontier_compile.cmake:44:    TIMEOUT \"${COMMAND_TIMEOUT_SECONDS}\"\nCore_Study/exercises/L14_ub/checks/frontier_compile.cmake:62:    message(FATAL_ERROR \"${CASE}: build did not return a process exit code (${result}); see ${out_file}\")\nCore_Study/exercises/L14_ub/checks/frontier_compile.cmake:71:function(require_expected_failure)\nCore_Study/exercises/L14_ub/checks/frontier_compile.cmake:91:        require_expected_failure()\nCore_Study/exercises/L14_ub/checks/frontier_compile.cmake:92:        message(STATUS \"SKIP: ${CASE} capability unavailable with expected diagnostic; see ${out_file}\")\nCore_Study/exercises/L14_ub/checks/frontier_compile.cmake:97:            message(STATUS \"SKIP: ${CASE} accepted after expected diagnostic; see ${out_file}\")\nCore_Study/exercises/L14_ub/checks/frontier_compile.cmake:102:        require_expected_failure()\nCore_Study/exercises/L14_ub/checks/expect_asan_failure.cmake:6:if(NOT DEFINED TIMEOUT_SECONDS)\nCore_Study/exercises/L14_ub/checks/expect_asan_failure.cmake:7:    set(TIMEOUT_SECONDS 10)\nCore_Study/exercises/L14_ub/checks/expect_asan_failure.cmake:15:    TIMEOUT \"${TIMEOUT_SECONDS}\"\nCore_Study/exercises/L14_ub/checks/expect_asan_failure.cmake:20:    message(FATAL_ERROR \"ASan diagnostic process did not return a process exit code (${result}); output was:\\n${combined}\")\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    "EXCLUDE_FROM_ALL",
+    "RESOURCE_LOCK",
+    "TIMEOUT",
+    "require_expected_failure"
+  ],
+  "verdict": "PASS"
+}

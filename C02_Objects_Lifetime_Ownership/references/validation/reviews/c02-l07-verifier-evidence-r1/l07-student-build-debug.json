@@ -1,0 +1,23 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "build/c02-verifier-l07-student-r1",
+    "--config",
+    "Debug"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 3.1879999998491257,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L07_raii/CMakeLists.txt\n  observation_check.cpp\n  L07_raii_observation.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-verifier-l07-student-r1\\Debug\\L07_raii_observation.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L07_raii/CMakeLists.txt\n  student_check.cpp\n  L07_raii_student.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-verifier-l07-student-r1\\Debug\\L07_raii_student.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L07_raii/CMakeLists.txt\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "expected_exit": 0,
+  "required_text": [
+    "L07_raii_student.exe",
+    "L07_raii_observation.exe"
+  ],
+  "verdict": "PASS"
+}

@@ -1,0 +1,23 @@
+{
+  "command": [
+    "rg",
+    "-n",
+    "OPENAI_API_KEY|ANTHROPIC|MIHOYO_API_KEY|API_KEY|TOKEN|SECRET",
+    "Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp",
+    "Core_Study/exercises/P1_object_buffer/validation/good/object_buffer.hpp",
+    "Core_Study/chapters/15-object-buffer.md",
+    "Core_Study/references/validation/author-storage-report.md"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.06300000008195639,
+  "stdout": "",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 1,
+  "required_text": [],
+  "verdict": "PASS"
+}

@@ -1,0 +1,6 @@
+{
+  "verdict": "FAIL",
+  "failures": [
+    "audit input error: [Errno 2] No such file or directory: 'Core_Study\\\\references\\\\validation\\\\reviews\\\\c02-student-wiring-verifier-evidence-r1\\\\does-not-exist.json'"
+  ]
+}

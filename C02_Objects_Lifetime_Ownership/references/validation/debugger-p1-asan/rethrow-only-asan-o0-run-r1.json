@@ -1,0 +1,17 @@
+{
+  "command": [
+    "build/c02-asan-debugger/rethrow_only_asan_o0.exe"
+  ],
+  "exit_code": 3221225477,
+  "timeout": false,
+  "process_seconds": 0.4220000000204891,
+  "stdout": "",
+  "stderr": "=================================================================\n==71484==ERROR: AddressSanitizer: stack-overflow on address 0x7ffa0d022b48 (pc 0x7ffa0d022b48 bp 0x000000000002 sp 0x0067f4a03fd0 T0)\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "FAIL"
+}

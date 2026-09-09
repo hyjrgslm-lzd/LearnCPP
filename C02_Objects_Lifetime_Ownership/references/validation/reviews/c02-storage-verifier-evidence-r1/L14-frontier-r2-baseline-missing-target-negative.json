@@ -1,0 +1,30 @@
+{
+  "command": [
+    "cmake",
+    "-DBUILD_DIR=build/c02-storage-verifier-r1/L14-frontier-r2",
+    "-DCONFIG=Debug",
+    "-DTARGET=DefinitelyMissingBaselineTarget",
+    "-DCASE=missing_baseline_probe",
+    "-DEXPECT=must_pass",
+    "-DSOURCE_MARKER=",
+    "-DEXPECTED_FAILURE=",
+    "-DACCEPTED_DIAGNOSTIC=",
+    "-DOUT_DIR=F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\reviews\\c02-storage-verifier-evidence-r1\\l14-frontier-baseline-missing-r2",
+    "-P",
+    "Core_Study/exercises/L14_ub/checks/frontier_compile.cmake"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.20399999991059303,
+  "stdout": "",
+  "stderr": "CMake Error at Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:84 (message):\n  missing_baseline_probe: baseline/toolchain compile failed; see\n  F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\reviews\\c02-storage-verifier-evidence-r1\\l14-frontier-baseline-missing-r2/missing_baseline_probe-20260909-022149.txt\n\n\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 1,
+  "required_text": [
+    "baseline/toolchain compile failed"
+  ],
+  "verdict": "PASS"
+}

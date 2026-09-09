@@ -1,0 +1,24 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "build/c02-wiring-bad",
+    "--config",
+    "Release",
+    "--clean-first",
+    "--target",
+    "wiring_student"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 1.6879999998491257,
+  "stdout": "CMake is re-running because F:/CPPTrain/LearnCPP/build/c02-wiring-bad/CMakeFiles/generate.stamp is out-of-date.\n  the file 'F:/CPPTrain/LearnCPP/Core_Study/references/validation/student-wiring/CMakeLists.txt'\n  is newer than 'F:/CPPTrain/LearnCPP/build/c02-wiring-bad/CMakeFiles/generate.stamp.depend'\n  result='-1'\n-- Configuring done (0.0s)\n-- Generating done (0.0s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/build/c02-wiring-bad\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/references/validation/student-wiring/CMakeLists.txt\n  bad.cpp\n  注意: 包含文件:  F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\student-wiring\\src\\student\\../../reference/answer.hpp\n  wiring_student.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-wiring-bad\\Release\\wiring_student.exe\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

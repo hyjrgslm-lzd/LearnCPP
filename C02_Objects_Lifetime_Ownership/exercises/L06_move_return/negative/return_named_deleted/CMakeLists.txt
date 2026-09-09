@@ -1,0 +1,4 @@
+cmake_minimum_required(VERSION 3.28)
+project(L06_negative_return_named_deleted LANGUAGES CXX)
+add_executable(L06_negative_return_named_deleted main.cpp)
+target_compile_features(L06_negative_return_named_deleted PRIVATE cxx_std_23)

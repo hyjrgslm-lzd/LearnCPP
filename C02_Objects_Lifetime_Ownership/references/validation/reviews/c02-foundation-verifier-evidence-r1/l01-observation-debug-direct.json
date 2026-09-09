@@ -1,0 +1,17 @@
+{
+  "command": [
+    "F:\\CPPTrain\\LearnCPP\\build\\c02-foundation-verifier-r1\\L01-default\\Debug\\L01_initialization_observation.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.031999999890103936,
+  "stdout": "",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

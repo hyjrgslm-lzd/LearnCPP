@@ -1,0 +1,19 @@
+{
+  "command": [
+    "build/c02-owner-l10-r1b/Debug/L10_control_block_validation_good.exe"
+  ],
+  "exit_code": null,
+  "timeout": false,
+  "process_seconds": 0.014999999897554517,
+  "stdout": "",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "launch failed: [WinError 2] 系统找不到指定的文件。",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    "L10_control_block_validation_contract OK"
+  ],
+  "verdict": "FAIL"
+}

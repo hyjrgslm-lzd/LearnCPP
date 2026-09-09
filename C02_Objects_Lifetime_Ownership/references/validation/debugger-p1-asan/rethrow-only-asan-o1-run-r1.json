@@ -1,0 +1,17 @@
+{
+  "command": [
+    "build/c02-asan-debugger/rethrow_only_asan_o1.exe"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.34399999980814755,
+  "stdout": "",
+  "stderr": "=================================================================\n==80636==ERROR: AddressSanitizer: access-violation on unknown address 0x000000000054 (pc 0x7ff705c8122f bp 0x00f487cfd140 sp 0x00f487cfb910 T0)\n==80636==The signal is caused by a READ memory access.\n==80636==Hint: address points to the zero page.\n    #0 0x7ff705c8122e in __FrameHandler3::GetUnwindTryBlock(unsigned __int64 *, struct _xDISPATCHER_CONTEXT *, struct _s_FuncInfo const *) D:\\a\\_work\\1\\s\\src\\vctools\\crt\\vcruntime\\src\\eh\\ehstate.cpp:183\n    #1 0x7ff705c83dbe in FindHandler<__FrameHandler3> D:\\a\\_work\\1\\s\\src\\vctools\\crt\\vcruntime\\src\\eh\\frame.cpp:547\n    #2 0x7ff705c83ac0 in __InternalCxxFrameHandler<class __FrameHandler3>(struct EHExceptionRecord *, unsigned __int64 *, struct _CONTEXT *, struct _xDISPATCHER_CONTEXT *, struct _s_FuncInfo const *, int, unsigned __int64 *, unsigned char) D:\\a\\_work\\1\\s\\src\\vctools\\crt\\vcruntime\\src\\eh\\frame.cpp:396\n    #3 0x7ff705c756d7 in __CxxFrameHandler3 D:\\a\\_work\\1\\s\\src\\vctools\\crt\\vcruntime\\src\\eh\\risctrnsctrl.cpp:281\n    #4 0x7ffa0d1647ae  (C:\\WINDOWS\\SYSTEM32\\ntdll.dll+0x1801647ae)\n    #5 0x7ffa0d0221c6  (C:\\WINDOWS\\SYSTEM32\\ntdll.dll+0x1800221c6)\n    #6 0x7ffa0d096ea0  (C:\\WINDOWS\\SYSTEM32\\ntdll.dll+0x180096ea0)\n    #7 0x7ffa0c9e1b69  (C:\\WINDOWS\\System32\\KERNELBASE.dll+0x1800c1b69)\n    #8 0x7ff705c744c8 in _CxxThrowException D:\\a\\_work\\1\\s\\src\\vctools\\crt\\vcruntime\\src\\eh\\throw.cpp:79\n    #9 0x7ff705c72d29 in rethrow_once F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\debugger-p1-asan\\rethrow_only.cpp:8\n    #10 0x7ff705c72d29 in main F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\debugger-p1-asan\\rethrow_only.cpp:15\n\n==80636==Register values:\nrax = 50  rbx = 7ff705cf11c4  rcx = 0  rdx = 0  \nrdi = 0  rsi = f487cfc340  rbp = f487cfd140  rsp = f487cfb910  \nr8  = 1  r9  = 7ff705cf123c  r10 = 2cf0  r11 = 5a  \nr12 = 7ff705c72d2a  r13 = f487cfc160  r14 = f487cfbb80  r15 = 7ff705cf11c4  \nAddressSanitizer can not provide additional info.\nSUMMARY: AddressSanitizer: access-violation D:\\a\\_work\\1\\s\\src\\vctools\\crt\\vcruntime\\src\\eh\\ehstate.cpp:183 in __FrameHandler3::GetUnwindTryBlock(unsigned __int64 *, struct _xDISPATCHER_CONTEXT *, struct _s_FuncInfo const *)\n==80636==ABORTING\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "FAIL"
+}

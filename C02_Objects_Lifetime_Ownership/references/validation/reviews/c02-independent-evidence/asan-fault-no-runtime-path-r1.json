@@ -1,0 +1,19 @@
+{
+  "command": [
+    "build\\c02-asan-probe\\c02_asan_fault.exe"
+  ],
+  "exit_code": 3221225781,
+  "timeout": false,
+  "process_seconds": 0.0470000000204891,
+  "stdout": "",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "expected_exit": 1,
+  "required_text": [
+    "heap-use-after-free",
+    "probe.cpp"
+  ],
+  "verdict": "FAIL"
+}

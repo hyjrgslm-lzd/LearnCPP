@@ -1,0 +1,19 @@
+{
+  "command": [
+    "build/c02-asan-debugger/P1_object_buffer_reference_fixed_o2.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.2970000000204891,
+  "stdout": "P1_object_buffer_contract OK\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    "P1_object_buffer_contract"
+  ],
+  "verdict": "PASS"
+}

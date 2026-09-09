@@ -1,0 +1,38 @@
+[
+  {
+    "path": "Core_Study/exercises/cmake/StudySetup.cmake",
+    "sha256": "6E0CFE88415D11B43FD953EE9D24263A9E484917C1EDBEE80AE95DABCAA0BC10"
+  },
+  {
+    "path": "Core_Study/exercises/tools/record_process.py",
+    "sha256": "A6CBE3E05A8A9845843254E17656E24C6F90E259F0AD93151A8AA09571246002"
+  },
+  {
+    "path": "Core_Study/references/validation/tools/check_record_process.py",
+    "sha256": "0BA659B3DC1E246BACB637403D87336B8B96051B8B3D71544AC82494D299BBC9"
+  },
+  {
+    "path": "Core_Study/exercises/L12_storage/CMakeLists.txt",
+    "sha256": "9E87001A142415F70376BB067C3F0870A69F36BC139BDCB3267F5EFD7D744AA2"
+  },
+  {
+    "path": "Core_Study/exercises/L12_storage/checks/expect_failure.cmake",
+    "sha256": "DC2EF83636017660B7810CB26E6C03D32E910D868CDBE3FAD36A3E785E63AFBD"
+  },
+  {
+    "path": "Core_Study/exercises/L14_ub/CMakeLists.txt",
+    "sha256": "89E7EEE5A94CDC09A6FFD226F75B3986C3B4EEE5116CE7FE291EE4A58AAAB910"
+  },
+  {
+    "path": "Core_Study/exercises/L14_ub/checks/expect_asan_failure.cmake",
+    "sha256": "C9E43935AB950B932196EE60A16D96A9AF2B461DA994387D4C4A5D167DA39A42"
+  },
+  {
+    "path": "Core_Study/exercises/L14_ub/checks/frontier_compile.cmake",
+    "sha256": "36D12DAA9FF9D29D7A7B4985F2EBB1BF005E6FBB85B398131E1CA79F291A80CE"
+  },
+  {
+    "path": "Core_Study/exercises/P1_object_buffer/CMakeLists.txt",
+    "sha256": "6AC6862F60C7A09F40F296DF0376572B3FEDA3C5C7287B33F9BD7E5DC42F574D"
+  }
+]

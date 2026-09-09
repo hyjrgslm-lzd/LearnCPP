@@ -1,0 +1,20 @@
+{
+  "command": [
+    "cmake",
+    "--version"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.06199999991804361,
+  "stdout": "cmake version 4.2.3\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    "cmake version"
+  ],
+  "verdict": "PASS"
+}

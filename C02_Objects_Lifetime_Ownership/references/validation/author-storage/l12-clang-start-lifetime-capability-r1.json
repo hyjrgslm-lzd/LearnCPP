@@ -1,0 +1,22 @@
+{
+  "command": [
+    "cmd.exe",
+    "/d",
+    "/c",
+    "build\\c02-l12-capability-r1-clang\\configure-build-test.cmd"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 5.5,
+  "stdout": "-- The CXX compiler identification is Clang 22.1.3 with GNU-like command-line\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/Llvm/x64/bin/clang++.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring done (2.0s)\n-- Generating done (0.0s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/build/c02-l12-capability-r1-clang\n[1/2] Building CXX object CMakeFiles/L12_storage_start_lifetime_as.dir/checks/start_lifetime_as_capability.cpp.obj\n[2/2] Linking CXX executable L12_storage_start_lifetime_as.exe\nTest project F:/CPPTrain/LearnCPP/build/c02-l12-capability-r1-clang\n    Start 2: L12_storage_start_lifetime_as\n1/1 Test #2: L12_storage_start_lifetime_as ....***Skipped   0.24 sec\n\n100% tests passed, 0 tests failed out of 1\n\nLabel Time Summary:\ncapability    =   0.24 sec*proc (1 test)\n\nTotal Test time (real) =   0.25 sec\n\nThe following tests did not run:\n\t  2 - L12_storage_start_lifetime_as (Skipped)\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    "L12_storage_start_lifetime_as"
+  ],
+  "verdict": "PASS"
+}

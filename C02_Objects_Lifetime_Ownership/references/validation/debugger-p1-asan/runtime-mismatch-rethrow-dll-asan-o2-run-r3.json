@@ -1,0 +1,18 @@
+{
+  "command": [
+    "build/c02-asan-debugger/rethrow_only_dll_asan_o2_r3.exe"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.5150000001303852,
+  "stdout": "",
+  "stderr": "=================================================================\n==43532==ERROR: AddressSanitizer: access-violation on unknown address 0x000000000054 (pc 0x7ff9ed8aa5ef bp 0x00fc83b8d180 sp 0x00fc83b8b950 T0)\n==43532==The signal is caused by a READ memory access.\n==43532==Hint: address points to the zero page.\n    #0 0x7ff9ed8aa5ee  (C:\\WINDOWS\\SYSTEM32\\VCRUNTIME140.dll+0x18001a5ee)\n    #1 0x7ff9ed8918ce  (C:\\WINDOWS\\SYSTEM32\\VCRUNTIME140.dll+0x1800018ce)\n    #2 0x7ff9ed892dd7  (C:\\WINDOWS\\SYSTEM32\\VCRUNTIME140.dll+0x180002dd7)\n    #3 0x7ff9ed8ab8f7  (C:\\WINDOWS\\SYSTEM32\\VCRUNTIME140.dll+0x18001b8f7)\n    #4 0x7ffa0d1647ae  (C:\\WINDOWS\\SYSTEM32\\ntdll.dll+0x1801647ae)\n    #5 0x7ffa0d0221c6  (C:\\WINDOWS\\SYSTEM32\\ntdll.dll+0x1800221c6)\n    #6 0x7ffa0d096ea0  (C:\\WINDOWS\\SYSTEM32\\ntdll.dll+0x180096ea0)\n    #7 0x7ffa0c9e1b69  (C:\\WINDOWS\\System32\\KERNELBASE.dll+0x1800c1b69)\n    #8 0x7ff9ed8955a8  (C:\\WINDOWS\\SYSTEM32\\VCRUNTIME140.dll+0x1800055a8)\n    #9 0x7ff6c3c72d29 in rethrow_once F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\debugger-p1-asan\\rethrow_only.cpp:8\n    #10 0x7ff6c3c72d29 in main F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\debugger-p1-asan\\rethrow_only.cpp:15\n\n==43532==Register values:\nrax = 50  rbx = 7ff6c3c77e2c  rcx = 0  rdx = 0  \nrdi = 0  rsi = fc83b8c380  rbp = fc83b8d180  rsp = fc83b8b950  \nr8  = 1  r9  = 7ff6c3c77ea4  r10 = 2cf0  r11 = 6c  \nr12 = 7ff6c3c72d2a  r13 = fc83b8c1a0  r14 = fc83b8bbc0  r15 = 7ff6c3c77e2c  \nAddressSanitizer can not provide additional info.\nSUMMARY: AddressSanitizer: access-violation (C:\\WINDOWS\\SYSTEM32\\VCRUNTIME140.dll+0x18001a5ee) \n==43532==ABORTING\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "FAIL"
+}

@@ -1,0 +1,534 @@
+[
+  {
+    "Doc": "Core_Study/exercises/BUILD_GUIDE.md",
+    "Line": 3,
+    "Target": "../README.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\exercises\\..\\README.md"
+  },
+  {
+    "Doc": "Core_Study/exercises/BUILD_GUIDE.md",
+    "Line": 63,
+    "Target": "../references/validation/asan/",
+    "Exists": true,
+    "Resolved": "Core_Study\\exercises\\..\\references\\validation\\asan\\"
+  },
+  {
+    "Doc": "Core_Study/exercises/BUILD_GUIDE.md",
+    "Line": 89,
+    "Target": "../references/validation/tools/check_record_process.py",
+    "Exists": true,
+    "Resolved": "Core_Study\\exercises\\..\\references\\validation\\tools\\check_record_process.py"
+  },
+  {
+    "Doc": "Core_Study/README.md",
+    "Line": 5,
+    "Target": "../Engineering_Study/README.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\..\\Engineering_Study\\README.md"
+  },
+  {
+    "Doc": "Core_Study/README.md",
+    "Line": 13,
+    "Target": "chapters/00-model-and-route.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\chapters\\00-model-and-route.md"
+  },
+  {
+    "Doc": "Core_Study/README.md",
+    "Line": 14,
+    "Target": "chapters/01-initialization.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\chapters\\01-initialization.md"
+  },
+  {
+    "Doc": "Core_Study/README.md",
+    "Line": 15,
+    "Target": "chapters/02-expressions-and-references.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\chapters\\02-expressions-and-references.md"
+  },
+  {
+    "Doc": "Core_Study/README.md",
+    "Line": 16,
+    "Target": "chapters/03-lifetime-and-borrowing.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\chapters\\03-lifetime-and-borrowing.md"
+  },
+  {
+    "Doc": "Core_Study/README.md",
+    "Line": 17,
+    "Target": "chapters/04-construction-and-unwinding.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\chapters\\04-construction-and-unwinding.md"
+  },
+  {
+    "Doc": "Core_Study/README.md",
+    "Line": 18,
+    "Target": "chapters/05-special-members.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\chapters\\05-special-members.md"
+  },
+  {
+    "Doc": "Core_Study/README.md",
+    "Line": 19,
+    "Target": "chapters/06-move-and-return.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\chapters\\06-move-and-return.md"
+  },
+  {
+    "Doc": "Core_Study/README.md",
+    "Line": 20,
+    "Target": "chapters/07-raii-and-ownership.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\chapters\\07-raii-and-ownership.md"
+  },
+  {
+    "Doc": "Core_Study/README.md",
+    "Line": 21,
+    "Target": "chapters/08-unique-ownership.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\chapters\\08-unique-ownership.md"
+  },
+  {
+    "Doc": "Core_Study/README.md",
+    "Line": 22,
+    "Target": "chapters/09-shared-ownership.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\chapters\\09-shared-ownership.md"
+  },
+  {
+    "Doc": "Core_Study/README.md",
+    "Line": 23,
+    "Target": "chapters/10-control-block.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\chapters\\10-control-block.md"
+  },
+  {
+    "Doc": "Core_Study/README.md",
+    "Line": 24,
+    "Target": "chapters/11-layout-and-representation.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\chapters\\11-layout-and-representation.md"
+  },
+  {
+    "Doc": "Core_Study/README.md",
+    "Line": 25,
+    "Target": "chapters/12-storage-and-object-creation.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\chapters\\12-storage-and-object-creation.md"
+  },
+  {
+    "Doc": "Core_Study/README.md",
+    "Line": 26,
+    "Target": "chapters/13-aliasing-and-provenance.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\chapters\\13-aliasing-and-provenance.md"
+  },
+  {
+    "Doc": "Core_Study/README.md",
+    "Line": 27,
+    "Target": "chapters/14-undefined-behavior-and-optimization.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\chapters\\14-undefined-behavior-and-optimization.md"
+  },
+  {
+    "Doc": "Core_Study/README.md",
+    "Line": 28,
+    "Target": "chapters/15-object-buffer.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\chapters\\15-object-buffer.md"
+  },
+  {
+    "Doc": "Core_Study/README.md",
+    "Line": 34,
+    "Target": "exercises/BUILD_GUIDE.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\exercises\\BUILD_GUIDE.md"
+  },
+  {
+    "Doc": "Core_Study/README.md",
+    "Line": 38,
+    "Target": "references/implementation-spec.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\implementation-spec.md"
+  },
+  {
+    "Doc": "Core_Study/README.md",
+    "Line": 38,
+    "Target": "references/quality-report.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\quality-report.md"
+  },
+  {
+    "Doc": "Core_Study/README.md",
+    "Line": 38,
+    "Target": "references/coverage.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\coverage.md"
+  },
+  {
+    "Doc": "Core_Study/README.md",
+    "Line": 42,
+    "Target": "../Coroutine_Study/README.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\..\\Coroutine_Study\\README.md"
+  },
+  {
+    "Doc": "Core_Study/README.md",
+    "Line": 43,
+    "Target": "../Ranges_Study/README.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\..\\Ranges_Study\\README.md"
+  },
+  {
+    "Doc": "Core_Study/README.md",
+    "Line": 44,
+    "Target": "../Execution_Study/README.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\..\\Execution_Study\\README.md"
+  },
+  {
+    "Doc": "Core_Study/README.md",
+    "Line": 45,
+    "Target": "../Concurrency_Study/README.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\..\\Concurrency_Study\\README.md"
+  },
+  {
+    "Doc": "Core_Study/README.md",
+    "Line": 47,
+    "Target": "../LEARNCPP_GLOBAL_PLAN.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\..\\LEARNCPP_GLOBAL_PLAN.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 7,
+    "Target": "../chapters/00-model-and-route.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\..\\chapters\\00-model-and-route.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 8,
+    "Target": "../chapters/01-initialization.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\..\\chapters\\01-initialization.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 8,
+    "Target": "../exercises/L01_initialization/README.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\..\\exercises\\L01_initialization\\README.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 9,
+    "Target": "../chapters/02-expressions-and-references.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\..\\chapters\\02-expressions-and-references.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 9,
+    "Target": "../exercises/L02_value_categories/README.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\..\\exercises\\L02_value_categories\\README.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 10,
+    "Target": "../exercises/L03_lifetimes/README.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\..\\exercises\\L03_lifetimes\\README.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 10,
+    "Target": "../chapters/03-lifetime-and-borrowing.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\..\\chapters\\03-lifetime-and-borrowing.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 11,
+    "Target": "validation/reviews/reviewer-c02-l04-r3.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\validation\\reviews\\reviewer-c02-l04-r3.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 11,
+    "Target": "../exercises/L04_construction/README.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\..\\exercises\\L04_construction\\README.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 11,
+    "Target": "../chapters/04-construction-and-unwinding.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\..\\chapters\\04-construction-and-unwinding.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 12,
+    "Target": "../chapters/05-special-members.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\..\\chapters\\05-special-members.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 12,
+    "Target": "../exercises/L05_special_members/README.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\..\\exercises\\L05_special_members\\README.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 13,
+    "Target": "../chapters/06-move-and-return.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\..\\chapters\\06-move-and-return.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 13,
+    "Target": "../exercises/L06_move_return/README.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\..\\exercises\\L06_move_return\\README.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 14,
+    "Target": "../chapters/07-raii-and-ownership.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\..\\chapters\\07-raii-and-ownership.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 14,
+    "Target": "../exercises/L07_raii/README.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\..\\exercises\\L07_raii\\README.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 14,
+    "Target": "validation/reviews/verifier-l07-r3.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\validation\\reviews\\verifier-l07-r3.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 15,
+    "Target": "../exercises/L08_unique/README.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\..\\exercises\\L08_unique\\README.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 15,
+    "Target": "../chapters/08-unique-ownership.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\..\\chapters\\08-unique-ownership.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 16,
+    "Target": "../chapters/09-shared-ownership.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\..\\chapters\\09-shared-ownership.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 16,
+    "Target": "../exercises/L09_shared/README.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\..\\exercises\\L09_shared\\README.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 17,
+    "Target": "../chapters/10-control-block.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\..\\chapters\\10-control-block.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 17,
+    "Target": "../exercises/L10_control_block/README.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\..\\exercises\\L10_control_block\\README.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 18,
+    "Target": "../chapters/11-layout-and-representation.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\..\\chapters\\11-layout-and-representation.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 18,
+    "Target": "../exercises/L11_layout/README.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\..\\exercises\\L11_layout\\README.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 19,
+    "Target": "../exercises/L12_storage/README.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\..\\exercises\\L12_storage\\README.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 19,
+    "Target": "../chapters/12-storage-and-object-creation.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\..\\chapters\\12-storage-and-object-creation.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 20,
+    "Target": "../exercises/L13_aliasing/README.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\..\\exercises\\L13_aliasing\\README.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 20,
+    "Target": "../chapters/13-aliasing-and-provenance.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\..\\chapters\\13-aliasing-and-provenance.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 21,
+    "Target": "../chapters/14-undefined-behavior-and-optimization.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\..\\chapters\\14-undefined-behavior-and-optimization.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 21,
+    "Target": "../exercises/L14_ub/README.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\..\\exercises\\L14_ub\\README.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 22,
+    "Target": "../chapters/15-object-buffer.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\..\\chapters\\15-object-buffer.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 22,
+    "Target": "../exercises/P1_object_buffer/README.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\..\\exercises\\P1_object_buffer\\README.md"
+  },
+  {
+    "Doc": "Core_Study/references/coverage.md",
+    "Line": 35,
+    "Target": "validation/author-storage-probes/results-20260908.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\validation\\author-storage-probes\\results-20260908.md"
+  },
+  {
+    "Doc": "Core_Study/references/quality-report.md",
+    "Line": 7,
+    "Target": "validation/planning/consensus.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\validation\\planning\\consensus.md"
+  },
+  {
+    "Doc": "Core_Study/references/quality-report.md",
+    "Line": 8,
+    "Target": "validation/reviews/reviewer-c02-l04-r3.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\validation\\reviews\\reviewer-c02-l04-r3.md"
+  },
+  {
+    "Doc": "Core_Study/references/quality-report.md",
+    "Line": 9,
+    "Target": "validation/reviews/verifier-l07-r3.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\validation\\reviews\\verifier-l07-r3.md"
+  },
+  {
+    "Doc": "Core_Study/references/quality-report.md",
+    "Line": 9,
+    "Target": "validation/reviews/reviewer-c02-l07-r3-final.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\validation\\reviews\\reviewer-c02-l07-r3-final.md"
+  },
+  {
+    "Doc": "Core_Study/references/quality-report.md",
+    "Line": 9,
+    "Target": "validation/reviews/verifier-l07-original-snapshot-r1.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\validation\\reviews\\verifier-l07-original-snapshot-r1.md"
+  },
+  {
+    "Doc": "Core_Study/references/quality-report.md",
+    "Line": 9,
+    "Target": "validation/reviews/reviewer-c02-sample-gate-r1.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\validation\\reviews\\reviewer-c02-sample-gate-r1.md"
+  },
+  {
+    "Doc": "Core_Study/references/quality-report.md",
+    "Line": 10,
+    "Target": "validation/reviews/verifier-c02-public-tools-asan-r1.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\validation\\reviews\\verifier-c02-public-tools-asan-r1.md"
+  },
+  {
+    "Doc": "Core_Study/references/quality-report.md",
+    "Line": 11,
+    "Target": "validation/student-wiring/README.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\validation\\student-wiring\\README.md"
+  },
+  {
+    "Doc": "Core_Study/references/quality-report.md",
+    "Line": 12,
+    "Target": "validation/author-storage-probes/results-20260908.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\validation\\author-storage-probes\\results-20260908.md"
+  },
+  {
+    "Doc": "Core_Study/references/quality-report.md",
+    "Line": 20,
+    "Target": "validation/author-owner-l07-evidence-history-note.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\validation\\author-owner-l07-evidence-history-note.md"
+  },
+  {
+    "Doc": "Core_Study/references/standards-and-implementations.md",
+    "Line": 29,
+    "Target": "validation/author-storage-probes/results-20260908.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\validation\\author-storage-probes\\results-20260908.md"
+  },
+  {
+    "Doc": "Core_Study/references/standards-and-implementations.md",
+    "Line": 37,
+    "Target": "validation/local-stl-inputs.json",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\validation\\local-stl-inputs.json"
+  },
+  {
+    "Doc": "Core_Study/references/standards-and-implementations.md",
+    "Line": 41,
+    "Target": "quality-report.md",
+    "Exists": true,
+    "Resolved": "Core_Study\\references\\quality-report.md"
+  }
+]

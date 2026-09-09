@@ -1,0 +1,46 @@
+cmake_minimum_required(VERSION 3.28)
+project(L09_shared LANGUAGES CXX)
+include(../cmake/StudySetup.cmake)
+
+option(L09_SHARED_BUILD_VALIDATION_VARIANTS "Build local checker good/bad validation variants" OFF)
+
+add_executable(L09_shared_observation checks/observation_check.cpp)
+target_include_directories(L09_shared_observation PRIVATE checks checks/support)
+core_configure_target(L09_shared_observation)
+core_add_test(L09_shared_observation COMMAND L09_shared_observation LABELS observation TIMEOUT 30)
+
+if(CORE_STUDY_TEST_STUDENTS)
+    add_executable(L09_shared_student checks/student_check.cpp)
+else()
+    add_executable(L09_shared_student EXCLUDE_FROM_ALL checks/student_check.cpp)
+endif()
+target_include_directories(L09_shared_student PRIVATE checks/support src/student checks)
+core_configure_target(L09_shared_student)
+if(CORE_STUDY_TEST_STUDENTS)
+    core_add_test(L09_shared_student COMMAND L09_shared_student LABELS student TIMEOUT 30)
+endif()
+
+if(CORE_STUDY_BUILD_REFERENCE)
+    add_executable(L09_shared_reference checks/reference_check.cpp)
+    target_include_directories(L09_shared_reference PRIVATE checks/support src/reference checks)
+    core_configure_target(L09_shared_reference)
+    core_add_test(L09_shared_reference COMMAND L09_shared_reference LABELS reference TIMEOUT 30)
+endif()
+
+if(L09_SHARED_BUILD_VALIDATION_VARIANTS)
+    add_executable(L09_shared_validation_good checks/validation_check.cpp)
+    target_include_directories(L09_shared_validation_good PRIVATE checks/support validation/good checks)
+    core_configure_target(L09_shared_validation_good)
+
+    add_executable(L09_shared_validation_bad_cycle checks/validation_check.cpp)
+    target_include_directories(L09_shared_validation_bad_cycle PRIVATE checks/support validation/bad_cycle checks)
+    core_configure_target(L09_shared_validation_bad_cycle)
+
+    add_executable(L09_shared_validation_bad_hardcoded_noop checks/validation_check.cpp)
+    target_include_directories(L09_shared_validation_bad_hardcoded_noop PRIVATE checks/support validation/bad_hardcoded_noop checks)
+    core_configure_target(L09_shared_validation_bad_hardcoded_noop)
+
+    add_executable(L09_shared_validation_bad_weak_resurrect checks/validation_check.cpp)
+    target_include_directories(L09_shared_validation_bad_weak_resurrect PRIVATE checks/support validation/bad_weak_resurrect checks)
+    core_configure_target(L09_shared_validation_bad_weak_resurrect)
+endif()

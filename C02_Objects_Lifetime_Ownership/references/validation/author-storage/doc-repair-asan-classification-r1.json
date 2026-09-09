@@ -1,0 +1,22 @@
+{
+  "command": [
+    "rg",
+    "-n",
+    "ASan 证据纠正|command invocation failures|P1 ASan access violation",
+    "Core_Study/references/validation/author-storage-report.md"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.030999999959021807,
+  "stdout": "52:## ASan 证据纠正\n54:`l12-asan-reference-runtime-fails-r1.json` and `p1-asan-reference-runtime-fails-r1.json` are preserved as raw intermediate evidence, but they are command invocation failures, not program runtime verdicts. Their recorded command shape contains a malformed `cmd /d /s /c` invocation with an empty command segment before the executable path, and stderr reports command/file-name syntax failure. The target executables did not start, so these JSON files must not be used as ASan PASS/FAIL evidence for L12 or P1.\n56:Root later ran with a matching runtime `PATH` directly. That newer direct evidence reports L12 Reference PASS and a real P1 ASan access violation in `references/validation/asan/p1-reference-direct-r1.json`, around the CopyFallback `grow_and_append` rethrow path and `VCRUNTIME140.dll`. P1 implementation/checker is frozen for the dedicated ASan debugger lane; this author report therefore classifies P1 ASan runtime status as pending external debugger resolution, not validated by the old wrapper JSON.\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    "ASan 证据纠正"
+  ],
+  "verdict": "PASS"
+}

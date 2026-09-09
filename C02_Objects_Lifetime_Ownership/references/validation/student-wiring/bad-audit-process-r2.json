@@ -1,0 +1,30 @@
+{
+  "command": [
+    "python",
+    "Core_Study/exercises/tools/audit_student.py",
+    "--build",
+    "build/c02-wiring-bad",
+    "--config",
+    "Release",
+    "--trace",
+    "Core_Study/references/validation/student-wiring/bad-build-r2.json",
+    "--expect-target",
+    "wiring_student",
+    "--output",
+    "Core_Study/references/validation/student-wiring/bad-audit-r2.json"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.0779999999795109,
+  "stdout": "FAIL: Core_Study\\references\\validation\\student-wiring\\bad-audit-r2.json\nReference in actual include trace: F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\student-wiring\\src\\student\\../../reference/answer.hpp\nReference include spelling in F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\student-wiring\\src\\student\\bad.cpp: ../../reference/answer.hpp\nReference source/include: F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\student-wiring\\reference\\answer.hpp\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 1,
+  "required_text": [
+    "Reference in actual include trace"
+  ],
+  "verdict": "PASS"
+}

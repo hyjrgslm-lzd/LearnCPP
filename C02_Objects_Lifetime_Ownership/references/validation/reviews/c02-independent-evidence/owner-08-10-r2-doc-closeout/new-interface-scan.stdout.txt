@@ -1,0 +1,5 @@
+Core_Study/exercises/L09_shared/README.md:24:- `lock_value(const std::weak_ptr<node>& weak, int& out)` 尝试 `weak.lock()`；成功时把节点 value 写入 `out` 并返回 `true`，失败时返回 `false`。
+Core_Study/exercises/L09_shared/README.md:56:./build/c02-owner-l09/Debug/L09_shared_validation_bad_hardcoded_noop.exe
+Core_Study/exercises/L08_unique/README.md:38:- `make_array(int size, int first_value)` 创建长度为 `size` 的数组，并从 `first_value` 开始依次写入递增整数。
+Core_Study/exercises/L08_unique/README.md:39:- `sum_array(const int_array& values, int size)` 按传入长度求和。
+Core_Study/exercises/L08_unique/README.md:41:解析：`unique_ptr<T[]>` 使用 `delete[]`，但不保存长度。checker 调用 `make_array(4, 10)`，期望数组内容是 `10, 11, 12, 13`，因此 `sum_array(values, 4)` 应返回 `46`。这只验证所有权和索引访问，不把它当 `vector`。

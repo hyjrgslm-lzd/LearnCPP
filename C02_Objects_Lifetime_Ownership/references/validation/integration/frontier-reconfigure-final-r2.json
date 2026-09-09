@@ -1,0 +1,22 @@
+{
+  "command": [
+    "cmake",
+    "-S",
+    "Core_Study/exercises",
+    "-B",
+    "build/c02-final-frontier-r1"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.8129999998491257,
+  "stdout": "-- Configuring done (0.1s)\n-- Generating done (0.6s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/build/c02-final-frontier-r1\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

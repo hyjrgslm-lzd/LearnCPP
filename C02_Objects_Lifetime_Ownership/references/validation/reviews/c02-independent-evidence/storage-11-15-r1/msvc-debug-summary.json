@@ -1,0 +1,170 @@
+{
+  "l11-configure-debug": {
+    "file": "cmake",
+    "args": [],
+    "exit": 0,
+    "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l11-configure-debug.stdout.txt",
+    "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l11-configure-debug.stderr.txt"
+  },
+  "l11-build-debug": {
+    "file": "cmake",
+    "args": [],
+    "exit": 0,
+    "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l11-build-debug.stdout.txt",
+    "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l11-build-debug.stderr.txt"
+  },
+  "l11-ctest-debug": {
+    "file": "ctest",
+    "args": [],
+    "exit": 0,
+    "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l11-ctest-debug.stdout.txt",
+    "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l11-ctest-debug.stderr.txt"
+  },
+  "l12-configure-debug": {
+    "file": "cmake",
+    "args": [],
+    "exit": 0,
+    "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l12-configure-debug.stdout.txt",
+    "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l12-configure-debug.stderr.txt"
+  },
+  "l12-build-debug": {
+    "file": "cmake",
+    "args": [],
+    "exit": 0,
+    "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l12-build-debug.stdout.txt",
+    "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l12-build-debug.stderr.txt"
+  },
+  "l12-ctest-debug": {
+    "file": "ctest",
+    "args": [],
+    "exit": 0,
+    "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l12-ctest-debug.stdout.txt",
+    "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l12-ctest-debug.stderr.txt"
+  },
+  "l13-configure-debug": {
+    "file": "cmake",
+    "args": [],
+    "exit": 0,
+    "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l13-configure-debug.stdout.txt",
+    "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l13-configure-debug.stderr.txt"
+  },
+  "l13-build-debug": {
+    "file": "cmake",
+    "args": [],
+    "exit": 0,
+    "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l13-build-debug.stdout.txt",
+    "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l13-build-debug.stderr.txt"
+  },
+  "l13-ctest-debug": {
+    "file": "ctest",
+    "args": [],
+    "exit": 0,
+    "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l13-ctest-debug.stdout.txt",
+    "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l13-ctest-debug.stderr.txt"
+  },
+  "l14-configure-debug": {
+    "file": "cmake",
+    "args": [],
+    "exit": 0,
+    "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l14-configure-debug.stdout.txt",
+    "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l14-configure-debug.stderr.txt"
+  },
+  "l14-build-debug": {
+    "file": "cmake",
+    "args": [],
+    "exit": 0,
+    "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l14-build-debug.stdout.txt",
+    "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l14-build-debug.stderr.txt"
+  },
+  "l14-ctest-debug": {
+    "file": "ctest",
+    "args": [],
+    "exit": 0,
+    "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l14-ctest-debug.stdout.txt",
+    "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l14-ctest-debug.stderr.txt"
+  },
+  "p1-configure-debug": {
+    "file": "cmake",
+    "args": [],
+    "exit": 0,
+    "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\p1-configure-debug.stdout.txt",
+    "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\p1-configure-debug.stderr.txt"
+  },
+  "p1-build-debug": {
+    "file": "cmake",
+    "args": [],
+    "exit": 0,
+    "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\p1-build-debug.stdout.txt",
+    "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\p1-build-debug.stderr.txt"
+  },
+  "p1-ctest-debug": {
+    "file": "ctest",
+    "args": [],
+    "exit": 0,
+    "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\p1-ctest-debug.stdout.txt",
+    "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\p1-ctest-debug.stderr.txt"
+  },
+  "l12-student-configure": {
+    "file": "cmake",
+    "args": [],
+    "exit": 0,
+    "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l12-student-configure.stdout.txt",
+    "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l12-student-configure.stderr.txt"
+  },
+  "l12-student-build": {
+    "file": "cmake",
+    "args": [],
+    "exit": 0,
+    "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l12-student-build.stdout.txt",
+    "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l12-student-build.stderr.txt"
+  },
+  "l12-student-ctest": {
+    "file": "ctest",
+    "args": [],
+    "exit": 0,
+    "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l12-student-ctest.stdout.txt",
+    "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l12-student-ctest.stderr.txt"
+  },
+  "p1-student-configure": {
+    "file": "cmake",
+    "args": [],
+    "exit": 0,
+    "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\p1-student-configure.stdout.txt",
+    "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\p1-student-configure.stderr.txt"
+  },
+  "p1-student-build": {
+    "file": "cmake",
+    "args": [],
+    "exit": 0,
+    "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\p1-student-build.stdout.txt",
+    "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\p1-student-build.stderr.txt"
+  },
+  "p1-student-ctest": {
+    "file": "ctest",
+    "args": [],
+    "exit": 0,
+    "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\p1-student-ctest.stdout.txt",
+    "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\p1-student-ctest.stderr.txt"
+  },
+  "l14-frontier-configure": {
+    "file": "cmake",
+    "args": [],
+    "exit": 0,
+    "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l14-frontier-configure.stdout.txt",
+    "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l14-frontier-configure.stderr.txt"
+  },
+  "l14-frontier-build-default": {
+    "file": "cmake",
+    "args": [],
+    "exit": 0,
+    "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l14-frontier-build-default.stdout.txt",
+    "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l14-frontier-build-default.stderr.txt"
+  },
+  "l14-frontier-ctest": {
+    "file": "ctest",
+    "args": [],
+    "exit": 0,
+    "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l14-frontier-ctest.stdout.txt",
+    "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1\\l14-frontier-ctest.stderr.txt"
+  }
+}

@@ -2,16 +2,51 @@
 
 面向已有 C++ 编程经验的工程师，从必要背景、标准语义和机制推导进入真实代码、实验及工程应用。正文是学习主线，练习用于验证理解；编译成功、观察程序成功和完成作业是不同的状态。
 
-全局范围、先修和进度见 [LEARNCPP_GLOBAL_PLAN](LEARNCPP_GLOBAL_PLAN.md)，教学、实验和独立审查标准见 [CONTENT_REFACTORING_GUIDE](CONTENT_REFACTORING_GUIDE.md)。
+## 从哪里开始
 
-| 课程入口 | 主讲责任 |
+先完成 **C01 的基本构建与调试 → C02 的对象、生命周期与所有权**。C01 的 ABI、Modules 和包交付可在遇到工程问题时继续深入，不必全部学完才能进入 C02。
+
+之后按目标选择路线：
+
+- **序列与算法**：C02 → C06 Ranges；自定义视图与泛型实现还需相应模板知识。
+- **并发与异步**：C02 → C08 基础同步 → C09 协程或 C10 Execution；协程与 sender 的组合放在两侧基础之后。C09 不是使用 C10 的硬先修。
+- **GPU 计算**：对象与资源基础、必要数值和性能知识 → C14；无需先读完整个异步课程组。
+- **引擎开发**：构建与对象基础 → C15，再按模块补齐并发、渲染和网络知识。
+
+目录采用 `C编号_具体主题`，按全局课程版图排序。编号提供默认阅读次序，实际硬先修以章节说明为准；空号留给尚未建设的课程，不创建占位目录。C03—C05、C07 等公共课程尚未完整交付，已有专题所需的先修说明和补充入口仍保留，不能把目录排序当成先修已全部齐备。
+
+## 已有课程
+
+| 阶段 | 课程入口 | 学习内容 |
+|---|---|---|
+| 公共基础 | [C01_Build_Compile_Link](C01_Build_Compile_Link/README.md) | 构建与调试、编译链接、ABI、CMake、Modules、依赖与包交付；11章/13练习 |
+| 公共基础 | [C02_Objects_Lifetime_Ownership](C02_Objects_Lifetime_Ownership/README.md) | 初始化、表达式、对象模型、生命周期、所有权、智能指针、存储复用；16章/15练习单元 |
+| 专题进阶 | [C06_Ranges](C06_Ranges/README.md) | 序列、算法、视图、迭代器与惰性求值；当前覆盖 C06 课程族中的 Ranges 专题 |
+| 专题进阶 | [C08_Concurrency](C08_Concurrency/README.md) | 线程、同步、原子、内存模型、并发结构与安全回收；已有 CPU 性能系列兼作 C13 入口 |
+| 专题进阶 | [C09_Coroutines](C09_Coroutines/README.md) | 协程协议、控制流、帧与生命周期、取消组合、I/O 与 RPC 应用 |
+| 专题进阶 | [C10_Execution](C10_Execution/README.md) | sender/receiver、scheduler、工作组合、完成通道与运行时 |
+| 领域应用 | [C14_GPU](C14_GPU/README.md) | CUDA、设备执行与内存层级、GPU 性能和算子实现 |
+| 领域应用 | [C15_Unreal_Engine](C15_Unreal_Engine/README.md) | Unreal Engine 对象、资源、任务、渲染及网络架构；当前覆盖 C15 中的 UE 专题 |
+
+各课独立配置和构建。进入课内 README 的阅读路线与构建指南后，再按目标阅读正文、做练习。实际验证、独立审查和环境限制，以对应课程的质量报告为准。
+
+全局范围、先修与进度见 [LEARNCPP_GLOBAL_PLAN](LEARNCPP_GLOBAL_PLAN.md)；教学、实验和审查标准见 [CONTENT_REFACTORING_GUIDE](CONTENT_REFACTORING_GUIDE.md)。
+
+## 目录迁移与旧记录
+
+2026-09-09 按课程顺序与主题统一目录名，课程内容归属保持不变：
+
+| 旧路径 | 当前路径 |
 |---|---|
-| [Engineering_Study](Engineering_Study/README.md) | C01：构建与调试、编译链接、ABI、CMake、Modules、依赖和包交付；11章/13练习，Windows验证结果见课内质量报告 |
-| [Concurrency_Study](Concurrency_Study/README.md) | C08：共享状态、同步、内存模型、结构与回收；保留 CPU 性能路线作为 C13 输入 |
-| [Coroutine_Study](Coroutine_Study/README.md) | C09：协程协议、控制流、帧和生命周期、I/O 与 RPC 应用 |
-| [Execution_Study](Execution_Study/README.md) | C10：sender/receiver、scheduler、工作组合和运行时 |
-| [Ranges_Study](Ranges_Study/README.md) | C06 的序列、视图、迭代器与惰性求值 |
-| [GPU_Study](GPU_Study/README.md) | C14：设备执行、内存层级和算子实现 |
-| [UELearn](UELearn/README.md) | C15 的 UE 对象、资源、任务、渲染及网络架构 |
+| `Engineering_Study` | `C01_Build_Compile_Link` |
+| `Core_Study` | `C02_Objects_Lifetime_Ownership` |
+| `Ranges_Study` | `C06_Ranges` |
+| `Concurrency_Study` | `C08_Concurrency` |
+| `Coroutine_Study` | `C09_Coroutines` |
+| `Execution_Study` | `C10_Execution` |
+| `GPU_Study` | `C14_GPU` |
+| `UELearn` | `C15_Unreal_Engine` |
 
-各课独立配置和构建。先进入相应 README 的阅读路线与构建指南；其他课程族的规划入口在全局计划中，不以不存在的目录伪装成已交付课程。实际已验证、审查通过与环境受限情况，以对应课程的质量报告和证据为准。
+旧日志、测量结果和冻结 SHA 清单保留当时的原文；查找其中的文件时，先按上表换算课程路径。历史 SHA 绑定当时版本，迁移中更新过路径的文件以新的验证记录为准。迁移验证与文件保留核对见[目录迁移记录](C02_Objects_Lifetime_Ownership/references/directory-migration.md)。
+
+旧 CMake 缓存包含绝对路径，迁移后请使用新构建目录重新配置；原缓存和构建产物保留在本地，不纳入 Git。各课顶层 CMake project 与生成的 VS solution 使用课程目录名；单题 target 保留题号。Unreal 宿主项目、主模块及 Game/Editor Target 同步为 `C15_Unreal_Engine` 系列名称，原 `UELearn.uproject` 改为 `C15_Unreal_Engine.uproject`。

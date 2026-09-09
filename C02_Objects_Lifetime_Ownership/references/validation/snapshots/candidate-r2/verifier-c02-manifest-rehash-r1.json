@@ -1,0 +1,38 @@
+{
+  "summary": {
+    "source_files": 299,
+    "evidence_files": 1266,
+    "source_manifest_sha256": "6b1e21472131b13bdfe800d8b1c42eafca31d4e267012b2f5af5b8b768681880",
+    "evidence_manifest_sha256": "594949caae1fee71ba366f775c8761b95ec9986490f0aa5c3ac5a3bc322675d8"
+  },
+  "source": {
+    "manifest": "Core_Study/references/validation/snapshots/candidate-r2/source.sha256",
+    "line_count": 299,
+    "manifest_sha256": "6b1e21472131b13bdfe800d8b1c42eafca31d4e267012b2f5af5b8b768681880",
+    "malformed_count": 0,
+    "missing_count": 0,
+    "mismatch_count": 0,
+    "duplicate_count": 0,
+    "malformed_sample": null,
+    "missing_sample": null,
+    "mismatch_sample": null,
+    "duplicate_sample": null
+  },
+  "evidence": {
+    "manifest": "Core_Study/references/validation/snapshots/candidate-r2/evidence.sha256",
+    "line_count": 1266,
+    "manifest_sha256": "594949caae1fee71ba366f775c8761b95ec9986490f0aa5c3ac5a3bc322675d8",
+    "malformed_count": 0,
+    "missing_count": 0,
+    "mismatch_count": 0,
+    "duplicate_count": 0,
+    "malformed_sample": null,
+    "missing_sample": null,
+    "mismatch_sample": null,
+    "duplicate_sample": null
+  },
+  "summary_source_count_matches": true,
+  "summary_evidence_count_matches": true,
+  "summary_source_manifest_sha_matches": true,
+  "summary_evidence_manifest_sha_matches": true
+}

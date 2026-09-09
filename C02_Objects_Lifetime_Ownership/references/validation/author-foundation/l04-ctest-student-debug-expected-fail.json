@@ -1,0 +1,23 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "Core_Study/exercises/L04_construction/build/c02-foundation-author-student",
+    "-C",
+    "Debug",
+    "--output-on-failure"
+  ],
+  "exit_code": 8,
+  "timeout": false,
+  "process_seconds": 0.17199999978765845,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/Core_Study/exercises/L04_construction/build/c02-foundation-author-student\n    Start 1: L04_construction_student\n1/5 Test #1: L04_construction_student ...............***Failed    0.02 sec\ncheck failed: implementation is still the safe starter\n\n    Start 2: L04_construction_reference\n2/5 Test #2: L04_construction_reference .............   Passed    0.02 sec\n    Start 3: L04_construction_validation_good\n3/5 Test #3: L04_construction_validation_good .......   Passed    0.02 sec\n    Start 4: L04_construction_validation_bad_noop\n4/5 Test #4: L04_construction_validation_bad_noop ...   Passed    0.02 sec\n    Start 5: L04_construction_validation_bad_leak\n5/5 Test #5: L04_construction_validation_bad_leak ...   Passed    0.03 sec\n\n80% tests passed, 1 tests failed out of 5\n\nLabel Time Summary:\nnegative      =   0.05 sec*proc (2 tests)\nreference     =   0.02 sec*proc (1 test)\nstudent       =   0.02 sec*proc (1 test)\nvalidation    =   0.02 sec*proc (1 test)\n\nTotal Test time (real) =   0.11 sec\n\nThe following tests FAILED:\n\t  1 - L04_construction_student (Failed)                 student\n",
+  "stderr": "Errors while running CTest\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "expected_exit": 8,
+  "required_text": [
+    "implementation is still the safe starter"
+  ],
+  "verdict": "PASS"
+}

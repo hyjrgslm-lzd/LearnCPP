@@ -1,0 +1,24 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "build/c02-foundation-verifier-r1/L01-default/negative/narrowing",
+    "--config",
+    "Debug",
+    "--clean-first"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 1.625,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L01_initialization/negative/narrowing/CMakeLists.txt\n  正在扫描源以查找模块依赖项...\n  main.cpp\n  正在编译...\n  main.cpp\nF:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L01_initialization\\negative\\narrowing\\main.cpp(2,14): error C2397: 从“double”转换到“int”需要收缩转换 [F:\\CPPTrain\\LearnCPP\\build\\c02-foundation-verifier-r1\\L01-default\\negative\\narrowing\\L01_negative_narrowing.vcxproj]\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 1,
+  "required_text": [
+    "narrowing"
+  ],
+  "verdict": "PASS"
+}

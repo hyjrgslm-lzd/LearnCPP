@@ -1,0 +1,66 @@
+
+Name                                                 Exit Verdict Status TimedOut Contains Command
+----                                                 ---- ------- ------ -------- -------- -------
+doc-repair-asan-classification-r1.json                  0 PASS    PASS                     rg -n ASan 证据纠正|command invocation failures|P1 ASan access violation Core_Study/references/validation/author-storage-report.md
+doc-repair-old-asan-claim-absent-r1.json                1 PASS    FAIL                     rg -n safe Reference executables exited|ASan runtime lane not validated Core_Study/references/validation/author-storage-report.md
+doc-repair-sensitive-scan-r1.json                       1 PASS    FAIL                     rg -n OPENAI_API_KEY|ANTHROPIC|MIHOYO_API_KEY|API_KEY|TOKEN|SECRET Core_Study/references/validation/author-storage Core_Study/chapters/11-layout-and…
+doc-repair-standard-boundaries-r1.json                  0 PASS    PASS                     rg -n implicit object creation|allocator<T>::allocate|start_lifetime_as|pointer provenance|erroneous behavior|copy fallback|新尾 Core_Study/chapters…
+l11-debug-ctest-r1.json                                 0 PASS    PASS                     ctest --test-dir build/c02-l11-author -C Debug --output-on-failure
+l11-release-ctest-r1.json                               0 PASS    PASS                     ctest --test-dir build/c02-l11-author -C Release --output-on-failure
+l12-asan-reference-runtime-fails-r1.json                1 PASS    FAIL                     cmd /d /s /c  D:\VisualStudio2026\Installed\Common7\Tools\VsDevCmd.bat -arch=x64 -host_arch=x64 >nul && build\c02-l12-author-asan\L12_storage_refere…
+l12-clang-start-lifetime-capability-r1.json             0 PASS    PASS                     cmd.exe /d /c build\c02-l12-capability-r1-clang\configure-build-test.cmd
+l12-clang-start-lifetime-direct-r2.json                 0 PASS    PASS                     cmd.exe /d /c build\c02-l12-capability-r1-clang\run-start-lifetime.cmd
+l12-debug-nonstudent-ctest-r1.json                      0 PASS    PASS                     ctest --test-dir build/c02-l12-author -C Debug --output-on-failure -E student
+l12-l14-entry-text-scan-r1.json                         0 PASS    PASS                     rg -n L12_storage_start_lifetime_as|__cpp_lib_start_lifetime_as|CORE_STUDY_ENABLE_FRONTIER|CORE_STUDY_ENABLE_UNSAFE_DEMOS|signed integer|allocator<T…
+l12-l14-old-claims-absent-r1.json                       1 PASS    FAIL                     rg -n 整数右移策略|allocator 或 aligned storage 只提供存储|safe Reference executables exited|ASan runtime lane not validated Core_Study/exercises/L1…
+l12-l14-sensitive-scan-r1.json                          1 PASS    FAIL                     rg -n OPENAI_API_KEY|ANTHROPIC|MIHOYO_API_KEY|API_KEY|TOKEN|SECRET Core_Study/exercises/L12_storage Core_Study/exercises/L14_ub Core_Study/chapters/…
+l12-msvc-capability-build-r1.json                       0 PASS    PASS                     cmake --build build/c02-l12-capability-r1-msvc --config Debug --parallel 2
+l12-msvc-capability-configure-r1.json                   0 PASS    PASS                     cmake -S Core_Study/exercises/L12_storage -B build/c02-l12-capability-r1-msvc -G Visual Studio 18 2026 -A x64 -DCORE_STUDY_BUILD_REFERENCE=ON -DCORE…
+l12-msvc-capability-ctest-r1.json                       0 PASS    PASS                     ctest --test-dir build/c02-l12-capability-r1-msvc -C Debug --output-on-failure
+l12-msvc-start-lifetime-direct-r2.json                  0 PASS    PASS                     build\c02-l12-capability-r1-msvc\Debug\L12_storage_start_lifetime_as.exe
+l12-ref-off-build-r1.json                               0 PASS    PASS                     cmake --build build/c02-l12-author-ref-off --config Debug
+l12-release-nonstudent-ctest-r1.json                    0 PASS    PASS                     ctest --test-dir build/c02-l12-author -C Release --output-on-failure -E student
+l12-student-placeholder-fails-r1.json                   1 PASS    FAIL                     build/c02-l12-author/Debug/L12_storage_student.exe
+l13-debug-ctest-r1.json                                 0 PASS    PASS                     ctest --test-dir build/c02-l13-author -C Debug --output-on-failure
+l13-release-ctest-r1.json                               0 PASS    PASS                     ctest --test-dir build/c02-l13-author -C Release --output-on-failure
+l14-clang-asan-safe-no-unsafe-tests-r1.json             0 PASS    PASS                     cmd.exe /d /c build\c02-l14-asan-safe-r1-clang\configure-list-tests.cmd
+l14-clang-frontier-ctest-r1.json                        0 PASS    PASS                     cmd.exe /d /c build\c02-l14-frontier-r1-clang\configure-test-frontier.cmd
+l14-clang-frontier-ctest-r2.json                        0 PASS    PASS                     cmd.exe /d /c build\c02-l14-frontier-r2-clang\configure-test-frontier.cmd
+l14-clang-unsafe-asan-r1.json                           0 FAIL    PASS                     cmd.exe /d /c build\c02-l14-unsafe-asan-r1-clang\configure-build-test.cmd
+l14-clang-unsafe-asan-r2.json                           0 PASS    PASS                     cmd.exe /d /c build\c02-l14-unsafe-asan-r1-clang\run-ctest-verbose.cmd
+l14-course-frontier-build-r1.json                       1 FAIL    FAIL                     cmake --build Core_Study/exercises/build/frontier --config Release --parallel 2
+l14-course-frontier-build-r2.json                       0 PASS    PASS                     cmake --build --preset frontier
+l14-course-frontier-configure-r1.json                   0 PASS    PASS                     cmake -S Core_Study/exercises --preset frontier
+l14-course-frontier-ctest-r1.json                       8 FAIL    FAIL                     ctest --test-dir Core_Study/exercises/build/frontier -C Release --output-on-failure
+l14-debug-ctest-r1.json                                 0 PASS    PASS                     ctest --test-dir build/c02-l14-author -C Debug --output-on-failure
+l14-default-no-frontier-configure-r1.json               0 PASS    PASS                     cmake -S Core_Study/exercises/L14_ub -B build/c02-l14-default-r1-msvc -G Visual Studio 18 2026 -A x64
+l14-default-no-frontier-tests-r1.json                   0 PASS    PASS                     ctest --test-dir build/c02-l14-default-r1-msvc -N
+l14-msvc-default-build-r1.json                          0 PASS    PASS                     cmake --build build/c02-l14-frontier-r1-msvc --config Debug --target L14_ub_observation --parallel 2
+l14-msvc-default-ctest-r1.json                          0 PASS    PASS                     ctest --test-dir build/c02-l14-frontier-r1-msvc -C Debug --output-on-failure -R L14_ub_observation
+l14-msvc-frontier-configure-r1.json                     0 PASS    PASS                     cmake -S Core_Study/exercises/L14_ub -B build/c02-l14-frontier-r1-msvc -G Visual Studio 18 2026 -A x64 -DCORE_STUDY_ENABLE_FRONTIER=ON
+l14-msvc-frontier-configure-r2.json                     0 PASS    PASS                     cmake -S Core_Study/exercises/L14_ub -B build/c02-l14-frontier-r2-msvc -G Visual Studio 18 2026 -A x64 -DCORE_STUDY_ENABLE_FRONTIER=ON
+l14-msvc-frontier-ctest-r1.json                         8 FAIL    FAIL                     ctest --test-dir build/c02-l14-frontier-r1-msvc -C Debug --output-on-failure
+l14-msvc-frontier-ctest-r2.json                         0 PASS    PASS                     ctest --test-dir build/c02-l14-frontier-r1-msvc -C Debug --output-on-failure -R L14_frontier
+l14-msvc-frontier-ctest-r3.json                         0 PASS    PASS                     ctest --test-dir build/c02-l14-frontier-r2-msvc -C Debug --output-on-failure -R L14_frontier
+l14-release-ctest-r1.json                               0 PASS    PASS                     ctest --test-dir build/c02-l14-author -C Release --output-on-failure
+p1-asan-reference-runtime-fails-r1.json                 1 PASS    FAIL                     cmd /d /s /c  D:\VisualStudio2026\Installed\Common7\Tools\VsDevCmd.bat -arch=x64 -host_arch=x64 >nul && build\c02-p1-author-asan\P1_object_buffer_re…
+p1-clang-asan-configure-build-reference-good-r2.json    0 PASS    PASS                     cmd.exe /d /c build\c02-p1-author-r2-asan\configure-build-reference-good.cmd
+p1-clang-asan-good-direct-r2.json                       0 PASS    PASS                     cmd.exe /d /c build\c02-p1-author-r2-asan\run-good.cmd
+p1-clang-asan-reference-direct-r2.json                  0 PASS    PASS                     cmd.exe /d /c build\c02-p1-author-r2-asan\run-reference.cmd
+p1-debug-nonstudent-ctest-r1.json                       0 PASS    PASS                     ctest --test-dir build/c02-p1-author -C Debug --output-on-failure -E student
+p1-msvc-configure-r2.json                               0 PASS    PASS                     cmake -S Core_Study/exercises/P1_object_buffer -B build/c02-p1-author-r2-msvc -G Visual Studio 18 2026 -A x64 -DCORE_STUDY_BUILD_REFERENCE=ON -DCORE…
+p1-msvc-debug-build-r2.json                             0 PASS    PASS                     cmake --build build/c02-p1-author-r2-msvc --config Debug --parallel 2
+p1-msvc-debug-ctest-r2.json                             0 PASS    PASS                     ctest --test-dir build/c02-p1-author-r2-msvc -C Debug --output-on-failure -E student
+p1-msvc-release-build-r2.json                           0 PASS    PASS                     cmake --build build/c02-p1-author-r2-msvc --config Release --parallel 2
+p1-msvc-release-ctest-r2.json                           0 PASS    PASS                     ctest --test-dir build/c02-p1-author-r2-msvc -C Release --output-on-failure -E student
+p1-r2-report-index-r1.json                              0 PASS    PASS                     rg -n p1-clang-asan-reference-direct-r2.json|p1-reference-fixed-diff-r3.json|p1-r2-sensitive-scan-r4.json|RAII rollback|rethrow_only Core_Study/refe…
+p1-r2-sensitive-scan-r1.json                            2 FAIL    FAIL                     rg -n OPENAI_API_KEY|ANTHROPIC|MIHOYO_API_KEY|API_KEY|TOKEN|SECRET Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp Core_Study/…
+p1-r2-sensitive-scan-r3.json                            0 FAIL    PASS                     rg -n OPENAI_API_KEY|ANTHROPIC|MIHOYO_API_KEY|API_KEY|TOKEN|SECRET Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp Core_Study/…
+p1-r2-sensitive-scan-r4.json                            1 PASS    FAIL                     rg -n OPENAI_API_KEY|ANTHROPIC|MIHOYO_API_KEY|API_KEY|TOKEN|SECRET Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp Core_Study/…
+p1-ref-off-build-r1.json                                0 PASS    PASS                     cmake --build build/c02-p1-author-ref-off --config Debug
+p1-reference-fixed-diff-r2.json                         1 FAIL    FAIL                     powershell -NoProfile -Command Compare-Object (Get-Content 'Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp') (Get-Content 'Co…
+p1-reference-fixed-diff-r3.json                         0 PASS    PASS                     cmd.exe /d /c build\c02-p1-author-r2-asan\source-diff-hash.cmd
+p1-release-nonstudent-ctest-r1.json                     0 PASS    PASS                     ctest --test-dir build/c02-p1-author -C Release --output-on-failure -E student
+p1-student-placeholder-fails-r1.json                    1 PASS    FAIL                     build/c02-p1-author/Debug/P1_object_buffer_student.exe
+
+

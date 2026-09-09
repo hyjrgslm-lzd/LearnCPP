@@ -1,0 +1,26 @@
+{
+  "command": [
+    "cmake",
+    "-S",
+    "Core_Study/exercises/L07_raii",
+    "-B",
+    "build/c02-owner-author",
+    "-G",
+    "Visual Studio 18 2026",
+    "-A",
+    "x64"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.1869999999180436,
+  "stdout": "-- Configuring done (0.1s)\n-- Generating done (0.1s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/build/c02-owner-author\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "expected_exit": 0,
+  "required_text": [
+    "Build files have been written"
+  ],
+  "verdict": "PASS"
+}

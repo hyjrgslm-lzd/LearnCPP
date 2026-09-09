@@ -1,0 +1,64 @@
+## L12-clangcl-asan-reference-release-current-build-target.json
+verdict=FAIL exit=1
+lld-link : warning : ignoring unknown argument '-fsanitize=address' [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\L12-clangcl-asan-reference-release-current\L12_storage_reference.vcxproj]
+lld-link : error : undefined symbol: __asan_shadow_memory_dynamic_address [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\L12-clangcl-asan-reference-release-current\L12_storage_reference.vcxproj]
+lld-link : error : undefined symbol: __asan_option_detect_stack_use_after_return [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\L12-clangcl-asan-reference-release-current\L12_storage_reference.vcxproj]
+lld-link : error : undefined symbol: __asan_stack_malloc_1 [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\L12-clangcl-asan-reference-release-current\L12_storage_reference.vcxproj]
+lld-link : error : undefined symbol: __asan_memcpy [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\L12-clangcl-asan-reference-release-current\L12_storage_reference.vcxproj]
+lld-link : error : undefined symbol: __asan_handle_no_return [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\L12-clangcl-asan-reference-release-current\L12_storage_reference.vcxproj]
+lld-link : error : undefined symbol: __asan_report_load8 [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\L12-clangcl-asan-reference-release-current\L12_storage_reference.vcxproj]
+lld-link : error : undefined symbol: __asan_report_store8 [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\L12-clangcl-asan-reference-release-current\L12_storage_reference.vcxproj]
+lld-link : error : undefined symbol: __asan_stack_malloc_2 [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\L12-clangcl-asan-reference-release-current\L12_storage_reference.vcxproj]
+lld-link : error : undefined symbol: __asan_memset [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\L12-clangcl-asan-reference-release-current\L12_storage_reference.vcxproj]
+lld-link : error : undefined symbol: __asan_report_load1 [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\L12-clangcl-asan-reference-release-current\L12_storage_reference.vcxproj]
+lld-link : error : undefined symbol: __asan_report_load4 [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\L12-clangcl-asan-reference-release-current\L12_storage_reference.vcxproj]
+lld-link : error : undefined symbol: __asan_init [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\L12-clangcl-asan-reference-release-current\L12_storage_reference.vcxproj]
+lld-link : error : undefined symbol: __asan_version_mismatch_check_v8 [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\L12-clangcl-asan-reference-release-current\L12_storage_reference.vcxproj]
+## P1-clangcl-asan-reference-release-current-build-target.json
+verdict=FAIL exit=1
+lld-link : warning : ignoring unknown argument '-fsanitize=address' [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\P1-clangcl-asan-reference-release-current\P1_object_buffer_reference.vcxproj]
+lld-link : error : undefined symbol: __asan_shadow_memory_dynamic_address [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\P1-clangcl-asan-reference-release-current\P1_object_buffer_reference.vcxproj]
+lld-link : error : undefined symbol: __asan_option_detect_stack_use_after_return [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\P1-clangcl-asan-reference-release-current\P1_object_buffer_reference.vcxproj]
+lld-link : error : undefined symbol: __asan_stack_malloc_1 [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\P1-clangcl-asan-reference-release-current\P1_object_buffer_reference.vcxproj]
+lld-link : error : undefined symbol: __asan_memcpy [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\P1-clangcl-asan-reference-release-current\P1_object_buffer_reference.vcxproj]
+lld-link : error : undefined symbol: __asan_handle_no_return [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\P1-clangcl-asan-reference-release-current\P1_object_buffer_reference.vcxproj]
+lld-link : error : undefined symbol: __asan_report_load8 [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\P1-clangcl-asan-reference-release-current\P1_object_buffer_reference.vcxproj]
+lld-link : error : undefined symbol: __asan_report_store8 [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\P1-clangcl-asan-reference-release-current\P1_object_buffer_reference.vcxproj]
+lld-link : error : undefined symbol: __asan_stack_malloc_3 [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\P1-clangcl-asan-reference-release-current\P1_object_buffer_reference.vcxproj]
+lld-link : error : undefined symbol: __asan_memset [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\P1-clangcl-asan-reference-release-current\P1_object_buffer_reference.vcxproj]
+lld-link : error : undefined symbol: __asan_report_store4 [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\P1-clangcl-asan-reference-release-current\P1_object_buffer_reference.vcxproj]
+lld-link : error : undefined symbol: __asan_report_load4 [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\P1-clangcl-asan-reference-release-current\P1_object_buffer_reference.vcxproj]
+lld-link : error : undefined symbol: __asan_set_shadow_f5 [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\P1-clangcl-asan-reference-release-current\P1_object_buffer_reference.vcxproj]
+lld-link : error : undefined symbol: __asan_report_load1 [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\P1-clangcl-asan-reference-release-current\P1_object_buffer_reference.vcxproj]
+lld-link : error : undefined symbol: __asan_stack_malloc_0 [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\P1-clangcl-asan-reference-release-current\P1_object_buffer_reference.vcxproj]
+lld-link : error : undefined symbol: __asan_stack_malloc_2 [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\P1-clangcl-asan-reference-release-current\P1_object_buffer_reference.vcxproj]
+lld-link : error : undefined symbol: __asan_init [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\P1-clangcl-asan-reference-release-current\P1_object_buffer_reference.vcxproj]
+lld-link : error : undefined symbol: __asan_version_mismatch_check_v8 [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\P1-clangcl-asan-reference-release-current\P1_object_buffer_reference.vcxproj]
+## L14-clangcl-asan-reference-release-current-build-target.json
+verdict=FAIL exit=1
+lld-link : warning : ignoring unknown argument '-fsanitize=address' [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\L14-clangcl-asan-reference-release-current\L14_ub_observation.vcxproj]
+lld-link : error : undefined symbol: __asan_shadow_memory_dynamic_address [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\L14-clangcl-asan-reference-release-current\L14_ub_observation.vcxproj]
+lld-link : error : undefined symbol: __asan_option_detect_stack_use_after_return [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\L14-clangcl-asan-reference-release-current\L14_ub_observation.vcxproj]
+lld-link : error : undefined symbol: __asan_stack_malloc_1 [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\L14-clangcl-asan-reference-release-current\L14_ub_observation.vcxproj]
+lld-link : error : undefined symbol: __asan_memcpy [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\L14-clangcl-asan-reference-release-current\L14_ub_observation.vcxproj]
+lld-link : error : undefined symbol: __asan_handle_no_return [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\L14-clangcl-asan-reference-release-current\L14_ub_observation.vcxproj]
+lld-link : error : undefined symbol: __asan_report_load8 [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\L14-clangcl-asan-reference-release-current\L14_ub_observation.vcxproj]
+lld-link : error : undefined symbol: __asan_report_store8 [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\L14-clangcl-asan-reference-release-current\L14_ub_observation.vcxproj]
+lld-link : error : undefined symbol: __asan_report_load4 [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\L14-clangcl-asan-reference-release-current\L14_ub_observation.vcxproj]
+lld-link : error : undefined symbol: __asan_report_load1 [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\L14-clangcl-asan-reference-release-current\L14_ub_observation.vcxproj]
+lld-link : error : undefined symbol: __asan_init [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\L14-clangcl-asan-reference-release-current\L14_ub_observation.vcxproj]
+lld-link : error : undefined symbol: __asan_version_mismatch_check_v8 [F:\CPPTrain\LearnCPP\build\c02-storage-verifier-r1\L14-clangcl-asan-reference-release-current\L14_ub_observation.vcxproj]
+## L12-msvc-asan-safe-current-ctest-debug.json
+verdict=PASS exit=0
+100% tests passed, 0 tests failed out of 4
+## P1-msvc-asan-safe-current-ctest-debug.json
+verdict=PASS exit=0
+100% tests passed, 0 tests failed out of 5
+## L14-msvc-asan-safe-current-ctest-debug.json
+verdict=PASS exit=0
+100% tests passed, 0 tests failed out of 1
+## L14-msvc-asan-unsafe-current-ctest-uaf-debug.json
+verdict=PASS exit=0
+2: Test command: D:\cmake\install\bin\cmake.exe "-DEXECUTABLE=F:/CPPTrain/LearnCPP/build/c02-storage-verifier-r1/L14-msvc-asan-unsafe-current/Debug/L14_ub_asan_uaf.exe" "-DEXPECTED_TEXT=heap-use-after-free" "-DEXPECTED_SOURCE=asan_uaf_probe.cpp" "-P" "F:/CPPTrain/LearnCPP/Core_Study/exercises/L14_ub/checks/expect_asan_failure.cmake"
+2: -- PASS: ASan diagnostic matched heap-use-after-free and asan_uaf_probe.cpp
+100% tests passed, 0 tests failed out of 1

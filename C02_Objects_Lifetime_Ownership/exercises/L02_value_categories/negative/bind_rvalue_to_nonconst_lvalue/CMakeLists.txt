@@ -1,0 +1,4 @@
+cmake_minimum_required(VERSION 3.28)
+project(L02_negative_bind_rvalue LANGUAGES CXX)
+add_executable(L02_negative_bind_rvalue main.cpp)
+target_compile_features(L02_negative_bind_rvalue PRIVATE cxx_std_23)

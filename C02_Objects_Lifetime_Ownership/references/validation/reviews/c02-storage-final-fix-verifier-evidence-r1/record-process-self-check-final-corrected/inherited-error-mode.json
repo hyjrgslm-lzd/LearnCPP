@@ -1,0 +1,22 @@
+{
+  "command": [
+    "C:\\Users\\zhidan.li\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+    "-c",
+    "import ctypes; m=ctypes.windll.kernel32.GetErrorMode(); print('C02_ERROR_MODE_OK' if m & 0x8003 == 0x8003 else 'BAD_MODE')"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.07800000021234155,
+  "stdout": "C02_ERROR_MODE_OK\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [
+    "C02_ERROR_MODE_OK"
+  ],
+  "verdict": "PASS"
+}

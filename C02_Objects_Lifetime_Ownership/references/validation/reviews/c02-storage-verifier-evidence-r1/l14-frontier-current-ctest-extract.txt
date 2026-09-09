@@ -1,0 +1,30 @@
+    Start 2: L14_frontier_baseline_compile
+2: Test command: D:\cmake\install\bin\cmake.exe "-DBUILD_DIR=F:/CPPTrain/LearnCPP/build/c02-storage-verifier-r1/L14-frontier-r2-current" "-DCONFIG=Debug" "-DTARGET=L14_frontier_baseline" "-DCASE=L14_frontier_baseline_compile" "-DEXPECT=must_pass" "-DSOURCE_MARKER=baseline.cpp" "-DEXPECTED_FAILURE=" "-DACCEPTED_DIAGNOSTIC=" "-DOUT_DIR=F:/CPPTrain/LearnCPP/build/c02-storage-verifier-r1/L14-frontier-r2-current/frontier" "-P" "F:/CPPTrain/LearnCPP/Core_Study/exercises/L14_ub/checks/frontier_compile.cmake"
+2: -- PASS: L14_frontier_baseline_compile baseline compiled; see F:/CPPTrain/LearnCPP/build/c02-storage-verifier-r1/L14-frontier-r2-current/frontier/L14_frontier_baseline_compile-20260909-022335.txt
+1/5 Test #2: L14_frontier_baseline_compile ........................   Passed    1.18 sec
+    Start 3: L14_frontier_p2287_base_member_designator_compile
+3: Test command: D:\cmake\install\bin\cmake.exe "-DBUILD_DIR=F:/CPPTrain/LearnCPP/build/c02-storage-verifier-r1/L14-frontier-r2-current" "-DCONFIG=Debug" "-DTARGET=L14_frontier_p2287_base_member_designator" "-DCASE=L14_frontier_p2287_base_member_designator_compile" "-DEXPECT=capability_compile" "-DSOURCE_MARKER=p2287_base_member_designator.cpp" "-DEXPECTED_FAILURE=designator|field designator|C7559|C2440" "-DACCEPTED_DIAGNOSTIC=" "-DOUT_DIR=F:/CPPTrain/LearnCPP/build/c02-storage-verifier-r1/L14-frontier-r2-current/frontier" "-P" "F:/CPPTrain/LearnCPP/Core_Study/exercises/L14_ub/checks/frontier_compile.cmake"
+3: -- SKIP: L14_frontier_p2287_base_member_designator_compile capability unavailable with expected diagnostic; see F:/CPPTrain/LearnCPP/build/c02-storage-verifier-r1/L14-frontier-r2-current/frontier/L14_frontier_p2287_base_member_designator_compile-20260909-022337.txt
+2/5 Test #3: L14_frontier_p2287_base_member_designator_compile ....***Skipped   1.10 sec
+    Start 4: L14_frontier_p2748_return_temp_ref_compile
+4: Test command: D:\cmake\install\bin\cmake.exe "-DBUILD_DIR=F:/CPPTrain/LearnCPP/build/c02-storage-verifier-r1/L14-frontier-r2-current" "-DCONFIG=Debug" "-DTARGET=L14_frontier_p2748_return_temp_ref" "-DCASE=L14_frontier_p2748_return_temp_ref_compile" "-DEXPECT=capability_reject" "-DSOURCE_MARKER=p2748_return_temp_ref.cpp" "-DEXPECTED_FAILURE=returning reference to local temporary|return.*temporary|C4172" "-DACCEPTED_DIAGNOSTIC=warning C4172|returning reference to local temporary|return.*temporary" "-DOUT_DIR=F:/CPPTrain/LearnCPP/build/c02-storage-verifier-r1/L14-frontier-r2-current/frontier" "-P" "F:/CPPTrain/LearnCPP/Core_Study/exercises/L14_ub/checks/frontier_compile.cmake"
+4: -- SKIP: L14_frontier_p2748_return_temp_ref_compile accepted after expected diagnostic; see F:/CPPTrain/LearnCPP/build/c02-storage-verifier-r1/L14-frontier-r2-current/frontier/L14_frontier_p2748_return_temp_ref_compile-20260909-022338.txt
+3/5 Test #4: L14_frontier_p2748_return_temp_ref_compile ...........***Skipped   1.26 sec
+    Start 5: L14_frontier_p2953_defaulted_assignment_compile
+5: Test command: D:\cmake\install\bin\cmake.exe "-DBUILD_DIR=F:/CPPTrain/LearnCPP/build/c02-storage-verifier-r1/L14-frontier-r2-current" "-DCONFIG=Debug" "-DTARGET=L14_frontier_p2953_defaulted_assignment" "-DCASE=L14_frontier_p2953_defaulted_assignment_compile" "-DEXPECT=capability_reject" "-DSOURCE_MARKER=p2953_defaulted_assignment.cpp" "-DEXPECTED_FAILURE=defaulted|assignment|operator=|ref-qualifier|C2280|C2679" "-DACCEPTED_DIAGNOSTIC=defaulted|assignment|operator=|ref-qualifier" "-DOUT_DIR=F:/CPPTrain/LearnCPP/build/c02-storage-verifier-r1/L14-frontier-r2-current/frontier" "-P" "F:/CPPTrain/LearnCPP/Core_Study/exercises/L14_ub/checks/frontier_compile.cmake"
+5: -- SKIP: L14_frontier_p2953_defaulted_assignment_compile accepted after expected diagnostic; see F:/CPPTrain/LearnCPP/build/c02-storage-verifier-r1/L14-frontier-r2-current/frontier/L14_frontier_p2953_defaulted_assignment_compile-20260909-022339.txt
+4/5 Test #5: L14_frontier_p2953_defaulted_assignment_compile ......***Skipped   1.18 sec
+    Start 6: L14_frontier_provenance_lifetime_end_model_compile
+6: Test command: D:\cmake\install\bin\cmake.exe "-DBUILD_DIR=F:/CPPTrain/LearnCPP/build/c02-storage-verifier-r1/L14-frontier-r2-current" "-DCONFIG=Debug" "-DTARGET=L14_frontier_provenance_lifetime_end_model" "-DCASE=L14_frontier_provenance_lifetime_end_model_compile" "-DEXPECT=observe_compile" "-DSOURCE_MARKER=provenance_lifetime_end_model.cpp" "-DEXPECTED_FAILURE=" "-DACCEPTED_DIAGNOSTIC=" "-DOUT_DIR=F:/CPPTrain/LearnCPP/build/c02-storage-verifier-r1/L14-frontier-r2-current/frontier" "-P" "F:/CPPTrain/LearnCPP/Core_Study/exercises/L14_ub/checks/frontier_compile.cmake"
+6: -- PASS: L14_frontier_provenance_lifetime_end_model_compile compile-only review model built; no runtime support claim; see F:/CPPTrain/LearnCPP/build/c02-storage-verifier-r1/L14-frontier-r2-current/frontier/L14_frontier_provenance_lifetime_end_model_compile-20260909-022340.txt
+5/5 Test #6: L14_frontier_provenance_lifetime_end_model_compile ...   Passed    1.75 sec
+	L14_frontier_baseline_compile
+	L14_frontier_p2287_base_member_designator_compile
+	L14_frontier_p2748_return_temp_ref_compile
+	L14_frontier_p2953_defaulted_assignment_compile
+	L14_frontier_provenance_lifetime_end_model_compile
+100% tests passed, 0 tests failed out of 5
+The following tests did not run:
+	  3 - L14_frontier_p2287_base_member_designator_compile (Skipped)
+	  4 - L14_frontier_p2748_return_temp_ref_compile (Skipped)
+	  5 - L14_frontier_p2953_defaulted_assignment_compile (Skipped)

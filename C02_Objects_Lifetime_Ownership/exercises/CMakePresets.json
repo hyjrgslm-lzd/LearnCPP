@@ -1,0 +1,34 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {"major":3,"minor":28,"patch":0},
+  "configurePresets": [
+    {
+      "name":"base", "hidden":true, "binaryDir":"${sourceDir}/build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE":"Release", "CMAKE_EXPORT_COMPILE_COMMANDS":"ON", "BUILD_TESTING":"ON",
+        "CORE_STUDY_BUILD_REFERENCE":"ON", "CORE_STUDY_TEST_STUDENTS":"OFF",
+        "CORE_STUDY_ENABLE_UNSAFE_DEMOS":"OFF", "CORE_STUDY_ENABLE_FRONTIER":"OFF",
+        "CORE_STUDY_ENABLE_ASAN":"OFF"
+      }
+    },
+    {"name":"verify-core","inherits":"base"},
+    {"name":"verify-debug","inherits":"base","cacheVariables":{"CMAKE_BUILD_TYPE":"Debug"}},
+    {"name":"student","inherits":"base","cacheVariables":{"CORE_STUDY_BUILD_REFERENCE":"OFF","CORE_STUDY_TEST_STUDENTS":"ON"}},
+    {"name":"asan","inherits":"base","generator":"Ninja","cacheVariables":{"CMAKE_CXX_COMPILER":"clang++","CORE_STUDY_ENABLE_ASAN":"ON","CMAKE_BUILD_TYPE":"RelWithDebInfo"}},
+    {"name":"frontier","inherits":"base","cacheVariables":{"CORE_STUDY_ENABLE_FRONTIER":"ON"}}
+  ],
+  "buildPresets": [
+    {"name":"verify-core","configurePreset":"verify-core","configuration":"Release"},
+    {"name":"verify-debug","configurePreset":"verify-debug","configuration":"Debug"},
+    {"name":"student","configurePreset":"student","configuration":"Release"},
+    {"name":"asan","configurePreset":"asan"},
+    {"name":"frontier","configurePreset":"frontier","configuration":"Release"}
+  ],
+  "testPresets": [
+    {"name":"verify-core","configurePreset":"verify-core","configuration":"Release","output":{"outputOnFailure":true}},
+    {"name":"verify-debug","configurePreset":"verify-debug","configuration":"Debug","output":{"outputOnFailure":true}},
+    {"name":"student","configurePreset":"student","configuration":"Release","output":{"outputOnFailure":true}},
+    {"name":"asan","configurePreset":"asan","filter":{"include":{"label":"^(reference|observation|capability)$"}},"output":{"outputOnFailure":true}},
+    {"name":"frontier","configurePreset":"frontier","configuration":"Release","output":{"outputOnFailure":true}}
+  ]
+}

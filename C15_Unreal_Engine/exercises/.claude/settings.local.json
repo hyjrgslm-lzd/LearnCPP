@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(\"G:/Unreal Engine/Source/UnrealEngine/Engine/Build/BatchFiles/Build.bat\" C15_Unreal_EngineEditor Win64 Development -Project=\"P:/C++Code/C15_Unreal_Engine/exercises/C15_Unreal_Engine.uproject\" -WaitMutex)"
+    ]
+  }
+}

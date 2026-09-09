@@ -1,0 +1,12 @@
+  1: cmake_minimum_required(VERSION 3.28)
+  2: 
+  3: if(NOT DEFINED BUILD_DIR OR NOT DEFINED TARGET OR NOT DEFINED CASE OR NOT DEFINED EXPECT OR NOT DEFINED OUT_DIR)
+  4:     message(FATAL_ERROR "missing frontier probe argument")
+  5: endif()
+  6: if(NOT DEFINED CONFIG)
+  7:     set(CONFIG "")
+  8: endif()
+  9: if(NOT DEFINED SOURCE_MARKER)
+ 10:     set(SOURCE_MARKER "")
+ 11: endif()
+ 12: if(NOT DEFINED EXPECTED_FAILURE)

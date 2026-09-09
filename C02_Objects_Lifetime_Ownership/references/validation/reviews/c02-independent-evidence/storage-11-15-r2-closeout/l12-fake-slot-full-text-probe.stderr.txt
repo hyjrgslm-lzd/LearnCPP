@@ -1,0 +1,6 @@
+CMake Error at Core_Study/exercises/L12_storage/checks/expect_failure.cmake:17 (message):
+  expected diagnostic not found: slot must report engaged after successful
+  construct
+
+
+

@@ -1,0 +1,19 @@
+{
+  "command": [
+    "F:\\CPPTrain\\LearnCPP\\build\\c02-0810-verifier-r1\\L10-default\\Debug\\L10_control_block_validation_good.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.2660000000614673,
+  "stdout": "L10_control_block_validation_contract OK\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    "validation_contract OK"
+  ],
+  "verdict": "PASS"
+}

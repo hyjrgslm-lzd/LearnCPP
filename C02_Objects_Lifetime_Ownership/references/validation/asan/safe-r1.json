@@ -1,0 +1,18 @@
+{
+  "command": [
+    "build/c02-asan-probe/c02_asan_safe.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.26500000013038516,
+  "stdout": "C02_ASAN_SAFE_OK\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "expected_exit": 0,
+  "required_text": [
+    "C02_ASAN_SAFE_OK"
+  ],
+  "verdict": "PASS"
+}

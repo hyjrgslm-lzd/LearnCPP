@@ -1,0 +1,24 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "Core_Study/exercises/L03_lifetimes/build/foundation-final-r2-ref-off",
+    "-C",
+    "Debug",
+    "--output-on-failure"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.04699999978765845,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/Core_Study/exercises/L03_lifetimes/build/foundation-final-r2-ref-off\n",
+  "stderr": "No tests were found!!!\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    "No tests were found"
+  ],
+  "verdict": "PASS"
+}

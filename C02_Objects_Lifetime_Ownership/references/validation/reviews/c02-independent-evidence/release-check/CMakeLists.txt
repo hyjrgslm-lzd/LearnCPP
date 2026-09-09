@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.28)
+project(c02_release_check_probe LANGUAGES CXX)
+include("${CMAKE_CURRENT_LIST_DIR}/../../../../../exercises/cmake/StudySetup.cmake")
+add_executable(c02_release_check_probe main.cpp)
+core_configure_target(c02_release_check_probe)

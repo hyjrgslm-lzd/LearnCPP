@@ -1,0 +1,16 @@
+[
+  {
+    "Lesson": "L02_value_categories",
+    "Configure": 0,
+    "Build": 0,
+    "Ctest": 0,
+    "CtestOutput": "Test project F:/CPPTrain/LearnCPP/build/c02-reviewer-foundation-r1-L02_value_categories\r\n    Start 1: L02_value_categories_observation\r\n1/3 Test #1: L02_value_categories_observation ...............................   Passed    0.24 sec\r\n    Start 2: L02_value_categories_negative_bind_rvalue_to_nonconst_lvalue\r\n2/3 Test #2: L02_value_categories_negative_bind_rvalue_to_nonconst_lvalue ...   Passed    2.94 sec\r\n    Start 3: L02_value_categories_negative_forward_lvalue_to_rvalue\r\n3/3 Test #3: L02_value_categories_negative_forward_lvalue_to_rvalue .........   Passed    3.16 sec\r\n\r\n100% tests passed, 0 tests failed out of 3\r\n\r\nLabel Time Summary:\r\nnegative       =   6.11 sec*proc (2 tests)\r\nobservation    =   0.24 sec*proc (1 test)\r\n\r\nTotal Test time (real) =   6.36 sec\r\n"
+  },
+  {
+    "Lesson": "L06_move_return",
+    "Configure": 0,
+    "Build": 0,
+    "Ctest": 0,
+    "CtestOutput": "Test project F:/CPPTrain/LearnCPP/build/c02-reviewer-foundation-r1-L06_move_return\r\n    Start 1: L06_move_return_observation\r\n1/3 Test #1: L06_move_return_observation .....................   Passed    0.28 sec\r\n    Start 2: L06_move_return_negative_return_named_deleted\r\n2/3 Test #2: L06_move_return_negative_return_named_deleted ...   Passed    3.13 sec\r\n    Start 3: L06_move_return_negative_const_move_only\r\n3/3 Test #3: L06_move_return_negative_const_move_only ........   Passed    3.17 sec\r\n\r\n100% tests passed, 0 tests failed out of 3\r\n\r\nLabel Time Summary:\r\nnegative       =   6.30 sec*proc (2 tests)\r\nobservation    =   0.28 sec*proc (1 test)\r\n\r\nTotal Test time (real) =   6.59 sec\r\n"
+  }
+]

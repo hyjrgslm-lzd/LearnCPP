@@ -1,0 +1,22 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "build/c02-foundation-verifier-r1/L05-default",
+    "-N"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.0470000000204891,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/build/c02-foundation-verifier-r1/L05-default\n  Test #1: L05_special_members_reference\n  Test #2: L05_special_members_validation_good\n  Test #3: L05_special_members_validation_bad_shallow_copy_check\n  Test #4: L05_special_members_validation_bad_move_leak_check\n\nTotal Tests: 4\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    "Total Tests"
+  ],
+  "verdict": "PASS"
+}

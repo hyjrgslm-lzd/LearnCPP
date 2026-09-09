@@ -1,0 +1,20 @@
+case=L14_frontier_p2748_return_temp_ref_compile
+target=L14_frontier_p2748_return_temp_ref
+expect=capability_reject
+source_marker=p2748_return_temp_ref.cpp
+expected_failure=returning reference to local temporary|return.*temporary|C4172
+accepted_diagnostic=warning C4172|returning reference to local temporary|return.*temporary
+result=0
+command=D:/cmake/install/bin/cmake.exe;--build;F:/CPPTrain/LearnCPP/Core_Study/exercises/build/frontier;--config;Release;--target;L14_frontier_p2748_return_temp_ref
+stdout<<EOF
+閫傜敤浜?.NET Framework MSBuild 鐗堟湰 18.9.1+a81b43525
+
+  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L14_ub/CMakeLists.txt
+  p2748_return_temp_ref.cpp
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier\p2748_return_temp_ref.cpp(2,1): warning C4172: 杩斿洖灞€閮ㄥ彉閲忕殑鍦板潃鎴栦复鏃? [F:\CPPTrain\LearnCPP\Core_Study\exercises\build\frontier\L14_ub\L14_frontier_p2748_return_temp_ref.vcxproj]
+  L14_frontier_p2748_return_temp_ref.vcxproj -> F:\CPPTrain\LearnCPP\Core_Study\exercises\build\frontier\L14_ub\L14_frontier_p2748_return_temp_ref.dir\Release\L14_frontier_p2748_return_temp_ref.lib
+
+EOF
+stderr<<EOF
+
+EOF

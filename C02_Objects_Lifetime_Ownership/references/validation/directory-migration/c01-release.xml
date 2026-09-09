@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Win32-MSBuild"
+	tests="34"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname="lizhidan-p02"
+	time="52"
+	timestamp="2026-09-09T11:40:04"
+	>
+	<testcase name="engineering_check_success" classname="engineering_check_success" time="0.461484" status="run">
+		<properties>
+			<property name="cmake_labels" value="tooling"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="engineering_check_failure" classname="engineering_check_failure" time="0.0505502" status="run">
+		<properties>
+			<property name="cmake_labels" value="tooling"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="A1_build_debug_reference" classname="A1_build_debug_reference" time="0.425203" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="A1_build_debug_observation" classname="A1_build_debug_observation" time="0.452453" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="B1_preprocessor_reference" classname="B1_preprocessor_reference" time="0.450027" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="B1_preprocessor_preprocess" classname="B1_preprocessor_preprocess" time="0.163496" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>-- preprocess evidence shows generated_value has separate internal-linkage definitions with different macro-expanded returns
+</system-out>
+	</testcase>
+	<testcase name="C1_odr_reference" classname="C1_odr_reference" time="0.86135" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>reference check passed: direct=42 a=42 b=42
+</system-out>
+	</testcase>
+	<testcase name="C1_odr_reference_inline" classname="C1_odr_reference_inline" time="0.466964" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>inline reference passed: a=42 b=42
+</system-out>
+	</testcase>
+	<testcase name="C1_odr_observation_single" classname="C1_odr_observation_single" time="0.417517" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>single consumer header definition: 42
+</system-out>
+	</testcase>
+	<testcase name="C1_odr_observation_preprocess" classname="C1_odr_observation_preprocess" time="0.0833609" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>-- preprocess evidence contains lesson_value definition
+</system-out>
+	</testcase>
+	<testcase name="C1_odr_observation_symbols" classname="C1_odr_observation_symbols" time="0.899037" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>-- symbol evidence contains external lesson_value definitions in observer_a and observer_b objects
+</system-out>
+	</testcase>
+	<testcase name="C1_odr_negative_duplicate_header_definition" classname="C1_odr_negative_duplicate_header_definition" time="5.70351" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>-- negative case compiled objects, then failed at the expected duplicate-symbol link step
+-- 閫傜敤浜?.NET Framework MSBuild 鐗堟湰 18.9.1+a81b43525
+
+  姝ｅ湪鎵弿婧愪互鏌ユ壘妯″潡渚濊禆椤?..
+  C1_odr_negative_duplicate_header_definition_objects.vcxproj -&gt; F:\CPPTrain\LearnCPP\build\mig-c01-r1\C1_odr\negative\duplicate_header_definition\C1_odr_negative_duplicate_header_definition_objects.dir\Debug\C1_odr_negative_duplicate_header_definition_objects.lib
+  Building Custom Rule F:/CPPTrain/LearnCPP/C01_Build_Compile_Link/exercises/C1_odr/negative/duplicate_header_definition/CMakeLists.txt
+  姝ｅ湪鎵弿婧愪互鏌ユ壘妯″潡渚濊禆椤?..
+  main.cpp
+  姝ｅ湪缂栬瘧...
+  main.cpp
+caller_b.obj : error LNK2005: "int __cdecl lesson_value(void)" (?lesson_value@@YAHXZ) 宸茬粡鍦?caller_a.obj 涓畾涔?[F:\CPPTrain\LearnCPP\build\mig-c01-r1\C1_odr\negative\duplicate_header_definition\C1_odr_negative_duplicate_header_definition_link.vcxproj]
+F:\CPPTrain\LearnCPP\build\m...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="C1_odr_negative_include_guard_same_failure" classname="C1_odr_negative_include_guard_same_failure" time="5.72128" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>-- negative case compiled objects, then failed at the expected duplicate-symbol link step
+-- 閫傜敤浜?.NET Framework MSBuild 鐗堟湰 18.9.1+a81b43525
+
+  姝ｅ湪鎵弿婧愪互鏌ユ壘妯″潡渚濊禆椤?..
+  C1_odr_negative_include_guard_same_failure_objects.vcxproj -&gt; F:\CPPTrain\LearnCPP\build\mig-c01-r1\C1_odr\negative\include_guard_same_failure\C1_odr_negative_include_guard_same_failure_objects.dir\Debug\C1_odr_negative_include_guard_same_failure_objects.lib
+  Building Custom Rule F:/CPPTrain/LearnCPP/C01_Build_Compile_Link/exercises/C1_odr/negative/include_guard_same_failure/CMakeLists.txt
+  姝ｅ湪鎵弿婧愪互鏌ユ壘妯″潡渚濊禆椤?..
+  main.cpp
+  姝ｅ湪缂栬瘧...
+  main.cpp
+caller_b.obj : error LNK2005: "int __cdecl lesson_value(void)" (?lesson_value@@YAHXZ) 宸茬粡鍦?caller_a.obj 涓畾涔?[F:\CPPTrain\LearnCPP\build\mig-c01-r1\C1_odr\negative\include_guard_same_failure\C1_odr_negative_include_guard_same_failure_link.vcxproj]
+F:\CPPTrain\LearnCPP\build\mig-c01-...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="C2_archive_reference" classname="C2_archive_reference" time="0.429308" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="C2_archive_symbols" classname="C2_archive_symbols" time="0.837016" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>-- object and archive symbol evidence contains archive_value
+</system-out>
+	</testcase>
+	<testcase name="C2_archive_negative_missing_definition" classname="C2_archive_negative_missing_definition" time="5.69689" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>-- negative case compiled objects, then failed at expected unresolved-symbol link step
+-- 閫傜敤浜?.NET Framework MSBuild 鐗堟湰 18.9.1+a81b43525
+
+  姝ｅ湪鎵弿婧愪互鏌ユ壘妯″潡渚濊禆椤?..
+  C2_archive_negative_missing_definition_objects.vcxproj -&gt; F:\CPPTrain\LearnCPP\build\mig-c01-r1\C2_archive\negative\missing_definition\C2_archive_negative_missing_definition_objects.dir\Debug\C2_archive_negative_missing_definition_objects.lib
+  Building Custom Rule F:/CPPTrain/LearnCPP/C01_Build_Compile_Link/exercises/C2_archive/negative/missing_definition/CMakeLists.txt
+  姝ｅ湪鎵弿婧愪互鏌ユ壘妯″潡渚濊禆椤?..
+  main.cpp
+  姝ｅ湪缂栬瘧...
+  main.cpp
+caller.obj : error LNK2019: 鏃犳硶瑙ｆ瀽鐨勫閮ㄧ鍙?"int __cdecl missing_archive_value(void)" (?missing_archive_value@@YAHXZ)锛屽嚱鏁?"int __cdecl call_missing_archive_value(void)" (?call_missing_archive_value@@YAHXZ) 涓紩鐢ㄤ簡璇ョ鍙?[F:\CPPTrain\LearnCPP\build\mig-c01-r1\C2_archive\neg...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="C2_archive_negative_direct_objects" classname="C2_archive_negative_direct_objects" time="5.63696" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>-- negative case compiled objects, then failed at expected unresolved-symbol link step
+-- 閫傜敤浜?.NET Framework MSBuild 鐗堟湰 18.9.1+a81b43525
+
+  姝ｅ湪鎵弿婧愪互鏌ユ壘妯″潡渚濊禆椤?..
+  C2_archive_negative_direct_objects.vcxproj -&gt; F:\CPPTrain\LearnCPP\build\mig-c01-r1\C2_archive\negative\direct_objects\C2_archive_negative_direct_objects.dir\Debug\C2_archive_negative_direct_objects.lib
+  Building Custom Rule F:/CPPTrain/LearnCPP/C01_Build_Compile_Link/exercises/C2_archive/negative/direct_objects/CMakeLists.txt
+  姝ｅ湪鎵弿婧愪互鏌ユ壘妯″潡渚濊禆椤?..
+  main.cpp
+  姝ｅ湪缂栬瘧...
+  main.cpp
+unused_member.obj : error LNK2019: 鏃犳硶瑙ｆ瀽鐨勫閮ㄧ鍙?"int __cdecl missing_unused_dependency(void)" (?missing_unused_dependency@@YAHXZ)锛屽嚱鏁?"int __cdecl unused_member_value(void)" (?unused_member_value@@YAHXZ) 涓紩鐢ㄤ簡璇ョ鍙?[F:\CPPTrain\LearnCPP\build\mig-c01-r1\C2_archive\negative\direct_objects\C2_archive_negative_di...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="D1_static_reference" classname="D1_static_reference" time="0.418278" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>linked check passed: value=7
+</system-out>
+	</testcase>
+	<testcase name="D1_shared_reference" classname="D1_shared_reference" time="0.417723" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>linked check passed: value=7
+</system-out>
+	</testcase>
+	<testcase name="D1_loader_reference" classname="D1_loader_reference" time="0.410091" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>loader check passed
+</system-out>
+	</testcase>
+	<testcase name="D1_negative_missing_dll" classname="D1_negative_missing_dll" time="0.0667766" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>-- missing DLL case failed before linked program logic as expected
+</system-out>
+	</testcase>
+	<testcase name="D1_negative_missing_export" classname="D1_negative_missing_export" time="0.0513913" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>-- loader rejected missing export as expected
+</system-out>
+	</testcase>
+	<testcase name="E1_abi_reference_static" classname="E1_abi_reference_static" time="0.428071" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>static ABI contract passed
+</system-out>
+	</testcase>
+	<testcase name="E1_abi_reference_shared" classname="E1_abi_reference_shared" time="0.430419" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>shared ABI contract passed
+</system-out>
+	</testcase>
+	<testcase name="E1_abi_bad_alloc" classname="E1_abi_bad_alloc" time="0.437464" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>bad_alloc conversion check passed
+</system-out>
+	</testcase>
+	<testcase name="E1_abi_c_consumer" classname="E1_abi_c_consumer" time="0.418719" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>C consumer passed: value=42
+</system-out>
+	</testcase>
+	<testcase name="E1_abi_observation_layout" classname="E1_abi_observation_layout" time="0.438086" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>public_layout_example size=8 align=4
+reordered_layout_example size=8 align=4
+opaque lesson_engine keeps this layout out of the ABI
+</system-out>
+	</testcase>
+	<testcase name="F1_cmake_targets_reference" classname="F1_cmake_targets_reference" time="0.429522" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="F2_dependencies_reference" classname="F2_dependencies_reference" time="0.433256" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="G1_diagnostics_reference" classname="G1_diagnostics_reference" time="0.41891" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="G2_build_cost_baseline" classname="G2_build_cost_baseline" time="0.426003" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="G2_build_cost_pch" classname="G2_build_cost_pch" time="0.430102" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="G2_build_cost_lto" classname="G2_build_cost_lto" time="0.431991" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="J1_package_roundtrip" classname="J1_package_roundtrip" time="17.6673" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>-- install package passed
+-- configure static consumer passed
+-- build static consumer passed
+-- run static consumer passed
+-- configure shared consumer passed
+-- build shared consumer passed
+-- run shared consumer passed
+-- reject version 2.0.0 failed as expected
+-- reject missing exported target failed as expected
+-- missing DLL run failed as expected
+</system-out>
+	</testcase>
+</testsuite>

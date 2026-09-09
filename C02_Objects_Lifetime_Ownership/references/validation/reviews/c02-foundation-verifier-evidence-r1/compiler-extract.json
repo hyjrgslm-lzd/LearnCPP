@@ -1,0 +1,37 @@
+[
+  {
+    "name": "l01-configure-default.json",
+    "compiler": [
+      "-- The CXX compiler identification is MSVC 19.51.36256.0",
+      "-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped"
+    ]
+  },
+  {
+    "name": "l02-configure-default.json",
+    "compiler": [
+      "-- The CXX compiler identification is MSVC 19.51.36256.0",
+      "-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped"
+    ]
+  },
+  {
+    "name": "l03-configure-default.json",
+    "compiler": [
+      "-- The CXX compiler identification is MSVC 19.51.36256.0",
+      "-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped"
+    ]
+  },
+  {
+    "name": "l05-configure-default.json",
+    "compiler": [
+      "-- The CXX compiler identification is MSVC 19.51.36256.0",
+      "-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped"
+    ]
+  },
+  {
+    "name": "l06-configure-default.json",
+    "compiler": [
+      "-- The CXX compiler identification is MSVC 19.51.36256.0",
+      "-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped"
+    ]
+  }
+]

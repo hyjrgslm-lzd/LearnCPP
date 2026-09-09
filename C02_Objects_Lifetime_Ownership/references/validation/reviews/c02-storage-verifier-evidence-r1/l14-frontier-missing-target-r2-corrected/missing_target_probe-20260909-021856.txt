@@ -1,0 +1,17 @@
+case=missing_target_probe
+target=DefinitelyMissingFrontierTarget
+expect=capability_reject
+source_marker=definitely_missing_source.cpp
+expected_failure=definitely_missing_diagnostic
+accepted_diagnostic=
+result=1
+command=D:/cmake/install/bin/cmake.exe;--build;build/c02-storage-verifier-r1/L14-frontier-r2;--config;Debug;--target;DefinitelyMissingFrontierTarget
+stdout<<EOF
+閫傜敤浜?.NET Framework MSBuild 鐗堟湰 18.9.1+a81b43525
+MSBUILD : error MSB1009: 椤圭洰鏂囦欢涓嶅瓨鍦ㄣ€?
+寮€鍏?DefinitelyMissingFrontierTarget.vcxproj
+
+EOF
+stderr<<EOF
+
+EOF

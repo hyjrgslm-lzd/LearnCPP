@@ -1,0 +1,59 @@
+[
+  {
+    "Lesson": "L08_unique",
+    "ConfigureExit": 0,
+    "BuildExit": 0,
+    "CtestExit": 0,
+    "GoodExit": 0,
+    "Bads": [
+      {
+        "Target": "L08_unique_validation_bad_noop",
+        "Exit": 1,
+        "Output": "check failed: make_tracked returns owner\r\n"
+      },
+      {
+        "Target": "L08_unique_validation_bad_release_keeps_owner",
+        "Exit": 1,
+        "Output": "check failed: release leaves unique_ptr empty\r\n"
+      }
+    ]
+  },
+  {
+    "Lesson": "L09_shared",
+    "ConfigureExit": 0,
+    "BuildExit": 0,
+    "CtestExit": 0,
+    "GoodExit": 0,
+    "Bads": [
+      {
+        "Target": "L09_shared_validation_bad_cycle",
+        "Exit": 1,
+        "Output": "check failed: weak backedge does not keep cycle alive\r\n"
+      },
+      {
+        "Target": "L09_shared_validation_bad_weak_resurrect",
+        "Exit": 1,
+        "Output": "check failed: weak lock fails after destruction\r\n"
+      }
+    ]
+  },
+  {
+    "Lesson": "L10_control_block",
+    "ConfigureExit": 0,
+    "BuildExit": 0,
+    "CtestExit": 0,
+    "GoodExit": 0,
+    "Bads": [
+      {
+        "Target": "L10_control_block_validation_bad_leak_control_block",
+        "Exit": 1,
+        "Output": "check failed: last strong: control block still alive\r\n"
+      },
+      {
+        "Target": "L10_control_block_validation_bad_weak_resurrect",
+        "Exit": 1,
+        "Output": "check failed: object destroyed after last strong\r\n"
+      }
+    ]
+  }
+]

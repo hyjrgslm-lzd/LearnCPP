@@ -1,0 +1,24 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "build/c02-foundation-verifier-r1/L05-default",
+    "-C",
+    "Debug",
+    "--output-on-failure"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 1.0940000000409782,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/build/c02-foundation-verifier-r1/L05-default\n    Start 1: L05_special_members_reference\n1/4 Test #1: L05_special_members_reference ...........................   Passed    0.24 sec\n    Start 2: L05_special_members_validation_good\n2/4 Test #2: L05_special_members_validation_good .....................   Passed    0.25 sec\n    Start 3: L05_special_members_validation_bad_shallow_copy_check\n3/4 Test #3: L05_special_members_validation_bad_shallow_copy_check ...   Passed    0.28 sec\n    Start 4: L05_special_members_validation_bad_move_leak_check\n4/4 Test #4: L05_special_members_validation_bad_move_leak_check ......   Passed    0.27 sec\n\n100% tests passed, 0 tests failed out of 4\n\nLabel Time Summary:\nnegative      =   0.55 sec*proc (2 tests)\nreference     =   0.24 sec*proc (1 test)\nvalidation    =   0.25 sec*proc (1 test)\n\nTotal Test time (real) =   1.05 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    "100% tests passed"
+  ],
+  "verdict": "PASS"
+}

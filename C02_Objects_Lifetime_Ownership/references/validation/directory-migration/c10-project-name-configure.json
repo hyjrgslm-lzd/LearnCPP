@@ -1,0 +1,30 @@
+{
+  "command": [
+    "cmake",
+    "-S",
+    "F:\\CPPTrain\\LearnCPP\\C10_Execution\\exercises",
+    "-B",
+    "F:\\CPPTrain\\LearnCPP\\build\\mig-names-c10-r1",
+    "-G",
+    "Visual Studio 18 2026",
+    "-A",
+    "x64",
+    "-DFETCHCONTENT_SOURCE_DIR_STDEXEC=F:\\CPPTrain\\LearnCPP/build-coro-stage3/_deps/stdexec-src",
+    "-DFETCHCONTENT_SOURCE_DIR_RAPIDS-CMAKE=F:\\CPPTrain\\LearnCPP/C09_Coroutines/exercises/build/full-windows/_deps/rapids-cmake-src",
+    "-DFETCHCONTENT_SOURCE_DIR_ICM=F:\\CPPTrain\\LearnCPP/C09_Coroutines/exercises/build/full-windows/_deps/icm-src",
+    "-DFETCHCONTENT_FULLY_DISCONNECTED=ON"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 2.375,
+  "stdout": "-- The CXX compiler identification is MSVC 19.51.36256.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- [StdexecSetup] stdexec not found — using FetchContent to download it...\n-- Configuring incomplete, errors occurred!\n",
+  "stderr": "CMake Error at F:/CPPTrain/LearnCPP/build-coro-stage3/_deps/stdexec-src/CMakeLists.txt:37 (include):\n  include could not find requested file:\n\n    rapids-export\n\n\nCMake Error at F:/CPPTrain/LearnCPP/build-coro-stage3/_deps/stdexec-src/CMakeLists.txt:39 (include):\n  include could not find requested file:\n\n    rapids-find\n\n\nCMake Error at F:/CPPTrain/LearnCPP/build-coro-stage3/_deps/stdexec-src/CMakeLists.txt:41 (include):\n  include could not find requested file:\n\n    rapids-cmake\n\n\nCMake Error at F:/CPPTrain/LearnCPP/build-coro-stage3/_deps/stdexec-src/CMakeLists.txt:43 (include):\n  include could not find requested file:\n\n    rapids-cpm\n\n\nCMake Error at F:/CPPTrain/LearnCPP/build-coro-stage3/_deps/stdexec-src/CMakeLists.txt:54 (string):\n  string sub-command REGEX, mode REPLACE needs at least 6 arguments total to\n  command.\n\n\nCMake Error at F:/CPPTrain/LearnCPP/build-coro-stage3/_deps/stdexec-src/CMakeLists.txt:65 (project):\n  VERSION \"0..0\" format invalid.\n\n\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "FAIL"
+}

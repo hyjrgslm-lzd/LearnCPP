@@ -1,0 +1,42 @@
+[
+  {
+    "Hash": "0FA0EAAD51F0F47C277DB6EC8B2A5823950F512EAFAABE36841AB1BA56EA98A0",
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\tools\\audit_student.py"
+  },
+  {
+    "Hash": "A405AF5089779E762A804E5135AA0FAA583773A3892696CB46E9D3A9DC927277",
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\tools\\record_process.py"
+  },
+  {
+    "Hash": "31184FF231653E03FDA46D257E482A147CD01DFEDF05D28CBC0FD3CD1D37F641",
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\cmake\\StudySetup.cmake"
+  },
+  {
+    "Hash": "716138E42081AEE359E17929C31EE156ECFFD1D3B596E35107CFB08FF16C5F38",
+    "Path": "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\include\\check.hpp"
+  },
+  {
+    "Hash": "8F1D1A9C2A98D162F89A530250D544DA19F051208CF712A786315FD9089C120D",
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\student-wiring\\CMakeLists.txt"
+  },
+  {
+    "Hash": "051E2094322817376C1C593FE5815816C1A55CAA5822841F673DB0CAE9B13F0D",
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\student-wiring\\check_wiring.ps1"
+  },
+  {
+    "Hash": "33FE3429E437E7199E71BC170098F340C410C8287E04A9A3D2E80EE4DA4FCF8E",
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\student-wiring\\README.md"
+  },
+  {
+    "Hash": "7494F6CC3BF055EF9A2E843681545820A7F4B9415AE5C02B6090680CE07B983C",
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\student-wiring\\src\\student\\main.cpp"
+  },
+  {
+    "Hash": "1B88E1F46595D177CB961E9AB9516ECB3C46886FB8EE0857FC8714A90F08D4E3",
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\student-wiring\\src\\student\\bad.cpp"
+  },
+  {
+    "Hash": "7431E079ABEF98DAB3E65740E059AB745EA9042A76069ED713A9AA2F27A5B7BD",
+    "Path": "F:\\CPPTrain\\LearnCPP\\Core_Study\\references\\validation\\student-wiring\\reference\\answer.hpp"
+  }
+]

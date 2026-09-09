@@ -1,0 +1,16 @@
+Test project F:/CPPTrain/LearnCPP/build/c02-reviewer-storage-r1b-p1-student
+    Start 1: P1_object_buffer_student
+1/1 Test #1: P1_object_buffer_student .........***Failed    0.43 sec
+check failed: reserve grows capacity
+
+
+0% tests passed, 1 tests failed out of 1
+
+Label Time Summary:
+student    =   0.43 sec*proc (1 test)
+
+Total Test time (real) =   0.43 sec
+
+The following tests FAILED:
+	  1 - P1_object_buffer_student (Failed)                 student
+

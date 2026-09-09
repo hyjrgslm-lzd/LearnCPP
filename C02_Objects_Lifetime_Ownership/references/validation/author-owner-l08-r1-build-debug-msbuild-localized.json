@@ -1,0 +1,23 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "build/c02-owner-l08-r1",
+    "--config",
+    "Debug"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.953999999910593,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  L08_unique_observation.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-owner-l08-r1\\Debug\\L08_unique_observation.exe\n  L08_unique_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-owner-l08-r1\\Debug\\L08_unique_reference.exe\n  L08_unique_validation_bad_noop.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-owner-l08-r1\\Debug\\L08_unique_validation_bad_noop.exe\n  L08_unique_validation_bad_release_keeps_owner.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-owner-l08-r1\\Debug\\L08_unique_validation_bad_release_keeps_owner.exe\n  L08_unique_validation_good.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-owner-l08-r1\\Debug\\L08_unique_validation_good.exe\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    "L08_unique_reference.vcxproj ->"
+  ],
+  "verdict": "PASS"
+}

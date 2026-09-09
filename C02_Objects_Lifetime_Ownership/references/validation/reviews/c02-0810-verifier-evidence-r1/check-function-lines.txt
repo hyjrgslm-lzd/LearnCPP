@@ -1,0 +1,29 @@
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L08_unique\checks\owner_checks.hpp:30:inline void check_basic_unique_lifetime() {
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L08_unique\checks\owner_checks.hpp:43:inline void check_release_transfers_responsibility() {
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L08_unique\checks\owner_checks.hpp:55:inline void check_reset_deletes_old_then_owns_new() {
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L08_unique\checks\owner_checks.hpp:69:inline void check_construction_failure_leaves_no_owner() {
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L08_unique\checks\owner_checks.hpp:101:inline void run_unique_contract() {
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L08_unique\checks\owner_checks.hpp:103:check_basic_unique_lifetime();
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L08_unique\checks\owner_checks.hpp:104:check_release_transfers_responsibility();
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L08_unique\checks\owner_checks.hpp:105:check_reset_deletes_old_then_owns_new();
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L08_unique\checks\owner_checks.hpp:106:check_construction_failure_leaves_no_owner();
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L09_shared\checks\owner_checks.hpp:17:inline void check_shared_copy_and_destruction() {
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L09_shared\checks\owner_checks.hpp:41:inline void check_aliasing_pointer_keeps_control_block() {
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L09_shared\checks\owner_checks.hpp:57:inline void check_weak_backedge_breaks_cycle() {
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L09_shared\checks\owner_checks.hpp:64:inline void check_enable_shared_from_this() {
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L09_shared\checks\owner_checks.hpp:71:inline void run_shared_contract() {
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L09_shared\checks\owner_checks.hpp:72:check_shared_copy_and_destruction();
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L09_shared\checks\owner_checks.hpp:73:check_aliasing_pointer_keeps_control_block();
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L09_shared\checks\owner_checks.hpp:74:check_weak_backedge_breaks_cycle();
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L09_shared\checks\owner_checks.hpp:75:check_enable_shared_from_this();
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\checks\rc_checks.hpp:32:inline void check_make_and_last_strong_destroys_object() {
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\checks\rc_checks.hpp:46:inline void check_copy_move_and_reset_counts() {
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\checks\rc_checks.hpp:65:inline void check_weak_keeps_control_block_after_object_destroyed() {
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\checks\rc_checks.hpp:85:inline void check_weak_copy_move() {
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\checks\rc_checks.hpp:100:inline void check_construction_failure_cleans_control_block() {
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\checks\rc_checks.hpp:113:inline void run_rc_contract() {
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\checks\rc_checks.hpp:115:check_make_and_last_strong_destroys_object();
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\checks\rc_checks.hpp:116:check_copy_move_and_reset_counts();
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\checks\rc_checks.hpp:117:check_weak_keeps_control_block_after_object_destroyed();
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\checks\rc_checks.hpp:118:check_weak_copy_move();
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\checks\rc_checks.hpp:119:check_construction_failure_cleans_control_block();

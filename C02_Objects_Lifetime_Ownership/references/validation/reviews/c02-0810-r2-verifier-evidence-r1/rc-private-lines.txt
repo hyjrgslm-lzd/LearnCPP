@@ -1,0 +1,35 @@
+ 101:         return block_ && block_->object_alive ? static_cast<T*>(block_->object_ptr()) : nullptr;
+ 102:     }
+ 103: 
+ 104:     [[nodiscard]] T& operator*() const noexcept { return *get(); }
+ 105:     [[nodiscard]] T* operator->() const noexcept { return get(); }
+ 106:     [[nodiscard]] explicit operator bool() const noexcept { return get() != nullptr; }
+ 107:     [[nodiscard]] int use_count() const noexcept { return block_ ? block_->strong : 0; }
+ 108:     [[nodiscard]] int weak_count() const noexcept { return block_ ? block_->weak - 1 : 0; }
+ 109: 
+ 110:     void reset() noexcept {
+ 111:         release();
+ 112:     }
+ 113: 
+ 114: private:
+ 115:     friend class weak_rc<T>;
+ 116:     friend struct detail::rc_access;
+ 117: 
+ 118:     explicit rc_ptr(control_block_base* block, bool add_ref) noexcept : block_(block) {
+ 119:         if (add_ref) {
+ 120:             add_strong();
+ 121:         }
+ 122:     }
+ 123: 
+ 124:     void add_strong() noexcept {
+ 125:         if (block_ != nullptr) {
+ 126:             ++block_->strong;
+ 127:         }
+ 128:     }
+ 129: 
+ 130:     void release() noexcept {
+ 131:         auto* old = std::exchange(block_, nullptr);
+ 132:         if (old == nullptr) {
+ 133:             return;
+ 134:         }
+ 135:         --old->strong;

@@ -1,0 +1,30 @@
+{
+  "command": [
+    "cmake",
+    "-DBUILD_DIR=Core_Study/exercises/build/frontier",
+    "-DCONFIG=Release",
+    "-DTARGET=L14_frontier_missing_target",
+    "-DCASE=L14_frontier_missing_target_negative",
+    "-DEXPECT=capability_compile",
+    "-DSOURCE_MARKER=p2287_base_member_designator",
+    ".cpp",
+    "-DEXPECTED_FAILURE=designator",
+    "-DOUT_DIR=build/c02-l14-frontier-negative-r1",
+    "-P",
+    "Core_Study/exercises/L14_ub/checks/frontier_compile.cmake"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.26500000013038516,
+  "stdout": "",
+  "stderr": "CMake Error at Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:67 (message):\n  L14_frontier_missing_target_negative: failure did not mention expected\n  source 'p2287_base_member_designator'; see\n  build/c02-l14-frontier-negative-r1/L14_frontier_missing_target_negative-20260909-022013.txt\nCall Stack (most recent call first):\n  Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:72 (require_source_marker)\n  Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:91 (require_expected_failure)\n\n\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 1,
+  "required_text": [
+    "failure did not mention expected source"
+  ],
+  "verdict": "FAIL"
+}

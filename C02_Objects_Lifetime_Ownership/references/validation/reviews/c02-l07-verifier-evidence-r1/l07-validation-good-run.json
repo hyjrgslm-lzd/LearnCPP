@@ -1,0 +1,18 @@
+{
+  "command": [
+    "build\\c02-verifier-l07-validation-r1\\Debug\\L07_raii_validation_good.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.26500000013038516,
+  "stdout": "L07_raii_reference OK\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "expected_exit": 0,
+  "required_text": [
+    "L07_raii_reference OK"
+  ],
+  "verdict": "PASS"
+}

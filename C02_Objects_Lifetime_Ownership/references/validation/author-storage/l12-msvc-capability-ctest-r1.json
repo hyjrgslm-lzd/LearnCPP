@@ -1,0 +1,24 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "build/c02-l12-capability-r1-msvc",
+    "-C",
+    "Debug",
+    "--output-on-failure"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 1.093000000109896,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/build/c02-l12-capability-r1-msvc\n    Start 1: L12_storage_reference\n1/4 Test #1: L12_storage_reference ...................   Passed    0.23 sec\n    Start 2: L12_storage_start_lifetime_as\n2/4 Test #2: L12_storage_start_lifetime_as ...........   Passed    0.28 sec\n    Start 3: L12_storage_validation_good\n3/4 Test #3: L12_storage_validation_good .............   Passed    0.23 sec\n    Start 4: L12_storage_validation_bad_noop_check\n4/4 Test #4: L12_storage_validation_bad_noop_check ...   Passed    0.28 sec\n\n100% tests passed, 0 tests failed out of 4\n\nLabel Time Summary:\ncapability    =   0.28 sec*proc (1 test)\nnegative      =   0.28 sec*proc (1 test)\nreference     =   0.23 sec*proc (1 test)\nvalidation    =   0.23 sec*proc (1 test)\n\nTotal Test time (real) =   1.03 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    "L12_storage_start_lifetime_as"
+  ],
+  "verdict": "PASS"
+}

@@ -1,0 +1,8 @@
+适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
+
+  1>Checking Build System
+  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/P1_object_buffer/CMakeLists.txt
+  run_checks.cpp
+  P1_object_buffer_student.vcxproj -> F:\CPPTrain\LearnCPP\build\c02-reviewer-storage-r1b-p1-student\Debug\P1_object_buffer_student.exe
+  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/P1_object_buffer/CMakeLists.txt
+

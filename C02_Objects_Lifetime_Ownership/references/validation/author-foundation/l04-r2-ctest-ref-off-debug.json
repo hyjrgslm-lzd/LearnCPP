@@ -1,0 +1,23 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "Core_Study/exercises/L04_construction/build/c02-foundation-author-ref-off-r2",
+    "-C",
+    "Debug",
+    "--output-on-failure"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.04600000008940697,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/Core_Study/exercises/L04_construction/build/c02-foundation-author-ref-off-r2\n",
+  "stderr": "No tests were found!!!\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "expected_exit": 0,
+  "required_text": [
+    "No tests were found"
+  ],
+  "verdict": "PASS"
+}

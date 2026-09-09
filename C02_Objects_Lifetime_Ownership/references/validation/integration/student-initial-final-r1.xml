@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Win32-MSBuild"
+	tests="9"
+	failures="9"
+	disabled="0"
+	skipped="0"
+	hostname="lizhidan-p02"
+	time="3"
+	timestamp="2026-09-09T10:18:59"
+	>
+	<testcase name="L03_lifetimes_student" classname="L03_lifetimes_student" time="0.445028" status="fail">
+		<failure message="Failed"/>
+		<properties>
+			<property name="cmake_labels" value="student"/>
+		</properties>
+		<system-out>check failed: borrow from live owner must be valid
+</system-out>
+	</testcase>
+	<testcase name="L04_construction_student" classname="L04_construction_student" time="0.433543" status="fail">
+		<failure message="Failed"/>
+		<properties>
+			<property name="cmake_labels" value="student"/>
+		</properties>
+		<system-out>check failed: both resources should be live inside the complete object scope
+</system-out>
+	</testcase>
+	<testcase name="L05_special_members_student" classname="L05_special_members_student" time="0.418818" status="fail">
+		<failure message="Failed"/>
+		<properties>
+			<property name="cmake_labels" value="student"/>
+		</properties>
+		<system-out>check failed: copy must have independent storage
+</system-out>
+	</testcase>
+	<testcase name="L07_raii_student" classname="L07_raii_student" time="0.431839" status="fail">
+		<failure message="Failed"/>
+		<properties>
+			<property name="cmake_labels" value="student"/>
+		</properties>
+		<system-out>check failed: normal owner must own first
+</system-out>
+	</testcase>
+	<testcase name="L08_unique_student" classname="L08_unique_student" time="0.435686" status="fail">
+		<failure message="Failed"/>
+		<properties>
+			<property name="cmake_labels" value="student"/>
+		</properties>
+		<system-out>check failed: make_tracked returns owner
+</system-out>
+	</testcase>
+	<testcase name="L09_shared_student" classname="L09_shared_student" time="0.437556" status="fail">
+		<failure message="Failed"/>
+		<properties>
+			<property name="cmake_labels" value="student"/>
+		</properties>
+		<system-out>check failed: make_node returns shared owner
+</system-out>
+	</testcase>
+	<testcase name="L10_control_block_student" classname="L10_control_block_student" time="0.417529" status="fail">
+		<failure message="Failed"/>
+		<properties>
+			<property name="cmake_labels" value="student"/>
+		</properties>
+		<system-out>check failed: make_rc returns owner
+</system-out>
+	</testcase>
+	<testcase name="L12_storage_student" classname="L12_storage_student" time="0.422151" status="fail">
+		<failure message="Failed"/>
+		<properties>
+			<property name="cmake_labels" value="student"/>
+		</properties>
+		<system-out>check failed: slot must report engaged after successful construct
+</system-out>
+	</testcase>
+	<testcase name="P1_object_buffer_student" classname="P1_object_buffer_student" time="0.434239" status="fail">
+		<failure message="Failed"/>
+		<properties>
+			<property name="cmake_labels" value="student"/>
+		</properties>
+		<system-out>check failed: reserve grows capacity
+</system-out>
+	</testcase>
+</testsuite>

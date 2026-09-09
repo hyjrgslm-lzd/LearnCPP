@@ -1,0 +1,29 @@
+{
+  "command": [
+    "cmake",
+    "-S",
+    "Core_Study/exercises/L08_unique",
+    "-B",
+    "build/c02-owner-l08-r1-student",
+    "-G",
+    "Visual Studio 18 2026",
+    "-A",
+    "x64",
+    "-DCORE_STUDY_BUILD_REFERENCE=OFF",
+    "-DCORE_STUDY_TEST_STUDENTS=ON"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.547000000020489,
+  "stdout": "-- The CXX compiler identification is MSVC 19.51.36256.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring done (2.4s)\n-- Generating done (0.1s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/build/c02-owner-l08-r1-student\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    "Configuring done"
+  ],
+  "verdict": "PASS"
+}

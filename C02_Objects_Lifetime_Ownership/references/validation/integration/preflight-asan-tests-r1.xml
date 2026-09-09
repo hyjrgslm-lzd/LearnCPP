@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="(empty)"
+	tests="20"
+	failures="0"
+	disabled="0"
+	skipped="1"
+	hostname=""
+	time="5"
+	timestamp="2026-09-08T23:51:23"
+	>
+	<testcase name="L01_initialization_observation" classname="L01_initialization_observation" time="0.257412" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L02_value_categories_observation" classname="L02_value_categories_observation" time="0.238462" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L03_lifetimes_reference" classname="L03_lifetimes_reference" time="0.246626" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L04_construction_reference" classname="L04_construction_reference" time="0.247575" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L05_special_members_reference" classname="L05_special_members_reference" time="0.246652" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L06_move_return_observation" classname="L06_move_return_observation" time="0.277084" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L07_raii_observation" classname="L07_raii_observation" time="0.231193" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>L07_raii_observation OK
+</system-out>
+	</testcase>
+	<testcase name="L07_raii_reference" classname="L07_raii_reference" time="0.245252" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L07_raii_reference OK
+</system-out>
+	</testcase>
+	<testcase name="L08_unique_observation" classname="L08_unique_observation" time="0.258065" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>L08_unique_observation OK
+</system-out>
+	</testcase>
+	<testcase name="L08_unique_reference" classname="L08_unique_reference" time="0.246921" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L08_unique_reference OK
+</system-out>
+	</testcase>
+	<testcase name="L09_shared_observation" classname="L09_shared_observation" time="0.246605" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>L09_shared_observation OK
+</system-out>
+	</testcase>
+	<testcase name="L09_shared_reference" classname="L09_shared_reference" time="0.24807" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L09_shared_reference OK
+</system-out>
+	</testcase>
+	<testcase name="L10_control_block_observation" classname="L10_control_block_observation" time="0.246157" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>L10_control_block_observation OK
+</system-out>
+	</testcase>
+	<testcase name="L10_control_block_reference" classname="L10_control_block_reference" time="0.269635" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L10_control_block_reference OK
+</system-out>
+	</testcase>
+	<testcase name="L11_layout_observation" classname="L11_layout_observation" time="0.235014" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>sizeof(Packet)=8
+alignof(Packet)=4
+offsetof(Packet.value)=4
+sizeof(Empty)=1
+sizeof(UsesEmptyBase)=4
+sizeof(int)=4
+L11_layout_observation OK
+</system-out>
+	</testcase>
+	<testcase name="L12_storage_reference" classname="L12_storage_reference" time="0.231484" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L12_storage_contract OK
+</system-out>
+	</testcase>
+	<testcase name="L12_storage_start_lifetime_as" classname="L12_storage_start_lifetime_as" time="0.24699" status="notrun">
+		<skipped message="SKIP_REGULAR_EXPRESSION_MATCHED"/>
+		<properties>
+			<property name="cmake_labels" value="capability"/>
+		</properties>
+		<system-out>SKIP: __cpp_lib_start_lifetime_as not defined
+</system-out>
+	</testcase>
+	<testcase name="L13_aliasing_observation" classname="L13_aliasing_observation" time="0.247094" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>bit_pattern_1_0f=0x3f800000
+L13_aliasing_observation OK
+</system-out>
+	</testcase>
+	<testcase name="L14_ub_observation" classname="L14_ub_observation" time="0.26307" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>dangling reference: undefined_behavior
+ODR no diagnostic case: ifndr
+plain char signedness: implementation_defined
+some evaluation orders: unspecified
+C++26 erroneous values: erroneous
+L14_ub_observation OK
+</system-out>
+	</testcase>
+	<testcase name="P1_object_buffer_reference" classname="P1_object_buffer_reference" time="0.230076" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>P1_object_buffer_contract OK
+</system-out>
+	</testcase>
+</testsuite>

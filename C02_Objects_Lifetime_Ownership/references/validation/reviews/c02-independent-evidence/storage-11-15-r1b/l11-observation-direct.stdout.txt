@@ -1,0 +1,8 @@
+sizeof(Packet)=8
+alignof(Packet)=4
+offsetof(Packet.value)=4
+sizeof(Empty)=1
+sizeof(UsesEmptyBase)=4
+sizeof(int)=4
+L11_layout_observation OK
+

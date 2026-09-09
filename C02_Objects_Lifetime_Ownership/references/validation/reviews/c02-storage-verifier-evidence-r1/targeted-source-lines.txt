@@ -1,0 +1,176 @@
+Core_Study/references/validation/author-storage-report.md:3:作者范围：章节 11-15，练习 `L11_layout`、`L12_storage`、`L13_aliasing`、`L14_ub`、`P1_object_buffer`，以及 `author-storage-probes` 能力探测证据。
+Core_Study/references/validation/author-storage-report.md:8:- `chapters/12-storage-and-object-creation.md`：分配与构造、C++20 implicit object creation、`allocator<T>::allocate` 数组对象边界、placement new、`construct_at`/`destroy_at`、implicit-lifetime、`start_lifetime_as`、union 活跃成员。
+Core_Study/references/validation/author-storage-report.md:12:- `exercises/L11_layout`、`L13_aliasing`、`L14_ub`：观察型实验，无 Student。
+Core_Study/references/validation/author-storage-report.md:13:- `exercises/L12_storage`：`storage_slot<T>` Student 占位、Reference、checker、good/bad validation。
+Core_Study/references/validation/author-storage-report.md:14:- `exercises/P1_object_buffer`：`object_buffer<T>` Student 占位、Reference、checker、good/bad validation、throwing-move-only 编译拒绝。
+Core_Study/references/validation/author-storage-report.md:46:- `l12-ref-off-build-r1.json`、`p1-ref-off-build-r1.json`
+Core_Study/references/validation/author-storage-report.md:51:- `p1-clang-asan-configure-build-reference-good-r2.json`
+Core_Study/references/validation/author-storage-report.md:52:- `p1-clang-asan-reference-direct-r2.json`、`p1-clang-asan-good-direct-r2.json`
+Core_Study/references/validation/author-storage-report.md:70:- MSVC Debug/Release non-Student checks pass for all five leaves.
+Core_Study/references/validation/author-storage-report.md:71:- L12/P1 Student placeholders fail quickly with checker diagnostics.
+Core_Study/references/validation/author-storage-report.md:72:- L12/P1 reference-off builds succeed and do not include reference/validation targets in the generated solution.
+Core_Study/references/validation/author-storage-report.md:73:- P1 public good passes; bad noop and early-commit variants are rejected; throwing-move-only compile target is rejected.
+Core_Study/references/validation/author-storage-report.md:74:- Capability probe shows MSVC 19.51 + current STL supports `std::start_lifetime_as`; Clang 22.1.3 with current MSVC STL does not expose `__cpp_lib_start_lifetime_as` and the `start_lifetime_as` probe fails to compile.
+Core_Study/references/validation/author-storage-report.md:75:- L12 now has a course target `L12_storage_start_lifetime_as`. MSVC Debug direct run prints `L12_start_lifetime_as OK macro=202207`; Clang 22.1.3 + current MSVC STL direct run prints `SKIP: __cpp_lib_start_lifetime_as not defined`. No fallback API is used to mark Clang PASS.
+Core_Study/references/validation/author-storage-report.md:76:- L14 now has `CORE_STUDY_ENABLE_FRONTIER` consumers. MSVC/Clang frontier baseline compile probes pass. P2287R6 base/indirect member designator probe is SKIP on both current toolchains. P2748 return-temporary-reference probe: MSVC diagnoses then accepts, recorded as SKIP; Clang rejects, recorded as PASS for the rejection capability. P2953 defaulted-assignment restriction probe is SKIP on both current toolchains. Provenance/lifetime-end model compiles on both as compile-only review evidence, with no runtime support claim.
+Core_Study/references/validation/author-storage-report.md:77:- L14 now has an unsafe ASan diagnostic target gated by both `CORE_STUDY_ENABLE_ASAN` and `CORE_STUDY_ENABLE_UNSAFE_DEMOS`. Clang ASan explicit run matches `heap-use-after-free` and `asan_uaf_probe.cpp`, and normal/default L14 remains safe.
+Core_Study/references/validation/author-storage-report.md:78:- Default L14 configure without frontier/unsafe registers only `L14_ub_observation`; Clang ASan configure with unsafe off also lists only one safe test.
+Core_Study/references/validation/author-storage-report.md:79:- P1 r2 Reference uses RAII rollback for allocation cleanup. MSVC Debug and Release non-student CTest both pass all 5 tests: Reference, validation good, bad noop rejection, bad early-commit rejection, and throwing-move-only compile rejection.
+Core_Study/references/validation/author-storage-report.md:80:- P1 r2 Clang ASan config/build passes for Reference and validation good; direct exe runs with matching runtime `PATH` both print `P1_object_buffer_contract OK` and exit 0.
+Core_Study/references/validation/author-storage-report.md:82:## ASan 证据纠正
+Core_Study/references/validation/author-storage-report.md:84:`l12-asan-reference-runtime-fails-r1.json` and `p1-asan-reference-runtime-fails-r1.json` are preserved as raw intermediate evidence, but they are command invocation failures, not program runtime verdicts. Their recorded command shape contains a malformed `cmd /d /s /c` invocation with an empty command segment before the executable path, and stderr reports command/file-name syntax failure. The target executables did not start, so these JSON files must not be used as ASan PASS/FAIL evidence for L12 or P1.
+Core_Study/references/validation/author-storage-report.md:86:Root later ran with a matching runtime `PATH` directly. That newer direct evidence reports L12 Reference PASS and a real P1 ASan access violation in `references/validation/asan/p1-reference-direct-r1.json`, around the CopyFallback `grow_and_append` rethrow path and `VCRUNTIME140.dll`. P1 implementation/checker was frozen while the dedicated ASan debugger lane isolated the cause; this report keeps the old wrapper JSON classified as command-startup failure, not runtime evidence.
+Core_Study/references/validation/author-storage-report.md:88:The dedicated P1 ASan diagnosis then isolated the issue to the Clang 22.1.3 + Windows ASan + MSVC exception-handling rethrow path: independent `rethrow_only` reproduces the crash, while `throw_only` passes and non-ASan runs pass. This does not make C++ `throw;` generally invalid, and it does not by itself prove the P1 algorithm wrong.
+Core_Study/references/validation/author-storage-report.md:90:The r2 Reference keeps the same strong-guarantee order and exception propagation, but replaces the two explicit catch-cleanup-`throw;` blocks with `std::unique_ptr` rollback guards whose deleters are `noexcept`. Cleanup now happens during stack unwinding without an explicit rethrow in those functions. The old root-cause evidence, minimal repro evidence, old failed JSON, and fixed-candidate evidence remain under `references/validation/debugger-p1-asan/`.
+Core_Study/references/validation/author-storage-report.md:92:`validation/bad_early_commit` is intentionally left as a broken teaching implementation. It is still rejected by MSVC Debug/Release CTest through the expected-failure harness; it is not treated as a target for the Reference ASan workaround.
+Core_Study/references/validation/author-storage-report.md:94:`p1-reference-fixed-diff-r3.json` records that the updated Reference source matches `debugger-p1-asan/fixed/object_buffer.hpp` by content and SHA256. Two intermediate sensitive-scan attempts, `p1-r2-sensitive-scan-r1.json` and `p1-r2-sensitive-scan-r3.json`, are preserved as failed command evidence: r1 used a wildcard that `rg` did not expand on Windows, and r3 scanned prior scan JSON files and matched the search expression itself. The corrected source/report scan is `p1-r2-sensitive-scan-r4.json`.
+Core_Study/references/validation/author-storage-report.md:96:Two L14 intermediate JSON files are also preserved with corrected classification. `l14-msvc-frontier-ctest-r1.json` failed because the default observation executable had not been built before running all tests; the frontier probes in that run already executed, and the corrected frontier-only run is `l14-msvc-frontier-ctest-r2.json`, superseded by the cleaner post-P2748-fix `l14-msvc-frontier-ctest-r3.json`. `l14-clang-unsafe-asan-r1.json` failed only because outer `record_process` looked for ASan text in non-verbose CTest output; the CTest itself passed. The corrected verbose evidence is `l14-clang-unsafe-asan-r2.json`.
+Core_Study/references/validation/author-storage-report.md:101:- No 11-15 work was self-approved.
+Core_Study/references/validation/author-storage-report.md:102:- No P1 implementation/checker edits were made after the ASan freeze notice.
+Core_Study/exercises/L14_ub\README.md:1:# 练习 L14：行为分类与诊断边界
+Core_Study/exercises/L14_ub\README.md:8:cmake -S Core_Study/exercises/L14_ub -B build/c02-l14 -G "Visual Studio 18 2026" -A x64
+Core_Study/exercises/L14_ub\README.md:23:UNSAFE 入口也默认关闭。只有同时启用 `CORE_STUDY_ENABLE_ASAN=ON` 和 `CORE_STUDY_ENABLE_UNSAFE_DEMOS=ON` 时，才构建并注册 `L14_ub_asan_uaf_diagnostic`。它是独立诊断进程，期望非零退出并匹配 `heap-use-after-free` 与 `asan_uaf_probe.cpp`；正常课程 preset 不运行真实 UB。
+Core_Study/exercises/L14_ub\CMakeLists.txt:2:project(L14_ub LANGUAGES CXX)
+Core_Study/exercises/L14_ub\CMakeLists.txt:5:add_executable(L14_ub_observation checks/observation_check.cpp)
+Core_Study/exercises/L14_ub\CMakeLists.txt:6:core_configure_target(L14_ub_observation)
+Core_Study/exercises/L14_ub\CMakeLists.txt:7:core_add_test(L14_ub_observation COMMAND L14_ub_observation LABELS observation TIMEOUT 30)
+Core_Study/exercises/L14_ub\CMakeLists.txt:37:    l14_frontier_probe(L14_frontier_baseline checks/frontier/baseline.cpp)
+Core_Study/exercises/L14_ub\CMakeLists.txt:38:    l14_frontier_test(L14_frontier_baseline_compile L14_frontier_baseline must_pass)
+Core_Study/exercises/L14_ub\CMakeLists.txt:40:    l14_frontier_probe(L14_frontier_p2287_base_member_designator
+Core_Study/exercises/L14_ub\CMakeLists.txt:42:    l14_frontier_test(L14_frontier_p2287_base_member_designator_compile
+Core_Study/exercises/L14_ub\CMakeLists.txt:43:        L14_frontier_p2287_base_member_designator
+Core_Study/exercises/L14_ub\CMakeLists.txt:46:    l14_frontier_probe(L14_frontier_p2748_return_temp_ref
+Core_Study/exercises/L14_ub\CMakeLists.txt:48:    l14_frontier_test(L14_frontier_p2748_return_temp_ref_compile
+Core_Study/exercises/L14_ub\CMakeLists.txt:49:        L14_frontier_p2748_return_temp_ref
+Core_Study/exercises/L14_ub\CMakeLists.txt:52:    l14_frontier_probe(L14_frontier_p2953_defaulted_assignment
+Core_Study/exercises/L14_ub\CMakeLists.txt:54:    l14_frontier_test(L14_frontier_p2953_defaulted_assignment_compile
+Core_Study/exercises/L14_ub\CMakeLists.txt:55:        L14_frontier_p2953_defaulted_assignment
+Core_Study/exercises/L14_ub\CMakeLists.txt:58:    l14_frontier_probe(L14_frontier_provenance_lifetime_end_model
+Core_Study/exercises/L14_ub\CMakeLists.txt:60:    l14_frontier_test(L14_frontier_provenance_lifetime_end_model_compile
+Core_Study/exercises/L14_ub\CMakeLists.txt:61:        L14_frontier_provenance_lifetime_end_model
+Core_Study/exercises/L14_ub\CMakeLists.txt:65:if(CORE_STUDY_ENABLE_ASAN AND CORE_STUDY_ENABLE_UNSAFE_DEMOS)
+Core_Study/exercises/L14_ub\CMakeLists.txt:66:    add_executable(L14_ub_asan_uaf checks/asan_uaf_probe.cpp)
+Core_Study/exercises/L14_ub\CMakeLists.txt:67:    core_configure_target(L14_ub_asan_uaf)
+Core_Study/exercises/L14_ub\CMakeLists.txt:68:    add_test(NAME L14_ub_asan_uaf_diagnostic
+Core_Study/exercises/L14_ub\CMakeLists.txt:70:            -DEXECUTABLE=$<TARGET_FILE:L14_ub_asan_uaf>
+Core_Study/exercises/L14_ub\CMakeLists.txt:74:    set_tests_properties(L14_ub_asan_uaf_diagnostic PROPERTIES TIMEOUT 30 LABELS "unsafe;asan")
+Core_Study/exercises/L14_ub\checks\expect_asan_failure.cmake:4:    message(FATAL_ERROR "missing ASan failure check argument")
+Core_Study/exercises/L14_ub\checks\expect_asan_failure.cmake:16:    message(FATAL_ERROR "expected ASan diagnostic process to fail, but it exited 0")
+Core_Study/exercises/L14_ub\checks\expect_asan_failure.cmake:19:    message(FATAL_ERROR "expected ASan diagnostic text '${EXPECTED_TEXT}' not found; output was:\n${combined}")
+Core_Study/exercises/L14_ub\checks\expect_asan_failure.cmake:22:    message(FATAL_ERROR "expected ASan source marker '${EXPECTED_SOURCE}' not found; output was:\n${combined}")
+Core_Study/exercises/L14_ub\checks\expect_asan_failure.cmake:24:message(STATUS "PASS: ASan diagnostic matched ${EXPECTED_TEXT} and ${EXPECTED_SOURCE}")
+Core_Study/exercises/P1_object_buffer\README.md:1:# 项目 P1：`object_buffer<T>`
+Core_Study/exercises/P1_object_buffer\README.md:46:move 构造把 allocation 转交给新 owner，源变空，旧借用随新 owner 存活。move 赋值先销毁目标旧数据，再接管源；self move 无损。
+Core_Study/exercises/P1_object_buffer\README.md:51:cmake -S Core_Study/exercises/P1_object_buffer -B build/c02-p1 -G "Visual Studio 18 2026" -A x64 -DCORE_STUDY_TEST_STUDENTS=ON
+Core_Study/exercises/P1_object_buffer\README.md:56:checker 覆盖：空/边界/growth、自身 const view 元素追加、无增长 reserve、copy 第 k 次失败、新尾失败、迁移失败、over-aligned、nontrivial、nothrow move-only、move 转交借用、move assignment 目标旧借用失效、self move、throwing-move-only 编译拒绝。
+Core_Study/exercises/P1_object_buffer\README.md:60:- `validation/good` 应通过同一 checker。
+Core_Study/exercises/P1_object_buffer\README.md:61:- `validation/bad_noop` 应被拒绝，证明 checker 不只看程序退出。
+Core_Study/exercises/P1_object_buffer\README.md:62:- `validation/bad_early_commit` 应在新尾失败时被拒绝，证明 checker 能抓早提交 capacity。
+Core_Study/exercises/L14_ub\checks\asan_uaf_probe.cpp:6:    volatile int* borrowed = owner.get();
+Core_Study/exercises/L14_ub\checks\asan_uaf_probe.cpp:8:    return borrowed[1];
+Core_Study/exercises/L12_storage\README.md:1:# 练习 L12：有界存储槽
+Core_Study/exercises/L12_storage\README.md:17:cmake -S Core_Study/exercises/L12_storage -B build/c02-l12 -G "Visual Studio 18 2026" -A x64 -DCORE_STUDY_TEST_STUDENTS=ON
+Core_Study/exercises/L12_storage\README.md:22:解析：普通 raw storage 不会调用 `T` 构造函数；`allocator<T>::allocate(n)` 建立的是 `T[n]` 数组对象边界，不表示元素对象已经构造。元素生命期仍由 `std::construct_at` / `std::destroy_at` 管理。本题用 checker 中的受信计数器验证活跃对象数量，Student 不能通过填写报告或完成标记绕过。
+Core_Study/exercises/L12_storage\README.md:24:本练习还提供 `L12_storage_start_lifetime_as` capability target。它只检测 C++23 `std::start_lifetime_as*`：
+Core_Study/exercises/L12_storage\README.md:26:- 若 `__cpp_lib_start_lifetime_as` 缺失，测试输出 `SKIP: __cpp_lib_start_lifetime_as not defined`。
+Core_Study/exercises/L12_storage\README.md:27:- 若宏存在，代码会真实实例化并运行 `std::start_lifetime_as<std::uint32_t>` 与 `std::start_lifetime_as_array<std::uint16_t>`。
+Core_Study/exercises/P1_object_buffer\CMakeLists.txt:2:project(P1_object_buffer LANGUAGES CXX)
+Core_Study/exercises/P1_object_buffer\CMakeLists.txt:21:    p1_configure(P1_object_buffer_student src/student)
+Core_Study/exercises/P1_object_buffer\CMakeLists.txt:22:    core_add_test(P1_object_buffer_student COMMAND P1_object_buffer_student LABELS student TIMEOUT 30)
+Core_Study/exercises/P1_object_buffer\CMakeLists.txt:24:    add_executable(P1_object_buffer_student EXCLUDE_FROM_ALL checks/run_checks.cpp)
+Core_Study/exercises/P1_object_buffer\CMakeLists.txt:25:    target_include_directories(P1_object_buffer_student PRIVATE checks src/student)
+Core_Study/exercises/P1_object_buffer\CMakeLists.txt:26:    core_configure_target(P1_object_buffer_student)
+Core_Study/exercises/P1_object_buffer\CMakeLists.txt:30:    p1_configure(P1_object_buffer_reference src/reference)
+Core_Study/exercises/P1_object_buffer\CMakeLists.txt:31:    core_add_test(P1_object_buffer_reference COMMAND P1_object_buffer_reference LABELS reference TIMEOUT 30)
+Core_Study/exercises/P1_object_buffer\CMakeLists.txt:33:    p1_configure(P1_object_buffer_validation_good validation/good)
+Core_Study/exercises/P1_object_buffer\CMakeLists.txt:34:    core_add_test(P1_object_buffer_validation_good COMMAND P1_object_buffer_validation_good LABELS validation TIMEOUT 30)
+Core_Study/exercises/P1_object_buffer\CMakeLists.txt:36:    p1_configure(P1_object_buffer_validation_bad_noop validation/bad_noop)
+Core_Study/exercises/P1_object_buffer\CMakeLists.txt:37:    p1_expected_failure(P1_object_buffer_validation_bad_noop_check
+Core_Study/exercises/P1_object_buffer\CMakeLists.txt:38:        P1_object_buffer_validation_bad_noop
+Core_Study/exercises/P1_object_buffer\CMakeLists.txt:41:    p1_configure(P1_object_buffer_validation_bad_early_commit validation/bad_early_commit)
+Core_Study/exercises/P1_object_buffer\CMakeLists.txt:42:    p1_expected_failure(P1_object_buffer_validation_bad_early_commit_check
+Core_Study/exercises/P1_object_buffer\CMakeLists.txt:43:        P1_object_buffer_validation_bad_early_commit
+Core_Study/exercises/P1_object_buffer\CMakeLists.txt:44:        "new tail failure keeps capacity")
+Core_Study/exercises/P1_object_buffer\CMakeLists.txt:46:    add_executable(P1_object_buffer_reject_throwing_move_only EXCLUDE_FROM_ALL checks/reject_throwing_move_only.cpp)
+Core_Study/exercises/P1_object_buffer\CMakeLists.txt:47:    target_include_directories(P1_object_buffer_reject_throwing_move_only PRIVATE src/reference)
+Core_Study/exercises/P1_object_buffer\CMakeLists.txt:48:    core_configure_target(P1_object_buffer_reject_throwing_move_only)
+Core_Study/exercises/P1_object_buffer\CMakeLists.txt:49:    add_test(NAME P1_object_buffer_reject_throwing_move_only_check
+Core_Study/exercises/P1_object_buffer\CMakeLists.txt:53:            -DTARGET=P1_object_buffer_reject_throwing_move_only
+Core_Study/exercises/P1_object_buffer\CMakeLists.txt:55:    set_tests_properties(P1_object_buffer_reject_throwing_move_only_check PROPERTIES TIMEOUT 30 LABELS negative)
+Core_Study/exercises/P1_object_buffer\validation\bad_early_commit\object_buffer.hpp:63:        } catch (...) {
+Core_Study/exercises/P1_object_buffer\validation\bad_early_commit\object_buffer.hpp:96:            } catch (...) {
+Core_Study/exercises/L14_ub\checks\observation_check.cpp:47:    std::cout << "L14_ub_observation OK\n";
+Core_Study/exercises/L12_storage\CMakeLists.txt:2:project(L12_storage LANGUAGES CXX)
+Core_Study/exercises/L12_storage\CMakeLists.txt:12:    l12_configure(L12_storage_student src/student)
+Core_Study/exercises/L12_storage\CMakeLists.txt:13:    core_add_test(L12_storage_student COMMAND L12_storage_student LABELS student TIMEOUT 30)
+Core_Study/exercises/L12_storage\CMakeLists.txt:15:    add_executable(L12_storage_student EXCLUDE_FROM_ALL checks/run_checks.cpp)
+Core_Study/exercises/L12_storage\CMakeLists.txt:16:    target_include_directories(L12_storage_student PRIVATE checks src/student)
+Core_Study/exercises/L12_storage\CMakeLists.txt:17:    core_configure_target(L12_storage_student)
+Core_Study/exercises/L12_storage\CMakeLists.txt:21:    l12_configure(L12_storage_reference src/reference)
+Core_Study/exercises/L12_storage\CMakeLists.txt:22:    core_add_test(L12_storage_reference COMMAND L12_storage_reference LABELS reference TIMEOUT 30)
+Core_Study/exercises/L12_storage\CMakeLists.txt:24:    add_executable(L12_storage_start_lifetime_as checks/start_lifetime_as_capability.cpp)
+Core_Study/exercises/L12_storage\CMakeLists.txt:25:    core_configure_target(L12_storage_start_lifetime_as)
+Core_Study/exercises/L12_storage\CMakeLists.txt:26:    core_add_test(L12_storage_start_lifetime_as
+Core_Study/exercises/L12_storage\CMakeLists.txt:27:        COMMAND L12_storage_start_lifetime_as
+Core_Study/exercises/L12_storage\CMakeLists.txt:30:    set_tests_properties(L12_storage_start_lifetime_as
+Core_Study/exercises/L12_storage\CMakeLists.txt:31:        PROPERTIES SKIP_REGULAR_EXPRESSION "SKIP: __cpp_lib_start_lifetime_as not defined")
+Core_Study/exercises/L12_storage\CMakeLists.txt:33:    l12_configure(L12_storage_validation_good validation/good)
+Core_Study/exercises/L12_storage\CMakeLists.txt:34:    core_add_test(L12_storage_validation_good COMMAND L12_storage_validation_good LABELS validation TIMEOUT 30)
+Core_Study/exercises/L12_storage\CMakeLists.txt:36:    l12_configure(L12_storage_validation_bad_noop validation/bad_noop)
+Core_Study/exercises/L12_storage\CMakeLists.txt:37:    add_test(NAME L12_storage_validation_bad_noop_check
+Core_Study/exercises/L12_storage\CMakeLists.txt:39:            -DEXECUTABLE=$<TARGET_FILE:L12_storage_validation_bad_noop>
+Core_Study/exercises/L12_storage\CMakeLists.txt:42:    set_tests_properties(L12_storage_validation_bad_noop_check PROPERTIES TIMEOUT 30 LABELS negative)
+Core_Study/exercises/L12_storage\validation\bad_noop\storage_slot.hpp:27:            throw std::logic_error("bad_noop has no object");
+Core_Study/exercises/L12_storage\validation\bad_noop\storage_slot.hpp:36:            throw std::logic_error("bad_noop has no object");
+Core_Study/exercises/L12_storage\checks\run_checks.cpp:84:    } catch (const std::logic_error&) {
+Core_Study/exercises/L12_storage\checks\run_checks.cpp:101:    } catch (const std::runtime_error&) {
+Core_Study/exercises/L12_storage\checks\run_checks.cpp:131:    std::cout << "L12_storage_contract OK\n";
+Core_Study/exercises/L12_storage\checks\start_lifetime_as_capability.cpp:9:#ifndef __cpp_lib_start_lifetime_as
+Core_Study/exercises/L12_storage\checks\start_lifetime_as_capability.cpp:10:    std::cout << "SKIP: __cpp_lib_start_lifetime_as not defined\n";
+Core_Study/exercises/L12_storage\checks\start_lifetime_as_capability.cpp:13:    static_assert(__cpp_lib_start_lifetime_as >= 202207L);
+Core_Study/exercises/L12_storage\checks\start_lifetime_as_capability.cpp:17:    auto* value = std::start_lifetime_as<std::uint32_t>(bytes.data());
+Core_Study/exercises/L12_storage\checks\start_lifetime_as_capability.cpp:19:        std::cerr << "start_lifetime_as value mismatch\n";
+Core_Study/exercises/L12_storage\checks\start_lifetime_as_capability.cpp:24:    auto* values = std::start_lifetime_as_array<std::uint16_t>(array_bytes.data(), 3);
+Core_Study/exercises/L12_storage\checks\start_lifetime_as_capability.cpp:29:        std::cerr << "start_lifetime_as_array value mismatch\n";
+Core_Study/exercises/L12_storage\checks\start_lifetime_as_capability.cpp:33:    std::cout << "L12_start_lifetime_as OK macro=" << __cpp_lib_start_lifetime_as << "\n";
+Core_Study/exercises/P1_object_buffer\checks\run_checks.cpp:119:    } catch (const std::out_of_range&) {
+Core_Study/exercises/P1_object_buffer\checks\run_checks.cpp:125:void check_self_view_append()
+Core_Study/exercises/P1_object_buffer\checks\run_checks.cpp:131:    check(buffer.view().size() == 2, "self const view append size");
+Core_Study/exercises/P1_object_buffer\checks\run_checks.cpp:132:    check(buffer.view()[0] == 10 && buffer.view()[1] == 10, "self const view append value");
+Core_Study/exercises/P1_object_buffer\checks\run_checks.cpp:135:void check_new_tail_failure_before_old_move()
+Core_Study/exercises/P1_object_buffer\checks\run_checks.cpp:150:    } catch (const std::runtime_error&) {
+Core_Study/exercises/P1_object_buffer\checks\run_checks.cpp:153:    check(threw, "new tail copy failure must throw");
+Core_Study/exercises/P1_object_buffer\checks\run_checks.cpp:154:    check(buffer.capacity() == old_capacity, "new tail failure keeps capacity");
+Core_Study/exercises/P1_object_buffer\checks\run_checks.cpp:155:    check(buffer.size() == old_size, "new tail failure keeps size");
+Core_Study/exercises/P1_object_buffer\checks\run_checks.cpp:156:    check(buffer.view()[0].value == old_value, "new tail failure keeps old value");
+Core_Study/exercises/P1_object_buffer\checks\run_checks.cpp:157:    check(CopyFallback::moves == 1, "new tail failure does not move old elements first");
+Core_Study/exercises/P1_object_buffer\checks\run_checks.cpp:175:    } catch (const std::runtime_error&) {
+Core_Study/exercises/P1_object_buffer\checks\run_checks.cpp:181:    check(buffer.view().data() == old.data(), "reserve copy failure keeps old borrowing");
+Core_Study/exercises/P1_object_buffer\checks\run_checks.cpp:200:    } catch (const std::runtime_error&) {
+Core_Study/exercises/P1_object_buffer\checks\run_checks.cpp:207:    check(CopyFallback::alive == alive_before + 1, "old copy failure cleans new prefix and new tail");
+Core_Study/exercises/P1_object_buffer\checks\run_checks.cpp:210:void check_move_only_and_borrowing()
+Core_Study/exercises/P1_object_buffer\checks\run_checks.cpp:216:    auto borrowed = source.view();
+Core_Study/exercises/P1_object_buffer\checks\run_checks.cpp:220:    check(borrowed.data() == target.view().data(), "move transfers allocation and old borrowing follows target");
+Core_Study/exercises/P1_object_buffer\checks\run_checks.cpp:224:    check(target.size() == 2, "self move keeps size");
+Core_Study/exercises/P1_object_buffer\checks\run_checks.cpp:225:    check(target.view()[0].value == 1 && target.view()[1].value == 2, "self move keeps values");
+Core_Study/exercises/P1_object_buffer\checks\run_checks.cpp:233:    check(old_target.data() != other.view().data(), "move assignment invalidates target old borrowing");
+Core_Study/exercises/P1_object_buffer\checks\run_checks.cpp:259:    check_self_view_append();
+Core_Study/exercises/P1_object_buffer\checks\run_checks.cpp:260:    check_new_tail_failure_before_old_move();
+Core_Study/exercises/P1_object_buffer\checks\run_checks.cpp:263:    check_move_only_and_borrowing();
+Core_Study/exercises/P1_object_buffer\checks\run_checks.cpp:267:    std::cout << "P1_object_buffer_contract OK\n";
+Core_Study/exercises/P1_object_buffer\src\reference\object_buffer.hpp:71:        auto rollback = [this, &built, requested](T* ptr) noexcept {
+Core_Study/exercises/P1_object_buffer\src\reference\object_buffer.hpp:72:            destroy_prefix(ptr, built);
+Core_Study/exercises/P1_object_buffer\src\reference\object_buffer.hpp:75:        std::unique_ptr<T, decltype(rollback)> cleanup(next, rollback);
+Core_Study/exercises/P1_object_buffer\src\reference\object_buffer.hpp:82:        destroy_prefix(data_, size_);
+Core_Study/exercises/P1_object_buffer\src\reference\object_buffer.hpp:111:        destroy_prefix(data_, size_);
+Core_Study/exercises/P1_object_buffer\src\reference\object_buffer.hpp:153:        bool tail_built = false;
+Core_Study/exercises/P1_object_buffer\src\reference\object_buffer.hpp:154:        std::size_t prefix_built = 0;
+Core_Study/exercises/P1_object_buffer\src\reference\object_buffer.hpp:155:        auto rollback = [this, &prefix_built, &tail_built, old_size, requested](T* ptr) noexcept {
+Core_Study/exercises/P1_object_buffer\src\reference\object_buffer.hpp:156:            destroy_prefix(ptr, prefix_built);
+Core_Study/exercises/P1_object_buffer\src\reference\object_buffer.hpp:157:            if (tail_built) {
+Core_Study/exercises/P1_object_buffer\src\reference\object_buffer.hpp:162:        std::unique_ptr<T, decltype(rollback)> cleanup(next, rollback);
+Core_Study/exercises/P1_object_buffer\src\reference\object_buffer.hpp:165:        tail_built = true;
+Core_Study/exercises/P1_object_buffer\src\reference\object_buffer.hpp:166:        for (; prefix_built != old_size; ++prefix_built) {
+Core_Study/exercises/P1_object_buffer\src\reference\object_buffer.hpp:167:            construct_relocated(next + prefix_built, data_[prefix_built]);
+Core_Study/exercises/P1_object_buffer\src\reference\object_buffer.hpp:171:        destroy_prefix(data_, old_size);
+Core_Study/exercises/P1_object_buffer\src\reference\object_buffer.hpp:180:    void destroy_prefix(T* first, std::size_t count) noexcept

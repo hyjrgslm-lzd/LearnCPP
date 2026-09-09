@@ -1,0 +1,24 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "build/c02-storage-verifier-r1/L12",
+    "--config",
+    "Release",
+    "--clean-first"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 6.0,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L12_storage/CMakeLists.txt\n  run_checks.cpp\n  L12_storage_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-storage-verifier-r1\\L12\\Release\\L12_storage_reference.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L12_storage/CMakeLists.txt\n  start_lifetime_as_capability.cpp\n  L12_storage_start_lifetime_as.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-storage-verifier-r1\\L12\\Release\\L12_storage_start_lifetime_as.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L12_storage/CMakeLists.txt\n  run_checks.cpp\n  L12_storage_validation_bad_noop.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-storage-verifier-r1\\L12\\Release\\L12_storage_validation_bad_noop.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L12_storage/CMakeLists.txt\n  run_checks.cpp\n  L12_storage_validation_good.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-storage-verifier-r1\\L12\\Release\\L12_storage_validation_good.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L12_storage/CMakeLists.txt\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    ".vcxproj"
+  ],
+  "verdict": "PASS"
+}

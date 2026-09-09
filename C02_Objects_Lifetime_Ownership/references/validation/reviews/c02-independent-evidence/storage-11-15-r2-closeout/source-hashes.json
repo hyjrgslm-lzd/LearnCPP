@@ -1,0 +1,58 @@
+[
+  {
+    "path": "Core_Study/exercises/L12_storage/CMakeLists.txt",
+    "sha256": "9E87001A142415F70376BB067C3F0870A69F36BC139BDCB3267F5EFD7D744AA2"
+  },
+  {
+    "path": "Core_Study/exercises/L12_storage/checks/expect_failure.cmake",
+    "sha256": "DC2EF83636017660B7810CB26E6C03D32E910D868CDBE3FAD36A3E785E63AFBD"
+  },
+  {
+    "path": "Core_Study/exercises/L14_ub/CMakeLists.txt",
+    "sha256": "9F1532AFBBC6F395F8AA38264C961346B2CB52CC481486FD76AA5D75FA2A6674"
+  },
+  {
+    "path": "Core_Study/exercises/L14_ub/checks/frontier_compile.cmake",
+    "sha256": "47E07F26B41D2A76A4F562B6EE15F9F3315CB098A259C3AFFC398513CD796058"
+  },
+  {
+    "path": "Core_Study/exercises/L14_ub/checks/frontier/p2287_base_member_designator.cpp",
+    "sha256": "C111159A5C73F4E0231A93EB0F7C35D492C94A9BD3A8F6B09B3CF0E18A1AB4D0"
+  },
+  {
+    "path": "Core_Study/exercises/cmake/StudySetup.cmake",
+    "sha256": "3D5F0EDB294012C2465AF14634BB3179703AF085B2C6B166674211E0F41FC26C"
+  },
+  {
+    "path": "Core_Study/exercises/tools/record_process.py",
+    "sha256": "A6CBE3E05A8A9845843254E17656E24C6F90E259F0AD93151A8AA09571246002"
+  },
+  {
+    "path": "Core_Study/references/validation/reviews/reviewer-storage-11-15-r1.md",
+    "sha256": "8D2C7260182764B280245FFCA11EDFD95D69311BD5347D3C025CDF992211EE98"
+  },
+  {
+    "path": "Core_Study/chapters/11-layout-and-representation.md",
+    "sha256": "6C705CDD16C7026F1C9825B9364F3E2E74DCCC3F201110F1CF3977E998AF504F"
+  },
+  {
+    "path": "Core_Study/chapters/12-storage-and-object-creation.md",
+    "sha256": "C52EE5724F2468B5614C2467BD9E923FACF4BFEC2EB91459E752646EF78B4719"
+  },
+  {
+    "path": "Core_Study/chapters/13-aliasing-and-provenance.md",
+    "sha256": "813B9063404F3370C58D45EE91105627163A823D6EED2C3A7B34BF11A6078FFB"
+  },
+  {
+    "path": "Core_Study/chapters/14-undefined-behavior-and-optimization.md",
+    "sha256": "F48730DA2E5660AA8A9BC8B0BB539FEF9E43F6C865FC3798AEFF70A098BE7C6E"
+  },
+  {
+    "path": "Core_Study/chapters/15-object-buffer.md",
+    "sha256": "8720C71F1737502324513C24612E949CA80197F27F9E605B213C28FDDC0C0F32"
+  },
+  {
+    "path": "Core_Study/exercises/P1_object_buffer/src/reference/object_buffer.hpp",
+    "sha256": "11031B05BAF698837601183CD021AB24ED11014639E2F49053F0ACDBA9EE0861"
+  }
+]

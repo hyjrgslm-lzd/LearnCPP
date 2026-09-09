@@ -1,0 +1,23 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "build/c02-owner-l10-r1",
+    "--config",
+    "Debug"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 4.594000000040978,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L10_control_block/CMakeLists.txt\n  observation_check.cpp\n  L10_control_block_observation.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-owner-l10-r1\\Debug\\L10_control_block_observation.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L10_control_block/CMakeLists.txt\n  reference_check.cpp\nF:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L10_control_block\\checks\\rc_checks.hpp(36,9): error C2664: “void check(bool,std::string_view)”: 无法将参数 1 从“l10::rc_ptr<l10_checks::tracked>”转换为“bool” [F:\\CPPTrain\\LearnCPP\\build\\c02-owner-l10-r1\\L10_control_block_reference.vcxproj]\n  (编译源文件“../../Core_Study/exercises/L10_control_block/checks/reference_check.cpp”)\n      F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L10_control_block\\checks\\rc_checks.hpp(36,15):\n      没有可用于执行该转换的用户定义的转换运算符，或者无法调用该运算符\n      F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\include\\check.hpp(8,13):\n      参见“check”的声明\n      F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L10_control_block\\checks\\rc_checks.hpp(36,9):\n      尝试匹配参数列表“(l10::rc_ptr<l10_checks::tracked>, const char [22])”时\n  \n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L10_control_block/CMakeLists.txt\n  validation_check.cpp\nF:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L10_control_block\\checks\\rc_checks.hpp(36,9): error C2664: “void check(bool,std::string_view)”: 无法将参数 1 从“l10::rc_ptr<l10_checks::tracked>”转换为“bool” [F:\\CPPTrain\\LearnCPP\\build\\c02-owner-l10-r1\\L10_control_block_validation_bad_leak_control_block.vcxproj]\n  (编译源文件“../../Core_Study/exercises/L10_control_block/checks/validation_check.cpp”)\n      F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L10_control_block\\checks\\rc_checks.hpp(36,15):\n      没有可用于执行该转换的用户定义的转换运算符，或者无法调用该运算符\n      F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\include\\check.hpp(8,13):\n      参见“check”的声明\n      F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L10_control_block\\checks\\rc_checks.hpp(36,9):\n      尝试匹配参数列表“(l10::rc_ptr<l10_checks::tracked>, const char [22])”时\n  \n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L10_control_block/CMakeLists.txt\n  validation_check.cpp\nF:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L10_control_block\\checks\\rc_checks.hpp(36,9): error C2664: “void check(bool,std::string_view)”: 无法将参数 1 从“l10::rc_ptr<l10_checks::tracked>”转换为“bool” [F:\\CPPTrain\\LearnCPP\\build\\c02-owner-l10-r1\\L10_control_block_validation_bad_weak_resurrect.vcxproj]\n  (编译源文件“../../Core_Study/exercises/L10_control_block/checks/validation_check.cpp”)\n      F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L10_control_block\\checks\\rc_checks.hpp(36,15):\n      没有可用于执行该转换的用户定义的转换运算符，或者无法调用该运算符\n      F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\include\\check.hpp(8,13):\n      参见“check”的声明\n      F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L10_control_block\\checks\\rc_checks.hpp(36,9):\n      尝试匹配参数列表“(l10::rc_ptr<l10_checks::tracked>, const char [22])”时\n  \n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L10_control_block/CMakeLists.txt\n  validation_check.cpp\nF:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L10_control_block\\checks\\rc_checks.hpp(36,9): error C2664: “void check(bool,std::string_view)”: 无法将参数 1 从“l10::rc_ptr<l10_checks::tracked>”转换为“bool” [F:\\CPPTrain\\LearnCPP\\build\\c02-owner-l10-r1\\L10_control_block_validation_good.vcxproj]\n  (编译源文件“../../Core_Study/exercises/L10_control_block/checks/validation_check.cpp”)\n      F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L10_control_block\\checks\\rc_checks.hpp(36,15):\n      没有可用于执行该转换的用户定义的转换运算符，或者无法调用该运算符\n      F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\include\\check.hpp(8,13):\n      参见“check”的声明\n      F:\\CPPTrain\\LearnCPP\\Core_Study\\exercises\\L10_control_block\\checks\\rc_checks.hpp(36,9):\n      尝试匹配参数列表“(l10::rc_ptr<l10_checks::tracked>, const char [22])”时\n  \n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": [
+    "L10_control_block_reference.vcxproj ->"
+  ],
+  "verdict": "FAIL"
+}

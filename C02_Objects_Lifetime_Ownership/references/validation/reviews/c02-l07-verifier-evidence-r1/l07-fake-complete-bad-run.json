@@ -1,0 +1,18 @@
+{
+  "command": [
+    "build\\c02-verifier-l07-fake-complete-bad-r1\\c02_l07_fake_complete_bad.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.25,
+  "stdout": "L07_raii_reference OK\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "expected_exit": 0,
+  "required_text": [
+    "L07_raii_reference OK"
+  ],
+  "verdict": "PASS"
+}

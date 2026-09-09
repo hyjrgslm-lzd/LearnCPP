@@ -1,0 +1,18 @@
+case=L14_frontier_baseline_compile
+target=L14_frontier_baseline
+expect=must_pass
+source_marker=baseline.cpp
+expected_failure=
+accepted_diagnostic=
+result=0
+command=D:/cmake/install/bin/cmake.exe;--build;F:/CPPTrain/LearnCPP/build/c02-final-frontier-r1;--config;Release;--target;L14_frontier_baseline
+stdout<<EOF
+閫傜敤浜?.NET Framework MSBuild 鐗堟湰 18.9.1+a81b43525
+
+  1>Checking Build System
+  L14_frontier_baseline.vcxproj -> F:\CPPTrain\LearnCPP\build\c02-final-frontier-r1\L14_ub\L14_frontier_baseline.dir\Release\L14_frontier_baseline.lib
+
+EOF
+stderr<<EOF
+
+EOF

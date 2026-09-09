@@ -1,0 +1,26 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "build/c02-verifier-l07-validation-r1",
+    "--config",
+    "Debug",
+    "--target",
+    "L07_raii_validation_good",
+    "L07_raii_validation_bad_noop"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 3.8280000002123415,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L07_raii/CMakeLists.txt\n  reference_check.cpp\n  L07_raii_validation_good.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-verifier-l07-validation-r1\\Debug\\L07_raii_validation_good.exe\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L07_raii/CMakeLists.txt\n  student_check.cpp\n  L07_raii_validation_bad_noop.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c02-verifier-l07-validation-r1\\Debug\\L07_raii_validation_bad_noop.exe\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "expected_exit": 0,
+  "required_text": [
+    "L07_raii_validation_good.exe",
+    "L07_raii_validation_bad_noop.exe"
+  ],
+  "verdict": "PASS"
+}

@@ -1,0 +1,47 @@
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:3:if(NOT DEFINED BUILD_DIR OR NOT DEFINED TARGET OR NOT DEFINED CASE OR NOT DEFINED EXPECT OR NOT DEFINED OUT_DIR)
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:4:    message(FATAL_ERROR "missing frontier probe argument")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:9:if(NOT DEFINED SOURCE_MARKER)
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:10:    set(SOURCE_MARKER "")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:12:if(NOT DEFINED EXPECTED_FAILURE)
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:13:    set(EXPECTED_FAILURE "")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:15:if(NOT DEFINED ACCEPTED_DIAGNOSTIC)
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:16:    set(ACCEPTED_DIAGNOSTIC "")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:18:if(NOT DEFINED COMMAND_TIMEOUT_SECONDS)
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:19:    set(COMMAND_TIMEOUT_SECONDS 60)
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:22:file(MAKE_DIRECTORY "${OUT_DIR}")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:24:set(base_out "${OUT_DIR}/${CASE}-${stamp}.txt")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:29:    set(out_file "${OUT_DIR}/${CASE}-${stamp}-${counter}.txt")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:31:set(index_file "${OUT_DIR}/index.txt")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:43:    ERROR_VARIABLE stderr
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:44:    TIMEOUT "${COMMAND_TIMEOUT_SECONDS}"
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:52:"source_marker=${SOURCE_MARKER}\n"
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:53:"expected_failure=${EXPECTED_FAILURE}\n"
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:54:"accepted_diagnostic=${ACCEPTED_DIAGNOSTIC}\n"
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:62:    message(FATAL_ERROR "${CASE}: build did not return a process exit code (${result}); see ${out_file}")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:66:    if(NOT "${SOURCE_MARKER}" STREQUAL "" AND NOT combined MATCHES "${SOURCE_MARKER}")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:67:        message(FATAL_ERROR "${CASE}: failure did not mention expected source '${SOURCE_MARKER}'; see ${out_file}")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:73:    if("${EXPECTED_FAILURE}" STREQUAL "")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:74:        message(FATAL_ERROR "${CASE}: expected failure pattern is empty; see ${out_file}")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:76:    if(NOT combined MATCHES "${EXPECTED_FAILURE}")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:77:        message(FATAL_ERROR "${CASE}: failure did not match expected diagnostic '${EXPECTED_FAILURE}'; see ${out_file}")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:84:        message(FATAL_ERROR "${CASE}: baseline/toolchain compile failed; see ${out_file}")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:96:        if(NOT "${ACCEPTED_DIAGNOSTIC}" STREQUAL "" AND combined MATCHES "${ACCEPTED_DIAGNOSTIC}")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:108:        message(FATAL_ERROR "${CASE}: compile-only review model failed; see ${out_file}")
+Core_Study/exercises/L14_ub/checks/frontier_compile.cmake:112:    message(FATAL_ERROR "unknown EXPECT=${EXPECT}; see ${out_file}")
+Core_Study/exercises/L14_ub/checks/expect_asan_failure.cmake:4:    message(FATAL_ERROR "missing ASan failure check argument")
+Core_Study/exercises/L14_ub/checks/expect_asan_failure.cmake:6:if(NOT DEFINED TIMEOUT_SECONDS)
+Core_Study/exercises/L14_ub/checks/expect_asan_failure.cmake:7:    set(TIMEOUT_SECONDS 10)
+Core_Study/exercises/L14_ub/checks/expect_asan_failure.cmake:14:    ERROR_VARIABLE stderr
+Core_Study/exercises/L14_ub/checks/expect_asan_failure.cmake:15:    TIMEOUT "${TIMEOUT_SECONDS}"
+Core_Study/exercises/L14_ub/checks/expect_asan_failure.cmake:20:    message(FATAL_ERROR "ASan diagnostic process did not return a process exit code (${result}); output was:\n${combined}")
+Core_Study/exercises/L14_ub/checks/expect_asan_failure.cmake:23:    message(FATAL_ERROR "expected ASan diagnostic process to fail, but it exited 0")
+Core_Study/exercises/L14_ub/checks/expect_asan_failure.cmake:26:    message(FATAL_ERROR "expected ASan diagnostic text '${EXPECTED_TEXT}' not found; output was:\n${combined}")
+Core_Study/exercises/L14_ub/checks/expect_asan_failure.cmake:29:    message(FATAL_ERROR "expected ASan source marker '${EXPECTED_SOURCE}' not found; output was:\n${combined}")
+Core_Study/exercises/L14_ub/CMakeLists.txt:7:core_add_test(L14_ub_observation COMMAND L14_ub_observation LABELS observation TIMEOUT 30)
+Core_Study/exercises/L14_ub/CMakeLists.txt:27:            -DSOURCE_MARKER=${source_marker}
+Core_Study/exercises/L14_ub/CMakeLists.txt:28:            -DEXPECTED_FAILURE=${expected_failure}
+Core_Study/exercises/L14_ub/CMakeLists.txt:29:            -DACCEPTED_DIAGNOSTIC=${accepted_diagnostic}
+Core_Study/exercises/L14_ub/CMakeLists.txt:30:            -DOUT_DIR=${CMAKE_BINARY_DIR}/frontier
+Core_Study/exercises/L14_ub/CMakeLists.txt:34:            TIMEOUT 90
+Core_Study/exercises/L14_ub/CMakeLists.txt:36:            RESOURCE_LOCK L14_frontier_build_tree
+Core_Study/exercises/L14_ub/CMakeLists.txt:95:    set_tests_properties(L14_ub_asan_uaf_diagnostic PROPERTIES TIMEOUT 30 LABELS "unsafe;asan")

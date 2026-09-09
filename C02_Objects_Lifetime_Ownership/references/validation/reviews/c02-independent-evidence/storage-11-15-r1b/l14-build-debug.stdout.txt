@@ -1,0 +1,8 @@
+适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
+
+  1>Checking Build System
+  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L14_ub/CMakeLists.txt
+  observation_check.cpp
+  L14_ub_observation.vcxproj -> F:\CPPTrain\LearnCPP\build\c02-reviewer-storage-r1b-l14\Debug\L14_ub_observation.exe
+  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L14_ub/CMakeLists.txt
+

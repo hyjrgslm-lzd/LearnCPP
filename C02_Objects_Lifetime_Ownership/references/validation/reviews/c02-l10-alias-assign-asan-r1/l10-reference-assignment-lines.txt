@@ -1,0 +1,68 @@
+> F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:73:    rc_ptr& operator=(const rc_ptr& other) noexcept {
+  F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:74:        if (this != &other) {
+  F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:75:            release();
+        if (this != &other) {
+            release();
+            block_ = other.block_;
+            add_strong();
+> F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:76:            block_ = other.block_;
+  F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:77:            add_strong();
+  F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:78:        }
+  F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:79:        return *this;
+  F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:80:    }
+            add_strong();
+        }
+        return *this;
+    }
+> F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:84:    rc_ptr& operator=(rc_ptr&& other) noexcept {
+  F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:85:        if (this != &other) {
+  F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:86:            release();
+        if (this != &other) {
+            release();
+            block_ = std::exchange(other.block_, nullptr);
+        }
+> F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:87:            block_ = std::exchange(other.block_, nullptr);
+  F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:88:        }
+  F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:89:        return *this;
+  F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:90:    }
+  F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:91:
+        }
+        return *this;
+    }
+
+> F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:123:    void release() noexcept {
+  F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:124:        auto* old = std::exchange(block_, nullptr);
+  F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:125:        if (old == nullptr) {
+  F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:126:            return;
+  F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:127:        }
+        auto* old = std::exchange(block_, nullptr);
+        if (old == nullptr) {
+            return;
+        }
+> F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:157:            block_ = other.block_;
+  F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:158:            add_weak();
+  F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:159:        }
+  F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:160:        return *this;
+  F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:161:    }
+            add_weak();
+        }
+        return *this;
+    }
+> F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:168:            block_ = std::exchange(other.block_, nullptr);
+  F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:169:        }
+  F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:170:        return *this;
+  F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:171:    }
+  F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:172:
+        }
+        return *this;
+    }
+
+> F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:201:    void release() noexcept {
+  F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:202:        auto* old = std::exchange(block_, nullptr);
+  F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:203:        if (old == nullptr) {
+  F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:204:            return;
+  F:\CPPTrain\LearnCPP\Core_Study\exercises\L10_control_block\src\reference\rc.hpp:205:        }
+        auto* old = std::exchange(block_, nullptr);
+        if (old == nullptr) {
+            return;
+        }

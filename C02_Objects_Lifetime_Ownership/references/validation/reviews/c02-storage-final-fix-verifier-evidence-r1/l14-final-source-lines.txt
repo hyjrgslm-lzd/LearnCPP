@@ -1,0 +1,37 @@
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\CMakeLists.txt:19: function(l14_frontier_test test_name target expectation source_marker expected_failure accepted_diagnostic)
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\CMakeLists.txt:27: -DSOURCE_MARKER=${source_marker}
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\CMakeLists.txt:28: -DEXPECTED_FAILURE=${expected_failure}
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\CMakeLists.txt:29: -DACCEPTED_DIAGNOSTIC=${accepted_diagnostic}
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\CMakeLists.txt:36: RESOURCE_LOCK L14_frontier_build_tree
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\CMakeLists.txt:55: "C7559|C2440:.*nitializer list.*erived|field designator.*does not refer|designator.*direct.*member"
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\CMakeLists.txt:64: "returning reference to local temporary|return.*temporary|C4172"
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\CMakeLists.txt:65: "warning C4172|returning reference to local temporary|return.*temporary")
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\CMakeLists.txt:73: "defaulted.*(ref-qualifier|rvalue)|ref-qualifier.*defaulted|rvalue.*defaulted"
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\CMakeLists.txt:74: "defaulted.*(ref-qualifier|rvalue)|ref-qualifier.*defaulted|rvalue.*defaulted")
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\CMakeLists.txt:85: FIXTURES_SETUP L14_frontier_baseline_ready)
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\CMakeLists.txt:91: PROPERTIES FIXTURES_REQUIRED L14_frontier_baseline_ready)
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier_compile.cmake:9: if(NOT DEFINED SOURCE_MARKER)
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier_compile.cmake:10: set(SOURCE_MARKER "")
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier_compile.cmake:12: if(NOT DEFINED EXPECTED_FAILURE)
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier_compile.cmake:13: set(EXPECTED_FAILURE "")
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier_compile.cmake:15: if(NOT DEFINED ACCEPTED_DIAGNOSTIC)
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier_compile.cmake:16: set(ACCEPTED_DIAGNOSTIC "")
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier_compile.cmake:55: "source_marker=${SOURCE_MARKER}\n"
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier_compile.cmake:56: "expected_failure=${EXPECTED_FAILURE}\n"
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier_compile.cmake:57: "accepted_diagnostic=${ACCEPTED_DIAGNOSTIC}\n"
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier_compile.cmake:68: function(require_source_marker)
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier_compile.cmake:69: if(NOT "${SOURCE_MARKER}" STREQUAL "" AND NOT combined MATCHES "${SOURCE_MARKER}")
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier_compile.cmake:70: message(FATAL_ERROR "${CASE}: failure did not mention expected source '${SOURCE_MARKER}'; see ${out_file}")
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier_compile.cmake:74: function(require_expected_failure)
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier_compile.cmake:75: require_source_marker()
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier_compile.cmake:76: if("${EXPECTED_FAILURE}" STREQUAL "")
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier_compile.cmake:79: if(NOT diagnostics MATCHES "${EXPECTED_FAILURE}")
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier_compile.cmake:80: message(FATAL_ERROR "${CASE}: failure did not match expected diagnostic '${EXPECTED_FAILURE}'; see ${out_file}")
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier_compile.cmake:86: require_source_marker()
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier_compile.cmake:87: message(FATAL_ERROR "${CASE}: baseline/toolchain compile failed; see ${out_file}")
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier_compile.cmake:94: require_expected_failure()
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier_compile.cmake:99: if(NOT "${ACCEPTED_DIAGNOSTIC}" STREQUAL "" AND diagnostics MATCHES "${ACCEPTED_DIAGNOSTIC}")
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier_compile.cmake:105: require_expected_failure()
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier_compile.cmake:110: require_source_marker()
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier_compile.cmake:111: message(FATAL_ERROR "${CASE}: compile-only review model failed; see ${out_file}")
+F:\CPPTrain\LearnCPP\Core_Study\exercises\L14_ub\checks\frontier_compile.cmake:113: message(STATUS "PASS: ${CASE} compile-only review model built; no runtime support claim; see ${out_file}")
