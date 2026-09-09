@@ -1,0 +1,27 @@
+Test project F:/CPPTrain/LearnCPP/build/c03-author-a-l07-student
+    Start 1: L07_interfaces_student
+1/5 Test #1: L07_interfaces_student ...................***Failed    0.43 sec
+check failed: snapshot remains independent after owner mutation
+
+    Start 2: L07_interfaces_reference
+2/5 Test #2: L07_interfaces_reference .................   Passed    0.41 sec
+    Start 3: L07_interfaces_validation_good
+3/5 Test #3: L07_interfaces_validation_good ...........   Passed    0.44 sec
+    Start 4: L07_interfaces_validation_bad_rejected
+4/5 Test #4: L07_interfaces_validation_bad_rejected ...   Passed    0.45 sec
+    Start 5: L07_interfaces_rvalue_view_rejected
+5/5 Test #5: L07_interfaces_rvalue_view_rejected ......   Passed    1.09 sec
+
+80% tests passed, 1 tests failed out of 5
+
+Label Time Summary:
+negative      =   1.54 sec*proc (2 tests)
+reference     =   0.41 sec*proc (1 test)
+student       =   0.43 sec*proc (1 test)
+validation    =   0.44 sec*proc (1 test)
+
+Total Test time (real) =   2.83 sec
+
+The following tests FAILED:
+	  1 - L07_interfaces_student (Failed)                   student
+Errors while running CTest

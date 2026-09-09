@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="(empty)"
+	tests="40"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname=""
+	time="18"
+	timestamp="2026-09-09T15:56:18"
+	>
+	<testcase name="L01_invariants_reference" classname="L01_invariants_reference" time="0.430811" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L01_invariants_validation_good" classname="L01_invariants_validation_good" time="0.433733" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L01_invariants_validation_bad_rejected" classname="L01_invariants_validation_bad_rejected" time="0.475898" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>-- Rejected the intended bad implementation: constructor rejects values outside range
+</system-out>
+	</testcase>
+	<testcase name="L02_value_semantics_reference" classname="L02_value_semantics_reference" time="0.425785" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L02_value_semantics_validation_good" classname="L02_value_semantics_validation_good" time="0.424656" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L02_value_semantics_validation_bad_rejected" classname="L02_value_semantics_validation_bad_rejected" time="0.475912" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>-- Rejected the intended bad implementation: different currencies cannot be added
+</system-out>
+	</testcase>
+	<testcase name="L03_optional_observation" classname="L03_optional_observation" time="0.432284" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L04_variant_observation" classname="L04_variant_observation" time="0.436577" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L05_expected_observation" classname="L05_expected_observation" time="0.438534" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L06_transactions_reference" classname="L06_transactions_reference" time="0.431014" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L06_transactions_validation_good" classname="L06_transactions_validation_good" time="0.417634" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L06_transactions_validation_bad_rejected" classname="L06_transactions_validation_bad_rejected" time="0.467436" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>-- Rejected the intended bad implementation: strong failure keeps original table
+</system-out>
+	</testcase>
+	<testcase name="L06_transactions_validation_bad_prefix_rejected" classname="L06_transactions_validation_bad_prefix_rejected" time="0.479472" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>-- Rejected the intended bad implementation: strong prefix failure keeps original prefix
+</system-out>
+	</testcase>
+	<testcase name="L07_interfaces_reference" classname="L07_interfaces_reference" time="0.428548" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L07_interfaces_validation_good" classname="L07_interfaces_validation_good" time="0.450699" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L07_interfaces_validation_bad_rejected" classname="L07_interfaces_validation_bad_rejected" time="0.469909" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>-- Rejected the intended bad implementation: snapshot remains independent after owner mutation
+</system-out>
+	</testcase>
+	<testcase name="L07_interfaces_rvalue_view_rejected" classname="L07_interfaces_rvalue_view_rejected" time="1.18766" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
+
+  Building Custom Rule F:/CPPTrain/LearnCPP/C03_Type_Modeling_Interface_Design/exercises/L07_interfaces/CMakeLists.txt
+  rvalue_view_negative.cpp
+F:\CPPTrain\LearnCPP\C03_Type_Modeling_Interface_Design\exercises\L07_interfaces\checks\rvalue_view_negative.cpp(5,34): error C2280: “std::span&lt;const int,18446744073709551615&gt; l07::Owner::view(void) &amp;&amp;”: 尝试引用已删除的函数 [F:\CPPTrain\LearnCPP\C03_Type_Modeling_Interface_Design\exercises\build\verify-core\L07_interfaces\L07_interfaces_rvalue_view_rejected.vcxproj]
+      F:\CPPTrain\LearnCPP\C03_Type_Modeling_Interface_Design\exercises\L07_interfaces\src\reference\owner.hpp(16,26):
+      参见“l07::Owner::view”的声明
+      F:\CPPTrain\LearnCPP\C03_Type_Modeling_Interface_Design\exercises\L07_interfaces\src\reference\owner.hpp(16,26):
+      “std::span&lt;const int,18446744073709551615&gt; l07::Owner::view(void) &amp;&amp;”: 已隐式删除函数
+  
+</system-out>
+	</testcase>
+	<testcase name="L07_interfaces_validation_bad_rvalue_rejected" classname="L07_interfaces_validation_bad_rvalue_rejected" time="0.47555" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>-- Rejected the intended bad implementation: rvalue view is rejected for selected implementation
+</system-out>
+	</testcase>
+	<testcase name="L08_composition_observation" classname="L08_composition_observation" time="0.430832" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L09_dynamic_polymorphism_reference" classname="L09_dynamic_polymorphism_reference" time="0.4478" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L09_dynamic_polymorphism_validation_good" classname="L09_dynamic_polymorphism_validation_good" time="0.432158" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L09_dynamic_polymorphism_validation_bad_rejected" classname="L09_dynamic_polymorphism_validation_bad_rejected" time="0.470885" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>-- Rejected the intended bad implementation: clone preserves dynamic type
+</system-out>
+	</testcase>
+	<testcase name="L09_dynamic_polymorphism_validation_bad_alias_rejected" classname="L09_dynamic_polymorphism_validation_bad_alias_rejected" time="0.468776" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>-- Rejected the intended bad implementation: clone owns an independent object
+</system-out>
+	</testcase>
+	<testcase name="L09_dynamic_polymorphism_validation_bad_wrong_value_rejected" classname="L09_dynamic_polymorphism_validation_bad_wrong_value_rejected" time="0.465757" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>-- Rejected the intended bad implementation: rectangle clone keeps observable dimensions
+</system-out>
+	</testcase>
+	<testcase name="L10_static_polymorphism_observation" classname="L10_static_polymorphism_observation" time="0.414419" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L11_type_erasure_reference" classname="L11_type_erasure_reference" time="0.445422" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L11_type_erasure_validation_good" classname="L11_type_erasure_validation_good" time="0.430615" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L11_type_erasure_validation_bad_rejected" classname="L11_type_erasure_validation_bad_rejected" time="0.499634" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>-- Rejected the intended bad implementation: copy failure keeps target unchanged
+</system-out>
+	</testcase>
+	<testcase name="L11_type_erasure_validation_bad_empty_rejected" classname="L11_type_erasure_validation_bad_empty_rejected" time="0.465711" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>-- Rejected the intended bad implementation: empty name throws
+</system-out>
+	</testcase>
+	<testcase name="L12_callables_observation" classname="L12_callables_observation" time="0.436143" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L13_indirect_values_observation" classname="L13_indirect_values_observation" time="0.432725" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L14_contracts_observation" classname="L14_contracts_observation" time="0.421111" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>_MSVC_STL_HARDENING=0
+__cpp_contracts=not-defined
+__cpp_lib_contracts=not-defined
+pattern_matching=P2688 proposal tracking only
+</system-out>
+	</testcase>
+	<testcase name="L15_evolution_reference" classname="L15_evolution_reference" time="0.428771" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>public data layout change is an ABI risk model
+</system-out>
+	</testcase>
+	<testcase name="L15_evolution_validation_good" classname="L15_evolution_validation_good" time="0.424023" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation"/>
+		</properties>
+		<system-out>public data layout change is an ABI risk model
+</system-out>
+	</testcase>
+	<testcase name="L15_evolution_validation_bad_rejected" classname="L15_evolution_validation_bad_rejected" time="0.486883" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>-- Rejected the intended bad implementation: v1 default timeout remains 1000
+</system-out>
+	</testcase>
+	<testcase name="P1_document_reference" classname="P1_document_reference" time="0.427754" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>document contract checks passed
+</system-out>
+	</testcase>
+	<testcase name="P1_document_validation_good" classname="P1_document_validation_good" time="0.449194" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation"/>
+		</properties>
+		<system-out>document contract checks passed
+</system-out>
+	</testcase>
+	<testcase name="P1_document_validation_bad_rejected" classname="P1_document_validation_bad_rejected" time="0.469637" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>-- Rejected the intended bad implementation: failed batch preserves the entire original document
+</system-out>
+	</testcase>
+	<testcase name="P1_document_allocation_reference" classname="P1_document_allocation_reference" time="0.4295" status="run">
+		<properties>
+			<property name="cmake_labels" value="allocation"/>
+		</properties>
+		<system-out>ordinary allocation failure points checked: 3
+document contract checks passed
+</system-out>
+	</testcase>
+	<testcase name="P1_document_allocation_good" classname="P1_document_allocation_good" time="0.417036" status="run">
+		<properties>
+			<property name="cmake_labels" value="allocation"/>
+		</properties>
+		<system-out>ordinary allocation failure points checked: 3
+document contract checks passed
+</system-out>
+	</testcase>
+</testsuite>

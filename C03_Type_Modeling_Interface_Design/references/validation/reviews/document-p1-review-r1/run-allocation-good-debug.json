@@ -1,0 +1,21 @@
+{
+  "command": [
+    "F:\\CPPTrain\\LearnCPP\\C03_Type_Modeling_Interface_Design\\exercises\\build\\reviewer-p1-debug\\Debug\\P1_document_allocation_good.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.031999999890103936,
+  "stdout": "ordinary allocation failure points checked: 3\ndocument contract checks passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [
+    "ordinary allocation failure points checked:",
+    "document contract checks passed"
+  ],
+  "verdict": "PASS"
+}

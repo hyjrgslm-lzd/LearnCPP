@@ -1,0 +1,13 @@
+适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
+
+  1>Checking Build System
+  Building Custom Rule F:/CPPTrain/LearnCPP/C03_Type_Modeling_Interface_Design/exercises/L01_invariants/CMakeLists.txt
+  invariant_checks.cpp
+  L01_invariants_reference.vcxproj -> F:\CPPTrain\LearnCPP\build\c03-author-a-l01-core\Debug\L01_invariants_reference.exe
+  Building Custom Rule F:/CPPTrain/LearnCPP/C03_Type_Modeling_Interface_Design/exercises/L01_invariants/CMakeLists.txt
+  invariant_checks.cpp
+  L01_invariants_validation_bad.vcxproj -> F:\CPPTrain\LearnCPP\build\c03-author-a-l01-core\Debug\L01_invariants_validation_bad.exe
+  Building Custom Rule F:/CPPTrain/LearnCPP/C03_Type_Modeling_Interface_Design/exercises/L01_invariants/CMakeLists.txt
+  invariant_checks.cpp
+  L01_invariants_validation_good.vcxproj -> F:\CPPTrain\LearnCPP\build\c03-author-a-l01-core\Debug\L01_invariants_validation_good.exe
+  Building Custom Rule F:/CPPTrain/LearnCPP/C03_Type_Modeling_Interface_Design/exercises/L01_invariants/CMakeLists.txt

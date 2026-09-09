@@ -1,0 +1,17 @@
+[
+  {
+    "source": "F:\\CPPTrain\\LearnCPP\\C03_Type_Modeling_Interface_Design\\exercises\\build\\references\\validation\\integration\\ctest-asan-r1.xml",
+    "destination": "F:\\CPPTrain\\LearnCPP\\C03_Type_Modeling_Interface_Design\\references\\validation\\integration\\ctest-asan-r1.xml",
+    "sha256": "9914429B24D89E2C8D09ECCEE43B9D5895A4A176E2E8669CFB4582B1604DFF58"
+  },
+  {
+    "source": "F:\\CPPTrain\\LearnCPP\\C03_Type_Modeling_Interface_Design\\exercises\\build\\references\\validation\\integration\\ctest-debug-r1.xml",
+    "destination": "F:\\CPPTrain\\LearnCPP\\C03_Type_Modeling_Interface_Design\\references\\validation\\integration\\ctest-debug-r1.xml",
+    "sha256": "A59DA4222A4F79CFB02B73AAB234DA95E55FE72EEE9F064705F3C858A6BB9675"
+  },
+  {
+    "source": "F:\\CPPTrain\\LearnCPP\\C03_Type_Modeling_Interface_Design\\exercises\\build\\references\\validation\\integration\\ctest-release-r1.xml",
+    "destination": "F:\\CPPTrain\\LearnCPP\\C03_Type_Modeling_Interface_Design\\references\\validation\\integration\\ctest-release-r1.xml",
+    "sha256": "8BEEB61AE22AFD45C0FE203C28969F0B28F231F1E2ADC59332B3A2189A5E02AE"
+  }
+]

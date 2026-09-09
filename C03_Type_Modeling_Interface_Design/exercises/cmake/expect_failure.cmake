@@ -1,0 +1,10 @@
+execute_process(COMMAND "${EXECUTABLE}" RESULT_VARIABLE result
+    OUTPUT_VARIABLE output ERROR_VARIABLE error TIMEOUT 20)
+if(NOT "${result}" STREQUAL "1")
+    message(FATAL_ERROR "Expected checker exit 1, got ${result}\n${output}\n${error}")
+endif()
+string(FIND "${output}\n${error}" "check failed: ${EXPECTED_TEXT}" found)
+if(found EQUAL -1)
+    message(FATAL_ERROR "Expected checker diagnostic absent: ${EXPECTED_TEXT}\n${output}\n${error}")
+endif()
+message(STATUS "Rejected the intended bad implementation: ${EXPECTED_TEXT}")

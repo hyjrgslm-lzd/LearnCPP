@@ -1,0 +1,13 @@
+f3adb580708f86d321c558a3eefa061d50afc07c2be784b7cab263010d93ceba  references/validation/author-a-l07/r2-debug-build-core.txt
+8a82483b4f51c501db248363169c34686c1af98df949040cd2abf36d62ba3815  references/validation/author-a-l07/r2-debug-build-student.txt
+0c3db9616b2978253ddfd15b5865897f5bd5e2d36c8f6cce158a816f4038bc7e  references/validation/author-a-l07/r2-debug-configure-core.txt
+197847f94e4f93c5ceeee9ad2594d1b2981072a0d9de9e8e817cf0bd1109e0a4  references/validation/author-a-l07/r2-debug-configure-student.txt
+c7368ece3088a87eed87bff0af5dd7b45851022d0201fb3bfa365eb280cc684d  references/validation/author-a-l07/r2-debug-ctest-core.txt
+896d7acfe8e588da94710ca4319e8dd9b5e45a57be88f4380de95ac8a4e822a1  references/validation/author-a-l07/r2-debug-ctest-student.txt
+f87358db27739b6629d0cb8fc5e8d4e2db0ba7018f66d5f09aa161ee888118dd  references/validation/author-a-l07/r2-debug-run-bad-rvalue.txt
+77416c525e252c8ae721bf9c2046fca7856c311eefaaab0d28d6337f5e8eb263  references/validation/author-a-l07/r2-final-scope-diff-check.txt
+77416c525e252c8ae721bf9c2046fca7856c311eefaaab0d28d6337f5e8eb263  references/validation/author-a-l07/r2-scope-diff-check-after-readme.txt
+77416c525e252c8ae721bf9c2046fca7856c311eefaaab0d28d6337f5e8eb263  references/validation/author-a-l07/r2-scope-diff-check.txt
+1078f22d1f966f2b4dea9823e8bfd2e7ba470c5b087568f781f5e68966d9b28a  references/validation/author-a-l07/r2-validation-include-scan-after-readme.txt
+1078f22d1f966f2b4dea9823e8bfd2e7ba470c5b087568f781f5e68966d9b28a  references/validation/author-a-l07/r2-validation-include-scan.txt
+b49b18adf1143c07269f66083c473182963eba27e3958bc1bb13646f3abf5fa7  references/validation/author-a-l07/summary-r2.md

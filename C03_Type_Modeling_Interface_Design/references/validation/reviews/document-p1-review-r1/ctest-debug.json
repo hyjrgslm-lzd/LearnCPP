@@ -1,0 +1,23 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "F:\\CPPTrain\\LearnCPP\\C03_Type_Modeling_Interface_Design\\exercises\\build\\reviewer-p1-debug",
+    "-C",
+    "Debug",
+    "--output-on-failure"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.280999999959022,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C03_Type_Modeling_Interface_Design/exercises/build/reviewer-p1-debug\n    Start 1: P1_document_reference\n1/5 Test #1: P1_document_reference .................   Passed    0.45 sec\n    Start 2: P1_document_validation_good\n2/5 Test #2: P1_document_validation_good ...........   Passed    0.43 sec\n    Start 3: P1_document_validation_bad_rejected\n3/5 Test #3: P1_document_validation_bad_rejected ...   Passed    0.46 sec\n    Start 4: P1_document_allocation_reference\n4/5 Test #4: P1_document_allocation_reference ......   Passed    0.42 sec\n    Start 5: P1_document_allocation_good\n5/5 Test #5: P1_document_allocation_good ...........   Passed    0.43 sec\n\n100% tests passed, 0 tests failed out of 5\n\nLabel Time Summary:\nallocation    =   0.85 sec*proc (2 tests)\nnegative      =   0.46 sec*proc (1 test)\nreference     =   0.45 sec*proc (1 test)\nvalidation    =   0.43 sec*proc (1 test)\n\nTotal Test time (real) =   2.22 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

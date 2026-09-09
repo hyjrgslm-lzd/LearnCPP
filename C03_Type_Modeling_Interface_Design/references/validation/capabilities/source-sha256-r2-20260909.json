@@ -1,0 +1,109 @@
+{
+  "generated_on": "2026-09-09",
+  "workspace": "F:\\CPPTrain\\LearnCPP",
+  "revision": "r2-doc-localization",
+  "note": "SHA256 binds the C03 F01 source and course Markdown files after the r2 Simplified Chinese documentation pass; raw process JSON evidence is intentionally not rewritten.",
+  "prior_binding": "C03_Type_Modeling_Interface_Design/references/validation/capabilities/source-sha256-20260909.json",
+  "validation_records": [
+    "C03_Type_Modeling_Interface_Design/references/validation/capabilities/author-frontier-configure-20260909.json",
+    "C03_Type_Modeling_Interface_Design/references/validation/capabilities/author-frontier-build-20260909.json",
+    "C03_Type_Modeling_Interface_Design/references/validation/capabilities/author-frontier-ctest-verbose-20260909.json"
+  ],
+  "files": [
+    {
+      "path": "C03_Type_Modeling_Interface_Design/exercises/F01_frontier/CMakeLists.txt",
+      "sha256": "5E30E7EAFF7E706068F3759957C5254025F8F49E2123DBFB37E175AB9D8B2633",
+      "bytes": 1519
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/exercises/F01_frontier/README.md",
+      "sha256": "D6BA3392969525105643C0AB8767265CE78717C400601649A98F4B8E4E5141F6",
+      "bytes": 2901
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/exercises/F01_frontier/capabilities/c23_expected_monadic.cpp",
+      "sha256": "9644460947A04143932D1A9AF1900965A77CF7599E2656259D968EA064939B4E",
+      "bytes": 1130
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/exercises/F01_frontier/capabilities/c23_move_only_function.cpp",
+      "sha256": "EB3F7416AEC1458B2460A9B3700DBC2F5C300C9A18FE6B3AF07A76B6615AC100",
+      "bytes": 924
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/exercises/F01_frontier/capabilities/c23_optional_monadic.cpp",
+      "sha256": "41CE65AC5916497E0728616583DBA40DE95DE474572A9387050EA60780265971",
+      "bytes": 1093
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/exercises/F01_frontier/capabilities/c26_contracts.cpp",
+      "sha256": "4D6776917D939819CA018DD213DEEE180D6AD9CBA4617F1B767E2E0D30FCF928",
+      "bytes": 906
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/exercises/F01_frontier/capabilities/c26_copyable_function.cpp",
+      "sha256": "76EFFD89D988EB885055CEB8F041AE344236EB34287109EA2E8A361C2E7B1E79",
+      "bytes": 767
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/exercises/F01_frontier/capabilities/c26_function_ref.cpp",
+      "sha256": "BE661AE2C62DCDF3A6290B318FCB60FF0FC2E97666CAB41E31C9A8C164BDC2C7",
+      "bytes": 810
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/exercises/F01_frontier/capabilities/c26_indirect_polymorphic.cpp",
+      "sha256": "ABBCC29343148D3731F0354F5F1FCD31E96010A04F0A9AD7CB02CFEB930F938F",
+      "bytes": 1288
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/exercises/F01_frontier/capabilities/c26_optional_range.cpp",
+      "sha256": "E4C99DE0329ABAA79A810BD2BDC4A4AFCBE5D5EFC63444AAD06C2F13239C9232",
+      "bytes": 728
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/exercises/F01_frontier/capabilities/c26_optional_ref.cpp",
+      "sha256": "33C48474FE1250D0B67B313B55902C7F242E24DFC9AF7247890E5AC5251B7221",
+      "bytes": 697
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/exercises/F01_frontier/capabilities/c26_variant_member_visit.cpp",
+      "sha256": "92631EF05876C5D101703123D4FB516B383BC5D25B0D157D8B41E4D85BEA8E66",
+      "bytes": 808
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/exercises/F01_frontier/capabilities/c29_virtual_contracts.cpp",
+      "sha256": "5AFEF2CEE0D0274CE242982B9C710CD4E0C548EF1D224929EB18074F5176D590",
+      "bytes": 876
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/exercises/F01_frontier/capabilities/capability_support.hpp",
+      "sha256": "C193EF7026C0D095C9D97D7EF01ECBA3F8CC301B48C9394F89376A39C1A3ADC8",
+      "bytes": 280
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/exercises/F01_frontier/capabilities/hardening_info.cpp",
+      "sha256": "114D8EEE9895FB621E01CA599ADEACC0D20938DC59F4948A2C9683706BDC6984",
+      "bytes": 820
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/exercises/F01_frontier/capabilities/proposal_tracking.cpp",
+      "sha256": "D3FB85EEA093FCF2A89A8A4B38BBCABADE2BFD73600FAF52CA217B827CE4324E",
+      "bytes": 331
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/references/standards-and-implementations.md",
+      "sha256": "08D24EABCD3E2B240AB7E446126FFC3D2DEFDFAC9E12A2FE50B0E0F02CA34C40",
+      "bytes": 7784
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/references/validation/capabilities/local-msvc-stl-inputs-20260909.md",
+      "sha256": "8F905CF1DA19A946CE328D7309DA738260975EE33F2C895EF1AF2B52B096A60B",
+      "bytes": 2038
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/references/validation/capabilities/capability-results-20260909.md",
+      "sha256": "F68011926551241FFB301C3C1B1DF3BAF9FEC5FF602BF8EFD091A74BD71B92E4",
+      "bytes": 4897
+    }
+  ]
+}

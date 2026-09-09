@@ -1,0 +1,62 @@
+# 17：带着问题读实现，再回到下游
+
+源码阅读不是背内部类名。先写出一个接口承诺和一个可能失败的路径，再找实现中负责保存状态、转交所有权、退出或清理的地方。相关导读已分布在03—05和11—15；本章串联阅读路径，并检查下游使用是否能从C03得到解释。
+
+## 固定输入，分开四种结论
+
+规范基线与本机STL信息见[标准索引](../references/standards-and-implementations.md)和[头文件指纹](../references/validation/capabilities/local-msvc-stl-inputs-20260909.md)。本轮入口是MSVC 14.51.36231/STL202604；安装目录不等于某个GitHub提交，不把滚动main的行号当成本机证据。
+
+读者记录四列：标准要求、本机实现选择、本次程序观察、仍未验证项。例如optional有/无值的语义来自标准；本机用哪个union和bool组合是实现选择；L03的析构计数是当前输入的观察；这些都不能证明另一STL对象的sizeof或ABI相同。
+
+下面给出本机实际入口。后续工具链更新先搜索符号，再核对指纹，不用旧行号证明新代码。
+
+## optional：状态位何时可以宣布有值
+
+从`optional:71`附近的`_Optional_destruct_base`开始，看`_Value`、`_Dummy`和`_Has_value`怎样表示活跃对象。继续查构造/销毁辅助层，沿`emplace`、`reset`到实际构造和析构操作。
+
+阅读问题：如果新T构造失败，状态位在哪一步改变？若先设置有值再构造，析构路径会不会把不存在的对象当成T销毁？结合L03的emplace失败观察回答，不能仅看对象内存还保留旧字节就认为旧T仍然存活。然后跟入`and_then`：检查空状态是否调用回调，返回类型约束为何不能用普通T替代optional<U>。
+
+出口是一个因果解释：有值状态必须与真实对象生命期一致；monadic短路由当前状态决定，回调抛异常并不自动变成空optional。C++26引用optional和range能力不能从这份尚未实现它们的头文件推断实现细节，应回到固定草案及F01状态。
+
+## variant：判别值与活跃备选
+
+先看`variant:344`附近的`_Variant_storage_`递归存储，再看`_Variant_base`与`_Which`。`variant:696`附近的赋值visitor把“相同备选直接赋值”和“不同备选结束旧对象后构造新对象”区分开。这就是为何一个类型的赋值可能抛异常，但未必使variant进入valueless。
+
+沿`_Reset`、备选构造、判别值更新及失败退出路径画出状态表。然后查访问分派：运行时保存一个备选，编译时visit必须处理声明的所有可达组合。一次当前分支运行成功不能证明遗漏的其他备选能编译。用L04的get/get_if、重复类型和受控构造失败例对照。
+
+出口不是“variant永远不会空”或“只要抛异常就空”，而是说明具体操作的规范允许范围，以及本次类型和实现走过的路径。
+
+## expected：never-empty靠什么约束维持
+
+从`expected:207`附近的主体和`_Check_expected_argument`开始。这里的类型准入会拒绝C++23的引用T；借用需要明确包装类型，不能只看T这个模板参数拼写就类比optional引用扩展。
+
+再读`_Expected_binary_copy_assignable`与`_Expected_binary_move_assignable`：成功/错误两种负载的构造、赋值和nothrow条件共同决定操作是否存在。切换状态需要一个可以恢复或不会再失败的路径，否则不能承诺总有一个活跃备选。这个事实解释了“类型能声明”与“某个赋值表达式可用”为何不同。
+
+最后跟入`value()`和`operator*`：前者错误状态抛bad_expected_access，是定义好的checked observer；后者有has_value前提。沿monadic函数核对T/E的值类别和错误短路。L05程序及[引用T编译反例证据](../references/validation/reviews/states-independent-evidence/expected-ref-negative-build-r2.json)分别提供运行和诊断入口。
+
+## function：擦除的不只是调用参数
+
+本机`functional:851`附近的`_Func_base`有调用、复制、移动和销毁操作。沿`_Func_impl_no_alloc`保存的目标类型，看`_Do_call`如何转到真实callable；再跟复制/移动/删除退出路径。内部名字`no_alloc`不是承诺这个对象永不发生动态分配，必须继续看选择它存放位置的调用者。
+
+`functional:873`附近的`_Is_large`同时考虑实现对象大小、对齐以及移动是否不抛出。不能把lambda大小单独等同SBO判断，也不能把一次无分配观察推广为整个std::function接口保证。对照L11的heap-only操作表：教学版本显式保存clone/destroy/dispatch，标准库还需要处理更多签名、约束、异常与存储路径。
+
+然后用第12章的mutable捕获和const调用例，检查const包装器是否约束实际目标的调用资格；copyable/move_only/function_ref的签名规则必须分别核对。固定源码说明见[作者源码记录](../references/validation/author-c-functional-source-20260909.md)。
+
+## 回到三个真实下游
+
+| 下游使用 | 先读的C03内容 | 必须能独立回答的问题 |
+|---|---|---|
+| [C06 高级模式](../../C06_Ranges/11-模块H-高级实现模式.md)的optional缓存、variant迭代器状态、any_view | 03/04/11/15 | 空缓存为何不等于错误？复制一个缓存是否保持所需语义？擦除后保留哪些操作和引用性质？为什么擦除本身不保证跨工具链ABI？ |
+| [C09 promise练习](../../C09_Coroutines/exercises/D1_promise_8_hooks/README.md)的optional值与exception_ptr | 03/04/05/07/12 | 无值是未完成、取消还是业务缺失，由谁定义？exception_ptr怎样承接稍后重抛？捕获回调的包装器是否真正拥有被引用对象？ |
+| [C10 高级模式](../../C10_Execution/11-模块H-高级实现模式.md)的variant完成状态和callable队列 | 04/05/11/12 | value/error/stopped为什么不能随意压成bool？运行资源拥有callable，是否就拥有其借用的缓冲区？擦除后销毁和异常退出责任由谁承担？ |
+
+C03只提供类型、状态、复制/借用、错误与接口的基础。协程帧何时恢复/销毁、sender完成协议、并发发布/取消的正确性仍由C09/C10/C08主讲，不从一次C03同步程序通过推断异步协议安全。旧课README增加回链，旧实现没有在本任务中被改写或自动重新批准。
+
+## 遮住答案的结课检查与解析
+
+1. **为异步读取选择返回类型。** 先区分“尚未完成”“已成功但没有记录”“读取失败”“取消”。optional只表达一层缺值，不自动携带四态协议；用variant/expected时仍需写清控制状态归属。具体恢复协议留给异步课程。
+2. **给开放图形做可复制包装。** 动态类型的复制不能退化成Base复制；clone/type-erasure操作表保存具体类型的构造责任。共享指针复制只是共享拥有关系，不等于独立值。
+3. **让回调参数接受临时lambda。** 同步调用期间借用可成立，保存供返回后调用则可能悬垂。必须由接口明确同步性/存储行为，不能只看参数类型名字带function。
+4. **判断一次绿色测试证明什么。** Reference通过说明该实现通过所执行检查；good/bad控制证明checker能接受/拒绝所选代表；Student仍要运行自己的实现。能力宏和编译成功都不直接证明教学完成，未实现的前沿仍需明确未验证边界。
+
+若完成这些任务必须借未讲过的规则猜测，应回到对应主讲章节补齐，而不是把Reference或外链当作正文的替身。最终覆盖与非作者审查入口见[覆盖表](../references/coverage.md)和[质量报告](../references/quality-report.md)。

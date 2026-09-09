@@ -1,0 +1,26 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {"major": 4, "minor": 2, "patch": 0},
+  "configurePresets": [
+    {"name": "base", "hidden": true, "generator": "Visual Studio 18 2026", "architecture": "x64", "binaryDir": "${sourceDir}/build/${presetName}", "cacheVariables": {"BUILD_TESTING": "ON", "TYPE_STUDY_BUILD_REFERENCE": "ON", "TYPE_STUDY_TEST_STUDENTS": "OFF", "TYPE_STUDY_ENABLE_ASAN": "OFF", "TYPE_STUDY_ENABLE_FRONTIER": "OFF", "TYPE_STUDY_ENABLE_UNSAFE_DEMOS": "OFF"}},
+    {"name": "verify-core", "inherits": "base"},
+    {"name": "verify-debug", "inherits": "base"},
+    {"name": "student", "inherits": "base", "cacheVariables": {"TYPE_STUDY_BUILD_REFERENCE": "OFF", "TYPE_STUDY_TEST_STUDENTS": "ON"}},
+    {"name": "asan", "inherits": "base", "cacheVariables": {"TYPE_STUDY_ENABLE_ASAN": "ON"}},
+    {"name": "frontier", "inherits": "base", "cacheVariables": {"TYPE_STUDY_ENABLE_FRONTIER": "ON"}}
+  ],
+  "buildPresets": [
+    {"name": "verify-core", "configurePreset": "verify-core", "configuration": "Release"},
+    {"name": "verify-debug", "configurePreset": "verify-debug", "configuration": "Debug"},
+    {"name": "student", "configurePreset": "student", "configuration": "Release"},
+    {"name": "asan", "configurePreset": "asan", "configuration": "RelWithDebInfo"},
+    {"name": "frontier", "configurePreset": "frontier", "configuration": "Release"}
+  ],
+  "testPresets": [
+    {"name": "verify-core", "configurePreset": "verify-core", "configuration": "Release", "output": {"outputOnFailure": true}},
+    {"name": "verify-debug", "configurePreset": "verify-debug", "configuration": "Debug", "output": {"outputOnFailure": true}},
+    {"name": "student", "configurePreset": "student", "configuration": "Release", "output": {"outputOnFailure": true}},
+    {"name": "asan", "configurePreset": "asan", "configuration": "RelWithDebInfo", "filter": {"include": {"label": "^(reference|observation|capability|allocation)$"}}, "output": {"outputOnFailure": true}},
+    {"name": "frontier", "configurePreset": "frontier", "configuration": "Release", "output": {"outputOnFailure": true}}
+  ]
+}

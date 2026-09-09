@@ -39,9 +39,10 @@
 
 ## 下游衔接
 
+- [C03 类型建模与接口设计](../C03_Type_Modeling_Interface_Design/README.md)：从对象合法、资源有归属，继续进入类不变量、独立值、错误通道、多态与接口演进；[批事务](../C03_Type_Modeling_Interface_Design/chapters/06-exception-safety-and-transactions.md)把异常展开用于可观察状态保证。
 - [Coroutine](../C09_Coroutines/README.md)：把对象/借用基础用于闭包、协程帧和挂起后的存活责任。
 - [Ranges](../C06_Ranges/README.md)：把借用和失效基础用于 view/iterator；borrowed_range 不为底层 owner 保活。
 - [Execution](../C10_Execution/README.md)：把资源归属用于 operation state、receiver 与完成后的收束。
 - [Concurrency](../C08_Concurrency/README.md)：在对象生命期上另外建立同步、发布和回收协议；引用计数不自动保证对象访问同步。
 
-全局覆盖及后续 C03/C04/C06/C07 的职责见[全局计划](../LEARNCPP_GLOBAL_PLAN.md)。本课只承担 C02，领域协议和完整并发保证留在对应主课。
+全局覆盖及 C03/C04/C06/C07 的职责见[全局计划](../LEARNCPP_GLOBAL_PLAN.md)。本课只承担 C02，领域协议和完整并发保证留在对应主课。

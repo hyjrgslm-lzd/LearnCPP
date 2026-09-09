@@ -1,0 +1,22 @@
+{
+  "command": [
+    "ctest",
+    "--preset",
+    "asan",
+    "--output-junit",
+    "../references/validation/integration/ctest-asan-r1.xml"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 8.375,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C03_Type_Modeling_Interface_Design/exercises/build/asan\n      Start  1: L01_invariants_reference\n 1/18 Test  #1: L01_invariants_reference ..............   Passed    0.48 sec\n      Start  4: L02_value_semantics_reference\n 2/18 Test  #4: L02_value_semantics_reference .........   Passed    0.46 sec\n      Start  7: L03_optional_observation\n 3/18 Test  #7: L03_optional_observation ..............   Passed    0.46 sec\n      Start  8: L04_variant_observation\n 4/18 Test  #8: L04_variant_observation ...............   Passed    0.46 sec\n      Start  9: L05_expected_observation\n 5/18 Test  #9: L05_expected_observation ..............   Passed    0.46 sec\n      Start 10: L06_transactions_reference\n 6/18 Test #10: L06_transactions_reference ............   Passed    0.48 sec\n      Start 14: L07_interfaces_reference\n 7/18 Test #14: L07_interfaces_reference ..............   Passed    0.45 sec\n      Start 19: L08_composition_observation\n 8/18 Test #19: L08_composition_observation ...........   Passed    0.45 sec\n      Start 20: L09_dynamic_polymorphism_reference\n 9/18 Test #20: L09_dynamic_polymorphism_reference ....   Passed    0.47 sec\n      Start 25: L10_static_polymorphism_observation\n10/18 Test #25: L10_static_polymorphism_observation ...   Passed    0.46 sec\n      Start 26: L11_type_erasure_reference\n11/18 Test #26: L11_type_erasure_reference ............   Passed    0.45 sec\n      Start 30: L12_callables_observation\n12/18 Test #30: L12_callables_observation .............   Passed    0.45 sec\n      Start 31: L13_indirect_values_observation\n13/18 Test #31: L13_indirect_values_observation .......   Passed    0.45 sec\n      Start 32: L14_contracts_observation\n14/18 Test #32: L14_contracts_observation .............   Passed    0.45 sec\n      Start 33: L15_evolution_reference\n15/18 Test #33: L15_evolution_reference ...............   Passed    0.43 sec\n      Start 36: P1_document_reference\n16/18 Test #36: P1_document_reference .................   Passed    0.47 sec\n      Start 39: P1_document_allocation_reference\n17/18 Test #39: P1_document_allocation_reference ......   Passed    0.46 sec\n      Start 40: P1_document_allocation_good\n18/18 Test #40: P1_document_allocation_good ...........   Passed    0.46 sec\n\n100% tests passed, 0 tests failed out of 18\n\nLabel Time Summary:\nallocation     =   0.92 sec*proc (2 tests)\nobservation    =   3.63 sec*proc (8 tests)\nreference      =   3.68 sec*proc (8 tests)\n\nTotal Test time (real) =   8.27 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP\\C03_Type_Modeling_Interface_Design\\exercises",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

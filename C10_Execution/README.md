@@ -262,3 +262,7 @@
 ## C02 对象归属先修
 
 理解 operation state 与 receiver 的存活责任，可先读 [C02 构造与展开](../C02_Objects_Lifetime_Ownership/chapters/04-construction-and-unwinding.md)、[移动与返回](../C02_Objects_Lifetime_Ownership/chapters/06-move-and-return.md)和[RAII 与所有权](../C02_Objects_Lifetime_Ownership/chapters/07-raii-and-ownership.md)。C02 解释对象及资源怎样成立和转交，本课继续规定 start、完成信号、scope 与完成后收束的执行协议。
+
+## C03 完成状态与可调用对象衔接
+
+[C03 variant/错误通道](../C03_Type_Modeling_Interface_Design/chapters/05-expected-and-error-channels.md)、[类型擦除](../C03_Type_Modeling_Interface_Design/chapters/11-type-erasure.md)和[可调用包装](../C03_Type_Modeling_Interface_Design/chapters/12-callable-objects-and-type-erasure.md)提供完成载荷、动态操作与复制/借用的基础。value/error/stopped的协议含义、实际执行位置与收束责任继续由本课主讲，不能由同步包装器测试推断运行时正确。

@@ -1,0 +1,23 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "build/leader-document",
+    "-C",
+    "Release",
+    "-V"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 1.3589999999385327,
+  "stdout": "UpdateCTestConfiguration  from :F:/CPPTrain/LearnCPP/C03_Type_Modeling_Interface_Design/exercises/build/leader-document/DartConfiguration.tcl\nParse Config file:F:/CPPTrain/LearnCPP/C03_Type_Modeling_Interface_Design/exercises/build/leader-document/DartConfiguration.tcl\nTest project F:/CPPTrain/LearnCPP/C03_Type_Modeling_Interface_Design/exercises/build/leader-document\nConstructing a list of tests\nDone constructing a list of tests\nUpdating test list for fixtures\nAdded 0 tests to meet fixture requirements\nChecking test dependency graph...\nChecking test dependency graph end\ntest 1\n    Start 1: P1_document_reference\n\n1: Test command: F:\\CPPTrain\\LearnCPP\\C03_Type_Modeling_Interface_Design\\exercises\\build\\leader-document\\Release\\P1_document_reference.exe\n1: Working Directory: F:/CPPTrain/LearnCPP/C03_Type_Modeling_Interface_Design/exercises/build/leader-document\n1: Test timeout computed to be: 30\n1: ordinary allocation failure points checked: 3\n1: document contract checks passed\n1/3 Test #1: P1_document_reference .................   Passed    0.42 sec\ntest 2\n    Start 2: P1_document_validation_good\n\n2: Test command: F:\\CPPTrain\\LearnCPP\\C03_Type_Modeling_Interface_Design\\exercises\\build\\leader-document\\Release\\P1_document_validation_good.exe\n2: Working Directory: F:/CPPTrain/LearnCPP/C03_Type_Modeling_Interface_Design/exercises/build/leader-document\n2: Test timeout computed to be: 30\n2: ordinary allocation failure points checked: 3\n2: document contract checks passed\n2/3 Test #2: P1_document_validation_good ...........   Passed    0.43 sec\ntest 3\n    Start 3: P1_document_validation_bad_rejected\n\n3: Test command: D:\\cmake\\install\\bin\\cmake.exe \"-DEXECUTABLE=F:/CPPTrain/LearnCPP/C03_Type_Modeling_Interface_Design/exercises/build/leader-document/Release/P1_document_validation_bad.exe\" \"-DEXPECTED_TEXT=failed batch preserves the entire original document\" \"-P\" \"F:/CPPTrain/LearnCPP/C03_Type_Modeling_Interface_Design/exercises/cmake/expect_failure.cmake\"\n3: Working Directory: F:/CPPTrain/LearnCPP/C03_Type_Modeling_Interface_Design/exercises/build/leader-document\n3: Test timeout computed to be: 30\n3: -- Rejected the intended bad implementation: failed batch preserves the entire original document\n3/3 Test #3: P1_document_validation_bad_rejected ...   Passed    0.45 sec\n\n100% tests passed, 0 tests failed out of 3\n\nLabel Time Summary:\nnegative      =   0.45 sec*proc (1 test)\nreference     =   0.42 sec*proc (1 test)\nvalidation    =   0.43 sec*proc (1 test)\n\nTotal Test time (real) =   1.31 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP\\C03_Type_Modeling_Interface_Design\\exercises",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

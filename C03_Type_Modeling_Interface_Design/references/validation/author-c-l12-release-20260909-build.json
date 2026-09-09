@@ -1,0 +1,24 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "build\\author-c-l12-release",
+    "--config",
+    "Release"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.030999999959022,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C03_Type_Modeling_Interface_Design/exercises/L12_callables/CMakeLists.txt\n  callables_observation.cpp\n  L12_callables_observation.vcxproj -> F:\\CPPTrain\\LearnCPP\\C03_Type_Modeling_Interface_Design\\exercises\\L12_callables\\build\\author-c-l12-release\\Release\\L12_callables_observation.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C03_Type_Modeling_Interface_Design/exercises/L12_callables/CMakeLists.txt\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP\\C03_Type_Modeling_Interface_Design\\exercises\\L12_callables",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [
+    "L12_callables_observation.vcxproj ->"
+  ],
+  "verdict": "PASS"
+}

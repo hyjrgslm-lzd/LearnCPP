@@ -1,0 +1,23 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "build\\c03-author-b-l08-debug",
+    "-C",
+    "Debug",
+    "--output-on-failure"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.5,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/build/c03-author-b-l08-debug\n    Start 1: L08_composition_observation\n1/1 Test #1: L08_composition_observation ......   Passed    0.43 sec\n\n100% tests passed, 0 tests failed out of 1\n\nLabel Time Summary:\nobservation    =   0.43 sec*proc (1 test)\n\nTotal Test time (real) =   0.43 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

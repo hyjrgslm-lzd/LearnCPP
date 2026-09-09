@@ -1,0 +1,13 @@
+适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
+
+  1>Checking Build System
+  Building Custom Rule F:/CPPTrain/LearnCPP/C03_Type_Modeling_Interface_Design/exercises/L07_interfaces/CMakeLists.txt
+  interface_checks.cpp
+  L07_interfaces_reference.vcxproj -> F:\CPPTrain\LearnCPP\build\c03-author-a-l07-core\Debug\L07_interfaces_reference.exe
+  Building Custom Rule F:/CPPTrain/LearnCPP/C03_Type_Modeling_Interface_Design/exercises/L07_interfaces/CMakeLists.txt
+  interface_checks.cpp
+  L07_interfaces_validation_bad.vcxproj -> F:\CPPTrain\LearnCPP\build\c03-author-a-l07-core\Debug\L07_interfaces_validation_bad.exe
+  Building Custom Rule F:/CPPTrain/LearnCPP/C03_Type_Modeling_Interface_Design/exercises/L07_interfaces/CMakeLists.txt
+  interface_checks.cpp
+  L07_interfaces_validation_good.vcxproj -> F:\CPPTrain\LearnCPP\build\c03-author-a-l07-core\Debug\L07_interfaces_validation_good.exe
+  Building Custom Rule F:/CPPTrain/LearnCPP/C03_Type_Modeling_Interface_Design/exercises/L07_interfaces/CMakeLists.txt

@@ -1,0 +1,19 @@
+{
+  "verdict": "PASS",
+  "failures": [],
+  "students": [
+    "L06_transactions_student"
+  ],
+  "configuration": "Debug",
+  "build": "F:\\CPPTrain\\LearnCPP\\build\\c03-review-l06-r4-audit",
+  "actual_include_count": 150,
+  "source_sha256": {
+    "F:\\CPPTrain\\LearnCPP\\C03_Type_Modeling_Interface_Design\\exercises\\L06_transactions\\checks\\transaction_checks.cpp": "1bc25904edc67078520075de74f7ad1eb4a2c9267b8b90697520c94543ba1ea6",
+    "F:\\CPPTrain\\LearnCPP\\C03_Type_Modeling_Interface_Design\\exercises\\L06_transactions\\src\\student\\table.hpp": "ed5c362569f7234fbadae7096b71df7fc188c8d0ed9aa59803f6681d7d946084",
+    "F:\\CPPTrain\\LearnCPP\\C03_Type_Modeling_Interface_Design\\exercises\\L06_transactions\\checks\\tracked_value.hpp": "2cb36e52b8fd98fbcc543ebd85289341ca9fc9754712458a62b860bf2860d036",
+    "F:\\CPPTrain\\LearnCPP\\C01_Build_Compile_Link\\exercises\\include\\check.hpp": "716138e42081aee359e17929c31ee156ecffd1d3b596e35107cfb08ff16c5f38",
+    "F:\\CPPTrain\\LearnCPP\\build\\c03-review-l06-r4-audit\\CMakeFiles\\81d7dcfd2ec643547292c4119e8dc1aa\\generate.stamp.rule": "6d2663216bb5708992dad2784a833f449113afd00fd431274ca956fb2530d391"
+  },
+  "trace_sha256": "7f0fb696c5878f20a704e4bab2febb69331d6b26dbcb7a61f2af298202e19eda",
+  "scope": "declared answer targets/paths, recorded includes and literal local includes; not plagiarism proof"
+}

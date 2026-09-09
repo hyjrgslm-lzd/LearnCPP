@@ -1,0 +1,16 @@
+适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
+
+  1>Checking Build System
+  Building Custom Rule F:/CPPTrain/LearnCPP/C03_Type_Modeling_Interface_Design/exercises/L02_value_semantics/CMakeLists.txt
+  money_checks.cpp
+  L02_value_semantics_reference.vcxproj -> F:\CPPTrain\LearnCPP\build\c03-author-a-l02-student\Release\L02_value_semantics_reference.exe
+  Building Custom Rule F:/CPPTrain/LearnCPP/C03_Type_Modeling_Interface_Design/exercises/L02_value_semantics/CMakeLists.txt
+  money_checks.cpp
+  L02_value_semantics_student.vcxproj -> F:\CPPTrain\LearnCPP\build\c03-author-a-l02-student\Release\L02_value_semantics_student.exe
+  Building Custom Rule F:/CPPTrain/LearnCPP/C03_Type_Modeling_Interface_Design/exercises/L02_value_semantics/CMakeLists.txt
+  money_checks.cpp
+  L02_value_semantics_validation_bad.vcxproj -> F:\CPPTrain\LearnCPP\build\c03-author-a-l02-student\Release\L02_value_semantics_validation_bad.exe
+  Building Custom Rule F:/CPPTrain/LearnCPP/C03_Type_Modeling_Interface_Design/exercises/L02_value_semantics/CMakeLists.txt
+  money_checks.cpp
+  L02_value_semantics_validation_good.vcxproj -> F:\CPPTrain\LearnCPP\build\c03-author-a-l02-student\Release\L02_value_semantics_validation_good.exe
+  Building Custom Rule F:/CPPTrain/LearnCPP/C03_Type_Modeling_Interface_Design/exercises/L02_value_semantics/CMakeLists.txt

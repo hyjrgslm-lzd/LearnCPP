@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="(empty)"
+	tests="18"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname=""
+	time="8"
+	timestamp="2026-09-09T15:56:18"
+	>
+	<testcase name="L01_invariants_reference" classname="L01_invariants_reference" time="0.482434" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L02_value_semantics_reference" classname="L02_value_semantics_reference" time="0.458969" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L03_optional_observation" classname="L03_optional_observation" time="0.455228" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L04_variant_observation" classname="L04_variant_observation" time="0.457132" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L05_expected_observation" classname="L05_expected_observation" time="0.455572" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L06_transactions_reference" classname="L06_transactions_reference" time="0.478012" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L07_interfaces_reference" classname="L07_interfaces_reference" time="0.450675" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L08_composition_observation" classname="L08_composition_observation" time="0.452315" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L09_dynamic_polymorphism_reference" classname="L09_dynamic_polymorphism_reference" time="0.465979" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L10_static_polymorphism_observation" classname="L10_static_polymorphism_observation" time="0.46144" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L11_type_erasure_reference" classname="L11_type_erasure_reference" time="0.447406" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L12_callables_observation" classname="L12_callables_observation" time="0.447005" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L13_indirect_values_observation" classname="L13_indirect_values_observation" time="0.452028" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L14_contracts_observation" classname="L14_contracts_observation" time="0.449786" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>_MSVC_STL_HARDENING=0
+__cpp_contracts=not-defined
+__cpp_lib_contracts=not-defined
+pattern_matching=P2688 proposal tracking only
+</system-out>
+	</testcase>
+	<testcase name="L15_evolution_reference" classname="L15_evolution_reference" time="0.431764" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>public data layout change is an ABI risk model
+</system-out>
+	</testcase>
+	<testcase name="P1_document_reference" classname="P1_document_reference" time="0.469316" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>document contract checks passed
+</system-out>
+	</testcase>
+	<testcase name="P1_document_allocation_reference" classname="P1_document_allocation_reference" time="0.4564" status="run">
+		<properties>
+			<property name="cmake_labels" value="allocation"/>
+		</properties>
+		<system-out>ordinary allocation failure points checked: 3
+document contract checks passed
+</system-out>
+	</testcase>
+	<testcase name="P1_document_allocation_good" classname="P1_document_allocation_good" time="0.464273" status="run">
+		<properties>
+			<property name="cmake_labels" value="allocation"/>
+		</properties>
+		<system-out>ordinary allocation failure points checked: 3
+document contract checks passed
+</system-out>
+	</testcase>
+</testsuite>

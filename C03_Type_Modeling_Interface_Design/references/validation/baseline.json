@@ -1,0 +1,15 @@
+{
+  "recorded_utc": "2026-09-09T06:44:48.0021830Z",
+  "initial_commit": "8e0f407afd155ede81f0b06a51553dadef206a23",
+  "initially_clean": true,
+  "shared_helpers_sha256": {
+    "C01_Build_Compile_Link/exercises/include/check.hpp": "716138E42081AEE359E17929C31EE156ECFFD1D3B596E35107CFB08FF16C5F38",
+    "C02_Objects_Lifetime_Ownership/exercises/tools/audit_student.py": "0FA0EAAD51F0F47C277DB6EC8B2A5823950F512EAFAABE36841AB1BA56EA98A0",
+    "C02_Objects_Lifetime_Ownership/exercises/tools/record_process.py": "8537EA16489D3193C7DB6EA1635C14AEA8ADF8A5150994971009F475F91F098F",
+    "C01_Build_Compile_Link/exercises/tools/process_runner.py": "77F7AA8A86FF5FA4FDB933C8BB9929D637748A1AA00FB7AFB3DAC941E47D936B"
+  },
+  "cmake": "cmake version 4.2.3",
+  "scope": "C03 course; root navigation and C02/C06/C09/C10 README bridges only",
+  "initial_plan_mode_writes": "none",
+  "powershell": "7.6.2"
+}

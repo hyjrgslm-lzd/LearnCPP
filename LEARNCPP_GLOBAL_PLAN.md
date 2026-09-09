@@ -193,11 +193,14 @@ N5051（2026-06-01）说明 N5050 是 C++26 最终草案及 DIS 的基础；N505
 
 后续已明确批准完整建设 C02，采用分专题与综合项目、样章先审及非作者复验。规格见 [C02 实施规格](C02_Objects_Lifetime_Ownership/references/implementation-spec.md)；该切片仅增加 C02 与五课 README 先修回链，保留旧课正文、源码和用户学习文件。
 
+本次已批准完整建设 C03，按课程性质采用主案例贯穿与局部机制实验；样章先审，状态、多态、包装/契约分批完成后集成Document项目。规格见 [C03 实施规格](C03_Type_Modeling_Interface_Design/references/implementation-spec.md)，旧课只增加C02/C06/C09/C10 README回链，未改旧算法或学习代码。
+
 | 目标/单元 | 当前状态 | 输入及先修 | 交付/证据入口 | 阻断与下一步 |
 |---|---|---|---|---|
 | G0 本批 C01/C08/C09 切片 | 本批盘点、覆盖与先修衔接已核对 | 本计划首版、当前两门旧课及通用指引；保留用户学习代码 | 根课程导航、C01 实施规格；C08/C09 各课覆盖表 | 本批导航和下游反向路线已纳独立审查；不代表六课全量 G0 完成 |
 | G1 / C01 | Windows范围实现与验证完成 | 基础 C++；先构建调试，再翻译/链接，之后 ABI/构建系统/Modules/交付 | [C01_Build_Compile_Link](C01_Build_Compile_Link/README.md)、[质量与终审记录](C01_Build_Compile_Link/references/quality-report.md) | 11章/13练习；四配置147项通过，G1最后修复另经Debug/Release正反复验，G2正式72轮通过；非作者终审及冻结指纹见质量报告。其他平台保留未测边界 |
 | G1 / C02 | Windows范围实施、验证与独立终审完成 | C01基本构建与基础C++；专题内部先修由本课补齐 | [C02_Objects_Lifetime_Ownership](C02_Objects_Lifetime_Ownership/README.md)、[覆盖表](C02_Objects_Lifetime_Ownership/references/coverage.md)、[质量报告](C02_Objects_Lifetime_Ownership/references/quality-report.md) | 16章/15练习单元；Debug/Release各40通过，ASan安全19通过/1能力跳过，前沿42通过/3能力跳过；分批与最终非作者审查均批准。保留未测平台及历史证据缺口说明 |
+| G1 / C03 | Windows范围实施、验证与独立终审完成 | C01最小构建、C02对象/资源；本课补足局部泛型先修 | [C03课程](C03_Type_Modeling_Interface_Design/README.md)、[覆盖表](C03_Type_Modeling_Interface_Design/references/coverage.md)、[质量报告](C03_Type_Modeling_Interface_Design/references/quality-report.md) | 18章；Debug/Release各40通过，ASan18通过，前沿45通过/8能力跳过；8个Student初始状态真实拒绝且接线审计通过。分批及最终非作者审查均批准；保留未测平台与前沿运行限制 |
 | G2 / C09 本批补修 | 定点修复独立审查通过 | 既有37单元；学生代码、Reference 和观察型结果分别登记 | [Coroutine 质量报告](C09_Coroutines/references/quality-report.md)及独立记录 | 核心43项通过；RPC/bridge2项通过；公开完成体4通过/坏变体5拒绝。保留未测平台及ASan范围，跨课桥接纳入最终导航审查 |
 | G2 / C08 本批补充 | 定点补充独立审查通过 | 既有50题及其历史审查；本批未改算法/测量 | [Concurrency 本批记录](C08_Concurrency/references/quality-report.md#8-c01-衔接补充2026-09-08) | 本次核心60项=58 PASS/2 SKIP/0 FAIL；新增索引与证据获非作者APPROVE，保留原环境边界；跨课桥接纳入最终导航审查 |
 | C08 C++29 前沿增量 | 索引已登记，正文/练习/独立实验待后续目标 | 固定 N5055 对线程属性与 HP batches 的入稿记录；不可用已有旧接口测试替代 | [规范与实现索引](C08_Concurrency/references/standards-and-implementations.md#c29-增量的独立状态) | 保留完整后续教学义务，不因登记而宣称前沿已实现 |

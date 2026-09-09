@@ -300,3 +300,7 @@ C++20 的 `views::split` 产出的子范围（subrange）不是 `forward_range`�
 ## C02 引用与借用先修
 
 [表达式与引用](../C02_Objects_Lifetime_Ownership/chapters/02-expressions-and-references.md)和[生命周期与借用](../C02_Objects_Lifetime_Ownership/chapters/03-lifetime-and-borrowing.md)为 view、iterator 与惰性访问提供先修。borrowed_range 讨论迭代器是否依赖 range 对象本身，不会自动延长底层 owner 的生命期；具体视图、迭代器与失效契约继续由本课主讲。
+
+## C03 状态与类型擦除衔接
+
+[C03 optional](../C03_Type_Modeling_Interface_Design/chapters/03-optional-and-empty-state.md)、[variant](../C03_Type_Modeling_Interface_Design/chapters/04-variant-and-state-space.md)及[类型擦除](../C03_Type_Modeling_Interface_Design/chapters/11-type-erasure.md)补齐缓存、判别状态和any_view所需基础。C++26 optional的0/1范围含义由C03引入，具体range协议在本课承接；擦除保留哪些迭代能力、引用和失效保证需要另行规定，不能自动推出稳定ABI。

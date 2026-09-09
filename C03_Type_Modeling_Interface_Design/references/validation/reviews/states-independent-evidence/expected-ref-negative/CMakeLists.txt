@@ -1,0 +1,11 @@
+cmake_minimum_required(VERSION 3.28)
+project(expected_ref_negative LANGUAGES CXX)
+
+add_executable(expected_ref_negative expected_ref_negative.cpp)
+target_compile_features(expected_ref_negative PRIVATE cxx_std_23)
+set_target_properties(expected_ref_negative PROPERTIES CXX_EXTENSIONS OFF)
+if(MSVC)
+    target_compile_options(expected_ref_negative PRIVATE /utf-8 /EHsc /W4 /permissive- /Zc:__cplusplus)
+else()
+    target_compile_options(expected_ref_negative PRIVATE -Wall -Wextra -Wpedantic)
+endif()

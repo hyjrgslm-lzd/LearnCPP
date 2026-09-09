@@ -1,0 +1,135 @@
+{
+  "generated_on": "2026-09-09",
+  "revision": "r2-callables-contracts-review-fix",
+  "workspace": "F:\\CPPTrain\\LearnCPP",
+  "note": "SHA256 binds Author C files after fixing callables/contracts independent review blockers. Build trees and raw process JSON are excluded.",
+  "previous_binding": "C03_Type_Modeling_Interface_Design/references/validation/author-c-source-sha256-20260909.json",
+  "current_validation_records": [
+    "C03_Type_Modeling_Interface_Design/references/validation/author-c-l12-r2-*-20260909-*.json",
+    "C03_Type_Modeling_Interface_Design/references/validation/author-c-l13-*-20260909-*.json",
+    "C03_Type_Modeling_Interface_Design/references/validation/author-c-l14-*-20260909-*.json",
+    "C03_Type_Modeling_Interface_Design/references/validation/author-c-l15-r3-*-20260909-*.json"
+  ],
+  "files": [
+    {
+      "path": "C03_Type_Modeling_Interface_Design/chapters/12-callable-objects-and-type-erasure.md",
+      "sha256": "4061C027B505FC1296132479E5FCAE595C45263E0C143F105322B982A259F252",
+      "bytes": 5967
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/chapters/13-indirect-values-and-polymorphic-ownership.md",
+      "sha256": "092F8585C68289CFE0759CA011934C1535C553BB4DBA86DFF4860B01DC2D914A",
+      "bytes": 4160
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/chapters/14-contracts-hardening-and-interface-boundaries.md",
+      "sha256": "43F61A06BC967B03EAC24F8A04CD6DEC3CC6F600455BBBD1123125D0F9F36CF4",
+      "bytes": 6234
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/chapters/15-interface-evolution-and-compatibility.md",
+      "sha256": "C8FD711B1EECA018C9E85EF6AFDD350BEAC245CEB2885BAACE5064CA35B52D9E",
+      "bytes": 3805
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/exercises/L12_callables/CMakeLists.txt",
+      "sha256": "D8F9577BD20C93ABF7141E04A4FDE10F4F5F4CE70DAB44F660B15A9CED5FADE9",
+      "bytes": 183
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/exercises/L12_callables/README.md",
+      "sha256": "13B184917B9AD6492A37FF3514F4A78C83F5B7B9BCBAA7734F85DE918EADF062",
+      "bytes": 1924
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/exercises/L12_callables/callables_observation.cpp",
+      "sha256": "F9810BA8C0A86520651F416360DA03DB9A9FD05237869C61CC7541F41F9C5E2D",
+      "bytes": 3646
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/exercises/L13_indirect_values/CMakeLists.txt",
+      "sha256": "42136AEEC44B93F0FBF34001D9ABB29E5578BFE94D14C8CF431C427CC8D93632",
+      "bytes": 201
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/exercises/L13_indirect_values/README.md",
+      "sha256": "2FA07CA357B811391C5799F7C079B172CBF3DEFF4FB2AAAE7A7FD1DDD7FF0E41",
+      "bytes": 1328
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/exercises/L13_indirect_values/indirect_values_observation.cpp",
+      "sha256": "27B712EA8653B268BB5E582530D9CE314FFD89CAACEC3BD89D0265196BA07A96",
+      "bytes": 3761
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/exercises/L14_contracts/CMakeLists.txt",
+      "sha256": "FAF55111BA56C97FAEC1F0BD86E986F20F8AE5B9A2BAC5025E6C8DF302D43C96",
+      "bytes": 183
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/exercises/L14_contracts/README.md",
+      "sha256": "B6B14A2C80AD69216135A4A8F30F17B056441AC54E47E587D39D167B232D5E5C",
+      "bytes": 1288
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/exercises/L14_contracts/contracts_observation.cpp",
+      "sha256": "50BA342DA744B63311E7448F090B31C511AAC811217EC3BABC9AC8C4E94D9863",
+      "bytes": 2454
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/exercises/L15_evolution/CMakeLists.txt",
+      "sha256": "F62EE3321E62DD9471D66D4701E6AE118341182F1BF2E15EFA5842294F8EA82D",
+      "bytes": 273
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/exercises/L15_evolution/README.md",
+      "sha256": "6BB605BD05F47B96C60A0364390FEEEE6CB40A5418A0E8360087E72EA8174D58",
+      "bytes": 2246
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/exercises/L15_evolution/checks/evolution_checks.cpp",
+      "sha256": "E1920FFFE85E357ECEC93C42B90410AD224366DB872A2F5EA4080F3F545484E0",
+      "bytes": 1237
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/exercises/L15_evolution/checks/v2_engine.hpp",
+      "sha256": "757C89348D2B83E2DF52E8452DF03DCD7A4CA411A94BED4A3BEB957102CA02C0",
+      "bytes": 745
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/exercises/L15_evolution/src/reference/compat_adapter.hpp",
+      "sha256": "0E429E5F7BE448227D1DBF1D43D26659EC67E31B05E699860CC5CF920446C7F3",
+      "bytes": 594
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/exercises/L15_evolution/src/student/compat_adapter.hpp",
+      "sha256": "93B4393091384D5173F8D7AB29331AAF22F239E7C8AE7F10EDBA152A487923F9",
+      "bytes": 440
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/exercises/L15_evolution/validation/bad/compat_adapter.hpp",
+      "sha256": "6EBAEF08B7CF6A2A0BA33F9D014FF85A1483899A02DE2631CE92A5F37A77B69F",
+      "bytes": 542
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/exercises/L15_evolution/validation/good/compat_adapter.hpp",
+      "sha256": "6533433C81449387704EF2726AC44E7EF70E6E0ECAB59D5A1563D63AB68DC396",
+      "bytes": 604
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/references/validation/author-c-functional-source-20260909.md",
+      "sha256": "D839A25C3F6C530DAEF4875E7F0955B3BE26966580EA0A7033F4C4EF68E47E82",
+      "bytes": 2222
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/references/validation/author-c-review-fix-20260909.md",
+      "sha256": "3262C1CF248309E1481FA9E23B9CAD80B4A88794B398AB214905EEAF5AFCF1F7",
+      "bytes": 1713
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/references/validation/author-c-validation-summary-20260909.md",
+      "sha256": "B3C392CFE6DCB7982C036D0FFAAD1A2E9F8977026104E73BCBDDA1AD8DCEEE98",
+      "bytes": 3526
+    }
+  ]
+}

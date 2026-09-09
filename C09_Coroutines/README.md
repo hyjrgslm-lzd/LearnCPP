@@ -99,3 +99,7 @@ cmake --build --preset verify-core
 ## C02 生命周期与所有权先修
 
 阅读协程捕获、帧和 awaiter 之前，可通过 [C02 生命周期与借用](../C02_Objects_Lifetime_Ownership/chapters/03-lifetime-and-borrowing.md)及[RAII 与所有权](../C02_Objects_Lifetime_Ownership/chapters/07-raii-and-ownership.md)补齐对象存活与责任转交。闭包先析构而帧仍借用其成员，是两种生命期不一致的问题；挂起、恢复、取消与帧销毁协议继续由本课展开。
+
+## C03 状态、错误与回调衔接
+
+[C03 状态集合](../C03_Type_Modeling_Interface_Design/chapters/04-variant-and-state-space.md)、[错误通道](../C03_Type_Modeling_Interface_Design/chapters/05-expected-and-error-channels.md)和[可调用包装](../C03_Type_Modeling_Interface_Design/chapters/12-callable-objects-and-type-erasure.md)解释promise中的值/异常载荷与回调拥有、借用关系。optional空值不自动表示取消，exception_ptr也不定义恢复时机；这些含义仍由本课的协程协议明确。

@@ -1,0 +1,19 @@
+适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
+
+  1>Checking Build System
+  Building Custom Rule F:/CPPTrain/LearnCPP/C03_Type_Modeling_Interface_Design/exercises/L06_transactions/CMakeLists.txt
+  transaction_checks.cpp
+  L06_transactions_reference.vcxproj -> F:\CPPTrain\LearnCPP\build\c03-author-a-l06-student-r4\Debug\L06_transactions_reference.exe
+  Building Custom Rule F:/CPPTrain/LearnCPP/C03_Type_Modeling_Interface_Design/exercises/L06_transactions/CMakeLists.txt
+  transaction_checks.cpp
+  L06_transactions_student.vcxproj -> F:\CPPTrain\LearnCPP\build\c03-author-a-l06-student-r4\Debug\L06_transactions_student.exe
+  Building Custom Rule F:/CPPTrain/LearnCPP/C03_Type_Modeling_Interface_Design/exercises/L06_transactions/CMakeLists.txt
+  transaction_checks.cpp
+  L06_transactions_validation_bad.vcxproj -> F:\CPPTrain\LearnCPP\build\c03-author-a-l06-student-r4\Debug\L06_transactions_validation_bad.exe
+  Building Custom Rule F:/CPPTrain/LearnCPP/C03_Type_Modeling_Interface_Design/exercises/L06_transactions/CMakeLists.txt
+  transaction_checks.cpp
+  L06_transactions_validation_bad_prefix.vcxproj -> F:\CPPTrain\LearnCPP\build\c03-author-a-l06-student-r4\Debug\L06_transactions_validation_bad_prefix.exe
+  Building Custom Rule F:/CPPTrain/LearnCPP/C03_Type_Modeling_Interface_Design/exercises/L06_transactions/CMakeLists.txt
+  transaction_checks.cpp
+  L06_transactions_validation_good.vcxproj -> F:\CPPTrain\LearnCPP\build\c03-author-a-l06-student-r4\Debug\L06_transactions_validation_good.exe
+  Building Custom Rule F:/CPPTrain/LearnCPP/C03_Type_Modeling_Interface_Design/exercises/L06_transactions/CMakeLists.txt
