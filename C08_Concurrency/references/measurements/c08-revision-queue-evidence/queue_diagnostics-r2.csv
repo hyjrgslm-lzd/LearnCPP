@@ -1,0 +1,6 @@
+variant,size,producers,consumers,capacity,batch,completed,push_calls,push_success,push_items,pop_calls,pop_success,pop_items,mutex_acquisitions,spsc_remote_loads,hot_operator_new_calls,note
+mutex,10003,3,4,64,1,10003,11351,10003,10003,12351,10003,10003,23702,0,2,strict bounded baseline; lock count is instrumented after acquisition
+ring,10003,3,4,64,1,10003,11103,10003,10003,13300,10003,10003,24403,0,0,preallocated storage; construction allocation excluded
+batch8,10003,3,4,64,8,10003,1667,1251,10003,2118,1251,10003,3785,0,0,one public batch call maps to one instrumented critical section
+spsc,10003,1,1,64,1,10003,10433,10003,10003,11302,10003,10003,0,21735,0,noncached SPSC loads the remote index on every try
+spsc-cached,10003,1,1,64,1,10003,10587,10003,10003,10515,10003,10003,0,3405,0,cached SPSC loads the remote index only when cache boundary is reached

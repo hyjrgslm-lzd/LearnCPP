@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-debug-r1/uring-debug/L01_handles/L01_thread_process"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.001994340999999622,
+  "stdout": "process_id=1242\nthread_ids=1243,1244\nshared_global_address=0x5ac8516982b4\ntls_addresses=0x7faf58fff6bc,0x7faf587fe6bc\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-q6vmdbi2",
+  "temporary_directory_removed": true,
+  "name": "L01_thread_process",
+  "cwd": "/root/learncpp-c07/builds/final-linux-debug-r1/uring-debug/L01_handles",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

@@ -1,0 +1,26 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "/root/learncpp-c07/builds/foundation-r3/foundation",
+    "-C",
+    "Release",
+    "--output-on-failure",
+    "-R",
+    "^L0[12]_",
+    "--output-junit",
+    "/root/learncpp-c07/evidence/foundation-r3/ctest.xml"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.26171948300000025,
+  "stdout": "Internal ctest changing into directory: /root/learncpp-c07/builds/foundation-r3/foundation\nTest project /root/learncpp-c07/builds/foundation-r3/foundation\n    Start 2: L01_handles_reference\n1/7 Test #2: L01_handles_reference .................   Passed    0.03 sec\n    Start 3: L01_handles_validation_good\n2/7 Test #3: L01_handles_validation_good ...........   Passed    0.03 sec\n    Start 4: L01_handles_validation_bad_rejected\n3/7 Test #4: L01_handles_validation_bad_rejected ...   Passed    0.03 sec\n    Start 5: L01_handles_ownership\n4/7 Test #5: L01_handles_ownership .................   Passed    0.03 sec\n    Start 6: L02_sync_io_reference\n5/7 Test #6: L02_sync_io_reference .................   Passed    0.03 sec\n    Start 7: L02_sync_io_validation_good\n6/7 Test #7: L02_sync_io_validation_good ...........   Passed    0.03 sec\n    Start 8: L02_sync_io_validation_bad_rejected\n7/7 Test #8: L02_sync_io_validation_bad_rejected ...   Passed    0.03 sec\n\n100% tests passed, 0 tests failed out of 7\n\nLabel Time Summary:\nnegative           =   0.06 sec*proc (2 tests)\nobservation        =   0.03 sec*proc (1 test)\nreference          =   0.06 sec*proc (2 tests)\nvalidation_good    =   0.05 sec*proc (2 tests)\n\nTotal Test time (real) =   0.22 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "/root/learncpp-c07/snapshots/foundation-r3/C07_OS_Memory_System_IO/exercises",
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

@@ -1,0 +1,14 @@
+name=frontier-clang18-explicit-target-build
+start=2026-09-10T17:43:40+08:00
+command=cmake --build /root/learncpp-c08-builds/final-20260910-173010-d5356576/frontier-clang18 --parallel 4 --target F01_thread_attributes F02_hazard_pointer_batches F01_thread_attributes_reference F02_hazard_pointer_batches_reference F03_std_senders_reference F03_std_hazard_pointer_reference F03_std_rcu_reference
+
+[100%] Built target F01_thread_attributes
+Built target F02_hazard_pointer_batches
+[100%] Built target F01_thread_attributes_reference
+[100%] Built target F02_hazard_pointer_batches_reference
+[100%] Built target F03_std_senders_reference
+[100%] Built target F03_std_hazard_pointer_reference
+[100%] Built target F03_std_rcu_reference
+
+exit_code=0
+end=2026-09-10T17:43:40+08:00

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Win32-MSBuild"
+	tests="7"
+	failures="0"
+	disabled="0"
+	skipped="5"
+	hostname="lizhidan-p02"
+	time="3"
+	timestamp="2026-09-10T18:23:35"
+	>
+	<testcase name="F01_thread_attributes_observation" classname="F01_thread_attributes_observation" time="0.453254" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>OBSERVATION: teaching model for C++29 thread attributes; native body is in solution.cpp
+F01 model OK: prefix/order/duplicates/borrowed-name/stack-hint/stop-token
+</system-out>
+	</testcase>
+	<testcase name="F01_thread_attributes_reference" classname="F01_thread_attributes_reference" time="0.428712" status="notrun">
+		<skipped message="SKIP_RETURN_CODE=77"/>
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>SKIP: CS_HAS_STD_THREAD_ATTRIBUTES=0; C++29 thread attributes unavailable
+</system-out>
+	</testcase>
+	<testcase name="F02_hazard_pointer_batches_observation" classname="F02_hazard_pointer_batches_observation" time="0.428333" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>OBSERVATION: teaching model for C++29 hazard pointer batches; native body is in solution.cpp
+F02 model OK: empty/mixed/make-preserves-nonempty/strong-exception/repeated-clear-destroys-handles
+</system-out>
+	</testcase>
+	<testcase name="F02_hazard_pointer_batches_reference" classname="F02_hazard_pointer_batches_reference" time="0.415941" status="notrun">
+		<skipped message="SKIP_RETURN_CODE=77"/>
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>SKIP: CS_HAS_STD_HAZARD_POINTER_BATCH=0; C++29 hazard pointer batch unavailable
+</system-out>
+	</testcase>
+	<testcase name="F03_std_senders_reference" classname="F03_std_senders_reference" time="0.431325" status="notrun">
+		<skipped message="SKIP_RETURN_CODE=77"/>
+		<properties>
+			<property name="cmake_labels" value="native;reference"/>
+		</properties>
+		<system-out>SKIP: CS_HAS_STD_SENDERS=0; native standard sender unavailable
+</system-out>
+	</testcase>
+	<testcase name="F03_std_hazard_pointer_reference" classname="F03_std_hazard_pointer_reference" time="0.655624" status="notrun">
+		<skipped message="SKIP_RETURN_CODE=77"/>
+		<properties>
+			<property name="cmake_labels" value="native;reference"/>
+		</properties>
+		<system-out>SKIP: CS_HAS_STD_HAZARD_POINTER=0; native standard hazard_pointer unavailable
+</system-out>
+	</testcase>
+	<testcase name="F03_std_rcu_reference" classname="F03_std_rcu_reference" time="0.43568" status="notrun">
+		<skipped message="SKIP_RETURN_CODE=77"/>
+		<properties>
+			<property name="cmake_labels" value="native;reference"/>
+		</properties>
+		<system-out>SKIP: CS_HAS_STD_RCU=0; native standard rcu unavailable
+</system-out>
+	</testcase>
+</testsuite>

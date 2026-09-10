@@ -1,0 +1,42 @@
+name=gcc-release-configure
+start=2026-09-10T18:17:28+08:00
+timeout_seconds=300
+command=cmake -S /root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises -B /root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/gcc-release --preset linux-core -DCMAKE_BUILD_TYPE=Release -DCONCURRENCY_STUDY_BUILD_REFERENCE=ON -DCONCURRENCY_STUDY_TEST_FAST_MATH=OFF -DCONCURRENCY_STUDY_FETCH_DEPS=OFF -DCONCURRENCY_STUDY_ENABLE_SPDLOG=ON -DCONCURRENCY_STUDY_FMT_SOURCE_DIR=/root/learncpp-c08-deps/fmt-12.1.0 -DCONCURRENCY_STUDY_SPDLOG_SOURCE_DIR=/root/learncpp-c08-deps/spdlog-1.17.0 -DCONCURRENCY_STUDY_ENABLE_XSIMD=OFF -DCONCURRENCY_STUDY_ENABLE_STDEXEC=OFF -DCONCURRENCY_STUDY_ENABLE_CXX26=OFF -DCONCURRENCY_STUDY_ENABLE_CXX29=OFF -DCONCURRENCY_STUDY_BUILD_BENCHMARKS=OFF -DCONCURRENCY_STUDY_ENABLE_UNSAFE_DEMOS=OFF -DCONCURRENCY_STUDY_SANITIZER=none
+
+Preset CMake variables:
+
+  BUILD_TESTING="ON"
+  CMAKE_CXX_COMPILER="g++"
+
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Performing Test CS_HAS_PARALLEL_ALGORITHMS
+-- Performing Test CS_HAS_PARALLEL_ALGORITHMS - Success
+-- [study] CS_HAS_STD_SIMD compile/link probe: DISABLED
+-- [study] CS_HAS_STD_SENDERS compile/link probe: DISABLED
+-- [study] CS_HAS_STD_HAZARD_POINTER compile/link probe: DISABLED
+-- [study] CS_HAS_STD_RCU compile/link probe: DISABLED
+-- [study] CS_HAS_ATOMIC_MIN_MAX compile/link probe: DISABLED
+-- [study] CS_HAS_INPLACE_STOP_TOKEN compile/link probe: DISABLED
+-- [study] CS_HAS_STD_THREAD_ATTRIBUTES compile/link probe: DISABLED
+-- [study] CS_HAS_STD_HAZARD_POINTER_BATCH compile/link probe: DISABLED
+-- {fmt} version: 12.1.0
+-- Build type: Release
+-- Build spdlog: 1.17.0
+-- Build type: Release
+-- Looking for fwrite_unlocked
+-- Looking for fwrite_unlocked - found
+-- Found Python3: /usr/bin/python3 (found suitable version "3.12.3", minimum required is "3.10") found components: Interpreter 
+-- Configuring done (9.3s)
+-- Generating done (0.1s)
+-- Build files have been written to: /root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/gcc-release
+
+exit_code=0
+end=2026-09-10T18:17:37+08:00

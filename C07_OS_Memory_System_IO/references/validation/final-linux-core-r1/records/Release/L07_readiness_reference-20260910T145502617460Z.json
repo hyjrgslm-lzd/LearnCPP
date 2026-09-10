@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-core-r1/core/L07_readiness/L07_readiness_reference"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.0016086039999976265,
+  "stdout": "L07 readiness seed=281367808045097\nL07 readiness checks passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-d28w400d",
+  "temporary_directory_removed": true,
+  "name": "L07_readiness_reference",
+  "cwd": "/root/learncpp-c07/builds/final-linux-core-r1/core/L07_readiness",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

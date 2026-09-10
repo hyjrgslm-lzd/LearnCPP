@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-debug-r1/uring-debug/L07_readiness/L07_readiness_validation_good"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.0026160700000019688,
+  "stdout": "L07 readiness seed=281465964152550\nL07 readiness checks passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-3w0nx4w1",
+  "temporary_directory_removed": true,
+  "name": "L07_readiness_validation_good",
+  "cwd": "/root/learncpp-c07/builds/final-linux-debug-r1/uring-debug/L07_readiness",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

@@ -1,0 +1,3 @@
+[0/2] Re-checking globbed directories...
+[1/2] Building CXX object M1_work_stealing_pool/CMakeFiles/M1_work_stealing_pool_reference.dir/solution.cpp.o
+[2/2] Linking CXX executable M1_work_stealing_pool/M1_work_stealing_pool_reference

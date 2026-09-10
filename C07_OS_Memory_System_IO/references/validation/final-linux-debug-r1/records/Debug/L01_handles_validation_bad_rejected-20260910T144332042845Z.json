@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-debug-r1/uring-debug/L01_handles/L01_handles_validation_bad"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.0017410339999983648,
+  "stdout": "",
+  "stderr": "check failed: existing target is refused\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "/tmp/c07-test-jxh6snl4",
+  "temporary_directory_removed": true,
+  "name": "L01_handles_validation_bad_rejected",
+  "cwd": "/root/learncpp-c07/builds/final-linux-debug-r1/uring-debug/L01_handles",
+  "expected_exit": 1,
+  "required_text": "existing target is refused",
+  "verdict": "PASS"
+}

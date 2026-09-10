@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Win32-MSBuild"
+	tests="6"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname="lizhidan-p02"
+	time="3"
+	timestamp="2026-09-10T20:07:01"
+	>
+	<testcase name="L01_handles_reference" classname="L01_handles_reference" time="0.517216" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L01 handle checks passed
+L01_handles_reference: PASS
+</system-out>
+	</testcase>
+	<testcase name="L01_handles_validation_good" classname="L01_handles_validation_good" time="0.517376" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation_good"/>
+		</properties>
+		<system-out>L01 handle checks passed
+L01_handles_validation_good: PASS
+</system-out>
+	</testcase>
+	<testcase name="L01_handles_validation_bad_rejected" classname="L01_handles_validation_bad_rejected" time="0.532912" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>check failed: existing target is refused
+L01_handles_validation_bad_rejected: PASS
+</system-out>
+	</testcase>
+	<testcase name="L02_sync_io_reference" classname="L02_sync_io_reference" time="0.520171" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L02 sync I/O checks passed
+L02_sync_io_reference: PASS
+</system-out>
+	</testcase>
+	<testcase name="L02_sync_io_validation_good" classname="L02_sync_io_validation_good" time="0.560425" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation_good"/>
+		</properties>
+		<system-out>L02 sync I/O checks passed
+L02_sync_io_validation_good: PASS
+</system-out>
+	</testcase>
+	<testcase name="L02_sync_io_validation_bad_rejected" classname="L02_sync_io_validation_bad_rejected" time="0.526189" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>check failed: copy reports every byte
+L02_sync_io_validation_bad_rejected: PASS
+</system-out>
+	</testcase>
+</testsuite>

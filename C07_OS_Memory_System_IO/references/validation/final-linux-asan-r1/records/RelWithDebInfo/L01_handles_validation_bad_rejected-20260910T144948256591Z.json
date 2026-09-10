@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-asan-r1/asan-uring/L01_handles/L01_handles_validation_bad"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.005311475999995707,
+  "stdout": "",
+  "stderr": "check failed: existing target is refused\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "/tmp/c07-test-jvd7c303",
+  "temporary_directory_removed": true,
+  "name": "L01_handles_validation_bad_rejected",
+  "cwd": "/root/learncpp-c07/builds/final-linux-asan-r1/asan-uring/L01_handles",
+  "expected_exit": 1,
+  "required_text": "existing target is refused",
+  "verdict": "PASS"
+}

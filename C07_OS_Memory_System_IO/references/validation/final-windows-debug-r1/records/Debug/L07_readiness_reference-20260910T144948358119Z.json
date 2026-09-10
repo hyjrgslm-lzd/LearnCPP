@@ -1,0 +1,20 @@
+{
+  "command": [
+    "F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/build/final-windows-debug-r1/L07_readiness/Debug/L07_readiness_reference.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.43699999999807915,
+  "stdout": "L07 readiness seed=30472320510368\nL07 readiness checks passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-dy4ewq2c",
+  "temporary_directory_removed": true,
+  "name": "L07_readiness_reference",
+  "cwd": "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\exercises\\build\\final-windows-debug-r1\\L07_readiness",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

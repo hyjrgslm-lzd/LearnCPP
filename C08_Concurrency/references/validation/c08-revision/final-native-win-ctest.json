@@ -1,0 +1,27 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "build/c08-revision-final-native",
+    "-C",
+    "Release",
+    "-R",
+    "^F0[123]_",
+    "--output-on-failure",
+    "--output-junit",
+    "F:/CPPTrain/LearnCPP/C08_Concurrency/references/validation/c08-revision/final-native-win-ctest.xml"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 3.383256600000095,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/build/c08-revision-final-native\n    Start  37: F01_thread_attributes_observation\n1/7 Test  #37: F01_thread_attributes_observation ........   Passed    0.45 sec\n    Start  38: F01_thread_attributes_reference\n2/7 Test  #38: F01_thread_attributes_reference ..........***Skipped   0.43 sec\n    Start  39: F02_hazard_pointer_batches_observation\n3/7 Test  #39: F02_hazard_pointer_batches_observation ...   Passed    0.43 sec\n    Start  40: F02_hazard_pointer_batches_reference\n4/7 Test  #40: F02_hazard_pointer_batches_reference .....***Skipped   0.42 sec\n    Start 105: F03_std_senders_reference\n5/7 Test #105: F03_std_senders_reference ................***Skipped   0.43 sec\n    Start 106: F03_std_hazard_pointer_reference\n6/7 Test #106: F03_std_hazard_pointer_reference .........***Skipped   0.66 sec\n    Start 107: F03_std_rcu_reference\n7/7 Test #107: F03_std_rcu_reference ....................***Skipped   0.44 sec\n\n100% tests passed, 0 tests failed out of 7\n\nLabel Time Summary:\nnative         =   1.52 sec*proc (3 tests)\nobservation    =   0.88 sec*proc (2 tests)\nreference      =   2.37 sec*proc (5 tests)\n\nTotal Test time (real) =   3.30 sec\n\nThe following tests did not run:\n\t 38 - F01_thread_attributes_reference (Skipped)\n\t 40 - F02_hazard_pointer_batches_reference (Skipped)\n\t105 - F03_std_senders_reference (Skipped)\n\t106 - F03_std_hazard_pointer_reference (Skipped)\n\t107 - F03_std_rcu_reference (Skipped)\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

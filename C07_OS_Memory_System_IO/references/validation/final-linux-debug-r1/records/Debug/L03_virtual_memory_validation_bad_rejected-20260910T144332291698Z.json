@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-debug-r1/uring-debug/L03_virtual_memory/L03_virtual_memory_validation_bad"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.0021701649999990025,
+  "stdout": "",
+  "stderr": "check failed: committed page keeps written bytes\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "/tmp/c07-test-04n55x6r",
+  "temporary_directory_removed": true,
+  "name": "L03_virtual_memory_validation_bad_rejected",
+  "cwd": "/root/learncpp-c07/builds/final-linux-debug-r1/uring-debug/L03_virtual_memory",
+  "expected_exit": 1,
+  "required_text": "committed page keeps written bytes",
+  "verdict": "PASS"
+}

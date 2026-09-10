@@ -20,7 +20,10 @@
         "CONCURRENCY_STUDY_ENABLE_STDEXEC": "OFF",
         "CONCURRENCY_STUDY_ENABLE_CXX26": "OFF",
         "CONCURRENCY_STUDY_BUILD_BENCHMARKS": "OFF",
-        "CONCURRENCY_STUDY_ENABLE_UNSAFE_DEMOS": "OFF"
+        "CONCURRENCY_STUDY_ENABLE_UNSAFE_DEMOS": "OFF",
+        "CONCURRENCY_STUDY_SANITIZER": "none",
+        "CONCURRENCY_STUDY_ENABLE_CXX29": "OFF",
+        "CONCURRENCY_STUDY_ENABLE_SPDLOG": "OFF"
       }
     },
     {
@@ -117,6 +120,66 @@
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug"
       }
+    },
+    {
+      "name": "asan-windows",
+      "inherits": "verify-core",
+      "generator": "Visual Studio 18 2026",
+      "architecture": "x64",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      },
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+        "CONCURRENCY_STUDY_SANITIZER": "address"
+      }
+    },
+    {
+      "name": "linux-core",
+      "inherits": "verify-core",
+      "generator": "Ninja",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Linux"
+      },
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER": "g++"
+      }
+    },
+    {
+      "name": "linux-debug",
+      "inherits": "linux-core",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "linux-asan",
+      "inherits": "linux-core",
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER": "clang++-18",
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+        "CONCURRENCY_STUDY_SANITIZER": "address"
+      }
+    },
+    {
+      "name": "linux-tsan",
+      "inherits": "linux-core",
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER": "clang++-18",
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+        "CONCURRENCY_STUDY_SANITIZER": "thread"
+      }
+    },
+    {
+      "name": "native-cxx29",
+      "inherits": "native-cxx26",
+      "cacheVariables": {
+        "CONCURRENCY_STUDY_ENABLE_CXX29": "ON"
+      }
     }
   ],
   "buildPresets": [
@@ -174,6 +237,36 @@
       "name": "ninja-debug",
       "configurePreset": "ninja-debug",
       "configuration": "Debug"
+    },
+    {
+      "name": "asan-windows",
+      "configurePreset": "asan-windows",
+      "configuration": "RelWithDebInfo"
+    },
+    {
+      "name": "linux-core",
+      "configurePreset": "linux-core",
+      "configuration": "Release"
+    },
+    {
+      "name": "linux-debug",
+      "configurePreset": "linux-debug",
+      "configuration": "Debug"
+    },
+    {
+      "name": "linux-asan",
+      "configurePreset": "linux-asan",
+      "configuration": "RelWithDebInfo"
+    },
+    {
+      "name": "linux-tsan",
+      "configurePreset": "linux-tsan",
+      "configuration": "RelWithDebInfo"
+    },
+    {
+      "name": "native-cxx29",
+      "configurePreset": "native-cxx29",
+      "configuration": "Release"
     }
   ],
   "testPresets": [
@@ -289,6 +382,78 @@
       "name": "ninja-debug",
       "configurePreset": "ninja-debug",
       "configuration": "Debug",
+      "output": {
+        "outputOnFailure": true
+      },
+      "execution": {
+        "timeout": 30,
+        "noTestsAction": "error"
+      }
+    },
+    {
+      "name": "asan-windows",
+      "configurePreset": "asan-windows",
+      "configuration": "RelWithDebInfo",
+      "output": {
+        "outputOnFailure": true
+      },
+      "execution": {
+        "timeout": 120,
+        "noTestsAction": "error"
+      }
+    },
+    {
+      "name": "linux-core",
+      "configurePreset": "linux-core",
+      "configuration": "Release",
+      "output": {
+        "outputOnFailure": true
+      },
+      "execution": {
+        "timeout": 30,
+        "noTestsAction": "error"
+      }
+    },
+    {
+      "name": "linux-debug",
+      "configurePreset": "linux-debug",
+      "configuration": "Debug",
+      "output": {
+        "outputOnFailure": true
+      },
+      "execution": {
+        "timeout": 30,
+        "noTestsAction": "error"
+      }
+    },
+    {
+      "name": "linux-asan",
+      "configurePreset": "linux-asan",
+      "configuration": "RelWithDebInfo",
+      "output": {
+        "outputOnFailure": true
+      },
+      "execution": {
+        "timeout": 120,
+        "noTestsAction": "error"
+      }
+    },
+    {
+      "name": "linux-tsan",
+      "configurePreset": "linux-tsan",
+      "configuration": "RelWithDebInfo",
+      "output": {
+        "outputOnFailure": true
+      },
+      "execution": {
+        "timeout": 120,
+        "noTestsAction": "error"
+      }
+    },
+    {
+      "name": "native-cxx29",
+      "configurePreset": "native-cxx29",
+      "configuration": "Release",
       "output": {
         "outputOnFailure": true
       },

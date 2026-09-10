@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/root/learncpp-c08-builds/students-r2-full-20260910-182216-452abc20/student-validation/Capstone3_parallel_compute/bad/build/Capstone3_parallel_compute"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.0016551669999671503,
+  "stdout": "",
+  "stderr": "Cap3 Part 6: student sort\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL"
+}

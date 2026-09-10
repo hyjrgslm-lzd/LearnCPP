@@ -1,0 +1,25 @@
+适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
+
+  Checking File Globs
+  1>Checking Build System
+  Building Custom Rule F:/CPPTrain/LearnCPP/C08_Concurrency/exercises/B3_call_once/CMakeLists.txt
+  solution.cpp
+  B3_call_once_reference.vcxproj -> F:\CPPTrain\LearnCPP\C08_Concurrency\exercises\build\c08-tsan-fix-win-20260910-1730\B3_call_once\Release\B3_call_once_reference.exe
+适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
+
+  Checking File Globs
+  Building Custom Rule F:/CPPTrain/LearnCPP/C08_Concurrency/exercises/F3_seqcst_fence/CMakeLists.txt
+  solution.cpp
+  F3_seqcst_fence_reference.vcxproj -> F:\CPPTrain\LearnCPP\C08_Concurrency\exercises\build\c08-tsan-fix-win-20260910-1730\F3_seqcst_fence\Release\F3_seqcst_fence_reference.exe
+适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
+
+  Checking File Globs
+  Building Custom Rule F:/CPPTrain/LearnCPP/C08_Concurrency/exercises/runtime_tests/CMakeLists.txt
+  scheduling_test.cpp
+  runtime_scheduling_test.vcxproj -> F:\CPPTrain\LearnCPP\C08_Concurrency\exercises\build\c08-tsan-fix-win-20260910-1730\runtime_tests\Release\runtime_scheduling_test.exe
+适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
+
+  Checking File Globs
+  Building Custom Rule F:/CPPTrain/LearnCPP/C08_Concurrency/exercises/runtime_tests/CMakeLists.txt
+  scheduling_allocation_test.cpp
+  runtime_scheduling_allocation_test.vcxproj -> F:\CPPTrain\LearnCPP\C08_Concurrency\exercises\build\c08-tsan-fix-win-20260910-1730\runtime_tests\Release\runtime_scheduling_allocation_test.exe

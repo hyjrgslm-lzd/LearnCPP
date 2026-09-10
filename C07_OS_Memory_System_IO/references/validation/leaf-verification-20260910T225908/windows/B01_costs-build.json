@@ -1,0 +1,24 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\build\\leaf-verifier-windows-20260910T225908-B01_costs",
+    "--config",
+    "Release",
+    "--parallel",
+    "2"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 3.8439999999973224,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/B01_costs/CMakeLists.txt\n  Building Custom Rule F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/B01_costs/CMakeLists.txt\n  source_observation.cpp\n  benchmark.cpp\n  B01_source_observation.vcxproj -> F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\build\\leaf-verifier-windows-20260910T225908-B01_costs\\Release\\B01_source_observation.exe\n  B01_costs_benchmark.vcxproj -> F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\build\\leaf-verifier-windows-20260910T225908-B01_costs\\Release\\B01_costs_benchmark.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/B01_costs/CMakeLists.txt\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

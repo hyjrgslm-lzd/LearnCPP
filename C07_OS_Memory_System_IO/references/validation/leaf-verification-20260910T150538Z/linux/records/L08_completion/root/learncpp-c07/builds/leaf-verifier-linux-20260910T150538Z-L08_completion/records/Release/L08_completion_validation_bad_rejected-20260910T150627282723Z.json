@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/leaf-verifier-linux-20260910T150538Z-L08_completion/L08_completion_validation_bad"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.001198292999987416,
+  "stdout": "",
+  "stderr": "check failed: missing target completion is rejected\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "/tmp/c07-test-fau9_g2s",
+  "temporary_directory_removed": true,
+  "name": "L08_completion_validation_bad_rejected",
+  "cwd": "/root/learncpp-c07/builds/leaf-verifier-linux-20260910T150538Z-L08_completion",
+  "expected_exit": 1,
+  "required_text": "missing target completion is rejected",
+  "verdict": "PASS"
+}

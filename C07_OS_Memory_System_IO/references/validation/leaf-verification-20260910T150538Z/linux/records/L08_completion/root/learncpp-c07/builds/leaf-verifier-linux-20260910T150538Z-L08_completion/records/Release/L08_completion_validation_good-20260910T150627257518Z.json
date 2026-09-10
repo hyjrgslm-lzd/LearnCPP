@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/leaf-verifier-linux-20260910T150538Z-L08_completion/L08_completion_validation_good"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.0015702910000072734,
+  "stdout": "L08 completion ledger checks passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-fnw7xrlg",
+  "temporary_directory_removed": true,
+  "name": "L08_completion_validation_good",
+  "cwd": "/root/learncpp-c07/builds/leaf-verifier-linux-20260910T150538Z-L08_completion",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/root/learncpp-c08-builds/students-r2-20260910-180658-457446af/student-validation/H2_semaphore/good/build/H2_semaphore"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.006335049000028903,
+  "stdout": "H2 student OK\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

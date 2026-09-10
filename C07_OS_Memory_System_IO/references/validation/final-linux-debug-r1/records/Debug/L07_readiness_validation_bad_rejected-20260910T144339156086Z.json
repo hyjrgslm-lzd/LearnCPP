@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-debug-r1/uring-debug/L07_readiness/L07_readiness_validation_bad"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.0012005009999995764,
+  "stdout": "L07 readiness seed=281441641114259\n",
+  "stderr": "check failed: runtime payload matches drained bytes\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "/tmp/c07-test-o54wjzd6",
+  "temporary_directory_removed": true,
+  "name": "L07_readiness_validation_bad_rejected",
+  "cwd": "/root/learncpp-c07/builds/final-linux-debug-r1/uring-debug/L07_readiness",
+  "expected_exit": 1,
+  "required_text": "runtime payload matches drained bytes",
+  "verdict": "PASS"
+}

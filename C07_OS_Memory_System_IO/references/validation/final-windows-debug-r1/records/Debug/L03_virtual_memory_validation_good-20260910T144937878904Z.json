@@ -1,0 +1,20 @@
+{
+  "command": [
+    "F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/build/final-windows-debug-r1/L03_virtual_memory/Debug/L03_virtual_memory_validation_good.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.4529999999977008,
+  "stdout": "L03 virtual memory checks passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-czz56jht",
+  "temporary_directory_removed": true,
+  "name": "L03_virtual_memory_validation_good",
+  "cwd": "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\exercises\\build\\final-windows-debug-r1\\L03_virtual_memory",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

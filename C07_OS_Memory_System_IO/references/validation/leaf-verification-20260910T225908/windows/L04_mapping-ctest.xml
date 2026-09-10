@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Win32-MSBuild"
+	tests="3"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname="lizhidan-p02"
+	time="1"
+	timestamp="2026-09-10T22:59:57"
+	>
+	<testcase name="L04_mapping_reference" classname="L04_mapping_reference" time="0.55121" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L04 mapping checks passed
+L04_mapping_reference: PASS
+</system-out>
+	</testcase>
+	<testcase name="L04_mapping_validation_good" classname="L04_mapping_validation_good" time="0.541308" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation_good"/>
+		</properties>
+		<system-out>L04 mapping checks passed
+L04_mapping_validation_good: PASS
+</system-out>
+	</testcase>
+	<testcase name="L04_mapping_validation_bad_rejected" classname="L04_mapping_validation_bad_rejected" time="0.560298" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>check failed: readonly mapping aligns view offset down
+L04_mapping_validation_bad_rejected: PASS
+</system-out>
+	</testcase>
+</testsuite>

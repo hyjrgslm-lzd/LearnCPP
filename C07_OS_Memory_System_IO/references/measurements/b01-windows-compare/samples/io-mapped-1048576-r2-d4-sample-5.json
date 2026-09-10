@@ -1,0 +1,56 @@
+{
+  "case": {
+    "bytes": 1048576,
+    "depth": 4,
+    "kind": "io",
+    "rounds": 2,
+    "variant": "mapped"
+  },
+  "case_id": "io-mapped-1048576-r2-d4",
+  "parse_error": "",
+  "parsed": {
+    "application_copy_bytes": 2097152,
+    "assemble_seconds": 0.0003327,
+    "bytes": 2097152,
+    "clock_period_den": 1000000000,
+    "clock_period_num": 1,
+    "clock_resolution_seconds": 1e-07,
+    "completions": 0,
+    "depth": 4,
+    "kind": "io",
+    "peak_in_flight": 0,
+    "read_calls": 0,
+    "read_seconds": 0.0007833,
+    "rounds": 2,
+    "seconds": 0.0225714,
+    "setup_seconds": 0.0002684,
+    "size": 1048576,
+    "valid": true,
+    "variant": "mapped",
+    "write_seconds": 0.0210071
+  },
+  "raw": {
+    "cleanup_error": "",
+    "command": [
+      "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\exercises\\build\\final-windows-release-r1\\B01_costs\\Release\\B01_costs_benchmark.exe",
+      "io",
+      "mapped",
+      "1048576",
+      "2",
+      "4"
+    ],
+    "error": "",
+    "exit_code": 0,
+    "process_seconds": 0.0790000000015425,
+    "status": "PASS",
+    "stderr": "",
+    "stdout": "{\"kind\":\"io\",\"variant\":\"mapped\",\"size\":1048576,\"rounds\":2,\"depth\":4,\"seconds\":0.022571399999999998,\"setup_seconds\":0.00026840000000000002,\"read_seconds\":0.00078330000000000001,\"assemble_seconds\":0.00033270000000000001,\"write_seconds\":0.021007100000000001,\"bytes\":2097152,\"read_calls\":0,\"completions\":0,\"peak_in_flight\":0,\"application_copy_bytes\":2097152,\"clock_resolution_seconds\":9.9999999999999995e-08,\"clock_period_num\":1,\"clock_period_den\":1000000000,\"valid\":true}\n",
+    "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-81qyngt_",
+    "temporary_directory_removed": true,
+    "timeout": false
+  },
+  "sample_id": "io-mapped-1048576-r2-d4-sample-5",
+  "seconds": 0.0225714,
+  "verdict": "VALID",
+  "warmup": false
+}

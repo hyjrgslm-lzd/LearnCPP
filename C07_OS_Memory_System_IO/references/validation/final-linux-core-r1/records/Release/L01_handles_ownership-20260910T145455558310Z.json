@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-core-r1/core/L01_handles/L01_handles_ownership"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.001278530999996974,
+  "stdout": "L01 ownership observation passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-qpwk3fvu",
+  "temporary_directory_removed": true,
+  "name": "L01_handles_ownership",
+  "cwd": "/root/learncpp-c07/builds/final-linux-core-r1/core/L01_handles",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

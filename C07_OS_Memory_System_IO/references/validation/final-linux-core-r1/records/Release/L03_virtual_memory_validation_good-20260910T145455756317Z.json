@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-core-r1/core/L03_virtual_memory/L03_virtual_memory_validation_good"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.001454940000002125,
+  "stdout": "L03 virtual memory checks passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-od2_1rif",
+  "temporary_directory_removed": true,
+  "name": "L03_virtual_memory_validation_good",
+  "cwd": "/root/learncpp-c07/builds/final-linux-core-r1/core/L03_virtual_memory",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

@@ -1,0 +1,2 @@
+PARTIAL_SKIP: Clang ThreadSanitizer does not support std::atomic_thread_fence as a publication edge; fence_publication is covered by non-TSan runs; see references/validation/c08-revision/tsan-diagnosis/diagnosis-20260910.md
+F3_reference OK: both-zero relaxed=0, RA=0, SC=0, SC-fence=0; fence publication skipped under this TSan build

@@ -1,0 +1,24 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\build\\leaf-verifier-windows-20260910T225908-L03_virtual_memory",
+    "--config",
+    "Release",
+    "--parallel",
+    "2"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 3.25,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L03_virtual_memory/CMakeLists.txt\n  Building Custom Rule F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L03_virtual_memory/CMakeLists.txt\n  Building Custom Rule F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L03_virtual_memory/CMakeLists.txt\n  virtual_memory_checks.cpp\n  virtual_memory_checks.cpp\n  virtual_memory_checks.cpp\n  L03_virtual_memory_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\build\\leaf-verifier-windows-20260910T225908-L03_virtual_memory\\Release\\L03_virtual_memory_reference.exe\n  L03_virtual_memory_validation_good.vcxproj -> F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\build\\leaf-verifier-windows-20260910T225908-L03_virtual_memory\\Release\\L03_virtual_memory_validation_good.exe\n  L03_virtual_memory_validation_bad.vcxproj -> F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\build\\leaf-verifier-windows-20260910T225908-L03_virtual_memory\\Release\\L03_virtual_memory_validation_bad.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L03_virtual_memory/CMakeLists.txt\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

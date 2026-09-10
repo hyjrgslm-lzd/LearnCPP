@@ -4,6 +4,18 @@
 
 ## 1. 工具链与核心构建
 
+本轮Windows验证显式使用已经安装的Python3.13.11，避免PATH中的3.10被误用来启动要求3.11+的benchmark工具：
+
+```powershell
+$C08Python = 'C:/Users/zhidan.li/AppData/Roaming/uv/python/cpython-3.13.11-windows-x86_64-none/python.exe'
+& $C08Python --version
+cmake --preset verify-core "-DPython3_EXECUTABLE=$C08Python"
+```
+
+其他机器选择自己的Python3.11+绝对路径，不需要复制本机用户名或改全局PATH。普通材料工具能在3.10运行，不代表benchmark runner也满足要求。新runner会在低版本入口清楚拒绝，摘要算法保持不变。
+
+根CTest的两项工具检查要求Python3.10+，找不到解释器将直接停止配置，不能静默减少测试。PowerShell调用记录器时，`"-DPython3_EXECUTABLE=完整路径"`整个参数必须加引号；配置后核对缓存中的完整路径以及`runtime_benchmark_tools`、`runtime_materials`确实注册。只编译C++且不运行测试可显式设置`BUILD_TESTING=OFF`。
+
 需要 CMake 3.28 或以上，以及满足实际课程用法的 C++23 编译器和标准库。Visual Studio 18 2026 生成器从 CMake 4.2 起提供。本机验收使用 CMake 4.2.3、MSVC 19.51.36256、Windows x64。
 
 这里的 C++23 表示代码及 CMake target 的最低要求。CMake 4.2.3 在本机 MSVC 上将该要求映射为 /std:c++latest；实际选项以构建日志为准。若要明确限制到本机的 C++23 预览模式，可按专题验证命令使用 /std:c++23preview。是否启用原生 C++26 课程分支仍由独立探测和能力宏决定。
@@ -96,6 +108,16 @@ ctest --preset full-windows
 
 ## 4. 原生 C++26 验证
 
+本轮同时增加 `native-cxx29` preset；它显式请求C++26和C++29两组设施。分别控制的选项为 `CONCURRENCY_STUDY_ENABLE_CXX26`、`CONCURRENCY_STUDY_ENABLE_CXX29`，可以只请求其中一组。每个能力的原始日志在构建目录 `capabilities/`；关闭时登记DISABLED，启用后的最小探测失败与主体失败分开。
+
+```powershell
+cmake --preset native-cxx29 "-DPython3_EXECUTABLE=$C08Python"
+cmake --build --preset native-cxx29 --parallel 4
+ctest --preset native-cxx29
+```
+
+F01/F02是两项C++29单元；F03的标准HP、RCU、sender分别构建、分别运行。教学模型、摘要和原生主体不是同一种验证。已有A2、E3及K系列的C++26分支仍按各自实际能力检查，不能仅凭核心通过推断扩展也通过。
+
 ```powershell
 cmake --preset native-cxx26
 cmake --build --preset native-cxx26 --parallel 4
@@ -142,5 +164,50 @@ CSV 的 threads 为正数时表示程序报告的线程数；0 明确表示后�
 普通路径不运行故意的 UB 或永久死锁。已提供的诊断资产必须显式开启或单独构建，并通过外部进程超时运行。ASan 检查地址访问，TSan 检查其支持环境中的数据竞争；它们不是内存序或进展保证的证明。
 
 回收专题提供了[独立验证说明](../topics/reclamation/06-validation.md)，包括优化构建与 ASan 的实际范围。其他平台和工具的可用性以本机配置为准，未运行的检查不会被记录为通过。
+
+## 7. 本轮 Windows 与 WSL 验证矩阵
+
+| 入口 | 环境与作用 |
+|---|---|
+| `verify-core` / `debug` | 核心Release/Debug；核心默认不下载依赖 |
+| `full-windows` | 固定xsimd/stdexec、fast独立判分和基准；日志需另加SPDLOG选项 |
+| `asan-windows` | MSVC RelWithDebInfo；地址检测、非增量链接、复制匹配ASan运行库 |
+| `linux-core` / `linux-debug` | WSL GCC，Ninja，分别Release/Debug |
+| `linux-asan` | WSL Clang18，RelWithDebInfo，ASan+UBSan |
+| `linux-tsan` | WSL Clang18，RelWithDebInfo，单独TSan，不与ASan混用 |
+
+`CONCURRENCY_STUDY_SANITIZER`接受`none/address/thread`。普通测试外部上限30秒，Sanitizer下的C++测试120秒；Python工具仍有30秒上限。MSVC的地址检测使用RelWithDebInfo，避免Debug默认的`/RTC1`冲突。Linux本课不使用module接口，因此关闭CMake模块扫描；Clang/libstdc++的运行时原子查询链接工具链提供的`atomic`库。
+
+```powershell
+cmake --preset asan-windows "-DPython3_EXECUTABLE=$C08Python"
+cmake --build --preset asan-windows --parallel 4
+ctest --preset asan-windows
+```
+
+Linux必须在guest中执行其预设，不从Windows生成器复用缓存：
+
+```bash
+# 已核对的guest源码快照内，进入C08_Concurrency/exercises
+cmake --preset linux-core
+cmake --build --preset linux-core --parallel 4
+ctest --preset linux-core
+```
+
+其余Linux预设使用同样三步。专用镜像、快照、实际工具版本和TSan正常/竞争控制见[WSL验证指南](../references/wsl-validation.md)。能力控制失败时先诊断环境；能够运行检测器之后出现的主体报告是失败，不能通过更改全局安全设置、压制报告或缩小源码快照来制造通过。多NUMA节点实验仍取决于实际拓扑；WSL不替代裸机性能证据。
+
+新增日志单元默认关闭。打开时沿用已固定的fmt/spdlog源码；Windows可使用C05已有下载，Linux必须指定guest实际源码路径，不能直接复用Windows marker：
+
+```powershell
+cmake -S U01_async_logging -B build/u01 -G "Visual Studio 18 2026" -A x64 `
+  -DCONCURRENCY_STUDY_ENABLE_SPDLOG=ON `
+  "-DCONCURRENCY_STUDY_FMT_SOURCE_DIR=实际fmt12.1.0干净Git源码目录" `
+  "-DCONCURRENCY_STUDY_SPDLOG_SOURCE_DIR=实际spdlog1.17.0干净Git源码目录"
+cmake --build build/u01 --config Release --target U01_async_logging_checked
+ctest --test-dir build/u01 -C Release -R U01_async_logging --output-on-failure
+```
+
+完整操作、Student作业位置与good/bad判分见[U01](U01_async_logging/README.md)。两个库的完整编译输入必须匹配固定commit且无跟踪修改；不能只校验头文件而允许src/CMake漂移。扩展不新增日志全局注册或机器级依赖。
+
+队列计数是单独的`queue_diagnostics`目标，仅它带`CS_QUEUE_DIAGNOSTICS=1`。正式`queue_bench`不启用计数，诊断结果不能当成计时结果。运行入口与正式测量窗口约束见[队列修订证据](../topics/performance/c08-revision-queue-evidence.md)。
 
 返回[课程入口](../README.md)。

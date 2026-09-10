@@ -1,0 +1,13 @@
+{
+  "command": [
+    "F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\build\\sv-final3\\R2_qsbr\\initial\\build\\Release\\R2_qsbr.exe"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.48399999999855936,
+  "stdout": "",
+  "stderr": "student FAIL: TODO A1: online\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL"
+}

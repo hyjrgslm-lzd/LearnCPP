@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-core-r1/core/L01_handles/L01_handles_reference"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.0025024539999947137,
+  "stdout": "L01 handle checks passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-9tyu3hj0",
+  "temporary_directory_removed": true,
+  "name": "L01_handles_reference",
+  "cwd": "/root/learncpp-c07/builds/final-linux-core-r1/core/L01_handles",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

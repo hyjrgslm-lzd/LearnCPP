@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-core-r1/core/L04_mapping/L04_mapping_validation_bad"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.0015957450000030349,
+  "stdout": "",
+  "stderr": "check failed: readonly mapping aligns view offset down\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "/tmp/c07-test-2ko7cbww",
+  "temporary_directory_removed": true,
+  "name": "L04_mapping_validation_bad_rejected",
+  "cwd": "/root/learncpp-c07/builds/final-linux-core-r1/core/L04_mapping",
+  "expected_exit": 1,
+  "required_text": "readonly mapping aligns view offset down",
+  "verdict": "PASS"
+}

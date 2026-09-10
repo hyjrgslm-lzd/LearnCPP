@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/root/learncpp-c08-builds/students-r2-20260910-180658-457446af/student-validation/Capstone3_parallel_compute/initial/build/Capstone3_parallel_compute"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.0012336850000451705,
+  "stdout": "",
+  "stderr": "GEMM integer oracle\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL"
+}

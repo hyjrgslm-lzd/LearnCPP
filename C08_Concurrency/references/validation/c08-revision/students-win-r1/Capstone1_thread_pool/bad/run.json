@@ -1,0 +1,13 @@
+{
+  "command": [
+    "F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\build\\sv-final3\\Capstone1_thread_pool\\bad\\build\\Release\\Capstone1_thread_pool.exe"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.4690000000009604,
+  "stdout": "",
+  "stderr": "Capstone1 student FAIL: task must run on a worker, not submitter\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL"
+}

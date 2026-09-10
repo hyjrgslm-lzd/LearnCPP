@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/root/learncpp-c08-builds/students-r2-full-20260910-182216-452abc20/student-validation/H1_latch_barrier/bad/build/H1_latch_barrier"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.0018127490000097168,
+  "stdout": "",
+  "stderr": "Part 5: failed startup declines phase entry\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL"
+}

@@ -1,0 +1,2 @@
+fence_tsan: fence_probe.cpp:42: int main(int, char **): Assertion `false' failed.
+/usr/bin/timeout: the monitored command dumped core

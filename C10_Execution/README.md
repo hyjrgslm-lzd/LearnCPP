@@ -266,3 +266,11 @@
 ## C03 完成状态与可调用对象衔接
 
 [C03 variant/错误通道](../C03_Type_Modeling_Interface_Design/chapters/05-expected-and-error-channels.md)、[类型擦除](../C03_Type_Modeling_Interface_Design/chapters/11-type-erasure.md)和[可调用包装](../C03_Type_Modeling_Interface_Design/chapters/12-callable-objects-and-type-erasure.md)提供完成载荷、动态操作与复制/借用的基础。value/error/stopped的协议含义、实际执行位置与收束责任继续由本课主讲，不能由同步包装器测试推断运行时正确。
+
+## C04 泛型与编译期桥接
+
+[进入C04课程](../C04_Generic_CompileTime_Reflection/README.md)。completion signatures与G1 my_then可回访C04的类型列表变换、表达式约束和异常规格；CPO/环境查询的具体规则仍须以本课所采用的stdexec版本为准，教学read_value不是通用sender协议。
+
+## C07 系统完成源桥接
+
+[C07 I/O 模型](../C07_OS_Memory_System_IO/chapters/11-readiness.md)、[取消与关闭](../C07_OS_Memory_System_IO/chapters/14-cancellation-shutdown.md)及[有界文件处理器](../C07_OS_Memory_System_IO/chapters/16-file-pipeline.md)提供实际系统资源与完成责任。本课继续规定 sender、receiver、operation_state 和 scope 的协议；把一个 OS completion 映射成完成信号，并不自动证明操作状态可提前销毁。

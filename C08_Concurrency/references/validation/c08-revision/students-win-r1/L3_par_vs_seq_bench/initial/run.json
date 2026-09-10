@@ -1,0 +1,13 @@
+{
+  "command": [
+    "F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\build\\sv-final3\\L3_par_vs_seq_bench\\initial\\build\\Release\\L3_par_vs_seq_bench.exe"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.43699999999989814,
+  "stdout": "",
+  "stderr": "L3 Part 1: student_light is incomplete\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL"
+}

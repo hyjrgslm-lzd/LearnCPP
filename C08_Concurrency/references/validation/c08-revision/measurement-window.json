@@ -1,0 +1,16 @@
+{
+  "started_at": "2026-09-10T10:34:01.226771+00:00",
+  "policy": "Task-owned builds/tests and C08 writes paused; OS background activity/frequency not controlled",
+  "host_record": "windows-environment.json",
+  "executable": "F:\\CPPTrain\\LearnCPP\\build\\c08-revision-final-win\\benchmarks\\Release\\queue_bench.exe",
+  "sha256": "3d59cca9f22b5735d9598ed1582331c5aed8147d60b7de51f6001fdb04e4f986",
+  "diagnostic_macro_in_timed_target": false,
+  "groups": 5,
+  "warmups_per_variant": 1,
+  "samples_per_variant": 5,
+  "seed": 42,
+  "variants": 8,
+  "formal_processes_expected": 40,
+  "warmup_processes_expected": 8,
+  "correctness_processes_expected": 12
+}

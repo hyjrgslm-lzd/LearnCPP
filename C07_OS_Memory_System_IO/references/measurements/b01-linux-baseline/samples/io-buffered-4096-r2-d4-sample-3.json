@@ -1,0 +1,56 @@
+{
+  "case": {
+    "bytes": 4096,
+    "depth": 4,
+    "kind": "io",
+    "rounds": 2,
+    "variant": "buffered"
+  },
+  "case_id": "io-buffered-4096-r2-d4",
+  "parse_error": "",
+  "parsed": {
+    "application_copy_bytes": 0,
+    "assemble_seconds": 2.94e-06,
+    "bytes": 8192,
+    "clock_period_den": 1000000000,
+    "clock_period_num": 1,
+    "clock_resolution_seconds": 1e-09,
+    "completions": 0,
+    "depth": 4,
+    "kind": "io",
+    "peak_in_flight": 0,
+    "read_calls": 2,
+    "read_seconds": 1.0241e-05,
+    "rounds": 2,
+    "seconds": 0.009106835,
+    "setup_seconds": 9.080000000000001e-06,
+    "size": 4096,
+    "valid": true,
+    "variant": "buffered",
+    "write_seconds": 0.009083583
+  },
+  "raw": {
+    "cleanup_error": "",
+    "command": [
+      "/root/learncpp-c07/builds/final-linux-release-r1/uring/B01_costs/B01_costs_benchmark",
+      "io",
+      "buffered",
+      "4096",
+      "2",
+      "4"
+    ],
+    "error": "",
+    "exit_code": 0,
+    "process_seconds": 0.013229805000037231,
+    "status": "PASS",
+    "stderr": "",
+    "stdout": "{\"kind\":\"io\",\"variant\":\"buffered\",\"size\":4096,\"rounds\":2,\"depth\":4,\"seconds\":0.0091068350000000006,\"setup_seconds\":9.0800000000000012e-06,\"read_seconds\":1.0241000000000001e-05,\"assemble_seconds\":2.9399999999999998e-06,\"write_seconds\":0.0090835829999999992,\"bytes\":8192,\"read_calls\":2,\"completions\":0,\"peak_in_flight\":0,\"application_copy_bytes\":0,\"clock_resolution_seconds\":1.0000000000000001e-09,\"clock_period_num\":1,\"clock_period_den\":1000000000,\"valid\":true}\n",
+    "temporary_directory": "/tmp/c07-test-g935_cev",
+    "temporary_directory_removed": true,
+    "timeout": false
+  },
+  "sample_id": "io-buffered-4096-r2-d4-sample-3",
+  "seconds": 0.009106835,
+  "verdict": "VALID",
+  "warmup": false
+}

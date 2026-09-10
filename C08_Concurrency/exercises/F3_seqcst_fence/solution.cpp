@@ -6,6 +6,18 @@
 #include <future>
 #include <iostream>
 
+#ifndef CS_VERIFIED_CLANG18_GLIBCXX13_TSAN_LIMIT
+#if defined(__clang__) && defined(__clang_major__) && defined(__has_feature) && defined(_GLIBCXX_RELEASE)
+#if __clang_major__ == 18 && _GLIBCXX_RELEASE == 13 && __has_feature(thread_sanitizer)
+#define CS_VERIFIED_CLANG18_GLIBCXX13_TSAN_LIMIT 1
+#else
+#define CS_VERIFIED_CLANG18_GLIBCXX13_TSAN_LIMIT 0
+#endif
+#else
+#define CS_VERIFIED_CLANG18_GLIBCXX13_TSAN_LIMIT 0
+#endif
+#endif
+
 enum class mode { relaxed, acq_rel, seq_cst, sc_fence };
 
 int store_load(std::atomic<int>& own, std::atomic<int>& other, mode variant) {
@@ -72,7 +84,19 @@ int main() {
     const int sc = store_buffering(mode::seq_cst);
     const int fence = store_buffering(mode::sc_fence);
     cs::check(sc == 0 && fence == 0, "SC operations and symmetric SC fences forbid 0,0");
+#if CS_VERIFIED_CLANG18_GLIBCXX13_TSAN_LIMIT
+    std::cout << "SKIP: verified Clang 18 + libstdc++ 13 + TSan does not support std::atomic_thread_fence "
+                 "as a publication edge; store-buffering ran here and fence_publication is covered by non-TSan runs; see "
+                 "references/validation/c08-revision/tsan-diagnosis/diagnosis-20260910.md\n";
+#else
     for (int form = 0; form < 3; ++form) fence_publication(form);
+#endif
     std::cout << "F3_reference OK: both-zero relaxed=" << relaxed << ", RA=" << ra
-              << ", SC=" << sc << ", SC-fence=" << fence << "; three fence bridges\n";
+              << ", SC=" << sc << ", SC-fence=" << fence;
+#if CS_VERIFIED_CLANG18_GLIBCXX13_TSAN_LIMIT
+    std::cout << "; fence publication skipped under this TSan build\n";
+    return 77;
+#else
+    std::cout << "; three fence bridges\n";
+#endif
 }

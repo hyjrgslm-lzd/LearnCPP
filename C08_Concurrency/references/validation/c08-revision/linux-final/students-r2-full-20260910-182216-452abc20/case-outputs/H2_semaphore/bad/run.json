@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/root/learncpp-c08-builds/students-r2-full-20260910-182216-452abc20/student-validation/H2_semaphore/bad/build/H2_semaphore"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.003346136999994087,
+  "stdout": "",
+  "stderr": "Part 2: zero permits\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL"
+}

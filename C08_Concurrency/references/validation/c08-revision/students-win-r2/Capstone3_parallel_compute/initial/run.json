@@ -1,0 +1,13 @@
+{
+  "command": [
+    "F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\build\\sv-r2-win\\Capstone3_parallel_compute\\initial\\build\\Release\\Capstone3_parallel_compute.exe"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.4530000000013388,
+  "stdout": "",
+  "stderr": "GEMM integer oracle\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL"
+}

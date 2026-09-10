@@ -1,0 +1,160 @@
+{
+  "runId": "final-20260910-173010-d5356576",
+  "snapshot": "\\\\wsl.localhost\\LearnCPP-C08-Ubuntu-24.04\\root\\learncpp-c08-src\\final-20260910-173010-d5356576",
+  "copiedFileCount": 1601,
+  "manifestSha256": "c61895e3f0749f8706c3a9d11c5999a3899a065d6e8ddd989d78867523f3cc58",
+  "cppFilesModifiedDuringSnapshot": 0,
+  "noLogFiles": true,
+  "configs": {
+    "clang-asan-ubsan": {
+      "junit": "clang-asan-ubsan-junit.xml",
+      "tests": 70,
+      "skipped": 7,
+      "failed": 0,
+      "skippedTests": [
+        "F01_thread_attributes_reference",
+        "F02_hazard_pointer_batches_reference",
+        "M2_execution_bridge_reference",
+        "N1_numa_placement_reference",
+        "F03_std_senders_reference",
+        "F03_std_hazard_pointer_reference",
+        "F03_std_rcu_reference"
+      ],
+      "failedTests": []
+    },
+    "clang-tsan": {
+      "junit": "clang-tsan-junit.xml",
+      "tests": 70,
+      "skipped": 10,
+      "failed": 1,
+      "skippedTests": [
+        "B3_call_once_reference",
+        "F01_thread_attributes_reference",
+        "F02_hazard_pointer_batches_reference",
+        "F3_seqcst_fence_reference",
+        "M2_execution_bridge_reference",
+        "N1_numa_placement_reference",
+        "F03_std_senders_reference",
+        "F03_std_hazard_pointer_reference",
+        "F03_std_rcu_reference",
+        "runtime_scheduling_allocation_test"
+      ],
+      "failedTests": [
+        "M1_work_stealing_pool_reference"
+      ]
+    },
+    "frontier-clang18": {
+      "junit": "frontier-clang18-junit.xml",
+      "tests": 5,
+      "skipped": 5,
+      "failed": 0,
+      "skippedTests": [
+        "F01_thread_attributes_reference",
+        "F02_hazard_pointer_batches_reference",
+        "F03_std_senders_reference",
+        "F03_std_hazard_pointer_reference",
+        "F03_std_rcu_reference"
+      ],
+      "failedTests": []
+    },
+    "gcc-debug": {
+      "junit": "gcc-debug-junit.xml",
+      "tests": 70,
+      "skipped": 7,
+      "failed": 0,
+      "skippedTests": [
+        "F01_thread_attributes_reference",
+        "F02_hazard_pointer_batches_reference",
+        "M2_execution_bridge_reference",
+        "N1_numa_placement_reference",
+        "F03_std_senders_reference",
+        "F03_std_hazard_pointer_reference",
+        "F03_std_rcu_reference"
+      ],
+      "failedTests": []
+    },
+    "gcc-release": {
+      "junit": "gcc-release-junit.xml",
+      "tests": 70,
+      "skipped": 7,
+      "failed": 0,
+      "skippedTests": [
+        "F01_thread_attributes_reference",
+        "F02_hazard_pointer_batches_reference",
+        "M2_execution_bridge_reference",
+        "N1_numa_placement_reference",
+        "F03_std_senders_reference",
+        "F03_std_hazard_pointer_reference",
+        "F03_std_rcu_reference"
+      ],
+      "failedTests": []
+    }
+  },
+  "testRegistration": {
+    "clang-asan-ubsan-ctest-list.json": {
+      "testCount": 70,
+      "has_runtime_benchmark_tools": true,
+      "has_runtime_materials": true,
+      "nativeFrontierTests": [
+        "F01_thread_attributes_reference",
+        "F02_hazard_pointer_batches_reference",
+        "F03_std_senders_reference",
+        "F03_std_hazard_pointer_reference",
+        "F03_std_rcu_reference"
+      ]
+    },
+    "clang-tsan-ctest-list.json": {
+      "testCount": 70,
+      "has_runtime_benchmark_tools": true,
+      "has_runtime_materials": true,
+      "nativeFrontierTests": [
+        "F01_thread_attributes_reference",
+        "F02_hazard_pointer_batches_reference",
+        "F03_std_senders_reference",
+        "F03_std_hazard_pointer_reference",
+        "F03_std_rcu_reference"
+      ]
+    },
+    "frontier-clang18-ctest-list.json": {
+      "testCount": 70,
+      "has_runtime_benchmark_tools": true,
+      "has_runtime_materials": true,
+      "nativeFrontierTests": [
+        "F01_thread_attributes_reference",
+        "F02_hazard_pointer_batches_reference",
+        "F03_std_senders_reference",
+        "F03_std_hazard_pointer_reference",
+        "F03_std_rcu_reference"
+      ]
+    },
+    "gcc-debug-ctest-list.json": {
+      "testCount": 70,
+      "has_runtime_benchmark_tools": true,
+      "has_runtime_materials": true,
+      "nativeFrontierTests": [
+        "F01_thread_attributes_reference",
+        "F02_hazard_pointer_batches_reference",
+        "F03_std_senders_reference",
+        "F03_std_hazard_pointer_reference",
+        "F03_std_rcu_reference"
+      ]
+    },
+    "gcc-release-ctest-list.json": {
+      "testCount": 70,
+      "has_runtime_benchmark_tools": true,
+      "has_runtime_materials": true,
+      "nativeFrontierTests": [
+        "F01_thread_attributes_reference",
+        "F02_hazard_pointer_batches_reference",
+        "F03_std_senders_reference",
+        "F03_std_hazard_pointer_reference",
+        "F03_std_rcu_reference"
+      ]
+    }
+  },
+  "extraCommands": {
+    "name": "frontier-clang18-explicit-target-build",
+    "exit_code": 0,
+    "output": "frontier-clang18-explicit-target-build.txt"
+  }
+}

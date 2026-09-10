@@ -1,0 +1,24 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\build\\leaf-verifier-windows-20260910T225908-L06_process_ipc",
+    "--config",
+    "Release",
+    "--parallel",
+    "2"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 5.452999999997701,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L06_process_ipc/CMakeLists.txt\n  Building Custom Rule F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L06_process_ipc/CMakeLists.txt\n  Building Custom Rule F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L06_process_ipc/CMakeLists.txt\n  file_locking.cpp\n  Building Custom Rule F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L06_process_ipc/CMakeLists.txt\n  process_ipc_checks.cpp\n  process_ipc_checks.cpp\n  L06_file_locking.vcxproj -> F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\build\\leaf-verifier-windows-20260910T225908-L06_process_ipc\\Release\\L06_file_locking.exe\n  process_ipc_checks.cpp\n  L06_process_ipc_validation_bad.vcxproj -> F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\build\\leaf-verifier-windows-20260910T225908-L06_process_ipc\\Release\\L06_process_ipc_validation_bad.exe\n  L06_process_ipc_validation_good.vcxproj -> F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\build\\leaf-verifier-windows-20260910T225908-L06_process_ipc\\Release\\L06_process_ipc_validation_good.exe\n  L06_process_ipc_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\build\\leaf-verifier-windows-20260910T225908-L06_process_ipc\\Release\\L06_process_ipc_reference.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L06_process_ipc/CMakeLists.txt\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

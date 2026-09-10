@@ -1,0 +1,9 @@
+linux-asan-configure.log -> linux-asan-configure.txt
+linux-asan-noscan-build.log -> linux-asan-noscan-build.txt
+linux-asan-noscan-configure.log -> linux-asan-noscan-configure.txt
+linux-core-build.log -> linux-core-build.txt
+linux-core-configure.log -> linux-core-configure.txt
+linux-debug-build.log -> linux-debug-build.txt
+linux-debug-configure.log -> linux-debug-configure.txt
+linux-tsan-configure.log -> linux-tsan-configure.txt
+robocopy.log -> robocopy.txt

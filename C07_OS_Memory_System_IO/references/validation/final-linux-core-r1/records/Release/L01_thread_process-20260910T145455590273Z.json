@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-core-r1/core/L01_handles/L01_thread_process"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.0015566590000020142,
+  "stdout": "process_id=1206\nthread_ids=1207,1208\nshared_global_address=0x6296adbe62b4\ntls_addresses=0x7b255b1ff6bc,0x7b255a9fe6bc\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-47h4psws",
+  "temporary_directory_removed": true,
+  "name": "L01_thread_process",
+  "cwd": "/root/learncpp-c07/builds/final-linux-core-r1/core/L01_handles",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

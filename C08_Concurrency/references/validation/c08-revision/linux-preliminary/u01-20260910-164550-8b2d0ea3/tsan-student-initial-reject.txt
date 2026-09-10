@@ -1,0 +1,7 @@
+COMMAND: ctest --test-dir /root/learncpp-c08-builds/u01-20260910-164550-8b2d0ea3/tsan -C RelWithDebInfo -R ^U01_async_logging_student$ --output-on-failure --output-junit /mnt/f/CPPTrain/LearnCPP/C08_Concurrency/references/validation/c08-revision/linux-preliminary/u01-20260910-164550-8b2d0ea3/tsan-student-junit.xml
+START: 2026-09-10T16:47:46+08:00
+Internal ctest changing into directory: /root/learncpp-c08-builds/u01-20260910-164550-8b2d0ea3/tsan
+Test project /root/learncpp-c08-builds/u01-20260910-164550-8b2d0ea3/tsan
+No tests were found!!!
+END: 2026-09-10T16:47:46+08:00
+EXIT: 0

@@ -1,0 +1,2538 @@
+[
+  {
+    "path": "C07_OS_Memory_System_IO/README.md",
+    "sha256": "f7156dcf6b26b10631037db40ede10b5fc2dde9fddd219f3c1b8cce9e88cda2a"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/chapters/00-roadmap.md",
+    "sha256": "a19e8a6befef1196bcac6a4f79d4af0e3fb5fb65401725d9a4e2458b1bd01c93"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/chapters/01-system-model.md",
+    "sha256": "976cebc455ea6beb2e3e2e0f9d2fad4047503b3ff5ea8f970038a48675e7c12b"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/chapters/02-handles-errors.md",
+    "sha256": "9eaf11c3baa5a6d0e299e68db69c9c9e9c3d454130f402b156abb19898ad1753"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/chapters/03-synchronous-files.md",
+    "sha256": "b9a6c7cd27c445c0195e55bd9551636ca118b9c7ae2081d37b7034fc36c81f1d"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/chapters/04-virtual-memory.md",
+    "sha256": "b67e7fa0c02ae8f7338f9bed85c9614fad0bc66f8a0f7a07505ca83320ed61e7"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/chapters/05-file-mapping.md",
+    "sha256": "0e290ba7925a27f689cc52fad6d6e84a38ffd1309f6faca792dec1dd4a567931"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/chapters/06-allocators.md",
+    "sha256": "9f1653d7c8c650f40e7aac48205433a966360d19708a88da2e6a206ef02132ea"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/chapters/07-pmr.md",
+    "sha256": "c1efef31e88025c5a029621a08896b63e88bcb91b707a5ed9a0ef5cff21e04b3"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/chapters/08-memory-pools.md",
+    "sha256": "bc1d7ab41d8c169c630287cdd2f0923deaaef7fad7ccd236460548a94efaf833"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/chapters/09-processes.md",
+    "sha256": "de19312cd1a96a65e794619a4dc8bd6957474f230a372cf29c543307072f4a47"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/chapters/10-ipc.md",
+    "sha256": "f75dabf981115d622f86c8596262d212c73799f3b0a14dcf22f75cabe9e22762"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/chapters/11-readiness.md",
+    "sha256": "4fa1e7b8773127d25e5778dba7d6053a8e1b2348368c176a9dfe3b4178908067"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/chapters/12-windows-iocp.md",
+    "sha256": "57a874c54295a2e1095b247f8bc6261685d2d5309e1c61d48978560008130fb1"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/chapters/13-linux-io-uring.md",
+    "sha256": "ba2a4c233fd5b97eeb7ae7a1b26e483cf547272a1e0bbecfbc1bfc8bfee7e055"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/chapters/14-cancellation-shutdown.md",
+    "sha256": "b1a9bd93755143f6c56ece093c99878501cfdd1ef282a94aa4e5a197b5ada63f"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/chapters/15-dynamic-loading.md",
+    "sha256": "99ee8e22cff4742802c1126c85d48df08ea06cfae4dbaa7cf45d24a6d2723137"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/chapters/16-file-pipeline.md",
+    "sha256": "9ee795ea0b2d6bbf9e8e6bf229cc95508d53aa4bf04106d654042a28778685e1"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/chapters/17-source-reading.md",
+    "sha256": "811273b7187d4e02350cad0916b9b6b17fecf13397fdbc297cd9ad35322167c0"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/chapters/18-measurement.md",
+    "sha256": "ed67a77e395cabe70c80091e610c4ea3476c0717d0ac7be86b778bb94f1642c5"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/BUILD_GUIDE.md",
+    "sha256": "89806ec18d3be60deb12f3ee78f405d4afa27da44338e7b8370776cddcc6d3fc"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/CMakeLists.txt",
+    "sha256": "5a129c65fac7cc441bb55a2bc4fda94e5c07b20cab6934334c20998c67810dcd"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/CMakePresets.json",
+    "sha256": "4ced8fddc6f37ae4eb0d9d6d6c62f07c7c4bf71386d75c6713842d9be40acc30"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/B01_costs/benchmark.cpp",
+    "sha256": "2b52d38ad13889962d6ee6d8a95a6d5a599a9db030841fc7dfffad3d4ae6bdc2"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/B01_costs/CMakeLists.txt",
+    "sha256": "8eddfb2ccb622343b8893e5283afdadb2584abf7b8963bd745f95f3e27fe8429"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/B01_costs/README.md",
+    "sha256": "a2c62e28d225e946bee1df9b0636146ffd10542c7b235c8800d6ec54ea04ce5a"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/B01_costs/source_observation.cpp",
+    "sha256": "9c789130ca703c1c50bdbdbac1cdaaabc61c7cf3ea7da515016bbeae67e8857c"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/B01_costs/tools/sample_benchmarks.py",
+    "sha256": "96195a90f05eb59cdd04ec9993ddcd62f4dcd5fba5dc117bd70c84648b924ab8"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/B01_costs/tools/__pycache__/sample_benchmarks.cpython-310.pyc",
+    "sha256": "778b599c7cbf51b301c4e7f234b121f16400cb8962a6b272f05bf332abaddb3c"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/cmake/StudySetup.cmake",
+    "sha256": "b027fac5ce15d23efa72b5712d8180b1aede87631a12574eed92266ddd11d706"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/include/c07/completion_io.hpp",
+    "sha256": "541b843587a9defb143c3561a0fa6c2b072f4fe9b107e7db10793d2f3b70a21c"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/include/c07/file_pipeline_io.hpp",
+    "sha256": "bcb72a3e497d79645076684164642d5bb10e2f5e96e0e3b3bfa2a7998a97ca2c"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/include/c07/file_pipeline_types.hpp",
+    "sha256": "ea4548797e7f2be9568028ef5e7eba95bb2dfa804326909e842b87cd4efdde02"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/include/c07/memory.hpp",
+    "sha256": "f8c5b74e2dc4441cb61bc288254844867e141126b6e3b1c9ee0fd4ac4b37dfda"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/include/c07/os.hpp",
+    "sha256": "6ac255c83e34591ade3cf68754e475fff02cccac228949ba0666895062a34bb5"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L01_handles/CMakeLists.txt",
+    "sha256": "f15fde61fdad4f0108fd23fa7fba75989ffed7571b9aa1494b10ac13eaec7c22"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L01_handles/README.md",
+    "sha256": "b1d6b7fdc84318b34dbcea0bdde330ed142fc0a6bbb4635ab1110147914ff452"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L01_handles/checks/handles_checks.cpp",
+    "sha256": "a6b3098541486be23ec39b96d161eaf62cd49da856eaa1603010715dfdf84984"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L01_handles/checks/ownership_observation.cpp",
+    "sha256": "286c244752c61894d39604a2392f9e4a846e41dc3afcc86f13f9cd8828c5845a"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L01_handles/checks/thread_process_observation.cpp",
+    "sha256": "7a57fe1f56c05aef02254e819822a7b08608507232968f7321e86d1362d9b184"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L01_handles/src/reference/handles.hpp",
+    "sha256": "74785e0ca210415f0ce2c89a5bad92c405fb8b458831a800341822f54e74c63b"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L01_handles/src/student/handles.hpp",
+    "sha256": "dae7f95d61518a7efe6c89eebf6e44df98d814aad46c234575a5bbe1c07c058e"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L01_handles/validation/bad/handles.hpp",
+    "sha256": "48a606cc9d96469edf29ba46b843d4f929d5b5ab321ccac3c015ff91dbad53a9"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L01_handles/validation/good/handles.hpp",
+    "sha256": "8512a0760ba78cdc2628507b3d22c88e6798b9923b792c791c422687f426c5b2"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L02_sync_io/CMakeLists.txt",
+    "sha256": "a010c2aeea795f92832b09c91d9b8ffdf9ed93d646e379274da37c18de88059f"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L02_sync_io/README.md",
+    "sha256": "06600f144b78965ee7ff0c1372a45f52003c9d2936e8531e764e43746467aae2"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L02_sync_io/checks/sync_io_checks.cpp",
+    "sha256": "6926d086886bc4bd27286983ed922bcf56ca874df562d1c8f1578e1bbed59a4a"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L02_sync_io/src/reference/sync_io.hpp",
+    "sha256": "5d7d279a461158154bbe53d077705566e275ebbc7bf262437c2cc34f124c67b8"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L02_sync_io/src/student/sync_io.hpp",
+    "sha256": "67f24e08d7897f90fa087b2e3ef77e0ee104c1d84ee8c48a7f3e1f433b6a02c0"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L02_sync_io/validation/bad/sync_io.hpp",
+    "sha256": "3db492427c3d7a4956918326d60f23ed5247d4416ec79fa6cb1b8d85c20e47ac"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L02_sync_io/validation/good/sync_io.hpp",
+    "sha256": "208b1c647f977b21bf0c534a8c82c6bec88bb0f110a5f9e15a684d5e1a4eaabd"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L03_virtual_memory/CMakeLists.txt",
+    "sha256": "8dc9c6e8bff99f5f1a85da8cc0979b25e0c7df81fffe9ce8164c7aefa701ae14"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L03_virtual_memory/README.md",
+    "sha256": "8abad2481b1137457cf9156e65bc5ec176d0d24d77f19bf81e8d134c7c7e2757"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L03_virtual_memory/checks/virtual_memory_checks.cpp",
+    "sha256": "25457d8e8bccbdb55a12e659af45ad6ebb12c7e3b6e97dd215b5e8de2236a002"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L03_virtual_memory/src/reference/virtual_memory_lab.hpp",
+    "sha256": "65119c938794c1fb209c009d29d7dc01973f30880930eeec18774770c1a9e371"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L03_virtual_memory/src/student/virtual_memory_lab.hpp",
+    "sha256": "bc8a86b225e9ec8356e81b42fc513cd3379faf843d9c995c0f4b9afbe85d564f"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L03_virtual_memory/validation/bad/virtual_memory_lab.hpp",
+    "sha256": "39c1b3faff3646745113ddfbe8bee0f17901b71bc800e23bf7921b40c11a0ca6"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L03_virtual_memory/validation/good/virtual_memory_lab.hpp",
+    "sha256": "6b0a42c0705af497bb35e96a8de9bec121ac33cb5066e4819169575ea6b93abf"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L04_mapping/CMakeLists.txt",
+    "sha256": "344fe8269c63b36fa69f412d7185174565ab038d6e622a427ce33b719b21131e"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L04_mapping/README.md",
+    "sha256": "b3ad2db846d63420f832019006116ff6d0400888c923c7917bf398f195a8f272"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L04_mapping/checks/mapping_checks.cpp",
+    "sha256": "33c83113481e5fbc4c622f9f71b64e6691d757faec060d8a8a6dd737137a1073"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L04_mapping/src/reference/mapping_lab.hpp",
+    "sha256": "0c714a820df94b6712e4dabf901d4ac93041c9fbe1df063b3e10fd1751fe5ac4"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L04_mapping/src/student/mapping_lab.hpp",
+    "sha256": "07bfb1f8e2435c9b05351b1d787b107b04e69502493e853aa34036ecf3b3d0e0"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L04_mapping/validation/bad/mapping_lab.hpp",
+    "sha256": "e162ef9c7a75ca42092318e2e48de04a152043093c3def68b4c882b01563d461"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L04_mapping/validation/good/mapping_lab.hpp",
+    "sha256": "628e66e0ac3f48bf78c1b1475f4594dee947dceb255c4f43f2e64af29d31fe4a"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L05_pmr/CMakeLists.txt",
+    "sha256": "aeb51680b0ead68beb54d835a49711b788498fa5981bd7743b5ad02a12d3ac0e"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L05_pmr/README.md",
+    "sha256": "e61015586fe8ca3cf0960793dc024a5d0580418a6f7e1b275c5c1d46a8ed2f11"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L05_pmr/checks/pmr_checks.cpp",
+    "sha256": "52d540d543f661afc58fa4056bf8d460171abd2895cd6f1f4b780676911118bf"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L05_pmr/src/reference/pmr_lab.hpp",
+    "sha256": "b3ae1fe025b380a6c141670a6b74d3fd48a94ea91bcc6c64f59db86b67c9d746"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L05_pmr/src/student/pmr_lab.hpp",
+    "sha256": "757be915a9098d86dd0319879296af29cd20bd4e77a9725eb5e721b41e8f44f8"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L05_pmr/validation/bad/pmr_lab.hpp",
+    "sha256": "0659fc26df8d5dde795b1ea08ac52fd353a8dc39b2efc863cb4206443598d79e"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L05_pmr/validation/good/pmr_lab.hpp",
+    "sha256": "07200ced8c574673f5e328ce798b33b1da9045f8a13cdd81874b6460bde582d4"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L06_process_ipc/CMakeLists.txt",
+    "sha256": "89f39d4616c916044be71608f250fb14f2606853dead1726e3845f546cc88239"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L06_process_ipc/README.md",
+    "sha256": "ec3380e47711186db603070a8beba674f20d436faa642191c15d4d3d6ad01839"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L06_process_ipc/checks/file_locking.cpp",
+    "sha256": "31301fe5c4bc0a3b2e89b1e481ccbd1b6207da3af7bd9240ba3bbc5252ef04f0"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L06_process_ipc/checks/process_ipc_checks.cpp",
+    "sha256": "db10b448b154221dffe1a2d28d0072b5486e8d567d3708d0caa9974192ce36e8"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L06_process_ipc/checks/include/process_ipc_contract.hpp",
+    "sha256": "841301e4c67898470f6453f43632a868063c6ea3396c8232fed96aed0600a0ec"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L06_process_ipc/src/reference/process_ipc.hpp",
+    "sha256": "7e2d6ba0094db4b77a5bf66c845bfbde66699286446c5f35035713d1ad875283"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L06_process_ipc/src/student/process_ipc.hpp",
+    "sha256": "da99bbd504ca435b42ca642d91195aff82a96a6791aa6039cb560a79bd509d24"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L06_process_ipc/validation/bad/process_ipc.hpp",
+    "sha256": "d437193bae3c3601da0873543193157b0b6a32f7d40561c44eaad8fd07352bb3"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L06_process_ipc/validation/good/process_ipc.hpp",
+    "sha256": "7e2d6ba0094db4b77a5bf66c845bfbde66699286446c5f35035713d1ad875283"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L07_readiness/CMakeLists.txt",
+    "sha256": "4aca7bb53a2450a77a1f14320ce6559ec06505acfa9cd6a74cb16e57d294b512"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L07_readiness/README.md",
+    "sha256": "eec89e6ad0d0e7832e4bc701b098f8d325799101d76100242db92bd9cd6cb596"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L07_readiness/checks/readiness_checks.cpp",
+    "sha256": "9a5dd2684243019d3bd121970b66a8ff5ffec448ea3f6a0c4d278ee3176910ea"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L07_readiness/src/reference/readiness.hpp",
+    "sha256": "bfaebc833d477be13d46ebda0caa7aa1022c1d8e5882f0f662da6a632f39d420"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L07_readiness/src/student/readiness.hpp",
+    "sha256": "900bc85a775cee88e11c6831bb3a16036298cf224d4a2e038f033eea201afc2b"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L07_readiness/validation/bad/readiness.hpp",
+    "sha256": "8577467804be67acd27524a294e96403370ac97bde323afab0c735297288b55e"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L07_readiness/validation/good/readiness.hpp",
+    "sha256": "90843dc7798e1401f77afbebbbc4901b8d287b8f7aff0f43b057439e52c63437"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L07_readiness/validation/scripted_bad/readiness.hpp",
+    "sha256": "cc6747d6cf3d82b05a1c76710bcbcd4322ef50962d2f3adbd96145989b4fed19"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L08_completion/CMakeLists.txt",
+    "sha256": "9f3f0813fed60831685c561b20e7cd3644fe4e47842c971b167fb0f489d3afd4"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L08_completion/README.md",
+    "sha256": "7f20954fd55b1d573d54f0519e957e4d8fc49377762775086c2ba65609d33bf6"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L08_completion/checks/completion_checks.cpp",
+    "sha256": "ddb4de834aa4663ef63747d2e4d9bd45526420a4be7ac7021432dde70fd59ee3"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L08_completion/src/reference/completion.hpp",
+    "sha256": "8a5897b52064049a2bf75ef0177e0379c648b0f00923c58d49650c9b310074d8"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L08_completion/src/student/completion.hpp",
+    "sha256": "8fbc81082c2a49a281bc5f977a1de695f90867c400a0bc048c4e2d7e0baf106d"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L08_completion/validation/bad/completion.hpp",
+    "sha256": "20e3949785c044671ce6e842602ae0796db5dc8b72320f13010a877d6e1e69cf"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L08_completion/validation/good/completion.hpp",
+    "sha256": "1c084591d63f6c2db740bf2e4c78cc90a41c349c198f92b01c77e9a57acb5e68"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/CMakeLists.txt",
+    "sha256": "62cc0428056e7c183ab80e9fbfa81a937dd285a6466d05a21c35b23cee10d335"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/README.md",
+    "sha256": "c2c7c8adbc2eea4fbc746699166e7af4990a46cb0b396fce9f94141fb9b2f8c3"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/checks/dynamic_loading_checks.cpp",
+    "sha256": "e069ad3e35d05d0d2e4844fd92aa63c6d73d76afd06a5dd38464960e5e261feb"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/checks/module.cpp",
+    "sha256": "6a3774bc4b3667c2df253aabaed70b4f1d9357a88f5b64e4f8d94fd68a59ca2e"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/checks/include/dynamic_loading_contract.hpp",
+    "sha256": "a817998bf886bf9224f2e08fde553e1669464f9be8863bc9aa8f42e360760dba"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/src/reference/dynamic_loading.hpp",
+    "sha256": "5f442e76be43679e44f30707295d4e2940f479307ccd838041b80c4eaf509058"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/src/student/dynamic_loading.hpp",
+    "sha256": "2f93759882945e479c56e2b081c36ba78d0c614664f9759971ce09bccf620b3d"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/validation/bad/dynamic_loading.hpp",
+    "sha256": "1782e360c027298e2a3ed687f2db27e80f1a13f11f14d0e056ff5fac988edcbc"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/validation/good/dynamic_loading.hpp",
+    "sha256": "5f442e76be43679e44f30707295d4e2940f479307ccd838041b80c4eaf509058"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/P1_file_pipeline/CMakeLists.txt",
+    "sha256": "133e2068133da4a1d017687db8dc384fcbc3308b6c62a731721f56df54567f3e"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/P1_file_pipeline/README.md",
+    "sha256": "9be2bb4db52cd32a32c200b9da6cb3129399adc440c84406a269fd2634beec27"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/P1_file_pipeline/checks/native_failure_checks.cpp",
+    "sha256": "8a7aee3466dd0649441a41e5c5ad331cd27d0f35595d410f5d29440e1190f87a"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/P1_file_pipeline/checks/pipeline_checks.cpp",
+    "sha256": "b57b62562b3052ce4a358d7ffe18f164f92362a4d6bbc7ffb573f03de7b8ef38"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/P1_file_pipeline/checks/pipeline_demo.cpp",
+    "sha256": "befe1df61415347643ff73b6d431d392f10a60905461dfff5ec92a7a6ae1bf68"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/P1_file_pipeline/src/reference/pipeline.hpp",
+    "sha256": "98cf1afe67425302843becb79555d5a4bc0364741fbebae1205676e830c6f515"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/P1_file_pipeline/src/student/pipeline.hpp",
+    "sha256": "04ea0b49f2e9f1ebc5813b36ba444d70d0270c5f930a96a2df8d535005836883"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/P1_file_pipeline/validation/bad/pipeline.hpp",
+    "sha256": "7029da8fb4c59a56d1fe12b9295f8b69b14ccde8bdd1de0e5602b0c52077c5f1"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/P1_file_pipeline/validation/good/pipeline.hpp",
+    "sha256": "f8d9201fe3ee4a07a09457f83e8776771b526e7981583010ec98968ed7a05942"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/tools/audit_delivery.py",
+    "sha256": "a3a34ad8cc232b571949c585e307fdec4a20e3023636192b9400123075f914bd"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/tools/check_runner.py",
+    "sha256": "c8606a9a0f08efbaa92dbc13c39306604707c8c3a8a4dd7cb419c5fde9922bdf"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/tools/prepare_uring.sh",
+    "sha256": "4f2ff7b1116c70b8d3f20423abe93111ff1c89fe7a27642988827d58720d0bfb"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/tools/README.md",
+    "sha256": "2fdd3bae12f1e04f8b909c038e37e4c9a0f2ce422e5a5913790025fb7c4bbfb6"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/tools/record_environment.py",
+    "sha256": "3015c0ccf3158cf2d8e35a3cc5cb3fe195d0462bd00c213283c14d71365b0118"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/tools/run_linux_matrix.sh",
+    "sha256": "16c88abc98a419fb65694436c7e3adebca4719a06467da117d9c9c10ebe48c32"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/tools/run_test.py",
+    "sha256": "8d52998f301dcdeecbb76c9a9c329330ed51ed62c49b2142001f8d55cafb22ce"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/tools/run_windows_matrix.ps1",
+    "sha256": "9c64e679c73fb371fc9abf4abde3dd3b38e3339229d4583ba42a367b9e3680f3"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/tools/snapshot_linux.py",
+    "sha256": "d0bdca5345f62846e2ecddc2227197419ec1fb624e4e9735603eb3be4f52c41a"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/tools/verify_students.py",
+    "sha256": "488f7df65b07598b419d7792d99e08e5091b00d11651d73bffde8a0d81404a7c"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/exercises/tools/__pycache__/run_test.cpython-310.pyc",
+    "sha256": "6245aa1024a69bc7ba548e35503a8b86a85a605b315877c2d746453e731cab2e"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/coverage.md",
+    "sha256": "ba877bdae24b1de4a3ef748043a20b69b135da335bcf72df9eb8632ea99c0f1b"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/implementation-spec.md",
+    "sha256": "d290e6e0af1756a5b5c5b65905bc7cece7b787b3b545b1fa28a2adc0d94e7fcc"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/quality-report.md",
+    "sha256": "0de2435f1f28f09a0072e83086474df2d50cfb141a7154c7619162658a4fc2f8"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/standards-and-implementations.md",
+    "sha256": "65085fddaf7a29dd58370cfb1fd0e25124568603c6160646c22f574b2f97ce0a"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/b01-windows-build-r2.json",
+    "sha256": "b9eb4b9b858cc214dd27f98a3934b216cfc88eebe6035ca38530a8b635b62a61"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/b01-windows-build.json",
+    "sha256": "7201907f91c0f4ea0cb9442dc98a0b72c1c8cc41bb6467e5267b1d651d864316"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/b01-windows-configure.json",
+    "sha256": "34c8daf53600073f49701943ac928fd5496445be97d0cf1e0ca3f37207186602"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/b01-windows-ctest-r2.json",
+    "sha256": "7f6bff6799292bcc25984bd929040b9c2b908e3e90d39cd0f23b1468764a998d"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/b01-windows-ctest.json",
+    "sha256": "6c3b9c37bf95d473c61b8906c75772678647f022124148f6f7da36ee35e4d314"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/b01-windows-ctest.xml",
+    "sha256": "ed8b11d104f7c3c1119892a11586d38ad24ae458e9395e19ff197767ae274fab"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/environment-linux-initial.json",
+    "sha256": "2289957d24a150d0267e219327950099ea8232c9b44070ad6c13da3fbaecad97"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/environment-windows-initial.json",
+    "sha256": "cbcaf57327618a105a05d5fc32d4045332f01f8641b0c0b69e49621ca5135391"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/foundation-windows-configure.json",
+    "sha256": "aaefb75db0810b8809e0d2b76146000d1af3b7ec2ad1297edf0f441e1b1ae0b6"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/foundation-windows-debug-build.json",
+    "sha256": "103d5d584f79f7a5a4d0a3a311ee5d247929a0c2cec96f92300b676ce90e315f"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/foundation-windows-debug-ctest.json",
+    "sha256": "80048583e4b817811174ed70935b22b293b863cb58750e48f6f10e2d620c3f6d"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/foundation-windows-debug.xml",
+    "sha256": "d2683e4330c63febda3257a7108c171e84b057b90fe58fd91bdfc24f0ad33942"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/foundation-windows-release-build.json",
+    "sha256": "7f0127765407ba2281cc6637ba2be9c68bac37a9dc4ff37254e6282a3acedc4a"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/foundation-windows-release-ctest.json",
+    "sha256": "5bc50ce4d72eecc46ae6d522b8b351619673b48f12d4f39b2f8ab72842bc0cd0"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/foundation-windows-release.xml",
+    "sha256": "f497747838a5082b15f2eb757760b36f8553082c0fe97587980c6937ec9701c0"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/p1-native-failure-build.json",
+    "sha256": "531392e88b16c7e76a64955a11a33e2bed2f6ece705999b30207f3fce3f0ed4b"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/p1-native-failure-configure.json",
+    "sha256": "737286fbf8d922a78e12006a5f1668f88dd344d023abe8b966e190ebcb7db076"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/p1-native-failure-ctest.json",
+    "sha256": "c94ebffcc95db7f144483bc8bed61bf41f4b4f011a8dc67bea13383a5d99f7a0"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/pre-final-navigation.json",
+    "sha256": "6ab4f6f470bcf87b346ba0092c9d3257642066d3d5df84bcf4e68e810b3ea17f"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/runner-linux-fixture-control.json",
+    "sha256": "43dab9e67df83014cd2c42ff98279a166e2a98dc3afcff1bcba0ffd644def70b"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/runner-windows-fixture-control.json",
+    "sha256": "a4d32f382f29fb187356a0d6fe385da2e27aae02c65035c04988c8e5f10adb44"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/runner-windows-initial.json",
+    "sha256": "89cfd4a526f2f4632805fbf7caf01da531006b3e79310827fc8a1aefa87c05e7"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/sample-windows-r2-build.json",
+    "sha256": "686b55bea9e067243a9714a3c0e3f625dd86e1cda3af7c439f45d92822e2bf3f"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/sample-windows-r2-configure.json",
+    "sha256": "b640ba84d5e436cb4f1612dcc2fed03c7b9cccdffcbc13fc7714f910cdf1ac50"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/sample-windows-r2-ctest.json",
+    "sha256": "313de8f6ae3ef55b9a02ea7a68c594f2428c43b29ef1f42020af8bfbfc1017f6"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/sample-windows-r2-ctest.xml",
+    "sha256": "fb3a4fd65cfb8f2fcbd5a328c492ad7b6b238afec2020d51e5ce9a9ad2250b33"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/sample-windows-r2-runner-repeat.json",
+    "sha256": "c4921931d33581592894e73a2029a5a1667028d149ea8db3c79f987744207739"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/session-baseline-20260910.json",
+    "sha256": "f2d362329ba91b1cc81d8ce63bf975774df2238379f649f6dd8e6e6c4605b1c0"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/source-inputs-linux.json",
+    "sha256": "2838bd18bd706b6b41a2a9bfd00384de0bcd720e2e7ff4ee20ec4c2a3838ec4c"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/source-inputs-windows.json",
+    "sha256": "82752af1496240eb38959af2e20e870dad447437b3aa62c594ef1f2810f5abb8"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/source-observation-windows-build.json",
+    "sha256": "1909440b6c913f7280f92f777e7dadaf85eb6de1bef8495f7f71f8a19d77f3c1"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/source-observation-windows.json",
+    "sha256": "a972e31aa05d992e3d1b4cef962b5a9ba841bc56fa2e8243cf751740da92d216"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/tool-review-20260910.md",
+    "sha256": "a8fc98edf6ba627c28d340e65c22a9c3a825c92dded4b89eb036ae729088d73a"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/uring-setup.json",
+    "sha256": "5d25169784b0446bdb9ce16ed6c4ad230e9b04b5ca6d2348c08dfdb6f8fb352e"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/build.json",
+    "sha256": "f7fddfa8e6443144c5611ce73ab40921bc39107b2092d74bc7a5031d53a38e9c"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/configure.json",
+    "sha256": "b517ff86e43e36109e164370aaa6249922f65cb6bc8853f47ecec5c2cb047483"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/ctest.json",
+    "sha256": "e17e3c2885df9410d3cf10f77fe61bfdffdc5d0609739b08b6678584df0809b0"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/ctest.xml",
+    "sha256": "88d849eeda72f3b0dc3c4dbff4ca14202b6359ec4bca9bf6eb059a2baeec3957"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/environment.json",
+    "sha256": "7609a4831218d268b01f61874dd9ac8ed282620ac13fc386d83d3e8082749983"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/snapshot-manifest.json",
+    "sha256": "c3aa0431e28f8c4e7b7dabf7ecb4e84929af9407fbd8f70b483339d2fc3ec1d3"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/B01_completion_control-20260910T144956315213Z.json",
+    "sha256": "938a4883f90e5c87555c47c6da7165f1b906b980ae9be115b565ab362fa78e1b"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/B01_costs_benchmark-20260910T144956238209Z.json",
+    "sha256": "1a60cdcdd161b99fe2a153023266b579293e56e73869fde6db135460180b8c27"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/B01_source_observation-20260910T144956271051Z.json",
+    "sha256": "7f2a9126122ab2a93e05070f4bb0ff5cd963d0f774dd58f2dfe508d0abbd1cb7"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/L01_handles_ownership-20260910T144948287413Z.json",
+    "sha256": "ce407e054f3d0960151d3a58b8fbee93000e8eb26ed84fc16b9939af88cac7d1"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/L01_handles_reference-20260910T144948191761Z.json",
+    "sha256": "db58bbdc303e20b4a49e69ed31e6560d597fb2c6a103c72fd8e0b4cd1aba182e"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/L01_handles_validation_bad_rejected-20260910T144948256591Z.json",
+    "sha256": "16fdd84bb7fd2f02fc66ed3eb649945fbf92158183e5a47e7c2c0a5241adc5d5"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/L01_handles_validation_good-20260910T144948223511Z.json",
+    "sha256": "93d151947f7b1afb9abe99b7474fe94b92b21004f8ab37d9615186d9628d25ba"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/L01_thread_process-20260910T144948320186Z.json",
+    "sha256": "b9e92e78489c5c93ffb6f00324cda549f8f3c7245badfc646e90c69f0a3766ed"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/L02_sync_io_reference-20260910T144948354494Z.json",
+    "sha256": "ddcff7456cb485add44484c3b5bdd4a045a126656555fc1babea7c4ad305a2d9"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/L02_sync_io_validation_bad_rejected-20260910T144948424172Z.json",
+    "sha256": "e536eb3557677765152cf6e469dc13cc8aa7af3195b8956a715f0b902456db7d"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/L02_sync_io_validation_good-20260910T144948391852Z.json",
+    "sha256": "ef9281dd6bc210e51bef23067989ea2db4f1e0c3052cb35397a684333d296cb9"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/L03_virtual_memory_reference-20260910T144948459697Z.json",
+    "sha256": "aed24b4f7728858b4d43cc1598fefa83f2090d494fddacf5a1803766e761b29f"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/L03_virtual_memory_validation_bad_rejected-20260910T144948523825Z.json",
+    "sha256": "8ce6e031f3d20dc23fae998734f79a2103d56777dc6dc2e30eece64f06ca185c"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/L03_virtual_memory_validation_good-20260910T144948492672Z.json",
+    "sha256": "155807d535c9a284a7a070bab97b192d742a0d53b1288f4278d9fa7fdb42c3a8"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/L04_mapping_reference-20260910T144948561123Z.json",
+    "sha256": "c1e7d17376ede19755ffcc504b52d8261d74dd7add58e818d20fc266f27dca13"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/L04_mapping_validation_bad_rejected-20260910T144948629807Z.json",
+    "sha256": "97e48ca1a19d3af294e29c0e209049838b6840c5d7c1afca0311b65bbdcebf75"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/L04_mapping_validation_good-20260910T144948597214Z.json",
+    "sha256": "bea9e296e74b349a4ec6c38a291c540d162940e71927386440a4ddc69ae97515"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/L05_pmr_reference-20260910T144948667855Z.json",
+    "sha256": "9ddc88a5a04305fc6f9d094a7ba82f5a2292a86d4a939098844772e65e1df01a"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/L05_pmr_validation_bad_rejected-20260910T144948757351Z.json",
+    "sha256": "84a1b38c1226c097bd25cb6dc5df6b91a3ed90064613b77245a2952c16a8d9fa"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/L05_pmr_validation_good-20260910T144948704670Z.json",
+    "sha256": "37f355e7e017cc2a9e6d5c94caee23f53d3b4bf0796983b1b9b2b438a32e6438"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/L06_file_locking-20260910T144955364788Z.json",
+    "sha256": "25079510291030afb875041be915efdd3ae24ef9ea2a2e8dd691aebd5aec7553"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/L06_process_ipc_reference-20260910T144952012673Z.json",
+    "sha256": "4cc915f1f1273b40e00a49c292c27a57b43a5a925ab26069dc3efc0302eb0519"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/L06_process_ipc_validation_bad_rejected-20260910T144955301959Z.json",
+    "sha256": "52f0ec07b456bd279f5c9f1127cb39661620b3e9dbe52980b9550fe4db601c09"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/L06_process_ipc_validation_good-20260910T144955267713Z.json",
+    "sha256": "ff9c6a4f48ea5ec2afc15d8dfac867f252727e88a8b061a426571506cdc6d1b3"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/L07_readiness_reference-20260910T144955395974Z.json",
+    "sha256": "71d7391842d38c6a3d58132b588e346cadf938dacefb4c2e1830afea3d3ec38a"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/L07_readiness_validation_bad_rejected-20260910T144955460558Z.json",
+    "sha256": "2f397dbef4fa8a4f684042a494bd1f1475785e456dabb7f7170f76236c9f70a4"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/L07_readiness_validation_good-20260910T144955429863Z.json",
+    "sha256": "aad758b47efe78bd87fbf061598c87d3db99df0cda9e4addaacf130205541c68"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/L07_readiness_validation_scripted_bad_rejected-20260910T144955493226Z.json",
+    "sha256": "2f6cc5b3e1b1ec8c2edd86a1e4fc84abbe650f3e6336e6efc99f8d15f09996ef"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/L08_completion_reference_platform-20260910T144955627018Z.json",
+    "sha256": "c56306b1c512602d9eb7e22abf78fa45da1497bb0cbb39ddaefa7e984474cb1a"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/L08_completion_reference-20260910T144955526858Z.json",
+    "sha256": "9f51fe338ef6b4da944a161eaa4f5b720f58c1c4ca97e0ad3dacaff9aba0f040"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/L08_completion_validation_bad_rejected-20260910T144955593214Z.json",
+    "sha256": "cc2c6562651370b37e11140b04ac99985b5e2714eeb8482890fe65dc607aec50"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/L08_completion_validation_good_platform-20260910T144955662368Z.json",
+    "sha256": "d529a359260a41d812f017d53f0de47b51957656f6b727f193457374d2c5f974"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/L08_completion_validation_good-20260910T144955561950Z.json",
+    "sha256": "5ea862d1509529d3121002cfde6f6b4c9f005d46183e8bfe3dd4cba1c60df9b2"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/L09_dynamic_loading_reference-20260910T144955695969Z.json",
+    "sha256": "19d3070b448998505812884299776ef10953432e52aaf9dd1342382b579098c2"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/L09_dynamic_loading_validation_bad_rejected-20260910T144955767273Z.json",
+    "sha256": "bafab38155c1eaa802d72fbeef84cd033f581e8441251d3f74aa0710b47a6fdd"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/L09_dynamic_loading_validation_good-20260910T144955732035Z.json",
+    "sha256": "9c3d7d21e3ed16e4cba00b8c781a9fa1d8821a8344b76c0c8b1754ab99059259"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/P1_file_pipeline_demo_self_test-20260910T144955903414Z.json",
+    "sha256": "c7a609dcf6c9aebe34f54f7744bfad382660d9aad79bb4c5b38cb293041076c4"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/P1_file_pipeline_reference_buffered-20260910T144955944544Z.json",
+    "sha256": "1d22d80e4a2e0509b52e3f69d82753eeb8e4a8aebf9e48fc07d79295501a1f70"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/P1_file_pipeline_reference_completion-20260910T144956146064Z.json",
+    "sha256": "bc3e062206528eb246ff0401e7a7c9f0914f2b2ae879accc789bad2ea624512d"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/P1_file_pipeline_reference_mapped-20260910T144956026331Z.json",
+    "sha256": "d103581b637200718d02c0eb2e7df830df0fb48ca144f2e39c9ee6182d5d8a05"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/P1_file_pipeline_reference-20260910T144955802126Z.json",
+    "sha256": "12f1d6ed0bd9287755a8b98a9d1d6997f5e8256142086221d087b7833117e9b9"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/P1_file_pipeline_validation_bad_rejected-20260910T144955870488Z.json",
+    "sha256": "c5d87c70e9ae479e5433ef91a2c435f46ca57e7365db634a0757573711d1bc1c"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/P1_file_pipeline_validation_good_buffered-20260910T144955985814Z.json",
+    "sha256": "c49e1fe58500b09dd2bbe37121c944bfe04fa17c6761f0b5fa76f1f955a10b10"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/P1_file_pipeline_validation_good_completion-20260910T144956186057Z.json",
+    "sha256": "b4aff8d4bb3a238f5c0c01ca92e43d4380593527d1a09f37d60b89b016d86dcd"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/P1_file_pipeline_validation_good_mapped-20260910T144956062714Z.json",
+    "sha256": "c618af723c5a8ee92db08d77e83adf2e579e76bec543a886d16d376cada20fe0"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/P1_file_pipeline_validation_good-20260910T144955836551Z.json",
+    "sha256": "2344087bd8e2436355d91766b62e08ce4c08490f91186f75da310b3e3472415d"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-asan-r1/records/RelWithDebInfo/P1_native_failure-20260910T144956102645Z.json",
+    "sha256": "419e58cd9e4fc7d3d5572deb7a95121a3615807e572f035e16c5d0f5af14acde"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/build.json",
+    "sha256": "f4853d6f9e522e8516653cc3bfd6a652486ae958cdf6b3d3e462a0367dc97bf0"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/configure.json",
+    "sha256": "232007bde03192650248752c62a0bcbcbe261ca91f2aac0bd855d448f52d429a"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/ctest.json",
+    "sha256": "597ad35d9ba94913b6d0e11a7f1a4da3a849d7072a5af3747beac188bf06d3e3"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/ctest.xml",
+    "sha256": "5ae34c01cebd4fab2889d638f8d336bcd2062c21df57590075d8f9b48406d4fe"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/environment.json",
+    "sha256": "00e518ef7a48a71ad1c36e6bb259d026aa6965fe9c74881086472d67ab409704"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/snapshot-manifest.json",
+    "sha256": "913c5f8ffc9655e6dfcf53024eb78ad643d281dbb9dc783d4441684c8632553b"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/B01_costs_benchmark-20260910T145503248866Z.json",
+    "sha256": "06d0ad653db685427632349abb6d371eb36ce4989ec36b276ca0753870d4b5a6"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/B01_source_observation-20260910T145503278280Z.json",
+    "sha256": "2ddd94069c134f90779ee89eaf2f0c18652edc0ba400d1c879a842a61aefe0ed"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/L01_handles_ownership-20260910T145455558310Z.json",
+    "sha256": "bfac672f5f22db24c6bc90fa64d692af9c34e70fc623756e4c4b6baa91aeeeed"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/L01_handles_reference-20260910T145455452889Z.json",
+    "sha256": "18eef399bbc53c2eb56dcdee87c6b53708a9e3c466a124915959b438a7691134"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/L01_handles_validation_bad_rejected-20260910T145455524640Z.json",
+    "sha256": "85bb5ee9c13dd223ace4b6ebbcc78dd5647cbdf25c6affd63ab567896cf489e7"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/L01_handles_validation_good-20260910T145455485761Z.json",
+    "sha256": "8d851d13d0bb7c364ae89e303740b36bd5c0803e8ecad7f4de0dae8429057fa5"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/L01_thread_process-20260910T145455590273Z.json",
+    "sha256": "12740b8008355c8d1d4f2ee85af5ecfa2afa6734f75a7f9c8cae13804eac1bd1"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/L02_sync_io_reference-20260910T145455622837Z.json",
+    "sha256": "07a8b50bd1122c11f4df2d5e825aa57db337f1fa21a4ef5158c340151743242a"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/L02_sync_io_validation_bad_rejected-20260910T145455692122Z.json",
+    "sha256": "9d3a36954fbdbe41eacb3824860ee66247db18e529bc5d08c4ff7ab39bd28ef4"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/L02_sync_io_validation_good-20260910T145455656202Z.json",
+    "sha256": "180d9b13474d4608e2944a938ec5453ecfa97d8195be8085a6cc928e92ba99ca"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/L03_virtual_memory_reference-20260910T145455725652Z.json",
+    "sha256": "25386ed8b16917724a6c4d0db6e9a427111a6140f99ecc32c9bfa1cefecfaedb"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/L03_virtual_memory_validation_bad_rejected-20260910T145455793687Z.json",
+    "sha256": "e582b8ce9a10f44941d679405619342f2417c8f38e199ff04b41ecb13fe775c8"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/L03_virtual_memory_validation_good-20260910T145455756317Z.json",
+    "sha256": "feb0b2d608273e80a8eea5facf9bce296b376cda5f3f01ecd1e32d25702589a7"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/L04_mapping_reference-20260910T145455831139Z.json",
+    "sha256": "5aab193a534351a46350dbbcf079001a125eaf18f42e5274141d4446e4664159"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/L04_mapping_validation_bad_rejected-20260910T145455901594Z.json",
+    "sha256": "799ab397fd7da1320e773cb9a39e37bd734c88c774e9e57bdef69b8724ed7217"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/L04_mapping_validation_good-20260910T145455869792Z.json",
+    "sha256": "ebd59bfdf1832addb2b4bfc0b1ec26bf6e6248dcaf7ab27da551efe031cf2b9e"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/L05_pmr_reference-20260910T145455933373Z.json",
+    "sha256": "0fdf1a69abdc3997d787954530a344c739cd8da9e8f672381ed4d4fda8e0c418"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/L05_pmr_validation_bad_rejected-20260910T145456004835Z.json",
+    "sha256": "07415f1fff73fba1790e38c994559975e04a0aeab25f1c8a585f4ea6623335b1"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/L05_pmr_validation_good-20260910T145455975274Z.json",
+    "sha256": "eb19325b6ca71248f983f2472bc2e002cc193b470b614b20c94b3127b1863676"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/L06_file_locking-20260910T145502582684Z.json",
+    "sha256": "b0fd5746bde757193e4e8cd6b17f41bd6d3b7b9007a3c45becb7db26eef46a5c"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/L06_process_ipc_reference-20260910T145459243639Z.json",
+    "sha256": "5f3b8aa24ca8b856dc59460f4385dabb23d2bf891da053582aa90cb69314401b"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/L06_process_ipc_validation_bad_rejected-20260910T145502522898Z.json",
+    "sha256": "10653a3e05a6a08f35984012174270ff3585f3c7b189b8dd7120416ebf51b4e7"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/L06_process_ipc_validation_good-20260910T145502483508Z.json",
+    "sha256": "95684225f1e2caf2e08496667fcdd0f140712373625c3e19459812e83737e120"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/L07_readiness_reference-20260910T145502617460Z.json",
+    "sha256": "bfc6b109e46ee09186cdfea0d45943925050970e6866ad76d0b47fc2735ba251"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/L07_readiness_validation_bad_rejected-20260910T145502684686Z.json",
+    "sha256": "2e5db157dd7bcce9921b2cc583bd044cc45e8beb2885da4c7ff775a51c49635f"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/L07_readiness_validation_good-20260910T145502650169Z.json",
+    "sha256": "033d33d7eaa49c63099f1e23908fb6a672dc0ddecf2601131c78aff9abde4df9"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/L07_readiness_validation_scripted_bad_rejected-20260910T145502715647Z.json",
+    "sha256": "435dca93c3e6668c8a0fbd13f776dcc5c14a42344fa2ef3f095d291beddb0941"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/L08_completion_reference-20260910T145502748214Z.json",
+    "sha256": "ce9b9647f80cbf07d6bb02ae2c700d45e7bc634c9f87a703219482836ed896a8"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/L08_completion_validation_bad_rejected-20260910T145502819400Z.json",
+    "sha256": "a9c55d69ca47f621ebfb5ece682cb408686d72dc7ca7fb00504b1c7c9a16d94e"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/L08_completion_validation_good-20260910T145502783281Z.json",
+    "sha256": "a895b081f1dcfcd08ec54f6b040a9be54c142feb4277ec063b58dd09e86a7261"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/L09_dynamic_loading_reference-20260910T145502858049Z.json",
+    "sha256": "39f73a5469cecbe652be3eec99d010984e3f6f44d1cf9d8345d47b3512bcec9b"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/L09_dynamic_loading_validation_bad_rejected-20260910T145502926400Z.json",
+    "sha256": "3b9bb575e2701568c8b551dc15737066a4faddb6d6f71b4202a958a83d97ddfa"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/L09_dynamic_loading_validation_good-20260910T145502892019Z.json",
+    "sha256": "5c44094e96399e72ee0a0d2a73e91c356eef1872c792ea788e791602c04f33f5"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/P1_file_pipeline_demo_self_test-20260910T145503054999Z.json",
+    "sha256": "a98e4f647215f5df204f683f056a007e3de8ce65c9182a73d13ccc6c68a66047"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/P1_file_pipeline_reference_buffered-20260910T145503094462Z.json",
+    "sha256": "d248343484849562b0d3a57ddb64c6a220c28dd875963cea7953bd11298a4547"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/P1_file_pipeline_reference_mapped-20260910T145503167631Z.json",
+    "sha256": "d18afc09e8f21ac357fbc4e1c25c27380d48837d1e4ad99db8b4bb6a3da161b8"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/P1_file_pipeline_reference-20260910T145502957002Z.json",
+    "sha256": "0d705887436e4cf086e4ff27f53aee9374f5fe585218a72b21794173b38d7101"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/P1_file_pipeline_validation_bad_rejected-20260910T145503022272Z.json",
+    "sha256": "8f4096b2a7a10d681193772db2fe2f6ed003469b323198d10e7d47b45cea1605"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/P1_file_pipeline_validation_good_buffered-20260910T145503130930Z.json",
+    "sha256": "b4cfad73255445c36b825598bf7f84f88afb2e371ff1b4309a3dbc7096dd26f4"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/P1_file_pipeline_validation_good_mapped-20260910T145503202268Z.json",
+    "sha256": "ea9eddd4d826b5ac106efb47b157ea581116e8a87b218594371f804e7ec7db69"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-core-r1/records/Release/P1_file_pipeline_validation_good-20260910T145502989299Z.json",
+    "sha256": "ea6c726f78210eac4b2328087d32a6f55df42525ddd9453fd0d55ce3dac38987"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/build.json",
+    "sha256": "58d8dfa7e86e6e425f8295228bd3efcb935d0b7a391bd5f45a716caef6326835"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/configure.json",
+    "sha256": "42d5f21b763a8f1a1b75e3a754c4d11c8cb8825b096eb8a69d11ebc6025efc29"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/ctest.json",
+    "sha256": "12c46f6c7ad3d659fa88578d2708a2ba8d4b1388d3885154fe747f099d370130"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/ctest.xml",
+    "sha256": "482cad0ac16dbe80b0579489fe17e574fbf02577881ec2b98432ee9369e1e67f"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/environment.json",
+    "sha256": "9ed907bdc1a6a77816bd296167047f82153c2681252cd01255238c64ec343238"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/snapshot-manifest.json",
+    "sha256": "93c3a6fabdb729129600c83ee2550d4de2ad347794ab4161a5f4c602793e7e74"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/B01_completion_control-20260910T144339899837Z.json",
+    "sha256": "fdb26c2de771aeee850ed99c27ad3f1598a8a6c288351e205621fe4b87596f58"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/B01_costs_benchmark-20260910T144339825365Z.json",
+    "sha256": "801ac1a8d9e6640db92c48a80593df4ded8325452c190419788708eeac939757"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/B01_source_observation-20260910T144339855322Z.json",
+    "sha256": "711c42af6b66600d8e0d88f06d9395a2f3a74ebb8e48c5851b032a249444366b"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/L01_handles_ownership-20260910T144332071012Z.json",
+    "sha256": "3dd2687eee4479bccab686eae637add3d5f24e764736acfd4c7bc0a86d28d773"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/L01_handles_reference-20260910T144331979610Z.json",
+    "sha256": "6105594bd4f69954b07ec428e674e2dad262236252b689e1d579d13fe03fa7ab"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/L01_handles_validation_bad_rejected-20260910T144332042845Z.json",
+    "sha256": "1f734ae7b0fea049c1fd5df92b65811ddeabe0e6b27238f039b922c6a70f435f"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/L01_handles_validation_good-20260910T144332009081Z.json",
+    "sha256": "b3d2582a84762cb2697d9e1d8e003e0062046a492836ca7c142fb1afbd475eff"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/L01_thread_process-20260910T144332104052Z.json",
+    "sha256": "74c2b67d8813acf11a2daf3b444f513a680b50519c12dc0c35d4dd13ea960934"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/L02_sync_io_reference-20260910T144332134963Z.json",
+    "sha256": "60e199e382c12abfd4c0098230901c0281597d0dc0cc3e96dcf65805158a70d5"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/L02_sync_io_validation_bad_rejected-20260910T144332199815Z.json",
+    "sha256": "6537ce42072ab2b1b96a7a09d1a642cc40f04e5c806cff46ab789104597c7437"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/L02_sync_io_validation_good-20260910T144332166447Z.json",
+    "sha256": "e0ab3569474a7cbdb75e8aa0c108b814a8ee66b75721f9d81bb453076e70c5a6"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/L03_virtual_memory_reference-20260910T144332228419Z.json",
+    "sha256": "65506dffcb86163cdf5099a0f9d5a55a950aae6cf592bb078ad0487f545a4661"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/L03_virtual_memory_validation_bad_rejected-20260910T144332291698Z.json",
+    "sha256": "b209c25424de6c525d2031440b6ce24084f1c380525330e1916852ae8315c898"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/L03_virtual_memory_validation_good-20260910T144332259121Z.json",
+    "sha256": "10081a9d1be86fc7353733bf0e254128577ac608dd27d3e536c240e9ea53084f"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/L04_mapping_reference-20260910T144332328889Z.json",
+    "sha256": "3eef03a0761d427c3d24d437457112c53235f738539cc29f0acadb77bf3e49e6"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/L04_mapping_validation_bad_rejected-20260910T144332396761Z.json",
+    "sha256": "a0db78b2514c618a33904c8cb04cf18d31853336b9a1329c1d6880ac282cd2e4"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/L04_mapping_validation_good-20260910T144332362642Z.json",
+    "sha256": "1e740d580dcc5708b68e0b3b2f52f604dfd20388597b88466246403f9b0ae9a2"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/L05_pmr_reference-20260910T144332428822Z.json",
+    "sha256": "4baaa2cf3a24af28a4012b94c297428fbe2da948de9d07705b05108be83e1f39"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/L05_pmr_validation_bad_rejected-20260910T144332493214Z.json",
+    "sha256": "7cd98d2568438ae297e5da4c8ec1ec8f00b6812bff438d8c8bf62a8602acb20a"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/L05_pmr_validation_good-20260910T144332461164Z.json",
+    "sha256": "7257877c20249f6ef92ff31be8ed3d2e2b02dc9cfc54c8a0ef4195e830236a15"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/L06_file_locking-20260910T144339063383Z.json",
+    "sha256": "321e922071f0338908bbb59dde388204a3e88345c6edc232c150be7a961d3f65"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/L06_process_ipc_reference-20260910T144335734712Z.json",
+    "sha256": "e35d2bfea552d440490f09fa35695e21714a97b7df8fe0c84343e63085f22674"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/L06_process_ipc_validation_bad_rejected-20260910T144339004781Z.json",
+    "sha256": "adc314684f102f90dcae220cbfaba1980b6e2891c89b31aaefe04c1124cfe3ed"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/L06_process_ipc_validation_good-20260910T144338973810Z.json",
+    "sha256": "19734974841fe26fbe1d68f17a15e5f09a9863c3992dc98a34cc65ded93563ca"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/L07_readiness_reference-20260910T144339094340Z.json",
+    "sha256": "d5cf502f5df0e09a48428ace228f16126091d6c6b74448000db46e7580076550"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/L07_readiness_validation_bad_rejected-20260910T144339156086Z.json",
+    "sha256": "1cd90367557f757525928c4fa2a115ac1110d3ffc20ba7bbe816c13192499c55"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/L07_readiness_validation_good-20260910T144339127094Z.json",
+    "sha256": "9d1c12ce6f829c461f90d8ae71571f556d89ddb77cf0e2e812e622c31ddc0a36"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/L07_readiness_validation_scripted_bad_rejected-20260910T144339183213Z.json",
+    "sha256": "3bc6fe46c20db877fc3406a5c20ad498be58cdb711476a202e24f365d62de2d0"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/L08_completion_reference_platform-20260910T144339300385Z.json",
+    "sha256": "7734407f1a2bc2926e902383ca0a393fec17004bdfcef7568256a4641a0b4ffc"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/L08_completion_reference-20260910T144339211718Z.json",
+    "sha256": "10970f49866f517f6a9d10a2b1e183e6ecc378b7ae22ffec5dd677cf4f7043e0"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/L08_completion_validation_bad_rejected-20260910T144339271310Z.json",
+    "sha256": "3224e1e479be89e43a2eeee1e4c4df570dfbb97e941d309fcb8b12df12ef7b66"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/L08_completion_validation_good_platform-20260910T144339332465Z.json",
+    "sha256": "537d87d52ac81d3311b46f4c02d97c96157f456a251c7b0077f97278001f4bd5"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/L08_completion_validation_good-20260910T144339241458Z.json",
+    "sha256": "ca2dcd29c2c38e5f91e8b3e5850d4ec9507782f3eeba2fe8b88f9fcec71be8c7"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/L09_dynamic_loading_reference-20260910T144339362510Z.json",
+    "sha256": "ff9a98115bb5b18eda68e6849be69c7181ac9019a4edcdc7c80ae514feeb67ba"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/L09_dynamic_loading_validation_bad_rejected-20260910T144339422277Z.json",
+    "sha256": "ae8dd8266fbb5235d122f3813336310a33a9274d3236a08d6429eed9627cd6dd"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/L09_dynamic_loading_validation_good-20260910T144339392369Z.json",
+    "sha256": "596b9f8cd2ac4da5bcc113a3f2980258cf2bc3975b89676c9eb137e7297babd5"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/P1_file_pipeline_demo_self_test-20260910T144339547426Z.json",
+    "sha256": "45610eda148dff1c4355cca0d4a3d8a988c579543bb5befbcf7cd4c5ed1d2bf4"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/P1_file_pipeline_reference_buffered-20260910T144339581250Z.json",
+    "sha256": "1028bbda6b5052473d8a8607d11c185ba6c6cec26b3e3e19fa5ff7e296e7cc88"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/P1_file_pipeline_reference_completion-20260910T144339748433Z.json",
+    "sha256": "e977dd3a25de76d1248e59310a199cdc03236c22ee33c731c5619ac34f3a8dbd"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/P1_file_pipeline_reference_mapped-20260910T144339649157Z.json",
+    "sha256": "49fb77dca44dca191a4ae4fc7a82a940b4f3a0c7b98e2793fe7e54413972c461"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/P1_file_pipeline_reference-20260910T144339457587Z.json",
+    "sha256": "d4ab3023581254554c7968197092f7524aa949ffeee0303f25148f767e96186b"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/P1_file_pipeline_validation_bad_rejected-20260910T144339517298Z.json",
+    "sha256": "c9e499f02719ad58c359a1d54246ed1632f23e2b320da3a5934e9195253fdbc1"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/P1_file_pipeline_validation_good_buffered-20260910T144339615582Z.json",
+    "sha256": "e2f16b203ba88c8bb6da0f1aff9703dddb9576f9a5d5a1a013a6955b57ad8ac9"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/P1_file_pipeline_validation_good_completion-20260910T144339779902Z.json",
+    "sha256": "3f264062d2158268bb10f4e62c3bcad40effb75b3caf698cec78a1680d2cfd93"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/P1_file_pipeline_validation_good_mapped-20260910T144339681664Z.json",
+    "sha256": "192caf87cd5d2a7fb0de0a07bdb07e6a0da036b6ab0bd43e36b7e6fcb7ab22cd"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/P1_file_pipeline_validation_good-20260910T144339486852Z.json",
+    "sha256": "ba742f4e423d573b992175308713c628526216c5ac2874f7c300ae533152b0b3"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-debug-r1/records/Debug/P1_native_failure-20260910T144339713170Z.json",
+    "sha256": "bcc8fde89c9f6c6eb5be94f5503bb4682a7a09cad3371b691093e06fb2290e41"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/build.json",
+    "sha256": "c3da257a0e34835bc133943b746f298c766d10b1c3759dd41ab3cf0a44d4943f"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/configure.json",
+    "sha256": "26787446d4ce9f58f9436195c3d578608411ef07b1ce4c3a36eccdc7f01e4d27"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/ctest.json",
+    "sha256": "9235f71c803df86f91a5b9ef8cf276cef3763bf7bd5194809b83f043f1a7312b"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/ctest.xml",
+    "sha256": "ffb7661990c3f71ec70236da25e02dc1e9cb1af522d0ac9605eef2f43b0862d6"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/environment.json",
+    "sha256": "772aa57d16792f92d0b274ba959bccc3f88afcf2aa2f9589b3f18bde853b52b9"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/snapshot-manifest.json",
+    "sha256": "876df3f6f5ce61084d6361d48fcdf5980bde71d82c25202fa1da5efa5c176015"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/B01_completion_control-20260910T145335147769Z.json",
+    "sha256": "071afb78c46cd91f3f07c657ae61f03d153bada8c9bc01a1bbe48d7b84d2b433"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/B01_costs_benchmark-20260910T145335075974Z.json",
+    "sha256": "121c4a7090816c037a43e916eacbd55bb635345e08ad0ef8066819f27a0f35e3"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/B01_source_observation-20260910T145335108472Z.json",
+    "sha256": "7792d6b4ba247ebca2673e84b40d8bdcc336a7565a498db246c18815f94ea9ba"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/L01_handles_ownership-20260910T145327303926Z.json",
+    "sha256": "4641a63894af16b764de5721f3d660f421bbb90fc562c91d3a2f5e75d5cb4618"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/L01_handles_reference-20260910T145327209957Z.json",
+    "sha256": "1a4c4e4579a596210793ec8893d18726dee6c2fc8f3f877918ca149eb7f01bdb"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/L01_handles_validation_bad_rejected-20260910T145327275427Z.json",
+    "sha256": "a3fbfbf270991b06ecfa78945ccd17d4986fe54f76e0e58293668ed7c172c8dc"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/L01_handles_validation_good-20260910T145327245643Z.json",
+    "sha256": "f1bce6664a72086b4211c29576c3a4ea269372f7d6797327b5484a585efa9d59"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/L01_thread_process-20260910T145327338837Z.json",
+    "sha256": "a603dbded61bf29e1e9bdbf9dccfa0ba6f9926e71c92761a6701a69785e38361"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/L02_sync_io_reference-20260910T145327367368Z.json",
+    "sha256": "669cd50f81d7c1967414b7b883c21967ce487cae4402e6da448cd168fb7a128f"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/L02_sync_io_validation_bad_rejected-20260910T145327430408Z.json",
+    "sha256": "cfad2373331f1b0b9cd809c944591790504cf1dca3e5f153c8d5ba0dfed2ce74"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/L02_sync_io_validation_good-20260910T145327400495Z.json",
+    "sha256": "3aa17db5beaaf3b875436891c2cff61a68998fb7f39ba39c46c06e7fdd607d69"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/L03_virtual_memory_reference-20260910T145327464753Z.json",
+    "sha256": "a8908a79a3d008738434403e94ff6f1cc6f0e7ac3d03fed6748e729ae855b0c7"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/L03_virtual_memory_validation_bad_rejected-20260910T145327526630Z.json",
+    "sha256": "4cc02154e38540f3bbd76fa76e08633f865f63b33a16fab1252ef6dc2f3d7cbd"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/L03_virtual_memory_validation_good-20260910T145327495856Z.json",
+    "sha256": "f904c96ed6399b2275e0c996d0eb81b621a3b4c642ab0e54cbd3c38c9e052cdc"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/L04_mapping_reference-20260910T145327559100Z.json",
+    "sha256": "1909a9125241166cdb3c5a965ee6facc7e517831b525e179f4789a0819f4e61a"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/L04_mapping_validation_bad_rejected-20260910T145327621829Z.json",
+    "sha256": "35359b67ed654ef798e55868a089f3d3339a65277a9bf609f7749261860d87c3"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/L04_mapping_validation_good-20260910T145327591634Z.json",
+    "sha256": "eb219d52b2fc2f93099a2b0f6670819a84fbc988416d378411098e8841a9c3f8"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/L05_pmr_reference-20260910T145327652772Z.json",
+    "sha256": "12d3b4fda419bc73301d84238008ff4d49a33411433431313d156583cbb3c18e"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/L05_pmr_validation_bad_rejected-20260910T145327715604Z.json",
+    "sha256": "c7869f6c7b25f496791fc7bf1176bb92cd29c7bf676ef87fab47eddeb844c2cb"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/L05_pmr_validation_good-20260910T145327681920Z.json",
+    "sha256": "45dd738a31a8309394f92ff71ae38b138f5b550abe424191840a0c78bedfb446"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/L06_file_locking-20260910T145334297440Z.json",
+    "sha256": "03a32c7453ed272175c1b3f6198dcfca8fca35670c524b1fd5431c94a4f19c33"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/L06_process_ipc_reference-20260910T145330960783Z.json",
+    "sha256": "2553ac1b423a977abd78a52123ad039b6f17960530903b227c7157035fa2ee0e"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/L06_process_ipc_validation_bad_rejected-20260910T145334234287Z.json",
+    "sha256": "d9161b5a310c0d9ebd4954b341188ccc8928d4e6983fbc19213d535dc930599f"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/L06_process_ipc_validation_good-20260910T145334202413Z.json",
+    "sha256": "8e666d9e59b5cf2f3b299efff1468a0276ee49732cb8b7db1bfde9313e84b6e0"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/L07_readiness_reference-20260910T145334332495Z.json",
+    "sha256": "43ff93f5e562d441aedba573a8fbbb6e1b6b7249fa65fbb2d4022bce365dc736"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/L07_readiness_validation_bad_rejected-20260910T145334391617Z.json",
+    "sha256": "0e1d071cf8adf997b4fa821dbdf4a68ff02a8b7ed19b1107c7e82299d3e131ca"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/L07_readiness_validation_good-20260910T145334363597Z.json",
+    "sha256": "c1f62f81dafd86ea4835e7d37a85441cfe2783a4ad5d6e26660cbcb8d2499b0c"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/L07_readiness_validation_scripted_bad_rejected-20260910T145334419411Z.json",
+    "sha256": "1e9419e8303b1599da4669812c9718d2f8a892a9e923519d808569b745e38c72"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/L08_completion_reference_platform-20260910T145334530885Z.json",
+    "sha256": "26530c82f70324b32c048412dd6294c66c154fa7912e95d9d6a9f1a13a16c8fb"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/L08_completion_reference-20260910T145334447343Z.json",
+    "sha256": "2cab55813b4e093cb5d6212b58b20e1ca2b36c4cfafda97a7163a1922e4b7b14"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/L08_completion_validation_bad_rejected-20260910T145334503246Z.json",
+    "sha256": "34ec40a11c92fa1bc9cfe76b0917516777185916b71a2beae7f034f0b0d3a7f4"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/L08_completion_validation_good_platform-20260910T145334556846Z.json",
+    "sha256": "8587f092e4edcefc6d6282c24fa314b154fd0679fdc836f819273786322cc612"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/L08_completion_validation_good-20260910T145334474239Z.json",
+    "sha256": "dfda2249c9b0d065e32f4fa6f06864c45d33890f875982c1be1a7a354ff47eb4"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/L09_dynamic_loading_reference-20260910T145334587641Z.json",
+    "sha256": "f898782fc8f498dc1a0e101ae1114ab1af8401585b4552d900d7f40e54a6ce80"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/L09_dynamic_loading_validation_bad_rejected-20260910T145334654326Z.json",
+    "sha256": "b56ca62be9d5f0bc800e8ed011c27b7edcf6b4a2a6b99956c556f7bfc0f385ac"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/L09_dynamic_loading_validation_good-20260910T145334621017Z.json",
+    "sha256": "2c03c1b99cb8c27bf88b7086b318348a2ee049c7b1a868acda3c90696477b2d6"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/P1_file_pipeline_demo_self_test-20260910T145334787653Z.json",
+    "sha256": "d6245792c89974de0632fb8a6ecf2d804d252aa6ad7ca7cb0b05f06666419726"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/P1_file_pipeline_reference_buffered-20260910T145334825946Z.json",
+    "sha256": "5f0228b9bb5b5cdd4950673f771d00e50cb68eff7aa497918c91b7668afccbdc"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/P1_file_pipeline_reference_completion-20260910T145334997097Z.json",
+    "sha256": "cc11bdc4ead6726c094d1cb4f04d2c5c4e801d2c0258dfc0003008cf10e77fd2"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/P1_file_pipeline_reference_mapped-20260910T145334893820Z.json",
+    "sha256": "1b1dd54ec29245f6e12c7892f9d8555550f40065922379e3e2c0c6c22e61ae57"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/P1_file_pipeline_reference-20260910T145334688290Z.json",
+    "sha256": "b7f936ba12c956d6e53bbf50479119ccc1154f82ca99aada4dc22ef89485f375"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/P1_file_pipeline_validation_bad_rejected-20260910T145334757577Z.json",
+    "sha256": "1975a0f0e13a26823c2adff7a9e343582f05f1c77f70ec1203f586b678ddc93f"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/P1_file_pipeline_validation_good_buffered-20260910T145334859131Z.json",
+    "sha256": "e4380914c821b5b12efae88b719e29e1bf15a528b7a70234f5d1d175847d3a89"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/P1_file_pipeline_validation_good_completion-20260910T145335029032Z.json",
+    "sha256": "20912405a9f676c2156efb2c09844cfba0633b48a19d8d89c7a0c46adb06fe78"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/P1_file_pipeline_validation_good_mapped-20260910T145334928227Z.json",
+    "sha256": "6ddef773326f97b345c16030262781d2e96a80b57e092dbd52279d30e0fb6033"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/P1_file_pipeline_validation_good-20260910T145334724822Z.json",
+    "sha256": "6b57a77e8dfe1316a40abed1f16f32f9dda5612727624ab7f7c7f4b69a392be1"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-linux-release-r1/records/Release/P1_native_failure-20260910T145334963981Z.json",
+    "sha256": "93facacfd3dad6548a30266dcc26fc98da8a1390eee1ecd0093a49eef7ef403f"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/build.json",
+    "sha256": "62afd11059b354b25e42013013d7dd58d5c2d1de67ca846c7500ad3b56b12d84"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/configure.json",
+    "sha256": "2c8ac0dc8211bd4aec10b93014ab4c91c4b871b4bcd3ce0b5d64ca15a45af1c0"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/ctest.json",
+    "sha256": "c8b9b768156fee9703ebf4b26dd571bfddcbfc3fa8af42f420331fb1d58ba4ef"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/ctest.xml",
+    "sha256": "e9ad14e725298b69dcbd3c4bdfd8674cf93120219bd0055168ed9ba427754251"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/environment.json",
+    "sha256": "0dbb37451dbd33456621f0397e7c3fd9585fd7a793e7240f1caeaddc90fcffed"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/B01_completion_control-20260910T145351347703Z.json",
+    "sha256": "73e89a3facd56fa33fef66db7a5012cc571e2439f44eaa10280ae6684487301e"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/B01_costs_benchmark-20260910T145350613662Z.json",
+    "sha256": "47b56f151460a118164decbe0add1da2f1ed01a49867eda09baf38cba17acb97"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/B01_source_observation-20260910T145351202814Z.json",
+    "sha256": "94316f2ee532b7f2fc9ccefd3d9c02c0924336fcb053b6b548a3bd4c462a5452"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/L01_handles_ownership-20260910T145326930984Z.json",
+    "sha256": "38b9515930579e14ddda12927bde83db65c640da2b3dc2e72e69b1f5bbbff0b8"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/L01_handles_reference-20260910T145325197049Z.json",
+    "sha256": "d069df971c0cb7efc029526c5573d67fcbcd9b9f84f5eb50a9462b6af9c5fb04"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/L01_handles_validation_bad_rejected-20260910T145326352739Z.json",
+    "sha256": "9e3aa8d9f03d3ada4cfa370fb9bafb476a4c15deb0adbe6a4dd286e15bf231d3"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/L01_handles_validation_good-20260910T145325786136Z.json",
+    "sha256": "196761a807d22cb9968b60699616dd5c7c3640e02d5abc1a1054ee4b7b53803e"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/L01_thread_process-20260910T145327498711Z.json",
+    "sha256": "7020b536a2c3652a206bffb29b3c61656def869c97443463e2ec2005211f8e53"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/L02_sync_io_reference-20260910T145328056385Z.json",
+    "sha256": "79222f46d3c1dfa7543b2f70b71834ec8e4f2c6450195f30f8eb6f8bad06632e"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/L02_sync_io_validation_bad_rejected-20260910T145329164131Z.json",
+    "sha256": "d0f743cd2122e8977676283ed2786ce6b478895fdcb16da377030d8445d88123"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/L02_sync_io_validation_good-20260910T145328612931Z.json",
+    "sha256": "ff2c1adb35a93b56aa1117b5372904f83ae68bb8de966a2e8455791725cba196"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/L03_virtual_memory_reference-20260910T145329721755Z.json",
+    "sha256": "f2675b61e0f368dc76403a5a5b72bc40175f7d94ad7838df01626661f426701a"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/L03_virtual_memory_validation_bad_rejected-20260910T145330829298Z.json",
+    "sha256": "8e560205ce59b5e327b2c794226857c81360c7a8fdfe2c6f9f16b91cd21ba2a9"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/L03_virtual_memory_validation_good-20260910T145330280427Z.json",
+    "sha256": "b1e0914f955334a28b6f1c7e0c9f35f0523d4c4dbcaf81075b2adb35e57e13b7"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/L04_mapping_reference-20260910T145331405000Z.json",
+    "sha256": "029a5c90258a63c2b89f1154c7a9165c920722a3359705f4ab5a39746ee2325e"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/L04_mapping_validation_bad_rejected-20260910T145332505721Z.json",
+    "sha256": "c3ce5e0c6d67f096aa5bf9cfcd47aa9f1df061209db7b9e23270e6fbeca3e8dd"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/L04_mapping_validation_good-20260910T145331960741Z.json",
+    "sha256": "7d803526665590143d16ab3e020d3ac46127270a2de5531fd8ae683625a1d261"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/L05_pmr_reference-20260910T145333061792Z.json",
+    "sha256": "ae71bbeef652f9e27e3ed2c55479763a30a8deeed896a1554579cf9e56d98620"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/L05_pmr_validation_bad_rejected-20260910T145334202234Z.json",
+    "sha256": "46e617514b06135f883a9db86a687d7194656550abc512ad5feaa2cbdc190ff9"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/L05_pmr_validation_good-20260910T145333645374Z.json",
+    "sha256": "5846fde5925b9acb6dc09dc6aac70412ea615cc4dadd730d243c7153b4656a98"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/L06_file_locking-20260910T145340313483Z.json",
+    "sha256": "df89d3f1adafb1cb9cc31b2d8f635fad0a4b82cd95f5ed018d343b3ba659a967"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/L06_process_ipc_reference-20260910T145336672718Z.json",
+    "sha256": "2c9323c26eb87d8787455aa04d786aac2c35d67bdc7e686b8d6cf7f58d85c974"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/L06_process_ipc_validation_bad_rejected-20260910T145339723468Z.json",
+    "sha256": "c1f167bd6a2c7ce82ddfaefc39becda7f5f6b18e29a9f0897933275e95068fd5"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/L06_process_ipc_validation_good-20260910T145339145077Z.json",
+    "sha256": "50594987f608796bd978b23853c2e4ffe881fd02df6179fad96906c429b45492"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/L07_readiness_reference-20260910T145340893879Z.json",
+    "sha256": "4ea35d6a392d915c015beda83354e38b8968de510d537c1dd4680c66dcffdda2"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/L07_readiness_validation_bad_rejected-20260910T145342024341Z.json",
+    "sha256": "95b51cb3f28a099848ba7d8d399b7e0e550000929b3b46b19c24d18de77666a8"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/L07_readiness_validation_good-20260910T145341457200Z.json",
+    "sha256": "ee3e29f6da4c9074197d6e8768d58680c4e6b8708fbe98ecdce44ce16cda49e5"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/L07_readiness_validation_scripted_bad_rejected-20260910T145342587865Z.json",
+    "sha256": "7e939c2ab8a5f36e1730922ac9e18f260e1871be175bad2b26a999c57c369d45"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/L08_completion_reference_platform-20260910T145344421815Z.json",
+    "sha256": "b4243e4283151136c3c2012c377bcc13cebd79a4c8fc814e57946549631b0fd2"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/L08_completion_reference-20260910T145343154629Z.json",
+    "sha256": "a8c4dc06ab14c7aa644cce359123d4716bcf8cb5d6a3fa7faefc78847733ed48"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/L08_completion_validation_bad_rejected-20260910T145344283219Z.json",
+    "sha256": "b4eaaa2b83ef94ff6fd681e5110e290dee8be0a19d2eefe905ea3484bc4d04ab"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/L08_completion_validation_good_platform-20260910T145344568818Z.json",
+    "sha256": "e779f4fbc0e5c64eb402e9c18fb7112a55f3e903531e8f8db9d9c8c4cc61f987"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/L08_completion_validation_good-20260910T145343731042Z.json",
+    "sha256": "c345b0e31930e1bc81b7044d1586aaeadbff091ecc484cfe41284def93888d6e"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/L09_dynamic_loading_reference-20260910T145345135645Z.json",
+    "sha256": "9900e9f0ee1d2ebb2b4ef5675a3a81de44a5e68f3a3eabeb9297eb84b2288602"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/L09_dynamic_loading_validation_bad_rejected-20260910T145346253759Z.json",
+    "sha256": "aa6838dbee17b4004575fbc50a1af127d8f06f1a7c6e01441657434346e2131a"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/L09_dynamic_loading_validation_good-20260910T145345692161Z.json",
+    "sha256": "451cb62587bec566edc723cd188f1af534c1b07167e1451849be50b0f675eaea"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/P1_file_pipeline_demo_self_test-20260910T145348525085Z.json",
+    "sha256": "28fdba74353d1a3b9eea7a11aeb14db5e710a3b7753163d867606f7e1ed7cf0b"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/P1_file_pipeline_reference_buffered-20260910T145348666429Z.json",
+    "sha256": "fe4393037448c2f8f877c8a8083b854b60cde534f1134703be127f86becffa53"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/P1_file_pipeline_reference_completion-20260910T145349867223Z.json",
+    "sha256": "bd5d521b9f12265ee698947356b0e01f3aa23c8c5678f08654945d316120726b"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/P1_file_pipeline_reference_mapped-20260910T145348992524Z.json",
+    "sha256": "568ff627480157cd9ff93f452cb50b0cd7ffe1126ad635f95ec3b1b63c8603ab"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/P1_file_pipeline_reference-20260910T145346862567Z.json",
+    "sha256": "af257152765bfb204e28b86d113b07879b8db0c6618e2ef9499e29067d2c40fa"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/P1_file_pipeline_validation_bad_rejected-20260910T145347970782Z.json",
+    "sha256": "c116011819fc63309ea5d42944b0df180b0214a8d2b524ef599f36080355a623"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/P1_file_pipeline_validation_good_buffered-20260910T145348821333Z.json",
+    "sha256": "d6b4103aa550a787fe58470b9bf2c59f31feea561eb2ff74ad62418cc0014036"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/P1_file_pipeline_validation_good_completion-20260910T145350022741Z.json",
+    "sha256": "bd80a65a00f046812ed0a835a38350938368e0f5623315cc9166eb6c5f93b77e"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/P1_file_pipeline_validation_good_mapped-20260910T145349143461Z.json",
+    "sha256": "51f1875f5941341bdf41904ab7e86984a3024291d4df897c4656402fb266cc56"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/P1_file_pipeline_validation_good-20260910T145347416837Z.json",
+    "sha256": "62bae1ead8afeafbbd846cb8568e4549c02c8696506aeb0217c1d170cc116359"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-asan-r1/records/RelWithDebInfo/P1_native_failure-20260910T145349702909Z.json",
+    "sha256": "16dabcbaac6a29ba587ee68e7a712ec13c207942150fc6926ab8f4122c42293e"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/build.json",
+    "sha256": "14e2eb25172b42b199b31b6c8c35f7f8737c170fd0f3ec13ef3769d10495e260"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/configure.json",
+    "sha256": "59f19ea36757e7eff76a5c557e6a1e17c344d4fe428dbfcf7e47be31f70bbbd1"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/ctest.json",
+    "sha256": "8aad964e042820910f8a15e28ba2caf6cdf6429546ae7071b4b8b9651f07d9a0"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/ctest.xml",
+    "sha256": "c198f2af4137c8226a7bf9d20323335582f66e7eabecd878f32b148edc6cf7da"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/environment.json",
+    "sha256": "ef919f40d3810deeb7633f1c71ed6106721d20204a29756d09b81e6dbaf5cdd6"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/B01_completion_control-20260910T144958173525Z.json",
+    "sha256": "06df2909c612ba4f16a7d6c0ce5a6e5a2f20b7b7763d590633a5daba715940f3"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/B01_costs_benchmark-20260910T144957500915Z.json",
+    "sha256": "9b7d0e960dedf9e1025c3d8eaedfc3824e151524d7bb1cc9b8718102ded0e876"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/B01_source_observation-20260910T144958034634Z.json",
+    "sha256": "49146ebd0b5c8fd0052c46c936053eddb1a542d2fdc788f2006b069f15ba2e6c"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/L01_handles_ownership-20260910T144934490013Z.json",
+    "sha256": "b9a0b6348c38503956dbc85b8d6e0c0e1ae4d007f53d43c4c8e2e9f96df17418"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/L01_handles_reference-20260910T144932670967Z.json",
+    "sha256": "4c414ea057b425b6334a17388d7e79f11020114d1bc88af5f33741bf45ca479d"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/L01_handles_validation_bad_rejected-20260910T144933824465Z.json",
+    "sha256": "250b6f70f3ea4690a5e7f688b587efa9f8dfcbf6f33e6a5297c1a693091e58c1"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/L01_handles_validation_good-20260910T144933224345Z.json",
+    "sha256": "c9b5298ecd15a7e195361365752ba7811edb133bbf56de67af4730e0be8b9689"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/L01_thread_process-20260910T144935040476Z.json",
+    "sha256": "93085c906dda94817d4bce7a2a54f8dae1fb02fd7d1abf07e0e6a07c37b1b682"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/L02_sync_io_reference-20260910T144935626918Z.json",
+    "sha256": "7aa9f93c98ab994de6197e45085660bea47390842fc7dd9d4d8262773ae6b2f9"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/L02_sync_io_validation_bad_rejected-20260910T144936766273Z.json",
+    "sha256": "ddef76f4c90fe07758b0ed86552a5335bfcf3bea32542504cad0b4679463e132"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/L02_sync_io_validation_good-20260910T144936203950Z.json",
+    "sha256": "c26513a60d83595da5a66e68715088be94c9baa243c4196d4fb6ae1653bbd5c3"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/L03_virtual_memory_reference-20260910T144937334761Z.json",
+    "sha256": "8356ae845249ed416849c7a1c8d10ea54e798451b26b9234419d9e2b902e23db"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/L03_virtual_memory_validation_bad_rejected-20260910T144938456178Z.json",
+    "sha256": "7bbc93acb501c4592eabde55514c0cb40ec48fb3498888c315718aa945dd5064"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/L03_virtual_memory_validation_good-20260910T144937878904Z.json",
+    "sha256": "8a950c9bfc5b6d635c2a3936ea42db2a443eafde9ea593c584a48ae9a69ff06c"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/L04_mapping_reference-20260910T144939051843Z.json",
+    "sha256": "61432eb70b3b78154c20edebace3d3b43482096d0acebc7685a84e5709ff357d"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/L04_mapping_validation_bad_rejected-20260910T144940215623Z.json",
+    "sha256": "0a4b6b979e152f2631c0045eb273b161495804768aabc059e9f4de79f4f1f75a"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/L04_mapping_validation_good-20260910T144939628987Z.json",
+    "sha256": "fcadeca85889d88677ea2dd927005acf3a234139b0be09fa05e54fcac5b3eb49"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/L05_pmr_reference-20260910T144940785611Z.json",
+    "sha256": "f9d2988d9d39607195d782a722afb4e276eab762e304cc9f0014d18420db948f"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/L05_pmr_validation_bad_rejected-20260910T144941873957Z.json",
+    "sha256": "adef1a0796dd7359fce02111fb351570bdb06bf34902f4b808dfc0e193b2cbd1"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/L05_pmr_validation_good-20260910T144941325299Z.json",
+    "sha256": "d6ce7a50dea0901b569a44afa00bbe83e0ea862a5f30495c0aeb6fa88fcead5d"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/L06_file_locking-20260910T144947829430Z.json",
+    "sha256": "16217daa3e414b7f6cef7b578e00fdca5054a2ca7e5199d9693c8e74684b4edd"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/L06_process_ipc_reference-20260910T144944336738Z.json",
+    "sha256": "b046456dc80946f4ec94dc37286bda7e38e0628c5c858da653a1ef2fb16c006d"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/L06_process_ipc_validation_bad_rejected-20260910T144947283665Z.json",
+    "sha256": "d7c22f744b0fac42b862aa0eed94eecf956dd27643af909fa3ec491e10926c9a"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/L06_process_ipc_validation_good-20260910T144946745845Z.json",
+    "sha256": "b4a91d83a4b47d5212ccbc1a3c19cf850489d92299678e818f85032ec7f3c665"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/L07_readiness_reference-20260910T144948358119Z.json",
+    "sha256": "46e98ffdc87671e28172efa687f2a7cbf428214925f5292788a7a672233a8a2d"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/L07_readiness_validation_bad_rejected-20260910T144949428887Z.json",
+    "sha256": "3b497951763d859b7da2b955989ca9077bf161d7fbeb30badc013aca74536008"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/L07_readiness_validation_good-20260910T144948897433Z.json",
+    "sha256": "bbe516b5f45b1888b7ef912806e77874d150dc9bebea106b9907aa97b7395856"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/L07_readiness_validation_scripted_bad_rejected-20260910T144949985481Z.json",
+    "sha256": "c8389735609ed6f80bae6b0ebd2ffa972148d4fe3670d8dfc7cc64dedfd76455"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/L08_completion_reference_platform-20260910T144951684998Z.json",
+    "sha256": "84fbed3fadd493eef9a7757badfcf21c7ee12be7d67c216c739f20017eb697fa"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/L08_completion_reference-20260910T144950508050Z.json",
+    "sha256": "a63c5cf8a45616413f7e8735f634c4fce12fc555ddecc89264f1b55343256654"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/L08_completion_validation_bad_rejected-20260910T144951563776Z.json",
+    "sha256": "797ec94a42f015c5225f049f3bebc943fb14445e38d9d6b725ae4c0e23d0dd8d"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/L08_completion_validation_good_platform-20260910T144951803854Z.json",
+    "sha256": "28590dada9b43631ada4b1267a880fd6c432c31b6f80b078dcc1d4465fe47b4a"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/L08_completion_validation_good-20260910T144951037461Z.json",
+    "sha256": "4f4b95352ee6ec299e5ab20fa4db6f7abb785b8b3a50bec986dfcc2e9a300895"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/L09_dynamic_loading_reference-20260910T144952334438Z.json",
+    "sha256": "c96640d8663169e7397a71b2fb0f54c0a702ca3fe4cc0f0662db848e4abd94a2"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/L09_dynamic_loading_validation_bad_rejected-20260910T144953413334Z.json",
+    "sha256": "2dc2ba70cbb56114cfb5e1756c6630fa3561c10e1b20aeb30e5150a9e38924e8"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/L09_dynamic_loading_validation_good-20260910T144952866645Z.json",
+    "sha256": "c7ea2a33ebff71d2a9493cd889d9996f31776de68044afb06512be24498f46e5"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/P1_file_pipeline_demo_self_test-20260910T144955612476Z.json",
+    "sha256": "3e4f977381b0b514c495685113cc37beb1c55b9e6e9ccce373fedf3bc1512565"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/P1_file_pipeline_reference_buffered-20260910T144955746758Z.json",
+    "sha256": "6689c9b7a374e2f256263c1f8141ee05e178a617ca9874d61360e04c12fe9474"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/P1_file_pipeline_reference_completion-20260910T144956828394Z.json",
+    "sha256": "0278e17002fd0bc14c78ed1b284c58eb507182817806c576e392d99558109373"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/P1_file_pipeline_reference_mapped-20260910T144956002238Z.json",
+    "sha256": "b82c18677817b596b19853f2c8de6a459efbeef934b8ab8d3944fc40e71679df"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/P1_file_pipeline_reference-20260910T144953976099Z.json",
+    "sha256": "7298a0d05c4e6756dac6466aa76fbf130c893ddf4ce058be1da283ec49406d12"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/P1_file_pipeline_validation_bad_rejected-20260910T144955084008Z.json",
+    "sha256": "ebc790014b0053056f722a547cfb67157b4eae81f3a2c87e1a2865ed80953bcc"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/P1_file_pipeline_validation_good_buffered-20260910T144955877255Z.json",
+    "sha256": "347682b8bd1033639720cea6beac3754e02c2e5d0b0c62b4f61bc2dcb3ef88ca"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/P1_file_pipeline_validation_good_completion-20260910T144956950955Z.json",
+    "sha256": "7135c8a92bda084b0f122177014778e0e5d955521b49794b045465eb1ad235b6"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/P1_file_pipeline_validation_good_mapped-20260910T144956145254Z.json",
+    "sha256": "1182bdf251e2b9aa4bd44adef3a7d68f92fb20510621eed9a0c13d5154e89dd0"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/P1_file_pipeline_validation_good-20260910T144954549737Z.json",
+    "sha256": "c274a0122e9ab18ae9bc01f4b98f541a18fdf2cb6abb8c314855e183302d259f"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-debug-r1/records/Debug/P1_native_failure-20260910T144956694751Z.json",
+    "sha256": "5990695b7c6d523fe1b29e8e9ee4452f7b4ec2ef5002447a93b1c2f1a3505fc1"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/build.json",
+    "sha256": "e59a8fdbd33245e25d30439f52d7ed402c6dde7661f9dbd7df39edb9a3f61f46"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/configure.json",
+    "sha256": "61e8b5b83725987a85772090a847016f944197c164ce8b9d98da1d4aa8b320a6"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/ctest.json",
+    "sha256": "7b74a5a34f3d614f9667a01f55a45885c69d3ef290e883596c91f453b04e7e06"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/ctest.xml",
+    "sha256": "76ae429e815b6fb2090180f352bca973a1df4492a7028b86ea079a830b4af15a"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/environment.json",
+    "sha256": "2a98f9373486df1b07ab1306dcd36e0791a666c70939f982d06cddb0d33660c8"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/B01_completion_control-20260910T144357196013Z.json",
+    "sha256": "33901f7978911533440117e13952344121cb8c9f9751614f67db57ef83db599e"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/B01_costs_benchmark-20260910T144356519927Z.json",
+    "sha256": "ff92a37d319921b1871f6a39337d20913c4e6ad9add47535206e3ca79a6f53a0"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/B01_source_observation-20260910T144357049738Z.json",
+    "sha256": "c065c0325b67c70af98088a5080599ca0b5d0298499575cbcbf954bb75e38d82"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/L01_handles_ownership-20260910T144334096844Z.json",
+    "sha256": "5132aa5ecfd3191c7277f7e60941be4ac880dbf42561b123dc970769fb7911d6"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/L01_handles_reference-20260910T144332469512Z.json",
+    "sha256": "4a19b6287d2f3752b03b0fe1d21929e9042ea196b5132a164d6b9357f98e6c93"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/L01_handles_validation_bad_rejected-20260910T144333564638Z.json",
+    "sha256": "e4c391eb7004d169b0dc681322a30385d0dd09434d361f6e58aec03f73b4e77d"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/L01_handles_validation_good-20260910T144333021359Z.json",
+    "sha256": "e236949dda0dc5d3382477949ace7cd6b7470dc178a44f9e0412e20b8874c1eb"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/L01_thread_process-20260910T144334643888Z.json",
+    "sha256": "2cef86d7d7c2975b5a97c8afdcb32c37e6535a0a2cb2877338c3c16ec606a99f"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/L02_sync_io_reference-20260910T144335178390Z.json",
+    "sha256": "1183de88551eb821ec7a30723b40a4ba25a5f82cfdc7191c740c86e1d2ec203b"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/L02_sync_io_validation_bad_rejected-20260910T144336250273Z.json",
+    "sha256": "6119ec866ae867eb680c7d5c0cd00b950b7dd8eb8ab3f3e74864c59cf5088f5d"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/L02_sync_io_validation_good-20260910T144335723845Z.json",
+    "sha256": "1d05bf1e54379a2900e217db069edadf891fd5eabd7b6443eba5ad7919723af4"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/L03_virtual_memory_reference-20260910T144337073047Z.json",
+    "sha256": "3ea31c866196af17056a1df6e3ec7f10999f1c9a49c6726e816a0560fd80cd2b"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/L03_virtual_memory_validation_bad_rejected-20260910T144337754803Z.json",
+    "sha256": "8d49e8602f6e0e3f82f120ccc8717fde153555830ca12641f0f73ece7275d682"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/L03_virtual_memory_validation_good-20260910T144337216549Z.json",
+    "sha256": "466330a7a7f1a8a2e3389402196c3b7903d620fe703160ba2c76d7e7da6b467c"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/L04_mapping_reference-20260910T144338300575Z.json",
+    "sha256": "f66be0fdab7c4e943e6475985e4e42c4f27d2c19ac6115ce627da9da3d3b6d8e"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/L04_mapping_validation_bad_rejected-20260910T144339390822Z.json",
+    "sha256": "547e8a2a44ccdbe1c83f22ced5c4696507545f1c31e245db145bd1095953a39c"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/L04_mapping_validation_good-20260910T144338852063Z.json",
+    "sha256": "aa2d57f41152bf6cd24f2c950573f335c40cfa3fe03efd35304093fa001fa850"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/L05_pmr_reference-20260910T144339949499Z.json",
+    "sha256": "eee8ca5cd8a9d00cb7009ebb81c3dc0b2d6d604595f702354d2461556da8d383"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/L05_pmr_validation_bad_rejected-20260910T144341022387Z.json",
+    "sha256": "17dc305c518002aecd82df02a449926717279e208951d80db938bf2c1223d443"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/L05_pmr_validation_good-20260910T144340489558Z.json",
+    "sha256": "f8de9fd82bcf5d685ce731a9fd42f33cb09daaf6e96312a3ddcc65879f70cb18"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/L06_file_locking-20260910T144346544116Z.json",
+    "sha256": "5c3e1c544c63a824eb17e9066fe18c6a344ddddc222938b93572288f50b65917"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/L06_process_ipc_reference-20260910T144343443169Z.json",
+    "sha256": "e681f3c91b108bda98a90f9bb8227ff6def767e5a26abf7b7132b5997469e879"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/L06_process_ipc_validation_bad_rejected-20260910T144345993739Z.json",
+    "sha256": "c95dcf369dc13649b58366b14d1f77fd35aefd04644f7ab229fd84af68fa444b"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/L06_process_ipc_validation_good-20260910T144345451690Z.json",
+    "sha256": "8ba54b0dc41f826122f542a047fa61d790b043ac687974f471185d0ee0ba333c"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/L07_readiness_reference-20260910T144347086528Z.json",
+    "sha256": "4a0ea94bada1f8e4ca72ec567531315f915a96e638011da577e3bcd8245aa13d"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/L07_readiness_validation_bad_rejected-20260910T144348176247Z.json",
+    "sha256": "0b15e3100c92d90456a0bf5c4292762d1c8480761e2ffeb4062f1e9f3c18bba8"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/L07_readiness_validation_good-20260910T144347639029Z.json",
+    "sha256": "7e8c61c7512226b92f8d80dc9c13703069a3560dadb36651176dbc0c930a21a2"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/L07_readiness_validation_scripted_bad_rejected-20260910T144348723806Z.json",
+    "sha256": "0849e85a09552e8ddb50fbedfb8caf1e1789a5f822a004e94d4e54e72b8ffee0"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/L08_completion_reference_platform-20260910T144350518557Z.json",
+    "sha256": "20ba50ba98fbf32df29c358865235c861aab662cd9a3b0b9cc5038a950fc2f87"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/L08_completion_reference-20260910T144349276255Z.json",
+    "sha256": "30ab0528b807c7fe46ab16bab19ed3258d8e72d61e0ac209af5911c8d75e9ba2"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/L08_completion_validation_bad_rejected-20260910T144350382149Z.json",
+    "sha256": "b6e647f5e49a8b145acc7047235f21767d4eaf0ba937961cb7e54a9b0106e428"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/L08_completion_validation_good_platform-20260910T144350659189Z.json",
+    "sha256": "02349505b432ce98423a4d0a47ed3c333f12cc813d5c6fc1152a8efc1dca7408"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/L08_completion_validation_good-20260910T144349849609Z.json",
+    "sha256": "ac5460917341587aa3eb3cc6f1c78f694123cf2cc9de4cabf80854f98759d8ff"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/L09_dynamic_loading_reference-20260910T144351615122Z.json",
+    "sha256": "52f063a595d3473d9e4e3bbb65bd36787b3a087ce399aca6b87c2b4c6d88c19e"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/L09_dynamic_loading_validation_bad_rejected-20260910T144352334161Z.json",
+    "sha256": "318cfd942ca56092d8db00f5cf74ac18c6aca1053ebc3b5f7bf3ae0f9386bc75"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/L09_dynamic_loading_validation_good-20260910T144351777832Z.json",
+    "sha256": "6a8b53fbf60aac4a8ccf413a4b4982a3865921b257e0003f953c029f9cd6284c"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/P1_file_pipeline_demo_self_test-20260910T144354535834Z.json",
+    "sha256": "e2ec1bd13aad13f845dec892a658804fd4f21029677f0ba64d42e33c8d0bded0"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/P1_file_pipeline_reference_buffered-20260910T144354673380Z.json",
+    "sha256": "d2883cbb33d3e15b99d5ce5a14b60d0b11ef5b4c44c2f4b4b07d7bec54db7511"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/P1_file_pipeline_reference_completion-20260910T144355827602Z.json",
+    "sha256": "41137ced4015382085c25683e77d1a40b00623b5d7a375f24716abf244a02246"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/P1_file_pipeline_reference_mapped-20260910T144354994813Z.json",
+    "sha256": "cb4170c25da8a2cb4b43b2420d5902af1abed102995b6d1b22617c22e46b0443"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/P1_file_pipeline_reference-20260910T144352880977Z.json",
+    "sha256": "80097586ddd3fba6345e6491a649149c6a0fe2dfd8d5f50fd0cd3f52c94f9641"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/P1_file_pipeline_validation_bad_rejected-20260910T144354002881Z.json",
+    "sha256": "27735e42feafc0e7156fdf5bc818d030a621ad8d0d4b55e31f07174fb7f07415"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/P1_file_pipeline_validation_good_buffered-20260910T144354841287Z.json",
+    "sha256": "90849e6b5382808752f03f51e91f89b32a36f3a677edec3f83d9ab9ed218d48c"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/P1_file_pipeline_validation_good_completion-20260910T144355965346Z.json",
+    "sha256": "ede9d9c87bf65d697007ebc73a9d526b0a07b9552be01927274af44aab5e8535"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/P1_file_pipeline_validation_good_mapped-20260910T144355141962Z.json",
+    "sha256": "4d009052fc7afa65812894b3f3bc721981cc742618be3e79719df76330442336"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/P1_file_pipeline_validation_good-20260910T144353441426Z.json",
+    "sha256": "733cabe9e228c6f7398927ccb9801cdd8acc882588f561556af0d1e246803b28"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-release-r1/records/Release/P1_native_failure-20260910T144355684795Z.json",
+    "sha256": "58511ff862efbdc60a4b881acf083c33ad5ab3ef71eb2c697298c594de507a4f"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-student-r1/build.json",
+    "sha256": "703ac89f1ab8fb9878a5fc31b64684cabbbf8659b3736231198e6581abf4647a"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-student-r1/configure.json",
+    "sha256": "06813cf7493854473376b3f0e038ffdf5b240473346bfc27c614349d47bb2a46"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-student-r1/environment.json",
+    "sha256": "c1fc73f304ad3c26425ec7863b87ec9b56f5187c96a0e57b691de900538b9009"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/final-windows-student-r1/student-verification.json",
+    "sha256": "cccc4854c60593fd9803b58e375a6cdb47815e10919b526994a6c8e45d8b468d"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/foundation-r2/build.json",
+    "sha256": "f7831c2c3ed928b721a5d141103969f1ef99989004ec6a780893284d71e152f4"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/foundation-r2/configure.json",
+    "sha256": "7ba27ae59494e08e7b75693dafef7afb7628bad14c9e9bdaf545e8ab1c7e942e"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/foundation-r2/ctest.json",
+    "sha256": "e132bd68343f245b7835aab6d5b5f89e579f901897124b9fdd7aacc337e21d0c"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/foundation-r2/ctest.xml",
+    "sha256": "30027a3d3253483bb4197ce6b7d09b3e2804ae568e42b45f4b26877355ea4159"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/foundation-r2/environment.json",
+    "sha256": "41ce398ba51e365fa125c1039f575172a70f0d0a5edf8c3cb803547549be9f30"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/foundation-r2/snapshot-manifest.json",
+    "sha256": "e2710946d0840c8e17f897922d760439faf62e3b6c3d9060d13617d7826ec39d"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/foundation-r2/records/Release/L01_handles_reference-20260910T115415449536Z.json",
+    "sha256": "3a19707bbbad3b22135f30d8643554ac629ab4cd1aa225d271d6bd283c841c1e"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/foundation-r2/records/Release/L01_handles_validation_bad_rejected-20260910T115415501817Z.json",
+    "sha256": "7a0788406c7defb2ea6b9bb144d0af892048f4a21a0c61a9c73c7cf0754a1b41"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/foundation-r2/records/Release/L01_handles_validation_good-20260910T115415476501Z.json",
+    "sha256": "f95c3e211c3a23ef40893d155e0ef335323d96b1e07f35bbc34de57a0178d025"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/foundation-r2/records/Release/L02_sync_io_reference-20260910T115415530221Z.json",
+    "sha256": "1de7c555a0c2c53fbeb1fdb8c1b35a4a7fe53cd1af94b873197d0d984340a03a"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/foundation-r2/records/Release/L02_sync_io_validation_bad_rejected-20260910T115415581749Z.json",
+    "sha256": "6f66afe2bd62bed2b3ebeb1d88bae997a59178936d326c7d64e4e9d941cbf759"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/foundation-r2/records/Release/L02_sync_io_validation_good-20260910T115415555101Z.json",
+    "sha256": "38baccb41b7e952a3bae04f0b9bd9f12f5ed4c32fbfcc0633562d06b2059f9ad"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/foundation-r3/build.json",
+    "sha256": "b458a95f384815cafe6697f1a4461e4086f37154579817c9be1654239835195a"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/foundation-r3/configure.json",
+    "sha256": "e2f296742ce801aa03393b6df9423620eac8401a8424c953aec2c1fa60676461"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/foundation-r3/ctest.json",
+    "sha256": "bfde09eed86e86400d56d3fe9d11ad9dd9280e9dbba2283030684720c3d6a063"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/foundation-r3/ctest.xml",
+    "sha256": "b71209d74183be2f45ce4de1e1896d1c0c6a8b7713e5bc1acfc260b4b118b916"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/foundation-r3/environment.json",
+    "sha256": "e857561798ffaeaea96ce6d302ae1ed395c9cd3a38a268f7f1728ec29f4067c6"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/foundation-r3/snapshot-manifest.json",
+    "sha256": "9145db4b6f08747188dd37cf41e8d7fd1b78a87bc170ccdaf8d559e1b33d03db"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/foundation-r3/records/Release/L01_handles_ownership-20260910T121234138415Z.json",
+    "sha256": "729c556a08bb7bb8109ea493b0eae1307b9b45c6c0ef3e6d5343db7d901d4672"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/foundation-r3/records/Release/L01_handles_reference-20260910T121234048828Z.json",
+    "sha256": "80717c83f13a57aba05989b1cb1a7819b646346d91bb97ee322134a12084bb7c"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/foundation-r3/records/Release/L01_handles_validation_bad_rejected-20260910T121234105471Z.json",
+    "sha256": "6abb53f549c8becac0570d6c8f0f66d55b2f3d2cb7af0afe22eb317ee0ca41b6"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/foundation-r3/records/Release/L01_handles_validation_good-20260910T121234075283Z.json",
+    "sha256": "bdaf9e63728fd06bc1fb60d6a9164b7cbcc66d8ece407c30ccf054e938f89d76"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/foundation-r3/records/Release/L02_sync_io_reference-20260910T121234171390Z.json",
+    "sha256": "56668ae67f1abc4f16397a39545148b4b44cef4a490716db934e0124dd994b11"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/foundation-r3/records/Release/L02_sync_io_validation_bad_rejected-20260910T121234226263Z.json",
+    "sha256": "7877d640542c53e234e2a8ec6d326fb05b7a7d537b35f9493b0746752860d560"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/foundation-r3/records/Release/L02_sync_io_validation_good-20260910T121234198726Z.json",
+    "sha256": "24979392c3f71178e0732d69238e2986de6e72b293f9bd927271b1a44a98768b"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/build.json",
+    "sha256": "7eaf6296a85792d028ccf83f8daadedb734a9b03c8bcc248d5acaff9d63c1d1b"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/configure.json",
+    "sha256": "3197df95a17fc62a4c0ac6559b68bd10a2560fcf42225ec8b21ca3ce31a1d1cb"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/ctest.json",
+    "sha256": "108046205a19119a9b1db68ff6e9816a995841c6688c23e4043ad8dfc1d1cbea"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/ctest.xml",
+    "sha256": "78e3cdff477814cac1f046d19835c54cb8a3d22e8647fd5bc7ffbdced36580cc"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/environment.json",
+    "sha256": "21e1db95962d01603df1f6953f646619b796da4ed13972b58c89e396fb97ea59"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/snapshot-manifest.json",
+    "sha256": "58b479cffb31ebde44cbabd428706b3cbc49c65e30da7b955590357ace9240ff"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/B01_completion_control-20260910T141822034276Z.json",
+    "sha256": "906479609006234a637978d3b24b2fc2dbaa412bdce43f7dbe09dec01e096212"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/B01_costs_benchmark-20260910T141821956151Z.json",
+    "sha256": "89319d26db5dbc09f4bb0fa885de507542fceba6ceee4045e6e82fdf1e38b546"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/B01_source_observation-20260910T141821992983Z.json",
+    "sha256": "695c3630673d111ad1f5a1c64e7ca0da639c628d19facdfe5b52ddb6c074ddbb"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/L01_handles_ownership-20260910T141814324323Z.json",
+    "sha256": "4d295f1d9258b4c8f8286e657374769269da2d73412c7bc19beeaea675fd9876"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/L01_handles_reference-20260910T141814237940Z.json",
+    "sha256": "3050d01cd182800c1bcf0e494a5830b9b51cb2e3905134f1d5c1839df792c6f2"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/L01_handles_validation_bad_rejected-20260910T141814294112Z.json",
+    "sha256": "0b70883d32d55455b60c0a6577d7238c768b42a9d1b8b54a92826d96feda2f8c"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/L01_handles_validation_good-20260910T141814264588Z.json",
+    "sha256": "cc2ad0beac5646b1c294287da2cf7088e080c3dba4185224f1ecac7562c0dc1a"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/L02_sync_io_reference-20260910T141814352465Z.json",
+    "sha256": "fb17b533864960c75c33e6a7c927dff3eec992c742ee22272388fb1590dbac80"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/L02_sync_io_validation_bad_rejected-20260910T141814409613Z.json",
+    "sha256": "fbe5377166a22503e2d9d7366a1168ec5892317842ae3f506f2de92b0c13137b"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/L02_sync_io_validation_good-20260910T141814380901Z.json",
+    "sha256": "e1ff53afe96dd07c2d971c94253176135408c55a4c59debcf6a7a40eddc804a6"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/L03_virtual_memory_reference-20260910T141814436435Z.json",
+    "sha256": "7aa292ebe0a064436f2a63ec9ea37149e9124de5f672f23ad97cd051d699259f"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/L03_virtual_memory_validation_bad_rejected-20260910T141814490278Z.json",
+    "sha256": "6a51f05d73d4c937e47c2ac8605025fc89ba9d15b021c7199f6c3b47961d2ac2"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/L03_virtual_memory_validation_good-20260910T141814463828Z.json",
+    "sha256": "0ab8529d54fac371556a0cc630b221b1aeefb4afe7b752e9f226b0404676acd9"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/L04_mapping_reference-20260910T141814521393Z.json",
+    "sha256": "a7f8ad4b7ccef8eacc648dde15fc79913ba0c36251aa532ed6fc9458258f8a80"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/L04_mapping_validation_bad_rejected-20260910T141814606305Z.json",
+    "sha256": "2abcb06afc0ced2fdc4282035f61ffb894d7fa3bce04e11385c6a1227c36cc42"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/L04_mapping_validation_good-20260910T141814577578Z.json",
+    "sha256": "44ac4219844e620bb493f6a6d8c93bf2a76d36d9e25390a671bb7b76c5331c76"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/L05_pmr_reference-20260910T141814635702Z.json",
+    "sha256": "b7e34e5c042243c89da1dad1391ed3a38fc240b3029bf8ec9d7f7b11f6c59e63"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/L05_pmr_validation_bad_rejected-20260910T141814692873Z.json",
+    "sha256": "ccc67626939583e1d141ba66c0d0f9c9e892e3dec4eecac921645496b49b8406"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/L05_pmr_validation_good-20260910T141814663867Z.json",
+    "sha256": "7c4cdcbdd257ccc6f2badb161584c377a11c460cf21f1b90a1fa70c21aaf244b"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/L06_process_ipc_reference-20260910T141817929604Z.json",
+    "sha256": "59f6fb47a1879f57590a821a5a9af1263cef14a7e8169d52792de66d8b9f207d"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/L06_process_ipc_validation_bad_rejected-20260910T141821197916Z.json",
+    "sha256": "dbf03d194e2f3bb4f6acc273ec300027e7eb28bac0662f609925e228ff149db8"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/L06_process_ipc_validation_good-20260910T141821167053Z.json",
+    "sha256": "9aaf5b2d5bd8b3c01ce36207e54e17826622fd34966ce2076db73b1d8b628aa6"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/L07_readiness_reference-20260910T141821230111Z.json",
+    "sha256": "213fb99052d9092c52f96ec16e078ba34fea04116e379d902ef773bc5c55146d"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/L07_readiness_validation_bad_rejected-20260910T141821291608Z.json",
+    "sha256": "b04e5e22f204f9561bc769ce9ac49b0c032c904804e455630e8f2aaed4805601"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/L07_readiness_validation_good-20260910T141821260530Z.json",
+    "sha256": "bd72f789389e6d1b504d295449cbec799db7b995b3ac4edcda714e9fe24900f5"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/L07_readiness_validation_scripted_bad_rejected-20260910T141821322904Z.json",
+    "sha256": "74f40cf2f1757f8be0328e4a2560b253ce6349381d8ee75a1e103d78bb08ca51"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/L08_completion_reference_platform-20260910T141821432196Z.json",
+    "sha256": "71353ec75e585ff16a3c09146c8a43b076ae35296f9beb234632ee2cc7a8bef7"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/L08_completion_reference-20260910T141821350400Z.json",
+    "sha256": "2a6f4fe438cbed4d7b8cf4709611fa521ebc9cf2a1566bf87a36b8c673fb8521"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/L08_completion_validation_bad_rejected-20260910T141821403547Z.json",
+    "sha256": "5560f8bb0b4be80ae2ea96e0399e200327870c976f8a1a71e4e73e0b10aa7c65"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/L08_completion_validation_good_platform-20260910T141821459313Z.json",
+    "sha256": "9bad9a07c11639b51c1757168395071b5293619926b5c48e386528115a806920"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/L08_completion_validation_good-20260910T141821377165Z.json",
+    "sha256": "5200cc9397550da60a1ff3a48558376e8b3b7d08fdbb5af1430536b4701ff544"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/L09_dynamic_loading_reference-20260910T141821490801Z.json",
+    "sha256": "bf2d907014d46ad0c0537f136031133a23d0df33acd10f1d1cdde038a67bd787"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/L09_dynamic_loading_validation_bad_rejected-20260910T141821548711Z.json",
+    "sha256": "39cd9d0a497d09d03612622c678f6aa8318c2fd51b8ebd7118584669ce72132b"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/L09_dynamic_loading_validation_good-20260910T141821521214Z.json",
+    "sha256": "dfe024668be88243a1bae8e8da037faabb976c78e8a5e5c7fda90fd70889d0a8"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/P1_file_pipeline_demo_self_test-20260910T141821662056Z.json",
+    "sha256": "6c3e67c20e6d2eceb3d6930fe2940efacbef9965588f8498d3316678f01ef6bd"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/P1_file_pipeline_reference_buffered-20260910T141821701120Z.json",
+    "sha256": "f240ff270098faf96c0010e32bb364ae982decc5c584a2fd814a715e733fa7a4"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/P1_file_pipeline_reference_completion-20260910T141821872874Z.json",
+    "sha256": "eff034a838bba35bdbbe6a79350f8a3b5307a379e520ebf0be656d350c56c952"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/P1_file_pipeline_reference_mapped-20260910T141821769079Z.json",
+    "sha256": "501a772a7e7a263c87a7c9e051ca64f643c436c9e1fe53971485ee017b71855c"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/P1_file_pipeline_reference-20260910T141821576560Z.json",
+    "sha256": "06f2ae2a0d5220112f939eb787259e48c0c2e607d61ef8a25f74bebb40f03fe5"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/P1_file_pipeline_validation_bad_rejected-20260910T141821632860Z.json",
+    "sha256": "e5bcd2b4d769e320f7c027eb47a7e1a2937742bcafd4b7d92b1f91291fc07d1d"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/P1_file_pipeline_validation_good_buffered-20260910T141821734554Z.json",
+    "sha256": "0280b02f2834956356ad71d42a3ed28bc49bb2377dab1b1df506f78f8713cd8a"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/P1_file_pipeline_validation_good_completion-20260910T141821906300Z.json",
+    "sha256": "896d5fce53308531ef93443d8a8a802ce5205e183b4e5c0b4510a571b23253cc"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/P1_file_pipeline_validation_good_mapped-20260910T141821806518Z.json",
+    "sha256": "1dbc5367faf6f87b1f11804fef0318c6dd3e20cf3126c0d9575b50a7bc8990cb"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/P1_file_pipeline_validation_good-20260910T141821605826Z.json",
+    "sha256": "b66efa1ee9d61af17d9ed94f5a257ec68bdfc5a2d9863afc719d1ae726c67ce0"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-linux-uring-r1/records/Release/P1_native_failure-20260910T141821840046Z.json",
+    "sha256": "7e6593921b043bd7fcb7902ebbc0b9b86afd5c3efa64ed1c696ceef0d971bdee"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-student-r2/build.json",
+    "sha256": "4d4b0665d2a5e1b96b4e1f2592f016102e170e735a9bed47cae4ac3c32fc836e"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-student-r2/configure.json",
+    "sha256": "c37c1b5fd7321bafa2feb972869c1f848d9356b55cc762f05e7849a6acc1d2e9"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-student-r2/environment.json",
+    "sha256": "b35599a46ba418b477df942641a16614057313909dbff836d9220a132aa002bd"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-student-r2/snapshot-manifest.json",
+    "sha256": "09dbdeea0e8899fba13cbea9cc702005324816a24f74f2c69b95719a979d60b4"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/integration-student-r2/student-verification.json",
+    "sha256": "6a74ac355d45f0ff479fef6757cca4a4782737997833bbee5aed86fd10026943"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/sample-student-r1/build.json",
+    "sha256": "1bab73b0109ee3ba65030534c5dca2656f2216ff327feaa6f0edbc0037d3ffbf"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/sample-student-r1/configure.json",
+    "sha256": "e3f4c8da9de7665c877afbef57bf37293887ccaada9a22bb00270968b9b70bfc"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/sample-student-r1/environment.json",
+    "sha256": "cdd8b8ea66fde23aaa30b18b24f23b9e395f01e22b30ba76eac1b90fc660919b"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/sample-student-r1/snapshot-manifest.json",
+    "sha256": "063cda3e834e03644203aa2b08145429f7b2f77b1ae4af3c9f3218ef69a1ccb9"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/sample-student-r1/student-verification.json",
+    "sha256": "ebbb3d92fba6f2e4611ca949d0c691f27dbda7381698fa48a061deb7f98082d5"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/sample-uring-r1/build.json",
+    "sha256": "7bbd19609b9b6b82e2af03c2a85d201df84aa742d7721094702a564471e78318"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/sample-uring-r1/configure.json",
+    "sha256": "52fb8ef7c4d4a5e509a13df399e61be2aaf1dbdc25b21e1dbaf8df75cb9c3e64"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/sample-uring-r1/ctest.json",
+    "sha256": "b3158c197d9b98460d7805aa35488e0decc342d671931c98f53eb1eb026a13bd"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/sample-uring-r1/ctest.xml",
+    "sha256": "d95cf20950c1fda26405ec4cb95f731909142794812a59e3910445323969fd88"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/sample-uring-r1/environment.json",
+    "sha256": "a2cb4d3eb054762a2feb4624a87d0789828b649dc2261ce2beb83e9bfa2f7e4a"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/sample-uring-r1/snapshot-manifest.json",
+    "sha256": "d9bef715b9c9421868915ffef321e1f2abf68ad39feb8186f3ac461ac7839083"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/sample-uring-r1/records/Release/C07_runner_controls-20260910T121737701799Z.json",
+    "sha256": "f8e7e24136d99dec12ee8be930027215adf13d1b788d018c220c8e0af6eb9085"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/sample-uring-r1/records/Release/L01_handles_ownership-20260910T121737823240Z.json",
+    "sha256": "c8a08cb90358f6170bae3987a4155f6316b4710a0efaf6ced1b7d51e075f1fda"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/sample-uring-r1/records/Release/L01_handles_reference-20260910T121737732388Z.json",
+    "sha256": "356d83980568f3d363b54450122cab7a968732f48580209807cd2b6e66ef26cb"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/sample-uring-r1/records/Release/L01_handles_validation_bad_rejected-20260910T121737789530Z.json",
+    "sha256": "34956b8e7a311c9e7ab6a258e8cfd833b13ff2e52b54d87059753c1bb605e8bb"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/sample-uring-r1/records/Release/L01_handles_validation_good-20260910T121737760679Z.json",
+    "sha256": "dd8fafde22652d854780ac17271a021e5771ae127469043e242a06265f3a4544"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/sample-uring-r1/records/Release/L02_sync_io_reference-20260910T121737851358Z.json",
+    "sha256": "5110139d6f9c2dc979d1761c5ec4d1881ff92af640f5b257a3b6ef3ab3a6a6db"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/sample-uring-r1/records/Release/L02_sync_io_validation_bad_rejected-20260910T121737905594Z.json",
+    "sha256": "0b6576690d1893f83c52766460410020e2934b75f2442490968126ec94b654c7"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/sample-uring-r1/records/Release/L02_sync_io_validation_good-20260910T121737878296Z.json",
+    "sha256": "141527400bdecbc38e34d9de191fbfa0a866b3c96a3972d6ba08d5cd456cffc1"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/sample-uring-r1/records/Release/L08_completion_reference_platform-20260910T121738017894Z.json",
+    "sha256": "2a333b2e243ebb8455b49048c51170633c096a915bda9f4f6bdecc7a391021f1"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/sample-uring-r1/records/Release/L08_completion_reference-20260910T121737935404Z.json",
+    "sha256": "a2b2ffb80d473f726193f41290a68a069727485e8163114784f568a50e8aa1df"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/sample-uring-r1/records/Release/L08_completion_validation_bad_rejected-20260910T121737992232Z.json",
+    "sha256": "61551b2ee9e7c386a994290076a861eefca1babe9a82f97606e9a50eb5427a38"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/sample-uring-r1/records/Release/L08_completion_validation_good_platform-20260910T121738047826Z.json",
+    "sha256": "74a25ad7e1492ecb96ba64dab8f94899c033a604e6ac69ee687e6664f3beb844"
+  },
+  {
+    "path": "C07_OS_Memory_System_IO/references/validation/sample-uring-r1/records/Release/L08_completion_validation_good-20260910T121737962146Z.json",
+    "sha256": "755ab7f28ff09b8139d699af37b77752f16c73e1af1efd3b945a2e7c03a491f3"
+  }
+]

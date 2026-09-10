@@ -1,0 +1,23 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "/root/learncpp-c07/builds/sample-uring-r1/uring",
+    "--config",
+    "Release",
+    "--parallel",
+    "4"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.9738359060000006,
+  "stdout": "[ 10%] Building CXX object L01_handles/CMakeFiles/L01_handles_validation_bad.dir/checks/handles_checks.cpp.o\n[ 10%] Building CXX object L01_handles/CMakeFiles/L01_handles_reference.dir/checks/handles_checks.cpp.o\n[ 20%] Building CXX object L01_handles/CMakeFiles/L01_handles_validation_good.dir/checks/handles_checks.cpp.o\n[ 20%] Building CXX object L01_handles/CMakeFiles/L01_handles_ownership.dir/checks/ownership_observation.cpp.o\n[ 25%] Linking CXX executable L01_handles_validation_bad\n[ 30%] Linking CXX executable L01_handles_ownership\n[ 30%] Built target L01_handles_validation_bad\n[ 30%] Built target L01_handles_ownership\n[ 35%] Linking CXX executable L01_handles_reference\n[ 40%] Building CXX object L02_sync_io/CMakeFiles/L02_sync_io_reference.dir/checks/sync_io_checks.cpp.o\n[ 45%] Building CXX object L02_sync_io/CMakeFiles/L02_sync_io_validation_good.dir/checks/sync_io_checks.cpp.o\n[ 45%] Built target L01_handles_reference\n[ 50%] Linking CXX executable L01_handles_validation_good\n[ 55%] Building CXX object L02_sync_io/CMakeFiles/L02_sync_io_validation_bad.dir/checks/sync_io_checks.cpp.o\n[ 55%] Built target L01_handles_validation_good\n[ 60%] Building CXX object L08_completion/CMakeFiles/L08_completion_reference.dir/checks/completion_checks.cpp.o\n[ 65%] Linking CXX executable L02_sync_io_validation_good\n[ 65%] Built target L02_sync_io_validation_good\n[ 70%] Linking CXX executable L02_sync_io_validation_bad\n[ 75%] Building CXX object L08_completion/CMakeFiles/L08_completion_validation_good.dir/checks/completion_checks.cpp.o\n[ 80%] Linking CXX executable L02_sync_io_reference\n[ 80%] Built target L02_sync_io_validation_bad\n[ 80%] Built target L02_sync_io_reference\n[ 85%] Building CXX object L08_completion/CMakeFiles/L08_completion_validation_bad.dir/checks/completion_checks.cpp.o\n[ 90%] Linking CXX executable L08_completion_reference\n[ 90%] Built target L08_completion_reference\n[ 95%] Linking CXX executable L08_completion_validation_bad\n[ 95%] Built target L08_completion_validation_bad\n[100%] Linking CXX executable L08_completion_validation_good\n[100%] Built target L08_completion_validation_good\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "/root/learncpp-c07/snapshots/sample-uring-r1/C07_OS_Memory_System_IO/exercises",
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

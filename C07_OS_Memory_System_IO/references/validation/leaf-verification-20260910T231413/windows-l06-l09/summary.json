@@ -1,0 +1,85 @@
+{
+  "stamp": "20260910T231413",
+  "platform": "windows",
+  "generator": "Visual Studio 18 2026",
+  "arch": "x64",
+  "config": "Release",
+  "scope": "L06/L09 independent revalidation after good/reference independence fix",
+  "evidence": "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\references\\validation\\leaf-verification-20260910T231413\\windows-l06-l09",
+  "good_hashes": [
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L06_process_ipc/validation/good/process_ipc.hpp",
+      "sha256": "99ac3eb7a1308c757cbe451399dead4adbf1de419fbd06f5e45de358cf7bb320"
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/validation/good/dynamic_loading.hpp",
+      "sha256": "d54fa11b2441ae8e1f2a9cf095f93ce92e73664275431aa9b86a5b2f3d423163"
+    }
+  ],
+  "units": [
+    {
+      "unit": "L06_process_ipc",
+      "source": "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\exercises\\L06_process_ipc",
+      "build": "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\build\\leaf-verifier-windows-20260910T231413-L06_process_ipc",
+      "steps": [
+        {
+          "name": "configure",
+          "output": "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\references\\validation\\leaf-verification-20260910T231413\\windows-l06-l09\\L06_process_ipc-configure.json",
+          "verdict": "PASS",
+          "exit_code": 0
+        },
+        {
+          "name": "build",
+          "output": "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\references\\validation\\leaf-verification-20260910T231413\\windows-l06-l09\\L06_process_ipc-build.json",
+          "verdict": "PASS",
+          "exit_code": 0
+        },
+        {
+          "name": "ctest",
+          "output": "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\references\\validation\\leaf-verification-20260910T231413\\windows-l06-l09\\L06_process_ipc-ctest.json",
+          "junit": "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\references\\validation\\leaf-verification-20260910T231413\\windows-l06-l09\\L06_process_ipc-ctest.xml",
+          "verdict": "PASS",
+          "exit_code": 0,
+          "counts": {
+            "tests": 4,
+            "failures": 0,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    {
+      "unit": "L09_dynamic_loading",
+      "source": "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\exercises\\L09_dynamic_loading",
+      "build": "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\build\\leaf-verifier-windows-20260910T231413-L09_dynamic_loading",
+      "steps": [
+        {
+          "name": "configure",
+          "output": "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\references\\validation\\leaf-verification-20260910T231413\\windows-l06-l09\\L09_dynamic_loading-configure.json",
+          "verdict": "PASS",
+          "exit_code": 0
+        },
+        {
+          "name": "build",
+          "output": "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\references\\validation\\leaf-verification-20260910T231413\\windows-l06-l09\\L09_dynamic_loading-build.json",
+          "verdict": "PASS",
+          "exit_code": 0
+        },
+        {
+          "name": "ctest",
+          "output": "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\references\\validation\\leaf-verification-20260910T231413\\windows-l06-l09\\L09_dynamic_loading-ctest.json",
+          "junit": "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\references\\validation\\leaf-verification-20260910T231413\\windows-l06-l09\\L09_dynamic_loading-ctest.xml",
+          "verdict": "PASS",
+          "exit_code": 0,
+          "counts": {
+            "tests": 3,
+            "failures": 0,
+            "skipped": 0,
+            "errors": 0
+          }
+        }
+      ]
+    }
+  ]
+}

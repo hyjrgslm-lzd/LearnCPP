@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-release-r1/uring/L02_sync_io/L02_sync_io_reference"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.0012894340000002558,
+  "stdout": "L02 sync I/O checks passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-qalp_ef8",
+  "temporary_directory_removed": true,
+  "name": "L02_sync_io_reference",
+  "cwd": "/root/learncpp-c07/builds/final-linux-release-r1/uring/L02_sync_io",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

@@ -1,0 +1,13 @@
+{
+  "command": [
+    "F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\build\\sv-final3\\H1_latch_barrier\\good\\build\\Release\\H1_latch_barrier.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.4529999999995198,
+  "stdout": "H1 student OK\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

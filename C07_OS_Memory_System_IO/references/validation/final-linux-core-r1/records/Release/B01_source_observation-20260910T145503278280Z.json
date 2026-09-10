@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-core-r1/core/B01_costs/B01_source_observation"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.0014073969999941482,
+  "stdout": "{\"observation\":\"LWG3120 initial buffer reset\",\"standard_expected_reset\":true,\"observed_reset\":true,\"second_allocation_bad_alloc\":false,\"fresh_scope_control\":true}\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-v2y0np8n",
+  "temporary_directory_removed": true,
+  "name": "B01_source_observation",
+  "cwd": "/root/learncpp-c07/builds/final-linux-core-r1/core/B01_costs",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

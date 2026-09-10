@@ -310,3 +310,7 @@
 把它当成三层训练：第一层是使用层训练——你在学习如何把计算任务映射到 GPU 线程层级并通过内存层级高效搬运数据。第二层是设计层训练——你在学习如何用 CUTLASS collective、cuTe layout、warp specialization 构建接近峰值吞吐的算子。第三层是源码层训练——你在学习从 FlashAttention / CUTLASS / TransformerEngine 的实现里读出设计决策，并能在自己的代码里复现核心思想。
 
 三层都练透，你对 GPU 计算的理解就不再停留在"能用"，而是到达"能设计、能优化、能读源码"。
+
+## C04 泛型与编译期桥接
+
+[进入C04课程](../C04_Generic_CompileTime_Reflection/README.md)。CUTLASS/cuTe的类型级布局、NTTP与特化可回访C04；C04的编译成本测量不替代本课设备性能与硬件验证。本次仅增加阅读桥接，不改变CUDA源码、依赖或已有实验证据。

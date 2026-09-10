@@ -1,0 +1,13 @@
+{
+  "command": [
+    "F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\build\\sv-final3\\B1_mutex_family\\good\\build\\Release\\B1_mutex_family.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.4690000000009604,
+  "stdout": "B1 student OK\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

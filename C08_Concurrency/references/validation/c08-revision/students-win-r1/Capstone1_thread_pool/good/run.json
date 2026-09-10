@@ -1,0 +1,13 @@
+{
+  "command": [
+    "F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\build\\sv-final3\\Capstone1_thread_pool\\good\\build\\Release\\Capstone1_thread_pool.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.4529999999995198,
+  "stdout": "thread_pool OK: asynchronous, futures, capacity=1, drain, shutdown, ownership\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

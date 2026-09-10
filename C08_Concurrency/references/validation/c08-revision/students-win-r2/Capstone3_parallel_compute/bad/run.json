@@ -1,0 +1,13 @@
+{
+  "command": [
+    "F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\build\\sv-r2-win\\Capstone3_parallel_compute\\bad\\build\\Release\\Capstone3_parallel_compute.exe"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.48400000000037835,
+  "stdout": "",
+  "stderr": "Cap3 Part 6: student sort\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL"
+}

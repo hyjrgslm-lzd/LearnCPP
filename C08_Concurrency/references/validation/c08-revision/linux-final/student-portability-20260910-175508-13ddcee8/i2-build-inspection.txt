@@ -1,0 +1,44 @@
+build=/root/learncpp-c08-builds/student-portability-20260910-175508-13ddcee8/student-validation/I2_hazard_pointer/good/build
+
+files
+.ninja_deps
+.ninja_log
+CMakeCache.txt
+CMakeFiles/3.28.3/CMakeCXXCompiler.cmake
+CMakeFiles/3.28.3/CMakeDetermineCompilerABI_CXX.bin
+CMakeFiles/3.28.3/CMakeSystem.cmake
+CMakeFiles/3.28.3/CompilerIdCXX/CMakeCXXCompilerId.cpp
+CMakeFiles/3.28.3/CompilerIdCXX/a.out
+CMakeFiles/CMakeConfigureLog.yaml
+CMakeFiles/I2_hazard_pointer.dir/main.cpp.o
+CMakeFiles/TargetDirectories.txt
+CMakeFiles/VerifyGlobs.cmake
+CMakeFiles/cmake.check_cache
+CMakeFiles/cmake.verify_globs
+CMakeFiles/rules.ninja
+CTestTestfile.cmake
+DartConfiguration.tcl
+I2_hazard_pointer
+build.ninja
+capabilities/CS_HAS_ATOMIC_MIN_MAX.log
+capabilities/CS_HAS_INPLACE_STOP_TOKEN.log
+capabilities/CS_HAS_STD_HAZARD_POINTER.log
+capabilities/CS_HAS_STD_HAZARD_POINTER_BATCH.log
+capabilities/CS_HAS_STD_RCU.log
+capabilities/CS_HAS_STD_SENDERS.log
+capabilities/CS_HAS_STD_SIMD.log
+capabilities/CS_HAS_STD_THREAD_ATTRIBUTES.log
+cmake_install.cmake
+compile_commands.json
+
+depfiles
+
+compile_commands
+[
+{
+  "directory": "/root/learncpp-c08-builds/student-portability-20260910-175508-13ddcee8/student-validation/I2_hazard_pointer/good/build",
+  "command": "/usr/bin/c++ -DCS_ENABLE_UNSAFE_DEMOS=0 -DCS_HAS_ATOMIC_MIN_MAX=0 -DCS_HAS_INPLACE_STOP_TOKEN=0 -DCS_HAS_PARALLEL_ALGORITHMS=1 -DCS_HAS_STDEXEC=0 -DCS_HAS_STD_HAZARD_POINTER=0 -DCS_HAS_STD_HAZARD_POINTER_BATCH=0 -DCS_HAS_STD_RCU=0 -DCS_HAS_STD_SENDERS=0 -DCS_HAS_STD_SIMD=0 -DCS_HAS_STD_THREAD_ATTRIBUTES=0 -DCS_HAS_XSIMD=0 -I/root/learncpp-c08-builds/student-portability-20260910-175508-13ddcee8/student-validation/I2_hazard_pointer/good/course/exercises/include -H -std=c++23 -Wall -Wextra -Wpedantic -o CMakeFiles/I2_hazard_pointer.dir/main.cpp.o -c /root/learncpp-c08-builds/student-portability-20260910-175508-13ddcee8/student-validation/I2_hazard_pointer/good/course/exercises/I2_hazard_pointer/main.cpp",
+  "file": "/root/learncpp-c08-builds/student-portability-20260910-175508-13ddcee8/student-validation/I2_hazard_pointer/good/course/exercises/I2_hazard_pointer/main.cpp",
+  "output": "CMakeFiles/I2_hazard_pointer.dir/main.cpp.o"
+}
+]

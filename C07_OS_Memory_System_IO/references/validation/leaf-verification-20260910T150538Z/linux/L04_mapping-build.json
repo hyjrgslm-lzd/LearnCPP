@@ -1,0 +1,21 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "/root/learncpp-c07/builds/leaf-verifier-linux-20260910T150538Z-L04_mapping",
+    "--parallel",
+    "2"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.112624033000003,
+  "stdout": "[ 33%] Building CXX object CMakeFiles/L04_mapping_reference.dir/checks/mapping_checks.cpp.o\n[ 33%] Building CXX object CMakeFiles/L04_mapping_validation_good.dir/checks/mapping_checks.cpp.o\n[ 66%] Linking CXX executable L04_mapping_reference\n[ 66%] Linking CXX executable L04_mapping_validation_good\n[ 66%] Built target L04_mapping_validation_good\n[ 66%] Built target L04_mapping_reference\n[ 83%] Building CXX object CMakeFiles/L04_mapping_validation_bad.dir/checks/mapping_checks.cpp.o\n[100%] Linking CXX executable L04_mapping_validation_bad\n[100%] Built target L04_mapping_validation_bad\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "/mnt/f/CPPTrain/LearnCPP",
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

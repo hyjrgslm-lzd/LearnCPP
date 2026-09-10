@@ -1,0 +1,21 @@
+{
+  "command": [
+    "F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/build/final-windows-debug-r1/P1_file_pipeline/Debug/P1_file_pipeline_demo.exe",
+    "--self-test"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.4379999999982829,
+  "stdout": "",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-2c__jw7b",
+  "temporary_directory_removed": true,
+  "name": "P1_file_pipeline_demo_self_test",
+  "cwd": "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\exercises\\build\\final-windows-debug-r1\\P1_file_pipeline",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

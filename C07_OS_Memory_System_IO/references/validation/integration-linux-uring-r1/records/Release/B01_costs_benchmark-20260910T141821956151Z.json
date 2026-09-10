@@ -1,0 +1,21 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/integration-linux-uring-r1/uring/B01_costs/B01_costs_benchmark",
+    "--check"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.019052531999989242,
+  "stdout": "B01 core controls: actual bytes, resource payloads and upstream balance passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-kj0uznkr",
+  "temporary_directory_removed": true,
+  "name": "B01_costs_benchmark",
+  "cwd": "/root/learncpp-c07/builds/integration-linux-uring-r1/uring/B01_costs",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

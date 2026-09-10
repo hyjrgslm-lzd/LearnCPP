@@ -1,0 +1,13 @@
+{
+  "command": [
+    "F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\build\\sv-final3\\R1_epoch_reclamation\\good\\build\\Release\\R1_epoch_reclamation.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.4690000000009604,
+  "stdout": "preflight PASS; starting student workers\nR1 student PASS: nested pin, 64 retained/reclaimed, final 65\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

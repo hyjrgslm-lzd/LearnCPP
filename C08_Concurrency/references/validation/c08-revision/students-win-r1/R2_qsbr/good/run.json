@@ -1,0 +1,13 @@
+{
+  "command": [
+    "F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\build\\sv-final3\\R2_qsbr\\good\\build\\Release\\R2_qsbr.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.4530000000013388,
+  "stdout": "preflight PASS; starting student workers\nR2 student PASS: online, copied read, explicit quiescent/offline, final 65\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

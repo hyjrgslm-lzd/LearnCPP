@@ -1,0 +1,24 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\build\\leaf-verifier-windows-20260910T225908-L05_pmr",
+    "--config",
+    "Release",
+    "--parallel",
+    "2"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.922000000002299,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L05_pmr/CMakeLists.txt\n  Building Custom Rule F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L05_pmr/CMakeLists.txt\n  Building Custom Rule F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L05_pmr/CMakeLists.txt\n  pmr_checks.cpp\n  pmr_checks.cpp\n  pmr_checks.cpp\n  L05_pmr_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\build\\leaf-verifier-windows-20260910T225908-L05_pmr\\Release\\L05_pmr_reference.exe\n  L05_pmr_validation_good.vcxproj -> F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\build\\leaf-verifier-windows-20260910T225908-L05_pmr\\Release\\L05_pmr_validation_good.exe\n  L05_pmr_validation_bad.vcxproj -> F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\build\\leaf-verifier-windows-20260910T225908-L05_pmr\\Release\\L05_pmr_validation_bad.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L05_pmr/CMakeLists.txt\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

@@ -1,0 +1,22 @@
+{
+  "command": [
+    "F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/build/final-windows-release-r1/P1_file_pipeline/Release/P1_file_pipeline_reference.exe",
+    "--backend",
+    "completion"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.046999999998661224,
+  "stdout": "P1 backend seed=11400689786260264451\nP1 file pipeline completion backend check passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-tzugnqlg",
+  "temporary_directory_removed": true,
+  "name": "P1_file_pipeline_reference_completion",
+  "cwd": "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\exercises\\build\\final-windows-release-r1\\P1_file_pipeline",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

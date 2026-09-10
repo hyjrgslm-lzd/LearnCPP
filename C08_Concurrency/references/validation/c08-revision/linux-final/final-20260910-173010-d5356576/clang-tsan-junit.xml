@@ -1,0 +1,825 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Linux-clang++-18"
+	tests="70"
+	failures="1"
+	disabled="0"
+	skipped="10"
+	hostname="lizhidan-p02"
+	time="4"
+	timestamp="2026-09-10T17:41:03"
+	>
+	<testcase name="A1_jthread_lifecycle_reference" classname="A1_jthread_lifecycle_reference" time="0.0159504" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>Part 1: worker result=42 -&gt; join returned; second join rejected
+Part 2: association moved; scope ended after result=7
+Part 3: destructor requests stop -&gt; worker observes -&gt; scope returns
+Part 4: copy result=11/original=10; ref original=11; move result=42
+A1_reference OK
+</system-out>
+	</testcase>
+	<testcase name="A2_stop_token_cancellation_reference" classname="A2_stop_token_cancellation_reference" time="0.0118361" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>SKIP inplace_stop_token: capability unavailable; C++23 baseline checked
+A2 OK: polling, shared state, callbacks, callback lifetime
+</system-out>
+	</testcase>
+	<testcase name="A3_thread_exception_reference" classname="A3_thread_exception_reference" time="0.0118758" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>Part 1: joined -&gt; value 42
+Part 1: joined -&gt; original failure rethrown
+Part 2: get returns 42
+Part 2: get rethrows failure
+Part 3: abandoned provider -&gt; broken_promise
+A3_reference OK
+</system-out>
+	</testcase>
+	<testcase name="B1_mutex_family_reference" classname="B1_mutex_family_reference" time="0.0250998" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>B1 OK: counter, shared invariant, lock ownership, timed/recursive
+</system-out>
+	</testcase>
+	<testcase name="B2_deadlock_scoped_lock_reference" classname="B2_deadlock_scoped_lock_reference" time="0.0157191" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>B2 OK: scoped_lock, adopt_lock, total order, self-transfer
+</system-out>
+	</testcase>
+	<testcase name="B3_call_once_reference" classname="B3_call_once_reference" time="0.0119376" status="notrun">
+		<skipped message="SKIP_RETURN_CODE=77"/>
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>B3 OK: once-only success, publication, local static
+SKIP: verified Clang 18 + libstdc++ 13 + TSan does not reliably verify C++ exception paths; call_once exception retry is covered by non-TSan runs, while success publication and local static ran here; see references/validation/c08-revision/tsan-diagnosis/diagnosis-20260910.md
+</system-out>
+	</testcase>
+	<testcase name="C1_condvar_predicate_reference" classname="C1_condvar_predicate_reference" time="0.0133464" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>C1 OK: early state, broadcast, unrelated notify, deadline predicates
+</system-out>
+	</testcase>
+	<testcase name="C2_bounded_queue_condvar_reference" classname="C2_bounded_queue_condvar_reference" time="0.0803042" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>C2 OK: capacity=1, FIFO, MPMC IDs, move-only, close/drain
+</system-out>
+	</testcase>
+	<testcase name="C3_interruptible_wait_reference" classname="C3_interruptible_wait_reference" time="0.0115845" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>C3 OK: data, cancellation, pre-stop, data/stop priority, timeout, close
+</system-out>
+	</testcase>
+	<testcase name="Capstone1_thread_pool_reference" classname="Capstone1_thread_pool_reference" time="0.028899" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>thread_pool OK: asynchronous, futures, capacity=1, drain, shutdown, ownership
+</system-out>
+	</testcase>
+	<testcase name="Capstone2_lockfree_queue_reference" classname="Capstone2_lockfree_queue_reference" time="0.209649" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>capacity=2 atomics lock-free=1
+capacity=4 atomics lock-free=1
+capacity=64 atomics lock-free=1
+Capstone2 OK: capacity, batch, MPSC/SPMC/MPMC IDs, reservation gap, wrap model
+</system-out>
+	</testcase>
+	<testcase name="Capstone3_parallel_compute_reference" classname="Capstone3_parallel_compute_reference" time="0.0196034" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>suite,variant,size,threads,milliseconds,completed,details
+"cap3_gemm","naive",7,1,0.00148,49,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+"cap3_gemm","tiled",7,1,0.00406,49,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+"cap3_gemm","threaded",7,2,0.25748,49,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=2; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+"cap3_gemm","par",7,0,0.00818,49,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=unmeasured; threads counts workers when nonzero, otherwise caller (backend unknown=0)"
+"cap3_gemm","sse2",7,1,0.002101,49,"C overwrite/zeroing and worker lifecycle included; block=16; FLOP=2*n^3; caller=1; workers=0; thread...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="D1_promise_future_reference" classname="D1_promise_future_reference" time="0.0119219" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>Part 1: published input=21; get=42
+Part 2: published input=21; get rethrows calculation_failure
+Part 3: consumers[0..2]=100; repeated shared get succeeds
+Part 4: early return -&gt; broken_promise; void event consumed
+D1_reference OK
+</system-out>
+	</testcase>
+	<testcase name="D2_async_policies_reference" classname="D2_async_policies_reference" time="0.0101477" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>Part 1: explicit deferred=caller, explicit async=other; default status=ready, default thread=137323947747008
+Part 2: temporary finishes each iteration; retained batch submits 3 before completion
+Part 3: non-last returns; last async release joins; ordinary/deferred do not wait for work
+Part 4: both policies store exceptions; get rethrows
+D2_reference OK
+</system-out>
+	</testcase>
+	<testcase name="D3_packaged_task_reference" classname="D3_packaged_task_reference" time="0.0120344" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>Part 1: same task abstraction, caller or worker selected by invocation
+Parts 2/3: 7 queued, 7 executed; int/string results, job 3 exception
+Part 4: repeated invocation rejected; discarded task -&gt; broken_promise
+Part 5: pending at close=0, executed IDs:; rejected=broken_promise; release=value
+Part 5: pending at close=4, executed IDs: 0 1 2 3; rejected=broken_promise; release=value
+Part 5: pending at close=4, executed IDs: 0 1 2 3; rejected=broken_promise; release=abandoned
+D3_reference OK
+</system-out>
+	</testcase>
+	<testcase name="E1_atomic_basics_reference" classname="E1_atomic_basics_reference" time="0.0144979" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>atomic&lt;int&gt;: runtime lock-free=1, always=1
+E1_reference OK: split/RMW, operations, flag lock
+</system-out>
+	</testcase>
+	<testcase name="E2_atomic_ref_reference" classname="E2_atomic_ref_reference" time="0.0122538" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>required_alignment=4, alignof(int)=4, lock-free=1
+E2_reference OK: per-element alignment and access phases
+</system-out>
+	</testcase>
+	<testcase name="E3_cas_loop_reference" classname="E3_cas_loop_reference" time="0.0167881" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>SKIP native C++26 fetch_min/max: lane disabled or probe not passed; see CONCURRENCY_STUDY_ENABLE_CXX26 and capabilities log
+E3_reference OK: expected, max, checked multiply
+</system-out>
+	</testcase>
+	<testcase name="F01_thread_attributes_reference" classname="F01_thread_attributes_reference" time="0.0098233" status="notrun">
+		<skipped message="SKIP_RETURN_CODE=77"/>
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>SKIP: CS_HAS_STD_THREAD_ATTRIBUTES=0; C++29 thread attributes unavailable
+</system-out>
+	</testcase>
+	<testcase name="F02_hazard_pointer_batches_reference" classname="F02_hazard_pointer_batches_reference" time="0.0145434" status="notrun">
+		<skipped message="SKIP_RETURN_CODE=77"/>
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>SKIP: CS_HAS_STD_HAZARD_POINTER_BATCH=0; C++29 hazard pointer batch unavailable
+</system-out>
+	</testcase>
+	<testcase name="F1_release_acquire_reference" classname="F1_release_acquire_reference" time="0.0113835" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>F1_reference OK: direct publication and RMW relay
+</system-out>
+	</testcase>
+	<testcase name="F2_relaxed_counter_reference" classname="F2_relaxed_counter_reference" time="0.301623" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>F2_reference OK: total=8000, relaxed stale=0, RA stale=0
+</system-out>
+	</testcase>
+	<testcase name="F3_seqcst_fence_reference" classname="F3_seqcst_fence_reference" time="0.615238" status="notrun">
+		<skipped message="SKIP_RETURN_CODE=77"/>
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>SKIP: verified Clang 18 + libstdc++ 13 + TSan does not support std::atomic_thread_fence as a publication edge; store-buffering ran here and fence_publication is covered by non-TSan runs; see references/validation/c08-revision/tsan-diagnosis/diagnosis-20260910.md
+F3_reference OK: both-zero relaxed=1, RA=0, SC=0, SC-fence=0; fence publication skipped under this TSan build
+</system-out>
+	</testcase>
+	<testcase name="F4_publish_pattern_reference" classname="F4_publish_pattern_reference" time="0.101914" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>F4_reference OK: 2000 exact SPSC handoffs and safe slot reuse
+</system-out>
+	</testcase>
+	<testcase name="G1_treiber_stack_reference" classname="G1_treiber_stack_reference" time="0.0551819" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>G1 OK; pointer atomics lock-free=1; complete operation uses allocating/locking HP domain
+</system-out>
+	</testcase>
+	<testcase name="G2_aba_problem_reference" classname="G2_aba_problem_reference" time="0.010885" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>plain stale CAS=1 atomic&lt;uint64_t&gt;.is_lock_free=1
+tagged stale CAS=0 atomic&lt;uint64_t&gt;.is_lock_free=1
+G2 OK: safe ABA history, tagged rejection, finite-width counterexample
+</system-out>
+	</testcase>
+	<testcase name="G3_spsc_ringbuffer_reference" classname="G3_spsc_ringbuffer_reference" time="0.160358" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>capacity=1 atomics lock-free=1,1
+capacity=2 atomics lock-free=1,1
+capacity=7 atomics lock-free=1,1
+capacity=64 atomics lock-free=1,1
+G3 OK: usable capacity, reuse, ordinary/cached FIFO
+</system-out>
+	</testcase>
+	<testcase name="H1_latch_barrier_reference" classname="H1_latch_barrier_reference" time="0.0139396" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>H1 OK: preparation, gate, phases, completion, split arrival, drop
+</system-out>
+	</testcase>
+	<testcase name="H2_semaphore_reference" classname="H2_semaphore_reference" time="0.0178597" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>H2 OK: upper bound, returned permits, timed failure, 100 handshakes
+</system-out>
+	</testcase>
+	<testcase name="H3_atomic_wait_notify_reference" classname="H3_atomic_wait_notify_reference" time="0.0121873" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>H3_reference OK: one-shot, controlled ABA history, 1000 generations
+</system-out>
+	</testcase>
+	<testcase name="I1_atomic_shared_ptr_reference" classname="I1_atomic_shared_ptr_reference" time="0.0198155" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>I1_reference OK: lifetime, replacement, 2000 cumulative updates; lock-free=0
+</system-out>
+	</testcase>
+	<testcase name="I2_hazard_pointer_reference" classname="I2_hazard_pointer_reference" time="0.0234902" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>HP: 4000 unique IDs, exact destruction, LIFO PASS
+</system-out>
+	</testcase>
+	<testcase name="I3_rcu_reference" classname="I3_rcu_reference" time="0.0349584" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>RCU: 8000/8000 consistent reads, 65 destructions PASS
+</system-out>
+	</testcase>
+	<testcase name="J1_false_sharing_reference" classname="J1_false_sharing_reference" time="0.0175952" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>J1 OK: private counts, true sharing, batched tail and publication count
+</system-out>
+	</testcase>
+	<testcase name="J2_interference_size_reference" classname="J2_interference_size_reference" time="0.011929" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>J2 OK: hints=64/64 packed_offsets=0,8 padded_stride=64 same_hint_region=1 hot_record=16 lock_free=1
+</system-out>
+	</testcase>
+	<testcase name="J3_numa_concept_reference" classname="J3_numa_concept_reference" time="0.0164606" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>Linux: sched_getaffinity + sysfs socket/core/node + Mems_allowed_list
+base_page_bytes=4096 allowed_memory_nodes=0 
+group,cpu,socket,core,node (same group/socket/core rows are SMT siblings)
+0,0,0,0,0
+0,1,0,0,0
+0,2,0,1,0
+0,3,0,1,0
+0,4,0,2,0
+0,5,0,2,0
+0,6,0,3,0
+0,7,0,3,0
+0,8,0,4,0
+0,9,0,4,0
+0,10,0,5,0
+0,11,0,5,0
+0,12,0,6,0
+0,13,0,6,0
+0,14,0,7,0
+0,15,0,7,0
+0,16,0,8,0
+0,17,0,8,0
+0,18,0,9,0
+0,19,0,9,0
+0,20,0,10,0
+0,21,0,10,0
+0,22,0,11,0
+0,23,0,11,0
+requested=0:0 actual-before=0:0 actual-after=0:0 node=0
+requested=0:1 actual-before=0:1 actual-after=0:1 node=0
+requested=0:2 actual-before=0:2 actual-after=0:2 node=0
+requested=0:3 actual-before=0:3 actual-after=0:3 node=0
+J3 topology/affinity OK; page placement is checked separately in N1
+</system-out>
+	</testcase>
+	<testcase name="K1_simd_basics_reference" classname="K1_simd_basics_reference" time="0.0105151" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>SKIP optional backend 2
+SKIP optional backend 3
+K1 Reference OK
+</system-out>
+	</testcase>
+	<testcase name="K2_simd_dotproduct_reference" classname="K2_simd_dotproduct_reference" time="0.0112524" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>K2 OK; SSE2=1; FMA differs by design
+</system-out>
+	</testcase>
+	<testcase name="K3_simd_where_select_reference" classname="K3_simd_where_select_reference" time="0.0142362" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>SKIP optional backend 2
+SKIP optional backend 3
+K3 Reference OK
+</system-out>
+	</testcase>
+	<testcase name="L1_par_algorithms_reference" classname="L1_par_algorithms_reference" time="0.013297" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L1 Reference OK
+</system-out>
+	</testcase>
+	<testcase name="L2_parallel_reduce_scan_reference" classname="L2_parallel_reduce_scan_reference" time="0.0105467" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L2 Reference OK; policy capability=1
+</system-out>
+	</testcase>
+	<testcase name="L3_par_vs_seq_bench_reference" classname="L3_par_vs_seq_bench_reference" time="0.014872" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>suite,variant,size,threads,milliseconds,completed,details
+"policy_map_light","plain",17,1,0.00052,17,"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+"policy_map_light","seq",17,1,0.00036,17,"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+"policy_map_light","par",17,0,0.00017,17,"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+"policy_map_light","unseq",17,1,0.00034,17,"map and contract validation included; allocation/init/oracle excluded; workload=light; threads=0: backend unmeasured; threads=1: caller; geometric_degree=96 for heavy"
+"policy_map_light","par_unseq",17,0,0.00015,17,"map and contract validation included; allocation/init/oracle excluded; wor...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="M1_work_stealing_pool_reference" classname="M1_work_stealing_pool_reference" time="0.0702104" status="fail">
+		<failure message="Failed"/>
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>==================
+WARNING: ThreadSanitizer: data race (pid=8722)
+  Write of size 8 at 0x720c00001848 by thread T30:
+    #0 operator delete(void*) &lt;null&gt; (M1_work_stealing_pool_reference+0xe451d) (BuildId: 0b71157105da0c2b5f5d8dfdd7aad14fcbe03528)
+    #1 std::runtime_error::~runtime_error() &lt;null&gt; (libstdc++.so.6+0xd21d1) (BuildId: 753c6c8608b61d4e67be8f0c890e03e0aa046b8b)
+    #2 std::__future_base::_Result&lt;int&gt;::_M_destroy() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/future:279:22 (M1_work_stealing_pool_reference+0xfce92) (BuildId: 0b71157105da0c2b5f5d8dfdd7aad14fcbe03528)
+    #3 std::__future_base::_Result_base::_Deleter::operator()(std::__future_base::_Result_base*) const /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/future:229:52 (M1_work_stealing_pool_reference+0xec781) (BuildId: 0b71157105da0c2b5f5d8dfdd7aad14fcbe03528)
+    #4 std::unique_ptr&lt;std::__future_base::_Result_base, std::__future_base::_Result_base::_Deleter&gt;::~unique_ptr() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/unique_ptr.h:404:4 (M1_work_stealing_pool_reference+0xec781)
+    #5 std::__future_base::_State_baseV2::~_State_baseV2() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/future:344:40 (M1_work_stealing_pool_reference+0xec781)
+    #6 std::__future_base::_Task_state_base&lt;int ()&gt;::~_Task_state_base() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/future:628:14 (M1_work_stealing_pool_reference+0xec781)
+    #7 std::__future_base::_Task_state&lt;main::$_2, std::allocator&lt;int&gt;, int ()&gt;::~_Task_state() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/future:631:14 (M1_work_stealing_pool_reference+0xec781)
+    #8 void std::destroy_at&lt;std::__future_base::_Task_state&lt;main::$_2, std::allocator&lt;int&gt;, int ()&gt;&gt;(std::__future_base::_Task_state&lt;main::$_2, std::allocator&lt;int&gt;, int ()&gt;*) /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/stl_construct.h:88:15 (M1_work_stealing_pool_reference+0xec781)
+    #9 void std::allocator_traits&lt;std::allocator&lt;int&gt;&gt;::destroy&lt;std::__future_base::_Task_state&lt;main::$_2, std::allocator&lt;int&gt;, int ()&gt;&gt;(std::allocator&lt;int&gt;&amp;, std::__future_base::_Task_state&lt;main::$_2, std::allocator&lt;int&gt;, int ()&gt;*) /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/alloc_traits.h:560:4 (M1_work_stealing_pool_reference+0xec781)
+    #10 std::_Sp_counted_ptr_inplace&lt;std::__future_base::_Task_state&lt;main::$_2, std::allocator&lt;int&gt;, int ()&gt;, std::allocator&lt;int&gt;, (__gnu_cxx::_Lock_policy)2&gt;::_M_dispose() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/shared_ptr_base.h:613:2 (M1_work_stealing_pool_reference+0xec781)
+    #11 std::_Sp_counted_base&lt;(__gnu_cxx::_Lock_policy)2&gt;::_M_release_last_use() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/shared_ptr_base.h:175:2 (M1_work_stealing_pool_reference+0xfd05c) (BuildId: 0b71157105da0c2b5f5d8dfdd7aad14fcbe03528)
+    #12 std::_Sp_counted_base&lt;(__gnu_cxx::_Lock_policy)2&gt;::_M_release() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/shared_ptr_base.h:361:4 (M1_work_stealing_pool_reference+0xfd05c)
+    #13 std::__shared_count&lt;(__gnu_cxx::_Lock_policy)2&gt;::~__shared_count() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/shared_ptr_base.h:1071:11 (M1_work_stealing_pool_reference+0xfd05c)
+    #14 std::__shared_ptr&lt;std::__future_base::_Task_state_base&lt;int ()&gt;, (__gnu_cxx::_Lock_policy)2&gt;::~__shared_ptr() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/shared_ptr_base.h:1524:31 (M1_work_stealing_pool_reference+0xfd05c)
+    #15 std::packaged_task&lt;int ()&gt;::~packaged_task() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/future:1594:7 (M1_work_stealing_pool_reference+0xfd05c)
+    #16 void std::destroy_at&lt;std::packaged_task&lt;int ()&gt;&gt;(std::packaged_task&lt;int ()&gt;*) /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/stl_construct.h:88:15 (M1_work_stealing_pool_reference+0xfccdd) (BuildId: 0b71157105da0c2b5f5d8dfdd7aad14fcbe03528)
+    #17 void std::_Destroy&lt;std::packaged_task&lt;int ()&gt;&gt;(std::packaged_task&lt;int ()&gt;*) /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/stl_construct.h:149:7 (M1_work_stealing_pool_reference+0xfccdd)
+    #18 void std::allocator_traits&lt;std::allocator&lt;void&gt;&gt;::destroy&lt;std::packaged_task&lt;int ()&gt;&gt;(std::allocator&lt;void&gt;&amp;, std::packaged_task&lt;int ()&gt;*) /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/alloc_traits.h:675:4 (M1_work_stealing_pool_reference+0xfccdd)
+    #19 std::_Sp_counted_ptr_inplace&lt;std::packaged_task&lt;int ()&gt;, std::allocator&lt;void&gt;, (__gnu_cxx::_Lock_policy)2&gt;::_M_dispose() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/shared_ptr_base.h:613:2 (M1_work_stealing_pool_reference+0xfccdd)
+    #20 std::_Sp_counted_base&lt;(__gnu_cxx::_Lock_policy)2&gt;::_M_release_last_use() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/shared_ptr_base.h:175:2 (M1_work_stealing_pool_reference+0xed28f) (BuildId: 0b71157105da0c2b5f5d8dfdd7aad14fcbe03528)
+    #21 std::_Sp_counted_base&lt;(__gnu_cxx::_Lock_policy)2&gt;::_M_release() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/shared_ptr_base.h:361:4 (M1_work_stealing_pool_reference+0xed28f)
+    #22 std::__shared_count&lt;(__gnu_cxx::_Lock_policy)2&gt;::~__shared_count() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/shared_ptr_base.h:1071:11 (M1_work_stealing_pool_reference+0xed28f)
+    #23 std::__shared_ptr&lt;std::packaged_task&lt;int ()&gt;, (__gnu_cxx::_Lock_policy)2&gt;::~__shared_ptr() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/shared_ptr_base.h:1524:31 (M1_work_stealing_pool_reference+0xed28f)
+    #24 std::future&lt;std::invoke_result&lt;std::decay&lt;main::$_2&gt;::type&amp;&gt;::type&gt; cs::work_stealing_pool::submit&lt;main::$_2&gt;(main::$_2&amp;&amp;)::'lambda'()::~() /root/learncpp-c08-src/final-20260910-173010-d5356576/C08_Concurrency/exercises/include/concurrency_study/work_stealing_pool.hpp:117:24 (M1_work_stealing_pool_reference+0xed28f)
+    #25 std::_Function_base::_Base_manager&lt;std::future&lt;std::invoke_result&lt;std::decay&lt;main::$_2&gt;::type&amp;&gt;::type&gt; cs::work_stealing_pool::submit&lt;main::$_2&gt;(main::$_2&amp;&amp;)::'lambda'()&gt;::_M_destroy(std::_Any_data&amp;, std::integral_constant&lt;bool, false&gt;) /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/std_function.h:175:4 (M1_work_stealing_pool_reference+0xed28f)
+    #26 std::_Function_base::_Base_manager&lt;std::future&lt;std::invoke_result&lt;std::decay&lt;main::$_2&gt;::type&amp;&gt;::type&gt; cs::work_stealing_pool::submit&lt;main::$_2&gt;(main::$_2&amp;&amp;)::'lambda'()&gt;::_M_manager(std::_Any_data&amp;, std::_Any_data const&amp;, std::_Manager_operation) /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/std_function.h:203:8 (M1_work_stealing_pool_reference+0xed28f)
+    #27 std::_Function_handler&lt;void (), std::future&lt;std::invoke_result&lt;std::decay&lt;main::$_2&gt;::type&amp;&gt;::type&gt; cs::work_stealing_pool::submit&lt;main::$_2&gt;(main::$_2&amp;&amp;)::'lambda'()&gt;::_M_manager(std::_Any_data&amp;, std::_Any_data const&amp;, std::_Manager_operation) /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/std_function.h:282:6 (M1_work_stealing_pool_reference+0xed28f)
+    #28 std::_Function_base::~_Function_base() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/std_function.h:244:2 (M1_work_stealing_pool_reference+0xf6383) (BuildId: 0b71157105da0c2b5f5d8dfdd7aad14fcbe03528)
+    #29 cs::work_stealing_pool::run_one(unsigned long) /root/learncpp-c08-src/final-20260910-173010-d5356576/C08_Concurrency/exercises/include/concurrency_study/work_stealing_pool.hpp:79:5 (M1_work_stealing_pool_reference+0xf6383)
+    #30 cs::work_stealing_pool::worker(unsigned long) /root/learncpp-c08-src/final-20260910-173010-d5356576/C08_Concurrency/exercises/include/concurrency_study/work_stealing_pool.hpp:85:17 (M1_work_stealing_pool_reference+0xf5d68) (BuildId: 0b71157105da0c2b5f5d8dfdd7aad14fcbe03528)
+    #31 cs::work_stealing_pool::work_stealing_pool(unsigned long)::'lambda'()::operator()() const /root/learncpp-c08-src/final-20260910-173010-d5356576/C08_Concurrency/exercises/include/concurrency_study/work_stealing_pool.hpp:101:51 (M1_work_stealing_pool_reference+0xf5cb4) (BuildId: 0b71157105da0c2b5f5d8dfdd7aad14fcbe03528)
+    #32 void std::__invoke_impl&lt;void, cs::work_stealing_pool::work_stealing_pool(unsigned long)::'lambda'()&gt;(std::__invoke_other, cs::work_stealing_pool::work_stealing_pool(unsigned long)::'lambda'()&amp;&amp;) /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/invoke.h:61:14 (M1_work_stealing_pool_reference+0xf5cb4)
+    #33 std::__invoke_result&lt;cs::work_stealing_pool::work_stealing_pool(unsigned long)::'lambda'()&gt;::type std::__invoke&lt;cs::work_stealing_pool::work_stealing_pool(unsigned long)::'lambda'()&gt;(cs::work_stealing_pool::work_stealing_pool(unsigned long)::'lambda'()&amp;&amp;) /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/invoke.h:96:14 (M1_work_stealing_pool_reference+0xf5cb4)
+    #34 void std::thread::_Invoker&lt;std::tuple&lt;cs::work_stealing_pool::work_stealing_pool(unsigned long)::'lambda'()&gt;&gt;::_M_invoke&lt;0ul&gt;(std::_Index_tuple&lt;0ul&gt;) /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/std_thread.h:292:13 (M1_work_stealing_pool_reference+0xf5cb4)
+    #35 std::thread::_Invoker&lt;std::tuple&lt;cs::work_stealing_pool::work_stealing_pool(unsigned long)::'lambda'()&gt;&gt;::operator()() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/std_thread.h:299:11 (M1_work_stealing_pool_reference+0xf5cb4)
+    #36 std::thread::_State_impl&lt;std::thread::_Invoker&lt;std::tuple&lt;cs::work_stealing_pool::work_stealing_pool(unsigned long)::'lambda'()&gt;&gt;&gt;::_M_run() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/std_thread.h:244:13 (M1_work_stealing_pool_reference+0xf5cb4)
+    #37 &lt;null&gt; &lt;null&gt; (libstdc++.so.6+0xecdb3) (BuildId: 753c6c8608b61d4e67be8f0c890e03e0aa046b8b)
+
+  Previous read of size 8 at 0x720c00001848 by main thread:
+    #0 bcmp &lt;null&gt; (M1_work_stealing_pool_reference+0x703c2) (BuildId: 0b71157105da0c2b5f5d8dfdd7aad14fcbe03528)
+    #1 std::char_traits&lt;char&gt;::compare(char const*, char const*, unsigned long) /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/char_traits.h:389:9 (M1_work_stealing_pool_reference+0xe5fcc) (BuildId: 0b71157105da0c2b5f5d8dfdd7aad14fcbe03528)
+    #2 std::basic_string_view&lt;char, std::char_traits&lt;char&gt;&gt;::compare(std::basic_string_view&lt;char, std::char_traits&lt;char&gt;&gt;) const /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/string_view:346:14 (M1_work_stealing_pool_reference+0xe5fcc)
+    #3 bool std::operator==&lt;char, std::char_traits&lt;char&gt;&gt;(std::basic_string_view&lt;char, std::char_traits&lt;char&gt;&gt;, std::__type_identity&lt;std::basic_string_view&lt;char, std::char_traits&lt;char&gt;&gt;&gt;::type) /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/string_view:619:46 (M1_work_stealing_pool_reference+0xe5fcc)
+    #4 main /root/learncpp-c08-src/final-20260910-173010-d5356576/C08_Concurrency/exercises/M1_work_stealing_pool/solution.cpp:40:104 (M1_work_stealing_pool_reference+0xe5fcc)
+
+  Thread T30 (tid=8753, running) created by main thread at:
+    #0 pthread_create &lt;null&gt; (M1_work_stealing_pool_reference+0x648ef) (BuildId: 0b71157105da0c2b5f5d8dfdd7aad14fcbe03528)
+    #1 std::thread::_M_start_thread(std::unique_ptr&lt;std::thread::_State, std::default_delete&lt;std::thread::_State&gt;&gt;, void (*)()) &lt;null&gt; (libstdc++.so.6+0xeceb0) (BuildId: 753c6c8608b61d4e67be8f0c890e03e0aa046b8b)
+    #2 cs::work_stealing_pool::work_stealing_pool(unsigned long) /root/learncpp-c08-src/final-20260910-173010-d5356576/C08_Concurrency/exercises/include/concurrency_study/work_stealing_pool.hpp:101:26 (M1_work_stealing_pool_reference+0xf280b) (BuildId: 0b71157105da0c2b5f5d8dfdd7aad14fcbe03528)
+    #3 main /root/learncpp-c08-src/final-20260910-173010-d5356576/C08_Concurrency/exercises/M1_work_stealing_pool/solution.cpp:33:32 (M1_work_stealing_pool_reference+0xe5183) (BuildId: 0b71157105da0c2b5f5d8dfdd7aad14fcbe03528)
+
+SUMMARY: ThreadSanitizer: data race (/root/learncpp-c08-builds/final-20260910-173010-d5356576/clang-tsan/M1_work_stealing_pool/M1_work_stealing_pool_reference+0xe451d) (BuildId: 0b71157105da0c2b5f5d8dfdd7aad14fcbe03528) in operator delete(void*)
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=8722)
+  Write of size 8 at 0x722400004910 by thread T30:
+    #0 free &lt;null&gt; (M1_work_stealing_pool_reference+0x63623) (BuildId: 0b71157105da0c2b5f5d8dfdd7aad14fcbe03528)
+    #1 std::__exception_ptr::exception_ptr::_M_release() &lt;null&gt; (libstdc++.so.6+0xbaee4) (BuildId: 753c6c8608b61d4e67be8f0c890e03e0aa046b8b)
+    #2 std::__future_base::_Result&lt;int&gt;::_M_destroy() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/future:279:22 (M1_work_stealing_pool_reference+0xfce92) (BuildId: 0b71157105da0c2b5f5d8dfdd7aad14fcbe03528)
+    #3 std::__future_base::_Result_base::_Deleter::operator()(std::__future_base::_Result_base*) const /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/future:229:52 (M1_work_stealing_pool_reference+0xec781) (BuildId: 0b71157105da0c2b5f5d8dfdd7aad14fcbe03528)
+    #4 std::unique_ptr&lt;std::__future_base::_Result_base, std::__future_base::_Result_base::_Deleter&gt;::~unique_ptr() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/unique_ptr.h:404:4 (M1_work_stealing_pool_reference+0xec781)
+    #5 std::__future_base::_State_baseV2::~_State_baseV2() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/future:344:40 (M1_work_stealing_pool_reference+0xec781)
+    #6 std::__future_base::_Task_state_base&lt;int ()&gt;::~_Task_state_base() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/future:628:14 (M1_work_stealing_pool_reference+0xec781)
+    #7 std::__future_base::_Task_state&lt;main::$_2, std::allocator&lt;int&gt;, int ()&gt;::~_Task_state() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/future:631:14 (M1_work_stealing_pool_reference+0xec781)
+    #8 void std::destroy_at&lt;std::__future_base::_Task_state&lt;main::$_2, std::allocator&lt;int&gt;, int ()&gt;&gt;(std::__future_base::_Task_state&lt;main::$_2, std::allocator&lt;int&gt;, int ()&gt;*) /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/stl_construct.h:88:15 (M1_work_stealing_pool_reference+0xec781)
+    #9 void std::allocator_traits&lt;std::allocator&lt;int&gt;&gt;::destroy&lt;std::__future_base::_Task_state&lt;main::$_2, std::allocator&lt;int&gt;, int ()&gt;&gt;(std::allocator&lt;int&gt;&amp;, std::__future_base::_Task_state&lt;main::$_2, std::allocator&lt;int&gt;, int ()&gt;*) /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/alloc_traits.h:560:4 (M1_work_stealing_pool_reference+0xec781)
+    #10 std::_Sp_counted_ptr_inplace&lt;std::__future_base::_Task_state&lt;main::$_2, std::allocator&lt;int&gt;, int ()&gt;, std::allocator&lt;int&gt;, (__gnu_cxx::_Lock_policy)2&gt;::_M_dispose() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/shared_ptr_base.h:613:2 (M1_work_stealing_pool_reference+0xec781)
+    #11 std::_Sp_counted_base&lt;(__gnu_cxx::_Lock_policy)2&gt;::_M_release_last_use() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/shared_ptr_base.h:175:2 (M1_work_stealing_pool_reference+0xfd05c) (BuildId: 0b71157105da0c2b5f5d8dfdd7aad14fcbe03528)
+    #12 std::_Sp_counted_base&lt;(__gnu_cxx::_Lock_policy)2&gt;::_M_release() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/shared_ptr_base.h:361:4 (M1_work_stealing_pool_reference+0xfd05c)
+    #13 std::__shared_count&lt;(__gnu_cxx::_Lock_policy)2&gt;::~__shared_count() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/shared_ptr_base.h:1071:11 (M1_work_stealing_pool_reference+0xfd05c)
+    #14 std::__shared_ptr&lt;std::__future_base::_Task_state_base&lt;int ()&gt;, (__gnu_cxx::_Lock_policy)2&gt;::~__shared_ptr() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/shared_ptr_base.h:1524:31 (M1_work_stealing_pool_reference+0xfd05c)
+    #15 std::packaged_task&lt;int ()&gt;::~packaged_task() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/future:1594:7 (M1_work_stealing_pool_reference+0xfd05c)
+    #16 void std::destroy_at&lt;std::packaged_task&lt;int ()&gt;&gt;(std::packaged_task&lt;int ()&gt;*) /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/stl_construct.h:88:15 (M1_work_stealing_pool_reference+0xfccdd) (BuildId: 0b71157105da0c2b5f5d8dfdd7aad14fcbe03528)
+    #17 void std::_Destroy&lt;std::packaged_task&lt;int ()&gt;&gt;(std::packaged_task&lt;int ()&gt;*) /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/stl_construct.h:149:7 (M1_work_stealing_pool_reference+0xfccdd)
+    #18 void std::allocator_traits&lt;std::allocator&lt;void&gt;&gt;::destroy&lt;std::packaged_task&lt;int ()&gt;&gt;(std::allocator&lt;void&gt;&amp;, std::packaged_task&lt;int ()&gt;*) /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/alloc_traits.h:675:4 (M1_work_stealing_pool_reference+0xfccdd)
+    #19 std::_Sp_counted_ptr_inplace&lt;std::packaged_task&lt;int ()&gt;, std::allocator&lt;void&gt;, (__gnu_cxx::_Lock_policy)2&gt;::_M_dispose() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/shared_ptr_base.h:613:2 (M1_work_stealing_pool_reference+0xfccdd)
+    #20 std::_Sp_counted_base&lt;(__gnu_cxx::_Lock_policy)2&gt;::_M_release_last_use() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/shared_ptr_base.h:175:2 (M1_work_stealing_pool_reference+0xed28f) (BuildId: 0b71157105da0c2b5f5d8dfdd7aad14fcbe03528)
+    #21 std::_Sp_counted_base&lt;(__gnu_cxx::_Lock_policy)2&gt;::_M_release() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/shared_ptr_base.h:361:4 (M1_work_stealing_pool_reference+0xed28f)
+    #22 std::__shared_count&lt;(__gnu_cxx::_Lock_policy)2&gt;::~__shared_count() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/shared_ptr_base.h:1071:11 (M1_work_stealing_pool_reference+0xed28f)
+    #23 std::__shared_ptr&lt;std::packaged_task&lt;int ()&gt;, (__gnu_cxx::_Lock_policy)2&gt;::~__shared_ptr() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/shared_ptr_base.h:1524:31 (M1_work_stealing_pool_reference+0xed28f)
+    #24 std::future&lt;std::invoke_result&lt;std::decay&lt;main::$_2&gt;::type&amp;&gt;::type&gt; cs::work_stealing_pool::submit&lt;main::$_2&gt;(main::$_2&amp;&amp;)::'lambda'()::~() /root/learncpp-c08-src/final-20260910-173010-d5356576/C08_Concurrency/exercises/include/concurrency_study/work_stealing_pool.hpp:117:24 (M1_work_stealing_pool_reference+0xed28f)
+    #25 std::_Function_base::_Base_manager&lt;std::future&lt;std::invoke_result&lt;std::decay&lt;main::$_2&gt;::type&amp;&gt;::type&gt; cs::work_stealing_pool::submit&lt;main::$_2&gt;(main::$_2&amp;&amp;)::'lambda'()&gt;::_M_destroy(std::_Any_data&amp;, std::integral_constant&lt;bool, false&gt;) /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/std_function.h:175:4 (M1_work_stealing_pool_reference+0xed28f)
+    #26 std::_Function_base::_Base_manager&lt;std::future&lt;std::invoke_result&lt;std::decay&lt;main::$_2&gt;::type&amp;&gt;::type&gt; cs::work_stealing_pool::submit&lt;main::$_2&gt;(main::$_2&amp;&amp;)::'lambda'()&gt;::_M_manager(std::_Any_data&amp;, std::_Any_data const&amp;, std::_Manager_operation) /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/std_function.h:203:8 (M1_work_stealing_pool_reference+0xed28f)
+    #27 std::_Function_handler&lt;void (), std::future&lt;std::invoke_result&lt;std::decay&lt;main::$_2&gt;::type&amp;&gt;::type&gt; cs::work_stealing_pool::submit&lt;main::$_2&gt;(main::$_2&amp;&amp;)::'lambda'()&gt;::_M_manager(std::_Any_data&amp;, std::_Any_data const&amp;, std::_Manager_operation) /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/std_function.h:282:6 (M1_work_stealing_pool_reference+0xed28f)
+    #28 std::_Function_base::~_Function_base() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/std_function.h:244:2 (M1_work_stealing_pool_reference+0xf6383) (BuildId: 0b71157105da0c2b5f5d8dfdd7aad14fcbe03528)
+    #29 cs::work_stealing_pool::run_one(unsigned long) /root/learncpp-c08-src/final-20260910-173010-d5356576/C08_Concurrency/exercises/include/concurrency_study/work_stealing_pool.hpp:79:5 (M1_work_stealing_pool_reference+0xf6383)
+    #30 cs::work_stealing_pool::worker(unsigned long) /root/learncpp-c08-src/final-20260910-173010-d5356576/C08_Concurrency/exercises/include/concurrency_study/work_stealing_pool.hpp:85:17 (M1_work_stealing_pool_reference+0xf5d68) (BuildId: 0b71157105da0c2b5f5d8dfdd7aad14fcbe03528)
+    #31 cs::work_stealing_pool::work_stealing_pool(unsigned long)::'lambda'()::operator()() const /root/learncpp-c08-src/final-20260910-173010-d5356576/C08_Concurrency/exercises/include/concurrency_study/work_stealing_pool.hpp:101:51 (M1_work_stealing_pool_reference+0xf5cb4) (BuildId: 0b71157105da0c2b5f5d8dfdd7aad14fcbe03528)
+    #32 void std::__invoke_impl&lt;void, cs::work_stealing_pool::work_stealing_pool(unsigned long)::'lambda'()&gt;(std::__invoke_other, cs::work_stealing_pool::work_stealing_pool(unsigned long)::'lambda'()&amp;&amp;) /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/invoke.h:61:14 (M1_work_stealing_pool_reference+0xf5cb4)
+    #33 std::__invoke_result&lt;cs::work_stealing_pool::work_stealing_pool(unsigned long)::'lambda'()&gt;::type std::__invoke&lt;cs::work_stealing_pool::work_stealing_pool(unsigned long)::'lambda'()&gt;(cs::work_stealing_pool::work_stealing_pool(unsigned long)::'lambda'()&amp;&amp;) /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/invoke.h:96:14 (M1_work_stealing_pool_reference+0xf5cb4)
+    #34 void std::thread::_Invoker&lt;std::tuple&lt;cs::work_stealing_pool::work_stealing_pool(unsigned long)::'lambda'()&gt;&gt;::_M_invoke&lt;0ul&gt;(std::_Index_tuple&lt;0ul&gt;) /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/std_thread.h:292:13 (M1_work_stealing_pool_reference+0xf5cb4)
+    #35 std::thread::_Invoker&lt;std::tuple&lt;cs::work_stealing_pool::work_stealing_pool(unsigned long)::'lambda'()&gt;&gt;::operator()() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/std_thread.h:299:11 (M1_work_stealing_pool_reference+0xf5cb4)
+    #36 std::thread::_State_impl&lt;std::thread::_Invoker&lt;std::tuple&lt;cs::work_stealing_pool::work_stealing_pool(unsigned long)::'lambda'()&gt;&gt;&gt;::_M_run() /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/std_thread.h:244:13 (M1_work_stealing_pool_reference+0xf5cb4)
+    #37 &lt;null&gt; &lt;null&gt; (libstdc++.so.6+0xecdb3) (BuildId: 753c6c8608b61d4e67be8f0c890e03e0aa046b8b)
+
+  Previous read of size 8 at 0x722400004910 by main thread:
+    #0 main /root/learncpp-c08-src/final-20260910-173010-d5356576/C08_Concurrency/exercises/M1_work_stealing_pool/solution.cpp:40:96 (M1_work_stealing_pool_reference+0xe5f9e) (BuildId: 0b71157105da0c2b5f5d8dfdd7aad14fcbe03528)
+
+  Thread T30 (tid=8753, running) created by main thread at:
+    #0 pthread_create &lt;null&gt; (M1_work_stealing_pool_reference+0x648ef) (BuildId: 0b71157105da0c2b5f5d8dfdd7aad14fcbe03528)
+    #1 std::thread::_M_start_thread(std::unique_ptr&lt;std::thread::_State, std::default_delete&lt;std::thread::_State&gt;&gt;, void (*)()) &lt;null&gt; (libstdc++.so.6+0xeceb0) (BuildId: 753c6c8608b61d4e67be8f0c890e03e0aa046b8b)
+    #2 cs::work_stealing_pool::work_stealing_pool(unsigned long) /root/learncpp-c08-src/final-20260910-173010-d5356576/C08_Concurrency/exercises/include/concurrency_study/work_stealing_pool.hpp:101:26 (M1_work_stealing_pool_reference+0xf280b) (BuildId: 0b71157105da0c2b5f5d8dfdd7aad14fcbe03528)
+    #3 main /root/learncpp-c08-src/final-20260910-173010-d5356576/C08_Concurrency/exercises/M1_work_stealing_pool/solution.cpp:33:32 (M1_work_stealing_pool_reference+0xe5183) (BuildId: 0b71157105da0c2b5f5d8dfdd7aad14fcbe03528)
+
+SUMMARY: ThreadSanitizer: data race (/root/learncpp-c08-builds/final-20260910-173010-d5356576/clang-tsan/M1_work_stealing_pool/M1_work_stealing_pool_reference+0x63623) (BuildId: 0b71157105da0c2b5f5d8dfdd7aad14fcbe03528) in free
+==================
+M1 reference OK: variants, recursion, errors, drain, stealing
+ThreadSanitizer: reported 2 warnings
+</system-out>
+	</testcase>
+	<testcase name="M2_execution_bridge_reference" classname="M2_execution_bridge_reference" time="0.00982326" status="notrun">
+		<skipped message="SKIP_RETURN_CODE=77"/>
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>SKIP: CS_HAS_STDEXEC=0; enable pinned nvhpc-26.05 dependency
+</system-out>
+	</testcase>
+	<testcase name="N1_numa_placement_reference" classname="N1_numa_placement_reference" time="0.0214871" status="notrun">
+		<skipped message="SKIP_RETURN_CODE=77"/>
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>pure models PASS: interleave phase/order; per-Part result merge (no simulated hardware measurements)
+Linux: sched_getaffinity + sysfs socket/core/node + Mems_allowed_list
+base_page_bytes=4096 allowed_memory_nodes=0 
+group,cpu,socket,core,node (same group/socket/core rows are SMT siblings)
+0,0,0,0,0
+0,1,0,0,0
+0,2,0,1,0
+0,3,0,1,0
+0,4,0,2,0
+0,5,0,2,0
+0,6,0,3,0
+0,7,0,3,0
+0,8,0,4,0
+0,9,0,4,0
+0,10,0,5,0
+0,11,0,5,0
+0,12,0,6,0
+0,13,0,6,0
+0,14,0,7,0
+0,15,0,7,0
+0,16,0,8,0
+0,17,0,8,0
+0,18,0,9,0
+0,19,0,9,0
+0,20,0,10,0
+0,21,0,10,0
+0,22,0,11,0
+0,23,0,11,0
+layout=contiguous-anonymous-VMA; MADV_NOHUGEPAGE; page_bytes=4096
+shared-before-touch: node=-1 pages=32 (-1=not resident/unverifiable)
+shared-before-read: node=0 pages=32 (-1=not resident/unverifiable)
+shared-after-read: node=0 pages=32 (-1=not resident/unverifiable)
+shared-reader=0 actual-before=0:0 node=0 actual-after=0:0 node=0
+shared read local check passed; cross-node readers unavailable
+Part shared-read: SKIP
+layout=contiguous-anonymous-VMA; MADV_NOHUGEPAGE; page_bytes=4096
+before-touch: node=-1 pages=128 (-1=not resident/unverifiable)
+after-touch: node=0 pages=128 (-1=not resident/unverifiable)
+before-timing: node=0 pages=128 (-1=not resident/unverifiable)
+reader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0
+initializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0
+after-timing: node=0 pages=128 (-1=not resident/unverifiable)
+reader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0
+initializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0
+Part local: PASS
+layout=contiguous-anonymous-VMA; MADV_NOHUGEPAGE; page_bytes=4096
+before-touch: node=-1 pages=128 (-1=not resident/unverifiable)
+after-touch: node=0 pages=128 (-1=not resident/unverifiable)
+before-timing: node=0 pages=128 (-1=not resident/unverifiable)
+reader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0
+reader=1 requested=0:2 actual-before=0:2 node=0 actual-after=0:2 node=0
+initializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0
+after-timing: node=0 pages=128 (-1=not resident/unverifiable)
+reader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0
+reader=1 requested=0:2 actual-before=0:2 node=0 actual-after=0:2 node=0
+initializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0
+Part firsttouch: PASS
+layout=contiguous-anonymous-VMA; MADV_NOHUGEPAGE; page_bytes=4096
+before-touch: node=-1 pages=128 (-1=not resident/unverifiable)
+after-touch: node=0 pages=128 (-1=not resident/unverifiable)
+before-timing: node=0 pages=128 (-1=not resident/unverifiable)
+reader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0
+reader=1 requested=0:2 actual-before=0:2 node=0 actual-after=0:2 node=0
+initializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0
+initializer=1 actual-before=0:2 node=0 actual-after=0:2 node=0
+after-timing: node=0 pages=128 (-1=not resident/unverifiable)
+reader=0 requested=0:0 actual-before=0:0 node=0 actual-after=0:0 node=0
+reader=1 requested=0:2 actual-before=0:2 node=0 actual-after=0:2 node=0
+initializer=0 actual-before=0:0 node=0 actual-after=0:0 node=0
+initializer=1 actual-before=0:2 node=0 actual-after=0:2 node=0
+Part parallel-init: PASS
+remote SKIP: only one eligible memory node; remote/interleave comparison unavailable
+Part remote: SKIP
+interleaved SKIP: only one eligible memory node; remote/interleave comparison unavailable
+Part interleaved: SKIP
+N1 summary: passed=3 skipped=3 failed=0 exit=77
+</system-out>
+	</testcase>
+	<testcase name="P1_object_lifetime_reference" classname="P1_object_lifetime_reference" time="0.0109224" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>Part 1: construct 1, construct 2, destroy 2, destroy 1
+Part 2: copy=11, original=21, moved owner=42
+Part 3: copy=3, referenced original=7, invoke lambda=42
+Part 4: destroy 2, destroy 1, then handler
+Part 5: owned=(10,saved); borrowed follows (20,later), wrapper writes 22, tie assigns 30
+Part 6: calls before invocation=0; owned=13, borrowed=24; moved argument result=42
+P1_reference OK
+</system-out>
+	</testcase>
+	<testcase name="P2_result_states_reference" classname="P2_result_states_reference" time="0.0110731" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>Part 1: empty -&gt; valid/pending -&gt; moved -&gt; ready -&gt; get 42 -&gt; invalid
+Part 2: ready(exception), wait returns, get rethrows, invalid
+Part 3: duplicate future/value rejected; abandonment -&gt; broken_promise
+Part 4: two handles, one immutable result; void completion consumed
+P2_reference OK
+</system-out>
+	</testcase>
+	<testcase name="Q0_queue_baseline_reference" classname="Q0_queue_baseline_reference" time="0.0426679" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>Q0_reference OK: FIFO, capacity, per-producer order, 3000 unique IDs
+</system-out>
+	</testcase>
+	<testcase name="Q1_mpsc_queue_reference" classname="Q1_mpsc_queue_reference" time="0.0275612" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>Q1 OK: producer order, exact IDs, deterministic publication gap; atomics lock-free=1
+</system-out>
+	</testcase>
+	<testcase name="Q2_ms_queue_reference" classname="Q2_ms_queue_reference" time="0.214642" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>MS pointer atomics lock-free=1; whole operation may allocate and acquire HP locks
+Q2 OK: FIFO, MPSC/SPMC/MPMC IDs, in-run reclamation and final drain
+</system-out>
+	</testcase>
+	<testcase name="R1_epoch_reclamation_reference" classname="R1_epoch_reclamation_reference" time="0.0142011" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>EBR: long reader retained 64 objects (256 payload bytes); exit reclaimed 64; final total 65 PASS
+</system-out>
+	</testcase>
+	<testcase name="R2_qsbr_reference" classname="R2_qsbr_reference" time="0.0137197" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>QSBR: no report retains 64; quiescent releases 64 while online; total 65 PASS
+</system-out>
+	</testcase>
+	<testcase name="U01_async_logging_reference" classname="U01_async_logging_reference" time="0.12164" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>U01_async_logging_reference OK
+</system-out>
+	</testcase>
+	<testcase name="U01_async_logging_good" classname="U01_async_logging_good" time="0.117017" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation"/>
+		</properties>
+		<system-out>U01_async_logging_check OK
+</system-out>
+	</testcase>
+	<testcase name="U01_async_logging_bad_overflow_rejected" classname="U01_async_logging_bad_overflow_rejected" time="0.125123" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>-- Rejected the intended bad implementation: overrun counter
+</system-out>
+	</testcase>
+	<testcase name="U01_async_logging_bad_flush_rejected" classname="U01_async_logging_bad_flush_rejected" time="0.125563" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>-- Rejected the intended bad implementation: queued flush runs during drain
+</system-out>
+	</testcase>
+	<testcase name="F03_std_senders_reference" classname="F03_std_senders_reference" time="0.0113176" status="notrun">
+		<skipped message="SKIP_RETURN_CODE=77"/>
+		<properties>
+			<property name="cmake_labels" value="native;reference"/>
+		</properties>
+		<system-out>SKIP: CS_HAS_STD_SENDERS=0; native standard sender unavailable
+</system-out>
+	</testcase>
+	<testcase name="F03_std_hazard_pointer_reference" classname="F03_std_hazard_pointer_reference" time="0.0105664" status="notrun">
+		<skipped message="SKIP_RETURN_CODE=77"/>
+		<properties>
+			<property name="cmake_labels" value="native;reference"/>
+		</properties>
+		<system-out>SKIP: CS_HAS_STD_HAZARD_POINTER=0; native standard hazard_pointer unavailable
+</system-out>
+	</testcase>
+	<testcase name="F03_std_rcu_reference" classname="F03_std_rcu_reference" time="0.0118028" status="notrun">
+		<skipped message="SKIP_RETURN_CODE=77"/>
+		<properties>
+			<property name="cmake_labels" value="native;reference"/>
+		</properties>
+		<system-out>SKIP: CS_HAS_STD_RCU=0; native standard rcu unavailable
+</system-out>
+	</testcase>
+	<testcase name="runtime_atomic_protocol_test" classname="runtime_atomic_protocol_test" time="0.0124973" status="run">
+		<properties>
+			<property name="cmake_labels" value="runtime"/>
+		</properties>
+		<system-out>atomic_protocol_test OK: six schedules and CAS return contracts
+</system-out>
+	</testcase>
+	<testcase name="runtime_common_tools_test" classname="runtime_common_tools_test" time="0.0148385" status="run">
+		<properties>
+			<property name="cmake_labels" value="runtime"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="runtime_numeric_test" classname="runtime_numeric_test" time="0.0233265" status="run">
+		<properties>
+			<property name="cmake_labels" value="runtime"/>
+		</properties>
+		<system-out>SKIP backend 2
+SKIP backend 3
+numeric_test OK: lengths, tails, alignment, permutations, precision, IEEE policy, GEMM, workers
+</system-out>
+	</testcase>
+	<testcase name="runtime_queue_history_test" classname="runtime_queue_history_test" time="0.110068" status="run">
+		<properties>
+			<property name="cmake_labels" value="runtime"/>
+		</properties>
+		<system-out>queue_history OK: actual small histories, oracle counterexamples, gap/wrap models
+</system-out>
+	</testcase>
+	<testcase name="runtime_reclamation_test" classname="runtime_reclamation_test" time="0.225004" status="run">
+		<properties>
+			<property name="cmake_labels" value="runtime"/>
+		</properties>
+		<system-out>HP: 4000 unique IDs, exact destruction, LIFO PASS
+RCU: 8000/8000 consistent reads, 65 destructions PASS
+EBR: long reader retained 64 objects (256 payload bytes); exit reclaimed 64; final total 65 PASS
+QSBR: no report retains 64; quiescent releases 64 while online; total 65 PASS
+inject: R1 registration
+  caught original: reclamation injected bad_alloc
+inject: R1 allocation after 8 retires
+  caught original: reclamation injected bad_alloc
+inject: R1 unpublished value
+  caught original: reclamation injected bad_alloc
+inject: R2 registration
+  caught original: reclamation injected bad_alloc
+inject: R2 allocation after 8 retires
+  caught original: reclamation injected bad_alloc
+inject: R2 unpublished value
+  caught original: reclamation injected bad_alloc
+inject: R2 report
+  caught original: reclamation injected bad_alloc
+inject: I3 registration
+  caught original: reclamation injected bad_alloc
+inject: I3 allocation after 8 retires
+  caught original: reclamation injected bad_alloc
+inject: I3 unpublished value
+  ca...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="runtime_scheduling_allocation_test" classname="runtime_scheduling_allocation_test" time="0.0200456" status="notrun">
+		<skipped message="SKIP_RETURN_CODE=77"/>
+		<properties>
+			<property name="cmake_labels" value="runtime"/>
+		</properties>
+		<system-out>SKIP: verified Clang 18 + libstdc++ 13 + TSan provides global new/delete interceptors; allocation injection is covered by non-TSan runs; see references/validation/c08-revision/tsan-diagnosis/diagnosis-20260910.md
+</system-out>
+	</testcase>
+	<testcase name="runtime_scheduling_test" classname="runtime_scheduling_test" time="0.184332" status="run">
+		<properties>
+			<property name="cmake_labels" value="runtime"/>
+		</properties>
+		<system-out>scheduling runtime checks OK
+</system-out>
+	</testcase>
+	<testcase name="runtime_thread_pool_test" classname="runtime_thread_pool_test" time="0.0456904" status="run">
+		<properties>
+			<property name="cmake_labels" value="runtime"/>
+		</properties>
+		<system-out>thread_pool OK: asynchronous, futures, capacity=1, drain, shutdown, ownership
+</system-out>
+	</testcase>
+	<testcase name="runtime_lifetime_reference" classname="runtime_lifetime_reference" time="0.0168022" status="run">
+		<properties>
+			<property name="cmake_labels" value="runtime"/>
+		</properties>
+		<system-out>atomic&lt;shared_ptr&gt;.is_lock_free=0
+delay model, strong ownership, ABA/tag model PASS
+</system-out>
+	</testcase>
+	<testcase name="runtime_benchmark_tools" classname="runtime_benchmark_tools" time="0.230219" status="run">
+		<properties>
+			<property name="cmake_labels" value="tools"/>
+		</properties>
+		<system-out>.........s
+----------------------------------------------------------------------
+Ran 10 tests in 0.151s
+
+OK (skipped=1)
+</system-out>
+	</testcase>
+	<testcase name="runtime_materials" classname="runtime_materials" time="0.11329" status="run">
+		<properties>
+			<property name="cmake_labels" value="tools"/>
+		</properties>
+		<system-out>documents=179 exercises=53 local_errors=0
+This checks navigation and registration, not teaching quality, standard correctness, or test adequacy.
+</system-out>
+	</testcase>
+</testsuite>

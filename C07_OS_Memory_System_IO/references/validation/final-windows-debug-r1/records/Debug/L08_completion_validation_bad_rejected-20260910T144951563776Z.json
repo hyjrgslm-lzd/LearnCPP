@@ -1,0 +1,20 @@
+{
+  "command": [
+    "F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/build/final-windows-debug-r1/L08_completion/Debug/L08_completion_validation_bad.exe"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.4530000000013388,
+  "stdout": "",
+  "stderr": "check failed: missing target completion is rejected\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-gx1pl40j",
+  "temporary_directory_removed": true,
+  "name": "L08_completion_validation_bad_rejected",
+  "cwd": "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\exercises\\build\\final-windows-debug-r1\\L08_completion",
+  "expected_exit": 1,
+  "required_text": "missing target completion is rejected",
+  "verdict": "PASS"
+}

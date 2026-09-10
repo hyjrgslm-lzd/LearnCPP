@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-release-r1/uring/L04_mapping/L04_mapping_reference"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.006443448999998935,
+  "stdout": "L04 mapping checks passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-34qw3sgd",
+  "temporary_directory_removed": true,
+  "name": "L04_mapping_reference",
+  "cwd": "/root/learncpp-c07/builds/final-linux-release-r1/uring/L04_mapping",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

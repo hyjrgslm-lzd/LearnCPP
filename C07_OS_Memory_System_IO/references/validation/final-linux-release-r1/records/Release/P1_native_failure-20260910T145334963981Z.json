@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-release-r1/uring/P1_file_pipeline/P1_native_failure"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.004912766000000346,
+  "stdout": "native allocation failure: three queued target obligations drained; subsequent batch passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-cet6bfe4",
+  "temporary_directory_removed": true,
+  "name": "P1_native_failure",
+  "cwd": "/root/learncpp-c07/builds/final-linux-release-r1/uring/P1_file_pipeline",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

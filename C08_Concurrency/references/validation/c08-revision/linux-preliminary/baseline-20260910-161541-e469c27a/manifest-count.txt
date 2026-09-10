@@ -1,0 +1,1 @@
+24428 /mnt/f/CPPTrain/LearnCPP/C08_Concurrency/references/validation/c08-revision/linux-preliminary/baseline-20260910-161541-e469c27a/manifest.sha256

@@ -60,6 +60,18 @@ SIMD 由第 15 章连接完整演进系列，NUMA 从[拓扑与亲和性练习](
 
 `main.cpp` 按题目分为待实现的 Starter 或可运行的观察/实验入口；`solution.cpp` 是 Reference。较大的参考实现放在本题的 `reference.hpp`、`reference/` 或公共教学头中，不应把修改参考答案作为学生作业路径。Reference 目标名在练习 ID 后加 `_reference`。学生实现测试、观察检查与 Reference 分别标记，含义见[构建指南](exercises/BUILD_GUIDE.md#验证学生程序与验证参考答案)。短正确性测试与长性能实验分别运行。
 
+## 本轮补全入口
+
+已有路线之外，下面三条专题按各自先修进入，不要求先完成全部高级无锁或性能内容：
+
+- [异步日志队列与关闭](topics/logging/01-async-spdlog.md)：先修 C05 同步日志前端、本课有界队列及取消关闭；通过 [U01](exercises/U01_async_logging/README.md) 研究溢出、消息所有权、flush 和排空，服务观测仍由 C11 承接。
+- [C++29 线程属性](topics/frontier/01-thread-attributes.md)：先修线程创建、对象借用、jthread 取消；[F01](exercises/F01_thread_attributes/README.md) 分别记录标准主体与教学观察，不把亲和性当作标准属性验证。
+- [C++29 HP batches](topics/frontier/02-hazard-pointer-batches.md)：先修内存模型及 hazard pointer；[F02](exercises/F02_hazard_pointer_batches/README.md) 讨论资源的批量取得和释放，不把教学域的清场接口当成标准保证。
+
+[原生设施单元](exercises/F03_native_facilities/README.md)连接标准 HP、RCU、sender 的独立主体。标准版本、是否请求、工具链能力和实际运行状态分别看待；模型通过不能补成原生 PASS。
+
+队列的新增定位入口见[演进证据](topics/performance/c08-revision-queue-evidence.md)。[本轮实施规格](references/revision-plan-20260910.md)与[审计清单](references/revision-audit-20260910.md)记录补全范围；当前结果以[本轮质量报告](references/revision-quality-report-20260910.md)为准。旧报告和样本保留其历史版本含义。
+
 ## 版本、证据与覆盖
 
 课程默认构建 C++23；常用并发设施分别来自 C++11/17/20。C++26 的 SIMD、sender/receiver、回收设施与新原子操作按实际头文件、特性宏、实例化和链接探测。标准、TS、第三方 API 的差异见[标准与实现状态](references/standards-and-implementations.md)。
@@ -69,3 +81,7 @@ SIMD 由第 15 章连接完整演进系列，NUMA 从[拓扑与亲和性练习](
 ## C02 对象生命期先修
 
 [共享所有权](../C02_Objects_Lifetime_Ownership/chapters/09-shared-ownership.md)、[存储与对象创建](../C02_Objects_Lifetime_Ownership/chapters/12-storage-and-object-creation.md)及[别名与指针来源](../C02_Objects_Lifetime_Ownership/chapters/13-aliasing-and-provenance.md)提供语言层前提。对象尚存活不等于并发访问已同步，地址复用也不能单独证明或排除 ABA；同步、发布和安全回收仍由本课协议与实验负责。
+
+## C07 系统与内存基础桥接
+
+[C07 系统模型](../C07_OS_Memory_System_IO/chapters/01-system-model.md)、[虚拟内存](../C07_OS_Memory_System_IO/chapters/04-virtual-memory.md)、[pmr 与池](../C07_OS_Memory_System_IO/chapters/07-pmr.md)补齐线程所处地址空间、页与分配责任；[IPC 与文件锁](../C07_OS_Memory_System_IO/chapters/10-ipc.md)说明跨进程资源边界。共享地址不等于同步，跨进程信号也不能直接替换本课的 C++ 内存模型与回收协议。

@@ -1,0 +1,31 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "C07_OS_Memory_System_IO/exercises/build/foundation-windows",
+    "--config",
+    "Release",
+    "--parallel",
+    "4",
+    "--target",
+    "L01_handles_reference",
+    "L01_handles_validation_good",
+    "L01_handles_validation_bad",
+    "L02_sync_io_reference",
+    "L02_sync_io_validation_good",
+    "L02_sync_io_validation_bad"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 15.40599999999904,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L01_handles/CMakeLists.txt\n  handles_checks.cpp\n  L01_handles_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\exercises\\build\\foundation-windows\\L01_handles\\Release\\L01_handles_reference.exe\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  Building Custom Rule F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L01_handles/CMakeLists.txt\n  handles_checks.cpp\n  L01_handles_validation_good.vcxproj -> F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\exercises\\build\\foundation-windows\\L01_handles\\Release\\L01_handles_validation_good.exe\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  Building Custom Rule F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L01_handles/CMakeLists.txt\n  handles_checks.cpp\n  L01_handles_validation_bad.vcxproj -> F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\exercises\\build\\foundation-windows\\L01_handles\\Release\\L01_handles_validation_bad.exe\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  Building Custom Rule F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L02_sync_io/CMakeLists.txt\n  sync_io_checks.cpp\n  L02_sync_io_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\exercises\\build\\foundation-windows\\L02_sync_io\\Release\\L02_sync_io_reference.exe\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  Building Custom Rule F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L02_sync_io/CMakeLists.txt\n  sync_io_checks.cpp\n  L02_sync_io_validation_good.vcxproj -> F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\exercises\\build\\foundation-windows\\L02_sync_io\\Release\\L02_sync_io_validation_good.exe\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  Building Custom Rule F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L02_sync_io/CMakeLists.txt\n  sync_io_checks.cpp\n  L02_sync_io_validation_bad.vcxproj -> F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\exercises\\build\\foundation-windows\\L02_sync_io\\Release\\L02_sync_io_validation_bad.exe\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

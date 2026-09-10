@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/root/learncpp-c08-builds/students-r2-20260910-180658-457446af/student-validation/C3_interruptible_wait/bad/build/C3_interruptible_wait"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.0015409250000004704,
+  "stdout": "",
+  "stderr": "Part 4: false may mean timeout without cancellation\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL"
+}

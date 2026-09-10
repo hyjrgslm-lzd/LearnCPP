@@ -1,0 +1,20 @@
+{
+  "command": [
+    "F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/build/final-windows-release-r1/L06_process_ipc/Release/L06_process_ipc_validation_good.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 1.875,
+  "stdout": "L06 process IPC checks passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-cwvw08z5",
+  "temporary_directory_removed": true,
+  "name": "L06_process_ipc_validation_good",
+  "cwd": "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\exercises\\build\\final-windows-release-r1\\L06_process_ipc",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

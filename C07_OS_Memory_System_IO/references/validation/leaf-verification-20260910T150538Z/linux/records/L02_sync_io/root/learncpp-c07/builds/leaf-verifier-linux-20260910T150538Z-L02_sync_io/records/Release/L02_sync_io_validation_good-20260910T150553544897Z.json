@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/leaf-verifier-linux-20260910T150538Z-L02_sync_io/L02_sync_io_validation_good"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.0014385810000021593,
+  "stdout": "L02 sync I/O checks passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-_o4obv_7",
+  "temporary_directory_removed": true,
+  "name": "L02_sync_io_validation_good",
+  "cwd": "/root/learncpp-c07/builds/leaf-verifier-linux-20260910T150538Z-L02_sync_io",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

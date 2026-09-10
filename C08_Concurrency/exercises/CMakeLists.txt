@@ -13,6 +13,8 @@ foreach(entry IN LISTS exercise_entries)
         add_subdirectory("${entry}")
     endif()
 endforeach()
+# A collection of independent native subjects, without a synthetic summary test.
+add_subdirectory(F03_native_facilities)
 add_subdirectory(runtime_tests)
 if(CONCURRENCY_STUDY_BUILD_BENCHMARKS AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/benchmarks/CMakeLists.txt")
     add_subdirectory(benchmarks)

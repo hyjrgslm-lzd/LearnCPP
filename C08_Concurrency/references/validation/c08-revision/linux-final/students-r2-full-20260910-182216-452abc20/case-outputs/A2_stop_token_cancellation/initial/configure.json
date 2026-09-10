@@ -1,0 +1,27 @@
+{
+  "command": [
+    "/usr/bin/cmake",
+    "-S",
+    "/root/learncpp-c08-builds/students-r2-full-20260910-182216-452abc20/student-validation/A2_stop_token_cancellation/initial/course/exercises/A2_stop_token_cancellation",
+    "-B",
+    "/root/learncpp-c08-builds/students-r2-full-20260910-182216-452abc20/student-validation/A2_stop_token_cancellation/initial/build",
+    "-DBUILD_TESTING=ON",
+    "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+    "-DCMAKE_BUILD_TYPE=Release",
+    "-DCMAKE_CXX_FLAGS=-H",
+    "-DCONCURRENCY_STUDY_BUILD_REFERENCE=OFF",
+    "-DCONCURRENCY_STUDY_TEST_STARTERS=ON",
+    "-DCONCURRENCY_STUDY_FETCH_DEPS=OFF",
+    "-DCONCURRENCY_STUDY_BUILD_BENCHMARKS=OFF",
+    "-G",
+    "Ninja"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 12.332167880000043,
+  "stdout": "-- The CXX compiler identification is GNU 13.3.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: /usr/bin/c++ - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n-- Found Threads: TRUE  \n-- Performing Test CS_HAS_PARALLEL_ALGORITHMS\n-- Performing Test CS_HAS_PARALLEL_ALGORITHMS - Success\n-- [study] CS_HAS_STD_SIMD compile/link probe: DISABLED\n-- [study] CS_HAS_STD_SENDERS compile/link probe: DISABLED\n-- [study] CS_HAS_STD_HAZARD_POINTER compile/link probe: DISABLED\n-- [study] CS_HAS_STD_RCU compile/link probe: DISABLED\n-- [study] CS_HAS_ATOMIC_MIN_MAX compile/link probe: DISABLED\n-- [study] CS_HAS_INPLACE_STOP_TOKEN compile/link probe: DISABLED\n-- [study] CS_HAS_STD_THREAD_ATTRIBUTES compile/link probe: DISABLED\n-- [study] CS_HAS_STD_HAZARD_POINTER_BATCH compile/link probe: DISABLED\n-- Configuring done (12.2s)\n-- Generating done (0.0s)\n-- Build files have been written to: /root/learncpp-c08-builds/students-r2-full-20260910-182216-452abc20/student-validation/A2_stop_token_cancellation/initial/build\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

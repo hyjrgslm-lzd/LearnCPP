@@ -107,6 +107,8 @@ ctest --test-dir build/q0 -C Release --output-on-failure
 
 不能仅看到耗时增加，就断言每次争用都产生了内核上下文切换。实际锁实现、调度、分配器和负载共同影响结果。需要观察或 profiler 证据时，性能附录应记录测量方法和可用证据；缺少证据时把原因标为待验证假设。
 
+本轮修订新增了一个轻量诊断入口 [`queue_diagnostics.cpp`](../../exercises/benchmarks/queue_diagnostics.cpp)，只在 `CS_QUEUE_DIAGNOSTICS` 开启时统计公开接口调用、内部 mutex 进入、SPSC 远端下标读取，以及单线程热区 `operator new` 次数。它可以证明传输驱动确实经过 `try_push`/`try_pop`，并显示满空重试会增加调用次数；它不能证明一次 mutex 操作是否进入内核、是否发生 cache miss，或调度器如何安排线程。需要这类结论时，必须另接 profiler 或硬件计数器。
+
 ## 6. 下一步怎样选择
 
 如果需求是“没有数据时等待”，先学习条件变量和关闭协议；如果需求是固定的一对生产者/消费者，进入 SPSC 槽位所有权实验；如果需要多生产者、多消费者，研究预订与发布之间的空隙；如果改用动态节点，则必须把节点摘除和内存回收分开。

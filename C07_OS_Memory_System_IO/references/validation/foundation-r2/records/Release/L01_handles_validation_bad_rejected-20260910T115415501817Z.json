@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/foundation-r2/foundation/L01_handles/L01_handles_validation_bad"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.0014912529999975277,
+  "stdout": "",
+  "stderr": "check failed: existing target is refused\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "name": "L01_handles_validation_bad_rejected",
+  "cwd": "/root/learncpp-c07/builds/foundation-r2/foundation/L01_handles",
+  "expected_exit": 1,
+  "required_text": "existing target is refused",
+  "verdict": "PASS"
+}

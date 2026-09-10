@@ -1,6 +1,8 @@
 // Implementation Starter. benchmark.cpp is the supplied measurement driver.
-// Only input generation and the independent oracle are reused from reference.hpp.
-#include "reference.hpp"
+// checks.hpp supplies only input generation and the independent oracle.
+#include "checks.hpp"
+#include <array>
+#include <iostream>
 
 void student_gemm(cs::numeric::input /*a*/,cs::numeric::input /*b*/,cs::numeric::output /*c*/,
                   std::size_t /*n*/,std::size_t /*block*/,std::string_view /*version*/) {

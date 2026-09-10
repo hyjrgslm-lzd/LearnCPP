@@ -1,0 +1,22 @@
+{
+  "command": [
+    "F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/build/final-windows-debug-r1/P1_file_pipeline/Debug/P1_file_pipeline_validation_good.exe",
+    "--backend",
+    "mapped"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.062000000001717126,
+  "stdout": "P1 backend seed=11400688850754926406\nP1 file pipeline mapped backend check passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-112shtvp",
+  "temporary_directory_removed": true,
+  "name": "P1_file_pipeline_validation_good_mapped",
+  "cwd": "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\exercises\\build\\final-windows-debug-r1\\P1_file_pipeline",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

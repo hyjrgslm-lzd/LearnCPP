@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/integration-linux-uring-r1/uring/L01_handles/L01_handles_ownership"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.0013806739999608908,
+  "stdout": "L01 ownership observation passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-t9bwdge4",
+  "temporary_directory_removed": true,
+  "name": "L01_handles_ownership",
+  "cwd": "/root/learncpp-c07/builds/integration-linux-uring-r1/uring/L01_handles",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-asan-r1/asan-uring/P1_file_pipeline/P1_file_pipeline_validation_bad"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.005655902999997409,
+  "stdout": "P1 synthetic seed=11400714794946979807\n",
+  "stderr": "check failed: out-of-order chunks assemble by offset\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "/tmp/c07-test-6yz0hbb5",
+  "temporary_directory_removed": true,
+  "name": "P1_file_pipeline_validation_bad_rejected",
+  "cwd": "/root/learncpp-c07/builds/final-linux-asan-r1/asan-uring/P1_file_pipeline",
+  "expected_exit": 1,
+  "required_text": "out-of-order chunks assemble by offset",
+  "verdict": "PASS"
+}

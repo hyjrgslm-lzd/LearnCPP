@@ -1,0 +1,1 @@
+f0a2da11e7f119ce027f37bc755ce50cfdd622730f46db0e8cfcfc795dd53d89  /mnt/f/CPPTrain/LearnCPP/C08_Concurrency/references/validation/c08-revision/linux-final/m1-r2-final-20260910-181517-b97f497d/guest-source-manifest.sha256.txt

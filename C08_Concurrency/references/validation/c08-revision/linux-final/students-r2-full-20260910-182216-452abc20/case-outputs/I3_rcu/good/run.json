@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/root/learncpp-c08-builds/students-r2-full-20260910-182216-452abc20/student-validation/I3_rcu/good/build/I3_rcu"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.0020940539999401153,
+  "stdout": "preflight PASS; starting student workers\nI3 student PASS: 8000 reads, 65 destructions, bounded retirement\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

@@ -1,0 +1,21 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-release-r1/uring/B01_costs/B01_costs_benchmark",
+    "--check-completion"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.0111576090000014,
+  "stdout": "B01 completion control: actual native read, assembly and checked output passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-2kh3enlw",
+  "temporary_directory_removed": true,
+  "name": "B01_completion_control",
+  "cwd": "/root/learncpp-c07/builds/final-linux-release-r1/uring/B01_costs",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

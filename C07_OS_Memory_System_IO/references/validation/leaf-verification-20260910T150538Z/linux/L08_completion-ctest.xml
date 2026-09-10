@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Linux-c++"
+	tests="5"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname="lizhidan-p02"
+	time="0"
+	timestamp="2026-09-10T23:06:27"
+	>
+	<testcase name="L08_completion_reference" classname="L08_completion_reference" time="0.0249674" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L08 completion ledger checks passed
+L08_completion_reference: PASS
+</system-out>
+	</testcase>
+	<testcase name="L08_completion_validation_good" classname="L08_completion_validation_good" time="0.0260356" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation_good"/>
+		</properties>
+		<system-out>L08 completion ledger checks passed
+L08_completion_validation_good: PASS
+</system-out>
+	</testcase>
+	<testcase name="L08_completion_validation_bad_rejected" classname="L08_completion_validation_bad_rejected" time="0.0252686" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>check failed: missing target completion is rejected
+L08_completion_validation_bad_rejected: PASS
+</system-out>
+	</testcase>
+	<testcase name="L08_completion_reference_platform" classname="L08_completion_reference_platform" time="0.0256991" status="run">
+		<properties>
+			<property name="cmake_labels" value="platform;reference"/>
+		</properties>
+		<system-out>L08 completion platform checks passed
+L08_completion_reference_platform: PASS
+</system-out>
+	</testcase>
+	<testcase name="L08_completion_validation_good_platform" classname="L08_completion_validation_good_platform" time="0.026633" status="run">
+		<properties>
+			<property name="cmake_labels" value="platform;validation_good"/>
+		</properties>
+		<system-out>L08 completion platform checks passed
+L08_completion_validation_good_platform: PASS
+</system-out>
+	</testcase>
+</testsuite>

@@ -1,7 +1,8 @@
 // Implementation Starter. The supplied benchmark lives in benchmark.cpp.
-// reference.hpp is used for independent verification, never to execute the answer.
-#include "reference.hpp"
+// checks.hpp supplies only input contracts and independent verification.
+#include "checks.hpp"
 #include <array>
+#include <iostream>
 
 float student_light(float /*x*/) noexcept {
     // TODO Part 1: compute x*x+2 for the documented small-integer domain.

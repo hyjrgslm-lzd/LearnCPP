@@ -1,0 +1,13 @@
+{
+  "command": [
+    "F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\build\\sv-final3\\R2_qsbr\\bad\\build\\Release\\R2_qsbr.exe"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.4529999999995198,
+  "stdout": "",
+  "stderr": "student FAIL: quiescent must change reclamation\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL"
+}

@@ -1,0 +1,24 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "/root/learncpp-c07/builds/leaf-verifier-linux-20260910T151328Z-L06_process_ipc",
+    "-C",
+    "Release",
+    "--output-on-failure",
+    "--output-junit",
+    "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/references/validation/leaf-verification-20260910T151328Z/linux-l06-l09/L06_process_ipc-ctest.xml"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 6.574392255000021,
+  "stdout": "Internal ctest changing into directory: /root/learncpp-c07/builds/leaf-verifier-linux-20260910T151328Z-L06_process_ipc\nTest project /root/learncpp-c07/builds/leaf-verifier-linux-20260910T151328Z-L06_process_ipc\n    Start 1: L06_process_ipc_reference\n1/4 Test #1: L06_process_ipc_reference .................   Passed    3.24 sec\n    Start 2: L06_process_ipc_validation_good\n2/4 Test #2: L06_process_ipc_validation_good ...........   Passed    3.23 sec\n    Start 3: L06_process_ipc_validation_bad_rejected\n3/4 Test #3: L06_process_ipc_validation_bad_rejected ...   Passed    0.03 sec\n    Start 4: L06_file_locking\n4/4 Test #4: L06_file_locking ..........................   Passed    0.05 sec\n\n100% tests passed, 0 tests failed out of 4\n\nLabel Time Summary:\nfile_locking       =   0.05 sec*proc (1 test)\nnegative           =   0.03 sec*proc (1 test)\nobservation        =   0.05 sec*proc (1 test)\nreference          =   3.24 sec*proc (1 test)\nvalidation_good    =   3.23 sec*proc (1 test)\n\nTotal Test time (real) =   6.55 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "/mnt/f/CPPTrain/LearnCPP",
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

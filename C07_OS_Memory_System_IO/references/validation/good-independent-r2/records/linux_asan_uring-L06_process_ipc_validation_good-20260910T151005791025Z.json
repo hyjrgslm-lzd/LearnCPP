@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-asan-r1/asan-uring/L06_process_ipc/L06_process_ipc_validation_good"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 3.2327536580000356,
+  "stdout": "L06 process IPC checks passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-5ld9el_7",
+  "temporary_directory_removed": true,
+  "name": "L06_process_ipc_validation_good",
+  "cwd": "/root/learncpp-c07/builds/final-linux-asan-r1/asan-uring/L06_process_ipc",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

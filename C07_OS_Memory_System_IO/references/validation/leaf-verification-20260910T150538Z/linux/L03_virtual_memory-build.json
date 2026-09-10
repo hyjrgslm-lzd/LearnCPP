@@ -1,0 +1,21 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "/root/learncpp-c07/builds/leaf-verifier-linux-20260910T150538Z-L03_virtual_memory",
+    "--parallel",
+    "2"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 1.5753902339999968,
+  "stdout": "[ 33%] Building CXX object CMakeFiles/L03_virtual_memory_reference.dir/checks/virtual_memory_checks.cpp.o\n[ 33%] Building CXX object CMakeFiles/L03_virtual_memory_validation_good.dir/checks/virtual_memory_checks.cpp.o\n[ 50%] Linking CXX executable L03_virtual_memory_validation_good\n[ 66%] Linking CXX executable L03_virtual_memory_reference\n[ 66%] Built target L03_virtual_memory_reference\n[ 66%] Built target L03_virtual_memory_validation_good\n[ 83%] Building CXX object CMakeFiles/L03_virtual_memory_validation_bad.dir/checks/virtual_memory_checks.cpp.o\n[100%] Linking CXX executable L03_virtual_memory_validation_bad\n[100%] Built target L03_virtual_memory_validation_bad\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "/mnt/f/CPPTrain/LearnCPP",
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

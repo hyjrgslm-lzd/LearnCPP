@@ -2,6 +2,8 @@
 
 本章固定 spdlog v1.17.0 commit `79524ddd08a4ec981b7fea76afd08ee05f83755d`。范围只包含同步 logger 前端、sink、pattern 和格式化错误处理；异步队列、溢出策略、flush/shutdown 与服务观测留给 C08/C11。
 
+C08 的 [异步日志队列单元](../../C08_Concurrency/exercises/U01_async_logging/README.md) 会接续这里的同步前端，专门验证 thread_pool、三种 overflow policy、flush 请求语义、sink 异常和关闭排空。
+
 ## 前端对象：logger 把消息交给 sink
 
 最小可测结构是局部 logger 加可观测 sink：

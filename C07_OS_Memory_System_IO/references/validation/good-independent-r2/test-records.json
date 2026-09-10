@@ -1,0 +1,125 @@
+{
+  "created_utc": "2026-09-10T15:16:09.496693+00:00",
+  "records": [
+    {
+      "env": "windows_debug",
+      "target": "L06_process_ipc_validation_good",
+      "source": "F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/build/final-windows-debug-r1/records/Debug/L06_process_ipc_validation_good-20260910T150827316008Z.json",
+      "archive": "C07_OS_Memory_System_IO/references/validation/good-independent-r2/records/windows_debug-L06_process_ipc_validation_good-20260910T150827316008Z.json",
+      "sha256": "4009b0c4807a3593faa6af91d2aa4c4c4bd83d609d6d40dba31c257bf2054bfe",
+      "verdict": "PASS",
+      "exit_code": 0,
+      "timeout": false
+    },
+    {
+      "env": "windows_debug",
+      "target": "L09_dynamic_loading_validation_good",
+      "source": "F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/build/final-windows-debug-r1/records/Debug/L09_dynamic_loading_validation_good-20260910T150827828005Z.json",
+      "archive": "C07_OS_Memory_System_IO/references/validation/good-independent-r2/records/windows_debug-L09_dynamic_loading_validation_good-20260910T150827828005Z.json",
+      "sha256": "5bf2e3e8a66738d26cda0bc36f580764ccbd369af19e81710b0773e947aaa9c6",
+      "verdict": "PASS",
+      "exit_code": 0,
+      "timeout": false
+    },
+    {
+      "env": "windows_release",
+      "target": "L06_process_ipc_validation_good",
+      "source": "F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/build/final-windows-release-r1/records/Release/L06_process_ipc_validation_good-20260910T151217262117Z.json",
+      "archive": "C07_OS_Memory_System_IO/references/validation/good-independent-r2/records/windows_release-L06_process_ipc_validation_good-20260910T151217262117Z.json",
+      "sha256": "f93c310d69d1653a1a1875f23c16ad8b6136e52ba6c2b676316184246876c7be",
+      "verdict": "PASS",
+      "exit_code": 0,
+      "timeout": false
+    },
+    {
+      "env": "windows_release",
+      "target": "L09_dynamic_loading_validation_good",
+      "source": "F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/build/final-windows-release-r1/records/Release/L09_dynamic_loading_validation_good-20260910T151217450250Z.json",
+      "archive": "C07_OS_Memory_System_IO/references/validation/good-independent-r2/records/windows_release-L09_dynamic_loading_validation_good-20260910T151217450250Z.json",
+      "sha256": "6328eaadc202fbf636a60442aa8cbd32f0fdcb2df0941b0a8e37c78f82910e2d",
+      "verdict": "PASS",
+      "exit_code": 0,
+      "timeout": false
+    },
+    {
+      "env": "windows_asan",
+      "target": "L06_process_ipc_validation_good",
+      "source": "F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/build/final-windows-asan-r1/records/RelWithDebInfo/L06_process_ipc_validation_good-20260910T150842015418Z.json",
+      "archive": "C07_OS_Memory_System_IO/references/validation/good-independent-r2/records/windows_asan-L06_process_ipc_validation_good-20260910T150842015418Z.json",
+      "sha256": "a9e570b73cd2dd09d59cb9ac1c7b12efe392fdf16e7665df3c50d7363047c670",
+      "verdict": "PASS",
+      "exit_code": 0,
+      "timeout": false
+    },
+    {
+      "env": "windows_asan",
+      "target": "L09_dynamic_loading_validation_good",
+      "source": "F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/build/final-windows-asan-r1/records/RelWithDebInfo/L09_dynamic_loading_validation_good-20260910T150842526817Z.json",
+      "archive": "C07_OS_Memory_System_IO/references/validation/good-independent-r2/records/windows_asan-L09_dynamic_loading_validation_good-20260910T150842526817Z.json",
+      "sha256": "81914f8f6fe1f8c7728b3b24756422d1560376e104cc771305ed3c05569fadbe",
+      "verdict": "PASS",
+      "exit_code": 0,
+      "timeout": false
+    },
+    {
+      "env": "linux_debug_uring",
+      "target": "L06_process_ipc_validation_good",
+      "source": "/root/learncpp-c07/builds/final-linux-debug-r1/uring-debug/records/Debug/L06_process_ipc_validation_good-20260910T150958821521Z.json",
+      "archive": "C07_OS_Memory_System_IO/references/validation/good-independent-r2/records/linux_debug_uring-L06_process_ipc_validation_good-20260910T150958821521Z.json",
+      "sha256": "a1b722f05665b7bf6988e2739a48e08308f27cc29212e3cdbdf593bf86247b6b",
+      "verdict": "PASS",
+      "exit_code": 0,
+      "timeout": false
+    },
+    {
+      "env": "linux_debug_uring",
+      "target": "L09_dynamic_loading_validation_good",
+      "source": "/root/learncpp-c07/builds/final-linux-debug-r1/uring-debug/records/Debug/L09_dynamic_loading_validation_good-20260910T150958946380Z.json",
+      "archive": "C07_OS_Memory_System_IO/references/validation/good-independent-r2/records/linux_debug_uring-L09_dynamic_loading_validation_good-20260910T150958946380Z.json",
+      "sha256": "1f8c3d9628fda3db7616838ae0204a44b947780bdb0aea01936f7a7c087c8b28",
+      "verdict": "PASS",
+      "exit_code": 0,
+      "timeout": false
+    },
+    {
+      "env": "linux_release_uring",
+      "target": "L06_process_ipc_validation_good",
+      "source": "/root/learncpp-c07/builds/final-linux-release-r1/uring/records/Release/L06_process_ipc_validation_good-20260910T151002302895Z.json",
+      "archive": "C07_OS_Memory_System_IO/references/validation/good-independent-r2/records/linux_release_uring-L06_process_ipc_validation_good-20260910T151002302895Z.json",
+      "sha256": "faf5d157a97fc8f7edc5dc2affa20d7e1dded909774489b720ad50f8c15cd050",
+      "verdict": "PASS",
+      "exit_code": 0,
+      "timeout": false
+    },
+    {
+      "env": "linux_release_uring",
+      "target": "L09_dynamic_loading_validation_good",
+      "source": "/root/learncpp-c07/builds/final-linux-release-r1/uring/records/Release/L09_dynamic_loading_validation_good-20260910T151002422480Z.json",
+      "archive": "C07_OS_Memory_System_IO/references/validation/good-independent-r2/records/linux_release_uring-L09_dynamic_loading_validation_good-20260910T151002422480Z.json",
+      "sha256": "396d3852f7f607e87eba467cb02e293bc0745645e50851141c6b54a5028b4f5b",
+      "verdict": "PASS",
+      "exit_code": 0,
+      "timeout": false
+    },
+    {
+      "env": "linux_asan_uring",
+      "target": "L06_process_ipc_validation_good",
+      "source": "/root/learncpp-c07/builds/final-linux-asan-r1/asan-uring/records/RelWithDebInfo/L06_process_ipc_validation_good-20260910T151005791025Z.json",
+      "archive": "C07_OS_Memory_System_IO/references/validation/good-independent-r2/records/linux_asan_uring-L06_process_ipc_validation_good-20260910T151005791025Z.json",
+      "sha256": "fb9f00e93e72c860aa89adac552269456cc2fdac037ed30c0be0d0e00249d14b",
+      "verdict": "PASS",
+      "exit_code": 0,
+      "timeout": false
+    },
+    {
+      "env": "linux_asan_uring",
+      "target": "L09_dynamic_loading_validation_good",
+      "source": "/root/learncpp-c07/builds/final-linux-asan-r1/asan-uring/records/RelWithDebInfo/L09_dynamic_loading_validation_good-20260910T151005904680Z.json",
+      "archive": "C07_OS_Memory_System_IO/references/validation/good-independent-r2/records/linux_asan_uring-L09_dynamic_loading_validation_good-20260910T151005904680Z.json",
+      "sha256": "33b4429b5ac256fa8f216a663711d750162ce0e48e14974769b0329e5915c2d9",
+      "verdict": "PASS",
+      "exit_code": 0,
+      "timeout": false
+    }
+  ]
+}

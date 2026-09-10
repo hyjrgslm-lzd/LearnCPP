@@ -1,0 +1,2 @@
+# Preserve verification transcripts; build directories stay ignored by the repository.
+!references/validation/**/*-LastTest.log

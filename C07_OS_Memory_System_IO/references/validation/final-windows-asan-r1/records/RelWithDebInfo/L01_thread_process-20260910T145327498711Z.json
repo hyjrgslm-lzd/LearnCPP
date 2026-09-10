@@ -1,0 +1,20 @@
+{
+  "command": [
+    "F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/build/final-windows-asan-r1/L01_handles/RelWithDebInfo/L01_thread_process.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.48399999999674037,
+  "stdout": "process_id=60564\nthread_ids=3812,64128\nshared_global_address=0x7ff7494336a0\ntls_addresses=0x114fc60a1824,0x114fc60a1944\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-i2uq8cca",
+  "temporary_directory_removed": true,
+  "name": "L01_thread_process",
+  "cwd": "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\exercises\\build\\final-windows-asan-r1\\L01_handles",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

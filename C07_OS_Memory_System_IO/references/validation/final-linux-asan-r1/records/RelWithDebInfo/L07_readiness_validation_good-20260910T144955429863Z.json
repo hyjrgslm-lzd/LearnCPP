@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-asan-r1/asan-uring/L07_readiness/L07_readiness_validation_good"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.006669360000003621,
+  "stdout": "L07 readiness seed=267624465683099\nL07 readiness checks passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-ldoelr8p",
+  "temporary_directory_removed": true,
+  "name": "L07_readiness_validation_good",
+  "cwd": "/root/learncpp-c07/builds/final-linux-asan-r1/asan-uring/L07_readiness",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

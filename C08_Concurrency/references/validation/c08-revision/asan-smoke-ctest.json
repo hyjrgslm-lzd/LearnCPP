@@ -1,0 +1,23 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "build/c08-revision-asan-smoke",
+    "-C",
+    "RelWithDebInfo",
+    "--output-on-failure"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.5748963999994885,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/build/c08-revision-asan-smoke\n    Start 1: A2_stop_token_cancellation_reference\n1/1 Test #1: A2_stop_token_cancellation_reference ...   Passed    0.52 sec\n\n100% tests passed, 0 tests failed out of 1\n\nLabel Time Summary:\nreference    =   0.52 sec*proc (1 test)\n\nTotal Test time (real) =   0.52 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

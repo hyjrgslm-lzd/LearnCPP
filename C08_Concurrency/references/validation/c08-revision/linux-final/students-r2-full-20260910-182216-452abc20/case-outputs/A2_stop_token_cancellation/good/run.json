@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/root/learncpp-c08-builds/students-r2-full-20260910-182216-452abc20/student-validation/A2_stop_token_cancellation/good/build/A2_stop_token_cancellation"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.002493905999983781,
+  "stdout": "SKIP Part 5 inplace_stop_token: capability unavailable\nA2 student OK\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

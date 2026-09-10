@@ -68,6 +68,48 @@ int main() {
     source.request_stop();
     return !token.stop_requested() || std::never_stop_token{}.stop_requested();
 }
+#elif defined(CS_HAS_STD_THREAD_ATTRIBUTES)
+#include <atomic>
+#include <thread>
+int main() {
+    std::thread named(
+        std::thread::name_hint<char>{"c08-probe"},
+        std::thread::stack_size_hint{0},
+        [] {});
+    named.join();
+    std::atomic<bool> stopped{false};
+    std::jthread jt(
+        std::jthread::name_hint<char>{"c08-probe-jthread"},
+        std::jthread::stack_size_hint{64 * 1024},
+        [&](std::stop_token st) {
+            while (!st.stop_requested()) std::this_thread::yield();
+            stopped.store(true);
+        });
+    jt.request_stop();
+    jt.join();
+    return stopped.load() ? 0 : 1;
+}
+#elif defined(CS_HAS_STD_HAZARD_POINTER_BATCH)
+#include <array>
+#include <atomic>
+#include <hazard_pointer>
+#include <span>
+#if !defined(__cpp_lib_hazard_pointer) || __cpp_lib_hazard_pointer < 202606L
+#error C++29 hazard pointer batch interface is required
+#endif
+struct node : std::hazard_pointer_obj_base<node> { int value = 3; };
+int main() {
+    std::array<std::hazard_pointer, 2> hps{};
+    std::make_hazard_pointer_batch(std::span<std::hazard_pointer>{});
+    std::make_hazard_pointer_batch(std::span{hps});
+    std::atomic<node*> source{new node{}};
+    node* protected_node = hps[0].protect(source);
+    if (!protected_node || protected_node->value != 3) return 1;
+    source.store(nullptr);
+    std::clear_hazard_pointer_batch(std::span{hps});
+    protected_node->retire();
+    return 0;
+}
 #else
 #error Select one feature
 #endif

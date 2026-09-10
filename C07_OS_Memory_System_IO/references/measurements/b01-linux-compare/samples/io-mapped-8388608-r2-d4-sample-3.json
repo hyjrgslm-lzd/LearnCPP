@@ -1,0 +1,56 @@
+{
+  "case": {
+    "bytes": 8388608,
+    "depth": 4,
+    "kind": "io",
+    "rounds": 2,
+    "variant": "mapped"
+  },
+  "case_id": "io-mapped-8388608-r2-d4",
+  "parse_error": "",
+  "parsed": {
+    "application_copy_bytes": 16777216,
+    "assemble_seconds": 0.003763306,
+    "bytes": 16777216,
+    "clock_period_den": 1000000000,
+    "clock_period_num": 1,
+    "clock_resolution_seconds": 1e-09,
+    "completions": 0,
+    "depth": 4,
+    "kind": "io",
+    "peak_in_flight": 0,
+    "read_calls": 0,
+    "read_seconds": 0.00216766,
+    "rounds": 2,
+    "seconds": 0.050496875999999996,
+    "setup_seconds": 6.3762e-05,
+    "size": 8388608,
+    "valid": true,
+    "variant": "mapped",
+    "write_seconds": 0.044158881999999997
+  },
+  "raw": {
+    "cleanup_error": "",
+    "command": [
+      "/root/learncpp-c07/builds/final-linux-release-r1/uring/B01_costs/B01_costs_benchmark",
+      "io",
+      "mapped",
+      "8388608",
+      "2",
+      "4"
+    ],
+    "error": "",
+    "exit_code": 0,
+    "process_seconds": 0.09000826600000078,
+    "status": "PASS",
+    "stderr": "",
+    "stdout": "{\"kind\":\"io\",\"variant\":\"mapped\",\"size\":8388608,\"rounds\":2,\"depth\":4,\"seconds\":0.050496875999999996,\"setup_seconds\":6.3762000000000004e-05,\"read_seconds\":0.0021676600000000001,\"assemble_seconds\":0.0037633060000000001,\"write_seconds\":0.044158881999999997,\"bytes\":16777216,\"read_calls\":0,\"completions\":0,\"peak_in_flight\":0,\"application_copy_bytes\":16777216,\"clock_resolution_seconds\":1.0000000000000001e-09,\"clock_period_num\":1,\"clock_period_den\":1000000000,\"valid\":true}\n",
+    "temporary_directory": "/tmp/c07-test-bbn0hu35",
+    "temporary_directory_removed": true,
+    "timeout": false
+  },
+  "sample_id": "io-mapped-8388608-r2-d4-sample-3",
+  "seconds": 0.050496875999999996,
+  "verdict": "VALID",
+  "warmup": false
+}

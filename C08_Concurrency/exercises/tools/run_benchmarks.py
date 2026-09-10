@@ -189,6 +189,9 @@ def collect_environment(executable: Path) -> dict:
 
 
 def main() -> int:
+    if sys.version_info < (3, 11):
+        print("Python 3.11+ is required; select the documented interpreter explicitly.", file=sys.stderr)
+        return 2
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--exe", required=True, type=Path)
     parser.add_argument("--check", required=True, action="append", type=Path,

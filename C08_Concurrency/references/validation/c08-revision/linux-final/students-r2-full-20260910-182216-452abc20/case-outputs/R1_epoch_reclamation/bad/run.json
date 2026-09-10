@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/root/learncpp-c08-builds/students-r2-full-20260910-182216-452abc20/student-validation/R1_epoch_reclamation/bad/build/R1_epoch_reclamation"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.0014374380000390374,
+  "stdout": "",
+  "stderr": "student FAIL: student retire ownership\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL"
+}

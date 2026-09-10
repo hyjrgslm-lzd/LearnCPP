@@ -1,0 +1,1620 @@
+{
+  "recorded_at": "2026-09-10T08:06:48.170541+00:00",
+  "head": "280ac301525e2b136a5b2f06c5ab2701defa0349",
+  "protected_changes": [
+    {
+      "path": "C01_Build_Compile_Link/README.md",
+      "sha256": "0a87fe7629d87424d582e29d746aa5db5281d4ce9821707988deb2e84a42daae"
+    },
+    {
+      "path": "C02_Objects_Lifetime_Ownership/README.md",
+      "sha256": "06b98511b3aadcc9636be03e5acc5461977347d0b2897d4f803cc43437ef58c1"
+    },
+    {
+      "path": "C03_Type_Modeling_Interface_Design/README.md",
+      "sha256": "02e1af03bc2a99b0c97f14e408caed7547c944e71b6b63ad5887310ca7a13168"
+    },
+    {
+      "path": "C09_Coroutines/README.md",
+      "sha256": "95655b96b49ab13fd9d8ead83e62e22d0e505d95890c61cef0c7a0bb5e441a93"
+    },
+    {
+      "path": "C10_Execution/README.md",
+      "sha256": "7c856a025ddf6f1d908bb317a1ef592c6c155165f261557f06992608a6d54906"
+    },
+    {
+      "path": "C14_GPU/README.md",
+      "sha256": "ef1c026e452b4aee8d8a4c9dbde8885bdfb2a86c9aaefcc747995b4493496230"
+    },
+    {
+      "path": "C15_Unreal_Engine/README.md",
+      "sha256": "7696d978adedaf92855cab6f7c90f08dbb98af622755e28bf89ea427f466ff79"
+    },
+    {
+      "path": "CONTENT_REFACTORING_GUIDE.md",
+      "sha256": "971e2f48729fa198e41dab09b8dc8b859745661ad3f184c8e061e2a11ad5e6fc"
+    }
+  ],
+  "initial_c08_tracked": [
+    {
+      "path": "C08_Concurrency/IMPLEMENTATION.md",
+      "sha256": "63fc156a378bc7dba73e0607ad21ab532c4ab19ceebb7433595cd6bdbbacd258"
+    },
+    {
+      "path": "C08_Concurrency/README.md",
+      "sha256": "4ced8b27d44c7edac5db30f8220b6d6c2c2c42306889ec5708212b1922a7232c"
+    },
+    {
+      "path": "C08_Concurrency/chapters/00-execution-and-objects.md",
+      "sha256": "7aedffd17ce4c865b93c0f9699b7137c6a782f8bdd05ac7c36e6ce2205041c65"
+    },
+    {
+      "path": "C08_Concurrency/chapters/01-concurrency-model.md",
+      "sha256": "cc03c6a9b3b7b2b27f616abab85035e820f7f8cddf8042e4ea69ad775aafe810"
+    },
+    {
+      "path": "C08_Concurrency/chapters/02-result-channels.md",
+      "sha256": "029e176515eee956b762f66d726253646ef5565f344fb2ecb6062517a9bbe20b"
+    },
+    {
+      "path": "C08_Concurrency/chapters/03-threads-and-execution.md",
+      "sha256": "b58b36a05823d5cb348cb89e8e4d20f2b104c85167b373c0286b8fa71d98c287"
+    },
+    {
+      "path": "C08_Concurrency/chapters/04-shared-state-and-locks.md",
+      "sha256": "9fbe8c0074391cb3a95773c11e1bd08e32ca88954970d5c5b954d0b1c215e900"
+    },
+    {
+      "path": "C08_Concurrency/chapters/05-waiting-and-channels.md",
+      "sha256": "a515e9fac3776528439f1ee3f208cfa589793a9643a3539bbd21f3136fcea5f8"
+    },
+    {
+      "path": "C08_Concurrency/chapters/06-cancellation-and-shutdown.md",
+      "sha256": "ed12331866aad8e1dc2711ebb79574b4a8c6731678af62ae508402952f21dd02"
+    },
+    {
+      "path": "C08_Concurrency/chapters/07-coordination.md",
+      "sha256": "9fd62d9ed91358ccaef79c344f2e1b0f13db8db95e177c698add57829982e090"
+    },
+    {
+      "path": "C08_Concurrency/chapters/08-atomics.md",
+      "sha256": "cff85b9754a3e3026b21af4af714da99d43a4ace52a775859b530bd01510b64b"
+    },
+    {
+      "path": "C08_Concurrency/chapters/09-memory-model.md",
+      "sha256": "a09c65a28b72afa6d4a3b0c916d5f15328334e416ce2a12884dc1ad0c3acbbc0"
+    },
+    {
+      "path": "C08_Concurrency/chapters/10-publication-and-lifetime.md",
+      "sha256": "e335332a516df7ebe8dbe8aafb097b9ad738ee3ea80fc3419463e8811fe80168"
+    },
+    {
+      "path": "C08_Concurrency/chapters/11-concurrent-structures.md",
+      "sha256": "68afb27cd0ec213673e3296fc710937c6c5e2474b3b0f13e7c322019004aa064"
+    },
+    {
+      "path": "C08_Concurrency/chapters/12-measurement.md",
+      "sha256": "adea9e234faa394b26f2d06dbcf4fd503fa742d266dbf14f7d90cfcf9101a8dc"
+    },
+    {
+      "path": "C08_Concurrency/chapters/13-cache-and-layout.md",
+      "sha256": "d28bb240d4bfd92147906723d21d7544a237217375f810ff5e76a97922db6cac"
+    },
+    {
+      "path": "C08_Concurrency/chapters/14-parallel-algorithms.md",
+      "sha256": "eb926171497a7b234d8c4b1d8c97a79710d8dea7959c2d1d1badc2f69b9a8e41"
+    },
+    {
+      "path": "C08_Concurrency/chapters/15-simd.md",
+      "sha256": "b67675dba8c30a6b3abc21120e8072eea615167233601b54a3c3e81a731b5753"
+    },
+    {
+      "path": "C08_Concurrency/chapters/16-scheduling.md",
+      "sha256": "2195735320af3cc8623c34633d70d81418a2cf4df44b28ad8c08b88d29e9ef8e"
+    },
+    {
+      "path": "C08_Concurrency/chapters/17-diagnostics-and-sources.md",
+      "sha256": "8d20bf57ae1ae47326d0f5f81af951699277902987c374a98d1f94c0bc5eabd5"
+    },
+    {
+      "path": "C08_Concurrency/exercises/.gitignore",
+      "sha256": "fd0f96d3a083d504f67bc24ab144ff1521497ff05233c97dd33eaf31d0cf8574"
+    },
+    {
+      "path": "C08_Concurrency/exercises/A1_jthread_lifecycle/CMakeLists.txt",
+      "sha256": "4550a4099762e5ef7ee50e22bc298c7e733c8b03ad9523c7a4ab1352f9433ef3"
+    },
+    {
+      "path": "C08_Concurrency/exercises/A1_jthread_lifecycle/README.md",
+      "sha256": "4d4096b830c15986e0de646160958a43d139845f115e928bb456e157959936d4"
+    },
+    {
+      "path": "C08_Concurrency/exercises/A1_jthread_lifecycle/main.cpp",
+      "sha256": "fe9257fc5ed51c1b4e3be7405925cb04313130dfd1411f9780f244925d880182"
+    },
+    {
+      "path": "C08_Concurrency/exercises/A1_jthread_lifecycle/solution.cpp",
+      "sha256": "184b196ba73c1021b236d614b7dbfa425dcb882db77424035bb89e1d7da0f4a8"
+    },
+    {
+      "path": "C08_Concurrency/exercises/A2_stop_token_cancellation/CMakeLists.txt",
+      "sha256": "260d48d8784f2f6791d9a47fb1c3ce3574b2e0233d01c2d6096fc4c3cfce54d1"
+    },
+    {
+      "path": "C08_Concurrency/exercises/A2_stop_token_cancellation/README.md",
+      "sha256": "9fbcd6baf6a4dd394d5400db434c49ae3d1cb36c2b102765abb50017eb6fd08b"
+    },
+    {
+      "path": "C08_Concurrency/exercises/A2_stop_token_cancellation/main.cpp",
+      "sha256": "a1b546e5b37a2fb12808d20a97927aa73791ad239635761a97333b5c30f3b2bc"
+    },
+    {
+      "path": "C08_Concurrency/exercises/A2_stop_token_cancellation/solution.cpp",
+      "sha256": "22fc42d67e2d08b4c06500f883f5dd194a9325dd7e754859c487e30cc5f9141f"
+    },
+    {
+      "path": "C08_Concurrency/exercises/A3_thread_exception/CMakeLists.txt",
+      "sha256": "3d85039b5442aa5a6ffa28f42b73deb3d818657e692a836bf2fad2d6583549e7"
+    },
+    {
+      "path": "C08_Concurrency/exercises/A3_thread_exception/README.md",
+      "sha256": "35aa0c74803b89b21873e6f05a5a0639d0bf6bc946a4d5924444dcd7092f4aa8"
+    },
+    {
+      "path": "C08_Concurrency/exercises/A3_thread_exception/main.cpp",
+      "sha256": "c1cf101fd619ffd117e3d990b70db7b2684142ad9457da6a5255ab3814f53579"
+    },
+    {
+      "path": "C08_Concurrency/exercises/A3_thread_exception/solution.cpp",
+      "sha256": "778e0b36e0384272110989fd408eee3fbfd10d911689c96bc1db70c191f094f2"
+    },
+    {
+      "path": "C08_Concurrency/exercises/B1_mutex_family/CMakeLists.txt",
+      "sha256": "62b39e659804e760062e4ae0cb3323957e6266ffcfa002e3c8f47ebb9cd863e7"
+    },
+    {
+      "path": "C08_Concurrency/exercises/B1_mutex_family/README.md",
+      "sha256": "392998de0a2469bbfa2e505bb91211bdfefb44fe44d3d96765dc6e3cd08dc6ec"
+    },
+    {
+      "path": "C08_Concurrency/exercises/B1_mutex_family/main.cpp",
+      "sha256": "013a2ceede7d161c86aff433315748ee0f8d79d566581648386de06419ac0066"
+    },
+    {
+      "path": "C08_Concurrency/exercises/B1_mutex_family/solution.cpp",
+      "sha256": "3d2670f075735508eb6e494b5c00133c543a700b7f08cb5c0e3069fbc74f452f"
+    },
+    {
+      "path": "C08_Concurrency/exercises/B2_deadlock_scoped_lock/CMakeLists.txt",
+      "sha256": "1a1e9f5cbbba5f0ff20650f730c6c25c6e495739457c0fb2fa1a000b893b8ddb"
+    },
+    {
+      "path": "C08_Concurrency/exercises/B2_deadlock_scoped_lock/README.md",
+      "sha256": "b10028273c1b6efa34253a50a70e2430ca40409ef0be4559835b22a91e2f9093"
+    },
+    {
+      "path": "C08_Concurrency/exercises/B2_deadlock_scoped_lock/main.cpp",
+      "sha256": "f99be94165703fe20a72a92613f4733bc5c13d58f9545fdc553e3a29bba31dac"
+    },
+    {
+      "path": "C08_Concurrency/exercises/B2_deadlock_scoped_lock/solution.cpp",
+      "sha256": "d719ec0bb1f9e8ecd7178d37d51b426315176c2a5a554629c85ea5ea8c57ac4b"
+    },
+    {
+      "path": "C08_Concurrency/exercises/B3_call_once/CMakeLists.txt",
+      "sha256": "d37798f2d5449142042baeca28faac651e87d5ffce4ec4781c143c12ddab9a80"
+    },
+    {
+      "path": "C08_Concurrency/exercises/B3_call_once/README.md",
+      "sha256": "11e3ec2412f869a8115869d1f8bc12b3e0582c542fcb44ad8c7c7ad8165545da"
+    },
+    {
+      "path": "C08_Concurrency/exercises/B3_call_once/main.cpp",
+      "sha256": "69b6885c1b1dcf8fad38263bad2e1724976ea53428eb54e0b98f7b361dfb9a52"
+    },
+    {
+      "path": "C08_Concurrency/exercises/B3_call_once/solution.cpp",
+      "sha256": "9d06981999a3f748b89795ae8b43966699f6ab3781fb2c0d59eda4afaba6c171"
+    },
+    {
+      "path": "C08_Concurrency/exercises/BUILD_GUIDE.md",
+      "sha256": "6b579fd96f0e7c05b70f4f3de3647b7a5663d7c39287b86e6f27df991da56d84"
+    },
+    {
+      "path": "C08_Concurrency/exercises/C1_condvar_predicate/CMakeLists.txt",
+      "sha256": "9e8cd6a6d4eaad55c78f9f8702df501fdae314dea753482808a06ad0ba897658"
+    },
+    {
+      "path": "C08_Concurrency/exercises/C1_condvar_predicate/README.md",
+      "sha256": "f6f8c59952a003b335856005da2d19033f75a6a7af4c0a3fca24a10209f8cc91"
+    },
+    {
+      "path": "C08_Concurrency/exercises/C1_condvar_predicate/main.cpp",
+      "sha256": "93a3fb494b99d95170e9e6ac7de313bf857167eafa14ccb39b6c2ed62291c57e"
+    },
+    {
+      "path": "C08_Concurrency/exercises/C1_condvar_predicate/solution.cpp",
+      "sha256": "96c40d522bc2d63b5c61f8c316c4761cc0b0eec36c09b32caec0490acf8c831c"
+    },
+    {
+      "path": "C08_Concurrency/exercises/C2_bounded_queue_condvar/CMakeLists.txt",
+      "sha256": "b1e066abb16cd50530144698179a298cc5eb7ebd6be3c87a02fae4d0c087a96d"
+    },
+    {
+      "path": "C08_Concurrency/exercises/C2_bounded_queue_condvar/README.md",
+      "sha256": "9d27236ec1973118b6e1b1e4b6eb622adf772203f15fed1a848b00cc1f92da8b"
+    },
+    {
+      "path": "C08_Concurrency/exercises/C2_bounded_queue_condvar/checks.hpp",
+      "sha256": "af994792587a12733d872a39374a2b13727cb694bbad061fdff58941c4f83bab"
+    },
+    {
+      "path": "C08_Concurrency/exercises/C2_bounded_queue_condvar/main.cpp",
+      "sha256": "2e2e319a76d0f7f847fed4c81854001315cc153e57f5f339fabc3859e2488840"
+    },
+    {
+      "path": "C08_Concurrency/exercises/C2_bounded_queue_condvar/solution.cpp",
+      "sha256": "197995dfc1f4599293533d75f6c1d1b8b208a6c345dd24aaca4a9efc9206b2ae"
+    },
+    {
+      "path": "C08_Concurrency/exercises/C3_interruptible_wait/CMakeLists.txt",
+      "sha256": "d043b1e41258deea5b094797ad47a451accd3b07c6ba76f6182470c9d7c56bd2"
+    },
+    {
+      "path": "C08_Concurrency/exercises/C3_interruptible_wait/README.md",
+      "sha256": "b6b55361e18f4def1f2408f88cb2ddef3c0b301dfea2b5746a132577ef131ae4"
+    },
+    {
+      "path": "C08_Concurrency/exercises/C3_interruptible_wait/main.cpp",
+      "sha256": "c92bd3222bc14908e1dbf94112d23093a56b4818cd6dc2369467eee010f8b245"
+    },
+    {
+      "path": "C08_Concurrency/exercises/C3_interruptible_wait/solution.cpp",
+      "sha256": "79b1d997adb3f609fcb84bb449bc4d7d90bb33189c70273b9ce20852495c226f"
+    },
+    {
+      "path": "C08_Concurrency/exercises/CMakeLists.txt",
+      "sha256": "8cd6757c8481969d2e75e4fe9313491815f12e69269968e314daf5acb78bbadb"
+    },
+    {
+      "path": "C08_Concurrency/exercises/CMakePresets.json",
+      "sha256": "cc2d3cd7d0cd2325f6c9eceeaf88ab49eabb4c9c628f2a543ab80011f052f3a0"
+    },
+    {
+      "path": "C08_Concurrency/exercises/Capstone1_thread_pool/CMakeLists.txt",
+      "sha256": "da41e2fc768e4df3af6f5238148c5597575ba2afd97eff4837bae5c919418ec9"
+    },
+    {
+      "path": "C08_Concurrency/exercises/Capstone1_thread_pool/README.md",
+      "sha256": "ef2ef19c626a36a468de85b4c5de8ea17e5fccbf2b0fe8b23404c5023e19e52e"
+    },
+    {
+      "path": "C08_Concurrency/exercises/Capstone1_thread_pool/checks.hpp",
+      "sha256": "18d05ea17687ec5fe821f75edb78f120fc7ab443f09f7a5982bd70a8ff659362"
+    },
+    {
+      "path": "C08_Concurrency/exercises/Capstone1_thread_pool/main.cpp",
+      "sha256": "75ea97b45a9a1930a269203bed1cc9e55d5e2170880219c1811538d9340d35ce"
+    },
+    {
+      "path": "C08_Concurrency/exercises/Capstone1_thread_pool/solution.cpp",
+      "sha256": "19f0084096a8e35a82076aa2e3447352ed9542acbaae9148393bbc5d78548746"
+    },
+    {
+      "path": "C08_Concurrency/exercises/Capstone2_lockfree_queue/CMakeLists.txt",
+      "sha256": "e9b99fe05a9a482612be18a8e5e9530cede08e393064662991fc735fc24d26db"
+    },
+    {
+      "path": "C08_Concurrency/exercises/Capstone2_lockfree_queue/README.md",
+      "sha256": "b02dc09f29dba550e7ecac5149325b31d2896af63de8a6375cab03ade9283ac3"
+    },
+    {
+      "path": "C08_Concurrency/exercises/Capstone2_lockfree_queue/main.cpp",
+      "sha256": "f262f3fa4c3b63a5efac6546ad922cc1f94259ff7831ae796ac45ae8a36a5e70"
+    },
+    {
+      "path": "C08_Concurrency/exercises/Capstone2_lockfree_queue/solution.cpp",
+      "sha256": "e7919b200154a181b3da0f308cbe540c2521154a3bad08f242b1dc6d93756d63"
+    },
+    {
+      "path": "C08_Concurrency/exercises/Capstone3_parallel_compute/CMakeLists.txt",
+      "sha256": "81107dd169713b8ec4e19072e1aaf447db6368c410a07d893c80488a8795eca1"
+    },
+    {
+      "path": "C08_Concurrency/exercises/Capstone3_parallel_compute/README.md",
+      "sha256": "820c2b10975b4fdd5c46eb8da997d53c7585ead28e70b741ca396212b7cc8bf2"
+    },
+    {
+      "path": "C08_Concurrency/exercises/Capstone3_parallel_compute/benchmark.cpp",
+      "sha256": "57902407fa5b1ddf0f5dae31d0fbe6b0f03fe5b7596d322fc3c03814758023de"
+    },
+    {
+      "path": "C08_Concurrency/exercises/Capstone3_parallel_compute/main.cpp",
+      "sha256": "bb59bf06563586b8813c321507c9c187560424c53a90f7960e8f98c4ec722ab0"
+    },
+    {
+      "path": "C08_Concurrency/exercises/Capstone3_parallel_compute/reference.hpp",
+      "sha256": "51139517559166e04fca691092e0d00547502737c4d7e6278fef9301b8e75f92"
+    },
+    {
+      "path": "C08_Concurrency/exercises/Capstone3_parallel_compute/solution.cpp",
+      "sha256": "e6c0f538685ef8bb234a72be36c245dd8d9b38214bdba1aa0e2a8b8d6baeb508"
+    },
+    {
+      "path": "C08_Concurrency/exercises/D1_promise_future/CMakeLists.txt",
+      "sha256": "c596f089b7b333acf7a8b64c1918f7c5338494a3112909a1e6b0c6bb7a7c5512"
+    },
+    {
+      "path": "C08_Concurrency/exercises/D1_promise_future/README.md",
+      "sha256": "de792a1984ac7acc2dd79041399cde9a84ccccd60c1e797def756a81efc927d7"
+    },
+    {
+      "path": "C08_Concurrency/exercises/D1_promise_future/main.cpp",
+      "sha256": "361a37f047f833b4a150448849652da0a6c551bbae8c3e15ccd845549ffeb8e2"
+    },
+    {
+      "path": "C08_Concurrency/exercises/D1_promise_future/solution.cpp",
+      "sha256": "a797928f77aff4c5662488e51985eef071c99a165eaf12ec3815fe8f8ba4687a"
+    },
+    {
+      "path": "C08_Concurrency/exercises/D2_async_policies/CMakeLists.txt",
+      "sha256": "4697cf605b7e1a72fffcc985148bcd222188006d8e0a25f20a3b8eb962188920"
+    },
+    {
+      "path": "C08_Concurrency/exercises/D2_async_policies/README.md",
+      "sha256": "37b420971e7694a3bb2dcdd19978dbebd57cf50463971d57a72c05e7c942e75f"
+    },
+    {
+      "path": "C08_Concurrency/exercises/D2_async_policies/main.cpp",
+      "sha256": "49e8e3bb6398ec3f836e786f5137f160a02db163c7dcbf235854601eae48f026"
+    },
+    {
+      "path": "C08_Concurrency/exercises/D2_async_policies/solution.cpp",
+      "sha256": "b1664f590d95dce4ddb334c171489a97d43c45188f3677f4d74f122607d8125b"
+    },
+    {
+      "path": "C08_Concurrency/exercises/D3_packaged_task/CMakeLists.txt",
+      "sha256": "80245940eaee8d4b15783e6e57ae7d969c3b7a4a18441a1aa0627cc04a8bc22c"
+    },
+    {
+      "path": "C08_Concurrency/exercises/D3_packaged_task/README.md",
+      "sha256": "48aa6ea50e9b749444d3d308f65503acb9ddb3b8a181542759d45ee7d7640fed"
+    },
+    {
+      "path": "C08_Concurrency/exercises/D3_packaged_task/main.cpp",
+      "sha256": "f6860fe1cdc13b80783bc3524e28f6263c587f569231262eef85f6bacd8bdb84"
+    },
+    {
+      "path": "C08_Concurrency/exercises/D3_packaged_task/solution.cpp",
+      "sha256": "478b3c28b983f5daf30ac30cccc7a0ba700c1b17a9d8566b3b18c66bfac47967"
+    },
+    {
+      "path": "C08_Concurrency/exercises/E1_atomic_basics/CMakeLists.txt",
+      "sha256": "af9475615822cde12ca392fd012d51d72dce62f3a7139542c5365e068a7354cb"
+    },
+    {
+      "path": "C08_Concurrency/exercises/E1_atomic_basics/README.md",
+      "sha256": "ab01c1ae50f3ea64fe070788e110dae272f21ff242df430115f90fb0c83af580"
+    },
+    {
+      "path": "C08_Concurrency/exercises/E1_atomic_basics/main.cpp",
+      "sha256": "1a75bbbadc5ed40794ef9829d588e8ad6a385298d53774210face5157c0f288d"
+    },
+    {
+      "path": "C08_Concurrency/exercises/E1_atomic_basics/solution.cpp",
+      "sha256": "4a949f51323461bb9af649c030e39ec14730191cf7c9126cdfcfe4f7c2f4aafa"
+    },
+    {
+      "path": "C08_Concurrency/exercises/E2_atomic_ref/CMakeLists.txt",
+      "sha256": "ec0183adbf07240a5bf3df829600cb736ad1447384ccfb2f6d77e132265e29aa"
+    },
+    {
+      "path": "C08_Concurrency/exercises/E2_atomic_ref/README.md",
+      "sha256": "9b1960bb3c0753449c77e6ec1567a7cd632fea6d09026fb385758b955af0b3e7"
+    },
+    {
+      "path": "C08_Concurrency/exercises/E2_atomic_ref/main.cpp",
+      "sha256": "ab60410d85c39b8a463f8227b7fddbf540c4548fd57722f611a75da8ae47d3a4"
+    },
+    {
+      "path": "C08_Concurrency/exercises/E2_atomic_ref/solution.cpp",
+      "sha256": "aa53463574dd18ecad2979d2b601e27cca5b49ed880b582c8bfec49a6790dc22"
+    },
+    {
+      "path": "C08_Concurrency/exercises/E3_cas_loop/CMakeLists.txt",
+      "sha256": "4e175e9ceb003e16b38b5a9066e4be550feecb8f7c981d5ca9c604048c19980a"
+    },
+    {
+      "path": "C08_Concurrency/exercises/E3_cas_loop/README.md",
+      "sha256": "3f692eb707efec445523d0d121fa2eff1906edb91eaeb1ec6bbb3fda7e94b25a"
+    },
+    {
+      "path": "C08_Concurrency/exercises/E3_cas_loop/main.cpp",
+      "sha256": "f52a2e9658252377eac8ac03fd71a1ae3e038bbce65a36048f16d9e8a60553ae"
+    },
+    {
+      "path": "C08_Concurrency/exercises/E3_cas_loop/solution.cpp",
+      "sha256": "8f996e98644609631459b9745e0a74e153b92bdb40ca2a399f8cd8a4f7ef454a"
+    },
+    {
+      "path": "C08_Concurrency/exercises/F1_release_acquire/CMakeLists.txt",
+      "sha256": "996a6d3442e2262e9c9c9902e965cff248dfd7374d35732136a6c5b67be30406"
+    },
+    {
+      "path": "C08_Concurrency/exercises/F1_release_acquire/README.md",
+      "sha256": "bc8c891630231478266074eefaa55fb3afeb9851c074bef859d34fb65005c392"
+    },
+    {
+      "path": "C08_Concurrency/exercises/F1_release_acquire/main.cpp",
+      "sha256": "f891c9d05309e7c60500956482cc354d3991a6bb2841a70e9f5d402accab0e85"
+    },
+    {
+      "path": "C08_Concurrency/exercises/F1_release_acquire/solution.cpp",
+      "sha256": "48406c97f2e41f06bb9251a257d3bbc0ce29c2169f248b84ec8e470531f5cc19"
+    },
+    {
+      "path": "C08_Concurrency/exercises/F2_relaxed_counter/CMakeLists.txt",
+      "sha256": "e66e62b287b2e91debfc49a4621ac0ddc5223848b40ce7862dec3e8d0d1f7acd"
+    },
+    {
+      "path": "C08_Concurrency/exercises/F2_relaxed_counter/README.md",
+      "sha256": "fc0e67061f29feec20317dcbc08212d0cab42898acc4bbefd4ea5d8e50dcc619"
+    },
+    {
+      "path": "C08_Concurrency/exercises/F2_relaxed_counter/main.cpp",
+      "sha256": "36eb42c33e25f5bed9d7299747ed8a4837d044aac8a8af7b57c410eea935953b"
+    },
+    {
+      "path": "C08_Concurrency/exercises/F2_relaxed_counter/solution.cpp",
+      "sha256": "34be621fa4ec143e71807670b581a00fe9fe38cab05762796773f3604a984ab1"
+    },
+    {
+      "path": "C08_Concurrency/exercises/F3_seqcst_fence/CMakeLists.txt",
+      "sha256": "213f97fe056b2815e6eb2a486555b66416ad4ca5b36b37aa52b4e706e9b02b01"
+    },
+    {
+      "path": "C08_Concurrency/exercises/F3_seqcst_fence/README.md",
+      "sha256": "e5f19f760fa60ba4d08753cf1eb02387f4db73bac23941fa0c0eafe5d4f5c226"
+    },
+    {
+      "path": "C08_Concurrency/exercises/F3_seqcst_fence/main.cpp",
+      "sha256": "c6b92cadae1494ef8349010f97c404c5bab6e6c3a66f62b21a579d120d595503"
+    },
+    {
+      "path": "C08_Concurrency/exercises/F3_seqcst_fence/solution.cpp",
+      "sha256": "ad1abb30bb036e7f2dc8e6749a1854273758291da769816b5db778dda17da6f1"
+    },
+    {
+      "path": "C08_Concurrency/exercises/F4_publish_pattern/CMakeLists.txt",
+      "sha256": "6089ecdf3cd890a3cd9c0035a9bb47426e880e3a981809db78d49090f049301f"
+    },
+    {
+      "path": "C08_Concurrency/exercises/F4_publish_pattern/README.md",
+      "sha256": "240d58944c93cd695c2b464c307d6ea9204a65969b00de46fc0fa0c19b39472e"
+    },
+    {
+      "path": "C08_Concurrency/exercises/F4_publish_pattern/main.cpp",
+      "sha256": "9e7d4a69d605e386f5df2c3f5de7d77a79ccc14cb928ed02324d463c57fe114f"
+    },
+    {
+      "path": "C08_Concurrency/exercises/F4_publish_pattern/solution.cpp",
+      "sha256": "08f091c6f5befed65a61d9ea16e446ce4c01f4550fae142f02599f23255d01d4"
+    },
+    {
+      "path": "C08_Concurrency/exercises/G1_treiber_stack/CMakeLists.txt",
+      "sha256": "03e9f4f8fa845e1eb5855c5cfd595f5a61fac8f8e625c3f17bf1f235bc95259c"
+    },
+    {
+      "path": "C08_Concurrency/exercises/G1_treiber_stack/README.md",
+      "sha256": "665adc04b163fdea96f288dcda29221c27ebd5a4d2d4f27cae34f1ee99b0cb77"
+    },
+    {
+      "path": "C08_Concurrency/exercises/G1_treiber_stack/main.cpp",
+      "sha256": "b8187f3de6e1d43156c590e91b27ded85dcaabfc35bbf2227f141bc47707dfe7"
+    },
+    {
+      "path": "C08_Concurrency/exercises/G1_treiber_stack/solution.cpp",
+      "sha256": "7cddc471369c3289a140ab8112afa08316d2acc2479352344ecafb896fd7bbf1"
+    },
+    {
+      "path": "C08_Concurrency/exercises/G2_aba_problem/CMakeLists.txt",
+      "sha256": "b4684a0fb2a76347b18ea05cb9c0d467a16e739a55a6b8989dc26dba213e9724"
+    },
+    {
+      "path": "C08_Concurrency/exercises/G2_aba_problem/README.md",
+      "sha256": "0719ae66ee83ae9483b7ab6ca5554a558ff39ad036315c681e1c4fce0ff55896"
+    },
+    {
+      "path": "C08_Concurrency/exercises/G2_aba_problem/main.cpp",
+      "sha256": "050a21181d62eb6fcac7e28d141305319c645c6bf0b9293350b112fee0d300cf"
+    },
+    {
+      "path": "C08_Concurrency/exercises/G2_aba_problem/reference.hpp",
+      "sha256": "2a0799d25b05ccd9fcccc2e9ea6cadbe042e4521ebb21383b66db1838357b41b"
+    },
+    {
+      "path": "C08_Concurrency/exercises/G2_aba_problem/solution.cpp",
+      "sha256": "d6730d354cd2af6f9256f12368d2ce1be7c2d59907645f74a5e8445a0f318a75"
+    },
+    {
+      "path": "C08_Concurrency/exercises/G3_spsc_ringbuffer/CMakeLists.txt",
+      "sha256": "531d677a3f9a6a9f6116ffab3919194c12a43fe5e50ad0f56978d473c6a60efc"
+    },
+    {
+      "path": "C08_Concurrency/exercises/G3_spsc_ringbuffer/README.md",
+      "sha256": "0739efd2edc05213b4d54f94b240f2d89b47373485b1fb9463ee20fa2467020e"
+    },
+    {
+      "path": "C08_Concurrency/exercises/G3_spsc_ringbuffer/main.cpp",
+      "sha256": "e3e91b40c90fb38b6f02014530bd93de77dfe374a72c9a90481c2276f3597d40"
+    },
+    {
+      "path": "C08_Concurrency/exercises/G3_spsc_ringbuffer/solution.cpp",
+      "sha256": "ab42576f4a615ac7f7bbf4a076b9d2d5be432d26709e197977ac033dde7a9b5c"
+    },
+    {
+      "path": "C08_Concurrency/exercises/H1_latch_barrier/CMakeLists.txt",
+      "sha256": "584c6aff02000c3303cc794f8e9ab190993c43312c100b89b987c1ae31576f06"
+    },
+    {
+      "path": "C08_Concurrency/exercises/H1_latch_barrier/README.md",
+      "sha256": "384f478c1cf4bf131338c81b337ff0c59a3fca1eb7cc5281f1a8c989dfdacc95"
+    },
+    {
+      "path": "C08_Concurrency/exercises/H1_latch_barrier/main.cpp",
+      "sha256": "e4fdd818c2d7f8818aab08a09eee4f5a1f6749a3dcd61df8f394c1cc9eb3bfaa"
+    },
+    {
+      "path": "C08_Concurrency/exercises/H1_latch_barrier/solution.cpp",
+      "sha256": "25d9e7a92b268ec799efba141cd567b0db03e352765f92638aa63ba02f293e64"
+    },
+    {
+      "path": "C08_Concurrency/exercises/H2_semaphore/CMakeLists.txt",
+      "sha256": "cf85af3f22774968078873235938061d100e978de2f3bbf8d4d90aa19cda6bb8"
+    },
+    {
+      "path": "C08_Concurrency/exercises/H2_semaphore/README.md",
+      "sha256": "e45291a15eacc1ea8fd237f4b27ff9b1fd69121e0b221e89235f4b75c54d5bcc"
+    },
+    {
+      "path": "C08_Concurrency/exercises/H2_semaphore/main.cpp",
+      "sha256": "e16e2602922499b88030db05c27de3865bd15e0d1cfe47cca736adabb4e69ffd"
+    },
+    {
+      "path": "C08_Concurrency/exercises/H2_semaphore/solution.cpp",
+      "sha256": "7fbe4a4dfcc380ff8103834a254fedd85d60f8fc6e344455bccb933861fbe10d"
+    },
+    {
+      "path": "C08_Concurrency/exercises/H3_atomic_wait_notify/CMakeLists.txt",
+      "sha256": "fd88255698bbe4aa5ad954906652f28bf847165721f20584d90b5267fff8442d"
+    },
+    {
+      "path": "C08_Concurrency/exercises/H3_atomic_wait_notify/README.md",
+      "sha256": "2f6b361de18828614966fb0e2b641adfd68494401c2768b5222b3d545faf5f88"
+    },
+    {
+      "path": "C08_Concurrency/exercises/H3_atomic_wait_notify/main.cpp",
+      "sha256": "4cfe890d1f462b0b2a37e6aba14c1678a6deba573ec30fcdb93caba02bd6d248"
+    },
+    {
+      "path": "C08_Concurrency/exercises/H3_atomic_wait_notify/solution.cpp",
+      "sha256": "45b63d0d3154b61d1682b47047a1c9c2c91868fd64b9c1fcb234f1b5d3707fd6"
+    },
+    {
+      "path": "C08_Concurrency/exercises/I1_atomic_shared_ptr/CMakeLists.txt",
+      "sha256": "0d400f72517ed987da44ff835a91fbdc40908e7f3fe9830b8bf3580742e47a17"
+    },
+    {
+      "path": "C08_Concurrency/exercises/I1_atomic_shared_ptr/README.md",
+      "sha256": "5312b2f474fd6c3f6e78b1948427929b287b6269c017204a4e1c3dd0f4d476ad"
+    },
+    {
+      "path": "C08_Concurrency/exercises/I1_atomic_shared_ptr/main.cpp",
+      "sha256": "4a2c135dfefeeccb4da80f6e3d89cad212ffad1e300af0f4e6eac2a4464816d7"
+    },
+    {
+      "path": "C08_Concurrency/exercises/I1_atomic_shared_ptr/solution.cpp",
+      "sha256": "d9fd2a6330c8625a4053b4db90a1ddaca4eeb11f9cf2e8e2047fd992da4530da"
+    },
+    {
+      "path": "C08_Concurrency/exercises/I2_hazard_pointer/CMakeLists.txt",
+      "sha256": "e1c46b74facd485383a9e8885f51b6d8bd147680aacaea4071aaa63fa18a4464"
+    },
+    {
+      "path": "C08_Concurrency/exercises/I2_hazard_pointer/README.md",
+      "sha256": "81e9f6cd5b9cc6c21794147988cb8bf555cea51685a19aecc03825a3c7d53fc0"
+    },
+    {
+      "path": "C08_Concurrency/exercises/I2_hazard_pointer/checks.hpp",
+      "sha256": "2a7d09bb873ad23c2d194d8c85458b6e842279fc09372baec81203e787f14ced"
+    },
+    {
+      "path": "C08_Concurrency/exercises/I2_hazard_pointer/main.cpp",
+      "sha256": "70176c5ff399d62205854cd86a1ecd292c3e2a20c2bfe171f6ae6b3dcccbe74a"
+    },
+    {
+      "path": "C08_Concurrency/exercises/I2_hazard_pointer/reference.hpp",
+      "sha256": "5dd21c9926f34321133e8bb27efe7ba7662573e2b19d8f118caa58e4397d29e1"
+    },
+    {
+      "path": "C08_Concurrency/exercises/I2_hazard_pointer/solution.cpp",
+      "sha256": "1cf5d6f916dfe4e61af401ba4c12d896ba7eda0b197f19aa80f47476e8d1b398"
+    },
+    {
+      "path": "C08_Concurrency/exercises/I2_hazard_pointer/student.hpp",
+      "sha256": "21a817b54ec01aaecef195b70796d98ecea224b17f7755d5315b59a188a2d4ac"
+    },
+    {
+      "path": "C08_Concurrency/exercises/I3_rcu/CMakeLists.txt",
+      "sha256": "01522e483f10977fb11263af14fa1886f51d57d82a1254fc2eadb33031658481"
+    },
+    {
+      "path": "C08_Concurrency/exercises/I3_rcu/README.md",
+      "sha256": "e5fd1c322fb36d9a0d639902b14a0b8de8dcffd8f246ac58ddc7bb3e6938319b"
+    },
+    {
+      "path": "C08_Concurrency/exercises/I3_rcu/checks.hpp",
+      "sha256": "9908c7cfad8caaabcc6f18a8092c1520ff8d3f5a15565231235766814c4ea08e"
+    },
+    {
+      "path": "C08_Concurrency/exercises/I3_rcu/main.cpp",
+      "sha256": "70176c5ff399d62205854cd86a1ecd292c3e2a20c2bfe171f6ae6b3dcccbe74a"
+    },
+    {
+      "path": "C08_Concurrency/exercises/I3_rcu/reference.hpp",
+      "sha256": "5fc231b71dfde2cf2d83ce3a714511a06c4805349c3c42dd8e21b9c75e07717c"
+    },
+    {
+      "path": "C08_Concurrency/exercises/I3_rcu/solution.cpp",
+      "sha256": "85cf5f10d52cbd19e74553aed65e7d26e2a4c8621482ad4d73d3533892dc995f"
+    },
+    {
+      "path": "C08_Concurrency/exercises/I3_rcu/student.hpp",
+      "sha256": "f95219513840fbe41580722100cd4e8a30a23a1aac180b460c5c82f41de04ebe"
+    },
+    {
+      "path": "C08_Concurrency/exercises/J1_false_sharing/CMakeLists.txt",
+      "sha256": "ae88a5ea8134f0b54785149990b7b4904778fbe0d07399e087ad437a2fbb0618"
+    },
+    {
+      "path": "C08_Concurrency/exercises/J1_false_sharing/README.md",
+      "sha256": "c31be987286aa96f25bafe2ffa0d2a6edfa987c721930898c7de3c6bf94ec82e"
+    },
+    {
+      "path": "C08_Concurrency/exercises/J1_false_sharing/main.cpp",
+      "sha256": "cb5da7c0cbcddee431104a98bf0e2987dd9d024024732259b589936f02d70fcf"
+    },
+    {
+      "path": "C08_Concurrency/exercises/J1_false_sharing/reference.hpp",
+      "sha256": "df7ca7bed8e0e47b1a30bd4ee6efb95a0392d520aff316d6972094fe19bfc575"
+    },
+    {
+      "path": "C08_Concurrency/exercises/J1_false_sharing/solution.cpp",
+      "sha256": "2b4c95216646d3ed0751a8b9313e786eea8153a32427dc1d70a214e40b3736a2"
+    },
+    {
+      "path": "C08_Concurrency/exercises/J2_interference_size/CMakeLists.txt",
+      "sha256": "8f36b825b26cc08aae554772a986d62d0ad7870e3b2a48fc259ff7011ce82461"
+    },
+    {
+      "path": "C08_Concurrency/exercises/J2_interference_size/README.md",
+      "sha256": "d6f2d20d12afb06228be8240f189275fd030eba9656271619987531c931385a8"
+    },
+    {
+      "path": "C08_Concurrency/exercises/J2_interference_size/main.cpp",
+      "sha256": "5c4c3d17b6117c6fc8565d7f85f172652c8fce868d97c8b1cf7d884f4b2c2b9c"
+    },
+    {
+      "path": "C08_Concurrency/exercises/J2_interference_size/solution.cpp",
+      "sha256": "ba3985de6ba8984b6a24585d44765960cb33d0ca934446609fe0318da3d0eb93"
+    },
+    {
+      "path": "C08_Concurrency/exercises/J3_numa_concept/CMakeLists.txt",
+      "sha256": "283b255251496a630996b1f696febb3dec95ccfecbb6cc6886c711085f85af6c"
+    },
+    {
+      "path": "C08_Concurrency/exercises/J3_numa_concept/README.md",
+      "sha256": "9c0106aa95c27c787f109b35ce6a924f64408f0a4419bdb0eb9c6417c6ed5b5b"
+    },
+    {
+      "path": "C08_Concurrency/exercises/J3_numa_concept/main.cpp",
+      "sha256": "cd0eea20e17009e91229c77ca1c399ee22f69b73d805eb1931838c5895158dc4"
+    },
+    {
+      "path": "C08_Concurrency/exercises/J3_numa_concept/solution.cpp",
+      "sha256": "0fa38e935379a2c8a9a746514ee0de65df109074cb9242e64f7ddfa0207d2b4c"
+    },
+    {
+      "path": "C08_Concurrency/exercises/K1_simd_basics/CMakeLists.txt",
+      "sha256": "bc0c19415dc25b2b29d37c1036e1548c1a2fe56be246f55f6fdb6f23bf4747a1"
+    },
+    {
+      "path": "C08_Concurrency/exercises/K1_simd_basics/README.md",
+      "sha256": "c36db802304d007f089b1943a6fa3b9c385b01373eff86f4791555fa379d0769"
+    },
+    {
+      "path": "C08_Concurrency/exercises/K1_simd_basics/main.cpp",
+      "sha256": "b1354998f22782416b59dd517df2ce1bf66e4fc232bf5f913bf9676d55a409ce"
+    },
+    {
+      "path": "C08_Concurrency/exercises/K1_simd_basics/solution.cpp",
+      "sha256": "f5f4def4ad0c18ec2ffa702bfd9de3a4964007921885675654358a07759ece5e"
+    },
+    {
+      "path": "C08_Concurrency/exercises/K2_simd_dotproduct/CMakeLists.txt",
+      "sha256": "92c468166bf922bbc7a2ad9929af101bbf047e563d48aebcc8d6c4df1286935b"
+    },
+    {
+      "path": "C08_Concurrency/exercises/K2_simd_dotproduct/README.md",
+      "sha256": "4c6ed11dd3f58780b11742f282e4f12ded2e410680c9f155e368f8ed21af1c3a"
+    },
+    {
+      "path": "C08_Concurrency/exercises/K2_simd_dotproduct/main.cpp",
+      "sha256": "704d6fb375e960a65e36e4f4ba9d1660365f72b3b57c48ce5db8f3f30c99003a"
+    },
+    {
+      "path": "C08_Concurrency/exercises/K2_simd_dotproduct/solution.cpp",
+      "sha256": "5aaa53c2f12a016312ef6e91733617dec696128315e7543ad0202493314b2a3a"
+    },
+    {
+      "path": "C08_Concurrency/exercises/K3_simd_where_select/CMakeLists.txt",
+      "sha256": "a8895015bda902cebe1085a25e0bc83701ba1d6a41edd3714a21dabccdbb0c08"
+    },
+    {
+      "path": "C08_Concurrency/exercises/K3_simd_where_select/README.md",
+      "sha256": "c59715cfed263c219022f5b6290304328cded3c624599b9fea4cbe0bef8e8ffc"
+    },
+    {
+      "path": "C08_Concurrency/exercises/K3_simd_where_select/main.cpp",
+      "sha256": "7cd2242b0291133d1b58f71061a9ea73b73b1ab95d9b8aa0ada392e944fbf8d2"
+    },
+    {
+      "path": "C08_Concurrency/exercises/K3_simd_where_select/solution.cpp",
+      "sha256": "7b9ad075ba09113a7868ce6ff4baabb179c36558362c0df6a2e2f322a52a347e"
+    },
+    {
+      "path": "C08_Concurrency/exercises/L1_par_algorithms/CMakeLists.txt",
+      "sha256": "cf741064731d1f88789a32440f904571e8bdeb784350e66d755b4ac77cd54df6"
+    },
+    {
+      "path": "C08_Concurrency/exercises/L1_par_algorithms/README.md",
+      "sha256": "3f11852b089b8f05e08d3e08dec687b70d4b84212a8e950c93ba0fdea62e79b5"
+    },
+    {
+      "path": "C08_Concurrency/exercises/L1_par_algorithms/main.cpp",
+      "sha256": "3ad511bdfdac954dbd6b726428e244065bf2b35366a662ea5d9d50eedbeb8f5f"
+    },
+    {
+      "path": "C08_Concurrency/exercises/L1_par_algorithms/solution.cpp",
+      "sha256": "d928afa8449ac1be73dd34f33d790354159f9acc4efe03922c9509d1d5cede45"
+    },
+    {
+      "path": "C08_Concurrency/exercises/L2_parallel_reduce_scan/CMakeLists.txt",
+      "sha256": "94a7af53fcefcf7e3a9cfe0d7318aa4d7e6758737c90e94a47bde9ca3aa392f1"
+    },
+    {
+      "path": "C08_Concurrency/exercises/L2_parallel_reduce_scan/README.md",
+      "sha256": "9f419e3b7e8c6f53ffd6a3c80e53684a3400966bc0e2864af24ce3e1a6cf784b"
+    },
+    {
+      "path": "C08_Concurrency/exercises/L2_parallel_reduce_scan/main.cpp",
+      "sha256": "bcb9b9a1ae7459c48bda17af716c74a61df514298b181b5e1429b6d84da8c6c4"
+    },
+    {
+      "path": "C08_Concurrency/exercises/L2_parallel_reduce_scan/solution.cpp",
+      "sha256": "9696380e3e7a421cd2a7ba79257d35bd5ebdeba1b6ab3fb799e1d633132a7b8d"
+    },
+    {
+      "path": "C08_Concurrency/exercises/L3_par_vs_seq_bench/CMakeLists.txt",
+      "sha256": "3b0ae77c48774c01196dfa6b1f6b0b2ba8e50c844cdf635be5a2c41c6542955f"
+    },
+    {
+      "path": "C08_Concurrency/exercises/L3_par_vs_seq_bench/README.md",
+      "sha256": "1b87891b986434a8d81644e4843b88279301e92ba4102bfad78df064281c0181"
+    },
+    {
+      "path": "C08_Concurrency/exercises/L3_par_vs_seq_bench/benchmark.cpp",
+      "sha256": "5cef93a2ff7e41684bb3801642cfd0f52ee89bb6a35a4b6e3d0476e7072e0aef"
+    },
+    {
+      "path": "C08_Concurrency/exercises/L3_par_vs_seq_bench/main.cpp",
+      "sha256": "0c39dcbc8df3f13c38e948b57e650968324950e51c7a388280fff75d4d089739"
+    },
+    {
+      "path": "C08_Concurrency/exercises/L3_par_vs_seq_bench/reference.hpp",
+      "sha256": "49491815db8f61770dd705707d1701d7f98ba5da16bba0a37837eaa426bece41"
+    },
+    {
+      "path": "C08_Concurrency/exercises/L3_par_vs_seq_bench/solution.cpp",
+      "sha256": "ce6a349836dba54756f0883256def3d7bf8637896d98ba1854a3b1096bae87b9"
+    },
+    {
+      "path": "C08_Concurrency/exercises/M1_work_stealing_pool/CMakeLists.txt",
+      "sha256": "fdd4c55471d2dcc13eea29987b034bc475ee67a381314ad329d389021359e133"
+    },
+    {
+      "path": "C08_Concurrency/exercises/M1_work_stealing_pool/README.md",
+      "sha256": "1ada1213e497960bd80d780ab736d0bc03d99682af7707673f47f233540bd546"
+    },
+    {
+      "path": "C08_Concurrency/exercises/M1_work_stealing_pool/main.cpp",
+      "sha256": "1190035a0df83107628a39bcae2bcf709b8d0146bdceda71cf0b06411bed1d12"
+    },
+    {
+      "path": "C08_Concurrency/exercises/M1_work_stealing_pool/solution.cpp",
+      "sha256": "5ec43a64904c8c50b6fab652f4f26ac2e120b86170b7fe5071f82db143db84b7"
+    },
+    {
+      "path": "C08_Concurrency/exercises/M2_execution_bridge/CMakeLists.txt",
+      "sha256": "705dccda7f0c5a3950b22b8780978d2a3a014bad551a9151af405ec60a5371ee"
+    },
+    {
+      "path": "C08_Concurrency/exercises/M2_execution_bridge/README.md",
+      "sha256": "726b5711c781786f34f6d87ab43f058ce0f78e66de2d5afc0d961040b9a37f10"
+    },
+    {
+      "path": "C08_Concurrency/exercises/M2_execution_bridge/main.cpp",
+      "sha256": "1292688e3ba379258a8159151a43247fdd013109e6ac719c4dde2feaba04c4ed"
+    },
+    {
+      "path": "C08_Concurrency/exercises/M2_execution_bridge/solution.cpp",
+      "sha256": "074473ee9853d48a5834c27ecd50f2056ed7ec078ec04cf4bff4ee0ed00a0891"
+    },
+    {
+      "path": "C08_Concurrency/exercises/N1_numa_placement/CMakeLists.txt",
+      "sha256": "3a13cbec2f7dabf1db75fa7267fc52cf04ebaf404e7fe69f09b100ede8e6a54b"
+    },
+    {
+      "path": "C08_Concurrency/exercises/N1_numa_placement/README.md",
+      "sha256": "1c9cdf90c4b1378abe4b56ee9b350426a7a4385537a1a1b768567b60495c50cc"
+    },
+    {
+      "path": "C08_Concurrency/exercises/N1_numa_placement/main.cpp",
+      "sha256": "215ca26cac2d874a78ea6451f6fc992065d3e99823d98c7a2e1030d6dce304ae"
+    },
+    {
+      "path": "C08_Concurrency/exercises/N1_numa_placement/solution.cpp",
+      "sha256": "0f3e4246163b2362ae2b3c576be3f97751eddade050508cd970cf4ebdacce233"
+    },
+    {
+      "path": "C08_Concurrency/exercises/P1_object_lifetime/CMakeLists.txt",
+      "sha256": "e4f31d7208c10e0aaf60d67960a5dafe3b85fb2ee624f97a92764aba400ce914"
+    },
+    {
+      "path": "C08_Concurrency/exercises/P1_object_lifetime/README.md",
+      "sha256": "9c00ae35dfd3effe118d14bfe5ac4e6a444e8e5f499bd17c688b2118700da734"
+    },
+    {
+      "path": "C08_Concurrency/exercises/P1_object_lifetime/main.cpp",
+      "sha256": "02d2b0efa2a69c48a4453c5be0792c427bde477a014ffe8430a89507fe40143e"
+    },
+    {
+      "path": "C08_Concurrency/exercises/P1_object_lifetime/solution.cpp",
+      "sha256": "340df42be6bac743bfe26529a64a5e7054de548e35ac4e78858c9a4202b913ff"
+    },
+    {
+      "path": "C08_Concurrency/exercises/P2_result_states/CMakeLists.txt",
+      "sha256": "7cb6b166a130e6081781f2fb141b8825a91ffb06cde44294d8236fa66b27d2ef"
+    },
+    {
+      "path": "C08_Concurrency/exercises/P2_result_states/README.md",
+      "sha256": "c8dc59acf51e9af693772d8fbb11a82e90610b2ea366fa1806592c58b831ba91"
+    },
+    {
+      "path": "C08_Concurrency/exercises/P2_result_states/main.cpp",
+      "sha256": "3a984ce9cd65c41f2904c6a642ccf0075d4c42213518ce13a9b9554b31aa59e1"
+    },
+    {
+      "path": "C08_Concurrency/exercises/P2_result_states/solution.cpp",
+      "sha256": "1264d2f331bb94bb8457df20a874ed3c2062289126799d43c3eda67c36117c90"
+    },
+    {
+      "path": "C08_Concurrency/exercises/Q0_queue_baseline/CMakeLists.txt",
+      "sha256": "7c09f0c2714731dd543eca9ec865a504b32db042350687b2a5b46218eadde2ab"
+    },
+    {
+      "path": "C08_Concurrency/exercises/Q0_queue_baseline/README.md",
+      "sha256": "e4279a9944c0f2165c0ae1caf4052a4f694aa457d3260aa113645eb3e17dd6c1"
+    },
+    {
+      "path": "C08_Concurrency/exercises/Q0_queue_baseline/main.cpp",
+      "sha256": "33e6a6bee6bc9f551d915e4b6ebfb1ef63770b99950739dad40a57a45e0a7746"
+    },
+    {
+      "path": "C08_Concurrency/exercises/Q0_queue_baseline/solution.cpp",
+      "sha256": "96a91b3d7c9c5dc9a8d0e44a048a48c32509e91d6aa0294b4b4f9e080d934eae"
+    },
+    {
+      "path": "C08_Concurrency/exercises/Q1_mpsc_queue/CMakeLists.txt",
+      "sha256": "a0fed443ea43bde00475646b950bf1953be317000a5288099e666e402f6cc738"
+    },
+    {
+      "path": "C08_Concurrency/exercises/Q1_mpsc_queue/README.md",
+      "sha256": "18703f5b4e53a60fce295d1125751c48d2aabdfd9c2a59afe4af1f8c9d3c9f5d"
+    },
+    {
+      "path": "C08_Concurrency/exercises/Q1_mpsc_queue/main.cpp",
+      "sha256": "e9da84ca1bc0522b0761d8c88e064285d9abe66a52315791583e21ce9cc4f94f"
+    },
+    {
+      "path": "C08_Concurrency/exercises/Q1_mpsc_queue/solution.cpp",
+      "sha256": "ea0f5405a48fe0b91579c9136be0368071d7bb9f4a31d98d159c33d5a3ddacb8"
+    },
+    {
+      "path": "C08_Concurrency/exercises/Q2_ms_queue/CMakeLists.txt",
+      "sha256": "9447809a03c2672d040a4f2ee955ebfa2caa6b6d9db6ccf0471a8b17b31952dc"
+    },
+    {
+      "path": "C08_Concurrency/exercises/Q2_ms_queue/README.md",
+      "sha256": "d345872152b71decc7e7a0902decd39baf24434be7510921255b754ae3a5e4a7"
+    },
+    {
+      "path": "C08_Concurrency/exercises/Q2_ms_queue/main.cpp",
+      "sha256": "1a203df1b0ea6eab36fd48f46806662592b7211c3a719b8f48cac898a79b6f81"
+    },
+    {
+      "path": "C08_Concurrency/exercises/Q2_ms_queue/solution.cpp",
+      "sha256": "70e6f0b83337cae36e9aee278157e55d8ca5df4a5ef99c80c16b671ae595b4a9"
+    },
+    {
+      "path": "C08_Concurrency/exercises/R1_epoch_reclamation/CMakeLists.txt",
+      "sha256": "64f1da1af7a5bb4903985ebce0bcefafd50014dbf1e0fff44ad033cf2c0f656e"
+    },
+    {
+      "path": "C08_Concurrency/exercises/R1_epoch_reclamation/README.md",
+      "sha256": "b5a3ab946ade3dea090bb279c25cee6088ef9dcc2ad160d36142062388068c65"
+    },
+    {
+      "path": "C08_Concurrency/exercises/R1_epoch_reclamation/checks.hpp",
+      "sha256": "389bc749e6f0875f734677822892f5ea4bce55e6625a9e70acd9afebe2944b29"
+    },
+    {
+      "path": "C08_Concurrency/exercises/R1_epoch_reclamation/main.cpp",
+      "sha256": "70176c5ff399d62205854cd86a1ecd292c3e2a20c2bfe171f6ae6b3dcccbe74a"
+    },
+    {
+      "path": "C08_Concurrency/exercises/R1_epoch_reclamation/reference.hpp",
+      "sha256": "1c38fec0d8f55604a79efbe6fde5de8505ca7f3d2bbba465f9cb378c1da17eb1"
+    },
+    {
+      "path": "C08_Concurrency/exercises/R1_epoch_reclamation/solution.cpp",
+      "sha256": "737ff2a6fb08a3d158f2e6933673c9073fac8711fa37822ee834433271489bf4"
+    },
+    {
+      "path": "C08_Concurrency/exercises/R1_epoch_reclamation/student.hpp",
+      "sha256": "a77f96280cbcfea989b5242898d95704a1e23990f274d49a44588d14a6ba4733"
+    },
+    {
+      "path": "C08_Concurrency/exercises/R2_qsbr/CMakeLists.txt",
+      "sha256": "2704a5061ba66de9cab8c178be01f9a7a41e9a21f2b9350bce7e08ff2044664b"
+    },
+    {
+      "path": "C08_Concurrency/exercises/R2_qsbr/README.md",
+      "sha256": "8d521c0107997459cd915f1bd3c2ec12f807e4216c7deefe115afa2100cbef78"
+    },
+    {
+      "path": "C08_Concurrency/exercises/R2_qsbr/checks.hpp",
+      "sha256": "1583bfff2a83999ff613c0bd880a06c0bce66603e7009d2e448f509bb22acf14"
+    },
+    {
+      "path": "C08_Concurrency/exercises/R2_qsbr/main.cpp",
+      "sha256": "70176c5ff399d62205854cd86a1ecd292c3e2a20c2bfe171f6ae6b3dcccbe74a"
+    },
+    {
+      "path": "C08_Concurrency/exercises/R2_qsbr/reference.hpp",
+      "sha256": "8028199ca54eae3fd984826a9480dc877dca6eda9f42cdc40f6e87e60698671c"
+    },
+    {
+      "path": "C08_Concurrency/exercises/R2_qsbr/solution.cpp",
+      "sha256": "3f334b628d45079207d47897d66e66efcd7e807a5124781afbf0c1281e8e216e"
+    },
+    {
+      "path": "C08_Concurrency/exercises/R2_qsbr/student.hpp",
+      "sha256": "412133b44e7e02959d0ea716719b56858253ae8758d0ee5a866c2e7191d99fe7"
+    },
+    {
+      "path": "C08_Concurrency/exercises/benchmarks/CMakeLists.txt",
+      "sha256": "6518fa68ad0d709f31b1cd302de976f4025b0228ead26530a65b2d8a56d9c41a"
+    },
+    {
+      "path": "C08_Concurrency/exercises/benchmarks/layout_bench.cpp",
+      "sha256": "418c66c1f4cba02e355582b5938c14aabc7d7401cb3b88fd146a21c3c64a1411"
+    },
+    {
+      "path": "C08_Concurrency/exercises/benchmarks/numa_bench.cpp",
+      "sha256": "82af293209e91dc7bfa5dd95b5f792ccdbace1928b92269cd13d47f63c245dcd"
+    },
+    {
+      "path": "C08_Concurrency/exercises/benchmarks/queue_bench.cpp",
+      "sha256": "a85de45cb084f7e3fea290f06bbe60c5ad01288c50540df7dfecde0d90e7b26c"
+    },
+    {
+      "path": "C08_Concurrency/exercises/benchmarks/scheduling_bench.cpp",
+      "sha256": "530f1af2d24724d44264108d026184f1e338abf1d68c4f12f2e849b1b1636891"
+    },
+    {
+      "path": "C08_Concurrency/exercises/benchmarks/simd_bench.cpp",
+      "sha256": "ff1e97f9fb3366e42f0c14d02d23f11a6538c82b364a33a17cd9992834bc531e"
+    },
+    {
+      "path": "C08_Concurrency/exercises/cmake/DependencyRevision.cmake",
+      "sha256": "ae8eea3c4265b335ac632fcb55b66244f9faca7a1b6a1a0bbf792d7b8f27fe2f"
+    },
+    {
+      "path": "C08_Concurrency/exercises/cmake/NativeFeatures.cmake",
+      "sha256": "376bfb97362338062443809278a67a176478479e08b5bd22dded646c10acd490"
+    },
+    {
+      "path": "C08_Concurrency/exercises/cmake/StdexecSetup.cmake",
+      "sha256": "b55a400e3c36d93bcfa9910241cfe7a4b5d71ce247deaa385d9f53d39d495a33"
+    },
+    {
+      "path": "C08_Concurrency/exercises/cmake/StudySetup.cmake",
+      "sha256": "4c89d624d53ca0b87cd6a858e1d8e5ee3af74fd0b6bc95b4596f2b2b5351aba3"
+    },
+    {
+      "path": "C08_Concurrency/exercises/cmake/TbbSetup.cmake",
+      "sha256": "fd6ca7bc2fe55d289250f73c6509a28079dce58f520f3aa8c11f0c4950b924ea"
+    },
+    {
+      "path": "C08_Concurrency/exercises/cmake/XsimdSetup.cmake",
+      "sha256": "47eaa851f794886a09095b754ec8cf959e75c377b22eac68a9e87d970ff469d1"
+    },
+    {
+      "path": "C08_Concurrency/exercises/cmake/feature_probes.cpp",
+      "sha256": "7f0ffaaf6711bc1942b8fbcff2ae2a3e0ccf88bf2f87fd5049dc2e8639c4ab78"
+    },
+    {
+      "path": "C08_Concurrency/exercises/cmake/native_probe/CMakeLists.txt",
+      "sha256": "885277ec9665a05c3e460b7e8a400b34b34c7a9a17d20bc196bc5daa5d849d67"
+    },
+    {
+      "path": "C08_Concurrency/exercises/include/concurrency_study/benchmark.hpp",
+      "sha256": "524a7eb02ae29082c1c3f385303468c2fbd9e70027be894eb05c93526c5d5a74"
+    },
+    {
+      "path": "C08_Concurrency/exercises/include/concurrency_study/bounded_channel.hpp",
+      "sha256": "946a78c4aad3ff11b7023aaa28ef16133d83a1266901ea75d54d004b7d5ab0fd"
+    },
+    {
+      "path": "C08_Concurrency/exercises/include/concurrency_study/epoch.hpp",
+      "sha256": "9ca146415408829f1116d72d60f10eec912ae04924167308bf9409fb904942e1"
+    },
+    {
+      "path": "C08_Concurrency/exercises/include/concurrency_study/exercise_check.hpp",
+      "sha256": "7744189af7a2a5882fe3b27c08aba30ebf22194854186983fc2572acbf9600ae"
+    },
+    {
+      "path": "C08_Concurrency/exercises/include/concurrency_study/hazard_pointer.hpp",
+      "sha256": "c1c77a9285c161386ef84a6bc0f0a65e2fde18570afbb5ba3b61c26d650412f2"
+    },
+    {
+      "path": "C08_Concurrency/exercises/include/concurrency_study/log.hpp",
+      "sha256": "8f424353dc5b98d61f301ca765a3a59ef4c45900bbb597f91e2d29f3a1927f04"
+    },
+    {
+      "path": "C08_Concurrency/exercises/include/concurrency_study/numa.hpp",
+      "sha256": "c5b446bca3d252cb45ef4f84f507b86a24dc8046c735a977c3183051fb4be7ba"
+    },
+    {
+      "path": "C08_Concurrency/exercises/include/concurrency_study/numeric_kernels.hpp",
+      "sha256": "c1e9b502c542924b3c48803a0591244fdebd03212451906c857eb232a3273ad9"
+    },
+    {
+      "path": "C08_Concurrency/exercises/include/concurrency_study/queue_baseline.hpp",
+      "sha256": "42162fdadcd65018b49c9be85103f461f5afce140c65d6e0c5a5bd0680a2c25b"
+    },
+    {
+      "path": "C08_Concurrency/exercises/include/concurrency_study/queue_checks.hpp",
+      "sha256": "74c72a6d07ecd1c336c4bfadd5d50d48ba4f23a47bc90d1b2322e6aa3949987c"
+    },
+    {
+      "path": "C08_Concurrency/exercises/include/concurrency_study/queue_linked.hpp",
+      "sha256": "30f2574c28c6ecbb98ff49da9af6d179e7ffcb5dbf5b963d3ebeb9947f36034d"
+    },
+    {
+      "path": "C08_Concurrency/exercises/include/concurrency_study/queue_versions.hpp",
+      "sha256": "941804c37ace98bb442cd1e87bd1ba85349e48138fcac63068b790059fdacf58"
+    },
+    {
+      "path": "C08_Concurrency/exercises/include/concurrency_study/rcu.hpp",
+      "sha256": "94fa58faa9968b380ec33f6886422fd6160bb09114afc33de5ee8fd125a6d2dc"
+    },
+    {
+      "path": "C08_Concurrency/exercises/include/concurrency_study/simd_kernels.hpp",
+      "sha256": "43a1fb15a22b70cba500f164840f747aacbc80872cb96b8d66c7ed816fe00e7e"
+    },
+    {
+      "path": "C08_Concurrency/exercises/include/concurrency_study/thread_pool.hpp",
+      "sha256": "1c15e7c9a5b01db276847d3aef32a0420b1d66759c5c24b31678622813233a07"
+    },
+    {
+      "path": "C08_Concurrency/exercises/include/concurrency_study/work_stealing_pool.hpp",
+      "sha256": "2ec9a625dfeb839c452d381f13cf1600ae9887314247e208820f4560ebc15f33"
+    },
+    {
+      "path": "C08_Concurrency/exercises/runtime_tests/CMakeLists.txt",
+      "sha256": "32d4f8a47e94e72c042c5235bd5dd70d8d1cf00a9a4deba8a4b31a5e26c7066c"
+    },
+    {
+      "path": "C08_Concurrency/exercises/runtime_tests/atomic_protocol_test.cpp",
+      "sha256": "e8186022418c0b5cd90803c1530e9b639c8cfa359613671ddbf1104d17fa2277"
+    },
+    {
+      "path": "C08_Concurrency/exercises/runtime_tests/common_tools_test.cpp",
+      "sha256": "0332aa5d43771c44d35bfa6f08b075c3b4e52f4a4936ad490530d8a52ac9c8f1"
+    },
+    {
+      "path": "C08_Concurrency/exercises/runtime_tests/numeric_test.cpp",
+      "sha256": "21212de7019b49fd47c4f621d401d40364090a2e88587807b6ffdf7113306f19"
+    },
+    {
+      "path": "C08_Concurrency/exercises/runtime_tests/queue_history_test.cpp",
+      "sha256": "e8d2c0ecf0ffa7113680ecfe0f01559d2b11b13a7334235715a299e4b9def495"
+    },
+    {
+      "path": "C08_Concurrency/exercises/runtime_tests/reclamation_test.cpp",
+      "sha256": "f068cecef5554a282ce59991584807d673fc83aef6420184723f70c3ef6c56a6"
+    },
+    {
+      "path": "C08_Concurrency/exercises/runtime_tests/scheduling_test.cpp",
+      "sha256": "7eec6e906b51b41b021276b0116a5c17d2222da277e5bf639d95af96ab73ecd1"
+    },
+    {
+      "path": "C08_Concurrency/exercises/runtime_tests/thread_pool_test.cpp",
+      "sha256": "f1e4d5b75eb5eae861d5da306e9781fbe9c408481e64d40a1d780f51e3156e2a"
+    },
+    {
+      "path": "C08_Concurrency/exercises/third_party/README.md",
+      "sha256": "848a60a5fd051f26f72f47b1fbce779c66911587cf59b97086ff3c39ffaf7a1d"
+    },
+    {
+      "path": "C08_Concurrency/exercises/tools/run_benchmarks.py",
+      "sha256": "3b933d7c37bbcb7e34bd82dcf09c97413dc7e987d754285ba55cf2687d120ae0"
+    },
+    {
+      "path": "C08_Concurrency/exercises/tools/run_diagnostic.py",
+      "sha256": "8ba7ae0509c521f6746e37fc782224a3d64a5b084df9c617da549afd08215b4c"
+    },
+    {
+      "path": "C08_Concurrency/exercises/tools/test_tools.py",
+      "sha256": "e1430928254db68714be5ec94c0ef4267a4165814fa990fa9fd5c7c059d3f001"
+    },
+    {
+      "path": "C08_Concurrency/exercises/tools/verify_materials.py",
+      "sha256": "0e04c83ea93ae89fba4fbbd4da9a69dab53266b03c4c552b4b14c437cce14661"
+    },
+    {
+      "path": "C08_Concurrency/references/coverage.md",
+      "sha256": "f15ceb6ee19c44e325448c30c7755f694ae8d0cd7051f6ae1b7bc52682bdadcf"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/README.md",
+      "sha256": "8832f1ae15b1a1ab7cf63208243b2ba03d9236a66ab0000f47925e29c76d76fe"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/ctest-full-windows.xml",
+      "sha256": "f64376180b88fc404b52b44c38b1a851e3f4e1495a180a4e889e633c12910ab2"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/ctest-verify-core.xml",
+      "sha256": "02ecbe42fbcb86f3fee47ce724fee1bfa82256d3f11ccaefdba4062b280b6ccf"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/entry-roles.json",
+      "sha256": "816677c42430c7cda42826b1030a9e9b0a1d0589e4e5a4edc729f8e81288bcd1"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/cap3-empty/run.json",
+      "sha256": "9758648bac27ab6e8177b2efdb01a5394c91c41de957280385e731d90b06fe02"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/cap3-empty/samples.csv",
+      "sha256": "621fa279f4139e9389ccde3b2daf7c1b8a36e63163edb1fa050b9eda48ef0c19"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/cap3/run.json",
+      "sha256": "ca6086c48fa0641f51e967bc4f9448ab4286079334f524ac344dda08bff54e0f"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/cap3/samples.csv",
+      "sha256": "0662f8aaa44d9342980e779ad00cd7f28156134e005df5aaa279571056a38dc6"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/layout/run.json",
+      "sha256": "a8f143ab164e2742160b0a9168fa415e6b1f0a0df369bd4b8999a07eb394d996"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/layout/samples.csv",
+      "sha256": "ea872bea3ac0e2b21ee4833ada217c637e055be1c5b5aea0fb44ca41098fbbbe"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/numa/run.json",
+      "sha256": "98e797f6eae57e28f024c4540778624325f69d1cd3208d5973de238ffb5bbf12"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/numa/samples.csv",
+      "sha256": "b8b3ae4977a0aee9db3c0eae234da889c0215fd279ac7af7fe42b86df98c58b5"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/policy-heavy-1024/run.json",
+      "sha256": "64bd365e55b384ebd89aa0956cc5f7977485024a051ac4db4c11fee42cf39905"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/policy-heavy-1024/samples.csv",
+      "sha256": "34330ea9349c32b0e8a140e51de4aff032d52699e784925023dabd36c01b66a0"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/policy-heavy-1048577/run.json",
+      "sha256": "679a301a6df06ae359b2955360ba0998e5f11021910bb910cc807c434282a260"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/policy-heavy-1048577/samples.csv",
+      "sha256": "67a492a7ab962de7e2c307436bb3907cfe50fd33f8192d750cf3afb6709bb884"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/policy-heavy-65537/run.json",
+      "sha256": "0262b8e2e6e627ccd19cee5aa2892c496b29899348f93a56666988aec6cbbf79"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/policy-heavy-65537/samples.csv",
+      "sha256": "c5655b81a113f8494324f04d8098a27194bb6596cab0b846b1f81ae77df27d81"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/policy-light-1024/run.json",
+      "sha256": "f2624fe006bdd65f7f118fe307ee3e9d807f68a8723f602ecfd925330d7d6722"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/policy-light-1024/samples.csv",
+      "sha256": "cd038114082017958b5bc5e41415d9ee1864defb1e8e9604298df1b4045b453c"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/policy-light-1048577/run.json",
+      "sha256": "409554a1c0b6be6fac30a58ced992fcb5e954039468800d3cdbe92fecd73a2e9"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/policy-light-1048577/samples.csv",
+      "sha256": "d7f89062616b4e697696cb1f67e346b4ac192d5ed20eb3ea21925342aaca213e"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/policy-light-65537/run.json",
+      "sha256": "eb3c9ea32b475b471169dc42834fa428ef3be3081dc9300f74fa95ff45cdadf2"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/policy-light-65537/samples.csv",
+      "sha256": "71ea1a2909567d2c1569b7729e6b36dcc5f93ee1f93e6dd3fff81e17fc4984cc"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/queue-batch/run.json",
+      "sha256": "dd0085f01b2c8874c01d9d66430683d18bb09b411b1f8b737c7497ed108af1eb"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/queue-batch/samples.csv",
+      "sha256": "63b53e981e4a10978d34fc5599355c85ca8c10c9753768f58534a90fbcb2adb7"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/queue-mpsc/run.json",
+      "sha256": "a4d8cb4b6d4c0bf591eb3c81570f49a0dbcabafb6692a84ba58d357bab048d8b"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/queue-mpsc/samples.csv",
+      "sha256": "45cc043f367536374e8d697ecb6b31b49c5ac369600e1dc6d1c855b3e7f4d756"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/queue-ms/run.json",
+      "sha256": "2fab09b225878c74e1de4903b74dddf67efc4d552ae0c2a1e0f83dd4078565f3"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/queue-ms/samples.csv",
+      "sha256": "985e9ac393064ab3a2ce6cbae8429502a82c7c8283bf2987bf820021f7acec11"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/queue-spsc/run.json",
+      "sha256": "2b54cadf99a5d8af13abad5932574c4a60d9074402d0f8fbda0ea664e0d79382"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/queue-spsc/samples.csv",
+      "sha256": "83896222f9ead76515564f168eed45e8bba261940796a63e491b56c399c6f2a1"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/queue-storage/run.json",
+      "sha256": "18cc8d2c42c01604fa63cff7dccc4a08abba35a48729dbbc11dcb265027cac13"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/queue-storage/samples.csv",
+      "sha256": "c8e80694d13d9af276f6fc514de922b102f4c6c074f9e66ade814c656e188981"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/scheduling/run.json",
+      "sha256": "4f0cad23cf3400d7cff2736450467af3a546c3f1777c47d20bdf25bf28efc3e4"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/scheduling/samples.csv",
+      "sha256": "a969cb63cccd614ee64a3fd4e04821320f4fcea56bde0a8ca4a863cd317fb6a4"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/simd/run.json",
+      "sha256": "cc22bbbba31cfc48236e27b85b26b63d2ec1d8ca4f624c7d3a9184851bc81bf5"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/final-20260908/simd/samples.csv",
+      "sha256": "bfe6c208003871d6aa6144d0722de3f5aadf6e0ee06b5e62acc1ec4a7a054366"
+    },
+    {
+      "path": "C08_Concurrency/references/measurements/native-probes.json",
+      "sha256": "857435fcc1b7d0409b519fcd3c03d944344fac786320bb4d3214d38f4ed7ae11"
+    },
+    {
+      "path": "C08_Concurrency/references/quality-report.md",
+      "sha256": "aa3e77de30e4b196b91399d6744796acc1399662d058ce3633cde376770b1252"
+    },
+    {
+      "path": "C08_Concurrency/references/standards-and-implementations.md",
+      "sha256": "528700f5c93875f2b2a7b843810a9234544f529320007605f7f636893099d5a5"
+    },
+    {
+      "path": "C08_Concurrency/references/validation/c01-supplement-independent-review.md",
+      "sha256": "11e126fd18e6df878d8e300f5bad8c897e9766384c43914c804f966626cb1997"
+    },
+    {
+      "path": "C08_Concurrency/references/validation/c01-supplement/build.json",
+      "sha256": "37345749dbdf7ea5e2d0c021e0c78d1610f7054ce57b94d4feae8743b629c7c2"
+    },
+    {
+      "path": "C08_Concurrency/references/validation/c01-supplement/configure.json",
+      "sha256": "e8dc642048b3777946e7ec9d6a676d9de09637da6d7d1cb549b785874ea4495a"
+    },
+    {
+      "path": "C08_Concurrency/references/validation/c01-supplement/ctest.json",
+      "sha256": "135cc1584b4f108912d5e1e23956886b94330ae42d5523406244a942ec72db4b"
+    },
+    {
+      "path": "C08_Concurrency/references/validation/c01-supplement/ctest.xml",
+      "sha256": "785667064880a1b57f761a5357647373a14af88eb9c276971785d7920b037dc2"
+    },
+    {
+      "path": "C08_Concurrency/topics/atomics/01-atomic-operations.md",
+      "sha256": "9e82d7b6587afb1ab50488ff0d6598181b1cd47be76e88a3ed6ea0d90bfac0ee"
+    },
+    {
+      "path": "C08_Concurrency/topics/atomics/02-cas-and-minmax.md",
+      "sha256": "d42d4c675eb4ff762d15c9aaa522490cf3f7cf2c46a04eb8c733e523449dff96"
+    },
+    {
+      "path": "C08_Concurrency/topics/atomics/03-atomic-ref.md",
+      "sha256": "4914a9e002a41b743de9ec6c5e7bead9fbae8387621b2f507190b6ace8c77287"
+    },
+    {
+      "path": "C08_Concurrency/topics/atomics/04-happens-before.md",
+      "sha256": "2c8295a9d5c530f7d0779b1645d4a4547cfc3daf74c9e8833f3c412139a735bd"
+    },
+    {
+      "path": "C08_Concurrency/topics/atomics/05-relaxed-and-sc.md",
+      "sha256": "3900d0b3035b8d6fcf7a6102c7517a2905b474f74cee15e671107f02c36836f1"
+    },
+    {
+      "path": "C08_Concurrency/topics/atomics/06-fences.md",
+      "sha256": "cd77e766e1238ca0c9ca97dd521f1db6b92d044731571df87dd6cfb2cb4ac4cf"
+    },
+    {
+      "path": "C08_Concurrency/topics/atomics/07-publication-and-lifetime.md",
+      "sha256": "59fa3c934770627dfbead5026f03fbf0e8ac181211c307debc515e1d68d811bb"
+    },
+    {
+      "path": "C08_Concurrency/topics/atomics/08-wait-and-generation.md",
+      "sha256": "0c9fdb5a31a50eb363b5744d904184c49a50b0a8118e7f36234863dd06b5d911"
+    },
+    {
+      "path": "C08_Concurrency/topics/numa/01-topology.md",
+      "sha256": "f01c8647b4eaa2c6fa168ffdaed8280c5208e14b79563a4edfd818eed2ad4699"
+    },
+    {
+      "path": "C08_Concurrency/topics/numa/02-affinity.md",
+      "sha256": "73545b7b1af35ba50aa3cf619657cb03401cbddf4d3f98e1106d5440250304fa"
+    },
+    {
+      "path": "C08_Concurrency/topics/numa/03-placement.md",
+      "sha256": "f6952a4e5cdba1945839e26ed6be2429e802feec806c10fb4ddf4298ccf4efb0"
+    },
+    {
+      "path": "C08_Concurrency/topics/numa/04-sharding.md",
+      "sha256": "6dd695de0153698eb4abd1d3580ebd901a48bcbeff4387e1dcbb3dddfa907665"
+    },
+    {
+      "path": "C08_Concurrency/topics/performance/01-cache-layout.md",
+      "sha256": "b816263352fefa62d89024f5bb83c8e913d8a488758cb20c26602823146ba620"
+    },
+    {
+      "path": "C08_Concurrency/topics/performance/02-execution-policies.md",
+      "sha256": "7657c54005eb495dd9fcd1d991489a0a137ad20ce8c67632719c36b139a1441c"
+    },
+    {
+      "path": "C08_Concurrency/topics/performance/03-reduce-scan.md",
+      "sha256": "4d9a5403c044978dd3e940386c4da5883ffa083fee829bc973035e76f9574d58"
+    },
+    {
+      "path": "C08_Concurrency/topics/performance/04-parallel-compute.md",
+      "sha256": "27fc91de3219af24839f053f5f3a9b77f7e8fd377ab937131c5022dbd23e2ef2"
+    },
+    {
+      "path": "C08_Concurrency/topics/performance/05-light-heavy-scaling.md",
+      "sha256": "5ffcb50ef09e29134eeeeb09c65f0bf065a613f5d120af2c281fdf8fe2c22cfb"
+    },
+    {
+      "path": "C08_Concurrency/topics/performance/VALIDATION.md",
+      "sha256": "b89b3e2a6eaa906f7ed69955c7567372d5705a9a1142cb0480e623ecaf8c0a8b"
+    },
+    {
+      "path": "C08_Concurrency/topics/performance/verify-numeric.ps1",
+      "sha256": "ad5f85f9cb75c4149359062bc7e5fcce22b3258867ade43e984657b65ffe17d3"
+    },
+    {
+      "path": "C08_Concurrency/topics/queues/01-mutex-baseline.md",
+      "sha256": "457b2ffb68dea2be1031248d7a6b6c0ab1700de7134e553d09cd51cd398f269d"
+    },
+    {
+      "path": "C08_Concurrency/topics/queues/02-bounded-and-batch.md",
+      "sha256": "eff9cd949006cb81e66a5776634d604466c90a12ca4d2a2b4eeb73c7a74aa9f7"
+    },
+    {
+      "path": "C08_Concurrency/topics/queues/03-spsc.md",
+      "sha256": "98fd1e7af64650bb616912c672bed4e132a1b0e25b535befaf076ae3eccccfc4"
+    },
+    {
+      "path": "C08_Concurrency/topics/queues/04-mpsc.md",
+      "sha256": "4d7caacff038b38390fa91257f092b17c73aa0500eefe80b7bb660c501c47b79"
+    },
+    {
+      "path": "C08_Concurrency/topics/queues/05-vyukov-mpmc.md",
+      "sha256": "8ce27aba99bfe81add0270d3e7c6ef5b324c3be5440303621bc834f00aa37e77"
+    },
+    {
+      "path": "C08_Concurrency/topics/queues/06-michael-scott.md",
+      "sha256": "b3c630ce29d3bc0208211d65b3418d03730e5eefbb14f05c4307eb00d8d3867f"
+    },
+    {
+      "path": "C08_Concurrency/topics/queues/07-treiber-and-aba.md",
+      "sha256": "10dae286fc437ddff70859441d60d2db713b4f7f57f8219a8e8b60b2ac690473"
+    },
+    {
+      "path": "C08_Concurrency/topics/queues/08-validation-and-benchmark.md",
+      "sha256": "f6bb5a69e57c65935085901fda689cf2c36f53d50abb82d367eedf3150375265"
+    },
+    {
+      "path": "C08_Concurrency/topics/queues/VALIDATION.md",
+      "sha256": "0a832552fc5d10cb4a8c8f8a90541570a511cd5267588d990543ff95dfd8fbf1"
+    },
+    {
+      "path": "C08_Concurrency/topics/reclamation/.gitignore",
+      "sha256": "b27393d12e435b333564fc73fd21adebe0423ae3e973a366b876b5f888e9d3c6"
+    },
+    {
+      "path": "C08_Concurrency/topics/reclamation/01-lifetime-and-ownership.md",
+      "sha256": "02266224cb85acd5b60004b3f0046166f4c452d115a0b99ebc6414bea9dcdfe2"
+    },
+    {
+      "path": "C08_Concurrency/topics/reclamation/02-hazard-pointers.md",
+      "sha256": "286fca2509d411a9da5ced24c10cbb09460a42d3f961731ae0352168038011ab"
+    },
+    {
+      "path": "C08_Concurrency/topics/reclamation/03-epoch-reclamation.md",
+      "sha256": "db9cdc3f3fad47c00b4548f66fad041eb54a1759fb4cfcddbbf58254194ac098"
+    },
+    {
+      "path": "C08_Concurrency/topics/reclamation/04-qsbr.md",
+      "sha256": "a09738cd71f10b76304a6eb96695c145e83430f9bd7195a6cb7d750e0389a528"
+    },
+    {
+      "path": "C08_Concurrency/topics/reclamation/05-rcu.md",
+      "sha256": "76d4ddea4432c83ee41039c81270948b4ed4d37e5f385612258295a17e7de77e"
+    },
+    {
+      "path": "C08_Concurrency/topics/reclamation/06-validation.md",
+      "sha256": "84211486a5f6406f7de11b0a2d16c01717e40474b521c49f96970f1fc89003e7"
+    },
+    {
+      "path": "C08_Concurrency/topics/reclamation/README.md",
+      "sha256": "88706c58ef9cc4a71f2da94024d5ae7cf1518707494a818332cea5dc0fc22655"
+    },
+    {
+      "path": "C08_Concurrency/topics/reclamation/experiment_support.hpp",
+      "sha256": "badf0e9c92570f27004adfff00fb3475f3fed65549fb5636eee1a818bbdc0afc"
+    },
+    {
+      "path": "C08_Concurrency/topics/reclamation/lifetime_reference.cpp",
+      "sha256": "3e20724e59bc85d48c6d7825beb496457584870b35938a1f05e492f266234ec7"
+    },
+    {
+      "path": "C08_Concurrency/topics/reclamation/student-paths.sha256",
+      "sha256": "5f839d10cc52ce18cc2c8aaa6f2f4df8ef20346bdcf79fe26f5db7dccf41b06f"
+    },
+    {
+      "path": "C08_Concurrency/topics/reclamation/verify.ps1",
+      "sha256": "0d57f0337e4cccba29bc7b58157fc2aabb9a8185e4bcb162a27d6efbd9c58536"
+    },
+    {
+      "path": "C08_Concurrency/topics/scheduling/01-static-dynamic.md",
+      "sha256": "cf20c618890f4bd2c12e6ee7313b6ae566acbb30ad619c16a86c4cff2be36532"
+    },
+    {
+      "path": "C08_Concurrency/topics/scheduling/02-work-stealing.md",
+      "sha256": "38d67ce2e447f9fc33d6d23d050336a12c24a5eb184bab8643d5cb478052731f"
+    },
+    {
+      "path": "C08_Concurrency/topics/scheduling/03-execution-bridge.md",
+      "sha256": "0cf2ee494955079dd3cf8cc832d6d16e97f47901a8d8f6026276e208248c00b5"
+    },
+    {
+      "path": "C08_Concurrency/topics/scheduling/verification.md",
+      "sha256": "2e9f2e91f13cb5661818fff4500b77be897fb474eb1a88a27372ecafd498199f"
+    },
+    {
+      "path": "C08_Concurrency/topics/simd/01-scalar-and-layout.md",
+      "sha256": "180f9a593342e88378fc49ac75ff84d55fd1934691105c3e0096cf42450eb7ab"
+    },
+    {
+      "path": "C08_Concurrency/topics/simd/02-explicit-vectors.md",
+      "sha256": "f7037b9c1d48765c438ea565a308298fdee1b454b435790ea99289c98613eb90"
+    },
+    {
+      "path": "C08_Concurrency/topics/simd/03-reductions-and-precision.md",
+      "sha256": "12b1274c54b95822dbfa03d35fde18e7d9ae22fca91192be66b618e4430679c2"
+    },
+    {
+      "path": "C08_Concurrency/topics/simd/04-diagnostics-and-bandwidth.md",
+      "sha256": "a80ed002088db408b0e049da47bd91c95cd6d50fd6d248d5b753e61d802f1753"
+    },
+    {
+      "path": "C08_Concurrency/topics/simd/fast-math-build.md",
+      "sha256": "177b0ac909d97ee9a19d7ee9a898caa2ec72bf473042c760b9b34a2b00655f72"
+    },
+    {
+      "path": "C08_Concurrency/topics/simd/fast_math_api.hpp",
+      "sha256": "bbc8f91023ef13643376480c4a12d6cc22b3d5686d8383cf8d2a412bf8c62e73"
+    },
+    {
+      "path": "C08_Concurrency/topics/simd/fast_math_check.cpp",
+      "sha256": "017e1f6572fd2b33686116736684d683e56b77a20be2cc0e98848e8b00a3f11f"
+    },
+    {
+      "path": "C08_Concurrency/topics/simd/fast_math_kernel.cpp",
+      "sha256": "c2ccaf7f67497eeae54ad64e52e88c0ac8799f3f30f888294cf0efcc400fcc24"
+    },
+    {
+      "path": "C08_Concurrency/topics/simd/vectorization_probe.cpp",
+      "sha256": "57b0c6faf9701fa44fa3c6d33cfcb9a5809b68f07bc83ecaf896fa80638fac95"
+    },
+    {
+      "path": "C08_Concurrency/topics/source-reading/01-atomic-and-simd-backends.md",
+      "sha256": "15b15b5ceab71483cf3cdb6422fb1fce933d119ff26e08a4578b7fa5cdd6ba69"
+    },
+    {
+      "path": "C08_Concurrency/topics/source-reading/02-ticket-and-segmented-queues.md",
+      "sha256": "023e5f722c40a95f83c1b5cc12a6b8c30eabfc6beacd49f35ead4f34bda48645"
+    },
+    {
+      "path": "C08_Concurrency/topics/source-reading/03-concurrent-hash-map.md",
+      "sha256": "9b6f3caaebd9a34fdef00c4eb9842c86781f19ed5f6b792b6f6edcd6d9a97f3a"
+    },
+    {
+      "path": "C08_Concurrency/topics/source-reading/04-allocator-ownership.md",
+      "sha256": "a35021309e5f8321c60e1eb463458b643a1b844fecf9f44d8b99a840f6c3523b"
+    },
+    {
+      "path": "C08_Concurrency/topics/source-reading/05-scalable-reclamation.md",
+      "sha256": "46ed543c2288a4ba8b041ecd9e81bb2ff91d3ba32e47a4ecd954ef0285342264"
+    },
+    {
+      "path": "C08_Concurrency/topics/source-reading/06-senders-and-execution.md",
+      "sha256": "29d47a9d8922d0704017b4052d9784df7a7bd5c42d32c1881b65a5c6a8c1738e"
+    },
+    {
+      "path": "C08_Concurrency/topics/synchronization/01-bounded-thread-pool.md",
+      "sha256": "3b6ef75f0a33cc7216dcc0a7d26b47ad9032311d17bd2aad1c822365494cb96f"
+    },
+    {
+      "path": "C08_Concurrency/topics/synchronization/VALIDATION.md",
+      "sha256": "8f0a338522dbb536c22f3085901748f4c465f3d6589f3b31aeb595fbe0132bb9"
+    }
+  ]
+}

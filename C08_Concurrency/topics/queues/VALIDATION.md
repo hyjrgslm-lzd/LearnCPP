@@ -57,7 +57,7 @@ runner 环境记录 AMD64 Family 25 Model 97 Stepping 2、AuthenticAMD、32 个�
 | batch / batch | 3/4、64、8 | 6.7833, 8.3842, 4.2763, 6.4905, 8.5948 | 6.7833 | 4.2763–8.5948 |
 | ms / ms | 3/4、无界、1 | 55.5749, 42.9428, 45.0709, 36.3218, 41.9066 | 42.9428 | 36.3218–55.5749 |
 
-原始数据分别在 storage（本机归档 `exercises/build/queue-author-samples-storage/run.json`）、spsc（本机归档 `exercises/build/queue-author-samples-spsc/run.json`）、mpsc（本机归档 `exercises/build/queue-author-samples-mpsc/run.json`）、batch（本机归档 `exercises/build/queue-author-samples-batch/run.json`）、ms（本机归档 `exercises/build/queue-author-samples-ms/run.json`），同目录有 samples.csv。它们是本工作区生成物，仓库读者可用[基准篇命令](08-validation-and-benchmark.md)重新生成，不能假定构建产物会随源码分发。
+这些五组最终样本已复制进仓库的 `references/measurements/final-20260908/queue-storage`、`queue-spsc`、`queue-mpsc`、`queue-batch`、`queue-ms`，每组都有 run.json 与 samples.csv。早期作者 build 目录仍只是临时归档；仓库最终样本才是可回读证据。它们绑定旧 benchmark 与旧算法头 hash，不能自动代表第 5、6 节修复后的当前源码性能。
 
 这次预分配 ring 的中位数高于 mutex，说明“消除容器分配必然加速”没有得到支持。SPSC 缓存版中位数较低，但样本范围重叠，不能推成普遍保证。MPSC 裁剪在此输入下差距也小。batch 改变调用粒度且另组执行，MS 又改变容量与分配/回收，不能根据这两行与其他组直接推算同契约加速比。热点原因、最大延迟与更广工作量仍未验证。
 
@@ -137,3 +137,9 @@ ctest --test-dir build/queue-review-fix-runtime_tests -C Release -R '^runtime_qu
 ```
 
 本轮源修改清单：queue_versions.hpp、queue_linked.hpp、queue_checks.hpp；G1/G3/Capstone2/Q1/Q2 各自的 solution.cpp 与 README.md；队列02–08正文及本记录。公共 CMake、HP 头、基线头、历史搜索源码、benchmark driver 源码均未修改。待原非作者基于第 5 节版本复验 P1/P2；当前状态是修复后作者验证通过，非独立通过。
+
+## 7. 2026-09-10 队列样章证据口径补充
+
+本轮只补队列 01-03 的演进证据口径、最终样本回链和诊断入口，不做正式 benchmark。新增 [`queue_diagnostics.cpp`](../../exercises/benchmarks/queue_diagnostics.cpp) 在 `CS_QUEUE_DIAGNOSTICS` 开启时统计公开接口调用、成功调用、完成元素数、mutex 进入、SPSC 远端下标 load，并在隔离单线程热区统计 `operator new`。它可用于样章自检，不能证明锁等待、CAS 失败、cache miss 或内核调度原因。
+
+新说明见[队列修订证据口径](../performance/c08-revision-queue-evidence.md)，r2 自检输出为 `references/measurements/c08-revision-queue-evidence/queue_diagnostics-r2.csv`。正式样本必须等主线程测量窗口后运行：一轮 warmup、五次独立进程、seed=42、保留所有原始样本及负收益。

@@ -1,0 +1,20 @@
+{
+  "command": [
+    "F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/build/final-windows-debug-r1/L05_pmr/Debug/L05_pmr_validation_good.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.43800000000192085,
+  "stdout": "L05 pmr checks passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-lrp3lu7t",
+  "temporary_directory_removed": true,
+  "name": "L05_pmr_validation_good",
+  "cwd": "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\exercises\\build\\final-windows-debug-r1\\L05_pmr",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

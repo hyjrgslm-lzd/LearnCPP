@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/root/learncpp-c08-builds/students-r2-20260910-180658-457446af/student-validation/H1_latch_barrier/initial/build/H1_latch_barrier"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.0012840130000313366,
+  "stdout": "",
+  "stderr": "STARTER INCOMPLETE: H1 Part 1-5 未完成；未创建任何线程。\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL"
+}

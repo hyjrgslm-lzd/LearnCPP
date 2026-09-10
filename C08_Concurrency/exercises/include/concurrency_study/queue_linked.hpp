@@ -96,8 +96,9 @@ public:
             }
         }
     }
-    template<class Hook = decltype([]() noexcept {})>
-    bool try_pop(T& value, Hook removed = {}) {
+    bool try_pop(T& value) { return try_pop(value, []() noexcept {}); }
+    template<class Hook>
+    bool try_pop(T& value, Hook removed) {
         static_assert(std::is_nothrow_invocable_v<Hook>);
         auto head_guard = cs::make_hazard_pointer();
         auto next_guard = cs::make_hazard_pointer();

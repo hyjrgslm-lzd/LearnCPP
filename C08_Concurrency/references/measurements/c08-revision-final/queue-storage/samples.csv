@@ -1,0 +1,11 @@
+suite,variant,size,threads,milliseconds,completed,details,repetition
+queue,ring,100003,7,21.8832,100003,P=3;C=4;capacity=64;batch=1;bounded;strict-try;prefix-batch;atomic_lock_free=n/a;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded,0
+queue,mutex,100003,7,27.7353,100003,P=3;C=4;capacity=64;batch=1;bounded;strict-try;atomic_lock_free=n/a;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded,0
+queue,mutex,100003,7,26.8519,100003,P=3;C=4;capacity=64;batch=1;bounded;strict-try;atomic_lock_free=n/a;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded,1
+queue,ring,100003,7,23.9071,100003,P=3;C=4;capacity=64;batch=1;bounded;strict-try;prefix-batch;atomic_lock_free=n/a;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded,1
+queue,ring,100003,7,27.0526,100003,P=3;C=4;capacity=64;batch=1;bounded;strict-try;prefix-batch;atomic_lock_free=n/a;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded,2
+queue,mutex,100003,7,23.4159,100003,P=3;C=4;capacity=64;batch=1;bounded;strict-try;atomic_lock_free=n/a;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded,2
+queue,ring,100003,7,21.407,100003,P=3;C=4;capacity=64;batch=1;bounded;strict-try;prefix-batch;atomic_lock_free=n/a;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded,3
+queue,mutex,100003,7,16.0466,100003,P=3;C=4;capacity=64;batch=1;bounded;strict-try;atomic_lock_free=n/a;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded,3
+queue,ring,100003,7,19.0096,100003,P=3;C=4;capacity=64;batch=1;bounded;strict-try;prefix-batch;atomic_lock_free=n/a;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded,4
+queue,mutex,100003,7,16.7004,100003,P=3;C=4;capacity=64;batch=1;bounded;strict-try;atomic_lock_free=n/a;retry=yield;timed=thread-create+transfer+join;final-destruction=excluded,4

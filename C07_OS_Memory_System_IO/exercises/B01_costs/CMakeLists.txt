@@ -1,0 +1,20 @@
+cmake_minimum_required(VERSION 3.28)
+project(B01_costs LANGUAGES CXX)
+include(../cmake/StudySetup.cmake)
+if(NOT C07_STUDY_BUILD_REFERENCE)
+    message(STATUS "B01 reference benchmark NOT_ENABLED in Student-only profile")
+    return()
+endif()
+set(libraries)
+if(TARGET c07_liburing)
+    list(APPEND libraries c07_liburing)
+endif()
+c07_add_observation(B01_costs_benchmark benchmark.cpp ARGS --check LIBRARIES ${libraries} LABELS benchmark_control)
+c07_add_observation(B01_source_observation source_observation.cpp LABELS source_observation)
+target_include_directories(B01_costs_benchmark PRIVATE
+    "${C07_EXERCISES}/P1_file_pipeline/src/reference"
+    "${C07_EXERCISES}/L05_pmr/src/reference")
+if(WIN32 OR TARGET c07_liburing)
+    c07_add_test(B01_completion_control COMMAND "$<TARGET_FILE:B01_costs_benchmark>" --check-completion
+        LABELS benchmark_control platform ALLOW_SKIP)
+endif()

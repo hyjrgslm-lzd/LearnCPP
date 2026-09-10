@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Win32-MSBuild"
+	tests="4"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname="lizhidan-p02"
+	time="5"
+	timestamp="2026-09-10T23:00:21"
+	>
+	<testcase name="L06_process_ipc_reference" classname="L06_process_ipc_reference" time="2.39348" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L06 process IPC checks passed
+L06_process_ipc_reference: PASS
+</system-out>
+	</testcase>
+	<testcase name="L06_process_ipc_validation_good" classname="L06_process_ipc_validation_good" time="2.37864" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation_good"/>
+		</properties>
+		<system-out>L06 process IPC checks passed
+L06_process_ipc_validation_good: PASS
+</system-out>
+	</testcase>
+	<testcase name="L06_process_ipc_validation_bad_rejected" classname="L06_process_ipc_validation_bad_rejected" time="0.592344" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>check failed: child witness proves spawned fixture
+L06_process_ipc_validation_bad_rejected: PASS
+</system-out>
+	</testcase>
+	<testcase name="L06_file_locking" classname="L06_file_locking" time="0.581905" status="run">
+		<properties>
+			<property name="cmake_labels" value="file_locking;observation"/>
+		</properties>
+		<system-out>Windows LockFileEx: overlap refused, non-overlap allowed, retry after unlock allowed
+L06 file locking observation passed
+L06_file_locking: PASS
+</system-out>
+	</testcase>
+</testsuite>

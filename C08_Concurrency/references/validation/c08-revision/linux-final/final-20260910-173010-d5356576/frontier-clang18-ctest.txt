@@ -1,0 +1,35 @@
+name=frontier-clang18-ctest
+start=2026-09-10T17:42:01+08:00
+timeout_seconds=1200
+command=ctest --test-dir /root/learncpp-c08-builds/final-20260910-173010-d5356576/frontier-clang18 -C Release --output-on-failure --output-junit /mnt/f/CPPTrain/LearnCPP/C08_Concurrency/references/validation/c08-revision/linux-final/final-20260910-173010-d5356576/frontier-clang18-junit.xml --timeout 120 -R ^(F01_thread_attributes_|F02_hazard_pointer_batches_|F03_std_(senders|hazard_pointer|rcu)_reference)
+
+Internal ctest changing into directory: /root/learncpp-c08-builds/final-20260910-173010-d5356576/frontier-clang18
+Test project /root/learncpp-c08-builds/final-20260910-173010-d5356576/frontier-clang18
+    Start 19: F01_thread_attributes_reference
+1/5 Test #19: F01_thread_attributes_reference ........***Skipped   0.00 sec
+    Start 20: F02_hazard_pointer_batches_reference
+2/5 Test #20: F02_hazard_pointer_batches_reference ...***Skipped   0.00 sec
+    Start 57: F03_std_senders_reference
+3/5 Test #57: F03_std_senders_reference ..............***Skipped   0.00 sec
+    Start 58: F03_std_hazard_pointer_reference
+4/5 Test #58: F03_std_hazard_pointer_reference .......***Skipped   0.00 sec
+    Start 59: F03_std_rcu_reference
+5/5 Test #59: F03_std_rcu_reference ..................***Skipped   0.00 sec
+
+100% tests passed, 0 tests failed out of 5
+
+Label Time Summary:
+native       =   0.00 sec*proc (3 tests)
+reference    =   0.01 sec*proc (5 tests)
+
+Total Test time (real) =   0.01 sec
+
+The following tests did not run:
+	 19 - F01_thread_attributes_reference (Skipped)
+	 20 - F02_hazard_pointer_batches_reference (Skipped)
+	 57 - F03_std_senders_reference (Skipped)
+	 58 - F03_std_hazard_pointer_reference (Skipped)
+	 59 - F03_std_rcu_reference (Skipped)
+
+exit_code=0
+end=2026-09-10T17:42:01+08:00

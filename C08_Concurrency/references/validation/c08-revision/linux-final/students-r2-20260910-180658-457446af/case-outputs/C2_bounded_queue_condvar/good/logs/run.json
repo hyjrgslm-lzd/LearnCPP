@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/root/learncpp-c08-builds/students-r2-20260910-180658-457446af/student-validation/C2_bounded_queue_condvar/good/build/C2_bounded_queue_condvar"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.0670098760000144,
+  "stdout": "C2 OK: capacity=1, FIFO, MPMC IDs, move-only, close/drain\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

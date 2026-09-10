@@ -1,0 +1,171 @@
+{
+  "timestamp": "2026-09-10T16:23:53.2024605+08:00",
+  "configure_cxx26_cxx29": "cmake -S C08_Concurrency\\\\exercises -B C08_Concurrency\\\\exercises\\\\build\\\\c08-frontier-author-r3 -G \"Visual Studio 18 2026\" -A x64 -DCONCURRENCY_STUDY_ENABLE_CXX26=ON -DCONCURRENCY_STUDY_ENABLE_CXX29=ON -DCONCURRENCY_STUDY_BUILD_REFERENCE=ON -DCONCURRENCY_STUDY_TEST_STARTERS=ON",
+  "build_dir": "C08_Concurrency/exercises/build/c08-frontier-author-r3",
+  "build_targets": [
+    "F01_thread_attributes",
+    "F01_thread_attributes_reference",
+    "F02_hazard_pointer_batches",
+    "F02_hazard_pointer_batches_reference",
+    "F03_native_facilities",
+    "F03_native_facilities_reference",
+    "F03_std_senders_reference",
+    "F03_std_hazard_pointer_reference",
+    "F03_std_rcu_reference"
+  ],
+  "ctest_command": "ctest --test-dir C08_Concurrency\\\\exercises\\\\build\\\\c08-frontier-author-r3 -C Release -R \"F0[123]_\" --output-on-failure --output-junit C08_Concurrency\\\\references\\\\validation\\\\c08-revision\\\\frontier-r3-ctest.xml",
+  "ctest_junit": "C08_Concurrency/references/validation/c08-revision/frontier-r3-ctest.xml",
+  "ctest_summary": "9 tests: 4 passed, 5 skipped, 0 failed; F03 std_senders/std_hazard_pointer/std_rcu are separate skipped native subjects",
+  "cxx26_only_configure": "cmake -S C08_Concurrency\\\\exercises -B C08_Concurrency\\\\exercises\\\\build\\\\c08-frontier-r3-cxx26-only -G \"Visual Studio 18 2026\" -A x64 -DCONCURRENCY_STUDY_ENABLE_CXX26=ON -DCONCURRENCY_STUDY_ENABLE_CXX29=OFF -DCONCURRENCY_STUDY_BUILD_REFERENCE=ON -DCONCURRENCY_STUDY_TEST_STARTERS=ON",
+  "cxx29_split_check": [
+    {
+      "name": "CS_HAS_STD_THREAD_ATTRIBUTES",
+      "log": "C08_Concurrency\\exercises\\build\\c08-frontier-r3-cxx26-only\\capabilities\\CS_HAS_STD_THREAD_ATTRIBUTES.log",
+      "text": "DISABLED: CONCURRENCY_STUDY_ENABLE_CXX29=OFF"
+    },
+    {
+      "name": "CS_HAS_STD_HAZARD_POINTER_BATCH",
+      "log": "C08_Concurrency\\exercises\\build\\c08-frontier-r3-cxx26-only\\capabilities\\CS_HAS_STD_HAZARD_POINTER_BATCH.log",
+      "text": "DISABLED: CONCURRENCY_STUDY_ENABLE_CXX29=OFF"
+    }
+  ],
+  "capabilities": [
+    {
+      "name": "CS_HAS_STD_SIMD",
+      "requested": true,
+      "available": false,
+      "log": "C08_Concurrency\\exercises\\build\\c08-frontier-author-r3\\capabilities\\CS_HAS_STD_SIMD.log",
+      "first_error": "F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises\\cmake\\feature_probes.cpp(4,1): error C1083: 无法打开包括文件: “simd”: No such file or directory [F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises\\build\\c08-frontier-author-r3\\capabilities\\CS_HAS_STD_SIMD\\cs_native_probe.vcxproj]\r"
+    },
+    {
+      "name": "CS_HAS_STD_SENDERS",
+      "requested": true,
+      "available": false,
+      "log": "C08_Concurrency\\exercises\\build\\c08-frontier-author-r3\\capabilities\\CS_HAS_STD_SENDERS.log",
+      "first_error": "F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises\\cmake\\feature_probes.cpp(17,1): error C1189: #error:  N5050 senders interface is required [F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises\\build\\c08-frontier-author-r3\\capabilities\\CS_HAS_STD_SENDERS\\cs_native_probe.vcxproj]\r"
+    },
+    {
+      "name": "CS_HAS_STD_HAZARD_POINTER",
+      "requested": true,
+      "available": false,
+      "log": "C08_Concurrency\\exercises\\build\\c08-frontier-author-r3\\capabilities\\CS_HAS_STD_HAZARD_POINTER.log",
+      "first_error": "F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises\\cmake\\feature_probes.cpp(26,1): error C1083: 无法打开包括文件: “hazard_pointer”: No such file or directory [F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises\\build\\c08-frontier-author-r3\\capabilities\\CS_HAS_STD_HAZARD_POINTER\\cs_native_probe.vcxproj]\r"
+    },
+    {
+      "name": "CS_HAS_STD_RCU",
+      "requested": true,
+      "available": false,
+      "log": "C08_Concurrency\\exercises\\build\\c08-frontier-author-r3\\capabilities\\CS_HAS_STD_RCU.log",
+      "first_error": "F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises\\cmake\\feature_probes.cpp(40,1): error C1083: 无法打开包括文件: “rcu”: No such file or directory [F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises\\build\\c08-frontier-author-r3\\capabilities\\CS_HAS_STD_RCU\\cs_native_probe.vcxproj]\r"
+    },
+    {
+      "name": "CS_HAS_ATOMIC_MIN_MAX",
+      "requested": true,
+      "available": false,
+      "log": "C08_Concurrency\\exercises\\build\\c08-frontier-author-r3\\capabilities\\CS_HAS_ATOMIC_MIN_MAX.log",
+      "first_error": "F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises\\cmake\\feature_probes.cpp(54,1): error C1189: #error:  N5050 atomic min/max interface is required [F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises\\build\\c08-frontier-author-r3\\capabilities\\CS_HAS_ATOMIC_MIN_MAX\\cs_native_probe.vcxproj]\r"
+    },
+    {
+      "name": "CS_HAS_INPLACE_STOP_TOKEN",
+      "requested": true,
+      "available": false,
+      "log": "C08_Concurrency\\exercises\\build\\c08-frontier-author-r3\\capabilities\\CS_HAS_INPLACE_STOP_TOKEN.log",
+      "first_error": "F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises\\cmake\\feature_probes.cpp(65,10): error C2039: \"inplace_stop_source\": 不是 \"std\" 的成员 [F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises\\build\\c08-frontier-author-r3\\capabilities\\CS_HAS_INPLACE_STOP_TOKEN\\cs_native_probe.vcxproj]\r"
+    },
+    {
+      "name": "CS_HAS_STD_THREAD_ATTRIBUTES",
+      "requested": true,
+      "available": false,
+      "log": "C08_Concurrency\\exercises\\build\\c08-frontier-author-r3\\capabilities\\CS_HAS_STD_THREAD_ATTRIBUTES.log",
+      "first_error": "F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises\\cmake\\feature_probes.cpp(76,22): error C2039: \"name_hint\": 不是 \"std::thread\" 的成员 [F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises\\build\\c08-frontier-author-r3\\capabilities\\CS_HAS_STD_THREAD_ATTRIBUTES\\cs_native_probe.vcxproj]\r"
+    },
+    {
+      "name": "CS_HAS_STD_HAZARD_POINTER_BATCH",
+      "requested": true,
+      "available": false,
+      "log": "C08_Concurrency\\exercises\\build\\c08-frontier-author-r3\\capabilities\\CS_HAS_STD_HAZARD_POINTER_BATCH.log",
+      "first_error": "F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises\\cmake\\feature_probes.cpp(95,1): error C1083: 无法打开包括文件: “hazard_pointer”: No such file or directory [F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises\\build\\c08-frontier-author-r3\\capabilities\\CS_HAS_STD_HAZARD_POINTER_BATCH\\cs_native_probe.vcxproj]\r"
+    }
+  ],
+  "material_check": "verify_materials.py --course C08_Concurrency: 166 documents, 54 exercises, 2 local_errors from U01_async_logging outside frontier slice",
+  "hashes": [
+    {
+      "path": "C08_Concurrency/topics/frontier/README.md",
+      "sha256": "76D7C1C18AB5FF10A7893EE65F0F8FFE7A859F3524E4FF8C814CCE7857F37701"
+    },
+    {
+      "path": "C08_Concurrency/topics/frontier/01-thread-attributes.md",
+      "sha256": "2600E4F0AE7843D80AF347910D25F0DA289DDCB7E52D9A79DC0A0DC4AC70BC81"
+    },
+    {
+      "path": "C08_Concurrency/topics/frontier/02-hazard-pointer-batches.md",
+      "sha256": "E4E5094BB2070458DCB33571564AB32ED210D596D4472EA5B4DCB92F5E029055"
+    },
+    {
+      "path": "C08_Concurrency/topics/frontier/03-native-facilities.md",
+      "sha256": "8C9D7884F34461237DD2592A89277D0317CAE8DD5D08C817E5C0EB45E302C57C"
+    },
+    {
+      "path": "C08_Concurrency/exercises/F01_thread_attributes/main.cpp",
+      "sha256": "8918E250493E3F6D1D0FE321F5444F10B3ECBED3DF2ACE15C24C5C38860D8F58"
+    },
+    {
+      "path": "C08_Concurrency/exercises/F01_thread_attributes/solution.cpp",
+      "sha256": "A666C16C7F8025EE40B440C429BE64912E232883C0D28CD5FE306AB794A15BA2"
+    },
+    {
+      "path": "C08_Concurrency/exercises/F01_thread_attributes/CMakeLists.txt",
+      "sha256": "13C09E097781945154EB63EB1D3DD0288E416ACF86BC5136FE71260BE69B3F36"
+    },
+    {
+      "path": "C08_Concurrency/exercises/F02_hazard_pointer_batches/main.cpp",
+      "sha256": "4A7D218F31AE13AD6C4D10A2D0F4D6B709C2077595E6D5D78FA9F67791FDF73A"
+    },
+    {
+      "path": "C08_Concurrency/exercises/F02_hazard_pointer_batches/solution.cpp",
+      "sha256": "6BCE6958264FEEBC035A4E34FFE701893704CE266CFBACFB0539C472D6CD3146"
+    },
+    {
+      "path": "C08_Concurrency/exercises/F02_hazard_pointer_batches/CMakeLists.txt",
+      "sha256": "5BCEA4C382AEAE4B7DC30CB48C5DCCCA4FA75A1A3EAAC0FE98890E450D2F6523"
+    },
+    {
+      "path": "C08_Concurrency/exercises/F03_native_facilities/main.cpp",
+      "sha256": "D85AE5FAFBC6A837C48D3A0EF34D51067559F68D168D96AC6110783D973D44E9"
+    },
+    {
+      "path": "C08_Concurrency/exercises/F03_native_facilities/solution.cpp",
+      "sha256": "6C1190BFCD30A59BC13517621CFB457900FC4DE9DAEF2EFA2F6D1BDF860BBE80"
+    },
+    {
+      "path": "C08_Concurrency/exercises/F03_native_facilities/std_senders.cpp",
+      "sha256": "0EF402B99128871E648A9005FF3ACDBA4442E4E2C572A44A936E94B8F57719B0"
+    },
+    {
+      "path": "C08_Concurrency/exercises/F03_native_facilities/std_hazard_pointer.cpp",
+      "sha256": "0EC8C1461796B70CAE4039B116443AB792671BD9F2ECE443B78591AB931E7B5E"
+    },
+    {
+      "path": "C08_Concurrency/exercises/F03_native_facilities/std_rcu.cpp",
+      "sha256": "AB836C1DD19D43EF98A48EBDDA31BEEEBC05ACAAE35C3B77DC75998192C4D99D"
+    },
+    {
+      "path": "C08_Concurrency/exercises/F03_native_facilities/CMakeLists.txt",
+      "sha256": "A2F7032A163295D55E0AA4CB2157C2A21CDC2D25CFE56957426E59C64B3D20CD"
+    },
+    {
+      "path": "C08_Concurrency/exercises/cmake/NativeFeatures.cmake",
+      "sha256": "614854EA0345A285357FC3C255A85342ABF0A61A26CFDD48A579551B3F58CF01"
+    },
+    {
+      "path": "C08_Concurrency/exercises/cmake/feature_probes.cpp",
+      "sha256": "395DA1626B16B2920F901100BE96DC5926EAD4CFB360229CBCD10CD67CA9A2EE"
+    }
+  ],
+  "standard_sources": [
+    "N5050 [saferecl.rcu] confirms rcu_domain lock/unlock and scoped_lock example, no std::rcu_reader",
+    "N5055 LWG Poll 18 P2019R9, Poll 9 P3428R4",
+    "P2019R9 thread attributes",
+    "P3428R4 hazard pointer batches"
+  ]
+}

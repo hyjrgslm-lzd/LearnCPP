@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/root/learncpp-c08-builds/student-portability-20260910-175508-13ddcee8/student-validation/I2_hazard_pointer/good/build/I2_hazard_pointer"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.007599908999999627,
+  "stdout": "preflight PASS; starting student workers\nI2 student PASS: 4000 unique IDs, LIFO, protection and cleanup\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

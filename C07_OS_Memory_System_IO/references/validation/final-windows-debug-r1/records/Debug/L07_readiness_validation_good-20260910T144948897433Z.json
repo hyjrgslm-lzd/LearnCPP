@@ -1,0 +1,20 @@
+{
+  "command": [
+    "F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/build/final-windows-debug-r1/L07_readiness/Debug/L07_readiness_validation_good.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.4530000000013388,
+  "stdout": "L07 readiness seed=29016462801516\nL07 readiness checks passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-ofeprv19",
+  "temporary_directory_removed": true,
+  "name": "L07_readiness_validation_good",
+  "cwd": "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\exercises\\build\\final-windows-debug-r1\\L07_readiness",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-asan-r1/asan-uring/L03_virtual_memory/L03_virtual_memory_reference"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.005360533999997585,
+  "stdout": "L03 virtual memory checks passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-d8fq6yfy",
+  "temporary_directory_removed": true,
+  "name": "L03_virtual_memory_reference",
+  "cwd": "/root/learncpp-c07/builds/final-linux-asan-r1/asan-uring/L03_virtual_memory",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/leaf-verifier-linux-20260910T150538Z-L07_readiness/L07_readiness_validation_scripted_bad"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.0010569839999732267,
+  "stdout": "L07 readiness seed=281283800174348\n",
+  "stderr": "check failed: runtime payload matches drained bytes\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "/tmp/c07-test-216cj47r",
+  "temporary_directory_removed": true,
+  "name": "L07_readiness_validation_scripted_bad_rejected",
+  "cwd": "/root/learncpp-c07/builds/leaf-verifier-linux-20260910T150538Z-L07_readiness",
+  "expected_exit": 1,
+  "required_text": "runtime payload matches drained bytes",
+  "verdict": "PASS"
+}

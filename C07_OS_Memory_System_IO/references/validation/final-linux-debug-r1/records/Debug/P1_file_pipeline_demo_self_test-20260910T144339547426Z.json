@@ -1,0 +1,21 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-debug-r1/uring-debug/P1_file_pipeline/P1_file_pipeline_demo",
+    "--self-test"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.001152424999997237,
+  "stdout": "",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-fyppjs40",
+  "temporary_directory_removed": true,
+  "name": "P1_file_pipeline_demo_self_test",
+  "cwd": "/root/learncpp-c07/builds/final-linux-debug-r1/uring-debug/P1_file_pipeline",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

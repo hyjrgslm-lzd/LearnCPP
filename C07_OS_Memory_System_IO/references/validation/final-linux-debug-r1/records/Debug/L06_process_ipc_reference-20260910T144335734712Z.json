@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-debug-r1/uring-debug/L06_process_ipc/L06_process_ipc_reference"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 3.2115054379999997,
+  "stdout": "L06 process IPC checks passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-fd2bi6zf",
+  "temporary_directory_removed": true,
+  "name": "L06_process_ipc_reference",
+  "cwd": "/root/learncpp-c07/builds/final-linux-debug-r1/uring-debug/L06_process_ipc",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

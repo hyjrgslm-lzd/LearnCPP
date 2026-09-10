@@ -1,0 +1,24 @@
+{
+  "command": [
+    "cmake",
+    "-S",
+    "/root/learncpp-c07/snapshots/foundation-r3/C07_OS_Memory_System_IO/exercises",
+    "-B",
+    "/root/learncpp-c07/builds/foundation-r3/foundation",
+    "-DCMAKE_BUILD_TYPE=Release",
+    "-DC07_STUDY_ENABLE_IO_URING=OFF",
+    "-DC07_STUDY_BUILD_REFERENCE=ON"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.5893436520000002,
+  "stdout": "-- The CXX compiler identification is GNU 13.3.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: /usr/bin/c++ - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Found Python3: /usr/bin/python3 (found suitable version \"3.12.3\", minimum required is \"3.10\") found components: Interpreter \n-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n-- Found Threads: TRUE  \n-- C07 authoring pending: L03_virtual_memory\n-- C07 authoring pending: L04_mapping\n-- C07 authoring pending: L05_pmr\n-- C07 authoring pending: L06_process_ipc\n-- C07 authoring pending: L07_readiness\n-- L08_completion platform tests NOT_ENABLED\n-- C07 authoring pending: L09_dynamic_loading\n-- C07 authoring pending: P1_file_pipeline\n-- C07 authoring pending: B01_costs\n-- Configuring done (0.5s)\n-- Generating done (0.0s)\n-- Build files have been written to: /root/learncpp-c07/builds/foundation-r3/foundation\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "/root/learncpp-c07/snapshots/foundation-r3/C07_OS_Memory_System_IO/exercises",
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

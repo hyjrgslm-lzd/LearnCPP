@@ -1,0 +1,24 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "/root/learncpp-c07/builds/leaf-verifier-linux-20260910T151328Z-L09_dynamic_loading",
+    "-C",
+    "Release",
+    "--output-on-failure",
+    "--output-junit",
+    "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/references/validation/leaf-verification-20260910T151328Z/linux-l06-l09/L09_dynamic_loading-ctest.xml"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.10035089799998786,
+  "stdout": "Internal ctest changing into directory: /root/learncpp-c07/builds/leaf-verifier-linux-20260910T151328Z-L09_dynamic_loading\nTest project /root/learncpp-c07/builds/leaf-verifier-linux-20260910T151328Z-L09_dynamic_loading\n    Start 1: L09_dynamic_loading_reference\n1/3 Test #1: L09_dynamic_loading_reference .................   Passed    0.03 sec\n    Start 2: L09_dynamic_loading_validation_good\n2/3 Test #2: L09_dynamic_loading_validation_good ...........   Passed    0.02 sec\n    Start 3: L09_dynamic_loading_validation_bad_rejected\n3/3 Test #3: L09_dynamic_loading_validation_bad_rejected ...   Passed    0.03 sec\n\n100% tests passed, 0 tests failed out of 3\n\nLabel Time Summary:\nnegative           =   0.03 sec*proc (1 test)\nreference          =   0.03 sec*proc (1 test)\nvalidation_good    =   0.02 sec*proc (1 test)\n\nTotal Test time (real) =   0.08 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "/mnt/f/CPPTrain/LearnCPP",
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

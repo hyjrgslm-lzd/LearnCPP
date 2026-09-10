@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-asan-r1/asan-uring/L05_pmr/L05_pmr_validation_good"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.005744954000000746,
+  "stdout": "L05 pmr checks passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-20bcp8ec",
+  "temporary_directory_removed": true,
+  "name": "L05_pmr_validation_good",
+  "cwd": "/root/learncpp-c07/builds/final-linux-asan-r1/asan-uring/L05_pmr",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

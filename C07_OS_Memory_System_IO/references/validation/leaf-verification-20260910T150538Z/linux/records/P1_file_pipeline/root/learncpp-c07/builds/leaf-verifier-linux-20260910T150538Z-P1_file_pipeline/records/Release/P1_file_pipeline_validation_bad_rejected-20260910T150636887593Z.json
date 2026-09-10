@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/leaf-verifier-linux-20260910T150538Z-P1_file_pipeline/P1_file_pipeline_validation_bad"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.0013190459999918858,
+  "stdout": "P1 synthetic seed=11400714658661656867\n",
+  "stderr": "check failed: out-of-order chunks assemble by offset\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "/tmp/c07-test-hiuepju8",
+  "temporary_directory_removed": true,
+  "name": "P1_file_pipeline_validation_bad_rejected",
+  "cwd": "/root/learncpp-c07/builds/leaf-verifier-linux-20260910T150538Z-P1_file_pipeline",
+  "expected_exit": 1,
+  "required_text": "out-of-order chunks assemble by offset",
+  "verdict": "PASS"
+}

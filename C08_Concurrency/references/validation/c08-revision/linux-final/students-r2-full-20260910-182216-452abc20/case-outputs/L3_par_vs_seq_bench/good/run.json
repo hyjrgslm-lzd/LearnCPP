@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/root/learncpp-c08-builds/students-r2-full-20260910-182216-452abc20/student-validation/L3_par_vs_seq_bench/good/build/L3_par_vs_seq_bench"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.0011918479999621923,
+  "stdout": "L3 student checks passed for these inputs; run the full Reference and study the measurement Parts\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

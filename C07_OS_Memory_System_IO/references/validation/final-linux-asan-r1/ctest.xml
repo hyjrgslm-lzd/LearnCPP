@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Linux-c++"
+	tests="48"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname="lizhidan-p02"
+	time="8"
+	timestamp="2026-09-10T22:49:47"
+	>
+	<testcase name="C07_runner_controls" classname="C07_runner_controls" time="0.411062" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation"/>
+		</properties>
+		<system-out>runner controls: positive, exact rejection, diagnostic mismatch, timeout and fixture cleanup distinguished
+</system-out>
+	</testcase>
+	<testcase name="L01_handles_reference" classname="L01_handles_reference" time="0.0432342" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L01 handle checks passed
+L01_handles_reference: PASS
+</system-out>
+	</testcase>
+	<testcase name="L01_handles_validation_good" classname="L01_handles_validation_good" time="0.0308253" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation_good"/>
+		</properties>
+		<system-out>L01 handle checks passed
+L01_handles_validation_good: PASS
+</system-out>
+	</testcase>
+	<testcase name="L01_handles_validation_bad_rejected" classname="L01_handles_validation_bad_rejected" time="0.0325625" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>check failed: existing target is refused
+L01_handles_validation_bad_rejected: PASS
+</system-out>
+	</testcase>
+	<testcase name="L01_handles_ownership" classname="L01_handles_ownership" time="0.0307323" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>L01 ownership observation passed
+L01_handles_ownership: PASS
+</system-out>
+	</testcase>
+	<testcase name="L01_thread_process" classname="L01_thread_process" time="0.0329365" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>process_id=1255
+thread_ids=1256,1257
+shared_global_address=0x5801090b5980
+tls_addresses=0x7012fe5ff6bc,0x7012fddfe6bc
+L01_thread_process: PASS
+</system-out>
+	</testcase>
+	<testcase name="L02_sync_io_reference" classname="L02_sync_io_reference" time="0.03455" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L02 sync I/O checks passed
+L02_sync_io_reference: PASS
+</system-out>
+	</testcase>
+	<testcase name="L02_sync_io_validation_good" classname="L02_sync_io_validation_good" time="0.0366246" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation_good"/>
+		</properties>
+		<system-out>L02 sync I/O checks passed
+L02_sync_io_validation_good: PASS
+</system-out>
+	</testcase>
+	<testcase name="L02_sync_io_validation_bad_rejected" classname="L02_sync_io_validation_bad_rejected" time="0.0323882" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>check failed: copy reports every byte
+L02_sync_io_validation_bad_rejected: PASS
+</system-out>
+	</testcase>
+	<testcase name="L03_virtual_memory_reference" classname="L03_virtual_memory_reference" time="0.0349481" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L03 virtual memory checks passed
+L03_virtual_memory_reference: PASS
+</system-out>
+	</testcase>
+	<testcase name="L03_virtual_memory_validation_good" classname="L03_virtual_memory_validation_good" time="0.0322604" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation_good"/>
+		</properties>
+		<system-out>L03 virtual memory checks passed
+L03_virtual_memory_validation_good: PASS
+</system-out>
+	</testcase>
+	<testcase name="L03_virtual_memory_validation_bad_rejected" classname="L03_virtual_memory_validation_bad_rejected" time="0.0310522" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>check failed: committed page keeps written bytes
+L03_virtual_memory_validation_bad_rejected: PASS
+</system-out>
+	</testcase>
+	<testcase name="L04_mapping_reference" classname="L04_mapping_reference" time="0.0375053" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L04 mapping checks passed
+L04_mapping_reference: PASS
+</system-out>
+	</testcase>
+	<testcase name="L04_mapping_validation_good" classname="L04_mapping_validation_good" time="0.0354835" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation_good"/>
+		</properties>
+		<system-out>L04 mapping checks passed
+L04_mapping_validation_good: PASS
+</system-out>
+	</testcase>
+	<testcase name="L04_mapping_validation_bad_rejected" classname="L04_mapping_validation_bad_rejected" time="0.0326147" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>check failed: readonly mapping aligns view offset down
+L04_mapping_validation_bad_rejected: PASS
+</system-out>
+	</testcase>
+	<testcase name="L05_pmr_reference" classname="L05_pmr_reference" time="0.0400068" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L05 pmr checks passed
+L05_pmr_reference: PASS
+</system-out>
+	</testcase>
+	<testcase name="L05_pmr_validation_good" classname="L05_pmr_validation_good" time="0.0352479" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation_good"/>
+		</properties>
+		<system-out>L05 pmr checks passed
+L05_pmr_validation_good: PASS
+</system-out>
+	</testcase>
+	<testcase name="L05_pmr_validation_bad_rejected" classname="L05_pmr_validation_bad_rejected" time="0.0513324" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>check failed: fixed pool reuses freed blocks
+L05_pmr_validation_bad_rejected: PASS
+</system-out>
+	</testcase>
+	<testcase name="L06_process_ipc_reference" classname="L06_process_ipc_reference" time="3.25549" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L06 process IPC checks passed
+L06_process_ipc_reference: PASS
+</system-out>
+	</testcase>
+	<testcase name="L06_process_ipc_validation_good" classname="L06_process_ipc_validation_good" time="3.25494" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation_good"/>
+		</properties>
+		<system-out>L06 process IPC checks passed
+L06_process_ipc_validation_good: PASS
+</system-out>
+	</testcase>
+	<testcase name="L06_process_ipc_validation_bad_rejected" classname="L06_process_ipc_validation_bad_rejected" time="0.0338641" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>check failed: child witness proves spawned fixture
+L06_process_ipc_validation_bad_rejected: PASS
+</system-out>
+	</testcase>
+	<testcase name="L06_file_locking" classname="L06_file_locking" time="0.0622853" status="run">
+		<properties>
+			<property name="cmake_labels" value="file_locking;observation"/>
+		</properties>
+		<system-out>Linux fcntl: child overlap refused, non-overlap allowed, retry after unlock allowed; pread/pwrite kept file offset
+L06 file locking observation passed
+L06_file_locking: PASS
+</system-out>
+	</testcase>
+	<testcase name="L07_readiness_reference" classname="L07_readiness_reference" time="0.0306411" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L07 readiness seed=267453833759694
+L07 readiness checks passed
+L07_readiness_reference: PASS
+</system-out>
+	</testcase>
+	<testcase name="L07_readiness_validation_good" classname="L07_readiness_validation_good" time="0.0337577" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation_good"/>
+		</properties>
+		<system-out>L07 readiness seed=267624465683099
+L07 readiness checks passed
+L07_readiness_validation_good: PASS
+</system-out>
+	</testcase>
+	<testcase name="L07_readiness_validation_bad_rejected" classname="L07_readiness_validation_bad_rejected" time="0.0305061" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>check failed: runtime payload matches drained bytes
+L07 readiness seed=249611397197796
+L07_readiness_validation_bad_rejected: PASS
+</system-out>
+	</testcase>
+	<testcase name="L07_readiness_validation_scripted_bad_rejected" classname="L07_readiness_validation_scripted_bad_rejected" time="0.0325348" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>check failed: runtime payload matches drained bytes
+L07 readiness seed=261429585579844
+L07_readiness_validation_scripted_bad_rejected: PASS
+</system-out>
+	</testcase>
+	<testcase name="L08_completion_reference" classname="L08_completion_reference" time="0.033469" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L08 completion ledger checks passed
+L08_completion_reference: PASS
+</system-out>
+	</testcase>
+	<testcase name="L08_completion_validation_good" classname="L08_completion_validation_good" time="0.0350841" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation_good"/>
+		</properties>
+		<system-out>L08 completion ledger checks passed
+L08_completion_validation_good: PASS
+</system-out>
+	</testcase>
+	<testcase name="L08_completion_validation_bad_rejected" classname="L08_completion_validation_bad_rejected" time="0.0310366" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>check failed: missing target completion is rejected
+L08_completion_validation_bad_rejected: PASS
+</system-out>
+	</testcase>
+	<testcase name="L08_completion_reference_platform" classname="L08_completion_reference_platform" time="0.0345636" status="run">
+		<properties>
+			<property name="cmake_labels" value="platform;reference"/>
+		</properties>
+		<system-out>L08 completion platform checks passed
+L08_completion_reference_platform: PASS
+</system-out>
+	</testcase>
+	<testcase name="L08_completion_validation_good_platform" classname="L08_completion_validation_good_platform" time="0.0343431" status="run">
+		<properties>
+			<property name="cmake_labels" value="platform;validation_good"/>
+		</properties>
+		<system-out>L08 completion platform checks passed
+L08_completion_validation_good_platform: PASS
+</system-out>
+	</testcase>
+	<testcase name="L09_dynamic_loading_reference" classname="L09_dynamic_loading_reference" time="0.0339699" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L09 dynamic loading checks passed
+L09_dynamic_loading_reference: PASS
+</system-out>
+	</testcase>
+	<testcase name="L09_dynamic_loading_validation_good" classname="L09_dynamic_loading_validation_good" time="0.0354931" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation_good"/>
+		</properties>
+		<system-out>L09 dynamic loading checks passed
+L09_dynamic_loading_validation_good: PASS
+</system-out>
+	</testcase>
+	<testcase name="L09_dynamic_loading_validation_bad_rejected" classname="L09_dynamic_loading_validation_bad_rejected" time="0.0354438" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>check failed: module call count changed once
+L09_dynamic_loading_validation_bad_rejected: PASS
+</system-out>
+	</testcase>
+	<testcase name="P1_file_pipeline_reference" classname="P1_file_pipeline_reference" time="0.0340294" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>P1 synthetic seed=11400714780367255104
+P1 file pipeline assembly checks passed
+P1_file_pipeline_reference: PASS
+</system-out>
+	</testcase>
+	<testcase name="P1_file_pipeline_validation_good" classname="P1_file_pipeline_validation_good" time="0.034609" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation_good"/>
+		</properties>
+		<system-out>P1 synthetic seed=11400714795328575072
+P1 file pipeline assembly checks passed
+P1_file_pipeline_validation_good: PASS
+</system-out>
+	</testcase>
+	<testcase name="P1_file_pipeline_validation_bad_rejected" classname="P1_file_pipeline_validation_bad_rejected" time="0.033403" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>check failed: out-of-order chunks assemble by offset
+P1 synthetic seed=11400714794946979807
+P1_file_pipeline_validation_bad_rejected: PASS
+</system-out>
+	</testcase>
+	<testcase name="P1_file_pipeline_demo_self_test" classname="P1_file_pipeline_demo_self_test" time="0.0329454" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>P1_file_pipeline_demo_self_test: PASS
+</system-out>
+	</testcase>
+	<testcase name="P1_file_pipeline_reference_buffered" classname="P1_file_pipeline_reference_buffered" time="0.0401239" status="run">
+		<properties>
+			<property name="cmake_labels" value="platform;reference"/>
+		</properties>
+		<system-out>P1 backend seed=11400714780679606218
+P1 file pipeline buffered backend check passed
+P1_file_pipeline_reference_buffered: PASS
+</system-out>
+	</testcase>
+	<testcase name="P1_file_pipeline_validation_good_buffered" classname="P1_file_pipeline_validation_good_buffered" time="0.0420864" status="run">
+		<properties>
+			<property name="cmake_labels" value="platform;validation_good"/>
+		</properties>
+		<system-out>P1 backend seed=11400714779792062402
+P1 file pipeline buffered backend check passed
+P1_file_pipeline_validation_good_buffered: PASS
+</system-out>
+	</testcase>
+	<testcase name="P1_file_pipeline_reference_mapped" classname="P1_file_pipeline_reference_mapped" time="0.0394741" status="run">
+		<properties>
+			<property name="cmake_labels" value="platform;reference"/>
+		</properties>
+		<system-out>P1 backend seed=11400714795580049015
+P1 file pipeline mapped backend check passed
+P1_file_pipeline_reference_mapped: PASS
+</system-out>
+	</testcase>
+	<testcase name="P1_file_pipeline_validation_good_mapped" classname="P1_file_pipeline_validation_good_mapped" time="0.0362731" status="run">
+		<properties>
+			<property name="cmake_labels" value="platform;validation_good"/>
+		</properties>
+		<system-out>P1 backend seed=11400714794423700193
+P1 file pipeline mapped backend check passed
+P1_file_pipeline_validation_good_mapped: PASS
+</system-out>
+	</testcase>
+	<testcase name="P1_native_failure" classname="P1_native_failure" time="0.0411368" status="run">
+		<properties>
+			<property name="cmake_labels" value="platform;validation"/>
+		</properties>
+		<system-out>native allocation failure: three queued target obligations drained; subsequent batch passed
+P1_native_failure: PASS
+</system-out>
+	</testcase>
+	<testcase name="P1_file_pipeline_reference_completion" classname="P1_file_pipeline_reference_completion" time="0.0430094" status="run">
+		<properties>
+			<property name="cmake_labels" value="platform;reference"/>
+		</properties>
+		<system-out>P1 backend seed=11400714794492013916
+P1 file pipeline completion backend check passed
+P1_file_pipeline_reference_completion: PASS
+</system-out>
+	</testcase>
+	<testcase name="P1_file_pipeline_validation_good_completion" classname="P1_file_pipeline_validation_good_completion" time="0.0388509" status="run">
+		<properties>
+			<property name="cmake_labels" value="platform;validation_good"/>
+		</properties>
+		<system-out>P1 backend seed=11400714794672089820
+P1 file pipeline completion backend check passed
+P1_file_pipeline_validation_good_completion: PASS
+</system-out>
+	</testcase>
+	<testcase name="B01_costs_benchmark" classname="B01_costs_benchmark" time="0.0518609" status="run">
+		<properties>
+			<property name="cmake_labels" value="benchmark_control;observation"/>
+		</properties>
+		<system-out>B01 core controls: actual bytes, resource payloads and upstream balance passed
+B01_costs_benchmark: PASS
+</system-out>
+	</testcase>
+	<testcase name="B01_source_observation" classname="B01_source_observation" time="0.0320342" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation;source_observation"/>
+		</properties>
+		<system-out>{"observation":"LWG3120 initial buffer reset","standard_expected_reset":true,"observed_reset":true,"second_allocation_bad_alloc":false,"fresh_scope_control":true}
+B01_source_observation: PASS
+</system-out>
+	</testcase>
+	<testcase name="B01_completion_control" classname="B01_completion_control" time="0.0442408" status="run">
+		<properties>
+			<property name="cmake_labels" value="benchmark_control;platform"/>
+		</properties>
+		<system-out>B01 completion control: actual native read, assembly and checked output passed
+B01_completion_control: PASS
+</system-out>
+	</testcase>
+</testsuite>

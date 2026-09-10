@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/root/learncpp-c08-builds/students-r2-full-20260910-182216-452abc20/student-validation/Capstone3_parallel_compute/good/build/Capstone3_parallel_compute"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.001595460000089588,
+  "stdout": "Cap3 mandatory student small checks passed\nOptional SIMD not requested; use --with-simd after implementing it\nReference covers more sizes, faults and contracts\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

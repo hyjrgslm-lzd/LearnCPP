@@ -1,0 +1,22 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-debug-r1/uring-debug/P1_file_pipeline/P1_file_pipeline_reference",
+    "--backend",
+    "buffered"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.005800773000000703,
+  "stdout": "P1 backend seed=11400714832766903608\nP1 file pipeline buffered backend check passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-1g01a8n0",
+  "temporary_directory_removed": true,
+  "name": "P1_file_pipeline_reference_buffered",
+  "cwd": "/root/learncpp-c07/builds/final-linux-debug-r1/uring-debug/P1_file_pipeline",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

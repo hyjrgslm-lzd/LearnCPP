@@ -1,0 +1,1 @@
+SKIP: Clang ThreadSanitizer provides global new/delete interceptors; allocation injection is covered by non-TSan runs; see references/validation/c08-revision/tsan-diagnosis/diagnosis-20260910.md

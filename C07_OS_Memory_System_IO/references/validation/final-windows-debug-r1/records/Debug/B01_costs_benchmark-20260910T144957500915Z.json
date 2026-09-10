@@ -1,0 +1,21 @@
+{
+  "command": [
+    "F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/build/final-windows-debug-r1/B01_costs/Debug/B01_costs_benchmark.exe",
+    "--check"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.4679999999971187,
+  "stdout": "B01 core controls: actual bytes, resource payloads and upstream balance passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-l8d7z16n",
+  "temporary_directory_removed": true,
+  "name": "B01_costs_benchmark",
+  "cwd": "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\exercises\\build\\final-windows-debug-r1\\B01_costs",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

@@ -1,0 +1,21 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-release-r1/uring/P1_file_pipeline/P1_file_pipeline_demo",
+    "--self-test"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.0011609870000022227,
+  "stdout": "",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-p95vzcle",
+  "temporary_directory_removed": true,
+  "name": "P1_file_pipeline_demo_self_test",
+  "cwd": "/root/learncpp-c07/builds/final-linux-release-r1/uring/P1_file_pipeline",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

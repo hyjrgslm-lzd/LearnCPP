@@ -4,6 +4,12 @@
 
 本题默认 C++23，无额外库依赖。它是每 worker 一条带锁 deque 的真实窃取池，没有实现 Chase–Lev，也不保证全局 FIFO、无锁进展或任意依赖图无死锁。
 
+## 本轮 TSan 边界
+
+Clang18＋libstdc++13＋TSan组合下，工作线程释放最后一个任务共享状态时，检测器可能将主线程catch中的`e.what()`读取报告为竞争。修正版纯标准库例子使用`packaged_task`、`thread`、`future`，移走主线程持有者并控制worker最后释放，已稳定复现同形报告；值通道及plain/ASan对照通过。原始报告、第一次未复现时的持有者差异和修正版源码见[M1专项诊断](../../references/validation/c08-revision/tsan-diagnosis/m1-20260910-1815/diagnosis.md)。
+
+这不支持把池认定为UAF，也不意味着一般情况下必须在`future.get()`之前join。标准异常对象的寿命与`exception_ptr`引用关系仍成立；不能加额外join或检测器suppression来掩盖本例。Reference仅在上述已验证组合中检查异常类型、跳过消息文本断言，并继续检查递归、结果、排空、拒收和窃取，最后返回77明确记录PARTIAL_SKIP。其他组合仍执行完整消息断言；普通及ASan验证保留完整范围。调度并发的独立runtime测试不因这一消息断言被跳过。
+
 入口类型：main 是独立 baseline 的 OBSERVATION 驱动，检查三个调度版本各 32 个任务的结果，没有直接 include solution.cpp。默认成功仅覆盖这些真实运行的结果检查，不表示 Part 2–5 的实现、协议推导或完整压力检查已完成。按各 Part 遮住对应函数重写并用独立 Reference/runtime 检查；保留这种观察/预测学习流程，不把已实现 baseline 称作未填学生代码，也不额外制造作业评分框架。
 
 ## 构建和运行

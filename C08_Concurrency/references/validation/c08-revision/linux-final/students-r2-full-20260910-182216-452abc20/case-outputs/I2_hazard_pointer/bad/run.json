@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/root/learncpp-c08-builds/students-r2-full-20260910-182216-452abc20/student-validation/I2_hazard_pointer/bad/build/I2_hazard_pointer"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.0010636260000183029,
+  "stdout": "",
+  "stderr": "student FAIL: protected node reclaimed early\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL"
+}

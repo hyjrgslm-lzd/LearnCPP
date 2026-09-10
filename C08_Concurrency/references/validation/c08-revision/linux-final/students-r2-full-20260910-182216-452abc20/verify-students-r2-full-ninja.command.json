@@ -1,0 +1,11 @@
+{
+  "name": "verify-students-r2-full-ninja",
+  "start": "2026-09-10T18:23:37+08:00",
+  "end": "2026-09-10T18:31:41+08:00",
+  "exit_code": 0,
+  "generator": "Ninja",
+  "course": "/root/learncpp-c08-src/students-r2-full-20260910-182216-452abc20/C08_Concurrency",
+  "build_root": "/root/learncpp-c08-builds/students-r2-full-20260910-182216-452abc20/student-validation",
+  "stdout": "verify-students-r2-full-ninja.stdout.txt",
+  "stderr": "verify-students-r2-full-ninja.stderr.txt"
+}

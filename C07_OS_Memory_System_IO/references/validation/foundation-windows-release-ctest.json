@@ -1,0 +1,27 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "C07_OS_Memory_System_IO/exercises/build/foundation-windows",
+    "-C",
+    "Release",
+    "--output-on-failure",
+    "-R",
+    "^L0[12]_",
+    "--output-junit",
+    "F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/references/validation/foundation-windows-release.xml"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 3.25,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/build/foundation-windows\n    Start 2: L01_handles_reference\n1/6 Test #2: L01_handles_reference .................   Passed    0.52 sec\n    Start 3: L01_handles_validation_good\n2/6 Test #3: L01_handles_validation_good ...........   Passed    0.52 sec\n    Start 4: L01_handles_validation_bad_rejected\n3/6 Test #4: L01_handles_validation_bad_rejected ...   Passed    0.53 sec\n    Start 5: L02_sync_io_reference\n4/6 Test #5: L02_sync_io_reference .................   Passed    0.52 sec\n    Start 6: L02_sync_io_validation_good\n5/6 Test #6: L02_sync_io_validation_good ...........   Passed    0.56 sec\n    Start 7: L02_sync_io_validation_bad_rejected\n6/6 Test #7: L02_sync_io_validation_bad_rejected ...   Passed    0.53 sec\n\n100% tests passed, 0 tests failed out of 6\n\nLabel Time Summary:\nnegative           =   1.06 sec*proc (2 tests)\nreference          =   1.04 sec*proc (2 tests)\nvalidation_good    =   1.08 sec*proc (2 tests)\n\nTotal Test time (real) =   3.19 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

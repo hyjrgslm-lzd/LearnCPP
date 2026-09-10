@@ -1,0 +1,20 @@
+{
+  "command": [
+    "F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/build/final-windows-release-r1/L01_handles/Release/L01_thread_process.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.4530000000013388,
+  "stdout": "process_id=72796\nthread_ids=72552,63480\nshared_global_address=0x7ff71e156120\ntls_addresses=0x19aa5ebff04,0x19aa5ec0224\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-fqw3j5l4",
+  "temporary_directory_removed": true,
+  "name": "L01_thread_process",
+  "cwd": "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\exercises\\build\\final-windows-release-r1\\L01_handles",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

@@ -103,3 +103,15 @@ cmake --build --preset verify-core
 ## C03 状态、错误与回调衔接
 
 [C03 状态集合](../C03_Type_Modeling_Interface_Design/chapters/04-variant-and-state-space.md)、[错误通道](../C03_Type_Modeling_Interface_Design/chapters/05-expected-and-error-channels.md)和[可调用包装](../C03_Type_Modeling_Interface_Design/chapters/12-callable-objects-and-type-erasure.md)解释promise中的值/异常载荷与回调拥有、借用关系。optional空值不自动表示取消，exception_ptr也不定义恢复时机；这些含义仍由本课的协程协议明确。
+
+## C04 泛型与编译期桥接
+
+[进入C04课程](../C04_Generic_CompileTime_Reflection/README.md)。promise选择、operator co_await查找和awaitable包装需要C04的模板选择、ADL、重载和转发；本课继续主讲帧生命周期、恢复及异常协议，不能用一个通用CPO模型替换协程专属变换。
+
+## C05 数据表达先修
+
+RPC长度头、数字完整消费、UTF与基础schema的先修见[C05 数据表达](../C05_Data_Representation_Standard_Facilities/README.md)。C05的同步字节解码不替代这里的连接、协程、取消和缓冲存活责任。
+
+## C07 系统 I/O 先修
+
+[C07 readiness](../C07_OS_Memory_System_IO/chapters/11-readiness.md)、[IOCP](../C07_OS_Memory_System_IO/chapters/12-windows-iocp.md)、[io_uring](../C07_OS_Memory_System_IO/chapters/13-linux-io-uring.md)和[取消收束](../C07_OS_Memory_System_IO/chapters/14-cancellation-shutdown.md)解释提交、等待和最终完成，以及 buffer/请求身份必须存活到何时。再回本课 I2，将系统完成接到 awaiter 的结果写入与恢复；帧的销毁/取消协议仍由本课单独验证。

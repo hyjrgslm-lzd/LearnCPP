@@ -1,0 +1,21 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/integration-linux-uring-r1/uring/L09_dynamic_loading/L09_dynamic_loading_validation_bad",
+    "/root/learncpp-c07/builds/integration-linux-uring-r1/uring/L09_dynamic_loading/libL09_dynamic_loading_module.so"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.0011787060000187921,
+  "stdout": "",
+  "stderr": "check failed: module call count changed once\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "/tmp/c07-test-zj8kf3zf",
+  "temporary_directory_removed": true,
+  "name": "L09_dynamic_loading_validation_bad_rejected",
+  "cwd": "/root/learncpp-c07/builds/integration-linux-uring-r1/uring/L09_dynamic_loading",
+  "expected_exit": 1,
+  "required_text": "module call count changed once",
+  "verdict": "PASS"
+}

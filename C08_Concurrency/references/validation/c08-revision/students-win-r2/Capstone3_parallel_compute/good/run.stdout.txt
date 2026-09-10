@@ -1,0 +1,3 @@
+Cap3 mandatory student small checks passed
+Optional SIMD not requested; use --with-simd after implementing it
+Reference covers more sizes, faults and contracts

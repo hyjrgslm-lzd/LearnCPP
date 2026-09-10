@@ -9,11 +9,12 @@
 之后按目标选择路线：
 
 - **序列与算法**：C02 → C06 容器/算法基础 → Ranges；自定义视图与泛型实现按需补C04。
+- **系统与 I/O**：C02/C03/C05 必要基础 → C07 句柄、虚拟内存、分配与系统 I/O；再接 C09/C10 的异步桥接和 C11 网络主线。
 - **并发与异步**：C02 → C08 基础同步 → C09 协程或 C10 Execution；协程与 sender 的组合放在两侧基础之后。C09 不是使用 C10 的硬先修。
 - **GPU 计算**：对象与资源基础、必要数值和性能知识 → C14；无需先读完整个异步课程组。
 - **引擎开发**：构建与对象基础 → C15，再按模块补齐并发、渲染和网络知识。
 
-目录采用 `C编号_具体主题`，按全局课程版图排序。编号提供默认阅读次序，实际硬先修以章节说明为准；空号留给尚未建设的课程，不创建占位目录。C03 提供类型、不变量、错误与接口设计的公共基础；C05 补充数据表达与常用设施；C04 提供泛型、编译期编程与反射主讲；C07 等公共课程尚未完整交付，已有专题所需的先修说明和补充入口仍保留，不能把目录排序当成先修已全部齐备。
+目录采用 `C编号_具体主题`，按全局课程版图排序。编号提供默认阅读次序，实际硬先修以章节说明为准；空号留给尚未建设的课程，不创建占位目录。C03 提供类型、不变量、错误与接口设计的公共基础；C05 补充数据表达与常用设施；C04 提供泛型、编译期编程与反射主讲；C07 承接操作系统、内存与 I/O。各课的实际验证和未覆盖环境见质量报告，不能把目录排序当成所有先修已全部齐备。
 
 ## 已有课程
 
@@ -25,7 +26,8 @@
 | 公共基础 | [C04_Generic_CompileTime_Reflection](C04_Generic_CompileTime_Reflection/README.md) | 泛型、查找/约束、类型计算、常量求值、反射与编译成本；25章/21单元，含进阶机制、Mp11/Hana及编译成本实验；验证与未测边界见质量报告 |
 | 公共基础 | [C05_Data_Representation_Standard_Facilities](C05_Data_Representation_Standard_Facilities/README.md) | 字节/编码、解析格式化、时间/时区、路径配置、schema与资源清单包；21章/20单元，含fmt/spdlog同步前端；验证与审查见质量报告 |
 | 公共基础与专题进阶 | [C06_Ranges](C06_Ranges/README.md) | 数据结构、容器、算法、Ranges与迭代器实现；保留C++26默认，标准/实现及验证状态见课程质量报告 |
-| 专题进阶 | [C08_Concurrency](C08_Concurrency/README.md) | 线程、同步、原子、内存模型、并发结构与安全回收；已有 CPU 性能系列兼作 C13 入口 |
+| 系统与异步基础 | [C07_OS_Memory_System_IO](C07_OS_Memory_System_IO/README.md) | 进程/线程、句柄、虚拟内存/映射、allocator/pmr/池、IPC/装载、readiness/completion；19章/11单元，Windows与WSL验证及证据边界见质量报告 |
+| 专题进阶 | [C08_Concurrency](C08_Concurrency/README.md) | 线程、同步、内存模型与回收；53题及独立原生主体，新增异步日志与C++29专题；Windows/WSL验证和未测边界见本轮报告，CPU性能资产兼作C13入口 |
 | 专题进阶 | [C09_Coroutines](C09_Coroutines/README.md) | 协程协议、控制流、帧与生命周期、取消组合、I/O 与 RPC 应用 |
 | 专题进阶 | [C10_Execution](C10_Execution/README.md) | sender/receiver、scheduler、工作组合、完成通道与运行时 |
 | 领域应用 | [C14_GPU](C14_GPU/README.md) | CUDA、设备执行与内存层级、GPU 性能和算子实现 |

@@ -1,0 +1,26 @@
+{
+  "command": [
+    "python3",
+    "/root/learncpp-c07/snapshots/final-linux-release-r1/C07_OS_Memory_System_IO/exercises/B01_costs/tools/sample_benchmarks.py",
+    "--phase",
+    "baseline",
+    "--exe",
+    "/root/learncpp-c07/builds/final-linux-release-r1/uring/B01_costs/B01_costs_benchmark",
+    "--output",
+    "/root/learncpp-c07/measurements/b01-linux-baseline",
+    "--repo-root",
+    "/root/learncpp-c07/snapshots/final-linux-release-r1"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.9314268119999269,
+  "stdout": "{\"cases\": 5, \"output\": \"/root/learncpp-c07/measurements/b01-linux-baseline/result.json\", \"phase\": \"baseline\", \"phase_valid\": true, \"samples\": 30}\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "/root/learncpp-c07",
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

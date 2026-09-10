@@ -1,0 +1,21 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "/root/learncpp-c07/builds/leaf-verifier-linux-20260910T151328Z-L09_dynamic_loading",
+    "--parallel",
+    "2"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.5100513490000367,
+  "stdout": "[ 12%] Building CXX object CMakeFiles/L09_dynamic_loading_module.dir/checks/module.cpp.o\n[ 25%] Linking CXX shared library libL09_dynamic_loading_module.so\n[ 25%] Built target L09_dynamic_loading_module\n[ 50%] Building CXX object CMakeFiles/L09_dynamic_loading_validation_good.dir/checks/dynamic_loading_checks.cpp.o\n[ 50%] Building CXX object CMakeFiles/L09_dynamic_loading_reference.dir/checks/dynamic_loading_checks.cpp.o\n[ 62%] Linking CXX executable L09_dynamic_loading_reference\n[ 75%] Linking CXX executable L09_dynamic_loading_validation_good\n[ 75%] Built target L09_dynamic_loading_reference\n[ 75%] Built target L09_dynamic_loading_validation_good\n[ 87%] Building CXX object CMakeFiles/L09_dynamic_loading_validation_bad.dir/checks/dynamic_loading_checks.cpp.o\n[100%] Linking CXX executable L09_dynamic_loading_validation_bad\n[100%] Built target L09_dynamic_loading_validation_bad\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "/mnt/f/CPPTrain/LearnCPP",
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

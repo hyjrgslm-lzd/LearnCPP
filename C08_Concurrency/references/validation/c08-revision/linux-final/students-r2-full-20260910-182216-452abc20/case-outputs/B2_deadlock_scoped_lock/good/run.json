@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/root/learncpp-c08-builds/students-r2-full-20260910-182216-452abc20/student-validation/B2_deadlock_scoped_lock/good/build/B2_deadlock_scoped_lock"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.0016144100000019534,
+  "stdout": "B2 student OK\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/leaf-verifier-linux-20260910T150538Z-L01_handles/L01_thread_process"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.002075485999995408,
+  "stdout": "process_id=584\nthread_ids=585,586\nshared_global_address=0x5db47cf352b4\ntls_addresses=0x76382efff6bc,0x76382e7fe6bc\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-w7idxym9",
+  "temporary_directory_removed": true,
+  "name": "L01_thread_process",
+  "cwd": "/root/learncpp-c07/builds/leaf-verifier-linux-20260910T150538Z-L01_handles",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

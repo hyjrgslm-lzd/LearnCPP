@@ -1,0 +1,2 @@
+B3 OK: once-only success, publication, local static
+PARTIAL_SKIP: Clang ThreadSanitizer does not reliably verify C++ exception paths; call_once exception retry is covered by non-TSan runs; see references/validation/c08-revision/tsan-diagnosis/diagnosis-20260910.md

@@ -1,0 +1,20 @@
+{
+  "command": [
+    "F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/build/final-windows-asan-r1/L01_handles/RelWithDebInfo/L01_handles_validation_bad.exe"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.4690000000009604,
+  "stdout": "",
+  "stderr": "check failed: existing target is refused\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-5yh05l28",
+  "temporary_directory_removed": true,
+  "name": "L01_handles_validation_bad_rejected",
+  "cwd": "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\exercises\\build\\final-windows-asan-r1\\L01_handles",
+  "expected_exit": 1,
+  "required_text": "existing target is refused",
+  "verdict": "PASS"
+}

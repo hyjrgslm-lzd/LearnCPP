@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-debug-r1/uring-debug/L04_mapping/L04_mapping_validation_good"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.004616269000003115,
+  "stdout": "L04 mapping checks passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-f9fb_9h1",
+  "temporary_directory_removed": true,
+  "name": "L04_mapping_validation_good",
+  "cwd": "/root/learncpp-c07/builds/final-linux-debug-r1/uring-debug/L04_mapping",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

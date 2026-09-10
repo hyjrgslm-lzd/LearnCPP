@@ -1,0 +1,21 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/integration-linux-uring-r1/uring/L08_completion/L08_completion_reference",
+    "--platform"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.0016650970000000598,
+  "stdout": "L08 completion platform checks passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-p5vlhj06",
+  "temporary_directory_removed": true,
+  "name": "L08_completion_reference_platform",
+  "cwd": "/root/learncpp-c07/builds/integration-linux-uring-r1/uring/L08_completion",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

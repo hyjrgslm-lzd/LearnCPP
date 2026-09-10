@@ -1,0 +1,69 @@
+{
+  "time_utc": "2026-09-10T14:49:58.259732+00:00",
+  "platform": "Windows-10-10.0.26100-SP0",
+  "machine": "AMD64",
+  "processor": "AMD64 Family 26 Model 68 Stepping 0, AuthenticAMD",
+  "cpu_count": 24,
+  "python": "3.10.11 (tags/v3.10.11:7d4cc5a, Apr  5 2023, 00:38:17) [MSC v.1929 64 bit (AMD64)]",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "commands": [
+    {
+      "command": [
+        "cmake",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "cmake version 4.2.3\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "ctest",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "ctest version 4.2.3\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).\n",
+      "stderr": ""
+    }
+  ],
+  "file_hashes": {
+    "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\exercises\\build\\final-windows-debug-r1\\CMakeCache.txt": "ffdeb51422b305d0859a815ddfe13197639d0ff2f4004d7b5486e4fb9e35708b"
+  },
+  "clocks": {
+    "monotonic": {
+      "implementation": "GetTickCount64()",
+      "monotonic": true,
+      "adjustable": false,
+      "resolution": 0.015625
+    },
+    "perf_counter": {
+      "implementation": "QueryPerformanceCounter()",
+      "monotonic": true,
+      "adjustable": false,
+      "resolution": 1e-07
+    }
+  },
+  "cmake_inputs": [
+    "C07_LIBURING_ROOT:PATH=",
+    "C07_OS_Memory_System_IO_BINARY_DIR:STATIC=F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/build/final-windows-debug-r1",
+    "C07_OS_Memory_System_IO_IS_TOP_LEVEL:STATIC=ON",
+    "C07_OS_Memory_System_IO_SOURCE_DIR:STATIC=F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises",
+    "C07_STUDY_BUILD_REFERENCE:BOOL=ON",
+    "C07_STUDY_ENABLE_ASAN:BOOL=OFF",
+    "C07_STUDY_ENABLE_IO_URING:BOOL=OFF",
+    "C07_STUDY_TEST_STUDENTS:BOOL=OFF",
+    "C07_STUDY_TRACE_INCLUDES:BOOL=OFF",
+    "CMAKE_CXX_FLAGS:STRING=/DWIN32 /D_WINDOWS /EHsc",
+    "CMAKE_CXX_FLAGS_DEBUG:STRING=/Ob0 /Od /RTC1",
+    "CMAKE_CXX_FLAGS_MINSIZEREL:STRING=/O1 /Ob1 /DNDEBUG",
+    "CMAKE_CXX_FLAGS_RELEASE:STRING=/O2 /Ob2 /DNDEBUG",
+    "CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=/O2 /Ob1 /DNDEBUG",
+    "CMAKE_CXX_FLAGS-ADVANCED:INTERNAL=1",
+    "CMAKE_CXX_FLAGS_DEBUG-ADVANCED:INTERNAL=1",
+    "CMAKE_CXX_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1",
+    "CMAKE_CXX_FLAGS_RELEASE-ADVANCED:INTERNAL=1",
+    "CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1",
+    "CMAKE_GENERATOR:INTERNAL=Visual Studio 18 2026",
+    "CMAKE_GENERATOR_INSTANCE:INTERNAL=D:/VisualStudio2026/Installed"
+  ]
+}

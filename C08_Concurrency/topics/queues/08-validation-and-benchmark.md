@@ -1,5 +1,7 @@
 # 队列 08：把正确性历史和吞吐样本分别解释
 
+2026-09-10的新源码正式采样见[本轮五组数据](../../references/measurements/c08-revision-final/README.md)，对应[新增定位证据](../performance/c08-revision-queue-evidence.md)。本篇保留原协议与历史实验说明；旧样本、当前诊断、当前正式计时分别使用各自的版本绑定。
+
 如果一个错误队列丢掉一半元素，它可能“跑得更快”。如果检查只看 push/pop 次数，另一个丢一项又重复一项的队列可能被误判正确。本系列把协议推导、逐项数据检查、小规模历史和计时分成几层，每一层解决不同的问题。
 
 实现都来自相同头文件：基线是 [`queue_baseline.hpp`](../../exercises/include/concurrency_study/queue_baseline.hpp)，数组演进是 [`queue_versions.hpp`](../../exercises/include/concurrency_study/queue_versions.hpp)，动态结构是 [`queue_linked.hpp`](../../exercises/include/concurrency_study/queue_linked.hpp)。Reference、历史检查与 [`queue_bench.cpp`](../../exercises/benchmarks/queue_bench.cpp) 复用这些类型；没有为基准偷偷写一套少做回收或少做同步的快版本。
@@ -67,6 +69,10 @@ python tools/run_benchmarks.py --exe build/bench/benchmarks/Release/queue_bench.
 每个 output 必须是新的目录，不能覆盖旧样本。默认每版本暖机一次、正式五个独立进程样本，固定种子打乱同组版本顺序，外部超时限制整个子进程。查看 run.json 中所有 samples_ms、median_ms、min_ms、max_ms 与环境字段，保留 samples.csv；不要只选最好的样本或静默排除离群值。这里给的是可复现方法，不预设哪个版本一定加速。
 
 修复前 Windows x64 上的 40 个样本、环境与当时的 Release/ASan 结果保留在[作者验证记录](VALIDATION.md)，已明确标成旧实现快照。独立 review 随后发现 bool 压位存储与可变源赋值重载问题；修复改变了算法头版本，旧耗时不能作为当前实现的性能证据。修复后的回归、构建、基准接口冒烟及源码哈希在该记录另节列出，等待原非作者复验；本轮不从旧样本推算新实现加速比。
+
+仓库还保留了 2026-09-08 的最终样本目录：`references/measurements/final-20260908/queue-storage`、`queue-batch`、`queue-spsc`、`queue-mpsc`、`queue-ms`。这些文件不是作者本机 build 目录里的临时日志，读者可以直接核对 run.json 与 samples.csv；但它们绑定的是当时的源码 hash，不能自动继承到后续头文件修订。
+
+修订期间新增的 [`queue_diagnostics.cpp`](../../exercises/benchmarks/queue_diagnostics.cpp) 用于样章自检：它统计公开接口调用数、成功调用数、完成元素数、诊断宏开启下的 mutex 进入和 SPSC 远端下标 load，并用单线程热区 `operator new` 计数隔离预分配差异。它不是正式 benchmark，也不观察等待时间、CAS 失败或 cache miss。完整修订采样命令和归因边界见[队列修订证据口径](../performance/c08-revision-queue-evidence.md)。
 
 ## 自测与答案
 

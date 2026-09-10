@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-release-r1/uring/P1_file_pipeline/P1_file_pipeline_reference"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.0013087489999996649,
+  "stdout": "P1 synthetic seed=11400714844354337251\nP1 file pipeline assembly checks passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-rfy79kdg",
+  "temporary_directory_removed": true,
+  "name": "P1_file_pipeline_reference",
+  "cwd": "/root/learncpp-c07/builds/final-linux-release-r1/uring/P1_file_pipeline",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

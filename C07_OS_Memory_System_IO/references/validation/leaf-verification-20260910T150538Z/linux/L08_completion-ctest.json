@@ -1,0 +1,24 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "/root/learncpp-c07/builds/leaf-verifier-linux-20260910T150538Z-L08_completion",
+    "-C",
+    "Release",
+    "--output-on-failure",
+    "--output-junit",
+    "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/references/validation/leaf-verification-20260910T150538Z/linux/L08_completion-ctest.xml"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.15949283200001219,
+  "stdout": "Internal ctest changing into directory: /root/learncpp-c07/builds/leaf-verifier-linux-20260910T150538Z-L08_completion\nTest project /root/learncpp-c07/builds/leaf-verifier-linux-20260910T150538Z-L08_completion\n    Start 1: L08_completion_reference\n1/5 Test #1: L08_completion_reference ..................   Passed    0.02 sec\n    Start 2: L08_completion_validation_good\n2/5 Test #2: L08_completion_validation_good ............   Passed    0.03 sec\n    Start 3: L08_completion_validation_bad_rejected\n3/5 Test #3: L08_completion_validation_bad_rejected ....   Passed    0.03 sec\n    Start 4: L08_completion_reference_platform\n4/5 Test #4: L08_completion_reference_platform .........   Passed    0.03 sec\n    Start 5: L08_completion_validation_good_platform\n5/5 Test #5: L08_completion_validation_good_platform ...   Passed    0.03 sec\n\n100% tests passed, 0 tests failed out of 5\n\nLabel Time Summary:\nnegative           =   0.03 sec*proc (1 test)\nplatform           =   0.05 sec*proc (2 tests)\nreference          =   0.05 sec*proc (2 tests)\nvalidation_good    =   0.05 sec*proc (2 tests)\n\nTotal Test time (real) =   0.13 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "/mnt/f/CPPTrain/LearnCPP",
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

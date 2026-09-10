@@ -1,0 +1,175 @@
+name=clang-tsan-ctest
+start=2026-09-10T18:21:40+08:00
+timeout_seconds=1200
+command=ctest --test-dir /root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan -C RelWithDebInfo --output-on-failure --output-junit /mnt/f/CPPTrain/LearnCPP/C08_Concurrency/references/validation/c08-revision/linux-final/m1-r2-final-20260910-181517-b97f497d/clang-tsan-junit.xml --timeout 120
+
+Internal ctest changing into directory: /root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan
+Test project /root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan
+      Start  1: A1_jthread_lifecycle_reference
+ 1/70 Test  #1: A1_jthread_lifecycle_reference ............   Passed    0.01 sec
+      Start  2: A2_stop_token_cancellation_reference
+ 2/70 Test  #2: A2_stop_token_cancellation_reference ......   Passed    0.01 sec
+      Start  3: A3_thread_exception_reference
+ 3/70 Test  #3: A3_thread_exception_reference .............   Passed    0.01 sec
+      Start  4: B1_mutex_family_reference
+ 4/70 Test  #4: B1_mutex_family_reference .................   Passed    0.03 sec
+      Start  5: B2_deadlock_scoped_lock_reference
+ 5/70 Test  #5: B2_deadlock_scoped_lock_reference .........   Passed    0.01 sec
+      Start  6: B3_call_once_reference
+ 6/70 Test  #6: B3_call_once_reference ....................***Skipped   0.01 sec
+      Start  7: C1_condvar_predicate_reference
+ 7/70 Test  #7: C1_condvar_predicate_reference ............   Passed    0.01 sec
+      Start  8: C2_bounded_queue_condvar_reference
+ 8/70 Test  #8: C2_bounded_queue_condvar_reference ........   Passed    0.08 sec
+      Start  9: C3_interruptible_wait_reference
+ 9/70 Test  #9: C3_interruptible_wait_reference ...........   Passed    0.01 sec
+      Start 10: Capstone1_thread_pool_reference
+10/70 Test #10: Capstone1_thread_pool_reference ...........   Passed    0.03 sec
+      Start 11: Capstone2_lockfree_queue_reference
+11/70 Test #11: Capstone2_lockfree_queue_reference ........   Passed    0.19 sec
+      Start 12: Capstone3_parallel_compute_reference
+12/70 Test #12: Capstone3_parallel_compute_reference ......   Passed    0.02 sec
+      Start 13: D1_promise_future_reference
+13/70 Test #13: D1_promise_future_reference ...............   Passed    0.01 sec
+      Start 14: D2_async_policies_reference
+14/70 Test #14: D2_async_policies_reference ...............   Passed    0.01 sec
+      Start 15: D3_packaged_task_reference
+15/70 Test #15: D3_packaged_task_reference ................   Passed    0.01 sec
+      Start 16: E1_atomic_basics_reference
+16/70 Test #16: E1_atomic_basics_reference ................   Passed    0.01 sec
+      Start 17: E2_atomic_ref_reference
+17/70 Test #17: E2_atomic_ref_reference ...................   Passed    0.01 sec
+      Start 18: E3_cas_loop_reference
+18/70 Test #18: E3_cas_loop_reference .....................   Passed    0.01 sec
+      Start 19: F01_thread_attributes_reference
+19/70 Test #19: F01_thread_attributes_reference ...........***Skipped   0.01 sec
+      Start 20: F02_hazard_pointer_batches_reference
+20/70 Test #20: F02_hazard_pointer_batches_reference ......***Skipped   0.01 sec
+      Start 21: F1_release_acquire_reference
+21/70 Test #21: F1_release_acquire_reference ..............   Passed    0.01 sec
+      Start 22: F2_relaxed_counter_reference
+22/70 Test #22: F2_relaxed_counter_reference ..............   Passed    0.20 sec
+      Start 23: F3_seqcst_fence_reference
+23/70 Test #23: F3_seqcst_fence_reference .................***Skipped   0.34 sec
+      Start 24: F4_publish_pattern_reference
+24/70 Test #24: F4_publish_pattern_reference ..............   Passed    0.08 sec
+      Start 25: G1_treiber_stack_reference
+25/70 Test #25: G1_treiber_stack_reference ................   Passed    0.05 sec
+      Start 26: G2_aba_problem_reference
+26/70 Test #26: G2_aba_problem_reference ..................   Passed    0.01 sec
+      Start 27: G3_spsc_ringbuffer_reference
+27/70 Test #27: G3_spsc_ringbuffer_reference ..............   Passed    0.13 sec
+      Start 28: H1_latch_barrier_reference
+28/70 Test #28: H1_latch_barrier_reference ................   Passed    0.01 sec
+      Start 29: H2_semaphore_reference
+29/70 Test #29: H2_semaphore_reference ....................   Passed    0.01 sec
+      Start 30: H3_atomic_wait_notify_reference
+30/70 Test #30: H3_atomic_wait_notify_reference ...........   Passed    0.01 sec
+      Start 31: I1_atomic_shared_ptr_reference
+31/70 Test #31: I1_atomic_shared_ptr_reference ............   Passed    0.01 sec
+      Start 32: I2_hazard_pointer_reference
+32/70 Test #32: I2_hazard_pointer_reference ...............   Passed    0.02 sec
+      Start 33: I3_rcu_reference
+33/70 Test #33: I3_rcu_reference ..........................   Passed    0.03 sec
+      Start 34: J1_false_sharing_reference
+34/70 Test #34: J1_false_sharing_reference ................   Passed    0.01 sec
+      Start 35: J2_interference_size_reference
+35/70 Test #35: J2_interference_size_reference ............   Passed    0.01 sec
+      Start 36: J3_numa_concept_reference
+36/70 Test #36: J3_numa_concept_reference .................   Passed    0.01 sec
+      Start 37: K1_simd_basics_reference
+37/70 Test #37: K1_simd_basics_reference ..................   Passed    0.01 sec
+      Start 38: K2_simd_dotproduct_reference
+38/70 Test #38: K2_simd_dotproduct_reference ..............   Passed    0.01 sec
+      Start 39: K3_simd_where_select_reference
+39/70 Test #39: K3_simd_where_select_reference ............   Passed    0.01 sec
+      Start 40: L1_par_algorithms_reference
+40/70 Test #40: L1_par_algorithms_reference ...............   Passed    0.01 sec
+      Start 41: L2_parallel_reduce_scan_reference
+41/70 Test #41: L2_parallel_reduce_scan_reference .........   Passed    0.01 sec
+      Start 42: L3_par_vs_seq_bench_reference
+42/70 Test #42: L3_par_vs_seq_bench_reference .............   Passed    0.01 sec
+      Start 43: M1_work_stealing_pool_reference
+43/70 Test #43: M1_work_stealing_pool_reference ...........***Skipped   0.03 sec
+      Start 44: M2_execution_bridge_reference
+44/70 Test #44: M2_execution_bridge_reference .............***Skipped   0.01 sec
+      Start 45: N1_numa_placement_reference
+45/70 Test #45: N1_numa_placement_reference ...............***Skipped   0.02 sec
+      Start 46: P1_object_lifetime_reference
+46/70 Test #46: P1_object_lifetime_reference ..............   Passed    0.01 sec
+      Start 47: P2_result_states_reference
+47/70 Test #47: P2_result_states_reference ................   Passed    0.01 sec
+      Start 48: Q0_queue_baseline_reference
+48/70 Test #48: Q0_queue_baseline_reference ...............   Passed    0.04 sec
+      Start 49: Q1_mpsc_queue_reference
+49/70 Test #49: Q1_mpsc_queue_reference ...................   Passed    0.02 sec
+      Start 50: Q2_ms_queue_reference
+50/70 Test #50: Q2_ms_queue_reference .....................   Passed    0.17 sec
+      Start 51: R1_epoch_reclamation_reference
+51/70 Test #51: R1_epoch_reclamation_reference ............   Passed    0.01 sec
+      Start 52: R2_qsbr_reference
+52/70 Test #52: R2_qsbr_reference .........................   Passed    0.01 sec
+      Start 53: U01_async_logging_reference
+53/70 Test #53: U01_async_logging_reference ...............   Passed    0.11 sec
+      Start 54: U01_async_logging_good
+54/70 Test #54: U01_async_logging_good ....................   Passed    0.11 sec
+      Start 55: U01_async_logging_bad_overflow_rejected
+55/70 Test #55: U01_async_logging_bad_overflow_rejected ...   Passed    0.12 sec
+      Start 56: U01_async_logging_bad_flush_rejected
+56/70 Test #56: U01_async_logging_bad_flush_rejected ......   Passed    0.12 sec
+      Start 57: F03_std_senders_reference
+57/70 Test #57: F03_std_senders_reference .................***Skipped   0.01 sec
+      Start 58: F03_std_hazard_pointer_reference
+58/70 Test #58: F03_std_hazard_pointer_reference ..........***Skipped   0.01 sec
+      Start 59: F03_std_rcu_reference
+59/70 Test #59: F03_std_rcu_reference .....................***Skipped   0.01 sec
+      Start 60: runtime_atomic_protocol_test
+60/70 Test #60: runtime_atomic_protocol_test ..............   Passed    0.01 sec
+      Start 61: runtime_common_tools_test
+61/70 Test #61: runtime_common_tools_test .................   Passed    0.01 sec
+      Start 62: runtime_numeric_test
+62/70 Test #62: runtime_numeric_test ......................   Passed    0.02 sec
+      Start 63: runtime_queue_history_test
+63/70 Test #63: runtime_queue_history_test ................   Passed    0.09 sec
+      Start 64: runtime_reclamation_test
+64/70 Test #64: runtime_reclamation_test ..................   Passed    0.18 sec
+      Start 65: runtime_scheduling_allocation_test
+65/70 Test #65: runtime_scheduling_allocation_test ........***Skipped   0.01 sec
+      Start 66: runtime_scheduling_test
+66/70 Test #66: runtime_scheduling_test ...................   Passed    0.13 sec
+      Start 67: runtime_thread_pool_test
+67/70 Test #67: runtime_thread_pool_test ..................   Passed    0.03 sec
+      Start 68: runtime_lifetime_reference
+68/70 Test #68: runtime_lifetime_reference ................   Passed    0.01 sec
+      Start 69: runtime_benchmark_tools
+69/70 Test #69: runtime_benchmark_tools ...................   Passed    0.19 sec
+      Start 70: runtime_materials
+70/70 Test #70: runtime_materials .........................   Passed    0.09 sec
+
+100% tests passed, 0 tests failed out of 70
+
+Label Time Summary:
+native        =   0.03 sec*proc (3 tests)
+negative      =   0.24 sec*proc (2 tests)
+reference     =   2.02 sec*proc (56 tests)
+runtime       =   0.48 sec*proc (9 tests)
+tools         =   0.28 sec*proc (2 tests)
+validation    =   0.11 sec*proc (1 test)
+
+Total Test time (real) =   3.22 sec
+
+The following tests did not run:
+	  6 - B3_call_once_reference (Skipped)
+	 19 - F01_thread_attributes_reference (Skipped)
+	 20 - F02_hazard_pointer_batches_reference (Skipped)
+	 23 - F3_seqcst_fence_reference (Skipped)
+	 43 - M1_work_stealing_pool_reference (Skipped)
+	 44 - M2_execution_bridge_reference (Skipped)
+	 45 - N1_numa_placement_reference (Skipped)
+	 57 - F03_std_senders_reference (Skipped)
+	 58 - F03_std_hazard_pointer_reference (Skipped)
+	 59 - F03_std_rcu_reference (Skipped)
+	 65 - runtime_scheduling_allocation_test (Skipped)
+
+exit_code=0
+end=2026-09-10T18:21:44+08:00

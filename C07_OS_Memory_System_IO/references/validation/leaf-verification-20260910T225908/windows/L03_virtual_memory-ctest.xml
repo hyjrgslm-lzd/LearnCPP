@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Win32-MSBuild"
+	tests="3"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname="lizhidan-p02"
+	time="1"
+	timestamp="2026-09-10T22:59:46"
+	>
+	<testcase name="L03_virtual_memory_reference" classname="L03_virtual_memory_reference" time="0.526256" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L03 virtual memory checks passed
+L03_virtual_memory_reference: PASS
+</system-out>
+	</testcase>
+	<testcase name="L03_virtual_memory_validation_good" classname="L03_virtual_memory_validation_good" time="0.145398" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation_good"/>
+		</properties>
+		<system-out>L03 virtual memory checks passed
+L03_virtual_memory_validation_good: PASS
+</system-out>
+	</testcase>
+	<testcase name="L03_virtual_memory_validation_bad_rejected" classname="L03_virtual_memory_validation_bad_rejected" time="0.534735" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>check failed: committed page keeps written bytes
+L03_virtual_memory_validation_bad_rejected: PASS
+</system-out>
+	</testcase>
+</testsuite>

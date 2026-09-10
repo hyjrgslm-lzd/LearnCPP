@@ -1,0 +1,13 @@
+{
+  "command": [
+    "F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\build\\sv-final3\\A2_stop_token_cancellation\\initial\\build\\Release\\A2_stop_token_cancellation.exe"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.4529999999995198,
+  "stdout": "",
+  "stderr": "STARTER INCOMPLETE: A2 Part 1-4 及可用的 Part 5 未完成；未创建任何线程。\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL"
+}

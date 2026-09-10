@@ -1,0 +1,25 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\build\\leaf-verifier-windows-20260910T225908-L08_completion",
+    "-C",
+    "Release",
+    "--output-on-failure",
+    "--output-junit",
+    "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\references\\validation\\leaf-verification-20260910T225908\\windows\\L08_completion-ctest.xml"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 1.9690000000009604,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/build/leaf-verifier-windows-20260910T225908-L08_completion\n    Start 1: L08_completion_reference\n1/5 Test #1: L08_completion_reference ..................   Passed    0.54 sec\n    Start 2: L08_completion_validation_good\n2/5 Test #2: L08_completion_validation_good ............   Passed    0.56 sec\n    Start 3: L08_completion_validation_bad_rejected\n3/5 Test #3: L08_completion_validation_bad_rejected ....   Passed    0.53 sec\n    Start 4: L08_completion_reference_platform\n4/5 Test #4: L08_completion_reference_platform .........   Passed    0.13 sec\n    Start 5: L08_completion_validation_good_platform\n5/5 Test #5: L08_completion_validation_good_platform ...   Passed    0.13 sec\n\n100% tests passed, 0 tests failed out of 5\n\nLabel Time Summary:\nnegative           =   0.53 sec*proc (1 test)\nplatform           =   0.25 sec*proc (2 tests)\nreference          =   0.67 sec*proc (2 tests)\nvalidation_good    =   0.68 sec*proc (2 tests)\n\nTotal Test time (real) =   1.90 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

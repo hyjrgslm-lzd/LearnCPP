@@ -1,0 +1,60 @@
+{
+  "verdict": "PASS",
+  "platform": "linux-wsl",
+  "distro": "LearnCPP-C08-Ubuntu-24.04",
+  "config": "Release",
+  "io_uring": "ON",
+  "scope": "L06/L09 delta leaf validation from fresh snapshot",
+  "evidence": "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\references\\validation\\leaf-verification-20260910T151328Z\\linux-l06-l09",
+  "units": [
+    {
+      "unit": "L06_process_ipc",
+      "configure": "PASS",
+      "build": "PASS",
+      "ctest": "PASS",
+      "ctest_exit_code": 0,
+      "tests": 4,
+      "failures": 0,
+      "skipped": 0,
+      "errors": 0
+    },
+    {
+      "unit": "L09_dynamic_loading",
+      "configure": "PASS",
+      "build": "PASS",
+      "ctest": "PASS",
+      "ctest_exit_code": 0,
+      "tests": 3,
+      "failures": 0,
+      "skipped": 0,
+      "errors": 0
+    }
+  ],
+  "record_json_count": 7,
+  "liburing_commit": "d41bf9220ec39277ff235379e9089d9e0fd6c2a5",
+  "environment": [
+    "stamp=20260910T151328Z",
+    "snapshot=/root/learncpp-c07/snapshots/leaf-delta-l06-l09-20260910T151158Z",
+    "config=Release",
+    "uring=/root/learncpp-c07/deps/install-liburing-2.15",
+    "cmake version 3.28.3",
+    "ctest version 3.28.3",
+    "Python 3.12.3",
+    "Linux lizhidan-p02 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux"
+  ],
+  "snapshot": {
+    "verdict": "PASS",
+    "snapshot_root": "/root/learncpp-c07/snapshots/leaf-delta-l06-l09-20260910T151158Z",
+    "source_root": "/mnt/f/CPPTrain/LearnCPP",
+    "scope": "C07 plus C01/C02 public include/tools; validation/build excluded",
+    "l06_good_sha256": "99ac3eb7a1308c757cbe451399dead4adbf1de419fbd06f5e45de358cf7bb320",
+    "l09_good_sha256": "d54fa11b2441ae8e1f2a9cf095f93ce92e73664275431aa9b86a5b2f3d423163",
+    "created_utc": "20260910T151158Z"
+  },
+  "totals": {
+    "tests": 7,
+    "failures": 0,
+    "skipped": 0,
+    "errors": 0
+  }
+}

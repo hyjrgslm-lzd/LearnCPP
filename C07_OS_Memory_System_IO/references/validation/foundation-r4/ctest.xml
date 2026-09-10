@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Linux-c++"
+	tests="8"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname="lizhidan-p02"
+	time="0"
+	timestamp="2026-09-10T23:11:07"
+	>
+	<testcase name="L01_handles_reference" classname="L01_handles_reference" time="0.0276457" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L01 handle checks passed
+L01_handles_reference: PASS
+</system-out>
+	</testcase>
+	<testcase name="L01_handles_validation_good" classname="L01_handles_validation_good" time="0.0266077" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation_good"/>
+		</properties>
+		<system-out>L01 handle checks passed
+L01_handles_validation_good: PASS
+</system-out>
+	</testcase>
+	<testcase name="L01_handles_validation_bad_rejected" classname="L01_handles_validation_bad_rejected" time="0.0269844" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>check failed: existing target is refused
+L01_handles_validation_bad_rejected: PASS
+</system-out>
+	</testcase>
+	<testcase name="L01_handles_ownership" classname="L01_handles_ownership" time="0.0279615" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>L01 ownership observation passed
+L01_handles_ownership: PASS
+</system-out>
+	</testcase>
+	<testcase name="L01_thread_process" classname="L01_thread_process" time="0.0286776" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>process_id=671
+thread_ids=672,673
+shared_global_address=0x588e435c32b4
+tls_addresses=0x7d9886bff6bc,0x7d98863fe6bc
+L01_thread_process: PASS
+</system-out>
+	</testcase>
+	<testcase name="L02_sync_io_reference" classname="L02_sync_io_reference" time="0.027935" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L02 sync I/O checks passed
+L02_sync_io_reference: PASS
+</system-out>
+	</testcase>
+	<testcase name="L02_sync_io_validation_good" classname="L02_sync_io_validation_good" time="0.0265865" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation_good"/>
+		</properties>
+		<system-out>L02 sync I/O checks passed
+L02_sync_io_validation_good: PASS
+</system-out>
+	</testcase>
+	<testcase name="L02_sync_io_validation_bad_rejected" classname="L02_sync_io_validation_bad_rejected" time="0.0269984" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>check failed: copy reports every byte
+L02_sync_io_validation_bad_rejected: PASS
+</system-out>
+	</testcase>
+</testsuite>

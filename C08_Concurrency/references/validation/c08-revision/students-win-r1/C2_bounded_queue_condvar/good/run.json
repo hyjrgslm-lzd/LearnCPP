@@ -1,0 +1,13 @@
+{
+  "command": [
+    "F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\build\\sv-final3\\C2_bounded_queue_condvar\\good\\build\\Release\\C2_bounded_queue_condvar.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.5,
+  "stdout": "C2 OK: capacity=1, FIFO, MPMC IDs, move-only, close/drain\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

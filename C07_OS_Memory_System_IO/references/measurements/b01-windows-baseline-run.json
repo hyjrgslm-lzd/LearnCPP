@@ -1,0 +1,25 @@
+{
+  "command": [
+    "python",
+    "C07_OS_Memory_System_IO/exercises/B01_costs/tools/sample_benchmarks.py",
+    "--phase",
+    "baseline",
+    "--exe",
+    "C07_OS_Memory_System_IO/exercises/build/final-windows-release-r1/B01_costs/Release/B01_costs_benchmark.exe",
+    "--output",
+    "C07_OS_Memory_System_IO/references/measurements/b01-windows-baseline"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.7339999999967404,
+  "stdout": "{\"cases\": 5, \"output\": \"C07_OS_Memory_System_IO\\\\references\\\\measurements\\\\b01-windows-baseline\\\\result.json\", \"phase\": \"baseline\", \"phase_valid\": true, \"samples\": 30}\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

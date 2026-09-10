@@ -1,0 +1,25 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\build\\leaf-verifier-windows-20260910T225908-B01_costs",
+    "-C",
+    "Release",
+    "--output-on-failure",
+    "--output-junit",
+    "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\references\\validation\\leaf-verification-20260910T225908\\windows\\B01_costs-ctest.xml"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 1.2970000000022992,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/build/leaf-verifier-windows-20260910T225908-B01_costs\n    Start 1: B01_costs_benchmark\n1/3 Test #1: B01_costs_benchmark ..............   Passed    0.54 sec\n    Start 2: B01_source_observation\n2/3 Test #2: B01_source_observation ...........   Passed    0.52 sec\n    Start 3: B01_completion_control\n3/3 Test #3: B01_completion_control ...........   Passed    0.16 sec\n\n100% tests passed, 0 tests failed out of 3\n\nLabel Time Summary:\nbenchmark_control     =   0.70 sec*proc (2 tests)\nobservation           =   1.06 sec*proc (2 tests)\nplatform              =   0.16 sec*proc (1 test)\nsource_observation    =   0.52 sec*proc (1 test)\n\nTotal Test time (real) =   1.23 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

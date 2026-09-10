@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/foundation-r4/foundation/L01_handles/L01_thread_process"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.0016348379999726603,
+  "stdout": "process_id=671\nthread_ids=672,673\nshared_global_address=0x588e435c32b4\ntls_addresses=0x7d9886bff6bc,0x7d98863fe6bc\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-l03p3hc7",
+  "temporary_directory_removed": true,
+  "name": "L01_thread_process",
+  "cwd": "/root/learncpp-c07/builds/foundation-r4/foundation/L01_handles",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

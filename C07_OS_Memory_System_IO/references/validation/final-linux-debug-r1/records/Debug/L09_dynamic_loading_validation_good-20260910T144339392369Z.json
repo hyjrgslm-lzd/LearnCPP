@@ -1,0 +1,21 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-debug-r1/uring-debug/L09_dynamic_loading/L09_dynamic_loading_validation_good",
+    "/root/learncpp-c07/builds/final-linux-debug-r1/uring-debug/L09_dynamic_loading/libL09_dynamic_loading_module.so"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.0012569209999995223,
+  "stdout": "L09 dynamic loading checks passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-eoj3puc2",
+  "temporary_directory_removed": true,
+  "name": "L09_dynamic_loading_validation_good",
+  "cwd": "/root/learncpp-c07/builds/final-linux-debug-r1/uring-debug/L09_dynamic_loading",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

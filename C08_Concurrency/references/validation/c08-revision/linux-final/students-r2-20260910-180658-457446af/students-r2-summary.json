@@ -1,0 +1,51 @@
+{
+  "runId": "students-r2-20260910-180658-457446af",
+  "command": {
+    "name": "verify-students-r2-ninja",
+    "start": "2026-09-10T18:07:58+08:00",
+    "end": "2026-09-10T18:13:58+08:00",
+    "exit_code": 1,
+    "generator": "Ninja",
+    "course": "/root/learncpp-c08-src/students-r2-20260910-180658-457446af/C08_Concurrency",
+    "build_root": "/root/learncpp-c08-builds/students-r2-20260910-180658-457446af/student-validation",
+    "stdout": "verify-students-r2-ninja.stdout.txt",
+    "stderr": "verify-students-r2-ninja.stderr.txt"
+  },
+  "snapshot": {
+    "runId": "students-r2-20260910-180658-457446af",
+    "snapshot": "\\\\wsl.localhost\\LearnCPP-C08-Ubuntu-24.04\\root\\learncpp-c08-src\\students-r2-20260910-180658-457446af",
+    "copiedFileCount": 302,
+    "manifestSha256": "ff980bd68794f16a2b7d7d8ee4d3785ad9b3117cc21374fdb299c52a6a2bbd34",
+    "verifyStudentsSha256": "9756a46c307e5c142f0d6751217a9380b32a9ed67d46ca9c5f1b825d04471158",
+    "m1SolutionSha256": "3ac94d97f2bff274ff311e16243566d72887bf59eb116bc0925b521961156535",
+    "start": "2026-09-10T18:07:35.655585+08:00"
+  },
+  "completedCases": 36,
+  "completedTargets": [
+    "A2_stop_token_cancellation",
+    "B1_mutex_family",
+    "B2_deadlock_scoped_lock",
+    "B3_call_once",
+    "C1_condvar_predicate",
+    "C2_bounded_queue_condvar",
+    "C3_interruptible_wait",
+    "Capstone1_thread_pool",
+    "Capstone3_parallel_compute",
+    "H1_latch_barrier",
+    "H2_semaphore",
+    "I2_hazard_pointer"
+  ],
+  "modeCounts": {
+    "initial": 12,
+    "good": 12,
+    "bad": 12
+  },
+  "goodCases": 12,
+  "goodCasesWithDependencyTrace": 12,
+  "goodCasesMissingDependencyTrace": [],
+  "referenceLeakTargets": [],
+  "sampleReleaseFlagsObserved": true,
+  "blockingFailure": "I3_rcu initial compile failed: ../../topics/reclamation/experiment_support.hpp not found",
+  "stderrTail": "s/confname.h\n........... /usr/include/x86_64-linux-gnu/bits/getopt_posix.h\n............ /usr/include/x86_64-linux-gnu/bits/getopt_core.h\n........... /usr/include/x86_64-linux-gnu/bits/unistd.h\n............ /usr/include/x86_64-linux-gnu/bits/unistd-decl.h\n........... /usr/include/x86_64-linux-gnu/bits/unistd_ext.h\n............ /usr/include/linux/close_range.h\n.......... /usr/include/syscall.h\n........... /usr/include/x86_64-linux-gnu/sys/syscall.h\n............ /usr/include/x86_64-linux-gnu/asm/unistd.h\n............. /usr/include/x86_64-linux-gnu/asm/unistd_64.h\n............ /usr/include/x86_64-linux-gnu/bits/syscall.h\n....... /usr/include/c++/13/bits/std_thread.h\n....... /usr/include/c++/13/semaphore\n........ /usr/include/c++/13/bits/semaphore_base.h\n......... /usr/include/c++/13/bits/atomic_timed_wait.h\n.......... /usr/include/c++/13/bits/this_thread_sleep.h\n........... /usr/include/c++/13/cerrno\n.......... /usr/include/x86_64-linux-gnu/sys/time.h\n......... /usr/include/c++/13/cerrno\n......... /usr/lib/gcc/x86_64-linux-gnu/13/include/limits.h\n......... /usr/include/semaphore.h\n.......... /usr/include/x86_64-linux-gnu/bits/semaphore.h\n........... /usr/include/x86_64-linux-gnu/bits/wordsize.h\n..... /usr/include/c++/13/functional\n...... /usr/include/c++/13/bits/std_function.h\n...... /usr/include/c++/13/unordered_map\n....... /usr/include/c++/13/bits/unordered_map.h\n........ /usr/include/c++/13/bits/hashtable.h\n......... /usr/include/c++/13/bits/hashtable_policy.h\n......... /usr/include/c++/13/bits/enable_special_members.h\n......... /usr/include/c++/13/bits/node_handle.h\n....... /usr/include/c++/13/bits/erase_if.h\n...... /usr/include/c++/13/vector\n....... /usr/include/c++/13/bits/stl_vector.h\n....... /usr/include/c++/13/bits/stl_bvector.h\n....... /usr/include/c++/13/bits/vector.tcc\n...... /usr/include/c++/13/array\n...... /usr/include/c++/13/bits/stl_algo.h\n....... /usr/include/c++/13/bits/algorithmfwd.h\n....... /usr/include/c++/13/bits/stl_heap.h\n....... /usr/include/c++/13/bits/uniform_int_dist.h\n....... /usr/include/c++/13/bits/stl_tempbuf.h\n....... /usr/include/c++/13/cstdlib\n...... /usr/include/c++/13/bits/move_only_function.h\n....... /usr/include/c++/13/bits/mofunc_impl.h\n....... /usr/include/c++/13/bits/mofunc_impl.h\n....... /usr/include/c++/13/bits/mofunc_impl.h\n....... /usr/include/c++/13/bits/mofunc_impl.h\n....... /usr/include/c++/13/bits/mofunc_impl.h\n....... /usr/include/c++/13/bits/mofunc_impl.h\n..... /usr/include/c++/13/list\n...... /usr/include/c++/13/bits/stl_list.h\n...... /usr/include/c++/13/bits/list.tcc\n..... /usr/include/c++/13/map\n...... /usr/include/c++/13/bits/stl_tree.h\n...... /usr/include/c++/13/bits/stl_map.h\n...... /usr/include/c++/13/bits/stl_multimap.h\n..... /usr/include/c++/13/memory\n...... /usr/include/c++/13/bits/stl_raw_storage_iter.h\n...... /usr/include/c++/13/bits/shared_ptr_atomic.h\n...... /usr/include/c++/13/backward/auto_ptr.h\n...... /usr/include/c++/13/bits/ranges_uninitialized.h\n....... /usr/include/c++/13/bits/ranges_algobase.h\n...... /usr/include/c++/13/pstl/glue_memory_defs.h\n....... /usr/include/c++/13/pstl/execution_defs.h\n..... /usr/include/c++/13/mutex\n..... /usr/include/c++/13/thread\n..... /usr/include/c++/13/utility\n...... /usr/include/c++/13/bits/stl_relops.h\nIn file included from /root/learncpp-c08-builds/students-r2-20260910-180658-457446af/student-validation/I3_rcu/initial/course/exercises/I3_rcu/checks.hpp:2,\n                 from /root/learncpp-c08-builds/students-r2-20260910-180658-457446af/student-validation/I3_rcu/initial/course/exercises/I3_rcu/main.cpp:6:\n/root/learncpp-c08-builds/students-r2-20260910-180658-457446af/student-validation/I3_rcu/initial/course/exercises/I3_rcu/student.hpp:3:10: fatal error: ../../topics/reclamation/experiment_support.hpp: No such file or directory\n    3 | #include \"../../topics/reclamation/experiment_support.hpp\"\n      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\ncompilation terminated.\nninja: build stopped: subcommand failed.\n\n",
+  "evidenceLogFiles": 0
+}

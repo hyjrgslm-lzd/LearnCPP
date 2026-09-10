@@ -1,0 +1,19 @@
+{
+  "os": {
+    "Caption": "Microsoft Windows 11 专业版",
+    "Version": "10.0.26100",
+    "BuildNumber": "26100"
+  },
+  "cpu": {
+    "Name": "AMD Ryzen 9 9900X 12-Core Processor            ",
+    "NumberOfCores": 12,
+    "NumberOfLogicalProcessors": 24
+  },
+  "cmake": "cmake version 4.2.3",
+  "python": "Python 3.13.11",
+  "stl": [
+    "#define _CPPLIB_VER       650",
+    "#define _MSVC_STL_VERSION 145",
+    "#define _MSVC_STL_UPDATE  202604L"
+  ]
+}

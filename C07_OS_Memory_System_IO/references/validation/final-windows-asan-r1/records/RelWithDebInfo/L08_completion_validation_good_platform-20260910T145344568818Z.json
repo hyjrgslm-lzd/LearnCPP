@@ -1,0 +1,21 @@
+{
+  "command": [
+    "F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/build/final-windows-asan-r1/L08_completion/RelWithDebInfo/L08_completion_validation_good.exe",
+    "--platform"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.046999999998661224,
+  "stdout": "L08 completion platform checks passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-t0cf72g8",
+  "temporary_directory_removed": true,
+  "name": "L08_completion_validation_good_platform",
+  "cwd": "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\exercises\\build\\final-windows-asan-r1\\L08_completion",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

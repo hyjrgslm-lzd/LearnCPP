@@ -1,0 +1,24 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\build\\leaf-verifier-windows-20260910T225908-P1_file_pipeline",
+    "--config",
+    "Release",
+    "--parallel",
+    "2"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 6.75,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/P1_file_pipeline/CMakeLists.txt\n  Building Custom Rule F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/P1_file_pipeline/CMakeLists.txt\n  pipeline_checks.cpp\n  pipeline_demo.cpp\n  Building Custom Rule F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/P1_file_pipeline/CMakeLists.txt\n  pipeline_checks.cpp\n  P1_file_pipeline_demo.vcxproj -> F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\build\\leaf-verifier-windows-20260910T225908-P1_file_pipeline\\Release\\P1_file_pipeline_demo.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/P1_file_pipeline/CMakeLists.txt\n  P1_file_pipeline_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\build\\leaf-verifier-windows-20260910T225908-P1_file_pipeline\\Release\\P1_file_pipeline_reference.exe\n  pipeline_checks.cpp\n  Building Custom Rule F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/P1_file_pipeline/CMakeLists.txt\n  native_failure_checks.cpp\n  P1_file_pipeline_validation_bad.vcxproj -> F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\build\\leaf-verifier-windows-20260910T225908-P1_file_pipeline\\Release\\P1_file_pipeline_validation_bad.exe\n  P1_native_failure.vcxproj -> F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\build\\leaf-verifier-windows-20260910T225908-P1_file_pipeline\\Release\\P1_native_failure.exe\n  P1_file_pipeline_validation_good.vcxproj -> F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\build\\leaf-verifier-windows-20260910T225908-P1_file_pipeline\\Release\\P1_file_pipeline_validation_good.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/P1_file_pipeline/CMakeLists.txt\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

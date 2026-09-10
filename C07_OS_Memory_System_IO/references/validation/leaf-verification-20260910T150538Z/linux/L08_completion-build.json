@@ -1,0 +1,21 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "/root/learncpp-c07/builds/leaf-verifier-linux-20260910T150538Z-L08_completion",
+    "--parallel",
+    "2"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.291685088999998,
+  "stdout": "[ 16%] Building CXX object CMakeFiles/L08_completion_validation_good.dir/checks/completion_checks.cpp.o\n[ 33%] Building CXX object CMakeFiles/L08_completion_reference.dir/checks/completion_checks.cpp.o\n[ 50%] Linking CXX executable L08_completion_validation_good\n[ 66%] Linking CXX executable L08_completion_reference\n[ 66%] Built target L08_completion_validation_good\n[ 83%] Building CXX object CMakeFiles/L08_completion_validation_bad.dir/checks/completion_checks.cpp.o\n[ 83%] Built target L08_completion_reference\n[100%] Linking CXX executable L08_completion_validation_bad\n[100%] Built target L08_completion_validation_bad\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "/mnt/f/CPPTrain/LearnCPP",
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

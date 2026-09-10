@@ -1,0 +1,285 @@
+{
+  "verdict": "PASS",
+  "failures": [],
+  "build": "/root/learncpp-c07/builds/integration-student-r2/student",
+  "config": "Release",
+  "targets": [
+    "L01_handles_student",
+    "L02_sync_io_student",
+    "L03_virtual_memory_student",
+    "L04_mapping_student",
+    "L05_pmr_student",
+    "L06_process_ipc_student",
+    "L07_readiness_student",
+    "L08_completion_student",
+    "L09_dynamic_loading_student",
+    "P1_file_pipeline_student"
+  ],
+  "audit_student": {
+    "verdict": "PASS",
+    "failures": [],
+    "students": [
+      "L01_handles_student",
+      "L02_sync_io_student",
+      "L03_virtual_memory_student",
+      "L04_mapping_student",
+      "L05_pmr_student",
+      "L06_process_ipc_student",
+      "L07_readiness_student",
+      "L08_completion_student",
+      "L09_dynamic_loading_student",
+      "P1_file_pipeline_student"
+    ],
+    "configuration": "Release",
+    "build": "/root/learncpp-c07/builds/integration-student-r2/student",
+    "actual_include_count": 3658,
+    "source_sha256": {
+      "/root/learncpp-c07/snapshots/integration-student-r2/C07_OS_Memory_System_IO/exercises/P1_file_pipeline/checks/pipeline_checks.cpp": "b57b62562b3052ce4a358d7ffe18f164f92362a4d6bbc7ffb573f03de7b8ef38",
+      "/root/learncpp-c07/snapshots/integration-student-r2/C07_OS_Memory_System_IO/exercises/P1_file_pipeline/src/student/pipeline.hpp": "04ea0b49f2e9f1ebc5813b36ba444d70d0270c5f930a96a2df8d535005836883",
+      "/root/learncpp-c07/snapshots/integration-student-r2/C07_OS_Memory_System_IO/exercises/include/c07/file_pipeline_types.hpp": "ea4548797e7f2be9568028ef5e7eba95bb2dfa804326909e842b87cd4efdde02",
+      "/root/learncpp-c07/snapshots/integration-student-r2/C01_Build_Compile_Link/exercises/include/check.hpp": "716138e42081aee359e17929c31ee156ecffd1d3b596e35107cfb08ff16c5f38",
+      "/root/learncpp-c07/snapshots/integration-student-r2/C07_OS_Memory_System_IO/exercises/include/c07/file_pipeline_io.hpp": "bcb72a3e497d79645076684164642d5bb10e2f5e96e0e3b3bfa2a7998a97ca2c",
+      "/root/learncpp-c07/snapshots/integration-student-r2/C07_OS_Memory_System_IO/exercises/include/c07/completion_io.hpp": "541b843587a9defb143c3561a0fa6c2b072f4fe9b107e7db10793d2f3b70a21c",
+      "/root/learncpp-c07/snapshots/integration-student-r2/C07_OS_Memory_System_IO/exercises/include/c07/os.hpp": "6ac255c83e34591ade3cf68754e475fff02cccac228949ba0666895062a34bb5",
+      "/root/learncpp-c07/snapshots/integration-student-r2/C07_OS_Memory_System_IO/exercises/include/c07/memory.hpp": "f8c5b74e2dc4441cb61bc288254844867e141126b6e3b1c9ee0fd4ac4b37dfda",
+      "/root/learncpp-c07/snapshots/integration-student-r2/C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/checks/dynamic_loading_checks.cpp": "e069ad3e35d05d0d2e4844fd92aa63c6d73d76afd06a5dd38464960e5e261feb",
+      "/root/learncpp-c07/snapshots/integration-student-r2/C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/src/student/dynamic_loading.hpp": "2f93759882945e479c56e2b081c36ba78d0c614664f9759971ce09bccf620b3d",
+      "/root/learncpp-c07/snapshots/integration-student-r2/C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/checks/include/dynamic_loading_contract.hpp": "a817998bf886bf9224f2e08fde553e1669464f9be8863bc9aa8f42e360760dba",
+      "/root/learncpp-c07/snapshots/integration-student-r2/C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/checks/module.cpp": "6a3774bc4b3667c2df253aabaed70b4f1d9357a88f5b64e4f8d94fd68a59ca2e",
+      "/root/learncpp-c07/snapshots/integration-student-r2/C07_OS_Memory_System_IO/exercises/L08_completion/checks/completion_checks.cpp": "ddb4de834aa4663ef63747d2e4d9bd45526420a4be7ac7021432dde70fd59ee3",
+      "/root/learncpp-c07/snapshots/integration-student-r2/C07_OS_Memory_System_IO/exercises/L08_completion/src/student/completion.hpp": "8fbc81082c2a49a281bc5f977a1de695f90867c400a0bc048c4e2d7e0baf106d",
+      "/root/learncpp-c07/snapshots/integration-student-r2/C07_OS_Memory_System_IO/exercises/L07_readiness/checks/readiness_checks.cpp": "9a5dd2684243019d3bd121970b66a8ff5ffec448ea3f6a0c4d278ee3176910ea",
+      "/root/learncpp-c07/snapshots/integration-student-r2/C07_OS_Memory_System_IO/exercises/L07_readiness/src/student/readiness.hpp": "900bc85a775cee88e11c6831bb3a16036298cf224d4a2e038f033eea201afc2b",
+      "/root/learncpp-c07/snapshots/integration-student-r2/C07_OS_Memory_System_IO/exercises/L06_process_ipc/checks/process_ipc_checks.cpp": "db10b448b154221dffe1a2d28d0072b5486e8d567d3708d0caa9974192ce36e8",
+      "/root/learncpp-c07/snapshots/integration-student-r2/C07_OS_Memory_System_IO/exercises/L06_process_ipc/src/student/process_ipc.hpp": "da99bbd504ca435b42ca642d91195aff82a96a6791aa6039cb560a79bd509d24",
+      "/root/learncpp-c07/snapshots/integration-student-r2/C07_OS_Memory_System_IO/exercises/L06_process_ipc/checks/include/process_ipc_contract.hpp": "841301e4c67898470f6453f43632a868063c6ea3396c8232fed96aed0600a0ec",
+      "/root/learncpp-c07/snapshots/integration-student-r2/C07_OS_Memory_System_IO/exercises/L05_pmr/checks/pmr_checks.cpp": "52d540d543f661afc58fa4056bf8d460171abd2895cd6f1f4b780676911118bf",
+      "/root/learncpp-c07/snapshots/integration-student-r2/C07_OS_Memory_System_IO/exercises/L05_pmr/src/student/pmr_lab.hpp": "757be915a9098d86dd0319879296af29cd20bd4e77a9725eb5e721b41e8f44f8",
+      "/root/learncpp-c07/snapshots/integration-student-r2/C07_OS_Memory_System_IO/exercises/L04_mapping/checks/mapping_checks.cpp": "33c83113481e5fbc4c622f9f71b64e6691d757faec060d8a8a6dd737137a1073",
+      "/root/learncpp-c07/snapshots/integration-student-r2/C07_OS_Memory_System_IO/exercises/L04_mapping/src/student/mapping_lab.hpp": "07bfb1f8e2435c9b05351b1d787b107b04e69502493e853aa34036ecf3b3d0e0",
+      "/root/learncpp-c07/snapshots/integration-student-r2/C07_OS_Memory_System_IO/exercises/L03_virtual_memory/checks/virtual_memory_checks.cpp": "25457d8e8bccbdb55a12e659af45ad6ebb12c7e3b6e97dd215b5e8de2236a002",
+      "/root/learncpp-c07/snapshots/integration-student-r2/C07_OS_Memory_System_IO/exercises/L03_virtual_memory/src/student/virtual_memory_lab.hpp": "bc8a86b225e9ec8356e81b42fc513cd3379faf843d9c995c0f4b9afbe85d564f",
+      "/root/learncpp-c07/snapshots/integration-student-r2/C07_OS_Memory_System_IO/exercises/L02_sync_io/checks/sync_io_checks.cpp": "6926d086886bc4bd27286983ed922bcf56ca874df562d1c8f1578e1bbed59a4a",
+      "/root/learncpp-c07/snapshots/integration-student-r2/C07_OS_Memory_System_IO/exercises/L02_sync_io/src/student/sync_io.hpp": "67f24e08d7897f90fa087b2e3ef77e0ee104c1d84ee8c48a7f3e1f433b6a02c0",
+      "/root/learncpp-c07/snapshots/integration-student-r2/C07_OS_Memory_System_IO/exercises/L01_handles/checks/handles_checks.cpp": "a6b3098541486be23ec39b96d161eaf62cd49da856eaa1603010715dfdf84984",
+      "/root/learncpp-c07/snapshots/integration-student-r2/C07_OS_Memory_System_IO/exercises/L01_handles/src/student/handles.hpp": "dae7f95d61518a7efe6c89eebf6e44df98d814aad46c234575a5bbe1c07c058e"
+    },
+    "trace_sha256": "4d4b0665d2a5e1b96b4e1f2592f016102e170e735a9bed47cae4ac3c32fc836e",
+    "scope": "declared answer targets/paths, recorded includes and literal local includes; not plagiarism proof"
+  },
+  "student_runs": [
+    {
+      "target": "L01_handles_student",
+      "artifact": "/root/learncpp-c07/builds/integration-student-r2/student/L01_handles/L01_handles_student",
+      "registered_command": [
+        "/root/learncpp-c07/builds/integration-student-r2/student/L01_handles/L01_handles_student"
+      ],
+      "controlled_rejection": true,
+      "command": [
+        "/root/learncpp-c07/builds/integration-student-r2/student/L01_handles/L01_handles_student"
+      ],
+      "exit_code": 1,
+      "timeout": false,
+      "process_seconds": 0.0011056339999981901,
+      "stdout": "",
+      "stderr": "check failed: create_note succeeds for a fresh path\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "FAIL",
+      "temporary_directory": "/tmp/c07-test-pqse7tae",
+      "temporary_directory_removed": true
+    },
+    {
+      "target": "L02_sync_io_student",
+      "artifact": "/root/learncpp-c07/builds/integration-student-r2/student/L02_sync_io/L02_sync_io_student",
+      "registered_command": [
+        "/root/learncpp-c07/builds/integration-student-r2/student/L02_sync_io/L02_sync_io_student"
+      ],
+      "controlled_rejection": true,
+      "command": [
+        "/root/learncpp-c07/builds/integration-student-r2/student/L02_sync_io/L02_sync_io_student"
+      ],
+      "exit_code": 1,
+      "timeout": false,
+      "process_seconds": 0.0010539829999984818,
+      "stdout": "",
+      "stderr": "check failed: copy succeeds\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "FAIL",
+      "temporary_directory": "/tmp/c07-test-eyal4ym5",
+      "temporary_directory_removed": true
+    },
+    {
+      "target": "L03_virtual_memory_student",
+      "artifact": "/root/learncpp-c07/builds/integration-student-r2/student/L03_virtual_memory/L03_virtual_memory_student",
+      "registered_command": [
+        "/root/learncpp-c07/builds/integration-student-r2/student/L03_virtual_memory/L03_virtual_memory_student"
+      ],
+      "controlled_rejection": true,
+      "command": [
+        "/root/learncpp-c07/builds/integration-student-r2/student/L03_virtual_memory/L03_virtual_memory_student"
+      ],
+      "exit_code": 1,
+      "timeout": false,
+      "process_seconds": 0.0011425759999994511,
+      "stdout": "",
+      "stderr": "check failed: make_region returns a real virtual_region\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "FAIL",
+      "temporary_directory": "/tmp/c07-test-vflkhjju",
+      "temporary_directory_removed": true
+    },
+    {
+      "target": "L04_mapping_student",
+      "artifact": "/root/learncpp-c07/builds/integration-student-r2/student/L04_mapping/L04_mapping_student",
+      "registered_command": [
+        "/root/learncpp-c07/builds/integration-student-r2/student/L04_mapping/L04_mapping_student"
+      ],
+      "controlled_rejection": true,
+      "command": [
+        "/root/learncpp-c07/builds/integration-student-r2/student/L04_mapping/L04_mapping_student"
+      ],
+      "exit_code": 1,
+      "timeout": false,
+      "process_seconds": 0.0009903129999990767,
+      "stdout": "",
+      "stderr": "check failed: student returns a window plan\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "FAIL",
+      "temporary_directory": "/tmp/c07-test-0857bril",
+      "temporary_directory_removed": true
+    },
+    {
+      "target": "L05_pmr_student",
+      "artifact": "/root/learncpp-c07/builds/integration-student-r2/student/L05_pmr/L05_pmr_student",
+      "registered_command": [
+        "/root/learncpp-c07/builds/integration-student-r2/student/L05_pmr/L05_pmr_student"
+      ],
+      "controlled_rejection": true,
+      "command": [
+        "/root/learncpp-c07/builds/integration-student-r2/student/L05_pmr/L05_pmr_student"
+      ],
+      "exit_code": 1,
+      "timeout": false,
+      "process_seconds": 0.0010893089999974848,
+      "stdout": "",
+      "stderr": "check failed: raw slot commits after successful construct\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "FAIL",
+      "temporary_directory": "/tmp/c07-test-r0gxb8im",
+      "temporary_directory_removed": true
+    },
+    {
+      "target": "L06_process_ipc_student",
+      "artifact": "/root/learncpp-c07/builds/integration-student-r2/student/L06_process_ipc/L06_process_ipc_student",
+      "registered_command": [
+        "/root/learncpp-c07/builds/integration-student-r2/student/L06_process_ipc/L06_process_ipc_student"
+      ],
+      "controlled_rejection": true,
+      "command": [
+        "/root/learncpp-c07/builds/integration-student-r2/student/L06_process_ipc/L06_process_ipc_student"
+      ],
+      "exit_code": 1,
+      "timeout": false,
+      "process_seconds": 0.0010319760000001565,
+      "stdout": "",
+      "stderr": "check failed: child exit and reap observed\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "FAIL",
+      "temporary_directory": "/tmp/c07-test-4efnc7mx",
+      "temporary_directory_removed": true
+    },
+    {
+      "target": "L07_readiness_student",
+      "artifact": "/root/learncpp-c07/builds/integration-student-r2/student/L07_readiness/L07_readiness_student",
+      "registered_command": [
+        "/root/learncpp-c07/builds/integration-student-r2/student/L07_readiness/L07_readiness_student"
+      ],
+      "controlled_rejection": true,
+      "command": [
+        "/root/learncpp-c07/builds/integration-student-r2/student/L07_readiness/L07_readiness_student"
+      ],
+      "exit_code": 1,
+      "timeout": false,
+      "process_seconds": 0.001065453999999022,
+      "stdout": "L07 readiness seed=281456440114980\n",
+      "stderr": "check failed: empty nonblocking endpoint reports would-block\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "FAIL",
+      "temporary_directory": "/tmp/c07-test-cectc7ej",
+      "temporary_directory_removed": true
+    },
+    {
+      "target": "L08_completion_student",
+      "artifact": "/root/learncpp-c07/builds/integration-student-r2/student/L08_completion/L08_completion_student",
+      "registered_command": [
+        "/root/learncpp-c07/builds/integration-student-r2/student/L08_completion/L08_completion_student"
+      ],
+      "controlled_rejection": true,
+      "command": [
+        "/root/learncpp-c07/builds/integration-student-r2/student/L08_completion/L08_completion_student"
+      ],
+      "exit_code": 1,
+      "timeout": false,
+      "process_seconds": 0.0009071519999999111,
+      "stdout": "",
+      "stderr": "check failed: normal ledger is accepted\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "FAIL",
+      "temporary_directory": "/tmp/c07-test-c5j9rx1d",
+      "temporary_directory_removed": true
+    },
+    {
+      "target": "L09_dynamic_loading_student",
+      "artifact": "/root/learncpp-c07/builds/integration-student-r2/student/L09_dynamic_loading/L09_dynamic_loading_student",
+      "registered_command": [
+        "/root/learncpp-c07/builds/integration-student-r2/student/L09_dynamic_loading/L09_dynamic_loading_student",
+        "/root/learncpp-c07/builds/integration-student-r2/student/L09_dynamic_loading/libL09_dynamic_loading_module.so"
+      ],
+      "controlled_rejection": true,
+      "command": [
+        "/root/learncpp-c07/builds/integration-student-r2/student/L09_dynamic_loading/L09_dynamic_loading_student",
+        "/root/learncpp-c07/builds/integration-student-r2/student/L09_dynamic_loading/libL09_dynamic_loading_module.so"
+      ],
+      "exit_code": 1,
+      "timeout": false,
+      "process_seconds": 0.000929879000000966,
+      "stdout": "",
+      "stderr": "check failed: student TODO: load absolute module path, resolve C ABI symbol, call, unload\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "FAIL",
+      "temporary_directory": "/tmp/c07-test-vq7o7pk3",
+      "temporary_directory_removed": true
+    },
+    {
+      "target": "P1_file_pipeline_student",
+      "artifact": "/root/learncpp-c07/builds/integration-student-r2/student/P1_file_pipeline/P1_file_pipeline_student",
+      "registered_command": [
+        "/root/learncpp-c07/builds/integration-student-r2/student/P1_file_pipeline/P1_file_pipeline_student"
+      ],
+      "controlled_rejection": true,
+      "command": [
+        "/root/learncpp-c07/builds/integration-student-r2/student/P1_file_pipeline/P1_file_pipeline_student"
+      ],
+      "exit_code": 1,
+      "timeout": false,
+      "process_seconds": 0.0009534659999985706,
+      "stdout": "P1 synthetic seed=11400714844754209739\n",
+      "stderr": "check failed: out-of-order chunks assemble by offset\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "FAIL",
+      "temporary_directory": "/tmp/c07-test-y3nqjpob",
+      "temporary_directory_removed": true
+    }
+  ],
+  "scope": "Student-only wiring plus direct placeholder rejection; not plagiarism proof"
+}

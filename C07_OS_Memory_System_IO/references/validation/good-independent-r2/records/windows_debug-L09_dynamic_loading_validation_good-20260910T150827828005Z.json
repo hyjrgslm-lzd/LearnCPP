@@ -1,0 +1,21 @@
+{
+  "command": [
+    "F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/build/final-windows-debug-r1/L09_dynamic_loading/Debug/L09_dynamic_loading_validation_good.exe",
+    "F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/build/final-windows-debug-r1/L09_dynamic_loading/Debug/L09_dynamic_loading_module.dll"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.4379999999982829,
+  "stdout": "L09 dynamic loading checks passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-ldgpdmr8",
+  "temporary_directory_removed": true,
+  "name": "L09_dynamic_loading_validation_good",
+  "cwd": "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\exercises\\build\\final-windows-debug-r1\\L09_dynamic_loading",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

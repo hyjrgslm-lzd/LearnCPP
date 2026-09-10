@@ -1,0 +1,25 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "C07_OS_Memory_System_IO/exercises/build/b01-windows",
+    "-C",
+    "Release",
+    "--output-on-failure",
+    "--output-junit",
+    "F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/references/validation/b01-windows-ctest.xml"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.75,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/build/b01-windows\n    Start 1: B01_costs_benchmark\n1/2 Test #1: B01_costs_benchmark ..............   Passed    0.54 sec\n    Start 2: B01_completion_control\n2/2 Test #2: B01_completion_control ...........   Passed    0.14 sec\n\n100% tests passed, 0 tests failed out of 2\n\nLabel Time Summary:\nbenchmark_control    =   0.68 sec*proc (2 tests)\nobservation          =   0.54 sec*proc (1 test)\nplatform             =   0.14 sec*proc (1 test)\n\nTotal Test time (real) =   0.69 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

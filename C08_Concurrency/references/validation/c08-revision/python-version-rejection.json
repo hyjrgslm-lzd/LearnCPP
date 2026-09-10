@@ -1,0 +1,22 @@
+{
+  "command": [
+    "C:/Users/zhidan.li/AppData/Local/Programs/Python/Python310/python.exe",
+    "C08_Concurrency/exercises/tools/run_benchmarks.py",
+    "--help"
+  ],
+  "exit_code": 2,
+  "timeout": false,
+  "process_seconds": 0.09043539999947825,
+  "stdout": "",
+  "stderr": "Python 3.11+ is required; select the documented interpreter explicitly.\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 2,
+  "required_text": [
+    "Python 3.11+"
+  ],
+  "verdict": "PASS"
+}

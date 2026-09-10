@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-core-r1/core/L07_readiness/L07_readiness_validation_good"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.002665753000002269,
+  "stdout": "L07 readiness seed=281346879953832\nL07 readiness checks passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-1frghl6f",
+  "temporary_directory_removed": true,
+  "name": "L07_readiness_validation_good",
+  "cwd": "/root/learncpp-c07/builds/final-linux-core-r1/core/L07_readiness",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

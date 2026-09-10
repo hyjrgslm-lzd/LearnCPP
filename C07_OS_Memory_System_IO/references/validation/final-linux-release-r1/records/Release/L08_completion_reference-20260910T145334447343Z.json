@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-release-r1/uring/L08_completion/L08_completion_reference"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.0015684310000025903,
+  "stdout": "L08 completion ledger checks passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-7a_jxe8u",
+  "temporary_directory_removed": true,
+  "name": "L08_completion_reference",
+  "cwd": "/root/learncpp-c07/builds/final-linux-release-r1/uring/L08_completion",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

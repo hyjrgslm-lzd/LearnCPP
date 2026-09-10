@@ -1,0 +1,25 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "C07_OS_Memory_System_IO/exercises/build/sample-windows-r2",
+    "-C",
+    "Release",
+    "--output-on-failure",
+    "--output-junit",
+    "F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/references/validation/sample-windows-r2-ctest.xml"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 6.860000000000582,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/build/sample-windows-r2\n      Start  1: C07_runner_controls\n 1/13 Test  #1: C07_runner_controls .......................   Passed    1.33 sec\n      Start  2: L01_handles_reference\n 2/13 Test  #2: L01_handles_reference .....................   Passed    0.54 sec\n      Start  3: L01_handles_validation_good\n 3/13 Test  #3: L01_handles_validation_good ...............   Passed    0.52 sec\n      Start  4: L01_handles_validation_bad_rejected\n 4/13 Test  #4: L01_handles_validation_bad_rejected .......   Passed    0.53 sec\n      Start  5: L01_handles_ownership\n 5/13 Test  #5: L01_handles_ownership .....................   Passed    0.52 sec\n      Start  6: L02_sync_io_reference\n 6/13 Test  #6: L02_sync_io_reference .....................   Passed    0.53 sec\n      Start  7: L02_sync_io_validation_good\n 7/13 Test  #7: L02_sync_io_validation_good ...............   Passed    0.52 sec\n      Start  8: L02_sync_io_validation_bad_rejected\n 8/13 Test  #8: L02_sync_io_validation_bad_rejected .......   Passed    0.51 sec\n      Start  9: L08_completion_reference\n 9/13 Test  #9: L08_completion_reference ..................   Passed    0.52 sec\n      Start 10: L08_completion_validation_good\n10/13 Test #10: L08_completion_validation_good ............   Passed    0.51 sec\n      Start 11: L08_completion_validation_bad_rejected\n11/13 Test #11: L08_completion_validation_bad_rejected ....   Passed    0.51 sec\n      Start 12: L08_completion_reference_platform\n12/13 Test #12: L08_completion_reference_platform .........   Passed    0.12 sec\n      Start 13: L08_completion_validation_good_platform\n13/13 Test #13: L08_completion_validation_good_platform ...   Passed    0.11 sec\n\n100% tests passed, 0 tests failed out of 13\n\nLabel Time Summary:\nnegative           =   1.55 sec*proc (3 tests)\nobservation        =   0.52 sec*proc (1 test)\nplatform           =   0.23 sec*proc (2 tests)\nreference          =   1.70 sec*proc (4 tests)\nvalidation         =   1.33 sec*proc (1 test)\nvalidation_good    =   1.67 sec*proc (4 tests)\n\nTotal Test time (real) =   6.80 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

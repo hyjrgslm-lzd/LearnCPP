@@ -1,0 +1,13 @@
+{
+  "command": [
+    "F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\build\\sv-final3\\C1_condvar_predicate\\bad\\build\\Release\\C1_condvar_predicate.exe"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.4690000000009604,
+  "stdout": "",
+  "stderr": "Part 3: timeout false\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL"
+}

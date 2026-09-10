@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/foundation-r4/foundation/L02_sync_io/L02_sync_io_validation_bad"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.0014867159999880641,
+  "stdout": "",
+  "stderr": "check failed: copy reports every byte\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "/tmp/c07-test-l_ac78nd",
+  "temporary_directory_removed": true,
+  "name": "L02_sync_io_validation_bad_rejected",
+  "cwd": "/root/learncpp-c07/builds/foundation-r4/foundation/L02_sync_io",
+  "expected_exit": 1,
+  "required_text": "copy reports every byte",
+  "verdict": "PASS"
+}

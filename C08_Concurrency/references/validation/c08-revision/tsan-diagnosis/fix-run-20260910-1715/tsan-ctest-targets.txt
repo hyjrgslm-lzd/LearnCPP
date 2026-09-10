@@ -1,0 +1,21 @@
+Internal ctest changing into directory: /root/learncpp-c08-builds/tsan-fix-tsan-20260910-1715
+Test project /root/learncpp-c08-builds/tsan-fix-tsan-20260910-1715
+    Start  6: B3_call_once_reference
+1/4 Test  #6: B3_call_once_reference ...............   Passed    0.01 sec
+    Start 23: F3_seqcst_fence_reference
+2/4 Test #23: F3_seqcst_fence_reference ............   Passed    0.38 sec
+    Start 61: runtime_scheduling_allocation_test
+3/4 Test #61: runtime_scheduling_allocation_test ...***Skipped   0.01 sec
+    Start 62: runtime_scheduling_test
+4/4 Test #62: runtime_scheduling_test ..............   Passed    0.12 sec
+
+100% tests passed, 0 tests failed out of 4
+
+Label Time Summary:
+reference    =   0.39 sec*proc (2 tests)
+runtime      =   0.13 sec*proc (2 tests)
+
+Total Test time (real) =   0.53 sec
+
+The following tests did not run:
+	 61 - runtime_scheduling_allocation_test (Skipped)

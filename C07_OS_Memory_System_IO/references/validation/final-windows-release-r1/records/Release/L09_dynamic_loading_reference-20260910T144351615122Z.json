@@ -1,0 +1,21 @@
+{
+  "command": [
+    "F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/build/final-windows-release-r1/L09_dynamic_loading/Release/L09_dynamic_loading_reference.exe",
+    "F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/build/final-windows-release-r1/L09_dynamic_loading/Release/L09_dynamic_loading_module.dll"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.8600000000005821,
+  "stdout": "L09 dynamic loading checks passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-ij65ki68",
+  "temporary_directory_removed": true,
+  "name": "L09_dynamic_loading_reference",
+  "cwd": "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\exercises\\build\\final-windows-release-r1\\L09_dynamic_loading",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

@@ -1,0 +1,93 @@
+{
+  "verdict": "PASS",
+  "failures": [],
+  "build": "/root/learncpp-c07/builds/sample-student-r1/student",
+  "config": "Release",
+  "targets": [
+    "L01_handles_student",
+    "L02_sync_io_student",
+    "L08_completion_student"
+  ],
+  "audit_student": {
+    "verdict": "PASS",
+    "failures": [],
+    "students": [
+      "L01_handles_student",
+      "L02_sync_io_student",
+      "L08_completion_student"
+    ],
+    "configuration": "Release",
+    "build": "/root/learncpp-c07/builds/sample-student-r1/student",
+    "actual_include_count": 922,
+    "source_sha256": {
+      "/root/learncpp-c07/snapshots/sample-student-r1/C07_OS_Memory_System_IO/exercises/L08_completion/checks/completion_checks.cpp": "ddb4de834aa4663ef63747d2e4d9bd45526420a4be7ac7021432dde70fd59ee3",
+      "/root/learncpp-c07/snapshots/sample-student-r1/C07_OS_Memory_System_IO/exercises/L08_completion/src/student/completion.hpp": "8fbc81082c2a49a281bc5f977a1de695f90867c400a0bc048c4e2d7e0baf106d",
+      "/root/learncpp-c07/snapshots/sample-student-r1/C07_OS_Memory_System_IO/exercises/include/c07/completion_io.hpp": "541b843587a9defb143c3561a0fa6c2b072f4fe9b107e7db10793d2f3b70a21c",
+      "/root/learncpp-c07/snapshots/sample-student-r1/C07_OS_Memory_System_IO/exercises/include/c07/os.hpp": "6ac255c83e34591ade3cf68754e475fff02cccac228949ba0666895062a34bb5",
+      "/root/learncpp-c07/snapshots/sample-student-r1/C01_Build_Compile_Link/exercises/include/check.hpp": "716138e42081aee359e17929c31ee156ecffd1d3b596e35107cfb08ff16c5f38",
+      "/root/learncpp-c07/snapshots/sample-student-r1/C07_OS_Memory_System_IO/exercises/L02_sync_io/checks/sync_io_checks.cpp": "6926d086886bc4bd27286983ed922bcf56ca874df562d1c8f1578e1bbed59a4a",
+      "/root/learncpp-c07/snapshots/sample-student-r1/C07_OS_Memory_System_IO/exercises/L02_sync_io/src/student/sync_io.hpp": "67f24e08d7897f90fa087b2e3ef77e0ee104c1d84ee8c48a7f3e1f433b6a02c0",
+      "/root/learncpp-c07/snapshots/sample-student-r1/C07_OS_Memory_System_IO/exercises/L01_handles/checks/handles_checks.cpp": "a6b3098541486be23ec39b96d161eaf62cd49da856eaa1603010715dfdf84984",
+      "/root/learncpp-c07/snapshots/sample-student-r1/C07_OS_Memory_System_IO/exercises/L01_handles/src/student/handles.hpp": "dae7f95d61518a7efe6c89eebf6e44df98d814aad46c234575a5bbe1c07c058e"
+    },
+    "trace_sha256": "1bab73b0109ee3ba65030534c5dca2656f2216ff327feaa6f0edbc0037d3ffbf",
+    "scope": "declared answer targets/paths, recorded includes and literal local includes; not plagiarism proof"
+  },
+  "student_runs": [
+    {
+      "target": "L01_handles_student",
+      "artifact": "/root/learncpp-c07/builds/sample-student-r1/student/L01_handles/L01_handles_student",
+      "controlled_rejection": true,
+      "command": [
+        "/root/learncpp-c07/builds/sample-student-r1/student/L01_handles/L01_handles_student"
+      ],
+      "exit_code": 1,
+      "timeout": false,
+      "process_seconds": 0.0017224369999997435,
+      "stdout": "",
+      "stderr": "check failed: create_note succeeds for a fresh path\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "FAIL",
+      "temporary_directory": "/tmp/c07-test-jniy_e9v",
+      "temporary_directory_removed": true
+    },
+    {
+      "target": "L02_sync_io_student",
+      "artifact": "/root/learncpp-c07/builds/sample-student-r1/student/L02_sync_io/L02_sync_io_student",
+      "controlled_rejection": true,
+      "command": [
+        "/root/learncpp-c07/builds/sample-student-r1/student/L02_sync_io/L02_sync_io_student"
+      ],
+      "exit_code": 1,
+      "timeout": false,
+      "process_seconds": 0.0010683529999990782,
+      "stdout": "",
+      "stderr": "check failed: copy succeeds\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "FAIL",
+      "temporary_directory": "/tmp/c07-test-7frwfvmj",
+      "temporary_directory_removed": true
+    },
+    {
+      "target": "L08_completion_student",
+      "artifact": "/root/learncpp-c07/builds/sample-student-r1/student/L08_completion/L08_completion_student",
+      "controlled_rejection": true,
+      "command": [
+        "/root/learncpp-c07/builds/sample-student-r1/student/L08_completion/L08_completion_student"
+      ],
+      "exit_code": 1,
+      "timeout": false,
+      "process_seconds": 0.0008380670000001089,
+      "stdout": "",
+      "stderr": "check failed: normal ledger is accepted\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "FAIL",
+      "temporary_directory": "/tmp/c07-test-vyjp9pz1",
+      "temporary_directory_removed": true
+    }
+  ],
+  "scope": "Student-only wiring plus direct placeholder rejection; not plagiarism proof"
+}

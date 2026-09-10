@@ -1,0 +1,1 @@
+42 /mnt/f/CPPTrain/LearnCPP/C08_Concurrency/references/validation/c08-revision/linux-preliminary/u01-20260910-164550-8b2d0ea3/manifest.sha256

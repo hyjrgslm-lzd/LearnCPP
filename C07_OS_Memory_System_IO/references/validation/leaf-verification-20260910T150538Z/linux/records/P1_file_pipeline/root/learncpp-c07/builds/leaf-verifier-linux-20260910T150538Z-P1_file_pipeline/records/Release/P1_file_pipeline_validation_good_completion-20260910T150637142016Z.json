@@ -1,0 +1,22 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/leaf-verifier-linux-20260910T150538Z-P1_file_pipeline/P1_file_pipeline_validation_good",
+    "--backend",
+    "completion"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.0047842849999995,
+  "stdout": "P1 backend seed=11400714674846914266\nP1 file pipeline completion backend check passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-ao_g6ro_",
+  "temporary_directory_removed": true,
+  "name": "P1_file_pipeline_validation_good_completion",
+  "cwd": "/root/learncpp-c07/builds/leaf-verifier-linux-20260910T150538Z-P1_file_pipeline",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

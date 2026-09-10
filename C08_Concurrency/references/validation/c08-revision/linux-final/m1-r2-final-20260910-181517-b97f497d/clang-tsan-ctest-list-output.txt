@@ -1,0 +1,3216 @@
+name=clang-tsan-ctest-list
+start=2026-09-10T18:21:40+08:00
+timeout_seconds=120
+command=ctest --test-dir /root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan -C RelWithDebInfo --show-only=json-v1
+
+{
+  "backtraceGraph" : 
+  {
+    "commands" : 
+    [
+      "add_test",
+      "cs_add_exercise",
+      "f03_add_native_subject"
+    ],
+    "files" : 
+    [
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/cmake/StudySetup.cmake",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/A1_jthread_lifecycle/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/A2_stop_token_cancellation/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/A3_thread_exception/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/B1_mutex_family/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/B2_deadlock_scoped_lock/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/B3_call_once/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/C1_condvar_predicate/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/C2_bounded_queue_condvar/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/C3_interruptible_wait/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/Capstone1_thread_pool/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/Capstone2_lockfree_queue/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/Capstone3_parallel_compute/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/D1_promise_future/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/D2_async_policies/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/D3_packaged_task/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/E1_atomic_basics/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/E2_atomic_ref/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/E3_cas_loop/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/F01_thread_attributes/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/F02_hazard_pointer_batches/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/F1_release_acquire/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/F2_relaxed_counter/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/F3_seqcst_fence/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/F4_publish_pattern/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/G1_treiber_stack/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/G2_aba_problem/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/G3_spsc_ringbuffer/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/H1_latch_barrier/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/H2_semaphore/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/H3_atomic_wait_notify/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/I1_atomic_shared_ptr/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/I2_hazard_pointer/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/I3_rcu/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/J1_false_sharing/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/J2_interference_size/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/J3_numa_concept/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/K1_simd_basics/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/K2_simd_dotproduct/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/K3_simd_where_select/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/L1_par_algorithms/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/L2_parallel_reduce_scan/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/L3_par_vs_seq_bench/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/M1_work_stealing_pool/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/M2_execution_bridge/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/N1_numa_placement/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/P1_object_lifetime/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/P2_result_states/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/Q0_queue_baseline/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/Q1_mpsc_queue/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/Q2_ms_queue/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/R1_epoch_reclamation/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/R2_qsbr/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/U01_async_logging/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/F03_native_facilities/CMakeLists.txt",
+      "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/runtime_tests/CMakeLists.txt"
+    ],
+    "nodes" : 
+    [
+      {
+        "file" : 1
+      },
+      {
+        "command" : 1,
+        "file" : 1,
+        "line" : 4,
+        "parent" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 1
+      },
+      {
+        "file" : 2
+      },
+      {
+        "command" : 1,
+        "file" : 2,
+        "line" : 4,
+        "parent" : 3
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 4
+      },
+      {
+        "file" : 3
+      },
+      {
+        "command" : 1,
+        "file" : 3,
+        "line" : 4,
+        "parent" : 6
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 7
+      },
+      {
+        "file" : 4
+      },
+      {
+        "command" : 1,
+        "file" : 4,
+        "line" : 4,
+        "parent" : 9
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 10
+      },
+      {
+        "file" : 5
+      },
+      {
+        "command" : 1,
+        "file" : 5,
+        "line" : 4,
+        "parent" : 12
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 13
+      },
+      {
+        "file" : 6
+      },
+      {
+        "command" : 1,
+        "file" : 6,
+        "line" : 4,
+        "parent" : 15
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 16
+      },
+      {
+        "file" : 7
+      },
+      {
+        "command" : 1,
+        "file" : 7,
+        "line" : 4,
+        "parent" : 18
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 19
+      },
+      {
+        "file" : 8
+      },
+      {
+        "command" : 1,
+        "file" : 8,
+        "line" : 4,
+        "parent" : 21
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 22
+      },
+      {
+        "file" : 9
+      },
+      {
+        "command" : 1,
+        "file" : 9,
+        "line" : 4,
+        "parent" : 24
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 25
+      },
+      {
+        "file" : 10
+      },
+      {
+        "command" : 1,
+        "file" : 10,
+        "line" : 4,
+        "parent" : 27
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 28
+      },
+      {
+        "file" : 11
+      },
+      {
+        "command" : 1,
+        "file" : 11,
+        "line" : 4,
+        "parent" : 30
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 31
+      },
+      {
+        "file" : 12
+      },
+      {
+        "command" : 1,
+        "file" : 12,
+        "line" : 4,
+        "parent" : 33
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 34
+      },
+      {
+        "file" : 13
+      },
+      {
+        "command" : 1,
+        "file" : 13,
+        "line" : 4,
+        "parent" : 36
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 37
+      },
+      {
+        "file" : 14
+      },
+      {
+        "command" : 1,
+        "file" : 14,
+        "line" : 4,
+        "parent" : 39
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 40
+      },
+      {
+        "file" : 15
+      },
+      {
+        "command" : 1,
+        "file" : 15,
+        "line" : 4,
+        "parent" : 42
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 43
+      },
+      {
+        "file" : 16
+      },
+      {
+        "command" : 1,
+        "file" : 16,
+        "line" : 4,
+        "parent" : 45
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 46
+      },
+      {
+        "file" : 17
+      },
+      {
+        "command" : 1,
+        "file" : 17,
+        "line" : 4,
+        "parent" : 48
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 49
+      },
+      {
+        "file" : 18
+      },
+      {
+        "command" : 1,
+        "file" : 18,
+        "line" : 4,
+        "parent" : 51
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 52
+      },
+      {
+        "file" : 19
+      },
+      {
+        "command" : 1,
+        "file" : 19,
+        "line" : 4,
+        "parent" : 54
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 55
+      },
+      {
+        "file" : 20
+      },
+      {
+        "command" : 1,
+        "file" : 20,
+        "line" : 4,
+        "parent" : 57
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 58
+      },
+      {
+        "file" : 21
+      },
+      {
+        "command" : 1,
+        "file" : 21,
+        "line" : 4,
+        "parent" : 60
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 61
+      },
+      {
+        "file" : 22
+      },
+      {
+        "command" : 1,
+        "file" : 22,
+        "line" : 4,
+        "parent" : 63
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 64
+      },
+      {
+        "file" : 23
+      },
+      {
+        "command" : 1,
+        "file" : 23,
+        "line" : 4,
+        "parent" : 66
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 67
+      },
+      {
+        "file" : 24
+      },
+      {
+        "command" : 1,
+        "file" : 24,
+        "line" : 4,
+        "parent" : 69
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 70
+      },
+      {
+        "file" : 25
+      },
+      {
+        "command" : 1,
+        "file" : 25,
+        "line" : 4,
+        "parent" : 72
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 73
+      },
+      {
+        "file" : 26
+      },
+      {
+        "command" : 1,
+        "file" : 26,
+        "line" : 4,
+        "parent" : 75
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 76
+      },
+      {
+        "file" : 27
+      },
+      {
+        "command" : 1,
+        "file" : 27,
+        "line" : 4,
+        "parent" : 78
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 79
+      },
+      {
+        "file" : 28
+      },
+      {
+        "command" : 1,
+        "file" : 28,
+        "line" : 4,
+        "parent" : 81
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 82
+      },
+      {
+        "file" : 29
+      },
+      {
+        "command" : 1,
+        "file" : 29,
+        "line" : 4,
+        "parent" : 84
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 85
+      },
+      {
+        "file" : 30
+      },
+      {
+        "command" : 1,
+        "file" : 30,
+        "line" : 4,
+        "parent" : 87
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 88
+      },
+      {
+        "file" : 31
+      },
+      {
+        "command" : 1,
+        "file" : 31,
+        "line" : 4,
+        "parent" : 90
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 91
+      },
+      {
+        "file" : 32
+      },
+      {
+        "command" : 1,
+        "file" : 32,
+        "line" : 4,
+        "parent" : 93
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 94
+      },
+      {
+        "file" : 33
+      },
+      {
+        "command" : 1,
+        "file" : 33,
+        "line" : 4,
+        "parent" : 96
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 97
+      },
+      {
+        "file" : 34
+      },
+      {
+        "command" : 1,
+        "file" : 34,
+        "line" : 4,
+        "parent" : 99
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 100
+      },
+      {
+        "file" : 35
+      },
+      {
+        "command" : 1,
+        "file" : 35,
+        "line" : 4,
+        "parent" : 102
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 103
+      },
+      {
+        "file" : 36
+      },
+      {
+        "command" : 1,
+        "file" : 36,
+        "line" : 4,
+        "parent" : 105
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 106
+      },
+      {
+        "file" : 37
+      },
+      {
+        "command" : 1,
+        "file" : 37,
+        "line" : 4,
+        "parent" : 108
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 109
+      },
+      {
+        "file" : 38
+      },
+      {
+        "command" : 1,
+        "file" : 38,
+        "line" : 4,
+        "parent" : 111
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 112
+      },
+      {
+        "file" : 39
+      },
+      {
+        "command" : 1,
+        "file" : 39,
+        "line" : 4,
+        "parent" : 114
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 115
+      },
+      {
+        "file" : 40
+      },
+      {
+        "command" : 1,
+        "file" : 40,
+        "line" : 4,
+        "parent" : 117
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 118
+      },
+      {
+        "file" : 41
+      },
+      {
+        "command" : 1,
+        "file" : 41,
+        "line" : 4,
+        "parent" : 120
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 121
+      },
+      {
+        "file" : 42
+      },
+      {
+        "command" : 1,
+        "file" : 42,
+        "line" : 4,
+        "parent" : 123
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 124
+      },
+      {
+        "file" : 43
+      },
+      {
+        "command" : 1,
+        "file" : 43,
+        "line" : 4,
+        "parent" : 126
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 127
+      },
+      {
+        "file" : 44
+      },
+      {
+        "command" : 1,
+        "file" : 44,
+        "line" : 4,
+        "parent" : 129
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 130
+      },
+      {
+        "file" : 45
+      },
+      {
+        "command" : 1,
+        "file" : 45,
+        "line" : 4,
+        "parent" : 132
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 133
+      },
+      {
+        "file" : 46
+      },
+      {
+        "command" : 1,
+        "file" : 46,
+        "line" : 4,
+        "parent" : 135
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 136
+      },
+      {
+        "file" : 47
+      },
+      {
+        "command" : 1,
+        "file" : 47,
+        "line" : 4,
+        "parent" : 138
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 139
+      },
+      {
+        "file" : 48
+      },
+      {
+        "command" : 1,
+        "file" : 48,
+        "line" : 4,
+        "parent" : 141
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 142
+      },
+      {
+        "file" : 49
+      },
+      {
+        "command" : 1,
+        "file" : 49,
+        "line" : 4,
+        "parent" : 144
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 145
+      },
+      {
+        "file" : 50
+      },
+      {
+        "command" : 1,
+        "file" : 50,
+        "line" : 4,
+        "parent" : 147
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 148
+      },
+      {
+        "file" : 51
+      },
+      {
+        "command" : 1,
+        "file" : 51,
+        "line" : 4,
+        "parent" : 150
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 151
+      },
+      {
+        "file" : 52
+      },
+      {
+        "command" : 1,
+        "file" : 52,
+        "line" : 4,
+        "parent" : 153
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 154
+      },
+      {
+        "file" : 53
+      },
+      {
+        "command" : 1,
+        "file" : 53,
+        "line" : 11,
+        "parent" : 156
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 137,
+        "parent" : 157
+      },
+      {
+        "file" : 53
+      },
+      {
+        "command" : 0,
+        "file" : 53,
+        "line" : 35,
+        "parent" : 159
+      },
+      {
+        "file" : 53
+      },
+      {
+        "command" : 0,
+        "file" : 53,
+        "line" : 37,
+        "parent" : 161
+      },
+      {
+        "file" : 53
+      },
+      {
+        "command" : 0,
+        "file" : 53,
+        "line" : 42,
+        "parent" : 163
+      },
+      {
+        "file" : 54
+      },
+      {
+        "command" : 2,
+        "file" : 54,
+        "line" : 21,
+        "parent" : 165
+      },
+      {
+        "command" : 0,
+        "file" : 54,
+        "line" : 13,
+        "parent" : 166
+      },
+      {
+        "file" : 54
+      },
+      {
+        "command" : 2,
+        "file" : 54,
+        "line" : 22,
+        "parent" : 168
+      },
+      {
+        "command" : 0,
+        "file" : 54,
+        "line" : 13,
+        "parent" : 169
+      },
+      {
+        "file" : 54
+      },
+      {
+        "command" : 2,
+        "file" : 54,
+        "line" : 23,
+        "parent" : 171
+      },
+      {
+        "command" : 0,
+        "file" : 54,
+        "line" : 13,
+        "parent" : 172
+      },
+      {
+        "file" : 55
+      },
+      {
+        "command" : 0,
+        "file" : 55,
+        "line" : 38,
+        "parent" : 174
+      },
+      {
+        "file" : 55
+      },
+      {
+        "command" : 0,
+        "file" : 55,
+        "line" : 38,
+        "parent" : 176
+      },
+      {
+        "file" : 55
+      },
+      {
+        "command" : 0,
+        "file" : 55,
+        "line" : 38,
+        "parent" : 178
+      },
+      {
+        "file" : 55
+      },
+      {
+        "command" : 0,
+        "file" : 55,
+        "line" : 38,
+        "parent" : 180
+      },
+      {
+        "file" : 55
+      },
+      {
+        "command" : 0,
+        "file" : 55,
+        "line" : 38,
+        "parent" : 182
+      },
+      {
+        "file" : 55
+      },
+      {
+        "command" : 0,
+        "file" : 55,
+        "line" : 38,
+        "parent" : 184
+      },
+      {
+        "file" : 55
+      },
+      {
+        "command" : 0,
+        "file" : 55,
+        "line" : 38,
+        "parent" : 186
+      },
+      {
+        "file" : 55
+      },
+      {
+        "command" : 0,
+        "file" : 55,
+        "line" : 38,
+        "parent" : 188
+      },
+      {
+        "file" : 55
+      },
+      {
+        "command" : 0,
+        "file" : 55,
+        "line" : 44,
+        "parent" : 190
+      },
+      {
+        "file" : 55
+      },
+      {
+        "command" : 0,
+        "file" : 55,
+        "line" : 49,
+        "parent" : 192
+      },
+      {
+        "file" : 55
+      },
+      {
+        "command" : 0,
+        "file" : 55,
+        "line" : 52,
+        "parent" : 194
+      }
+    ]
+  },
+  "kind" : "ctestInfo",
+  "tests" : 
+  [
+    {
+      "backtrace" : 2,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/A1_jthread_lifecycle/A1_jthread_lifecycle_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "A1_jthread_lifecycle_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/A1_jthread_lifecycle"
+        }
+      ]
+    },
+    {
+      "backtrace" : 5,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/A2_stop_token_cancellation/A2_stop_token_cancellation_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "A2_stop_token_cancellation_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/A2_stop_token_cancellation"
+        }
+      ]
+    },
+    {
+      "backtrace" : 8,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/A3_thread_exception/A3_thread_exception_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "A3_thread_exception_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/A3_thread_exception"
+        }
+      ]
+    },
+    {
+      "backtrace" : 11,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/B1_mutex_family/B1_mutex_family_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "B1_mutex_family_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/B1_mutex_family"
+        }
+      ]
+    },
+    {
+      "backtrace" : 14,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/B2_deadlock_scoped_lock/B2_deadlock_scoped_lock_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "B2_deadlock_scoped_lock_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/B2_deadlock_scoped_lock"
+        }
+      ]
+    },
+    {
+      "backtrace" : 17,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/B3_call_once/B3_call_once_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "B3_call_once_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/B3_call_once"
+        }
+      ]
+    },
+    {
+      "backtrace" : 20,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/C1_condvar_predicate/C1_condvar_predicate_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "C1_condvar_predicate_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/C1_condvar_predicate"
+        }
+      ]
+    },
+    {
+      "backtrace" : 23,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/C2_bounded_queue_condvar/C2_bounded_queue_condvar_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "C2_bounded_queue_condvar_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/C2_bounded_queue_condvar"
+        }
+      ]
+    },
+    {
+      "backtrace" : 26,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/C3_interruptible_wait/C3_interruptible_wait_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "C3_interruptible_wait_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/C3_interruptible_wait"
+        }
+      ]
+    },
+    {
+      "backtrace" : 29,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/Capstone1_thread_pool/Capstone1_thread_pool_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "Capstone1_thread_pool_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/Capstone1_thread_pool"
+        }
+      ]
+    },
+    {
+      "backtrace" : 32,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/Capstone2_lockfree_queue/Capstone2_lockfree_queue_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "Capstone2_lockfree_queue_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/Capstone2_lockfree_queue"
+        }
+      ]
+    },
+    {
+      "backtrace" : 35,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/Capstone3_parallel_compute/Capstone3_parallel_compute_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "Capstone3_parallel_compute_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/Capstone3_parallel_compute"
+        }
+      ]
+    },
+    {
+      "backtrace" : 38,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/D1_promise_future/D1_promise_future_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "D1_promise_future_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/D1_promise_future"
+        }
+      ]
+    },
+    {
+      "backtrace" : 41,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/D2_async_policies/D2_async_policies_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "D2_async_policies_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/D2_async_policies"
+        }
+      ]
+    },
+    {
+      "backtrace" : 44,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/D3_packaged_task/D3_packaged_task_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "D3_packaged_task_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/D3_packaged_task"
+        }
+      ]
+    },
+    {
+      "backtrace" : 47,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/E1_atomic_basics/E1_atomic_basics_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "E1_atomic_basics_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/E1_atomic_basics"
+        }
+      ]
+    },
+    {
+      "backtrace" : 50,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/E2_atomic_ref/E2_atomic_ref_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "E2_atomic_ref_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/E2_atomic_ref"
+        }
+      ]
+    },
+    {
+      "backtrace" : 53,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/E3_cas_loop/E3_cas_loop_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "E3_cas_loop_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/E3_cas_loop"
+        }
+      ]
+    },
+    {
+      "backtrace" : 56,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/F01_thread_attributes/F01_thread_attributes_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "F01_thread_attributes_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/F01_thread_attributes"
+        }
+      ]
+    },
+    {
+      "backtrace" : 59,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/F02_hazard_pointer_batches/F02_hazard_pointer_batches_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "F02_hazard_pointer_batches_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/F02_hazard_pointer_batches"
+        }
+      ]
+    },
+    {
+      "backtrace" : 62,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/F1_release_acquire/F1_release_acquire_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "F1_release_acquire_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/F1_release_acquire"
+        }
+      ]
+    },
+    {
+      "backtrace" : 65,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/F2_relaxed_counter/F2_relaxed_counter_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "F2_relaxed_counter_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/F2_relaxed_counter"
+        }
+      ]
+    },
+    {
+      "backtrace" : 68,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/F3_seqcst_fence/F3_seqcst_fence_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "F3_seqcst_fence_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/F3_seqcst_fence"
+        }
+      ]
+    },
+    {
+      "backtrace" : 71,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/F4_publish_pattern/F4_publish_pattern_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "F4_publish_pattern_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/F4_publish_pattern"
+        }
+      ]
+    },
+    {
+      "backtrace" : 74,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/G1_treiber_stack/G1_treiber_stack_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "G1_treiber_stack_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/G1_treiber_stack"
+        }
+      ]
+    },
+    {
+      "backtrace" : 77,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/G2_aba_problem/G2_aba_problem_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "G2_aba_problem_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/G2_aba_problem"
+        }
+      ]
+    },
+    {
+      "backtrace" : 80,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/G3_spsc_ringbuffer/G3_spsc_ringbuffer_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "G3_spsc_ringbuffer_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/G3_spsc_ringbuffer"
+        }
+      ]
+    },
+    {
+      "backtrace" : 83,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/H1_latch_barrier/H1_latch_barrier_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "H1_latch_barrier_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/H1_latch_barrier"
+        }
+      ]
+    },
+    {
+      "backtrace" : 86,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/H2_semaphore/H2_semaphore_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "H2_semaphore_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/H2_semaphore"
+        }
+      ]
+    },
+    {
+      "backtrace" : 89,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/H3_atomic_wait_notify/H3_atomic_wait_notify_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "H3_atomic_wait_notify_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/H3_atomic_wait_notify"
+        }
+      ]
+    },
+    {
+      "backtrace" : 92,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/I1_atomic_shared_ptr/I1_atomic_shared_ptr_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "I1_atomic_shared_ptr_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/I1_atomic_shared_ptr"
+        }
+      ]
+    },
+    {
+      "backtrace" : 95,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/I2_hazard_pointer/I2_hazard_pointer_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "I2_hazard_pointer_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/I2_hazard_pointer"
+        }
+      ]
+    },
+    {
+      "backtrace" : 98,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/I3_rcu/I3_rcu_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "I3_rcu_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/I3_rcu"
+        }
+      ]
+    },
+    {
+      "backtrace" : 101,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/J1_false_sharing/J1_false_sharing_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "J1_false_sharing_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/J1_false_sharing"
+        }
+      ]
+    },
+    {
+      "backtrace" : 104,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/J2_interference_size/J2_interference_size_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "J2_interference_size_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/J2_interference_size"
+        }
+      ]
+    },
+    {
+      "backtrace" : 107,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/J3_numa_concept/J3_numa_concept_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "J3_numa_concept_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/J3_numa_concept"
+        }
+      ]
+    },
+    {
+      "backtrace" : 110,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/K1_simd_basics/K1_simd_basics_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "K1_simd_basics_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/K1_simd_basics"
+        }
+      ]
+    },
+    {
+      "backtrace" : 113,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/K2_simd_dotproduct/K2_simd_dotproduct_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "K2_simd_dotproduct_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/K2_simd_dotproduct"
+        }
+      ]
+    },
+    {
+      "backtrace" : 116,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/K3_simd_where_select/K3_simd_where_select_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "K3_simd_where_select_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/K3_simd_where_select"
+        }
+      ]
+    },
+    {
+      "backtrace" : 119,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/L1_par_algorithms/L1_par_algorithms_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "L1_par_algorithms_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/L1_par_algorithms"
+        }
+      ]
+    },
+    {
+      "backtrace" : 122,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/L2_parallel_reduce_scan/L2_parallel_reduce_scan_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "L2_parallel_reduce_scan_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/L2_parallel_reduce_scan"
+        }
+      ]
+    },
+    {
+      "backtrace" : 125,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/L3_par_vs_seq_bench/L3_par_vs_seq_bench_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "L3_par_vs_seq_bench_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/L3_par_vs_seq_bench"
+        }
+      ]
+    },
+    {
+      "backtrace" : 128,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/M1_work_stealing_pool/M1_work_stealing_pool_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "M1_work_stealing_pool_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/M1_work_stealing_pool"
+        }
+      ]
+    },
+    {
+      "backtrace" : 131,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/M2_execution_bridge/M2_execution_bridge_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "M2_execution_bridge_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/M2_execution_bridge"
+        }
+      ]
+    },
+    {
+      "backtrace" : 134,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/N1_numa_placement/N1_numa_placement_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "N1_numa_placement_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/N1_numa_placement"
+        }
+      ]
+    },
+    {
+      "backtrace" : 137,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/P1_object_lifetime/P1_object_lifetime_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "P1_object_lifetime_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/P1_object_lifetime"
+        }
+      ]
+    },
+    {
+      "backtrace" : 140,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/P2_result_states/P2_result_states_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "P2_result_states_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/P2_result_states"
+        }
+      ]
+    },
+    {
+      "backtrace" : 143,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/Q0_queue_baseline/Q0_queue_baseline_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "Q0_queue_baseline_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/Q0_queue_baseline"
+        }
+      ]
+    },
+    {
+      "backtrace" : 146,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/Q1_mpsc_queue/Q1_mpsc_queue_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "Q1_mpsc_queue_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/Q1_mpsc_queue"
+        }
+      ]
+    },
+    {
+      "backtrace" : 149,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/Q2_ms_queue/Q2_ms_queue_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "Q2_ms_queue_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/Q2_ms_queue"
+        }
+      ]
+    },
+    {
+      "backtrace" : 152,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/R1_epoch_reclamation/R1_epoch_reclamation_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "R1_epoch_reclamation_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/R1_epoch_reclamation"
+        }
+      ]
+    },
+    {
+      "backtrace" : 155,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/R2_qsbr/R2_qsbr_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "R2_qsbr_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/R2_qsbr"
+        }
+      ]
+    },
+    {
+      "backtrace" : 158,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/U01_async_logging/U01_async_logging_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "U01_async_logging_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/U01_async_logging"
+        }
+      ]
+    },
+    {
+      "backtrace" : 160,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/U01_async_logging/U01_async_logging_good"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "U01_async_logging_good",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "validation"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/U01_async_logging"
+        }
+      ]
+    },
+    {
+      "backtrace" : 162,
+      "command" : 
+      [
+        "/usr/bin/cmake",
+        "-DEXECUTABLE=/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/U01_async_logging/U01_async_logging_bad_overflow",
+        "-DEXPECTED_TEXT=overrun counter",
+        "-DPROCESS_TIMEOUT=120",
+        "-P",
+        "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/U01_async_logging/expect_failure.cmake"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "U01_async_logging_bad_overflow_rejected",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "negative"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 125.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/U01_async_logging"
+        }
+      ]
+    },
+    {
+      "backtrace" : 164,
+      "command" : 
+      [
+        "/usr/bin/cmake",
+        "-DEXECUTABLE=/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/U01_async_logging/U01_async_logging_bad_flush",
+        "-DEXPECTED_TEXT=queued flush runs during drain",
+        "-DPROCESS_TIMEOUT=120",
+        "-P",
+        "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/U01_async_logging/expect_failure.cmake"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "U01_async_logging_bad_flush_rejected",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "negative"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 125.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/U01_async_logging"
+        }
+      ]
+    },
+    {
+      "backtrace" : 167,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/F03_native_facilities/F03_std_senders_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "F03_std_senders_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "native",
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/F03_native_facilities"
+        }
+      ]
+    },
+    {
+      "backtrace" : 170,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/F03_native_facilities/F03_std_hazard_pointer_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "F03_std_hazard_pointer_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "native",
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/F03_native_facilities"
+        }
+      ]
+    },
+    {
+      "backtrace" : 173,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/F03_native_facilities/F03_std_rcu_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "F03_std_rcu_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "native",
+            "reference"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/F03_native_facilities"
+        }
+      ]
+    },
+    {
+      "backtrace" : 175,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/runtime_tests/runtime_atomic_protocol_test"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "runtime_atomic_protocol_test",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "runtime"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/runtime_tests"
+        }
+      ]
+    },
+    {
+      "backtrace" : 177,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/runtime_tests/runtime_common_tools_test"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "runtime_common_tools_test",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "runtime"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/runtime_tests"
+        }
+      ]
+    },
+    {
+      "backtrace" : 179,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/runtime_tests/runtime_numeric_test"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "runtime_numeric_test",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "runtime"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/runtime_tests"
+        }
+      ]
+    },
+    {
+      "backtrace" : 181,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/runtime_tests/runtime_queue_history_test"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "runtime_queue_history_test",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "runtime"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/runtime_tests"
+        }
+      ]
+    },
+    {
+      "backtrace" : 183,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/runtime_tests/runtime_reclamation_test"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "runtime_reclamation_test",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "runtime"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/runtime_tests"
+        }
+      ]
+    },
+    {
+      "backtrace" : 185,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/runtime_tests/runtime_scheduling_allocation_test"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "runtime_scheduling_allocation_test",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "runtime"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/runtime_tests"
+        }
+      ]
+    },
+    {
+      "backtrace" : 187,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/runtime_tests/runtime_scheduling_test"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "runtime_scheduling_test",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "runtime"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/runtime_tests"
+        }
+      ]
+    },
+    {
+      "backtrace" : 189,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/runtime_tests/runtime_thread_pool_test"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "runtime_thread_pool_test",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "runtime"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/runtime_tests"
+        }
+      ]
+    },
+    {
+      "backtrace" : 191,
+      "command" : 
+      [
+        "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/runtime_tests/runtime_lifetime_reference"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "runtime_lifetime_reference",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "runtime"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/runtime_tests"
+        }
+      ]
+    },
+    {
+      "backtrace" : 193,
+      "command" : 
+      [
+        "/usr/bin/python3",
+        "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/tools/test_tools.py"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "runtime_benchmark_tools",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "tools"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/runtime_tests"
+        }
+      ]
+    },
+    {
+      "backtrace" : 195,
+      "command" : 
+      [
+        "/usr/bin/python3",
+        "/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/tools/verify_materials.py"
+      ],
+      "config" : "RelWithDebInfo",
+      "name" : "runtime_materials",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "tools"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/clang-tsan/runtime_tests"
+        }
+      ]
+    }
+  ],
+  "version" : 
+  {
+    "major" : 1,
+    "minor" : 0
+  }
+}
+exit_code=0
+end=2026-09-10T18:21:40+08:00

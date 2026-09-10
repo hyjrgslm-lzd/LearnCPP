@@ -1,0 +1,71 @@
+{
+  "recorded_at": "2026-09-10T11:00:23.488020+00:00",
+  "content_files": 2205,
+  "missing": [],
+  "changed": [],
+  "binary_candidates": [],
+  "protected_files": 8,
+  "protected_changes": [],
+  "code_inputs": 243,
+  "code_changes": [],
+  "manifest_sha256": "42f6d793bb43ee881b0fa3cf6b159368ef3a0dd0420edb4180e8d9a55badcc19",
+  "manifest_markdown_sha256": "88f88f968fd432de5a5f35d9a700100765ced4281a7d64e856650f4e8e588882",
+  "independent_review_sha256": "3f73787794f2ec2a023bebf20fcdb92dca8f0a639a8fbde548622196c8ba1406",
+  "checks": {
+    "materials": {
+      "command": [
+        "C:\\Users\\zhidan.li\\AppData\\Roaming\\uv\\python\\cpython-3.13.11-windows-x86_64-none\\python.exe",
+        "F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises\\tools\\verify_materials.py",
+        "--course",
+        "F:\\CPPTrain\\LearnCPP\\C08_Concurrency"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 16.339761700000963,
+      "stdout": "documents=191 exercises=53 local_errors=0\nThis checks navigation and registration, not teaching quality, standard correctness, or test adequacy.\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS"
+    },
+    "python_tools": {
+      "command": [
+        "C:\\Users\\zhidan.li\\AppData\\Roaming\\uv\\python\\cpython-3.13.11-windows-x86_64-none\\python.exe",
+        "F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises\\tools\\test_tools.py"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.8939246000009007,
+      "stdout": "",
+      "stderr": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.726s\n\nOK\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS"
+    },
+    "diff_check": {
+      "command": [
+        "git",
+        "-c",
+        "core.safecrlf=false",
+        "-c",
+        "core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol",
+        "diff",
+        "--check",
+        "--",
+        "C08_Concurrency",
+        "README.md",
+        "LEARNCPP_GLOBAL_PLAN.md",
+        "C05_Data_Representation_Standard_Facilities/chapters/20-spdlog-frontend.md"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.1015707000005932,
+      "stdout": "",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS"
+    }
+  },
+  "status": "PASS"
+}

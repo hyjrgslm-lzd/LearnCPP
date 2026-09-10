@@ -1,0 +1,24 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "/root/learncpp-c07/builds/sample-uring-r1/uring",
+    "-C",
+    "Release",
+    "--output-on-failure",
+    "--output-junit",
+    "/root/learncpp-c07/evidence/sample-uring-r1/ctest.xml"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.8275209009999998,
+  "stdout": "Internal ctest changing into directory: /root/learncpp-c07/builds/sample-uring-r1/uring\nTest project /root/learncpp-c07/builds/sample-uring-r1/uring\n      Start  1: C07_runner_controls\n 1/13 Test  #1: C07_runner_controls .......................   Passed    0.43 sec\n      Start  2: L01_handles_reference\n 2/13 Test  #2: L01_handles_reference .....................   Passed    0.03 sec\n      Start  3: L01_handles_validation_good\n 3/13 Test  #3: L01_handles_validation_good ...............   Passed    0.03 sec\n      Start  4: L01_handles_validation_bad_rejected\n 4/13 Test  #4: L01_handles_validation_bad_rejected .......   Passed    0.03 sec\n      Start  5: L01_handles_ownership\n 5/13 Test  #5: L01_handles_ownership .....................   Passed    0.03 sec\n      Start  6: L02_sync_io_reference\n 6/13 Test  #6: L02_sync_io_reference .....................   Passed    0.03 sec\n      Start  7: L02_sync_io_validation_good\n 7/13 Test  #7: L02_sync_io_validation_good ...............   Passed    0.03 sec\n      Start  8: L02_sync_io_validation_bad_rejected\n 8/13 Test  #8: L02_sync_io_validation_bad_rejected .......   Passed    0.03 sec\n      Start  9: L08_completion_reference\n 9/13 Test  #9: L08_completion_reference ..................   Passed    0.03 sec\n      Start 10: L08_completion_validation_good\n10/13 Test #10: L08_completion_validation_good ............   Passed    0.03 sec\n      Start 11: L08_completion_validation_bad_rejected\n11/13 Test #11: L08_completion_validation_bad_rejected ....   Passed    0.03 sec\n      Start 12: L08_completion_reference_platform\n12/13 Test #12: L08_completion_reference_platform .........   Passed    0.03 sec\n      Start 13: L08_completion_validation_good_platform\n13/13 Test #13: L08_completion_validation_good_platform ...   Passed    0.03 sec\n\n100% tests passed, 0 tests failed out of 13\n\nLabel Time Summary:\nnegative           =   0.08 sec*proc (3 tests)\nobservation        =   0.03 sec*proc (1 test)\nplatform           =   0.06 sec*proc (2 tests)\nreference          =   0.11 sec*proc (4 tests)\nvalidation         =   0.43 sec*proc (1 test)\nvalidation_good    =   0.11 sec*proc (4 tests)\n\nTotal Test time (real) =   0.78 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "/root/learncpp-c07/snapshots/sample-uring-r1/C07_OS_Memory_System_IO/exercises",
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

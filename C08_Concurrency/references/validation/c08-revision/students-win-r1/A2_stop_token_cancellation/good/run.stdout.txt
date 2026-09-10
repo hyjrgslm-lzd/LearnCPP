@@ -1,0 +1,2 @@
+SKIP Part 5 inplace_stop_token: capability unavailable
+A2 student OK

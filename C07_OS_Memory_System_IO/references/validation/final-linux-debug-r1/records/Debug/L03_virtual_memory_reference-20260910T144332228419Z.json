@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-debug-r1/uring-debug/L03_virtual_memory/L03_virtual_memory_reference"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.0013081290000016566,
+  "stdout": "L03 virtual memory checks passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-md4bejol",
+  "temporary_directory_removed": true,
+  "name": "L03_virtual_memory_reference",
+  "cwd": "/root/learncpp-c07/builds/final-linux-debug-r1/uring-debug/L03_virtual_memory",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

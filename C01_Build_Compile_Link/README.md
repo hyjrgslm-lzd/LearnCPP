@@ -39,3 +39,7 @@
 ## C02 对象与资源先修
 
 语言层的初始化、部分构造失败与对象表示见 [C02](../C02_Objects_Lifetime_Ownership/README.md) 的[构造与展开](../C02_Objects_Lifetime_Ownership/chapters/04-construction-and-unwinding.md)及[布局与表示](../C02_Objects_Lifetime_Ownership/chapters/11-layout-and-representation.md)。这些规则支撑本课的 ABI 和跨模块资源责任；具体符号、运行库、装载与二进制兼容仍由本课主讲。
+
+## C04 泛型与编译期桥接
+
+[进入C04课程](../C04_Generic_CompileTime_Reflection/README.md)。模板实例化的语义、查找、类型计算与定制点由C04主讲；本课继续负责翻译、链接、ABI及构建系统。编译成本实验可在掌握两侧当前先修后互相回访。

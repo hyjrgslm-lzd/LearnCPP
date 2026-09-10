@@ -10,3 +10,12 @@ foreach(source IN LISTS sources)
         target_link_libraries(${name} PRIVATE Psapi)
     endif()
 endforeach()
+
+# Diagnostic counters are absent from ordinary algorithms and timed drivers.
+add_executable(queue_diagnostics queue_diagnostics.cpp)
+cs_configure_target(queue_diagnostics)
+target_compile_definitions(queue_diagnostics PRIVATE CS_QUEUE_DIAGNOSTICS=1)
+if(BUILD_TESTING)
+    add_test(NAME diagnostic_queue_counts COMMAND queue_diagnostics)
+    set_tests_properties(diagnostic_queue_counts PROPERTIES TIMEOUT ${CS_TEST_TIMEOUT} LABELS "diagnostic")
+endif()

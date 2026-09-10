@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-asan-r1/asan-uring/L06_process_ipc/L06_process_ipc_validation_bad"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.005137234999999407,
+  "stdout": "",
+  "stderr": "check failed: child witness proves spawned fixture\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "/tmp/c07-test-3tpio006",
+  "temporary_directory_removed": true,
+  "name": "L06_process_ipc_validation_bad_rejected",
+  "cwd": "/root/learncpp-c07/builds/final-linux-asan-r1/asan-uring/L06_process_ipc",
+  "expected_exit": 1,
+  "required_text": "child witness proves spawned fixture",
+  "verdict": "PASS"
+}

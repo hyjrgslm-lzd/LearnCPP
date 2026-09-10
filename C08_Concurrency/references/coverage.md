@@ -2,7 +2,19 @@
 
 本表用于核对课程知识是否实际落到正文、程序及检查。每个练习链接进入其 Part、完整解析及复现命令；Reference 目标为该 ID 加 `_reference`。实际构建与独立审查状态统一见[质量报告](quality-report.md)，本表不把“存在文件”当作“已经验证”。
 
-全局归属：本课主讲 C08，CPU 性能/SIMD/NUMA 作为 C13 的已有实验资产；通用编译、链接、ABI、CMake 和能力探测由 [C01](../../C01_Build_Compile_Link/README.md)主讲。C++29 线程属性与 HP batches 的新增索引和未实施状态见[版本索引](standards-and-implementations.md#c29-增量的独立状态)，没有改变以下50题的完成含义。
+全局归属：本课主讲 C08，CPU 性能/SIMD/NUMA 作为 C13 的已有实验资产；通用编译、链接、ABI、CMake 和能力探测由 [C01](../../C01_Build_Compile_Link/README.md)主讲。C++29 线程属性与 HP batches 的规范状态见[版本索引](standards-and-implementations.md#c29-增量的独立状态)，新增材料和本轮复验见下表及[本轮质量报告](revision-quality-report-20260910.md)。以下原50题的观察/实现分类保持其原有含义。
+
+## 本轮补充与反向检查
+
+| 下游能力 | 必要先修与主讲 | 独立入口与检查边界 |
+|---|---|---|
+| 将C05同步日志接入有界异步运行时 | C05第20章、本课05/06章→[异步日志](../topics/logging/01-async-spdlog.md) | [U01](../exercises/U01_async_logging/README.md)：三溢出策略、拥有型消息、flush、关停；服务观测归C11 |
+| 创建具有属性的线程并正确取消收束 | 线程构造、对象借用、stop_token→[线程属性](../topics/frontier/01-thread-attributes.md) | [F01](../exercises/F01_thread_attributes/README.md)：标准主体与教学模型分别记录，不替代NUMA/亲和实测 |
+| 对多个保护资源进行批量管理 | 09内存模型、10发布/寿命、HP协议→[HP batches](../topics/frontier/02-hazard-pointer-batches.md) | [F02](../exercises/F02_hazard_pointer_batches/README.md)：资源状态/强保证与保护集成；不假定标准强制清场 |
+| 把教学/第三方回收与执行机制映射到标准 | HP/RCU专题、M2桥接→[原生设施](../topics/frontier/03-native-facilities.md) | [F03](../exercises/F03_native_facilities/README.md)：标准主体与最小能力门独立；完整sender设计归C10 |
+| 判断已有队列演进是否得到测量支持 | 01-03队列、12测量→[新增定位记录](../topics/performance/c08-revision-queue-evidence.md) | 真实计数、正确性、历史/本轮快照、正式样本分开；通用CPU性能主讲归C13 |
+
+下游C09/C10分别负责协程帧与sender完成契约；本课提供同步、发布、停止请求及资源收束前提，不能把某个stop token或教学回收域的规则直接移植到其他运行时。新增材料是否已审查通过以本轮报告为准，表中登记不构成通过声明。
 
 ## 1. 逐练习覆盖
 

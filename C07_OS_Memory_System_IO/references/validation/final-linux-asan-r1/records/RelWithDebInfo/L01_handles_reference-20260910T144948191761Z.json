@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-asan-r1/asan-uring/L01_handles/L01_handles_reference"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.014979664000001947,
+  "stdout": "L01 handle checks passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-ijkoy6n8",
+  "temporary_directory_removed": true,
+  "name": "L01_handles_reference",
+  "cwd": "/root/learncpp-c07/builds/final-linux-asan-r1/asan-uring/L01_handles",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

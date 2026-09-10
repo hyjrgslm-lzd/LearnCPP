@@ -1,0 +1,22 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/final-linux-asan-r1/asan-uring/P1_file_pipeline/P1_file_pipeline_validation_good",
+    "--backend",
+    "mapped"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.009842298000002359,
+  "stdout": "P1 backend seed=11400714794423700193\nP1 file pipeline mapped backend check passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-tlxoiesq",
+  "temporary_directory_removed": true,
+  "name": "P1_file_pipeline_validation_good_mapped",
+  "cwd": "/root/learncpp-c07/builds/final-linux-asan-r1/asan-uring/P1_file_pipeline",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

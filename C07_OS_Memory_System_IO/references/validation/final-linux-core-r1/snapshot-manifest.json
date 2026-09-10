@@ -1,0 +1,927 @@
+{
+  "verdict": "PASS",
+  "source_root": "/mnt/f/CPPTrain/LearnCPP",
+  "snapshot_root": "/root/learncpp-c07/snapshots/final-linux-core-r1",
+  "destination_filesystem": "ext4",
+  "ext4_verified": true,
+  "scope": "C07 plus C01/C02 public include/tools only; no C08, build output, symlinks, dependencies, or raw validation trees copied",
+  "files": [
+    {
+      "path": "C01_Build_Compile_Link/exercises/include/check.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C01_Build_Compile_Link/exercises/include/check.hpp",
+      "source_sha256": "716138e42081aee359e17929c31ee156ecffd1d3b596e35107cfb08ff16c5f38",
+      "snapshot_sha256": "716138e42081aee359e17929c31ee156ecffd1d3b596e35107cfb08ff16c5f38",
+      "bytes": 416
+    },
+    {
+      "path": "C01_Build_Compile_Link/exercises/tools/process_runner.py",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C01_Build_Compile_Link/exercises/tools/process_runner.py",
+      "source_sha256": "77f7aa8a86ff5fa4fdb933c8bb9929d637748a1aa00fb7afb3dac941e47d936b",
+      "snapshot_sha256": "77f7aa8a86ff5fa4fdb933c8bb9929d637748a1aa00fb7afb3dac941e47d936b",
+      "bytes": 3559
+    },
+    {
+      "path": "C02_Objects_Lifetime_Ownership/exercises/tools/audit_student.py",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C02_Objects_Lifetime_Ownership/exercises/tools/audit_student.py",
+      "source_sha256": "0fa0eaad51f0f47c277db6ec8b2a5823950f512eafaabe36841ab1ba56ea98a0",
+      "snapshot_sha256": "0fa0eaad51f0f47c277db6ec8b2a5823950f512eafaabe36841ab1ba56ea98a0",
+      "bytes": 7815
+    },
+    {
+      "path": "C02_Objects_Lifetime_Ownership/exercises/tools/record_process.py",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C02_Objects_Lifetime_Ownership/exercises/tools/record_process.py",
+      "source_sha256": "8537ea16489d3193c7db6ea1635c14aea8adf8a5150994971009f475f91f098f",
+      "snapshot_sha256": "8537ea16489d3193c7db6ea1635c14aea8adf8a5150994971009f475f91f098f",
+      "bytes": 2637
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/README.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/README.md",
+      "source_sha256": "f7156dcf6b26b10631037db40ede10b5fc2dde9fddd219f3c1b8cce9e88cda2a",
+      "snapshot_sha256": "f7156dcf6b26b10631037db40ede10b5fc2dde9fddd219f3c1b8cce9e88cda2a",
+      "bytes": 3542
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/chapters/00-roadmap.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/chapters/00-roadmap.md",
+      "source_sha256": "a19e8a6befef1196bcac6a4f79d4af0e3fb5fb65401725d9a4e2458b1bd01c93",
+      "snapshot_sha256": "a19e8a6befef1196bcac6a4f79d4af0e3fb5fb65401725d9a4e2458b1bd01c93",
+      "bytes": 5683
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/chapters/01-system-model.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/chapters/01-system-model.md",
+      "source_sha256": "976cebc455ea6beb2e3e2e0f9d2fad4047503b3ff5ea8f970038a48675e7c12b",
+      "snapshot_sha256": "976cebc455ea6beb2e3e2e0f9d2fad4047503b3ff5ea8f970038a48675e7c12b",
+      "bytes": 8229
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/chapters/02-handles-errors.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/chapters/02-handles-errors.md",
+      "source_sha256": "9eaf11c3baa5a6d0e299e68db69c9c9e9c3d454130f402b156abb19898ad1753",
+      "snapshot_sha256": "9eaf11c3baa5a6d0e299e68db69c9c9e9c3d454130f402b156abb19898ad1753",
+      "bytes": 4999
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/chapters/03-synchronous-files.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/chapters/03-synchronous-files.md",
+      "source_sha256": "b9a6c7cd27c445c0195e55bd9551636ca118b9c7ae2081d37b7034fc36c81f1d",
+      "snapshot_sha256": "b9a6c7cd27c445c0195e55bd9551636ca118b9c7ae2081d37b7034fc36c81f1d",
+      "bytes": 5534
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/chapters/04-virtual-memory.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/chapters/04-virtual-memory.md",
+      "source_sha256": "b67e7fa0c02ae8f7338f9bed85c9614fad0bc66f8a0f7a07505ca83320ed61e7",
+      "snapshot_sha256": "b67e7fa0c02ae8f7338f9bed85c9614fad0bc66f8a0f7a07505ca83320ed61e7",
+      "bytes": 1907
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/chapters/05-file-mapping.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/chapters/05-file-mapping.md",
+      "source_sha256": "0e290ba7925a27f689cc52fad6d6e84a38ffd1309f6faca792dec1dd4a567931",
+      "snapshot_sha256": "0e290ba7925a27f689cc52fad6d6e84a38ffd1309f6faca792dec1dd4a567931",
+      "bytes": 1613
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/chapters/06-allocators.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/chapters/06-allocators.md",
+      "source_sha256": "9f1653d7c8c650f40e7aac48205433a966360d19708a88da2e6a206ef02132ea",
+      "snapshot_sha256": "9f1653d7c8c650f40e7aac48205433a966360d19708a88da2e6a206ef02132ea",
+      "bytes": 1205
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/chapters/07-pmr.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/chapters/07-pmr.md",
+      "source_sha256": "c1efef31e88025c5a029621a08896b63e88bcb91b707a5ed9a0ef5cff21e04b3",
+      "snapshot_sha256": "c1efef31e88025c5a029621a08896b63e88bcb91b707a5ed9a0ef5cff21e04b3",
+      "bytes": 1633
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/chapters/08-memory-pools.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/chapters/08-memory-pools.md",
+      "source_sha256": "bc1d7ab41d8c169c630287cdd2f0923deaaef7fad7ccd236460548a94efaf833",
+      "snapshot_sha256": "bc1d7ab41d8c169c630287cdd2f0923deaaef7fad7ccd236460548a94efaf833",
+      "bytes": 1853
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/chapters/09-processes.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/chapters/09-processes.md",
+      "source_sha256": "de19312cd1a96a65e794619a4dc8bd6957474f230a372cf29c543307072f4a47",
+      "snapshot_sha256": "de19312cd1a96a65e794619a4dc8bd6957474f230a372cf29c543307072f4a47",
+      "bytes": 4817
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/chapters/10-ipc.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/chapters/10-ipc.md",
+      "source_sha256": "f75dabf981115d622f86c8596262d212c73799f3b0a14dcf22f75cabe9e22762",
+      "snapshot_sha256": "f75dabf981115d622f86c8596262d212c73799f3b0a14dcf22f75cabe9e22762",
+      "bytes": 5758
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/chapters/11-readiness.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/chapters/11-readiness.md",
+      "source_sha256": "4fa1e7b8773127d25e5778dba7d6053a8e1b2348368c176a9dfe3b4178908067",
+      "snapshot_sha256": "4fa1e7b8773127d25e5778dba7d6053a8e1b2348368c176a9dfe3b4178908067",
+      "bytes": 9395
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/chapters/12-windows-iocp.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/chapters/12-windows-iocp.md",
+      "source_sha256": "57a874c54295a2e1095b247f8bc6261685d2d5309e1c61d48978560008130fb1",
+      "snapshot_sha256": "57a874c54295a2e1095b247f8bc6261685d2d5309e1c61d48978560008130fb1",
+      "bytes": 4261
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/chapters/13-linux-io-uring.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/chapters/13-linux-io-uring.md",
+      "source_sha256": "ba2a4c233fd5b97eeb7ae7a1b26e483cf547272a1e0bbecfbc1bfc8bfee7e055",
+      "snapshot_sha256": "ba2a4c233fd5b97eeb7ae7a1b26e483cf547272a1e0bbecfbc1bfc8bfee7e055",
+      "bytes": 3646
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/chapters/14-cancellation-shutdown.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/chapters/14-cancellation-shutdown.md",
+      "source_sha256": "b1a9bd93755143f6c56ece093c99878501cfdd1ef282a94aa4e5a197b5ada63f",
+      "snapshot_sha256": "b1a9bd93755143f6c56ece093c99878501cfdd1ef282a94aa4e5a197b5ada63f",
+      "bytes": 3898
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/chapters/15-dynamic-loading.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/chapters/15-dynamic-loading.md",
+      "source_sha256": "99ee8e22cff4742802c1126c85d48df08ea06cfae4dbaa7cf45d24a6d2723137",
+      "snapshot_sha256": "99ee8e22cff4742802c1126c85d48df08ea06cfae4dbaa7cf45d24a6d2723137",
+      "bytes": 4207
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/chapters/16-file-pipeline.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/chapters/16-file-pipeline.md",
+      "source_sha256": "9ee795ea0b2d6bbf9e8e6bf229cc95508d53aa4bf04106d654042a28778685e1",
+      "snapshot_sha256": "9ee795ea0b2d6bbf9e8e6bf229cc95508d53aa4bf04106d654042a28778685e1",
+      "bytes": 4015
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/chapters/17-source-reading.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/chapters/17-source-reading.md",
+      "source_sha256": "811273b7187d4e02350cad0916b9b6b17fecf13397fdbc297cd9ad35322167c0",
+      "snapshot_sha256": "811273b7187d4e02350cad0916b9b6b17fecf13397fdbc297cd9ad35322167c0",
+      "bytes": 10371
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/chapters/18-measurement.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/chapters/18-measurement.md",
+      "source_sha256": "ed67a77e395cabe70c80091e610c4ea3476c0717d0ac7be86b778bb94f1642c5",
+      "snapshot_sha256": "ed67a77e395cabe70c80091e610c4ea3476c0717d0ac7be86b778bb94f1642c5",
+      "bytes": 3843
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/B01_costs/CMakeLists.txt",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/B01_costs/CMakeLists.txt",
+      "source_sha256": "8eddfb2ccb622343b8893e5283afdadb2584abf7b8963bd745f95f3e27fe8429",
+      "snapshot_sha256": "8eddfb2ccb622343b8893e5283afdadb2584abf7b8963bd745f95f3e27fe8429",
+      "bytes": 892
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/B01_costs/README.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/B01_costs/README.md",
+      "source_sha256": "a2c62e28d225e946bee1df9b0636146ffd10542c7b235c8800d6ec54ea04ce5a",
+      "snapshot_sha256": "a2c62e28d225e946bee1df9b0636146ffd10542c7b235c8800d6ec54ea04ce5a",
+      "bytes": 4421
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/B01_costs/benchmark.cpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/B01_costs/benchmark.cpp",
+      "source_sha256": "2b52d38ad13889962d6ee6d8a95a6d5a599a9db030841fc7dfffad3d4ae6bdc2",
+      "snapshot_sha256": "2b52d38ad13889962d6ee6d8a95a6d5a599a9db030841fc7dfffad3d4ae6bdc2",
+      "bytes": 11997
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/B01_costs/source_observation.cpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/B01_costs/source_observation.cpp",
+      "source_sha256": "9c789130ca703c1c50bdbdbac1cdaaabc61c7cf3ea7da515016bbeae67e8857c",
+      "snapshot_sha256": "9c789130ca703c1c50bdbdbac1cdaaabc61c7cf3ea7da515016bbeae67e8857c",
+      "bytes": 1389
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/B01_costs/tools/sample_benchmarks.py",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/B01_costs/tools/sample_benchmarks.py",
+      "source_sha256": "96195a90f05eb59cdd04ec9993ddcd62f4dcd5fba5dc117bd70c84648b924ab8",
+      "snapshot_sha256": "96195a90f05eb59cdd04ec9993ddcd62f4dcd5fba5dc117bd70c84648b924ab8",
+      "bytes": 23176
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/BUILD_GUIDE.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/BUILD_GUIDE.md",
+      "source_sha256": "89806ec18d3be60deb12f3ee78f405d4afa27da44338e7b8370776cddcc6d3fc",
+      "snapshot_sha256": "89806ec18d3be60deb12f3ee78f405d4afa27da44338e7b8370776cddcc6d3fc",
+      "bytes": 6304
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/CMakeLists.txt",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/CMakeLists.txt",
+      "source_sha256": "5a129c65fac7cc441bb55a2bc4fda94e5c07b20cab6934334c20998c67810dcd",
+      "snapshot_sha256": "5a129c65fac7cc441bb55a2bc4fda94e5c07b20cab6934334c20998c67810dcd",
+      "bytes": 909
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/CMakePresets.json",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/CMakePresets.json",
+      "source_sha256": "4ced8fddc6f37ae4eb0d9d6d6c62f07c7c4bf71386d75c6713842d9be40acc30",
+      "snapshot_sha256": "4ced8fddc6f37ae4eb0d9d6d6c62f07c7c4bf71386d75c6713842d9be40acc30",
+      "bytes": 7642
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L01_handles/CMakeLists.txt",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L01_handles/CMakeLists.txt",
+      "source_sha256": "f15fde61fdad4f0108fd23fa7fba75989ffed7571b9aa1494b10ac13eaec7c22",
+      "snapshot_sha256": "f15fde61fdad4f0108fd23fa7fba75989ffed7571b9aa1494b10ac13eaec7c22",
+      "bytes": 399
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L01_handles/README.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L01_handles/README.md",
+      "source_sha256": "b1d6b7fdc84318b34dbcea0bdde330ed142fc0a6bbb4635ab1110147914ff452",
+      "snapshot_sha256": "b1d6b7fdc84318b34dbcea0bdde330ed142fc0a6bbb4635ab1110147914ff452",
+      "bytes": 4355
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L01_handles/checks/handles_checks.cpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L01_handles/checks/handles_checks.cpp",
+      "source_sha256": "a6b3098541486be23ec39b96d161eaf62cd49da856eaa1603010715dfdf84984",
+      "snapshot_sha256": "a6b3098541486be23ec39b96d161eaf62cd49da856eaa1603010715dfdf84984",
+      "bytes": 1686
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L01_handles/checks/ownership_observation.cpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L01_handles/checks/ownership_observation.cpp",
+      "source_sha256": "286c244752c61894d39604a2392f9e4a846e41dc3afcc86f13f9cd8828c5845a",
+      "snapshot_sha256": "286c244752c61894d39604a2392f9e4a846e41dc3afcc86f13f9cd8828c5845a",
+      "bytes": 1216
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L01_handles/checks/thread_process_observation.cpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L01_handles/checks/thread_process_observation.cpp",
+      "source_sha256": "7a57fe1f56c05aef02254e819822a7b08608507232968f7321e86d1362d9b184",
+      "snapshot_sha256": "7a57fe1f56c05aef02254e819822a7b08608507232968f7321e86d1362d9b184",
+      "bytes": 2607
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L01_handles/src/reference/handles.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L01_handles/src/reference/handles.hpp",
+      "source_sha256": "74785e0ca210415f0ce2c89a5bad92c405fb8b458831a800341822f54e74c63b",
+      "snapshot_sha256": "74785e0ca210415f0ce2c89a5bad92c405fb8b458831a800341822f54e74c63b",
+      "bytes": 579
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L01_handles/src/student/handles.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L01_handles/src/student/handles.hpp",
+      "source_sha256": "dae7f95d61518a7efe6c89eebf6e44df98d814aad46c234575a5bbe1c07c058e",
+      "snapshot_sha256": "dae7f95d61518a7efe6c89eebf6e44df98d814aad46c234575a5bbe1c07c058e",
+      "bytes": 361
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L01_handles/validation/bad/handles.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L01_handles/validation/bad/handles.hpp",
+      "source_sha256": "48a606cc9d96469edf29ba46b843d4f929d5b5ab321ccac3c015ff91dbad53a9",
+      "snapshot_sha256": "48a606cc9d96469edf29ba46b843d4f929d5b5ab321ccac3c015ff91dbad53a9",
+      "bytes": 565
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L01_handles/validation/good/handles.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L01_handles/validation/good/handles.hpp",
+      "source_sha256": "8512a0760ba78cdc2628507b3d22c88e6798b9923b792c791c422687f426c5b2",
+      "snapshot_sha256": "8512a0760ba78cdc2628507b3d22c88e6798b9923b792c791c422687f426c5b2",
+      "bytes": 704
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L02_sync_io/CMakeLists.txt",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L02_sync_io/CMakeLists.txt",
+      "source_sha256": "a010c2aeea795f92832b09c91d9b8ffdf9ed93d646e379274da37c18de88059f",
+      "snapshot_sha256": "a010c2aeea795f92832b09c91d9b8ffdf9ed93d646e379274da37c18de88059f",
+      "bytes": 238
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L02_sync_io/README.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L02_sync_io/README.md",
+      "source_sha256": "06600f144b78965ee7ff0c1372a45f52003c9d2936e8531e764e43746467aae2",
+      "snapshot_sha256": "06600f144b78965ee7ff0c1372a45f52003c9d2936e8531e764e43746467aae2",
+      "bytes": 3336
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L02_sync_io/checks/sync_io_checks.cpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L02_sync_io/checks/sync_io_checks.cpp",
+      "source_sha256": "6926d086886bc4bd27286983ed922bcf56ca874df562d1c8f1578e1bbed59a4a",
+      "snapshot_sha256": "6926d086886bc4bd27286983ed922bcf56ca874df562d1c8f1578e1bbed59a4a",
+      "bytes": 2251
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L02_sync_io/src/reference/sync_io.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L02_sync_io/src/reference/sync_io.hpp",
+      "source_sha256": "5d7d279a461158154bbe53d077705566e275ebbc7bf262437c2cc34f124c67b8",
+      "snapshot_sha256": "5d7d279a461158154bbe53d077705566e275ebbc7bf262437c2cc34f124c67b8",
+      "bytes": 1156
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L02_sync_io/src/student/sync_io.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L02_sync_io/src/student/sync_io.hpp",
+      "source_sha256": "67f24e08d7897f90fa087b2e3ef77e0ee104c1d84ee8c48a7f3e1f433b6a02c0",
+      "snapshot_sha256": "67f24e08d7897f90fa087b2e3ef77e0ee104c1d84ee8c48a7f3e1f433b6a02c0",
+      "bytes": 372
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L02_sync_io/validation/bad/sync_io.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L02_sync_io/validation/bad/sync_io.hpp",
+      "source_sha256": "3db492427c3d7a4956918326d60f23ed5247d4416ec79fa6cb1b8d85c20e47ac",
+      "snapshot_sha256": "3db492427c3d7a4956918326d60f23ed5247d4416ec79fa6cb1b8d85c20e47ac",
+      "bytes": 716
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L02_sync_io/validation/good/sync_io.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L02_sync_io/validation/good/sync_io.hpp",
+      "source_sha256": "208b1c647f977b21bf0c534a8c82c6bec88bb0f110a5f9e15a684d5e1a4eaabd",
+      "snapshot_sha256": "208b1c647f977b21bf0c534a8c82c6bec88bb0f110a5f9e15a684d5e1a4eaabd",
+      "bytes": 1694
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L03_virtual_memory/CMakeLists.txt",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L03_virtual_memory/CMakeLists.txt",
+      "source_sha256": "8dc9c6e8bff99f5f1a85da8cc0979b25e0c7df81fffe9ce8164c7aefa701ae14",
+      "snapshot_sha256": "8dc9c6e8bff99f5f1a85da8cc0979b25e0c7df81fffe9ce8164c7aefa701ae14",
+      "bytes": 285
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L03_virtual_memory/README.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L03_virtual_memory/README.md",
+      "source_sha256": "8abad2481b1137457cf9156e65bc5ec176d0d24d77f19bf81e8d134c7c7e2757",
+      "snapshot_sha256": "8abad2481b1137457cf9156e65bc5ec176d0d24d77f19bf81e8d134c7c7e2757",
+      "bytes": 1638
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L03_virtual_memory/checks/virtual_memory_checks.cpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L03_virtual_memory/checks/virtual_memory_checks.cpp",
+      "source_sha256": "25457d8e8bccbdb55a12e659af45ad6ebb12c7e3b6e97dd215b5e8de2236a002",
+      "snapshot_sha256": "25457d8e8bccbdb55a12e659af45ad6ebb12c7e3b6e97dd215b5e8de2236a002",
+      "bytes": 3361
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L03_virtual_memory/src/reference/virtual_memory_lab.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L03_virtual_memory/src/reference/virtual_memory_lab.hpp",
+      "source_sha256": "65119c938794c1fb209c009d29d7dc01973f30880930eeec18774770c1a9e371",
+      "snapshot_sha256": "65119c938794c1fb209c009d29d7dc01973f30880930eeec18774770c1a9e371",
+      "bytes": 928
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L03_virtual_memory/src/student/virtual_memory_lab.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L03_virtual_memory/src/student/virtual_memory_lab.hpp",
+      "source_sha256": "bc8a86b225e9ec8356e81b42fc513cd3379faf843d9c995c0f4b9afbe85d564f",
+      "snapshot_sha256": "bc8a86b225e9ec8356e81b42fc513cd3379faf843d9c995c0f4b9afbe85d564f",
+      "bytes": 407
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L03_virtual_memory/validation/bad/virtual_memory_lab.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L03_virtual_memory/validation/bad/virtual_memory_lab.hpp",
+      "source_sha256": "39c1b3faff3646745113ddfbe8bee0f17901b71bc800e23bf7921b40c11a0ca6",
+      "snapshot_sha256": "39c1b3faff3646745113ddfbe8bee0f17901b71bc800e23bf7921b40c11a0ca6",
+      "bytes": 801
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L03_virtual_memory/validation/good/virtual_memory_lab.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L03_virtual_memory/validation/good/virtual_memory_lab.hpp",
+      "source_sha256": "6b0a42c0705af497bb35e96a8de9bec121ac33cb5066e4819169575ea6b93abf",
+      "snapshot_sha256": "6b0a42c0705af497bb35e96a8de9bec121ac33cb5066e4819169575ea6b93abf",
+      "bytes": 849
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L04_mapping/CMakeLists.txt",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L04_mapping/CMakeLists.txt",
+      "source_sha256": "344fe8269c63b36fa69f412d7185174565ab038d6e622a427ce33b719b21131e",
+      "snapshot_sha256": "344fe8269c63b36fa69f412d7185174565ab038d6e622a427ce33b719b21131e",
+      "bytes": 263
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L04_mapping/README.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L04_mapping/README.md",
+      "source_sha256": "b3ad2db846d63420f832019006116ff6d0400888c923c7917bf398f195a8f272",
+      "snapshot_sha256": "b3ad2db846d63420f832019006116ff6d0400888c923c7917bf398f195a8f272",
+      "bytes": 1683
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L04_mapping/checks/mapping_checks.cpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L04_mapping/checks/mapping_checks.cpp",
+      "source_sha256": "33c83113481e5fbc4c622f9f71b64e6691d757faec060d8a8a6dd737137a1073",
+      "snapshot_sha256": "33c83113481e5fbc4c622f9f71b64e6691d757faec060d8a8a6dd737137a1073",
+      "bytes": 3596
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L04_mapping/src/reference/mapping_lab.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L04_mapping/src/reference/mapping_lab.hpp",
+      "source_sha256": "0c714a820df94b6712e4dabf901d4ac93041c9fbe1df063b3e10fd1751fe5ac4",
+      "snapshot_sha256": "0c714a820df94b6712e4dabf901d4ac93041c9fbe1df063b3e10fd1751fe5ac4",
+      "bytes": 3595
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L04_mapping/src/student/mapping_lab.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L04_mapping/src/student/mapping_lab.hpp",
+      "source_sha256": "07bfb1f8e2435c9b05351b1d787b107b04e69502493e853aa34036ecf3b3d0e0",
+      "snapshot_sha256": "07bfb1f8e2435c9b05351b1d787b107b04e69502493e853aa34036ecf3b3d0e0",
+      "bytes": 1127
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L04_mapping/validation/bad/mapping_lab.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L04_mapping/validation/bad/mapping_lab.hpp",
+      "source_sha256": "e162ef9c7a75ca42092318e2e48de04a152043093c3def68b4c882b01563d461",
+      "snapshot_sha256": "e162ef9c7a75ca42092318e2e48de04a152043093c3def68b4c882b01563d461",
+      "bytes": 1023
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L04_mapping/validation/good/mapping_lab.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L04_mapping/validation/good/mapping_lab.hpp",
+      "source_sha256": "628e66e0ac3f48bf78c1b1475f4594dee947dceb255c4f43f2e64af29d31fe4a",
+      "snapshot_sha256": "628e66e0ac3f48bf78c1b1475f4594dee947dceb255c4f43f2e64af29d31fe4a",
+      "bytes": 3465
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L05_pmr/CMakeLists.txt",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L05_pmr/CMakeLists.txt",
+      "source_sha256": "aeb51680b0ead68beb54d835a49711b788498fa5981bd7743b5ad02a12d3ac0e",
+      "snapshot_sha256": "aeb51680b0ead68beb54d835a49711b788498fa5981bd7743b5ad02a12d3ac0e",
+      "bytes": 237
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L05_pmr/README.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L05_pmr/README.md",
+      "source_sha256": "e61015586fe8ca3cf0960793dc024a5d0580418a6f7e1b275c5c1d46a8ed2f11",
+      "snapshot_sha256": "e61015586fe8ca3cf0960793dc024a5d0580418a6f7e1b275c5c1d46a8ed2f11",
+      "bytes": 2288
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L05_pmr/checks/pmr_checks.cpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L05_pmr/checks/pmr_checks.cpp",
+      "source_sha256": "52d540d543f661afc58fa4056bf8d460171abd2895cd6f1f4b780676911118bf",
+      "snapshot_sha256": "52d540d543f661afc58fa4056bf8d460171abd2895cd6f1f4b780676911118bf",
+      "bytes": 6059
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L05_pmr/src/reference/pmr_lab.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L05_pmr/src/reference/pmr_lab.hpp",
+      "source_sha256": "b3ae1fe025b380a6c141670a6b74d3fd48a94ea91bcc6c64f59db86b67c9d746",
+      "snapshot_sha256": "b3ae1fe025b380a6c141670a6b74d3fd48a94ea91bcc6c64f59db86b67c9d746",
+      "bytes": 6580
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L05_pmr/src/student/pmr_lab.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L05_pmr/src/student/pmr_lab.hpp",
+      "source_sha256": "757be915a9098d86dd0319879296af29cd20bd4e77a9725eb5e721b41e8f44f8",
+      "snapshot_sha256": "757be915a9098d86dd0319879296af29cd20bd4e77a9725eb5e721b41e8f44f8",
+      "bytes": 2705
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L05_pmr/validation/bad/pmr_lab.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L05_pmr/validation/bad/pmr_lab.hpp",
+      "source_sha256": "0659fc26df8d5dde795b1ea08ac52fd353a8dc39b2efc863cb4206443598d79e",
+      "snapshot_sha256": "0659fc26df8d5dde795b1ea08ac52fd353a8dc39b2efc863cb4206443598d79e",
+      "bytes": 4323
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L05_pmr/validation/good/pmr_lab.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L05_pmr/validation/good/pmr_lab.hpp",
+      "source_sha256": "07200ced8c574673f5e328ce798b33b1da9045f8a13cdd81874b6460bde582d4",
+      "snapshot_sha256": "07200ced8c574673f5e328ce798b33b1da9045f8a13cdd81874b6460bde582d4",
+      "bytes": 5932
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L06_process_ipc/CMakeLists.txt",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L06_process_ipc/CMakeLists.txt",
+      "source_sha256": "89f39d4616c916044be71608f250fb14f2606853dead1726e3845f546cc88239",
+      "snapshot_sha256": "89f39d4616c916044be71608f250fb14f2606853dead1726e3845f546cc88239",
+      "bytes": 351
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L06_process_ipc/README.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L06_process_ipc/README.md",
+      "source_sha256": "ec3380e47711186db603070a8beba674f20d436faa642191c15d4d3d6ad01839",
+      "snapshot_sha256": "ec3380e47711186db603070a8beba674f20d436faa642191c15d4d3d6ad01839",
+      "bytes": 2506
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L06_process_ipc/checks/file_locking.cpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L06_process_ipc/checks/file_locking.cpp",
+      "source_sha256": "31301fe5c4bc0a3b2e89b1e481ccbd1b6207da3af7bd9240ba3bbc5252ef04f0",
+      "snapshot_sha256": "31301fe5c4bc0a3b2e89b1e481ccbd1b6207da3af7bd9240ba3bbc5252ef04f0",
+      "bytes": 7711
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L06_process_ipc/checks/include/process_ipc_contract.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L06_process_ipc/checks/include/process_ipc_contract.hpp",
+      "source_sha256": "841301e4c67898470f6453f43632a868063c6ea3396c8232fed96aed0600a0ec",
+      "snapshot_sha256": "841301e4c67898470f6453f43632a868063c6ea3396c8232fed96aed0600a0ec",
+      "bytes": 2133
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L06_process_ipc/checks/process_ipc_checks.cpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L06_process_ipc/checks/process_ipc_checks.cpp",
+      "source_sha256": "db10b448b154221dffe1a2d28d0072b5486e8d567d3708d0caa9974192ce36e8",
+      "snapshot_sha256": "db10b448b154221dffe1a2d28d0072b5486e8d567d3708d0caa9974192ce36e8",
+      "bytes": 10145
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L06_process_ipc/src/reference/process_ipc.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L06_process_ipc/src/reference/process_ipc.hpp",
+      "source_sha256": "7e2d6ba0094db4b77a5bf66c845bfbde66699286446c5f35035713d1ad875283",
+      "snapshot_sha256": "7e2d6ba0094db4b77a5bf66c845bfbde66699286446c5f35035713d1ad875283",
+      "bytes": 12369
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L06_process_ipc/src/student/process_ipc.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L06_process_ipc/src/student/process_ipc.hpp",
+      "source_sha256": "da99bbd504ca435b42ca642d91195aff82a96a6791aa6039cb560a79bd509d24",
+      "snapshot_sha256": "da99bbd504ca435b42ca642d91195aff82a96a6791aa6039cb560a79bd509d24",
+      "bytes": 574
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L06_process_ipc/validation/bad/process_ipc.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L06_process_ipc/validation/bad/process_ipc.hpp",
+      "source_sha256": "d437193bae3c3601da0873543193157b0b6a32f7d40561c44eaad8fd07352bb3",
+      "snapshot_sha256": "d437193bae3c3601da0873543193157b0b6a32f7d40561c44eaad8fd07352bb3",
+      "bytes": 542
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L06_process_ipc/validation/good/process_ipc.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L06_process_ipc/validation/good/process_ipc.hpp",
+      "source_sha256": "7e2d6ba0094db4b77a5bf66c845bfbde66699286446c5f35035713d1ad875283",
+      "snapshot_sha256": "7e2d6ba0094db4b77a5bf66c845bfbde66699286446c5f35035713d1ad875283",
+      "bytes": 12369
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L07_readiness/CMakeLists.txt",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L07_readiness/CMakeLists.txt",
+      "source_sha256": "4aca7bb53a2450a77a1f14320ce6559ec06505acfa9cd6a74cb16e57d294b512",
+      "snapshot_sha256": "4aca7bb53a2450a77a1f14320ce6559ec06505acfa9cd6a74cb16e57d294b512",
+      "bytes": 1103
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L07_readiness/README.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L07_readiness/README.md",
+      "source_sha256": "eec89e6ad0d0e7832e4bc701b098f8d325799101d76100242db92bd9cd6cb596",
+      "snapshot_sha256": "eec89e6ad0d0e7832e4bc701b098f8d325799101d76100242db92bd9cd6cb596",
+      "bytes": 6729
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L07_readiness/checks/readiness_checks.cpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L07_readiness/checks/readiness_checks.cpp",
+      "source_sha256": "9a5dd2684243019d3bd121970b66a8ff5ffec448ea3f6a0c4d278ee3176910ea",
+      "snapshot_sha256": "9a5dd2684243019d3bd121970b66a8ff5ffec448ea3f6a0c4d278ee3176910ea",
+      "bytes": 16581
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L07_readiness/src/reference/readiness.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L07_readiness/src/reference/readiness.hpp",
+      "source_sha256": "bfaebc833d477be13d46ebda0caa7aa1022c1d8e5882f0f662da6a632f39d420",
+      "snapshot_sha256": "bfaebc833d477be13d46ebda0caa7aa1022c1d8e5882f0f662da6a632f39d420",
+      "bytes": 2035
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L07_readiness/src/student/readiness.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L07_readiness/src/student/readiness.hpp",
+      "source_sha256": "900bc85a775cee88e11c6831bb3a16036298cf224d4a2e038f033eea201afc2b",
+      "snapshot_sha256": "900bc85a775cee88e11c6831bb3a16036298cf224d4a2e038f033eea201afc2b",
+      "bytes": 606
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L07_readiness/validation/bad/readiness.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L07_readiness/validation/bad/readiness.hpp",
+      "source_sha256": "8577467804be67acd27524a294e96403370ac97bde323afab0c735297288b55e",
+      "snapshot_sha256": "8577467804be67acd27524a294e96403370ac97bde323afab0c735297288b55e",
+      "bytes": 1557
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L07_readiness/validation/good/readiness.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L07_readiness/validation/good/readiness.hpp",
+      "source_sha256": "90843dc7798e1401f77afbebbbc4901b8d287b8f7aff0f43b057439e52c63437",
+      "snapshot_sha256": "90843dc7798e1401f77afbebbbc4901b8d287b8f7aff0f43b057439e52c63437",
+      "bytes": 1754
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L07_readiness/validation/scripted_bad/readiness.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L07_readiness/validation/scripted_bad/readiness.hpp",
+      "source_sha256": "cc6747d6cf3d82b05a1c76710bcbcd4322ef50962d2f3adbd96145989b4fed19",
+      "snapshot_sha256": "cc6747d6cf3d82b05a1c76710bcbcd4322ef50962d2f3adbd96145989b4fed19",
+      "bytes": 2105
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L08_completion/CMakeLists.txt",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L08_completion/CMakeLists.txt",
+      "source_sha256": "9f3f0813fed60831685c561b20e7cd3644fe4e47842c971b167fb0f489d3afd4",
+      "snapshot_sha256": "9f3f0813fed60831685c561b20e7cd3644fe4e47842c971b167fb0f489d3afd4",
+      "bytes": 1469
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L08_completion/README.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L08_completion/README.md",
+      "source_sha256": "7f20954fd55b1d573d54f0519e957e4d8fc49377762775086c2ba65609d33bf6",
+      "snapshot_sha256": "7f20954fd55b1d573d54f0519e957e4d8fc49377762775086c2ba65609d33bf6",
+      "bytes": 5872
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L08_completion/checks/completion_checks.cpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L08_completion/checks/completion_checks.cpp",
+      "source_sha256": "ddb4de834aa4663ef63747d2e4d9bd45526420a4be7ac7021432dde70fd59ee3",
+      "snapshot_sha256": "ddb4de834aa4663ef63747d2e4d9bd45526420a4be7ac7021432dde70fd59ee3",
+      "bytes": 4383
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L08_completion/src/reference/completion.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L08_completion/src/reference/completion.hpp",
+      "source_sha256": "8a5897b52064049a2bf75ef0177e0379c648b0f00923c58d49650c9b310074d8",
+      "snapshot_sha256": "8a5897b52064049a2bf75ef0177e0379c648b0f00923c58d49650c9b310074d8",
+      "bytes": 4125
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L08_completion/src/student/completion.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L08_completion/src/student/completion.hpp",
+      "source_sha256": "8fbc81082c2a49a281bc5f977a1de695f90867c400a0bc048c4e2d7e0baf106d",
+      "snapshot_sha256": "8fbc81082c2a49a281bc5f977a1de695f90867c400a0bc048c4e2d7e0baf106d",
+      "bytes": 331
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L08_completion/validation/bad/completion.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L08_completion/validation/bad/completion.hpp",
+      "source_sha256": "20e3949785c044671ce6e842602ae0796db5dc8b72320f13010a877d6e1e69cf",
+      "snapshot_sha256": "20e3949785c044671ce6e842602ae0796db5dc8b72320f13010a877d6e1e69cf",
+      "bytes": 503
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L08_completion/validation/good/completion.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L08_completion/validation/good/completion.hpp",
+      "source_sha256": "1c084591d63f6c2db740bf2e4c78cc90a41c349c198f92b01c77e9a57acb5e68",
+      "snapshot_sha256": "1c084591d63f6c2db740bf2e4c78cc90a41c349c198f92b01c77e9a57acb5e68",
+      "bytes": 4057
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/CMakeLists.txt",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/CMakeLists.txt",
+      "source_sha256": "62cc0428056e7c183ab80e9fbfa81a937dd285a6466d05a21c35b23cee10d335",
+      "snapshot_sha256": "62cc0428056e7c183ab80e9fbfa81a937dd285a6466d05a21c35b23cee10d335",
+      "bytes": 927
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/README.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/README.md",
+      "source_sha256": "c2c7c8adbc2eea4fbc746699166e7af4990a46cb0b396fce9f94141fb9b2f8c3",
+      "snapshot_sha256": "c2c7c8adbc2eea4fbc746699166e7af4990a46cb0b396fce9f94141fb9b2f8c3",
+      "bytes": 1447
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/checks/dynamic_loading_checks.cpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/checks/dynamic_loading_checks.cpp",
+      "source_sha256": "e069ad3e35d05d0d2e4844fd92aa63c6d73d76afd06a5dd38464960e5e261feb",
+      "snapshot_sha256": "e069ad3e35d05d0d2e4844fd92aa63c6d73d76afd06a5dd38464960e5e261feb",
+      "bytes": 4013
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/checks/include/dynamic_loading_contract.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/checks/include/dynamic_loading_contract.hpp",
+      "source_sha256": "a817998bf886bf9224f2e08fde553e1669464f9be8863bc9aa8f42e360760dba",
+      "snapshot_sha256": "a817998bf886bf9224f2e08fde553e1669464f9be8863bc9aa8f42e360760dba",
+      "bytes": 525
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/checks/module.cpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/checks/module.cpp",
+      "source_sha256": "6a3774bc4b3667c2df253aabaed70b4f1d9357a88f5b64e4f8d94fd68a59ca2e",
+      "snapshot_sha256": "6a3774bc4b3667c2df253aabaed70b4f1d9357a88f5b64e4f8d94fd68a59ca2e",
+      "bytes": 665
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/src/reference/dynamic_loading.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/src/reference/dynamic_loading.hpp",
+      "source_sha256": "5f442e76be43679e44f30707295d4e2940f479307ccd838041b80c4eaf509058",
+      "snapshot_sha256": "5f442e76be43679e44f30707295d4e2940f479307ccd838041b80c4eaf509058",
+      "bytes": 2245
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/src/student/dynamic_loading.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/src/student/dynamic_loading.hpp",
+      "source_sha256": "2f93759882945e479c56e2b081c36ba78d0c614664f9759971ce09bccf620b3d",
+      "snapshot_sha256": "2f93759882945e479c56e2b081c36ba78d0c614664f9759971ce09bccf620b3d",
+      "bytes": 445
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/validation/bad/dynamic_loading.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/validation/bad/dynamic_loading.hpp",
+      "source_sha256": "1782e360c027298e2a3ed687f2db27e80f1a13f11f14d0e056ff5fac988edcbc",
+      "snapshot_sha256": "1782e360c027298e2a3ed687f2db27e80f1a13f11f14d0e056ff5fac988edcbc",
+      "bytes": 368
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/validation/good/dynamic_loading.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/validation/good/dynamic_loading.hpp",
+      "source_sha256": "5f442e76be43679e44f30707295d4e2940f479307ccd838041b80c4eaf509058",
+      "snapshot_sha256": "5f442e76be43679e44f30707295d4e2940f479307ccd838041b80c4eaf509058",
+      "bytes": 2245
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/P1_file_pipeline/CMakeLists.txt",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/P1_file_pipeline/CMakeLists.txt",
+      "source_sha256": "133e2068133da4a1d017687db8dc384fcbc3308b6c62a731721f56df54567f3e",
+      "snapshot_sha256": "133e2068133da4a1d017687db8dc384fcbc3308b6c62a731721f56df54567f3e",
+      "bytes": 2775
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/P1_file_pipeline/README.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/P1_file_pipeline/README.md",
+      "source_sha256": "9be2bb4db52cd32a32c200b9da6cb3129399adc440c84406a269fd2634beec27",
+      "snapshot_sha256": "9be2bb4db52cd32a32c200b9da6cb3129399adc440c84406a269fd2634beec27",
+      "bytes": 3334
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/P1_file_pipeline/checks/native_failure_checks.cpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/P1_file_pipeline/checks/native_failure_checks.cpp",
+      "source_sha256": "8a7aee3466dd0649441a41e5c5ad331cd27d0f35595d410f5d29440e1190f87a",
+      "snapshot_sha256": "8a7aee3466dd0649441a41e5c5ad331cd27d0f35595d410f5d29440e1190f87a",
+      "bytes": 2260
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/P1_file_pipeline/checks/pipeline_checks.cpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/P1_file_pipeline/checks/pipeline_checks.cpp",
+      "source_sha256": "b57b62562b3052ce4a358d7ffe18f164f92362a4d6bbc7ffb573f03de7b8ef38",
+      "snapshot_sha256": "b57b62562b3052ce4a358d7ffe18f164f92362a4d6bbc7ffb573f03de7b8ef38",
+      "bytes": 6413
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/P1_file_pipeline/checks/pipeline_demo.cpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/P1_file_pipeline/checks/pipeline_demo.cpp",
+      "source_sha256": "befe1df61415347643ff73b6d431d392f10a60905461dfff5ec92a7a6ae1bf68",
+      "snapshot_sha256": "befe1df61415347643ff73b6d431d392f10a60905461dfff5ec92a7a6ae1bf68",
+      "bytes": 3576
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/P1_file_pipeline/src/reference/pipeline.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/P1_file_pipeline/src/reference/pipeline.hpp",
+      "source_sha256": "98cf1afe67425302843becb79555d5a4bc0364741fbebae1205676e830c6f515",
+      "snapshot_sha256": "98cf1afe67425302843becb79555d5a4bc0364741fbebae1205676e830c6f515",
+      "bytes": 2333
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/P1_file_pipeline/src/student/pipeline.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/P1_file_pipeline/src/student/pipeline.hpp",
+      "source_sha256": "04ea0b49f2e9f1ebc5813b36ba444d70d0270c5f930a96a2df8d535005836883",
+      "snapshot_sha256": "04ea0b49f2e9f1ebc5813b36ba444d70d0270c5f930a96a2df8d535005836883",
+      "bytes": 373
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/P1_file_pipeline/validation/bad/pipeline.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/P1_file_pipeline/validation/bad/pipeline.hpp",
+      "source_sha256": "7029da8fb4c59a56d1fe12b9295f8b69b14ccde8bdd1de0e5602b0c52077c5f1",
+      "snapshot_sha256": "7029da8fb4c59a56d1fe12b9295f8b69b14ccde8bdd1de0e5602b0c52077c5f1",
+      "bytes": 839
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/P1_file_pipeline/validation/good/pipeline.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/P1_file_pipeline/validation/good/pipeline.hpp",
+      "source_sha256": "f8d9201fe3ee4a07a09457f83e8776771b526e7981583010ec98968ed7a05942",
+      "snapshot_sha256": "f8d9201fe3ee4a07a09457f83e8776771b526e7981583010ec98968ed7a05942",
+      "bytes": 2073
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/cmake/StudySetup.cmake",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/cmake/StudySetup.cmake",
+      "source_sha256": "b027fac5ce15d23efa72b5712d8180b1aede87631a12574eed92266ddd11d706",
+      "snapshot_sha256": "b027fac5ce15d23efa72b5712d8180b1aede87631a12574eed92266ddd11d706",
+      "bytes": 8162
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/include/c07/completion_io.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/include/c07/completion_io.hpp",
+      "source_sha256": "541b843587a9defb143c3561a0fa6c2b072f4fe9b107e7db10793d2f3b70a21c",
+      "snapshot_sha256": "541b843587a9defb143c3561a0fa6c2b072f4fe9b107e7db10793d2f3b70a21c",
+      "bytes": 17111
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/include/c07/file_pipeline_io.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/include/c07/file_pipeline_io.hpp",
+      "source_sha256": "bcb72a3e497d79645076684164642d5bb10e2f5e96e0e3b3bfa2a7998a97ca2c",
+      "snapshot_sha256": "bcb72a3e497d79645076684164642d5bb10e2f5e96e0e3b3bfa2a7998a97ca2c",
+      "bytes": 19413
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/include/c07/file_pipeline_types.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/include/c07/file_pipeline_types.hpp",
+      "source_sha256": "ea4548797e7f2be9568028ef5e7eba95bb2dfa804326909e842b87cd4efdde02",
+      "snapshot_sha256": "ea4548797e7f2be9568028ef5e7eba95bb2dfa804326909e842b87cd4efdde02",
+      "bytes": 1453
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/include/c07/memory.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/include/c07/memory.hpp",
+      "source_sha256": "f8c5b74e2dc4441cb61bc288254844867e141126b6e3b1c9ee0fd4ac4b37dfda",
+      "snapshot_sha256": "f8c5b74e2dc4441cb61bc288254844867e141126b6e3b1c9ee0fd4ac4b37dfda",
+      "bytes": 10840
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/include/c07/os.hpp",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/include/c07/os.hpp",
+      "source_sha256": "6ac255c83e34591ade3cf68754e475fff02cccac228949ba0666895062a34bb5",
+      "snapshot_sha256": "6ac255c83e34591ade3cf68754e475fff02cccac228949ba0666895062a34bb5",
+      "bytes": 6996
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/tools/README.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/tools/README.md",
+      "source_sha256": "2fdd3bae12f1e04f8b909c038e37e4c9a0f2ce422e5a5913790025fb7c4bbfb6",
+      "snapshot_sha256": "2fdd3bae12f1e04f8b909c038e37e4c9a0f2ce422e5a5913790025fb7c4bbfb6",
+      "bytes": 3032
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/tools/audit_delivery.py",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/tools/audit_delivery.py",
+      "source_sha256": "a3a34ad8cc232b571949c585e307fdec4a20e3023636192b9400123075f914bd",
+      "snapshot_sha256": "a3a34ad8cc232b571949c585e307fdec4a20e3023636192b9400123075f914bd",
+      "bytes": 8361
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/tools/check_runner.py",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/tools/check_runner.py",
+      "source_sha256": "c8606a9a0f08efbaa92dbc13c39306604707c8c3a8a4dd7cb419c5fde9922bdf",
+      "snapshot_sha256": "c8606a9a0f08efbaa92dbc13c39306604707c8c3a8a4dd7cb419c5fde9922bdf",
+      "bytes": 2334
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/tools/prepare_uring.sh",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/tools/prepare_uring.sh",
+      "source_sha256": "4f2ff7b1116c70b8d3f20423abe93111ff1c89fe7a27642988827d58720d0bfb",
+      "snapshot_sha256": "4f2ff7b1116c70b8d3f20423abe93111ff1c89fe7a27642988827d58720d0bfb",
+      "bytes": 1178
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/tools/record_environment.py",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/tools/record_environment.py",
+      "source_sha256": "3015c0ccf3158cf2d8e35a3cc5cb3fe195d0462bd00c213283c14d71365b0118",
+      "snapshot_sha256": "3015c0ccf3158cf2d8e35a3cc5cb3fe195d0462bd00c213283c14d71365b0118",
+      "bytes": 3247
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/tools/run_linux_matrix.sh",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/tools/run_linux_matrix.sh",
+      "source_sha256": "16c88abc98a419fb65694436c7e3adebca4719a06467da117d9c9c10ebe48c32",
+      "snapshot_sha256": "16c88abc98a419fb65694436c7e3adebca4719a06467da117d9c9c10ebe48c32",
+      "bytes": 3448
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/tools/run_test.py",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/tools/run_test.py",
+      "source_sha256": "8d52998f301dcdeecbb76c9a9c329330ed51ed62c49b2142001f8d55cafb22ce",
+      "snapshot_sha256": "8d52998f301dcdeecbb76c9a9c329330ed51ed62c49b2142001f8d55cafb22ce",
+      "bytes": 3552
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/tools/run_windows_matrix.ps1",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/tools/run_windows_matrix.ps1",
+      "source_sha256": "9c64e679c73fb371fc9abf4abde3dd3b38e3339229d4583ba42a367b9e3680f3",
+      "snapshot_sha256": "9c64e679c73fb371fc9abf4abde3dd3b38e3339229d4583ba42a367b9e3680f3",
+      "bytes": 3399
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/tools/snapshot_linux.py",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/tools/snapshot_linux.py",
+      "source_sha256": "d0bdca5345f62846e2ecddc2227197419ec1fb624e4e9735603eb3be4f52c41a",
+      "snapshot_sha256": "d0bdca5345f62846e2ecddc2227197419ec1fb624e4e9735603eb3be4f52c41a",
+      "bytes": 8299
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/exercises/tools/verify_students.py",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/tools/verify_students.py",
+      "source_sha256": "488f7df65b07598b419d7792d99e08e5091b00d11651d73bffde8a0d81404a7c",
+      "snapshot_sha256": "488f7df65b07598b419d7792d99e08e5091b00d11651d73bffde8a0d81404a7c",
+      "bytes": 8995
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/references/coverage.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/references/coverage.md",
+      "source_sha256": "ba877bdae24b1de4a3ef748043a20b69b135da335bcf72df9eb8632ea99c0f1b",
+      "snapshot_sha256": "ba877bdae24b1de4a3ef748043a20b69b135da335bcf72df9eb8632ea99c0f1b",
+      "bytes": 4471
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/references/implementation-spec.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/references/implementation-spec.md",
+      "source_sha256": "d290e6e0af1756a5b5c5b65905bc7cece7b787b3b545b1fa28a2adc0d94e7fcc",
+      "snapshot_sha256": "d290e6e0af1756a5b5c5b65905bc7cece7b787b3b545b1fa28a2adc0d94e7fcc",
+      "bytes": 6856
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/references/quality-report.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/references/quality-report.md",
+      "source_sha256": "0de2435f1f28f09a0072e83086474df2d50cfb141a7154c7619162658a4fc2f8",
+      "snapshot_sha256": "0de2435f1f28f09a0072e83086474df2d50cfb141a7154c7619162658a4fc2f8",
+      "bytes": 2805
+    },
+    {
+      "path": "C07_OS_Memory_System_IO/references/standards-and-implementations.md",
+      "source": "/mnt/f/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/references/standards-and-implementations.md",
+      "source_sha256": "65085fddaf7a29dd58370cfb1fd0e25124568603c6160646c22f574b2f97ce0a",
+      "snapshot_sha256": "65085fddaf7a29dd58370cfb1fd0e25124568603c6160646c22f574b2f97ce0a",
+      "bytes": 4455
+    }
+  ]
+}

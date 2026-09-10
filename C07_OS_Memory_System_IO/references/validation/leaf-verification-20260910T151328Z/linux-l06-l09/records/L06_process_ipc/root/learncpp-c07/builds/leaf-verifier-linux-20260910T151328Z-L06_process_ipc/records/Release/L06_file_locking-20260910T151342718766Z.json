@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/leaf-verifier-linux-20260910T151328Z-L06_process_ipc/L06_file_locking"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.023461688999987018,
+  "stdout": "Linux fcntl: child overlap refused, non-overlap allowed, retry after unlock allowed; pread/pwrite kept file offset\nL06 file locking observation passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-s6nptj8b",
+  "temporary_directory_removed": true,
+  "name": "L06_file_locking",
+  "cwd": "/root/learncpp-c07/builds/leaf-verifier-linux-20260910T151328Z-L06_process_ipc",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

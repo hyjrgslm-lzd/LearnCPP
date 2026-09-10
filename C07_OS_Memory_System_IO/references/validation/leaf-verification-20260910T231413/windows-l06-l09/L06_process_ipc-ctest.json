@@ -1,0 +1,25 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\build\\leaf-verifier-windows-20260910T231413-L06_process_ipc",
+    "-C",
+    "Release",
+    "--output-on-failure",
+    "--output-junit",
+    "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\references\\validation\\leaf-verification-20260910T231413\\windows-l06-l09\\L06_process_ipc-ctest.xml"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 5.75,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/build/leaf-verifier-windows-20260910T231413-L06_process_ipc\n    Start 1: L06_process_ipc_reference\n1/4 Test #1: L06_process_ipc_reference .................   Passed    2.33 sec\n    Start 2: L06_process_ipc_validation_good\n2/4 Test #2: L06_process_ipc_validation_good ...........   Passed    2.31 sec\n    Start 3: L06_process_ipc_validation_bad_rejected\n3/4 Test #3: L06_process_ipc_validation_bad_rejected ...   Passed    0.54 sec\n    Start 4: L06_file_locking\n4/4 Test #4: L06_file_locking ..........................   Passed    0.50 sec\n\n100% tests passed, 0 tests failed out of 4\n\nLabel Time Summary:\nfile_locking       =   0.50 sec*proc (1 test)\nnegative           =   0.54 sec*proc (1 test)\nobservation        =   0.50 sec*proc (1 test)\nreference          =   2.33 sec*proc (1 test)\nvalidation_good    =   2.31 sec*proc (1 test)\n\nTotal Test time (real) =   5.69 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

@@ -16,6 +16,45 @@
 
 namespace cs::queue_lab {
 
+#if defined(CS_QUEUE_DIAGNOSTICS) && !defined(CS_QUEUE_DIAGNOSTIC_SUPPORT_HPP)
+#define CS_QUEUE_DIAGNOSTIC_SUPPORT_HPP
+struct queue_diagnostic_counters {
+    std::atomic<std::size_t> mutex_acquisitions{0};
+    std::atomic<std::size_t> spsc_remote_loads{0};
+};
+
+struct queue_diagnostic_snapshot {
+    std::size_t mutex_acquisitions = 0;
+    std::size_t spsc_remote_loads = 0;
+};
+
+inline queue_diagnostic_counters queue_diagnostics;
+
+inline void reset_queue_diagnostics() noexcept {
+    queue_diagnostics.mutex_acquisitions.store(0, std::memory_order_relaxed);
+    queue_diagnostics.spsc_remote_loads.store(0, std::memory_order_relaxed);
+}
+
+inline queue_diagnostic_snapshot read_queue_diagnostics() noexcept {
+    return {
+        queue_diagnostics.mutex_acquisitions.load(std::memory_order_relaxed),
+        queue_diagnostics.spsc_remote_loads.load(std::memory_order_relaxed),
+    };
+}
+
+inline void note_mutex_acquired() noexcept {
+    queue_diagnostics.mutex_acquisitions.fetch_add(1, std::memory_order_relaxed);
+}
+
+inline void note_spsc_remote_load() noexcept {
+    queue_diagnostics.spsc_remote_loads.fetch_add(1, std::memory_order_relaxed);
+}
+#elif !defined(CS_QUEUE_DIAGNOSTIC_SUPPORT_HPP)
+#define CS_QUEUE_DIAGNOSTIC_SUPPORT_HPP
+inline void note_mutex_acquired() noexcept {}
+inline void note_spsc_remote_load() noexcept {}
+#endif
+
 // All versions: stop and join participants before destruction. Output objects
 // belong to the caller. No concurrent access to the same input/output object.
 template<class T>
@@ -29,6 +68,7 @@ public:
     // One critical section; returns the accepted prefix length, possibly zero.
     std::size_t push_batch(std::span<const T> values) {
         std::lock_guard lock(mutex_);
+        note_mutex_acquired();
         std::size_t n = 0;
         while (n < values.size() && size_ < data_.size()) {
             data_[(head_ + size_) % data_.size()] = values[n++];
@@ -38,6 +78,7 @@ public:
     }
     std::size_t pop_batch(std::span<T> values) {
         std::lock_guard lock(mutex_);
+        note_mutex_acquired();
         std::size_t n = 0;
         while (n < values.size() && size_ != 0) {
             // const container access also handles vector<bool>'s value proxy.
@@ -72,10 +113,14 @@ public:
         const auto next = advance(tail);
         if constexpr (Cached) {
             if (next == cached_head_) {
+                note_spsc_remote_load();
                 cached_head_ = head_.load(std::memory_order_acquire);
                 if (next == cached_head_) return false;
             }
-        } else if (next == head_.load(std::memory_order_acquire)) return false;
+        } else {
+            note_spsc_remote_load();
+            if (next == head_.load(std::memory_order_acquire)) return false;
+        }
         data_[tail] = value;
         tail_.store(next, std::memory_order_release);
         return true;
@@ -84,10 +129,14 @@ public:
         const auto head = head_.load(std::memory_order_relaxed);
         if constexpr (Cached) {
             if (head == cached_tail_) {
+                note_spsc_remote_load();
                 cached_tail_ = tail_.load(std::memory_order_acquire);
                 if (head == cached_tail_) return false;
             }
-        } else if (head == tail_.load(std::memory_order_acquire)) return false;
+        } else {
+            note_spsc_remote_load();
+            if (head == tail_.load(std::memory_order_acquire)) return false;
+        }
         value = std::as_const(data_[head]);
         head_.store(advance(head), std::memory_order_release);
         return true;
@@ -139,8 +188,9 @@ public:
     }
     // Test-only hook runs after reservation, before publication. A noexcept
     // callable is mandatory: abandoning an owned ticket would leave a hole.
-    template<class Hook = decltype([]() noexcept {})>
-    bool try_push(const T& value, Hook reserved = {}) noexcept {
+    bool try_push(const T& value) noexcept { return try_push(value, []() noexcept {}); }
+    template<class Hook>
+    bool try_push(const T& value, Hook reserved) noexcept {
         static_assert(std::is_nothrow_invocable_v<Hook>);
         Counter pos = enqueue_.load(std::memory_order_relaxed);
         cell* slot;

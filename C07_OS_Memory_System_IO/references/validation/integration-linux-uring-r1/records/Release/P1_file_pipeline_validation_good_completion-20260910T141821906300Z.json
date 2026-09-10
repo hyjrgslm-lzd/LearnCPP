@@ -1,0 +1,22 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/integration-linux-uring-r1/uring/P1_file_pipeline/P1_file_pipeline_validation_good",
+    "--backend",
+    "completion"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.00517252899999221,
+  "stdout": "P1 backend seed=11400714956655315213\nP1 file pipeline completion backend check passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-4og9zku4",
+  "temporary_directory_removed": true,
+  "name": "P1_file_pipeline_validation_good_completion",
+  "cwd": "/root/learncpp-c07/builds/integration-linux-uring-r1/uring/P1_file_pipeline",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

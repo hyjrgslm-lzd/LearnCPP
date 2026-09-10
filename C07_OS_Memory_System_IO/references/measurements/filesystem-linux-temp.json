@@ -1,0 +1,21 @@
+{
+  "command": [
+    "findmnt",
+    "-T",
+    "/tmp",
+    "-o",
+    "TARGET,SOURCE,FSTYPE,OPTIONS"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.004163492999992968,
+  "stdout": "TARGET SOURCE   FSTYPE OPTIONS\n/      /dev/sdd ext4   rw,relatime,discard,errors=remount-ro,data=ordered\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "/mnt/f/CPPTrain/LearnCPP",
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

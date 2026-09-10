@@ -1,0 +1,18 @@
+{
+  "command": [
+    "C07_OS_Memory_System_IO/exercises/build/b01-windows/Release/B01_source_observation.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.4059999999990396,
+  "stdout": "{\"observation\":\"LWG3120 initial buffer reset\",\"standard_expected_reset\":true,\"observed_reset\":false,\"fresh_scope_control\":true}\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

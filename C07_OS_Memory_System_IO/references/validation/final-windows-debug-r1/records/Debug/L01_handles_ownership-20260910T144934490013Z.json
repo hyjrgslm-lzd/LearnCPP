@@ -1,0 +1,20 @@
+{
+  "command": [
+    "F:/CPPTrain/LearnCPP/C07_OS_Memory_System_IO/exercises/build/final-windows-debug-r1/L01_handles/Debug/L01_handles_ownership.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.5159999999996217,
+  "stdout": "L01 ownership observation passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-x8zresi7",
+  "temporary_directory_removed": true,
+  "name": "L01_handles_ownership",
+  "cwd": "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\exercises\\build\\final-windows-debug-r1\\L01_handles",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

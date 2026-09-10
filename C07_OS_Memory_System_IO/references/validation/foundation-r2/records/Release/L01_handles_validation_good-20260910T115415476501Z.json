@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/foundation-r2/foundation/L01_handles/L01_handles_validation_good"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.001549835000005828,
+  "stdout": "L01 handle checks passed\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "name": "L01_handles_validation_good",
+  "cwd": "/root/learncpp-c07/builds/foundation-r2/foundation/L01_handles",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

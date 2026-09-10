@@ -1,0 +1,50 @@
+{
+  "case": {
+    "items": 4096,
+    "kind": "alloc",
+    "variant": "arena"
+  },
+  "case_id": "alloc-arena-4096",
+  "parse_error": "",
+  "parsed": {
+    "checksum": 8386560,
+    "cleanup_seconds": 9.688999999999998e-06,
+    "clock_period_den": 1000000000,
+    "clock_period_num": 1,
+    "clock_resolution_seconds": 1e-09,
+    "items": 4096,
+    "kind": "alloc",
+    "loop_seconds": 4.069e-06,
+    "observed_address_reuse": 0,
+    "peak_upstream_bytes": 262208,
+    "seconds": 5.8884e-05,
+    "setup_seconds": 4.5126e-05,
+    "upstream_allocations": 1,
+    "upstream_bytes": 262208,
+    "upstream_deallocations": 1,
+    "valid": true,
+    "variant": "arena"
+  },
+  "raw": {
+    "cleanup_error": "",
+    "command": [
+      "/root/learncpp-c07/builds/final-linux-release-r1/uring/B01_costs/B01_costs_benchmark",
+      "alloc",
+      "arena",
+      "4096"
+    ],
+    "error": "",
+    "exit_code": 0,
+    "process_seconds": 0.0008449470000000403,
+    "status": "PASS",
+    "stderr": "",
+    "stdout": "{\"kind\":\"alloc\",\"variant\":\"arena\",\"items\":4096,\"seconds\":5.8884000000000001e-05,\"setup_seconds\":4.5126000000000001e-05,\"loop_seconds\":4.0690000000000003e-06,\"cleanup_seconds\":9.6889999999999982e-06,\"upstream_allocations\":1,\"upstream_deallocations\":1,\"upstream_bytes\":262208,\"peak_upstream_bytes\":262208,\"observed_address_reuse\":0,\"checksum\":8386560,\"clock_resolution_seconds\":1.0000000000000001e-09,\"clock_period_num\":1,\"clock_period_den\":1000000000,\"valid\":true}\n",
+    "temporary_directory": "/tmp/c07-test-65cb_x14",
+    "temporary_directory_removed": true,
+    "timeout": false
+  },
+  "sample_id": "alloc-arena-4096-sample-4",
+  "seconds": 5.8884e-05,
+  "verdict": "VALID",
+  "warmup": false
+}

@@ -1,0 +1,76 @@
+{
+  "generated_at": "2026-09-10T16:28:33.2621202+08:00",
+  "cwd": "F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises",
+  "evidence": [
+    {
+      "name": "release-configure-enabled",
+      "command": "cmake -S . -B build/c08-logging-author -G Visual Studio 18 2026 -A x64 -DCONCURRENCY_STUDY_ENABLE_SPDLOG=ON -DCONCURRENCY_STUDY_BUILD_REFERENCE=ON",
+      "started_at": "2026-09-10T16:27:11.2171432+08:00",
+      "exit_code": 0,
+      "output": "-- Performing Test CS_HAS_PARALLEL_ALGORITHMS\r\n-- Performing Test CS_HAS_PARALLEL_ALGORITHMS - Success\r\n-- [study] CS_HAS_STD_SIMD compile/link probe: DISABLED\r\n-- [study] CS_HAS_STD_SENDERS compile/link probe: DISABLED\r\n-- [study] CS_HAS_STD_HAZARD_POINTER compile/link probe: DISABLED\r\n-- [study] CS_HAS_STD_RCU compile/link probe: DISABLED\r\n-- [study] CS_HAS_ATOMIC_MIN_MAX compile/link probe: DISABLED\r\n-- [study] CS_HAS_INPLACE_STOP_TOKEN compile/link probe: DISABLED\r\n-- [study] CS_HAS_STD_THREAD_ATTRIBUTES compile/link probe: DISABLED\r\n-- [study] CS_HAS_STD_HAZARD_POINTER_BATCH compile/link probe: DISABLED\r\n-- {fmt} version: 12.1.0\r\n-- Build type: \r\n-- Build spdlog: 1.17.0\r\n-- Build type: \r\n-- Configuring done (3.7s)\r\n-- Generating done (2.5s)\r\n-- Build files have been written to: F:/CPPTrain/LearnCPP/C08_Concurrency/exercises/build/c08-logging-author\r\n"
+    },
+    {
+      "name": "release-build-checked",
+      "command": "cmake --build build/c08-logging-author --config Release --target U01_async_logging_checked",
+      "started_at": "2026-09-10T16:27:17.5728828+08:00",
+      "exit_code": 0,
+      "output": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\r\n\r\n  Checking File Globs\r\n  fmt.vcxproj -> F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises\\build\\c08-logging-author\\_deps\\fmt-12.1.0-build\\Release\\fmt.lib\r\n  spdlog.vcxproj -> F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises\\build\\c08-logging-author\\_deps\\spdlog-1.17.0-build\\Release\\spdlog.lib\r\n  正在扫描源以查找模块依赖项...\r\n  U01_async_logging_bad_flush.vcxproj -> F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises\\build\\c08-logging-author\\U01_async_logging\\Release\\U01_async_logging_bad_flush.exe\r\n  正在扫描源以查找模块依赖项...\r\n  U01_async_logging_bad_overflow.vcxproj -> F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises\\build\\c08-logging-author\\U01_async_logging\\Release\\U01_async_logging_bad_overflow.exe\r\n  正在扫描源以查找模块依赖项...\r\n  U01_async_logging_good.vcxproj -> F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises\\build\\c08-logging-author\\U01_async_logging\\Release\\U01_async_logging_good.exe\r\n  正在扫描源以查找模块依赖项...\r\n  U01_async_logging_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises\\build\\c08-logging-author\\U01_async_logging\\Release\\U01_async_logging_reference.exe\r\n  1>\r\n"
+    },
+    {
+      "name": "release-ctest-u01",
+      "command": "ctest --test-dir build/c08-logging-author -C Release -R U01_async_logging --output-on-failure",
+      "started_at": "2026-09-10T16:27:18.8141027+08:00",
+      "exit_code": 0,
+      "output": "Test project F:/CPPTrain/LearnCPP/C08_Concurrency/exercises/build/c08-logging-author\r\n    Start 57: U01_async_logging_reference\r\n1/4 Test #57: U01_async_logging_reference ...............   Passed    0.13 sec\r\n    Start 58: U01_async_logging_good\r\n2/4 Test #58: U01_async_logging_good ....................   Passed    0.13 sec\r\n    Start 59: U01_async_logging_bad_overflow_rejected\r\n3/4 Test #59: U01_async_logging_bad_overflow_rejected ...   Passed    0.16 sec\r\n    Start 60: U01_async_logging_bad_flush_rejected\r\n4/4 Test #60: U01_async_logging_bad_flush_rejected ......   Passed    0.15 sec\r\n\r\n100% tests passed, 0 tests failed out of 4\r\n\r\nLabel Time Summary:\r\nnegative      =   0.31 sec*proc (2 tests)\r\nreference     =   0.13 sec*proc (1 test)\r\nvalidation    =   0.13 sec*proc (1 test)\r\n\r\nTotal Test time (real) =   0.63 sec\r\n"
+    },
+    {
+      "name": "starter-build",
+      "command": "cmake --build build/c08-logging-author --config Release --target U01_async_logging",
+      "started_at": "2026-09-10T16:27:19.5101762+08:00",
+      "exit_code": 0,
+      "output": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\r\n\r\n  Checking File Globs\r\n  fmt.vcxproj -> F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises\\build\\c08-logging-author\\_deps\\fmt-12.1.0-build\\Release\\fmt.lib\r\n  spdlog.vcxproj -> F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises\\build\\c08-logging-author\\_deps\\spdlog-1.17.0-build\\Release\\spdlog.lib\r\n  正在扫描源以查找模块依赖项...\r\n  U01_async_logging.vcxproj -> F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises\\build\\c08-logging-author\\U01_async_logging\\Release\\U01_async_logging.exe\r\n"
+    },
+    {
+      "name": "starter-initial-rejected",
+      "command": "build/c08-logging-author/U01_async_logging/Release/U01_async_logging.exe",
+      "started_at": "2026-09-10T16:27:20.5827308+08:00",
+      "exit_code": 1,
+      "output": "STARTER INCOMPLETE: U01 Part 1-4 未完成；未启动 async logger。\r\n"
+    },
+    {
+      "name": "default-off-configure",
+      "command": "cmake -S . -B build/c08-logging-default-off -G Visual Studio 18 2026 -A x64",
+      "started_at": "2026-09-10T16:27:20.6377148+08:00",
+      "exit_code": 0,
+      "output": "-- Performing Test CS_HAS_PARALLEL_ALGORITHMS\r\n-- Performing Test CS_HAS_PARALLEL_ALGORITHMS - Success\r\n-- [study] CS_HAS_STD_SIMD compile/link probe: DISABLED\r\n-- [study] CS_HAS_STD_SENDERS compile/link probe: DISABLED\r\n-- [study] CS_HAS_STD_HAZARD_POINTER compile/link probe: DISABLED\r\n-- [study] CS_HAS_STD_RCU compile/link probe: DISABLED\r\n-- [study] CS_HAS_ATOMIC_MIN_MAX compile/link probe: DISABLED\r\n-- [study] CS_HAS_INPLACE_STOP_TOKEN compile/link probe: DISABLED\r\n-- [study] CS_HAS_STD_THREAD_ATTRIBUTES compile/link probe: DISABLED\r\n-- [study] CS_HAS_STD_HAZARD_POINTER_BATCH compile/link probe: DISABLED\r\n-- U01_async_logging disabled; CONCURRENCY_STUDY_ENABLE_SPDLOG=OFF\r\n-- Configuring done (2.8s)\r\n-- Generating done (2.5s)\r\n-- Build files have been written to: F:/CPPTrain/LearnCPP/C08_Concurrency/exercises/build/c08-logging-default-off\r\n"
+    },
+    {
+      "name": "asan-configure-enabled",
+      "command": "cmake -S . -B build/c08-logging-asan -G Visual Studio 18 2026 -A x64 -DCMAKE_CONFIGURATION_TYPES=RelWithDebInfo -DCONCURRENCY_STUDY_ENABLE_SPDLOG=ON -DCONCURRENCY_STUDY_BUILD_REFERENCE=ON -DCONCURRENCY_STUDY_SANITIZER=address",
+      "started_at": "2026-09-10T16:27:26.061155+08:00",
+      "exit_code": 0,
+      "output": "-- Performing Test CS_HAS_PARALLEL_ALGORITHMS\r\n-- Performing Test CS_HAS_PARALLEL_ALGORITHMS - Success\r\n-- [study] CS_HAS_STD_SIMD compile/link probe: DISABLED\r\n-- [study] CS_HAS_STD_SENDERS compile/link probe: DISABLED\r\n-- [study] CS_HAS_STD_HAZARD_POINTER compile/link probe: DISABLED\r\n-- [study] CS_HAS_STD_RCU compile/link probe: DISABLED\r\n-- [study] CS_HAS_ATOMIC_MIN_MAX compile/link probe: DISABLED\r\n-- [study] CS_HAS_INPLACE_STOP_TOKEN compile/link probe: DISABLED\r\n-- [study] CS_HAS_STD_THREAD_ATTRIBUTES compile/link probe: DISABLED\r\n-- [study] CS_HAS_STD_HAZARD_POINTER_BATCH compile/link probe: DISABLED\r\n-- {fmt} version: 12.1.0\r\n-- Build type: \r\n-- Build spdlog: 1.17.0\r\n-- Build type: \r\n-- Configuring done (4.1s)\r\n-- Generating done (2.2s)\r\n-- Build files have been written to: F:/CPPTrain/LearnCPP/C08_Concurrency/exercises/build/c08-logging-asan\r\n"
+    },
+    {
+      "name": "asan-build-checked",
+      "command": "cmake --build build/c08-logging-asan --config RelWithDebInfo --target U01_async_logging_checked",
+      "started_at": "2026-09-10T16:27:32.5049189+08:00",
+      "exit_code": 0,
+      "output": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\r\n\r\n  Checking File Globs\r\n  1>Checking Build System\r\n  fmt.vcxproj -> F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises\\build\\c08-logging-asan\\_deps\\fmt-12.1.0-build\\RelWithDebInfo\\fmt.lib\r\n  spdlog.vcxproj -> F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises\\build\\c08-logging-asan\\_deps\\spdlog-1.17.0-build\\RelWithDebInfo\\spdlog.lib\r\n  正在扫描源以查找模块依赖项...\r\n  U01_async_logging_bad_flush.vcxproj -> F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises\\build\\c08-logging-asan\\U01_async_logging\\RelWithDebInfo\\U01_async_logging_bad_flush.exe\r\n  正在扫描源以查找模块依赖项...\r\n  U01_async_logging_bad_overflow.vcxproj -> F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises\\build\\c08-logging-asan\\U01_async_logging\\RelWithDebInfo\\U01_async_logging_bad_overflow.exe\r\n  正在扫描源以查找模块依赖项...\r\n  U01_async_logging_good.vcxproj -> F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises\\build\\c08-logging-asan\\U01_async_logging\\RelWithDebInfo\\U01_async_logging_good.exe\r\n  正在扫描源以查找模块依赖项...\r\n  U01_async_logging_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\C08_Concurrency\\exercises\\build\\c08-logging-asan\\U01_async_logging\\RelWithDebInfo\\U01_async_logging_reference.exe\r\n  1>\r\n"
+    },
+    {
+      "name": "asan-ctest-u01",
+      "command": "ctest --test-dir build/c08-logging-asan -C RelWithDebInfo -R U01_async_logging --output-on-failure",
+      "started_at": "2026-09-10T16:27:34.4115009+08:00",
+      "exit_code": 0,
+      "output": "Test project F:/CPPTrain/LearnCPP/C08_Concurrency/exercises/build/c08-logging-asan\r\n    Start 57: U01_async_logging_reference\r\n1/4 Test #57: U01_async_logging_reference ...............   Passed    0.15 sec\r\n    Start 58: U01_async_logging_good\r\n2/4 Test #58: U01_async_logging_good ....................   Passed    0.16 sec\r\n    Start 59: U01_async_logging_bad_overflow_rejected\r\n3/4 Test #59: U01_async_logging_bad_overflow_rejected ...   Passed    0.19 sec\r\n    Start 60: U01_async_logging_bad_flush_rejected\r\n4/4 Test #60: U01_async_logging_bad_flush_rejected ......   Passed    0.20 sec\r\n\r\n100% tests passed, 0 tests failed out of 4\r\n\r\nLabel Time Summary:\r\nnegative      =   0.38 sec*proc (2 tests)\r\nreference     =   0.15 sec*proc (1 test)\r\nvalidation    =   0.16 sec*proc (1 test)\r\n\r\nTotal Test time (real) =   0.74 sec\r\n"
+    },
+    {
+      "name": "materials-registration-links",
+      "command": "python tools/verify_materials.py --course ..",
+      "started_at": "2026-09-10T16:28:24.0494033+08:00",
+      "exit_code": 0,
+      "output": "documents=169 exercises=54 local_errors=0\r\nThis checks navigation and registration, not teaching quality, standard correctness, or test adequacy.\r\n"
+    }
+  ]
+}

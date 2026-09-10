@@ -1,0 +1,330 @@
+name=gcc-release-build
+start=2026-09-10T18:17:37+08:00
+timeout_seconds=1200
+command=cmake --build /root/learncpp-c08-builds/m1-r2-final-20260910-181517-b97f497d/gcc-release --parallel 4
+
+[0/2] Re-checking globbed directories...
+[1/252] Building CXX object A1_jthread_lifecycle/CMakeFiles/A1_jthread_lifecycle.dir/main.cpp.o
+[2/252] Building CXX object A1_jthread_lifecycle/CMakeFiles/A1_jthread_lifecycle_reference.dir/solution.cpp.o
+[3/252] Linking CXX executable A1_jthread_lifecycle/A1_jthread_lifecycle
+[4/252] Building CXX object A2_stop_token_cancellation/CMakeFiles/A2_stop_token_cancellation.dir/main.cpp.o
+[5/252] Linking CXX executable A1_jthread_lifecycle/A1_jthread_lifecycle_reference
+[6/252] Building CXX object A2_stop_token_cancellation/CMakeFiles/A2_stop_token_cancellation_reference.dir/solution.cpp.o
+[7/252] Building CXX object A3_thread_exception/CMakeFiles/A3_thread_exception.dir/main.cpp.o
+[8/252] Linking CXX executable A2_stop_token_cancellation/A2_stop_token_cancellation
+[9/252] Linking CXX executable A3_thread_exception/A3_thread_exception
+[10/252] Linking CXX executable A2_stop_token_cancellation/A2_stop_token_cancellation_reference
+[11/252] Building CXX object A3_thread_exception/CMakeFiles/A3_thread_exception_reference.dir/solution.cpp.o
+[12/252] Building CXX object B2_deadlock_scoped_lock/CMakeFiles/B2_deadlock_scoped_lock.dir/main.cpp.o
+[13/252] Linking CXX executable A3_thread_exception/A3_thread_exception_reference
+[14/252] Linking CXX executable B2_deadlock_scoped_lock/B2_deadlock_scoped_lock
+[15/252] Building CXX object B1_mutex_family/CMakeFiles/B1_mutex_family.dir/main.cpp.o
+[16/252] Building CXX object B3_call_once/CMakeFiles/B3_call_once.dir/main.cpp.o
+[17/252] Building CXX object B1_mutex_family/CMakeFiles/B1_mutex_family_reference.dir/solution.cpp.o
+[18/252] Linking CXX executable B1_mutex_family/B1_mutex_family
+[19/252] Building CXX object B2_deadlock_scoped_lock/CMakeFiles/B2_deadlock_scoped_lock_reference.dir/solution.cpp.o
+[20/252] Linking CXX executable B3_call_once/B3_call_once
+[21/252] Linking CXX executable B1_mutex_family/B1_mutex_family_reference
+[22/252] Linking CXX executable B2_deadlock_scoped_lock/B2_deadlock_scoped_lock_reference
+[23/252] Building CXX object B3_call_once/CMakeFiles/B3_call_once_reference.dir/solution.cpp.o
+[24/252] Building CXX object C2_bounded_queue_condvar/CMakeFiles/C2_bounded_queue_condvar.dir/main.cpp.o
+[25/252] Building CXX object C1_condvar_predicate/CMakeFiles/C1_condvar_predicate.dir/main.cpp.o
+[26/252] Linking CXX executable B3_call_once/B3_call_once_reference
+[27/252] Building CXX object C1_condvar_predicate/CMakeFiles/C1_condvar_predicate_reference.dir/solution.cpp.o
+[28/252] Linking CXX executable C2_bounded_queue_condvar/C2_bounded_queue_condvar
+[29/252] Linking CXX executable C1_condvar_predicate/C1_condvar_predicate
+[30/252] Linking CXX executable C1_condvar_predicate/C1_condvar_predicate_reference
+[31/252] Building CXX object C3_interruptible_wait/CMakeFiles/C3_interruptible_wait.dir/main.cpp.o
+[32/252] Building CXX object C3_interruptible_wait/CMakeFiles/C3_interruptible_wait_reference.dir/solution.cpp.o
+[33/252] Building CXX object Capstone1_thread_pool/CMakeFiles/Capstone1_thread_pool.dir/main.cpp.o
+[34/252] Linking CXX executable C3_interruptible_wait/C3_interruptible_wait
+[35/252] Building CXX object C2_bounded_queue_condvar/CMakeFiles/C2_bounded_queue_condvar_reference.dir/solution.cpp.o
+[36/252] Linking CXX executable C3_interruptible_wait/C3_interruptible_wait_reference
+[37/252] Linking CXX executable Capstone1_thread_pool/Capstone1_thread_pool
+[38/252] Linking CXX executable C2_bounded_queue_condvar/C2_bounded_queue_condvar_reference
+[39/252] Building CXX object Capstone2_lockfree_queue/CMakeFiles/Capstone2_lockfree_queue.dir/main.cpp.o
+[40/252] Building CXX object Capstone3_parallel_compute/CMakeFiles/Capstone3_parallel_compute.dir/main.cpp.o
+[41/252] Linking CXX executable Capstone2_lockfree_queue/Capstone2_lockfree_queue
+[42/252] Linking CXX executable Capstone3_parallel_compute/Capstone3_parallel_compute
+[43/252] Building CXX object D1_promise_future/CMakeFiles/D1_promise_future.dir/main.cpp.o
+[44/252] Building CXX object Capstone2_lockfree_queue/CMakeFiles/Capstone2_lockfree_queue_reference.dir/solution.cpp.o
+[45/252] Linking CXX executable D1_promise_future/D1_promise_future
+[46/252] Linking CXX executable Capstone2_lockfree_queue/Capstone2_lockfree_queue_reference
+[47/252] Building CXX object Capstone1_thread_pool/CMakeFiles/Capstone1_thread_pool_reference.dir/solution.cpp.o
+[48/252] Building CXX object D1_promise_future/CMakeFiles/D1_promise_future_reference.dir/solution.cpp.o
+[49/252] Building CXX object D2_async_policies/CMakeFiles/D2_async_policies.dir/main.cpp.o
+[50/252] Linking CXX executable Capstone1_thread_pool/Capstone1_thread_pool_reference
+[51/252] Building CXX object Capstone3_parallel_compute/CMakeFiles/Capstone3_parallel_compute_reference.dir/solution.cpp.o
+[52/252] Linking CXX executable D1_promise_future/D1_promise_future_reference
+[53/252] Linking CXX executable D2_async_policies/D2_async_policies
+[54/252] Linking CXX executable Capstone3_parallel_compute/Capstone3_parallel_compute_reference
+[55/252] Building CXX object E1_atomic_basics/CMakeFiles/E1_atomic_basics.dir/main.cpp.o
+[56/252] Building CXX object D3_packaged_task/CMakeFiles/D3_packaged_task.dir/main.cpp.o
+[57/252] Linking CXX executable E1_atomic_basics/E1_atomic_basics
+[58/252] Linking CXX executable D3_packaged_task/D3_packaged_task
+[59/252] Building CXX object E2_atomic_ref/CMakeFiles/E2_atomic_ref.dir/main.cpp.o
+[60/252] Building CXX object D2_async_policies/CMakeFiles/D2_async_policies_reference.dir/solution.cpp.o
+[61/252] Building CXX object E1_atomic_basics/CMakeFiles/E1_atomic_basics_reference.dir/solution.cpp.o
+[62/252] Linking CXX executable E2_atomic_ref/E2_atomic_ref
+[63/252] Linking CXX executable D2_async_policies/D2_async_policies_reference
+[64/252] Linking CXX executable E1_atomic_basics/E1_atomic_basics_reference
+[65/252] Building CXX object E3_cas_loop/CMakeFiles/E3_cas_loop.dir/main.cpp.o
+[66/252] Building CXX object D3_packaged_task/CMakeFiles/D3_packaged_task_reference.dir/solution.cpp.o
+[67/252] Building CXX object E2_atomic_ref/CMakeFiles/E2_atomic_ref_reference.dir/solution.cpp.o
+[68/252] Linking CXX executable E3_cas_loop/E3_cas_loop
+[69/252] Linking CXX executable D3_packaged_task/D3_packaged_task_reference
+[70/252] Linking CXX executable E2_atomic_ref/E2_atomic_ref_reference
+[71/252] Building CXX object E3_cas_loop/CMakeFiles/E3_cas_loop_reference.dir/solution.cpp.o
+[72/252] Building CXX object F01_thread_attributes/CMakeFiles/F01_thread_attributes_reference.dir/solution.cpp.o
+[73/252] Building CXX object F01_thread_attributes/CMakeFiles/F01_thread_attributes.dir/main.cpp.o
+[74/252] Building CXX object F02_hazard_pointer_batches/CMakeFiles/F02_hazard_pointer_batches.dir/main.cpp.o
+[75/252] Linking CXX executable E3_cas_loop/E3_cas_loop_reference
+[76/252] Linking CXX executable F01_thread_attributes/F01_thread_attributes_reference
+[77/252] Linking CXX executable F01_thread_attributes/F01_thread_attributes
+[78/252] Linking CXX executable F02_hazard_pointer_batches/F02_hazard_pointer_batches
+[79/252] Building CXX object F02_hazard_pointer_batches/CMakeFiles/F02_hazard_pointer_batches_reference.dir/solution.cpp.o
+[80/252] Linking CXX executable F02_hazard_pointer_batches/F02_hazard_pointer_batches_reference
+[81/252] Building CXX object F1_release_acquire/CMakeFiles/F1_release_acquire.dir/main.cpp.o
+[82/252] Building CXX object F2_relaxed_counter/CMakeFiles/F2_relaxed_counter.dir/main.cpp.o
+[83/252] Building CXX object F1_release_acquire/CMakeFiles/F1_release_acquire_reference.dir/solution.cpp.o
+[84/252] Linking CXX executable F1_release_acquire/F1_release_acquire
+[85/252] Linking CXX executable F2_relaxed_counter/F2_relaxed_counter
+[86/252] Linking CXX executable F1_release_acquire/F1_release_acquire_reference
+[87/252] Building CXX object F2_relaxed_counter/CMakeFiles/F2_relaxed_counter_reference.dir/solution.cpp.o
+[88/252] Building CXX object F3_seqcst_fence/CMakeFiles/F3_seqcst_fence.dir/main.cpp.o
+[89/252] Linking CXX executable F2_relaxed_counter/F2_relaxed_counter_reference
+[90/252] Building CXX object F3_seqcst_fence/CMakeFiles/F3_seqcst_fence_reference.dir/solution.cpp.o
+[91/252] Building CXX object F4_publish_pattern/CMakeFiles/F4_publish_pattern.dir/main.cpp.o
+[92/252] Linking CXX executable F3_seqcst_fence/F3_seqcst_fence
+[93/252] Linking CXX executable F3_seqcst_fence/F3_seqcst_fence_reference
+[94/252] Linking CXX executable F4_publish_pattern/F4_publish_pattern
+[95/252] Building CXX object F4_publish_pattern/CMakeFiles/F4_publish_pattern_reference.dir/solution.cpp.o
+[96/252] Building CXX object G1_treiber_stack/CMakeFiles/G1_treiber_stack.dir/main.cpp.o
+[97/252] Linking CXX executable F4_publish_pattern/F4_publish_pattern_reference
+[98/252] Linking CXX executable G1_treiber_stack/G1_treiber_stack
+[99/252] Building CXX object G2_aba_problem/CMakeFiles/G2_aba_problem.dir/main.cpp.o
+[100/252] Building CXX object G3_spsc_ringbuffer/CMakeFiles/G3_spsc_ringbuffer.dir/main.cpp.o
+[101/252] Linking CXX executable G2_aba_problem/G2_aba_problem
+[102/252] Building CXX object G2_aba_problem/CMakeFiles/G2_aba_problem_reference.dir/solution.cpp.o
+[103/252] Building CXX object G1_treiber_stack/CMakeFiles/G1_treiber_stack_reference.dir/solution.cpp.o
+[104/252] Linking CXX executable G3_spsc_ringbuffer/G3_spsc_ringbuffer
+[105/252] Linking CXX executable G2_aba_problem/G2_aba_problem_reference
+[106/252] Linking CXX executable G1_treiber_stack/G1_treiber_stack_reference
+[107/252] Building CXX object H1_latch_barrier/CMakeFiles/H1_latch_barrier.dir/main.cpp.o
+[108/252] Building CXX object G3_spsc_ringbuffer/CMakeFiles/G3_spsc_ringbuffer_reference.dir/solution.cpp.o
+[109/252] Building CXX object H1_latch_barrier/CMakeFiles/H1_latch_barrier_reference.dir/solution.cpp.o
+[110/252] Linking CXX executable H1_latch_barrier/H1_latch_barrier
+[111/252] Building CXX object H2_semaphore/CMakeFiles/H2_semaphore.dir/main.cpp.o
+[112/252] Linking CXX executable G3_spsc_ringbuffer/G3_spsc_ringbuffer_reference
+[113/252] Linking CXX executable H1_latch_barrier/H1_latch_barrier_reference
+[114/252] Linking CXX executable H2_semaphore/H2_semaphore
+[115/252] Building CXX object H3_atomic_wait_notify/CMakeFiles/H3_atomic_wait_notify.dir/main.cpp.o
+[116/252] Building CXX object I1_atomic_shared_ptr/CMakeFiles/I1_atomic_shared_ptr.dir/main.cpp.o
+[117/252] Building CXX object H3_atomic_wait_notify/CMakeFiles/H3_atomic_wait_notify_reference.dir/solution.cpp.o
+[118/252] Building CXX object H2_semaphore/CMakeFiles/H2_semaphore_reference.dir/solution.cpp.o
+[119/252] Linking CXX executable H3_atomic_wait_notify/H3_atomic_wait_notify
+[120/252] Linking CXX executable I1_atomic_shared_ptr/I1_atomic_shared_ptr
+[121/252] Linking CXX executable H3_atomic_wait_notify/H3_atomic_wait_notify_reference
+[122/252] Linking CXX executable H2_semaphore/H2_semaphore_reference
+[123/252] Building CXX object I1_atomic_shared_ptr/CMakeFiles/I1_atomic_shared_ptr_reference.dir/solution.cpp.o
+[124/252] Building CXX object I2_hazard_pointer/CMakeFiles/I2_hazard_pointer.dir/main.cpp.o
+[125/252] Building CXX object I3_rcu/CMakeFiles/I3_rcu.dir/main.cpp.o
+[126/252] Building CXX object I2_hazard_pointer/CMakeFiles/I2_hazard_pointer_reference.dir/solution.cpp.o
+[127/252] Linking CXX executable I1_atomic_shared_ptr/I1_atomic_shared_ptr_reference
+[128/252] Linking CXX executable I2_hazard_pointer/I2_hazard_pointer
+[129/252] Linking CXX executable I3_rcu/I3_rcu
+[130/252] Linking CXX executable I2_hazard_pointer/I2_hazard_pointer_reference
+[131/252] Building CXX object J1_false_sharing/CMakeFiles/J1_false_sharing.dir/main.cpp.o
+In file included from /root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/J1_false_sharing/main.cpp:2:
+/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/J1_false_sharing/reference.hpp:9:42: warning: use of ‘std::hardware_destructive_interference_size’ [-Winterference-size]
+    9 | inline constexpr auto destructive = std::hardware_destructive_interference_size;
+      |                                     ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/J1_false_sharing/reference.hpp:9:42: note: its value can vary between compiler versions or with different ‘-mtune’ or ‘-mcpu’ flags
+/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/J1_false_sharing/reference.hpp:9:42: note: if this use is part of a public ABI, change it to instead use a constant variable you define
+/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/J1_false_sharing/reference.hpp:9:42: note: the default value for the current CPU tuning is 64 bytes
+/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/J1_false_sharing/reference.hpp:9:42: note: you can stabilize this value with ‘--param hardware_destructive_interference_size=64’, or disable this warning with ‘-Wno-interference-size’
+[132/252] Building CXX object I3_rcu/CMakeFiles/I3_rcu_reference.dir/solution.cpp.o
+[133/252] Building CXX object J1_false_sharing/CMakeFiles/J1_false_sharing_reference.dir/solution.cpp.o
+In file included from /root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/J1_false_sharing/solution.cpp:1:
+/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/J1_false_sharing/reference.hpp:9:42: warning: use of ‘std::hardware_destructive_interference_size’ [-Winterference-size]
+    9 | inline constexpr auto destructive = std::hardware_destructive_interference_size;
+      |                                     ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/J1_false_sharing/reference.hpp:9:42: note: its value can vary between compiler versions or with different ‘-mtune’ or ‘-mcpu’ flags
+/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/J1_false_sharing/reference.hpp:9:42: note: if this use is part of a public ABI, change it to instead use a constant variable you define
+/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/J1_false_sharing/reference.hpp:9:42: note: the default value for the current CPU tuning is 64 bytes
+/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/J1_false_sharing/reference.hpp:9:42: note: you can stabilize this value with ‘--param hardware_destructive_interference_size=64’, or disable this warning with ‘-Wno-interference-size’
+[134/252] Building CXX object J2_interference_size/CMakeFiles/J2_interference_size.dir/main.cpp.o
+In file included from /root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/J2_interference_size/main.cpp:2:
+/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/J2_interference_size/../J1_false_sharing/reference.hpp:9:42: warning: use of ‘std::hardware_destructive_interference_size’ [-Winterference-size]
+    9 | inline constexpr auto destructive = std::hardware_destructive_interference_size;
+      |                                     ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/J2_interference_size/../J1_false_sharing/reference.hpp:9:42: note: its value can vary between compiler versions or with different ‘-mtune’ or ‘-mcpu’ flags
+/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/J2_interference_size/../J1_false_sharing/reference.hpp:9:42: note: if this use is part of a public ABI, change it to instead use a constant variable you define
+/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/J2_interference_size/../J1_false_sharing/reference.hpp:9:42: note: the default value for the current CPU tuning is 64 bytes
+/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/J2_interference_size/../J1_false_sharing/reference.hpp:9:42: note: you can stabilize this value with ‘--param hardware_destructive_interference_size=64’, or disable this warning with ‘-Wno-interference-size’
+[135/252] Linking CXX executable J1_false_sharing/J1_false_sharing
+[136/252] Linking CXX executable J2_interference_size/J2_interference_size
+[137/252] Linking CXX executable I3_rcu/I3_rcu_reference
+[138/252] Linking CXX executable J1_false_sharing/J1_false_sharing_reference
+[139/252] Building CXX object J2_interference_size/CMakeFiles/J2_interference_size_reference.dir/solution.cpp.o
+In file included from /root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/J2_interference_size/solution.cpp:1:
+/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/J2_interference_size/../J1_false_sharing/reference.hpp:9:42: warning: use of ‘std::hardware_destructive_interference_size’ [-Winterference-size]
+    9 | inline constexpr auto destructive = std::hardware_destructive_interference_size;
+      |                                     ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/J2_interference_size/../J1_false_sharing/reference.hpp:9:42: note: its value can vary between compiler versions or with different ‘-mtune’ or ‘-mcpu’ flags
+/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/J2_interference_size/../J1_false_sharing/reference.hpp:9:42: note: if this use is part of a public ABI, change it to instead use a constant variable you define
+/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/J2_interference_size/../J1_false_sharing/reference.hpp:9:42: note: the default value for the current CPU tuning is 64 bytes
+/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/J2_interference_size/../J1_false_sharing/reference.hpp:9:42: note: you can stabilize this value with ‘--param hardware_destructive_interference_size=64’, or disable this warning with ‘-Wno-interference-size’
+[140/252] Building CXX object K1_simd_basics/CMakeFiles/K1_simd_basics.dir/main.cpp.o
+[141/252] Linking CXX executable J2_interference_size/J2_interference_size_reference
+[142/252] Linking CXX executable K1_simd_basics/K1_simd_basics
+[143/252] Building CXX object J3_numa_concept/CMakeFiles/J3_numa_concept.dir/main.cpp.o
+[144/252] Building CXX object J3_numa_concept/CMakeFiles/J3_numa_concept_reference.dir/solution.cpp.o
+[145/252] Building CXX object K1_simd_basics/CMakeFiles/K1_simd_basics_reference.dir/solution.cpp.o
+[146/252] Building CXX object K2_simd_dotproduct/CMakeFiles/K2_simd_dotproduct.dir/main.cpp.o
+[147/252] Linking CXX executable J3_numa_concept/J3_numa_concept
+[148/252] Linking CXX executable J3_numa_concept/J3_numa_concept_reference
+[149/252] Linking CXX executable K1_simd_basics/K1_simd_basics_reference
+[150/252] Linking CXX executable K2_simd_dotproduct/K2_simd_dotproduct
+[151/252] Building CXX object K2_simd_dotproduct/CMakeFiles/K2_simd_dotproduct_reference.dir/solution.cpp.o
+[152/252] Building CXX object K3_simd_where_select/CMakeFiles/K3_simd_where_select.dir/main.cpp.o
+[153/252] Building CXX object K3_simd_where_select/CMakeFiles/K3_simd_where_select_reference.dir/solution.cpp.o
+[154/252] Building CXX object L1_par_algorithms/CMakeFiles/L1_par_algorithms.dir/main.cpp.o
+[155/252] Linking CXX executable K2_simd_dotproduct/K2_simd_dotproduct_reference
+[156/252] Linking CXX executable K3_simd_where_select/K3_simd_where_select
+[157/252] Linking CXX executable K3_simd_where_select/K3_simd_where_select_reference
+[158/252] Linking CXX executable L1_par_algorithms/L1_par_algorithms
+[159/252] Building CXX object L2_parallel_reduce_scan/CMakeFiles/L2_parallel_reduce_scan.dir/main.cpp.o
+[160/252] Building CXX object L1_par_algorithms/CMakeFiles/L1_par_algorithms_reference.dir/solution.cpp.o
+[161/252] Building CXX object L3_par_vs_seq_bench/CMakeFiles/L3_par_vs_seq_bench.dir/main.cpp.o
+[162/252] Linking CXX executable L2_parallel_reduce_scan/L2_parallel_reduce_scan
+[163/252] Building CXX object L2_parallel_reduce_scan/CMakeFiles/L2_parallel_reduce_scan_reference.dir/solution.cpp.o
+[164/252] Linking CXX executable L3_par_vs_seq_bench/L3_par_vs_seq_bench
+[165/252] Linking CXX executable L1_par_algorithms/L1_par_algorithms_reference
+[166/252] Linking CXX executable L2_parallel_reduce_scan/L2_parallel_reduce_scan_reference
+[167/252] Building CXX object M2_execution_bridge/CMakeFiles/M2_execution_bridge.dir/main.cpp.o
+[168/252] Linking CXX executable M2_execution_bridge/M2_execution_bridge
+[169/252] Building CXX object M2_execution_bridge/CMakeFiles/M2_execution_bridge_reference.dir/solution.cpp.o
+[170/252] Building CXX object L3_par_vs_seq_bench/CMakeFiles/L3_par_vs_seq_bench_reference.dir/solution.cpp.o
+[171/252] Linking CXX executable M2_execution_bridge/M2_execution_bridge_reference
+[172/252] Building CXX object M1_work_stealing_pool/CMakeFiles/M1_work_stealing_pool.dir/main.cpp.o
+[173/252] Linking CXX executable L3_par_vs_seq_bench/L3_par_vs_seq_bench_reference
+[174/252] Linking CXX executable M1_work_stealing_pool/M1_work_stealing_pool
+[175/252] Building CXX object P1_object_lifetime/CMakeFiles/P1_object_lifetime.dir/main.cpp.o
+[176/252] Building CXX object M1_work_stealing_pool/CMakeFiles/M1_work_stealing_pool_reference.dir/solution.cpp.o
+[177/252] Linking CXX executable P1_object_lifetime/P1_object_lifetime
+[178/252] Linking CXX executable M1_work_stealing_pool/M1_work_stealing_pool_reference
+[179/252] Building CXX object P1_object_lifetime/CMakeFiles/P1_object_lifetime_reference.dir/solution.cpp.o
+[180/252] Linking CXX executable P1_object_lifetime/P1_object_lifetime_reference
+[181/252] Building CXX object N1_numa_placement/CMakeFiles/N1_numa_placement.dir/main.cpp.o
+[182/252] Building CXX object P2_result_states/CMakeFiles/P2_result_states.dir/main.cpp.o
+[183/252] Linking CXX executable N1_numa_placement/N1_numa_placement
+[184/252] Building CXX object N1_numa_placement/CMakeFiles/N1_numa_placement_reference.dir/solution.cpp.o
+[185/252] Linking CXX executable P2_result_states/P2_result_states
+[186/252] Building CXX object Q0_queue_baseline/CMakeFiles/Q0_queue_baseline.dir/main.cpp.o
+[187/252] Linking CXX executable N1_numa_placement/N1_numa_placement_reference
+[188/252] Building CXX object P2_result_states/CMakeFiles/P2_result_states_reference.dir/solution.cpp.o
+[189/252] Linking CXX executable Q0_queue_baseline/Q0_queue_baseline
+[190/252] Building CXX object Q0_queue_baseline/CMakeFiles/Q0_queue_baseline_reference.dir/solution.cpp.o
+[191/252] Linking CXX executable P2_result_states/P2_result_states_reference
+[192/252] Building CXX object Q1_mpsc_queue/CMakeFiles/Q1_mpsc_queue.dir/main.cpp.o
+[193/252] Linking CXX executable Q0_queue_baseline/Q0_queue_baseline_reference
+[194/252] Linking CXX executable Q1_mpsc_queue/Q1_mpsc_queue
+[195/252] Building CXX object Q2_ms_queue/CMakeFiles/Q2_ms_queue.dir/main.cpp.o
+[196/252] Building CXX object Q1_mpsc_queue/CMakeFiles/Q1_mpsc_queue_reference.dir/solution.cpp.o
+[197/252] Linking CXX executable Q2_ms_queue/Q2_ms_queue
+[198/252] Building CXX object R1_epoch_reclamation/CMakeFiles/R1_epoch_reclamation.dir/main.cpp.o
+[199/252] Linking CXX executable Q1_mpsc_queue/Q1_mpsc_queue_reference
+[200/252] Linking CXX executable R1_epoch_reclamation/R1_epoch_reclamation
+[201/252] Building CXX object R2_qsbr/CMakeFiles/R2_qsbr.dir/main.cpp.o
+[202/252] Building CXX object R1_epoch_reclamation/CMakeFiles/R1_epoch_reclamation_reference.dir/solution.cpp.o
+[203/252] Linking CXX executable R2_qsbr/R2_qsbr
+[204/252] Building CXX object Q2_ms_queue/CMakeFiles/Q2_ms_queue_reference.dir/solution.cpp.o
+[205/252] Linking CXX executable R1_epoch_reclamation/R1_epoch_reclamation_reference
+[206/252] Building CXX object R2_qsbr/CMakeFiles/R2_qsbr_reference.dir/solution.cpp.o
+[207/252] Linking CXX executable Q2_ms_queue/Q2_ms_queue_reference
+[208/252] Linking CXX executable R2_qsbr/R2_qsbr_reference
+[209/252] Building CXX object U01_async_logging/CMakeFiles/U01_async_logging.dir/main.cpp.o
+[210/252] Building CXX object U01_async_logging/CMakeFiles/U01_async_logging_reference.dir/solution.cpp.o
+[211/252] Building CXX object U01_async_logging/CMakeFiles/U01_async_logging_good.dir/check_main.cpp.o
+[212/252] Building CXX object U01_async_logging/CMakeFiles/U01_async_logging_bad_overflow.dir/check_main.cpp.o
+[213/252] Building CXX object _deps/fmt-12.1.0-build/CMakeFiles/fmt.dir/src/os.cc.o
+[214/252] Building CXX object U01_async_logging/CMakeFiles/U01_async_logging_bad_flush.dir/check_main.cpp.o
+[215/252] Building CXX object _deps/spdlog-1.17.0-build/CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.o
+[216/252] Building CXX object _deps/fmt-12.1.0-build/CMakeFiles/fmt.dir/src/format.cc.o
+[217/252] Linking CXX static library _deps/fmt-12.1.0-build/libfmt.a
+[218/252] Building CXX object _deps/spdlog-1.17.0-build/CMakeFiles/spdlog.dir/src/color_sinks.cpp.o
+[219/252] Building CXX object _deps/spdlog-1.17.0-build/CMakeFiles/spdlog.dir/src/file_sinks.cpp.o
+[220/252] Building CXX object F03_native_facilities/CMakeFiles/F03_std_senders_reference.dir/std_senders.cpp.o
+[221/252] Building CXX object _deps/spdlog-1.17.0-build/CMakeFiles/spdlog.dir/src/cfg.cpp.o
+[222/252] Building CXX object F03_native_facilities/CMakeFiles/F03_std_hazard_pointer_reference.dir/std_hazard_pointer.cpp.o
+[223/252] Building CXX object _deps/spdlog-1.17.0-build/CMakeFiles/spdlog.dir/src/async.cpp.o
+[224/252] Linking CXX executable F03_native_facilities/F03_std_senders_reference
+[225/252] Building CXX object F03_native_facilities/CMakeFiles/F03_std_rcu_reference.dir/std_rcu.cpp.o
+[226/252] Linking CXX executable F03_native_facilities/F03_std_hazard_pointer_reference
+[227/252] Building CXX object runtime_tests/CMakeFiles/runtime_atomic_protocol_test.dir/atomic_protocol_test.cpp.o
+[228/252] Linking CXX executable F03_native_facilities/F03_std_rcu_reference
+[229/252] Linking CXX executable runtime_tests/runtime_atomic_protocol_test
+[230/252] Building CXX object _deps/spdlog-1.17.0-build/CMakeFiles/spdlog.dir/src/spdlog.cpp.o
+[231/252] Linking CXX static library _deps/spdlog-1.17.0-build/libspdlog.a
+[232/252] Linking CXX executable U01_async_logging/U01_async_logging
+[233/252] Building CXX object runtime_tests/CMakeFiles/runtime_common_tools_test.dir/common_tools_test.cpp.o
+[234/252] Linking CXX executable U01_async_logging/U01_async_logging_reference
+[235/252] Linking CXX executable U01_async_logging/U01_async_logging_good
+[236/252] Linking CXX executable U01_async_logging/U01_async_logging_bad_overflow
+[237/252] Linking CXX executable U01_async_logging/U01_async_logging_bad_flush
+[238/252] Building CXX object runtime_tests/CMakeFiles/runtime_numeric_test.dir/numeric_test.cpp.o
+In file included from /root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/runtime_tests/numeric_test.cpp:2:
+/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/runtime_tests/../J1_false_sharing/reference.hpp:9:42: warning: use of ‘std::hardware_destructive_interference_size’ [-Winterference-size]
+    9 | inline constexpr auto destructive = std::hardware_destructive_interference_size;
+      |                                     ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/runtime_tests/../J1_false_sharing/reference.hpp:9:42: note: its value can vary between compiler versions or with different ‘-mtune’ or ‘-mcpu’ flags
+/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/runtime_tests/../J1_false_sharing/reference.hpp:9:42: note: if this use is part of a public ABI, change it to instead use a constant variable you define
+/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/runtime_tests/../J1_false_sharing/reference.hpp:9:42: note: the default value for the current CPU tuning is 64 bytes
+/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/runtime_tests/../J1_false_sharing/reference.hpp:9:42: note: you can stabilize this value with ‘--param hardware_destructive_interference_size=64’, or disable this warning with ‘-Wno-interference-size’
+[239/252] Linking CXX executable runtime_tests/runtime_common_tools_test
+[240/252] Linking CXX executable runtime_tests/runtime_numeric_test
+[241/252] Building CXX object runtime_tests/CMakeFiles/runtime_queue_history_test.dir/queue_history_test.cpp.o
+[242/252] Linking CXX executable runtime_tests/runtime_queue_history_test
+[243/252] Building CXX object runtime_tests/CMakeFiles/runtime_scheduling_allocation_test.dir/scheduling_allocation_test.cpp.o
+In function ‘void operator delete(void*, std::size_t)’,
+    inlined from ‘void std::__new_allocator<_Tp>::deallocate(_Tp*, size_type) [with _Tp = std::jthread]’ at /usr/include/c++/13/bits/new_allocator.h:172:26,
+    inlined from ‘constexpr void std::allocator< <template-parameter-1-1> >::deallocate(_Tp*, std::size_t) [with _Tp = std::jthread]’ at /usr/include/c++/13/bits/allocator.h:210:35,
+    inlined from ‘static constexpr void std::allocator_traits<std::allocator<_CharT> >::deallocate(allocator_type&, pointer, size_type) [with _Tp = std::jthread]’ at /usr/include/c++/13/bits/alloc_traits.h:517:23,
+    inlined from ‘constexpr void std::_Vector_base<_Tp, _Alloc>::_M_deallocate(pointer, std::size_t) [with _Tp = std::jthread; _Alloc = std::allocator<std::jthread>]’ at /usr/include/c++/13/bits/stl_vector.h:390:19,
+    inlined from ‘constexpr void std::vector<_Tp, _Alloc>::_M_realloc_insert(iterator, _Args&& ...) [with _Args = {inject_creation_and_submit_failure(unwind_audit&)::<lambda()>}; _Tp = std::jthread; _Alloc = std::allocator<std::jthread>]’ at /usr/include/c++/13/bits/vector.tcc:511:17,
+    inlined from ‘constexpr std::vector<_Tp, _Alloc>::reference std::vector<_Tp, _Alloc>::emplace_back(_Args&& ...) [with _Args = {inject_creation_and_submit_failure(unwind_audit&)::<lambda()>}; _Tp = std::jthread; _Alloc = std::allocator<std::jthread>]’ at /usr/include/c++/13/bits/vector.tcc:123:21,
+    inlined from ‘void inject_creation_and_submit_failure(unwind_audit&)’ at /root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/runtime_tests/scheduling_allocation_test.cpp:65:31,
+    inlined from ‘int main()’ at /root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/runtime_tests/scheduling_allocation_test.cpp:106:45:
+/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/runtime_tests/scheduling_allocation_test.cpp:46:70: warning: ‘void free(void*)’ called on pointer returned from a mismatched allocation function [-Wmismatched-new-delete]
+   46 | void operator delete(void* address, std::size_t) noexcept { std::free(address); }
+      |                                                             ~~~~~~~~~^~~~~~~~~
+In file included from /usr/include/x86_64-linux-gnu/c++/13/bits/c++allocator.h:33,
+                 from /usr/include/c++/13/bits/allocator.h:46,
+                 from /usr/include/c++/13/string:43,
+                 from /usr/include/c++/13/stdexcept:39,
+                 from /root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/include/concurrency_study/exercise_check.hpp:4,
+                 from /root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/runtime_tests/scheduling_allocation_test.cpp:1:
+In member function ‘_Tp* std::__new_allocator<_Tp>::allocate(size_type, const void*) [with _Tp = std::jthread]’,
+    inlined from ‘constexpr _Tp* std::allocator< <template-parameter-1-1> >::allocate(std::size_t) [with _Tp = std::jthread]’ at /usr/include/c++/13/bits/allocator.h:198:40,
+    inlined from ‘static constexpr _Tp* std::allocator_traits<std::allocator<_CharT> >::allocate(allocator_type&, size_type) [with _Tp = std::jthread]’ at /usr/include/c++/13/bits/alloc_traits.h:482:28,
+    inlined from ‘constexpr std::_Vector_base<_Tp, _Alloc>::pointer std::_Vector_base<_Tp, _Alloc>::_M_allocate(std::size_t) [with _Tp = std::jthread; _Alloc = std::allocator<std::jthread>]’ at /usr/include/c++/13/bits/stl_vector.h:381:33,
+    inlined from ‘constexpr void std::vector<_Tp, _Alloc>::_M_realloc_insert(iterator, _Args&& ...) [with _Args = {inject_creation_and_submit_failure(unwind_audit&)::<lambda()>}; _Tp = std::jthread; _Alloc = std::allocator<std::jthread>]’ at /usr/include/c++/13/bits/vector.tcc:459:44,
+    inlined from ‘constexpr std::vector<_Tp, _Alloc>::reference std::vector<_Tp, _Alloc>::emplace_back(_Args&& ...) [with _Args = {inject_creation_and_submit_failure(unwind_audit&)::<lambda()>}; _Tp = std::jthread; _Alloc = std::allocator<std::jthread>]’ at /usr/include/c++/13/bits/vector.tcc:123:21,
+    inlined from ‘void inject_creation_and_submit_failure(unwind_audit&)’ at /root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/runtime_tests/scheduling_allocation_test.cpp:65:31,
+    inlined from ‘int main()’ at /root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/exercises/runtime_tests/scheduling_allocation_test.cpp:106:45:
+/usr/include/c++/13/bits/new_allocator.h:151:55: note: returned from ‘void* operator new(std::size_t)’
+  151 |         return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+      |                                                       ^
+[244/252] Linking CXX executable runtime_tests/runtime_scheduling_allocation_test
+[245/252] Building CXX object runtime_tests/CMakeFiles/runtime_scheduling_test.dir/scheduling_test.cpp.o
+[246/252] Building CXX object runtime_tests/CMakeFiles/runtime_lifetime_reference.dir/root/learncpp-c08-src/m1-r2-final-20260910-181517-b97f497d/C08_Concurrency/topics/reclamation/lifetime_reference.cpp.o
+[247/252] Linking CXX executable runtime_tests/runtime_scheduling_test
+[248/252] Linking CXX executable runtime_tests/runtime_lifetime_reference
+[249/252] Building CXX object runtime_tests/CMakeFiles/runtime_reclamation_test.dir/reclamation_test.cpp.o
+[250/252] Linking CXX executable runtime_tests/runtime_reclamation_test
+[251/252] Building CXX object runtime_tests/CMakeFiles/runtime_thread_pool_test.dir/thread_pool_test.cpp.o
+[252/252] Linking CXX executable runtime_tests/runtime_thread_pool_test
+
+exit_code=0
+end=2026-09-10T18:18:21+08:00

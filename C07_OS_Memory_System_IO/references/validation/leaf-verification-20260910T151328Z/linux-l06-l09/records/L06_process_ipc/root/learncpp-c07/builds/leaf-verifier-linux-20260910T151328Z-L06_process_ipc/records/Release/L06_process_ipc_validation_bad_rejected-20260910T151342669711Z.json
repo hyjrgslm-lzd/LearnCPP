@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/root/learncpp-c07/builds/leaf-verifier-linux-20260910T151328Z-L06_process_ipc/L06_process_ipc_validation_bad"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.0012014650000082838,
+  "stdout": "",
+  "stderr": "check failed: child witness proves spawned fixture\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "/tmp/c07-test-h1b1p1s6",
+  "temporary_directory_removed": true,
+  "name": "L06_process_ipc_validation_bad_rejected",
+  "cwd": "/root/learncpp-c07/builds/leaf-verifier-linux-20260910T151328Z-L06_process_ipc",
+  "expected_exit": 1,
+  "required_text": "child witness proves spawned fixture",
+  "verdict": "PASS"
+}

@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.28)
+project(F02_hazard_pointer_batches LANGUAGES CXX)
+include(../cmake/StudySetup.cmake)
+cs_add_exercise(F02_hazard_pointer_batches OBSERVATION)
+foreach(_target F02_hazard_pointer_batches F02_hazard_pointer_batches_reference)
+    if(TARGET ${_target})
+        target_compile_definitions(${_target} PRIVATE
+            CS_HAS_STD_HAZARD_POINTER_BATCH=${CS_HAS_STD_HAZARD_POINTER_BATCH})
+    endif()
+endforeach()

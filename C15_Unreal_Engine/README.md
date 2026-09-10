@@ -308,3 +308,11 @@ Module（由 `FModuleManager` 管理）？GC（由 `GUObjectArray` 的 mark-swee
 把它当成两层训练：第一层是框架使用训练——你在学习 UE 把 C++ 工程组织成一个 editor + runtime 的方式，理解它每一个专属机制存在的理由。第二层是框架阅读训练——你在培养看到一段 UE 源码就能快速定位"这在哪条线程、生命周期归谁、GC 能看见什么"的直觉。
 
 两层都练透，你对 UE 引擎内核的理解就不再停留在"能用 API"，而是到达"能推理任意新遇到的引擎代码"。
+
+## C04 泛型与编译期桥接
+
+[进入C04课程](../C04_Generic_CompileTime_Reflection/README.md)。语言静态反射与annotations在C04主讲。本课仍负责UHT生成、UObject运行时信息及GC；语言元信息不会自动替代引擎注册、持久化或对象追踪。
+
+## C05 数据表达先修
+
+字符串编码、标识与显示、基础字段及版本兼容可先读[C05 数据表达](../C05_Data_Representation_Standard_Facilities/README.md)。FString/FName/FText、TCHAR和FArchive的UE具体语义仍按本课固定版本核对，通用Unicode实验不证明所有UE平台布局。

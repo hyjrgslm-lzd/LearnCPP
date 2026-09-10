@@ -1,0 +1,50 @@
+{
+  "case": {
+    "items": 4096,
+    "kind": "alloc",
+    "variant": "heap"
+  },
+  "case_id": "alloc-heap-4096",
+  "parse_error": "",
+  "parsed": {
+    "checksum": 8386560,
+    "cleanup_seconds": 1.200000000000002e-06,
+    "clock_period_den": 1000000000,
+    "clock_period_num": 1,
+    "clock_resolution_seconds": 1e-07,
+    "items": 4096,
+    "kind": "alloc",
+    "loop_seconds": 9.14e-05,
+    "observed_address_reuse": 273,
+    "peak_upstream_bytes": 64,
+    "seconds": 9.39e-05,
+    "setup_seconds": 1.3e-06,
+    "upstream_allocations": 4096,
+    "upstream_bytes": 262144,
+    "upstream_deallocations": 4096,
+    "valid": true,
+    "variant": "heap"
+  },
+  "raw": {
+    "cleanup_error": "",
+    "command": [
+      "F:\\CPPTrain\\LearnCPP\\C07_OS_Memory_System_IO\\exercises\\build\\final-windows-release-r1\\B01_costs\\Release\\B01_costs_benchmark.exe",
+      "alloc",
+      "heap",
+      "4096"
+    ],
+    "error": "",
+    "exit_code": 0,
+    "process_seconds": 0.014999999999417923,
+    "status": "PASS",
+    "stderr": "",
+    "stdout": "{\"kind\":\"alloc\",\"variant\":\"heap\",\"items\":4096,\"seconds\":9.3900000000000006e-05,\"setup_seconds\":1.3e-06,\"loop_seconds\":9.1399999999999999e-05,\"cleanup_seconds\":1.2000000000000021e-06,\"upstream_allocations\":4096,\"upstream_deallocations\":4096,\"upstream_bytes\":262144,\"peak_upstream_bytes\":64,\"observed_address_reuse\":273,\"checksum\":8386560,\"clock_resolution_seconds\":9.9999999999999995e-08,\"clock_period_num\":1,\"clock_period_den\":1000000000,\"valid\":true}\n",
+    "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-all084o9",
+    "temporary_directory_removed": true,
+    "timeout": false
+  },
+  "sample_id": "alloc-heap-4096-sample-1",
+  "seconds": 9.39e-05,
+  "verdict": "VALID",
+  "warmup": false
+}

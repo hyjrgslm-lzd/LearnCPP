@@ -1,5 +1,7 @@
 # 标准、实现与教学协议
 
+> 2026-09-10修订：线程属性、HP batches及标准HP/RCU/sender新增正文和独立主体，见[前沿入口](../topics/frontier/README.md)及[本轮质量报告](revision-quality-report-20260910.md)。下面2026-09-08的工具探测是历史记录，不能替代本轮结果；规范仍分别固定N5050/N5054。
+
 核对日期：2026-09-08。课程代码默认以 C++23 为基线；讨论 C++26 时固定引用 N5050。N5050 是 C++26 最终草案及 DIS 的基础，后续 N5054 已进入 C++29。滚动工作草案方便定位，但不能把它后来增加的功能全部归为 C++26。[N5051 编辑报告](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2026/n5051.html)、[N5055 编辑报告](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2026/n5055.html)。
 
 ## 1. 四种不同的证据
@@ -68,10 +70,12 @@ EBR、QSBR 与 RCU 的关联由专题分别说明。版本标签用于识别某�
 
 | 增量 | 规范状态 | 本课程实现与实验状态 |
 |---|---|---|
-| Thread attributes，P2019R9 | 已纳入 N5054 工作草案 | 未接入独立正文/练习，未做该标准 API 的编译链接探测。本课已有亲和/拓扑实验不等于验证线程属性新接口。后续归 C08 创建与调度边界单元。 |
-| Hazard Pointer Batches，P3428R4 | 已纳入 N5054 工作草案 | 未接入独立正文/练习，未做批量 API 探测。现有 HP 教学协议与较早原生 HP 阴性探测均不能替代它；后续归 C08 回收扩展单元，重新核对保护/资源管理契约。 |
+| Thread attributes，P2019R9 | 已纳入 N5054 工作草案 | [F01](../exercises/F01_thread_attributes/README.md)新增名称/栈大小hint的正文、标准主体及专用probe。亲和/拓扑实验与教学模型不等于验证标准API；实际结果及审查见本轮报告。 |
+| Hazard Pointer Batches，P3428R4 | 已纳入 N5054 工作草案 | [F02](../exercises/F02_hazard_pointer_batches/README.md)新增批量make/clear、资源状态及独立probe/主体。教学HP协议、早期HP探测不替代batch接口；实际结果及审查见本轮报告。 |
 
-这里补齐的是全局前沿索引；相应讲解、代码和独立验证仍待后续目标完成，不因登记条目而标为“已掌握/已通过”。[C01](../../C01_Build_Compile_Link/README.md)解释怎样区分特性宏、头文件、真实实例化、链接和运行证据。
+2026-09-08只登记了索引；本轮新增材料后仍分别记录作者完成、独立审查和实际工具能力，不因登记或模型通过而标为原生PASS。[C01](../../C01_Build_Compile_Link/README.md)解释怎样区分特性宏、头文件、真实实例化、链接和运行证据。
+
+本轮以 `CONCURRENCY_STUDY_ENABLE_CXX26` 和 `CONCURRENCY_STUDY_ENABLE_CXX29` 分别请求两组原生设施。OFF是DISABLED，ON后最小能力缺失才是SKIP；能力满足之后主体的编译或行为错误必须FAIL。原生HP/RCU/sender主体见[F03](../exercises/F03_native_facilities/README.md)，固定stdexec仍是独立实现分支；已有inplace stop、min/max与SIMD主体继续复用。各设施单独记录，不能以其中一项通过掩盖其他项未执行。
 
 ### 既有 C++26 探测记录
 

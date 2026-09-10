@@ -1,0 +1,77 @@
+{
+  "final-linux-debug-r1": {
+    "snapshot_root": "/root/learncpp-c07/snapshots/final-linux-debug-r1",
+    "manifest_path": "/root/learncpp-c07/snapshots/final-linux-debug-r1/snapshot-manifest.json",
+    "note": "final Linux snapshot source was updated only for these two validation/good headers after the immutable-manifest snapshot was created; original manifest is not claimed current.",
+    "files": [
+      {
+        "path": "C07_OS_Memory_System_IO/exercises/L06_process_ipc/validation/good/process_ipc.hpp",
+        "manifest_source_sha256": "7e2d6ba0094db4b77a5bf66c845bfbde66699286446c5f35035713d1ad875283",
+        "manifest_snapshot_sha256": "7e2d6ba0094db4b77a5bf66c845bfbde66699286446c5f35035713d1ad875283",
+        "current_snapshot_sha256": "99ac3eb7a1308c757cbe451399dead4adbf1de419fbd06f5e45de358cf7bb320",
+        "current_workspace_sha256": "99ac3eb7a1308c757cbe451399dead4adbf1de419fbd06f5e45de358cf7bb320",
+        "changed_from_manifest": true,
+        "matches_current_workspace": true
+      },
+      {
+        "path": "C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/validation/good/dynamic_loading.hpp",
+        "manifest_source_sha256": "5f442e76be43679e44f30707295d4e2940f479307ccd838041b80c4eaf509058",
+        "manifest_snapshot_sha256": "5f442e76be43679e44f30707295d4e2940f479307ccd838041b80c4eaf509058",
+        "current_snapshot_sha256": "d54fa11b2441ae8e1f2a9cf095f93ce92e73664275431aa9b86a5b2f3d423163",
+        "current_workspace_sha256": "d54fa11b2441ae8e1f2a9cf095f93ce92e73664275431aa9b86a5b2f3d423163",
+        "changed_from_manifest": true,
+        "matches_current_workspace": true
+      }
+    ]
+  },
+  "final-linux-release-r1": {
+    "snapshot_root": "/root/learncpp-c07/snapshots/final-linux-release-r1",
+    "manifest_path": "/root/learncpp-c07/snapshots/final-linux-release-r1/snapshot-manifest.json",
+    "note": "final Linux snapshot source was updated only for these two validation/good headers after the immutable-manifest snapshot was created; original manifest is not claimed current.",
+    "files": [
+      {
+        "path": "C07_OS_Memory_System_IO/exercises/L06_process_ipc/validation/good/process_ipc.hpp",
+        "manifest_source_sha256": "7e2d6ba0094db4b77a5bf66c845bfbde66699286446c5f35035713d1ad875283",
+        "manifest_snapshot_sha256": "7e2d6ba0094db4b77a5bf66c845bfbde66699286446c5f35035713d1ad875283",
+        "current_snapshot_sha256": "99ac3eb7a1308c757cbe451399dead4adbf1de419fbd06f5e45de358cf7bb320",
+        "current_workspace_sha256": "99ac3eb7a1308c757cbe451399dead4adbf1de419fbd06f5e45de358cf7bb320",
+        "changed_from_manifest": true,
+        "matches_current_workspace": true
+      },
+      {
+        "path": "C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/validation/good/dynamic_loading.hpp",
+        "manifest_source_sha256": "5f442e76be43679e44f30707295d4e2940f479307ccd838041b80c4eaf509058",
+        "manifest_snapshot_sha256": "5f442e76be43679e44f30707295d4e2940f479307ccd838041b80c4eaf509058",
+        "current_snapshot_sha256": "d54fa11b2441ae8e1f2a9cf095f93ce92e73664275431aa9b86a5b2f3d423163",
+        "current_workspace_sha256": "d54fa11b2441ae8e1f2a9cf095f93ce92e73664275431aa9b86a5b2f3d423163",
+        "changed_from_manifest": true,
+        "matches_current_workspace": true
+      }
+    ]
+  },
+  "final-linux-asan-r1": {
+    "snapshot_root": "/root/learncpp-c07/snapshots/final-linux-asan-r1",
+    "manifest_path": "/root/learncpp-c07/snapshots/final-linux-asan-r1/snapshot-manifest.json",
+    "note": "final Linux snapshot source was updated only for these two validation/good headers after the immutable-manifest snapshot was created; original manifest is not claimed current.",
+    "files": [
+      {
+        "path": "C07_OS_Memory_System_IO/exercises/L06_process_ipc/validation/good/process_ipc.hpp",
+        "manifest_source_sha256": "7e2d6ba0094db4b77a5bf66c845bfbde66699286446c5f35035713d1ad875283",
+        "manifest_snapshot_sha256": "7e2d6ba0094db4b77a5bf66c845bfbde66699286446c5f35035713d1ad875283",
+        "current_snapshot_sha256": "99ac3eb7a1308c757cbe451399dead4adbf1de419fbd06f5e45de358cf7bb320",
+        "current_workspace_sha256": "99ac3eb7a1308c757cbe451399dead4adbf1de419fbd06f5e45de358cf7bb320",
+        "changed_from_manifest": true,
+        "matches_current_workspace": true
+      },
+      {
+        "path": "C07_OS_Memory_System_IO/exercises/L09_dynamic_loading/validation/good/dynamic_loading.hpp",
+        "manifest_source_sha256": "5f442e76be43679e44f30707295d4e2940f479307ccd838041b80c4eaf509058",
+        "manifest_snapshot_sha256": "5f442e76be43679e44f30707295d4e2940f479307ccd838041b80c4eaf509058",
+        "current_snapshot_sha256": "d54fa11b2441ae8e1f2a9cf095f93ce92e73664275431aa9b86a5b2f3d423163",
+        "current_workspace_sha256": "d54fa11b2441ae8e1f2a9cf095f93ce92e73664275431aa9b86a5b2f3d423163",
+        "changed_from_manifest": true,
+        "matches_current_workspace": true
+      }
+    ]
+  }
+}
