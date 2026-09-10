@@ -1,0 +1,25 @@
+{
+  "command": [
+    "same\\: false",
+    "--",
+    "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "-NoProfile",
+    "-Command",
+    " = Get-ChildItem 'C06_Ranges/exercises/CAPSTONE4_mini_ranges/src/reference/my_ranges' -Filter *.hpp | Sort-Object Name | ForEach-Object { =.Name; =.FullName; =(Join-Path 'C06_Ranges/exercises/CAPSTONE4_mini_ranges/validation/good/my_ranges' ); =(Get-FileHash -Algorithm SHA256 -LiteralPath ).Hash.ToLowerInvariant(); =(Get-FileHash -Algorithm SHA256 -LiteralPath ).Hash.ToLowerInvariant(); [ordered]@{ file=; reference_sha256=; good_sha256=; same=( -eq ) } }; if (( | Where-Object { .same }).Count -ne 0) {  | ConvertTo-Json -Depth 3; exit 1 };  | ConvertTo-Json -Depth 3"
+  ],
+  "exit_code": null,
+  "timeout": false,
+  "process_seconds": 0.0,
+  "stdout": "",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "launch failed: [WinError 2] 系统找不到指定的文件。",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [
+    "\\"
+  ],
+  "verdict": "FAIL"
+}

@@ -1,0 +1,23 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "C06_Ranges/exercises/G2_my_transform_closure/build-author",
+    "-C",
+    "Release",
+    "--output-on-failure"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.15600000019185245,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C06_Ranges/exercises/G2_my_transform_closure/build-author\n    Start 1: G2_my_transform_closure_reference\n1/3 Test #1: G2_my_transform_closure_reference .................   Passed    0.02 sec\n    Start 2: G2_my_transform_closure_validation_good\n2/3 Test #2: G2_my_transform_closure_validation_good ...........   Passed    0.02 sec\n    Start 3: G2_my_transform_closure_validation_bad_rejected\n3/3 Test #3: G2_my_transform_closure_validation_bad_rejected ...   Passed    0.06 sec\n\n100% tests passed, 0 tests failed out of 3\n\nLabel Time Summary:\nnegative      =   0.06 sec*proc (1 test)\nreference     =   0.02 sec*proc (1 test)\nvalidation    =   0.02 sec*proc (1 test)\n\nTotal Test time (real) =   0.10 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

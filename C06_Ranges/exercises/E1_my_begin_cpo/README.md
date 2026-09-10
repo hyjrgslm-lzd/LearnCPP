@@ -62,3 +62,9 @@
 - Eric Niebler 博文 "Customization Point Design in C++11 and Beyond"
 - N4381: Suggested Design for Customization Points
 - cppreference: [std::ranges::begin](https://en.cppreference.com/w/cpp/ranges/begin)
+
+## Author-validation layout
+
+本题已迁移到统一四路径验证：`checks/main.cpp` 只消费 `#include <my_begin.hpp>` 暴露的 `c06_e1::my_begin`，不会包含 Reference。`src/reference` 是教学自写参考；`validation/good` 是独立正确实现；`validation/bad` 是安全运行时错误实现，故意让 ADL begin 抢在成员 begin 之前；`src/student` 是可编译但会被 checker 拒绝的学生边界。
+
+当前 checker 覆盖：成员 begin、ADL begin、成员优先于 ADL、数组 begin、右值 `std::string_view` 作为 borrowed range 允许、右值 `std::vector` 作为非 borrowed range 拒绝、无 begin 类型拒绝，以及 `noexcept` 传播。数组和 borrowed 过滤是 `ranges::begin` 的关键边界，不应把本题泛化成“任意对象上找个 begin 就行”。

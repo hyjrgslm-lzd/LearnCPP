@@ -1,0 +1,23 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "C06_Ranges/references/validation/ranges-protocols-r5/build-doc-probe-build-r5c",
+    "-C",
+    "Release",
+    "--output-on-failure"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.5309999999590218,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C06_Ranges/references/validation/ranges-protocols-r5/build-doc-probe-build-r5c\n    Start 1: g2_doc_probe\n1/1 Test #1: g2_doc_probe .....................   Passed    0.45 sec\n\n100% tests passed, 0 tests failed out of 1\n\nTotal Test time (real) =   0.46 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

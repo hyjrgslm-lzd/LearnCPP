@@ -1,0 +1,22 @@
+{
+  "command": [
+    "F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-vs2026\\B01_cost\\Release\\B01_cost.exe",
+    "--bench-one",
+    "--case",
+    "index",
+    "--scenario",
+    "large_high_hit",
+    "--variant",
+    "map",
+    "--seed",
+    "12270",
+    "--instrument",
+    "timed"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.047000000000025466,
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS"
+}

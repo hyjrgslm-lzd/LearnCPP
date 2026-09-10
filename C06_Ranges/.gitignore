@@ -1,0 +1,10 @@
+# Reviewer build trees can live beside raw evidence. Keep only reusable sources
+# and recorded evidence, not IDE projects or compiler tracking databases.
+*.slnx
+*.vcxproj
+*.recipe
+*.dir/
+*.tlog/
+.cmake/
+CTestTestfile.cmake
+DartConfiguration.tcl

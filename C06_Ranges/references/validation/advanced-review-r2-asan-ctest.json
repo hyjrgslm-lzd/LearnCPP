@@ -1,0 +1,28 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "C06_Ranges\\references\\validation\\advanced-review-r2-asan-build",
+    "-C",
+    "Release",
+    "--output-on-failure",
+    "-R",
+    "^(H1_non_propagating_cache_(reference|validation_good)|H2_common_iter_proxy_(reference|validation_good)|H3_generator_const_iter_(reference|validation_good)|CAPSTONE3_impl_source_reading|CAPSTONE4_mini_ranges_(reference|validation_good))$"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 4.1399999998975545,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C06_Ranges/references/validation/advanced-review-r2-asan-build\n    Start 37: H1_non_propagating_cache_reference\n1/9 Test #37: H1_non_propagating_cache_reference .........   Passed    0.46 sec\n    Start 38: H1_non_propagating_cache_validation_good\n2/9 Test #38: H1_non_propagating_cache_validation_good ...   Passed    0.45 sec\n    Start 40: H2_common_iter_proxy_reference\n3/9 Test #40: H2_common_iter_proxy_reference .............   Passed    0.44 sec\n    Start 41: H2_common_iter_proxy_validation_good\n4/9 Test #41: H2_common_iter_proxy_validation_good .......   Passed    0.46 sec\n    Start 43: H3_generator_const_iter_reference\n5/9 Test #43: H3_generator_const_iter_reference ..........   Passed    0.44 sec\n    Start 44: H3_generator_const_iter_validation_good\n6/9 Test #44: H3_generator_const_iter_validation_good ....   Passed    0.46 sec\n    Start 46: CAPSTONE3_impl_source_reading\n7/9 Test #46: CAPSTONE3_impl_source_reading ..............   Passed    0.45 sec\n    Start 47: CAPSTONE4_mini_ranges_reference\n8/9 Test #47: CAPSTONE4_mini_ranges_reference ............   Passed    0.44 sec\n    Start 48: CAPSTONE4_mini_ranges_validation_good\n9/9 Test #48: CAPSTONE4_mini_ranges_validation_good ......   Passed    0.45 sec\n\n100% tests passed, 0 tests failed out of 9\n\nLabel Time Summary:\nobservation    =   0.45 sec*proc (1 test)\nreference      =   1.78 sec*proc (4 tests)\nvalidation     =   1.82 sec*proc (4 tests)\n\nTotal Test time (real) =   4.09 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [
+    "100% tests passed",
+    "9 tests passed"
+  ],
+  "verdict": "FAIL"
+}

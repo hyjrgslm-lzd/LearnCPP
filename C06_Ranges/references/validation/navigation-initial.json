@@ -1,0 +1,150 @@
+{
+  "verdict": "FAIL",
+  "documents": 59,
+  "links_checked": 25,
+  "failures": [
+    {
+      "source": "C06_Ranges\\02-模块A-视图工厂与惰性.md",
+      "link": "int",
+      "error": "target missing"
+    },
+    {
+      "source": "C06_Ranges\\03-模块B-基础适配器与管道.md",
+      "link": "int x",
+      "error": "target missing"
+    },
+    {
+      "source": "C06_Ranges\\05-模块C2-算法·投影·范围边界.md",
+      "link": "auto& a, auto& b",
+      "error": "target missing"
+    },
+    {
+      "source": "C06_Ranges\\06-模块D-C++23高阶视图与协程桥.md",
+      "link": "auto a, auto b",
+      "error": "target missing"
+    },
+    {
+      "source": "C06_Ranges\\06-模块D-C++23高阶视图与协程桥.md",
+      "link": "a, b",
+      "error": "target missing"
+    },
+    {
+      "source": "C06_Ranges\\10-模块G-自行实现视图.md",
+      "link": "n",
+      "error": "target missing"
+    },
+    {
+      "source": "C06_Ranges\\exercises\\A3_repeat_cartesian\\README.md",
+      "link": "int",
+      "error": "target missing"
+    },
+    {
+      "source": "C06_Ranges\\exercises\\B3_take_drop_closure\\README.md",
+      "link": "int x",
+      "error": "target missing"
+    },
+    {
+      "source": "C06_Ranges\\exercises\\C2_1_projection\\README.md",
+      "link": "int a",
+      "error": "target missing"
+    },
+    {
+      "source": "C06_Ranges\\exercises\\C2_1_projection\\README.md",
+      "link": "const Person& p",
+      "error": "target missing"
+    },
+    {
+      "source": "C06_Ranges\\exercises\\C2_1_projection\\README.md",
+      "link": "auto& a, auto& b",
+      "error": "target missing"
+    },
+    {
+      "source": "C06_Ranges\\exercises\\D2_chunk_by_join_with_asconst\\README.md",
+      "link": "a,b",
+      "error": "target missing"
+    },
+    {
+      "source": "C06_Ranges\\exercises\\D2_chunk_by_join_with_asconst\\README.md",
+      "link": "a,b",
+      "error": "target missing"
+    },
+    {
+      "source": "C06_Ranges\\exercises\\D2_chunk_by_join_with_asconst\\README.md",
+      "link": "a,b",
+      "error": "target missing"
+    },
+    {
+      "source": "C06_Ranges\\exercises\\D3_std_generator\\README.md",
+      "link": "int v",
+      "error": "target missing"
+    },
+    {
+      "source": "C06_Ranges\\exercises\\G1_my_take_view\\README.md",
+      "link": "n",
+      "error": "target missing"
+    }
+  ],
+  "sha256": {
+    "C06_Ranges\\01-心智模型.md": "1e8b0106dbfbf63cc8fbc35c62d6e9bf07d79a337335105280574caf207091b6",
+    "C06_Ranges\\02-模块A-视图工厂与惰性.md": "dc724dfe814cab1f505fed133ed9c15ae75129bfeac06724fe78cfc5c0953536",
+    "C06_Ranges\\03-模块B-基础适配器与管道.md": "a442a8de0c598fafb18cb133737ca6aea8771b8ad6c026e46e3e0b3aa5bb7e5d",
+    "C06_Ranges\\04-模块C1-结构适配器.md": "b2aa748f1dabdb636f7d9e4fd0fe295b1cc7d0abf49952fead7ef32936d415b7",
+    "C06_Ranges\\05-模块C2-算法·投影·范围边界.md": "ab523cdf84020442a95e076a5604ceb1c4496eba77915a79c9b0694c7cec0158",
+    "C06_Ranges\\06-模块D-C++23高阶视图与协程桥.md": "5da8e231002a06c1e90f86a2edd71625a67c87beefb16b8e456810b13768a95e",
+    "C06_Ranges\\07-结课项目1-数据管道与源码阅读.md": "bae1e5d68552ee963974cc57e3b0b2eeffec33d8f29fc4d0b01fba01b0b07392",
+    "C06_Ranges\\08-模块E-CPO与niebloid.md": "9550343ffd54ff059ec540e5d7c82b68feec7d4fb897e67a8a660a3bf19b744d",
+    "C06_Ranges\\09-模块F-概念精化与迭代器分类.md": "3abde8a203ae64672d723c3b4542c9f9a0f8f6b84ea124f885fdb8c0031de29a",
+    "C06_Ranges\\10-模块G-自行实现视图.md": "ff2eb10137fa7221520686d3c0c8a3c0fc51b25a82b0dbc3b032f4b60fb179ce",
+    "C06_Ranges\\11-模块H-高级实现模式.md": "fe2ea5910b7f3d6c734d9b6155a3d56ea37087e53e83e82edb92da3519ceab09",
+    "C06_Ranges\\12-结课项目2-实现级源码阅读.md": "af9e803472e056318198565de429e0a0a1a04de4ca6bb76cd13b3be221a32ab7",
+    "C06_Ranges\\chapters\\00-log-pipeline-evolution.md": "70d21c0d4f2db4832ed180869a03bb7cb31ff78206a63ce23a25df32bf3bc192",
+    "C06_Ranges\\exercises\\01_mental_model_warmup\\README.md": "02bf9b6458c1f28101020747bf1a363a7fa22f7fcd63bedd415930c3724cf856",
+    "C06_Ranges\\exercises\\A1_iota_view\\README.md": "102555f293259064d34237305659c7d0cab542ffa37be8c958c404a0445caaf7",
+    "C06_Ranges\\exercises\\A2_istream_view\\README.md": "122451a483e5bcae1b1c6e26c4e30ff6a34c70342204fc40bec4e038572b5818",
+    "C06_Ranges\\exercises\\A3_repeat_cartesian\\README.md": "621e3ef38fba603d33cea1bc90aa2e3314cd98374a2f7b01b6f9659ed80395fe",
+    "C06_Ranges\\exercises\\B1_all_ref_owning\\README.md": "289c762779e4250065ae70b69f8e8f3b947388d5ddb5964f4bb0f993c11c46c6",
+    "C06_Ranges\\exercises\\B2_filter_transform_degrade\\README.md": "1504f9f4b4ef0e3a6c8885dc9e09ef844dacda4dc130907e1f675b095e18f18c",
+    "C06_Ranges\\exercises\\B3_take_drop_closure\\README.md": "e044b0d25ea6ce5299b22725b6241b13d55464118d6ccd54712989849f4c4d30",
+    "C06_Ranges\\exercises\\BUILD_GUIDE.md": "916bf291b6468bf6cf9b27d8fd2501b5763d4a5efc6ef327a19701998bc78901",
+    "C06_Ranges\\exercises\\C1_1_join\\README.md": "f471bff49b4b7e83b648c666db586f2136e613796d43c37ae5be60a16b7e2ade",
+    "C06_Ranges\\exercises\\C1_2_split_evolution\\README.md": "c367c571c590c863deaf05ff8b1bf99308279c3318c3ba8ca56bdb900836ee10",
+    "C06_Ranges\\exercises\\C1_3_common_reverse_elements\\README.md": "69d7f0d7354917d3db12731cdcdb37854e9252e24bdecaa9532bf37a210fcf38",
+    "C06_Ranges\\exercises\\C2_1_projection\\README.md": "b202eb6d24997904030ba8ffd2d9f0b80047ae93f82efcdd8167b44a958d3f3a",
+    "C06_Ranges\\exercises\\C2_2_dangling_borrowed\\README.md": "9d638af76f3e0ba06f26116430b551681214f3e0f8f5e8f385b832a7f7709450",
+    "C06_Ranges\\exercises\\C2_3_ranges_to\\README.md": "b4ebe632028ce7a43bac20a2ca1a580c27a993e40972fe0c52ce22a9e59708e1",
+    "C06_Ranges\\exercises\\CAPSTONE1_log_pipeline\\README.md": "b00391c369c996cbb960cfe2e0325c04834fd201a65cd280eaa3c55dee7ec7eb",
+    "C06_Ranges\\exercises\\CAPSTONE3_impl_source_reading\\notes\\01_object_diagram.md": "1dbc98cfedfc4a832de7fe6eae7555c8e1cf1957eb7c96d2bfa41a245c4131e0",
+    "C06_Ranges\\exercises\\CAPSTONE3_impl_source_reading\\notes\\02_pattern_table.md": "82fdf23b8aff5213d7afae312e4b4792f881baca8ebd1d2f992e41bb07e17618",
+    "C06_Ranges\\exercises\\CAPSTONE3_impl_source_reading\\notes\\03_cpo_checklist.md": "24ce45d643b15b640551faceec747774cea48c564a6aa8b5e63c4c82d63a6efc",
+    "C06_Ranges\\exercises\\CAPSTONE3_impl_source_reading\\notes\\04_reading_note.md": "787b708e8739c3f4225da5162249c24ef8b2b74ff2dbb56c4c848147e506504b",
+    "C06_Ranges\\exercises\\CAPSTONE3_impl_source_reading\\README.md": "8cbfaa71436c38abe2db75b0150c3a680888cd6ee20b434178414c697bde4734",
+    "C06_Ranges\\exercises\\CAPSTONE4_mini_ranges\\notes\\architecture_diagram.md": "d06eac45db08f8fc2157ce9605337fbca3e7f6da95fd2702e942da58a6c2b95b",
+    "C06_Ranges\\exercises\\CAPSTONE4_mini_ranges\\notes\\design_doc.md": "89c905f33369850237d1de4b2ba8a04a842b85003a713e26b574100c84426cc7",
+    "C06_Ranges\\exercises\\CAPSTONE4_mini_ranges\\README.md": "e0f97b67d66f2558e856ca26c44014dd3ed8cc04ca12c1f9fcc2f8a78c735db3",
+    "C06_Ranges\\exercises\\D1_zip_adjacent_chunk\\README.md": "634b0374b946414b11ea2dfc0c507de2ed80c6a3588c9da7455bf2787e1120db",
+    "C06_Ranges\\exercises\\D2_chunk_by_join_with_asconst\\README.md": "9ce3ee444183a2f03febba1bb822e9f2b0cd97f6b4417e6a003d67644e2c6e24",
+    "C06_Ranges\\exercises\\D3_std_generator\\README.md": "880cc5c6d9e6712f8a85a3e136b08f7099169e8d4406398eb3f5b0053066c497",
+    "C06_Ranges\\exercises\\E1_my_begin_cpo\\README.md": "b846c95fe3f3decd94b1177204a2ae809f0bbcb0e80e3bc19568ba63b8026918",
+    "C06_Ranges\\exercises\\E2_niebloid\\README.md": "78d6c8a5b5472d5fba00868fc5f48f653aa722c985bdd1391a82451562d6d471",
+    "C06_Ranges\\exercises\\E3_cpo_tagdispatch_compare\\README.md": "85c5398ba2d792c4159d75c07b8d66dbe667153fef7549b46ff71ac3ebdad3f4",
+    "C06_Ranges\\exercises\\F1_iterator_hierarchy\\README.md": "6076266da544ed276713e00ed9b7d4005dd7e6bbbff621a5e2e499662ccfc606",
+    "C06_Ranges\\exercises\\G1_my_take_view\\README.md": "bef1ee742378a7947dc93f372a7705cea380f448ce4075c167623615ed5b845f",
+    "C06_Ranges\\exercises\\G2_my_transform_closure\\README.md": "fbd1ac0c26503083db3040bcf8a449e33bc0f608aad255e3490e74856e59ac09",
+    "C06_Ranges\\exercises\\G3_my_enumerate_borrowed\\README.md": "5927fa60d88c3e1da5cba96d3184b3ec442355971bc48386abd86293e0735d34",
+    "C06_Ranges\\exercises\\H1_non_propagating_cache\\README.md": "b47f62767e6c76d1b4c25f81de0d5e49359d757785ff74dfd0aab0de288f1fac",
+    "C06_Ranges\\exercises\\H2_common_iter_proxy\\README.md": "dda5fa140c61df7218497ddf6d15117f1b7d69b9e16826ce3ac26c77eb42ac9b",
+    "C06_Ranges\\exercises\\H3_generator_const_iter\\README.md": "8e5c802b158ee5b2feea39aff1ae46d0b1900d3728dbf95acbec94c14a3811c8",
+    "C06_Ranges\\exercises\\README.md": "ef34f13c40ef2688c3d05c4d06f7313b918abd1df3f8f428aca8e7079365f96c",
+    "C06_Ranges\\README.md": "1a7fe5496f9f7c0f0e73e72695cfef684bc9c81c1930e32aafaca2844fd0593e",
+    "C06_Ranges\\references\\implementation-spec.md": "8b4acc1bdf26fc71df779402cdac7658aa53e6366719a253005ccd70b47ecaa8",
+    "C06_Ranges\\references\\reviews\\sample-review.md": "6e9c646c8ab2d54a5e2d7334506e0e951a1ee8451a09bf24f2b65ae8426843c5",
+    "C06_Ranges\\references\\reviews\\spec-review.md": "937f4ac2940fab485885d210b91ccb39327471d0916be6712b7a04316a57dffa",
+    "C06_Ranges\\references\\source-reading.md": "8330afcddaa89082e947b71402d913613aa14a0fecb7dafbdc38235d0dae39d5",
+    "C06_Ranges\\references\\standards.md": "0e92a6ca616369593939d2feb089b692cdd950e0d00443da0638f6d1a6b4114c",
+    "C06_Ranges\\references\\validation\\baseline\\README.md": "942651cc74c308fe2e2121564bf290a5618403c04c8e66bd6f47958321850500",
+    "README.md": "c6771d78ef0199083685e64a0056ac8b59b931738f22e28d45d840ddfcc2d378",
+    "LEARNCPP_GLOBAL_PLAN.md": "357cfd09a16fb62831f3f085edb6068a726e85ffc40504a3b1f1d4e522f21b47"
+  },
+  "root_links_outside_c06": 47,
+  "scope": "C06 non-build public Markdown and root links into C06; not teaching quality or web availability"
+}

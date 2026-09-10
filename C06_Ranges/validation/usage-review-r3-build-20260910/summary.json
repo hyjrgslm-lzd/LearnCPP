@@ -1,0 +1,18 @@
+{
+  "scope": "usage-review-r3 narrow fix: C1_1_join README and C2_3_ranges_to main",
+  "source_hashes": "source-hashes.json",
+  "raw_records": [
+    "C1_1_join-build-Debug.json",
+    "C1_1_join-build-Release.json",
+    "C1_1_join-configure.json",
+    "C1_1_join-ctest-Debug.json",
+    "C1_1_join-ctest-Release.json",
+    "C2_3_ranges_to-build-Debug.json",
+    "C2_3_ranges_to-build-Release.json",
+    "C2_3_ranges_to-configure.json",
+    "C2_3_ranges_to-ctest-Debug.json",
+    "C2_3_ranges_to-ctest-Release.json"
+  ],
+  "all_exit_zero": true,
+  "static_scan": "static-scan.txt"
+}

@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 3.28)
+project(F01_frontier LANGUAGES CXX)
+include(../cmake/RangesSetup.cmake)
+
+# Flat containers are part of the ordinary course, not a skipped future promise.
+ranges_add_observation(F01_flat_containers flat_containers.cpp)
+if(RANGES_ENABLE_FRONTIER)
+    foreach(feature inplace_vector hive concat cache_latest as_input const_input_filter reserve_hint optional_range view_interface_at map_lookup)
+        add_executable(F01_${feature} ${feature}.cpp)
+        ranges_configure_target(F01_${feature})
+        ranges_add_test(F01_${feature} LABELS frontier)
+        if(BUILD_TESTING)
+            set_tests_properties(F01_${feature} PROPERTIES SKIP_RETURN_CODE 77)
+        endif()
+    endforeach()
+endif()

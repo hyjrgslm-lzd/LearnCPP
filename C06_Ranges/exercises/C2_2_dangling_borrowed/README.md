@@ -115,3 +115,8 @@
 - cppreference: [std::ranges::dangling](https://en.cppreference.com/w/cpp/ranges/dangling)
 - cppreference: [std::ranges::borrowed_range](https://en.cppreference.com/w/cpp/ranges/borrowed_range)
 - cppreference: [std::ranges::enable_borrowed_range](https://en.cppreference.com/w/cpp/ranges/borrowed_range)
+## 参考解析
+
+预测：右值非 borrowed range 调返回迭代器的算法会得到 `ranges::dangling`；`string_view`、`span`、`iota_view` 是 borrowed，因为迭代器指向外部或值语义位置，不依赖 view 对象本身。borrowed 不负责持有拥有者生命周期。
+
+当前程序验证右值 vector 的 dangling、string_view 的真实迭代器、自定义 span 包装通过 `enable_borrowed_range` 获得 borrowed，以及 `borrowed_iterator_t` / `borrowed_subrange_t` 的类型结果。扩展时不要把 borrowed 当 GC 或 shared ownership。

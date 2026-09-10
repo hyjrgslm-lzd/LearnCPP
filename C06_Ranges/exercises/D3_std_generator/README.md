@@ -20,8 +20,8 @@
 2. **concept 验证**：用 `static_assert` 验证 `input_range` 和 `view` 成立，`forward_range` 不成立，并说出原因。
 3. **move-only 验证**：验证 `std::copyable` 不成立，`std::movable` 成立。
 4. **单遍语义演示**：手动用 `it/end` 推进，先取 5 个再取接续的 5 个，证明不能从头重播。
-5. **树的递归遍历**：用 `co_yield std::ranges::elements_of(walk_tree(child))` 实现前序 DFS，验证输出 `1 2 4 5 3`。
-6. **接入管道**：`walk_tree(tree) | views::filter([](int v){ return v >= 3; })`，验证产出 `3 4 5`。
+5. **树的递归遍历**：用 `co_yield std::ranges::elements_of(walk_tree(child))` 实现前序 DFS，验证输出 `1 2 4 3 5 6`。
+6. **接入管道**：`walk_tree(tree) | views::filter([](int v){ return v >= 3; })`，验证产出 `4 3 5 6`。过滤保持 DFS 顺序，不排序。
 
 ## 进阶预计方向
 
@@ -40,7 +40,7 @@
 
 ## 观察点
 
-- `std::generator<T>` 的"惰性"来自 `initial_suspend()` 返回 `std::suspend_always`：协程体不会在 `fib()` 调用时立即执行，而是等到第一次 `++it` 时才运行到第一个 `co_yield`。与 `views::iota` / `views::filter` 的管道惰性是同一层的抽象。
+- `std::generator<T>` 的"惰性"来自 `initial_suspend()` 返回 `std::suspend_always`：协程体不会在 `fib()` 调用时立即执行，而是第一次 `begin()` 启动协程并运行到第一个 `co_yield`；之后每次 `++it` 推进到下一个 `co_yield`。与 `views::iota` / `views::filter` 的管道惰性是同一层的抽象。
 - `std::generator` 满足 O(1) move（转移 `coroutine_handle`，只是一个指针大小的操作）、O(1) destroy（`coroutine_handle.destroy()` 清理协程帧，不遍历已产出的元素）。不满足 copyable，因为协程状态不能被复制。
 - `elements_of` 是 P2502R2 引入的协程扩展点，允许 generator 递归委托。实现上可以利用对称转移（symmetric transfer）在协程之间直接切换，减少开销。与 `join_view` 展平嵌套的思路类似，但发生在协程层面。
 - 单遍不仅是运行时约束，也是类型系统约束：`input_iterator` 不提供 multi-pass 保证，`std::sort`、`std::distance`（非 sized）等算法无法与 generator 配合。
@@ -73,3 +73,8 @@
 - P2474R2：`views::repeat`（模块 A 已讲，在进阶对比部分引用）
 - cppreference：[`std::generator`](https://en.cppreference.com/w/cpp/coroutine/generator)
 - cppreference：[`std::ranges::elements_of`](https://en.cppreference.com/w/cpp/ranges/elements_of)
+## 参考解析
+
+预测：`std::generator<T>` 是 move-only view/input_range，不是 forward_range；第一次 `begin()` 才启动协程执行，之后每次 `++` 推进到下一个 `co_yield`。`elements_of` 可以把另一个 range 或 generator 委托展开。
+
+当前程序用日志验证 begin 首次启动、递增继续执行，验证 generator 的 concept，并用真实 `std::generator` + `elements_of` 展平两个 vector。扩展时不要复制手写 generator；标准库缺能力时应 SKIP，有能力时主体失败就是 FAIL。

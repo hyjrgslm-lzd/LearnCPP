@@ -1,0 +1,12 @@
+{
+  "date": "2026-09-10",
+  "source": "https://raw.githubusercontent.com/cplusplus/draft/601ae94d6cba6994d3b43dbb2b6c9139bd35a423/source/support.tex",
+  "commit": "601ae94d6cba6994d3b43dbb2b6c9139bd35a423",
+  "sha256": "99336a2d0401157a9761cc712bdf6886474fb442b701d296b8546e9c774b8ba7",
+  "feature_macros": {
+    "__cpp_lib_view_interface": 202606,
+    "__cpp_lib_map_lookup": 202606
+  },
+  "boundary": "Pinned draft source, not proof of installed library capability or final ISO publication.",
+  "adoption": "N5055 LWG Poll 4 and Poll 16; C++29 working draft N5054"
+}

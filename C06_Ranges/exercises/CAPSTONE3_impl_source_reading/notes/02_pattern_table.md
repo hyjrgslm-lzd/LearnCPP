@@ -1,49 +1,19 @@
 # 笔记 02：技术模式对照表
 
-> 对应任务 3 / 验收点：四行全部填完，无空格；iterator_concept 推导列有具体 min 表达式；
-> "你之前的误解"列有实质内容。
+固定输入同 `references/source-reading.md`：MSVC STL 145 / `_MSVC_STL_UPDATE=202604L`，源码入口为本机 `<ranges>`。
+源码阅读结论不等于标准强制实现布局。
 
----
+| 实现 | 核心模式 | iterator_concept 推导 | cache | 对应课程主题 | 之前的误解 | 修正后的判断 |
+|---|---|---|---|---|---|---|
+| `single_view` / `empty_view` / `iota_view` | 完成型 view；对象自己提供 begin/end，不需要 parent 指针 | `single_view` 用指针得到 contiguous；整数 `iota_view` 可到 random_access；`empty_view` 无状态且 sized | 无 | 模块 F：`view_interface` 和完成型 view | 以为所有 view 都包装一个底层 range | 完成型 view 可以直接拥有元素或只表达一个生成规则 |
+| `transform_view` | inner iterator = 当前底层 iterator + parent 指针；解引用时调用函数对象 | `min(底层, random_access)`；contiguous 会降为 random_access，因为解引用可能产出 prvalue | 无 | 模块 G：inner iterator 与 projection | 以为底层 contiguous 会继续 contiguous | 连续存储性质要求引用真实相邻对象，transform 的 prvalue 不满足 |
+| `filter_view` | iterator 跳过不满足谓词的元素；parent 提供谓词和 base | `min(底层, bidirectional)`；random_access 降级，因为无法 O(1) 跳过任意数量已拒绝元素 | forward 底层有 begin cache，拷贝/移动时 reset | 模块 H：`__non_propagating_cache` | 以为 filter 永远没有 const begin | N5047/P3725R3 只给 input-only const 支线；普通 forward/vector 缓存路径仍是非 const begin |
+| `join_view` | 双层状态：外层子范围位置 + 内层元素位置；空子范围循环跳过 | `min(外层, 内层, bidirectional)`，且受 common/reference 类别约束 | xvalue 内层子范围需要 cache 稳定本体 | 模块 H：双层迭代与临时子范围 | 以为 join 只是两层 for 循环语法糖 | 实现必须管理内层对象生命期和空子范围推进，缓存动机不同于 filter |
 
-## 对照表
+五个问题答案：
 
-| 库视图 | 核心模式 | iterator_concept 推导 | 缓存 | 你实现的对应练习 | 你的最大收获 | 你之前的误解 |
-|--------|----------|-----------------------|------|------------------|--------------|--------------|
-| `single_view` | `view_interface` CRTP + 内部存值（movable-box），begin/end 返回裸指针 | `contiguous`（直接 pointer，自动推导） | 无 | 模块 G：实现最小 view | <!-- 填写 --> | <!-- 填写 --> |
-| `transform_view` | inner iterator 持有底层迭代器（_M_current）+ parent 裸指针（_M_parent），`operator*` 调用 `std::invoke(*_M_parent->_M_fun, *_M_current)` | `min(底层 concept, random_access_iterator_tag)`；contiguous 底层降为 random_access（operator* 返回 prvalue，不是真实内存引用） | 无 | 模块 G：实现 transform adaptor | <!-- 填写 --> | <!-- 填写 --> |
-| `filter_view` | inner iterator + `__non_propagating_cache<optional<iterator_t<V>>>` 缓存 begin 位置；begin() 为非 const 成员函数 | `min(底层 concept, bidirectional_iterator_tag)`；random_access 底层降为 bidirectional（operator- 无法 O(1)） | 有（begin cache，拷贝时重置 reset()） | 模块 H：带缓存的 view | <!-- 填写 --> | <!-- 填写 --> |
-| `join_view` | 双层迭代器状态（外层 _M_outer + 内层 _M_inner）；xvalue 内层子范围用 `__non_propagating_cache<inner_range>` 稳定本体；operator++ 先推进内层，到达 end 后推进外层并重置内层 | `min(外层 concept, 内层 concept, bidirectional_iterator_tag)` | 有（xvalue 内层时缓存 inner_range 本体） | 07 文件内部"结课项目 2：源码对照"一节的观察 | <!-- 填写 --> | <!-- 填写 --> |
-
----
-
-## 补充说明区（阅读笔记）
-
-### single_view 观察
-<!-- 在此写阅读 single_view 源码的观察 -->
-
-### transform_view 观察
-<!-- 在此写阅读 transform_view 源码的观察 -->
-
-### filter_view 观察
-<!-- 在此写阅读 filter_view 源码的观察，重点说明 __non_propagating_cache 的实现细节 -->
-
-### join_view 观察
-<!-- 在此写阅读 join_view 源码的观察，重点说明 xvalue 内层缓存的触发条件 -->
-
----
-
-## 五个问题答案（对应任务 2）
-
-对 single_view / transform_view / filter_view / join_view 各回答一次：
-
-| 问题 | single_view | transform_view | filter_view | join_view |
-|------|-------------|----------------|-------------|-----------|
-| CPO 还是普通 dispatch？ | <!-- 填写 --> | <!-- 填写 --> | <!-- 填写 --> | <!-- 填写 --> |
-| iterator_concept 如何推导？ | contiguous（裸指针） | min(底层, random_access) | min(底层, bidirectional) | min(外层, 内层, bidirectional) |
-| 是否有 cache？什么类型？ | 无 | 无 | 有，`__non_propagating_cache<optional<It>>` | xvalue 内层时有，`__non_propagating_cache<inner_range>` |
-| operation state 栈对象还是堆对象？ | <!-- 填写 --> | <!-- 填写 --> | <!-- 填写 --> | <!-- 填写 --> |
-| 是否用 variant/tuple？ | <!-- 填写 --> | <!-- 填写 --> | <!-- 填写 --> | <!-- 填写 --> |
-
----
-
-*填写完成后删除此行提示，保留所有表格内容。*
+1. CPO 先把公开操作压成一个稳定入口，再由成员、ADL 或回退分支决定实际调用；实现类不需要暴露私有 helper。
+2. inner iterator 指向 parent，是因为函数对象、谓词和 inner cache 属于 view 对象，不属于每个迭代器副本。
+3. cache 类型不是性能装饰。`filter_view` 缓存 begin 扫描结果；`join_view` 缓存 xvalue 子范围本体。一个解决摊还复杂度，一个解决对象生命期。
+4. `iterator_concept` 描述 ranges 新算法可用能力；`iterator_category` 面向旧算法，遇到 proxy/prvalue 时常需要降级。
+5. `borrowed_range` 只说明迭代器离开 range 对象后是否仍可用，不延长被借用容器、临时子范围或 parent view 的生命期。

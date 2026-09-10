@@ -1,0 +1,26 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "C06_Ranges\\exercises\\L02_sequence_containers\\build-author",
+    "--config",
+    "Debug",
+    "--parallel",
+    "2"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.5,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L02_sequence_containers/CMakeLists.txt\n  main.cpp\n  L02_sequence_containers.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\L02_sequence_containers\\build-author\\Debug\\L02_sequence_containers.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L02_sequence_containers/CMakeLists.txt\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [
+    "L02_sequence_containers"
+  ],
+  "verdict": "PASS"
+}

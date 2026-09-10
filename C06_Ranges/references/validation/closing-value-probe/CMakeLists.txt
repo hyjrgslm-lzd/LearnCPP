@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.28)
+project(closing_value_probe LANGUAGES CXX)
+include(../../../exercises/cmake/RangesSetup.cmake)
+add_executable(g3_value_probe main.cpp)
+ranges_configure_target(g3_value_probe)
+target_include_directories(g3_value_probe PRIVATE ../../../exercises/G3_my_enumerate_borrowed/validation/good)
+ranges_add_test(g3_value_probe LABELS validation)

@@ -1,0 +1,22 @@
+{
+  "command": [
+    "D:/Perl/c/bin/g++.exe",
+    "-std=c++20",
+    "C06_Ranges/references/validation/baseline/g2-stateful-semantic.cpp",
+    "-o",
+    "C06_Ranges/references/validation/baseline/build-semantic/g2.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 1.031000000000006,
+  "stdout": "",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

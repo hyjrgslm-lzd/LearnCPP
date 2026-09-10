@@ -110,3 +110,8 @@
 - cppreference: [std::ranges::reverse_view](https://en.cppreference.com/w/cpp/ranges/reverse_view)
 - cppreference: [std::ranges::elements_view](https://en.cppreference.com/w/cpp/ranges/elements_view)
 - cppreference: [std::ranges::keys_view / values_view](https://en.cppreference.com/w/cpp/ranges/keys_view)
+## 参考解析
+
+预测：`common` 把 iter/sentinel 异型 range 包成 common_range；`reverse` 要求 bidirectional，且 iterator_concept 跟随底层；`elements` / `keys` / `values` 只投影 tuple-like 元素，不改变底层 borrowed 语义。
+
+当前程序验证 common 化、vector reverse 保留 random_access、forward_list 不能 reverse、keys/values 输出，以及右值 map 参与返回迭代器算法时得到 dangling。扩展问题答案：右值 map 的元素生命周期随 map 销毁，borrowed_range 不能凭 values_view 自动获得。

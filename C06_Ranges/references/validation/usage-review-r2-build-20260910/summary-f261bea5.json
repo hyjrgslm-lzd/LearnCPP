@@ -1,0 +1,18 @@
+{
+  "head": "f261bea559d6722c31135fb2d3589be52fe958ed",
+  "generated_at": "2026-09-10",
+  "units": [
+    "C1_1_join",
+    "B1_all_ref_owning",
+    "B3_take_drop_closure",
+    "C2_3_ranges_to",
+    "D1_zip_adjacent_chunk",
+    "D2_chunk_by_join_with_asconst",
+    "D3_std_generator"
+  ],
+  "expected_ctest_runs": 14,
+  "actual_ctest_runs": 12,
+  "failures": 2,
+  "results_path": "C06_Ranges\\references\\validation\\usage-review-r2-build-20260910\\results-f261bea5.json",
+  "summary_path": "C06_Ranges\\references\\validation\\usage-review-r2-build-20260910\\summary-f261bea5.json"
+}

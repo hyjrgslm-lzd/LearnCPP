@@ -1,0 +1,23 @@
+{
+  "command": [
+    "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C06_Ranges\\references\\validation\\advanced-review-r3-doc-hash.ps1"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 1.577999999979511,
+  "stdout": "{\n  \"generated_at\": \"2026-09-10T05:52:54.6265326Z\",\n  \"repo\": \"F:\\\\CPPTrain\\\\LearnCPP\",\n  \"git_head\": \"f261bea559d6722c31135fb2d3589be52fe958ed\",\n  \"git_status_short\": [\n    \" M \\\"C06_Ranges/11-\\\\346\\\\250\\\\241\\\\345\\\\235\\\\227H-\\\\351\\\\253\\\\230\\\\347\\\\272\\\\247\\\\345\\\\256\\\\236\\\\347\\\\216\\\\260\\\\346\\\\250\\\\241\\\\345\\\\274\\\\217.md\\\"\",\n    \" M C06_Ranges/exercises/H3_generator_const_iter/README.md\",\n    \"?? C06_Ranges/references/validation/advanced-r3-doc-alias-probe.json\",\n    \"?? C06_Ranges/references/validation/r3-doc-alias-probe/\"\n  ],\n  \"files\": [\n    {\n      \"path\": \"C06_Ranges/11-ģ��H-�߼�ʵ��ģʽ.md\",\n      \"bytes\": 54306,\n      \"sha256\": \"9743e33879332257f81916a3ad4a60ce9dd5a93bcad40cd755338194832d97b9\"\n    },\n    {\n      \"path\": \"C06_Ranges/exercises/H3_generator_const_iter/README.md\",\n      \"bytes\": 4853,\n      \"sha256\": \"85d19b6c60af94fc9c91074e15ec37c1d2f5a8a119b28c87055a16eb57ca8eef\"\n    },\n    {\n      \"path\": \"C06_Ranges/references/validation/r3-doc-alias-probe/h3_doc_alias_probe.cpp\",\n      \"bytes\": 1172,\n      \"sha256\": \"c8c983a6eaf904a83713b97cfbe7448de5ca921cd1ce8a98cb8b00e182635668\"\n    },\n    {\n      \"path\": \"C06_Ranges/references/validation/r3-doc-alias-probe/CMakeLists.txt\",\n      \"bytes\": 404,\n      \"sha256\": \"471e53210246db51850e7ef98fdd96ca29a032d34238e72df75bf0e53f89b657\"\n    },\n    {\n      \"path\": \"C06_Ranges/references/validation/advanced-r3-doc-alias-probe.json\",\n      \"bytes\": 1026,\n      \"sha256\": \"75c5713555bf848c6d80bbe2e5006b2f71a0a9d1b8126cebf85bd3bf5fddb082\"\n    }\n  ]\n}\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

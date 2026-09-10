@@ -108,3 +108,8 @@
 - P2781R5：`std::from_range_t` 容器构造标签
 - cppreference: [std::ranges::to](https://en.cppreference.com/w/cpp/ranges/to)（C++23）
 - cppreference: [std::from_range_t](https://en.cppreference.com/w/cpp/ranges/from_range)（C++23）
+## 参考解析
+
+预测：C++23 `ranges::to` 会消费 range 并构造目标容器，可直接接在管道末尾；拥有容器物化后就脱离 view 生命周期。`from_range` 是容器构造协议，不是普通函数。
+
+当前程序把 filter/transform 管道直接 `to<vector>`，把字符串切分 `to<vector<string>>`，验证推导目标类型，并用 `from_range` 构造 vector。扩展时不要手写替代 `ranges::to` 模拟缺失标准 API；缺能力应 capability probe 后 SKIP。

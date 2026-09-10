@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.28)
+project(protocol_review_r3_probes LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+add_executable(g2_noncommon_probe protocol-review-r3-g2-noncommon-probe.cpp)
+target_include_directories(g2_noncommon_probe PRIVATE "../../../exercises/G2_my_transform_closure/src/reference")
+add_executable(g3_noncommon_probe protocol-review-r3-g3-noncommon-probe.cpp)
+target_include_directories(g3_noncommon_probe PRIVATE "../../../exercises/G3_my_enumerate_borrowed/src/reference")

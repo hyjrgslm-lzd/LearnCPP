@@ -1,0 +1,27 @@
+{
+  "command": [
+    "C:\\Users\\zhidan.li\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+    "C06_Ranges\\references\\benchmarks\\scripts\\measure_b01.py",
+    "--exe",
+    "C06_Ranges\\exercises\\B01_cost\\build-review\\Release\\B01_cost.exe",
+    "--output",
+    "C06_Ranges\\references\\validation\\benchmark-review-bad-driver-out",
+    "--samples",
+    "0"
+  ],
+  "exit_code": 2,
+  "timeout": false,
+  "process_seconds": 0.1720000000204891,
+  "stdout": "",
+  "stderr": "usage: measure_b01.py [-h] --exe EXE --output OUTPUT [--samples SAMPLES]\n                      [--warmups WARMUPS] [--seed SEED] [--timeout TIMEOUT]\n                      [--smoke]\nmeasure_b01.py: error: samples, warmups and timeout must be positive\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 2,
+  "required_text": [
+    "samples, warmups and timeout must be positive"
+  ],
+  "verdict": "PASS"
+}

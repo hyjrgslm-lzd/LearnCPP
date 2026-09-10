@@ -8,7 +8,7 @@
 
 - **函数模板无法直接取地址**：`std::sort` 是函数模板——一个重载集合的名字，不是具体实体。`auto f = std::sort` 无法编译，必须显式实例化（丢失泛型性）才能得到函数指针。
 - **niebloid 是对象**：`std::ranges::sort` 是 `inline constexpr` 变量，有固定类型，可赋值给 `auto`，可传给 `template<auto F>` 非类型模板参数，可被 `std::invoke` 调用。这是函数对象作为一等公民的核心优势。
-- **niebloid vs CPO 的范围**：所有 niebloid 都是 CPO；`ranges::begin` 是 CPO（访问 CPO），`ranges::sort` 既是 CPO 也是 niebloid（算法 CPO）。"niebloid"特指算法类函数对象。
+- **niebloid vs CPO 的范围**：`ranges::begin` 是访问 CPO，开放成员/ADL 定制；`ranges::sort` 是 ranges 算法 niebloid，重点是 ADL 隔离、约束和 projection，不是用户可通过 ADL 替换算法体的定制点。
 - **projection 是 first-class 参数**：`ranges::sort(v, comp, proj)` 在 niebloid 内部统一处理，调用者无需手写 lambda 包装器。
 
 ## 必做任务
@@ -33,7 +33,7 @@
 - `apply_algo<std::ranges::sort>(v)` 实现完整且运行正确。
 - `vector<Person>` 按年龄排序不用任何 lambda。
 - 能解释为什么 niebloid 名字不被 ADL 找到，而 `std::sort` 的名字会参与 ADL。
-- 能说出"niebloid 是所有 CPO 的子集，专指算法类 CPO"的准确含义。
+- 能说出访问 CPO 与算法 niebloid 的边界：`ranges::begin` 开放受约束定制；`ranges::sort` 是可传递的标准算法对象。
 
 ## 观察点
 
@@ -59,3 +59,9 @@
 - P0896R4（ranges 算法 niebloid 设计）
 - cppreference: [std::ranges::sort](https://en.cppreference.com/w/cpp/algorithm/ranges/sort)
 - cppreference: [Niebloids（ranges constrained algorithms）](https://en.cppreference.com/w/cpp/algorithm/ranges)
+
+## Author-validation note
+
+本题是观察型练习，CMake 使用 `ranges_add_observation(E2_niebloid main.cpp)`。当前 `main.cpp` 是完整可运行对照：`std::ranges::sort` 可赋给 `auto`、可作为 `template<auto Algo>` 参数、可携带 projection；`std::sort` 只能通过显式实例化或 lambda 包装变成具体 callable。
+
+术语上需要区分历史：C++20/23 ranges 算法 niebloid 已以函数对象形式提供 ADL 隔离、约束和 projection；C++26 P3136 进一步讨论更多 algorithm function objects 的一等值能力。不要把算法对象一概称为用户可定制 CPO，也不要把 C++26 能力倒灌回 C++20/23 解释。

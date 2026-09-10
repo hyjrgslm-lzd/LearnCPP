@@ -1,0 +1,23 @@
+{
+  "command": [
+    "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C06_Ranges\\references\\validation\\advanced-review-r2-cap4-good-hash-compare.ps1"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.5619999999180436,
+  "stdout": "[\n  {\n    \"file\": \"01_cpo.hpp\",\n    \"reference_sha256\": \"6ed080d4568f3ac6324cdbeb0a8d2d909c64702d6242f320baea2cf25f0dd68e\",\n    \"good_sha256\": \"f28a49b85a577243998d2cb458cc401a53c503358ff5067312acd55da3a75252\",\n    \"same\": false\n  },\n  {\n    \"file\": \"02_concepts.hpp\",\n    \"reference_sha256\": \"1b7a7b39e57b1da133882d5388dc86b38f606c2a615588d3a1e99bb23bdee19e\",\n    \"good_sha256\": \"92525fd071a4dee76a4ddf70b93c29af1214f526396656d998c5611a0cf5b64f\",\n    \"same\": false\n  },\n  {\n    \"file\": \"03_interface.hpp\",\n    \"reference_sha256\": \"853028fafa02a767035a1a7f641c3d61e2638ad756fe430a258fadc4d73b23e5\",\n    \"good_sha256\": \"4b47a5172c159e9f4156127299637601476a155723fa155141d858f802b1b96b\",\n    \"same\": false\n  },\n  {\n    \"file\": \"04_factories.hpp\",\n    \"reference_sha256\": \"a22d2a5b6221ab5541157d9008041bafa518e60992cc8186f2dc6f1b09c14f9f\",\n    \"good_sha256\": \"4ba719a381b933427eb94b4ee6fce73ffc54b29635944231277f789f6dc3d910\",\n    \"same\": false\n  },\n  {\n    \"file\": \"05_adaptors.hpp\",\n    \"reference_sha256\": \"a02c3c26aff90a5ef63905c9395b7c55a140449912fff7122ae0a4682cf1e906\",\n    \"good_sha256\": \"fe05dbce0cd732518ea8914aafdb79877dd22bd5854eab627e93d0526c88ee4f\",\n    \"same\": false\n  },\n  {\n    \"file\": \"06_consumers.hpp\",\n    \"reference_sha256\": \"bfcc2f3b44616c8b4b7ce05b97ff6fb1095890b79879411f5fd08d139698c822\",\n    \"good_sha256\": \"e715f912da9186515bc39b5a48a5eb7317f3d548a9129bd7a2a30a7f3fe62a98\",\n    \"same\": false\n  }\n]\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

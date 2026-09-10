@@ -1,0 +1,23 @@
+{
+  "command": [
+    "powershell",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C06_Ranges\\references\\validation\\advanced-review-r2-sourcehash.ps1"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.7180000001098961,
+  "stdout": "",
+  "stderr": "Get-ChildItem : �Ҳ���·����F:\\CPPTrain\\LearnCPP\\C06_Ranges\\11-模块H-高级实现模式.md������Ϊ��·�������ڡ�\n����λ�� F:\\CPPTrain\\LearnCPP\\C06_Ranges\\references\\validation\\advanced-review-r2-sourcehash.ps1:18 �ַ�: 9\n+         Get-ChildItem -LiteralPath $path -Recurse -File |\n+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n    + CategoryInfo          : ObjectNotFound: (F:\\CPPTrain\\Lea...��H-高级实现模式.md:String) [Get-ChildItem], Item\nNotFound    Exception\n    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetChildItemCommand\n \n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "FAIL"
+}

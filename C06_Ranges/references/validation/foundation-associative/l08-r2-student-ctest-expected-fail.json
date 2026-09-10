@@ -1,0 +1,25 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "C06_Ranges/exercises/L08_avl_tree/build-author-r2-student",
+    "-C",
+    "Debug",
+    "--output-on-failure"
+  ],
+  "exit_code": 8,
+  "timeout": false,
+  "process_seconds": 0.5159999998286366,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L08_avl_tree/build-author-r2-student\n    Start 1: L08_avl_tree_student\n1/1 Test #1: L08_avl_tree_student .............***Failed    0.44 sec\ncheck failed: new value inserts\n\n\n0% tests passed, 1 tests failed out of 1\n\nLabel Time Summary:\nstudent    =   0.44 sec*proc (1 test)\n\nTotal Test time (real) =   0.45 sec\n\nThe following tests FAILED:\n\t  1 - L08_avl_tree_student (Failed)                     student\n",
+  "stderr": "Errors while running CTest\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 8,
+  "required_text": [
+    "check failed: new value inserts"
+  ],
+  "verdict": "PASS"
+}

@@ -1,138 +1,75 @@
 # 笔记：mini-ranges 六层架构图
 
-> 对应任务 1 / 验收点 6：能拿着六层架构图解释整个系统，指出每层的职责和层间依赖方向。
+层间依赖方向是单向的：上层 include 下层。学生只需要编辑 `src/student/my_ranges/` 下的六个 header；根目录 `my_ranges/` 只是旧入口导航，不保存第二套答案。
 
----
-
-## 占位骨架（任务 1：实现前先画架构图）
-
-```
-【实现前填写】
-
-层间依赖方向：上层 include 下层，依赖方向从上到下。
-
-┌─────────────────────────────────────────────────────────────────┐
-│  层 6 — 消费层 (06_consumers.hpp)                               │
-│  ranges::to<C>                                                  │
-│  职责：将 range 元素收集到容器；管道最终出口                      │
-│  继承：range_adaptor_closure（可出现在管道右侧）                  │
-├─────────────────────────────────────────────────────────────────┤
-│  层 5 — closure 层 (05_adaptors.hpp)                            │
-│  _transform_closure / _take_closure                             │
-│  职责：持有参数（函数/数量），等待 range 输入；注入 operator|     │
-│  继承：range_adaptor_closure                                     │
-├─────────────────────────────────────────────────────────────────┤
-│  层 4/5 — view 层 (04_factories.hpp, 05_adaptors.hpp)           │
-│  iota_view / single_view / transform_view / take_view           │
-│  职责：持有数据或底层 view，提供 begin/end；惰性求值              │
-│  继承：view_interface（注入 empty/front 等）                     │
-├─────────────────────────────────────────────────────────────────┤
-│  层 3 — 基础设施层 (03_interface.hpp)                            │
-│  view_interface<D> + range_adaptor_closure<D>                   │
-│  职责：CRTP 基类，零开销注入接口；无虚函数                        │
-├─────────────────────────────────────────────────────────────────┤
-│  层 2 — 概念层 (02_concepts.hpp)                                 │
-│  range / view / input_range / forward_range                     │
-│  职责：编译期约束，描述类型能力；不产生运行时代码                  │
-├─────────────────────────────────────────────────────────────────┤
-│  层 1 — CPO 层 (01_cpo.hpp)                                     │
-│  begin / end / iter_move / size                                 │
-│  职责：函数对象，ADL 隔离；统一接口入口；enable_view 变量模板     │
-└─────────────────────────────────────────────────────────────────┘
+```text
+┌───────────────────────────────────────────────────────────────┐
+│ 层 6 — consumers：06_consumers.hpp                            │
+│ my::ranges::to<C>()                                           │
+│ 把惰性 range 收集到容器；管道最终出口。                         │
+├───────────────────────────────────────────────────────────────┤
+│ 层 5 — adaptors：05_adaptors.hpp                              │
+│ transform_view / take_view / transform(...) / take(...)        │
+│ view 保存底层 range；closure 保存参数并接入 operator|。          │
+├───────────────────────────────────────────────────────────────┤
+│ 层 4 — factories：04_factories.hpp                            │
+│ iota_view / single_view                                       │
+│ 无底层 view 的起点 range，负责产生管道源头。                     │
+├───────────────────────────────────────────────────────────────┤
+│ 层 3 — interface：03_interface.hpp                            │
+│ view_interface<D> / range_adaptor_closure<D>                   │
+│ 用 CRTP 注入 empty/front 与 range | closure。                   │
+├───────────────────────────────────────────────────────────────┤
+│ 层 2 — concepts：02_concepts.hpp                              │
+│ range / view / input_range / forward_range / borrowed_range    │
+│ 把结构能力和 view 公理分开表达。                                │
+├───────────────────────────────────────────────────────────────┤
+│ 层 1 — CPO：01_cpo.hpp                                        │
+│ begin / end / size / iter_move + enable_view 变量模板          │
+│ 统一访问入口，隔离 ADL，给上层 concept 与 view 使用。             │
+└───────────────────────────────────────────────────────────────┘
 ```
 
----
+## 层 1 — CPO
 
-## 详细层说明（实现后补全）
+`begin` / `end` / `size` / `iter_move` 是 `inline constexpr` 函数对象。调用方写 `my::ranges::begin(r)`，先进入固定 CPO，再由 CPO 选择数组、成员函数或 ADL fallback。这样不会让第三方同名自由函数直接劫持顶层名字。
 
-### 层 1 — CPO 层
+`enable_view<T>` 与 `enable_borrowed_range<T>` 默认是 `false`。具体 view 在对应 header 末尾显式特化，表示作者承诺该类型满足 view 或 borrowed_range 公理。
 
-**文件**：`my_ranges/01_cpo.hpp`
+## 层 2 — concept
 
-**核心内容**：
-- `my::ranges::begin` / `end`：`inline constexpr` 函数对象，成员优先
-- `my::ranges::iter_move`：hidden-friend 优先，回退 `std::move(*it)`
-- `enable_view<T>` / `enable_borrowed_range<T>`：变量模板，默认 false
+`range` 只要求能 `begin/end`；`view` 要求 `range + movable + enable_view<T>`。这能区分 `std::vector<int>` 和真正 view：vector 有 begin/end，但拷贝不是 O(1)，所以不能靠结构检测自动视为 view。
 
-**为什么用函数对象而非函数模板**：
-<!-- 填写：ADL 隔离——函数对象不参与 ADL，阻止第三方同名函数劫持 -->
+`input_range` / `forward_range` 继续把 iterator concept 叠上去，供上层 adaptor 限制能力。
 
----
+## 层 3 — 基础设施
 
-### 层 2 — 概念层
+`view_interface<D>` 用 CRTP 调派到派生类，提供 `empty()` 和 `front()`。没有虚函数，没有 vtable，类型仍然保持标准 ranges 依赖的轻量值语义。
 
-**文件**：`my_ranges/02_concepts.hpp`
+`range_adaptor_closure<D>` 注入 `range | closure`。每个 closure 只实现 `operator()(R&&)`，管道语法由基类统一提供。
 
-**核心内容**：
-- `range`：能调用 begin/end
-- `view`：range + movable + enable_view = true
-- `input_range` / `forward_range`：约束链递增
+## 层 4 — 工厂 view
 
-**约束链图**：
+`iota_view<int>` 的 iterator 只保存当前值，支持随机访问运算，并标记为 borrowed range。
+
+`single_view<T>` 自己保存一个值，`begin/end` 返回裸指针。裸指针天然满足 contiguous/random access，但本 mini-ranges 只把它作为单元素 view 使用。
+
+## 层 5 — adaptor view
+
+`transform_view<V, F>` 的 iterator 保存底层 iterator 和函数指针，解引用时惰性调用函数。底层即使 contiguous，transform 后也只能按 random access 处理，因为解引用结果不再是底层连续内存里的元素引用。
+
+`take_view<V>` 的 iterator 包装底层 iterator 并保存剩余数量，sentinel 保存底层 end。比较时“剩余数量为 0”或“到底层 end”任一条件成立即停止，因此既支持 `take(5)`，也支持底层提前结束。
+
+## 层 6 — consumer
+
+`to<C>()` 是最终物化出口。它要求容器支持 `push_back`，逐个消费输入 range。本题不做 `reserve`、insert-only 容器、嵌套 `to`、异常安全优化。
+
+验收管道：
+
+```cpp
+auto v = my::views::iota(1, 11)
+       | my::views::transform([](int x) { return x * x; })
+       | my::views::take(5)
+       | my::ranges::to<std::vector<int>>();
+// v == {1, 4, 9, 16, 25}
 ```
-range
-  └─ input_range (+ input_iterator)
-       └─ forward_range (+ forward_iterator)
-            └─ [进阶] bidirectional_range
-                 └─ [进阶] random_access_range
-                      └─ [进阶] contiguous_range
-```
-
----
-
-### 层 3 — 基础设施层
-
-**文件**：`my_ranges/03_interface.hpp`
-
-**为什么用 CRTP 而非虚函数**：
-<!-- 填写：零开销，与 O(1) 公理兼容；虚函数有 vtable 开销，且阻止某些优化 -->
-
-**operator| 的两条路径**：
-<!-- 填写：1) range | closure → d(forward(r))；2) [进阶] closure | closure → _Pipe{c1,c2} -->
-
----
-
-### 层 4 — 工厂 view
-
-**文件**：`my_ranges/04_factories.hpp`
-
-**iota_view 特性**：iterator_concept = random_access；enable_borrowed_range = true（迭代器只持有当前整数，不依赖 view 对象）
-
-**single_view 特性**：begin/end = 裸指针（iterator_concept 自动为 contiguous）；无底层 view 依赖
-
----
-
-### 层 5 — adaptor view + closure
-
-**文件**：`my_ranges/05_adaptors.hpp`
-
-**transform_view 关键点**：
-<!-- 填写：inner iterator 持有 _cur + _fp；contiguous 底层降为 random_access -->
-
-**take_view sentinel 异型**：
-<!-- 填写：end() 返回 sentinel 类型 ≠ begin() 返回 iterator_t<V>；to<Container> 消费时需要 sentinel 可比较 -->
-
----
-
-### 层 6 — 消费端
-
-**文件**：`my_ranges/06_consumers.hpp`
-
-**简化点**：
-<!-- 填写：不做 reserve；不支持 insert-based 容器；不支持嵌套 ranges::to -->
-
----
-
-## 完成验收样例
-
-实现后补充运行结果：
-
-```
-输入管道：iota(1, 11) | transform(x*x) | take(5) | to<vector<int>>()
-期望输出：{1, 4, 9, 16, 25}
-实际输出：<!-- 填写 -->
-```
-
----
-
-*填写完成后删除此行提示，保留图表与说明。*

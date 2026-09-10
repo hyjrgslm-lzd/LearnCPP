@@ -1,0 +1,22 @@
+{
+  "command": [
+    "cmake",
+    "-S",
+    "C06_Ranges/exercises/G2_my_transform_closure",
+    "-B",
+    "C06_Ranges/exercises/G2_my_transform_closure/build-author"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.2029999999795109,
+  "stdout": "-- Configuring done (0.1s)\n-- Generating done (0.1s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/C06_Ranges/exercises/G2_my_transform_closure/build-author\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

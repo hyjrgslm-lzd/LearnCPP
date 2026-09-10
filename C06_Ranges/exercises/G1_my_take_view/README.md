@@ -10,7 +10,7 @@
 
 - **view_interface 是脚手架**：它通过 CRTP 向下转型（`static_cast<Derived&>(*this)`）调用 `Derived::begin()` 和 `Derived::end()`，按条件注入 `empty()`、`front()`、`back()`、`operator[]`、`size()`、`data()`。它不存储任何数据，也不提供 `begin()`/`end()`，这两个必须由 `Derived` 自己实现。
 - **enable_view opt-in**：继承 `view_interface` 的类型，只要满足 `movable` 且能被 range 消费，`enable_view<T>` 自动为 `true`（C++20 规定）。无需显式特化 `enable_view`。
-- **end() 分支**：`random_access + sized` 底层时，`end()` 返回 `begin() + n`（与 `begin()` 同类型），view 因此是 `common_range`；其他底层时，`end()` 返回 `default_sentinel_t`，view 不是 `common_range`，调用方通过 `counted_iterator` 感知终止。
+- **begin()/end() 分支**：`random_access + sized` 底层时，`begin()` 透传底层 begin、`end()` 返回 `begin() + min(count, size)`；`sized` 非 random-access 底层时，`begin()` 返回截断后的 `counted_iterator`、`end()` 返回 `default_sentinel_t`；`unsized` 底层时，`begin()` 返回保存底层 sentinel 的 guarded iterator，比较时同时检查 count 和底层 end。
 - **推导指引（CTAD）**：让 `my_take_view{vec, 3}` 可以用，无需写 `my_take_view<ref_view<vector<int>>>{vec, 3}`。指引在 `viewable_range R&&` 层面接受参数，用 `views::all_t<R>` 映射到 view 类型。
 
 ---
@@ -21,31 +21,36 @@
 
 ```cpp
 constexpr auto begin() {
-    return std::ranges::begin(base_);
+    auto first = std::ranges::begin(base_);
+    auto n = non_negative_count();
+    if constexpr (std::ranges::random_access_range<V> &&
+                  std::ranges::sized_range<V>) {
+        return first;
+    } else if constexpr (std::ranges::sized_range<V>) {
+        return std::counted_iterator{first, std::min(n, distance_count())};
+    } else {
+        return guarded_iterator{first, std::ranges::end(base_), n};
+    }
 }
 ```
 
-直接透传底层 `begin()`。迭代器类型继承底层（`random_access_iterator`、`bidirectional_iterator` 等），`view_interface` 会根据迭代器的能力决定注入哪些成员。
+`begin()` 不能永远透传底层。非 random-access 路径的终止信息在 begin 侧：sized 底层用截断后的 counted iterator；unsized 底层用 guarded iterator 保存底层 sentinel。
 
-### 任务 2 — 实现 `end()`（两条路径）
+### 任务 2 — 实现 `end()`（三条路径）
 
 ```cpp
 constexpr auto end() {
     if constexpr (std::ranges::random_access_range<V> &&
                   std::ranges::sized_range<V>) {
-        // 路径 A：end 与 begin 同类型 → common_range
-        auto sz = std::ranges::distance(base_);
-        auto n  = std::min(count_, sz);
+        auto n = std::min(non_negative_count(), distance_count());
         return std::ranges::begin(base_) + n;
     } else {
-        // 路径 B：end 是 default_sentinel_t
         return std::default_sentinel;
     }
 }
 ```
 
-路径 B 下，`begin()` 需要返回 `counted_iterator{std::ranges::begin(base_), count_}` 而非裸迭代器，否则 range-for 无法与 `default_sentinel` 配对终止。这是路径 B 最容易踩的坑。
-
+`guarded_iterator == default_sentinel` 的条件必须是 `remaining == 0 || current == last`。只用 `counted_iterator + default_sentinel` 处理 unsized 短 range 是错误方案：`count_` 大于底层长度时会继续递增已经到 end 的底层迭代器。
 ### 任务 3 — 实现 `size()`
 
 ```cpp
@@ -80,7 +85,7 @@ my_take_view(R&&, std::ranges::range_difference_t<R>)
 
 **A. 分支行为可观察验证**
 
-用 `std::list<int>` 作底层（bidirectional，非 random_access+sized），触发路径 B，验证 `!common_range<decltype(tv_lst)>`。
+用 `std::list<int>` 作底层（bidirectional，sized，非 random_access），触发路径 B；再用单遍 input/non-common/unsized range 触发路径 C，验证短输入不会越界。
 
 **B. view_interface 注入条件表**
 
@@ -102,7 +107,7 @@ my_take_view(R&&, std::ranges::range_difference_t<R>)
 
 - `static_assert(std::ranges::view<my_take_view<...>>)` 编译通过。
 - `my_take_view{vec, 4}` 推导指引生效，无需显式模板参数。
-- `random_access + sized` 底层时 `common_range` 且 `sized_range`；`bidirectional` 底层时非 `common_range`。
+- `random_access + sized` 底层时 `common_range` 且 `sized_range`；`sized` 非 random-access 底层时用截断 counted iterator；unsized 底层时 guarded iterator 同时检查 count 和底层 end。
 - `view_interface` 注入的 `empty()` / `front()` / `back()` / `operator[]` 可以直接使用。
 - 能解释 `view_interface` 为什么不提供 `begin()` / `end()`，以及 CRTP 的向下转型机制。
 
@@ -111,7 +116,7 @@ my_take_view(R&&, std::ranges::range_difference_t<R>)
 ## 观察点
 
 - `view_interface` 的核心实现模式：`bool empty() { return ranges::begin(derived()) == ranges::end(derived()); }`，其中 `derived()` 是 `static_cast<Derived&>(*this)`。所有逻辑依赖 `Derived::begin()` 和 `Derived::end()`，是纯语法糖。
-- 路径 B 下 `begin()` 返回 `counted_iterator`，使得 `ranges::begin(tv) == ranges::begin(tv)` 是 counted_iterator 而非裸迭代器——这与路径 A 的类型不同，使得两条路径的 `decltype(tv.begin())` 完全不同。
+- 路径 B 下 `begin()` 返回 `counted_iterator`；路径 C 下返回 guarded iterator。它们与路径 A 的裸底层迭代器类型不同，`decltype(tv.begin())` 会随底层 range 能力改变。
 - 继承 `view_interface` 并不自动满足 view concept——你还需要满足 `movable`，且 `begin()`/`end()` 组成合法 range。
 
 ---
@@ -140,3 +145,9 @@ my_take_view(R&&, std::ranges::range_difference_t<R>)
 - P2325R3（view 不必 default_initializable：放宽后 view concept 语义更新）
 - cppreference: `std::ranges::view_interface`
 - cppreference: `std::ranges::view` concept
+
+## Author-validation layout
+
+本题已迁移到统一四路径验证：`checks/main.cpp` 消费 `c06_g1::my_take` 和 `c06_g1::my_take_view`。Reference 与 good 各自实现；bad 是安全运行时错误实现，故意接受负数；Student 可编译但会取错起点。
+
+本题自写接口选择把负 `count` 统一抛 `std::invalid_argument`，这是教学接口的安全约束；`std::views::take` 本身仍以非负计数作为前提，不应混为一谈。checker 覆盖 sized random-access、sized non-random-access、input non-common unsized、`n` 大于底层长度、`front/back/operator[]/size`，并要求 unsized end 同时检查“剩余计数为 0 或底层已到 end”，不能用裸 `counted_iterator + default_sentinel` 越过短输入。

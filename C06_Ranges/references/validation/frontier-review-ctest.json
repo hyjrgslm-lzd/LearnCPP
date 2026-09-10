@@ -1,0 +1,25 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "C06_Ranges/exercises/F01_frontier/build-review",
+    "-C",
+    "Release",
+    "--output-on-failure"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 4.890000000130385,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C06_Ranges/exercises/F01_frontier/build-review\n      Start  1: F01_flat_containers\n 1/11 Test  #1: F01_flat_containers ..............   Passed    0.43 sec\n      Start  2: F01_inplace_vector\n 2/11 Test  #2: F01_inplace_vector ...............***Skipped   0.43 sec\n      Start  3: F01_hive\n 3/11 Test  #3: F01_hive .........................***Skipped   0.46 sec\n      Start  4: F01_concat\n 4/11 Test  #4: F01_concat .......................***Skipped   0.44 sec\n      Start  5: F01_cache_latest\n 5/11 Test  #5: F01_cache_latest .................***Skipped   0.43 sec\n      Start  6: F01_as_input\n 6/11 Test  #6: F01_as_input .....................***Skipped   0.42 sec\n      Start  7: F01_const_input_filter\n 7/11 Test  #7: F01_const_input_filter ...........***Skipped   0.43 sec\n      Start  8: F01_reserve_hint\n 8/11 Test  #8: F01_reserve_hint .................***Skipped   0.47 sec\n      Start  9: F01_optional_range\n 9/11 Test  #9: F01_optional_range ...............***Skipped   0.45 sec\n      Start 10: F01_view_interface_at\n10/11 Test #10: F01_view_interface_at ............***Skipped   0.41 sec\n      Start 11: F01_map_lookup\n11/11 Test #11: F01_map_lookup ...................***Skipped   0.45 sec\n\n100% tests passed, 0 tests failed out of 11\n\nLabel Time Summary:\nfrontier       =   4.39 sec*proc (10 tests)\nobservation    =   0.43 sec*proc (1 test)\n\nTotal Test time (real) =   4.83 sec\n\nThe following tests did not run:\n\t  2 - F01_inplace_vector (Skipped)\n\t  3 - F01_hive (Skipped)\n\t  4 - F01_concat (Skipped)\n\t  5 - F01_cache_latest (Skipped)\n\t  6 - F01_as_input (Skipped)\n\t  7 - F01_const_input_filter (Skipped)\n\t  8 - F01_reserve_hint (Skipped)\n\t  9 - F01_optional_range (Skipped)\n\t 10 - F01_view_interface_at (Skipped)\n\t 11 - F01_map_lookup (Skipped)\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [
+    "100% tests passed"
+  ],
+  "verdict": "PASS"
+}

@@ -1,0 +1,14 @@
+{
+  "head": "f261bea559d6722c31135fb2d3589be52fe958ed",
+  "generated_at": "2026-09-10",
+  "scope": "usage-review-r3 independent narrow validation",
+  "units": [
+    "C1_1_join",
+    "C2_3_ranges_to"
+  ],
+  "expected_ctest_runs": 4,
+  "actual_ctest_runs": 4,
+  "failures": 0,
+  "results_path": "C06_Ranges\\references\\validation\\usage-review-r3-build-20260910\\results-f261bea5.json",
+  "summary_path": "C06_Ranges\\references\\validation\\usage-review-r3-build-20260910\\summary-f261bea5.json"
+}

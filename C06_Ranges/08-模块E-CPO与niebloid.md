@@ -9,8 +9,8 @@
 本模块聚焦以下四个问题：
 
 - `ranges::begin/end/size/empty/data/rbegin/rend` 这些 CPO（Customization Point Object）是怎么实现的，它们为什么不是函数模板？
-- 什么是 niebloid？它和 CPO 的关系是什么？
-- 算法 niebloid 如何做到 ADL 隔离，又为什么能被当作函数对象传递？
+- 什么是 niebloid？它和 ranges 访问 CPO、算法函数对象的关系是什么？
+- ranges 算法 niebloid 如何做到 ADL 隔离，又为什么能被当作函数对象传递？它和用户可定制访问 CPO 有什么边界？
 - 与 stdexec `tag_invoke` 相比，ranges CPO 采用了什么不同的定制策略，各自的设计权衡是什么？
 
 反向引用 `01-心智模型.md` 的"CPO / niebloid"段：那里已经建立了基本直觉——`ranges::begin` 是函数对象而不是函数模板，目的是 ADL 隔离。本模块从那个直觉出发，向下挖到实现层，弄清楚这套机制是怎么构造出来的。
@@ -23,7 +23,7 @@
 
 - `std::ranges::begin` 不是函数模板，而是 `inline constexpr` 变量——一个带 `operator()` 的函数对象实例。`using std::ranges::begin; begin(r)` 不会走 ADL（因为名字查找找到的是一个变量，变量不参与函数 ADL 重载集构建），这就自然屏蔽了 ADL 污染。
 - CPO 的三阶查找逻辑：成员 `.begin()` 优先 → ADL 自由 `begin(r)` fallback → SFINAE 失败拒绝调用。"自由函数 `begin` 仅在返回 iterator 时有效"不是口头说说，而是通过 concept 约束在编译期强制保证的。
-- niebloid 和 CPO 的关系：所有 niebloid 都是 CPO（`inline constexpr` 函数对象），但不是所有 CPO 都是 niebloid。niebloid 特指算法类函数对象（如 `ranges::sort`、`ranges::find`），它们除了 ADL 隔离之外，还要求整个算法实现都封装在 `operator()` 内部，不参与任何形式的 ADL。
+- niebloid 和 CPO 的边界：`ranges::begin` 这类访问 CPO 是用户可通过成员/ADL 参与的定制点；`ranges::sort` 这类 ranges 算法 niebloid 是标准库算法函数对象，提供 ADL 隔离、约束重载和 projection，但不是用户可通过 ADL 替换算法体的定制点。C++20/23 已有 ranges 算法函数对象；C++26 P3136 讨论的是把更多标准算法以一等函数对象形式暴露。
 - 为什么算法 niebloid 能被传递（`auto f = std::ranges::sort;` 合法），而 `std::sort` 不能（函数模板必须带参数推导，取地址需要显式实例化才能获得函数指针）。
 - ranges CPO（C++20）和 stdexec `tag_invoke`（P2300/P1895）的差异：ranges 采用"成员优先 + ADL fallback + 约束过滤"；`tag_invoke` 进一步抽象为单一 ADL 入口 + 标签类型分发，所有定制通过 `friend tag_invoke(tag_t, args...)` 集中注册。
 
@@ -88,14 +88,14 @@ constexpr auto operator()(R&& r) const {
 
 ### 什么是 niebloid
 
-niebloid 是 ranges 算法类 CPO 的别称（名字来自 Eric Niebler）。广义 CPO 包括 `ranges::begin/end/size` 等"访问 CPO"；niebloid 特指像 `ranges::sort`、`ranges::find`、`ranges::transform` 这样的"算法 CPO"。
+niebloid 是 ranges 约束算法函数对象的社区称呼（名字来自 Eric Niebler）。`ranges::begin/end/size` 等是访问 CPO，用户类型可以通过成员或 ADL fallback 参与定制；`ranges::sort`、`ranges::find`、`ranges::transform` 等是标准库算法对象，调用点有 ADL 隔离、约束和 projection，但用户不能通过同名 ADL 函数替换算法体。
 
-两者都是 `inline constexpr` 函数对象，都屏蔽 ADL。niebloid 额外的特点是：整个算法的所有逻辑（包括 concept 约束、projection 应用）都封装在 `operator()` 里，调用方通过对象语法调用，不存在任何同名自由函数版本。
+两类名字都常以 `inline constexpr` 函数对象暴露，都能屏蔽调用点 ADL。差异在定制语义：访问 CPO 的目标就是开放受约束的用户定制；算法 niebloid 的目标是提供标准算法的一等 callable 入口，而不是开放用户定制算法体。
 
 | 类别 | 代表 | ADL 隔离 | 可传递 | 算法逻辑封装 |
 |------|------|----------|--------|--------------|
-| 访问 CPO | `ranges::begin` | 是 | 是 | 是（三阶查找） |
-| 算法 niebloid | `ranges::sort` | 是 | 是 | 是（完整算法） |
+| 访问 CPO | `ranges::begin` | 是 | 是 | 是（三阶查找，开放受约束定制） |
+| 算法 niebloid | `ranges::sort` | 是 | 是 | 是（标准算法对象，不开放 ADL 替换算法体） |
 | 函数模板 | `std::sort` | 否 | 需显式实例化 | — |
 
 ---
@@ -529,7 +529,7 @@ namespace std::ranges {
 - 你能实现 `apply_algo<std::ranges::sort>(v)` 的 `template<auto Algo>` 包装，并展示与 lambda 包装 `std::sort` 的代码长度对比。
 - 你能用 `std::ranges::sort` 加 projection 对 `vector<Person>` 完成按年龄排序，且不用任何手写 lambda。
 - 你能解释为什么 niebloid 名字不会被 ADL 找到，而 `std::sort` 的名字会参与 ADL。
-- 你能说出"niebloid 是所有 CPO 的子集，专指算法类 CPO"的准确含义，以及 `ranges::begin` 和 `ranges::sort` 在分类上的关系。
+- 你能说出访问 CPO 与算法 niebloid 的准确边界：`ranges::begin` 开放成员/ADL 定制；`ranges::sort` 是可传递的标准算法对象，不是用户可 ADL 替换的算法定制点。
 
 ### 观察点
 
@@ -766,7 +766,7 @@ range-v3 库（ranges 标准化的前身）内部有一种"集中 dispatch 的 C
 
 ### 常见坑
 
-- **混淆 CPO 和 niebloid**：这两个词经常被混用，但含义不完全相同。所有 niebloid 都是 CPO；反之不成立——`ranges::begin/end/size` 是 CPO 但不通常被叫做 niebloid，那个称呼主要用于算法类（`ranges::sort/find/transform`）。
+- **混淆访问 CPO 和算法 niebloid**：`ranges::begin/end/size` 是访问 CPO，开放成员/ADL 定制；`ranges::sort/find/transform` 是算法 niebloid，重点是函数对象传递、ADL 隔离、约束和 projection，不开放用户通过同名 ADL 函数替换算法体。
 - **以为 `tag_invoke` 是 C++ 标准的一部分**：不是。P1895R0 是一个提案，`tag_invoke` 是 stdexec（NVIDIA 的参考实现）和 libunifex 使用的定制模式。C++26 的 `std::execution` 可能采纳，也可能采用不同形式。不要在需要可移植代码的地方依赖 `tag_invoke`。
 - **以为 ranges CPO 不能做集中入口**：ranges 标准库目前的实现是"每个 CPO 各自独立"，但理论上可以用类似 `tag_invoke` 的集中入口重新实现同样的三阶查找——range-v3 就做了部分集中化。"ranges CPO 不集中"是实现选择，不是机制限制。
 
@@ -792,7 +792,7 @@ range-v3 库（ranges 标准化的前身）内部有一种"集中 dispatch 的 C
 
 - `std::ranges::begin` 是 `inline constexpr` 变量，它的类型是一个带 `operator()` 的函数对象类型。`using std::ranges::begin; begin(r)` 找到的是变量 `begin`，不会发起函数名 ADL，这就是 ADL 污染被屏蔽的机制——变量查找优先，且变量名不参与 ADL 候选集构建。
 - CPO 内部的三阶查找是编译期的 concept 检测链：成员 `.begin()` → ADL `begin(r)` → SFINAE 失败。每一阶都通过 `requires` 表达式做约束，不是运行时 if。
-- niebloid 是算法类 CPO 的别称。所有 niebloid 都是 CPO；`ranges::begin` 是 CPO 但不是 niebloid；`ranges::sort` 既是 CPO 也是 niebloid。
+- niebloid 是 ranges 算法函数对象的社区称呼。`ranges::begin` 是访问 CPO，开放受约束定制；`ranges::sort` 是可传递的标准算法对象，不是用户可 ADL 替换的算法定制点。
 - `auto f = std::ranges::sort;` 合法，因为 `ranges::sort` 是一个 `constexpr` 对象，可以被赋值给 `auto`。`auto g = std::sort;` 不合法，因为 `std::sort` 是函数模板，不是可赋值的实体（必须显式实例化）。
 - ranges CPO（C++20）和 `tag_invoke`（stdexec P2300）都是对 ADL 污染的系统性修复，但层次不同：ranges CPO 每个独立管理三阶查找，`tag_invoke` 把所有定制收敛到单一 ADL 名字 + 标签分发。前者在 C++20 已标准化，后者目前只在提案和 stdexec 实现中。
 
@@ -809,3 +809,13 @@ range-v3 库（ranges 标准化的前身）内部有一种"集中 dispatch 的 C
 | P0896R4 | C++20 核心合入：ranges CPO 的设计规范（`ranges::begin/end/size` 等的三阶查找规则） |
 | P1895R0 | `tag_invoke`：单一 ADL 入口 + 标签类型分发的通用定制模式（stdexec/libunifex 采用，非 C++ 标准） |
 | P2855R1 | Member customization points for Senders and Receivers：member-first dispatch 方向，CPO 优先检测成员函数（C++26 执行库方向） |
+
+---
+
+## 本轮实现校准：E1/E2/E3
+
+E1 的实现练习现在以 `c06_e1::my_begin` 为唯一学生接口，checker 覆盖成员 begin、ADL begin、成员优先、数组、右值 borrowed 过滤和无 begin 拒绝。这里的“成员优先 + ADL fallback”不是“随便找一个 begin”：标准 `ranges::begin` 对数组有专门路径，对右值非 borrowed range 会拒绝，以免返回悬垂迭代器。
+
+E2 是观察型练习。`std::ranges::sort` 在 C++20/23 已经是范围算法函数对象，具备 ADL 隔离、约束重载和 projection；C++26 的 P3136 讨论的是更广义的 algorithm function objects 能力补齐。讲解时应按版本分层：C++20/23 的 ranges 算法 niebloid是一类既有标准对象；C++26 的算法函数对象不是把所有算法统称为可定制 CPO。
+
+E3 是观察型练习。ranges CPO 和历史 `tag_invoke` 都在解决“定制点如何开放且不被 ADL 污染”的问题，但时间线不同：ranges CPO 是 C++20 标准机制；`tag_invoke` 是 P1895/stdexec/libunifex 语境中的协议风格，用一个 ADL 名字配多个 tag。这里作为 C04 定制点知识与 C10 execution 协议之间的桥，不把 `tag_invoke` 说成当前 ranges 的实现协议。

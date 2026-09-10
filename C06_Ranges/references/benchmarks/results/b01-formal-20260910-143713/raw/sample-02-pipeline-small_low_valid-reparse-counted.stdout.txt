@@ -1,0 +1,1 @@
+{"schema":1,"case":"pipeline","scenario":"small_low_valid","variant":"reparse","instrument":"counted","seed":2316,"n":256,"rate":10,"checksum":4543615177075775018,"oracle_checksum":4543615177075775018,"valid_records":13,"oracle_valid_records":13,"error_records":2,"oracle_error_records":2,"parse_calls":492,"optional_slots":0,"records_materialized":13,"elapsed_ns":8400}

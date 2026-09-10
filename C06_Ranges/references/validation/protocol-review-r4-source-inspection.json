@@ -1,0 +1,110 @@
+{
+  "generated_at": "2026-09-10T14:02:37.0704633+08:00",
+  "hashes": [
+    {
+      "path": "C06_Ranges/10-模块G-自行实现视图.md",
+      "sha256": "A517764AAF0A898322AEFD3B9EB07C67BFAF315DA6A01FACCF88F266F71FFEB8",
+      "length": 54088
+    },
+    {
+      "path": "C06_Ranges/exercises/G2_my_transform_closure/README.md",
+      "sha256": "38764FD7AB7C5924CC57E1808EE3552BA109AE4E5035F6505E720882A7DC8916",
+      "length": 9604
+    },
+    {
+      "path": "C06_Ranges/exercises/G2_my_transform_closure/src/reference/my_transform_view.hpp",
+      "sha256": "2BEFF01E36587DED7BBD698DD818D1075D6EA4DE5AD95DDACF8850AEEF33F513",
+      "length": 6325
+    },
+    {
+      "path": "C06_Ranges/exercises/G2_my_transform_closure/validation/good/my_transform_view.hpp",
+      "sha256": "49A75B09FA94F405CE995012FCFEC2643AB9ED73A0C37D0A9863F13DB8BCDDB6",
+      "length": 582
+    },
+    {
+      "path": "C06_Ranges/exercises/E2_niebloid/main.cpp",
+      "sha256": "65CF89B4E04366D79B04887F3C0EAA3FCBC4B6C8869BB7A3C49260C8EB5491D6",
+      "length": 8507
+    },
+    {
+      "path": "C06_Ranges/exercises/E3_cpo_tagdispatch_compare/main.cpp",
+      "sha256": "2A3F8E6DC0D4B677CE3B08D87D3A16C517ACCA3240C83BE591A8C6DB196B7BFA",
+      "length": 9107
+    },
+    {
+      "path": "C06_Ranges/references/validation/ranges-protocols-r5/doc-probe/g2_doc_probe.cpp",
+      "sha256": "179ECCB15BD630F729C97F030235E17630C9320BC1C4260C3C0E64E6C63D16AC",
+      "length": 8432
+    },
+    {
+      "path": "C06_Ranges/references/validation/ranges-protocols-r5/doc-probe/CMakeLists.txt",
+      "sha256": "D9F0B4C6D2C1C70E04834B0C64DC1C374BD302213A258AD63C8455EEF9F63605",
+      "length": 376
+    },
+    {
+      "path": "C06_Ranges/references/validation/ranges-protocols-r5/probe-location.md",
+      "sha256": "1B07A92EF6AA247ACA5DD4091CFF6AE99B6FCB88EE46FE2A6A2A94BD0F76CDF1",
+      "length": 760
+    }
+  ],
+  "checks": [
+    {
+      "name": "G2 final doc block required symbols",
+      "argv": [
+        "rg",
+        "-n",
+        "class sentinel|struct iterator_category_for|operator\\(R&& range\\) const&|operator\\(R&& range\\) &&|std::move\\(function_\\)|std::views::istream<int>|static_assert\\(std::ranges::input_range",
+        "C06_Ranges/10-模块G-自行实现视图.md"
+      ],
+      "exit_code": 0,
+      "stdout": "177:    my_take_view stream_take{std::views::istream<int>(input), 5};\r\n178:    static_assert(std::ranges::input_range<decltype(stream_take)>);\r\n341:struct iterator_category_for {\r\n347:struct iterator_category_for<It, Ref> {\r\n356:    class sentinel;\r\n395:        friend class sentinel;\r\n398:    class sentinel {\r\n449:        return my_transform_view{std::views::all(std::forward<R>(range)), std::move(function_)};\r\n508:    auto stream = my_transform(std::views::istream<int>(input), [](int value) { return value + 10; });\r\n509:    static_assert(std::ranges::input_range<decltype(stream)>);\r\n936:        static_assert(std::ranges::input_range<decltype(ev)>,\r\n",
+      "stderr": ""
+    },
+    {
+      "name": "G2 README required symbols",
+      "argv": [
+        "rg",
+        "-n",
+        "class sentinel|friend class sentinel|operator\\(R&& range\\) const&|operator\\(R&& range\\) &&|std::move\\(function_\\)|std::views::istream|iterator_category.*helper",
+        "C06_Ranges/exercises/G2_my_transform_closure/README.md"
+      ],
+      "exit_code": 0,
+      "stdout": "56:`my_transform_view` 接受任意 `viewable_range`，所以不能只处理 common range。先在 view 内前置声明 `class sentinel;`，让 iterator 授权它读取底层迭代器：\r\n59:class sentinel;\r\n63:    friend class sentinel;\r\n66:class sentinel {\r\n104:    return my_transform_view{std::views::all(std::forward<R>(range)), std::move(function_)};\r\n194:`my_transform_view` 接受 `viewable_range`，因此必须支持 `std::views::istream<T>` 这类 input/non-common range。非 common 分支不能返回底层 raw sentinel，除非 wrapper iterator 能直接和它比较；本题使用自定义 sentinel wrapper 保存 `sentinel_t<V>`。iterator 构造时移动底层 iterator，避免 move-only input iterator 被意外拷贝。`iterator_category` 用受约束 helper 惰性暴露，底层没有 `iterator_category` 时降到 `input_iterator_tag`。\n",
+      "stderr": ""
+    },
+    {
+      "name": "E2 E3 runtime checks",
+      "argv": [
+        "rg",
+        "-n",
+        "#include <check.hpp>|check\\(",
+        "C06_Ranges/exercises/E2_niebloid/main.cpp",
+        "C06_Ranges/exercises/E3_cpo_tagdispatch_compare/main.cpp"
+      ],
+      "exit_code": 0,
+      "stdout": "C06_Ranges/exercises/E3_cpo_tagdispatch_compare/main.cpp:15:#include <check.hpp>\r\nC06_Ranges/exercises/E3_cpo_tagdispatch_compare/main.cpp:192:    check(*it == 10, \"ranges::begin uses the member begin path\");\r\nC06_Ranges/exercises/E3_cpo_tagdispatch_compare/main.cpp:196:    check(sz == 4, \"ranges::size calls the member size path\");\r\nC06_Ranges/exercises/E3_cpo_tagdispatch_compare/main.cpp:205:    check(seen == std::vector<int>({10, 20, 30, 40}), \"range-for consumes the member begin/end pair\");\r\nC06_Ranges/exercises/E3_cpo_tagdispatch_compare/main.cpp:210:    check(first == 10, \"tag_invoke connect dispatch returns the first element\");\r\nC06_Ranges/exercises/E3_cpo_tagdispatch_compare/main.cpp:214:    check(*std::ranges::begin(free_range) == 7, \"ranges::begin uses the ADL fallback path when no member exists\");\r\nC06_Ranges/exercises/E2_niebloid/main.cpp:18:#include <check.hpp>\r\nC06_Ranges/exercises/E2_niebloid/main.cpp:40:    check(v == std::vector<int>({1, 1, 3, 4, 5}), \"ranges::sort object sorts ascending\");\r\nC06_Ranges/exercises/E2_niebloid/main.cpp:76:    check(v == std::vector<int>({1, 3, 5, 8, 9}), \"template<auto> wrapper calls ranges::sort ascending\");\r\nC06_Ranges/exercises/E2_niebloid/main.cpp:83:    check(v == std::vector<int>({9, 8, 5, 3, 1}), \"template<auto> wrapper forwards comparator\");\r\nC06_Ranges/exercises/E2_niebloid/main.cpp:114:    check(std::ranges::is_sorted(people, {}, &Person::age), \"projection sort orders people by age\");\r\nC06_Ranges/exercises/E2_niebloid/main.cpp:115:    check(people.front().name == \"Alice\" && people.back().name == \"Carol\", \"projection sort keeps expected endpoints\");\r\nC06_Ranges/exercises/E2_niebloid/main.cpp:134:    check(std::ranges::is_sorted(r, comp, proj), \"niebloid generic wrapper sorts its copy\");\r\nC06_Ranges/exercises/E2_niebloid/main.cpp:145:    check(std::is_sorted(r.begin(), r.end(), comp), \"legacy wrapper calls concrete std::sort adapter\");\r\n",
+      "stderr": ""
+    },
+    {
+      "name": "risky patterns",
+      "argv": [
+        "rg",
+        "-n",
+        "--glob",
+        "!**/protocol-review-r4-doc-probe-build/**",
+        "--glob",
+        "!**/build-protocol-review-r4-e2e3/**",
+        "--glob",
+        "!**/.git/**",
+        "console\\.log\\(|catch\\s*\\([^)]*\\)\\s*\\{\\s*\\}|apiKey\\s*=|password\\s*=|token\\s*=|best effort",
+        "C06_Ranges/10-模块G-自行实现视图.md",
+        "C06_Ranges/exercises/G2_my_transform_closure",
+        "C06_Ranges/exercises/E2_niebloid",
+        "C06_Ranges/exercises/E3_cpo_tagdispatch_compare"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

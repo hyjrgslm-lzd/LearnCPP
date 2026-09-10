@@ -1,0 +1,30 @@
+[
+  {
+    "path": "C06_Ranges/exercises/C1_1_join/CMakeLists.txt",
+    "git_hash_object_sha1": "0b8af25f3086af175c7d811c02ccd13393504247"
+  },
+  {
+    "path": "C06_Ranges/exercises/C1_1_join/README.md",
+    "git_hash_object_sha1": "7fb6cbb2647abb983b9a26880dc981277263f97a"
+  },
+  {
+    "path": "C06_Ranges/exercises/C1_1_join/main.cpp",
+    "git_hash_object_sha1": "634c08f49e7ff95db9c91b62ccaf280e75b89c84"
+  },
+  {
+    "path": "C06_Ranges/exercises/C2_3_ranges_to/CMakeLists.txt",
+    "git_hash_object_sha1": "56ca55130f88d90a2167660e5edf6db94e7d4e26"
+  },
+  {
+    "path": "C06_Ranges/exercises/C2_3_ranges_to/README.md",
+    "git_hash_object_sha1": "b7b5ef11eeb372d209b215ffef05843b1c92bc0b"
+  },
+  {
+    "path": "C06_Ranges/exercises/C2_3_ranges_to/main.cpp",
+    "git_hash_object_sha1": "5ddd10b7ca77e139b66f8bd361811f60a1a62162"
+  },
+  {
+    "path": "C06_Ranges/exercises/cmake/RangesSetup.cmake",
+    "git_hash_object_sha1": "c50de27f66d8550d637c10ad874f3b420579b377"
+  }
+]

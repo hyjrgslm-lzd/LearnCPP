@@ -1,11 +1,15 @@
 {
     "version": 6,
-    "cmakeMinimumRequired": { "major": 3, "minor": 28, "patch": 0 },
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 28,
+        "patch": 0
+    },
     "configurePresets": [
         {
             "name": "vs2026",
             "displayName": "Visual Studio 18 2026 (首选)",
-            "description": "Windows 首选：Visual Studio 18 2026，C++26 基线",
+            "description": "Windows默认C++26；核心Reference验证，前沿另开。",
             "binaryDir": "${sourceDir}/build-vs2026",
             "generator": "Visual Studio 18 2026",
             "condition": {
@@ -14,7 +18,10 @@
                 "rhs": "Windows"
             },
             "cacheVariables": {
-                "CMAKE_CXX_STANDARD": "26"
+                "CMAKE_CXX_STANDARD": "26",
+                "RANGES_BUILD_REFERENCE": "ON",
+                "RANGES_TEST_STUDENTS": "OFF",
+                "RANGES_ENABLE_FRONTIER": "OFF"
             }
         },
         {
@@ -63,6 +70,35 @@
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug"
             }
+        },
+        {
+            "name": "vs2026-frontier",
+            "inherits": "vs2026",
+            "binaryDir": "${sourceDir}/build-frontier",
+            "cacheVariables": {
+                "RANGES_ENABLE_FRONTIER": "ON"
+            }
+        },
+        {
+            "name": "vs2026-asan",
+            "inherits": "vs2026",
+            "binaryDir": "${sourceDir}/build-asan",
+            "cacheVariables": {
+                "RANGES_ENABLE_ASAN": "ON"
+            }
+        },
+        {
+            "name": "vs2026-student",
+            "inherits": "vs2026",
+            "binaryDir": "${sourceDir}/build-student",
+            "cacheVariables": {
+                "RANGES_BUILD_REFERENCE": "OFF",
+                "RANGES_TEST_STUDENTS": "ON",
+                "CMAKE_CXX_FLAGS": "/showIncludes"
+            },
+            "environment": {
+                "VSLANG": "1033"
+            }
         }
     ],
     "buildPresets": [
@@ -91,6 +127,76 @@
         {
             "name": "ninja-debug",
             "configurePreset": "ninja-debug"
+        },
+        {
+            "name": "vs2026-debug",
+            "configurePreset": "vs2026",
+            "configuration": "Debug"
+        },
+        {
+            "name": "vs2026-frontier",
+            "configurePreset": "vs2026-frontier",
+            "configuration": "Release"
+        },
+        {
+            "name": "vs2026-asan",
+            "configurePreset": "vs2026-asan",
+            "configuration": "RelWithDebInfo"
+        },
+        {
+            "name": "vs2026-student",
+            "configurePreset": "vs2026-student",
+            "configuration": "Release",
+            "environment": {
+                "VSLANG": "1033"
+            }
+        }
+    ],
+    "testPresets": [
+        {
+            "name": "core-release",
+            "configurePreset": "vs2026",
+            "configuration": "Release",
+            "output": {
+                "outputOnFailure": true
+            }
+        },
+        {
+            "name": "core-debug",
+            "configurePreset": "vs2026",
+            "configuration": "Debug",
+            "output": {
+                "outputOnFailure": true
+            }
+        },
+        {
+            "name": "frontier",
+            "configurePreset": "vs2026-frontier",
+            "configuration": "Release",
+            "output": {
+                "outputOnFailure": true
+            }
+        },
+        {
+            "name": "asan",
+            "configurePreset": "vs2026-asan",
+            "configuration": "RelWithDebInfo",
+            "output": {
+                "outputOnFailure": true
+            },
+            "filter": {
+                "exclude": {
+                    "label": "negative"
+                }
+            }
+        },
+        {
+            "name": "students",
+            "configurePreset": "vs2026-student",
+            "configuration": "Release",
+            "output": {
+                "outputOnFailure": true
+            }
         }
     ]
 }

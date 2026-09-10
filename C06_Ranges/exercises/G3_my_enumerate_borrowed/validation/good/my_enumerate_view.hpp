@@ -1,0 +1,211 @@
+#pragma once
+
+#include <concepts>
+#include <iterator>
+#include <ranges>
+#include <tuple>
+#include <type_traits>
+#include <utility>
+
+namespace c06_g3 {
+
+template<std::ranges::view V>
+class my_enumerate_view : public std::ranges::view_interface<my_enumerate_view<V>> {
+    using std_view = std::ranges::enumerate_view<V>;
+
+public:
+    using index_type = std::ranges::range_difference_t<V>;
+
+private:
+    class sentinel;
+
+    class iterator {
+        using base_iterator = std::ranges::iterator_t<std_view>;
+        base_iterator current_{};
+
+        static constexpr index_type read_index(auto&& item) {
+            return static_cast<index_type>(std::get<0>(std::forward<decltype(item)>(item)));
+        }
+
+    public:
+        using value_type = std::pair<index_type, std::ranges::range_value_t<V>>;
+        using reference = std::pair<index_type, std::ranges::range_reference_t<V>>;
+        using difference_type = std::ranges::range_difference_t<V>;
+        using iterator_concept =
+            std::conditional_t<std::random_access_iterator<base_iterator>, std::random_access_iterator_tag,
+            std::conditional_t<std::bidirectional_iterator<base_iterator>, std::bidirectional_iterator_tag,
+            std::conditional_t<std::forward_iterator<base_iterator>, std::forward_iterator_tag,
+            std::input_iterator_tag>>>;
+        using iterator_category = std::input_iterator_tag;
+
+        iterator() = default;
+        explicit iterator(base_iterator current) : current_(std::move(current)) {}
+
+        reference operator*() const {
+            auto item = *current_;
+            return {read_index(item), std::get<1>(std::move(item))};
+        }
+
+        iterator& operator++() {
+            ++current_;
+            return *this;
+        }
+
+        iterator operator++(int)
+            requires std::forward_iterator<base_iterator>
+        {
+            auto old = *this;
+            ++*this;
+            return old;
+        }
+
+        void operator++(int) { ++*this; }
+
+        iterator& operator--()
+            requires std::bidirectional_iterator<base_iterator>
+        {
+            --current_;
+            return *this;
+        }
+
+        iterator operator--(int)
+            requires std::bidirectional_iterator<base_iterator>
+        {
+            auto old = *this;
+            --*this;
+            return old;
+        }
+
+        iterator& operator+=(difference_type n)
+            requires std::random_access_iterator<base_iterator>
+        {
+            current_ += n;
+            return *this;
+        }
+
+        iterator& operator-=(difference_type n)
+            requires std::random_access_iterator<base_iterator>
+        {
+            current_ -= n;
+            return *this;
+        }
+
+        iterator operator+(difference_type n) const
+            requires std::random_access_iterator<base_iterator>
+        {
+            auto out = *this;
+            out += n;
+            return out;
+        }
+
+        friend iterator operator+(difference_type n, iterator it)
+            requires std::random_access_iterator<base_iterator>
+        {
+            return it + n;
+        }
+
+        iterator operator-(difference_type n) const
+            requires std::random_access_iterator<base_iterator>
+        {
+            auto out = *this;
+            out -= n;
+            return out;
+        }
+
+        difference_type operator-(const iterator& other) const
+            requires std::random_access_iterator<base_iterator>
+        {
+            return current_ - other.current_;
+        }
+
+        reference operator[](difference_type n) const
+            requires std::random_access_iterator<base_iterator>
+        {
+            auto item = current_[n];
+            return {read_index(item), std::get<1>(std::move(item))};
+        }
+
+        bool operator==(const iterator& other) const
+            requires std::equality_comparable<base_iterator>
+        {
+            return current_ == other.current_;
+        }
+
+        auto operator<=>(const iterator& other) const
+            requires std::random_access_iterator<base_iterator>
+        {
+            return current_ <=> other.current_;
+        }
+
+        friend class sentinel;
+
+        friend auto iter_move(const iterator& it) noexcept(noexcept(std::ranges::iter_move(it.current_))) {
+            auto item = std::ranges::iter_move(it.current_);
+            return std::pair<index_type, std::ranges::range_rvalue_reference_t<V>>{
+                read_index(item),
+                std::get<1>(std::move(item))
+            };
+        }
+    };
+
+    class sentinel {
+        std::ranges::sentinel_t<std_view> last_{};
+
+        bool equal(const iterator& it) const { return it.current_ == last_; }
+
+    public:
+        sentinel() = default;
+        explicit sentinel(std::ranges::sentinel_t<std_view> last) : last_(std::move(last)) {}
+
+        friend bool operator==(const iterator& it, const sentinel& s) { return s.equal(it); }
+        friend bool operator==(const sentinel& s, const iterator& it) { return s.equal(it); }
+    };
+
+public:
+    my_enumerate_view() = default;
+    explicit my_enumerate_view(V base) : base_(std::move(base)) {}
+
+    iterator begin() { return iterator{std::ranges::begin(base_)}; }
+
+    auto end() {
+        if constexpr (std::ranges::common_range<std_view>) {
+            return iterator{std::ranges::end(base_)};
+        } else {
+            return sentinel{std::ranges::end(base_)};
+        }
+    }
+
+    auto size() requires std::ranges::sized_range<std_view> {
+        return std::ranges::size(base_);
+    }
+
+private:
+    std_view base_{};
+};
+
+template<std::ranges::viewable_range R>
+my_enumerate_view(R&&) -> my_enumerate_view<std::views::all_t<R>>;
+
+struct my_enumerate_closure : std::ranges::range_adaptor_closure<my_enumerate_closure> {
+    template<std::ranges::viewable_range R>
+    auto operator()(R&& range) const {
+        return my_enumerate_view{std::views::all(std::forward<R>(range))};
+    }
+};
+
+struct my_enumerate_fn {
+    my_enumerate_closure operator()() const { return {}; }
+
+    template<std::ranges::viewable_range R>
+    auto operator()(R&& range) const {
+        return my_enumerate_view{std::views::all(std::forward<R>(range))};
+    }
+};
+
+inline constexpr my_enumerate_fn my_enumerate{};
+
+} // namespace c06_g3
+
+template<std::ranges::view V>
+inline constexpr bool std::ranges::enable_borrowed_range<c06_g3::my_enumerate_view<V>> =
+    std::ranges::enable_borrowed_range<V>;

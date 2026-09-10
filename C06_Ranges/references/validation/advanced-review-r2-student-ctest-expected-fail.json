@@ -1,0 +1,31 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "C06_Ranges\\references\\validation\\advanced-review-r2-student-build",
+    "-C",
+    "Release",
+    "--output-on-failure",
+    "-R",
+    "^(H1_non_propagating_cache|H2_common_iter_proxy|H3_generator_const_iter|CAPSTONE4_mini_ranges)_student$"
+  ],
+  "exit_code": 8,
+  "timeout": false,
+  "process_seconds": 1.827999999979511,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C06_Ranges/references/validation/advanced-review-r2-student-build\n    Start 25: H1_non_propagating_cache_student\n1/4 Test #25: H1_non_propagating_cache_student ...***Failed    0.44 sec\ncheck failed: first begin finds first accepted value\n\n    Start 26: H2_common_iter_proxy_student\n2/4 Test #26: H2_common_iter_proxy_student .......***Failed    0.44 sec\ncheck failed: iter_swap must exchange underlying elements\n\n    Start 27: H3_generator_const_iter_student\n3/4 Test #27: H3_generator_const_iter_student ....***Failed    0.45 sec\ncheck failed: move assignment must destroy the old coroutine frame\n\n    Start 29: CAPSTONE4_mini_ranges_student\n4/4 Test #29: CAPSTONE4_mini_ranges_student ......***Failed    0.42 sec\ncheck failed: take_view stops after requested count\n\n\n0% tests passed, 4 tests failed out of 4\n\nLabel Time Summary:\nstudent    =   1.74 sec*proc (4 tests)\n\nTotal Test time (real) =   1.77 sec\n\nThe following tests FAILED:\n\t 25 - H1_non_propagating_cache_student (Failed)         student\n\t 26 - H2_common_iter_proxy_student (Failed)             student\n\t 27 - H3_generator_const_iter_student (Failed)          student\n\t 29 - CAPSTONE4_mini_ranges_student (Failed)            student\n",
+  "stderr": "Errors while running CTest\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 8,
+  "required_text": [
+    "0% tests passed",
+    "H1_non_propagating_cache_student",
+    "H2_common_iter_proxy_student",
+    "H3_generator_const_iter_student",
+    "CAPSTONE4_mini_ranges_student"
+  ],
+  "verdict": "PASS"
+}

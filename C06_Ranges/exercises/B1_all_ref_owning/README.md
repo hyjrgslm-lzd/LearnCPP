@@ -91,3 +91,8 @@
 - cppreference：[`std::ranges::owning_view`](https://en.cppreference.com/w/cpp/ranges/owning_view)
 - cppreference：[`std::views::all`](https://en.cppreference.com/w/cpp/ranges/all_view)
 - cppreference：[`std::ranges::viewable_range`](https://en.cppreference.com/w/cpp/ranges/viewable_range)
+## 参考解析
+
+预测：`views::all(lvalue vector)` 产生 `ref_view`，`views::all(rvalue vector)` 产生 `owning_view`，已有 view（如 `iota_view`）会按值传递并保持 view 身份。`owning_view` 说明 view 可以拥有元素，但它仍不是“借用延寿”机制。
+
+当前程序用 `static_assert` 区分 `ref_view` / `owning_view`，再用运行时修改原 vector 证明 `ref_view` 观察外部对象，用累加证明 `owning_view` 持有自己的元素。扩展时可比较 `span`、`string_view` 与 `vector`：前两者本身是轻量借用 view，后者需要 `all` 转换。

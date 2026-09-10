@@ -98,3 +98,8 @@
 - cppreference：[`std::ranges::subrange`](https://en.cppreference.com/w/cpp/ranges/subrange)
 - cppreference：[`std::ranges::sized_range`](https://en.cppreference.com/w/cpp/ranges/sized_range)
 - cppreference：[`std::ranges::common_range`](https://en.cppreference.com/w/cpp/ranges/common_range)
+## 参考解析
+
+预测：有界 `iota(0, 10)` 是 sized/common/random_access/borrowed；无界 `iota(0)` 仍是 random_access，但不是 sized/common，end 是 `unreachable_sentinel_t`。`subrange` 只是把现有迭代器和 sentinel 包成 range，不复制元素。
+
+当前程序检查了前三个值、`take(5)` 的物化结果，以及 `subrange` 对原数组的借用关系。扩展问题的答案是：无界 range 可以被 `take` 安全截断；`subrange` 的 borrowed 状态来自迭代器是否可在 range 对象销毁后继续表达同一段外部存储。

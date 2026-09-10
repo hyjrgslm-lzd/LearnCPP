@@ -1,0 +1,27 @@
+{
+  "command": [
+    "C:\\Users\\zhidan.li\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+    "C06_Ranges\\references\\benchmarks\\scripts\\measure_b01.py",
+    "--exe",
+    "C06_Ranges\\exercises\\B01_cost\\build-review\\Release\\B01_cost.exe",
+    "--output",
+    "C06_Ranges\\references\\validation\\benchmark-review-smoke",
+    "--smoke"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.6409999998286366,
+  "stdout": "{\n  \"status\": \"PASS\",\n  \"output\": \"F:\\\\CPPTrain\\\\LearnCPP\\\\C06_Ranges\\\\references\\\\validation\\\\benchmark-review-smoke\",\n  \"formal\": false\n}\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [
+    "PASS",
+    "formal"
+  ],
+  "verdict": "PASS"
+}

@@ -1,0 +1,23 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "C06_Ranges/references/validation/ranges-protocols-r3/noncommon-probes-build",
+    "-C",
+    "Release",
+    "--output-on-failure"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.9849999998696148,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C06_Ranges/references/validation/ranges-protocols-r3/noncommon-probes-build\n    Start 1: g2_noncommon_probe\n1/2 Test #1: g2_noncommon_probe ...............   Passed    0.44 sec\n    Start 2: g3_noncommon_probe\n2/2 Test #2: g3_noncommon_probe ...............   Passed    0.45 sec\n\n100% tests passed, 0 tests failed out of 2\n\nTotal Test time (real) =   0.89 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

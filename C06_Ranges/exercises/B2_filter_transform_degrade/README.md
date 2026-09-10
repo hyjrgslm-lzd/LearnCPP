@@ -106,3 +106,8 @@ transform 保持"的直觉，并理解 `filter_view::begin()` 非 const 的设�
 - cppreference：[`std::ranges::transform_view`](https://en.cppreference.com/w/cpp/ranges/transform_view)
   （注意 const-iterable 要求 F 的 const 可调用）
 - 01 心智模型中"iterator_concept 双轨"章节
+## 参考解析
+
+预测：`filter` 的迭代器概念由底层和标准上界共同决定。vector 底层从 random_access 裁顶到 bidirectional；forward_list 底层保持 forward；input 底层保持 input。`transform` 通常透传底层迭代器概念，但引用类别取决于函数对象返回值。普通 vector 底层的 `filter_view` 仍不能 const 迭代；P3725R3 只放开 const input_range 特例。
+
+当前程序同时验证 vector 管道、transform-first 管道、forward_list filter，以及可观察输出 `{1, 9, 25}`。扩展时应先写出底层 range concept，再推导 filter 裁顶，而不是背“filter 降级”一句话。

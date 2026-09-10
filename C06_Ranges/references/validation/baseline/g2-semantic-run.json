@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C06_Ranges/references/validation/baseline/build-semantic/g2.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.11000000000001364,
+  "stdout": "same argument results=12,13; mutated function calls=2\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [
+    "same argument results=12,13"
+  ],
+  "verdict": "PASS"
+}

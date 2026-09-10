@@ -101,3 +101,8 @@
 - cppreference：[`std::ranges::istream_view`](https://en.cppreference.com/w/cpp/ranges/istream_view)
 - cppreference：[`std::ranges::input_range`](https://en.cppreference.com/w/cpp/ranges/input_range)
 - cppreference：[`std::input_iterator`](https://en.cppreference.com/w/cpp/iterator/input_iterator)
+## 参考解析
+
+预测：`istream_view<int>` 是 input_range，不是 forward/sized/common；迭代器不可复制，读一次会推进底层流，不能重新遍历。
+
+当前程序先读取首元素，再沿同一个输入迭代器继续读剩余元素，随后确认流已耗尽，并用 `ranges::to<vector>` 物化第二个流。扩展时要牢记：一旦要多次遍历或随机访问，应先物化；不要把 input view 传给需要 multi-pass 的算法。

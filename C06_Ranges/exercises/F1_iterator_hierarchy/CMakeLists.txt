@@ -1,9 +1,10 @@
 cmake_minimum_required(VERSION 3.28)
 project(F1_iterator_hierarchy LANGUAGES CXX)
-set(CMAKE_CXX_STANDARD 26)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
-if(MSVC)
-    add_compile_options(/Zc:__cplusplus /utf-8 /permissive-)
-endif()
-add_executable(F1_iterator_hierarchy main.cpp)
+include(../cmake/RangesSetup.cmake)
+
+ranges_add_exercise(
+    NAME F1_iterator_hierarchy
+    HEADER iterator_hierarchy.hpp
+    CHECK main.cpp
+    BAD_DIAGNOSTIC "random access distance matches"
+)

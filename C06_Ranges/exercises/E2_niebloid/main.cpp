@@ -15,6 +15,8 @@
 //   niebloid path: 1 2 3 5 8
 //   lambda-wrap path: 1 2 3 5 8
 
+#include <check.hpp>
+
 #include <algorithm>
 #include <ranges>
 #include <vector>
@@ -35,6 +37,7 @@ void demo_assignability() {
 
     std::vector<int> v = {3, 1, 4, 1, 5};
     sort_fn(v);
+    check(v == std::vector<int>({1, 1, 3, 4, 5}), "ranges::sort object sorts ascending");
 
     std::cout << "sorted: ";
     for (int x : v) std::cout << x << ' ';
@@ -70,12 +73,14 @@ void demo_template_param() {
 
     // TODO [必做] 3: 用 apply_algo<std::ranges::sort> 对 v 升序排序
     apply_algo<std::ranges::sort>(v);
+    check(v == std::vector<int>({1, 3, 5, 8, 9}), "template<auto> wrapper calls ranges::sort ascending");
     std::cout << "apply_algo sorted: ";
     for (int x : v) std::cout << x << ' ';
     std::cout << '\n';  // 1 3 5 8 9
 
     // TODO [必做] 4: 用 apply_algo<std::ranges::sort> + std::greater<>{} 降序排序
     apply_algo<std::ranges::sort>(v, std::greater<>{});
+    check(v == std::vector<int>({9, 8, 5, 3, 1}), "template<auto> wrapper forwards comparator");
     std::cout << "apply_algo sorted desc: ";
     for (int x : v) std::cout << x << ' ';
     std::cout << '\n';  // 9 8 5 3 1
@@ -106,6 +111,8 @@ void demo_projection_sort() {
     //         sort_by_age(people, std::less{}, &Person::age);
     auto sort_by_age = std::ranges::sort;
     sort_by_age(people, std::less{}, &Person::age);  // TODO: 填入 projection
+    check(std::ranges::is_sorted(people, {}, &Person::age), "projection sort orders people by age");
+    check(people.front().name == "Alice" && people.back().name == "Carol", "projection sort keeps expected endpoints");
 
     std::cout << "sorted by age: ";
     for (const auto& p : people)
@@ -124,6 +131,7 @@ template<auto Algo, class R, class Comp = std::ranges::less, class Proj = std::i
 void sorted_print(R r, Comp comp = {}, Proj proj = {}) {
     // TODO: 用 Algo 对 r 排序（传入 comp 和 proj），然后打印
     Algo(r, comp, proj);
+    check(std::ranges::is_sorted(r, comp, proj), "niebloid generic wrapper sorts its copy");
     for (const auto& x : r)
         std::cout << x << ' ';
     std::cout << '\n';
@@ -134,6 +142,7 @@ template<class SortFn, class R, class Comp = std::less<>>
 void sorted_print_legacy(SortFn sort_fn, R r, Comp comp = {}) {
     // TODO: 调用 sort_fn(r.begin(), r.end(), comp)，然后打印
     sort_fn(r.begin(), r.end(), comp);
+    check(std::is_sorted(r.begin(), r.end(), comp), "legacy wrapper calls concrete std::sort adapter");
     for (const auto& x : r)
         std::cout << x << ' ';
     std::cout << '\n';

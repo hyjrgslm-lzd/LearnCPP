@@ -1,0 +1,22 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "C06_Ranges/references/validation/closing-value-probe/build",
+    "--config",
+    "Release"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.0,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  main.cpp\n  g3_value_probe.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\references\\validation\\closing-value-probe\\build\\Release\\g3_value_probe.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/references/validation/closing-value-probe/CMakeLists.txt\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

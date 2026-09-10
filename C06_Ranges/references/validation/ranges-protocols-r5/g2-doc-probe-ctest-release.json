@@ -1,0 +1,23 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "C06_Ranges/references/validation/ranges-protocols-r5/build-doc-probe-build",
+    "-C",
+    "Release",
+    "--output-on-failure"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.06300000008195639,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C06_Ranges/references/validation/ranges-protocols-r5/build-doc-probe-build\n",
+  "stderr": "No tests were found!!!\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

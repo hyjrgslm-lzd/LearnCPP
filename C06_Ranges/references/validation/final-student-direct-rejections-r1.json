@@ -1,0 +1,245 @@
+{
+  "verdict": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "count": 14,
+  "results": [
+    {
+      "command": [
+        "F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-student\\CAPSTONE1_log_pipeline\\Release\\CAPSTONE1_log_pipeline_student.exe"
+      ],
+      "exit_code": 1,
+      "timeout": false,
+      "process_seconds": 0.48499999986961484,
+      "stdout": "",
+      "stderr": "check failed: valid row parses\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "FAIL",
+      "target": "CAPSTONE1_log_pipeline_student",
+      "exe_sha256": "c522af06766e6323e603e340916c4306b32fc5e93667fd4335fd94214a8f7d0f",
+      "expected_exit": 1,
+      "verdict": "PASS"
+    },
+    {
+      "command": [
+        "F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-student\\CAPSTONE4_mini_ranges\\Release\\CAPSTONE4_mini_ranges_student.exe"
+      ],
+      "exit_code": 1,
+      "timeout": false,
+      "process_seconds": 0.4690000000409782,
+      "stdout": "",
+      "stderr": "check failed: take_view stops after requested count\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "FAIL",
+      "target": "CAPSTONE4_mini_ranges_student",
+      "exe_sha256": "ac0d2d3cdba2d26ae15fe3f0be9bb98e502e1a7fb0c704dd686595cce2fc0997",
+      "expected_exit": 1,
+      "verdict": "PASS"
+    },
+    {
+      "command": [
+        "F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-student\\E1_my_begin_cpo\\Release\\E1_my_begin_cpo_student.exe"
+      ],
+      "exit_code": 1,
+      "timeout": false,
+      "process_seconds": 0.46800000010989606,
+      "stdout": "",
+      "stderr": "check failed: member begin returns the first member element\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "FAIL",
+      "target": "E1_my_begin_cpo_student",
+      "exe_sha256": "dbc7eacffe4f0b701440a1d4e076f7f45267350c6ae0f1b293fbf674f8fde55f",
+      "expected_exit": 1,
+      "verdict": "PASS"
+    },
+    {
+      "command": [
+        "F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-student\\F1_iterator_hierarchy\\Release\\F1_iterator_hierarchy_student.exe"
+      ],
+      "exit_code": 1,
+      "timeout": false,
+      "process_seconds": 0.43799999984912574,
+      "stdout": "",
+      "stderr": "check failed: forward traversal preserves order\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "FAIL",
+      "target": "F1_iterator_hierarchy_student",
+      "exe_sha256": "719d71d5cd5cee6c13a1d3719e6eb15f3c490ded5e388597d7a7976455f8bbfa",
+      "expected_exit": 1,
+      "verdict": "PASS"
+    },
+    {
+      "command": [
+        "F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-student\\G1_my_take_view\\Release\\G1_my_take_view_student.exe"
+      ],
+      "exit_code": 1,
+      "timeout": false,
+      "process_seconds": 0.4690000000409782,
+      "stdout": "",
+      "stderr": "check failed: vector take keeps first n values\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "FAIL",
+      "target": "G1_my_take_view_student",
+      "exe_sha256": "0cfd50aac9ae75b59147b346fec40aafd609b474bed5a3a7bfaf87996e1e13a7",
+      "expected_exit": 1,
+      "verdict": "PASS"
+    },
+    {
+      "command": [
+        "F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-student\\G2_my_transform_closure\\Release\\G2_my_transform_closure_student.exe"
+      ],
+      "exit_code": 1,
+      "timeout": false,
+      "process_seconds": 0.4529999999795109,
+      "stdout": "",
+      "stderr": "check failed: prvalue transform produces expected values\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "FAIL",
+      "target": "G2_my_transform_closure_student",
+      "exe_sha256": "d80ea979be044aceebb58723586b19755f12174fc84ebf74011a75458aa97b7c",
+      "expected_exit": 1,
+      "verdict": "PASS"
+    },
+    {
+      "command": [
+        "F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-student\\G3_my_enumerate_borrowed\\Release\\G3_my_enumerate_borrowed_student.exe"
+      ],
+      "exit_code": 1,
+      "timeout": false,
+      "process_seconds": 0.4369999999180436,
+      "stdout": "",
+      "stderr": "check failed: enumerate index follows iteration order\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "FAIL",
+      "target": "G3_my_enumerate_borrowed_student",
+      "exe_sha256": "56f6004cac202110177715eadbca0759173a610f42b47d168e129b8758b29a02",
+      "expected_exit": 1,
+      "verdict": "PASS"
+    },
+    {
+      "command": [
+        "F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-student\\H1_non_propagating_cache\\Release\\H1_non_propagating_cache_student.exe"
+      ],
+      "exit_code": 1,
+      "timeout": false,
+      "process_seconds": 0.45300000021234155,
+      "stdout": "",
+      "stderr": "check failed: first begin finds first accepted value\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "FAIL",
+      "target": "H1_non_propagating_cache_student",
+      "exe_sha256": "73c978da6970a18346561ef7ba11ae2a33d66a5bb0433c529fb65fff39014a1a",
+      "expected_exit": 1,
+      "verdict": "PASS"
+    },
+    {
+      "command": [
+        "F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-student\\H2_common_iter_proxy\\Release\\H2_common_iter_proxy_student.exe"
+      ],
+      "exit_code": 1,
+      "timeout": false,
+      "process_seconds": 0.46899999980814755,
+      "stdout": "",
+      "stderr": "check failed: iter_swap must exchange underlying elements\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "FAIL",
+      "target": "H2_common_iter_proxy_student",
+      "exe_sha256": "e42216b9d4cdd1ef84b75155d36930516e2be5dc6ebf6693ec8ec2ae96d580be",
+      "expected_exit": 1,
+      "verdict": "PASS"
+    },
+    {
+      "command": [
+        "F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-student\\H3_generator_const_iter\\Release\\H3_generator_const_iter_student.exe"
+      ],
+      "exit_code": 1,
+      "timeout": false,
+      "process_seconds": 0.4380000000819564,
+      "stdout": "",
+      "stderr": "check failed: move assignment must destroy the old coroutine frame\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "FAIL",
+      "target": "H3_generator_const_iter_student",
+      "exe_sha256": "50b5c270eb2359dcde136e04f0da7147a7029e222b2f31d4da74b03693acae26",
+      "expected_exit": 1,
+      "verdict": "PASS"
+    },
+    {
+      "command": [
+        "F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-student\\L05_dynamic_array\\Release\\L05_dynamic_array_student.exe"
+      ],
+      "exit_code": 1,
+      "timeout": false,
+      "process_seconds": 0.4369999999180436,
+      "stdout": "",
+      "stderr": "check failed: reserve grows capacity\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "FAIL",
+      "target": "L05_dynamic_array_student",
+      "exe_sha256": "309ab0222ec67d26bbe0ae9c7e01d11c0b20a7f069dacb1185536068d568f4e3",
+      "expected_exit": 1,
+      "verdict": "PASS"
+    },
+    {
+      "command": [
+        "F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-student\\L06_binary_heap\\Release\\L06_binary_heap_student.exe"
+      ],
+      "exit_code": 1,
+      "timeout": false,
+      "process_seconds": 0.48400000017136335,
+      "stdout": "",
+      "stderr": "check failed: push accepts values until capacity\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "FAIL",
+      "target": "L06_binary_heap_student",
+      "exe_sha256": "896206303eb3a5ec65133276ff89e6673edac890bea30b3f2413749c39da2d96",
+      "expected_exit": 1,
+      "verdict": "PASS"
+    },
+    {
+      "command": [
+        "F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-student\\L07_chained_hash\\Release\\L07_chained_hash_student.exe"
+      ],
+      "exit_code": 1,
+      "timeout": false,
+      "process_seconds": 0.45399999991059303,
+      "stdout": "",
+      "stderr": "check failed: constructor keeps requested bucket count\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "FAIL",
+      "target": "L07_chained_hash_student",
+      "exe_sha256": "d8b03f614c6968442175fce31b6d09dee7028c48a7044fba3bcadb860f907853",
+      "expected_exit": 1,
+      "verdict": "PASS"
+    },
+    {
+      "command": [
+        "F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-student\\L08_avl_tree\\Release\\L08_avl_tree_student.exe"
+      ],
+      "exit_code": 1,
+      "timeout": false,
+      "process_seconds": 0.4369999999180436,
+      "stdout": "",
+      "stderr": "check failed: new value inserts\n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "FAIL",
+      "target": "L08_avl_tree_student",
+      "exe_sha256": "5ba69556be659d7435831413c5e72db3ee572647ae06f0a536b00bcd30964b5e",
+      "expected_exit": 1,
+      "verdict": "PASS"
+    }
+  ]
+}

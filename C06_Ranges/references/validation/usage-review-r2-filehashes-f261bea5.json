@@ -1,0 +1,66 @@
+[
+  {
+    "path": "C06_Ranges/04-模块C1-结构适配器.md",
+    "sha256": "1F72FC252FAF9C2793EC42068D266DEC8B0C9A77BC8AF80764085A9304F5BDBA"
+  },
+  {
+    "path": "C06_Ranges/06-模块D-C++23高阶视图与协程桥.md",
+    "sha256": "7F76B43744DAAFF72D389F435B591884F8A6D241FC7C515C507B5B22F303FE2A"
+  },
+  {
+    "path": "C06_Ranges/exercises/C1_1_join/README.md",
+    "sha256": "7DDFF6DB388FF3AC963E432DD9DAD30FA98E09A292EC71C1088AC3A429BA19E0"
+  },
+  {
+    "path": "C06_Ranges/exercises/C1_1_join/main.cpp",
+    "sha256": "400AA0F8CF3A3D404EA674E171B630A7431C054C3510DFC79434CE7CDB81EB87"
+  },
+  {
+    "path": "C06_Ranges/exercises/B1_all_ref_owning/README.md",
+    "sha256": "4F3586D87507A0B4C23C594F9FCE7037783ECC87F8043D4EFA5C5108A3A20DDC"
+  },
+  {
+    "path": "C06_Ranges/exercises/B1_all_ref_owning/main.cpp",
+    "sha256": "40ED9D12912FD06B517A64A3D8AD4459CA2AD0412A185C2CA0C0396BB7A84D41"
+  },
+  {
+    "path": "C06_Ranges/exercises/B3_take_drop_closure/README.md",
+    "sha256": "4A73EC5BC01A93AE87C95769667FE1AA27F51C3A51FFBF4553BEF061739660D5"
+  },
+  {
+    "path": "C06_Ranges/exercises/B3_take_drop_closure/main.cpp",
+    "sha256": "3714B36D17F0B5BE530C2F1C0ED62C17C29E3584A6ADB92835E6F0565BC29852"
+  },
+  {
+    "path": "C06_Ranges/exercises/C2_3_ranges_to/README.md",
+    "sha256": "31304EEE89ED53B18477F90493FD17E9489F6EDBCD9E29F95E1334DE265CC0C5"
+  },
+  {
+    "path": "C06_Ranges/exercises/C2_3_ranges_to/main.cpp",
+    "sha256": "FA039C54DD95F5D5D49C4954B58E573C9F8635483F629D356AB0CB1F916F59DC"
+  },
+  {
+    "path": "C06_Ranges/exercises/D1_zip_adjacent_chunk/README.md",
+    "sha256": "64DB83ABC533331A778ABE35036BDD0CD159375477465CAC87CADC697CEF69E9"
+  },
+  {
+    "path": "C06_Ranges/exercises/D1_zip_adjacent_chunk/main.cpp",
+    "sha256": "512C102F568A2B024C7E25BBFB67BCF870157AD92B62E0A81C58393F5C363823"
+  },
+  {
+    "path": "C06_Ranges/exercises/D2_chunk_by_join_with_asconst/README.md",
+    "sha256": "CCAEB9D2F87D7FF89DD26E55AC405F3BAC6CBDEBE0A183DD5958AF9E2346F190"
+  },
+  {
+    "path": "C06_Ranges/exercises/D2_chunk_by_join_with_asconst/main.cpp",
+    "sha256": "FA311D74982AB67E5AA1DE626417628BA9781B4305D2F86F02C38ACF30F6442B"
+  },
+  {
+    "path": "C06_Ranges/exercises/D3_std_generator/README.md",
+    "sha256": "A4DA5143B1D23F80D5CC6DDC52CFD8062EBAB2702121733471B726EC03F87B87"
+  },
+  {
+    "path": "C06_Ranges/exercises/D3_std_generator/main.cpp",
+    "sha256": "093212FA620B2D729B86C0F0C824F5B9ECC85BC15BC0D9DC439EC8ABEC41EF6B"
+  }
+]

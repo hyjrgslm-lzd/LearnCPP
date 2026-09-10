@@ -1,0 +1,31 @@
+{
+  "command": [
+    "C06_Ranges\\exercises\\B01_cost\\build-review\\Release\\B01_cost.exe",
+    "--bench-one",
+    "--case",
+    "pipeline",
+    "--scenario",
+    "small_low_valid",
+    "--variant",
+    "loop",
+    "--instrument",
+    "profiled",
+    "--seed",
+    "42"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.030999999959021807,
+  "stdout": "",
+  "stderr": "B01_cost error: instrument must be counted or timed\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 1,
+  "required_text": [
+    "instrument must be counted or timed"
+  ],
+  "verdict": "PASS"
+}

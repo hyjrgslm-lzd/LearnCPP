@@ -1,0 +1,24 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "C06_Ranges/exercises/E3_cpo_tagdispatch_compare/build-author-r4-release",
+    "--config",
+    "Release",
+    "--parallel",
+    "2"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.030999999959022,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/E3_cpo_tagdispatch_compare/CMakeLists.txt\n  main.cpp\n  E3_cpo_tagdispatch_compare.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\E3_cpo_tagdispatch_compare\\build-author-r4-release\\Release\\E3_cpo_tagdispatch_compare.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/E3_cpo_tagdispatch_compare/CMakeLists.txt\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

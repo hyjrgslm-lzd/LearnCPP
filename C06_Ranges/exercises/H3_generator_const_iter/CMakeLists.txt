@@ -1,9 +1,10 @@
 cmake_minimum_required(VERSION 3.28)
 project(H3_generator_const_iter LANGUAGES CXX)
-set(CMAKE_CXX_STANDARD 26)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
-if(MSVC)
-    add_compile_options(/Zc:__cplusplus /utf-8 /permissive-)
-endif()
-add_executable(H3_generator_const_iter main.cpp)
+include(../cmake/RangesSetup.cmake)
+
+ranges_add_exercise(
+    NAME H3_generator_const_iter
+    HEADER generator_const_iter.hpp
+    CHECK main.cpp
+    BAD_DIAGNOSTIC "move assignment must destroy the old coroutine frame"
+)

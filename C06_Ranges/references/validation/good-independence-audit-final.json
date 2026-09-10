@@ -1,0 +1,101 @@
+{
+  "same_byte_headers": [],
+  "pairs": [
+    {
+      "reference": "C06_Ranges\\exercises\\CAPSTONE1_log_pipeline\\src\\reference\\log_pipeline.hpp",
+      "good": "C06_Ranges\\exercises\\CAPSTONE1_log_pipeline\\validation\\good\\log_pipeline.hpp",
+      "equal": false
+    },
+    {
+      "reference": "C06_Ranges\\exercises\\CAPSTONE4_mini_ranges\\src\\reference\\my_ranges\\01_cpo.hpp",
+      "good": "C06_Ranges\\exercises\\CAPSTONE4_mini_ranges\\validation\\good\\my_ranges\\01_cpo.hpp",
+      "equal": false
+    },
+    {
+      "reference": "C06_Ranges\\exercises\\CAPSTONE4_mini_ranges\\src\\reference\\my_ranges\\02_concepts.hpp",
+      "good": "C06_Ranges\\exercises\\CAPSTONE4_mini_ranges\\validation\\good\\my_ranges\\02_concepts.hpp",
+      "equal": false
+    },
+    {
+      "reference": "C06_Ranges\\exercises\\CAPSTONE4_mini_ranges\\src\\reference\\my_ranges\\03_interface.hpp",
+      "good": "C06_Ranges\\exercises\\CAPSTONE4_mini_ranges\\validation\\good\\my_ranges\\03_interface.hpp",
+      "equal": false
+    },
+    {
+      "reference": "C06_Ranges\\exercises\\CAPSTONE4_mini_ranges\\src\\reference\\my_ranges\\04_factories.hpp",
+      "good": "C06_Ranges\\exercises\\CAPSTONE4_mini_ranges\\validation\\good\\my_ranges\\04_factories.hpp",
+      "equal": false
+    },
+    {
+      "reference": "C06_Ranges\\exercises\\CAPSTONE4_mini_ranges\\src\\reference\\my_ranges\\05_adaptors.hpp",
+      "good": "C06_Ranges\\exercises\\CAPSTONE4_mini_ranges\\validation\\good\\my_ranges\\05_adaptors.hpp",
+      "equal": false
+    },
+    {
+      "reference": "C06_Ranges\\exercises\\CAPSTONE4_mini_ranges\\src\\reference\\my_ranges\\06_consumers.hpp",
+      "good": "C06_Ranges\\exercises\\CAPSTONE4_mini_ranges\\validation\\good\\my_ranges\\06_consumers.hpp",
+      "equal": false
+    },
+    {
+      "reference": "C06_Ranges\\exercises\\E1_my_begin_cpo\\src\\reference\\my_begin.hpp",
+      "good": "C06_Ranges\\exercises\\E1_my_begin_cpo\\validation\\good\\my_begin.hpp",
+      "equal": false
+    },
+    {
+      "reference": "C06_Ranges\\exercises\\F1_iterator_hierarchy\\src\\reference\\iterator_hierarchy.hpp",
+      "good": "C06_Ranges\\exercises\\F1_iterator_hierarchy\\validation\\good\\iterator_hierarchy.hpp",
+      "equal": false
+    },
+    {
+      "reference": "C06_Ranges\\exercises\\G1_my_take_view\\src\\reference\\my_take_view.hpp",
+      "good": "C06_Ranges\\exercises\\G1_my_take_view\\validation\\good\\my_take_view.hpp",
+      "equal": false
+    },
+    {
+      "reference": "C06_Ranges\\exercises\\G2_my_transform_closure\\src\\reference\\my_transform_view.hpp",
+      "good": "C06_Ranges\\exercises\\G2_my_transform_closure\\validation\\good\\my_transform_view.hpp",
+      "equal": false
+    },
+    {
+      "reference": "C06_Ranges\\exercises\\G3_my_enumerate_borrowed\\src\\reference\\my_enumerate_view.hpp",
+      "good": "C06_Ranges\\exercises\\G3_my_enumerate_borrowed\\validation\\good\\my_enumerate_view.hpp",
+      "equal": false
+    },
+    {
+      "reference": "C06_Ranges\\exercises\\H1_non_propagating_cache\\src\\reference\\filter_cache.hpp",
+      "good": "C06_Ranges\\exercises\\H1_non_propagating_cache\\validation\\good\\filter_cache.hpp",
+      "equal": false
+    },
+    {
+      "reference": "C06_Ranges\\exercises\\H2_common_iter_proxy\\src\\reference\\common_proxy.hpp",
+      "good": "C06_Ranges\\exercises\\H2_common_iter_proxy\\validation\\good\\common_proxy.hpp",
+      "equal": false
+    },
+    {
+      "reference": "C06_Ranges\\exercises\\H3_generator_const_iter\\src\\reference\\generator_const_iter.hpp",
+      "good": "C06_Ranges\\exercises\\H3_generator_const_iter\\validation\\good\\generator_const_iter.hpp",
+      "equal": false
+    },
+    {
+      "reference": "C06_Ranges\\exercises\\L05_dynamic_array\\src\\reference\\dynamic_array.hpp",
+      "good": "C06_Ranges\\exercises\\L05_dynamic_array\\validation\\good\\dynamic_array.hpp",
+      "equal": false
+    },
+    {
+      "reference": "C06_Ranges\\exercises\\L06_binary_heap\\src\\reference\\finite_max_heap.hpp",
+      "good": "C06_Ranges\\exercises\\L06_binary_heap\\validation\\good\\finite_max_heap.hpp",
+      "equal": false
+    },
+    {
+      "reference": "C06_Ranges\\exercises\\L07_chained_hash\\src\\reference\\chained_hash.hpp",
+      "good": "C06_Ranges\\exercises\\L07_chained_hash\\validation\\good\\chained_hash.hpp",
+      "equal": false
+    },
+    {
+      "reference": "C06_Ranges\\exercises\\L08_avl_tree\\src\\reference\\avl_set.hpp",
+      "good": "C06_Ranges\\exercises\\L08_avl_tree\\validation\\good\\avl_set.hpp",
+      "equal": false
+    }
+  ],
+  "boundary": "Byte equality audit only; independent approaches also require source review."
+}

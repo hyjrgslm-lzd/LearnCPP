@@ -46,7 +46,7 @@
 
 ## 常见坑
 
-- **混淆 CPO 和 niebloid**：`ranges::begin/end/size` 是访问 CPO，`ranges::sort/find` 是算法 CPO（niebloid）。两者都是 CPO；niebloid 特指算法类。
+- **混淆访问 CPO 和算法 niebloid**：`ranges::begin/end/size` 是访问 CPO，开放成员/ADL 定制；`ranges::sort/find` 是算法 niebloid，重点是标准算法对象的一等值调用，不开放用户通过 ADL 替换算法体。
 - **以为 `tag_invoke` 是 C++ 标准**：不是。P1895R0 是提案，`tag_invoke` 来自 stdexec/libunifex。C++26 的 `std::execution` 可能采纳某种形式，但目前不在任何已发布标准中。
 - **以为 ranges CPO 不能做集中入口**：ranges 标准库目前每个 CPO 各自独立，但理论上可以用类似 `tag_invoke` 的集中入口重新实现——range-v3 已做了部分集中化。"不集中"是实现选择，不是机制限制。
 
@@ -62,3 +62,9 @@
 - P2300R10: `std::execution` 提案中 CPO 的定义和 `tag_invoke` 的使用
 - P2855R1: Member customization points for Senders and Receivers
 - cppreference: [std::ranges::begin](https://en.cppreference.com/w/cpp/ranges/begin)
+
+## Author-validation note
+
+本题是观察型练习，CMake 使用 `ranges_add_observation(E3_cpo_tagdispatch_compare main.cpp)`。当前 `main.cpp` 给出 ranges 成员/ADL 风格与最小 `tag_invoke` 风格的完整可运行对照，保持 stdlib-only，不依赖 stdexec 实现库。
+
+版本桥接要说清：ranges CPO 是 C++20 标准库机制；`tag_invoke` 是 P1895/stdexec/libunifex 传播出的协议风格，不是 C++20/23 标准；C10 的 execution 内容会继续讨论 P2300 及后续 member customization 方向。本题只建立 C04/C10 之间的概念桥，不把历史 `tag_invoke` 当成当前 ranges 定制协议。

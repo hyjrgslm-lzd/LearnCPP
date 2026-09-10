@@ -76,3 +76,8 @@
 - cppreference：[`std::ranges::chunk_view`](https://en.cppreference.com/w/cpp/ranges/chunk_view)
 - cppreference：[`std::ranges::slide_view`](https://en.cppreference.com/w/cpp/ranges/slide_view)
 - cppreference：[`std::ranges::stride_view`](https://en.cppreference.com/w/cpp/ranges/stride_view)
+## 参考解析
+
+预测：`zip_view` 的能力依赖所有底层 range；底层都 random_access 时可 random_access，但 proxy reference 会让 `iterator_category` 与 `iterator_concept` 分离。`adjacent<N>` 产生 N 元窗口，`chunk` 分块，`stride` 跳步。
+
+当前程序验证 zip 求和、adjacent<3> 的 tuple size 和窗口和、chunk 分组、stride 输出，以及 list 底层 stride 不具备 random_access。扩展时先看最弱底层 range，再推导组合 view 的能力。

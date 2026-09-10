@@ -1,9 +1,10 @@
 cmake_minimum_required(VERSION 3.28)
 project(H1_non_propagating_cache LANGUAGES CXX)
-set(CMAKE_CXX_STANDARD 26)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
-if(MSVC)
-    add_compile_options(/Zc:__cplusplus /utf-8 /permissive-)
-endif()
-add_executable(H1_non_propagating_cache main.cpp)
+include(../cmake/RangesSetup.cmake)
+
+ranges_add_exercise(
+    NAME H1_non_propagating_cache
+    HEADER filter_cache.hpp
+    CHECK main.cpp
+    BAD_DIAGNOSTIC "copy must rescan after non-propagating cache reset"
+)

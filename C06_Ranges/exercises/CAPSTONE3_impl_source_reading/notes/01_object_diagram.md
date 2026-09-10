@@ -1,85 +1,64 @@
 # 笔记 01：实现层对象关系图
 
-> 对应任务 1 / 验收点：出现 view_interface / range_adaptor_closure / iterator / sentinel / cache 五节点；
-> 每条边标注"持有（owns）"或"指向（points-to）"；`__non_propagating_cache` 节点有"拷贝时重置"标注。
+固定输入：MSVC STL 145，`_MSVC_STL_UPDATE=202604L`，本机源码目录
+`D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/include`。行号升级后会漂移，按
+`single_view`、`transform_view`、`filter_view`、`join_view`、`_Cached_position` 重新定位。
 
----
-
-## 占位骨架（用 ASCII 或 mermaid 填写）
-
-```
-【填写实现层对象关系图】
-
-示例起点（Mermaid，取消注释后在支持渲染的编辑器预览）：
-
----
 ```mermaid
 classDiagram
     class view_interface~D~ {
-        +empty() bool
-        +front() auto
-        +back() auto
-        +size() auto
-        +operator[]() auto
-        <<CRTP base>>
+        +empty()
+        +front()
+        +back()
+        +operator[]()
     }
     class range_adaptor_closure~D~ {
-        +operator|(range, closure) auto
-        <<CRTP base>>
-    }
-    class iterator {
-        +_M_current  [底层迭代器]
-        +_M_parent*  [指向 view 本体]
-        +operator*()
-        +operator++()
-    }
-    class sentinel {
-        +operator==(iterator) bool
-    }
-    class __non_propagating_cache~T~ {
-        +拷贝时重置 reset()
-        +赋值时重置 reset()
-    }
-    class filter_view {
-        +_M_begin [__non_propagating_cache]
-        +begin() [非 const]
-        +end()
+        +operator|()
     }
     class transform_view {
-        +_base  [owns 底层 view]
-        +_M_fun [owns 函数对象]
-        +begin()
-        +end()
+        +base range
+        +callable
+    }
+    class filter_view {
+        +base range
+        +predicate
+        +begin cache
+    }
+    class join_view {
+        +outer range
+        +optional inner cache
+    }
+    class iterator {
+        +current iterator
+        +parent pointer
+    }
+    class sentinel {
+        +end state
+    }
+    class non_propagating_cache~T~ {
+        +optional slot
+        +copy resets
+        +move resets
     }
 
-    view_interface~D~ <|-- filter_view : CRTP 继承
-    view_interface~D~ <|-- transform_view : CRTP 继承
-    filter_view *-- __non_propagating_cache : owns（begin 缓存）
-    transform_view *-- iterator : 产生
-    iterator --> transform_view : points-to（_M_parent）
-    iterator *-- sentinel : 配对
+    view_interface <|-- transform_view : CRTP base
+    view_interface <|-- filter_view : CRTP base
+    view_interface <|-- join_view : CRTP base
+    range_adaptor_closure <|-- transform_closure : CRTP base
+    range_adaptor_closure <|-- filter_closure : CRTP base
+    transform_view *-- iterator : owns type and creates values
+    filter_view *-- iterator : owns type and creates values
+    join_view *-- iterator : owns type and creates values
+    iterator --> transform_view : points-to parent
+    iterator --> filter_view : points-to parent
+    iterator --> join_view : points-to parent
+    iterator --> sentinel : compares-to
+    filter_view *-- non_propagating_cache : owns begin cache
+    join_view *-- non_propagating_cache : owns xvalue inner range cache
 ```
----
 
-TODO：
-- [ ] 补全 join_view 的双层迭代器节点（外层 _M_outer + 内层 _M_inner）
-- [ ] 补全 single_view 的 movable-box 持有节点
-- [ ] 补全 iota_view 的"无 parent 指针"说明（borrowed_range 成立的原因）
-- [ ] 在每条继承/持有/指向边上标注方向和语义
-```
-
----
-
-## 关键节点说明（阅读后填写）
-
-| 节点 | 职责 | 与其他节点的关系 |
-|------|------|------------------|
-| `view_interface<D>` | CRTP 注入 empty/front/back/size/operator[] | 被所有 view 继承 |
-| `range_adaptor_closure<D>` | CRTP 注入 operator\| | 被所有 closure 类型继承 |
-| `iterator`（内嵌类） | 持有底层迭代器 + parent 指针 | 指向（points-to）view 本体 |
-| `sentinel` | 标记范围结束，类型可与 iterator 不同 | 与 iterator 配对比较 |
-| `__non_propagating_cache<T>` | 缓存 begin 位置；**拷贝时重置**（non-propagating） | filter_view / join_view 持有 |
-
----
-
-*填写完成后删除此行提示，保留图表与说明。*
+`single_view` 是完成型 view：对象自己持有一个元素，`begin/end` 可以直接暴露元素地址。
+`transform_view`、`filter_view`、`join_view` 都是依赖型 view：迭代器不仅持有当前位置，还要能回到 parent
+读取函数对象、谓词或内层状态。`filter_view` 的 cache 缓存第一次 `begin()` 扫描结果，拷贝和移动时重置，
+保证新 view 不继承旧 view 的迭代状态。`join_view` 的 cache 解决另一个问题：当外层解引用产生 xvalue 子范围时，
+必须把那个临时子范围本体稳定在 view 内，否则内层迭代器会指向已结束生命期的对象。

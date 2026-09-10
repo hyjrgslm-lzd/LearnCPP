@@ -1,0 +1,27 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "C06_Ranges\\references\\validation\\advanced-review-h3-probe-build-r2",
+    "--config",
+    "Release",
+    "--target",
+    "h3_hostile_probe"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 1.3119999999180436,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  正在扫描源以查找模块依赖项...\n  正在编译...\n  advanced-review-h3-hostile-probe.cpp\nF:\\CPPTrain\\LearnCPP\\C06_Ranges\\references\\validation\\advanced-review-h3-hostile-probe.cpp(11,20): error C2607: 静态断言失败 [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\references\\validation\\advanced-review-h3-probe-build-r2\\h3_hostile_probe.vcxproj]\n      F:\\CPPTrain\\LearnCPP\\C06_Ranges\\references\\validation\\advanced-review-h3-hostile-probe.cpp(11,20):\n      计算结果为 false 的概念“std::same_as<std::_Vb_reference<std::_Wrap_alloc<std::allocator<std::_Vbase>>>,bool>”\n          F:\\CPPTrain\\LearnCPP\\C06_Ranges\\references\\validation\\advanced-review-h3-hostile-probe.cpp(11,20):\n          “std::_Vb_reference<std::_Wrap_alloc<std::allocator<std::_Vbase>>>”和“bool”是不同的类型\n  \nF:\\CPPTrain\\LearnCPP\\C06_Ranges\\references\\validation\\advanced-review-h3-hostile-probe.cpp(14,15): error C2607: 静态断言失败 [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\references\\validation\\advanced-review-h3-probe-build-r2\\h3_hostile_probe.vcxproj]\nF:\\CPPTrain\\LearnCPP\\C06_Ranges\\references\\validation\\advanced-review-h3-hostile-probe.cpp(19,20): error C2607: 静态断言失败 [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\references\\validation\\advanced-review-h3-probe-build-r2\\h3_hostile_probe.vcxproj]\n      F:\\CPPTrain\\LearnCPP\\C06_Ranges\\references\\validation\\advanced-review-h3-hostile-probe.cpp(19,20):\n      计算结果为 false 的概念“std::same_as<const int&,const int&&>”\n          F:\\CPPTrain\\LearnCPP\\C06_Ranges\\references\\validation\\advanced-review-h3-hostile-probe.cpp(19,20):\n          “const int &”和“const int &&”是不同的类型\n  \n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 1,
+  "required_text": [
+    "std::_Vb_reference",
+    "const int&&"
+  ],
+  "verdict": "PASS"
+}

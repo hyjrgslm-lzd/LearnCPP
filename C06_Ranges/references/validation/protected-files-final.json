@@ -1,0 +1,212 @@
+{
+  "baseline_covered_files": 7844,
+  "unchanged": 7803,
+  "observed_changes": [
+    {
+      "path": "C04_Generic_CompileTime_Reflection/README.md",
+      "before": "ce01b5f3bc2d2f3ab5bcd004edc35e867781a85334eb056596694bf564d5d59b",
+      "current": "a84cea2918a2ebbe2fef3efdc706586d3547e92448b5a570d280115758540630"
+    },
+    {
+      "path": "C04_Generic_CompileTime_Reflection/chapters/00-learning-route.md",
+      "before": "f97ee345992370a2e830c0dd43a236655ce8957691d1251dda70d5cfc5c08243",
+      "current": "efe399e8941ccf6e2d178ff80512f9586ceb0db64ca666856502032a08827995"
+    },
+    {
+      "path": "C04_Generic_CompileTime_Reflection/chapters/08-type-lists.md",
+      "before": "46bafa4faaa5d42fb95c03d9cd31ab4bdddc07d8cef6bdcf52b8cb264f3d94e5",
+      "current": "54ad32e84c5435a158b3dcf810fb9c18480ffceab0e1bb55c4ee9e0d6b3ff479"
+    },
+    {
+      "path": "C04_Generic_CompileTime_Reflection/chapters/10-constant-evaluation.md",
+      "before": "d06c5cdbee3d2201af0ad5d6e73c6c0b324195aebd35efb6cbcd25813367feba",
+      "current": "cb50b205f6fe7d6e70b6db118c012cb3242bb033b6d991d37f1138993f02e44e"
+    },
+    {
+      "path": "C04_Generic_CompileTime_Reflection/chapters/12-compile-cost.md",
+      "before": "8278e7ea4fc04c0d05bd41d373019197d7ed7042148fc2d800eb02c869a64bf3",
+      "current": "80e7d62ebdbedbcd40675b3c8f333cfc94fc33fe899c38c79198aa9d98e9869e"
+    },
+    {
+      "path": "C04_Generic_CompileTime_Reflection/chapters/14-splicing-generation.md",
+      "before": "c79360d1a3ed8807e976fee4983bd14f3db9a64a64743111b32831735ddaa23e",
+      "current": "8455fcbe261f804a5f821f7d16cc290863e3c08dbf2df6a44c14a5dde13fbd05"
+    },
+    {
+      "path": "C04_Generic_CompileTime_Reflection/chapters/15-annotations-frontier.md",
+      "before": "d956a4c296dbca12055c19f249bfe6b42ad5c4568481b627eb1f71727df52eb9",
+      "current": "0f73c9ae6eaa5a0ba10f47e47f3e84f75afb0a9ca4059359b7a8a4f689a9b503"
+    },
+    {
+      "path": "C04_Generic_CompileTime_Reflection/exercises/B01_compile_cost/README.md",
+      "before": "7da490fe51a80fa50d19ec44fca9f127cef81ec2f0d06f7bb7b1b4fe03dcc645",
+      "current": "265405d16fe26f53f6619073c45985761d64d20d3ab5e3fd09c2064a16e056f4"
+    },
+    {
+      "path": "C04_Generic_CompileTime_Reflection/exercises/CMakeLists.txt",
+      "before": "68aee9cf6bbfc2dc03763822ae59c7087b7c3a0b0ac4e4b6ab10b988c44467e6",
+      "current": "c00a8c7535a6a3e4fc1c63dede6814c654ba7b2bb0307fce1d9e30d2efa7ea6c"
+    },
+    {
+      "path": "C04_Generic_CompileTime_Reflection/exercises/CMakePresets.json",
+      "before": "e876988fe7583c3f301b15ad452ed6055dd613159cc8095d74e8fd2cbd1ab5a9",
+      "current": "1a3c6dd20d7ff30150b4be664edd28bd7fa5d4b1780ea9f90e2e50279accc6aa"
+    },
+    {
+      "path": "C04_Generic_CompileTime_Reflection/exercises/F01_frontier/CMakeLists.txt",
+      "before": "1d9795ca46c821b7a2d25a1eaabbb48c08409873d4a8cfea7844791008c4e61e",
+      "current": "b3d75c8c1611e75cb51b1c36fb277a4da6164816405c485c2e7ce46205f5670d"
+    },
+    {
+      "path": "C04_Generic_CompileTime_Reflection/exercises/F01_frontier/README.md",
+      "before": "72d0287549de9f8c45e30f7212d9baae0ddd5a1797d89cfca0542193b53afb34",
+      "current": "bb82db84c84d7883585dc4847cb81ddd3516f9b9c59ed868f546c28b8c0c6a76"
+    },
+    {
+      "path": "C04_Generic_CompileTime_Reflection/exercises/F01_frontier/answers.md",
+      "before": "c565ee41dd0f6a2670d0b59eae2252bf3f6561b1e27b215a83bed00819919064",
+      "current": "2a7d65d69750e34d38497250df08a619f594a3ca3597610fb2db23a639901a75"
+    },
+    {
+      "path": "C04_Generic_CompileTime_Reflection/exercises/F01_frontier/probes/pack_indexing_probe.cpp",
+      "before": "5d50cbd3144dd3069b22105170428e1a55fe80d640a15e4d717eaf367d9f603f",
+      "current": "09bc568f1c5e9a72329321cd317d46716a6870eb54b7d5cb8ff173bc629c56dd"
+    },
+    {
+      "path": "C04_Generic_CompileTime_Reflection/exercises/L07_packs/validation/good/pack_tools.hpp",
+      "before": "6baf5184c2c49c5169d3fd4cbde52dfc2395b5dcb95c3f9f79fcbcbc51a63b7a",
+      "current": "44cf0cbab053448749c79f3578125d59df6725ae09476f9178b8371543cfd13c"
+    },
+    {
+      "path": "C04_Generic_CompileTime_Reflection/exercises/L08_type_lists/validation/good/type_list_tools.hpp",
+      "before": "49f55135abe9cdbd760a9e73855c34e9e0a31da7c5291176da772bc62f6671f5",
+      "current": "993d3684653610cf69909b997d905dcc0783daa08fd852bfb8b41e1f9b1514d2"
+    },
+    {
+      "path": "C04_Generic_CompileTime_Reflection/exercises/L09_tuple/validation/good/tuple_for_each.hpp",
+      "before": "415092a01a2942115e0ed794b720228674afb37cd595ce9e15f7714d99222414",
+      "current": "90dec28ae086fe74a8c41687b178b9aced42d96e411653b8e358ba951e938ba6"
+    },
+    {
+      "path": "C04_Generic_CompileTime_Reflection/exercises/L10_constexpr/CMakeLists.txt",
+      "before": "f58cd2697d25aab6383df93c45e3fd2b4977c6a60b34214d8c408c198360343e",
+      "current": "61f5d161794c4acd625bcb0c49c01984ae6cd404b1aed20090486019679dd0ef"
+    },
+    {
+      "path": "C04_Generic_CompileTime_Reflection/exercises/L10_constexpr/README.md",
+      "before": "00c19c8f2dd33041093fbb2e71c324a0e01f8c0fc64fd8ef5806613c472012a4",
+      "current": "ca5ac06a923d871cb81c83a75ddb21c7fc0ba73e2723ddc9d64c5567b8a05844"
+    },
+    {
+      "path": "C04_Generic_CompileTime_Reflection/exercises/L10_constexpr/checks/constexpr_tools_checks.cpp",
+      "before": "cffcff4cda40e7127f3f77ea789dce5f3711e6aac39945d071fe3690b8fce382",
+      "current": "cbb5cdb6680e5bfaedc75b22ae32fdf1077405dd4315257aa0fb620869588ee2"
+    },
+    {
+      "path": "C04_Generic_CompileTime_Reflection/exercises/L10_constexpr/src/reference/constexpr_tools.hpp",
+      "before": "cbca5bf84db74158741b6186711bf1bbcb2e5916508990492f46a4cffee0e1bd",
+      "current": "6ef5ac3710022c0a38c3f26c7bd8db79bbaed89b0ab3af296deac134e6eaa95c"
+    },
+    {
+      "path": "C04_Generic_CompileTime_Reflection/exercises/L10_constexpr/validation/diagnostics/invalid_digit_control.cpp",
+      "before": "c5b60836250d9ae9339379adb1a2ee12de4c76d1b054641ed9ba60659a88abb8",
+      "current": "637cb9b8d6f67b283102b28ab9ae6c63a341fb314d55fd73f3a50d5e6c502334"
+    },
+    {
+      "path": "C04_Generic_CompileTime_Reflection/exercises/L10_constexpr/validation/good/constexpr_tools.hpp",
+      "before": "6259d3cd5f19ee132985c5c999142cc7b5e50e007c1dd1c69a203270e138f6a5",
+      "current": "7d5a1e8cdb4fcd61b2231da6bb18b050b844c6f18d6a6110a8569888d5016333"
+    },
+    {
+      "path": "C04_Generic_CompileTime_Reflection/exercises/cmake/StudySetup.cmake",
+      "before": "c666bf86d8fe1da8e513ae61832d8a0c2d2a4120afc5782e35633f356049fde0",
+      "current": "1345ddd6dc3d939c570079fc9257f783bb8638e4b8e7cae1f6578de8814cb28d"
+    },
+    {
+      "path": "C04_Generic_CompileTime_Reflection/exercises/tools/compile_case.py",
+      "before": "7dabd21a7abb70fc8b926b2913fa739583ab655c022aad6da0ebb6c45d1377ad",
+      "current": "a5a8a2d86171035018d8381fa27db85ce143f82711534f697d8d5ac79754e029"
+    },
+    {
+      "path": "C04_Generic_CompileTime_Reflection/references/BUILD_GUIDE.md",
+      "before": "e6904ef7279eb01dc9a72f9b4312d24d87100220777e814bb77e99758d3d5d14",
+      "current": "732b1f2192ee74a84e013f7e3977f21319da95d3157e407a61121532d9f07af9"
+    },
+    {
+      "path": "C04_Generic_CompileTime_Reflection/references/benchmarks/cost_driver.py",
+      "before": "b4fb3e1cd2b62d037593a184141d6279538df7bb6dd572e5231a5875651a0eb9",
+      "current": "98954136856697257f964c8b9309ae4f32e6b96d273f8b335b1b7200b02f41f0"
+    },
+    {
+      "path": "C04_Generic_CompileTime_Reflection/references/coverage.md",
+      "before": "5611c45639cc3b56135ac248835d84f7949b5c215e07ee7a251e0d3b29c11e53",
+      "current": "62c0b74924cd3f73edf1e29ca77aa07c81b24d216569c9abdb270de33e8882db"
+    },
+    {
+      "path": "C04_Generic_CompileTime_Reflection/references/implementation-spec.md",
+      "before": "5f2d2c840d18f8362ded0cda24cd7135f1c6ca9b3d72a31f76e4d385e5d647da",
+      "current": "34263f0ca69550992c80ca8c78eb9e8be830775ca648e35fd86ccb9e727fe0b4"
+    },
+    {
+      "path": "C04_Generic_CompileTime_Reflection/references/quality-report.md",
+      "before": "b32e2dcbe81ae6ddcb8e340ba1ec293948298256fa54e6df131a60e62fb48313",
+      "current": "774200d351de3b168d188158fc4998b403eb4043291f4a7862fd34c2ff245b47"
+    },
+    {
+      "path": "C04_Generic_CompileTime_Reflection/references/standards-and-implementations.md",
+      "before": "594858ca6c98399ad5138cf0cdf40653cf14771d68907430a115a7989103214e",
+      "current": "a6a7d0c79d0ea38c218fad80b3d8c43743c7ae35c3d50c675c5846607f714d93"
+    },
+    {
+      "path": "C05_Data_Representation_Standard_Facilities/README.md",
+      "before": "5f827c660ba39e3e1e76063be12c8c4fd77f568e185d7dce2a72c20d9e09b41b",
+      "current": "b486af831fade3b25637f2f4258b64d2d92f89b8e357151f6a06aa1073f54ce6"
+    },
+    {
+      "path": "C05_Data_Representation_Standard_Facilities/chapters/09-formatting-and-locales.md",
+      "before": "4e0c9ff984de329eecd0b331ebaba963ca161f77a822fef99117d1cf550558a6",
+      "current": "0fbbef58afc8dd785d7a3f41b73afb7150cce6a8eafbe0b8e8b3f40d491c2d02"
+    },
+    {
+      "path": "C05_Data_Representation_Standard_Facilities/chapters/17-source-and-downstream.md",
+      "before": "ef16d799939badb016d8f97f980dc4afe2ffde026f023a1dea40151a00dd3950",
+      "current": "a4ebf2144a8163ece72b8416dca7eae396d5bb50488ffb5f8763fdf4d32cd0fa"
+    },
+    {
+      "path": "C05_Data_Representation_Standard_Facilities/exercises/BUILD_GUIDE.md",
+      "before": "3450e7bd7ac8044928603626c9422f49b55cb3324649ba088d3b261bc6fffacf",
+      "current": "d1bd55c4fdba01138934551c04e9248fb0a2a783a7f7ba681d3b524db0575d0e"
+    },
+    {
+      "path": "C05_Data_Representation_Standard_Facilities/exercises/CMakeLists.txt",
+      "before": "688af42d99804320062011df0936322a7e12cdc2da3234acf6207df5b7cc8a91",
+      "current": "db9b6075885715e3ac3e8253080d9b8240113ff876b529f7f982a2cb88506ee7"
+    },
+    {
+      "path": "C05_Data_Representation_Standard_Facilities/exercises/CMakePresets.json",
+      "before": "e38fe129e3a82ddb294f036367e27271fa804f874fceb525e6432556a3aafebe",
+      "current": "70be553d01d3a10a23ca3a43a9d270e515fd2034624317534a21af376f5507b2"
+    },
+    {
+      "path": "C05_Data_Representation_Standard_Facilities/exercises/cmake/StudySetup.cmake",
+      "before": "11b0c779028bbefe80e744b23a3a4ede10f8895248310ed7b528603012e0abcd",
+      "current": "35b70b527b0805490b8f897332e3305ce34dac4763313794aeacceeb089ae381"
+    },
+    {
+      "path": "C05_Data_Representation_Standard_Facilities/references/coverage.md",
+      "before": "ef2f73dc459337583680cd2d9739befd0e327e5a9bfbf7f528d00ad60b4f3089",
+      "current": "1cf12d7dd12383458fc38cc1a7436026f921df9d94e49d2653e469f6abd6a786"
+    },
+    {
+      "path": "C05_Data_Representation_Standard_Facilities/references/implementation-spec.md",
+      "before": "1037a117ff7e66bdbf1b0002dc25c46fb60c3d4aa31c3ae99f75d8c342a7055a",
+      "current": "e1b96f3d9926055e71a511826bb5caf9fc0e18aadaad8bfc35bcb1392c8bc80f"
+    },
+    {
+      "path": "C05_Data_Representation_Standard_Facilities/references/quality-report.md",
+      "before": "bab472cb54a60e84ceb12f64ad6cd8d4dc51adaa2f0b7aa70f093003818e4c65",
+      "current": "c0a1498ad58509ef326654ad3a0bd9facd0383c65cf8b53ecd08041b8d61632e"
+    }
+  ],
+  "classification": "Observed concurrent changes preserved; hashes alone do not attribute authorship. No reset to the old snapshot was performed."
+}

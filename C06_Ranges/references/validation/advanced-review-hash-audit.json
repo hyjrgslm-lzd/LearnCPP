@@ -1,0 +1,21 @@
+{
+  "command": [
+    "powershell",
+    "-NoProfile",
+    "-Command",
+    "Get-ChildItem C06_Ranges\\exercises\\CAPSTONE4_mini_ranges\\src\\reference\\my_ranges\\*.hpp,C06_Ranges\\exercises\\CAPSTONE4_mini_ranges\\validation\\good\\my_ranges\\*.hpp,C06_Ranges\\exercises\\CAPSTONE4_mini_ranges\\validation\\bad\\my_ranges\\*.hpp,C06_Ranges\\exercises\\CAPSTONE4_mini_ranges\\src\\student\\my_ranges\\*.hpp,C06_Ranges\\exercises\\H1_non_propagating_cache\\src\\reference\\filter_cache.hpp,C06_Ranges\\exercises\\H1_non_propagating_cache\\validation\\good\\filter_cache.hpp,C06_Ranges\\exercises\\H2_common_iter_proxy\\src\\reference\\common_proxy.hpp,C06_Ranges\\exercises\\H2_common_iter_proxy\\validation\\good\\common_proxy.hpp,C06_Ranges\\exercises\\H3_generator_const_iter\\src\\reference\\generator_const_iter.hpp,C06_Ranges\\exercises\\H3_generator_const_iter\\validation\\good\\generator_const_iter.hpp | Get-FileHash | ForEach-Object { .Path + ' ' + .Hash }"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.4220000000204891,
+  "stdout": "",
+  "stderr": "Get-FileHash : �޷�����Get-FileHash����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ\n��·����ȷ��Ȼ������һ�Ρ�\n����λ�� ��:1 �ַ�: 784\n+ ... _iter\\validation\\good\\generator_const_iter.hpp | Get-FileHash | ForEa ...\n+                                                      ~~~~~~~~~~~~\n    + CategoryInfo          : ObjectNotFound: (Get-FileHash:String) [], CommandNotFoundException\n    + FullyQualifiedErrorId : CommandNotFoundException\n \n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "FAIL"
+}

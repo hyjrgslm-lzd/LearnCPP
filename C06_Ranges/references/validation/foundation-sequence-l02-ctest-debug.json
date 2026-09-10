@@ -1,0 +1,26 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "C06_Ranges\\exercises\\L02_sequence_containers\\build-author",
+    "-C",
+    "Debug",
+    "--output-on-failure"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.4529999999795109,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L02_sequence_containers/build-author\n    Start 1: L02_sequence_containers\n1/1 Test #1: L02_sequence_containers ..........   Passed    0.39 sec\n\n100% tests passed, 0 tests failed out of 1\n\nLabel Time Summary:\nobservation    =   0.39 sec*proc (1 test)\n\nTotal Test time (real) =   0.40 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [
+    "100% tests passed",
+    "0 tests failed out of 1"
+  ],
+  "verdict": "PASS"
+}

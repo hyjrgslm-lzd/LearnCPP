@@ -40,9 +40,9 @@
 
 - 能分别写出 `lazy_split` 和 C++23 `split` 的代码，并观察子范围类型差异。
 - 能解释为什么 C++20/lazy_split 子范围不能直接构造 `std::string`，
-  而 C++23 split 可以。
+  而修订后 split 可以。
 - 能指出 P2210R2 "改名保留旧语义"的实际效果：两者在 C++23 下都可用，只是名字不同。
-- 能说出 C++23 split 对输入 range 的概念要求，以及子范围迭代器类别由底层继承的机制。
+- 能说出修订后 split 对输入 range 的概念要求，以及子范围迭代器类别由底层继承的机制。
 
 ## 观察点
 
@@ -53,7 +53,7 @@
   子范围 `begin()` 就是 `const char*`，`string_view` 构造自然成立。
 - P2210R2 的改动不是破坏性重做：旧语义通过 `lazy_split` 继续可用，
   对维护 C++20 代码库而言，升级到 C++23 后行为不变，只需更新名字为 `lazy_split`。
-- 跨编译器行为不一致：MSVC 和 GCC 对 C++23 split/lazy_split 实现进度可能不同。
+- 跨编译器行为不一致：MSVC 和 GCC 对 P2210R2 DR 与 lazy_split 实现进度可能不同。
   编译失败不等于"标准说错了"。
 
 ## 常见坑
@@ -72,7 +72,7 @@
 ## 提示
 
 - 如果编译器是 C++20 only，可以用 `views::split` 做 lazy_split 验证，
-  先读懂 C++23 split 语义，等升级编译器后再验证。
+  先读懂修订后 split 语义，等升级编译器后再验证。
 - 当子范围需要转换为 `string` 或 `string_view` 时，先打印子范围迭代器类型，
   直观看到 lazy_split vs split 的差异。
 - `static_assert(!std::ranges::contiguous_range<decltype(lazy_first)>)` 是
@@ -80,7 +80,7 @@
 
 ## 复盘问题
 
-1. P2210R2 为什么选择"把 C++20 split 改名为 lazy_split"而不是保留旧名字？
+1. P2210R2 为什么选择“旧语义由 lazy_split 承接、split 名字给修订语义”而不是保留旧名字？
    这个决定对现有代码的迁移有什么影响？
 2. `lazy_split` 子范围迭代器是"代理迭代器"，C++23 `split` 子范围迭代器是
    底层 range 的真实迭代器。两种设计在"传递 contiguous 性质"上的核心差异是什么？
@@ -94,3 +94,8 @@
 - P2210R2：C++23 `views::split` 语义改进，子范围可构造 string
 - cppreference: [std::ranges::split_view](https://en.cppreference.com/w/cpp/ranges/split_view)
 - cppreference: [std::ranges::lazy_split_view](https://en.cppreference.com/w/cpp/ranges/lazy_split_view)
+## 参考解析
+
+预测：P2210R2 已作为 C++20 DR 采纳，不能靠 `-std=c++20` 假定旧 split 行为。旧惰性设计由 `lazy_split` 承接；修订后 `split` 的子范围用底层真实迭代器，连续底层上可直接构造 `string_view`。
+
+当前程序同时观察 `lazy_split` 的 forward-only 代理子范围和修订后 `split` 的 contiguous 子范围，并把两者都物化成 token。扩展时要分清：`std::string(first,last)` 只需 input iterator；真正体现差异的是 `string_view` 构造需要 contiguous/sized。

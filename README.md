@@ -8,7 +8,7 @@
 
 之后按目标选择路线：
 
-- **序列与算法**：C02 → C06 Ranges；自定义视图与泛型实现还需相应模板知识。
+- **序列与算法**：C02 → C06 容器/算法基础 → Ranges；自定义视图与泛型实现按需补C04。
 - **并发与异步**：C02 → C08 基础同步 → C09 协程或 C10 Execution；协程与 sender 的组合放在两侧基础之后。C09 不是使用 C10 的硬先修。
 - **GPU 计算**：对象与资源基础、必要数值和性能知识 → C14；无需先读完整个异步课程组。
 - **引擎开发**：构建与对象基础 → C15，再按模块补齐并发、渲染和网络知识。
@@ -24,7 +24,7 @@
 | 公共基础 | [C03_Type_Modeling_Interface_Design](C03_Type_Modeling_Interface_Design/README.md) | 类型/值/状态、错误与异常安全、多态与擦除、包装/契约、接口演进；18章、15专题练习＋综合项目与前沿单元；状态见质量报告 |
 | 公共基础 | [C04_Generic_CompileTime_Reflection](C04_Generic_CompileTime_Reflection/README.md) | 泛型、查找/约束、类型计算、常量求值、反射与编译成本；25章/21单元，含进阶机制、Mp11/Hana及编译成本实验；验证与未测边界见质量报告 |
 | 公共基础 | [C05_Data_Representation_Standard_Facilities](C05_Data_Representation_Standard_Facilities/README.md) | 字节/编码、解析格式化、时间/时区、路径配置、schema与资源清单包；21章/20单元，含fmt/spdlog同步前端；验证与审查见质量报告 |
-| 专题进阶 | [C06_Ranges](C06_Ranges/README.md) | 序列、算法、视图、迭代器与惰性求值；当前覆盖 C06 课程族中的 Ranges 专题 |
+| 公共基础与专题进阶 | [C06_Ranges](C06_Ranges/README.md) | 数据结构、容器、算法、Ranges与迭代器实现；保留C++26默认，标准/实现及验证状态见课程质量报告 |
 | 专题进阶 | [C08_Concurrency](C08_Concurrency/README.md) | 线程、同步、原子、内存模型、并发结构与安全回收；已有 CPU 性能系列兼作 C13 入口 |
 | 专题进阶 | [C09_Coroutines](C09_Coroutines/README.md) | 协程协议、控制流、帧与生命周期、取消组合、I/O 与 RPC 应用 |
 | 专题进阶 | [C10_Execution](C10_Execution/README.md) | sender/receiver、scheduler、工作组合、完成通道与运行时 |

@@ -1,0 +1,556 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "formal": false,
+  "repo": "F:\\CPPTrain\\LearnCPP",
+  "environment": {
+    "python": "3.10.11 (tags/v3.10.11:7d4cc5a, Apr  5 2023, 00:38:17) [MSC v.1929 64 bit (AMD64)]",
+    "platform": "Windows-10-10.0.26100-SP0",
+    "machine": "AMD64",
+    "logical_cpus": 24
+  },
+  "arguments": {
+    "samples": 1,
+    "warmups": 1,
+    "seed": 42,
+    "timeout": 30.0,
+    "exe": "F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\B01_cost\\build-author\\Release\\B01_cost.exe",
+    "smoke": true
+  },
+  "source_sha256": "11c58524fa6eb9dd36a066f1c2bac1b2a57c4faa2ae9f1ac7f6fd76c7a8b4fb1",
+  "capstone1_source_sha256": "b4f118af7c823b1dd90ed39e54ce25a6169b3f4f217933da9a6297538950b2a4",
+  "exe_sha256": "0ea57756290798170ef0e42300d82b432aab586c2818a5beec0e057094d0328a",
+  "driver_sha256": "b9b4518b70c66553cd0dcc2b3f0d0542372d74be518099ea39ce4cf39adf52d8",
+  "process_runner_sha256": "77f7aa8a86ff5fa4fdb933c8bb9929d637748a1aa00fb7afb3dac941e47d936b",
+  "schedule": [
+    {
+      "phase": "warmup",
+      "rep": 0,
+      "case": "pipeline",
+      "scenario": "small_low_valid",
+      "variant": "loop",
+      "instrument": "timed"
+    },
+    {
+      "phase": "sample",
+      "rep": 0,
+      "case": "pipeline",
+      "scenario": "small_low_valid",
+      "variant": "loop",
+      "instrument": "timed"
+    },
+    {
+      "phase": "sample",
+      "rep": 0,
+      "case": "pipeline",
+      "scenario": "small_low_valid",
+      "variant": "loop",
+      "instrument": "counted"
+    },
+    {
+      "phase": "sample",
+      "rep": 0,
+      "case": "pipeline",
+      "scenario": "small_low_valid",
+      "variant": "materialized",
+      "instrument": "timed"
+    },
+    {
+      "phase": "sample",
+      "rep": 0,
+      "case": "pipeline",
+      "scenario": "small_low_valid",
+      "variant": "reparse",
+      "instrument": "timed"
+    },
+    {
+      "phase": "sample",
+      "rep": 0,
+      "case": "index",
+      "scenario": "small_low_hit",
+      "variant": "linear_vector",
+      "instrument": "counted"
+    },
+    {
+      "phase": "sample",
+      "rep": 0,
+      "case": "index",
+      "scenario": "small_low_hit",
+      "variant": "unordered_map",
+      "instrument": "timed"
+    }
+  ],
+  "rounds": [
+    {
+      "phase": "warmup",
+      "rep": 0,
+      "case": "pipeline",
+      "scenario": "small_low_valid",
+      "variant": "loop",
+      "instrument": "timed",
+      "seed": 298,
+      "command": [
+        "F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\B01_cost\\build-author\\Release\\B01_cost.exe",
+        "--bench-one",
+        "--case",
+        "pipeline",
+        "--scenario",
+        "small_low_valid",
+        "--variant",
+        "loop",
+        "--seed",
+        "298",
+        "--instrument",
+        "timed"
+      ],
+      "process": {
+        "exit_code": 0,
+        "timeout": false,
+        "process_seconds": 0.06299999984912574,
+        "status": "PASS",
+        "error": "",
+        "cleanup_error": ""
+      },
+      "payload": {
+        "schema": 1,
+        "case": "pipeline",
+        "scenario": "small_low_valid",
+        "variant": "loop",
+        "instrument": "timed",
+        "seed": 298,
+        "n": 256,
+        "rate": 10,
+        "checksum": 8749635614949239210,
+        "oracle_checksum": 8749635614949239210,
+        "valid_records": 30,
+        "oracle_valid_records": 30,
+        "error_records": 6,
+        "oracle_error_records": 6,
+        "parse_calls": 0,
+        "optional_slots": 0,
+        "records_materialized": 30,
+        "elapsed_ns": 10200
+      },
+      "verdict": "PASS",
+      "failure": ""
+    },
+    {
+      "phase": "sample",
+      "rep": 0,
+      "case": "pipeline",
+      "scenario": "small_low_valid",
+      "variant": "loop",
+      "instrument": "timed",
+      "seed": 298,
+      "command": [
+        "F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\B01_cost\\build-author\\Release\\B01_cost.exe",
+        "--bench-one",
+        "--case",
+        "pipeline",
+        "--scenario",
+        "small_low_valid",
+        "--variant",
+        "loop",
+        "--seed",
+        "298",
+        "--instrument",
+        "timed"
+      ],
+      "process": {
+        "exit_code": 0,
+        "timeout": false,
+        "process_seconds": 0.030999999959021807,
+        "status": "PASS",
+        "error": "",
+        "cleanup_error": ""
+      },
+      "payload": {
+        "schema": 1,
+        "case": "pipeline",
+        "scenario": "small_low_valid",
+        "variant": "loop",
+        "instrument": "timed",
+        "seed": 298,
+        "n": 256,
+        "rate": 10,
+        "checksum": 8749635614949239210,
+        "oracle_checksum": 8749635614949239210,
+        "valid_records": 30,
+        "oracle_valid_records": 30,
+        "error_records": 6,
+        "oracle_error_records": 6,
+        "parse_calls": 0,
+        "optional_slots": 0,
+        "records_materialized": 30,
+        "elapsed_ns": 7800
+      },
+      "verdict": "PASS",
+      "failure": ""
+    },
+    {
+      "phase": "sample",
+      "rep": 0,
+      "case": "pipeline",
+      "scenario": "small_low_valid",
+      "variant": "loop",
+      "instrument": "counted",
+      "seed": 298,
+      "command": [
+        "F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\B01_cost\\build-author\\Release\\B01_cost.exe",
+        "--bench-one",
+        "--case",
+        "pipeline",
+        "--scenario",
+        "small_low_valid",
+        "--variant",
+        "loop",
+        "--seed",
+        "298",
+        "--instrument",
+        "counted"
+      ],
+      "process": {
+        "exit_code": 0,
+        "timeout": false,
+        "process_seconds": 0.03100000019185245,
+        "status": "PASS",
+        "error": "",
+        "cleanup_error": ""
+      },
+      "payload": {
+        "schema": 1,
+        "case": "pipeline",
+        "scenario": "small_low_valid",
+        "variant": "loop",
+        "instrument": "counted",
+        "seed": 298,
+        "n": 256,
+        "rate": 10,
+        "checksum": 8749635614949239210,
+        "oracle_checksum": 8749635614949239210,
+        "valid_records": 30,
+        "oracle_valid_records": 30,
+        "error_records": 6,
+        "oracle_error_records": 6,
+        "parse_calls": 256,
+        "optional_slots": 0,
+        "records_materialized": 30,
+        "elapsed_ns": 7500
+      },
+      "verdict": "PASS",
+      "failure": ""
+    },
+    {
+      "phase": "sample",
+      "rep": 0,
+      "case": "pipeline",
+      "scenario": "small_low_valid",
+      "variant": "materialized",
+      "instrument": "timed",
+      "seed": 298,
+      "command": [
+        "F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\B01_cost\\build-author\\Release\\B01_cost.exe",
+        "--bench-one",
+        "--case",
+        "pipeline",
+        "--scenario",
+        "small_low_valid",
+        "--variant",
+        "materialized",
+        "--seed",
+        "298",
+        "--instrument",
+        "timed"
+      ],
+      "process": {
+        "exit_code": 0,
+        "timeout": false,
+        "process_seconds": 0.03100000019185245,
+        "status": "PASS",
+        "error": "",
+        "cleanup_error": ""
+      },
+      "payload": {
+        "schema": 1,
+        "case": "pipeline",
+        "scenario": "small_low_valid",
+        "variant": "materialized",
+        "instrument": "timed",
+        "seed": 298,
+        "n": 256,
+        "rate": 10,
+        "checksum": 8749635614949239210,
+        "oracle_checksum": 8749635614949239210,
+        "valid_records": 30,
+        "oracle_valid_records": 30,
+        "error_records": 6,
+        "oracle_error_records": 6,
+        "parse_calls": 0,
+        "optional_slots": 256,
+        "records_materialized": 30,
+        "elapsed_ns": 18800
+      },
+      "verdict": "PASS",
+      "failure": ""
+    },
+    {
+      "phase": "sample",
+      "rep": 0,
+      "case": "pipeline",
+      "scenario": "small_low_valid",
+      "variant": "reparse",
+      "instrument": "timed",
+      "seed": 298,
+      "command": [
+        "F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\B01_cost\\build-author\\Release\\B01_cost.exe",
+        "--bench-one",
+        "--case",
+        "pipeline",
+        "--scenario",
+        "small_low_valid",
+        "--variant",
+        "reparse",
+        "--seed",
+        "298",
+        "--instrument",
+        "timed"
+      ],
+      "process": {
+        "exit_code": 0,
+        "timeout": false,
+        "process_seconds": 0.031999999890103936,
+        "status": "PASS",
+        "error": "",
+        "cleanup_error": ""
+      },
+      "payload": {
+        "schema": 1,
+        "case": "pipeline",
+        "scenario": "small_low_valid",
+        "variant": "reparse",
+        "instrument": "timed",
+        "seed": 298,
+        "n": 256,
+        "rate": 10,
+        "checksum": 8749635614949239210,
+        "oracle_checksum": 8749635614949239210,
+        "valid_records": 30,
+        "oracle_valid_records": 30,
+        "error_records": 6,
+        "oracle_error_records": 6,
+        "parse_calls": 0,
+        "optional_slots": 0,
+        "records_materialized": 30,
+        "elapsed_ns": 13000
+      },
+      "verdict": "PASS",
+      "failure": ""
+    },
+    {
+      "phase": "sample",
+      "rep": 0,
+      "case": "index",
+      "scenario": "small_low_hit",
+      "variant": "linear_vector",
+      "instrument": "counted",
+      "seed": 298,
+      "command": [
+        "F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\B01_cost\\build-author\\Release\\B01_cost.exe",
+        "--bench-one",
+        "--case",
+        "index",
+        "--scenario",
+        "small_low_hit",
+        "--variant",
+        "linear_vector",
+        "--seed",
+        "298",
+        "--instrument",
+        "counted"
+      ],
+      "process": {
+        "exit_code": 0,
+        "timeout": false,
+        "process_seconds": 0.04600000008940697,
+        "status": "PASS",
+        "error": "",
+        "cleanup_error": ""
+      },
+      "payload": {
+        "schema": 1,
+        "case": "index",
+        "scenario": "small_low_hit",
+        "variant": "linear_vector",
+        "instrument": "counted",
+        "seed": 298,
+        "n": 256,
+        "rate": 10,
+        "checksum": 38703726852917169,
+        "oracle_checksum": 38703726852917169,
+        "matches": 22,
+        "oracle_matches": 22,
+        "build_ns": 2900,
+        "lookup_ns": 26300,
+        "build_comparisons": 0,
+        "lookup_comparisons": 63346,
+        "build_hash_calls": 0,
+        "lookup_hash_calls": 0,
+        "build_equal_calls": 0,
+        "lookup_equal_calls": 0
+      },
+      "verdict": "PASS",
+      "failure": ""
+    },
+    {
+      "phase": "sample",
+      "rep": 0,
+      "case": "index",
+      "scenario": "small_low_hit",
+      "variant": "unordered_map",
+      "instrument": "timed",
+      "seed": 298,
+      "command": [
+        "F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\B01_cost\\build-author\\Release\\B01_cost.exe",
+        "--bench-one",
+        "--case",
+        "index",
+        "--scenario",
+        "small_low_hit",
+        "--variant",
+        "unordered_map",
+        "--seed",
+        "298",
+        "--instrument",
+        "timed"
+      ],
+      "process": {
+        "exit_code": 0,
+        "timeout": false,
+        "process_seconds": 0.0470000000204891,
+        "status": "PASS",
+        "error": "",
+        "cleanup_error": ""
+      },
+      "payload": {
+        "schema": 1,
+        "case": "index",
+        "scenario": "small_low_hit",
+        "variant": "unordered_map",
+        "instrument": "timed",
+        "seed": 298,
+        "n": 256,
+        "rate": 10,
+        "checksum": 38703726852917169,
+        "oracle_checksum": 38703726852917169,
+        "matches": 22,
+        "oracle_matches": 22,
+        "build_ns": 10900,
+        "lookup_ns": 800,
+        "build_comparisons": 0,
+        "lookup_comparisons": 0,
+        "build_hash_calls": 0,
+        "lookup_hash_calls": 0,
+        "build_equal_calls": 0,
+        "lookup_equal_calls": 0
+      },
+      "verdict": "PASS",
+      "failure": ""
+    }
+  ],
+  "summary": [
+    {
+      "case": "index",
+      "scenario": "small_low_hit",
+      "variant": "linear_vector",
+      "instrument": "counted",
+      "valid_samples": 1,
+      "requested_samples": 1,
+      "build_ms": [
+        0.0029
+      ],
+      "lookup_ms": [
+        0.0263
+      ],
+      "build_median_ms": 0.0029,
+      "lookup_median_ms": 0.0263
+    },
+    {
+      "case": "index",
+      "scenario": "small_low_hit",
+      "variant": "unordered_map",
+      "instrument": "timed",
+      "valid_samples": 1,
+      "requested_samples": 1,
+      "build_ms": [
+        0.0109
+      ],
+      "lookup_ms": [
+        0.0008
+      ],
+      "build_median_ms": 0.0109,
+      "lookup_median_ms": 0.0008
+    },
+    {
+      "case": "pipeline",
+      "scenario": "small_low_valid",
+      "variant": "loop",
+      "instrument": "counted",
+      "valid_samples": 1,
+      "requested_samples": 1,
+      "elapsed_ms": [
+        0.0075
+      ],
+      "median_ms": 0.0075,
+      "min_ms": 0.0075,
+      "max_ms": 0.0075
+    },
+    {
+      "case": "pipeline",
+      "scenario": "small_low_valid",
+      "variant": "loop",
+      "instrument": "timed",
+      "valid_samples": 1,
+      "requested_samples": 1,
+      "elapsed_ms": [
+        0.0078
+      ],
+      "median_ms": 0.0078,
+      "min_ms": 0.0078,
+      "max_ms": 0.0078
+    },
+    {
+      "case": "pipeline",
+      "scenario": "small_low_valid",
+      "variant": "materialized",
+      "instrument": "timed",
+      "valid_samples": 1,
+      "requested_samples": 1,
+      "elapsed_ms": [
+        0.0188
+      ],
+      "median_ms": 0.0188,
+      "min_ms": 0.0188,
+      "max_ms": 0.0188
+    },
+    {
+      "case": "pipeline",
+      "scenario": "small_low_valid",
+      "variant": "reparse",
+      "instrument": "timed",
+      "valid_samples": 1,
+      "requested_samples": 1,
+      "elapsed_ms": [
+        0.013
+      ],
+      "median_ms": 0.013,
+      "min_ms": 0.013,
+      "max_ms": 0.013
+    }
+  ],
+  "source_sha256_after": "11c58524fa6eb9dd36a066f1c2bac1b2a57c4faa2ae9f1ac7f6fd76c7a8b4fb1",
+  "capstone1_source_sha256_after": "b4f118af7c823b1dd90ed39e54ce25a6169b3f4f217933da9a6297538950b2a4",
+  "exe_sha256_after": "0ea57756290798170ef0e42300d82b432aab586c2818a5beec0e057094d0328a",
+  "driver_sha256_after": "b9b4518b70c66553cd0dcc2b3f0d0542372d74be518099ea39ce4cf39adf52d8",
+  "process_runner_sha256_after": "77f7aa8a86ff5fa4fdb933c8bb9929d637748a1aa00fb7afb3dac941e47d936b",
+  "hash_drift": {}
+}

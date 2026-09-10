@@ -105,3 +105,8 @@
 - cppreference: [std::ranges::sort](https://en.cppreference.com/w/cpp/algorithm/ranges/sort)
 - cppreference: [std::ranges::min_max_result](https://en.cppreference.com/w/cpp/algorithm/ranges/min_max_result)
 - cppreference: [Constrained algorithms 全列表](https://en.cppreference.com/w/cpp/algorithm/ranges)
+## 参考解析
+
+预测：ranges 算法的 projection 在比较前执行，因此可以用成员指针或 lambda 按字段比较；富返回类型（如 `minmax_result`）用命名成员表达多个结果。
+
+当前程序用 `sort` 的 projection 按分数排序，用 `minmax_element` 找年龄边界，用 `max` 找最高分，并验证 `minmax_result<int>` 的 `.min/.max` 成员。扩展时优先把“比较逻辑”和“取字段逻辑”分开，projection 负责后者。

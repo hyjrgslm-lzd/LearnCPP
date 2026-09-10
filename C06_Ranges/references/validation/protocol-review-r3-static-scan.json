@@ -1,0 +1,50 @@
+{
+  "generated_at": "2026-09-10T13:43:38.6967448+08:00",
+  "checks": [
+    {
+      "name": "G2 chapter sentinel symbols",
+      "argv": [
+        "rg",
+        "-n",
+        "class sentinel|struct sentinel|return sentinel|直接返回底层 sentinel|返回原始 sentinel|iterator_category_for|operator\\(\\).*&&|std::move\\(f_\\)",
+        "C06_Ranges/10-模块G-自行实现视图.md"
+      ],
+      "exit_code": 0,
+      "stdout": "349:struct iterator_category_for { using type = std::input_iterator_tag; };\n353:struct iterator_category_for<It, Ref> {\n357:using detail::iterator_category_for;\n404:        using iterator_category = typename iterator_category_for<InnerIt, reference>::type;\r\n484:    // 直接返回底层 sentinel 会要求 wrapper iterator 与底层 sentinel 可比较；\r\n490:            return sentinel{std::ranges::end(base_)};\r\n526:    constexpr auto operator()(R&& r) const {\r\n550:    constexpr auto operator()(R&& r, F f) const {\r\n942:    constexpr auto operator()(R&& r) const {\r\n955:    constexpr auto operator()(R&& r) const {\r\n",
+      "stderr": ""
+    },
+    {
+      "name": "G2 README closure/sentinel",
+      "argv": [
+        "rg",
+        "-n",
+        "class sentinel|struct sentinel|return sentinel|直接透传底层 sentinel|operator\\(\\).*&&|std::move\\(function_\\)|std::move\\(f_\\)",
+        "C06_Ranges/exercises/G2_my_transform_closure/README.md"
+      ],
+      "exit_code": 0,
+      "stdout": "64:// 非 common_range 分支：返回自定义 sentinel wrapper，不能直接透传底层 sentinel\r\n69:        return sentinel{std::ranges::end(base_)};\r\n74:### 任务 6 — 实现 `my_transform_closure::operator()(R&&)`\r\n79:constexpr auto operator()(R&& r) const {\r\n",
+      "stderr": ""
+    },
+    {
+      "name": "static risky patterns",
+      "argv": [
+        "rg",
+        "-n",
+        "--glob",
+        "!**/build-protocol-review-r3/**",
+        "--glob",
+        "!**/protocol-review-r3-probe-build/**",
+        "--glob",
+        "!**/.git/**",
+        "console\\.log\\(|catch\\s*\\([^)]*\\)\\s*\\{\\s*\\}|apiKey\\s*=|password\\s*=|token\\s*=|best effort",
+        "C06_Ranges/exercises/G1_my_take_view",
+        "C06_Ranges/exercises/G2_my_transform_closure",
+        "C06_Ranges/exercises/G3_my_enumerate_borrowed",
+        "C06_Ranges/10-模块G-自行实现视图.md"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

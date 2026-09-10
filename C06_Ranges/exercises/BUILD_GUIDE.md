@@ -1,97 +1,80 @@
-# 构建指南
+# C06构建与验证
 
-本练习包不依赖任何外部库；所有代码只用标准库 `<ranges>` / `<algorithm>` / `<iterator>` 等。
+默认保持C++26。本批主验收环境为Windows x64、Visual Studio 18 2026、MSVC19.51、STL145/202604、CMake4.2.3。其他历史预设保留，不意味着本批完成相应平台验证。CMake声明最低3.28，但使用VS2026生成器需要识别该生成器的版本，本机验证版本为4.2.3。
 
-## 前置条件
-
-- **CMake** >= 3.28
-- **C++26 编译器**（优先级从高到低）：
-  - MSVC `cl.exe` 自 Visual Studio 18 2026（首选；预设 `vs2026`）
-  - MSVC `cl.exe` 自 Visual Studio 17 2022 17.10+（回退；预设 `vs2022`，部分 C++26 特性可能缺失）
-  - GCC 14+（C++26 子集支持）
-  - Clang 18+（C++26 子集支持）
-
-> C++26 是 C++23 的超集；文档中标注 `// C++23: ...` 的代码在 C++26 下直接可编。若本地工具链暂未完成 C++26 支持，可临时把 `CMAKE_CXX_STANDARD` 改回 23 或 20（见 `cmake/RangesSetup.cmake` 注释）。
-
-## 快速开始
-
-### 方式 1：Visual Studio 2026（Windows 首选）
+所有命令从仓库根开始，先进入练习目录：
 
 ```powershell
-cd P:\C++Code\C06_Ranges\exercises
+cd C06_Ranges/exercises
 cmake --preset vs2026
-cmake --build build-vs2026 --config Release
+cmake --build --preset vs2026 --parallel 2
+ctest --preset core-release
+cmake --build --preset vs2026-debug --parallel 2
+ctest --preset core-debug
 ```
 
-然后可用 VS 打开 `build-vs2026/C06_Ranges.slnx` 做单题调试；旧版生成器产生的同名 `.sln` 也可使用。
+Reference、独立good、bad拒绝、观察程序和B01正确性快测构成普通验证。Release检查使用已有C01 `check.hpp`，不因NDEBUG消失。默认未完成Student不加入该通过数。
 
-### 方式 2：Visual Studio 2022（回退）
+## 单题与Student
 
 ```powershell
-cmake --preset vs2022
-cmake --build build-vs2022 --config Release
+cmake --build build-vs2026 --config Release --target G1_my_take_view_student
+./build-vs2026/G1_my_take_view/Release/G1_my_take_view_student.exe
 ```
 
-### 方式 3：Ninja（Linux / macOS / Windows）
+初态应输出具体`check failed: ...`并返回1；它不是安装失败，也不能改成SKIP。编辑该题`src/student/`，重编后用相同checker验证。旧题名例如`--target G1_my_take_view`保留为Student构建入口，实际程序名带`_student`。
 
-```bash
-cmake --preset ninja
-cmake --build build-ninja
+单题也可以独立配置，不依赖先生成整课：
+
+```powershell
+cmake -S G1_my_take_view -B G1_my_take_view/build-local -G "Visual Studio 18 2026"
+cmake --build G1_my_take_view/build-local --config Release --parallel 2
+ctest --test-dir G1_my_take_view/build-local -C Release --output-on-failure
 ```
 
-### 方式 4：Default（自动探测）
+同一build目录不要同时启动两个MSBuild进程；一次build可用`--parallel`，多个独立作者应使用不同的build目录。`.slnx`、exe、PDB和CMake缓存属于本地生成物，不随课程证据发布。
 
-```bash
-cmake --preset default
-cmake --build build
+## ASan安全集
+
+```powershell
+cmake --preset vs2026-asan
+cmake --build --preset vs2026-asan --parallel 2
+ctest --preset asan
 ```
 
-### 只构建某一道题
+ASan预设使用RelWithDebInfo，避免把普通Debug的运行时检查组合当成已经支持的ASan配置。公共helper选择与编译器匹配的运行库并复制到程序目录，缺少运行库会明确失败；不修改机器PATH或安装组件。默认只执行Reference、good、观察与正确性快测，排除negative标签；不运行冻结的真实UB旧代码。
 
-```bash
-cmake --build build-vs2026 --target A1_iota_view --config Release
-./build-vs2026/A1_iota_view/Release/A1_iota_view.exe
+ASan无报告只覆盖实际执行路径；它不证明借用、异常或全部输入都正确。MSVC不提供UBSan；显式请求该选项会报清楚的配置错误，不能假装启用了检测。
+
+## 前沿能力
+
+```powershell
+cmake --preset vs2026-frontier
+cmake --build --preset vs2026-frontier --parallel 2
+ctest --preset frontier
 ```
 
-## 做题流程
+F01默认的flat容器是普通验证；十个C++26/C++29主体单独启用。头文件、宏版本或受约束重载缺失时返回77，CTest显示SKIP；进入真实主体后编译、链接或运行失败就是FAIL。`100% tests passed`可能包含SKIP，必须另列通过和跳过数量。关闭选项不算能力探测成功，也不算十次SKIP。
 
-1. 先读章节 markdown（位于本目录上一级，如 `../02-模块A-视图工厂与惰性.md`）。
-2. 打开对应题目的 `README.md`，看"目标 / 前置理解 / 验收点"。
-3. 打开 `main.cpp`，搜索 `// TODO [必做]`，按提示补码。
-4. `cmake --build build-vs2026 --target <题目名>` 编译并运行。
-5. 做完必做后搜索 `// TODO [进阶]` 扩展。
-6. 回到 README 逐条回答"复盘问题"。
+## Student-only接线审计
 
-## C++26 / vs2026 说明
-
-- 顶层 `CMakeLists.txt` 全局设置 `set(CMAKE_CXX_STANDARD 26)`。
-- MSVC 全局注入 `/Zc:__cplusplus /utf-8 /permissive-`。
-- 若特定题目在 C++26 下触发编译器 ICE，临时在该题 `CMakeLists.txt` 手动回退：
-  ```cmake
-  set_property(TARGET <题目名> PROPERTY CXX_STANDARD 23)
-  ```
-
-## 目录结构
-
-```
-exercises/
-├── CMakeLists.txt          # 顶层构建（31 条 add_subdirectory）
-├── CMakePresets.json       # 预设：vs2026 / vs2022 / default / debug / ninja / ninja-debug
-├── BUILD_GUIDE.md          # 本文件
-├── README.md               # 练习包导览与索引
-├── .gitignore
-├── cmake/
-│   └── RangesSetup.cmake   # 扩展位（当前 no-op）
-├── 01_mental_model_warmup/ # 心智模型预热
-├── A1_iota_view/ ... A3_repeat_cartesian/          # 模块 A
-├── B1_*/ B2_*/ B3_*/       # 模块 B
-├── C1_1_*/ ... C2_3_*/     # 模块 C1/C2
-├── D1_*/ D2_*/ D3_*/       # 模块 D
-├── CAPSTONE1_log_pipeline/ # 结课项目 1
-├── E*/  F1_*/              # 模块 E/F
-├── G*/  H*/                # 模块 G/H
-├── CAPSTONE3_impl_source_reading/  # 结课项目 3
-└── CAPSTONE4_mini_ranges/          # 结课项目 4
+```powershell
+cmake --preset vs2026-student
+cmake --build --preset vs2026-student --parallel 2
+ctest --preset students
 ```
 
-每个题目子目录都含三文件：`CMakeLists.txt` / `main.cpp` / `README.md`（结课项目 3/4 另有 `notes/` 与分层 `.hpp`）。
+此配置关闭Reference与good/bad，启用Student测试；未完成初态会让CTest返回失败，这是单独记录的拒绝证据。B01依赖教师Reference，随Reference选项关闭，不能将B01未运行计为通过。include跟踪由此预设的`/showIncludes`与局部`VSLANG=1033`提供；完整审计还需CMake file-api和全Student显式重编记录，最终命令见质量报告。
+
+## 可复现证据与性能
+
+复用C02的`exercises/tools/record_process.py`保存每条命令、cwd、输出、退出码、进程外超时和清理状态；记录文件名必须新建，不能覆盖旧失败。C02的`audit_student.py`复核file-api、真实includes和源接线；C06的`references/validation/check_navigation.py`复核本课链接和根C06导航，均不代替教学审查。
+
+正式性能实验见[B01协议](../references/benchmarks/README.md)。先通过正确性快测和诊断，再在所有构建停止、源码与exe冻结时运行一次预热加五次独立进程采样。不能拿作者smoke样本或与并行编译重叠的结果作正式排名。
+
+## 常见判断错误
+
+- CMake配置/生成成功不等于编译出exe；构建成功不等于程序行为通过。
+- Student和bad的拒绝需要指定失败原因；任意非零退出、超时、ASan崩溃不算相同证据。
+- feature宏只能表示库声明；缺能力的预处理分支内主体没有被本机实例化，不能写成“所有前沿代码均验证”。
+- 验证只证明被执行的检查；题目中的预测、解释、结构推导和源码理解仍需要非作者教学审查。

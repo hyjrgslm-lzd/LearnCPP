@@ -1,182 +1,92 @@
 # 结课项目 4：mini-ranges 子集实现
 
-> 对应文件：`12-结课项目2-实现级源码阅读.md` §"结课项目 4：mini-ranges 子集实现"
-> 阶段定位：阶段二（实现层）结课项目，综合考察模块 E-H 全部实现技术。
-
----
+> 对应章节：`12-结课项目2-实现级源码阅读.md` / CAPSTONE4。
 
 ## 项目目标
 
-从零实现最小但可用的 mini-ranges 子系统。综合考察阶段二全部实现技术。
-mini-ranges 是子集，不是完备实现，不覆盖 C++23 全部 view，
-但对象关系和编译期语义必须正确。
+从零实现一个受限但可运行的 mini-ranges 子系统，贯穿模块 E-H 的实现主题：CPO、concept、CRTP、view、adaptor closure、iterator/sentinel、consumer。
 
----
+本项目不允许学生用 `std::views` 包一层冒充自写实现。标准库可以在 checker 或 `validation/good` oracle 里作为行为参照；Reference 和 Student 路径必须保留自写六层实现。
 
-## 架构总览
+## 文件路径
 
-```
-┌──────────────────────────────────────────────────────────┐
-│ 层 6  消费层     06_consumers.hpp                        │
-│       ranges::to<C>                                      │
-│       继承 range_adaptor_closure，可出现在管道右侧        │
-├──────────────────────────────────────────────────────────┤
-│ 层 5  closure 层  05_adaptors.hpp                        │
-│       _transform_closure / _take_closure                 │
-│       持有参数，等待 range 输入，注入 operator|           │
-├──────────────────────────────────────────────────────────┤
-│ 层 4  view 层   04_factories.hpp + 05_adaptors.hpp       │
-│       iota_view / single_view                            │
-│       transform_view / take_view                         │
-│       继承 view_interface，惰性求值                       │
-├──────────────────────────────────────────────────────────┤
-│ 层 3  基础设施层  03_interface.hpp                        │
-│       view_interface<D>   — CRTP，注入 empty/front/...   │
-│       range_adaptor_closure<D> — CRTP，注入 operator|   │
-├──────────────────────────────────────────────────────────┤
-│ 层 2  概念层    02_concepts.hpp                          │
-│       range / view / input_range / forward_range        │
-│       编译期约束，不产生运行时代码                         │
-├──────────────────────────────────────────────────────────┤
-│ 层 1  CPO 层    01_cpo.hpp                               │
-│       begin / end / iter_move / size                    │
-│       inline constexpr 函数对象，ADL 隔离               │
-│       enable_view / enable_borrowed_range 变量模板       │
-└──────────────────────────────────────────────────────────┘
-       依赖方向：上层 include 下层（单向）
+- `src/student/my_ranges/01_cpo.hpp` 到 `06_consumers.hpp`：学生唯一编辑入口。
+- `src/reference/my_ranges/`：标准答案。
+- `validation/good/my_ranges/`：独立 oracle。它用标准库范围设施加一层兼容外壳验证公共行为，不复用 Reference 的六层源码。
+- `validation/bad/my_ranges/`：安全但真实错误的实现，`take_view` 多取一个元素，必须被 checker 拒绝。
+- 根目录 `my_ranges/`：旧入口兼容导航，只 include 到 `src/student/my_ranges/`，不要在这里写第二套答案。
+
+## 六层结构
+
+```text
+层 6  consumers       06_consumers.hpp    my::ranges::to<C>()
+层 5  adaptors        05_adaptors.hpp     transform_view / take_view / closure
+层 4  factories       04_factories.hpp    iota_view / single_view
+层 3  interface       03_interface.hpp    view_interface / range_adaptor_closure
+层 2  concepts        02_concepts.hpp     range / view / input_range / forward_range
+层 1  CPO             01_cpo.hpp          begin / end / size / iter_move
 ```
 
----
+依赖方向固定为上层 include 下层。先完成底层，再让上层 concept、view、adaptor 和 consumer 使用它。
 
 ## 必做任务
 
-### 任务 1（`main.cpp` TODO [必做] 1 + `notes/architecture_diagram.md`）：先画架构图
+1. CPO 层。
+   - `my::ranges::begin/end` 支持数组、成员函数和 ADL fallback。
+   - `my::ranges::iter_move` 支持 hidden-friend 定制，失败时回退到 `std::move(*it)`。
+   - `enable_view` / `enable_borrowed_range` 默认 `false`。
 
-实现之前，先补全 `notes/architecture_diagram.md` 的六层依赖图，
-用文字说明每层职责和层间依赖方向。
+2. concept 层。
+   - `range` 只检测 begin/end。
+   - `view` 必须显式 opt-in，不能把 `std::vector<int>` 当 view。
+   - `input_range`、`forward_range` 基于 iterator concept 逐级加约束。
 
-**交付**：`notes/architecture_diagram.md` 六层说明全部填写，`main.cpp` TODO 1 验证通过。
+3. CRTP 基础设施。
+   - `view_interface<D>` 提供 `empty()` / `front()`。
+   - `range_adaptor_closure<D>` 提供 `range | closure`。
 
-### 任务 2（`main.cpp` TODO [必做] 2 + TODO [必做] 3）：按底层到上层顺序实现
+4. 工厂 view。
+   - `iota_view<int>` 支持随机访问 iterator，标记 borrowed。
+   - `single_view<T>` 保存一个对象并返回指针 begin/end。
 
-按架构图六层从下到上：CPO → concept → 基础设施 → iota/single → transform/take → to<C>。
-每完成一层，取消注释对应 static_assert 验证通过，再进入下一层。
+5. adaptor view。
+   - `transform_view<V, F>` 惰性调用函数，保留合理 iterator 能力。
+   - `take_view<V>` 使用 wrapper iterator + sentinel，停止于“取够数量”或“底层结束”。
 
-**交付**：`main.cpp` TODO 1-4 验证块的 static_assert 全部通过。
-
-### 任务 3（`main.cpp` TODO [必做] 3）：每层至少一条 static_assert
-
-必须覆盖：
-- `my::ranges::range<vector<int>>`
-- `my::ranges::view<iota_view<int>>`
-- `!my::ranges::view<vector<int>>`
-- `enable_borrowed_range<iota_view<int>>`
-- `!same_as<decltype(tv.begin()), decltype(tv.end())>`（sentinel 异型）
-
-**交付**：以上五条 static_assert 全部通过。
-
-### 任务 4（`main.cpp` TODO [必做] 4）：最终样例编译运行
+6. consumer。
+   - `my::ranges::to<C>()` 用 `push_back` 收集 range。
+   - 支持最终管道：
 
 ```cpp
 auto v = my::views::iota(1, 11)
-       | my::views::transform([](int x){ return x * x; })
+       | my::views::transform([](int x) { return x * x; })
        | my::views::take(5)
        | my::ranges::to<std::vector<int>>();
-assert((v == std::vector<int>{1, 4, 9, 16, 25}));
+// {1, 4, 9, 16, 25}
 ```
-
-**交付**：`main.cpp` TODO 5 验证块通过，assert 不触发。
-
-### 任务 5（`notes/design_doc.md`）：写设计文档
-
-解释每层的选择：CPO 不用函数模板（ADL 隔离）；view_interface 用 CRTP 不用虚函数；
-range_adaptor_closure 用 CRTP 不手写 operator|；take_view sentinel 异型；
-mini-ranges 的简化点与潜在问题。
-
-**交付**：`notes/design_doc.md` 所有章节填写完整，不超过两页打印长度。
-
----
-
-## 进阶任务
-
-### 进阶 1：std::ranges::copy 消费 mini-ranges view（stdlib 互操作）
-
-```cpp
-auto my_view = my::views::iota(1, 6)
-             | my::views::transform([](int x){ return x * 2; });
-std::vector<int> out;
-std::ranges::copy(my_view, std::back_inserter(out));
-// out == {2, 4, 6, 8, 10}
-```
-
-验证"成员优先 CPO 设计"的直接收益：只要迭代器满足 `std::input_iterator`，stdlib 算法就能消费。
-（对应 `main.cpp` TODO [进阶] 1）
-
-### 进阶 2：增加 `my::views::filter` + `__non_propagating_cache`
-
-实现等价的 non-propagating optional wrapper；begin() 非 const；
-验证"拷贝不传播、移动传播"；验证 `const filter_view` 不能调用 begin()。
-（对应 `my_ranges/05_adaptors.hpp` TODO [进阶] 5f，`main.cpp` TODO [进阶] 2）
-
-### 进阶 3：增加 `my::views::enumerate` 并让其在底层 borrowed 时也 borrowed
-
-`enumerate_view<V>::enable_borrowed_range` 特化：当且仅当底层 V 是 borrowed_range 时为 true。
-（对应 `main.cpp` TODO [进阶] 3）
-
-### 进阶 4：实现 iterator_concept 双轨
-
-在 `transform_view::iterator` 中完整实现 `iterator_concept` vs `iterator_category` 两套标签，
-用 static_assert 验证两者在 proxy reference 场景下的不同值。
-（对应 `main.cpp` TODO [进阶] 4）
-
----
-
-## 最终验收样例代码
-
-```cpp
-// 填写实现后，在 main.cpp 中取消注释此块并运行：
-auto v = my::views::iota(1, 11)
-       | my::views::transform([](int x){ return x * x; })
-       | my::views::take(5)
-       | my::ranges::to<std::vector<int>>();
-assert((v == std::vector<int>{1, 4, 9, 16, 25}));
-std::puts("CAPSTONE4: pipeline OK");
-```
-
----
 
 ## 验收点
 
-1. `my::ranges::begin` 是 `inline constexpr` 函数对象，能作为值存储，不是函数模板
-2. `my::ranges::view` concept 对 `iota_view<int>` 成立，对 `std::vector<int>` 不成立
-3. 管道 `iota(1,11) | transform(x*x) | take(5) | to<vector<int>>()` 编译运行，结果为 `{1, 4, 9, 16, 25}`
-4. `take_view` 的 `end()` 返回类型与 `begin()` 返回类型不同（sentinel 异型）
-5. `iota_view` 的 `enable_borrowed_range = true`；`transform_view` 的为 `false`（默认）
-6. 能拿着六层架构图解释整个系统，指出每层的职责和层间依赖方向
+- CPO 是函数对象，可作为值使用。
+- `std::vector<int>` 是 range，但不是 view。
+- `iota_view<int>` 是 view 和 borrowed range。
+- `transform_view` 能被 `std::ranges::copy` 消费。
+- `take_view` 的 begin/end 是异型 iterator/sentinel。
+- `take(99)` 遇到底层提前结束时不会越界。
+- `validation/bad` 的 off-by-one `take_view` 被 checker 拒绝。
 
----
+## 受限边界
 
-## 复盘问题
+本题不实现完整标准 ranges。下列简化是刻意保留的学习边界：
 
-1. 实现过程中，哪一层最出乎意料地复杂？CPO ADL 隔离、range_adaptor_closure 的
-   closure-to-closure 组合，还是 to<Container> 的通用性约束？
-2. `take_view` 的 sentinel 异型设计，在 `to<Container>` 消费端带来了什么额外要求？
-3. 如果要增加 `my::views::filter`，begin cache 的 non-propagating 语义如何影响
-   copy 行为的测试设计？
-4. 你的 mini-ranges 与 stdlib 相比，最大的简化在哪里？这些简化会在什么场景下
-   导致错误（而不只是缺失功能）？
-5. 完成这个项目后，对 P2387R3 的设计选择有什么新理解？为什么标准选择 CRTP 基类
-   而非要求用户手写 `operator|`？
+- 不实现 `filter_view`、`join_view`、`zip_view`、`common_view`、`as_const`。
+- 不实现 `closure | closure` 的具名组合对象。
+- `to<C>()` 只支持 `push_back` 容器，不处理 map/set、allocator、reserve 优化。
+- 不追求完整 `noexcept`、borrowed propagation 和所有 category 细节。
 
----
+进阶实现 `filter_view + __non_propagating_cache` 时，注意 C++26 新增的是 input-only const 分支；普通 forward 底层的缓存分支仍不能泛化成 const begin。
 
-## 对应官方参考
+## 笔记交付
 
-| 资源 | 内容 |
-|------|------|
-| P2387R3 | `range_adaptor_closure` 正式化设计 |
-| P0896R4 | ranges 总体设计，borrowed_range 引入 |
-| cppreference `std::ranges::transform_view` | inner iterator 结构参考 |
-| cppreference `std::ranges::take_view` | sentinel 异型实现参考 |
-| libstdc++ `<bits/ranges_adaptors.h>` | transform/filter/join 实现对照 |
-| cppreference `std::ranges::to` (C++23) | to<C> 完备实现参考 |
+- `notes/architecture_diagram.md`：六层架构图和每层职责。
+- `notes/design_doc.md`：关键设计选择、支持范围和简化边界。

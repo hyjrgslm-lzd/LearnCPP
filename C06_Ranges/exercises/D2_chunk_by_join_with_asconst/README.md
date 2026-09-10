@@ -76,3 +76,8 @@
 - cppreference：[`std::ranges::join_with_view`](https://en.cppreference.com/w/cpp/ranges/join_with_view)
 - cppreference：[`std::ranges::as_const_view`](https://en.cppreference.com/w/cpp/ranges/as_const_view)
 - cppreference：[`std::ranges::as_rvalue_view`](https://en.cppreference.com/w/cpp/ranges/as_rvalue_view)
+## 参考解析
+
+预测：`chunk_by` 按相邻元素关系分组，不是按固定长度；`join_with` 在拍平时插入分隔符；`as_const` 改变元素引用的 const 性，不等于让所有 view 都具备 const begin；`as_rvalue` 把元素暴露为可移动引用。
+
+当前程序验证相邻相等游程分组、相邻非递减分组、字符串 join_with 分隔、as_const 的 `const int&` 引用类型，以及 as_rvalue 移出字符串。扩展时应分别观察“元素 const”和“view 对象 const 可迭代性”，两者不要混淆。

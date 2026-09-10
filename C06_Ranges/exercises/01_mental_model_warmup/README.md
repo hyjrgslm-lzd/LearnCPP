@@ -99,3 +99,8 @@
 - cppreference：[`std::ranges::dangling`](https://en.cppreference.com/w/cpp/ranges/dangling)
 - cppreference：[`std::ranges::range_adaptor_closure`](https://en.cppreference.com/w/cpp/ranges/range_adaptor_closure)
 - cppreference：[`std::identity`](https://en.cppreference.com/w/cpp/utility/functional/identity)
+## 参考解析
+
+预测：`vector`、`string_view`、`array` 是 range，`int` 不是；`string_view`、`span`、`iota_view` 是 view，`vector` 不是 view。无界 `iota_view` 的 end 是 `unreachable_sentinel_t`，所以不是 common_range；右值 `vector` 传给返回迭代器的 ranges 算法得到 `ranges::dangling`，因为 borrowed_range 不负责延长所有者生命周期。
+
+当前 `main.cpp` 的完整程序已经把这些预测写成 `static_assert` 和 `check`：它同时验证 span 迭代器仍指向原数组、`find` 对右值 vector 返回 dangling、对 borrowed `string_view` 返回真实迭代器。扩展时可以加入 `owning_view<vector<int>>`，观察 view 可以拥有元素，但 borrowed 语义仍不等于持有临时对象生命周期。

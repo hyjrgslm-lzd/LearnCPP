@@ -1,0 +1,24 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "C06_Ranges/exercises/L04_algorithms/build-author",
+    "--config",
+    "Debug",
+    "--parallel",
+    "2"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.625,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L04_algorithms/CMakeLists.txt\n  main.cpp\n  L04_algorithms.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\L04_algorithms\\build-author\\Debug\\L04_algorithms.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L04_algorithms/CMakeLists.txt\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

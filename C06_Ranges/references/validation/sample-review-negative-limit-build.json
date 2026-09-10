@@ -1,0 +1,24 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "C06_Ranges\\exercises\\CAPSTONE1_log_pipeline\\build-sample-review\\probes-build",
+    "--config",
+    "Release",
+    "--target",
+    "negative_limit_reference"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.2659999998286366,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/CAPSTONE1_log_pipeline/build-sample-review/probes/CMakeLists.txt\n  negative_limit_reference.cpp\n  negative_limit_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\CAPSTONE1_log_pipeline\\build-sample-review\\probes-build\\Release\\negative_limit_reference.exe\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

@@ -1,0 +1,368 @@
+[
+  {
+    "command": [
+      "cmake",
+      "-S",
+      "C06_Ranges\\exercises",
+      "-B",
+      "C06_Ranges\\exercises\\build-protocol-review",
+      "-DRANGES_BUILD_REFERENCE=ON",
+      "-DRANGES_TEST_STUDENTS=OFF"
+    ],
+    "exit_code": 0,
+    "stdout": "-- Building for: Visual Studio 18 2026\n-- The CXX compiler identification is MSVC 19.51.36256.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring done (3.8s)\n-- Generating done (2.7s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/C06_Ranges/exercises/build-protocol-review\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "cmake",
+      "--build",
+      "C06_Ranges\\exercises\\build-protocol-review",
+      "--config",
+      "Release",
+      "--target",
+      "E1_my_begin_cpo_reference",
+      "--parallel",
+      "2"
+    ],
+    "exit_code": 0,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\r\n\r\n  1>Checking Build System\r\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/E1_my_begin_cpo/CMakeLists.txt\r\n  main.cpp\r\n  E1_my_begin_cpo_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\E1_my_begin_cpo\\Release\\E1_my_begin_cpo_reference.exe\r\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "cmake",
+      "--build",
+      "C06_Ranges\\exercises\\build-protocol-review",
+      "--config",
+      "Release",
+      "--target",
+      "E1_my_begin_cpo_validation_good",
+      "--parallel",
+      "2"
+    ],
+    "exit_code": 0,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\r\n\r\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/E1_my_begin_cpo/CMakeLists.txt\r\n  main.cpp\r\n  E1_my_begin_cpo_validation_good.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\E1_my_begin_cpo\\Release\\E1_my_begin_cpo_validation_good.exe\r\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "cmake",
+      "--build",
+      "C06_Ranges\\exercises\\build-protocol-review",
+      "--config",
+      "Release",
+      "--target",
+      "E1_my_begin_cpo_validation_bad",
+      "--parallel",
+      "2"
+    ],
+    "exit_code": 0,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\r\n\r\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/E1_my_begin_cpo/CMakeLists.txt\r\n  main.cpp\r\n  E1_my_begin_cpo_validation_bad.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\E1_my_begin_cpo\\Release\\E1_my_begin_cpo_validation_bad.exe\r\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "cmake",
+      "--build",
+      "C06_Ranges\\exercises\\build-protocol-review",
+      "--config",
+      "Release",
+      "--target",
+      "E1_my_begin_cpo_student",
+      "--parallel",
+      "2"
+    ],
+    "exit_code": 0,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\r\n\r\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/E1_my_begin_cpo/CMakeLists.txt\r\n  main.cpp\r\n  E1_my_begin_cpo_student.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\E1_my_begin_cpo\\Release\\E1_my_begin_cpo_student.exe\r\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "cmake",
+      "--build",
+      "C06_Ranges\\exercises\\build-protocol-review",
+      "--config",
+      "Release",
+      "--target",
+      "E2_niebloid",
+      "--parallel",
+      "2"
+    ],
+    "exit_code": 0,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\r\n\r\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/E2_niebloid/CMakeLists.txt\r\n  main.cpp\r\n  E2_niebloid.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\E2_niebloid\\Release\\E2_niebloid.exe\r\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "cmake",
+      "--build",
+      "C06_Ranges\\exercises\\build-protocol-review",
+      "--config",
+      "Release",
+      "--target",
+      "E3_cpo_tagdispatch_compare",
+      "--parallel",
+      "2"
+    ],
+    "exit_code": 0,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\r\n\r\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/E3_cpo_tagdispatch_compare/CMakeLists.txt\r\n  main.cpp\r\n  E3_cpo_tagdispatch_compare.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\E3_cpo_tagdispatch_compare\\Release\\E3_cpo_tagdispatch_compare.exe\r\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "cmake",
+      "--build",
+      "C06_Ranges\\exercises\\build-protocol-review",
+      "--config",
+      "Release",
+      "--target",
+      "F1_iterator_hierarchy_reference",
+      "--parallel",
+      "2"
+    ],
+    "exit_code": 0,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\r\n\r\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/F1_iterator_hierarchy/CMakeLists.txt\r\n  main.cpp\r\n  F1_iterator_hierarchy_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\F1_iterator_hierarchy\\Release\\F1_iterator_hierarchy_reference.exe\r\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "cmake",
+      "--build",
+      "C06_Ranges\\exercises\\build-protocol-review",
+      "--config",
+      "Release",
+      "--target",
+      "F1_iterator_hierarchy_validation_good",
+      "--parallel",
+      "2"
+    ],
+    "exit_code": 0,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\r\n\r\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/F1_iterator_hierarchy/CMakeLists.txt\r\n  main.cpp\r\n  F1_iterator_hierarchy_validation_good.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\F1_iterator_hierarchy\\Release\\F1_iterator_hierarchy_validation_good.exe\r\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "cmake",
+      "--build",
+      "C06_Ranges\\exercises\\build-protocol-review",
+      "--config",
+      "Release",
+      "--target",
+      "F1_iterator_hierarchy_validation_bad",
+      "--parallel",
+      "2"
+    ],
+    "exit_code": 0,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\r\n\r\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/F1_iterator_hierarchy/CMakeLists.txt\r\n  main.cpp\r\n  F1_iterator_hierarchy_validation_bad.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\F1_iterator_hierarchy\\Release\\F1_iterator_hierarchy_validation_bad.exe\r\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "cmake",
+      "--build",
+      "C06_Ranges\\exercises\\build-protocol-review",
+      "--config",
+      "Release",
+      "--target",
+      "F1_iterator_hierarchy_student",
+      "--parallel",
+      "2"
+    ],
+    "exit_code": 0,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\r\n\r\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/F1_iterator_hierarchy/CMakeLists.txt\r\n  main.cpp\r\n  F1_iterator_hierarchy_student.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\F1_iterator_hierarchy\\Release\\F1_iterator_hierarchy_student.exe\r\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "cmake",
+      "--build",
+      "C06_Ranges\\exercises\\build-protocol-review",
+      "--config",
+      "Release",
+      "--target",
+      "G1_my_take_view_reference",
+      "--parallel",
+      "2"
+    ],
+    "exit_code": 0,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\r\n\r\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/G1_my_take_view/CMakeLists.txt\r\n  main.cpp\r\n  G1_my_take_view_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G1_my_take_view\\Release\\G1_my_take_view_reference.exe\r\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "cmake",
+      "--build",
+      "C06_Ranges\\exercises\\build-protocol-review",
+      "--config",
+      "Release",
+      "--target",
+      "G1_my_take_view_validation_good",
+      "--parallel",
+      "2"
+    ],
+    "exit_code": 0,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\r\n\r\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/G1_my_take_view/CMakeLists.txt\r\n  main.cpp\r\n  G1_my_take_view_validation_good.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G1_my_take_view\\Release\\G1_my_take_view_validation_good.exe\r\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "cmake",
+      "--build",
+      "C06_Ranges\\exercises\\build-protocol-review",
+      "--config",
+      "Release",
+      "--target",
+      "G1_my_take_view_validation_bad",
+      "--parallel",
+      "2"
+    ],
+    "exit_code": 0,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\r\n\r\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/G1_my_take_view/CMakeLists.txt\r\n  main.cpp\r\n  G1_my_take_view_validation_bad.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G1_my_take_view\\Release\\G1_my_take_view_validation_bad.exe\r\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "cmake",
+      "--build",
+      "C06_Ranges\\exercises\\build-protocol-review",
+      "--config",
+      "Release",
+      "--target",
+      "G1_my_take_view_student",
+      "--parallel",
+      "2"
+    ],
+    "exit_code": 0,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\r\n\r\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/G1_my_take_view/CMakeLists.txt\r\n  main.cpp\r\n  G1_my_take_view_student.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G1_my_take_view\\Release\\G1_my_take_view_student.exe\r\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "cmake",
+      "--build",
+      "C06_Ranges\\exercises\\build-protocol-review",
+      "--config",
+      "Release",
+      "--target",
+      "G2_my_transform_closure_reference",
+      "--parallel",
+      "2"
+    ],
+    "exit_code": 0,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\r\n\r\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/G2_my_transform_closure/CMakeLists.txt\r\n  main.cpp\r\n  G2_my_transform_closure_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G2_my_transform_closure\\Release\\G2_my_transform_closure_reference.exe\r\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "cmake",
+      "--build",
+      "C06_Ranges\\exercises\\build-protocol-review",
+      "--config",
+      "Release",
+      "--target",
+      "G2_my_transform_closure_validation_good",
+      "--parallel",
+      "2"
+    ],
+    "exit_code": 0,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\r\n\r\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/G2_my_transform_closure/CMakeLists.txt\r\n  main.cpp\r\n  G2_my_transform_closure_validation_good.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G2_my_transform_closure\\Release\\G2_my_transform_closure_validation_good.exe\r\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "cmake",
+      "--build",
+      "C06_Ranges\\exercises\\build-protocol-review",
+      "--config",
+      "Release",
+      "--target",
+      "G2_my_transform_closure_validation_bad",
+      "--parallel",
+      "2"
+    ],
+    "exit_code": 0,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\r\n\r\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/G2_my_transform_closure/CMakeLists.txt\r\n  main.cpp\r\n  G2_my_transform_closure_validation_bad.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G2_my_transform_closure\\Release\\G2_my_transform_closure_validation_bad.exe\r\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "cmake",
+      "--build",
+      "C06_Ranges\\exercises\\build-protocol-review",
+      "--config",
+      "Release",
+      "--target",
+      "G2_my_transform_closure_student",
+      "--parallel",
+      "2"
+    ],
+    "exit_code": 0,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\r\n\r\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/G2_my_transform_closure/CMakeLists.txt\r\n  main.cpp\r\n  G2_my_transform_closure_student.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G2_my_transform_closure\\Release\\G2_my_transform_closure_student.exe\r\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "cmake",
+      "--build",
+      "C06_Ranges\\exercises\\build-protocol-review",
+      "--config",
+      "Release",
+      "--target",
+      "G3_my_enumerate_borrowed_reference",
+      "--parallel",
+      "2"
+    ],
+    "exit_code": 0,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\r\n\r\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/G3_my_enumerate_borrowed/CMakeLists.txt\r\n  main.cpp\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244: “初始化”: 从“_Ty”转换到“_Ty”，可能丢失数据 [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_reference.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244:         with [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_reference.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244:         [ [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_reference.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244:             _Ty=__int64 [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_reference.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244:         ] [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_reference.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244:         and [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_reference.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244:         [ [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_reference.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244:             _Ty=int [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_reference.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244:         ] [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_reference.vcxproj]\r\n  (编译源文件“../../G3_my_enumerate_borrowed/checks/main.cpp”)\r\n      D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64):\r\n      模板实例化上下文(最早的实例化上下文)为\r\n          F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\G3_my_enumerate_borrowed\\checks\\main.cpp(40,27):\r\n          查看对正在编译的函数 模板 实例化“std::vector<int,std::allocator<int>>::vector<std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false>,0>(_Iter,_Iter,const _Alloc &)”的引用\r\n          with\r\n          [\r\n              _Iter=std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false>,\r\n              _Alloc=std::allocator<int>\r\n          ]\r\n              F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\G3_my_enumerate_borrowed\\checks\\main.cpp(40,10):\r\n              请参阅 \"main\" 中对 \"std::vector<int,std::allocator<int>>::vector\" 的第一个引用\r\n          D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\vector(707,13):\r\n          查看对正在编译的函数 模板 实例化“void std::vector<int,std::allocator<int>>::_Construct_n<std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false>,std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false>>(const unsigned __int64,std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false> &&,std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false> &&)”的引用\r\n          D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\vector(2128,41):\r\n          查看对正在编译的函数 模板 实例化“int *std::_Uninitialized_copy<_Ty,_Ty,std::allocator<int>>(_InIt,_Se,int *,_Alloc &)”的引用\r\n          with\r\n          [\r\n              _Ty=std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false>,\r\n              _InIt=std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false>,\r\n              _Se=std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false>,\r\n              _Alloc=std::allocator<int>\r\n          ]\r\n          D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xmemory(1926,18):\r\n          查看对正在编译的函数 模板 实例化“void std::_Uninitialized_backout_al<std::allocator<int>>::_Emplace_back<_Ty1>(_Ty1 &&)”的引用\r\n          with\r\n          [\r\n              _Ty1=__int64\r\n          ]\r\n          D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xmemory(1868,35):\r\n          查看对正在编译的函数 模板 实例化“void std::_Default_allocator_traits<_Alloc>::construct<_Ty,__int64>(_Alloc &,_Objty *const ,__int64 &&)”的引用\r\n          with\r\n          [\r\n              _Alloc=std::allocator<int>,\r\n              _Ty=int,\r\n              _Objty=int\r\n          ]\r\n          D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xmemory(730,14):\r\n          查看对正在编译的函数 模板 实例化“_Ty *std::construct_at<_Objty,__int64>(_Ty *const ,__int64 &&) noexcept(<expr>)”的引用\r\n          with\r\n          [\r\n              _Ty=int,\r\n              _Objty=int\r\n          ]\r\n  \r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244: “初始化”: 从“_Ty”转换到“_Objty”，可能丢失数据 [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_reference.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244:         with [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_reference.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244:         [ [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_reference.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244:             _Ty=__int64 [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_reference.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244:         ] [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_reference.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244:         and [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_reference.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244:         [ [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_reference.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244:             _Objty=int [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_reference.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244:         ] [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_reference.vcxproj]\r\n  (编译源文件“../../G3_my_enumerate_borrowed/checks/main.cpp”)\r\n      D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73):\r\n      模板实例化上下文(最早的实例化上下文)为\r\n          D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xmemory(1868,35):\r\n          查看对正在编译的函数 模板 实例化“void std::_Default_allocator_traits<_Alloc>::construct<_Ty,__int64>(_Alloc &,_Objty *const ,__int64 &&)”的引用\r\n          with\r\n          [\r\n              _Alloc=std::allocator<int>,\r\n              _Ty=int,\r\n              _Objty=int\r\n          ]\r\n          D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xmemory(730,14):\r\n          查看对正在编译的函数 模板 实例化“_Ty *std::construct_at<_Objty,__int64>(_Ty *const ,__int64 &&) noexcept”的引用\r\n          with\r\n          [\r\n              _Ty=int,\r\n              _Objty=int\r\n          ]\r\n  \r\n  G3_my_enumerate_borrowed_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\Release\\G3_my_enumerate_borrowed_reference.exe\r\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "cmake",
+      "--build",
+      "C06_Ranges\\exercises\\build-protocol-review",
+      "--config",
+      "Release",
+      "--target",
+      "G3_my_enumerate_borrowed_validation_good",
+      "--parallel",
+      "2"
+    ],
+    "exit_code": 0,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\r\n\r\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/G3_my_enumerate_borrowed/CMakeLists.txt\r\n  main.cpp\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244: “初始化”: 从“_Ty”转换到“_Ty”，可能丢失数据 [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_good.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244:         with [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_good.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244:         [ [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_good.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244:             _Ty=__int64 [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_good.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244:         ] [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_good.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244:         and [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_good.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244:         [ [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_good.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244:             _Ty=int [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_good.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244:         ] [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_good.vcxproj]\r\n  (编译源文件“../../G3_my_enumerate_borrowed/checks/main.cpp”)\r\n      D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64):\r\n      模板实例化上下文(最早的实例化上下文)为\r\n          F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\G3_my_enumerate_borrowed\\checks\\main.cpp(40,27):\r\n          查看对正在编译的函数 模板 实例化“std::vector<int,std::allocator<int>>::vector<std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false>,0>(_Iter,_Iter,const _Alloc &)”的引用\r\n          with\r\n          [\r\n              _Iter=std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false>,\r\n              _Alloc=std::allocator<int>\r\n          ]\r\n              F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\G3_my_enumerate_borrowed\\checks\\main.cpp(40,10):\r\n              请参阅 \"main\" 中对 \"std::vector<int,std::allocator<int>>::vector\" 的第一个引用\r\n          D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\vector(707,13):\r\n          查看对正在编译的函数 模板 实例化“void std::vector<int,std::allocator<int>>::_Construct_n<std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false>,std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false>>(const unsigned __int64,std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false> &&,std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false> &&)”的引用\r\n          D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\vector(2128,41):\r\n          查看对正在编译的函数 模板 实例化“int *std::_Uninitialized_copy<_Ty,_Ty,std::allocator<int>>(_InIt,_Se,int *,_Alloc &)”的引用\r\n          with\r\n          [\r\n              _Ty=std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false>,\r\n              _InIt=std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false>,\r\n              _Se=std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false>,\r\n              _Alloc=std::allocator<int>\r\n          ]\r\n          D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xmemory(1926,18):\r\n          查看对正在编译的函数 模板 实例化“void std::_Uninitialized_backout_al<std::allocator<int>>::_Emplace_back<_Ty1>(_Ty1 &&)”的引用\r\n          with\r\n          [\r\n              _Ty1=__int64\r\n          ]\r\n          D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xmemory(1868,35):\r\n          查看对正在编译的函数 模板 实例化“void std::_Default_allocator_traits<_Alloc>::construct<_Ty,__int64>(_Alloc &,_Objty *const ,__int64 &&)”的引用\r\n          with\r\n          [\r\n              _Alloc=std::allocator<int>,\r\n              _Ty=int,\r\n              _Objty=int\r\n          ]\r\n          D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xmemory(730,14):\r\n          查看对正在编译的函数 模板 实例化“_Ty *std::construct_at<_Objty,__int64>(_Ty *const ,__int64 &&) noexcept(<expr>)”的引用\r\n          with\r\n          [\r\n              _Ty=int,\r\n              _Objty=int\r\n          ]\r\n  \r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244: “初始化”: 从“_Ty”转换到“_Objty”，可能丢失数据 [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_good.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244:         with [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_good.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244:         [ [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_good.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244:             _Ty=__int64 [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_good.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244:         ] [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_good.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244:         and [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_good.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244:         [ [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_good.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244:             _Objty=int [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_good.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244:         ] [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_good.vcxproj]\r\n  (编译源文件“../../G3_my_enumerate_borrowed/checks/main.cpp”)\r\n      D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73):\r\n      模板实例化上下文(最早的实例化上下文)为\r\n          D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xmemory(1868,35):\r\n          查看对正在编译的函数 模板 实例化“void std::_Default_allocator_traits<_Alloc>::construct<_Ty,__int64>(_Alloc &,_Objty *const ,__int64 &&)”的引用\r\n          with\r\n          [\r\n              _Alloc=std::allocator<int>,\r\n              _Ty=int,\r\n              _Objty=int\r\n          ]\r\n          D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xmemory(730,14):\r\n          查看对正在编译的函数 模板 实例化“_Ty *std::construct_at<_Objty,__int64>(_Ty *const ,__int64 &&) noexcept”的引用\r\n          with\r\n          [\r\n              _Ty=int,\r\n              _Objty=int\r\n          ]\r\n  \r\n  G3_my_enumerate_borrowed_validation_good.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\Release\\G3_my_enumerate_borrowed_validation_good.exe\r\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "cmake",
+      "--build",
+      "C06_Ranges\\exercises\\build-protocol-review",
+      "--config",
+      "Release",
+      "--target",
+      "G3_my_enumerate_borrowed_validation_bad",
+      "--parallel",
+      "2"
+    ],
+    "exit_code": 0,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\r\n\r\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/G3_my_enumerate_borrowed/CMakeLists.txt\r\n  main.cpp\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244: “初始化”: 从“_Ty”转换到“_Ty”，可能丢失数据 [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_bad.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244:         with [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_bad.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244:         [ [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_bad.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244:             _Ty=__int64 [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_bad.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244:         ] [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_bad.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244:         and [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_bad.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244:         [ [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_bad.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244:             _Ty=int [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_bad.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244:         ] [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_bad.vcxproj]\r\n  (编译源文件“../../G3_my_enumerate_borrowed/checks/main.cpp”)\r\n      D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64):\r\n      模板实例化上下文(最早的实例化上下文)为\r\n          F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\G3_my_enumerate_borrowed\\checks\\main.cpp(40,27):\r\n          查看对正在编译的函数 模板 实例化“std::vector<int,std::allocator<int>>::vector<std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false>,0>(_Iter,_Iter,const _Alloc &)”的引用\r\n          with\r\n          [\r\n              _Iter=std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false>,\r\n              _Alloc=std::allocator<int>\r\n          ]\r\n              F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\G3_my_enumerate_borrowed\\checks\\main.cpp(40,10):\r\n              请参阅 \"main\" 中对 \"std::vector<int,std::allocator<int>>::vector\" 的第一个引用\r\n          D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\vector(707,13):\r\n          查看对正在编译的函数 模板 实例化“void std::vector<int,std::allocator<int>>::_Construct_n<std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false>,std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false>>(const unsigned __int64,std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false> &&,std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false> &&)”的引用\r\n          D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\vector(2128,41):\r\n          查看对正在编译的函数 模板 实例化“int *std::_Uninitialized_copy<_Ty,_Ty,std::allocator<int>>(_InIt,_Se,int *,_Alloc &)”的引用\r\n          with\r\n          [\r\n              _Ty=std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false>,\r\n              _InIt=std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false>,\r\n              _Se=std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false>,\r\n              _Alloc=std::allocator<int>\r\n          ]\r\n          D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xmemory(1926,18):\r\n          查看对正在编译的函数 模板 实例化“void std::_Uninitialized_backout_al<std::allocator<int>>::_Emplace_back<_Ty1>(_Ty1 &&)”的引用\r\n          with\r\n          [\r\n              _Ty1=__int64\r\n          ]\r\n          D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xmemory(1868,35):\r\n          查看对正在编译的函数 模板 实例化“void std::_Default_allocator_traits<_Alloc>::construct<_Ty,__int64>(_Alloc &,_Objty *const ,__int64 &&)”的引用\r\n          with\r\n          [\r\n              _Alloc=std::allocator<int>,\r\n              _Ty=int,\r\n              _Objty=int\r\n          ]\r\n          D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xmemory(730,14):\r\n          查看对正在编译的函数 模板 实例化“_Ty *std::construct_at<_Objty,__int64>(_Ty *const ,__int64 &&) noexcept(<expr>)”的引用\r\n          with\r\n          [\r\n              _Ty=int,\r\n              _Objty=int\r\n          ]\r\n  \r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244: “初始化”: 从“_Ty”转换到“_Objty”，可能丢失数据 [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_bad.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244:         with [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_bad.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244:         [ [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_bad.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244:             _Ty=__int64 [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_bad.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244:         ] [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_bad.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244:         and [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_bad.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244:         [ [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_bad.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244:             _Objty=int [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_bad.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244:         ] [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_validation_bad.vcxproj]\r\n  (编译源文件“../../G3_my_enumerate_borrowed/checks/main.cpp”)\r\n      D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73):\r\n      模板实例化上下文(最早的实例化上下文)为\r\n          D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xmemory(1868,35):\r\n          查看对正在编译的函数 模板 实例化“void std::_Default_allocator_traits<_Alloc>::construct<_Ty,__int64>(_Alloc &,_Objty *const ,__int64 &&)”的引用\r\n          with\r\n          [\r\n              _Alloc=std::allocator<int>,\r\n              _Ty=int,\r\n              _Objty=int\r\n          ]\r\n          D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xmemory(730,14):\r\n          查看对正在编译的函数 模板 实例化“_Ty *std::construct_at<_Objty,__int64>(_Ty *const ,__int64 &&) noexcept”的引用\r\n          with\r\n          [\r\n              _Ty=int,\r\n              _Objty=int\r\n          ]\r\n  \r\n  G3_my_enumerate_borrowed_validation_bad.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\Release\\G3_my_enumerate_borrowed_validation_bad.exe\r\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "cmake",
+      "--build",
+      "C06_Ranges\\exercises\\build-protocol-review",
+      "--config",
+      "Release",
+      "--target",
+      "G3_my_enumerate_borrowed_student",
+      "--parallel",
+      "2"
+    ],
+    "exit_code": 0,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\r\n\r\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/G3_my_enumerate_borrowed/CMakeLists.txt\r\n  main.cpp\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244: “初始化”: 从“_Ty”转换到“_Ty”，可能丢失数据 [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_student.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244:         with [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_student.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244:         [ [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_student.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244:             _Ty=__int64 [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_student.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244:         ] [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_student.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244:         and [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_student.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244:         [ [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_student.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244:             _Ty=int [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_student.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64): warning C4244:         ] [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_student.vcxproj]\r\n  (编译源文件“../../G3_my_enumerate_borrowed/checks/main.cpp”)\r\n      D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(636,64):\r\n      模板实例化上下文(最早的实例化上下文)为\r\n          F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\G3_my_enumerate_borrowed\\checks\\main.cpp(40,27):\r\n          查看对正在编译的函数 模板 实例化“std::vector<int,std::allocator<int>>::vector<std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false>,0>(_Iter,_Iter,const _Alloc &)”的引用\r\n          with\r\n          [\r\n              _Iter=std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false>,\r\n              _Alloc=std::allocator<int>\r\n          ]\r\n              F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\G3_my_enumerate_borrowed\\checks\\main.cpp(40,10):\r\n              请参阅 \"main\" 中对 \"std::vector<int,std::allocator<int>>::vector\" 的第一个引用\r\n          D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\vector(707,13):\r\n          查看对正在编译的函数 模板 实例化“void std::vector<int,std::allocator<int>>::_Construct_n<std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false>,std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false>>(const unsigned __int64,std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false> &&,std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false> &&)”的引用\r\n          D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\vector(2128,41):\r\n          查看对正在编译的函数 模板 实例化“int *std::_Uninitialized_copy<_Ty,_Ty,std::allocator<int>>(_InIt,_Se,int *,_Alloc &)”的引用\r\n          with\r\n          [\r\n              _Ty=std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false>,\r\n              _InIt=std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false>,\r\n              _Se=std::ranges::transform_view<c06_g3::my_enumerate_view<std::ranges::ref_view<std::vector<int,std::allocator<int>>>>,main::<lambda_1>>::_Iterator<false>,\r\n              _Alloc=std::allocator<int>\r\n          ]\r\n          D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xmemory(1926,18):\r\n          查看对正在编译的函数 模板 实例化“void std::_Uninitialized_backout_al<std::allocator<int>>::_Emplace_back<_Ty1>(_Ty1 &&)”的引用\r\n          with\r\n          [\r\n              _Ty1=__int64\r\n          ]\r\n          D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xmemory(1868,35):\r\n          查看对正在编译的函数 模板 实例化“void std::_Default_allocator_traits<_Alloc>::construct<_Ty,__int64>(_Alloc &,_Objty *const ,__int64 &&)”的引用\r\n          with\r\n          [\r\n              _Alloc=std::allocator<int>,\r\n              _Ty=int,\r\n              _Objty=int\r\n          ]\r\n          D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xmemory(730,14):\r\n          查看对正在编译的函数 模板 实例化“_Ty *std::construct_at<_Objty,__int64>(_Ty *const ,__int64 &&) noexcept(<expr>)”的引用\r\n          with\r\n          [\r\n              _Ty=int,\r\n              _Objty=int\r\n          ]\r\n  \r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244: “初始化”: 从“_Ty”转换到“_Objty”，可能丢失数据 [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_student.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244:         with [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_student.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244:         [ [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_student.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244:             _Ty=__int64 [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_student.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244:         ] [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_student.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244:         and [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_student.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244:         [ [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_student.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244:             _Objty=int [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_student.vcxproj]\r\nD:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73): warning C4244:         ] [F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\G3_my_enumerate_borrowed_student.vcxproj]\r\n  (编译源文件“../../G3_my_enumerate_borrowed/checks/main.cpp”)\r\n      D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xutility(647,73):\r\n      模板实例化上下文(最早的实例化上下文)为\r\n          D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xmemory(1868,35):\r\n          查看对正在编译的函数 模板 实例化“void std::_Default_allocator_traits<_Alloc>::construct<_Ty,__int64>(_Alloc &,_Objty *const ,__int64 &&)”的引用\r\n          with\r\n          [\r\n              _Alloc=std::allocator<int>,\r\n              _Ty=int,\r\n              _Objty=int\r\n          ]\r\n          D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\xmemory(730,14):\r\n          查看对正在编译的函数 模板 实例化“_Ty *std::construct_at<_Objty,__int64>(_Ty *const ,__int64 &&) noexcept”的引用\r\n          with\r\n          [\r\n              _Ty=int,\r\n              _Objty=int\r\n          ]\r\n  \r\n  G3_my_enumerate_borrowed_student.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\build-protocol-review\\G3_my_enumerate_borrowed\\Release\\G3_my_enumerate_borrowed_student.exe\r\n",
+    "stderr": ""
+  }
+]

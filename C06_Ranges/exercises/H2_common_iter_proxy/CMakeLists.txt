@@ -1,9 +1,10 @@
 cmake_minimum_required(VERSION 3.28)
 project(H2_common_iter_proxy LANGUAGES CXX)
-set(CMAKE_CXX_STANDARD 26)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
-if(MSVC)
-    add_compile_options(/Zc:__cplusplus /utf-8 /permissive-)
-endif()
-add_executable(H2_common_iter_proxy main.cpp)
+include(../cmake/RangesSetup.cmake)
+
+ranges_add_exercise(
+    NAME H2_common_iter_proxy
+    HEADER common_proxy.hpp
+    CHECK main.cpp
+    BAD_DIAGNOSTIC "iter_swap must exchange underlying elements"
+)

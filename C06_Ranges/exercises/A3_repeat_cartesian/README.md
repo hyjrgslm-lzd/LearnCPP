@@ -76,7 +76,7 @@ iterator_concept 由底层 range 决定的机制，以及空积语义（P2540R1�
   ```cpp
   auto r = std::views::repeat(42);
   auto it = r.begin();
-  assert(&*it == &*std::next(it));  // 同一个 const int 对象
+  check(&*it == &*std::next(it), "repeat_view reuses the same const object");
   ```
 - 检查 iterator_concept 降级：经过 `filter_view` 后最高只有 `bidirectional_range`，
   不要对 `random_access_range` 做硬断言。
@@ -101,3 +101,8 @@ iterator_concept 由底层 range 决定的机制，以及空积语义（P2540R1�
 - cppreference：[`std::ranges::repeat_view`](https://en.cppreference.com/w/cpp/ranges/repeat_view)
 - cppreference：[`std::ranges::cartesian_product_view`](https://en.cppreference.com/w/cpp/ranges/cartesian_product_view)
 - cppreference：[`std::ranges::filter_view`](https://en.cppreference.com/w/cpp/ranges/filter_view)
+## 参考解析
+
+预测：无界 `repeat(7)` 不 sized、不 common，但可随机访问；有界 `repeat(3, 4)` 是 sized，四个元素都读到同一个逻辑值。零参数 `cartesian_product()` 有一个空 tuple；普通乘积的 size 等于各输入 size 的乘积。
+
+当前程序覆盖无界 repeat 的前缀、repeat_n 式有界范围、零参数 product，以及字符/数字乘积求和。扩展检查对象身份时用 `check(&*it == &*std::next(it), ...)`，避免把 `assert` 当唯一验证。

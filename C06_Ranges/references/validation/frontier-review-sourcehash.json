@@ -1,0 +1,79 @@
+{
+  "date": "2026-09-10T12:48:48.6137398+08:00",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "scope": "C06 F01 frontier review source binding",
+  "files": [
+    {
+      "path": "C06_Ranges/chapters/08-new-containers.md",
+      "sha256": "67F0D87E8DC7BEE7D683FE2A14410AE009EB6E2CE5FA08D5BA1EA807543CAF79"
+    },
+    {
+      "path": "C06_Ranges/chapters/09-frontier-ranges.md",
+      "sha256": "B8FEF4C111EDC879EB7B03D195DDB9DB39D2655AE564FCE11F318AAF485F124F"
+    },
+    {
+      "path": "C06_Ranges/references/standards.md",
+      "sha256": "CC08E92CAF4DDE12C16FC5368786CAF1FB766C58D48724A37A42698F77E2EDB2"
+    },
+    {
+      "path": "C06_Ranges/references/source-reading.md",
+      "sha256": "8330AFCDDAA89082E947B71402D913613AA14A0FECB7DAFBDC38235D0DAE39D5"
+    },
+    {
+      "path": "C06_Ranges/exercises/F01_frontier/as_input.cpp",
+      "sha256": "7AB2D16AEDA7BEAF296BCA1A9E7EC5658B37160E378EA746587AA85B7F9E1F66"
+    },
+    {
+      "path": "C06_Ranges/exercises/F01_frontier/cache_latest.cpp",
+      "sha256": "04666B3AA276FAF65DECAD7BA1EFC6610D521BD7515775CAD0EAF18C57915168"
+    },
+    {
+      "path": "C06_Ranges/exercises/F01_frontier/CMakeLists.txt",
+      "sha256": "890FB035F1612694504A1207163616044809995B3BCA0B90D5B41615EC1F11BB"
+    },
+    {
+      "path": "C06_Ranges/exercises/F01_frontier/concat.cpp",
+      "sha256": "D93BD76247DD7B741DD550014D6F7BF84992AAA5ED213C97C94B88F73CA56D19"
+    },
+    {
+      "path": "C06_Ranges/exercises/F01_frontier/const_input_filter.cpp",
+      "sha256": "15FCAAC5BB2B781FE2A9ED0945EFB29A9A142558B1F9E1F8D5B97E38D9C9C30F"
+    },
+    {
+      "path": "C06_Ranges/exercises/F01_frontier/flat_containers.cpp",
+      "sha256": "A617994F4575548E8CC38E3B8669C2547FEFFFB3E90ADD4C33F756857EA936DC"
+    },
+    {
+      "path": "C06_Ranges/exercises/F01_frontier/hive.cpp",
+      "sha256": "A5AF99BDB7EC08B8B481290F6E74B01DEEBD5D251310477F856BD80880891E28"
+    },
+    {
+      "path": "C06_Ranges/exercises/F01_frontier/include/frontier_status.hpp",
+      "sha256": "50BD6F3EF4425095CD97CEBE2220DFBD145A05F0A47E19A2DAA64A3D07E1E7B9"
+    },
+    {
+      "path": "C06_Ranges/exercises/F01_frontier/inplace_vector.cpp",
+      "sha256": "BC7EF8B338593F259E604A5C69AE7CD35EF9F1AE8740A423CD86569B49247C33"
+    },
+    {
+      "path": "C06_Ranges/exercises/F01_frontier/map_lookup.cpp",
+      "sha256": "ABC2C8873C99AF0FAC57078F53628E8B0E17FB1CB0FD6E575374CE47658705A9"
+    },
+    {
+      "path": "C06_Ranges/exercises/F01_frontier/optional_range.cpp",
+      "sha256": "3CB9F920CC36EAE78070C78703697D5D9F8F16275FE5DF5E2502BB5036E8DA75"
+    },
+    {
+      "path": "C06_Ranges/exercises/F01_frontier/README.md",
+      "sha256": "F4B0EF4620FD8DEF27615B544ABAD180CDC45C68076995A2769299CF7631D603"
+    },
+    {
+      "path": "C06_Ranges/exercises/F01_frontier/reserve_hint.cpp",
+      "sha256": "FF9FAD4A287ED11F47CE35E7AC62F1B975FD2BB788F0F4552AF3D8AD89C2FA2E"
+    },
+    {
+      "path": "C06_Ranges/exercises/F01_frontier/view_interface_at.cpp",
+      "sha256": "8619D9D7D50905CF8DFFC5C61D387E2B2E4907AC97AF1A0F164A9CA6393111A7"
+    }
+  ]
+}

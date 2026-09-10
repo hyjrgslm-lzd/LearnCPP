@@ -1,0 +1,1 @@
+{"schema":1,"case":"index","scenario":"small_low_hit","variant":"linear_vector","instrument":"counted","seed":298,"n":256,"rate":10,"checksum":38703726852917169,"matches":22,"build_ns":1500,"lookup_ns":17800,"build_comparisons":0,"lookup_comparisons":63346,"build_hash_calls":0,"lookup_hash_calls":0,"build_equal_calls":0,"lookup_equal_calls":0}

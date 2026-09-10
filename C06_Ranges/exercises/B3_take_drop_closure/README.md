@@ -16,7 +16,7 @@
 
 ## 预计练习方向
 
-属性对比表（填写 TODO 时以此为目标）：
+属性对比表（填写观察结论时以此为目标）：
 
 | adaptor | sized | common | iterator_concept | begin() const |
 |---------|-------|--------|------------------|---------------|
@@ -116,3 +116,8 @@ take_while 是前缀截断，filter 是全局跳过式筛选，两者根本不�
 - cppreference：[`std::ranges::take_while_view`](https://en.cppreference.com/w/cpp/ranges/take_while_view)
 - cppreference：[`std::ranges::drop_while_view`](https://en.cppreference.com/w/cpp/ranges/drop_while_view)
 - 01 心智模型中"range adaptor 与 range adaptor closure"章节
+## 参考解析
+
+预测：对 sized/random_access 底层，`take` / `drop` 常能保留 sized 和 random_access；对 list 底层只能保留 bidirectional；对无界 iota 截断后的 common/sized 状态由具体适配器决定。`take_while` 由谓词决定停止点，通常不能保持 sized。
+
+当前程序检查 take/drop/drop_while/take_while 的输出，并验证预组合 closure 与直接管道类型一致。扩展时把观察项落实成实际 `static_assert` + `check`，完成标准是行为和类型都被观察到。

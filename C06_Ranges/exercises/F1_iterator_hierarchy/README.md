@@ -67,3 +67,9 @@
 - P1207R4：move-only iterator 合法化（`input_iterator` 不再要求 copyable）
 - P1614R2：spaceship 运算符集成（`random_access_iterator` 的 `<=>` 要求）
 - cppreference: [iterator concepts](https://en.cppreference.com/w/cpp/iterator#Iterator_concepts)
+
+## Author-validation layout
+
+本题已迁移到统一四路径验证：`checks/main.cpp` 只依赖 `#include <iterator_hierarchy.hpp>` 暴露的 `c06_f1::forward_range`、`bidirectional_range`、`random_access_range`、`contiguous_range` 和 `move_only_input_iterator`。Reference 与 good 各自独立实现；bad 是可编译、可安全运行的错误实现，故意让 random access distance 多 1；Student 可编译但 begin 偏移，不能被 checker 标记通过。
+
+checker 不只看 typedef 名字，而是实际消费接口：遍历 forward、反向走 bidirectional、使用 random-access `[]` / `+` / `-`、用 `std::to_address` 验证 contiguous，并验证 move-only iterator 满足 input 而非 forward。声明了某个 iterator concept，就必须提供该 concept 对应的真实操作。

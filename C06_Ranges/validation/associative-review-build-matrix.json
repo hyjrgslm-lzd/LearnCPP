@@ -1,0 +1,367 @@
+{
+  "created_at": "2026-09-10T12:48:52.2202218+08:00",
+  "head": "f261bea559d6722c31135fb2d3589be52fe958ed",
+  "review_scope": "foundation_associative",
+  "results": [
+    {
+      "exercise": "L03",
+      "step": "configure",
+      "exit_code": 0,
+      "seconds": 2.755,
+      "tail": "-- Building for: Visual Studio 18 2026\n-- The CXX compiler identification is MSVC 19.51.36256.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring done (2.5s)\n-- Generating done (0.1s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L03_associative_containers/build-review"
+    },
+    {
+      "exercise": "L03",
+      "step": "build-debug",
+      "exit_code": 0,
+      "seconds": 2.474,
+      "tail": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L03_associative_containers/CMakeLists.txt\n  main.cpp\n  L03_associative_containers.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\L03_associative_containers\\build-review\\Debug\\L03_associative_containers.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L03_associative_containers/CMakeLists.txt"
+    },
+    {
+      "exercise": "L03",
+      "step": "ctest-debug",
+      "exit_code": 0,
+      "seconds": 0.526,
+      "tail": "Test project F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L03_associative_containers/build-review\n    Start 1: L03_associative_containers\n1/1 Test #1: L03_associative_containers .......   Passed    0.45 sec\n\n100% tests passed, 0 tests failed out of 1\n\nLabel Time Summary:\nobservation    =   0.45 sec*proc (1 test)\n\nTotal Test time (real) =   0.45 sec"
+    },
+    {
+      "exercise": "L03",
+      "step": "build-release",
+      "exit_code": 0,
+      "seconds": 2.116,
+      "tail": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L03_associative_containers/CMakeLists.txt\n  main.cpp\n  L03_associative_containers.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\L03_associative_containers\\build-review\\Release\\L03_associative_containers.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L03_associative_containers/CMakeLists.txt"
+    },
+    {
+      "exercise": "L03",
+      "step": "ctest-release",
+      "exit_code": 0,
+      "seconds": 0.475,
+      "tail": "Test project F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L03_associative_containers/build-review\n    Start 1: L03_associative_containers\n1/1 Test #1: L03_associative_containers .......   Passed    0.42 sec\n\n100% tests passed, 0 tests failed out of 1\n\nLabel Time Summary:\nobservation    =   0.42 sec*proc (1 test)\n\nTotal Test time (real) =   0.43 sec"
+    },
+    {
+      "exercise": "L04",
+      "step": "configure",
+      "exit_code": 0,
+      "seconds": 2.317,
+      "tail": "-- Building for: Visual Studio 18 2026\n-- The CXX compiler identification is MSVC 19.51.36256.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring done (2.1s)\n-- Generating done (0.1s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L04_algorithms/build-review"
+    },
+    {
+      "exercise": "L04",
+      "step": "build-debug",
+      "exit_code": 0,
+      "seconds": 2.096,
+      "tail": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L04_algorithms/CMakeLists.txt\n  main.cpp\n  L04_algorithms.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\L04_algorithms\\build-review\\Debug\\L04_algorithms.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L04_algorithms/CMakeLists.txt"
+    },
+    {
+      "exercise": "L04",
+      "step": "ctest-debug",
+      "exit_code": 0,
+      "seconds": 0.508,
+      "tail": "Test project F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L04_algorithms/build-review\n    Start 1: L04_algorithms\n1/1 Test #1: L04_algorithms ...................   Passed    0.44 sec\n\n100% tests passed, 0 tests failed out of 1\n\nLabel Time Summary:\nobservation    =   0.44 sec*proc (1 test)\n\nTotal Test time (real) =   0.45 sec"
+    },
+    {
+      "exercise": "L04",
+      "step": "build-release",
+      "exit_code": 0,
+      "seconds": 2.046,
+      "tail": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L04_algorithms/CMakeLists.txt\n  main.cpp\n  L04_algorithms.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\L04_algorithms\\build-review\\Release\\L04_algorithms.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L04_algorithms/CMakeLists.txt"
+    },
+    {
+      "exercise": "L04",
+      "step": "ctest-release",
+      "exit_code": 0,
+      "seconds": 0.478,
+      "tail": "Test project F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L04_algorithms/build-review\n    Start 1: L04_algorithms\n1/1 Test #1: L04_algorithms ...................   Passed    0.42 sec\n\n100% tests passed, 0 tests failed out of 1\n\nLabel Time Summary:\nobservation    =   0.42 sec*proc (1 test)\n\nTotal Test time (real) =   0.43 sec"
+    },
+    {
+      "exercise": "L06",
+      "step": "configure",
+      "exit_code": 0,
+      "seconds": 2.426,
+      "tail": "-- Building for: Visual Studio 18 2026\n-- The CXX compiler identification is MSVC 19.51.36256.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring done (2.2s)\n-- Generating done (0.2s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L06_binary_heap/build-review"
+    },
+    {
+      "exercise": "L06",
+      "step": "build-debug",
+      "exit_code": 0,
+      "seconds": 4.545,
+      "tail": "\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L06_binary_heap/CMakeLists.txt\n  heap_checks.cpp\n  L06_binary_heap_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\L06_binary_heap\\build-review\\Debug\\L06_binary_heap_reference.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L06_binary_heap/CMakeLists.txt\n  heap_checks.cpp\n  L06_binary_heap_validation_bad.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\L06_binary_heap\\build-review\\Debug\\L06_binary_heap_validation_bad.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L06_binary_heap/CMakeLists.txt\n  heap_checks.cpp\n  L06_binary_heap_validation_good.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\L06_binary_heap\\build-review\\Debug\\L06_binary_heap_validation_good.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L06_binary_heap/CMakeLists.txt"
+    },
+    {
+      "exercise": "L06",
+      "step": "ctest-debug",
+      "exit_code": 0,
+      "seconds": 1.426,
+      "tail": "2/3 Test #2: L06_binary_heap_validation_good ...........   Passed    0.43 sec\n    Start 3: L06_binary_heap_validation_bad_rejected\n3/3 Test #3: L06_binary_heap_validation_bad_rejected ...   Passed    0.46 sec\n\n100% tests passed, 0 tests failed out of 3\n\nLabel Time Summary:\nnegative      =   0.46 sec*proc (1 test)\nreference     =   0.43 sec*proc (1 test)\nvalidation    =   0.43 sec*proc (1 test)\n\nTotal Test time (real) =   1.33 sec"
+    },
+    {
+      "exercise": "L06",
+      "step": "build-release",
+      "exit_code": 0,
+      "seconds": 4.099,
+      "tail": "\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L06_binary_heap/CMakeLists.txt\n  heap_checks.cpp\n  L06_binary_heap_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\L06_binary_heap\\build-review\\Release\\L06_binary_heap_reference.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L06_binary_heap/CMakeLists.txt\n  heap_checks.cpp\n  L06_binary_heap_validation_bad.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\L06_binary_heap\\build-review\\Release\\L06_binary_heap_validation_bad.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L06_binary_heap/CMakeLists.txt\n  heap_checks.cpp\n  L06_binary_heap_validation_good.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\L06_binary_heap\\build-review\\Release\\L06_binary_heap_validation_good.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L06_binary_heap/CMakeLists.txt"
+    },
+    {
+      "exercise": "L06",
+      "step": "ctest-release",
+      "exit_code": 0,
+      "seconds": 1.364,
+      "tail": "2/3 Test #2: L06_binary_heap_validation_good ...........   Passed    0.43 sec\n    Start 3: L06_binary_heap_validation_bad_rejected\n3/3 Test #3: L06_binary_heap_validation_bad_rejected ...   Passed    0.45 sec\n\n100% tests passed, 0 tests failed out of 3\n\nLabel Time Summary:\nnegative      =   0.45 sec*proc (1 test)\nreference     =   0.43 sec*proc (1 test)\nvalidation    =   0.43 sec*proc (1 test)\n\nTotal Test time (real) =   1.32 sec"
+    },
+    {
+      "exercise": "L06",
+      "step": "student-configure",
+      "exit_code": 0,
+      "seconds": 2.379,
+      "tail": "-- Building for: Visual Studio 18 2026\n-- The CXX compiler identification is MSVC 19.51.36256.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring done (2.2s)\n-- Generating done (0.1s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L06_binary_heap/build-review-student"
+    },
+    {
+      "exercise": "L06",
+      "step": "student-build-debug",
+      "exit_code": 0,
+      "seconds": 1.949,
+      "tail": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L06_binary_heap/CMakeLists.txt\n  heap_checks.cpp\n  L06_binary_heap_student.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\L06_binary_heap\\build-review-student\\Debug\\L06_binary_heap_student.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L06_binary_heap/CMakeLists.txt"
+    },
+    {
+      "exercise": "L06",
+      "step": "student-ctest-debug-expected-fail",
+      "exit_code": 8,
+      "seconds": 0.497,
+      "tail": "\n\n0% tests passed, 1 tests failed out of 1\n\nLabel Time Summary:\nstudent    =   0.44 sec*proc (1 test)\n\nTotal Test time (real) =   0.44 sec\n\nThe following tests FAILED:\n\t  1 - L06_binary_heap_student (Failed)                  student\nErrors while running CTest"
+    },
+    {
+      "exercise": "L07",
+      "step": "configure",
+      "exit_code": 0,
+      "seconds": 2.463,
+      "tail": "-- Building for: Visual Studio 18 2026\n-- The CXX compiler identification is MSVC 19.51.36256.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring done (2.2s)\n-- Generating done (0.2s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L07_chained_hash/build-review"
+    },
+    {
+      "exercise": "L07",
+      "step": "build-debug",
+      "exit_code": 0,
+      "seconds": 4.154,
+      "tail": "\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L07_chained_hash/CMakeLists.txt\n  hash_checks.cpp\n  L07_chained_hash_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\L07_chained_hash\\build-review\\Debug\\L07_chained_hash_reference.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L07_chained_hash/CMakeLists.txt\n  hash_checks.cpp\n  L07_chained_hash_validation_bad.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\L07_chained_hash\\build-review\\Debug\\L07_chained_hash_validation_bad.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L07_chained_hash/CMakeLists.txt\n  hash_checks.cpp\n  L07_chained_hash_validation_good.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\L07_chained_hash\\build-review\\Debug\\L07_chained_hash_validation_good.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L07_chained_hash/CMakeLists.txt"
+    },
+    {
+      "exercise": "L07",
+      "step": "ctest-debug",
+      "exit_code": 0,
+      "seconds": 1.491,
+      "tail": "2/3 Test #2: L07_chained_hash_validation_good ...........   Passed    0.46 sec\n    Start 3: L07_chained_hash_validation_bad_rejected\n3/3 Test #3: L07_chained_hash_validation_bad_rejected ...   Passed    0.50 sec\n\n100% tests passed, 0 tests failed out of 3\n\nLabel Time Summary:\nnegative      =   0.50 sec*proc (1 test)\nreference     =   0.44 sec*proc (1 test)\nvalidation    =   0.46 sec*proc (1 test)\n\nTotal Test time (real) =   1.41 sec"
+    },
+    {
+      "exercise": "L07",
+      "step": "build-release",
+      "exit_code": 0,
+      "seconds": 4.275,
+      "tail": "\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L07_chained_hash/CMakeLists.txt\n  hash_checks.cpp\n  L07_chained_hash_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\L07_chained_hash\\build-review\\Release\\L07_chained_hash_reference.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L07_chained_hash/CMakeLists.txt\n  hash_checks.cpp\n  L07_chained_hash_validation_bad.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\L07_chained_hash\\build-review\\Release\\L07_chained_hash_validation_bad.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L07_chained_hash/CMakeLists.txt\n  hash_checks.cpp\n  L07_chained_hash_validation_good.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\L07_chained_hash\\build-review\\Release\\L07_chained_hash_validation_good.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L07_chained_hash/CMakeLists.txt"
+    },
+    {
+      "exercise": "L07",
+      "step": "ctest-release",
+      "exit_code": 0,
+      "seconds": 1.361,
+      "tail": "2/3 Test #2: L07_chained_hash_validation_good ...........   Passed    0.42 sec\n    Start 3: L07_chained_hash_validation_bad_rejected\n3/3 Test #3: L07_chained_hash_validation_bad_rejected ...   Passed    0.45 sec\n\n100% tests passed, 0 tests failed out of 3\n\nLabel Time Summary:\nnegative      =   0.45 sec*proc (1 test)\nreference     =   0.42 sec*proc (1 test)\nvalidation    =   0.42 sec*proc (1 test)\n\nTotal Test time (real) =   1.31 sec"
+    },
+    {
+      "exercise": "L07",
+      "step": "student-configure",
+      "exit_code": 0,
+      "seconds": 2.363,
+      "tail": "-- Building for: Visual Studio 18 2026\n-- The CXX compiler identification is MSVC 19.51.36256.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring done (2.2s)\n-- Generating done (0.1s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L07_chained_hash/build-review-student"
+    },
+    {
+      "exercise": "L07",
+      "step": "student-build-debug",
+      "exit_code": 0,
+      "seconds": 1.858,
+      "tail": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L07_chained_hash/CMakeLists.txt\n  hash_checks.cpp\n  L07_chained_hash_student.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\L07_chained_hash\\build-review-student\\Debug\\L07_chained_hash_student.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L07_chained_hash/CMakeLists.txt"
+    },
+    {
+      "exercise": "L07",
+      "step": "student-ctest-debug-expected-fail",
+      "exit_code": 8,
+      "seconds": 0.49,
+      "tail": "\n\n0% tests passed, 1 tests failed out of 1\n\nLabel Time Summary:\nstudent    =   0.42 sec*proc (1 test)\n\nTotal Test time (real) =   0.44 sec\n\nThe following tests FAILED:\n\t  1 - L07_chained_hash_student (Failed)                 student\nErrors while running CTest"
+    },
+    {
+      "exercise": "L08",
+      "step": "configure",
+      "exit_code": 0,
+      "seconds": 2.56,
+      "tail": "-- Building for: Visual Studio 18 2026\n-- The CXX compiler identification is MSVC 19.51.36256.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring done (2.3s)\n-- Generating done (0.2s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L08_avl_tree/build-review"
+    },
+    {
+      "exercise": "L08",
+      "step": "build-debug",
+      "exit_code": 0,
+      "seconds": 4.479,
+      "tail": "\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L08_avl_tree/CMakeLists.txt\n  avl_checks.cpp\n  L08_avl_tree_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\L08_avl_tree\\build-review\\Debug\\L08_avl_tree_reference.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L08_avl_tree/CMakeLists.txt\n  avl_checks.cpp\n  L08_avl_tree_validation_bad.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\L08_avl_tree\\build-review\\Debug\\L08_avl_tree_validation_bad.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L08_avl_tree/CMakeLists.txt\n  avl_checks.cpp\n  L08_avl_tree_validation_good.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\L08_avl_tree\\build-review\\Debug\\L08_avl_tree_validation_good.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L08_avl_tree/CMakeLists.txt"
+    },
+    {
+      "exercise": "L08",
+      "step": "ctest-debug",
+      "exit_code": 0,
+      "seconds": 1.419,
+      "tail": "2/3 Test #2: L08_avl_tree_validation_good ...........   Passed    0.46 sec\n    Start 3: L08_avl_tree_validation_bad_rejected\n3/3 Test #3: L08_avl_tree_validation_bad_rejected ...   Passed    0.46 sec\n\n100% tests passed, 0 tests failed out of 3\n\nLabel Time Summary:\nnegative      =   0.46 sec*proc (1 test)\nreference     =   0.44 sec*proc (1 test)\nvalidation    =   0.46 sec*proc (1 test)\n\nTotal Test time (real) =   1.37 sec"
+    },
+    {
+      "exercise": "L08",
+      "step": "build-release",
+      "exit_code": 0,
+      "seconds": 4.05,
+      "tail": "\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L08_avl_tree/CMakeLists.txt\n  avl_checks.cpp\n  L08_avl_tree_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\L08_avl_tree\\build-review\\Release\\L08_avl_tree_reference.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L08_avl_tree/CMakeLists.txt\n  avl_checks.cpp\n  L08_avl_tree_validation_bad.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\L08_avl_tree\\build-review\\Release\\L08_avl_tree_validation_bad.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L08_avl_tree/CMakeLists.txt\n  avl_checks.cpp\n  L08_avl_tree_validation_good.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\L08_avl_tree\\build-review\\Release\\L08_avl_tree_validation_good.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L08_avl_tree/CMakeLists.txt"
+    },
+    {
+      "exercise": "L08",
+      "step": "ctest-release",
+      "exit_code": 0,
+      "seconds": 1.444,
+      "tail": "2/3 Test #2: L08_avl_tree_validation_good ...........   Passed    0.42 sec\n    Start 3: L08_avl_tree_validation_bad_rejected\n3/3 Test #3: L08_avl_tree_validation_bad_rejected ...   Passed    0.45 sec\n\n100% tests passed, 0 tests failed out of 3\n\nLabel Time Summary:\nnegative      =   0.45 sec*proc (1 test)\nreference     =   0.42 sec*proc (1 test)\nvalidation    =   0.42 sec*proc (1 test)\n\nTotal Test time (real) =   1.31 sec"
+    },
+    {
+      "exercise": "L08",
+      "step": "student-configure",
+      "exit_code": 0,
+      "seconds": 2.359,
+      "tail": "-- Building for: Visual Studio 18 2026\n-- The CXX compiler identification is MSVC 19.51.36256.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring done (2.2s)\n-- Generating done (0.1s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L08_avl_tree/build-review-student"
+    },
+    {
+      "exercise": "L08",
+      "step": "student-build-debug",
+      "exit_code": 0,
+      "seconds": 1.77,
+      "tail": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L08_avl_tree/CMakeLists.txt\n  avl_checks.cpp\n  L08_avl_tree_student.vcxproj -> F:\\CPPTrain\\LearnCPP\\C06_Ranges\\exercises\\L08_avl_tree\\build-review-student\\Debug\\L08_avl_tree_student.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C06_Ranges/exercises/L08_avl_tree/CMakeLists.txt"
+    },
+    {
+      "exercise": "L08",
+      "step": "student-ctest-debug-expected-fail",
+      "exit_code": 8,
+      "seconds": 0.503,
+      "tail": "\n\n0% tests passed, 1 tests failed out of 1\n\nLabel Time Summary:\nstudent    =   0.44 sec*proc (1 test)\n\nTotal Test time (real) =   0.45 sec\n\nThe following tests FAILED:\n\t  1 - L08_avl_tree_student (Failed)                     student\nErrors while running CTest"
+    }
+  ],
+  "source_hashes": [
+    {
+      "path": "C06_Ranges/chapters/05-associative-containers.md",
+      "git_hash_object": "7b25396434c00db54cf27e904a7de3f838cdd1fc"
+    },
+    {
+      "path": "C06_Ranges/chapters/06-algorithm-contracts.md",
+      "git_hash_object": "1e47032b7da233eef8643d6757f4d10c46a7de66"
+    },
+    {
+      "path": "C06_Ranges/chapters/07-heap-hash-avl.md",
+      "git_hash_object": "a60ac9a6ad3cafc66873daa8bef9266ec3b3bf37"
+    },
+    {
+      "path": "C06_Ranges/exercises/L03_associative_containers/CMakeLists.txt",
+      "git_hash_object": "fdc5ffa97465776f21e41ea80c187f9a04a8fe2a"
+    },
+    {
+      "path": "C06_Ranges/exercises/L03_associative_containers/main.cpp",
+      "git_hash_object": "042462a7e30d671000a80d5ef484d35eadcf7457"
+    },
+    {
+      "path": "C06_Ranges/exercises/L03_associative_containers/README.md",
+      "git_hash_object": "d2274487c6ef758766b4be4f8ef0e0bef944ac89"
+    },
+    {
+      "path": "C06_Ranges/exercises/L04_algorithms/CMakeLists.txt",
+      "git_hash_object": "429b2d7bb0cb061b038037963f0301d493e1d07a"
+    },
+    {
+      "path": "C06_Ranges/exercises/L04_algorithms/main.cpp",
+      "git_hash_object": "a1743d72ef61a7f26e39eea81ac709692c9d00d7"
+    },
+    {
+      "path": "C06_Ranges/exercises/L04_algorithms/README.md",
+      "git_hash_object": "c75fed8fc18086eb9fcbbf96cf2175521ac9640f"
+    },
+    {
+      "path": "C06_Ranges/exercises/L06_binary_heap/checks/heap_checks.cpp",
+      "git_hash_object": "345b887697680e3ad41b53fcecc5017d07eb7979"
+    },
+    {
+      "path": "C06_Ranges/exercises/L06_binary_heap/CMakeLists.txt",
+      "git_hash_object": "987e3345b61d0e7c7b4c4389ab5c1e43be5960e0"
+    },
+    {
+      "path": "C06_Ranges/exercises/L06_binary_heap/README.md",
+      "git_hash_object": "1bd52055db441e45e3aa7ab9616eda4344935d5f"
+    },
+    {
+      "path": "C06_Ranges/exercises/L06_binary_heap/src/reference/finite_max_heap.hpp",
+      "git_hash_object": "2f52a385f4414878d1194eb2cb338401d5eadf63"
+    },
+    {
+      "path": "C06_Ranges/exercises/L06_binary_heap/src/student/finite_max_heap.hpp",
+      "git_hash_object": "eef08f63c012cd9fd378cb1523af7a2dd10c30ba"
+    },
+    {
+      "path": "C06_Ranges/exercises/L06_binary_heap/validation/bad/finite_max_heap.hpp",
+      "git_hash_object": "7f6c80a7eb6962959cc083c1f3486f8d8e2d963b"
+    },
+    {
+      "path": "C06_Ranges/exercises/L06_binary_heap/validation/good/finite_max_heap.hpp",
+      "git_hash_object": "9230bd22f5d32ebcd82456a9eed765f744dce456"
+    },
+    {
+      "path": "C06_Ranges/exercises/L07_chained_hash/checks/hash_checks.cpp",
+      "git_hash_object": "69801c2abc80c2554dda7e33bdb776f94bd897b4"
+    },
+    {
+      "path": "C06_Ranges/exercises/L07_chained_hash/CMakeLists.txt",
+      "git_hash_object": "5d8261532aa88d0d35f71127f58811d31df25bd1"
+    },
+    {
+      "path": "C06_Ranges/exercises/L07_chained_hash/README.md",
+      "git_hash_object": "a873ce830c2451e3ec1b1adb9f05438e19a478ac"
+    },
+    {
+      "path": "C06_Ranges/exercises/L07_chained_hash/src/reference/chained_hash.hpp",
+      "git_hash_object": "a3b1678375224c5de5259b52006fed28bb45af57"
+    },
+    {
+      "path": "C06_Ranges/exercises/L07_chained_hash/src/student/chained_hash.hpp",
+      "git_hash_object": "033d6aae46f35374de7d42ff258a7cba2e874dac"
+    },
+    {
+      "path": "C06_Ranges/exercises/L07_chained_hash/validation/bad/chained_hash.hpp",
+      "git_hash_object": "69e91dd1223b19cdc2219a9ff7a4147d2c92c0dc"
+    },
+    {
+      "path": "C06_Ranges/exercises/L07_chained_hash/validation/good/chained_hash.hpp",
+      "git_hash_object": "19d6c04fa5a88c6f94d41f59be20a0b7b863e212"
+    },
+    {
+      "path": "C06_Ranges/exercises/L08_avl_tree/checks/avl_checks.cpp",
+      "git_hash_object": "8f249dfde3447a885374a261f4979c70a86e6299"
+    },
+    {
+      "path": "C06_Ranges/exercises/L08_avl_tree/CMakeLists.txt",
+      "git_hash_object": "90d20b58a48dbee6438f0f60dc4952c71790afe3"
+    },
+    {
+      "path": "C06_Ranges/exercises/L08_avl_tree/README.md",
+      "git_hash_object": "4c8e382eee82af747da1d8d77f27ad8470f826d6"
+    },
+    {
+      "path": "C06_Ranges/exercises/L08_avl_tree/src/reference/avl_set.hpp",
+      "git_hash_object": "9c1d0effe96c68908811cb0b672738d304ac8a67"
+    },
+    {
+      "path": "C06_Ranges/exercises/L08_avl_tree/src/student/avl_set.hpp",
+      "git_hash_object": "0ae5448bea643440267038dc6b56309110a984a5"
+    },
+    {
+      "path": "C06_Ranges/exercises/L08_avl_tree/validation/bad/avl_set.hpp",
+      "git_hash_object": "0c420e8bc5813eb973fdd8cf9b8a8d70504aaa0e"
+    },
+    {
+      "path": "C06_Ranges/exercises/L08_avl_tree/validation/good/avl_set.hpp",
+      "git_hash_object": "c5a3e2e58c0186d5743db3ad161117e5b0c69a4e"
+    }
+  ]
+}

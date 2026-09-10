@@ -12,11 +12,14 @@
 //   tag_invoke connect -> 10
 //   both customizations work
 
+#include <check.hpp>
+
 #include <ranges>
 #include <iterator>
 #include <concepts>
 #include <cstddef>
 #include <iostream>
+#include <vector>
 
 
 // ============================================================
@@ -107,6 +110,15 @@ public:
 };
 
 
+
+namespace adl_demo {
+class FreeBeginRange {
+    int data_[2] = {7, 8};
+public:
+    friend int* begin(FreeBeginRange& r) { return r.data_; }
+    friend int* end(FreeBeginRange& r) { return r.data_ + 2; }
+};
+} // namespace adl_demo
 // ============================================================
 // 四维度对照（注释形式）
 //
@@ -177,19 +189,29 @@ void demo_dual_customization() {
 
     // 通过 ranges CPO 访问（走成员 begin 路径）：
     auto it = std::ranges::begin(mc);
+    check(*it == 10, "ranges::begin uses the member begin path");
     std::cout << "ranges::begin   -> " << *it << '\n';  // 10
 
     std::size_t sz = std::ranges::size(mc);
+    check(sz == 4, "ranges::size calls the member size path");
     std::cout << "ranges::size    -> " << sz << '\n';   // 4
 
+    std::vector<int> seen;
     std::cout << "range-for loop  -> ";
-    for (int x : mc)
+    for (int x : mc) {
+        seen.push_back(x);
         std::cout << x << ' ';
+    }
+    check(seen == std::vector<int>({10, 20, 30, 40}), "range-for consumes the member begin/end pair");
     std::cout << '\n';  // 10 20 30 40
 
     // 通过 tag_invoke 访问（走 friend tag_invoke 路径）：
     int first = my_exec::connect(mc);
+    check(first == 10, "tag_invoke connect dispatch returns the first element");
     std::cout << "tag_invoke connect -> " << first << '\n';  // 10
+
+    adl_demo::FreeBeginRange free_range;
+    check(*std::ranges::begin(free_range) == 7, "ranges::begin uses the ADL fallback path when no member exists");
 
     std::cout << "both customizations work\n";
 }
