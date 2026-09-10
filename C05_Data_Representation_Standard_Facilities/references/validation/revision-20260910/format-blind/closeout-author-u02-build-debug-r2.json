@@ -1,0 +1,24 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "C05_Data_Representation_Standard_Facilities/exercises/build/leaf-U02-fmt",
+    "--config",
+    "Debug",
+    "--target",
+    "U02_fmt_observation"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.75,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  fmt.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\leaf-U02-fmt\\_deps\\fmt-12.1.0-build\\Debug\\fmtd.lib\n  U02_fmt_observation.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\leaf-U02-fmt\\Debug\\U02_fmt_observation.exe\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

@@ -1,0 +1,24 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "build/delivery-leaves-r1/F01_frontier",
+    "--config",
+    "Release",
+    "--parallel",
+    "2"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 4.952999999979511,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/F01_frontier/CMakeLists.txt\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/F01_frontier/CMakeLists.txt\n  bitops_permutation_c29.cpp\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/F01_frontier/CMakeLists.txt\n  bitops_shift_c29.cpp\n  charconv_result_bool.cpp\n  F01_bitops_permutation_c29.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\delivery-leaves-r1\\F01_frontier\\Release\\F01_bitops_permutation_c29.exe\n  F01_bitops_shift_c29.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\delivery-leaves-r1\\F01_frontier\\Release\\F01_bitops_shift_c29.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/F01_frontier/CMakeLists.txt\n  F01_charconv_result_bool.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\delivery-leaves-r1\\F01_frontier\\Release\\F01_charconv_result_bool.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/F01_frontier/CMakeLists.txt\n  error_code_formatter_c29.cpp\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/F01_frontier/CMakeLists.txt\n  format_float_c29.cpp\n  path_formatter.cpp\n  F01_error_code_formatter_c29.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\delivery-leaves-r1\\F01_frontier\\Release\\F01_error_code_formatter_c29.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/F01_frontier/CMakeLists.txt\n  runtime_format.cpp\n  F01_format_float_c29.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\delivery-leaves-r1\\F01_frontier\\Release\\F01_format_float_c29.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/F01_frontier/CMakeLists.txt\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/F01_frontier/CMakeLists.txt\n  to_string_semantics.cpp\n  text_encoding_locale.cpp\n  F01_path_formatter.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\delivery-leaves-r1\\F01_frontier\\Release\\F01_path_formatter.exe\n  F01_runtime_format.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\delivery-leaves-r1\\F01_frontier\\Release\\F01_runtime_format.exe\n  F01_to_string_semantics.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\delivery-leaves-r1\\F01_frontier\\Release\\F01_to_string_semantics.exe\n  F01_text_encoding_locale.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\delivery-leaves-r1\\F01_frontier\\Release\\F01_text_encoding_locale.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/F01_frontier/CMakeLists.txt\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

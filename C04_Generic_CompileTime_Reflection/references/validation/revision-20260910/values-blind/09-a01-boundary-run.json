@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C04_Generic_CompileTime_Reflection\\build\\vb-probes\\Debug\\a01_boundary_probe.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.5,
+  "stdout": "A01 boundary gap reproduced: implementation accepts 16-char and non-ASCII keys\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [
+    "A01 boundary gap reproduced"
+  ],
+  "verdict": "PASS"
+}

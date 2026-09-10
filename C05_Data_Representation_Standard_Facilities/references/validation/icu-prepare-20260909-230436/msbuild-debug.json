@@ -1,0 +1,23 @@
+{
+  "name": "msbuild-debug",
+  "command": [
+    "D:\\VisualStudio2026\\Installed\\MSBuild\\Current\\Bin\\MSBuild.exe",
+    "F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\_deps\\icu-77.1\\source\\icu-77.1-source\\icu4c\\source\\allinone\\allinone.sln",
+    "/m:1",
+    "/t:Build",
+    "/p:Configuration=Debug",
+    "/p:Platform=x64",
+    "/p:PlatformToolset=v145",
+    "/p:SkipUWP=true"
+  ],
+  "cwd": "F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\_deps\\icu-77.1\\source\\icu-77.1-source\\icu4c",
+  "started_utc": "2026-09-09T15:05:13.9446693Z",
+  "ended_utc": "2026-09-09T15:07:45.1025455Z",
+  "elapsed_seconds": 151.158,
+  "timeout_seconds": 3600,
+  "timed_out": false,
+  "exit_code": 0,
+  "stdout_file": "F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\references\\validation\\icu-prepare-20260909-230436\\msbuild-debug.stdout.txt",
+  "stderr_file": "F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\references\\validation\\icu-prepare-20260909-230436\\msbuild-debug.stderr.txt",
+  "verdict": "PASS"
+}

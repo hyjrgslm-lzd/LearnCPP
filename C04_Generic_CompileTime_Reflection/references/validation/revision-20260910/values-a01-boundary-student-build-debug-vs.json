@@ -1,0 +1,22 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "C04_Generic_CompileTime_Reflection/exercises/A01_compiletime_values/build/values-student",
+    "--config",
+    "Debug"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 1.921000000089407,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/A01_compiletime_values/CMakeLists.txt\n  compiletime_values_checks.cpp\n  A01_compiletime_values_student.vcxproj -> F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\A01_compiletime_values\\build\\values-student\\Debug\\A01_compiletime_values_student.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/A01_compiletime_values/CMakeLists.txt\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C04_Generic_CompileTime_Reflection\\exercises\\build\\f01-frontier-failure-control-r2\\Release\\F01_declared_failure_control.exe"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.4220000000204891,
+  "stdout": "probe=declared_failure_control header=na macro=1 body=1\nFAIL declared capability control reached the subject body\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 1,
+  "required_text": [
+    "FAIL declared capability control"
+  ],
+  "verdict": "PASS"
+}

@@ -1,0 +1,26 @@
+{
+  "command": [
+    "cmake",
+    "-S",
+    "C04_Generic_CompileTime_Reflection\\exercises\\L08_type_lists",
+    "-B",
+    "build\\revision-core\\L08_type_lists",
+    "-DGENERIC_STUDY_BUILD_REFERENCE=ON",
+    "-DGENERIC_STUDY_TEST_STUDENTS=OFF"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.7190000000409782,
+  "stdout": "-- Configuring done (0.5s)\n-- Generating done (0.1s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/build/revision-core/L08_type_lists\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [
+    "Configuring done"
+  ],
+  "verdict": "PASS"
+}

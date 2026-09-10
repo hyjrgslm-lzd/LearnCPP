@@ -1,0 +1,43 @@
+{
+  "evidence": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/meta-libs-u02-migration-20260910-134300",
+  "build_root": "C04_Generic_CompileTime_Reflection/exercises/build/meta-libs-u02-migration-20260910-134300",
+  "steps": [
+    {
+      "name": "debug-configure",
+      "verdict": "PASS",
+      "exit_code": 0,
+      "output": "C04_Generic_CompileTime_Reflection\\references\\validation\\revision-20260910\\meta-libs-u02-migration-20260910-134300\\debug-configure.json"
+    },
+    {
+      "name": "debug-build",
+      "verdict": "PASS",
+      "exit_code": 0,
+      "output": "C04_Generic_CompileTime_Reflection\\references\\validation\\revision-20260910\\meta-libs-u02-migration-20260910-134300\\debug-build.json"
+    },
+    {
+      "name": "debug-ctest",
+      "verdict": "PASS",
+      "exit_code": 0,
+      "output": "C04_Generic_CompileTime_Reflection\\references\\validation\\revision-20260910\\meta-libs-u02-migration-20260910-134300\\debug-ctest.json"
+    },
+    {
+      "name": "release-configure",
+      "verdict": "PASS",
+      "exit_code": 0,
+      "output": "C04_Generic_CompileTime_Reflection\\references\\validation\\revision-20260910\\meta-libs-u02-migration-20260910-134300\\release-configure.json"
+    },
+    {
+      "name": "release-build",
+      "verdict": "PASS",
+      "exit_code": 0,
+      "output": "C04_Generic_CompileTime_Reflection\\references\\validation\\revision-20260910\\meta-libs-u02-migration-20260910-134300\\release-build.json"
+    },
+    {
+      "name": "release-ctest",
+      "verdict": "PASS",
+      "exit_code": 0,
+      "output": "C04_Generic_CompileTime_Reflection\\references\\validation\\revision-20260910\\meta-libs-u02-migration-20260910-134300\\release-ctest.json"
+    }
+  ],
+  "verdict": "PASS"
+}

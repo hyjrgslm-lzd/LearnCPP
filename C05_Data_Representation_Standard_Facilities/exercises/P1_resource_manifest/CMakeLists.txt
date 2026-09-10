@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.28)
+project(P1_resource_manifest LANGUAGES CXX)
+include(../cmake/StudySetup.cmake)
+c05_add_exercise(NAME P1_resource_manifest HEADER pipeline.hpp CHECK checks/pipeline_checks.cpp
+    BAD_DIAGNOSTIC "creates the package file")
+foreach(variant student reference validation_good validation_bad)
+    if(TARGET P1_resource_manifest_${variant})
+        target_include_directories(P1_resource_manifest_${variant} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/provided")
+    endif()
+endforeach()

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Win32-MSBuild"
+	tests="19"
+	failures="7"
+	disabled="0"
+	skipped="0"
+	hostname="lizhidan-p02"
+	time="7"
+	timestamp="2026-09-10T00:05:27"
+	>
+	<testcase name="L01_bytes_object_representation" classname="L01_bytes_object_representation" time="0.435358" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L02_bits_endian_observation" classname="L02_bits_endian_observation" time="0.413549" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L03_integer_boundaries_student" classname="L03_integer_boundaries_student" time="0.41883" status="fail">
+		<failure message="Failed"/>
+		<properties>
+			<property name="cmake_labels" value="student"/>
+		</properties>
+		<system-out>check failed: keeps zero
+</system-out>
+	</testcase>
+	<testcase name="L04_strings_views_observation" classname="L04_strings_views_observation" time="0.416938" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L05_unicode_observation" classname="L05_unicode_observation" time="0.41935" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L06_transcoding_student" classname="L06_transcoding_student" time="0.414063" status="fail">
+		<failure message="Failed"/>
+		<properties>
+			<property name="cmake_labels" value="student"/>
+		</properties>
+		<system-out>check failed: preserves embedded nul
+</system-out>
+	</testcase>
+	<testcase name="L07_text_semantics_observation" classname="L07_text_semantics_observation" time="0.0270356" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L07_text_semantics_bad_identity_rejected" classname="L07_text_semantics_bad_identity_rejected" time="0.459523" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>-- Rejected the intended bad implementation: canonical-equivalence is not byte identity
+</system-out>
+	</testcase>
+	<testcase name="L08_parsing_student" classname="L08_parsing_student" time="0.454398" status="fail">
+		<failure message="Failed"/>
+		<properties>
+			<property name="cmake_labels" value="student"/>
+		</properties>
+		<system-out>check failed: parses decimal u32
+</system-out>
+	</testcase>
+	<testcase name="L09_formatting_observation" classname="L09_formatting_observation" time="0.419682" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L09_formatting_bad_truncation_rejected" classname="L09_formatting_bad_truncation_rejected" time="0.454468" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>-- Rejected the intended bad implementation: format_to_n reports truncation
+</system-out>
+	</testcase>
+	<testcase name="L10_clocks_durations_observation" classname="L10_clocks_durations_observation" time="0.422426" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L11_calendar_zones_utc" classname="L11_calendar_zones_utc" time="0.421018" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L11_calendar_zones_tzdb" classname="L11_calendar_zones_tzdb" time="0.430483" status="run">
+		<properties>
+			<property name="cmake_labels" value="capability"/>
+		</properties>
+		<system-out>tzdb version: 2022g.27
+</system-out>
+	</testcase>
+	<testcase name="L12_paths_observation" classname="L12_paths_observation" time="0.404388" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L13_configuration_student" classname="L13_configuration_student" time="0.414754" status="fail">
+		<failure message="Failed"/>
+		<properties>
+			<property name="cmake_labels" value="student"/>
+		</properties>
+		<system-out>check failed: empty config keeps defaults
+</system-out>
+	</testcase>
+	<testcase name="L14_binary_fields_student" classname="L14_binary_fields_student" time="0.402516" status="fail">
+		<failure message="Failed"/>
+		<properties>
+			<property name="cmake_labels" value="student"/>
+		</properties>
+		<system-out>check failed: reads valid utf8 field and preserves nul
+</system-out>
+	</testcase>
+	<testcase name="L15_schema_evolution_student" classname="L15_schema_evolution_student" time="0.446601" status="fail">
+		<failure message="Failed"/>
+		<properties>
+			<property name="cmake_labels" value="student"/>
+		</properties>
+		<system-out>check failed: v1 writer matches independent golden bytes
+</system-out>
+	</testcase>
+	<testcase name="P1_resource_manifest_student" classname="P1_resource_manifest_student" time="0.41647" status="fail">
+		<failure message="Failed"/>
+		<properties>
+			<property name="cmake_labels" value="student"/>
+		</properties>
+		<system-out>check failed: pipeline succeeds for valid input
+</system-out>
+	</testcase>
+</testsuite>

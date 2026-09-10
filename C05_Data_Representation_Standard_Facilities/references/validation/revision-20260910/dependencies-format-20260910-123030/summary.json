@@ -1,0 +1,38 @@
+﻿{
+    "verdict":  "PASS",
+    "generated_utc":  "2026-09-10T04:30:36.2911687Z",
+    "deps_root":  "F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\_deps",
+    "evidence_dir":  "F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\references\\validation\\revision-20260910\\dependencies-format-20260910-123030",
+    "dependencies":  [
+                         {
+                             "name":  "fmt",
+                             "verdict":  "PASS",
+                             "repo_url":  "https://github.com/fmtlib/fmt.git",
+                             "required_commit":  "407c905e45ad75fc29bf0f9bb7c5c2fd3475976f",
+                             "actual_commit":  "407c905e45ad75fc29bf0f9bb7c5c2fd3475976f",
+                             "prefix":  "F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\_deps\\fmt-12.1.0",
+                             "source_dir":  "F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\_deps\\fmt-12.1.0\\source",
+                             "license":  "F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\_deps\\fmt-12.1.0\\source\\LICENSE",
+                             "license_sha256":  "25b5db04aa6070c12ac518b91cbd0a59725c050ecb091456e6ebc3d3eeb369cf",
+                             "headers":  [
+                                             "include\\fmt\\format.h",
+                                             "CMakeLists.txt"
+                                         ]
+                         },
+                         {
+                             "name":  "spdlog",
+                             "verdict":  "PASS",
+                             "repo_url":  "https://github.com/gabime/spdlog.git",
+                             "required_commit":  "79524ddd08a4ec981b7fea76afd08ee05f83755d",
+                             "actual_commit":  "79524ddd08a4ec981b7fea76afd08ee05f83755d",
+                             "prefix":  "F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\_deps\\spdlog-1.17.0",
+                             "source_dir":  "F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\_deps\\spdlog-1.17.0\\source",
+                             "license":  "F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\_deps\\spdlog-1.17.0\\source\\LICENSE",
+                             "license_sha256":  "d8cfaae20761042ac00dff862a1a9f31a437cbe337ea9aa8c13285222b7086c5",
+                             "headers":  [
+                                             "include\\spdlog\\spdlog.h",
+                                             "CMakeLists.txt"
+                                         ]
+                         }
+                     ]
+}

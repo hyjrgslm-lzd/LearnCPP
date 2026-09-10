@@ -1,0 +1,21 @@
+{
+  "command": [
+    "powershell",
+    "-NoProfile",
+    "-Command",
+    "Get-FileHash C04_Generic_CompileTime_Reflection/exercises/A04_type_pipelines/validation/good/type_pipelines.hpp,C04_Generic_CompileTime_Reflection/exercises/A05_expression_templates/validation/good/expression_templates.hpp -Algorithm SHA256"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.31200000015087426,
+  "stdout": "",
+  "stderr": "Get-FileHash : �޷�����Get-FileHash����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ\n��·����ȷ��Ȼ������һ�Ρ�\n����λ�� ��:1 �ַ�: 1\n+ Get-FileHash C04_Generic_CompileTime_Reflection/exercises/A04_type_pi ...\n+ ~~~~~~~~~~~~\n    + CategoryInfo          : ObjectNotFound: (Get-FileHash:String) [], CommandNotFoundException\n    + FullyQualifiedErrorId : CommandNotFoundException\n \n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "FAIL"
+}

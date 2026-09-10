@@ -1,0 +1,59 @@
+#pragma once
+
+#include <cstddef>
+
+namespace c04 {
+
+template<class... Ts>
+inline constexpr auto count_types = sizeof...(Ts);
+
+template<auto... Vs>
+inline constexpr auto count_values = sizeof...(Vs);
+
+template<bool... Vs>
+inline constexpr bool all_true = false;
+
+template<bool... Vs>
+inline constexpr bool any_true = false;
+
+template<auto... Vs>
+inline constexpr auto sum_values = 0;
+
+template<auto... Vs>
+inline constexpr auto left_subtract = 0;
+
+template<auto... Vs>
+inline constexpr auto right_subtract = 0;
+
+template<class... Fs>
+constexpr void call_in_order(Fs&&...) {}
+
+template<auto V>
+struct constant {
+    static constexpr auto value = V;
+};
+
+template<std::size_t N>
+struct fixed_string {
+    char value[N]{};
+
+    constexpr fixed_string(const char (&text)[N]) {
+        for (std::size_t i = 0; i != N; ++i) {
+            value[i] = text[i];
+        }
+    }
+};
+
+template<std::size_t N>
+fixed_string(const char (&)[N]) -> fixed_string<N>;
+
+template<fixed_string Name, auto V>
+struct named_value {
+    static constexpr auto name = Name;
+    static constexpr auto value = V;
+};
+
+template<template<class> class F, class T>
+using apply_unary_template = T;
+
+} // namespace c04

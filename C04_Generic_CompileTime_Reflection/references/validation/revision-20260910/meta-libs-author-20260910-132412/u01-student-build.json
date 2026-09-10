@@ -1,0 +1,28 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\meta-libs-author-20260910-132412\\u01-student",
+    "--config",
+    "Release",
+    "--parallel",
+    "1",
+    "--target",
+    "U01_mp11_student"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.0620000001508743,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/U01_mp11/CMakeLists.txt\n  mp11_schema_checks.cpp\n  U01_mp11_student.vcxproj -> F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\meta-libs-author-20260910-132412\\u01-student\\Release\\U01_mp11_student.exe\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [
+    "U01_mp11_student"
+  ],
+  "verdict": "PASS"
+}

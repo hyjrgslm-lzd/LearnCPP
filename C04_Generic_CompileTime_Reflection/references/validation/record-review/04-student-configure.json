@@ -1,0 +1,28 @@
+{
+  "command": [
+    "cmake",
+    "-S",
+    "C04_Generic_CompileTime_Reflection/exercises/P1_static_record",
+    "-B",
+    "C04_Generic_CompileTime_Reflection/exercises/P1_static_record/build/record-review-student",
+    "-G",
+    "Visual Studio 18 2026",
+    "-A",
+    "x64",
+    "-DGENERIC_STUDY_BUILD_REFERENCE=OFF",
+    "-DGENERIC_STUDY_TEST_STUDENTS=ON"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 3.6409999998286366,
+  "stdout": "-- The CXX compiler identification is MSVC 19.51.36256.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Found Python3: C:/Users/zhidan.li/AppData/Local/Programs/Python/Python310/python.exe (found suitable version \"3.10.11\", minimum required is \"3.10\") found components: Interpreter\n-- Configuring done (3.4s)\n-- Generating done (0.1s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/P1_static_record/build/record-review-student\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

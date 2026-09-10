@@ -1,0 +1,23 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "C04_Generic_CompileTime_Reflection\\exercises\\L06_constraints\\build\\lookup-author-r2",
+    "-C",
+    "Debug",
+    "--output-on-failure"
+  ],
+  "exit_code": 8,
+  "timeout": false,
+  "process_seconds": 5.358999999938533,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/L06_constraints/build/lookup-author-r2\n    Start 1: L06_constraints_reference\n1/5 Test #1: L06_constraints_reference .................   Passed    0.45 sec\n    Start 2: L06_constraints_validation_good\n2/5 Test #2: L06_constraints_validation_good ...........   Passed    0.42 sec\n    Start 3: L06_constraints_validation_bad_rejected\n3/5 Test #3: L06_constraints_validation_bad_rejected ...   Passed    0.46 sec\n    Start 4: L06_constraints_observation\n4/5 Test #4: L06_constraints_observation ...............   Passed    0.44 sec\n    Start 5: L06_constraints_non_dependent_error\n5/5 Test #5: L06_constraints_non_dependent_error .......***Failed    3.51 sec\nFAIL: configuration must succeed; F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L06_constraints\\build\\lookup-author-r2\\diagnostic-build\\L06_constraints_non_dependent_error\\evidence-1.json\nTraceback (most recent call last):\n  File \"F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\tools\\compile_case.py\", line 76, in <module>\n    raise SystemExit(main())\n  File \"F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\tools\\compile_case.py\", line 71, in main\n    print(records[key]['stdout'] + records[key]['stderr'])\nUnicodeEncodeError: 'gbk' codec can't encode character '\\ue21a' in position 1203: illegal multibyte sequence\n\n\n80% tests passed, 1 tests failed out of 5\n\nLabel Time Summary:\ndiagnostic     =   3.51 sec*proc (1 test)\nnegative       =   0.46 sec*proc (1 test)\nobservation    =   0.44 sec*proc (1 test)\nreference      =   0.45 sec*proc (1 test)\nvalidation     =   0.42 sec*proc (1 test)\n\nTotal Test time (real) =   5.30 sec\n\nThe following tests FAILED:\n\t  5 - L06_constraints_non_dependent_error (Failed)      diagnostic\n",
+  "stderr": "Errors while running CTest\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "FAIL"
+}

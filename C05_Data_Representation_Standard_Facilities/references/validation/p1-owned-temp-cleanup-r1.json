@@ -1,0 +1,21 @@
+{
+  "scope": "Four directories created by this task before the P1 trailing-separator fix; absolute paths and owning parent were checked before native PowerShell removal",
+  "results": [
+    {
+      "path": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c05-p1-1171020501953900-0",
+      "removed": true
+    },
+    {
+      "path": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c05-p1-1171021149103800-0",
+      "removed": true
+    },
+    {
+      "path": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c05-p1-1171021589350700-0",
+      "removed": true
+    },
+    {
+      "path": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c05-p1-1171249968191800-0",
+      "removed": true
+    }
+  ]
+}

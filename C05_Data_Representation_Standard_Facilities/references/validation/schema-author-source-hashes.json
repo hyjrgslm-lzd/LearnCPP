@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "-NoProfile",
+    "-Command",
+    "Get-ChildItem ../chapters/15-schema-evolution.md,include/c05/manifest.hpp,L15_schema_evolution -Recurse -File | Sort-Object FullName | Get-FileHash -Algorithm SHA256 | Select-Object Hash,Path | ConvertTo-Json -Depth 3"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.5150000001303852,
+  "stdout": "[\n  {\n    \"Hash\": \"E1F9A717306E216D4DE7439F46AB0D79C1192AA03103CAB9CFC5200DDF450ECD\",\n    \"Path\": \"F:\\\\CPPTrain\\\\LearnCPP\\\\C05_Data_Representation_Standard_Facilities\\\\chapters\\\\15-schema-evolution.md\"\n  },\n  {\n    \"Hash\": \"A47DE196A7A2A5F33DA3E5542CB8B5C086D8B6DF6615135836D83F15080B76B5\",\n    \"Path\": \"F:\\\\CPPTrain\\\\LearnCPP\\\\C05_Data_Representation_Standard_Facilities\\\\exercises\\\\include\\\\c05\\\\manifest.hpp\"\n  },\n  {\n    \"Hash\": \"5B8AD6E44C0031BB77A149F84EB722AD15CDE41EFA92FDFB81FA281B375EA2D1\",\n    \"Path\": \"F:\\\\CPPTrain\\\\LearnCPP\\\\C05_Data_Representation_Standard_Facilities\\\\exercises\\\\L15_schema_evolution\\\\checks\\\\schema_checks.cpp\"\n  },\n  {\n    \"Hash\": \"26453165DDA624BA8501F0A5D3C498C283573BE85E716123214D2D3610C6EC02\",\n    \"Path\": \"F:\\\\CPPTrain\\\\LearnCPP\\\\C05_Data_Representation_Standard_Facilities\\\\exercises\\\\L15_schema_evolution\\\\CMakeLists.txt\"\n  },\n  {\n    \"Hash\": \"647FF1B01DBD1427DDF4DE51474ABD7DA19E04D7BFD175713A84234BB04D1C46\",\n    \"Path\": \"F:\\\\CPPTrain\\\\LearnCPP\\\\C05_Data_Representation_Standard_Facilities\\\\exercises\\\\L15_schema_evolution\\\\provided\\\\v1_reader.hpp\"\n  },\n  {\n    \"Hash\": \"8D4D70BD2CD04A9C3AFD912ECF5847BB0040DBF7F5EF9EACDD6105B2D2FDA42B\",\n    \"Path\": \"F:\\\\CPPTrain\\\\LearnCPP\\\\C05_Data_Representation_Standard_Facilities\\\\exercises\\\\L15_schema_evolution\\\\README.md\"\n  },\n  {\n    \"Hash\": \"0757A8E76841501AEF655B9BFEFC09DDC46D25882485F760D0A62FC90F2EC63E\",\n    \"Path\": \"F:\\\\CPPTrain\\\\LearnCPP\\\\C05_Data_Representation_Standard_Facilities\\\\exercises\\\\L15_schema_evolution\\\\src\\\\reference\\\\schema_evolution.hpp\"\n  },\n  {\n    \"Hash\": \"CB9AC4C3B81D73E3048533E87125546D9A8842218EBA2B31D381FEC11A95A8F7\",\n    \"Path\": \"F:\\\\CPPTrain\\\\LearnCPP\\\\C05_Data_Representation_Standard_Facilities\\\\exercises\\\\L15_schema_evolution\\\\src\\\\student\\\\schema_evolution.hpp\"\n  },\n  {\n    \"Hash\": \"082651FAF0755B9FBEFF9672EB30C0D5178C24A81AD04B124007D7E7E7ABFE0D\",\n    \"Path\": \"F:\\\\CPPTrain\\\\LearnCPP\\\\C05_Data_Representation_Standard_Facilities\\\\exercises\\\\L15_schema_evolution\\\\validation\\\\bad\\\\schema_evolution.hpp\"\n  },\n  {\n    \"Hash\": \"7F394A906F90C500EE2DEC23207CB5FA499D91B23B8809F73275458C2F417783\",\n    \"Path\": \"F:\\\\CPPTrain\\\\LearnCPP\\\\C05_Data_Representation_Standard_Facilities\\\\exercises\\\\L15_schema_evolution\\\\validation\\\\good\\\\schema_evolution.hpp\"\n  }\n]\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

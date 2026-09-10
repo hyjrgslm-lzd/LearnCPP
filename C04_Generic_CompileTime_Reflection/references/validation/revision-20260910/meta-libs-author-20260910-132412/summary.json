@@ -1,0 +1,13 @@
+{
+  "generated_utc": "2026-09-10T05:25:20.1933157Z",
+  "verdict": "PASS",
+  "checks": [
+    "U01 Debug configure/build/ctest with unfamiliar Ticket record",
+    "U01 Release configure/build/ctest with unfamiliar Ticket record",
+    "U02 Debug configure/build/ctest",
+    "U02 Release configure/build/ctest",
+    "U01 Student-only configure/build and expected ctest failure",
+    "U01/U02 OFF configure early return"
+  ],
+  "evidence_dir": "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\references\\validation\\revision-20260910\\meta-libs-author-20260910-132412"
+}

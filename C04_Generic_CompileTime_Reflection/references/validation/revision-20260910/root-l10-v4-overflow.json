@@ -1,0 +1,25 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "build/c04-l10-v4",
+    "-C",
+    "Debug",
+    "-R",
+    "L10_decimal_overflow_diagnostic",
+    "--output-on-failure"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 6.436999999918044,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/build/c04-l10-v4\n    Start 10: L10_decimal_overflow_diagnostic\n1/1 Test #10: L10_decimal_overflow_diagnostic ...   Passed    6.38 sec\n\n100% tests passed, 0 tests failed out of 1\n\nLabel Time Summary:\ndiagnostic    =   6.38 sec*proc (1 test)\n\nTotal Test time (real) =   6.38 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

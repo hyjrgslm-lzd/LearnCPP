@@ -1,0 +1,26 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\dependency-probes\\format-std-build-20260910-123814",
+    "--config",
+    "Release",
+    "--parallel",
+    "1"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 14.406999999890104,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/build/_deps/spdlog-1.17.0/source/CMakeLists.txt\n  spdlog.cpp\n  stdout_sinks.cpp\n  color_sinks.cpp\n  file_sinks.cpp\n  async.cpp\n  cfg.cpp\n  正在生成代码...\n  spdlog.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\dependency-probes\\format-std-build-20260910-123814\\_deps\\spdlog-1.17.0-build\\Release\\spdlog.lib\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/build/dependency-probes/format-std-src/CMakeLists.txt\n  main.cpp\n  c05_format_std_probe.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\dependency-probes\\format-std-build-20260910-123814\\Release\\c05_format_std_probe.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/build/dependency-probes/format-std-src/CMakeLists.txt\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [
+    "c05_format_std_probe"
+  ],
+  "verdict": "PASS"
+}

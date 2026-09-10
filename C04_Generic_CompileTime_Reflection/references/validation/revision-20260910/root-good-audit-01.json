@@ -1,0 +1,27 @@
+{
+  "verdict": "PASS",
+  "failures": [],
+  "targets": [
+    "A01_compiletime_values_validation_good",
+    "A02_field_projection_validation_good",
+    "A03_explicit_object_validation_good",
+    "A04_type_pipelines_validation_good",
+    "A05_expression_templates_validation_good",
+    "L01_templates_validation_good",
+    "L02_deduction_validation_good",
+    "L03_forwarding_validation_good",
+    "L04_lookup_validation_good",
+    "L05_overload_validation_good",
+    "L06_constraints_validation_good",
+    "L07_packs_validation_good",
+    "L08_type_lists_validation_good",
+    "L09_tuple_validation_good",
+    "L10_constexpr_validation_good",
+    "L11_customization_validation_good",
+    "P1_static_record_validation_good",
+    "U01_mp11_validation_good"
+  ],
+  "actual_include_count": 2742,
+  "trace_sha256": "e3b6f6433894b4112d7f4664b6b3af10e42849ca126dd4f93f03a0818c6225e8",
+  "scope": "build inputs and actual includes; not proof of independent authorship"
+}

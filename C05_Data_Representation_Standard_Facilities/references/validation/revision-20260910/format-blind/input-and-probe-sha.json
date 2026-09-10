@@ -1,0 +1,21 @@
+{
+  "command": [
+    "powershell",
+    "-NoProfile",
+    "-Command",
+    "=@('C05_Data_Representation_Standard_Facilities/chapters/09-formatting-and-locales.md','C05_Data_Representation_Standard_Facilities/chapters/19-fmt-library.md','C05_Data_Representation_Standard_Facilities/chapters/20-spdlog-frontend.md','C05_Data_Representation_Standard_Facilities/exercises/U02_fmt/README.md','C05_Data_Representation_Standard_Facilities/exercises/U03_spdlog/README.md','C05_Data_Representation_Standard_Facilities/references/validation/revision-20260910/format-blind/CMakeLists.txt','C05_Data_Representation_Standard_Facilities/references/validation/revision-20260910/format-blind/fmt_probe.cpp','C05_Data_Representation_Standard_Facilities/references/validation/revision-20260910/format-blind/spdlog_probe.cpp','C05_Data_Representation_Standard_Facilities/references/validation/revision-20260910/format-blind/bad_fmt_compile.cpp','C05_Data_Representation_Standard_Facilities/references/validation/revision-20260910/format-blind/bad_spdlog_compile.cpp'); foreach( in ){=Get-FileHash  -Algorithm SHA256; Write-Output (.Hash + '  ' + )}; Write-Output 'fmt HEAD'; git -C C05_Data_Representation_Standard_Facilities/exercises/build/_deps/fmt-12.1.0/source rev-parse HEAD; Write-Output 'spdlog HEAD'; git -C C05_Data_Representation_Standard_Facilities/exercises/build/_deps/spdlog-1.17.0/source rev-parse HEAD"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.26599999982863665,
+  "stdout": "",
+  "stderr": "����λ�� ��:1 �ַ�: 983\n+ ... sion-20260910/format-blind/bad_spdlog_compile.cpp'); foreach( in ){=G ...\n+                                                                  ~\nforeach ����ȱ�ٱ������ơ�\n����λ�� ��:1 �ַ�: 987\n+ ... 20260910/format-blind/bad_spdlog_compile.cpp'); foreach( in ){=Get-Fi ...\n+                                                                 ~\n����ʽ������а�������ı�ǡ�)����\n    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException\n    + FullyQualifiedErrorId : MissingVariableNameAfterForeach\n \n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "FAIL"
+}

@@ -1,0 +1,26 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "build/c04-revision-meta",
+    "--config",
+    "Release",
+    "--target",
+    "U01_mp11_reference",
+    "U01_mp11_validation_good",
+    "U01_mp11_validation_bad"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 5.094000000000051,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  mp11_schema_checks.cpp\n  U01_mp11_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c04-revision-meta\\U01_mp11\\Release\\U01_mp11_reference.exe\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  mp11_schema_checks.cpp\n  U01_mp11_validation_good.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c04-revision-meta\\U01_mp11\\Release\\U01_mp11_validation_good.exe\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  mp11_schema_checks.cpp\nF:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\U01_mp11\\validation\\bad\\mp11_schema_tools.hpp(151,20): error C2039: \"out_of_range\": 不是 \"std\" 的成员 [F:\\CPPTrain\\LearnCPP\\build\\c04-revision-meta\\U01_mp11\\U01_mp11_validation_bad.vcxproj]\n  (编译源文件“../../../C04_Generic_CompileTime_Reflection/exercises/U01_mp11/checks/mp11_schema_checks.cpp”)\n      D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\include\\string(23,1):\n      参见“std”的声明\n  \n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "FAIL"
+}

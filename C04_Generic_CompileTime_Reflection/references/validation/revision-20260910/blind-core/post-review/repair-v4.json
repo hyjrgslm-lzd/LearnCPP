@@ -1,0 +1,6 @@
+{
+  "phase": "post-blind technical repair v4",
+  "previous_sha256": "65ecb96a7bf05eb3c4f1ece4a06c2ff313299c9fe5a7c62d010c7fda3cf53077",
+  "sha256": "7d5a1e8cdb4fcd61b2231da6bb18b050b844c6f18d6a6110a8569888d5016333",
+  "reason": "MSVC recursive NTTP overflow error path produced ICE/timeout even after guard; compute a constexpr result object in a bounded value loop, then assert its status; this is not a blind draft"
+}

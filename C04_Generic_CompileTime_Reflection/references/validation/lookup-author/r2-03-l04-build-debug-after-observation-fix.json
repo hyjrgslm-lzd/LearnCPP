@@ -1,0 +1,22 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "C04_Generic_CompileTime_Reflection\\exercises\\L04_lookup\\build\\lookup-author-r2",
+    "--config",
+    "Debug"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.8600000001024455,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  lookup_observation.cpp\n  L04_lookup_observation.vcxproj -> F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L04_lookup\\build\\lookup-author-r2\\Debug\\L04_lookup_observation.exe\n  L04_lookup_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L04_lookup\\build\\lookup-author-r2\\Debug\\L04_lookup_reference.exe\n  L04_lookup_validation_bad.vcxproj -> F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L04_lookup\\build\\lookup-author-r2\\Debug\\L04_lookup_validation_bad.exe\n  L04_lookup_validation_good.vcxproj -> F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L04_lookup\\build\\lookup-author-r2\\Debug\\L04_lookup_validation_good.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/L04_lookup/CMakeLists.txt\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

@@ -1,0 +1,76 @@
+{
+  "configure": {
+    "command": [
+      "cmake",
+      "-S",
+      "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\references\\validation\\revision-20260910\\foundation-review-a02-setup\\diagnostics\\A02_diag_dup\\source",
+      "-B",
+      "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\references\\validation\\revision-20260910\\foundation-review-a02-setup\\diagnostics\\A02_diag_dup\\binary",
+      "-G",
+      "Visual Studio 18 2026",
+      "-DBUILD_TESTING=OFF",
+      "-DCMAKE_CXX_COMPILER=D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe",
+      "-A",
+      "x64"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "process_seconds": 3.422000000020489,
+    "stdout": "-- The CXX compiler identification is MSVC 19.51.36256.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Found Python3: C:/Users/zhidan.li/AppData/Local/Programs/Python/Python310/python.exe (found suitable version \"3.10.11\", minimum required is \"3.10\") found components: Interpreter\n-- Configuring done (3.3s)\n-- Generating done (0.1s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/foundation-review-a02-setup/diagnostics/A02_diag_dup/binary\n",
+    "stderr": "",
+    "cleanup_error": "",
+    "error": "",
+    "status": "PASS"
+  },
+  "control": {
+    "command": [
+      "cmake",
+      "--build",
+      "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\references\\validation\\revision-20260910\\foundation-review-a02-setup\\diagnostics\\A02_diag_dup\\binary",
+      "--config",
+      "Release",
+      "--target",
+      "control"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "process_seconds": 1.702999999979511,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/foundation-review-a02-setup/diagnostics/A02_diag_dup/source/CMakeLists.txt\n  projection_control.cpp\n  control.vcxproj -> F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\references\\validation\\revision-20260910\\foundation-review-a02-setup\\diagnostics\\A02_diag_dup\\binary\\Release\\control.exe\n",
+    "stderr": "",
+    "cleanup_error": "",
+    "error": "",
+    "status": "PASS"
+  },
+  "subject": {
+    "command": [
+      "cmake",
+      "--build",
+      "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\references\\validation\\revision-20260910\\foundation-review-a02-setup\\diagnostics\\A02_diag_dup\\binary",
+      "--config",
+      "Release",
+      "--target",
+      "subject"
+    ],
+    "exit_code": 1,
+    "timeout": false,
+    "process_seconds": 1.0,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  Building Custom Rule F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/foundation-review-a02-setup/diagnostics/A02_diag_dup/source/CMakeLists.txt\n  duplicate_field.cpp\nF:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\A02_field_projection\\validation\\good\\field_projection.hpp(123,19): error C2338: static assertion failed: 'duplicate projection field' [F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\references\\validation\\revision-20260910\\foundation-review-a02-setup\\diagnostics\\A02_diag_dup\\binary\\subject.vcxproj]\n  (编译源文件“../../../../../../../exercises/A02_field_projection/validation/diagnostics/duplicate_field.cpp”)\n      F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\A02_field_projection\\validation\\good\\field_projection.hpp(123,19):\n      模板实例化上下文(最早的实例化上下文)为\n          F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\A02_field_projection\\validation\\diagnostics\\duplicate_field.cpp(5,27):\n          查看对正在编译的函数 模板 实例化“auto c04_projection::project<c04_projection::fixed_string<6>{char105,100,44,105,100,0},c04_projection::Person&>(T)”的引用\n          with\n          [\n              T=c04_projection::Person &\n          ]\n          F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\A02_field_projection\\validation\\good\\field_projection.hpp(156,25):\n          查看对正在编译的函数 模板 实例化“std::tuple<int &,int &> c04_projection::good_detail::project_all<c04_projection::Person,c04_projection::fixed_string<3>{char105,100,0},c04_projection::fixed_string<3>{char105,100,0}>(T &,c04_projection::good_detail::name_list<c04_projection::fixed_string<3>{char105,100,0},c04_projection::fixed_string<3>{char105,100,0}>)”的引用\n          with\n          [\n              T=c04_projection::Person\n          ]\n          F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\A02_field_projection\\validation\\good\\field_projection.hpp(140,5):\n          查看对正在编译的函数 模板 实例化“void c04_projection::good_detail::validate<c04_projection::Person,c04_projection::fixed_string<3>{char105,100,0},c04_projection::fixed_string<3>{char105,100,0}>(c04_projection::good_detail::name_list<c04_projection::fixed_string<3>{char105,100,0},c04_projection::fixed_string<3>{char105,100,0}>)”的引用\n  \n",
+    "stderr": "",
+    "cleanup_error": "",
+    "error": "",
+    "status": "FAIL"
+  },
+  "verdict": "PASS",
+  "reason": "expected semantic diagnostic with a normal nonzero compiler exit",
+  "subject_source": "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\A02_field_projection\\validation\\diagnostics\\duplicate_field.cpp",
+  "control_source": "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\A02_field_projection\\validation\\diagnostics\\projection_control.cpp",
+  "pattern": "duplicate projection field",
+  "compiler": "D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe",
+  "input_sha256": {
+    "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\A02_field_projection\\validation\\diagnostics\\duplicate_field.cpp": "f51181c802e28815635067263b755cdb5d9304ec411ff841c141e925a33bda31",
+    "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\A02_field_projection\\validation\\diagnostics\\projection_control.cpp": "186f844294f7fb894366f638537d9bb3c29a0ca1d4203d8ec431446aeecfaa4a",
+    "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\tools\\compile_case.py": "1735b806e508c2b618daa1923fbec42dff8e52e0a35e4cce3725c22954f6674a",
+    "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\cmake\\StudySetup.cmake": "74edf9979ee19f21138920ff79307a20d615509fcfdff6da08288a4fae0c6012",
+    "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\A02_field_projection\\validation\\diagnostics\\setup.cmake": "f0434543fbf5c82377c13147666e62f2c0883806ee03ae5f7e8410c81f9fc6b4"
+  }
+}

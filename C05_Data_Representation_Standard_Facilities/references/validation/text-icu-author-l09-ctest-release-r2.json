@@ -1,0 +1,23 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "C05_Data_Representation_Standard_Facilities/exercises/L09_formatting/build/author-release",
+    "-C",
+    "Release",
+    "--output-on-failure"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.5940000000409782,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/L09_formatting/build/author-release\n    Start 1: L09_formatting_observation\n1/2 Test #1: L09_formatting_observation ...............   Passed    0.02 sec\n    Start 2: L09_formatting_bad_truncation_rejected\n2/2 Test #2: L09_formatting_bad_truncation_rejected ...   Passed    0.50 sec\n\n100% tests passed, 0 tests failed out of 2\n\nLabel Time Summary:\nnegative       =   0.50 sec*proc (1 test)\nobservation    =   0.02 sec*proc (1 test)\n\nTotal Test time (real) =   0.53 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

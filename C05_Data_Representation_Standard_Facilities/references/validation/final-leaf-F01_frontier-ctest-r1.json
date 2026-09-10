@@ -1,0 +1,25 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "build/delivery-leaves-r1/F01_frontier",
+    "-C",
+    "Release",
+    "--output-on-failure",
+    "--output-junit",
+    "F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\references\\validation\\final-leaf-F01_frontier-r1.xml"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 3.827999999979511,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/build/delivery-leaves-r1/F01_frontier\n    Start 1: F01_text_encoding_locale\n1/9 Test #1: F01_text_encoding_locale .........***Skipped   0.41 sec\n    Start 2: F01_charconv_result_bool\n2/9 Test #2: F01_charconv_result_bool .........***Skipped   0.41 sec\n    Start 3: F01_to_string_semantics\n3/9 Test #3: F01_to_string_semantics ..........***Skipped   0.42 sec\n    Start 4: F01_runtime_format\n4/9 Test #4: F01_runtime_format ...............***Skipped   0.41 sec\n    Start 5: F01_path_formatter\n5/9 Test #5: F01_path_formatter ...............***Skipped   0.42 sec\n    Start 6: F01_format_float_c29\n6/9 Test #6: F01_format_float_c29 .............***Skipped   0.42 sec\n    Start 7: F01_error_code_formatter_c29\n7/9 Test #7: F01_error_code_formatter_c29 .....***Skipped   0.42 sec\n    Start 8: F01_bitops_shift_c29\n8/9 Test #8: F01_bitops_shift_c29 .............***Skipped   0.42 sec\n    Start 9: F01_bitops_permutation_c29\n9/9 Test #9: F01_bitops_permutation_c29 .......***Skipped   0.41 sec\n\n100% tests passed, 0 tests failed out of 9\n\nLabel Time Summary:\ncapability    =   3.73 sec*proc (9 tests)\n\nTotal Test time (real) =   3.76 sec\n\nThe following tests did not run:\n\t  1 - F01_text_encoding_locale (Skipped)\n\t  2 - F01_charconv_result_bool (Skipped)\n\t  3 - F01_to_string_semantics (Skipped)\n\t  4 - F01_runtime_format (Skipped)\n\t  5 - F01_path_formatter (Skipped)\n\t  6 - F01_format_float_c29 (Skipped)\n\t  7 - F01_error_code_formatter_c29 (Skipped)\n\t  8 - F01_bitops_shift_c29 (Skipped)\n\t  9 - F01_bitops_permutation_c29 (Skipped)\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

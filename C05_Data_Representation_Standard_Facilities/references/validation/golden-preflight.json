@@ -1,0 +1,31 @@
+{
+  "scope": "Independent Python integer decoding of hand-written C++ octets before manifest encoder implementation; not C++ integration proof",
+  "source_sha256": "575bd0dc47cae78ae05cd805f8d2e5b84801efc5560c20c34c9d2f574a903e78",
+  "results": [
+    {
+      "fixture": "v1_octets",
+      "bytes": 68,
+      "field_tags": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "fixture": "v2_empty_note_octets",
+      "bytes": 74,
+      "field_tags": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "verdict": "PASS"
+    }
+  ]
+}

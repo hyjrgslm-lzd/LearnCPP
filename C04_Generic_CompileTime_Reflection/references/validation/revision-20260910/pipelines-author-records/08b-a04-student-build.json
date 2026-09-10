@@ -1,0 +1,24 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "C04_Generic_CompileTime_Reflection/exercises/A04_type_pipelines/build/revision-pipelines-student",
+    "--config",
+    "Debug"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.1879999998491257,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  A04_eager_counterexample.vcxproj -> F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\A04_type_pipelines\\build\\revision-pipelines-student\\Debug\\A04_eager_counterexample.exe\n  type_pipeline_checks.cpp\n  A04_type_pipelines_student.vcxproj -> F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\A04_type_pipelines\\build\\revision-pipelines-student\\Debug\\A04_type_pipelines_student.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/A04_type_pipelines/CMakeLists.txt\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [
+    "A04_type_pipelines_student"
+  ],
+  "verdict": "PASS"
+}

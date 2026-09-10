@@ -1,0 +1,31 @@
+{
+  "command": [
+    "cmake",
+    "-E",
+    "env",
+    "PYTHONUTF8=1",
+    "python",
+    "C04_Generic_CompileTime_Reflection/exercises/tools/audit_good.py",
+    "--build",
+    "F:/CPPTrain/LearnCPP/build/c04-revision-good-audit",
+    "--config",
+    "Release",
+    "--trace",
+    "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/final-audits-good/15-synthetic-reference-include-trace-r2.json",
+    "--output",
+    "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/final-audits-good/16-audit-good-negative-control-r2-current.json"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.14000000000010004,
+  "stdout": "FAIL C04_Generic_CompileTime_Reflection\\references\\validation\\revision-20260910\\final-audits-good\\16-audit-good-negative-control-r2-current.json\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 1,
+  "required_text": [],
+  "verdict": "PASS"
+}

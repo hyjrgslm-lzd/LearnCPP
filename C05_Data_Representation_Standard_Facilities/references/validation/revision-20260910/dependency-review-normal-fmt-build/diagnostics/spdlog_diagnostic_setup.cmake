@@ -1,0 +1,7 @@
+set(DATA_STUDY_ENABLE_FORMAT_LIBS ON CACHE BOOL "" FORCE)
+set(DATA_STUDY_SPDLOG_BACKEND "fmt" CACHE STRING "" FORCE)
+include("F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/U03_spdlog/../cmake/FormatLibraries.cmake")
+c05_link_spdlog(control)
+c05_link_spdlog(subject)
+target_compile_definitions(control PRIVATE SPDLOG_ACTIVE_LEVEL=SPDLOG_LEVEL_DEBUG)
+target_compile_definitions(subject PRIVATE SPDLOG_ACTIVE_LEVEL=SPDLOG_LEVEL_DEBUG)

@@ -13,7 +13,7 @@
 - **GPU 计算**：对象与资源基础、必要数值和性能知识 → C14；无需先读完整个异步课程组。
 - **引擎开发**：构建与对象基础 → C15，再按模块补齐并发、渲染和网络知识。
 
-目录采用 `C编号_具体主题`，按全局课程版图排序。编号提供默认阅读次序，实际硬先修以章节说明为准；空号留给尚未建设的课程，不创建占位目录。C03 提供类型、不变量、错误与接口设计的公共基础；C04、C05、C07 等公共课程尚未完整交付，已有专题所需的先修说明和补充入口仍保留，不能把目录排序当成先修已全部齐备。
+目录采用 `C编号_具体主题`，按全局课程版图排序。编号提供默认阅读次序，实际硬先修以章节说明为准；空号留给尚未建设的课程，不创建占位目录。C03 提供类型、不变量、错误与接口设计的公共基础；C05 补充数据表达与常用设施；C04 提供泛型、编译期编程与反射主讲；C07 等公共课程尚未完整交付，已有专题所需的先修说明和补充入口仍保留，不能把目录排序当成先修已全部齐备。
 
 ## 已有课程
 
@@ -22,6 +22,8 @@
 | 公共基础 | [C01_Build_Compile_Link](C01_Build_Compile_Link/README.md) | 构建与调试、编译链接、ABI、CMake、Modules、依赖与包交付；11章/13练习 |
 | 公共基础 | [C02_Objects_Lifetime_Ownership](C02_Objects_Lifetime_Ownership/README.md) | 初始化、表达式、对象模型、生命周期、所有权、智能指针、存储复用；16章/15练习单元 |
 | 公共基础 | [C03_Type_Modeling_Interface_Design](C03_Type_Modeling_Interface_Design/README.md) | 类型/值/状态、错误与异常安全、多态与擦除、包装/契约、接口演进；18章、15专题练习＋综合项目与前沿单元；状态见质量报告 |
+| 公共基础 | [C04_Generic_CompileTime_Reflection](C04_Generic_CompileTime_Reflection/README.md) | 泛型、查找/约束、类型计算、常量求值、反射与编译成本；25章/21单元，含进阶机制、Mp11/Hana及编译成本实验；验证与未测边界见质量报告 |
+| 公共基础 | [C05_Data_Representation_Standard_Facilities](C05_Data_Representation_Standard_Facilities/README.md) | 字节/编码、解析格式化、时间/时区、路径配置、schema与资源清单包；21章/20单元，含fmt/spdlog同步前端；验证与审查见质量报告 |
 | 专题进阶 | [C06_Ranges](C06_Ranges/README.md) | 序列、算法、视图、迭代器与惰性求值；当前覆盖 C06 课程族中的 Ranges 专题 |
 | 专题进阶 | [C08_Concurrency](C08_Concurrency/README.md) | 线程、同步、原子、内存模型、并发结构与安全回收；已有 CPU 性能系列兼作 C13 入口 |
 | 专题进阶 | [C09_Coroutines](C09_Coroutines/README.md) | 协程协议、控制流、帧与生命周期、取消组合、I/O 与 RPC 应用 |

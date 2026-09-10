@@ -1,0 +1,1215 @@
+{
+  "verdict": "PASS",
+  "records": 151,
+  "entries": [
+    {
+      "profile": "c04-core",
+      "test": "L04_lookup_missing_typename",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/0841c8ce72b1/Release/evidence-2.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-core-L04_lookup_missing_typename.json",
+      "sha256": "9d2e56f7d327e343980ace577905f374d6bf02ee950bae1d2c15ea068f278b04",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-core",
+      "test": "L05_func_partial",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/7aa06b9d0bed/Release/evidence-2.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-core-L05_func_partial.json",
+      "sha256": "3b565176211203eddb8a047a7caeb31349b416623ceac0d60b9d2702dae4751e",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-core",
+      "test": "L05_body_error",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/92f647541ebf/Release/evidence-2.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-core-L05_body_error.json",
+      "sha256": "a010a7340b0cb58d2369363c18dace7240f54a1bb4fbd2bf8ae4d8e5d78c1fcf",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-core",
+      "test": "L06_non_dep",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/850067d80489/Release/evidence-2.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-core-L06_non_dep.json",
+      "sha256": "9c179d13557798b70cb9e153ceff4d5c64b514eea71e866740afadd44b7fec40",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-core",
+      "test": "L08_lazy_type_eager_bad",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/e7d41a71cb9b/Release/evidence-2.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-core-L08_lazy_type_eager_bad.json",
+      "sha256": "97ad449b78a5a5d3efee92ea88c32e28b9aad6a3cc74c2ba8180253f4705603e",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-core",
+      "test": "L10_invalid_digit_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/d43b03798cc6/Release/evidence-2.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-core-L10_invalid_digit_diagnostic.json",
+      "sha256": "913170539dc94f16c20b19ab011e38d2272303d01727e4c2fe368e68ed50d73d",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-core",
+      "test": "L10_empty_decimal_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/1435a515985c/Release/evidence-2.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-core-L10_empty_decimal_diagnostic.json",
+      "sha256": "ad4ad935ac77b63076b8fcba2346e951205af60d3fd5c5545ded798f149a565a",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-core",
+      "test": "L10_embedded_nul_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/ab8f93613d65/Release/evidence-2.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-core-L10_embedded_nul_diagnostic.json",
+      "sha256": "97f973eae327dbdfcb377e26f045de9937567ab2ab6708022fd17d90aebe7d73",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-core",
+      "test": "L10_signed_decimal_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/4c3cbded01f2/Release/evidence-2.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-core-L10_signed_decimal_diagnostic.json",
+      "sha256": "1e9fcace7ed110174db9a1e37186842b8401cb7d84b76dfd1f54d291eee02194",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-core",
+      "test": "L10_spaced_decimal_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/79ac47fe82be/Release/evidence-2.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-core-L10_spaced_decimal_diagnostic.json",
+      "sha256": "869eb451514e793fbf6645b5e198e7fc781e14cc846af925cf9ec09a2e7a4d3d",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-core",
+      "test": "L10_decimal_overflow_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/2544ccb465db/Release/evidence-2.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-core-L10_decimal_overflow_diagnostic.json",
+      "sha256": "4c129b25dda24d6d20432007a07852e3faf8f36f94f39afac91727c5af924e81",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-core",
+      "test": "L10_parameter_constant_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/4267b7e08f01/Release/evidence-2.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-core-L10_parameter_constant_diagnostic.json",
+      "sha256": "f329130e1f93c46c3ae222e24c967cc2514019400a125a96c0ce9f405f223238",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-core",
+      "test": "A01_diag_escape_pointer",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/358bebdc57d6/Release/evidence-2.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-core-A01_diag_escape_pointer.json",
+      "sha256": "dd44030e716a033498646030e4909772f6ec0b770f2976907e2e6893f1631109",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-core",
+      "test": "A01_diag_key_too_long",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/3186931d295f/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-core-A01_diag_key_too_long.json",
+      "sha256": "3af18b0f80ed6fa2ab1142883dee3b007baac646370ddb271b400a3f0cc40198",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-core",
+      "test": "A01_diag_key_non_ascii",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/9565ed11e18e/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-core-A01_diag_key_non_ascii.json",
+      "sha256": "0e022d1051339d9b2d5d9e374c15d1eb746432f86f16bdf6b232b4315adc44fb",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-core",
+      "test": "A01_diag_key_embedded_nul",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/8d6c7a651893/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-core-A01_diag_key_embedded_nul.json",
+      "sha256": "baa16e01027b4f43374323afa905c3f8196810d6541b6052244ccab7c5f95983",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-core",
+      "test": "A02_diag_unknown",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/6334a175086c/Release/evidence-2.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-core-A02_diag_unknown.json",
+      "sha256": "226d2d7751fd657e389590a1084760af3140c0854c0ca7dc90640bf5b3c4526f",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-core",
+      "test": "A02_diag_dup",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/f9bf9986ce6e/Release/evidence-2.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-core-A02_diag_dup.json",
+      "sha256": "df959378fd8f814b0449e143d24f068823609c23cd77e9584d3b4e5af1d6fdcb",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-core",
+      "test": "A02_diag_empty",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/d4a39b68ef0e/Release/evidence-2.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-core-A02_diag_empty.json",
+      "sha256": "0b5b739621b81ebd2d5a11791a840b5f4f021de947f9edf48d0d82281b73f0dc",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-core",
+      "test": "A02_diag_bad_id",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/e63f4976f795/Release/evidence-2.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-core-A02_diag_bad_id.json",
+      "sha256": "277633359b4602fe414dd6929251d2c14a42235a23b3945b3687a27931524734",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-core",
+      "test": "A02_diag_rvalue",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/ad766246950e/Release/evidence-2.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-core-A02_diag_rvalue.json",
+      "sha256": "6f729311975e7e6a063c62f6a6b4cbb46bbd8e00f87852b3278b872dde5888e4",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-core",
+      "test": "A02_diag_trail",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/56a4e042fb98/Release/evidence-2.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-core-A02_diag_trail.json",
+      "sha256": "7b3d2764e07782bf5d451f00fac28fa23c2a2d3b240647e64a75c4d4c59d1f4d",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-core",
+      "test": "A02_diag_nul",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/0a1570bd3c1f/Release/evidence-2.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-core-A02_diag_nul.json",
+      "sha256": "b617402c4d69e3be99edc8902f52a70da3dedd029037050f84cb4e7cfc846234",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-core",
+      "test": "A03_diag_const_take",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/5d838afe4264/Release/evidence-2.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-core-A03_diag_const_take.json",
+      "sha256": "6955654b366375902fe34e9e3579d92919aad763256cecf81608ce32570c3dd6",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-core",
+      "test": "A04_diag_zip",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/a1d6c9f2b5bb/Release/evidence-2.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-core-A04_diag_zip.json",
+      "sha256": "f148deedbea845946395b8eb4916ce615d383f3691f96be8116a823e5fbb42e9",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-core",
+      "test": "A04_diag_flatten",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/706feaf4eb03/Release/evidence-2.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-core-A04_diag_flatten.json",
+      "sha256": "84c9f12d131b8114f60fc2a59a8a73112e0f4e4b205b1b9fb60b0d6d939cb020",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-core",
+      "test": "A04_diag_eager",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/477597e4f135/Release/evidence-2.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-core-A04_diag_eager.json",
+      "sha256": "eab2b9714628da885071f742e51aba15621fdf8ca7874f9655b53ce49b4bc9fb",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-core",
+      "test": "A05_diag_size",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/9021d79ae519/Release/evidence-2.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-core-A05_diag_size.json",
+      "sha256": "62359e2fb65c1eb3636c00b115165149745d5c8ad91596c81996d3189432c6e4",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-debug",
+      "test": "L04_lookup_missing_typename",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/c15fe3dda5fc/Debug/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-debug-L04_lookup_missing_typename.json",
+      "sha256": "7520c1acecc840292d69b5d7e9fbf6b186b2086c25b6774a7cd8a808d50aad62",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-debug",
+      "test": "L05_func_partial",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/7e5fe92fc27e/Debug/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-debug-L05_func_partial.json",
+      "sha256": "438578a98fa11ea9f7b7d18f568e1dc8fca6029315d9b0a7df7ae395c4354063",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-debug",
+      "test": "L05_body_error",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/3353df097629/Debug/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-debug-L05_body_error.json",
+      "sha256": "d9601d8b2790828e284754142b7b2b730a1eb491c518d8e94216088b75e928a6",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-debug",
+      "test": "L06_non_dep",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/8d6b08ba2074/Debug/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-debug-L06_non_dep.json",
+      "sha256": "570f494fac9a28fd7fa6f55836a68b24725e6f81cfe1300cbf57663727a905aa",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-debug",
+      "test": "L08_lazy_type_eager_bad",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/49a4858ac45a/Debug/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-debug-L08_lazy_type_eager_bad.json",
+      "sha256": "7534ae1831bb1ccad8eac1485be44d8d073faebc5462e0365f9558a17dbab356",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-debug",
+      "test": "L10_invalid_digit_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/5a4791a52e55/Debug/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-debug-L10_invalid_digit_diagnostic.json",
+      "sha256": "9b2187b3448d65e3e749261568e9b27ec0eaca44139281381af87e7ab30163a6",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-debug",
+      "test": "L10_empty_decimal_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/2bac1a88ef52/Debug/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-debug-L10_empty_decimal_diagnostic.json",
+      "sha256": "ade5e046330f2745569c16055b58b31ada2b7ab7ea3d22f8fa22c434465faad3",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-debug",
+      "test": "L10_embedded_nul_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/9efc1cab3ced/Debug/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-debug-L10_embedded_nul_diagnostic.json",
+      "sha256": "33c6ace5fdbe577f0434bec7ccd240710293b9ddb34bfc39296a74a882cc52d2",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-debug",
+      "test": "L10_signed_decimal_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/492089ffa217/Debug/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-debug-L10_signed_decimal_diagnostic.json",
+      "sha256": "1040f14f45108b19e7f7dd9c0611b9e1981984a9824bdd1eead9fc9dbbff062f",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-debug",
+      "test": "L10_spaced_decimal_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/8f26b2f55a88/Debug/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-debug-L10_spaced_decimal_diagnostic.json",
+      "sha256": "81111a4c330def8b7859c944ee0b0407455ee1d57b6fcc2e17d6476056beaef2",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-debug",
+      "test": "L10_decimal_overflow_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/280c894c166b/Debug/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-debug-L10_decimal_overflow_diagnostic.json",
+      "sha256": "45718960241c45af5af2a6b19784c6e4b387fd93ae0306a45cae9c4a0a58dae7",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-debug",
+      "test": "L10_parameter_constant_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/6ed59e47e354/Debug/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-debug-L10_parameter_constant_diagnostic.json",
+      "sha256": "7c096b42c22ba9fc2c125055af9a1b63bf9238031175fc62daa683f250f8ae2e",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-debug",
+      "test": "A01_diag_escape_pointer",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/83164e19af99/Debug/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-debug-A01_diag_escape_pointer.json",
+      "sha256": "48fd2c2a949136ba016f78df9c0b8be146f6c1c917a533a1b52f2a3d9b90d24a",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-debug",
+      "test": "A01_diag_key_too_long",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/0f09dce0152e/Debug/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-debug-A01_diag_key_too_long.json",
+      "sha256": "65589387cce521a65081dd100723db5fbda1885df17263f4906dd6d59ba835e6",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-debug",
+      "test": "A01_diag_key_non_ascii",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/12c62cb7a773/Debug/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-debug-A01_diag_key_non_ascii.json",
+      "sha256": "0cb33b103ed88ae4c571207f0d15c2387bf67303adecd341c8313e75ba60d10a",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-debug",
+      "test": "A01_diag_key_embedded_nul",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/50ded2af7b47/Debug/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-debug-A01_diag_key_embedded_nul.json",
+      "sha256": "b91c6accece6e9b246a66f6ebc184452e16c3e01d165e19cc5c11e5391040778",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-debug",
+      "test": "A02_diag_unknown",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/a31b1e78ac4f/Debug/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-debug-A02_diag_unknown.json",
+      "sha256": "8f0f144fa1f789c7c4d57c22e6976604ca56ce6b6b8b9c8558d805ad157fb076",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-debug",
+      "test": "A02_diag_dup",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/11492fbb2396/Debug/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-debug-A02_diag_dup.json",
+      "sha256": "ebfc3f34a419ce7fac84b4ad30eccbfb888ab8b50399732de10629f040ccb200",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-debug",
+      "test": "A02_diag_empty",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/190696957f43/Debug/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-debug-A02_diag_empty.json",
+      "sha256": "cd2f903e0f657dfa66cfc15815f1c8a5347ff12ec3d1c0a060fd1c36c72f275f",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-debug",
+      "test": "A02_diag_bad_id",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/1e0c8b303569/Debug/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-debug-A02_diag_bad_id.json",
+      "sha256": "874d47b54c36c8e185afa5a3507997a6448822c9103498c525e52771c9c4a452",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-debug",
+      "test": "A02_diag_rvalue",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/cad5c54d6989/Debug/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-debug-A02_diag_rvalue.json",
+      "sha256": "f8de32d5c575fb85dfbbed6a2fed82a09a09c52cd1d1846d98b6e4cfeab2a702",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-debug",
+      "test": "A02_diag_trail",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/22eca4e253db/Debug/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-debug-A02_diag_trail.json",
+      "sha256": "57bbf01ed8541393dbacb910efe1d68913248e96b4161fbe5f203e380148419e",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-debug",
+      "test": "A02_diag_nul",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/2f2670d25c8b/Debug/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-debug-A02_diag_nul.json",
+      "sha256": "623e887b159741882956fc45f81bc3b61f33fd9b5d90f49472325f80ec9c47b4",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-debug",
+      "test": "A03_diag_const_take",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/f5b8ff10df7f/Debug/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-debug-A03_diag_const_take.json",
+      "sha256": "bf0f8ee6d212734293e4a93a0ef964a8fa02910dc09492f77625cd24c8dfe0c9",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-debug",
+      "test": "A04_diag_zip",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/84f3bb336f00/Debug/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-debug-A04_diag_zip.json",
+      "sha256": "4326129c035d039717a63400fef37d72dd35365837b4d760fbaf349ecdf22ab1",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-debug",
+      "test": "A04_diag_flatten",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/292369d0e6a8/Debug/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-debug-A04_diag_flatten.json",
+      "sha256": "c806b78f30e66ef246612850e8ec0ef2bda5307005a2a2d22e20fa1a3c41e0c0",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-debug",
+      "test": "A04_diag_eager",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/4fd78657f2a2/Debug/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-debug-A04_diag_eager.json",
+      "sha256": "ea4ab3dd8cf1a8b6cd842669c33b0e193ca6b0a5e211801a4d9ec7dbad1c2fea",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-debug",
+      "test": "A05_diag_size",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/048cb13e4fa4/Debug/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-debug-A05_diag_size.json",
+      "sha256": "76f6ee049abb9cbe26e748ba6c777ebcdeadcd9967aef89b09ad477cea3bb00a",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-meta",
+      "test": "L04_lookup_missing_typename",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/d1ff00bed9bd/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-meta-L04_lookup_missing_typename.json",
+      "sha256": "6f919e5e685f9c37a4c373c48ba139bea391fb5785fb8db6b2c8d446e16be017",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-meta",
+      "test": "L05_func_partial",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/1874acdbd065/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-meta-L05_func_partial.json",
+      "sha256": "605c5ced011f287986e275cdebe8f38c7f49955fd16f4bdf10805af590250196",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-meta",
+      "test": "L05_body_error",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/2d4408d3bf37/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-meta-L05_body_error.json",
+      "sha256": "3f8d5313e89b8233349d2647f6862117f60ca56c2fa618c877b8ac929ee009f3",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-meta",
+      "test": "L06_non_dep",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/a9e9b53e3457/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-meta-L06_non_dep.json",
+      "sha256": "1b323f9a83dda3188f3a91c09e430d3b21e9ccad8b13c68cd3f6c63803741b65",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-meta",
+      "test": "L08_lazy_type_eager_bad",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/265def38a345/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-meta-L08_lazy_type_eager_bad.json",
+      "sha256": "e5d3ceea46eafda759cba95f3c6233f1c09f4afa03e04a4007fb0841ba2c0f40",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-meta",
+      "test": "L10_invalid_digit_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/1537e95f4e43/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-meta-L10_invalid_digit_diagnostic.json",
+      "sha256": "4a0e2657330aac7b4e163edd06e8d52ad65c27697a2e6d1cbfccbf6f320ddf7b",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-meta",
+      "test": "L10_empty_decimal_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/ab90fc79a218/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-meta-L10_empty_decimal_diagnostic.json",
+      "sha256": "75c6670aa33fd6fee00eefa8b5c197f0e46dbe86c7a800420b4a45c3cf80c2ed",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-meta",
+      "test": "L10_embedded_nul_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/c780e33d5702/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-meta-L10_embedded_nul_diagnostic.json",
+      "sha256": "5963a5e5239b70457cf06666a350e25a5a548a824d428996f183b8c1ac611559",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-meta",
+      "test": "L10_signed_decimal_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/aa46c98c9aa9/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-meta-L10_signed_decimal_diagnostic.json",
+      "sha256": "b4eefb6cb7c71f5ec6728620893079dbd6cd0c364c1fdf83d877a24b78aada85",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-meta",
+      "test": "L10_spaced_decimal_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/ba94c924baab/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-meta-L10_spaced_decimal_diagnostic.json",
+      "sha256": "113616918aedd892fda3c1e77b264a2c17cb6e30072efc0ee298d7f352acbcf1",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-meta",
+      "test": "L10_decimal_overflow_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/a0849d180c2b/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-meta-L10_decimal_overflow_diagnostic.json",
+      "sha256": "fa61709fe694d2e5e2414fb7a535abd764b7733d0b8adfbfd5c1e2f252988a68",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-meta",
+      "test": "L10_parameter_constant_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/5a39bfa1f288/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-meta-L10_parameter_constant_diagnostic.json",
+      "sha256": "6b4c2334f0c4ca371dad0fffc809978bbf60d72014e91ecc1d3a5bf950626878",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-meta",
+      "test": "A01_diag_escape_pointer",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/0706cc7d7441/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-meta-A01_diag_escape_pointer.json",
+      "sha256": "70d8ba3fca08a98448e412126b6b699528de00ecad09c0621625d24e752c61bd",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-meta",
+      "test": "A01_diag_key_too_long",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/948dc63e922a/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-meta-A01_diag_key_too_long.json",
+      "sha256": "b8b895245e889d25229b171a6ba1048c7f70868f2e1240afbe2212298a2fe8c9",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-meta",
+      "test": "A01_diag_key_non_ascii",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/713812aa9423/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-meta-A01_diag_key_non_ascii.json",
+      "sha256": "ebaced2d705c2f02960ae62895b693aa17abd0eea59c2087d9df1ec403785b11",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-meta",
+      "test": "A01_diag_key_embedded_nul",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/4a746003d89c/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-meta-A01_diag_key_embedded_nul.json",
+      "sha256": "b92e62815271d59e12fded58f4b218299b87c794cf6c6f59554e67420be1d9da",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-meta",
+      "test": "A02_diag_unknown",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/73e963be60fd/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-meta-A02_diag_unknown.json",
+      "sha256": "5391d357f194dccacd03eb0f7dc538a17c677de095b36818d48aaf90dc1b0375",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-meta",
+      "test": "A02_diag_dup",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/41f4cfbab768/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-meta-A02_diag_dup.json",
+      "sha256": "3e324a0d65650932a63731eb06bc051c8525fb23cd68a07a0295114c6b6e62c8",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-meta",
+      "test": "A02_diag_empty",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/28f439dbb3db/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-meta-A02_diag_empty.json",
+      "sha256": "fd0909d69695d12d920c6e8492d8656b0f9a54e86b3cf59c3173e7be7ee8da5f",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-meta",
+      "test": "A02_diag_bad_id",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/0b50027dddd5/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-meta-A02_diag_bad_id.json",
+      "sha256": "02d8f1e4ad4c31327bbd2426b64c1c7c1d3a1b0dfb11345c1f1b599949951cab",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-meta",
+      "test": "A02_diag_rvalue",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/e0519d654bd4/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-meta-A02_diag_rvalue.json",
+      "sha256": "51e24629b9e863c0814360852e681d3f62a1e6c602693b603ea27dbe35c0481b",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-meta",
+      "test": "A02_diag_trail",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/5e8b2cb9393d/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-meta-A02_diag_trail.json",
+      "sha256": "5fccf6561fd4fb666f0e70abc924f3b442e7d5fd95d9317f5fcf258f4c909c37",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-meta",
+      "test": "A02_diag_nul",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/734976ce247e/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-meta-A02_diag_nul.json",
+      "sha256": "afac535e720897563cf88bbf087d66f24b788f630e9ab55fc9b3a374b753ac99",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-meta",
+      "test": "A03_diag_const_take",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/babe412103a9/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-meta-A03_diag_const_take.json",
+      "sha256": "29aae8ab01db0f043be4132c51665159d389cd31319c2374ca9e66351e06da6d",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-meta",
+      "test": "A04_diag_zip",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/188f2a1e3924/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-meta-A04_diag_zip.json",
+      "sha256": "f1604bd9ae938829bd1d97cfa5cec8f254ff5837594945e209ff03546c08af8a",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-meta",
+      "test": "A04_diag_flatten",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/f049b91a7210/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-meta-A04_diag_flatten.json",
+      "sha256": "749c92929a04fa3dc83e3f0e5d50f9dddb3841bbfbb85ab48ec997a924d4f600",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-meta",
+      "test": "A04_diag_eager",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/6080b9dc76ee/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-meta-A04_diag_eager.json",
+      "sha256": "2bbe8e86b70dcc0be434255a534df8ac9a9f9a324ae8b0e2213df59dfd0f0012",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-meta",
+      "test": "A05_diag_size",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/802c925c32ff/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-meta-A05_diag_size.json",
+      "sha256": "841afe8ff507a0de8ae8c85d00ca5bb86f932f0eb4b2089c7dac39c629d39d84",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-meta",
+      "test": "U01_mp11_missing_key_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/137a19ec5fd5/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-meta-U01_mp11_missing_key_diagnostic.json",
+      "sha256": "da64131e3655df861e17e769a3cc7cbcce6f47c991fef4d0aa8b45185805cda4",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-frontier",
+      "test": "L04_lookup_missing_typename",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/00f396b4ec03/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-frontier-L04_lookup_missing_typename.json",
+      "sha256": "7676ab17cfbd9bcf41dc16094417a5bc7f8c6892c9eb10a1fe5a5063dccd26dc",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-frontier",
+      "test": "L05_func_partial",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/8c724c190523/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-frontier-L05_func_partial.json",
+      "sha256": "477e0855f9ee8aef7f6ba5026f73b961973bcdf8283c2d9ecb18504b44f5b586",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-frontier",
+      "test": "L05_body_error",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/fe70c1aa46e4/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-frontier-L05_body_error.json",
+      "sha256": "812c8ad6bb178b3981c18d69575792a08f86ce4421c76ed8947f720161625241",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-frontier",
+      "test": "L06_non_dep",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/6af5cfed6283/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-frontier-L06_non_dep.json",
+      "sha256": "49de633f4c5c4b84001ae128eaac097ff309cbbb9f35a04be8ab28f60e8f7528",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-frontier",
+      "test": "L08_lazy_type_eager_bad",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/a9d94b978355/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-frontier-L08_lazy_type_eager_bad.json",
+      "sha256": "e60eee7e34ddccb05e85707d7f0624eb019af6a78a37d9c4e024db4eded3f476",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-frontier",
+      "test": "L10_invalid_digit_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/4cab873778c0/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-frontier-L10_invalid_digit_diagnostic.json",
+      "sha256": "79429166b1851d99929e8e6744620e66e897dd55afcfe7bdeb73964e85bd5fe9",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-frontier",
+      "test": "L10_empty_decimal_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/2e488d261317/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-frontier-L10_empty_decimal_diagnostic.json",
+      "sha256": "47dddcd79ae5d788ee6d7d37bdc2839fcb4879dbff45847ce7bb356c2583f68b",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-frontier",
+      "test": "L10_embedded_nul_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/cf2becb3b967/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-frontier-L10_embedded_nul_diagnostic.json",
+      "sha256": "7394e6cb0d40452beae56678245ba4eaae7cd33bc61115feacd1d39c11e4954b",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-frontier",
+      "test": "L10_signed_decimal_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/5e0b2bf2c67f/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-frontier-L10_signed_decimal_diagnostic.json",
+      "sha256": "d1b98edfb1ffb8b416159daafb32c1000afe5bde636f25edb4d7022bdb2f8074",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-frontier",
+      "test": "L10_spaced_decimal_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/efc4b4633dab/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-frontier-L10_spaced_decimal_diagnostic.json",
+      "sha256": "f556d97fd3f8a4a6bd845d727d2d2125dc9a7270891149a13244d89b115dc0da",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-frontier",
+      "test": "L10_decimal_overflow_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/81237239f7f9/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-frontier-L10_decimal_overflow_diagnostic.json",
+      "sha256": "df05c798c570273bcac6c090fa361c5c8410ad703c8b03a13b591e53faceb989",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-frontier",
+      "test": "L10_parameter_constant_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/38cc4cdd246d/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-frontier-L10_parameter_constant_diagnostic.json",
+      "sha256": "a84b3aad52967eb7e93b4ff4cb6a8e22cc20ba7c5f5941f8b6f79810204d79c0",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-frontier",
+      "test": "A01_diag_escape_pointer",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/8d3df763c6a5/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-frontier-A01_diag_escape_pointer.json",
+      "sha256": "40032d85a67757438a839fc92bfcd2eaa78b4f4066b8761dd443a4c6aacfd013",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-frontier",
+      "test": "A01_diag_key_too_long",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/1af1760a2d3d/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-frontier-A01_diag_key_too_long.json",
+      "sha256": "11dd1bf3976594d44816e3d446de85efd57e50fe3ff4beeca8e36ec6c5613060",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-frontier",
+      "test": "A01_diag_key_non_ascii",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/60a5742dad2e/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-frontier-A01_diag_key_non_ascii.json",
+      "sha256": "86775de3c58c46d391170a19344f989b76b76a68a22f0b75ed2351fdc525e062",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-frontier",
+      "test": "A01_diag_key_embedded_nul",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/56320ac6d131/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-frontier-A01_diag_key_embedded_nul.json",
+      "sha256": "6e34ab1072518831565500114689718666a80a647f9a538b07487e5c91f5697f",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-frontier",
+      "test": "A02_diag_unknown",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/1bc6776adf3b/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-frontier-A02_diag_unknown.json",
+      "sha256": "1021769112b2758237208816b4621d240c4afff90cd7e2968474df0067a245fa",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-frontier",
+      "test": "A02_diag_dup",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/233e86fc79e1/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-frontier-A02_diag_dup.json",
+      "sha256": "a2b4678f524149069e1b4c5afb31d42181a06c04d7d14eae601b34d01c58e9e7",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-frontier",
+      "test": "A02_diag_empty",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/ab014cbc3ea6/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-frontier-A02_diag_empty.json",
+      "sha256": "67df993169f9ebbdf3c329bcd077d8294c23bc9b626fb40b4326d57f164ce018",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-frontier",
+      "test": "A02_diag_bad_id",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/16c300759024/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-frontier-A02_diag_bad_id.json",
+      "sha256": "8559c58b2a766df07c686fa87e3b0a7b56c4040ba3d4ba52bdb2fe3da029416f",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-frontier",
+      "test": "A02_diag_rvalue",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/aba156a96dc1/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-frontier-A02_diag_rvalue.json",
+      "sha256": "b7476a015d6bffa8ce5516ad5bc274b5b6b9d71be69fa293ea8d4f259d251115",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-frontier",
+      "test": "A02_diag_trail",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/30c311770109/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-frontier-A02_diag_trail.json",
+      "sha256": "2640e280990de19cba108ca33204e8619c96aea69b79d07cbb361bf1dc70f458",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-frontier",
+      "test": "A02_diag_nul",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/55b8b9a2b5ea/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-frontier-A02_diag_nul.json",
+      "sha256": "4648f7e2312488ee62def1f0238fa2608d60d117d2d85504a716444b59bf1045",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-frontier",
+      "test": "A03_diag_const_take",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/c0cd9e2b7197/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-frontier-A03_diag_const_take.json",
+      "sha256": "13d9b632442a8f0a8e79a1d09b74c71a670b7c5caf4c5c70a764b50df7af824f",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-frontier",
+      "test": "A04_diag_zip",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/b1b336134010/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-frontier-A04_diag_zip.json",
+      "sha256": "eb0542bb208a12ad1acfd3fcb56a70a8c5f3d8d5a95fd2b56d6abb3dd9131d07",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-frontier",
+      "test": "A04_diag_flatten",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/17f7efe7ec86/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-frontier-A04_diag_flatten.json",
+      "sha256": "e84616fd7bac5812f040f2e532ce6f493b46fae27ea83b94f91203575b53daf0",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-frontier",
+      "test": "A04_diag_eager",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/3125cb78f42b/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-frontier-A04_diag_eager.json",
+      "sha256": "fdbdb0ea43d3deba9f10c21ffe1bbb560750560821d7370a37f0134143211135",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-frontier",
+      "test": "A05_diag_size",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/2b40002ee161/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-frontier-A05_diag_size.json",
+      "sha256": "ed816bfd7a0d0dfec38f6afaccbdec0939b709e976538640e6f8082696391be0",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-student",
+      "test": "L04_lookup_missing_typename",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/f3f85c4add7e/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-student-L04_lookup_missing_typename.json",
+      "sha256": "24f569524ff23d8072a5d2f92f6b5709981ca7b118bb35142eb3f9519bf3c71f",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-student",
+      "test": "L05_func_partial",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/bd815dc0a322/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-student-L05_func_partial.json",
+      "sha256": "38158b908583a149e3ae29b331bf127e0ca900177e78d965f0a4033953555d63",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-student",
+      "test": "L05_body_error",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/8fe1067a11cd/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-student-L05_body_error.json",
+      "sha256": "768566a5b6e57e6b4b6242c762231eb3ad4fced2ff8440b6589da951aca2e662",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-student",
+      "test": "L06_non_dep",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/6157154f7779/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-student-L06_non_dep.json",
+      "sha256": "a8e0a0048d0227975518d5872a5f0df1c5ec04d14cff223d1fc046d9f303aac2",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-student",
+      "test": "L08_lazy_type_eager_bad",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/ce9639747a90/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-student-L08_lazy_type_eager_bad.json",
+      "sha256": "d705fe5ee5d770f8875c5945b744fd4e9905997c0b47b330188613742d914b24",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-student",
+      "test": "L10_invalid_digit_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/c530672be5da/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-student-L10_invalid_digit_diagnostic.json",
+      "sha256": "2ed5c812299647ddb1c5aea7fb5a6632d63f4533d4ead32487a6c990c5b69eb6",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-student",
+      "test": "L10_empty_decimal_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/c63a669a8bba/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-student-L10_empty_decimal_diagnostic.json",
+      "sha256": "c4a2586cb129e220cf46d662a2e0f6b6d804f657ccaf5412b41cc344de1b52d2",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-student",
+      "test": "L10_embedded_nul_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/487a2235b8ad/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-student-L10_embedded_nul_diagnostic.json",
+      "sha256": "512b047819768416de5d0b93187c80593765fcfa61ef89fc97ecfda898618b1e",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-student",
+      "test": "L10_signed_decimal_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/ad1efd21ca8f/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-student-L10_signed_decimal_diagnostic.json",
+      "sha256": "c3a7deb9afe3a0de8dc8fdb242293a49115eeaea781712f7a932892469f163c3",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-student",
+      "test": "L10_spaced_decimal_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/aa368cfc904f/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-student-L10_spaced_decimal_diagnostic.json",
+      "sha256": "9d7d3176b9bf82a3b17d01ff2b442271ec374d37c0e9fd25e2adffd53ad9b06b",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-student",
+      "test": "L10_decimal_overflow_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/7d10b23b570f/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-student-L10_decimal_overflow_diagnostic.json",
+      "sha256": "564cd739490e3b36f259883a0acb4b1e46169a9a1059b691b994f65a7030b82c",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-student",
+      "test": "L10_parameter_constant_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/2af6f255b922/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-student-L10_parameter_constant_diagnostic.json",
+      "sha256": "29afa54780608ce33740749975dd1fe5070c58a25d0b37085dcda2bbe17268dc",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-student",
+      "test": "A01_diag_escape_pointer",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/6b30cb931463/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-student-A01_diag_escape_pointer.json",
+      "sha256": "10e04bcd3aa70aefb52da59ea00d64d54e02ae346e1620752adf7913d2fa2414",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-student",
+      "test": "A01_diag_key_too_long",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/be8bac1bc33c/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-student-A01_diag_key_too_long.json",
+      "sha256": "9ea749b9415c67edacdb608765f49ee3b8faf8377fb95b6065627f5f8b4b3a99",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-student",
+      "test": "A01_diag_key_non_ascii",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/7c38afa07d25/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-student-A01_diag_key_non_ascii.json",
+      "sha256": "5b6de3c4289dfb589d6c5ba18b8feebc4cc56effec244e78619b7bc0d2b9dd73",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-student",
+      "test": "A01_diag_key_embedded_nul",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/7c8c4be6e9c5/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-student-A01_diag_key_embedded_nul.json",
+      "sha256": "de2d2e03b723476d17a1b1721bd93d1a01a03277e01c816d588d31d9892f082d",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-student",
+      "test": "A02_diag_unknown",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/17101f8d7a53/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-student-A02_diag_unknown.json",
+      "sha256": "b9dfe00afa2654880a2b9473952fbaa63fc60ec9417960a86c69a155be5fb73f",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-student",
+      "test": "A02_diag_dup",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/3729db075b3f/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-student-A02_diag_dup.json",
+      "sha256": "927dfb17e4fcecba9420b871c0e25f112c5ef18ea8ba4eceda5e254a90b67553",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-student",
+      "test": "A02_diag_empty",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/a858e5f39ccf/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-student-A02_diag_empty.json",
+      "sha256": "a6344d6a31ec00645b9d14206093f7f635ef76fec081448bf260126abd8efc10",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-student",
+      "test": "A02_diag_bad_id",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/b96d47080814/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-student-A02_diag_bad_id.json",
+      "sha256": "43faf5d6cf16031002cb10ffab69d5f943e36d2ed1081b9de7697003925911b9",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-student",
+      "test": "A02_diag_rvalue",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/547ca2d2bec4/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-student-A02_diag_rvalue.json",
+      "sha256": "41e631074c809e1415084176207246e9bf7a18cc6d73bede41289a7b7d049eaf",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-student",
+      "test": "A02_diag_trail",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/2021fea9af64/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-student-A02_diag_trail.json",
+      "sha256": "d16e33e9261361243b62d5d50e9850ad2bd69991432f33a049fbef4f55533212",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-student",
+      "test": "A02_diag_nul",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/d8e8875667ec/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-student-A02_diag_nul.json",
+      "sha256": "dde5101f645f338fe32e1f559e7e86a9ce507f508aed21475f23e17ed9340f2c",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-student",
+      "test": "A03_diag_const_take",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/1d4e0caf4269/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-student-A03_diag_const_take.json",
+      "sha256": "15bac824175bd580c0a28894a5c23046cb6aaed753b55fb88254c845179db0f7",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-student",
+      "test": "A04_diag_zip",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/657bbef69992/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-student-A04_diag_zip.json",
+      "sha256": "c905e1a237582ae2a032a0c0e149d1ec74152b955166dae97b0e4f4f25817256",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-student",
+      "test": "A04_diag_flatten",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/d98699ab9d25/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-student-A04_diag_flatten.json",
+      "sha256": "3632c3e7a5f92591a2ab49ba3eb23dbf6b62a773127344f10816926053235467",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-student",
+      "test": "A04_diag_eager",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/5acd537c75c9/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-student-A04_diag_eager.json",
+      "sha256": "d7c7fec6aaaa629d07f91462f56e9b7098ed4aac6fa554190020afbf3f86fea1",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-student",
+      "test": "A05_diag_size",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/7f066eb4644a/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-student-A05_diag_size.json",
+      "sha256": "437efe3e37427534b71c36b738122ba475d9fe16d95f030c1cdc67cfed9f4ba2",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c04-student",
+      "test": "U01_mp11_missing_key_diagnostic",
+      "original": "C04_Generic_CompileTime_Reflection/exercises/cmake/../build/_diag/242a805c7697/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c04-student-U01_mp11_missing_key_diagnostic.json",
+      "sha256": "2ebaa9f8c120e029df4785d54cecc215d42ca8d038194d5b0342e673a73bb84d",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c05-fmt-release",
+      "test": "U02_fmt_bad_compile_format_rejected",
+      "original": "C05_Data_Representation_Standard_Facilities/exercises/U02_fmt/../build/_diag/3681058ee81c/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c05-fmt-release-U02_fmt_bad_compile_format_rejected.json",
+      "sha256": "4420ab350e73b18a14920ab0e870cd5672b779905c254727c7da694f71121116",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c05-fmt-release",
+      "test": "U03_spdlog_bad_compile_format_rejected",
+      "original": "C05_Data_Representation_Standard_Facilities/exercises/U03_spdlog/../build/_diag/341ed6fcab13/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c05-fmt-release-U03_spdlog_bad_compile_format_rejected.json",
+      "sha256": "5e3bb28858480e9e3d0fdd29d0865b4c77310a3fe4f4b2a125541f390fb7c211",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c05-fmt-debug",
+      "test": "U02_fmt_bad_compile_format_rejected",
+      "original": "C05_Data_Representation_Standard_Facilities/exercises/U02_fmt/../build/_diag/3681058ee81c/Debug/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c05-fmt-debug-U02_fmt_bad_compile_format_rejected.json",
+      "sha256": "936bdd70789ce956141cfa0b2fb8cd6c64f700d9406f76a449ddd6ef44d6ac1a",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c05-fmt-debug",
+      "test": "U03_spdlog_bad_compile_format_rejected",
+      "original": "C05_Data_Representation_Standard_Facilities/exercises/U03_spdlog/../build/_diag/341ed6fcab13/Debug/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c05-fmt-debug-U03_spdlog_bad_compile_format_rejected.json",
+      "sha256": "6653ce6800cbf3bedb411df14685054a4e74997805552c2e3110effecf4891eb",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c05-std-release",
+      "test": "U02_fmt_bad_compile_format_rejected",
+      "original": "C05_Data_Representation_Standard_Facilities/exercises/U02_fmt/../build/_diag/c032b7eb26ca/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c05-std-release-U02_fmt_bad_compile_format_rejected.json",
+      "sha256": "bf28efb670c1a7bd9685dd51c6345a3f9a53471e15898890b9484549e4f2a1b1",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c05-std-release",
+      "test": "U03_spdlog_bad_compile_format_rejected",
+      "original": "C05_Data_Representation_Standard_Facilities/exercises/U03_spdlog/../build/_diag/036f8c9bd9ce/Release/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c05-std-release-U03_spdlog_bad_compile_format_rejected.json",
+      "sha256": "dd0c8f817d46d99685f7165a22d7255cd2810b1a27ecd48273b72b7560896e7b",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c05-std-debug",
+      "test": "U02_fmt_bad_compile_format_rejected",
+      "original": "C05_Data_Representation_Standard_Facilities/exercises/U02_fmt/../build/_diag/c032b7eb26ca/Debug/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c05-std-debug-U02_fmt_bad_compile_format_rejected.json",
+      "sha256": "45a8ff559f9c2c4eaea7a164090f21138cea7a1ae5f893ffde112ddbe764a1fd",
+      "verdict": "PASS"
+    },
+    {
+      "profile": "c05-std-debug",
+      "test": "U03_spdlog_bad_compile_format_rejected",
+      "original": "C05_Data_Representation_Standard_Facilities/exercises/U03_spdlog/../build/_diag/036f8c9bd9ce/Debug/evidence-1.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/c05-std-debug-U03_spdlog_bad_compile_format_rejected.json",
+      "sha256": "69cebed955ce15e613caa30110f0b08531067e3071d36a132420514fd42c66eb",
+      "verdict": "PASS"
+    },
+    {
+      "test": "synthetic infrastructure rejection",
+      "original": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/r3-infra-reject/build/evidence-3.json",
+      "archive": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/closeout-diagnostics/infrastructure-missing-header-rejected.json",
+      "sha256": "8cbcafcc2a840b66a1fff65c4ebb147c0cb8ba75ae98fe98368ac95b43227901",
+      "expected_verdict": "FAIL"
+    }
+  ],
+  "failures": [],
+  "scope": "latest actual compiler-case records for the final tested configurations; infrastructure control remains an expected FAIL"
+}

@@ -1,0 +1,79 @@
+{
+  "configure": {
+    "command": [
+      "cmake",
+      "-S",
+      "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\cmake\\..\\build\\_diag\\6af5cfed6283\\Release\\source",
+      "-B",
+      "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\cmake\\..\\build\\_diag\\6af5cfed6283\\Release\\binary",
+      "-G",
+      "Visual Studio 18 2026",
+      "-DBUILD_TESTING=OFF",
+      "-DCMAKE_CXX_COMPILER=D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe",
+      "-A",
+      "x64"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "process_seconds": 3.797000000020489,
+    "stdout": "-- The CXX compiler identification is MSVC 19.51.36256.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Found Python3: C:/Users/zhidan.li/AppData/Local/Programs/Python/Python310/python.exe (found suitable version \"3.10.11\", minimum required is \"3.10\") found components: Interpreter\n-- Configuring done (3.6s)\n-- Generating done (0.1s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/build/_diag/6af5cfed6283/Release/binary\n",
+    "stderr": "",
+    "cleanup_error": "",
+    "error": "",
+    "status": "PASS"
+  },
+  "control": {
+    "command": [
+      "cmake",
+      "--build",
+      "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\cmake\\..\\build\\_diag\\6af5cfed6283\\Release\\binary",
+      "--config",
+      "Release",
+      "--target",
+      "control",
+      "--clean-first"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "process_seconds": 1.9849999998696148,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/build/_diag/6af5cfed6283/Release/source/CMakeLists.txt\n  non_dependent_error_control.cpp\n  control.vcxproj -> F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\_diag\\6af5cfed6283\\Release\\binary\\Release\\control.exe\n",
+    "stderr": "",
+    "cleanup_error": "",
+    "error": "",
+    "status": "PASS"
+  },
+  "subject": {
+    "command": [
+      "cmake",
+      "--build",
+      "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\cmake\\..\\build\\_diag\\6af5cfed6283\\Release\\binary",
+      "--config",
+      "Release",
+      "--target",
+      "subject"
+    ],
+    "exit_code": 1,
+    "timeout": false,
+    "process_seconds": 1.0619999999180436,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  Building Custom Rule F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/build/_diag/6af5cfed6283/Release/source/CMakeLists.txt\n  non_dependent_error.cpp\nF:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L06_constraints\\validation\\diagnostics\\non_dependent_error.cpp(3,5): error C3861: “missing_global_name”: 找不到标识符 [F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\_diag\\6af5cfed6283\\Release\\binary\\subject.vcxproj]\n      F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L06_constraints\\validation\\diagnostics\\non_dependent_error.cpp(3,24):\n      “missing_global_name”: 函数声明必须可用，因为所有参数都不依赖于模板参数\n  \n",
+    "stderr": "",
+    "cleanup_error": "",
+    "error": "",
+    "status": "FAIL"
+  },
+  "semantic_diagnostics": "error C3861: “missing_global_name”: 找不到标识符",
+  "verdict": "PASS",
+  "reason": "expected semantic diagnostic with a normal nonzero compiler exit",
+  "subject_source": "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L06_constraints\\validation\\diagnostics\\non_dependent_error.cpp",
+  "control_source": "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L06_constraints\\validation\\diagnostics\\non_dependent_error_control.cpp",
+  "pattern": "error C3861",
+  "compiler": "D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe",
+  "input_sha256": {
+    "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L06_constraints\\validation\\diagnostics\\non_dependent_error.cpp": "bffef2a3853259e5c34a4ee04b4bc5bc11ac5afe411595826d3111b39af0e6e0",
+    "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L06_constraints\\validation\\diagnostics\\non_dependent_error_control.cpp": "e85454762577f3a9daf5f98b512c42f4f96001bbd8cfe17c4960d825e0e014f8",
+    "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\tools\\compile_case.py": "a5a8a2d86171035018d8381fa27db85ce143f82711534f697d8d5ac79754e029",
+    "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\cmake\\StudySetup.cmake": "1345ddd6dc3d939c570079fc9257f783bb8638e4b8e7cae1f6578de8814cb28d"
+  },
+  "changed_inputs": [],
+  "local_include_sha256": {}
+}

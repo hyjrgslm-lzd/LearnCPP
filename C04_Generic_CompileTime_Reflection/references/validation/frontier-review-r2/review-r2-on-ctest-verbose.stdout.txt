@@ -1,0 +1,138 @@
+UpdateCTestConfiguration  from :F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/references/validation/frontier-review-r2/build-msvc-frontier/DartConfiguration.tcl
+Parse Config file:F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/references/validation/frontier-review-r2/build-msvc-frontier/DartConfiguration.tcl
+Test project F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/references/validation/frontier-review-r2/build-msvc-frontier
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 1
+      Start  1: F01_reflection_query
+
+1: Test command: F:\CPPTrain\LearnCPP\C04_Generic_CompileTime_Reflection\references\validation\frontier-review-r2\build-msvc-frontier\Release\F01_reflection_query.exe
+1: Working Directory: F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/references/validation/frontier-review-r2/build-msvc-frontier
+1: Test timeout computed to be: 30
+1: probe=reflection_query header=0 macro=0 body=0
+1: SKIP reflection query: missing <meta> or explicit reflection syntax macro
+ 1/12 Test  #1: F01_reflection_query ..................***Skipped   0.02 sec
+test 2
+      Start  2: F01_splicing_generation
+
+2: Test command: F:\CPPTrain\LearnCPP\C04_Generic_CompileTime_Reflection\references\validation\frontier-review-r2\build-msvc-frontier\Release\F01_splicing_generation.exe
+2: Working Directory: F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/references/validation/frontier-review-r2/build-msvc-frontier
+2: Test timeout computed to be: 30
+2: probe=splicing_generation header=0 macro=0 body=0
+2: SKIP splicing: missing <meta> or explicit splicing syntax macro
+ 2/12 Test  #2: F01_splicing_generation ...............***Skipped   0.02 sec
+test 3
+      Start  3: F01_annotations
+
+3: Test command: F:\CPPTrain\LearnCPP\C04_Generic_CompileTime_Reflection\references\validation\frontier-review-r2\build-msvc-frontier\Release\F01_annotations.exe
+3: Working Directory: F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/references/validation/frontier-review-r2/build-msvc-frontier
+3: Test timeout computed to be: 30
+3: probe=annotations header=0 macro=0 body=0
+3: SKIP annotations: missing <meta> or explicit annotation syntax macro
+ 3/12 Test  #3: F01_annotations .......................***Skipped   0.02 sec
+test 4
+      Start  4: F01_expansion_statement
+
+4: Test command: F:\CPPTrain\LearnCPP\C04_Generic_CompileTime_Reflection\references\validation\frontier-review-r2\build-msvc-frontier\Release\F01_expansion_statement.exe
+4: Working Directory: F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/references/validation/frontier-review-r2/build-msvc-frontier
+4: Test timeout computed to be: 30
+4: probe=expansion_statement header=na macro=0 body=0
+4: SKIP expansion statements: __cpp_expansion_statements < 202506L
+ 4/12 Test  #4: F01_expansion_statement ...............***Skipped   0.02 sec
+test 5
+      Start  5: F01_define_static
+
+5: Test command: F:\CPPTrain\LearnCPP\C04_Generic_CompileTime_Reflection\references\validation\frontier-review-r2\build-msvc-frontier\Release\F01_define_static.exe
+5: Working Directory: F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/references/validation/frontier-review-r2/build-msvc-frontier
+5: Test timeout computed to be: 30
+5: probe=define_static header=0 macro=0 body=0
+5: SKIP define_static: missing <meta> or __cpp_lib_define_static
+ 5/12 Test  #5: F01_define_static .....................***Skipped   0.02 sec
+test 6
+      Start  6: F01_define_aggregate
+
+6: Test command: F:\CPPTrain\LearnCPP\C04_Generic_CompileTime_Reflection\references\validation\frontier-review-r2\build-msvc-frontier\Release\F01_define_aggregate.exe
+6: Working Directory: F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/references/validation/frontier-review-r2/build-msvc-frontier
+6: Test timeout computed to be: 30
+6: probe=define_aggregate header=0 macro=0 body=0
+6: SKIP define_aggregate: missing <meta> or explicit aggregate generation macro
+ 6/12 Test  #6: F01_define_aggregate ..................***Skipped   0.04 sec
+test 7
+      Start  7: F01_pack_indexing
+
+7: Test command: F:\CPPTrain\LearnCPP\C04_Generic_CompileTime_Reflection\references\validation\frontier-review-r2\build-msvc-frontier\Release\F01_pack_indexing.exe
+7: Working Directory: F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/references/validation/frontier-review-r2/build-msvc-frontier
+7: Test timeout computed to be: 30
+7: probe=pack_indexing header=na macro=0 body=0
+7: SKIP pack indexing: __cpp_pack_indexing < 202311L
+ 7/12 Test  #7: F01_pack_indexing .....................***Skipped   0.02 sec
+test 8
+      Start  8: F01_fold_constraints
+
+8: Test command: F:\CPPTrain\LearnCPP\C04_Generic_CompileTime_Reflection\references\validation\frontier-review-r2\build-msvc-frontier\Release\F01_fold_constraints.exe
+8: Working Directory: F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/references/validation/frontier-review-r2/build-msvc-frontier
+8: Test timeout computed to be: 30
+8: probe=fold_constraints header=na macro=201603 body=0
+8: SKIP fold expanded constraints: compile probe did not prove P2963R3 behavior
+ 8/12 Test  #8: F01_fold_constraints ..................***Skipped   0.03 sec
+test 9
+      Start  9: F01_constexpr_exceptions
+
+9: Test command: F:\CPPTrain\LearnCPP\C04_Generic_CompileTime_Reflection\references\validation\frontier-review-r2\build-msvc-frontier\Release\F01_constexpr_exceptions.exe
+9: Working Directory: F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/references/validation/frontier-review-r2/build-msvc-frontier
+9: Test timeout computed to be: 30
+9: probe=constexpr_exceptions header=na macro=0 body=0
+9: SKIP constexpr exceptions: __cpp_constexpr_exceptions < 202411L
+ 9/12 Test  #9: F01_constexpr_exceptions ..............***Skipped   0.02 sec
+test 10
+      Start 10: F01_c29_template_name_pack_indexing
+
+10: Test command: F:\CPPTrain\LearnCPP\C04_Generic_CompileTime_Reflection\references\validation\frontier-review-r2\build-msvc-frontier\Release\F01_c29_template_name_pack_indexing.exe
+10: Working Directory: F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/references/validation/frontier-review-r2/build-msvc-frontier
+10: Test timeout computed to be: 30
+10: probe=c29_template_name_pack_indexing header=na macro=0 body=0
+10: SKIP C++29 template-name pack indexing: no explicit implementation marker
+10/12 Test #10: F01_c29_template_name_pack_indexing ...***Skipped   0.02 sec
+test 11
+      Start 11: F01_consteval_only_values
+
+11: Test command: F:\CPPTrain\LearnCPP\C04_Generic_CompileTime_Reflection\references\validation\frontier-review-r2\build-msvc-frontier\Release\F01_consteval_only_values.exe
+11: Working Directory: F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/references/validation/frontier-review-r2/build-msvc-frontier
+11: Test timeout computed to be: 30
+11: probe=consteval_only_values header=0 macro=0 body=0
+11: SKIP consteval-only values: missing <meta> or __cpp_consteval DR marker
+11/12 Test #11: F01_consteval_only_values .............***Skipped   0.02 sec
+test 12
+      Start 12: F01_attributes_reflection_proposal
+
+12: Test command: F:\CPPTrain\LearnCPP\C04_Generic_CompileTime_Reflection\references\validation\frontier-review-r2\build-msvc-frontier\Release\F01_attributes_reflection_proposal.exe
+12: Working Directory: F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/references/validation/frontier-review-r2/build-msvc-frontier
+12: Test timeout computed to be: 30
+12: probe=attributes_reflection header=0 macro=0 body=0
+12: SKIP attributes reflection: P3385R8 is a proposal and no implementation marker is set
+12/12 Test #12: F01_attributes_reflection_proposal ....***Skipped   0.02 sec
+
+100% tests passed, 0 tests failed out of 12
+
+Label Time Summary:
+capability    =   0.24 sec*proc (12 tests)
+
+Total Test time (real) =   0.27 sec
+
+The following tests did not run:
+	  1 - F01_reflection_query (Skipped)
+	  2 - F01_splicing_generation (Skipped)
+	  3 - F01_annotations (Skipped)
+	  4 - F01_expansion_statement (Skipped)
+	  5 - F01_define_static (Skipped)
+	  6 - F01_define_aggregate (Skipped)
+	  7 - F01_pack_indexing (Skipped)
+	  8 - F01_fold_constraints (Skipped)
+	  9 - F01_constexpr_exceptions (Skipped)
+	 10 - F01_c29_template_name_pack_indexing (Skipped)
+	 11 - F01_consteval_only_values (Skipped)
+	 12 - F01_attributes_reflection_proposal (Skipped)

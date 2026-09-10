@@ -1,0 +1,26 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "C04_Generic_CompileTime_Reflection/exercises/F01_frontier/build/revision-frontier-force-placement",
+    "--config",
+    "Release",
+    "--target",
+    "F01_constexpr_placement_new"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 2.4370000001508743,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/F01_frontier/CMakeLists.txt\n  constexpr_placement_new_probe.cpp\nF:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\F01_frontier\\probes\\constexpr_placement_new_probe.cpp(67,38): error C2131: 表达式的计算结果不是常数 [F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\F01_frontier\\build\\revision-frontier-force-placement\\F01_constexpr_placement_new.vcxproj]\n      F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\F01_frontier\\probes\\constexpr_placement_new_probe.cpp(25,18):\n      失败原因是调用不可替换的分配函数\n      F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\F01_frontier\\probes\\constexpr_placement_new_probe.cpp(67,38):\n      计算的调用堆栈(最旧的调用优先)是\n          F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\F01_frontier\\probes\\constexpr_placement_new_probe.cpp(67,35):\n          在计算函数 \"int construct_scalar(void)”时\n  \nF:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\F01_frontier\\probes\\constexpr_placement_new_probe.cpp(68,41): error C2131: 表达式的计算结果不是常数 [F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\F01_frontier\\build\\revision-frontier-force-placement\\F01_constexpr_placement_new.vcxproj]\n      F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\F01_frontier\\probes\\constexpr_placement_new_probe.cpp(35,20):\n      失败原因是调用不可替换的分配函数\n      F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\F01_frontier\\probes\\constexpr_placement_new_probe.cpp(68,41):\n      计算的调用堆栈(最旧的调用优先)是\n          F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\F01_frontier\\probes\\constexpr_placement_new_probe.cpp(68,38):\n          在计算函数 \"int construct_aggregate(void)”时\n  \n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 1,
+  "required_text": [
+    "constexpr_placement_new_probe.cpp"
+  ],
+  "verdict": "PASS"
+}

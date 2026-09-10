@@ -1,0 +1,78 @@
+{
+  "captured_at": "2026-09-10T13:04:08.6969485+08:00",
+  "git_head": "f261bea559d6722c31135fb2d3589be52fe958ed",
+  "results": [
+    {
+      "name": "blind_harness_configure",
+      "command": "cmake -S C04_Generic_CompileTime_Reflection\\references\\validation\\revision-20260910\\sample-blind -B C04_Generic_CompileTime_Reflection\\references\\validation\\revision-20260910\\sample-blind\\build-r2 -G \"Visual Studio 18 2026\" -A x64",
+      "exit_code": 0,
+      "evidence": "Configured with MSVC 19.51.36256.0."
+    },
+    {
+      "name": "blind_harness_build",
+      "command": "cmake --build C04_Generic_CompileTime_Reflection\\references\\validation\\revision-20260910\\sample-blind\\build-r2 --config Debug",
+      "exit_code": 0,
+      "evidence": "Built sample_blind_field_projection.exe and sample_blind_student_projection.exe."
+    },
+    {
+      "name": "blind_solution_run",
+      "command": "C04_Generic_CompileTime_Reflection\\references\\validation\\revision-20260910\\sample-blind\\build-r2\\Debug\\sample_blind_field_projection.exe",
+      "exit_code": 0,
+      "evidence": "A02 field projection contract passed"
+    },
+    {
+      "name": "blind_student_run",
+      "command": "C04_Generic_CompileTime_Reflection\\references\\validation\\revision-20260910\\sample-blind\\build-r2\\Debug\\sample_blind_student_projection.exe",
+      "exit_code": 1,
+      "evidence": "check failed: project returns writable references in requested order"
+    },
+    {
+      "name": "formal_configure",
+      "command": "cmake -S C04_Generic_CompileTime_Reflection\\exercises\\A02_field_projection -B C04_Generic_CompileTime_Reflection\\references\\validation\\revision-20260910\\a02-formal-r2 -G \"Visual Studio 18 2026\" -A x64",
+      "exit_code": 0,
+      "evidence": "Configured with MSVC 19.51.36256.0 and Python 3.10.11."
+    },
+    {
+      "name": "formal_build",
+      "command": "cmake --build C04_Generic_CompileTime_Reflection\\references\\validation\\revision-20260910\\a02-formal-r2 --config Debug",
+      "exit_code": 0,
+      "evidence": "Built Reference, validation_good, validation_bad, known_projection_baseline, and projection_counterexamples."
+    },
+    {
+      "name": "formal_ctest",
+      "command": "ctest --test-dir C04_Generic_CompileTime_Reflection\\references\\validation\\revision-20260910\\a02-formal-r2 -C Debug --output-on-failure",
+      "exit_code": 0,
+      "evidence": "100% tests passed, 0 tests failed out of 12. Covered reference, validation, negative bad rejection, two observations, and seven diagnostic cases."
+    },
+    {
+      "name": "formal_student_build",
+      "command": "cmake --build C04_Generic_CompileTime_Reflection\\references\\validation\\revision-20260910\\a02-formal-r2 --config Debug --target A02_field_projection_student",
+      "exit_code": 0,
+      "evidence": "Built A02_field_projection_student.exe."
+    },
+    {
+      "name": "formal_student_run",
+      "command": "C04_Generic_CompileTime_Reflection\\references\\validation\\revision-20260910\\a02-formal-r2\\Debug\\A02_field_projection_student.exe",
+      "exit_code": 1,
+      "evidence": "check failed: project returns writable references in requested order"
+    },
+    {
+      "name": "unknown_schema_reference_probe",
+      "command": "cmake --build C04_Generic_CompileTime_Reflection\\references\\validation\\revision-20260910\\sample-blind\\build-r2 --config Debug --target sample_blind_unknown_schema_reference",
+      "exit_code": 1,
+      "evidence": "Rejected ExternalRecord and emitted static assertion 'unknown projection record', with additional follow-on incomplete-schema diagnostics."
+    },
+    {
+      "name": "unknown_schema_good_probe",
+      "command": "cmake --build C04_Generic_CompileTime_Reflection\\references\\validation\\revision-20260910\\sample-blind\\build-r2 --config Debug --target sample_blind_unknown_schema_good",
+      "exit_code": 1,
+      "evidence": "Rejected ExternalRecord and emitted static assertion 'unknown projection record', with additional follow-on incomplete-schema diagnostics."
+    },
+    {
+      "name": "ninja_empty_platform_probe",
+      "command": "cmake -S C04_Generic_CompileTime_Reflection\\exercises\\A02_field_projection -B C04_Generic_CompileTime_Reflection\\references\\validation\\revision-20260910\\a02-formal-r2-ninja -G Ninja",
+      "exit_code": 1,
+      "evidence": "Interrupted after over 60 seconds while detecting GNU 13.2.0 compiler ABI. This did not reach compile_case.py and was not used as pass/fail evidence for A02."
+    }
+  ]
+}

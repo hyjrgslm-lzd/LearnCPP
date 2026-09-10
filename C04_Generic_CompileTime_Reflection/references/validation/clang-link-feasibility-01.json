@@ -1,0 +1,33 @@
+{
+  "command": [
+    "D:/VisualStudio2026/Installed/VC/Tools/Llvm/x64/bin/clang-cl.exe",
+    "/nologo",
+    "/O2",
+    "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\clang-trace-probe\\link_probe.cpp",
+    "/FoF:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\clang-trace-probe\\link_probe.obj",
+    "/FeF:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\clang-trace-probe\\link_probe.exe",
+    "/link",
+    "/INCREMENTAL:NO"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.25,
+  "stdout": "",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "run": {
+    "command": [
+      "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\clang-trace-probe\\link_probe.exe"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "process_seconds": 0.45399999991059303,
+    "stdout": "",
+    "stderr": "",
+    "cleanup_error": "",
+    "error": "",
+    "status": "PASS"
+  }
+}

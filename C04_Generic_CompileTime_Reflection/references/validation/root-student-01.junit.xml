@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Win32-MSBuild"
+	tests="34"
+	failures="12"
+	disabled="0"
+	skipped="0"
+	hostname="lizhidan-p02"
+	time="44"
+	timestamp="2026-09-10T00:02:30"
+	>
+	<testcase name="L01_templates_student" classname="L01_templates_student" time="0.41365" status="fail">
+		<failure message="Failed"/>
+		<properties>
+			<property name="cmake_labels" value="student"/>
+		</properties>
+		<system-out>check failed: quantity_value_t reads dependent value_type
+</system-out>
+	</testcase>
+	<testcase name="L01_templates_instantiation" classname="L01_templates_instantiation" time="0.445752" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>L01_templates instantiation observation OK
+</system-out>
+	</testcase>
+	<testcase name="L01_templates_extern_template" classname="L01_templates_extern_template" time="0.439615" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>L01_templates extern template observation OK
+</system-out>
+	</testcase>
+	<testcase name="L01_templates_missing_extern_provider" classname="L01_templates_missing_extern_provider" time="4.49479" status="run">
+		<properties>
+			<property name="cmake_labels" value="diagnostic"/>
+		</properties>
+		<system-out>PASS: missing explicit-instantiation provider must fail at link; F:\CPPTrain\LearnCPP\C04_Generic_CompileTime_Reflection\exercises\build\student\L01_templates\diag\missing\evidence-1.json
+</system-out>
+	</testcase>
+	<testcase name="L02_deduction_student" classname="L02_deduction_student" time="0.425694" status="fail">
+		<failure message="Failed"/>
+		<properties>
+			<property name="cmake_labels" value="student"/>
+		</properties>
+		<system-out>check failed: by-value keeps plain int
+</system-out>
+	</testcase>
+	<testcase name="L02_deduction_decltype" classname="L02_deduction_decltype" time="0.420332" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>L02_deduction decltype observation OK
+</system-out>
+	</testcase>
+	<testcase name="L03_forwarding_student" classname="L03_forwarding_student" time="0.424398" status="fail">
+		<failure message="Failed"/>
+		<properties>
+			<property name="cmake_labels" value="student"/>
+		</properties>
+		<system-out>check failed: invoke_preserving must keep lvalue argument category
+</system-out>
+	</testcase>
+	<testcase name="L03_forwarding_counterexamples" classname="L03_forwarding_counterexamples" time="0.417861" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>L03_forwarding counterexamples observation OK
+</system-out>
+	</testcase>
+	<testcase name="L04_lookup_student" classname="L04_lookup_student" time="0.421843" status="fail">
+		<failure message="Failed"/>
+		<properties>
+			<property name="cmake_labels" value="student"/>
+		</properties>
+		<system-out>check failed: no-route object must not satisfy c04_inspectable
+</system-out>
+	</testcase>
+	<testcase name="L04_lookup_observation" classname="L04_lookup_observation" time="0.413698" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>L04_lookup observation OK
+</system-out>
+	</testcase>
+	<testcase name="L04_lookup_missing_typename" classname="L04_lookup_missing_typename" time="6.20849" status="run">
+		<properties>
+			<property name="cmake_labels" value="diagnostic"/>
+		</properties>
+		<system-out>PASS: expected semantic diagnostic with a normal nonzero compiler exit; F:\CPPTrain\LearnCPP\C04_Generic_CompileTime_Reflection\exercises\build\student\diagnostics\L04_lookup_missing_typename\evidence-1.json
+</system-out>
+	</testcase>
+	<testcase name="L05_overload_student" classname="L05_overload_student" time="0.431063" status="fail">
+		<failure message="Failed"/>
+		<properties>
+			<property name="cmake_labels" value="student"/>
+		</properties>
+		<system-out>check failed: member describe returns member_result
+</system-out>
+	</testcase>
+	<testcase name="L05_overload_observation" classname="L05_overload_observation" time="0.428416" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>L05_overload observation OK
+</system-out>
+	</testcase>
+	<testcase name="L05_func_partial" classname="L05_func_partial" time="6.79745" status="run">
+		<properties>
+			<property name="cmake_labels" value="diagnostic"/>
+		</properties>
+		<system-out>PASS: expected semantic diagnostic with a normal nonzero compiler exit; F:\CPPTrain\LearnCPP\C04_Generic_CompileTime_Reflection\exercises\build\student\diagnostics\L05_func_partial\evidence-1.json
+</system-out>
+	</testcase>
+	<testcase name="L05_body_error" classname="L05_body_error" time="5.49171" status="run">
+		<properties>
+			<property name="cmake_labels" value="diagnostic"/>
+		</properties>
+		<system-out>PASS: expected semantic diagnostic with a normal nonzero compiler exit; F:\CPPTrain\LearnCPP\C04_Generic_CompileTime_Reflection\exercises\build\student\diagnostics\L05_body_error\evidence-1.json
+</system-out>
+	</testcase>
+	<testcase name="L06_constraints_student" classname="L06_constraints_student" time="0.426737" status="fail">
+		<failure message="Failed"/>
+		<properties>
+			<property name="cmake_labels" value="student"/>
+		</properties>
+		<system-out>check failed: missing name is not field_like
+</system-out>
+	</testcase>
+	<testcase name="L06_constraints_observation" classname="L06_constraints_observation" time="0.423608" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>L06_constraints observation OK
+</system-out>
+	</testcase>
+	<testcase name="L06_non_dep" classname="L06_non_dep" time="4.73737" status="run">
+		<properties>
+			<property name="cmake_labels" value="diagnostic"/>
+		</properties>
+		<system-out>PASS: expected semantic diagnostic with a normal nonzero compiler exit; F:\CPPTrain\LearnCPP\C04_Generic_CompileTime_Reflection\exercises\build\student\diagnostics\L06_non_dep\evidence-1.json
+</system-out>
+	</testcase>
+	<testcase name="L07_packs_student" classname="L07_packs_student" time="0.410255" status="fail">
+		<failure message="Failed"/>
+		<properties>
+			<property name="cmake_labels" value="student"/>
+		</properties>
+		<system-out>check failed: empty all fold identity must be true
+</system-out>
+	</testcase>
+	<testcase name="L07_packs_observation" classname="L07_packs_observation" time="0.416762" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>L07 pack observation OK
+</system-out>
+	</testcase>
+	<testcase name="L08_type_lists_student" classname="L08_type_lists_student" time="0.419669" status="fail">
+		<failure message="Failed"/>
+		<properties>
+			<property name="cmake_labels" value="student"/>
+		</properties>
+		<system-out>check failed: map_t applies a unary template to each element
+</system-out>
+	</testcase>
+	<testcase name="L08_type_lists_observation" classname="L08_type_lists_observation" time="0.41553" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>L08 type-list observation OK
+</system-out>
+	</testcase>
+	<testcase name="L08_lazy_type_eager_bad" classname="L08_lazy_type_eager_bad" time="2.03701" status="run">
+		<properties>
+			<property name="cmake_labels" value="diagnostic"/>
+		</properties>
+		<system-out>PASS: expected semantic diagnostic with a normal nonzero compiler exit; F:\CPPTrain\LearnCPP\C04_Generic_CompileTime_Reflection\exercises\build\student\diagnostics\L08_lazy_type_eager_bad\evidence-2.json
+</system-out>
+	</testcase>
+	<testcase name="L09_tuple_student" classname="L09_tuple_student" time="0.429243" status="fail">
+		<failure message="Failed"/>
+		<properties>
+			<property name="cmake_labels" value="student"/>
+		</properties>
+		<system-out>check failed: tuple traversal must preserve left-to-right order
+</system-out>
+	</testcase>
+	<testcase name="L09_tuple_observation" classname="L09_tuple_observation" time="0.435655" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>L09 tuple observation OK
+</system-out>
+	</testcase>
+	<testcase name="L10_constexpr_student" classname="L10_constexpr_student" time="0.421094" status="fail">
+		<failure message="Failed"/>
+		<properties>
+			<property name="cmake_labels" value="student"/>
+		</properties>
+		<system-out>check failed: decimal_value parses digits at compile time
+</system-out>
+	</testcase>
+	<testcase name="L10_constexpr_observation" classname="L10_constexpr_observation" time="0.434076" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>L10 constexpr observation OK
+</system-out>
+	</testcase>
+	<testcase name="L10_invalid_digit_diagnostic" classname="L10_invalid_digit_diagnostic" time="3.21577" status="run">
+		<properties>
+			<property name="cmake_labels" value="diagnostic"/>
+		</properties>
+		<system-out>PASS: expected semantic diagnostic with a normal nonzero compiler exit; F:\CPPTrain\LearnCPP\C04_Generic_CompileTime_Reflection\exercises\build\student\diagnostics\L10_invalid_digit_diagnostic\evidence-2.json
+</system-out>
+	</testcase>
+	<testcase name="L11_customization_student" classname="L11_customization_student" time="0.438951" status="fail">
+		<failure message="Failed"/>
+		<properties>
+			<property name="cmake_labels" value="student"/>
+		</properties>
+		<system-out>check failed: no-path object must not satisfy c04_readable
+</system-out>
+	</testcase>
+	<testcase name="L11_customization_baseline" classname="L11_customization_baseline" time="0.427112" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>L11_customization baseline observation OK
+</system-out>
+	</testcase>
+	<testcase name="L11_customization_counterexamples" classname="L11_customization_counterexamples" time="0.419215" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>L11_customization counterexamples observation OK
+</system-out>
+	</testcase>
+	<testcase name="B01_compile_cost_contracts" classname="B01_compile_cost_contracts" time="0.414975" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="P1_static_record_student" classname="P1_static_record_student" time="0.419811" status="fail">
+		<failure message="Failed"/>
+		<properties>
+			<property name="cmake_labels" value="student"/>
+		</properties>
+		<system-out>check failed: encoded fields cover the complete schema in declaration order
+</system-out>
+	</testcase>
+	<testcase name="P1_static_record_known_baseline" classname="P1_static_record_known_baseline" time="0.429431" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>P1 known-type encoding baseline passed
+</system-out>
+	</testcase>
+</testsuite>

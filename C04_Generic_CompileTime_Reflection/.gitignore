@@ -1,0 +1,10 @@
+# Local verification trees may use names other than build/.
+.cmake/
+*.dir/
+*.tlog
+*.lastbuildstate
+*.recipe
+*.vcxproj
+*.slnx
+CTestTestfile.cmake
+DartConfiguration.tcl

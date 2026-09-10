@@ -1,0 +1,13 @@
+{
+  "head": "f261bea559d6722c31135fb2d3589be52fe958ed",
+  "status": " M C01_Build_Compile_Link/README.md\n M C02_Objects_Lifetime_Ownership/README.md\n M C03_Type_Modeling_Interface_Design/README.md\n M C06_Ranges/README.md\n M C09_Coroutines/README.md\n M C10_Execution/README.md\n M C14_GPU/README.md\n M C15_Unreal_Engine/README.md\n M CONTENT_REFACTORING_GUIDE.md\n M LEARNCPP_GLOBAL_PLAN.md\n M README.md\n?? C04_Generic_CompileTime_Reflection/\n?? C05_Data_Representation_Standard_Facilities/\n",
+  "protected_inputs": {
+    "README.md": "ed603b69610fa578736548cb0c06a3e797421e5fe328d01020d0a1b70625c6a2",
+    "LEARNCPP_GLOBAL_PLAN.md": "e3415554eb2c43dd734c108f598217143e6fabb91680b45ea1bee465376acaa8",
+    "CONTENT_REFACTORING_GUIDE.md": "971e2f48729fa198e41dab09b8dc8b859745661ad3f184c8e061e2a11ad5e6fc",
+    "C03_Type_Modeling_Interface_Design/README.md": "758b5f545c6f358b3c49add656589e0ec998217fe301b8032affeb65a840c3ee",
+    "C09_Coroutines/README.md": "5551c88434e0acf8e3a80fee104b02cade023f02418e34d7b64465d80985c4d7",
+    "C15_Unreal_Engine/README.md": "eebca76049d2364c1248fe5b7a030d6172bd78ff1e618a521acd5a0080cff9d8"
+  },
+  "scope": "C04 and existing dirty work are preserved; C05 planning approvals are conversation records"
+}

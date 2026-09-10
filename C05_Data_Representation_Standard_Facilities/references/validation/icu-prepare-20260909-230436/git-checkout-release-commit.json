@@ -1,0 +1,21 @@
+{
+  "name": "git-checkout-release-commit",
+  "command": [
+    "git",
+    "-C",
+    "F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\_deps\\icu-77.1\\source\\icu-77.1-source",
+    "checkout",
+    "--detach",
+    "457157a92aa053e632cc7fcfd0e12f8a943b2d11"
+  ],
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "started_utc": "2026-09-09T15:04:57.0897798Z",
+  "ended_utc": "2026-09-09T15:05:13.8641457Z",
+  "elapsed_seconds": 16.774,
+  "timeout_seconds": 3600,
+  "timed_out": false,
+  "exit_code": 0,
+  "stdout_file": "F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\references\\validation\\icu-prepare-20260909-230436\\git-checkout-release-commit.stdout.txt",
+  "stderr_file": "F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\references\\validation\\icu-prepare-20260909-230436\\git-checkout-release-commit.stderr.txt",
+  "verdict": "PASS"
+}

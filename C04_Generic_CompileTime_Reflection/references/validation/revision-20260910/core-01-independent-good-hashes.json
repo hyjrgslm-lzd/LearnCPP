@@ -1,0 +1,26 @@
+{
+  "command": [
+    "powershell",
+    "-NoProfile",
+    "-Command",
+    "Get-FileHash C04_Generic_CompileTime_Reflection\\exercises\\L07_packs\\validation\\good\\pack_tools.hpp,C04_Generic_CompileTime_Reflection\\exercises\\L08_type_lists\\validation\\good\\type_list_tools.hpp,C04_Generic_CompileTime_Reflection\\exercises\\L09_tuple\\validation\\good\\tuple_for_each.hpp,C04_Generic_CompileTime_Reflection\\exercises\\L10_constexpr\\validation\\good\\constexpr_tools.hpp -Algorithm SHA256 | Format-Table -AutoSize"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.32800000021234155,
+  "stdout": "",
+  "stderr": "Get-FileHash : �޷�����Get-FileHash����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ\n��·����ȷ��Ȼ������һ�Ρ�\n����λ�� ��:1 �ַ�: 1\n+ Get-FileHash C04_Generic_CompileTime_Reflection\\exercises\\L07_packs\\v ...\n+ ~~~~~~~~~~~~\n    + CategoryInfo          : ObjectNotFound: (Get-FileHash:String) [], CommandNotFoundException\n    + FullyQualifiedErrorId : CommandNotFoundException\n \n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [
+    "pack_tools.hpp",
+    "type_list_tools.hpp",
+    "tuple_for_each.hpp",
+    "constexpr_tools.hpp"
+  ],
+  "verdict": "FAIL"
+}

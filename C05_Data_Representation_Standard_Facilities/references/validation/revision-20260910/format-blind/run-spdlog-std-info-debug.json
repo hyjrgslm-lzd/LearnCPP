@@ -1,0 +1,18 @@
+{
+  "command": [
+    "C05_Data_Representation_Standard_Facilities/references/validation/revision-20260910/format-blind/b/Debug/blind_spdlog_std_info.exe"
+  ],
+  "exit_code": 1,
+  "timeout": true,
+  "process_seconds": 61.42199999978766,
+  "stdout": "",
+  "stderr": "Assertion failed: out.str() == \"alice#403\\n\", file F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\references\\validation\\revision-20260910\\format-blind\\spdlog_probe.cpp, line 72\n",
+  "cleanup_error": "",
+  "error": "TimeoutExpired: Command '['C05_Data_Representation_Standard_Facilities/references/validation/revision-20260910/format-blind/b/Debug/blind_spdlog_std_info.exe']' timed out after 60.0 seconds",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "FAIL"
+}

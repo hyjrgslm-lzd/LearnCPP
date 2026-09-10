@@ -1,0 +1,23 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "C04_Generic_CompileTime_Reflection\\exercises\\B01_compile_cost\\build\\local",
+    "-C",
+    "Release",
+    "--output-on-failure"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.5150000001303852,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/B01_compile_cost/build/local\n    Start 1: B01_compile_cost_contracts\n1/1 Test #1: B01_compile_cost_contracts .......   Passed    0.43 sec\n\n100% tests passed, 0 tests failed out of 1\n\nLabel Time Summary:\nobservation    =   0.43 sec*proc (1 test)\n\nTotal Test time (real) =   0.43 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

@@ -1,0 +1,24 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "C04_Generic_CompileTime_Reflection/exercises/A04_type_pipelines/build/revision-pipelines-author",
+    "--config",
+    "Debug"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 6.077999999979511,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/A04_type_pipelines/CMakeLists.txt\n  eager_counterexample.cpp\n  A04_eager_counterexample.vcxproj -> F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\A04_type_pipelines\\build\\revision-pipelines-author\\Debug\\A04_eager_counterexample.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/A04_type_pipelines/CMakeLists.txt\n  type_pipeline_checks.cpp\n  A04_type_pipelines_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\A04_type_pipelines\\build\\revision-pipelines-author\\Debug\\A04_type_pipelines_reference.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/A04_type_pipelines/CMakeLists.txt\n  type_pipeline_checks.cpp\n  A04_type_pipelines_validation_bad.vcxproj -> F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\A04_type_pipelines\\build\\revision-pipelines-author\\Debug\\A04_type_pipelines_validation_bad.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/A04_type_pipelines/CMakeLists.txt\n  type_pipeline_checks.cpp\n  A04_type_pipelines_validation_good.vcxproj -> F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\A04_type_pipelines\\build\\revision-pipelines-author\\Debug\\A04_type_pipelines_validation_good.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/A04_type_pipelines/CMakeLists.txt\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [
+    "A04_type_pipelines_validation_good"
+  ],
+  "verdict": "PASS"
+}

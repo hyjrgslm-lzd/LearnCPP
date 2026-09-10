@@ -1,0 +1,23 @@
+{
+  "command": [
+    "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "-NoProfile",
+    "-Command",
+    "Get-FileHash -Algorithm SHA256 C04_Generic_CompileTime_Reflection\\chapters\\18-compiletime-values.md, C04_Generic_CompileTime_Reflection\\chapters\\20-explicit-object-forwarding.md, C04_Generic_CompileTime_Reflection\\exercises\\A01_compiletime_values\\README.md, C04_Generic_CompileTime_Reflection\\exercises\\A01_compiletime_values\\checks\\compiletime_values_checks.cpp, C04_Generic_CompileTime_Reflection\\exercises\\A01_compiletime_values\\src\\student\\compiletime_values.hpp, C04_Generic_CompileTime_Reflection\\exercises\\A03_explicit_object\\README.md, C04_Generic_CompileTime_Reflection\\exercises\\A03_explicit_object\\checks\\explicit_object_checks.cpp, C04_Generic_CompileTime_Reflection\\exercises\\A03_explicit_object\\src\\student\\explicit_object.hpp | Select-Object Path,Hash | ConvertTo-Json"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.48400000017136335,
+  "stdout": "[\n  {\n    \"Path\": \"F:\\\\CPPTrain\\\\LearnCPP\\\\C04_Generic_CompileTime_Reflection\\\\chapters\\\\18-compiletime-values.md\",\n    \"Hash\": \"6E497B597B5DBA5946A6F400C007D5A5EE71C5EEB04C5FD30495A755E8BDEC93\"\n  },\n  {\n    \"Path\": \"F:\\\\CPPTrain\\\\LearnCPP\\\\C04_Generic_CompileTime_Reflection\\\\chapters\\\\20-explicit-object-forwarding.md\",\n    \"Hash\": \"7E11E2535555E106091E0BB0909BF2DAA5B7ABB12612904434A22863BC6B0563\"\n  },\n  {\n    \"Path\": \"F:\\\\CPPTrain\\\\LearnCPP\\\\C04_Generic_CompileTime_Reflection\\\\exercises\\\\A01_compiletime_values\\\\README.md\",\n    \"Hash\": \"AE634EDC373717D105D90BA4F0A3E8C9969777C20FAFC04AF8E86DB65786838F\"\n  },\n  {\n    \"Path\": \"F:\\\\CPPTrain\\\\LearnCPP\\\\C04_Generic_CompileTime_Reflection\\\\exercises\\\\A01_compiletime_values\\\\checks\\\\compiletime_values_checks.cpp\",\n    \"Hash\": \"CF7AADC38ED6EC7078F16796721A2966DB4D2C4E0C60CFA572BB5B60BB95A1DB\"\n  },\n  {\n    \"Path\": \"F:\\\\CPPTrain\\\\LearnCPP\\\\C04_Generic_CompileTime_Reflection\\\\exercises\\\\A01_compiletime_values\\\\src\\\\student\\\\compiletime_values.hpp\",\n    \"Hash\": \"F1C572DF703CA170B2462D7902A7A510E5959255A9795E5A6A1FFB0A3FC1A15D\"\n  },\n  {\n    \"Path\": \"F:\\\\CPPTrain\\\\LearnCPP\\\\C04_Generic_CompileTime_Reflection\\\\exercises\\\\A03_explicit_object\\\\README.md\",\n    \"Hash\": \"2801489D2DEDF500BD758F8D1CA4354BCD817BCD613AA8A53E0BF7CF90CDF4A3\"\n  },\n  {\n    \"Path\": \"F:\\\\CPPTrain\\\\LearnCPP\\\\C04_Generic_CompileTime_Reflection\\\\exercises\\\\A03_explicit_object\\\\checks\\\\explicit_object_checks.cpp\",\n    \"Hash\": \"9CB74D1861EB3F0FE150ABFD858B524B9E3F106AF0F01F9B869BE66999F2176C\"\n  },\n  {\n    \"Path\": \"F:\\\\CPPTrain\\\\LearnCPP\\\\C04_Generic_CompileTime_Reflection\\\\exercises\\\\A03_explicit_object\\\\src\\\\student\\\\explicit_object.hpp\",\n    \"Hash\": \"221FC3115F552A4E1AFAFD59F9189C5A80F714188EFEF9E8D7090AD8A4A7062D\"\n  }\n]\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [
+    "compiletime_values_checks.cpp"
+  ],
+  "verdict": "PASS"
+}

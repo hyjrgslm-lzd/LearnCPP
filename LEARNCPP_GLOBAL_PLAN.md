@@ -187,7 +187,7 @@ N5051（2026-06-01）说明 N5050 是 C++26 最终草案及 DIS 的基础；N505
 
 交接应足以让下一位 AI 从当前状态继续：提供精确文件/接口与版本、已完成和未完成项、命令与原始结果位置、失败复现及剩余问题。公共修改由指定负责人集成并复验消费者，审查者不批准自己创作的同一内容。
 
-### 7.2 当前实施切片（更新于2026-09-09）
+### 7.2 当前实施切片（更新于2026-09-10）
 
 本批已获明确实施授权：完整建设 C01，补齐 Coroutine/Concurrency 已证实的缺口并保留旧课主线。Windows 实测；其他平台保留完整内容、代码和命令并标未验证。具体规格见 [C01 实施规格](C01_Build_Compile_Link/references/implementation-spec.md)，本表记录进度，不替代课程正文或独立审查。
 
@@ -195,12 +195,20 @@ N5051（2026-06-01）说明 N5050 是 C++26 最终草案及 DIS 的基础；N505
 
 本次已批准完整建设 C03，按课程性质采用主案例贯穿与局部机制实验；样章先审，状态、多态、包装/契约分批完成后集成Document项目。规格见 [C03 实施规格](C03_Type_Modeling_Interface_Design/references/implementation-spec.md)，旧课只增加C02/C06/C09/C10 README回链，未改旧算法或学习代码。
 
+已批准完整建设C04，采用机制专题递进与字段综合项目，先审CPO样章。用户确认按教学/业务需求组织，允许合理内部耦合；前沿完整交付但本机不支持项明确未测。见[C04实施规格](C04_Generic_CompileTime_Reflection/references/implementation-spec.md)。
+
+已批准完整建设C05，采用资源清单与数据包贯穿、复杂样章先审，并增加固定ICU77.1扩展。见[C05实施规格](C05_Data_Representation_Standard_Facilities/references/implementation-spec.md)及[质量报告](C05_Data_Representation_Standard_Facilities/references/quality-report.md)；保留C04并行改动和旧课正文，仅补C03/C09/C15导航。
+
+2026-09-10批准的C04修正与进阶增量、C05格式库增量已完成本机验证与独立审查。范围与门槛见[C04增量实施记录](C04_Generic_CompileTime_Reflection/references/revision-plan-20260910.md)：完整纳入值级算法、字段DSL、显式对象形参、类型算法组合、表达式模板、Mp11/Hana，以及C05的fmt/spdlog同步前端。下表记录当前增量结果，旧统计及其证据保留在两课历史质量报告。异步日志队列、溢出策略、flush/shutdown和服务观测由C08/C11后续主讲。
+
 | 目标/单元 | 当前状态 | 输入及先修 | 交付/证据入口 | 阻断与下一步 |
 |---|---|---|---|---|
 | G0 本批 C01/C08/C09 切片 | 本批盘点、覆盖与先修衔接已核对 | 本计划首版、当前两门旧课及通用指引；保留用户学习代码 | 根课程导航、C01 实施规格；C08/C09 各课覆盖表 | 本批导航和下游反向路线已纳独立审查；不代表六课全量 G0 完成 |
 | G1 / C01 | Windows范围实现与验证完成 | 基础 C++；先构建调试，再翻译/链接，之后 ABI/构建系统/Modules/交付 | [C01_Build_Compile_Link](C01_Build_Compile_Link/README.md)、[质量与终审记录](C01_Build_Compile_Link/references/quality-report.md) | 11章/13练习；四配置147项通过，G1最后修复另经Debug/Release正反复验，G2正式72轮通过；非作者终审及冻结指纹见质量报告。其他平台保留未测边界 |
 | G1 / C02 | Windows范围实施、验证与独立终审完成 | C01基本构建与基础C++；专题内部先修由本课补齐 | [C02_Objects_Lifetime_Ownership](C02_Objects_Lifetime_Ownership/README.md)、[覆盖表](C02_Objects_Lifetime_Ownership/references/coverage.md)、[质量报告](C02_Objects_Lifetime_Ownership/references/quality-report.md) | 16章/15练习单元；Debug/Release各40通过，ASan安全19通过/1能力跳过，前沿42通过/3能力跳过；分批与最终非作者审查均批准。保留未测平台及历史证据缺口说明 |
 | G1 / C03 | Windows范围实施、验证与独立终审完成 | C01最小构建、C02对象/资源；本课补足局部泛型先修 | [C03课程](C03_Type_Modeling_Interface_Design/README.md)、[覆盖表](C03_Type_Modeling_Interface_Design/references/coverage.md)、[质量报告](C03_Type_Modeling_Interface_Design/references/quality-report.md) | 18章；Debug/Release各40通过，ASan18通过，前沿45通过/8能力跳过；8个Student初始状态真实拒绝且接线审计通过。分批及最终非作者审查均批准；保留未测平台与前沿运行限制 |
+| G1 / C04 | 修订增量与本机验证完成，非作者审查见报告 | C01构建、C02对象；C03错误按需先修；库扩展固定输入且默认OFF | [C04课程](C04_Generic_CompileTime_Reflection/README.md)、[覆盖表](C04_Generic_CompileTime_Reflection/references/coverage.md)、[增量质量报告](C04_Generic_CompileTime_Reflection/references/revision-quality-report-20260910.md) | 25章/21单元；核心Debug/Release各102 PASS，meta组合108 PASS，ASan35 PASS，frontier102 PASS/15 SKIP；18个Student初态拒绝，18个good接线审计通过；12组元查找正式采样及独立复算通过，未声明普遍加速 |
+| G1 / C05 | fmt/spdlog增量与本机验证完成，非作者r2批准 | 原基础先修不变；格式库进阶另需C04相应机制 | [C05课程](C05_Data_Representation_Standard_Facilities/README.md)、[覆盖表](C05_Data_Representation_Standard_Facilities/references/coverage.md)、[增量质量报告](C05_Data_Representation_Standard_Facilities/references/revision-quality-report-20260910.md) | 21章/20单元；扩展OFF核心33 PASS；external fmt/std两backend的Debug/Release各38 PASS；原ICU/前沿结果保留历史报告，异步日志运行时归C08/C11后续 |
 | G2 / C09 本批补修 | 定点修复独立审查通过 | 既有37单元；学生代码、Reference 和观察型结果分别登记 | [Coroutine 质量报告](C09_Coroutines/references/quality-report.md)及独立记录 | 核心43项通过；RPC/bridge2项通过；公开完成体4通过/坏变体5拒绝。保留未测平台及ASan范围，跨课桥接纳入最终导航审查 |
 | G2 / C08 本批补充 | 定点补充独立审查通过 | 既有50题及其历史审查；本批未改算法/测量 | [Concurrency 本批记录](C08_Concurrency/references/quality-report.md#8-c01-衔接补充2026-09-08) | 本次核心60项=58 PASS/2 SKIP/0 FAIL；新增索引与证据获非作者APPROVE，保留原环境边界；跨课桥接纳入最终导航审查 |
 | C08 C++29 前沿增量 | 索引已登记，正文/练习/独立实验待后续目标 | 固定 N5055 对线程属性与 HP batches 的入稿记录；不可用已有旧接口测试替代 | [规范与实现索引](C08_Concurrency/references/standards-and-implementations.md#c29-增量的独立状态) | 保留完整后续教学义务，不因登记而宣称前沿已实现 |

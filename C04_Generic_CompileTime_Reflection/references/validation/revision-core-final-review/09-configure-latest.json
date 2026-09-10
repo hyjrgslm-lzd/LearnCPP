@@ -1,0 +1,26 @@
+{
+  "command": [
+    "cmake",
+    "-S",
+    "C04_Generic_CompileTime_Reflection\\exercises",
+    "-B",
+    "C04_Generic_CompileTime_Reflection\\exercises\\build\\revision-core-final-review",
+    "-G",
+    "Visual Studio 18 2026",
+    "-A",
+    "x64"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.015000000130385,
+  "stdout": "-- F01_frontier tests are OFF: set GENERIC_STUDY_ENABLE_FRONTIER=ON to register capability probes\n-- Configuring done (0.7s)\n-- Generating done (1.2s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/build/revision-core-final-review\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

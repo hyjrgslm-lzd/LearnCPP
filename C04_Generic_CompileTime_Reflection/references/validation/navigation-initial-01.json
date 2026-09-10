@@ -1,0 +1,28 @@
+{
+  "verdict": "PASS",
+  "documents": 19,
+  "links_checked": 61,
+  "failures": [],
+  "sha256": {
+    "C04_Generic_CompileTime_Reflection\\chapters\\11-customization-points.md": "587d24417217e6085ad73060f805414417350612be62fcc70113b29e30202342",
+    "C04_Generic_CompileTime_Reflection\\exercises\\L11_customization\\README.md": "23af3f42ecc232a13505039556462510b0b823b076d0cdb678922bc61b4f556c",
+    "C04_Generic_CompileTime_Reflection\\README.md": "46deaaa14ac5cfe2654e4345669f156b69fcfa292e09b04363e02efb1f0df7cf",
+    "C04_Generic_CompileTime_Reflection\\references\\BUILD_GUIDE.md": "3cd6cb7beb1ff30fc527decd5cb5540daf4bd7b6a7c73d8d3e17f8824161dffa",
+    "C04_Generic_CompileTime_Reflection\\references\\implementation-spec.md": "bb3edd054ae16fc8b743b38d2c83860a6c27c59eeec2795f4445e3e27235a3ba",
+    "C04_Generic_CompileTime_Reflection\\references\\reviews\\sample-review.md": "e7d88649aa02244a8bb0729a71b83e02099b0224538f1b7bd625e0f83f85c773",
+    "C04_Generic_CompileTime_Reflection\\references\\standards-and-implementations.md": "594858ca6c98399ad5138cf0cdf40653cf14771d68907430a115a7989103214e",
+    "C04_Generic_CompileTime_Reflection\\references\\validation\\sample-author\\summary.md": "1ee2c4e6d0994fc05a7ae3bec14787359571e3a5c003df92e822f49742a34e6a",
+    "README.md": "ed603b69610fa578736548cb0c06a3e797421e5fe328d01020d0a1b70625c6a2",
+    "LEARNCPP_GLOBAL_PLAN.md": "e3415554eb2c43dd734c108f598217143e6fabb91680b45ea1bee465376acaa8",
+    "CONTENT_REFACTORING_GUIDE.md": "971e2f48729fa198e41dab09b8dc8b859745661ad3f184c8e061e2a11ad5e6fc",
+    "C01_Build_Compile_Link\\README.md": "0a87fe7629d87424d582e29d746aa5db5281d4ce9821707988deb2e84a42daae",
+    "C02_Objects_Lifetime_Ownership\\README.md": "06b98511b3aadcc9636be03e5acc5461977347d0b2897d4f803cc43437ef58c1",
+    "C03_Type_Modeling_Interface_Design\\README.md": "758b5f545c6f358b3c49add656589e0ec998217fe301b8032affeb65a840c3ee",
+    "C06_Ranges\\README.md": "1a7fe5496f9f7c0f0e73e72695cfef684bc9c81c1930e32aafaca2844fd0593e",
+    "C09_Coroutines\\README.md": "5551c88434e0acf8e3a80fee104b02cade023f02418e34d7b64465d80985c4d7",
+    "C10_Execution\\README.md": "7c856a025ddf6f1d908bb317a1ef592c6c155165f261557f06992608a6d54906",
+    "C14_GPU\\README.md": "ef1c026e452b4aee8d8a4c9dbde8885bdfb2a86c9aaefcc747995b4493496230",
+    "C15_Unreal_Engine\\README.md": "eebca76049d2364c1248fe5b7a030d6172bd78ff1e618a521acd5a0080cff9d8"
+  },
+  "scope": "C04 docs, three root docs and new bridge paragraphs; no teaching-quality or web-link claim"
+}

@@ -1,0 +1,21 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "--preset",
+    "student"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 10.328000000212342,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/L01_bytes/CMakeLists.txt\n  observation.cpp\n  L01_bytes_object_representation.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\student\\L01_bytes\\Release\\L01_bytes_object_representation.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/L02_bits_endian/CMakeLists.txt\n  observation.cpp\n  L02_bits_endian_observation.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\student\\L02_bits_endian\\Release\\L02_bits_endian_observation.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/L03_integer_boundaries/CMakeLists.txt\n  checked_int_checks.cpp\n  L03_integer_boundaries_student.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\student\\L03_integer_boundaries\\Release\\L03_integer_boundaries_student.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/L04_strings_views/CMakeLists.txt\n  observation.cpp\n  L04_strings_views_observation.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\student\\L04_strings_views\\Release\\L04_strings_views_observation.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/L05_unicode/CMakeLists.txt\n  observation.cpp\n  L05_unicode_observation.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\student\\L05_unicode\\Release\\L05_unicode_observation.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/L06_transcoding/CMakeLists.txt\n  transcode_checks.cpp\n  L06_transcoding_student.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\student\\L06_transcoding\\Release\\L06_transcoding_student.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/L14_binary_fields/CMakeLists.txt\n  field_checks.cpp\n  L14_binary_fields_student.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\student\\L14_binary_fields\\Release\\L14_binary_fields_student.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/CMakeLists.txt\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

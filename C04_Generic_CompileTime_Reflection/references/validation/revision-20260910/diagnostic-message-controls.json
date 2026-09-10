@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "checks": [
+    "include/source filename cannot satisfy semantic pattern",
+    "MSVC diagnostic preserves code and strips path/project",
+    "Clang diagnostic preserved"
+  ],
+  "scope": "diagnostic message extraction only; live compile cases separately required"
+}

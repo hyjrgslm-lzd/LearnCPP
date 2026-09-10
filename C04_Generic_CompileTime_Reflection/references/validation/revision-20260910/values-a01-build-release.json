@@ -1,0 +1,22 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "C04_Generic_CompileTime_Reflection/exercises/A01_compiletime_values/build/values-author-release",
+    "--config",
+    "Release"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.9529999999795109,
+  "stdout": "[1/6] Building CXX object CMakeFiles/A01_compiletime_values_validation_good.dir/checks/compiletime_values_checks.cpp.obj\n[2/6] Building CXX object CMakeFiles/A01_compiletime_values_validation_bad.dir/checks/compiletime_values_checks.cpp.obj\n[3/6] Building CXX object CMakeFiles/A01_compiletime_values_reference.dir/checks/compiletime_values_checks.cpp.obj\n[4/6] Linking CXX executable A01_compiletime_values_validation_good.exe\n[5/6] Linking CXX executable A01_compiletime_values_reference.exe\n[6/6] Linking CXX executable A01_compiletime_values_validation_bad.exe\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

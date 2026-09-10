@@ -1,0 +1,131 @@
+{
+  "units": 18,
+  "results": [
+    {
+      "file": "final-leaf-F01_frontier-r1.xml",
+      "total": 9,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 9
+    },
+    {
+      "file": "final-leaf-L01_bytes-r1.xml",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "final-leaf-L02_bits_endian-r1.xml",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "final-leaf-L03_integer_boundaries-r1.xml",
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "final-leaf-L04_strings_views-r1.xml",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "final-leaf-L05_unicode-r1.xml",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "final-leaf-L06_transcoding-r1.xml",
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "final-leaf-L07_text_semantics-r1.xml",
+      "total": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "final-leaf-L08_parsing-r1.xml",
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "final-leaf-L09_formatting-r1.xml",
+      "total": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "final-leaf-L10_clocks_durations-r1.xml",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "final-leaf-L11_calendar_zones-r1.xml",
+      "total": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "final-leaf-L12_paths-r1.xml",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "final-leaf-L13_configuration-r1.xml",
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "final-leaf-L14_binary_fields-r1.xml",
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "final-leaf-L15_schema_evolution-r1.xml",
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "final-leaf-P1_resource_manifest-r1.xml",
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "final-leaf-U01_icu_unicode-r1.xml",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "build/sample-author-r2",
+    "--config",
+    "Debug",
+    "--target",
+    "L11_customization_counterexamples"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 1.5310000001918525,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/L11_customization/CMakeLists.txt\n  counterexamples.cpp\nF:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L11_customization\\observations\\counterexamples.cpp(62,22): error C3861: “read_value”: 找不到标识符 [F:\\CPPTrain\\LearnCPP\\build\\sample-author-r2\\L11_customization_counterexamples.vcxproj]\n      F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L11_customization\\observations\\counterexamples.cpp(62,22):\n      “read_value”: 函数未在模板定义上下文中声明，只能通过实例化上下文中参数相关的查找找到\n      F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L11_customization\\observations\\counterexamples.cpp(62,22):\n      模板实例化上下文(最早的实例化上下文)为\n          F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L11_customization\\observations\\counterexamples.cpp(100,41):\n          查看对正在编译的函数 模板 实例化“int c04_l11_counterexamples::polluted_adl::read_value_fn::operator ()<c04_l11_counterexamples::polluted_adl::NoAdlBox&>(T) const”的引用\n          with\n          [\n              T=c04_l11_counterexamples::polluted_adl::NoAdlBox &\n          ]\n  \n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "FAIL"
+}

@@ -1,0 +1,27 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "C04_Generic_CompileTime_Reflection\\exercises\\build\\revision-core-final-review-student",
+    "-C",
+    "Debug",
+    "-R",
+    "^L(07|08|09|10)_.*student$",
+    "--output-on-failure"
+  ],
+  "exit_code": 8,
+  "timeout": false,
+  "process_seconds": 0.1559999999590218,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/build/revision-core-final-review-student\n    Start 19: L07_packs_student\n1/4 Test #19: L07_packs_student ................***Failed    0.04 sec\ncheck failed: empty all fold identity must be true\n\n    Start 21: L08_type_lists_student\n2/4 Test #21: L08_type_lists_student ...........***Failed    0.01 sec\ncheck failed: map_t applies a unary template to each element\n\n    Start 24: L09_tuple_student\n3/4 Test #24: L09_tuple_student ................***Failed    0.01 sec\ncheck failed: tuple traversal must preserve left-to-right order\n\n    Start 26: L10_constexpr_student\n4/4 Test #26: L10_constexpr_student ............***Failed    0.01 sec\ncheck failed: decimal_value parses digits at compile time\n\n\n0% tests passed, 4 tests failed out of 4\n\nLabel Time Summary:\nstudent    =   0.08 sec*proc (4 tests)\n\nTotal Test time (real) =   0.10 sec\n\nThe following tests FAILED:\n\t 19 - L07_packs_student (Failed)                        student\n\t 21 - L08_type_lists_student (Failed)                   student\n\t 24 - L09_tuple_student (Failed)                        student\n\t 26 - L10_constexpr_student (Failed)                    student\n",
+  "stderr": "Errors while running CTest\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 8,
+  "required_text": [
+    "0% tests passed, 4 tests failed out of 4"
+  ],
+  "verdict": "PASS"
+}

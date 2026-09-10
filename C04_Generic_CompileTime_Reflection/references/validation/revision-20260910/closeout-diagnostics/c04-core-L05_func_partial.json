@@ -1,0 +1,79 @@
+{
+  "configure": {
+    "command": [
+      "cmake",
+      "-S",
+      "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\cmake\\..\\build\\_diag\\7aa06b9d0bed\\Release\\source",
+      "-B",
+      "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\cmake\\..\\build\\_diag\\7aa06b9d0bed\\Release\\binary",
+      "-G",
+      "Visual Studio 18 2026",
+      "-DBUILD_TESTING=OFF",
+      "-DCMAKE_CXX_COMPILER=D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe",
+      "-A",
+      "x64"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "process_seconds": 0.5780000002123415,
+    "stdout": "-- Configuring done (0.4s)\n-- Generating done (0.0s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/build/_diag/7aa06b9d0bed/Release/binary\n",
+    "stderr": "",
+    "cleanup_error": "",
+    "error": "",
+    "status": "PASS"
+  },
+  "control": {
+    "command": [
+      "cmake",
+      "--build",
+      "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\cmake\\..\\build\\_diag\\7aa06b9d0bed\\Release\\binary",
+      "--config",
+      "Release",
+      "--target",
+      "control",
+      "--clean-first"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "process_seconds": 2.156999999890104,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/build/_diag/7aa06b9d0bed/Release/source/CMakeLists.txt\n  function_partial_specialization_control.cpp\n  control.vcxproj -> F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\_diag\\7aa06b9d0bed\\Release\\binary\\Release\\control.exe\n",
+    "stderr": "",
+    "cleanup_error": "",
+    "error": "",
+    "status": "PASS"
+  },
+  "subject": {
+    "command": [
+      "cmake",
+      "--build",
+      "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\cmake\\..\\build\\_diag\\7aa06b9d0bed\\Release\\binary",
+      "--config",
+      "Release",
+      "--target",
+      "subject"
+    ],
+    "exit_code": 1,
+    "timeout": false,
+    "process_seconds": 0.9839999999385327,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  Building Custom Rule F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/build/_diag/7aa06b9d0bed/Release/source/CMakeLists.txt\n  function_partial_specialization.cpp\nF:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L05_overload\\validation\\diagnostics\\function_partial_specialization.cpp(7,5): error C2768: “classify”: 非法使用显式模板参数 [F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\_diag\\7aa06b9d0bed\\Release\\binary\\subject.vcxproj]\n",
+    "stderr": "",
+    "cleanup_error": "",
+    "error": "",
+    "status": "FAIL"
+  },
+  "semantic_diagnostics": "error C2768: “classify”: 非法使用显式模板参数",
+  "verdict": "PASS",
+  "reason": "expected semantic diagnostic with a normal nonzero compiler exit",
+  "subject_source": "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L05_overload\\validation\\diagnostics\\function_partial_specialization.cpp",
+  "control_source": "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L05_overload\\validation\\diagnostics\\function_partial_specialization_control.cpp",
+  "pattern": "error C2768|error C2912",
+  "compiler": "D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe",
+  "input_sha256": {
+    "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L05_overload\\validation\\diagnostics\\function_partial_specialization.cpp": "c93f2cf846e8adf402a3d8433cc28ccaf5cbc1e8bb72ab259ff04de69f050415",
+    "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L05_overload\\validation\\diagnostics\\function_partial_specialization_control.cpp": "7e03116e936eaf7243fd770e4ee0800d1002c307690ba8d6acba4141b27180c4",
+    "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\tools\\compile_case.py": "a5a8a2d86171035018d8381fa27db85ce143f82711534f697d8d5ac79754e029",
+    "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\cmake\\StudySetup.cmake": "1345ddd6dc3d939c570079fc9257f783bb8638e4b8e7cae1f6578de8814cb28d"
+  },
+  "changed_inputs": [],
+  "local_include_sha256": {}
+}

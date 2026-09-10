@@ -1,0 +1,25 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "C04_Generic_CompileTime_Reflection\\exercises\\L05_overload\\build\\lookup-author-r2-student",
+    "-C",
+    "Debug",
+    "--output-on-failure"
+  ],
+  "exit_code": 8,
+  "timeout": false,
+  "process_seconds": 11.843999999808148,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/L05_overload/build/lookup-author-r2-student\n    Start 1: L05_overload_student\n1/4 Test #1: L05_overload_student .............***Failed    0.42 sec\ncheck failed: member describe returns member_result\n\n    Start 2: L05_overload_observation\n2/4 Test #2: L05_overload_observation .........   Passed    0.42 sec\n    Start 3: L05_func_partial\n3/4 Test #3: L05_func_partial .................   Passed    5.43 sec\n    Start 4: L05_body_error\n4/4 Test #4: L05_body_error ...................   Passed    5.50 sec\n\n75% tests passed, 1 tests failed out of 4\n\nLabel Time Summary:\ndiagnostic     =  10.93 sec*proc (2 tests)\nobservation    =   0.42 sec*proc (1 test)\nstudent        =   0.42 sec*proc (1 test)\n\nTotal Test time (real) =  11.78 sec\n\nThe following tests FAILED:\n\t  1 - L05_overload_student (Failed)                     student\n",
+  "stderr": "Errors while running CTest\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 8,
+  "required_text": [
+    "check failed: member describe returns member_result"
+  ],
+  "verdict": "PASS"
+}

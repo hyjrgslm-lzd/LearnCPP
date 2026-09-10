@@ -1,0 +1,25 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "build/delivery-leaves-r1/L07_text_semantics",
+    "-C",
+    "Release",
+    "--output-on-failure",
+    "--output-junit",
+    "F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\references\\validation\\final-leaf-L07_text_semantics-r1.xml"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 1.0,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/build/delivery-leaves-r1/L07_text_semantics\n    Start 1: L07_text_semantics_observation\n1/2 Test #1: L07_text_semantics_observation .............   Passed    0.43 sec\n    Start 2: L07_text_semantics_bad_identity_rejected\n2/2 Test #2: L07_text_semantics_bad_identity_rejected ...   Passed    0.46 sec\n\n100% tests passed, 0 tests failed out of 2\n\nLabel Time Summary:\nnegative       =   0.46 sec*proc (1 test)\nobservation    =   0.43 sec*proc (1 test)\n\nTotal Test time (real) =   0.91 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

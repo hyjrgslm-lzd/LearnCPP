@@ -1,0 +1,21 @@
+{
+  "command": [
+    "powershell",
+    "-NoProfile",
+    "-Command",
+    "Get-Process -ErrorAction SilentlyContinue | Where-Object { @('cl','clang-cl','MSBuild','cmake','ninja','link','lld-link') -contains $_.ProcessName } | Select-Object ProcessName,Id | ConvertTo-Json -Compress"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.35999999986961484,
+  "stdout": "[{\"ProcessName\":\"cmake\",\"Id\":14852},{\"ProcessName\":\"link\",\"Id\":51568},{\"ProcessName\":\"MSBuild\",\"Id\":12764},{\"ProcessName\":\"MSBuild\",\"Id\":14452},{\"ProcessName\":\"MSBuild\",\"Id\":16692},{\"ProcessName\":\"MSBuild\",\"Id\":18108},{\"ProcessName\":\"MSBuild\",\"Id\":18256},{\"ProcessName\":\"MSBuild\",\"Id\":27604},{\"ProcessName\":\"MSBuild\",\"Id\":31052},{\"ProcessName\":\"MSBuild\",\"Id\":34416},{\"ProcessName\":\"MSBuild\",\"Id\":38356},{\"ProcessName\":\"MSBuild\",\"Id\":43724},{\"ProcessName\":\"MSBuild\",\"Id\":53968},{\"ProcessName\":\"MSBuild\",\"Id\":54080},{\"ProcessName\":\"MSBuild\",\"Id\":54360},{\"ProcessName\":\"MSBuild\",\"Id\":70084},{\"ProcessName\":\"MSBuild\",\"Id\":106392},{\"ProcessName\":\"MSBuild\",\"Id\":107044},{\"ProcessName\":\"MSBuild\",\"Id\":122812},{\"ProcessName\":\"MSBuild\",\"Id\":125780},{\"ProcessName\":\"MSBuild\",\"Id\":135816},{\"ProcessName\":\"MSBuild\",\"Id\":136572},{\"ProcessName\":\"MSBuild\",\"Id\":142960}]\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

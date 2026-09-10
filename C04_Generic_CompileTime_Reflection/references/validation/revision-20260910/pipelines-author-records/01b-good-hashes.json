@@ -1,0 +1,22 @@
+{
+  "command": [
+    "python",
+    "-c",
+    "import hashlib, pathlib; paths=[\"C04_Generic_CompileTime_Reflection/exercises/A04_type_pipelines/validation/good/type_pipelines.hpp\",\"C04_Generic_CompileTime_Reflection/exercises/A05_expression_templates/validation/good/expression_templates.hpp\"]; [print(hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest(), p) for p in paths]"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.0779999999795109,
+  "stdout": "54e89ccf68cedadeda53d5882635b8a92737a200d6f70b61d142b0a0dfe3b712 C04_Generic_CompileTime_Reflection/exercises/A04_type_pipelines/validation/good/type_pipelines.hpp\n82dc1d4eba80a50c1cb7f3fc292edb63e8bde2fcf8ed31db9b2f34f8c15744af C04_Generic_CompileTime_Reflection/exercises/A05_expression_templates/validation/good/expression_templates.hpp\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [
+    "type_pipelines.hpp"
+  ],
+  "verdict": "PASS"
+}

@@ -1,0 +1,295 @@
+{
+  "recorded_utc": "2026-09-10T04:34:44.457920+00:00",
+  "repo_head": "f261bea559d6722c31135fb2d3589be52fe958ed",
+  "mode": "meta-map-check-only",
+  "tools": {
+    "clang": "D:\\VisualStudio2026\\Installed\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe",
+    "clang_sha256": "ec094d5f8f37c106eefcfc47c9997c261a06e3bd8eaaa7255835983a58524156",
+    "llvm_readobj": "D:\\VisualStudio2026\\Installed\\VC\\Tools\\Llvm\\x64\\bin\\llvm-readobj.exe",
+    "llvm_nm": "D:\\VisualStudio2026\\Installed\\VC\\Tools\\Llvm\\x64\\bin\\llvm-nm.exe",
+    "llvm_size": "D:\\VisualStudio2026\\Installed\\VC\\Tools\\Llvm\\x64\\bin\\llvm-size.exe",
+    "driver_sha256": "9ada03551fe6531961b184e1a339f6ced50b7bd68e956df6bdc279893670664f",
+    "meta_lookup_driver_sha256": "fabfcb4ccb9a0c9bcc25d457f89d734bc655d8bbc4d2452ab395963314333fc5"
+  },
+  "environment": {
+    "clang_version": {
+      "command": [
+        "D:\\VisualStudio2026\\Installed\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe",
+        "--version"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.06200000015087426,
+      "stdout": "clang version 22.1.3 (https://github.com/llvm/llvm-project e9846648fd6183ee6d8cbdb4502213fcf902a211)\nTarget: x86_64-pc-windows-msvc\nThread model: posix\nInstalledDir: D:\\VisualStudio2026\\Installed\\VC\\Tools\\Llvm\\x64\\bin\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "cwd": "F:\\CPPTrain\\LearnCPP"
+    },
+    "python_version": "3.10.11 (tags/v3.10.11:7d4cc5a, Apr  5 2023, 00:38:17) [MSC v.1929 64 bit (AMD64)]",
+    "platform": {
+      "system": "Windows",
+      "release": "10",
+      "version": "10.0.26100",
+      "machine": "AMD64",
+      "processor": "AMD64 Family 26 Model 68 Stepping 0, AuthenticAMD"
+    },
+    "cpu": {
+      "command": [
+        "powershell",
+        "-NoProfile",
+        "-Command",
+        "Get-CimInstance Win32_Processor | Select-Object -First 1 Name,NumberOfCores,NumberOfLogicalProcessors | ConvertTo-Json -Compress"
+      ],
+      "exit_code": 1,
+      "timeout": false,
+      "process_seconds": 0.4529999999795109,
+      "stdout": "",
+      "stderr": "Get-CimInstance : �ܾ����� \n����λ�� ��:1 �ַ�: 1\n+ Get-CimInstance Win32_Processor | Select-Object -First 1 Name,NumberO ...\n+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n    + CategoryInfo          : PermissionDenied: (root\\cimv2:Win32_Processor:String) [Get-CimInstance], CimException\n    + FullyQualifiedErrorId : HRESULT 0x80041003,Microsoft.Management.Infrastructure.CimCmdlets.GetCimInstanceCommand\n \n",
+      "cleanup_error": "",
+      "error": "",
+      "status": "FAIL",
+      "cwd": "F:\\CPPTrain\\LearnCPP"
+    },
+    "cpu_fallback": {
+      "command": [
+        "powershell",
+        "-NoProfile",
+        "-Command",
+        "[pscustomobject]@{ProcessorIdentifier=$env:PROCESSOR_IDENTIFIER; NumberOfLogicalProcessors=$env:NUMBER_OF_PROCESSORS} | ConvertTo-Json -Compress"
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "process_seconds": 0.4059999999590218,
+      "stdout": "{\"ProcessorIdentifier\":\"AMD64 Family 26 Model 68 Stepping 0, AuthenticAMD\",\"NumberOfLogicalProcessors\":\"24\"}\n",
+      "stderr": "",
+      "cleanup_error": "",
+      "error": "",
+      "status": "PASS",
+      "cwd": "F:\\CPPTrain\\LearnCPP"
+    },
+    "clock_info": {
+      "monotonic": {
+        "implementation": "GetTickCount64()",
+        "monotonic": true,
+        "adjustable": false,
+        "resolution": 0.015625
+      },
+      "perf_counter": {
+        "implementation": "QueryPerformanceCounter()",
+        "monotonic": true,
+        "adjustable": false,
+        "resolution": 1e-07
+      }
+    },
+    "hash_timing_note": "Source, object and executable SHA-256 are read after compile/link commands and are not included in process_seconds.",
+    "measurement_boundary": "Post-sample detection compares the final pre-sample snapshot with the first immediate post-sample snapshot, then probes one more second. Build activity that starts and finishes wholly between snapshots may be missed; ordinary OS noise is not excluded."
+  },
+  "random_seed": 40412027,
+  "timing_compile_options": [
+    "/nologo",
+    "/c",
+    "/std:c++latest",
+    "/O2",
+    "/EHsc",
+    "/GR-"
+  ],
+  "trace_extra_options": [
+    "/clang:-ftime-trace=<path>",
+    "/clang:-ftime-trace-granularity=0"
+  ],
+  "process_detection_scope": [
+    "MSBuild.exe",
+    "cl.exe",
+    "clang-cl.exe",
+    "cmake.exe",
+    "link.exe",
+    "lld-link.exe",
+    "ninja.exe"
+  ],
+  "detector_self_check": {
+    "status": "PASS",
+    "cases": [
+      {
+        "name": "idle_msbuild_node",
+        "expected_idle": true,
+        "actual_idle": true,
+        "status": "PASS",
+        "active_reasons": []
+      },
+      {
+        "name": "busy_msbuild_node",
+        "expected_idle": false,
+        "actual_idle": false,
+        "status": "PASS",
+        "active_reasons": [
+          "msbuild-cpu-delta"
+        ]
+      },
+      {
+        "name": "new_msbuild_node",
+        "expected_idle": false,
+        "actual_idle": false,
+        "status": "PASS",
+        "active_reasons": [
+          "new-msbuild-node"
+        ]
+      },
+      {
+        "name": "exited_msbuild_node",
+        "expected_idle": false,
+        "actual_idle": false,
+        "status": "PASS",
+        "active_reasons": [
+          "msbuild-node-exited-during-probe"
+        ]
+      },
+      {
+        "name": "compiler_present",
+        "expected_idle": false,
+        "actual_idle": false,
+        "status": "PASS",
+        "active_reasons": [
+          "compiler-or-build-process-present"
+        ]
+      },
+      {
+        "name": "compiler_exited",
+        "expected_idle": false,
+        "actual_idle": false,
+        "status": "PASS",
+        "active_reasons": [
+          "compiler-or-build-process-exited-during-probe"
+        ]
+      },
+      {
+        "name": "detection_failure",
+        "expected_idle": false,
+        "actual_idle": false,
+        "status": "PASS",
+        "active_reasons": []
+      },
+      {
+        "name": "four_samples_rejected",
+        "expected_idle": false,
+        "actual_idle": false,
+        "status": "PASS",
+        "active_reasons": []
+      }
+    ]
+  },
+  "initial_probe": {
+    "idle": false,
+    "detection_failed": false,
+    "before": {
+      "status": "PASS",
+      "record": {
+        "command": [
+          "powershell",
+          "-NoProfile",
+          "-Command",
+          "$names=@('cl','clang-cl','MSBuild','cmake','ninja','link','lld-link'); Get-Process -ErrorAction SilentlyContinue | Where-Object { $names -contains $_.ProcessName } | Select-Object ProcessName,Id,CPU | ConvertTo-Json -Compress"
+        ],
+        "exit_code": 0,
+        "timeout": false,
+        "process_seconds": 0.4529999999795109,
+        "stdout": "[{\"ProcessName\":\"cmake\",\"Id\":55080,\"CPU\":0.0625},{\"ProcessName\":\"cmake\",\"Id\":86944,\"CPU\":0.3125},{\"ProcessName\":\"MSBuild\",\"Id\":14452,\"CPU\":0.28125}]\n",
+        "stderr": "",
+        "cleanup_error": "",
+        "error": "",
+        "status": "PASS",
+        "cwd": "F:\\CPPTrain\\LearnCPP"
+      },
+      "processes": [
+        {
+          "name": "cmake.exe",
+          "pid": 55080,
+          "cpu_seconds": 0.0625
+        },
+        {
+          "name": "cmake.exe",
+          "pid": 86944,
+          "cpu_seconds": 0.3125
+        },
+        {
+          "name": "MSBuild.exe",
+          "pid": 14452,
+          "cpu_seconds": 0.28125
+        }
+      ]
+    },
+    "after": {
+      "status": "PASS",
+      "record": {
+        "command": [
+          "powershell",
+          "-NoProfile",
+          "-Command",
+          "$names=@('cl','clang-cl','MSBuild','cmake','ninja','link','lld-link'); Get-Process -ErrorAction SilentlyContinue | Where-Object { $names -contains $_.ProcessName } | Select-Object ProcessName,Id,CPU | ConvertTo-Json -Compress"
+        ],
+        "exit_code": 0,
+        "timeout": false,
+        "process_seconds": 0.39099999982863665,
+        "stdout": "[{\"ProcessName\":\"cmake\",\"Id\":47008,\"CPU\":0.0625},{\"ProcessName\":\"cmake\",\"Id\":86944,\"CPU\":0.53125},{\"ProcessName\":\"MSBuild\",\"Id\":79772,\"CPU\":0.15625}]\n",
+        "stderr": "",
+        "cleanup_error": "",
+        "error": "",
+        "status": "PASS",
+        "cwd": "F:\\CPPTrain\\LearnCPP"
+      },
+      "processes": [
+        {
+          "name": "cmake.exe",
+          "pid": 47008,
+          "cpu_seconds": 0.0625
+        },
+        {
+          "name": "cmake.exe",
+          "pid": 86944,
+          "cpu_seconds": 0.53125
+        },
+        {
+          "name": "MSBuild.exe",
+          "pid": 79772,
+          "cpu_seconds": 0.15625
+        }
+      ]
+    },
+    "active": [
+      {
+        "reason": "compiler-or-build-process-present",
+        "name": "cmake.exe",
+        "pid": 47008,
+        "cpu_seconds": 0.0625
+      },
+      {
+        "reason": "compiler-or-build-process-present",
+        "name": "cmake.exe",
+        "pid": 86944,
+        "cpu_seconds": 0.53125
+      },
+      {
+        "reason": "new-msbuild-node",
+        "name": "MSBuild.exe",
+        "pid": 79772,
+        "cpu_seconds": 0.15625
+      },
+      {
+        "reason": "compiler-or-build-process-exited-during-probe",
+        "name": "cmake.exe",
+        "pid": 55080,
+        "cpu_seconds": 0.0625
+      },
+      {
+        "reason": "msbuild-node-exited-during-probe",
+        "name": "MSBuild.exe",
+        "pid": 14452,
+        "cpu_seconds": 0.28125
+      }
+    ],
+    "idle_msbuild_nodes": []
+  },
+  "status": "FAIL",
+  "error": "RuntimeError: meta_map manual_32_missing baseline compile failed"
+}

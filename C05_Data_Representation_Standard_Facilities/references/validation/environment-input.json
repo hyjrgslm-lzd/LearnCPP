@@ -1,0 +1,22 @@
+{
+  "utc": "2026-09-09T15:01:10.3293316Z",
+  "compiler_path": "D:\\VisualStudio2026\\Installed\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe",
+  "compiler_file_version": "19.51.36256.0",
+  "os": "Microsoft Windows 11 专业版",
+  "os_version": "10.0.26100",
+  "cpu": "AMD Ryzen 9 9900X 12-Core Processor            ",
+  "cores": 12,
+  "logical_processors": 24,
+  "cmake": "cmake version 4.2.3",
+  "header_sha256": {
+    "print": "9EC8CCAA7EC5BE91A15BB9D18A673CCCA265F5BA56B9A89B26EC73034CA174DF",
+    "yvals_core.h": "10B59D42BDE2105E76CF16735E34DD0F1D45A943CB1B789C4A0406C67C2BD684",
+    "chrono": "3B3AF70F215D5F38692670DC96C589D7E5DFB27D392A83D97B7B1949B024E284",
+    "filesystem": "443C33B031B1A1794429227D4BCC1970524117AD8D6E3991F38EC0764EA0EFD1",
+    "charconv": "9FC3E0ED3789A856DE9C3E4567F090365879828CCA0357FDD3C3F457739DB3F3",
+    "format": "5966265992723EEA192D65E1AC791B9EEA3B5B0487872EEA56FB040B2E4E431B",
+    "bit": "7D64EC79E84239CE3E7D009C4A994EABCDB8D5EFF0488C7CDE5BA8C62AD6E3E4"
+  },
+  "note": "Installation inspection only; actual compile/link flags and capabilities require build evidence",
+  "upstream_stl_commit": "4edbc1d63a1ec156bed6dbf1727f413fa682abba"
+}

@@ -1,0 +1,28 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "C04_Generic_CompileTime_Reflection\\build\\vb-a01-r2-student",
+    "-C",
+    "Debug",
+    "--output-on-failure"
+  ],
+  "exit_code": 8,
+  "timeout": false,
+  "process_seconds": 24.311999999918044,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/build/vb-a01-r2-student\n    Start 1: A01_compiletime_values_student\n1/5 Test #1: A01_compiletime_values_student ...***Failed    0.48 sec\ncheck failed: sort orders literal keys\n\n    Start 2: A01_diag_escape_pointer\n2/5 Test #2: A01_diag_escape_pointer ..........   Passed    5.82 sec\n    Start 3: A01_diag_key_too_long\n3/5 Test #3: A01_diag_key_too_long ............   Passed    5.92 sec\n    Start 4: A01_diag_key_non_ascii\n4/5 Test #4: A01_diag_key_non_ascii ...........   Passed    5.77 sec\n    Start 5: A01_diag_key_embedded_nul\n5/5 Test #5: A01_diag_key_embedded_nul ........   Passed    6.24 sec\n\n80% tests passed, 1 tests failed out of 5\n\nLabel Time Summary:\ndiagnostic    =  23.75 sec*proc (4 tests)\nstudent       =   0.48 sec*proc (1 test)\n\nTotal Test time (real) =  24.25 sec\n\nThe following tests FAILED:\n\t  1 - A01_compiletime_values_student (Failed)           student\n",
+  "stderr": "Errors while running CTest\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 8,
+  "required_text": [
+    "check failed: sort orders literal keys",
+    "A01_diag_key_too_long",
+    "A01_diag_key_non_ascii",
+    "A01_diag_key_embedded_nul"
+  ],
+  "verdict": "PASS"
+}

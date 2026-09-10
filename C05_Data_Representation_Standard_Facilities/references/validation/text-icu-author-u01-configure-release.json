@@ -1,0 +1,27 @@
+{
+  "command": [
+    "cmake",
+    "-S",
+    "C05_Data_Representation_Standard_Facilities/exercises/U01_icu_unicode",
+    "-B",
+    "C05_Data_Representation_Standard_Facilities/exercises/U01_icu_unicode/build/author-release",
+    "-G",
+    "Visual Studio 18 2026",
+    "-A",
+    "x64",
+    "-DDATA_STUDY_ENABLE_ICU=ON"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 3.0,
+  "stdout": "-- The CXX compiler identification is MSVC 19.51.36256.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Found ICU: F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/build/_deps/icu-77.1/include (found suitable exact version \"77.1\") found components: uc i18n data\n-- Configuring done (2.9s)\n-- Generating done (0.1s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/U01_icu_unicode/build/author-release\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

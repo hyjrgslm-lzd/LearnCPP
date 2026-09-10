@@ -1,0 +1,24 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "build/delivery-leaves-r1/L04_strings_views",
+    "--config",
+    "Release",
+    "--parallel",
+    "2"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 1.9059999999590218,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/L04_strings_views/CMakeLists.txt\n  observation.cpp\n  L04_strings_views_observation.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\delivery-leaves-r1\\L04_strings_views\\Release\\L04_strings_views_observation.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/L04_strings_views/CMakeLists.txt\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

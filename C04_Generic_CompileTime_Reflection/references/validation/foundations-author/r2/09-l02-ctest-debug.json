@@ -1,0 +1,23 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "C04_Generic_CompileTime_Reflection/exercises/L02_deduction/build/foundations-author-r2-debug",
+    "-C",
+    "Debug",
+    "--output-on-failure"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 1.8129999998491257,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/L02_deduction/build/foundations-author-r2-debug\n    Start 1: L02_deduction_reference\n1/4 Test #1: L02_deduction_reference .................   Passed    0.43 sec\n    Start 2: L02_deduction_validation_good\n2/4 Test #2: L02_deduction_validation_good ...........   Passed    0.42 sec\n    Start 3: L02_deduction_validation_bad_rejected\n3/4 Test #3: L02_deduction_validation_bad_rejected ...   Passed    0.45 sec\n    Start 4: L02_deduction_decltype\n4/4 Test #4: L02_deduction_decltype ..................   Passed    0.41 sec\n\n100% tests passed, 0 tests failed out of 4\n\nLabel Time Summary:\nnegative       =   0.45 sec*proc (1 test)\nobservation    =   0.41 sec*proc (1 test)\nreference      =   0.43 sec*proc (1 test)\nvalidation     =   0.42 sec*proc (1 test)\n\nTotal Test time (real) =   1.73 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

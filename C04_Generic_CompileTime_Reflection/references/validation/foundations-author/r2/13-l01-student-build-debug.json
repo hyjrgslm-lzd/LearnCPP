@@ -1,0 +1,22 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "C04_Generic_CompileTime_Reflection/exercises/L01_templates/build/foundations-author-r2-student",
+    "--config",
+    "Debug"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 4.202999999979511,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/L01_templates/CMakeLists.txt\n  main.cpp\n  use_a.cpp\n  use_b.cpp\n  twice_instantiation.cpp\n  正在生成代码...\n  L01_templates_extern_template.vcxproj -> F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L01_templates\\build\\foundations-author-r2-student\\Debug\\L01_templates_extern_template.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/L01_templates/CMakeLists.txt\n  instantiation.cpp\n  L01_templates_instantiation.vcxproj -> F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L01_templates\\build\\foundations-author-r2-student\\Debug\\L01_templates_instantiation.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/L01_templates/CMakeLists.txt\n  quantity_checks.cpp\nF:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L01_templates\\checks\\quantity_checks.cpp(23,44): error C2039: \"value_type\": 不是 \"l01::quantity<int,l01::meters>\" 的成员 [F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L01_templates\\build\\foundations-author-r2-student\\L01_templates_student.vcxproj]\n      F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L01_templates\\src\\student\\quantity_templates.hpp(10,8):\n      参见“l01::quantity<int,l01::meters>”的声明\n  \nF:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L01_templates\\checks\\quantity_checks.cpp(23,17): error C2882: “std”: 在表达式中非法使用命名空间标识符 [F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L01_templates\\build\\foundations-author-r2-student\\L01_templates_student.vcxproj]\nF:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L01_templates\\checks\\quantity_checks.cpp(24,44): error C2039: \"unit_type\": 不是 \"l01::quantity<int,l01::meters>\" 的成员 [F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L01_templates\\build\\foundations-author-r2-student\\L01_templates_student.vcxproj]\n      F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L01_templates\\src\\student\\quantity_templates.hpp(10,8):\n      参见“l01::quantity<int,l01::meters>”的声明\n  \nF:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L01_templates\\checks\\quantity_checks.cpp(24,17): error C2882: “std”: 在表达式中非法使用命名空间标识符 [F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L01_templates\\build\\foundations-author-r2-student\\L01_templates_student.vcxproj]\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "FAIL"
+}

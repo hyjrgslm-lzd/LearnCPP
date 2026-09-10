@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Win32-MSBuild"
+	tests="17"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname="lizhidan-p02"
+	time="7"
+	timestamp="2026-09-10T00:03:37"
+	>
+	<testcase name="L01_bytes_object_representation" classname="L01_bytes_object_representation" time="0.441849" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L02_bits_endian_observation" classname="L02_bits_endian_observation" time="0.444936" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L03_integer_boundaries_reference" classname="L03_integer_boundaries_reference" time="0.434883" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L04_strings_views_observation" classname="L04_strings_views_observation" time="0.436443" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L05_unicode_observation" classname="L05_unicode_observation" time="0.431173" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L06_transcoding_reference" classname="L06_transcoding_reference" time="0.428056" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L07_text_semantics_observation" classname="L07_text_semantics_observation" time="0.430544" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L08_parsing_reference" classname="L08_parsing_reference" time="0.437252" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L09_formatting_observation" classname="L09_formatting_observation" time="0.449196" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L10_clocks_durations_observation" classname="L10_clocks_durations_observation" time="0.454309" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L11_calendar_zones_utc" classname="L11_calendar_zones_utc" time="0.469782" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L11_calendar_zones_tzdb" classname="L11_calendar_zones_tzdb" time="0.485491" status="run">
+		<properties>
+			<property name="cmake_labels" value="capability"/>
+		</properties>
+		<system-out>tzdb version: 2022g.27
+</system-out>
+	</testcase>
+	<testcase name="L12_paths_observation" classname="L12_paths_observation" time="0.451517" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L13_configuration_reference" classname="L13_configuration_reference" time="0.448605" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L14_binary_fields_reference" classname="L14_binary_fields_reference" time="0.46116" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L15_schema_evolution_reference" classname="L15_schema_evolution_reference" time="0.456737" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="P1_resource_manifest_reference" classname="P1_resource_manifest_reference" time="0.491495" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>resource manifest pipeline checked
+</system-out>
+	</testcase>
+</testsuite>

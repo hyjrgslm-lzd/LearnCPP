@@ -1,0 +1,15 @@
+{
+  "command": [
+    "cmake",
+    "-S",
+    "C05_Data_Representation_Standard_Facilities/exercises/F01_frontier",
+    "-B",
+    "C05_Data_Representation_Standard_Facilities/exercises/build/f01-frontier-on",
+    "-DDATA_STUDY_ENABLE_FRONTIER=ON"
+  ],
+  "exit_code": 0,
+  "duration_ms": 358,
+  "stdout": "-- Configuring done (0.1s)\r\n-- Generating done (0.2s)\r\n-- Build files have been written to: F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/build/f01-frontier-on\r\n",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "timestamp": "2026-09-09T23:46:48.7256513+08:00"
+}

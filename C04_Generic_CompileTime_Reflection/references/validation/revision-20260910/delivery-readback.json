@@ -1,0 +1,14 @@
+{
+  "verdict": "PASS",
+  "manifest_sha256": "ef4b42cb988f7f36fc5f0857819ebd123f9f41151b4fa4e4c27c126bc0a3704d",
+  "files_checked": 2491,
+  "changed_files": 1213,
+  "source_mismatches": [],
+  "shared_input_mismatches": [],
+  "binary_metadata_checked": 616,
+  "binary_mismatches": [],
+  "metadata_mismatches": [],
+  "navigation_document_mismatches": [],
+  "navigation_documents": 224,
+  "local_links_checked": 2768
+}

@@ -1,0 +1,26 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\dependency-probes\\format-fmt-build",
+    "--config",
+    "Release",
+    "--parallel",
+    "1"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 11.108999999938533,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/build/_deps/fmt-12.1.0/source/CMakeLists.txt\n  format.cc\nF:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\_deps\\fmt-12.1.0\\source\\include\\fmt\\base.h(930,12): warning C4834: 放弃具有 [[nodiscard]] 属性的函数的返回值 [F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\dependency-probes\\format-fmt-build\\_deps\\fmt-12.1.0-build\\fmt.vcxproj]\n  (编译源文件“../../../../_deps/fmt-12.1.0/source/src/format.cc”)\n      F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\_deps\\fmt-12.1.0\\source\\include\\fmt\\base.h(930,12):\n      模板实例化上下文(最早的实例化上下文)为\n          F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\_deps\\fmt-12.1.0\\source\\src\\format.cc(13,30):\n          查看对正在编译的函数 模板 实例化“fmt::v12::locale_ref::locale_ref<std::locale,0>(const std::locale &)”的引用\n  \n  os.cc\n  正在生成代码...\n  fmt.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\dependency-probes\\format-fmt-build\\_deps\\fmt-12.1.0-build\\Release\\fmt.lib\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/build/_deps/spdlog-1.17.0/source/CMakeLists.txt\n  spdlog.cpp\n  stdout_sinks.cpp\n  color_sinks.cpp\n  file_sinks.cpp\n  async.cpp\n  cfg.cpp\n  正在生成代码...\n  spdlog.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\dependency-probes\\format-fmt-build\\_deps\\spdlog-1.17.0-build\\Release\\spdlog.lib\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/build/dependency-probes/format-fmt-src/CMakeLists.txt\n  main.cpp\n  c05_format_fmt_probe.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\dependency-probes\\format-fmt-build\\Release\\c05_format_fmt_probe.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/build/dependency-probes/format-fmt-src/CMakeLists.txt\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [
+    "c05_format_fmt_probe"
+  ],
+  "verdict": "PASS"
+}

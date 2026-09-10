@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Win32-MSBuild"
+	tests="3"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname="lizhidan-p02"
+	time="0"
+	timestamp="2026-09-10T00:10:16"
+	>
+	<testcase name="L03_integer_boundaries_reference" classname="L03_integer_boundaries_reference" time="0.415437" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L03_integer_boundaries_validation_good" classname="L03_integer_boundaries_validation_good" time="0.0221519" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L03_integer_boundaries_validation_bad_rejected" classname="L03_integer_boundaries_validation_bad_rejected" time="0.441106" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>-- Rejected the intended bad implementation: rejects one-past u32 max
+</system-out>
+	</testcase>
+</testsuite>

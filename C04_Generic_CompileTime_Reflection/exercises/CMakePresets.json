@@ -1,0 +1,170 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 4,
+    "minor": 2,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "base",
+      "hidden": true,
+      "generator": "Visual Studio 18 2026",
+      "architecture": "x64",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "cacheVariables": {
+        "BUILD_TESTING": "ON",
+        "GENERIC_STUDY_BUILD_REFERENCE": "ON",
+        "GENERIC_STUDY_TEST_STUDENTS": "OFF",
+        "GENERIC_STUDY_ENABLE_ASAN": "OFF",
+        "GENERIC_STUDY_ENABLE_FRONTIER": "OFF",
+        "GENERIC_STUDY_ENABLE_META_LIBS": "OFF"
+      }
+    },
+    {
+      "name": "verify-core",
+      "inherits": "base"
+    },
+    {
+      "name": "verify-debug",
+      "inherits": "base"
+    },
+    {
+      "name": "student",
+      "inherits": "base",
+      "cacheVariables": {
+        "GENERIC_STUDY_BUILD_REFERENCE": "OFF",
+        "GENERIC_STUDY_TEST_STUDENTS": "ON"
+      }
+    },
+    {
+      "name": "asan",
+      "inherits": "base",
+      "cacheVariables": {
+        "GENERIC_STUDY_ENABLE_ASAN": "ON"
+      }
+    },
+    {
+      "name": "frontier",
+      "inherits": "base",
+      "cacheVariables": {
+        "GENERIC_STUDY_ENABLE_FRONTIER": "ON"
+      }
+    },
+    {
+      "name": "meta-libs",
+      "inherits": "base",
+      "cacheVariables": {
+        "GENERIC_STUDY_ENABLE_META_LIBS": "ON"
+      }
+    },
+    {
+      "name": "meta-student",
+      "inherits": "student",
+      "cacheVariables": {
+        "GENERIC_STUDY_ENABLE_META_LIBS": "ON"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "verify-core",
+      "configurePreset": "verify-core",
+      "configuration": "Release"
+    },
+    {
+      "name": "verify-debug",
+      "configurePreset": "verify-debug",
+      "configuration": "Debug"
+    },
+    {
+      "name": "student",
+      "configurePreset": "student",
+      "configuration": "Release"
+    },
+    {
+      "name": "asan",
+      "configurePreset": "asan",
+      "configuration": "RelWithDebInfo"
+    },
+    {
+      "name": "frontier",
+      "configurePreset": "frontier",
+      "configuration": "Release"
+    },
+    {
+      "name": "meta-libs",
+      "configurePreset": "meta-libs",
+      "configuration": "Release"
+    },
+    {
+      "name": "meta-student",
+      "configurePreset": "meta-student",
+      "configuration": "Release"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "verify-core",
+      "configurePreset": "verify-core",
+      "configuration": "Release",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "verify-debug",
+      "configurePreset": "verify-debug",
+      "configuration": "Debug",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "student",
+      "configurePreset": "student",
+      "configuration": "Release",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "asan",
+      "configurePreset": "asan",
+      "configuration": "RelWithDebInfo",
+      "filter": {
+        "include": {
+          "label": "^(reference|validation|observation)$",
+          "name": "^(L02_deduction|L03_forwarding|L04_lookup|L09_tuple|L11_customization|P1_static_record|A0[1-5]_)"
+        }
+      },
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "frontier",
+      "configurePreset": "frontier",
+      "configuration": "Release",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "meta-libs",
+      "configurePreset": "meta-libs",
+      "configuration": "Release",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "meta-student",
+      "configurePreset": "meta-student",
+      "configuration": "Release",
+      "output": {
+        "outputOnFailure": true
+      }
+    }
+  ]
+}

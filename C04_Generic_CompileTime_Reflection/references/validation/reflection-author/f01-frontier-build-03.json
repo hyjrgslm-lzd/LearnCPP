@@ -1,0 +1,22 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "C04_Generic_CompileTime_Reflection\\exercises\\build\\f01-frontier",
+    "--config",
+    "Release"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 2.1399999998975545,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  annotations_probe.cpp\nF:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\F01_frontier\\probes\\annotations_probe.cpp(26,7): error C2760: 语法错误: 此处出现意外的“=”；应为“attribute” [F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\f01-frontier\\F01_annotations.vcxproj]\nF:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\F01_frontier\\probes\\annotations_probe.cpp(26,7): error C2760: 语法错误: 此处出现意外的“=”；应为“]” [F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\f01-frontier\\F01_annotations.vcxproj]\nF:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\F01_frontier\\probes\\annotations_probe.cpp(26,9): error C2226: 语法错误: 意外的“FormatSkip”类型 [F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\f01-frontier\\F01_annotations.vcxproj]\nF:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\F01_frontier\\probes\\annotations_probe.cpp(26,19): error C2334: “{”的前面有意外标记；跳过明显的函数体 [F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\f01-frontier\\F01_annotations.vcxproj]\nF:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\F01_frontier\\probes\\annotations_probe.cpp(26,25): error C2059: 语法错误:“]” [F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\f01-frontier\\F01_annotations.vcxproj]\nF:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\F01_frontier\\probes\\annotations_probe.cpp(28,15): error C2238: 意外的标记位于“;”之前 [F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\f01-frontier\\F01_annotations.vcxproj]\n  F01_attributes_reflection_proposal.vcxproj -> F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\f01-frontier\\Release\\F01_attributes_reflection_proposal.exe\n  F01_c29_template_name_pack_indexing.vcxproj -> F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\f01-frontier\\Release\\F01_c29_template_name_pack_indexing.exe\n  F01_consteval_only_values.vcxproj -> F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\f01-frontier\\Release\\F01_consteval_only_values.exe\n  F01_constexpr_exceptions.vcxproj -> F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\f01-frontier\\Release\\F01_constexpr_exceptions.exe\n  F01_define_aggregate.vcxproj -> F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\f01-frontier\\Release\\F01_define_aggregate.exe\n  F01_define_static.vcxproj -> F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\f01-frontier\\Release\\F01_define_static.exe\n  F01_expansion_statement.vcxproj -> F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\f01-frontier\\Release\\F01_expansion_statement.exe\n  F01_fold_constraints.vcxproj -> F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\f01-frontier\\Release\\F01_fold_constraints.exe\n  F01_pack_indexing.vcxproj -> F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\f01-frontier\\Release\\F01_pack_indexing.exe\n  F01_reflection_query.vcxproj -> F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\f01-frontier\\Release\\F01_reflection_query.exe\n  F01_splicing_generation.vcxproj -> F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\f01-frontier\\Release\\F01_splicing_generation.exe\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "FAIL"
+}

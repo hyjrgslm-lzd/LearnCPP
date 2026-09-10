@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Win32-MSBuild"
+	tests="1"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname="lizhidan-p02"
+	time="0"
+	timestamp="2026-09-10T00:10:27"
+	>
+	<testcase name="L05_unicode_observation" classname="L05_unicode_observation" time="0.412865" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+</testsuite>

@@ -1,0 +1,24 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "build/sample-author-r2",
+    "--config",
+    "Debug",
+    "--target",
+    "L11_customization_counterexamples"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 1.6880000000819564,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  counterexamples.cpp\n  L11_customization_counterexamples.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\sample-author-r2\\Debug\\L11_customization_counterexamples.exe\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

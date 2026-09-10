@@ -1,0 +1,25 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "C04_Generic_CompileTime_Reflection/exercises/L01_templates/build/foundations-author-r2-student",
+    "-C",
+    "Debug",
+    "--output-on-failure"
+  ],
+  "exit_code": 8,
+  "timeout": false,
+  "process_seconds": 1.922000000020489,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/L01_templates/build/foundations-author-r2-student\n    Start 1: L01_templates_student\n1/4 Test #1: L01_templates_student ...................***Failed    0.02 sec\ncheck failed: quantity_value_t reads dependent value_type\n\n    Start 2: L01_templates_instantiation\n2/4 Test #2: L01_templates_instantiation .............   Passed    0.02 sec\n    Start 3: L01_templates_extern_template\n3/4 Test #3: L01_templates_extern_template ...........   Passed    0.03 sec\n    Start 4: L01_templates_missing_extern_provider\n4/4 Test #4: L01_templates_missing_extern_provider ...   Passed    1.78 sec\n\n75% tests passed, 1 tests failed out of 4\n\nLabel Time Summary:\ndiagnostic     =   1.78 sec*proc (1 test)\nobservation    =   0.05 sec*proc (2 tests)\nstudent        =   0.02 sec*proc (1 test)\n\nTotal Test time (real) =   1.85 sec\n\nThe following tests FAILED:\n\t  1 - L01_templates_student (Failed)                    student\n",
+  "stderr": "Errors while running CTest\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 8,
+  "required_text": [
+    "quantity_value_t reads dependent value_type"
+  ],
+  "verdict": "PASS"
+}

@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Win32-MSBuild"
+	tests="43"
+	failures="0"
+	disabled="0"
+	skipped="9"
+	hostname="lizhidan-p02"
+	time="20"
+	timestamp="2026-09-10T00:06:03"
+	>
+	<testcase name="L01_bytes_object_representation" classname="L01_bytes_object_representation" time="0.42344" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L02_bits_endian_observation" classname="L02_bits_endian_observation" time="0.412319" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L03_integer_boundaries_reference" classname="L03_integer_boundaries_reference" time="0.414869" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L03_integer_boundaries_validation_good" classname="L03_integer_boundaries_validation_good" time="0.415856" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L03_integer_boundaries_validation_bad_rejected" classname="L03_integer_boundaries_validation_bad_rejected" time="0.443002" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>-- Rejected the intended bad implementation: rejects one-past u32 max
+</system-out>
+	</testcase>
+	<testcase name="L04_strings_views_observation" classname="L04_strings_views_observation" time="0.408569" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L05_unicode_observation" classname="L05_unicode_observation" time="0.421201" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L06_transcoding_reference" classname="L06_transcoding_reference" time="0.41726" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L06_transcoding_validation_good" classname="L06_transcoding_validation_good" time="0.420334" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L06_transcoding_validation_bad_rejected" classname="L06_transcoding_validation_bad_rejected" time="0.454921" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>-- Rejected the intended bad implementation: rejects overlong slash
+</system-out>
+	</testcase>
+	<testcase name="L07_text_semantics_observation" classname="L07_text_semantics_observation" time="0.419677" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L07_text_semantics_bad_identity_rejected" classname="L07_text_semantics_bad_identity_rejected" time="0.473737" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>-- Rejected the intended bad implementation: canonical-equivalence is not byte identity
+</system-out>
+	</testcase>
+	<testcase name="L08_parsing_reference" classname="L08_parsing_reference" time="0.414416" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L08_parsing_validation_good" classname="L08_parsing_validation_good" time="0.414135" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L08_parsing_validation_bad_rejected" classname="L08_parsing_validation_bad_rejected" time="0.455859" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>-- Rejected the intended bad implementation: rejects trailing characters
+</system-out>
+	</testcase>
+	<testcase name="L09_formatting_observation" classname="L09_formatting_observation" time="0.435026" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L09_formatting_bad_truncation_rejected" classname="L09_formatting_bad_truncation_rejected" time="0.467292" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>-- Rejected the intended bad implementation: format_to_n reports truncation
+</system-out>
+	</testcase>
+	<testcase name="L10_clocks_durations_observation" classname="L10_clocks_durations_observation" time="0.420092" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L11_calendar_zones_utc" classname="L11_calendar_zones_utc" time="0.423105" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L11_calendar_zones_tzdb" classname="L11_calendar_zones_tzdb" time="0.446499" status="run">
+		<properties>
+			<property name="cmake_labels" value="capability"/>
+		</properties>
+		<system-out>tzdb version: 2022g.27
+</system-out>
+	</testcase>
+	<testcase name="L12_paths_observation" classname="L12_paths_observation" time="0.424845" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L13_configuration_reference" classname="L13_configuration_reference" time="0.418519" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L13_configuration_validation_good" classname="L13_configuration_validation_good" time="0.420045" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L13_configuration_validation_bad_rejected" classname="L13_configuration_validation_bad_rejected" time="0.458389" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>-- Rejected the intended bad implementation: duplicate package_file
+</system-out>
+	</testcase>
+	<testcase name="L14_binary_fields_reference" classname="L14_binary_fields_reference" time="0.425947" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L14_binary_fields_validation_good" classname="L14_binary_fields_validation_good" time="0.433403" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L14_binary_fields_validation_bad_rejected" classname="L14_binary_fields_validation_bad_rejected" time="0.443066" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>-- Rejected the intended bad implementation: truncated payload keeps cursor
+</system-out>
+	</testcase>
+	<testcase name="L15_schema_evolution_reference" classname="L15_schema_evolution_reference" time="0.433972" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L15_schema_evolution_validation_good" classname="L15_schema_evolution_validation_good" time="1.4281" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="L15_schema_evolution_validation_bad_rejected" classname="L15_schema_evolution_validation_bad_rejected" time="0.458196" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>-- Rejected the intended bad implementation: v1 writer rejects note
+</system-out>
+	</testcase>
+	<testcase name="P1_resource_manifest_reference" classname="P1_resource_manifest_reference" time="0.439006" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>resource manifest pipeline checked
+</system-out>
+	</testcase>
+	<testcase name="P1_resource_manifest_validation_good" classname="P1_resource_manifest_validation_good" time="0.448237" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation"/>
+		</properties>
+		<system-out>resource manifest pipeline checked
+</system-out>
+	</testcase>
+	<testcase name="P1_resource_manifest_validation_bad_rejected" classname="P1_resource_manifest_validation_bad_rejected" time="0.499285" status="run">
+		<properties>
+			<property name="cmake_labels" value="negative"/>
+		</properties>
+		<system-out>-- Rejected the intended bad implementation: creates the package file
+</system-out>
+	</testcase>
+	<testcase name="U01_icu_unicode_check" classname="U01_icu_unicode_check" time="0.961691" status="run">
+		<properties>
+			<property name="cmake_labels" value="icu"/>
+		</properties>
+		<system-out>ICU 77.1 Unicode 16.0
+NormalizationTest records 19965
+GraphemeBreakTest records 1093
+</system-out>
+	</testcase>
+	<testcase name="F01_text_encoding_locale" classname="F01_text_encoding_locale" time="0.411939" status="notrun">
+		<skipped message="SKIP_RETURN_CODE=77"/>
+		<properties>
+			<property name="cmake_labels" value="capability"/>
+		</properties>
+		<system-out>SKIP &lt;text_encoding&gt; is not available
+</system-out>
+	</testcase>
+	<testcase name="F01_charconv_result_bool" classname="F01_charconv_result_bool" time="0.416064" status="notrun">
+		<skipped message="SKIP_RETURN_CODE=77"/>
+		<properties>
+			<property name="cmake_labels" value="capability"/>
+		</properties>
+		<system-out>SKIP __cpp_lib_to_chars is below 202306L; charconv result bool not declared
+</system-out>
+	</testcase>
+	<testcase name="F01_to_string_semantics" classname="F01_to_string_semantics" time="0.419587" status="notrun">
+		<skipped message="SKIP_RETURN_CODE=77"/>
+		<properties>
+			<property name="cmake_labels" value="capability"/>
+		</properties>
+		<system-out>SKIP __cpp_lib_to_string is missing or below 202306L
+</system-out>
+	</testcase>
+	<testcase name="F01_runtime_format" classname="F01_runtime_format" time="0.418965" status="notrun">
+		<skipped message="SKIP_RETURN_CODE=77"/>
+		<properties>
+			<property name="cmake_labels" value="capability"/>
+		</properties>
+		<system-out>SKIP __cpp_lib_format is below 202311L; runtime_format not declared
+</system-out>
+	</testcase>
+	<testcase name="F01_path_formatter" classname="F01_path_formatter" time="0.416805" status="notrun">
+		<skipped message="SKIP_RETURN_CODE=77"/>
+		<properties>
+			<property name="cmake_labels" value="capability"/>
+		</properties>
+		<system-out>SKIP __cpp_lib_format_path is missing or below 202403L
+</system-out>
+	</testcase>
+	<testcase name="F01_format_float_c29" classname="F01_format_float_c29" time="0.422142" status="notrun">
+		<skipped message="SKIP_RETURN_CODE=77"/>
+		<properties>
+			<property name="cmake_labels" value="capability"/>
+		</properties>
+		<system-out>SKIP P3505-style default floating-point format not implemented; observed 1e+05 and 1234567890123456774144
+</system-out>
+	</testcase>
+	<testcase name="F01_error_code_formatter_c29" classname="F01_error_code_formatter_c29" time="0.416471" status="notrun">
+		<skipped message="SKIP_RETURN_CODE=77"/>
+		<properties>
+			<property name="cmake_labels" value="capability"/>
+		</properties>
+		<system-out>SKIP std::formatter&lt;std::error_code, char&gt; failed the configure-time semantic probe
+</system-out>
+	</testcase>
+	<testcase name="F01_bitops_shift_c29" classname="F01_bitops_shift_c29" time="0.417201" status="notrun">
+		<skipped message="SKIP_RETURN_CODE=77"/>
+		<properties>
+			<property name="cmake_labels" value="capability"/>
+		</properties>
+		<system-out>SKIP __cpp_lib_bitops is below 202606L; C++29 shl/shr not declared
+</system-out>
+	</testcase>
+	<testcase name="F01_bitops_permutation_c29" classname="F01_bitops_permutation_c29" time="0.401816" status="notrun">
+		<skipped message="SKIP_RETURN_CODE=77"/>
+		<properties>
+			<property name="cmake_labels" value="capability"/>
+		</properties>
+		<system-out>SKIP __cpp_lib_bitops is below 202607L; C++29 bit permutation functions not declared
+</system-out>
+	</testcase>
+</testsuite>

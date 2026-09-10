@@ -1,0 +1,31 @@
+{
+  "command": [
+    "cmake",
+    "-S",
+    "C04_Generic_CompileTime_Reflection/exercises/F01_frontier",
+    "-B",
+    "C04_Generic_CompileTime_Reflection/exercises/F01_frontier/build/revision-frontier-force-placement",
+    "-G",
+    "Visual Studio 18 2026",
+    "-A",
+    "x64",
+    "-DBUILD_TESTING=ON",
+    "-DGENERIC_STUDY_BUILD_REFERENCE=ON",
+    "-DGENERIC_STUDY_TEST_STUDENTS=OFF",
+    "-DGENERIC_STUDY_ENABLE_FRONTIER=ON",
+    "-DCMAKE_CXX_FLAGS=/DC04_FORCE_CONSTEXPR_PLACEMENT_NEW_PROBE"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.5930000001098961,
+  "stdout": "-- F01 required flags C++26: /std:c++latest\n-- F01 required flags C++29: /std:c++latest\n-- F01 constexpr placement new behavior: \n-- F01 minimal annotations syntax: \n-- F01 fold expanded constraints behavior: \n-- F01 C++29 conditional noexcept compound requirement behavior: \n-- F01 C++29 template-name pack indexing behavior: \n-- Configuring done (0.4s)\n-- Generating done (0.1s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/F01_frontier/build/revision-frontier-force-placement\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

@@ -1,0 +1,75 @@
+{
+  "configure": {
+    "command": [
+      "cmake",
+      "-S",
+      "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\student\\diagnostics\\L08_lazy_type_eager_bad\\source",
+      "-B",
+      "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\student\\diagnostics\\L08_lazy_type_eager_bad\\binary",
+      "-G",
+      "Visual Studio 18 2026",
+      "-DBUILD_TESTING=OFF",
+      "-DCMAKE_CXX_COMPILER=D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe",
+      "-A",
+      "x64"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "process_seconds": 2.968000000109896,
+    "stdout": "-- The CXX compiler identification is MSVC 19.51.36256.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Found Python3: C:/Users/zhidan.li/AppData/Local/Programs/Python/Python310/python.exe (found suitable version \"3.10.11\", minimum required is \"3.10\") found components: Interpreter\n-- Configuring done (2.8s)\n-- Generating done (0.1s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/build/student/diagnostics/L08_lazy_type_eager_bad/binary\n",
+    "stderr": "",
+    "cleanup_error": "",
+    "error": "",
+    "status": "PASS"
+  },
+  "control": {
+    "command": [
+      "cmake",
+      "--build",
+      "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\student\\diagnostics\\L08_lazy_type_eager_bad\\binary",
+      "--config",
+      "Release",
+      "--target",
+      "control"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "process_seconds": 1.7189999998081475,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/build/student/diagnostics/L08_lazy_type_eager_bad/source/CMakeLists.txt\n  lazy_type_control.cpp\n  control.vcxproj -> F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\student\\diagnostics\\L08_lazy_type_eager_bad\\binary\\Release\\control.exe\n",
+    "stderr": "",
+    "cleanup_error": "",
+    "error": "",
+    "status": "PASS"
+  },
+  "subject": {
+    "command": [
+      "cmake",
+      "--build",
+      "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\student\\diagnostics\\L08_lazy_type_eager_bad\\binary",
+      "--config",
+      "Release",
+      "--target",
+      "subject"
+    ],
+    "exit_code": 1,
+    "timeout": false,
+    "process_seconds": 0.8910000000614673,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  Building Custom Rule F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/build/student/diagnostics/L08_lazy_type_eager_bad/source/CMakeLists.txt\n  lazy_type_eager_bad.cpp\nF:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L08_type_lists\\validation\\diagnostics\\lazy_type_eager_bad.cpp(11,33): error C2027: 使用了未定义类型“explosive” [F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\student\\diagnostics\\L08_lazy_type_eager_bad\\binary\\subject.vcxproj]\n      F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L08_type_lists\\validation\\diagnostics\\lazy_type_eager_bad.cpp(6,8):\n      参见“explosive”的声明\n      F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L08_type_lists\\validation\\diagnostics\\lazy_type_eager_bad.cpp(11,33):\n      模板实例化上下文(最早的实例化上下文)为\n          F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L08_type_lists\\validation\\diagnostics\\lazy_type_eager_bad.cpp(18,23):\n          查看对正在编译的 别名 模板 实例化“c04::eager_lazy_type_t<true,provider<int>,explosive>”的引用\n          F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L08_type_lists\\validation\\diagnostics\\lazy_type_eager_bad.cpp(15,77):\n          查看对正在编译的 类 模板 实例化“c04::eager_lazy_type<true,provider<int>,explosive>”的引用\n  \nF:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L08_type_lists\\validation\\diagnostics\\lazy_type_eager_bad.cpp(11,33): error C2061: 语法错误: 标识符“missing_type” [F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\student\\diagnostics\\L08_lazy_type_eager_bad\\binary\\subject.vcxproj]\nF:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L08_type_lists\\validation\\diagnostics\\lazy_type_eager_bad.cpp(15,77): error C2794: “type”: 不是“c04::eager_lazy_type<true,provider<int>,explosive>”的任何直接或间接基类的成员 [F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\student\\diagnostics\\L08_lazy_type_eager_bad\\binary\\subject.vcxproj]\nF:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L08_type_lists\\validation\\diagnostics\\lazy_type_eager_bad.cpp(18,23): error C2938: “c04::eager_lazy_type_t”: 未能使别名模板专用化 [F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\student\\diagnostics\\L08_lazy_type_eager_bad\\binary\\subject.vcxproj]\n",
+    "stderr": "",
+    "cleanup_error": "",
+    "error": "",
+    "status": "FAIL"
+  },
+  "verdict": "PASS",
+  "reason": "expected semantic diagnostic with a normal nonzero compiler exit",
+  "subject_source": "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L08_type_lists\\validation\\diagnostics\\lazy_type_eager_bad.cpp",
+  "control_source": "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L08_type_lists\\validation\\diagnostics\\lazy_type_control.cpp",
+  "pattern": "missing_type|C2039",
+  "compiler": "D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe",
+  "input_sha256": {
+    "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L08_type_lists\\validation\\diagnostics\\lazy_type_eager_bad.cpp": "db2cb136a82955d103461122a336b195f3dc8d7a57d6f409637d53b2ca8fe6ac",
+    "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L08_type_lists\\validation\\diagnostics\\lazy_type_control.cpp": "a937a4488182401ea05417eb448f60d17c9f4b725a0fb3fd38118557575499d4",
+    "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\tools\\compile_case.py": "7dabd21a7abb70fc8b926b2913fa739583ab655c022aad6da0ebb6c45d1377ad",
+    "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\cmake\\StudySetup.cmake": "3bbde5e2e79e32e052082c9453ce51ce1bf3d60c394f2058413f128f63c92026"
+  }
+}

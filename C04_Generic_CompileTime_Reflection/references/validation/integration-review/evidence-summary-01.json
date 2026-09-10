@@ -1,0 +1,273 @@
+{
+  "verdict": "READY_FOR_FINAL_PREP",
+  "constraints": "No compiler/build/long test/benchmark run in this review; only source/evidence inspection plus navigation link check.",
+  "c04_add_exercise_count": 12,
+  "junit": [
+    {
+      "name": "root-debug",
+      "tests": 59,
+      "passed": 59,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "root-release",
+      "tests": 59,
+      "passed": 59,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "root-asan",
+      "tests": 20,
+      "passed": 20,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "root-student",
+      "tests": 34,
+      "passed": 22,
+      "failures": 12,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "root-frontier",
+      "tests": 72,
+      "passed": 59,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 13
+    }
+  ],
+  "process_records": [
+    {
+      "file": "root-debug-configure-01.json",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout": false,
+      "cleanup_error": "",
+      "verdict": "PASS"
+    },
+    {
+      "file": "root-debug-build-01.json",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout": false,
+      "cleanup_error": "",
+      "verdict": "PASS"
+    },
+    {
+      "file": "root-debug-ctest-01.json",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout": false,
+      "cleanup_error": "",
+      "verdict": "PASS"
+    },
+    {
+      "file": "root-release-configure-01.json",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout": false,
+      "cleanup_error": "",
+      "verdict": "PASS"
+    },
+    {
+      "file": "root-release-build-01.json",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout": false,
+      "cleanup_error": "",
+      "verdict": "PASS"
+    },
+    {
+      "file": "root-release-ctest-01.json",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout": false,
+      "cleanup_error": "",
+      "verdict": "PASS"
+    },
+    {
+      "file": "root-asan-configure-01.json",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout": false,
+      "cleanup_error": "",
+      "verdict": "PASS"
+    },
+    {
+      "file": "root-asan-build-01.json",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout": false,
+      "cleanup_error": "",
+      "verdict": "PASS"
+    },
+    {
+      "file": "root-asan-ctest-01.json",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout": false,
+      "cleanup_error": "",
+      "verdict": "PASS"
+    },
+    {
+      "file": "root-student-configure-01.json",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout": false,
+      "cleanup_error": "",
+      "verdict": "PASS"
+    },
+    {
+      "file": "root-student-build-02.json",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout": false,
+      "cleanup_error": "",
+      "verdict": "PASS"
+    },
+    {
+      "file": "root-student-ctest-01.json",
+      "status": "FAIL",
+      "exit_code": 8,
+      "timeout": false,
+      "cleanup_error": "",
+      "verdict": "PASS"
+    },
+    {
+      "file": "root-frontier-configure-01.json",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout": false,
+      "cleanup_error": "",
+      "verdict": "PASS"
+    },
+    {
+      "file": "root-frontier-build-01.json",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout": false,
+      "cleanup_error": "",
+      "verdict": "PASS"
+    },
+    {
+      "file": "root-frontier-ctest-01.json",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout": false,
+      "cleanup_error": "",
+      "verdict": "PASS"
+    }
+  ],
+  "student_expected_failures": [
+    "L01_templates_student",
+    "L02_deduction_student",
+    "L03_forwarding_student",
+    "L04_lookup_student",
+    "L05_overload_student",
+    "L06_constraints_student",
+    "L07_packs_student",
+    "L08_type_lists_student",
+    "L09_tuple_student",
+    "L10_constexpr_student",
+    "L11_customization_student",
+    "P1_static_record_student"
+  ],
+  "student_non_student_failures": null,
+  "student_audit": {
+    "verdict": "PASS",
+    "student_count": 12,
+    "actual_include_count": 1794,
+    "failures": 0,
+    "scope": "declared answer targets/paths, recorded includes and literal local includes; not plagiarism proof"
+  },
+  "old_trace_01": {
+    "status": "PASS",
+    "verdict": "FAIL",
+    "expected_required_text": [
+      "including file:"
+    ]
+  },
+  "frontier_skipped": [
+    {
+      "name": "P1_static_record_reflection",
+      "labels": "capability",
+      "output": "SKIP P1 real reflection: meta header=0 reflection=absent expansion=absent; real backend not compiled or run "
+    },
+    {
+      "name": "F01_reflection_query",
+      "labels": "capability",
+      "output": "probe=reflection_query header=0 macro=0 body=0 SKIP reflection query: missing <meta> or explicit reflection syntax macro "
+    },
+    {
+      "name": "F01_splicing_generation",
+      "labels": "capability",
+      "output": "probe=splicing_generation header=0 macro=0 body=0 SKIP splicing: missing <meta> or explicit splicing syntax macro "
+    },
+    {
+      "name": "F01_annotations",
+      "labels": "capability",
+      "output": "probe=annotations header=0 macro=0 body=0 SKIP annotations: missing <meta> or explicit annotation syntax macro "
+    },
+    {
+      "name": "F01_expansion_statement",
+      "labels": "capability",
+      "output": "probe=expansion_statement header=na macro=0 body=0 SKIP expansion statements: __cpp_expansion_statements < 202506L "
+    },
+    {
+      "name": "F01_define_static",
+      "labels": "capability",
+      "output": "probe=define_static header=0 macro=0 body=0 SKIP define_static: missing <meta> or __cpp_lib_define_static "
+    },
+    {
+      "name": "F01_define_aggregate",
+      "labels": "capability",
+      "output": "probe=define_aggregate header=0 macro=0 body=0 SKIP define_aggregate: missing <meta> or explicit aggregate generation macro "
+    },
+    {
+      "name": "F01_pack_indexing",
+      "labels": "capability",
+      "output": "probe=pack_indexing header=na macro=0 body=0 SKIP pack indexing: __cpp_pack_indexing < 202311L "
+    },
+    {
+      "name": "F01_fold_constraints",
+      "labels": "capability",
+      "output": "probe=fold_constraints header=na macro=201603 body=0 SKIP fold expanded constraints: compile probe did not prove P2963R3 behavior "
+    },
+    {
+      "name": "F01_constexpr_exceptions",
+      "labels": "capability",
+      "output": "probe=constexpr_exceptions header=na macro=0 body=0 SKIP constexpr exceptions: __cpp_constexpr_exceptions < 202411L "
+    },
+    {
+      "name": "F01_c29_template_name_pack_indexing",
+      "labels": "capability",
+      "output": "probe=c29_template_name_pack_indexing header=na macro=0 body=0 SKIP C++29 template-name pack indexing: no explicit implementation marker "
+    },
+    {
+      "name": "F01_consteval_only_values",
+      "labels": "capability",
+      "output": "probe=consteval_only_values header=0 macro=0 body=0 SKIP consteval-only values: missing <meta> or __cpp_consteval DR marker "
+    },
+    {
+      "name": "F01_attributes_reflection_proposal",
+      "labels": "capability",
+      "output": "probe=attributes_reflection header=0 macro=0 body=0 SKIP attributes reflection: P3385R8 is a proposal and no implementation marker is set "
+    }
+  ],
+  "navigation": {
+    "verdict": "PASS",
+    "documents": 89,
+    "links_checked": 153,
+    "failures": 0,
+    "excluded_concurrent_links": 6,
+    "scope": "C04 docs, root navigation and new bridges; concurrent C05 links reported separately; no teaching-quality or web-link claim"
+  }
+}

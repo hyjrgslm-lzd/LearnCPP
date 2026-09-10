@@ -1,0 +1,25 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "build/c04-l10-v4",
+    "-C",
+    "Debug",
+    "-R",
+    "^(L07_packs_validation_good|L08_type_lists_validation_good|L08_lazy_type_eager_bad|L09_tuple_validation_good|L10_constexpr_reference|L10_constexpr_validation_good|L10_.*_diagnostic)$",
+    "--output-on-failure"
+  ],
+  "exit_code": 8,
+  "timeout": false,
+  "process_seconds": 40.562999999849126,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/build/c04-l10-v4\n    Start  1: L10_constexpr_reference\nCould not find executable F:/CPPTrain/LearnCPP/build/c04-l10-v4/Debug/L10_constexpr_reference.exe\nLooked in the following places:\nF:/CPPTrain/LearnCPP/build/c04-l10-v4/Debug/L10_constexpr_reference.exe\nF:/CPPTrain/LearnCPP/build/c04-l10-v4/Debug/L10_constexpr_reference.exe.exe\nF:/CPPTrain/LearnCPP/build/c04-l10-v4/Debug/Debug/L10_constexpr_reference.exe\nF:/CPPTrain/LearnCPP/build/c04-l10-v4/Debug/Debug/L10_constexpr_reference.exe.exe\nDebug/F:/CPPTrain/LearnCPP/build/c04-l10-v4/Debug/L10_constexpr_reference.exe\nDebug/F:/CPPTrain/LearnCPP/build/c04-l10-v4/Debug/L10_constexpr_reference.exe.exe\n1/9 Test  #1: L10_constexpr_reference .............***Not Run   0.00 sec\n    Start  2: L10_constexpr_validation_good\nCould not find executable F:/CPPTrain/LearnCPP/build/c04-l10-v4/Debug/L10_constexpr_validation_good.exe\nLooked in the following places:\nF:/CPPTrain/LearnCPP/build/c04-l10-v4/Debug/L10_constexpr_validation_good.exe\nF:/CPPTrain/LearnCPP/build/c04-l10-v4/Debug/L10_constexpr_validation_good.exe.exe\nF:/CPPTrain/LearnCPP/build/c04-l10-v4/Debug/Debug/L10_constexpr_validation_good.exe\nF:/CPPTrain/LearnCPP/build/c04-l10-v4/Debug/Debug/L10_constexpr_validation_good.exe.exe\nDebug/F:/CPPTrain/LearnCPP/build/c04-l10-v4/Debug/L10_constexpr_validation_good.exe\nDebug/F:/CPPTrain/LearnCPP/build/c04-l10-v4/Debug/L10_constexpr_validation_good.exe.exe\n2/9 Test  #2: L10_constexpr_validation_good .......***Not Run   0.00 sec\n    Start  5: L10_invalid_digit_diagnostic\n3/9 Test  #5: L10_invalid_digit_diagnostic ........   Passed    6.05 sec\n    Start  6: L10_empty_decimal_diagnostic\n4/9 Test  #6: L10_empty_decimal_diagnostic ........   Passed    6.50 sec\n    Start  7: L10_embedded_nul_diagnostic\n5/9 Test  #7: L10_embedded_nul_diagnostic .........   Passed    6.24 sec\n    Start  8: L10_signed_decimal_diagnostic\n6/9 Test  #8: L10_signed_decimal_diagnostic .......   Passed    6.26 sec\n    Start  9: L10_spaced_decimal_diagnostic\n7/9 Test  #9: L10_spaced_decimal_diagnostic .......   Passed    6.30 sec\n    Start 10: L10_decimal_overflow_diagnostic\n8/9 Test #10: L10_decimal_overflow_diagnostic .....   Passed    3.67 sec\n    Start 11: L10_parameter_constant_diagnostic\n9/9 Test #11: L10_parameter_constant_diagnostic ...   Passed    5.47 sec\n\n78% tests passed, 2 tests failed out of 9\n\nLabel Time Summary:\ndiagnostic    =  40.49 sec*proc (7 tests)\nreference     =   0.00 sec*proc (1 test)\nvalidation    =   0.00 sec*proc (1 test)\n\nTotal Test time (real) =  40.50 sec\n\nThe following tests FAILED:\n\t  1 - L10_constexpr_reference (Not Run)                 reference\n\t  2 - L10_constexpr_validation_good (Not Run)           validation\n",
+  "stderr": "Unable to find executable: F:/CPPTrain/LearnCPP/build/c04-l10-v4/Debug/L10_constexpr_reference.exe\nUnable to find executable: F:/CPPTrain/LearnCPP/build/c04-l10-v4/Debug/L10_constexpr_validation_good.exe\nErrors while running CTest\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "FAIL"
+}

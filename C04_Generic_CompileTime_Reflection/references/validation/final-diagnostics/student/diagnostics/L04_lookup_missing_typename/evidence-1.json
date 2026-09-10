@@ -1,0 +1,75 @@
+{
+  "configure": {
+    "command": [
+      "cmake",
+      "-S",
+      "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\student\\diagnostics\\L04_lookup_missing_typename\\source",
+      "-B",
+      "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\student\\diagnostics\\L04_lookup_missing_typename\\binary",
+      "-G",
+      "Visual Studio 18 2026",
+      "-DBUILD_TESTING=OFF",
+      "-DCMAKE_CXX_COMPILER=D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe",
+      "-A",
+      "x64"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "process_seconds": 3.375,
+    "stdout": "-- The CXX compiler identification is MSVC 19.51.36256.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Found Python3: C:/Users/zhidan.li/AppData/Local/Programs/Python/Python310/python.exe (found suitable version \"3.10.11\", minimum required is \"3.10\") found components: Interpreter\n-- Configuring done (3.2s)\n-- Generating done (0.1s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/build/student/diagnostics/L04_lookup_missing_typename/binary\n",
+    "stderr": "",
+    "cleanup_error": "",
+    "error": "",
+    "status": "PASS"
+  },
+  "control": {
+    "command": [
+      "cmake",
+      "--build",
+      "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\student\\diagnostics\\L04_lookup_missing_typename\\binary",
+      "--config",
+      "Release",
+      "--target",
+      "control"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "process_seconds": 1.593000000109896,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/build/student/diagnostics/L04_lookup_missing_typename/source/CMakeLists.txt\n  missing_typename_control.cpp\n  control.vcxproj -> F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\student\\diagnostics\\L04_lookup_missing_typename\\binary\\Release\\control.exe\n",
+    "stderr": "",
+    "cleanup_error": "",
+    "error": "",
+    "status": "PASS"
+  },
+  "subject": {
+    "command": [
+      "cmake",
+      "--build",
+      "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\student\\diagnostics\\L04_lookup_missing_typename\\binary",
+      "--config",
+      "Release",
+      "--target",
+      "subject"
+    ],
+    "exit_code": 1,
+    "timeout": false,
+    "process_seconds": 1.1409999998286366,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  Building Custom Rule F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/build/student/diagnostics/L04_lookup_missing_typename/source/CMakeLists.txt\n  missing_typename.cpp\nF:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L04_lookup\\validation\\diagnostics\\missing_typename.cpp(8,24): error C3878: 语法错误:“expression”后出现意外标记“value” [F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\student\\diagnostics\\L04_lookup_missing_typename\\binary\\subject.vcxproj]\nF:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L04_lookup\\validation\\diagnostics\\missing_typename.cpp(8,30): error C2760: 语法错误: 此处出现意外的“}”；应为“;” [F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\student\\diagnostics\\L04_lookup_missing_typename\\binary\\subject.vcxproj]\nF:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L04_lookup\\validation\\diagnostics\\missing_typename.cpp(8,5): error C7510: “value_type”: 类型 从属名称的使用必须以“typename”为前缀 [F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\student\\diagnostics\\L04_lookup_missing_typename\\binary\\subject.vcxproj]\n",
+    "stderr": "",
+    "cleanup_error": "",
+    "error": "",
+    "status": "FAIL"
+  },
+  "verdict": "PASS",
+  "reason": "expected semantic diagnostic with a normal nonzero compiler exit",
+  "subject_source": "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L04_lookup\\validation\\diagnostics\\missing_typename.cpp",
+  "control_source": "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L04_lookup\\validation\\diagnostics\\missing_typename_control.cpp",
+  "pattern": "error C7510",
+  "compiler": "D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe",
+  "input_sha256": {
+    "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L04_lookup\\validation\\diagnostics\\missing_typename.cpp": "349ce7b284af31b542d1a2b44fc85cb99330d50140c1356b146ef0042a033c68",
+    "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L04_lookup\\validation\\diagnostics\\missing_typename_control.cpp": "77ec3e8823fa726aa0ab2f7557f3c484da512ad2570f3268fefe1e6643b97cfb",
+    "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\tools\\compile_case.py": "7dabd21a7abb70fc8b926b2913fa739583ab655c022aad6da0ebb6c45d1377ad",
+    "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\cmake\\StudySetup.cmake": "c666bf86d8fe1da8e513ae61832d8a0c2d2a4120afc5782e35633f356049fde0"
+  }
+}

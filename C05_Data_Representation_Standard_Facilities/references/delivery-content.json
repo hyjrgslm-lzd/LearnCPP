@@ -1,0 +1,589 @@
+{
+  "snapshot_utc": "2026-09-09T16:19:25.201318+00:00",
+  "scope": "C05 authored content; raw validation and review records are indexed separately; these manifests exclude themselves",
+  "files": {
+    "README.md": {
+      "sha256": "5f827c660ba39e3e1e76063be12c8c4fd77f568e185d7dce2a72c20d9e09b41b",
+      "bytes": 4995
+    },
+    "chapters/00-roadmap.md": {
+      "sha256": "b05a1912c62864d93fffecde5642829f5f644a058401280ea5d6217a01f61159",
+      "bytes": 7969
+    },
+    "chapters/01-bytes-and-object-representation.md": {
+      "sha256": "5c8c8e6336c7e81c3da04e467dfe1359a14b4ebb3cadcf4d85a838a5adf04be3",
+      "bytes": 6846
+    },
+    "chapters/02-bits-and-endian.md": {
+      "sha256": "069b4ac2ecb39caefb96cd198f9c6e58bfcfb17ef4e84ff26ec6362e4ecdd2fb",
+      "bytes": 5310
+    },
+    "chapters/03-integer-conversions.md": {
+      "sha256": "a2f36c2901d1c73ee503bf1a8118b4bd0d4d1cb81d0ed254fd805a70c8ac0865",
+      "bytes": 6166
+    },
+    "chapters/04-strings-and-views.md": {
+      "sha256": "4fca58ea4bd3cb4eeff8d5a9b3661f14d2df363ede4bfe6207068f90bb83ca9d",
+      "bytes": 5678
+    },
+    "chapters/05-unicode-model.md": {
+      "sha256": "d3ca802840e86b37e8d24dbd870c548f636419b2f2daa3eb5a5f342a95fb5f7a",
+      "bytes": 5151
+    },
+    "chapters/06-utf-transcoding.md": {
+      "sha256": "f5bc5f171f7562ef12899717d1a9ff46e9c49c1b1e2a0de8d79f905ed4341250",
+      "bytes": 6776
+    },
+    "chapters/07-unicode-text-semantics.md": {
+      "sha256": "134477c45b8468f3b648941e8c15d2cda8380c56ccacefc6f43a078eefc07bdf",
+      "bytes": 2801
+    },
+    "chapters/08-parsing-and-charconv.md": {
+      "sha256": "070cdfe521e38ccb602a37e0246d7e3e788af90b15840f3961db345895354e4c",
+      "bytes": 2493
+    },
+    "chapters/09-formatting-and-locales.md": {
+      "sha256": "4e0c9ff984de329eecd0b331ebaba963ca161f77a822fef99117d1cf550558a6",
+      "bytes": 2449
+    },
+    "chapters/10-clocks-and-durations.md": {
+      "sha256": "cf8f9997634edcc88cb38eee67388a291107ce9238968f90a24285d2a5a0dd4d",
+      "bytes": 5139
+    },
+    "chapters/11-calendars-and-time-zones.md": {
+      "sha256": "a8dbd9243313d8083c8b2d90386c10c3df891c7f8bf9442458fd405163a222d5",
+      "bytes": 5193
+    },
+    "chapters/12-filesystem-paths.md": {
+      "sha256": "e283f92b6435dbbfd1ac94101bb8a8062ee94b88dc0f5c3ab8c447279c89799a",
+      "bytes": 4152
+    },
+    "chapters/13-configuration.md": {
+      "sha256": "b1f47713ee89a4310e9afa47a3dbacdc275447405e3a8e579f8f83b2aecf544e",
+      "bytes": 5094
+    },
+    "chapters/14-bounded-binary-fields.md": {
+      "sha256": "f39727cef8b672f96365983e1700efb65ae3f9bce0e40252317d2d972fd3b6d1",
+      "bytes": 9494
+    },
+    "chapters/15-schema-evolution.md": {
+      "sha256": "e1f9a717306e216d4de7439f46ab0d79c1192aa03103cab9cfc5200ddf450ecd",
+      "bytes": 4793
+    },
+    "chapters/16-resource-manifest.md": {
+      "sha256": "80bfc5b16f8be473b1fbabfa9f76ee0740cb690e41e186264d144302fd97c03e",
+      "bytes": 9004
+    },
+    "chapters/17-source-and-downstream.md": {
+      "sha256": "ef16d799939badb016d8f97f980dc4afe2ffde026f023a1dea40151a00dd3950",
+      "bytes": 9734
+    },
+    "chapters/18-standard-frontier.md": {
+      "sha256": "73900d2753953acc8b506d1ae773c3221f0d4e5f7e96a13562c32028cfe5bfc9",
+      "bytes": 11680
+    },
+    "exercises/BUILD_GUIDE.md": {
+      "sha256": "3450e7bd7ac8044928603626c9422f49b55cb3324649ba088d3b261bc6fffacf",
+      "bytes": 5452
+    },
+    "exercises/CMakeLists.txt": {
+      "sha256": "688af42d99804320062011df0936322a7e12cdc2da3234acf6207df5b7cc8a91",
+      "bytes": 589
+    },
+    "exercises/CMakePresets.json": {
+      "sha256": "e38fe129e3a82ddb294f036367e27271fa804f874fceb525e6432556a3aafebe",
+      "bytes": 3774
+    },
+    "exercises/F01_frontier/CMakeLists.txt": {
+      "sha256": "37f87bac294b4d4e68a37763bb64690362f9cb91edfaa59bdac9e968a4c7e365",
+      "bytes": 2233
+    },
+    "exercises/F01_frontier/README.md": {
+      "sha256": "5b3475a07bbab5f99d3073250dcebcf8f1a5ef4d045dd629c6aca39799d47a8a",
+      "bytes": 1777
+    },
+    "exercises/F01_frontier/bitops_permutation_c29.cpp": {
+      "sha256": "ddfda198b5d9565fe73769ff9e993ff2c1ff4c82668ab4938f9abfef20bce00b",
+      "bytes": 924
+    },
+    "exercises/F01_frontier/bitops_shift_c29.cpp": {
+      "sha256": "4c0c57edbe6845fd7697e5ec0aa97329468e10a1561326871ee0cec49610b943",
+      "bytes": 859
+    },
+    "exercises/F01_frontier/charconv_result_bool.cpp": {
+      "sha256": "62d3ed5751b4020ceb1147d70be7cdc305bfec002bc5ac6855bc7b319248322e",
+      "bytes": 1159
+    },
+    "exercises/F01_frontier/error_code_formatter_c29.cpp": {
+      "sha256": "8e7479a473f08d41b7d20637327fa62e6f6d3c29cea646690a311053f2f8a4b2",
+      "bytes": 720
+    },
+    "exercises/F01_frontier/format_float_c29.cpp": {
+      "sha256": "ae85f31a9c3e6c7e341eb5e588624d02b66e31f2a6d47abca01f24b84acb1289",
+      "bytes": 796
+    },
+    "exercises/F01_frontier/path_formatter.cpp": {
+      "sha256": "96ed2a1656079e369e0ff2fb894615e13f211b662e8f2371f67f8cc1a5d308ed",
+      "bytes": 1388
+    },
+    "exercises/F01_frontier/runtime_format.cpp": {
+      "sha256": "58568002749a81098cbb56ff93ffe26c2d10f4fbb056f29587a7232e2a461e1e",
+      "bytes": 903
+    },
+    "exercises/F01_frontier/text_encoding_locale.cpp": {
+      "sha256": "d6850e3f639be45f073e1761a2ad9c8dc3d0cc2961962e7db9c8bc6fb92a943a",
+      "bytes": 1318
+    },
+    "exercises/F01_frontier/to_string_semantics.cpp": {
+      "sha256": "a8de3b95d24437ca20ee1cd4432511e195740dced219953f7d191ffdb3afb852",
+      "bytes": 973
+    },
+    "exercises/L01_bytes/CMakeLists.txt": {
+      "sha256": "12bb28d0b09a36fc765c17cd7adbd34eb93701929b20b42d84336173764b84e4",
+      "bytes": 175
+    },
+    "exercises/L01_bytes/README.md": {
+      "sha256": "d18a4d7e9d83400fcd695068086a5a2978ab58562c4b331058eabbbe6ba3773e",
+      "bytes": 887
+    },
+    "exercises/L01_bytes/observation.cpp": {
+      "sha256": "850818697d6c71c0eab753ef7e0dae7c36214cc746536ead3402753291352a16",
+      "bytes": 835
+    },
+    "exercises/L02_bits_endian/CMakeLists.txt": {
+      "sha256": "1f68143d546b1e5a0d730c27b543d53b82cdd4e3999f767278d22874e35e06e6",
+      "bytes": 177
+    },
+    "exercises/L02_bits_endian/README.md": {
+      "sha256": "2aabce5aa6283cf5ed322cdac872d71f15158dc434e84e9a629ffffe9a0411ad",
+      "bytes": 826
+    },
+    "exercises/L02_bits_endian/observation.cpp": {
+      "sha256": "75b8103e2eacf3ed3b0cfd16b0949997953835b2924abf6ed1999463a5fc20a6",
+      "bytes": 1058
+    },
+    "exercises/L03_integer_boundaries/CMakeLists.txt": {
+      "sha256": "7acfa8645109c9a666b3f7cbaef839e36e341a681913973c6beab6c4d9025b27",
+      "bytes": 283
+    },
+    "exercises/L03_integer_boundaries/README.md": {
+      "sha256": "cf389713f094d8bc6f62337b26bfadd1aa5ce615a9f636631b4db002ed522398",
+      "bytes": 927
+    },
+    "exercises/L03_integer_boundaries/checks/checked_int_checks.cpp": {
+      "sha256": "8d21e8f6eccc5713b8b738dbf5ae3d046814b186074e4efc934af006973e542c",
+      "bytes": 614
+    },
+    "exercises/L03_integer_boundaries/src/reference/checked_int.hpp": {
+      "sha256": "e1e5f3b39d824cfb788a79e56743f332172289ced2a459eb5c7d6177d4aa6cfc",
+      "bytes": 431
+    },
+    "exercises/L03_integer_boundaries/src/student/checked_int.hpp": {
+      "sha256": "ec5044b0fbf3a2cb4cca84e1835d16ca97ec55015a0e788b41b78f4ae9d86f24",
+      "bytes": 293
+    },
+    "exercises/L03_integer_boundaries/validation/bad/checked_int.hpp": {
+      "sha256": "9da26e94b28cc0a1c865fa752b6dd22f735c8941cd192f60acd7a776e6d31d4d",
+      "bytes": 240
+    },
+    "exercises/L03_integer_boundaries/validation/good/checked_int.hpp": {
+      "sha256": "e1e5f3b39d824cfb788a79e56743f332172289ced2a459eb5c7d6177d4aa6cfc",
+      "bytes": 431
+    },
+    "exercises/L04_strings_views/CMakeLists.txt": {
+      "sha256": "1684a723e02dc533ad902454314318efbd2a1d3b366bedfab7b1a8d30b091673",
+      "bytes": 181
+    },
+    "exercises/L04_strings_views/README.md": {
+      "sha256": "13eee9d9959d3dcbb2bbbc9f3cf587024e12a9dd869412ad43890f2f116e7f54",
+      "bytes": 818
+    },
+    "exercises/L04_strings_views/observation.cpp": {
+      "sha256": "420687fa6dc5faf8a1500b7405e1e0881813ca0300fba958fd877680b6ac33b3",
+      "bytes": 844
+    },
+    "exercises/L05_unicode/CMakeLists.txt": {
+      "sha256": "457a8724ad5972b8c0b952a7eefda878866ed2d5eaf5e381caba2c26f784dc41",
+      "bytes": 169
+    },
+    "exercises/L05_unicode/README.md": {
+      "sha256": "f89514b3224e36b40d46627bfabc996290a62026a0df2bc4c9ca8c0ef329019f",
+      "bytes": 749
+    },
+    "exercises/L05_unicode/observation.cpp": {
+      "sha256": "d956dc59593d3189286624141552535fbedf3ad364e58af4989560076adb7577",
+      "bytes": 754
+    },
+    "exercises/L06_transcoding/CMakeLists.txt": {
+      "sha256": "eaae12931e191bccc81def5903abe1060aee2b69755fa1d57ec41f6a1cea10d5",
+      "bytes": 267
+    },
+    "exercises/L06_transcoding/README.md": {
+      "sha256": "f98240498ab3e625e848d85ef09f972070b9b8ba9a2ea8243e7ed1057cb5650b",
+      "bytes": 1264
+    },
+    "exercises/L06_transcoding/checks/transcode_checks.cpp": {
+      "sha256": "438a55dc11008d6d88243a24f6f9dd7ddf5e8cf8716065192909648517c12023",
+      "bytes": 2152
+    },
+    "exercises/L06_transcoding/src/reference/utf_transcode.hpp": {
+      "sha256": "f4bbff264894cffa39cec09793a32d1590667ea50979d49e7b92db58a501ae52",
+      "bytes": 464
+    },
+    "exercises/L06_transcoding/src/student/utf_transcode.hpp": {
+      "sha256": "141e01de3dcfb39213116f9ab511596354b33a03753834019a0ab66b274f2459",
+      "bytes": 1042
+    },
+    "exercises/L06_transcoding/validation/bad/utf_transcode.hpp": {
+      "sha256": "e94f406bd5ca0627f86deffb00c99260cb4a70a635765f9823e3d2a26a2ea2bf",
+      "bytes": 782
+    },
+    "exercises/L06_transcoding/validation/good/utf_transcode.hpp": {
+      "sha256": "4ca0eea8ce409aac3e75f6718180aa2300595834697eee82e0096fe582bd8f41",
+      "bytes": 5587
+    },
+    "exercises/L07_text_semantics/CMakeLists.txt": {
+      "sha256": "035a5acc66f5f78c6b8dc1e3496c950c537bc939a23d14e95362267cfd4acbb9",
+      "bytes": 606
+    },
+    "exercises/L07_text_semantics/README.md": {
+      "sha256": "95b2c49bd4456ee8d23cc061b0c32c2a8d8ba7b2a18c9f450683a994a6c94512",
+      "bytes": 1886
+    },
+    "exercises/L07_text_semantics/observation.cpp": {
+      "sha256": "378707f58ffb6160565fe401517fa860355e5d87a24b288d6b2b41150c86d0c8",
+      "bytes": 1744
+    },
+    "exercises/L07_text_semantics/validation/bad_identity.cpp": {
+      "sha256": "309f2a942e2166619e317d15d39d5dac78af2acc24f7b2a7d91373cda9de51cd",
+      "bytes": 454
+    },
+    "exercises/L08_parsing/CMakeLists.txt": {
+      "sha256": "85cc733dfceedc3f012aa046dc1f1099f68b06df204bb1bece9c7784257851a4",
+      "bytes": 257
+    },
+    "exercises/L08_parsing/README.md": {
+      "sha256": "d74ed9fe48f45cb6b68bcb2886ad796458a1941268c088c2d0e165a3ce7d9a00",
+      "bytes": 1476
+    },
+    "exercises/L08_parsing/checks/parse_checks.cpp": {
+      "sha256": "4439f1c03bffe4dc9d5c79cc4d334f4ea31839891a2fc64733d12c17084a8f71",
+      "bytes": 2662
+    },
+    "exercises/L08_parsing/src/reference/text_parse.hpp": {
+      "sha256": "319c6a19723057a81843ab9d6640a442f73d6b291c8708aefd1f4001c47f476b",
+      "bytes": 135
+    },
+    "exercises/L08_parsing/src/student/text_parse.hpp": {
+      "sha256": "242ac64736b08986161e03e375e37e7d22e166bfc08b2ec68e5e1f614eebe572",
+      "bytes": 836
+    },
+    "exercises/L08_parsing/validation/bad/text_parse.hpp": {
+      "sha256": "476df8e51732eee4953b96ac525d1d4cb15a9df1b036970f61968849a7ed24ae",
+      "bytes": 2122
+    },
+    "exercises/L08_parsing/validation/good/text_parse.hpp": {
+      "sha256": "875308d718d0b1cca95419e059f6a09fb6f638c983af38cabb5f3a936d0e7c85",
+      "bytes": 2405
+    },
+    "exercises/L09_formatting/CMakeLists.txt": {
+      "sha256": "e4c8215d9074e5b5148ea272ab4a105a67ee8d86633a1d5f520eeb20e4b4b329",
+      "bytes": 580
+    },
+    "exercises/L09_formatting/README.md": {
+      "sha256": "85ff756cf9bbda438616994287f565a5313cb01fa1f2e92436e17500c6e0340e",
+      "bytes": 1593
+    },
+    "exercises/L09_formatting/observation.cpp": {
+      "sha256": "de5ae979840cccb37e1d6b85375256b188f60530bc4de4103735eea3eb6c2984",
+      "bytes": 1801
+    },
+    "exercises/L09_formatting/validation/bad_truncation.cpp": {
+      "sha256": "8ff1c9ac1733ac1cdcaa472a12b50d428c9d19e49310b53f33dddf50746a8c9b",
+      "bytes": 364
+    },
+    "exercises/L10_clocks_durations/CMakeLists.txt": {
+      "sha256": "4fd55093f157a61f2f6b1928b7ce3c83dce13775d7fc3f7932b52a5cf9c919f8",
+      "bytes": 187
+    },
+    "exercises/L10_clocks_durations/README.md": {
+      "sha256": "afd0fec5c406bc2b87dfbd5b4366dfcb217744acd9736fae365fe1774a5a0d23",
+      "bytes": 1110
+    },
+    "exercises/L10_clocks_durations/observation.cpp": {
+      "sha256": "2b975a67f9b67ddab69458e8b769434d8cc3bc2726f90f2c4d384f01edbc38cb",
+      "bytes": 1310
+    },
+    "exercises/L11_calendar_zones/CMakeLists.txt": {
+      "sha256": "caead6d392cb227f23ef303021c88ab59dd1f34217346da2c225968ca6dbe420",
+      "bytes": 419
+    },
+    "exercises/L11_calendar_zones/README.md": {
+      "sha256": "1ed64d06c3b9d599580df34a40f48ed81e27144467506f83e21c02f032141721",
+      "bytes": 1268
+    },
+    "exercises/L11_calendar_zones/tzdb_observation.cpp": {
+      "sha256": "5c9d861ce0659b80813f53ab85f39dc9de1d1b94feb27b239e1416f7d09f4c3b",
+      "bytes": 1875
+    },
+    "exercises/L11_calendar_zones/utc_observation.cpp": {
+      "sha256": "752356c138de66283cf8c284a45dcaa8a19fc68de0f1ce67001fd0e88cb76bd2",
+      "bytes": 1451
+    },
+    "exercises/L12_paths/CMakeLists.txt": {
+      "sha256": "c77b2bcdfbb07f3ed26218d2ea25d0855301d293d65cf36c711759f2eaa93f4b",
+      "bytes": 165
+    },
+    "exercises/L12_paths/README.md": {
+      "sha256": "287c06eb302ebe92f375d3ce00b31eb457a54c1b58d7c6ca06729dfb047b2cc4",
+      "bytes": 1211
+    },
+    "exercises/L12_paths/observation.cpp": {
+      "sha256": "f03c41336aff8b6b62f3c1c02a708a3137ac78b185f97ac98bfc966cbb98486f",
+      "bytes": 1416
+    },
+    "exercises/L13_configuration/CMakeLists.txt": {
+      "sha256": "485066aba2718f0d6399df3166bd9a0a63f89dde9d90823e9aca3ed3558849ba",
+      "bytes": 268
+    },
+    "exercises/L13_configuration/README.md": {
+      "sha256": "01fb07f97fdb03f85415f4caa1d798459485fc628a3cdc730cff7d52fb968dab",
+      "bytes": 1901
+    },
+    "exercises/L13_configuration/checks/config_checks.cpp": {
+      "sha256": "2fe98897b31e853979b4708e9eacdd5abed90bd32b5d23d68440a8c5a8f61f20",
+      "bytes": 3440
+    },
+    "exercises/L13_configuration/src/reference/config_parser.hpp": {
+      "sha256": "eef480a8df8060033667ac64af68c0a9b786d17a9679f31e7b0fe8fb292935ef",
+      "bytes": 256
+    },
+    "exercises/L13_configuration/src/student/config_parser.hpp": {
+      "sha256": "668c615f32917cf68d857f004509b5f90e2c4dd4e602c37dd323ed83bd572cb5",
+      "bytes": 322
+    },
+    "exercises/L13_configuration/validation/bad/config_parser.hpp": {
+      "sha256": "4d8f5ac4cc6ea44d4633479ab9391676c2a6b80a46d26f566109b6a4c5ea6b21",
+      "bytes": 5730
+    },
+    "exercises/L13_configuration/validation/good/config_parser.hpp": {
+      "sha256": "ae4ac4d27ad643ad12be8419110e0ddac540b0da9cf2eef9c84f46d0cf155936",
+      "bytes": 6219
+    },
+    "exercises/L14_binary_fields/CMakeLists.txt": {
+      "sha256": "070e8b15a52aab0828649f6e7c98b2d7856687263e8687900579426b4a94e893",
+      "bytes": 275
+    },
+    "exercises/L14_binary_fields/README.md": {
+      "sha256": "f004f1f48c50799995624e9e8a165b1b3e83edc28fb742d098a870fa087ff219",
+      "bytes": 1722
+    },
+    "exercises/L14_binary_fields/checks/field_checks.cpp": {
+      "sha256": "4d6d62d187b6292cb511e1eb7d11650a62b9ec6b16c6971498c287df6947ab10",
+      "bytes": 3689
+    },
+    "exercises/L14_binary_fields/src/reference/bounded_field.hpp": {
+      "sha256": "c7eb711743b94f3d38e9e0b4c737b3e7b8562f8eb15f32666bfc136efa777fc5",
+      "bytes": 88
+    },
+    "exercises/L14_binary_fields/src/student/bounded_field.hpp": {
+      "sha256": "fcd56f3cb816417390f2f775e864fdbaf43eaf07a67795c7a4fb97b2ec50b02e",
+      "bytes": 358
+    },
+    "exercises/L14_binary_fields/validation/bad/bounded_field.hpp": {
+      "sha256": "20da195f708113f967d2bb0013316038a96945928cb11164d3951de940defe4f",
+      "bytes": 1652
+    },
+    "exercises/L14_binary_fields/validation/good/bounded_field.hpp": {
+      "sha256": "9fceb0828cd56b7010f51da6939e1d64f1aefb661d927aff243c6a0e907fbc8b",
+      "bytes": 3099
+    },
+    "exercises/L15_schema_evolution/CMakeLists.txt": {
+      "sha256": "26453165dda624ba8501f0a5d3c498c283573be85e716123214d2d3610c6ec02",
+      "bytes": 277
+    },
+    "exercises/L15_schema_evolution/README.md": {
+      "sha256": "8c615a266abedce14ab7670004915f63ef338e3b4bd3ca32b071d4389817d31a",
+      "bytes": 2127
+    },
+    "exercises/L15_schema_evolution/checks/schema_checks.cpp": {
+      "sha256": "96c06a1dcf80ae2b0a883b3687ef3a9d2a70b98974decbd9eda006f228539972",
+      "bytes": 11298
+    },
+    "exercises/L15_schema_evolution/provided/v1_reader.hpp": {
+      "sha256": "b0025b5040e55fcc4d6324d0e6df9065a5b0015b63d3be783174c162fe622ad1",
+      "bytes": 6928
+    },
+    "exercises/L15_schema_evolution/src/reference/schema_evolution.hpp": {
+      "sha256": "0757a8e76841501aef655b9bfefc09ddc46d25882485f760d0a62fc90f2ec63e",
+      "bytes": 149
+    },
+    "exercises/L15_schema_evolution/src/student/schema_evolution.hpp": {
+      "sha256": "cb9ac4c3b81d73e3048533e87125546d9a8842218eba2b31d381fec11a95a8f7",
+      "bytes": 825
+    },
+    "exercises/L15_schema_evolution/validation/bad/schema_evolution.hpp": {
+      "sha256": "082651faf0755b9fbeff9672eb30c0d5178c24a81ad04b124007d7e7e7abfe0d",
+      "bytes": 812
+    },
+    "exercises/L15_schema_evolution/validation/good/schema_evolution.hpp": {
+      "sha256": "76f0225efaf373657d1521f5ca5a832f61e79d97939c8e3284f5f37a72c9692b",
+      "bytes": 12926
+    },
+    "exercises/P1_resource_manifest/CMakeLists.txt": {
+      "sha256": "683f20d251742a835ae0fb2eb922b0868aab09dfb52f87e3733da82ed986f2cc",
+      "bytes": 512
+    },
+    "exercises/P1_resource_manifest/README.md": {
+      "sha256": "ffff8d75a6c001b06dcea1a6eba45d8a1b945bb31404c8fc746cb9fa53f3a4a0",
+      "bytes": 3130
+    },
+    "exercises/P1_resource_manifest/checks/pipeline_checks.cpp": {
+      "sha256": "2713317b1247a93a096ebf0bfa12901bbb8aaaccaff8508bb4c1467e7d2945db",
+      "bytes": 5681
+    },
+    "exercises/P1_resource_manifest/provided/contract.hpp": {
+      "sha256": "75ff8866a94c61b260c3df58d368e6799abe1a7bf39e3077b88bae8318da8c23",
+      "bytes": 466
+    },
+    "exercises/P1_resource_manifest/provided/operations.hpp": {
+      "sha256": "fe1535ec01c833380d719aab66363661f22536b00d36ade2e9502f92d135a280",
+      "bytes": 3385
+    },
+    "exercises/P1_resource_manifest/src/reference/pipeline.hpp": {
+      "sha256": "077eed14e72c1cba1aa224d539e368b6b3a0edda312410bf6af792e793066c53",
+      "bytes": 1387
+    },
+    "exercises/P1_resource_manifest/src/student/pipeline.hpp": {
+      "sha256": "7306e5172d7845997fb3f5eb9cd667b87fe1f4f6fb11c3f2cddfc0d0a27f5558",
+      "bytes": 466
+    },
+    "exercises/P1_resource_manifest/validation/bad/pipeline.hpp": {
+      "sha256": "1c5540a12815d4e379a63a58d6d9fe3496bb6f929fc3a55e1a10878b31d7ca43",
+      "bytes": 824
+    },
+    "exercises/P1_resource_manifest/validation/good/pipeline.hpp": {
+      "sha256": "ab7fb3853d2d43cc5bb9110f71397229d44146b2bd1e2667aa7fb13d961a9865",
+      "bytes": 1412
+    },
+    "exercises/U01_icu_unicode/CMakeLists.txt": {
+      "sha256": "31131ade1969aa2e2d34d31fa6d18810b98653310ede4a4526438ab08e820c77",
+      "bytes": 627
+    },
+    "exercises/U01_icu_unicode/README.md": {
+      "sha256": "9e225f27b8ee770c3c6e9b37defefc248d5d2988bfd7f340f87a5346e9b9bdd9",
+      "bytes": 1528
+    },
+    "exercises/U01_icu_unicode/checks/icu_unicode_checks.cpp": {
+      "sha256": "aeaf29fe75195c1bd2701007b53d796dd6057018e40cd30de52a6121d6aefebe",
+      "bytes": 11173
+    },
+    "exercises/U01_icu_unicode/data/GraphemeBreakTest.txt": {
+      "sha256": "ee2b9354d270ac061b29f09662cafea06341d77e704b8cc6bd72aaeeda363cb5",
+      "bytes": 171927
+    },
+    "exercises/U01_icu_unicode/data/NormalizationTest.txt": {
+      "sha256": "d811971453e7075e1ad56fb1b301eece5aa80757b81f6156e74a1bfb3ae5ceb1",
+      "bytes": 2798671
+    },
+    "exercises/U01_icu_unicode/data/UNICODE-LICENSE.txt": {
+      "sha256": "e7a93b009565cfce55919a381437ac4db883e9da2126fa28b91d12732bc53d96",
+      "bytes": 1995
+    },
+    "exercises/U01_icu_unicode/data/unicode-16.0-data-manifest.json": {
+      "sha256": "ee0596af60b570aaee11d7a643485e3003ed988439305c57d7668ca1b5af61de",
+      "bytes": 819
+    },
+    "exercises/cmake/ICU.cmake": {
+      "sha256": "c19f4500a000bd0e68cc6288a335fb7a19a5961007fcf6486bda79fce5bd2ea3",
+      "bytes": 2568
+    },
+    "exercises/cmake/StudySetup.cmake": {
+      "sha256": "11b0c779028bbefe80e744b23a3a4ede10f8895248310ed7b528603012e0abcd",
+      "bytes": 5043
+    },
+    "exercises/cmake/expect_failure.cmake": {
+      "sha256": "a62d8b82d1d17fe4a230f088d4a6c733521c8ad78e0531660d2f6601bb0a33d5",
+      "bytes": 540
+    },
+    "exercises/fixtures/README.md": {
+      "sha256": "0ccb7be6fea123e9e08a45c052ddf2ada3c0549401513e0f68963e89126f563e",
+      "bytes": 1269
+    },
+    "exercises/fixtures/golden.hpp": {
+      "sha256": "575bd0dc47cae78ae05cd805f8d2e5b84801efc5560c20c34c9d2f574a903e78",
+      "bytes": 1229
+    },
+    "exercises/include/c05/bytes.hpp": {
+      "sha256": "6cf21a07f7bf782d798591b1d81801c4c9c42db130f545bd471aed86ab438b07",
+      "bytes": 2757
+    },
+    "exercises/include/c05/config.hpp": {
+      "sha256": "773adf8948fc43e8b8079507f8e42d33e226de3680ab9c41a41f5dff17a3627b",
+      "bytes": 7075
+    },
+    "exercises/include/c05/manifest.hpp": {
+      "sha256": "3203c99b399eba1afcb013f53c837f3bf937ef07ca5f53b69d1a0e086cf9ef46",
+      "bytes": 16549
+    },
+    "exercises/include/c05/model.hpp": {
+      "sha256": "2f826cb338f73e12f950df91a8170d5532004305365baed41cb4bc7e38bdec10",
+      "bytes": 681
+    },
+    "exercises/include/c05/paths.hpp": {
+      "sha256": "6bfca0c4a15f896ecc5a8497e5e3ee4a15d9760cab96f67c4a6446e52517c1c0",
+      "bytes": 1777
+    },
+    "exercises/include/c05/text.hpp": {
+      "sha256": "d8dd1fb751eaca98f3de2d7da6087cbfd304bff9be8e19e6a73b5f1858c8d50c",
+      "bytes": 2560
+    },
+    "exercises/include/c05/time.hpp": {
+      "sha256": "aed042d3b6399ce3879019dec85ab6ea8187aa04994b439a35c8ccb92fd9f750",
+      "bytes": 3346
+    },
+    "exercises/include/c05/types.hpp": {
+      "sha256": "af8af2fccf9ff02b36f912162ceb7d98cf94df4a72cd04c2a47d947acddc3d39",
+      "bytes": 850
+    },
+    "exercises/include/c05/utf.hpp": {
+      "sha256": "36f6b4f3b99d0eba3e62669e18e7026fa8171ea913b768b8c7469835c2f1b9f6",
+      "bytes": 5275
+    },
+    "exercises/tools/prepare_icu.ps1": {
+      "sha256": "f4fdcb5826931c1a0888769121e2fdd3abe4a417804e1cca8e3fbcab7969023c",
+      "bytes": 11000
+    },
+    "references/coverage.md": {
+      "sha256": "ef2f73dc459337583680cd2d9739befd0e327e5a9bfbf7f528d00ad60b4f3089",
+      "bytes": 5962
+    },
+    "references/icu-build.md": {
+      "sha256": "ec4bf6da2261183360a82e011fbd76fd3a1460dda7bce37c15f72b185b2222bf",
+      "bytes": 2009
+    },
+    "references/implementation-spec.md": {
+      "sha256": "1037a117ff7e66bdbf1b0002dc25c46fb60c3d4aa31c3ae99f75d8c342a7055a",
+      "bytes": 6228
+    },
+    "references/progress.md": {
+      "sha256": "5445ab76f3f9733388c98ff7b22bd67b3a918c3b90d702df570259d46d210169",
+      "bytes": 1365
+    },
+    "references/quality-report.md": {
+      "sha256": "bab472cb54a60e84ceb12f64ad6cd8d4dc51adaa2f0b7aa70f093003818e4c65",
+      "bytes": 10254
+    },
+    "references/standards-and-implementations.md": {
+      "sha256": "bd9f06b8a8bafa109c5e85b84f02f74a284f91677ca170e361fa694ee7058b8f",
+      "bytes": 5980
+    }
+  },
+  "navigation_sha256": {
+    "README.md": "59adfa083507c14531787790381eff98deea69be50718d91a9c43a818d543f9b",
+    "LEARNCPP_GLOBAL_PLAN.md": "2fec301670e1964782ee6451cac3102e7c44ac5242f9f2af8f54b571e50bb523",
+    "C03_Type_Modeling_Interface_Design/README.md": "02e1af03bc2a99b0c97f14e408caed7547c944e71b6b63ad5887310ca7a13168",
+    "C09_Coroutines/README.md": "95655b96b49ab13fd9d8ead83e62e22d0e505d95890c61cef0c7a0bb5e441a93",
+    "C15_Unreal_Engine/README.md": "7696d978adedaf92855cab6f7c90f08dbb98af622755e28bf89ea427f466ff79"
+  }
+}

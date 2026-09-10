@@ -1,0 +1,23 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "F:/CPPTrain/LearnCPP/build/c04-u01-final-r2-default",
+    "--config",
+    "Release",
+    "--parallel"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.4370000000001255,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/U01_mp11/CMakeLists.txt\n  Building Custom Rule F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/U01_mp11/CMakeLists.txt\n  Building Custom Rule F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/U01_mp11/CMakeLists.txt\n  mp11_schema_checks.cpp\n  mp11_schema_checks.cpp\n  mp11_schema_checks.cpp\n  U01_mp11_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c04-u01-final-r2-default\\Release\\U01_mp11_reference.exe\n  U01_mp11_validation_bad.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c04-u01-final-r2-default\\Release\\U01_mp11_validation_bad.exe\n  U01_mp11_validation_good.vcxproj -> F:\\CPPTrain\\LearnCPP\\build\\c04-u01-final-r2-default\\Release\\U01_mp11_validation_good.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/U01_mp11/CMakeLists.txt\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

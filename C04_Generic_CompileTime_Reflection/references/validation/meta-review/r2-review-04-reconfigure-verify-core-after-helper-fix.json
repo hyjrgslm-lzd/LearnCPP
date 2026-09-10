@@ -1,0 +1,22 @@
+{
+  "command": [
+    "cmake",
+    "--preset",
+    "verify-core",
+    "-S",
+    "C04_Generic_CompileTime_Reflection/exercises"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 1.171000000089407,
+  "stdout": "-- F01_frontier tests are OFF: set GENERIC_STUDY_ENABLE_FRONTIER=ON to register capability probes\n-- Configuring done (0.5s)\n-- Generating done (0.6s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/build/verify-core\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

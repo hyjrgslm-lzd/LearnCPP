@@ -1,0 +1,28 @@
+{
+  "command": [
+    "cmake",
+    "-S",
+    "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\dependency-probes\\meta-missing-src-20260910-123814",
+    "-B",
+    "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\dependency-probes\\meta-missing-build-20260910-123814",
+    "-G",
+    "Visual Studio 18 2026",
+    "-A",
+    "x64"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 2.984999999869615,
+  "stdout": "-- The CXX compiler identification is MSVC 19.51.36256.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring incomplete, errors occurred!\n",
+  "stderr": "CMake Warning (dev) at cmake/MetaLibraries.cmake:4 (file):\n  Given path:\n\n    F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/build/dependency-probes/meta-missing-src-20260910-123814/cmake/../build/_deps/mp11-boost-1.91.0\n\n  does not refer to an existing path on disk.\nCall Stack (most recent call first):\n  cmake/MetaLibraries.cmake:48 (c04_require_meta_dependency)\n  CMakeLists.txt:6 (c04_link_mp11)\nThis warning is for project developers.  Use -Wno-dev to suppress it.\n\nCMake Error at cmake/MetaLibraries.cmake:7 (message):\n  C04_MP11 extension requested but isolated mp11-boost-1.91.0 is absent; run\n  tools/prepare_meta_libraries.ps1\nCall Stack (most recent call first):\n  cmake/MetaLibraries.cmake:48 (c04_require_meta_dependency)\n  CMakeLists.txt:6 (c04_link_mp11)\n\n\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 1,
+  "required_text": [
+    "isolated mp11-boost-1.91.0 is absent"
+  ],
+  "verdict": "PASS"
+}

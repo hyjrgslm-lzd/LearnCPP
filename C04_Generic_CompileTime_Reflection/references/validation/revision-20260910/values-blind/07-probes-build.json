@@ -1,0 +1,25 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "C04_Generic_CompileTime_Reflection\\build\\vb-probes",
+    "--config",
+    "Debug"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 2.9379999998491257,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/values-blind/probes/CMakeLists.txt\n  a01_boundary_probe.cpp\nF:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\references\\validation\\revision-20260910\\values-blind\\probes\\a01_boundary_probe.cpp(17,34): error C2872: “table”: 不明确的符号 [F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\build\\vb-probes\\a01_boundary_probe.vcxproj]\n      F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\references\\validation\\revision-20260910\\values-blind\\probes\\a01_boundary_probe.cpp(14,23):\n      可能是“const c04_values::table<2> table”\n      F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\A01_compiletime_values\\src\\reference\\compiletime_values.hpp(52,8):\n      或    “c04_values::table”\n  \nF:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\references\\validation\\revision-20260910\\values-blind\\probes\\a01_boundary_probe.cpp(18,41): error C2872: “table”: 不明确的符号 [F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\build\\vb-probes\\a01_boundary_probe.vcxproj]\n      F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\references\\validation\\revision-20260910\\values-blind\\probes\\a01_boundary_probe.cpp(14,23):\n      可能是“const c04_values::table<2> table”\n      F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\A01_compiletime_values\\src\\reference\\compiletime_values.hpp(52,8):\n      或    “c04_values::table”\n  \n  Building Custom Rule F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/values-blind/probes/CMakeLists.txt\n  a03_extra_probe.cpp\n  a03_extra_probe.vcxproj -> F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\build\\vb-probes\\Debug\\a03_extra_probe.exe\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [
+    "a01_boundary_probe.vcxproj ->",
+    "a03_extra_probe.vcxproj ->"
+  ],
+  "verdict": "FAIL"
+}

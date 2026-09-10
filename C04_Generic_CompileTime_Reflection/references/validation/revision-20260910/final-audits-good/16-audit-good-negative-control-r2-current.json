@@ -1,0 +1,29 @@
+{
+  "verdict": "FAIL",
+  "failures": [
+    "Reference in actual include trace: F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/U01_mp11/src/reference/mp11_schema_tools.hpp"
+  ],
+  "targets": [
+    "A01_compiletime_values_validation_good",
+    "A02_field_projection_validation_good",
+    "A03_explicit_object_validation_good",
+    "A04_type_pipelines_validation_good",
+    "A05_expression_templates_validation_good",
+    "L01_templates_validation_good",
+    "L02_deduction_validation_good",
+    "L03_forwarding_validation_good",
+    "L04_lookup_validation_good",
+    "L05_overload_validation_good",
+    "L06_constraints_validation_good",
+    "L07_packs_validation_good",
+    "L08_type_lists_validation_good",
+    "L09_tuple_validation_good",
+    "L10_constexpr_validation_good",
+    "L11_customization_validation_good",
+    "P1_static_record_validation_good",
+    "U01_mp11_validation_good"
+  ],
+  "actual_include_count": 2743,
+  "trace_sha256": "e850453a6d0fa4b9e82a9090c748c0a2e76a9e8ece53eda907b7467b1c086206",
+  "scope": "build inputs and actual includes; not proof of independent authorship"
+}

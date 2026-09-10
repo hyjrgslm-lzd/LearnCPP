@@ -1,0 +1,14 @@
+{
+  "monotonic": {
+    "implementation": "GetTickCount64()",
+    "resolution": 0.015625,
+    "monotonic": true,
+    "adjustable": false
+  },
+  "perf_counter": {
+    "implementation": "QueryPerformanceCounter()",
+    "resolution": 1e-07,
+    "monotonic": true,
+    "adjustable": false
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "recorded_local": "2026-09-10T12:57:27",
+  "verdict": "FAIL",
+  "reason": "latest targeted CTest fails on L10_decimal_overflow_diagnostic",
+  "latest_records": [
+    "09-configure-latest.json",
+    "10-build-core-latest.json",
+    "11-ctest-good-l10-diagnostics-latest.json",
+    "12-configure-student-latest.json",
+    "13-build-student-latest.json",
+    "14-ctest-student-expected-fail-latest.json",
+    "07-good-no-reference-include.json"
+  ],
+  "good_hashes": [
+    {
+      "lesson": "L07_packs",
+      "good_path": "C04_Generic_CompileTime_Reflection\\exercises\\L07_packs\\validation\\good\\pack_tools.hpp",
+      "reference_path": "C04_Generic_CompileTime_Reflection\\exercises\\L07_packs\\src\\reference\\pack_tools.hpp",
+      "good_sha256": "44CF0CBAB053448749C79F3578125D59DF6725AE09476F9178B8371543CFD13C",
+      "reference_sha256": "7B6A7065BFE44494B5EFB3F7AEED20FCDDD2AA5F18D17F20D6541AB2A48F1C5B",
+      "same_hash": false,
+      "good_bytes": 1309,
+      "reference_bytes": 1278
+    },
+    {
+      "lesson": "L08_type_lists",
+      "good_path": "C04_Generic_CompileTime_Reflection\\exercises\\L08_type_lists\\validation\\good\\type_list_tools.hpp",
+      "reference_path": "C04_Generic_CompileTime_Reflection\\exercises\\L08_type_lists\\src\\reference\\type_list_tools.hpp",
+      "good_sha256": "993D3684653610CF69909B997D905DCC0783DAA08FD852BFB8B41E1F9B1514D2",
+      "reference_sha256": "5BDDE8C968CE16FA264889EF7625D04B5A8325AEA24979E97A28903F0771F5A1",
+      "same_hash": false,
+      "good_bytes": 3963,
+      "reference_bytes": 3729
+    },
+    {
+      "lesson": "L09_tuple",
+      "good_path": "C04_Generic_CompileTime_Reflection\\exercises\\L09_tuple\\validation\\good\\tuple_for_each.hpp",
+      "reference_path": "C04_Generic_CompileTime_Reflection\\exercises\\L09_tuple\\src\\reference\\tuple_for_each.hpp",
+      "good_sha256": "90DEC28AE086FE74A8C41687B178B9ACED42D96E411653B8E358BA951E938BA6",
+      "reference_sha256": "24A58C82F4F5F78F1354DDBBDBB7A1FA0D6E013501BEC014ECDC21ED74666C4E",
+      "same_hash": false,
+      "good_bytes": 598,
+      "reference_bytes": 630
+    },
+    {
+      "lesson": "L10_constexpr",
+      "good_path": "C04_Generic_CompileTime_Reflection\\exercises\\L10_constexpr\\validation\\good\\constexpr_tools.hpp",
+      "reference_path": "C04_Generic_CompileTime_Reflection\\exercises\\L10_constexpr\\src\\reference\\constexpr_tools.hpp",
+      "good_sha256": "65ECB96A7BF05EB3C4F1ECE4A06C2FF313299C9FE5A7C62D010C7FDA3CF53077",
+      "reference_sha256": "6EF5AC3710022C0A38C3F26C7BD8DB79BBAED89B0AB3AF296DEAC134E6EAA95C",
+      "same_hash": false,
+      "good_bytes": 2279,
+      "reference_bytes": 1932
+    }
+  ],
+  "diagnostics": [
+    {
+      "case": "47eeeb1edb55",
+      "evidence": "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\_diag\\47eeeb1edb55\\Debug\\evidence-1.json",
+      "verdict": "PASS",
+      "configure": "PASS",
+      "control": "PASS",
+      "subject": "FAIL",
+      "pattern": "decimal_value accepts only decimal digits",
+      "subject_exit": 1,
+      "compiler": "D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe"
+    },
+    {
+      "case": "4eadfececb03",
+      "evidence": "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\_diag\\4eadfececb03\\Debug\\evidence-1.json",
+      "verdict": "PASS",
+      "configure": "PASS",
+      "control": "PASS",
+      "subject": "FAIL",
+      "pattern": "constant|常量|常数",
+      "subject_exit": 1,
+      "compiler": "D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe"
+    },
+    {
+      "case": "569194582e46",
+      "evidence": "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\_diag\\569194582e46\\Debug\\evidence-1.json",
+      "verdict": "PASS",
+      "configure": "PASS",
+      "control": "PASS",
+      "subject": "FAIL",
+      "pattern": "decimal_value accepts only decimal digits",
+      "subject_exit": 1,
+      "compiler": "D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe"
+    },
+    {
+      "case": "6a1469581710",
+      "evidence": "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\_diag\\6a1469581710\\Debug\\evidence-1.json",
+      "verdict": "PASS",
+      "configure": "PASS",
+      "control": "PASS",
+      "subject": "FAIL",
+      "pattern": "missing_type|C2039",
+      "subject_exit": 1,
+      "compiler": "D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe"
+    },
+    {
+      "case": "7d5e264e9736",
+      "evidence": "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\_diag\\7d5e264e9736\\Debug\\evidence-1.json",
+      "verdict": "PASS",
+      "configure": "PASS",
+      "control": "PASS",
+      "subject": "FAIL",
+      "pattern": "decimal_value accepts only decimal digits",
+      "subject_exit": 1,
+      "compiler": "D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe"
+    },
+    {
+      "case": "8c0fd6473c3e",
+      "evidence": "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\_diag\\8c0fd6473c3e\\Debug\\evidence-1.json",
+      "verdict": "FAIL",
+      "configure": "PASS",
+      "control": "PASS",
+      "subject": "FAIL",
+      "pattern": "decimal_value exceeds int range",
+      "subject_exit": 1,
+      "compiler": "D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe"
+    },
+    {
+      "case": "9bca0dc7fe04",
+      "evidence": "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\_diag\\9bca0dc7fe04\\Debug\\evidence-1.json",
+      "verdict": "PASS",
+      "configure": "PASS",
+      "control": "PASS",
+      "subject": "FAIL",
+      "pattern": "decimal_value accepts only decimal digits",
+      "subject_exit": 1,
+      "compiler": "D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe"
+    },
+    {
+      "case": "f5d6706b3b81",
+      "evidence": "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\_diag\\f5d6706b3b81\\Debug\\evidence-1.json",
+      "verdict": "PASS",
+      "configure": "PASS",
+      "control": "PASS",
+      "subject": "FAIL",
+      "pattern": "decimal_value accepts only decimal digits",
+      "subject_exit": 1,
+      "compiler": "D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe"
+    }
+  ]
+}

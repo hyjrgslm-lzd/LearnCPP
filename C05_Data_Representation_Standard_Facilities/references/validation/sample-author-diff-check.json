@@ -1,0 +1,30 @@
+{
+  "command": [
+    "git",
+    "diff",
+    "--check",
+    "--",
+    "C05_Data_Representation_Standard_Facilities/exercises/L01_bytes",
+    "C05_Data_Representation_Standard_Facilities/exercises/L02_bits_endian",
+    "C05_Data_Representation_Standard_Facilities/exercises/L03_integer_boundaries",
+    "C05_Data_Representation_Standard_Facilities/exercises/L04_strings_views",
+    "C05_Data_Representation_Standard_Facilities/exercises/L05_unicode",
+    "C05_Data_Representation_Standard_Facilities/exercises/L06_transcoding",
+    "C05_Data_Representation_Standard_Facilities/exercises/L14_binary_fields",
+    "C05_Data_Representation_Standard_Facilities/exercises/include/c05/bytes.hpp",
+    "C05_Data_Representation_Standard_Facilities/exercises/include/c05/utf.hpp"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.0940000000409782,
+  "stdout": "",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

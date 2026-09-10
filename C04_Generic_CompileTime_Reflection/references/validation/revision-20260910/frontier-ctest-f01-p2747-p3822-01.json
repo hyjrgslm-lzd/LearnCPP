@@ -1,0 +1,25 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "C04_Generic_CompileTime_Reflection/exercises/F01_frontier/build/revision-frontier",
+    "-C",
+    "Release",
+    "-R",
+    "^F01_",
+    "--output-on-failure"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 6.358999999938533,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/F01_frontier/build/revision-frontier\n      Start  1: F01_reflection_query\n 1/14 Test  #1: F01_reflection_query .......................***Skipped   0.47 sec\n      Start  2: F01_splicing_generation\n 2/14 Test  #2: F01_splicing_generation ....................***Skipped   0.45 sec\n      Start  3: F01_annotations\n 3/14 Test  #3: F01_annotations ............................***Skipped   0.46 sec\n      Start  4: F01_expansion_statement\n 4/14 Test  #4: F01_expansion_statement ....................***Skipped   0.43 sec\n      Start  5: F01_define_static\n 5/14 Test  #5: F01_define_static ..........................***Skipped   0.44 sec\n      Start  6: F01_define_aggregate\n 6/14 Test  #6: F01_define_aggregate .......................***Skipped   0.42 sec\n      Start  7: F01_pack_indexing\n 7/14 Test  #7: F01_pack_indexing ..........................***Skipped   0.44 sec\n      Start  8: F01_fold_constraints\n 8/14 Test  #8: F01_fold_constraints .......................***Skipped   0.45 sec\n      Start  9: F01_constexpr_placement_new\n 9/14 Test  #9: F01_constexpr_placement_new ................***Skipped   0.44 sec\n      Start 10: F01_constexpr_exceptions\n10/14 Test #10: F01_constexpr_exceptions ...................***Skipped   0.44 sec\n      Start 11: F01_c29_conditional_noexcept_requirement\n11/14 Test #11: F01_c29_conditional_noexcept_requirement ...***Skipped   0.43 sec\n      Start 12: F01_c29_template_name_pack_indexing\n12/14 Test #12: F01_c29_template_name_pack_indexing ........***Skipped   0.46 sec\n      Start 13: F01_consteval_only_values\n13/14 Test #13: F01_consteval_only_values ..................***Skipped   0.45 sec\n      Start 14: F01_attributes_reflection_proposal\n14/14 Test #14: F01_attributes_reflection_proposal .........***Skipped   0.48 sec\n\n100% tests passed, 0 tests failed out of 14\n\nLabel Time Summary:\ncapability    =   6.26 sec*proc (14 tests)\n\nTotal Test time (real) =   6.28 sec\n\nThe following tests did not run:\n\t  1 - F01_reflection_query (Skipped)\n\t  2 - F01_splicing_generation (Skipped)\n\t  3 - F01_annotations (Skipped)\n\t  4 - F01_expansion_statement (Skipped)\n\t  5 - F01_define_static (Skipped)\n\t  6 - F01_define_aggregate (Skipped)\n\t  7 - F01_pack_indexing (Skipped)\n\t  8 - F01_fold_constraints (Skipped)\n\t  9 - F01_constexpr_placement_new (Skipped)\n\t 10 - F01_constexpr_exceptions (Skipped)\n\t 11 - F01_c29_conditional_noexcept_requirement (Skipped)\n\t 12 - F01_c29_template_name_pack_indexing (Skipped)\n\t 13 - F01_consteval_only_values (Skipped)\n\t 14 - F01_attributes_reflection_proposal (Skipped)\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

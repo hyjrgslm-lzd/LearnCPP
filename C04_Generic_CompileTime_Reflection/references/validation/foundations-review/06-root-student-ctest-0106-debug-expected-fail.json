@@ -1,0 +1,33 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "C04_Generic_CompileTime_Reflection/exercises/build/foundations-review-r2-student",
+    "-C",
+    "Debug",
+    "--output-on-failure",
+    "-R",
+    "^L0[1-6].*_student$"
+  ],
+  "exit_code": 8,
+  "timeout": false,
+  "process_seconds": 2.6869999999180436,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/build/foundations-review-r2-student\n    Start  1: L01_templates_student\n1/6 Test  #1: L01_templates_student ............***Failed    0.44 sec\ncheck failed: quantity_value_t reads dependent value_type\n\n    Start  5: L02_deduction_student\n2/6 Test  #5: L02_deduction_student ............***Failed    0.42 sec\ncheck failed: by-value keeps plain int\n\n    Start  7: L03_forwarding_student\n3/6 Test  #7: L03_forwarding_student ...........***Failed    0.43 sec\ncheck failed: invoke_preserving must keep lvalue argument category\n\n    Start  9: L04_lookup_student\n4/6 Test  #9: L04_lookup_student ...............***Failed    0.45 sec\ncheck failed: no-route object must not satisfy c04_inspectable\n\n    Start 12: L05_overload_student\n5/6 Test #12: L05_overload_student .............***Failed    0.42 sec\ncheck failed: member describe returns member_result\n\n    Start 16: L06_constraints_student\n6/6 Test #16: L06_constraints_student ..........***Failed    0.42 sec\ncheck failed: missing name is not field_like\n\n\n0% tests passed, 6 tests failed out of 6\n\nLabel Time Summary:\nstudent    =   2.57 sec*proc (6 tests)\n\nTotal Test time (real) =   2.59 sec\n\nThe following tests FAILED:\n\t  1 - L01_templates_student (Failed)                    student\n\t  5 - L02_deduction_student (Failed)                    student\n\t  7 - L03_forwarding_student (Failed)                   student\n\t  9 - L04_lookup_student (Failed)                       student\n\t 12 - L05_overload_student (Failed)                     student\n\t 16 - L06_constraints_student (Failed)                  student\n",
+  "stderr": "Errors while running CTest\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 8,
+  "required_text": [
+    "0% tests passed, 6 tests failed out of 6",
+    "L01_templates_student",
+    "L02_deduction_student",
+    "L03_forwarding_student",
+    "L04_lookup_student",
+    "L05_overload_student",
+    "L06_constraints_student"
+  ],
+  "verdict": "PASS"
+}

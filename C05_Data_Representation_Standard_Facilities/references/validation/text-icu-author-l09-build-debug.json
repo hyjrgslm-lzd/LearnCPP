@@ -1,0 +1,24 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "C05_Data_Representation_Standard_Facilities/exercises/L09_formatting/build/author-debug",
+    "--config",
+    "Debug",
+    "--parallel",
+    "1"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 3.625,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/L09_formatting/CMakeLists.txt\n  bad_truncation.cpp\nF:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\L09_formatting\\validation\\bad_truncation.cpp(11,23): warning C4018: '<=': 有符号/无符号不匹配 [F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\L09_formatting\\build\\author-debug\\L09_formatting_bad_truncation.vcxproj]\n  L09_formatting_bad_truncation.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\L09_formatting\\build\\author-debug\\Debug\\L09_formatting_bad_truncation.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/L09_formatting/CMakeLists.txt\n  observation.cpp\n  L09_formatting_observation.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\L09_formatting\\build\\author-debug\\Debug\\L09_formatting_observation.exe\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/L09_formatting/CMakeLists.txt\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

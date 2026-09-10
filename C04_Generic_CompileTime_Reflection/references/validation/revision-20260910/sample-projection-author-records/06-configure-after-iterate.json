@@ -1,0 +1,26 @@
+{
+  "command": [
+    "cmake",
+    "-S",
+    "C04_Generic_CompileTime_Reflection/exercises/A02_field_projection",
+    "-B",
+    "C04_Generic_CompileTime_Reflection/exercises/A02_field_projection/build/revision-author-evidence",
+    "-G",
+    "Visual Studio 18 2026",
+    "-A",
+    "x64"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.5319999998901039,
+  "stdout": "-- Configuring done (0.4s)\n-- Generating done (0.1s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/A02_field_projection/build/revision-author-evidence\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

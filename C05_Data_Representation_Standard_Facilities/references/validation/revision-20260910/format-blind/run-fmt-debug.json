@@ -1,0 +1,18 @@
+{
+  "command": [
+    "C05_Data_Representation_Standard_Facilities/references/validation/revision-20260910/format-blind/b/Debug/blind_fmt_probe.exe"
+  ],
+  "exit_code": 1,
+  "timeout": true,
+  "process_seconds": 61.015000000130385,
+  "stdout": "",
+  "stderr": "Assertion failed: fmt::vformat(\"{}|{}\", store) == \"copied|second\", file F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\references\\validation\\revision-20260910\\format-blind\\fmt_probe.cpp, line 52\n",
+  "cleanup_error": "",
+  "error": "TimeoutExpired: Command '['C05_Data_Representation_Standard_Facilities/references/validation/revision-20260910/format-blind/b/Debug/blind_fmt_probe.exe']' timed out after 60.0 seconds",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "FAIL"
+}

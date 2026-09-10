@@ -1,0 +1,25 @@
+{
+  "command": [
+    "C:\\Program",
+    "Files\\PowerShell\\7\\pwsh.exe",
+    "-NoProfile",
+    "-Command",
+    "Get-FileHash C04_Generic_CompileTime_Reflection\\exercises\\cmake\\StudySetup.cmake,C04_Generic_CompileTime_Reflection\\exercises\\tools\\compile_case.py -Algorithm SHA256 | Select-Object Algorithm,Hash,Path | ConvertTo-Json -Compress"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.7660000000614673,
+  "stdout": "[{\"Algorithm\":\"SHA256\",\"Hash\":\"74EDF9979EE19F21138920FF79307A20D615509FCFDFF6DA08288A4FAE0C6012\",\"Path\":\"F:\\\\CPPTrain\\\\LearnCPP\\\\C04_Generic_CompileTime_Reflection\\\\exercises\\\\cmake\\\\StudySetup.cmake\"},{\"Algorithm\":\"SHA256\",\"Hash\":\"1735B806E508C2B618DAA1923FBEC42DFF8E52E0A35E4CCE3725C22954F6674A\",\"Path\":\"F:\\\\CPPTrain\\\\LearnCPP\\\\C04_Generic_CompileTime_Reflection\\\\exercises\\\\tools\\\\compile_case.py\"}]\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [
+    "StudySetup.cmake",
+    "compile_case.py"
+  ],
+  "verdict": "PASS"
+}

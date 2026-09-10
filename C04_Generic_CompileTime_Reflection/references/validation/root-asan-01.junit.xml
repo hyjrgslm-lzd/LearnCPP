@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="(empty)"
+	tests="20"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname=""
+	time="8"
+	timestamp="2026-09-10T00:08:12"
+	>
+	<testcase name="L02_deduction_reference" classname="L02_deduction_reference" time="0.44419" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L02_deduction checks OK
+</system-out>
+	</testcase>
+	<testcase name="L02_deduction_validation_good" classname="L02_deduction_validation_good" time="0.45521" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation"/>
+		</properties>
+		<system-out>L02_deduction checks OK
+</system-out>
+	</testcase>
+	<testcase name="L02_deduction_decltype" classname="L02_deduction_decltype" time="0.436044" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>L02_deduction decltype observation OK
+</system-out>
+	</testcase>
+	<testcase name="L03_forwarding_reference" classname="L03_forwarding_reference" time="0.444745" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L03_forwarding checks OK
+</system-out>
+	</testcase>
+	<testcase name="L03_forwarding_validation_good" classname="L03_forwarding_validation_good" time="0.436007" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation"/>
+		</properties>
+		<system-out>L03_forwarding checks OK
+</system-out>
+	</testcase>
+	<testcase name="L03_forwarding_counterexamples" classname="L03_forwarding_counterexamples" time="0.431656" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>L03_forwarding counterexamples observation OK
+</system-out>
+	</testcase>
+	<testcase name="L04_lookup_reference" classname="L04_lookup_reference" time="0.445246" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L04_lookup checks OK
+</system-out>
+	</testcase>
+	<testcase name="L04_lookup_validation_good" classname="L04_lookup_validation_good" time="0.441192" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation"/>
+		</properties>
+		<system-out>L04_lookup checks OK
+</system-out>
+	</testcase>
+	<testcase name="L04_lookup_observation" classname="L04_lookup_observation" time="0.450661" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>L04_lookup observation OK
+</system-out>
+	</testcase>
+	<testcase name="L09_tuple_reference" classname="L09_tuple_reference" time="0.43416" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L09_tuple checks OK
+</system-out>
+	</testcase>
+	<testcase name="L09_tuple_validation_good" classname="L09_tuple_validation_good" time="0.516532" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation"/>
+		</properties>
+		<system-out>L09_tuple checks OK
+</system-out>
+	</testcase>
+	<testcase name="L09_tuple_observation" classname="L09_tuple_observation" time="0.444629" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>L09 tuple observation OK
+</system-out>
+	</testcase>
+	<testcase name="L11_customization_reference" classname="L11_customization_reference" time="0.446193" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>L11_customization read_value checks OK
+</system-out>
+	</testcase>
+	<testcase name="L11_customization_validation_good" classname="L11_customization_validation_good" time="0.451147" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation"/>
+		</properties>
+		<system-out>L11_customization read_value checks OK
+</system-out>
+	</testcase>
+	<testcase name="L11_customization_baseline" classname="L11_customization_baseline" time="0.436121" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>L11_customization baseline observation OK
+</system-out>
+	</testcase>
+	<testcase name="L11_customization_counterexamples" classname="L11_customization_counterexamples" time="0.431783" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>L11_customization counterexamples observation OK
+</system-out>
+	</testcase>
+	<testcase name="P1_static_record_reference" classname="P1_static_record_reference" time="0.441011" status="run">
+		<properties>
+			<property name="cmake_labels" value="reference"/>
+		</properties>
+		<system-out>P1 static record contract passed
+</system-out>
+	</testcase>
+	<testcase name="P1_static_record_validation_good" classname="P1_static_record_validation_good" time="0.431744" status="run">
+		<properties>
+			<property name="cmake_labels" value="validation"/>
+		</properties>
+		<system-out>P1 static record contract passed
+</system-out>
+	</testcase>
+	<testcase name="P1_static_record_known_baseline" classname="P1_static_record_known_baseline" time="0.438106" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>P1 known-type encoding baseline passed
+</system-out>
+	</testcase>
+	<testcase name="P1_static_record_schema_gap" classname="P1_static_record_schema_gap" time="0.43481" status="run">
+		<properties>
+			<property name="cmake_labels" value="observation"/>
+		</properties>
+		<system-out>P1 observed the manual schema completeness boundary, not a verified reflection repair
+</system-out>
+	</testcase>
+</testsuite>

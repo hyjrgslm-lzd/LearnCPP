@@ -1,0 +1,28 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "C05_Data_Representation_Standard_Facilities/references/validation/revision-20260910/format-blind/b",
+    "--config",
+    "Debug",
+    "--target",
+    "blind_fmt_probe",
+    "blind_spdlog_fmt_debug",
+    "blind_spdlog_fmt_info",
+    "blind_spdlog_std_debug",
+    "blind_spdlog_std_info"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 17.844000000040978,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/exercises/build/_deps/fmt-12.1.0/source/CMakeLists.txt\n  format.cc\nF:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\_deps\\fmt-12.1.0\\source\\include\\fmt\\base.h(930,12): warning C4834: 放弃具有 [[nodiscard]] 属性的函数的返回值 [F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\references\\validation\\revision-20260910\\format-blind\\b\\fmt-build\\fmt.vcxproj]\n  (编译源文件“../../../../../../exercises/build/_deps/fmt-12.1.0/source/src/format.cc”)\n      F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\_deps\\fmt-12.1.0\\source\\include\\fmt\\base.h(930,12):\n      模板实例化上下文(最早的实例化上下文)为\n          F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\_deps\\fmt-12.1.0\\source\\src\\format.cc(13,30):\n          查看对正在编译的函数 模板 实例化“fmt::v12::locale_ref::locale_ref<std::locale,0>(const std::locale &)”的引用\n  \n  os.cc\n  正在生成代码...\n  fmt.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\references\\validation\\revision-20260910\\format-blind\\b\\fmt-build\\Debug\\fmtd.lib\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/references/validation/revision-20260910/format-blind/CMakeLists.txt\n  fmt_probe.cpp\n  blind_fmt_probe.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\references\\validation\\revision-20260910\\format-blind\\b\\Debug\\blind_fmt_probe.exe\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  fmt.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\references\\validation\\revision-20260910\\format-blind\\b\\fmt-build\\Debug\\fmtd.lib\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/references/validation/revision-20260910/format-blind/CMakeLists.txt\n  spdlog_probe.cpp\n  blind_spdlog_fmt_debug.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\references\\validation\\revision-20260910\\format-blind\\b\\Debug\\blind_spdlog_fmt_debug.exe\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  fmt.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\references\\validation\\revision-20260910\\format-blind\\b\\fmt-build\\Debug\\fmtd.lib\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/references/validation/revision-20260910/format-blind/CMakeLists.txt\n  spdlog_probe.cpp\n  blind_spdlog_fmt_info.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\references\\validation\\revision-20260910\\format-blind\\b\\Debug\\blind_spdlog_fmt_info.exe\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/references/validation/revision-20260910/format-blind/CMakeLists.txt\n  spdlog_probe.cpp\n  blind_spdlog_std_debug.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\references\\validation\\revision-20260910\\format-blind\\b\\Debug\\blind_spdlog_std_debug.exe\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  Building Custom Rule F:/CPPTrain/LearnCPP/C05_Data_Representation_Standard_Facilities/references/validation/revision-20260910/format-blind/CMakeLists.txt\n  spdlog_probe.cpp\n  blind_spdlog_std_info.vcxproj -> F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\references\\validation\\revision-20260910\\format-blind\\b\\Debug\\blind_spdlog_std_info.exe\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [],
+  "verdict": "PASS"
+}

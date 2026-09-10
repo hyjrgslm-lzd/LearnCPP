@@ -1,0 +1,67 @@
+{
+  "results": [
+    {
+      "file": "final-asan-relwithdebinfo-r1.xml",
+      "total": 17,
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "final-core-debug-r1.xml",
+      "total": 33,
+      "passed": 33,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "final-core-release-r1.xml",
+      "total": 33,
+      "passed": 33,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "final-frontier-release-r1.xml",
+      "total": 42,
+      "passed": 33,
+      "failed": 0,
+      "skipped": 9
+    },
+    {
+      "file": "final-icu-debug-r1.xml",
+      "total": 43,
+      "passed": 34,
+      "failed": 0,
+      "skipped": 9
+    },
+    {
+      "file": "final-icu-release-r1.xml",
+      "total": 43,
+      "passed": 34,
+      "failed": 0,
+      "skipped": 9
+    },
+    {
+      "file": "final-student-r1.xml",
+      "total": 19,
+      "passed": 12,
+      "failed": 7,
+      "skipped": 0
+    }
+  ],
+  "student_initial_failures_are_expected": true,
+  "student_isolation": {
+    "verdict": "PASS",
+    "targets": [
+      "L03_integer_boundaries_student",
+      "L06_transcoding_student",
+      "L08_parsing_student",
+      "L13_configuration_student",
+      "L14_binary_fields_student",
+      "L15_schema_evolution_student",
+      "P1_resource_manifest_student"
+    ],
+    "actual_include_count": 2929
+  }
+}

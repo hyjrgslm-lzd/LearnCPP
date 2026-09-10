@@ -1,0 +1,12 @@
+{
+  "verdict": "GAP_RECORDED",
+  "deleted_by": "prepare_libraries worker",
+  "deleted_at_local": "2026-09-10T13:46:00+08:00",
+  "deleted_paths": [
+    "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/meta-libs-u02-migration-20260910-134229",
+    "C04_Generic_CompileTime_Reflection/exercises/build/meta-libs-u02-migration-20260910-134229"
+  ],
+  "reason": "误把第一组 U02 记录视为干扰并删除；该组 debug-configure PASS，debug-build 进程 exit=0 但 record_process 因匹配英文 Build succeeded. 与本机中文 MSBuild 输出不一致判 FAIL。",
+  "recovery": "未重造旧数据。保留并引用替代完整验证结果 meta-libs-u02-migration-20260910-134300，Debug/Release configure/build/ctest 全 PASS，CTest 实际运行两个 U02 observation target。",
+  "replacement_summary": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/meta-libs-u02-migration-20260910-134300/summary.json"
+}

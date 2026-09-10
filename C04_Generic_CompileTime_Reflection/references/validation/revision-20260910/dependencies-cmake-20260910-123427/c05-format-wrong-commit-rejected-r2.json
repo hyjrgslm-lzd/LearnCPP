@@ -1,0 +1,28 @@
+{
+  "command": [
+    "cmake",
+    "-S",
+    "F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\dependency-probes\\format-wrong-src",
+    "-B",
+    "F:\\CPPTrain\\LearnCPP\\C05_Data_Representation_Standard_Facilities\\exercises\\build\\dependency-probes\\format-wrong-build-r2",
+    "-G",
+    "Visual Studio 18 2026",
+    "-A",
+    "x64"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 2.6879999998491257,
+  "stdout": "-- The CXX compiler identification is MSVC 19.51.36256.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring incomplete, errors occurred!\n",
+  "stderr": "CMake Error at cmake/FormatLibraries.cmake:11 (message):\n  C05_FMT commit mismatch: wrong\nCall Stack (most recent call first):\n  cmake/FormatLibraries.cmake:35 (c05_require_format_dependency)\n  cmake/FormatLibraries.cmake:48 (c05_ensure_fmt)\n  CMakeLists.txt:6 (c05_link_fmt)\n\n\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 1,
+  "required_text": [
+    "C05_FMT commit mismatch: wrong"
+  ],
+  "verdict": "PASS"
+}

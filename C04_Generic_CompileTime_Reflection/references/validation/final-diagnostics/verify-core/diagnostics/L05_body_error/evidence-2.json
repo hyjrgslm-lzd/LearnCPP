@@ -1,0 +1,75 @@
+{
+  "configure": {
+    "command": [
+      "cmake",
+      "-S",
+      "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\verify-core\\diagnostics\\L05_body_error\\source",
+      "-B",
+      "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\verify-core\\diagnostics\\L05_body_error\\binary",
+      "-G",
+      "Visual Studio 18 2026",
+      "-DBUILD_TESTING=OFF",
+      "-DCMAKE_CXX_COMPILER=D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe",
+      "-A",
+      "x64"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "process_seconds": 0.4529999999795109,
+    "stdout": "-- Configuring done (0.3s)\n-- Generating done (0.0s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/build/verify-core/diagnostics/L05_body_error/binary\n",
+    "stderr": "",
+    "cleanup_error": "",
+    "error": "",
+    "status": "PASS"
+  },
+  "control": {
+    "command": [
+      "cmake",
+      "--build",
+      "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\verify-core\\diagnostics\\L05_body_error\\binary",
+      "--config",
+      "Release",
+      "--target",
+      "control"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "process_seconds": 0.9690000000409782,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/build/verify-core/diagnostics/L05_body_error/source/CMakeLists.txt\n  control.vcxproj -> F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\verify-core\\diagnostics\\L05_body_error\\binary\\Release\\control.exe\n",
+    "stderr": "",
+    "cleanup_error": "",
+    "error": "",
+    "status": "PASS"
+  },
+  "subject": {
+    "command": [
+      "cmake",
+      "--build",
+      "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\verify-core\\diagnostics\\L05_body_error\\binary",
+      "--config",
+      "Release",
+      "--target",
+      "subject"
+    ],
+    "exit_code": 1,
+    "timeout": false,
+    "process_seconds": 0.9370000001508743,
+    "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  Building Custom Rule F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/build/verify-core/diagnostics/L05_body_error/source/CMakeLists.txt\n  sfinae_body_hard_error.cpp\nF:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L05_overload\\validation\\diagnostics\\sfinae_body_hard_error.cpp(5,18): error C2039: \"size\": 不是 \"no_size\" 的成员 [F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\build\\verify-core\\diagnostics\\L05_body_error\\binary\\subject.vcxproj]\n      F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L05_overload\\validation\\diagnostics\\sfinae_body_hard_error.cpp(1,8):\n      参见“no_size”的声明\n      F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L05_overload\\validation\\diagnostics\\sfinae_body_hard_error.cpp(5,18):\n      模板实例化上下文(最早的实例化上下文)为\n          F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L05_overload\\validation\\diagnostics\\sfinae_body_hard_error.cpp(10,12):\n          查看对正在编译的函数 模板 实例化“int probe<no_size>(T &)”的引用\n          with\n          [\n              T=no_size\n          ]\n  \n",
+    "stderr": "",
+    "cleanup_error": "",
+    "error": "",
+    "status": "FAIL"
+  },
+  "verdict": "PASS",
+  "reason": "expected semantic diagnostic with a normal nonzero compiler exit",
+  "subject_source": "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L05_overload\\validation\\diagnostics\\sfinae_body_hard_error.cpp",
+  "control_source": "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L05_overload\\validation\\diagnostics\\sfinae_immediate_context_control.cpp",
+  "pattern": "error C2039",
+  "compiler": "D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe",
+  "input_sha256": {
+    "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L05_overload\\validation\\diagnostics\\sfinae_body_hard_error.cpp": "8a48fbd1fbcc5833d2c31df93873cb1d6489f85c2210470cba7097f479cff374",
+    "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\L05_overload\\validation\\diagnostics\\sfinae_immediate_context_control.cpp": "64b746a0cd43b7ef7bf875d57dd4de8cb3f86067c87e9c8e83e342acbd69f0b7",
+    "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\tools\\compile_case.py": "7dabd21a7abb70fc8b926b2913fa739583ab655c022aad6da0ebb6c45d1377ad",
+    "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\exercises\\cmake\\StudySetup.cmake": "3bbde5e2e79e32e052082c9453ce51ce1bf3d60c394f2058413f128f63c92026"
+  }
+}

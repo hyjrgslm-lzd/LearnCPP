@@ -1,0 +1,24 @@
+{
+  "unicode_version": "16.0.0",
+  "generated_utc": "2026-09-09T15:41:13.1652567Z",
+  "files": [
+    {
+      "name": "NormalizationTest.txt",
+      "url": "https://www.unicode.org/Public/16.0.0/ucd/NormalizationTest.txt",
+      "bytes": 2798671,
+      "sha256": "d811971453e7075e1ad56fb1b301eece5aa80757b81f6156e74a1bfb3ae5ceb1"
+    },
+    {
+      "name": "GraphemeBreakTest.txt",
+      "url": "https://www.unicode.org/Public/16.0.0/ucd/auxiliary/GraphemeBreakTest.txt",
+      "bytes": 171927,
+      "sha256": "ee2b9354d270ac061b29f09662cafea06341d77e704b8cc6bd72aaeeda363cb5"
+    },
+    {
+      "name": "UNICODE-LICENSE.txt",
+      "url": "https://www.unicode.org/license.txt",
+      "bytes": 1995,
+      "sha256": "e7a93b009565cfce55919a381437ac4db883e9da2126fa28b91d12732bc53d96"
+    }
+  ]
+}

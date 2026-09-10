@@ -1,0 +1,25 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "F:/CPPTrain/LearnCPP/build/c04-u01-final-r2-student",
+    "-C",
+    "Debug",
+    "--output-on-failure"
+  ],
+  "exit_code": 8,
+  "timeout": false,
+  "process_seconds": 6.875,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/build/c04-u01-final-r2-student\n    Start 1: U01_mp11_student\n1/2 Test #1: U01_mp11_student ..................***Failed    0.43 sec\ncheck failed: schema_map_t<Person> must expose the Person fields before the full Mp11 contract can run\n\n    Start 2: U01_mp11_missing_key_diagnostic\n2/2 Test #2: U01_mp11_missing_key_diagnostic ...   Passed    6.38 sec\n\n50% tests passed, 1 tests failed out of 2\n\nLabel Time Summary:\ndiagnostic    =   6.38 sec*proc (1 test)\nstudent       =   0.43 sec*proc (1 test)\n\nTotal Test time (real) =   6.82 sec\n\nThe following tests FAILED:\n\t  1 - U01_mp11_student (Failed)                         student\n",
+  "stderr": "Errors while running CTest\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 8,
+  "required_text": [
+    "schema_map_t<Person> must expose the Person fields before the full Mp11 contract can run"
+  ],
+  "verdict": "PASS"
+}
