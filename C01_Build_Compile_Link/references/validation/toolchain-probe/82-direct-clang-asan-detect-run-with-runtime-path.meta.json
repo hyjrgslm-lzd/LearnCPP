@@ -1,9 +1,0 @@
-﻿{
-    "name":  "82-direct-clang-asan-detect-run-with-runtime-path",
-    "command":  "call \"D:\\VisualStudio2026\\Installed\\Common7\\Tools\\VsDevCmd.bat\" -arch=x64 \u003enul \u0026\u0026 set PATH=D:\\VisualStudio2026\\Installed\\VC\\Tools\\Llvm\\x64\\lib\\clang\\22\\lib\\windows;%PATH% \u0026\u0026 \"F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\toolchain-probe\\out\\direct\\clang\\asan_detect_probe.exe\"",
-    "exit_code":  1,
-    "timed_out":  false,
-    "timeout_seconds":  45,
-    "stdout":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\82-direct-clang-asan-detect-run-with-runtime-path.stdout.txt",
-    "stderr":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\82-direct-clang-asan-detect-run-with-runtime-path.stderr.txt"
-}

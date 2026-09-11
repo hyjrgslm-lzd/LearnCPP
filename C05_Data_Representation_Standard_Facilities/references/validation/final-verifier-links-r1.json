@@ -1,7 +1,0 @@
-{
-  "verdict": "PASS",
-  "checked_markdown_files": 71,
-  "checked_local_links": 444,
-  "broken": [],
-  "scope": "C05 markdown plus five authorized navigation files; local markdown links and heading anchors only"
-}

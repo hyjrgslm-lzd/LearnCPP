@@ -1,1 +1,0 @@
-call D:\VisualStudio2026\Installed\Common7\Tools\VsDevCmd.bat -arch=x64 >nul && D:\cmake\install\bin\cmake.exe --build Engineering_Study\exercises\build\sample-odr --verbose

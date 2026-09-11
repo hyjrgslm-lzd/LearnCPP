@@ -1,7 +1,0 @@
-cmake_minimum_required(VERSION 3.28)
-project(join_common_probe LANGUAGES CXX)
-add_executable(join_common_probe join_common_probe.cpp)
-set_target_properties(join_common_probe PROPERTIES CXX_STANDARD 23 CXX_STANDARD_REQUIRED ON CXX_EXTENSIONS OFF CXX_SCAN_FOR_MODULES OFF)
-if(MSVC)
-  target_compile_options(join_common_probe PRIVATE /utf-8 /EHsc /permissive- /Zc:__cplusplus)
-endif()

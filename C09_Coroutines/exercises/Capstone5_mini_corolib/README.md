@@ -143,7 +143,7 @@ ctest --test-dir C09_Coroutines/exercises/build/verify-core -C Release -R "mini_
 | stop | stop_token.hpp | mini_stop_test | 标准别名已提供，观察已有/晚到回调及幂等请求；不证明 in-place 无分配扩展。 |
 | sender awaitable | as_awaitable.hpp | mini_as_awaitable_test（stdexec） | 检查 value/error/stopped 映射；任务未实现与 stopped 必须区分。 |
 
-这些检查会调用学生操作，未完成项保留普通非零失败，不使用 WILL_FAIL。参考值、void、错误、并发等完整测试仍由下列 Reference 列表承担，不能把参考结果套到 Student。独立可做性验证及行为型反例见 [mini Student 审查](../../references/validation/c09-refresh/reviews/mini-student-review.md)。
+这些检查会调用学生操作，未完成项保留普通非零失败，不使用 WILL_FAIL。参考值、void、错误、并发等完整测试仍由下列 Reference 列表承担，不能把参考结果套到 Student。独立可做性验证及行为型反例应保存在本机验证记录中。
 
 首个错误不等于 when_any 完成：该组合保留 first-success 语义，只有成功 winner 请求 stop。没有成功值时，所有输入必须自行完成或响应外部取消；“一个 error 加一个永远等 stop 的输入”本身没有保证有限完成。不能为让这种输入自动退出而悄悄改成 first-error cancel。
 

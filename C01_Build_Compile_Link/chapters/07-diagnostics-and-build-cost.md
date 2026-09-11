@@ -68,7 +68,7 @@ extern "C" int LLVMFuzzerTestOneInput(const std::uint8_t* data, std::size_t size
 g1_real_parser_fuzz.exe -runs=16 -seed=20260908 -max_total_time=5 input-corpus
 ```
 
-脚本还会链接一个代表性坏 parser：`parse_two_digits` 总是返回 `42`。同一个 harness 必须先输出 `G1_ORACLE_MISMATCH:`，再非零退出，证明失败来自 oracle 拒绝“忽略输入/忽略长度”的错误实现。验证脚本同时要求无 timeout、无 cleanup error；缺 DLL、找不到 exe、未带 marker 的任意访问违规或超时都不能冒充 PASS。原始输出中的 `Done 16 runs` 只证明这些固定种子和本轮生成输入没有触发 Reference parser 契约违规。它不能证明输入空间完整安全。若要把 fuzz 用作更强结论，必须保存 seed、runs、语料、二进制、flags、失败输入和 sanitizer 配置。当前 Windows 验证中 `-fsanitize=fuzzer,address` 遇到 MSVC STL annotation link mismatch，因此 fuzzer 正式证据使用 `-fsanitize=fuzzer`；ASan 由独立正反样例覆盖。
+脚本还会链接一个代表性坏 parser：`parse_two_digits` 总是返回 `42`。同一个 harness 必须先输出 `G1_ORACLE_MISMATCH:`，再非零退出，证明失败来自 oracle 拒绝“忽略输入/忽略长度”的错误实现。验证脚本同时要求无 timeout、无 cleanup error；缺 DLL、找不到 exe、未带 marker 的任意访问违规或超时都不能冒充 PASS。`Done 16 runs` 只证明这些固定种子和当次生成输入没有触发 Reference parser 契约违规。它不能证明输入空间完整安全。若要把 fuzz 用作更强结论，必须保存 seed、runs、语料、二进制、flags、失败输入和 sanitizer 配置。若 `-fsanitize=fuzzer,address` 与某个 STL 或运行库组合冲突，应把 fuzzer 与 ASan 正反样例拆开验证。
 
 ## `-ftime-trace` 与阶段定位
 

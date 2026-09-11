@@ -1,2 +1,0 @@
-D:\cmake\install\bin\cmake.exe --build Coroutine_Study/exercises/build/c01-supplement-starters --config Release --target mini_task_test mini_generator_test mini_sync_wait_test mini_when_all_test mini_scope_test J1_eight_pitfalls
-timeout_seconds=300

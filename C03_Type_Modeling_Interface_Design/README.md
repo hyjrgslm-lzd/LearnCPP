@@ -37,7 +37,7 @@
 
 核心使用C++23。本机支持不足的C++26/29内容仍有正文、真实源码与独立能力探测；标准地位、实现能力与实际运行结果分别记录在[标准索引](references/standards-and-implementations.md)。性能没有预设排名，复制/分配计数只用于对应受控实验。
 
-本课已完成教材、Windows可用路径验证与非作者独立终审，实际结果和环境限制见[质量报告](references/quality-report.md)。[实施规格](references/implementation-spec.md)说明承诺范围，[覆盖表](references/coverage.md)连接各知识点、练习与审查证据；[交付清单](references/delivery-manifest.md)绑定文件与证据版本。能力SKIP不计为设施运行通过。
+[覆盖表](references/coverage.md)连接各知识点与练习。课程提交只保留教材、源码和稳定参考资料；本机验证日志、审查记录、交付清单和能力探测输出不作为学习入口。能力缺失不同于设施运行通过。
 
 ## 下游衔接
 

@@ -1,5 +1,0 @@
-Change Dir: 'F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/g2-formal-r1-work/sample-00-pch-noop/build'
-
-Run Build Command(s): D:\VisualStudio2026\Installed\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja\ninja.exe -v -j 1 G2_build_cost_pch
-ninja: no work to do.
-

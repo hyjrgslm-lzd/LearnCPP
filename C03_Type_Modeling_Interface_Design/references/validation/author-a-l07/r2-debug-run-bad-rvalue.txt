@@ -1,3 +1,0 @@
-check failed: rvalue view is rejected for selected implementation
-
-EXIT_CODE=1

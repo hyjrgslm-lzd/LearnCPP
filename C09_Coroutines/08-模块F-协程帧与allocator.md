@@ -235,7 +235,7 @@ HALO 关注另一件事：整个 coroutine state 的动态分配是否消失。�
 
 微基准只能辅助判断。时间接近可能是两边都 elide、都未 elide，或成本被其他工作掩盖；时间差大也可能来自循环化简等其他优化。应沿实际 consumer 调用路径检查 remark、IR、dump 或汇编，不能搜索全模块分配符号就下结论。
 
-本轮 Clang 18.1.3、`-O2` 无插桩输出中，两个 consumer 均没有动态分配并已化简为求和循环，独立导出的 `range_values` 却仍分配 48 字节。没有 elide remark；这证明实际路径消除了动态分配，但不指定优化 pass，也不能将两版耗时差归因于 HALO 有无。完整证据与干扰边界见[F3 最终实验判读](references/validation/c09-refresh/performance/final/analysis.md)。
+一次 Clang 18.1.3、`-O2` 无插桩输出中，两个 consumer 均没有动态分配并已化简为求和循环，独立导出的 `range_values` 却仍分配 48 字节。没有 elide remark；这证明实际路径消除了动态分配，但不指定优化 pass，也不能将两版耗时差归因于 HALO 有无。完整原始样本、IR/汇编、指纹及干扰说明属于本机运行产物。
 
 ## 本模块完成后应能说清楚
 

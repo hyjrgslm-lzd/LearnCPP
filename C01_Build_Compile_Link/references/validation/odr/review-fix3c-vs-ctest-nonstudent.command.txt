@@ -1,1 +1,0 @@
-call "D:\VisualStudio2026\Installed\Common7\Tools\VsDevCmd.bat" -arch=x64 >nul && "D:\cmake\install\bin\ctest.exe" --test-dir "F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\sample-odr-review-fix3c-vs" -C Release -LE student --output-on-failure

@@ -4,7 +4,7 @@
 
 课程包含 **34 道独立练习和 3 个项目，共 37 个学习单元**。34 道练习由 2 道预备练习和既有的 32 道普通练习组成；项目沿用 Capstone1、Capstone4、Capstone5 这三个稳定 ID。
 
-本轮增量补全的范围和门禁见[实施规格](references/implementation-spec.md)，逐单元去向见[覆盖表](references/coverage.md)，运行与非作者结论见[质量报告](references/quality-report.md)。实现型 Starter 现在会实际进入学生操作；未完成时明确失败，完成相关 Part 后再用同一检查验收。观察、学生作业、Reference 和独立 good/bad 分别统计。
+逐单元去向见[覆盖表](references/coverage.md)。实现型 Starter 现在会实际进入学生操作；未完成时明确失败，完成相关 Part 后再用同一检查验收。观察、学生作业、Reference 和独立 good/bad 分别统计。
 
 ## 从这里开始
 
@@ -14,7 +14,7 @@
 
 正文代码块突出正在讲的机制；练习目录中的完整文件提供头文件、入口函数和可运行示例。`main.cpp` 是供你观察、修改和补全的 Starter，`solution.cpp` 是完整 Reference。H1–H3 的学生编辑入口为 `student.hpp`，`checks/` 保持固定；项目采用各自的 `src/` 与 `reference/` 目录。你可以先运行已有日志建立直觉，再完成 TODO，并用参考实现核对自己的推理。
 
-通用构建、链接、ABI 与工具能力的背景见 [C01 工程课程](../C01_Build_Compile_Link/README.md)，按当前练习需要选择阅读，不要求先学完整门工程课。[覆盖登记](references/coverage.md)与[质量报告](references/quality-report.md)记录37单元的入口、验证范围和非作者审查；Student 的 TODO 状态与 Reference 通过状态分别看待。
+通用构建、链接、ABI 与工具能力的背景见 [C01 工程课程](../C01_Build_Compile_Link/README.md)，按当前练习需要选择阅读，不要求先学完整门工程课。[覆盖登记](references/coverage.md)记录37单元的入口和验证范围；Student 的 TODO 状态与 Reference 通过状态分别看待。
 
 本机编译与运行方式见 [构建指南](exercises/BUILD_GUIDE.md)。首次使用可在 `C09_Coroutines/exercises` 执行：
 
@@ -117,3 +117,7 @@ RPC长度头、数字完整消费、UTF与基础schema的先修见[C05 数据表
 ## C07 系统 I/O 先修
 
 [C07 readiness](../C07_OS_Memory_System_IO/chapters/11-readiness.md)、[IOCP](../C07_OS_Memory_System_IO/chapters/12-windows-iocp.md)、[io_uring](../C07_OS_Memory_System_IO/chapters/13-linux-io-uring.md)和[取消收束](../C07_OS_Memory_System_IO/chapters/14-cancellation-shutdown.md)解释提交、等待和最终完成，以及 buffer/请求身份必须存活到何时。再回本课 I2，将系统完成接到 awaiter 的结果写入与恢复；帧的销毁/取消协议仍由本课单独验证。
+
+## C10 执行协议桥接
+
+[C10 task 桥接](../C10_Execution/chapters/10-task-and-scope.md)在本课 promise/await/final_suspend 基础上实现 sender await、环境传播与 task-as-sender；[G1 adaptor](../C10_Execution/chapters/08-adaptor.md)则从非协程完成协议推导组合。先修按具体单元进入，不要求先读完两课。

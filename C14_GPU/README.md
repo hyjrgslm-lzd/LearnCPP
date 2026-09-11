@@ -314,3 +314,7 @@
 ## C04 泛型与编译期桥接
 
 [进入C04课程](../C04_Generic_CompileTime_Reflection/README.md)。CUTLASS/cuTe的类型级布局、NTTP与特化可回访C04；C04的编译成本测量不替代本课设备性能与硬件验证。本次仅增加阅读桥接，不改变CUDA源码、依赖或已有实验证据。
+
+## C10 执行协议桥接
+
+[C10 异构执行](../C10_Execution/chapters/12-heterogeneous.md)把设备 stream、内存归属和同步接到 bulk/domain/nvexec 工作图。CPU domain 模型、单 GPU 与多 GPU 实验分别登记；CUDA/NVCC 可用不等于具备 nvexec 所需 nvc++。

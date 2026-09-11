@@ -1,2 +1,0 @@
-D:\cmake\install\bin\cmake.exe -S Coroutine_Study/exercises -B Coroutine_Study/exercises/build/c01-supplement -DCOROUTINE_STUDY_BUILD_REFERENCE=ON -DCOROUTINE_STUDY_FETCH_DEPS=OFF -DCOROUTINE_STUDY_TEST_STARTERS=OFF
-timeout_seconds=120

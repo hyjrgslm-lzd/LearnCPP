@@ -1,142 +1,152 @@
-#include <stdexec/execution.hpp>
-#include <exec/static_thread_pool.hpp>
-#include <iostream>
+#include <c10/test.hpp>
+#include <solution.hpp>
+#include <algorithm>
+#include <cmath>
+#include <mutex>
+#include <set>
+#include <stdexcept>
 #include <string>
+#include <string_view>
 #include <thread>
-#include <sstream>
+#include <vector>
 
-namespace ex = stdexec;
-
-// ── 数据类型 ──────────────────────────────────────────
-struct RawRecord {
-    std::string text;
+namespace {
+struct Expected {
+  int valid{};
+  int invalid{};
+  double score{};
 };
 
-struct ParsedRecord {
+bool name_ok(std::string_view name) {
+  if (name.empty())
+    return false;
+  auto good_first = [](unsigned char c) {
+    return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || c == '_';
+  };
+  auto good_rest = [&](unsigned char c) { return good_first(c) || (c >= '0' && c <= '9'); };
+  if (!good_first(static_cast<unsigned char>(name.front())))
+    return false;
+  for (char c : name.substr(1))
+    if (!good_rest(static_cast<unsigned char>(c)))
+      return false;
+  return true;
+}
+
+bool parse_record(std::string_view text, std::string &name, int &value) {
+  auto comma = text.find(',');
+  if (comma == std::string_view::npos || text.find(',', comma + 1) != std::string_view::npos)
+    return false;
+  auto lhs = text.substr(0, comma);
+  auto rhs = text.substr(comma + 1);
+  if (!name_ok(lhs) || rhs.empty())
+    return false;
+  long long n = 0;
+  for (char c : rhs) {
+    if (c < '0' || c > '9')
+      return false;
+    n = n * 10 + (c - '0');
+    if (n > 1000000)
+      return false;
+  }
+  name = std::string(lhs);
+  value = static_cast<int>(n);
+  return true;
+}
+
+Expected oracle(const std::vector<std::string> &input) {
+  Expected e{};
+  for (const auto &s : input) {
     std::string name;
-    int         value;
-    bool        valid;
-};
-
-struct EnrichedRecord {
-    ParsedRecord base;
-    double       derived_score;
-};
-
-struct Report {
-    int    total;
-    int    valid_count;
-    double total_score;
-};
-
-// ── 三份原始输入 ──────────────────────────────────────
-static const RawRecord raw_inputs[] = {
-    {"Alice,100"},
-    {"Bob,200"},
-    {"Charlie,150"},
-};
-
-// ── 辅助：线程安全打印 ───────────────────────────────
-void log_stage(const char* stage, const char* record_name) {
-    std::ostringstream oss;
-    oss << "  [" << stage << "] record=\"" << record_name
-        << "\" thread_id=" << std::this_thread::get_id() << "\n";
-    std::cout << oss.str();
+    int value = 0;
+    if (parse_record(s, name, value)) {
+      ++e.valid;
+      e.score += value * 2.0 + static_cast<double>(name.size());
+    } else {
+      ++e.invalid;
+    }
+  }
+  return e;
 }
 
-// ══════════════════════════════════════════════════════
-// parse: RawRecord -> ParsedRecord
-// ══════════════════════════════════════════════════════
-ParsedRecord parse(const RawRecord& raw) {
-    // TODO [必做]: 把 raw.text 解析为 ParsedRecord
-    //   简化做法：手工拆分逗号前后部分
-    //   例如 "Alice,100" -> ParsedRecord{"Alice", 100, true}
-    //   解析失败时可设 valid = false
-
-    log_stage("parse", raw.text.c_str());
-
-    // 占位实现 —— 请替换为真正的解析逻辑
-    return ParsedRecord{"", 0, false};
+int count_phase(const c10_b6::Report &r, std::string_view phase) {
+  return static_cast<int>(std::count_if(r.stages.begin(), r.stages.end(),
+                                        [&](const auto &s) { return s.phase == phase; }));
 }
 
-// ══════════════════════════════════════════════════════
-// enrich: ParsedRecord -> EnrichedRecord
-// ══════════════════════════════════════════════════════
-EnrichedRecord enrich(ParsedRecord rec) {
-    // TODO [必做]: 为 ParsedRecord 补充派生字段 derived_score
-    //   例如 derived_score = rec.value * 1.5
-
-    log_stage("enrich", rec.name.c_str());
-
-    // 占位实现 —— 请替换
-    return EnrichedRecord{std::move(rec), 0.0};
+std::set<std::thread::id> threads_for(const c10_b6::Report &r, std::string_view phase) {
+  std::set<std::thread::id> ids;
+  for (const auto &s : r.stages)
+    if (s.phase == phase)
+      ids.insert(s.thread);
+  return ids;
 }
 
-// ══════════════════════════════════════════════════════
-// 构造单条记录的 sender 分支: parse -> enrich
-// ══════════════════════════════════════════════════════
-auto make_branch(const RawRecord& raw, auto sch) {
-    // TODO [必做]: 在 sch 上启动，先 parse 再 enrich
-    //   返回一个产出 EnrichedRecord 的 sender
-    //
-    // return ex::starts_on(sch,
-    //     ex::just(raw)
-    //     | ex::then([](RawRecord r) { return parse(r); })
-    //     | ex::then([](ParsedRecord p) { return enrich(std::move(p)); })
-    // );
-
-    // 占位：直接在 inline 上下文返回
-    return ex::just(raw)
-        | ex::then([](RawRecord r) { return parse(r); })
-        | ex::then([](ParsedRecord p) { return enrich(std::move(p)); });
+std::vector<std::string> generated_records(int n) {
+  std::vector<std::string> records;
+  records.reserve(static_cast<std::size_t>(n));
+  for (int i = 0; i < n; ++i) {
+    int value = (i * 7919 + 17) % 1000001;
+    records.push_back("Rec_" + std::to_string(i) + "," + std::to_string(value));
+  }
+  return records;
 }
+
+void check_pipeline(const std::vector<std::string> &input, std::size_t max_records) {
+  std::mutex hook_lock;
+  std::vector<std::thread::id> hook_threads;
+  int hook_calls = 0;
+  auto hook = [&](std::string_view name, int value) {
+    std::lock_guard guard(hook_lock);
+    ++hook_calls;
+    hook_threads.push_back(std::this_thread::get_id());
+    return value * 2.0 + static_cast<double>(name.size());
+  };
+
+  auto report = c10_b6::run_pipeline(input, max_records, hook);
+  auto expected = oracle(input);
+  c10::require(report.total == static_cast<int>(input.size()), "total input count recorded");
+  c10::require(report.valid_count == expected.valid, "valid records counted");
+  c10::require(report.invalid_count == expected.invalid, "ordinary parse failure counted");
+  c10::require(std::abs(report.total_score - expected.score) < 0.0001,
+               "merge sums injected enrich scores");
+  c10::require(report.completed_batches == 3,
+               "all three accepted branch batches complete before return");
+  c10::require(report.merge_thread != report.caller_thread, "merge runs on merge scheduler");
+  c10::require(count_phase(report, "parse") == static_cast<int>(input.size()),
+               "one parse stage per accepted record");
+  c10::require(count_phase(report, "enrich") == expected.valid,
+               "one enrich stage per valid record");
+  c10::require(hook_calls == expected.valid, "enrich callback called once per valid record");
+
+  auto parse_threads = threads_for(report, "parse");
+  auto enrich_threads = threads_for(report, "enrich");
+  for (auto id : parse_threads)
+    c10::require(id != report.caller_thread, "parse stages run on parse scheduler");
+  for (auto id : enrich_threads)
+    c10::require(id != report.caller_thread, "enrich stages run on enrich scheduler");
+  for (auto p : parse_threads)
+    for (auto e : enrich_threads)
+      c10::require(p != e, "parse and enrich use distinct execution resources");
+  for (auto id : hook_threads)
+    c10::require(enrich_threads.contains(id), "enrich callback runs on recorded enrich resource");
+}
+} // namespace
 
 int main() {
-    std::cout << "主线程 thread_id = " << std::this_thread::get_id() << "\n\n";
-
-    // ── 线程池 ────────────────────────────────────────
-    exec::static_thread_pool pool(2);
-    auto sch = pool.get_scheduler();
-
-    // ══════════════════════════════════════════════════════
-    // TODO [必做]: 用 when_all 汇合三条 make_branch 分支，
-    //   在最后的 then 中把三个 EnrichedRecord 合并成 Report。
-    //
-    // auto pipeline = ex::when_all(
-    //         make_branch(raw_inputs[0], sch),
-    //         make_branch(raw_inputs[1], sch),
-    //         make_branch(raw_inputs[2], sch)
-    //     )
-    //     | ex::then([](EnrichedRecord a, EnrichedRecord b, EnrichedRecord c)
-    //                    -> Report {
-    //         // TODO [必做]: 汇总成 Report
-    //         int total = 3;
-    //         int valid_count = (a.base.valid ? 1 : 0)
-    //                         + (b.base.valid ? 1 : 0)
-    //                         + (c.base.valid ? 1 : 0);
-    //         double total_score = a.derived_score
-    //                            + b.derived_score
-    //                            + c.derived_score;
-    //         return Report{total, valid_count, total_score};
-    //     });
-    //
-    // auto [report] = ex::sync_wait(std::move(pipeline)).value();
-    // ══════════════════════════════════════════════════════
-
-    // 临时占位，完成 TODO 后删除
-    Report report{0, 0, 0.0};
-
-    // ── 打印最终报告 ──────────────────────────────────
-    std::cout << "\n=== Final Report ===\n";
-    std::cout << "  total        = " << report.total       << "\n";
-    std::cout << "  valid_count  = " << report.valid_count << "\n";
-    std::cout << "  total_score  = " << report.total_score << "\n";
-
-    // ══════════════════════════════════════════════════════
-    // TODO [进阶]: 增加一个"过滤异常记录"的子阶段（纯 value path）。
-    // TODO [进阶]: 把 merge 拆成"汇总统计"和"生成展示对象"两阶段。
-    // TODO [进阶]: 把三条固定分支升级为可扩展的 N 条分支。
-    // ══════════════════════════════════════════════════════
-
-    return 0;
+  return c10::test_main([] {
+    check_pipeline(generated_records(1), 31);
+    check_pipeline({}, 31);
+    check_pipeline({"Zero,0", "One,1", "Top,999999", "Limit,1000000", "bad", "9bad,7", "Neg,-1",
+                    "Huge,2147483648", "TooBig,1000001"},
+                   31);
+    for (int n = 2; n <= 31; ++n)
+      check_pipeline(generated_records(n), 31);
+    bool rejected = false;
+    try {
+      (void)c10_b6::run_pipeline(generated_records(4), 3);
+    } catch (const std::invalid_argument &) {
+      rejected = true;
+    }
+    c10::require(rejected, "bounded input rejects excess work");
+  });
 }

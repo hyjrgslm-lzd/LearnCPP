@@ -1,6 +1,6 @@
 # 标准、实现与教学协议
 
-> 2026-09-10修订：线程属性、HP batches及标准HP/RCU/sender新增正文和独立主体，见[前沿入口](../topics/frontier/README.md)及[本轮质量报告](revision-quality-report-20260910.md)。下面2026-09-08的工具探测是历史记录，不能替代本轮结果；规范仍分别固定N5050/N5054。
+> 2026-09-10修订：线程属性、HP batches及标准HP/RCU/sender新增正文和独立主体，见[前沿入口](../topics/frontier/README.md)。工具探测是本机能力记录，不能替代源码主体；规范仍分别固定N5050/N5054。
 
 核对日期：2026-09-08。课程代码默认以 C++23 为基线；讨论 C++26 时固定引用 N5050。N5050 是 C++26 最终草案及 DIS 的基础，后续 N5054 已进入 C++29。滚动工作草案方便定位，但不能把它后来增加的功能全部归为 C++26。[N5051 编辑报告](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2026/n5051.html)、[N5055 编辑报告](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2026/n5055.html)。
 
@@ -70,8 +70,8 @@ EBR、QSBR 与 RCU 的关联由专题分别说明。版本标签用于识别某�
 
 | 增量 | 规范状态 | 本课程实现与实验状态 |
 |---|---|---|
-| Thread attributes，P2019R9 | 已纳入 N5054 工作草案 | [F01](../exercises/F01_thread_attributes/README.md)新增名称/栈大小hint的正文、标准主体及专用probe。亲和/拓扑实验与教学模型不等于验证标准API；实际结果及审查见本轮报告。 |
-| Hazard Pointer Batches，P3428R4 | 已纳入 N5054 工作草案 | [F02](../exercises/F02_hazard_pointer_batches/README.md)新增批量make/clear、资源状态及独立probe/主体。教学HP协议、早期HP探测不替代batch接口；实际结果及审查见本轮报告。 |
+| Thread attributes，P2019R9 | 已纳入 N5054 工作草案 | [F01](../exercises/F01_thread_attributes/README.md)新增名称/栈大小hint的正文、标准主体及专用probe。亲和/拓扑实验与教学模型不等于验证标准API。 |
+| Hazard Pointer Batches，P3428R4 | 已纳入 N5054 工作草案 | [F02](../exercises/F02_hazard_pointer_batches/README.md)新增批量make/clear、资源状态及独立probe/主体。教学HP协议、早期HP探测不替代batch接口。 |
 
 2026-09-08只登记了索引；本轮新增材料后仍分别记录作者完成、独立审查和实际工具能力，不因登记或模型通过而标为原生PASS。[C01](../../C01_Build_Compile_Link/README.md)解释怎样区分特性宏、头文件、真实实例化、链接和运行证据。
 
@@ -95,4 +95,4 @@ EBR、QSBR 与 RCU 的关联由专题分别说明。版本标签用于识别某�
 
 本机结果不能外推为所有 MSVC、GCC 或 Clang 版本的状态。进一步核查使用 [Microsoft STL 符合性](https://learn.microsoft.com/en-us/cpp/overview/visual-cpp-language-conformance)、[libstdc++ 状态](https://gcc.gnu.org/onlinedocs/libstdc++/manual/status.html)、[libc++ C++26 状态](https://libcxx.llvm.org/Status/Cxx26.html)，并以实际实例化和链接复核。
 
-第三方精确提交与本地来源检查见[构建指南](../exercises/BUILD_GUIDE.md)；实际测试和未验证范围见[质量报告](quality-report.md)。
+第三方精确提交与本地来源检查见[构建指南](../exercises/BUILD_GUIDE.md)；实际测试和未验证范围由本机运行记录另行保存。

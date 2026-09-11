@@ -1,9 +1,0 @@
-﻿{
-    "name":  "00-tool-versions",
-    "command":  "\"call \"D:\\VisualStudio2026\\Installed\\Common7\\Tools\\VsDevCmd.bat\" -arch=x64 \u003enul \u0026\u0026 \"D:\\cmake\\install\\bin\\cmake.exe\" --version \u0026\u0026 \"D:\\Perl\\c\\bin\\ninja.exe\" --version \u0026\u0026 cl /Bv \u0026\u0026 \"D:\\VisualStudio2026\\Installed\\VC\\Tools\\Llvm\\x64\\bin\\clang++.exe\" --version\"",
-    "exit_code":  null,
-    "timed_out":  false,
-    "timeout_seconds":  120,
-    "stdout":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\00-tool-versions.stdout.txt",
-    "stderr":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\00-tool-versions.stderr.txt"
-}

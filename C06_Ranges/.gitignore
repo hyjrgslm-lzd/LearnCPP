@@ -1,5 +1,4 @@
-# Reviewer build trees can live beside raw evidence. Keep only reusable sources
-# and recorded evidence, not IDE projects or compiler tracking databases.
+# Generated builds and local execution outputs are not course sources.
 *.slnx
 *.vcxproj
 *.recipe

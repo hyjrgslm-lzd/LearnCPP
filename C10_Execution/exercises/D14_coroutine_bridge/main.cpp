@@ -1,107 +1,52 @@
-// ============================================================
-// Exercise D14: Coroutine bridge
-// ============================================================
-// Goal: Rewrite a sender graph as a coroutine, compare the two
-//       expression styles, and understand that coroutines are a
-//       surface-level convenience -- they do NOT replace the
-//       sender-receiver execution model.
-// ============================================================
-
+#include <c10/test.hpp>
+#include <solution.hpp>
 #include <stdexec/execution.hpp>
-#include <iostream>
-#include <string>
-#include <tuple>
-#include <optional>
+#include <exec/static_thread_pool.hpp>
 
-// Uncomment if your stdexec build ships exec/task.hpp:
-// #include <exec/task.hpp>
+#include <concepts>
+#include <string>
+#include <thread>
 
 namespace ex = stdexec;
 
-// ============================================================
-// Version 1: Sender graph
-// ============================================================
-// TODO [必做]: Pick a sender graph from a previous exercise
-//   (e.g. module B two-phase pipeline or module C1 unified result).
-//   Reproduce it here so it can serve as the control group.
-//
-// Example skeleton (replace with your chosen exercise):
-auto sender_graph_version() {
-    // TODO [必做]: build and return the sender graph
-    //   e.g. return ex::just(42)
-    //              | ex::then([](int x) { return x * 2; })
-    //              | ex::then([](int x) { return std::to_string(x); });
-    return ex::just(std::string{"<replace me>"}); // placeholder
-}
+namespace {
+struct probe_promise : ex::with_awaitable_senders<probe_promise> {
+  auto get_env() const noexcept { return ex::env<>{}; }
+};
+} // namespace
 
-// ============================================================
-// Version 2: Coroutine
-// ============================================================
-// TODO [必做]: Rewrite the same logic using co_await.
-//   Requires exec::task<T> from stdexec's exec/ headers.
-//
-// Example skeleton (uncomment and adapt once exec/task.hpp is available):
-//
-// exec::task<std::string> coroutine_version() {
-//     // Step 1 -- equivalent of just(42)
-//     int x = co_await ex::just(42);
-//
-//     // Step 2 -- equivalent of then(... * 2)
-//     int doubled = x * 2;
-//
-//     // Step 3 -- equivalent of then(to_string)
-//     co_return std::to_string(doubled);
-// }
-
-// ============================================================
-// main: run both versions, compare results
-// ============================================================
 int main() {
-    // --- Sender graph version ---
-    auto sndr_result = ex::sync_wait(sender_graph_version());
-    if (sndr_result) {
-        auto& [val] = *sndr_result;
-        std::cout << "[sender graph]   result = " << val << "\n";
-    }
+  return c10::test_main([] {
+    auto sender = ex::sync_wait(c10_d14::sender_graph(21));
+    auto sender_fresh = ex::sync_wait(c10_d14::sender_graph(5));
+    auto coroutine = ex::sync_wait(c10_d14::coroutine_task(21));
+    auto task_value = ex::sync_wait(c10_d14::stdexec_task());
+    auto sender_stopped = ex::sync_wait(c10_d14::sender_stopped_status());
+    auto coroutine_stopped = ex::sync_wait(c10_d14::coroutine_stopped_status());
 
-    // --- Coroutine version ---
-    // TODO [必做]: uncomment once coroutine_version() is implemented
-    // auto coro_result = ex::sync_wait(coroutine_version());
-    // if (coro_result) {
-    //     auto& [val] = *coro_result;
-    //     std::cout << "[coroutine]      result = " << val << "\n";
-    // }
+    exec::static_thread_pool pool{1};
+    auto scheduler = pool.get_scheduler();
+    auto caller = std::this_thread::get_id();
+    auto sender_thread = ex::sync_wait(c10_d14::sender_switch_thread(scheduler));
+    auto coroutine_thread = ex::sync_wait(c10_d14::coroutine_switch_thread(scheduler));
 
-    // --- Comparison ---
-    // TODO [必做]: verify both results are identical
-    // assert(std::get<0>(*sndr_result) == std::get<0>(*coro_result));
-
-    // ============================================================
-    // Comparison notes (fill in after completing both versions):
-    // ============================================================
-    //
-    // | Aspect                        | Sender graph          | Coroutine            |
-    // |-------------------------------|-----------------------|----------------------|
-    // | Sequential readability        |                       |                      |
-    // | Explicit scheduler boundaries |                       |                      |
-    // | Completion semantics visible  |                       |                      |
-    // | Parallel composition          |                       |                      |
-    // | Boilerplate                   |                       |                      |
-    //
-    // Key takeaway:
-    //   Coroutines improve local sequential readability but do NOT
-    //   eliminate scheduling, completion, or lifetime concerns.
-    //   They are an expression-layer bridge, not an execution-model
-    //   replacement.
-    //
-
-    // TODO [进阶]: Add a version that explicitly switches scheduler
-    //   inside the coroutine, showing that co_await does not
-    //   automatically decide which execution resource to use.
-
-    // TODO [进阶]: Convert the stopped path to an optional or
-    //   status object for easier consumption.
-
-    std::cout << "D14: coroutine bridge exercise -- implement the TODOs above.\n";
-    return 0;
+    c10::require(sender && std::get<0>(*sender) == "42", "sender graph transforms record");
+    c10::require(sender_fresh && std::get<0>(*sender_fresh) == "10",
+                 "sender graph consumes fresh input");
+    c10::require(coroutine && std::get<0>(*coroutine) == std::get<0>(*sender),
+                 "coroutine result matches sender graph");
+    c10::require(task_value && std::get<0>(*task_value) == 5, "stdexec task is consumed as sender");
+    c10::require(sender_stopped && std::get<0>(*sender_stopped) == "stopped",
+                 "sender graph maps stopped to explicit status");
+    c10::require(coroutine_stopped && std::get<0>(*coroutine_stopped) == "stopped",
+                 "coroutine maps stopped to explicit status");
+    c10::require(sender_thread && std::get<0>(*sender_thread) != caller,
+                 "sender graph switches to scheduler thread");
+    c10::require(coroutine_thread && std::get<0>(*coroutine_thread) != caller,
+                 "coroutine explicitly switches to scheduler thread");
+    c10::require(std::get<0>(*sender_thread) == std::get<0>(*coroutine_thread),
+                 "sender and coroutine observe the same scheduler execution source");
+    static_assert(
+        requires(probe_promise promise) { ex::as_awaitable(c10_d14::sender_graph(1), promise); });
+  });
 }

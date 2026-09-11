@@ -4,7 +4,7 @@
 
 ## 固定输入，分开四种结论
 
-规范基线与本机STL信息见[标准索引](../references/standards-and-implementations.md)和[头文件指纹](../references/validation/capabilities/local-msvc-stl-inputs-20260909.md)。本轮入口是MSVC 14.51.36231/STL202604；安装目录不等于某个GitHub提交，不把滚动main的行号当成本机证据。
+规范基线与实现支持边界见[标准索引](../references/standards-and-implementations.md)。本机安装目录不等于某个 GitHub 提交，不把滚动 main 的行号当成本机证据；做源码导读时应记录实际工具集版本、头文件路径和上游版本关系。
 
 读者记录四列：标准要求、本机实现选择、本次程序观察、仍未验证项。例如optional有/无值的语义来自标准；本机用哪个union和bool组合是实现选择；L03的析构计数是当前输入的观察；这些都不能证明另一STL对象的sizeof或ABI相同。
 
@@ -32,7 +32,7 @@
 
 再读`_Expected_binary_copy_assignable`与`_Expected_binary_move_assignable`：成功/错误两种负载的构造、赋值和nothrow条件共同决定操作是否存在。切换状态需要一个可以恢复或不会再失败的路径，否则不能承诺总有一个活跃备选。这个事实解释了“类型能声明”与“某个赋值表达式可用”为何不同。
 
-最后跟入`value()`和`operator*`：前者错误状态抛bad_expected_access，是定义好的checked observer；后者有has_value前提。沿monadic函数核对T/E的值类别和错误短路。L05程序及[引用T编译反例证据](../references/validation/reviews/states-independent-evidence/expected-ref-negative-build-r2.json)分别提供运行和诊断入口。
+最后跟入`value()`和`operator*`：前者错误状态抛bad_expected_access，是定义好的checked observer；后者有has_value前提。沿monadic函数核对T/E的值类别和错误短路。L05程序提供运行入口；引用T编译拒绝应以当前工具链的最小反例重新验证。
 
 ## function：擦除的不只是调用参数
 
@@ -40,7 +40,7 @@
 
 `functional:873`附近的`_Is_large`同时考虑实现对象大小、对齐以及移动是否不抛出。不能把lambda大小单独等同SBO判断，也不能把一次无分配观察推广为整个std::function接口保证。对照L11的heap-only操作表：教学版本显式保存clone/destroy/dispatch，标准库还需要处理更多签名、约束、异常与存储路径。
 
-然后用第12章的mutable捕获和const调用例，检查const包装器是否约束实际目标的调用资格；copyable/move_only/function_ref的签名规则必须分别核对。固定源码说明见[作者源码记录](../references/validation/author-c-functional-source-20260909.md)。
+然后用第12章的mutable捕获和const调用例，检查const包装器是否约束实际目标的调用资格；copyable/move_only/function_ref的签名规则必须分别核对。源码导读只记录稳定入口和阅读问题，不提交本机作者记录。
 
 ## 回到三个真实下游
 
@@ -59,4 +59,4 @@ C03只提供类型、状态、复制/借用、错误与接口的基础。协程�
 3. **让回调参数接受临时lambda。** 同步调用期间借用可成立，保存供返回后调用则可能悬垂。必须由接口明确同步性/存储行为，不能只看参数类型名字带function。
 4. **判断一次绿色测试证明什么。** Reference通过说明该实现通过所执行检查；good/bad控制证明checker能接受/拒绝所选代表；Student仍要运行自己的实现。能力宏和编译成功都不直接证明教学完成，未实现的前沿仍需明确未验证边界。
 
-若完成这些任务必须借未讲过的规则猜测，应回到对应主讲章节补齐，而不是把Reference或外链当作正文的替身。最终覆盖与非作者审查入口见[覆盖表](../references/coverage.md)和[质量报告](../references/quality-report.md)。
+若完成这些任务必须借未讲过的规则猜测，应回到对应主讲章节补齐，而不是把 Reference 或外链当作正文的替身。最终覆盖入口见[覆盖表](../references/coverage.md)。

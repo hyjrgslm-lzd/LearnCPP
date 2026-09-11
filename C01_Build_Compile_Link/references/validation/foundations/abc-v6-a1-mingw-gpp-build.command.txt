@@ -1,1 +1,0 @@
-"D:\Perl\c\bin\g++.exe" -std=c++23 -g -O0 "F:\CPPTrain\LearnCPP\Engineering_Study\exercises\A1_build_debug\debugger\gdb_lesson.cpp" -o "F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\abc-v6-a1-gdb.exe"

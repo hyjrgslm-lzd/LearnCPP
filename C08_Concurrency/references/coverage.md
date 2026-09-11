@@ -1,8 +1,8 @@
 # 知识覆盖、练习与迁移
 
-本表用于核对课程知识是否实际落到正文、程序及检查。每个练习链接进入其 Part、完整解析及复现命令；Reference 目标为该 ID 加 `_reference`。实际构建与独立审查状态统一见[质量报告](quality-report.md)，本表不把“存在文件”当作“已经验证”。
+本表用于核对课程知识是否实际落到正文、程序及检查。每个练习链接进入其 Part、完整解析及复现命令；Reference 目标为该 ID 加 `_reference`。本表不把“存在文件”当作“已经验证”。
 
-全局归属：本课主讲 C08，CPU 性能/SIMD/NUMA 作为 C13 的已有实验资产；通用编译、链接、ABI、CMake 和能力探测由 [C01](../../C01_Build_Compile_Link/README.md)主讲。C++29 线程属性与 HP batches 的规范状态见[版本索引](standards-and-implementations.md#c29-增量的独立状态)，新增材料和本轮复验见下表及[本轮质量报告](revision-quality-report-20260910.md)。以下原50题的观察/实现分类保持其原有含义。
+全局归属：本课主讲 C08，CPU 性能/SIMD/NUMA 作为 C13 的已有实验资产；通用编译、链接、ABI、CMake 和能力探测由 [C01](../../C01_Build_Compile_Link/README.md)主讲。C++29 线程属性与 HP batches 的规范状态见[版本索引](standards-and-implementations.md#c29-增量的独立状态)。以下原50题的观察/实现分类保持其原有含义。
 
 ## 本轮补充与反向检查
 
@@ -12,9 +12,9 @@
 | 创建具有属性的线程并正确取消收束 | 线程构造、对象借用、stop_token→[线程属性](../topics/frontier/01-thread-attributes.md) | [F01](../exercises/F01_thread_attributes/README.md)：标准主体与教学模型分别记录，不替代NUMA/亲和实测 |
 | 对多个保护资源进行批量管理 | 09内存模型、10发布/寿命、HP协议→[HP batches](../topics/frontier/02-hazard-pointer-batches.md) | [F02](../exercises/F02_hazard_pointer_batches/README.md)：资源状态/强保证与保护集成；不假定标准强制清场 |
 | 把教学/第三方回收与执行机制映射到标准 | HP/RCU专题、M2桥接→[原生设施](../topics/frontier/03-native-facilities.md) | [F03](../exercises/F03_native_facilities/README.md)：标准主体与最小能力门独立；完整sender设计归C10 |
-| 判断已有队列演进是否得到测量支持 | 01-03队列、12测量→[新增定位记录](../topics/performance/c08-revision-queue-evidence.md) | 真实计数、正确性、历史/本轮快照、正式样本分开；通用CPU性能主讲归C13 |
+| 判断已有队列演进是否得到测量支持 | 01-03队列、12测量→[队列验证与基准](../topics/queues/08-validation-and-benchmark.md) | 真实计数、正确性、历史快照、正式样本分开；通用CPU性能主讲归C13 |
 
-下游C09/C10分别负责协程帧与sender完成契约；本课提供同步、发布、停止请求及资源收束前提，不能把某个stop token或教学回收域的规则直接移植到其他运行时。新增材料是否已审查通过以本轮报告为准，表中登记不构成通过声明。
+下游C09/C10分别负责协程帧与sender完成契约；本课提供同步、发布、停止请求及资源收束前提，不能把某个stop token或教学回收域的规则直接移植到其他运行时。表中登记不构成通过声明。
 
 ## 1. 逐练习覆盖
 
@@ -87,15 +87,15 @@
 
 ### 按核心问题追到契约、代码和证据
 
-下列路线补足表格中的先修与契约入口。正文是推导和答案，练习 README 逐 Part 定位 Reference；各专题验证记录是作者证据，独立批准及最终集成结果以[质量报告](quality-report.md)为准，不能将二者混为一谈。
+下列路线补足表格中的先修与契约入口。正文是推导和答案，练习 README 逐 Part 定位 Reference；本机验证记录可用于复查，但不替代课程正文和源码本身。
 
 - **如何把结果交给另一个执行者，同时保持对象存活？** 先完成 00 的对象、捕获和参数打包，再读 02 的有效/就绪/消费状态；03 对照直接调用、thread、async 和 packaged_task。D1–D3 将值、错误、共享状态和任务排空分开检查，P1/P2 提供最小前置实验。深度：自行扩展观察基线，完整参考实现及协议解析。
-- **怎样等待、取消并可靠关闭一组工作？** 先修 03–05 的线程拥有者、锁与等待谓词，再沿 [有界线程池](../topics/synchronization/01-bounded-thread-pool.md)追踪接受、拒绝、排空和 join 契约。C2、A2/C3、H1/H2、Capstone1 的独立学生路径与 Reference 分别验证；[同步记录](../topics/synchronization/VALIDATION.md)说明受控顺序、故障边界和运行结果。深度：实现与协议试验，不声称通用结构化并发框架。
+- **怎样等待、取消并可靠关闭一组工作？** 先修 03–05 的线程拥有者、锁与等待谓词，再沿 [有界线程池](../topics/synchronization/01-bounded-thread-pool.md)追踪接受、拒绝、排空和 join 契约。C2、A2/C3、H1/H2、Capstone1 的独立学生路径与 Reference 分别验证；受控顺序、故障边界和运行结果留在本机验证记录。深度：实现与协议试验，不声称通用结构化并发框架。
 - **一次原子访问何时能发布其他数据？** 先修 04 的复合不变量和 08 的合法操作，再沿 [同步边](../topics/atomics/04-happens-before.md)、[fence](../topics/atomics/06-fences.md)、[重复发布](../topics/atomics/07-publication-and-lifetime.md)比较单次发布、确认复用和快照所有权。E/F/H3/I1 的 Reference 与 atomic_protocol_test 对应合法结果及受控反例；规范和机器观察分别记录。深度：完整语义推导与最小协议实验。
-- **何时可以称入队或出队已经发生？** 先修 05 的锁内检查修改、09 的同步边和 10 的生命期，再从 [mutex 基线](../topics/queues/01-mutex-baseline.md)进入各线程拓扑分支；[MPMC](../topics/queues/05-vyukov-mpmc.md)与 [Michael–Scott](../topics/queues/06-michael-scott.md)分别声明暂时失败、容量、顺序和完整操作进展。G/Q/Capstone2、历史测试及 queue_bench 复用实现；[队列记录](../topics/queues/VALIDATION.md)区分旧样本与修复版本。SPMC 通过多消费者配置检查，不冒充专用最优实现。深度：可运行教学结构、回收和有限历史验证。
+- **何时可以称入队或出队已经发生？** 先修 05 的锁内检查修改、09 的同步边和 10 的生命期，再从 [mutex 基线](../topics/queues/01-mutex-baseline.md)进入各线程拓扑分支；[MPMC](../topics/queues/05-vyukov-mpmc.md)与 [Michael–Scott](../topics/queues/06-michael-scott.md)分别声明暂时失败、容量、顺序和完整操作进展。G/Q/Capstone2、历史测试及 queue_bench 复用实现；旧样本与修复版本必须在本机记录中分开。SPMC 通过多消费者配置检查，不冒充专用最优实现。深度：可运行教学结构、回收和有限历史验证。
 - **对象被摘除后，什么时候才能真正释放？** 先修 00 的借用和 09 的同步关系，从 [生命周期基线](../topics/reclamation/01-lifetime-and-ownership.md)区分引用计数、标签和保护，再分别进入 HP、EBR、QSBR、RCU 的应用义务。I2/I3/R1/R2 与 reclamation_test 验证保护、退休、长读者、线程退出及删除器完成；[回收记录](../topics/reclamation/06-validation.md)保存启动/异常展开等检查。深度：最小可证明教学协议，不宣称标准实现兼容或完整操作无锁。
 - **数据布局和执行策略的收益来自哪里？** 先修 12 的公平比较，再从 [缓存布局](../topics/performance/01-cache-layout.md)、[策略合同](../topics/performance/02-execution-policies.md)走到 [归约扫描](../topics/performance/03-reduce-scan.md)和 [计算项目](../topics/performance/04-parallel-compute.md)。J1/J2、L1–L3、Capstone3、numeric_test 及 layout_bench 共同检查；不同规模和轻重负载用于识别启动成本与可分摊工作，不以固定加速比验收。深度：真实计算内核、独立数值检查和实验解释。
-- **向量化怎样保持访问合法与数值可接受？** 先修 13–14 的布局、依赖和结合顺序，再从 [标量与布局](../topics/simd/01-scalar-and-layout.md)进入显式后端、掩码、尾部和 [精度](../topics/simd/03-reductions-and-precision.md)。K1–K3、numeric_test、simd_bench 复用内核；[性能记录](../topics/performance/VALIDATION.md)分开保存严格、有限输入、实际 ISA 和缺能力路径。深度：标量、SSE2、固定 xsimd 实测；原生标准路径以真实探测为边界。
+- **向量化怎样保持访问合法与数值可接受？** 先修 13–14 的布局、依赖和结合顺序，再从 [标量与布局](../topics/simd/01-scalar-and-layout.md)进入显式后端、掩码、尾部和 [精度](../topics/simd/03-reductions-and-precision.md)。K1–K3、numeric_test、simd_bench 复用内核；严格、有限输入、实际 ISA 和缺能力路径必须分开记录。深度：标量、SSE2、固定 xsimd 实测；原生标准路径以真实探测为边界。
 - **任务和页面是否真的位于预期位置？** 先修 06 的收束和 12–13 的测量，再从 [拓扑](../topics/numa/01-topology.md)、[亲和](../topics/numa/02-affinity.md)、[放置](../topics/numa/03-placement.md)进入分片；[静态/动态调度](../topics/scheduling/01-static-dynamic.md)、窃取和任务组合是相关但不同的分支。J3/N1 验证实际 CPU/页，M1/M2 检查调度和完成通道；[调度记录](../topics/scheduling/verification.md)明确单节点、平台及依赖限制。深度：教学实现与探测，未运行的远端条件不写成通过。
 
 ## 3. 原有内容怎样迁移
@@ -108,11 +108,11 @@
 - 原 K/L/M 分别进入 SIMD、并行算法与调度任务组合，项目3保留矩阵乘、归约和排序的实际对照。
 - 原18扩展为诊断与源码路线。旧讲义文件保留迁移链接，避免旧链接突然失效。
 
-删除的是重复任务清单、重复复盘和没有依据的固定性能保证；已有核心知识及其改进路线均有明确去向。专题可以有不同阅读优先级，但选定内容的正文、代码、答案和独立审查都属于交付范围。
+删除的是重复任务清单、重复复盘和没有依据的固定性能保证；已有核心知识及其改进路线均有明确去向。专题可以有不同阅读优先级，但选定内容的正文、代码和答案都属于课程范围。
 
 ### 原源码路线与新增生产实现导读
 
-下面均为固定版本的源码导读深度，不表示本仓库重新实现或实测了这些生产库。每篇给出真实符号路径、所有权或状态变化、成功/失败出口、与教学协议的差异及阅读任务答案；版本与一手链接在正文中，独立审查状态仍由质量报告统一维护。
+下面均为固定版本的源码导读深度，不表示本仓库重新实现或实测了这些生产库。每篇给出真实符号路径、所有权或状态变化、成功/失败出口、与教学协议的差异及阅读任务答案；版本与一手链接在正文中。
 
 | 来源与问题 | 先修和契约重点 | 实际去向与迁移理由 |
 |---|---|---|

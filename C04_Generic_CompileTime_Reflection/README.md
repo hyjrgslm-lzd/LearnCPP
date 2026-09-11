@@ -1,8 +1,8 @@
 # C04：泛型、编译期编程与反射
 
-2026-09-10 修订增量已完成，现有25章/21单元。当前结果见[增量质量报告](references/revision-quality-report-20260910.md)与[交付清单](references/revision-delivery-manifest.md)；前次18章/14单元的验证保留为历史基线。
+本课现有25章/21单元，覆盖泛型基础、编译期算法、手写元数据、前沿反射探针和Mp11/Hana对照。
 
-本课把“能写一个模板”推进到“能解释查找、推导、约束、实例化和常量求值发生在哪一步，并据此设计可诊断的泛型接口”。正文负责推导，练习用真实类型、调用和编译器输出验证理解。现包含25章与21个练习/实验单元；[质量报告](references/quality-report.md)区分各批验证、独立审查和前沿未测范围。
+本课把“能写一个模板”推进到“能解释查找、推导、约束、实例化和常量求值发生在哪一步，并据此设计可诊断的泛型接口”。正文负责推导，练习用真实类型、调用和编译器输出验证理解。
 
 入口需要[C01](../C01_Build_Compile_Link/README.md)基本构建能力和[C02](../C02_Objects_Lifetime_Ownership/README.md)对象、引用与生命周期基础；错误通道在综合项目前补读[C03](../C03_Type_Modeling_Interface_Design/README.md)。没有学过Ranges、sender或协程也可以开始；它们是本课机制的下游应用。
 
@@ -42,13 +42,13 @@
 | 23 | [Boost.Mp11与元map](chapters/23-mp11.md) |
 | 24 | [Boost.Hana异构计算对照](chapters/24-hana.md) |
 
-## 构建与证据
+## 构建与复现
 
 使用[构建指南](references/BUILD_GUIDE.md)。实现型Student有意未完成；正常核心验证运行Reference、观察程序和有效的检查器正反控制，不把运行Reference当成学生已完成。
 
 新增实现题为[A01](exercises/A01_compiletime_values/README.md)、[A02](exercises/A02_field_projection/README.md)、[A03](exercises/A03_explicit_object/README.md)、[A04](exercises/A04_type_pipelines/README.md)、[A05](exercises/A05_expression_templates/README.md)与[U01 Mp11](exercises/U01_mp11/README.md)；[U02 Hana](exercises/U02_hana/README.md)是观察/迁移题。第三方库使用固定版本和显式准备的`meta-libs`预设；默认核心保持离线。
 
-[逐文件交付清单](references/revision-delivery-manifest.md)记录源码、文档与证据指纹；[规范与实现索引](references/standards-and-implementations.md)分别记录语言规范和实际能力。本机验证是Windows可用路径；反射等前沿的源码存在或探测SKIP不代表其运行通过。
+[规范与实现索引](references/standards-and-implementations.md)分别记录语言规范和实际能力。本机可按构建指南重新运行Windows路径；反射等前沿的源码存在或探测SKIP不代表其运行通过。
 
 ## 主讲与桥接
 

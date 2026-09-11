@@ -23,8 +23,8 @@ Student 运行通过同目录 `run_test.py` 的 `supervise()` 执行。superviso
 python3 C07_OS_Memory_System_IO/exercises/tools/verify_students.py \
   --build C07_OS_Memory_System_IO/exercises/build/linux-student \
   --config Debug \
-  --trace C07_OS_Memory_System_IO/references/validation/linux-student-include-trace.json \
-  --output C07_OS_Memory_System_IO/references/validation/linux-student-verification.json
+  --trace C07_OS_Memory_System_IO/exercises/build/validation/linux-student-include-trace.json \
+  --output C07_OS_Memory_System_IO/exercises/build/validation/linux-student-verification.json
 ```
 
 ## audit_delivery.py
@@ -37,7 +37,7 @@ python3 C07_OS_Memory_System_IO/exercises/tools/verify_students.py \
 python3 C07_OS_Memory_System_IO/exercises/tools/audit_delivery.py \
   --course C07_OS_Memory_System_IO \
   --ctest-records C07_OS_Memory_System_IO/exercises/build/linux-debug/records/Debug \
-  --output C07_OS_Memory_System_IO/references/validation/delivery-audit.json
+  --output C07_OS_Memory_System_IO/exercises/build/validation/delivery-audit.json
 ```
 
 三个脚本都支持 `--self-check`，用于无测试框架的本地 smoke check。

@@ -1,55 +1,40 @@
+#include <c10/test.hpp>
+#include <solution.hpp>
 #include <stdexec/execution.hpp>
-#include <iostream>
 #include <string>
-
+#include <tuple>
+#include <type_traits>
 namespace ex = stdexec;
-
-// ============ Custom query tag ============
-struct get_trace_id_t {
-    // TODO [必做]: implement as a CPO using tag_invoke
-    // When called on an environment, returns a std::string trace_id
-    template <typename Env>
-    auto operator()(const Env& env) const {
-        // TODO [必做]: dispatch through tag_invoke
-    }
+struct absent_query {
+  template <class E> auto operator()(const E &e) const -> decltype(e.query(*this));
 };
-inline constexpr get_trace_id_t get_trace_id{};
-
-// ============ Custom environment ============
-struct trace_env {
-    std::string trace_id;
-    // TODO [必做]: friend tag_invoke(get_trace_id_t, const trace_env&) -> std::string
-};
-
-// ============ override_env combinator ============
-template <typename Base, typename Override>
-struct override_env {
-    Base base_;
-    Override override_;
-
-    // TODO [必做]: For each query, check Override first, then fallback to Base
-    // Hint: use if constexpr + requires to check if Override responds to a query
-};
-
-// TODO [必做]: Factory function
-template <typename Base, typename Override>
-auto make_override_env(Base base, Override override_part) {
-    return override_env<Base, Override>{std::move(base), std::move(override_part)};
-}
-
-// ============ Adaptor receiver that overrides get_scheduler ============
-// TODO [进阶]: write a receiver wrapper that uses override_env in get_env()
-
+template <class E>
+concept has_absent_query = requires(const E &e) { absent_query{}(e); };
 int main() {
-    trace_env env{"trace-abc-123"};
-
-    // TODO [必做]: query the custom trace_id from env
-    std::cout << "Trace ID: " << get_trace_id(env) << "\n";
-
-    // TODO [必做]: create an override_env that overrides trace_id
-    // auto combined = make_override_env(original_env, trace_env{"new-trace-456"});
-    // Verify: get_trace_id(combined) returns "new-trace-456"
-    // Verify: other queries fall through to original_env
-
-    return 0;
+  return c10::test_main([] {
+    ex::run_loop loop;
+    for (int quota : {0, 1, 7, 31}) {
+      auto base = ex::env{ex::prop{ex::get_scheduler, loop.get_scheduler()},
+                          ex::prop{c10_h2::get_quota, quota}, c10_h2::trace_env{"parent"}};
+      auto text = std::string("request-") + std::to_string(quota);
+      auto child = c10_h2::make_override_env(base, c10_h2::trace_env{text});
+      c10::require(c10_h2::get_trace_id(child) == text, "override takes priority over parent");
+      c10::require(c10_h2::get_trace_id(base) == "parent", "parent remains unchanged");
+      c10::require(c10_h2::get_quota(child) == quota, "unrelated custom query falls back");
+      c10::require(ex::get_scheduler(child) == loop.get_scheduler(),
+                   "real scheduler query falls back");
+      static_assert(!has_absent_query<decltype(child)>);
+      static_assert(noexcept(c10_h2::get_trace_id(child)));
+      static_assert(std::is_same_v<decltype(c10_h2::get_trace_id(child)), const std::string &>);
+      auto nested = c10_h2::make_override_env(child, ex::prop{c10_h2::get_quota, quota + 2});
+      auto graph = ex::write_env(
+          ex::when_all(ex::read_env(c10_h2::get_trace_id) |
+                           ex::then([](const std::string &v) { return std::string(v); }),
+                       ex::read_env(c10_h2::get_quota)),
+          nested);
+      auto result = ex::sync_wait(std::move(graph));
+      c10::require(result && std::get<0>(*result) == text && std::get<1>(*result) == quota + 2,
+                   "sender reads composed receiver environment");
+    }
+  });
 }

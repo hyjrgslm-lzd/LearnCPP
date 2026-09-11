@@ -1,6 +1,0 @@
-{
-  "command": "rg sensitive terms over storage 11-15 scope",
-  "exit": 1,
-  "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1b\\sensitive-scan.stdout.txt",
-  "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1b\\sensitive-scan.stderr.txt"
-}

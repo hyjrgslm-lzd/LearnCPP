@@ -1,7 +1,0 @@
-===== F-3: HALO 触发与失败诊断 =====
-
-consumer_A (HALO 可触发)     每次约 78.5 ns
-consumer_B (HALO 被阻断)     每次约 86.4 ns
-ratio B/A                    1.10x
-
-[sink] 495000495

@@ -2,7 +2,7 @@
 
 本练习验证 object、符号和静态归档成员按需抽取。
 
-学生只修改 `src/student/archive_value.cpp`。GCC/ELF 的 `nm`/`ar` 路径保留在代码和正文中，本轮 Windows 验收不把它写成已运行。
+学生只修改 `src/student/archive_value.cpp`。GCC/ELF 的 `nm`/`ar` 路径保留在代码和正文中；未在当前机器运行的平台路径不能写成已运行。
 
 ## Part 1：静态库正常消费者
 

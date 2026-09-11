@@ -1,10 +1,6 @@
 # B01 compile cost：编译成本观察
 
-默认构建只运行有限正确性观察，不跑正式 benchmark。正式测量使用课程根目录下的 driver：
-
-```powershell
-python C04_Generic_CompileTime_Reflection/references/benchmarks/cost_driver.py --output-root C04_Generic_CompileTime_Reflection/references/benchmarks/results
-```
+默认构建只运行有限正确性观察，不跑正式 benchmark。正式测量应在未跟踪目录中保存脚本输出、样本和环境说明；课程仓库只保留方法和结论边界。
 
 本题有两组同契约对照。
 
@@ -14,20 +10,8 @@ python C04_Generic_CompileTime_Reflection/references/benchmarks/cost_driver.py -
 
 正式计时口径：一次预热、五次独立进程样本，固定随机种子安排版本顺序。trace 插桩与正式计时分开运行。
 
-本机正式结果见 `../../references/benchmarks/results/latest-summary.md`，原始目录为 `../../references/benchmarks/results/compile-cost-run-20260910-004959/`。本机 `time.monotonic()` 分辨率为 0.015625s；表格保留 4 位小数用于复算，不表示能从 1ms 差异推断收益。该结果显示：32 项和 128 项类型查询本次未分辨出稳定收益，不能证明性能相等；256 项折叠版本中位数低于递归版本。多 TU 显式实例化减少调用方 `.obj` `.text`，但最终 `.exe` `.text` 不变，本轮编译时间中位数更慢；它由 4/5 个短编译进程耗时相加，解释更要谨慎。
+解释结果时必须记录时钟分辨率，并把 trace、对象节、符号和计时样本分开看。不能从1ms级差异推出收益，也不能把多个短编译进程的耗时相加后直接归因到某个模板技巧。
 
 扩展组比较手写递归 type map 查找与 Boost.Mp11 `mp_map_find`。规模为 32、128、256 个键；查询最后一项和缺失项；manual/Mp11 共 12 组。manual 与 Mp11 源文件使用同一个 `source_map`、同一个 `entry_value` 输出适配、同一 Boost.Mp11 头依赖、同一 include path、同一编译选项，只隔离查找机制。依赖必须由 `../build/_deps/mp11-boost-1.91.0/.learncpp-dependency.cmake` 指向 Boost.Mp11 commit `b94b089d4ec83cd397f20958f34edf25bc3e06f4`，Git HEAD 必须相同且工作树必须干净，否则 driver 失败。
 
-扩展组有限正确性观察：
-
-```powershell
-python C04_Generic_CompileTime_Reflection/references/benchmarks/cost_driver.py --output-root C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/cost-meta-map-checks --meta-map --check-only
-```
-
-扩展组正式成本实验必须等独占测量窗口：
-
-```powershell
-python C04_Generic_CompileTime_Reflection/references/benchmarks/cost_driver.py --output-root C04_Generic_CompileTime_Reflection/references/benchmarks/results --meta-map
-```
-
-`--meta-map` 输出目录名为 `meta-map-run-<timestamp>`，不会覆盖旧 `latest-summary.md`。正式结果使用 `time.perf_counter()` 包装现有有界 runner；计时包含 Python runner、进程创建、clang-cl 编译和等待返回，源码/产物哈希在计时外记录。
+扩展组正式成本实验必须等独占测量窗口。计时应使用单调高分辨率时钟包装有界runner；计时包含脚本、进程创建、编译和等待返回，源码/产物哈希在计时外记录。

@@ -60,7 +60,7 @@ Reference 先对容量 8 的 mutex 基线与预分配环运行相同的填满、
 
 这里的“通过”表示这些输入与实际交错符合检查。临界区保护范围才是任意合法交错的主要论证。批量和非批量的性能命令见[基准篇](08-validation-and-benchmark.md)：先比 `mutex` 与 `ring` 的单元素共同契约，再比较 `ring` 与 `batch` 的调用粒度；不得将不同 batch 的结果描述成同一接口下无条件的速度提升。
 
-修订诊断入口 [`queue_diagnostics.cpp`](../../exercises/benchmarks/queue_diagnostics.cpp) 把 `ring` 的单元素调用和 `batch8` 的前缀批量调用分开统计。r2 自检中 `ring` 完成 10003 项时进入 mutex 24403 次，`batch8` 进入 3785 次；这个计数来自 `mutex_ring` 内部加锁后的位置，支持“批量减少临界区进入机会”。它仍不测锁等待时间。正式耗时按[修订证据口径](../performance/c08-revision-queue-evidence.md)等待独占测量窗口后采样。
+修订诊断入口 [`queue_diagnostics.cpp`](../../exercises/benchmarks/queue_diagnostics.cpp) 把 `ring` 的单元素调用和 `batch8` 的前缀批量调用分开统计。这个计数来自 `mutex_ring` 内部加锁后的位置，支持“批量减少临界区进入机会”。它仍不测锁等待时间。正式耗时按[队列验证与基准](08-validation-and-benchmark.md)的方法等待独占测量窗口后采样。
 
 ## 自测与答案
 

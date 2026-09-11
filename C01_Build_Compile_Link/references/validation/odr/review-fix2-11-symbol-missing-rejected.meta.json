@@ -1,7 +1,0 @@
-{
-  "exit_code": 8,
-  "timed_out": false,
-  "expected_failure": true,
-  "stdout": "Engineering_Study\\references\\validation\\odr\\review-fix2-11-symbol-missing-rejected.stdout.txt",
-  "stderr": "Engineering_Study\\references\\validation\\odr\\review-fix2-11-symbol-missing-rejected.stderr.txt"
-}

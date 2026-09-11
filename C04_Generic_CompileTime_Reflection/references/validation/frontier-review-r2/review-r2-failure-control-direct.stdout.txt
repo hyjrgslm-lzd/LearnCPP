@@ -1,2 +1,0 @@
-probe=declared_failure_control header=na macro=1 body=1
-FAIL declared capability control reached the subject body

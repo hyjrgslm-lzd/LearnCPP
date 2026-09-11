@@ -1,1 +1,0 @@
-F3_reference OK: both-zero relaxed=0, RA=0, SC=0, SC-fence=0; three fence bridges

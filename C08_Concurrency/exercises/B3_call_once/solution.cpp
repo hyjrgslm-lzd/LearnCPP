@@ -77,7 +77,7 @@ int main() {
     std::cout << "B3 OK: once-only success, publication, local static\n";
     std::cout << "SKIP: verified Clang 18 + libstdc++ 13 + TSan does not reliably verify C++ exception paths; "
                  "call_once exception retry is covered by non-TSan runs, while success publication and local static ran here; see "
-                 "references/validation/c08-revision/tsan-diagnosis/diagnosis-20260910.md\n";
+                 "C08_Concurrency/exercises/BUILD_GUIDE.md\n";
     return 77;
 #else
     exception_retry_publication();

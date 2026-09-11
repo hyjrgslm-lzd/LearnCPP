@@ -1,6 +1,6 @@
 # C07 知识覆盖与下游反查
 
-每行同时追踪主讲、可执行入口和下游问题。构建/导航检查不证明教学深度；实际矩阵、独立审查、标准行为差异及版本对应由质量报告链接到具体证据，不能因文件出现就判为通过。
+每行同时追踪主讲、可执行入口和下游问题。构建/导航检查不证明教学深度；实际矩阵、标准行为差异及版本对应由本机验证记录另行保存，不能因文件出现就判为通过。
 
 | 知识与核心问题 | 主讲与解析 | 代码/实验 | 下游反查 |
 |---|---|---|---|
@@ -22,4 +22,4 @@
 | 动态装载、符号、C ABI、模块卸载 | [动态装载](../chapters/15-dynamic-loading.md) | [L09](../exercises/L09_dynamic_loading/README.md) | C01 链接/ABI 回访，C18 插件/FFI 后续 |
 | 综合契约与可归因成本 | [P1](../chapters/16-file-pipeline.md)、[源码](../chapters/17-source-reading.md)、[测量](../chapters/18-measurement.md) | [P1](../exercises/P1_file_pipeline/README.md)、[B01](../exercises/B01_costs/README.md) | C13 性能归因、C12 持久性边界；不跨平台排名 |
 
-完成状态与原始记录统一见[质量报告](quality-report.md)。规范与实际接口来源见[标准和实现索引](standards-and-implementations.md)；逐 Part 的学生编辑位置、Reference、good/bad 和解析在对应题目，不在本表复制另一份状态。
+规范与实际接口来源见[标准和实现索引](standards-and-implementations.md)；逐 Part 的学生编辑位置、Reference、good/bad 和解析在对应题目，不在本表复制另一份状态或本机运行记录。

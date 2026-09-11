@@ -1,2 +1,0 @@
-SKIP: verified Clang 18 + libstdc++ 13 + TSan does not support std::atomic_thread_fence as a publication edge; store-buffering ran here and fence_publication is covered by non-TSan runs; see references/validation/c08-revision/tsan-diagnosis/diagnosis-20260910.md
-F3_reference OK: both-zero relaxed=1, RA=0, SC=0, SC-fence=0; fence publication skipped under this TSan build

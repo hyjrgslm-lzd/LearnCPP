@@ -1,6 +1,6 @@
 # C04 知识覆盖与下游反向检查
 
-本表按全局计划4.2组织，不以文件数证明教学完成。状态以[质量报告](quality-report.md)和非作者记录为准；当前修订中的正文不能沿用旧版本批准。课程正文、练习入口和源码指纹共同定位证据。
+本表按全局计划4.2组织，不以文件数证明教学完成。课程正文、练习入口和源码阅读点共同定位知识，不用本机运行记录代替教学覆盖。
 
 | 核心知识与问题 | 主讲与代码入口 | 下游承接 |
 |---|---|---|
@@ -20,7 +20,7 @@
 | splicing、展开、define_static_*、define_aggregate、代码生成与存储 | [14](../chapters/14-splicing-generation.md)、[F01](../exercises/F01_frontier/README.md) | 生成字段辅助逻辑；C18语言工具衔接 |
 | annotations、attributes区别、C26 pack indexing/fold/constexpr及placement new、C29模板名索引/条件noexcept复合要求、consteval-only DR、P3385提案 | [15](../chapters/15-annotations-frontier.md)、[F01](../exercises/F01_frontier/README.md)、[规范索引](standards-and-implementations.md) | 字段命名/显示策略、C15 UHT区别 |
 | 成员指针、字段引用、格式化、拥有型字段列表、输入拒绝/错误通道、反射同域对照 | [16](../chapters/16-static-record.md)、[P1](../exercises/P1_static_record/README.md) | C03错误接口、C05/C12 schema边界 |
-| 固定STL invoke/ranges源码入口与退出、下游代表任务遮答案回访 | [17](../chapters/17-source-and-bridges.md)、[源码输入指纹](validation/source-inputs.json) | C06、C09、C10、C14、C15 |
+| 固定STL invoke/ranges源码入口与退出、下游代表任务遮答案回访 | [17](../chapters/17-source-and-bridges.md) | C06、C09、C10、C14、C15 |
 | 值级编译期算法、静态表生成、排序/去重/二分查找、普通consteval参数与NTTP边界、暂存容器不逃逸 | [18](../chapters/18-compiletime-values.md)、[A01](../exercises/A01_compiletime_values/README.md) | C05格式/配置小表、C12 schema查找、C13编译成本观察 |
 | 字段选择DSL、结构化字符串NTTP、字段名解析、投影顺序、唯一字段、cvref保持、lvalue-only投影 | [19](../chapters/19-field-projection-dsl.md)、[A02](../exercises/A02_field_projection/README.md) | P1手工metadata、C05展示字段、U01/U02元map案例 |
 | 显式对象参数、`std::forward_like`语义、四类cvref、move-only限制、递归lambda和借用生命周期 | [20](../chapters/20-explicit-object-forwarding.md)、[A03](../exercises/A03_explicit_object/README.md) | C06 CPO cvref/noexcept、C10 sender适配器、表达式模板节点转发 |
@@ -35,9 +35,9 @@
 
 C++26/C++29各项保留实际语法源码和实验说明；本机不支持时分别列未测/能力SKIP，不能把它们计为运行通过。C++23手工metadata的完整性是注册前提，独立遗漏观察专门说明该边界。
 
-## 审查闭环
+## 自查闭环
 
-复杂样章初审发现“合法ADL fallback正例缺失”和“前置反例未实测”，经r2修复与[独立复验](reviews/sample-review-r2.md)关闭。其余批次的静态发现、作者修复、实际构建及非作者复验逐项保留在reviews和validation；最终报告才汇总当前版本状态，不将静态检查、作者完成和最终批准混成一个PASS。
+复杂样章、前沿探针和成本实验都要同时检查正文解释、可运行正例、真实反例和能力边界。静态检查、作者完成和最终批准不能混成一个PASS；需要复验时按构建指南重新运行当前源码。
 
 ## 2026-09-10 增量反向映射
 

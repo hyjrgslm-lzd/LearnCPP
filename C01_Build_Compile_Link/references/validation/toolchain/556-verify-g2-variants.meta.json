@@ -1,6 +1,0 @@
-{
-  "command": "cmd.exe /d /c Engineering_Study\\references\\validation\\toolchain\\556-verify-g2-variants.command.cmd > Engineering_Study\\references\\validation\\toolchain\\556-verify-g2-variants.stdout.txt 2> Engineering_Study\\references\\validation\\toolchain\\556-verify-g2-variants.stderr.txt",
-  "exit_code": 0,
-  "execution_surface": "require_escalated normal local process",
-  "claims": ["baseline, PCH and LTO variants independently compile the same five source files", "PCH variant emits /Yc and /Yu compile commands for the actual heavy header users", "LTO variant compiles all five source files with /GL and links with /LTCG", "CTest runs and passes all three variants"]
-}

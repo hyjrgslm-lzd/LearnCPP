@@ -88,4 +88,4 @@ Clang ASan/libFuzzer 程序在 Windows 需要匹配的运行库 DLL。只把匹�
 
 [J1](J1_package/README.md)只在工作区内安装到专用 prefix_A，然后复制到 prefix_B。consumer 从新 prefix 的 package config 和导出目标获取使用要求，不应引用原源码目录、原 build 或机器上偶然存在的同名包。动态库运行还要核对实际加载位置；能找到导入库不意味着能找到 DLL。
 
-Windows 核心及可用专项实际运行。ELF/GCC/Linux 的代码条件分支和命令保留，但未跑不写成通过；标准语义、工具细节和本机观察分别说明。最终验证范围、环境限制和非作者批准以[质量报告](../references/quality-report.md)为准。
+Windows 核心及可用专项可按本指南运行。ELF/GCC/Linux 的代码条件分支和命令保留，但未跑不写成通过；标准语义、工具细节和本机观察分别说明。提交范围只包含课程源码、练习和稳定文档，不包含本机验证日志或测量结果。

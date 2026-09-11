@@ -67,4 +67,4 @@ CAPSTONE1是完整日志管道，CAPSTONE3是实现级源码阅读，CAPSTONE4�
 
 默认C++26是构建选择，不表示全部库功能已实现。`split`的历史设计差异按DR和实际实现解释；view可拥有元素，不能背成全部copy/move/destroy严格O(1)；borrowed不延长owner存活。细节见[标准索引](../references/standards.md)。
 
-每题正文与README提供解析；[覆盖表](../references/coverage.md)将下游任务反向连回知识。性能结论只来自[正式实验记录](../references/benchmarks/README.md)，教学与技术完成状态看[质量报告](../references/quality-report.md)。
+每题正文与README提供解析；[覆盖表](../references/coverage.md)将下游任务反向连回知识。性能结论只来自可复现的[B01题面](B01_cost/README.md)方法，不能用临时运行日志替代。

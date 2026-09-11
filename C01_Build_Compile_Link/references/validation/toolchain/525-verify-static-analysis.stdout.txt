@@ -1,3 +1,0 @@
-=== clang static analyzer: reference parser ===
-=== clang static analyzer: nullable observation sample ===
-=== done ===

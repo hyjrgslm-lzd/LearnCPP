@@ -1,2 +1,0 @@
-F:\CPPTrain\LearnCPP\Coroutine_Study\exercises\build\full-windows\Capstone4_rpc_framework\Release\Capstone4_rpc_framework.exe 
-timeout_seconds=60

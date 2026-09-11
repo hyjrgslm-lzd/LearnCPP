@@ -21,7 +21,7 @@ ctest --test-dir C01_Build_Compile_Link/exercises/build/learner-g1 -L student --
 
 ## Part 2：静态分析与 ASan 分别证明什么
 
-阅读`static_analysis/`和`unsafe/`，先预测告警或错误类别，再对照[当前工具证据](../../references/validation/toolchain/summary.md)。静态分析不运行程序；安全parser无告警和故意空指针样例产生`core.NullDereference`是两种证据。退出码0本身不能证明目标诊断命中。
+阅读`static_analysis/`和`unsafe/`，先预测告警或错误类别，再用本机可用的静态分析器或 sanitizer 运行对应目标。静态分析不运行程序；安全 parser 无告警和故意空指针样例产生目标诊断是两种证据。退出码0本身不能证明目标诊断命中。
 
 ASan可以检查正常安全代码；故意越界程序才需要显式隔离。构建插桩程序后还必须运行，并检查匹配的LLVM runtime是否成功装载。没有ASan报告的DLL装载失败不是“发现内存错误”。故意越界的通过判据包括报告类别`heap-buffer-overflow`、源码位置和非零退出，不接受任意崩溃或timeout。具体当前命令及其环境见工具证据；不直接执行未经检查的unsafe代码来获得漂亮结果。
 

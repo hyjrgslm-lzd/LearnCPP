@@ -1,67 +1,25 @@
-# 练习 5：显式切换执行上下文
+# B5 context switch
 
 ## 目标
 
-用两个不同的线程池，把"解析阶段"和"计算阶段"放到不同 scheduler 上，体会上下文切换应该通过 sender 图显式表达。
+用三个小图观察 `starts_on`、`continues_on` 和 `on`。重点不是线程池 benchmark，而是把执行位置写进 sender 图，并用可观察线程 ID 验证边界。
 
-## 前置理解
+## Part 1：真实解析
 
-- 你已经完成练习 4，知道 scheduler 不等于线程。
-- 你知道 `starts_on(scheduler, sender)` 的基本意图。
-- 你知道 `let_value` 可以在拿到上游值后返回下一段 sender。
+输入格式是 `name,value,raw`，例如 `sensor_b,7,12.5`。`parse_record` 必须解析传入字符串，不能返回固定 `sensor_a,42,3.14`。checker 使用多组 fresh input，并按 `normalized = raw / 100`、`score = value * normalized` 验证。
 
-## 必做任务
+## Part 2：`starts_on`
 
-1. 创建两个线程池，例如 `parse_pool` 与 `compute_pool`。
-2. 准备一组原始字符串输入，例如数字文本、逗号分隔字段，或你自己熟悉的简化记录。
-3. 设计阶段 A：在 `parse_pool` 上把原始输入解析成结构化数据。
-4. 设计阶段 B：在 `compute_pool` 上对解析结果做统计、归一化或派生字段计算。
-5. 用 sender 图明确表达这次切换：阶段 A 完成后，返回一段 `starts_on(compute_scheduler, ...)` 的新 sender。
-6. 在两个阶段都打印线程 ID 和阶段名，证明切换确实发生在图里，而不是只靠口头约定。
-7. 最终把结果同步取回并验证数值正确。
-8. 再做一个版本，用 `continues_on(compute_scheduler)` 替换 `starts_on` + `let_value` 的组合来实现同一切换。对比两种写法的语义差异：`starts_on` 控制的是"这段新 sender 在哪里开始"，而 `continues_on` 控制的是"当前 sender 完成后，后续工作在哪里继续"。在日志中对比线程 ID，确认两者的切换边界是否不同。
+`starts_on(parse_sch, sender)` 表示这段 sender 在 `parse_sch` 上开始。练习先在 parse pool 里解析，再用 `let_value` 返回一段 `starts_on(compute_sch, ...)`，让 compute 阶段整体在 compute pool 上开始。
 
-## 进阶任务
+## Part 3：`continues_on`
 
-- 在阶段 A 完成后，通过查询当前 scheduler 的方式，再在同一上下文里插一个短阶段，体会 environment 查询与显式切换的区别。
-- 把阶段 B 再拆成两个小阶段，例如 `enrich` 与 `compute_stats`，看 sender 图是否比普通回调嵌套更清楚。
-- 做一个反例版本：故意把阶段 B 写回阶段 A 的池中，再比较日志和图结构的差异。
+第二条图先在 parse pool 解析，然后 `continues_on(compute_sch)`，后面的 compute `then` 在 compute pool 上继续。checker 要求两条图数值一致，并要求 compute 离开 caller thread。
 
-## 验收点
+## Part 4：`on` roundtrip
 
-- 你能在日志中看见清晰的阶段边界。
-- 你能指出 sender 图里"切换到另一个 scheduler"的那一段代码。
-- 你没有用裸 `std::thread` 或共享队列手动完成这次切换。
-- 你能说明为什么阶段切换应该写成"返回新 sender"，而不是在 lambda 里偷偷直接调用下一段逻辑。
+固定 stdexec `nvhpc-26.05` 的 `on(scheduler, sender)` 在有外层 scheduler 环境时，child 在目标 scheduler 上运行，completion 回到旧 scheduler。练习用 outer pool 启动外层图，再用 compute pool 运行 inner work，最后 continuation 回到 outer pool。
 
-## 观察点
+## 边界
 
-- 图中的上下文切换是显式的，这会极大提高可推理性。
-- `let_value` 的关键价值是：你可以在拿到上游值以后，继续返回一段新的 sender 图，而不是立刻把所有工作做完。
-- "在哪个池上执行"成为 sender 图的一部分，而不是实现细节。
-
-## 常见坑
-
-- 在阶段 A 的 lambda 里直接做完所有计算，导致根本没有真正切换上下文。
-- 使用 `starts_on` 但又把大量工作写在切换之前，结果调度边界与实际重活不一致。
-- 过早把解析结果写进全局状态，后面计算阶段再去读，破坏了值流模型。
-- 因为 API 形式差异而纠缠管道写法，忽略了真正要练的是"返回下一段 sender 图"。
-
-## 提示
-
-- 解析结果可以设计成很小的结构体，只保留练习所需字段。
-- 如果你本地版本的 `let_value` 管道形式不顺手，就直接写函数式调用。
-- 先确保阶段 A 和阶段 B 的职责边界清楚，再考虑日志和输出格式。
-- 先做两阶段版本，跑通后再做三阶段拆分。
-
-## 复盘问题
-
-- 为什么"在图里切换 scheduler"比"在某个函数里随手丢给别的线程池"更像框架设计？
-- 为什么说阶段 A 与阶段 B 的分界线也是一条很重要的类型边界？
-- 如果未来你想在阶段 A 和阶段 B 之间插入缓存、限流或统计，哪种写法更容易扩展？
-- `let_value` 在这题里到底扮演了"值传递"还是"图延展"的角色，还是两者都有？
-- `starts_on` 和 `continues_on` 分别适合什么场景？如果你想"把下一段工作整体挪到另一个池"，用哪个更自然？如果你想"在当前图的某个点之后切换后续执行上下文"，又该用哪个？
-
-## 对应官方参考
-
-- `stdexec/examples/hello_world.cpp` 中查询 scheduler 并继续构图的片段
+`distinct_pools_observed` 必须从实际 parse/compute thread id 推导；不能写常量 true。线程 ID 是观察证据，不是 scheduler 身份本身。

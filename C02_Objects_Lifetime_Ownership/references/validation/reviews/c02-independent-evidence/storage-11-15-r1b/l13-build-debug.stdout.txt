@@ -1,8 +1,0 @@
-适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
-
-  1>Checking Build System
-  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L13_aliasing/CMakeLists.txt
-  observation_check.cpp
-  L13_aliasing_observation.vcxproj -> F:\CPPTrain\LearnCPP\build\c02-reviewer-storage-r1b-l13\Debug\L13_aliasing_observation.exe
-  Building Custom Rule F:/CPPTrain/LearnCPP/Core_Study/exercises/L13_aliasing/CMakeLists.txt
-

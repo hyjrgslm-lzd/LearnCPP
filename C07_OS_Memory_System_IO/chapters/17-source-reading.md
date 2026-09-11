@@ -6,7 +6,7 @@
 
 ## 固定这次到底读了什么
 
-liburing 固定为 `liburing-2.15`，commit `d41bf9220ec39277ff235379e9089d9e0fd6c2a5`。本机标准库则读实际编译器使用的文件，不能用滚动 master 代替本地构建。输入指纹见 [Windows](../references/validation/source-inputs-windows.json) 与 [Linux](../references/validation/source-inputs-linux.json)。
+liburing 固定为 `liburing-2.15`，commit `d41bf9220ec39277ff235379e9089d9e0fd6c2a5`。本机标准库则读实际编译器使用的文件，不能用滚动 master 代替本地构建。复查时记录本机实际源码路径、工具链版本和输入文件指纹；这些记录属于本机验证产物，不随课程正文提交。
 
 | 输入 | 本次入口 |
 |---|---|
@@ -75,7 +75,7 @@ cmake --build --preset verify-core --target B01_source_observation
 ctest --preset verify-core -R B01_source_observation --output-on-failure
 ```
 
-本次 Windows 记录的 `observed_reset=false`，guest libstdc++ 的同项为 true。参见 [Windows 当前版本观察](../references/validation/source-observation-windows-r2.json) 和 [Linux 集成观察记录](../references/validation/integration-linux-uring-r1/ctest.xml)。**Windows 这个具体标准符合性检查未满足要求**；观察程序 exit 0 仅表示已取得观察且新的 resource 作用域对照通过，不是把库差异改叫标准通过。旧 Windows 记录原样保留；r2 补齐当前输出的 `second_allocation_bad_alloc=true`。
+本机一次观察中，MSVC 与 libstdc++ 对这条 `release()` 边界的表现不同：Windows 侧未观察到同一初始 buffer 被恢复，Linux/libstdc++ 侧观察到恢复。复查时应重新运行观察程序并保存本机输出；观察程序 exit 0 仅表示已取得观察且新的 resource 作用域对照通过，不是把库差异改叫标准通过。
 
 本课没有修改系统标准库。跨平台实际路径在每批重新构造标准单调资源，且先结束所有借用它的对象；两端的新作用域对照都通过。B01 不依赖“同一标准资源 release 后重新使用外部初始 buffer”的缺陷分支，自制有界 arena 的 reset 行为则由自己的 checker 验证。
 

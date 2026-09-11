@@ -1,9 +1,0 @@
-{
-  "name": "ninja-configure",
-  "exit_code": 0,
-  "expected": [
-    0
-  ],
-  "ok": true,
-  "command": "call \"D:\\VisualStudio2026\\Installed\\Common7\\Tools\\VsDevCmd.bat\" -arch=x64 >nul && \"D:\\cmake\\install\\bin\\cmake.exe\" -S \"F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\C1_odr\" -B \"F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\sample-odr-review-fix3c-ninja\" -G Ninja -DCMAKE_MAKE_PROGRAM=\"D:\\VisualStudio2026\\Installed\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja\\ninja.exe\" -DCMAKE_CXX_COMPILER=cl.exe -DCMAKE_TRY_COMPILE_TARGET_TYPE=STATIC_LIBRARY -DCMAKE_BUILD_TYPE=Release -DENGINEERING_STUDY_TEST_STUDENTS=ON"
-}

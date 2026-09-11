@@ -1,8 +1,0 @@
-cmake_minimum_required(VERSION 3.28)
-project(enumerate_std_probe LANGUAGES CXX)
-add_executable(probe probe.cpp)
-if(MSVC)
-  target_compile_options(probe PRIVATE /std:c++latest /permissive-)
-else()
-  target_compile_options(probe PRIVATE -std=c++2c)
-endif()

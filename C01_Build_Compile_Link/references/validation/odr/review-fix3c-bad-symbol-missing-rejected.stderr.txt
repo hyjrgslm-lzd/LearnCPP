@@ -1,6 +1,0 @@
-CMake Error at Engineering_Study/exercises/C1_odr/cmake/observe_symbols.cmake:76 (message):
-  neither dumpbin nor nm is available for symbol observation
-Call Stack (most recent call first):
-  Engineering_Study/exercises/C1_odr/cmake/observe_symbols.cmake:91 (_check_lesson_value_definition)
-
-

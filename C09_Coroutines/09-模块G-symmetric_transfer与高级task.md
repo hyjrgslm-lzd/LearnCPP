@@ -251,7 +251,7 @@ cmake --build C09_Coroutines/exercises/build/verify-core --config Release --targ
 ctest --test-dir C09_Coroutines/exercises/build/verify-core -C Release -R "runtime_await_resume_exception_test|G3_sync_wait_impl_reference" --output-on-failure
 ```
 
-修复后必须同时看到错误仍传播、存活计数回到 0、正常值与既有同步/异步完成检查仍成立。原始失败、工具命令和版本对应见 [S1 证据目录](references/validation/c09-refresh/s1)。独立审查还要核对：错误是在 child body、结果提取还是 root 消费阶段发生，哪个 owner 在该阶段负责帧；仅捕获了异常不等于资源已收束。
+复查时必须同时看到错误仍传播、存活计数回到 0、正常值与既有同步/异步完成检查仍成立。还要核对：错误是在 child body、结果提取还是 root 消费阶段发生，哪个 owner 在该阶段负责帧；仅捕获了异常不等于资源已收束。
 
 **练习与解析：** 遮住上面的修复，先画出旧实现每一步的句柄持有者，再选择一个能覆盖抛出窗口的现有 owner。答案应保持“取值前转移一次所有权、返回对象构造期间 owner 仍存活、异常与正常路径都析构、awaiter 不再重复释放”四项。只在 catch 里补一次 destroy 容易漏掉新增失败路径；把 move 标成 noexcept 会改变类型契约，不能解决通用 T 的所有权问题。
 

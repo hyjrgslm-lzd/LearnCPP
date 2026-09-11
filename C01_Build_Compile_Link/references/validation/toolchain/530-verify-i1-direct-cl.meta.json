@@ -1,6 +1,0 @@
-{
-  "command": "cmd.exe /d /c Engineering_Study\\references\\validation\\toolchain\\530-verify-i1-direct-cl.command.cmd > Engineering_Study\\references\\validation\\toolchain\\530-verify-i1-direct-cl.stdout.txt 2> Engineering_Study\\references\\validation\\toolchain\\530-verify-i1-direct-cl.stderr.txt",
-  "exit_code": 0,
-  "execution_surface": "require_escalated normal local process",
-  "claim": "direct cl path compiles MSVC std.ixx, compiles importer with /reference std=std.ifc, links and runs output 10"
-}

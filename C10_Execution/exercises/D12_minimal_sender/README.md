@@ -1,51 +1,32 @@
-# 练习 12：最小 sender 与 operation_state
+# D12 最小 sender 与 operation_state
 
-## 目标
+sender 是蓝图；operation state 是一次 connect 产生的执行实例。本题手写一个 sender，验证每次 connect 都有独立状态，`start` 发出恰好一条 completion。
 
-手写一个最小 sender，让你亲眼看到：sender 是蓝图，`operation_state` 才是一次具体执行实例。**这题的 `completion_signatures` 是必做内容。**
+## 知识
 
-## 前置理解
+`connect(sender, receiver)` 只建立状态，不运行工作。`start(op)` 才触发执行。operation state 通常不可移动，因为上游或调度器可能保存它的地址。
 
-- 你已经完成练习 11，能够手动 `connect` 和 `start`。
-- 你知道 sender 至少要能与 receiver 连接。
-- 你知道 sender 需要声明 `completion_signatures` 才能与标准组合器互操作。
+`start` 要 `noexcept`。如果启动阶段遇到可报告错误，应通过 `set_error` 发送，而不是抛出。
 
-## 必做任务
+## 机制
 
-1. 设计一个最小 sender，例如 `single_value_sender`，内部只保存一个整数或一个小结构体。
-2. 为它定义 `connect(receiver)`，返回一个你自己写的 `operation_state` 类型。
-3. 这个 `operation_state` 至少要保存两样东西：
-   - 要发送的值
-   - 被连接的 receiver
-4. 为 `operation_state` 实现 `start()`，在其中调用 `set_value(receiver, value)`。
-5. 用上一题的 logging receiver 手动连接并启动它。
-6. **为 sender 定义 `completion_signatures`**，至少包含 `set_value_t(int)` 和 `set_error_t(std::exception_ptr)`。
-7. **验证你的 sender 能被 `sync_wait` 消费**。如果 `sync_wait` 编译不过，检查 `completion_signatures` 是否正确——这就是签名声明的实际作用。
-8. 在笔记里明确写出：sender、receiver、operation_state、completion_signatures 各自承担什么责任。
+`single_value_sender` 支持三种模式：value 发送 `set_value(int)`；error 发送 `set_error(exception_ptr)`；stopped 发送 `set_stopped()`。检查器手动连接 probe receiver，直接检查 member `connect`、不可移动 operation state、`start noexcept` 和三种 completion。
 
-## 进阶任务
+bad 版本把所有模式都伪造成 value，检查器在 error mode 拒绝。
 
-- 把 sender 从 value-only 版本升级为可配置模式：根据一个标志决定发 value、error 或 stopped。相应更新 `completion_signatures` 声明。
-- 尝试故意写错 completion_signatures（声明 `set_value_t(int)` 但实际发 `set_value_t(string)`），观察编译器给你什么提示。
-- 如果你愿意挑战，再试着让它和 `then` 组合，观察"进入通用生态"需要补哪些元信息。
+## 必做
 
-## 验收点
+1. sender 保存值和 completion 模式。
+2. 每次 `connect` 返回新的 operation state。
+3. operation state 按值拥有 receiver。
+4. 删除 operation state copy/move。
+5. `start` 根据模式发送一条终结信号。
 
-- 你能清楚说出 sender 和 operation_state 的职责分界。
-- 你能手动触发一次 value completion，并看到 receiver 被调用。
-- 你没有把 receiver 以悬空引用等危险方式塞进 operation_state。
-- 你能解释为什么 `connect` 不能直接返回"立刻运行完的结果"。
-- **你的 sender 能被 `sync_wait` 消费，证明 `completion_signatures` 声明正确。**
+## 进阶
 
-## 常见坑
+- 增加 start-twice 诊断。
+- 试着把签名写错，观察组合器诊断。
 
-- 在 sender 内部直接调用 receiver，完全跳过 operation_state。
-- `operation_state` 没有稳定拥有 receiver，导致生命周期不安全。
-- `start()` 里重复发射 completion，破坏一次执行的基本语义。
-- 一开始就追求支持所有概念，结果主线对象关系反而没看清。
-- 忘记定义 `completion_signatures`，导致 `sync_wait` 编译失败后以为是"库 bug"。
+## 答案解释
 
-## 对应官方参考
-
-- P3090R0 的基础对象关系说明
-- P3143R0 对示例的分层拆解
+正确答案的核心是所有权：sender 可复制描述；operation state 独占一次执行；receiver 被移动进 completion。两个 connect 分别 start，应该得到两条独立 value 事件。

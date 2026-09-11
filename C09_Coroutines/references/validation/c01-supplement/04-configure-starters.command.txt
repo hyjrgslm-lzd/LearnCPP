@@ -1,2 +1,0 @@
-D:\cmake\install\bin\cmake.exe -S Coroutine_Study/exercises -B Coroutine_Study/exercises/build/c01-supplement-starters -G "Visual Studio 18 2026" -DCOROUTINE_STUDY_BUILD_REFERENCE=OFF -DCOROUTINE_STUDY_FETCH_DEPS=OFF -DCOROUTINE_STUDY_TEST_STARTERS=ON
-timeout_seconds=120

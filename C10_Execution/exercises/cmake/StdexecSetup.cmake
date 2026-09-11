@@ -1,44 +1,29 @@
-# exercises/cmake/StdexecSetup.cmake
-#
-# 统一的 stdexec 引入逻辑。
-# 当子目录作为独立项目打开时（VS Code 打开单个习题），
-# 由子目录的 CMakeLists.txt include 此文件来拉取 stdexec。
-# 当子目录作为顶层项目的子目录时（顶层已配置 stdexec），此文件什么也不做。
-
-# 如果 stdexec::stdexec 已经存在（被顶层 CMake 提供），跳过
-if(TARGET stdexec::stdexec)
-    return()
+include_guard(GLOBAL)
+set(C10_STDEXEC_REVISION "6d7ad689f4d4831c5136e4abe1c601f9a3b64e43")
+set(FETCHCONTENT_SOURCE_DIR_STDEXEC "" CACHE PATH "Local pinned stdexec checkout; configuration never downloads")
+if(NOT FETCHCONTENT_SOURCE_DIR_STDEXEC AND EXISTS "${CMAKE_CURRENT_LIST_DIR}/../third_party/stdexec/include/stdexec/execution.hpp")
+    get_filename_component(FETCHCONTENT_SOURCE_DIR_STDEXEC "${CMAKE_CURRENT_LIST_DIR}/../third_party/stdexec" ABSOLUTE)
 endif()
-
-# 也检查大写版本
-if(TARGET STDEXEC::stdexec)
-    if(NOT TARGET stdexec::stdexec)
-        add_library(stdexec::stdexec ALIAS stdexec)
-    endif()
-    return()
+if(NOT EXISTS "${FETCHCONTENT_SOURCE_DIR_STDEXEC}/include/stdexec/execution.hpp")
+    message(FATAL_ERROR "Provide -DFETCHCONTENT_SOURCE_DIR_STDEXEC=<local nvhpc-26.05 checkout>. See BUILD_GUIDE.md. No download attempted.")
 endif()
-
-message(STATUS "[StdexecSetup] stdexec not found — using FetchContent to download it...")
-
-include(FetchContent)
-
-FetchContent_Declare(
-    stdexec
-    GIT_REPOSITORY https://github.com/NVIDIA/stdexec.git
-    GIT_TAG        main
-    GIT_SHALLOW    TRUE
-    GIT_PROGRESS   TRUE
-)
-
-set(STDEXEC_BUILD_TESTS OFF CACHE BOOL "" FORCE)
-set(STDEXEC_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
-set(STDEXEC_BUILD_DOCS OFF CACHE BOOL "" FORCE)
-
-FetchContent_MakeAvailable(stdexec)
-
-# 创建小写 alias
-if(NOT TARGET stdexec::stdexec)
-    add_library(stdexec::stdexec ALIAS stdexec)
+find_package(Git REQUIRED)
+execute_process(COMMAND "${GIT_EXECUTABLE}" -C "${FETCHCONTENT_SOURCE_DIR_STDEXEC}" rev-parse HEAD
+    RESULT_VARIABLE revision_result OUTPUT_VARIABLE revision OUTPUT_STRIP_TRAILING_WHITESPACE)
+if(NOT revision_result EQUAL 0 OR NOT revision STREQUAL C10_STDEXEC_REVISION)
+    message(FATAL_ERROR "C10 requires stdexec ${C10_STDEXEC_REVISION}; actual=${revision}")
 endif()
-
-message(STATUS "[StdexecSetup] stdexec ready.")
+execute_process(COMMAND "${GIT_EXECUTABLE}" -C "${FETCHCONTENT_SOURCE_DIR_STDEXEC}" diff --quiet HEAD -- include src
+    RESULT_VARIABLE dirty_result)
+if(NOT dirty_result EQUAL 0)
+    message(FATAL_ERROR "stdexec include/src differ from the pinned revision")
+endif()
+find_package(Threads REQUIRED)
+add_library(c10_stdexec INTERFACE)
+add_library(stdexec::stdexec ALIAS c10_stdexec)
+target_include_directories(c10_stdexec SYSTEM INTERFACE "${FETCHCONTENT_SOURCE_DIR_STDEXEC}/include")
+target_link_libraries(c10_stdexec INTERFACE Threads::Threads)
+if(MSVC)
+    target_compile_options(c10_stdexec INTERFACE /Zc:__cplusplus /Zc:preprocessor /Zc:externConstexpr /bigobj)
+endif()
+message(STATUS "C10 stdexec: ${revision} (local headers, no upstream CMake/download)")

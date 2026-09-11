@@ -1,2 +1,0 @@
-preflight PASS; starting student workers
-R2 student PASS: online, copied read, explicit quiescent/offline, final 65

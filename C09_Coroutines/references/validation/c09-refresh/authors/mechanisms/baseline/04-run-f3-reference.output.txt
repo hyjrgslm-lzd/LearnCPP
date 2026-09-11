@@ -1,2 +1,0 @@
-[halo-fixture] escaping hook allocations=1 deallocations=1
-[halo-fixture] non-escaping direct completions=1

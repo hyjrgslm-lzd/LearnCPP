@@ -98,7 +98,7 @@ int main() try {
 #if CS_VERIFIED_CLANG18_GLIBCXX13_TSAN_LIMIT
     std::cout << "SKIP: verified Clang 18 + libstdc++ 13 + TSan provides global new/delete interceptors; "
                  "allocation injection is covered by non-TSan runs; see "
-                 "references/validation/c08-revision/tsan-diagnosis/diagnosis-20260910.md\n";
+                 "C08_Concurrency/exercises/BUILD_GUIDE.md\n";
     return 77;
 #else
     unwind_audit audit;

@@ -1,9 +1,0 @@
-[0/2] Re-checking globbed directories...
-[1/8] Building CXX object F3_seqcst_fence/CMakeFiles/F3_seqcst_fence_reference.dir/solution.cpp.o
-[2/8] Building CXX object B3_call_once/CMakeFiles/B3_call_once_reference.dir/solution.cpp.o
-[3/8] Linking CXX executable B3_call_once/B3_call_once_reference
-[4/8] Linking CXX executable F3_seqcst_fence/F3_seqcst_fence_reference
-[5/8] Building CXX object runtime_tests/CMakeFiles/runtime_scheduling_allocation_test.dir/scheduling_allocation_test.cpp.o
-[6/8] Linking CXX executable runtime_tests/runtime_scheduling_allocation_test
-[7/8] Building CXX object runtime_tests/CMakeFiles/runtime_scheduling_test.dir/scheduling_test.cpp.o
-[8/8] Linking CXX executable runtime_tests/runtime_scheduling_test

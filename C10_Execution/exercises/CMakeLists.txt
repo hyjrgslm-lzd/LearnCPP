@@ -1,54 +1,51 @@
-cmake_minimum_required(VERSION 3.25)
+cmake_minimum_required(VERSION 3.28)
 project(C10_Execution LANGUAGES CXX)
-
-# ============================================================
-# C++ 标准
-# ============================================================
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
-
-# MSVC: 启用 __cplusplus 正确报告 + UTF-8 源码
-if(MSVC)
-    add_compile_options(/Zc:__cplusplus /utf-8)
+include(cmake/StudySetup.cmake)
+set(C10_DEFAULT_UNITS
+    A1_two_executions
+    A2_value_channel
+    A3_fan_out_merge
+    B4_scheduler_capability
+    B5_context_switch
+    B6_pipeline
+    C1_7_error_channel
+    C1_8_cancellation
+    C2_9_environment
+    C2_10_scope_lifetime
+    D11_minimal_receiver
+    D12_minimal_sender
+    D13_sender_adaptor
+    D14_coroutine_bridge
+    E1_cpo_niebloid
+    E2_tag_invoke
+    E3_evolution_compare
+    F1_type_list
+    F2_completion_signatures
+    F3_concepts
+    G1_my_then
+    G2_pipe_syntax
+    G3_retry
+    H1_run_loop
+    H2_custom_query
+    H3_coroutine_task
+    R1_task_scope
+    P2_mini_execution
+    S1_usage_reading
+    S2_implementation_reading
+    B01_costs
+    B02_bulk_domain
+    F01_native
+    V1_nvexec
+)
+if(WIN32 OR C10_STUDY_ENABLE_IO_URING)
+    list(APPEND C10_DEFAULT_UNITS I1_native_io P1_pipeline)
+else()
+    message(STATUS "C10 native I/O NOT_ENABLED: use C10_STUDY_ENABLE_IO_URING=ON with C10_LIBURING_ROOT")
 endif()
-
-# ============================================================
-# 引入 stdexec（FetchContent 或本地）
-# ============================================================
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
-include(StdexecSetup)
-
-# ============================================================
-# 第一阶段：框架使用与概念理解
-# ============================================================
-add_subdirectory(A1_two_executions)
-add_subdirectory(A2_value_channel)
-add_subdirectory(A3_fan_out_merge)
-add_subdirectory(B4_scheduler_capability)
-add_subdirectory(B5_context_switch)
-add_subdirectory(B6_pipeline)
-add_subdirectory(C1_7_error_channel)
-add_subdirectory(C1_8_cancellation)
-add_subdirectory(C2_9_environment)
-add_subdirectory(C2_10_scope_lifetime)
-add_subdirectory(D11_minimal_receiver)
-add_subdirectory(D12_minimal_sender)
-add_subdirectory(D13_sender_adaptor)
-add_subdirectory(D14_coroutine_bridge)
-
-# ============================================================
-# 第二阶段：实现技巧与架构设计
-# ============================================================
-add_subdirectory(E1_cpo_niebloid)
-add_subdirectory(E2_tag_invoke)
-add_subdirectory(E3_evolution_compare)
-add_subdirectory(F1_type_list)
-add_subdirectory(F2_completion_signatures)
-add_subdirectory(F3_concepts)
-add_subdirectory(G1_my_then)
-add_subdirectory(G2_pipe_syntax)
-add_subdirectory(G3_retry)
-add_subdirectory(H1_run_loop)
-add_subdirectory(H2_custom_query)
-add_subdirectory(H3_coroutine_task)
+set(C10_UNITS "${C10_DEFAULT_UNITS}" CACHE STRING "Semicolon-separated course units (new build recommended after changing coverage)")
+foreach(unit IN LISTS C10_UNITS)
+    if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/${unit}/CMakeLists.txt")
+        message(FATAL_ERROR "Unknown C10 unit: ${unit}")
+    endif()
+    add_subdirectory(${unit})
+endforeach()

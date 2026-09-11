@@ -1,8 +1,0 @@
-适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
-
-  reference_check.cpp
-  G1_diagnostics_reference.vcxproj -> F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\final-matrix-r3\verify-debug\G1_diagnostics\Debug\G1_diagnostics_reference.exe
-适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
-
-  student_check.cpp
-  G1_diagnostics_student.vcxproj -> F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\final-matrix-r3\verify-debug\G1_diagnostics\Debug\G1_diagnostics_student.exe

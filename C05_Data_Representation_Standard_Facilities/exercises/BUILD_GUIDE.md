@@ -67,21 +67,22 @@ cmake --build --preset icu-debug --parallel 2
 ctest --preset icu-debug
 ```
 
-DATA_STUDY_ENABLE_ICU默认OFF；ON却缺依赖、错版本或越界是FAIL。本轮扩展必须实际运行；最终另验证ICU与frontier同时开启的组合，仍分别报告能力SKIP。实际矩阵命令采用新的delivery目录，精确命令见quality-report中的JSON，避免重用早期作者缓存冒充fresh验收。
+DATA_STUDY_ENABLE_ICU默认OFF；ON却缺依赖、错版本或越界是FAIL。扩展必须实际运行；ICU与frontier同时开启时仍分别报告能力SKIP。实际矩阵命令使用新的本地记录目录，避免重用早期作者缓存冒充fresh验收。
 
 ## 记录证据与隔离审计
 
-使用现有记录器，不覆盖旧证据：
+使用现有记录器，输出到本地未跟踪目录：
 
 ```powershell
-python ../../C02_Objects_Lifetime_Ownership/exercises/tools/record_process.py --output ../references/validation/my-core-configure.json --timeout 180 -- cmake --preset verify-core
+New-Item -ItemType Directory -Force ../../build/local-records/C05 | Out-Null
+python ../../C02_Objects_Lifetime_Ownership/exercises/tools/record_process.py --output ../../build/local-records/C05/my-core-configure.json --timeout 180 -- cmake --preset verify-core
 ```
 
 记录器包含命令、cwd、stdout/stderr、退出码、超时/清理和预期检查结果。构建命令选择足够且有界的超时；目录名中build/内容不作为可发布证据。
 
 Student隔离审计要求：先在build目录请求.cmake/api/v1/query/codemodel-v2；以Reference OFF配置并启用MSVC /showIncludes；通过record_process记录所有Student目标的--clean-first显式重建；再运行C02工具audit_student.py，逐目标给--expect-target。需要真实预处理输出和codemodel，单纯搜索文本或检查目录名不够；它也不是防抄袭证明。
 
-最终命令、结果和范围统一见本课references/quality-report.md；这里是操作方法，不是执行通过声明。
+这里是操作方法，不是执行通过声明。最终对外文档只保留稳定命令、范围和边界，不提交本机过程记录。
 
 
 ## fmt 与 spdlog 固定扩展

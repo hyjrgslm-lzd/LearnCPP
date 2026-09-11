@@ -1,57 +1,47 @@
-# 练习 H-1：my_run_loop
+# 练习 H-1：run_loop 调度器
 
-## 目标
+H1 让你从零写一个最小可用的 `run_loop`：`schedule()` 返回 sender，`connect` 产生不可移动的 operation state，`start()` 把 operation state 入队，`run()` 在调用它的线程上按 FIFO 顺序取出并完成 receiver。重点不是“写一个线程池”，而是看清 scheduler sender 与 operation state 地址稳定性的关系。
 
-亲手实现一个最小的 run_loop 调度器，包含 intrusive FIFO queue、互斥与条件变量驱动的事件循环、以及一个返回 sender 的 `schedule()` 接口。通过这道题把"scheduler 到底是怎么把 operation_state 排队并执行的"刻进直觉。
+## 你要实现什么
 
-## 前置理解
+公开接口在本题 `solution.hpp` 中，命名空间为 `c10_h1`。Reference 现在把实现放在 `H1_run_loop/src/reference/solution.hpp`，不再依赖公共 runtime shortcut。你需要提供：
 
-- 你已经完成模块 D 和模块 G，能手写 sender、receiver、operation_state。
-- `operation_state` 在 sender-receiver 模型里必须 non-movable（一旦构造，地址不再改变）。
-- intrusive data structure 的基本概念：节点自身携带链表指针，而不是把节点塞进外部容器。
-- `std::mutex` 和 `std::condition_variable` 的基本用法。
+- `run_loop`：持有 intrusive FIFO 队列、`std::mutex`、`std::condition_variable`、关闭标志。
+- `run_loop::schedule()`：返回一个 sender。这个 sender 的 operation state 继承一个队列节点，`start()` 把自己的地址交给 loop。
+- `run_loop::run()`：阻塞等待 work；出队后在锁外调用节点的完成函数；`close()` 后仍要 drain 已入队 work，队列空后退出。
+- `run_loop_closed`：`close()` 之后再 `schedule()` 的 work 不应悄悄丢失，checker 期待它走 error channel。
+- `detached_receiver`：用于 checker 直接 connect/start 后让 run loop drain。
 
-## 必做任务
+## Parts
 
-1. **定义 `operation_base` 基类**：包含 intrusive `next` 指针和纯虚函数 `execute()`。
+1. 定义 queue node。node 自带 `next` 指针和一个 `execute()`/函数指针入口。它由 operation state 自身继承或包含，不能分配临时节点后复制 receiver。
+2. 写 FIFO。`push_back` 保持提交顺序，`pop_front` 返回原始 node 指针。checker 会用 `when_all` 和多个 `then` 验证顺序。
+3. 写 `schedule_sender`。`connect(sender, receiver)` 返回 non-movable operation state；operation state 保存 receiver 和 loop 指针。
+4. 写 `start()`。它只做入队和通知，不直接 inline 完成 receiver；bad 版本正是因为 completion 不在 loop 线程上而被拒绝。
+5. 写 `run()`/`close()`。`run()` 必须由消费线程调用；所有 queued completion 都应在这条线程上执行。`close()` 唤醒 `run()`，但不抢走已排队任务。
 
-2. **实现 intrusive FIFO queue**：`push_back`、`pop_front`、`empty`。
+## checker 覆盖
 
-3. **实现 `my_run_loop` 类**：
-   - `push(op)`: 加锁，入队，通知条件变量。
-   - `run()`: 循环等待，出队后解锁，调用 `execute()`。finished 且 queue 空时退出。
-   - `finish()`: 设置 finished，通知条件变量。
+checker 不再相信实现提供的 `operation_state_address_stable()` 布尔函数，而是自己构造 operation state 并静态检查它不可移动，再运行真实排队流程。主要断言：
 
-4. **实现 `schedule()` 方法**，返回一个 sender：
-   - sender 的 connect 返回 `run_loop_operation_state<Receiver>`。
-   - operation_state 继承 `operation_base`，`start()` 把自己入队，`execute()` 调用 `set_value`。
+- 三个 scheduled sender 按 FIFO 得到 `{1,2,3}`。
+- completion 运行在调用 `run()` 的线程上，而不是 `start()` 调用线程。
+- operation state 类型不可移动，地址能被 intrusive queue 安全持有。
+- `close()` 会 drain 已入队任务。
+- `close()` 之后再 schedule 会产生 `run_loop_closed` error。
 
-5. **验证**：用 `schedule()` 创建多个 sender，接 `then` 打印任务编号，用 `when_all` 汇合，在另一个线程运行 `loop.run()`。
+## Reference / good / bad
 
-## 进阶任务
+- `src/reference/solution.hpp` 是教学 Reference，实现真实 intrusive FIFO run loop。
+- `validation/good/solution.hpp` 是独立 good，也实现自己的 FIFO loop，不依赖 Reference。
+- `validation/bad/solution.hpp` 可编译，但错误地 inline 完成或跑错线程；负例诊断是 `completion runs on loop thread`。
 
-- 在 `execute()` 中加入 try-catch，捕获异常后调用 `set_error`。
-- 把 intrusive queue 替换为 LIFO（栈），观察执行顺序变化。
-- 让 `my_run_loop` 支持 `get_scheduler` environment query。
-- 把 `virtual execute()` 替换为函数指针，避免虚函数开销。
+## 直接命令
 
-## 验收点
+```powershell
+cmake -S C10_Execution/exercises -B build/c10-h1 -DC10_UNITS="H1_run_loop" -DFETCHCONTENT_SOURCE_DIR_STDEXEC=$env:STDEXEC_ROOT -DC10_STUDY_BUILD_REFERENCE=ON
+cmake --build build/c10-h1 --config Debug --target H1_run_loop_reference H1_run_loop_validation_good H1_run_loop_validation_bad H1_run_loop_student
+ctest --test-dir build/c10-h1 -C Debug --output-on-failure
+```
 
-- `schedule()` 返回的 sender 能与 `then`、`when_all`、`sync_wait` 正常组合。
-- 所有入队任务都在调用 `run()` 的那个线程上执行（单线程事件循环）。
-- 你能画出 operation_state 入队、出队、execute 的完整生命周期。
-- 你能解释为什么 `operation_state` 必须 non-movable：`start()` 之后地址已被 intrusive queue 持有。
-- 你能解释 intrusive queue 和 `std::queue<std::function>` 的本质差异。
-
-## 观察点
-
-- `run_loop` 是标准里最简单的 scheduler 之一，因为它只有一个线程在消费 queue。
-- intrusive data structure 在 sender-receiver 框架中无处不在，因为 operation_state 的 non-movable 特性天然提供了地址稳定性。
-- `start()` 把 `this` 入队——这就是为什么 operation_state 不能被移动或复制。
-- 这个模式也解释了为什么 `connect` 返回的 operation_state 必须由调用者保持存活。
-
-## 对应官方参考
-
-- P2300R10 中 `execution::run_loop` 的规范定义
-- `stdexec` 中 `__run_loop` 的实现
-- P3090R0 中对 operation_state 地址稳定性的说明
+Student 初态应该能编译，并通过 `c10::unfinished` 返回 exit 2。bad 应该编译成功但被行为测试拒绝。

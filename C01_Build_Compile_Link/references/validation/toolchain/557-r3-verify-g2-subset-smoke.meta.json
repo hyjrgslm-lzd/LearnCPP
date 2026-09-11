@@ -1,7 +1,0 @@
-{
-  "command": "cmd.exe /d /c Engineering_Study\\references\\validation\\toolchain\\557-verify-g2-subset-smoke.command.cmd > Engineering_Study\\references\\validation\\toolchain\\557-r3-verify-g2-subset-smoke.stdout.txt 2> Engineering_Study\\references\\validation\\toolchain\\557-r3-verify-g2-subset-smoke.stderr.txt",
-  "exit_code": 1,
-  "execution_surface": "require_escalated normal local process",
-  "claim": "driver correctly refused an existing output directory instead of overwriting previous g2-r3-subset-smoke results",
-  "expected_failure": true
-}

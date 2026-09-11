@@ -1,10 +1,10 @@
 # C05：数据表达与常用标准设施
 
-2026-09-10 的 fmt/spdlog 跨课增量已完成，现有21章/20单元。当前结果见[增量质量报告](references/revision-quality-report-20260910.md)与[联合交付清单](../C04_Generic_CompileTime_Reflection/references/revision-delivery-manifest.md)；前次19章基线保留历史验证记录。
+本课现有21章/20单元，覆盖字节、编码、解析、时间、路径、schema，以及fmt/spdlog库前端。
 
 以资源清单与数据包贯穿字节、编码、解析、时间、路径和schema。面向已有C++经验的工程师，正文连续推导机制，练习验证理解，标准规则与本机观察分别说明。
 
-实际验证、非作者审查及未测边界见[质量报告](references/quality-report.md)；逐知识点闭环见[覆盖表](references/coverage.md)，接口与任务边界见[实施规格](references/implementation-spec.md)。目录或测试数量不代替教学与技术验收。
+逐知识点闭环见[覆盖表](references/coverage.md)。目录或测试数量不代替教学与技术验收；未测边界在相关章节和构建指南中就地说明。
 
 ## 怎样开始
 

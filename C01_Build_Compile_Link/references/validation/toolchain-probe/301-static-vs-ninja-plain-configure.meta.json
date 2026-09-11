@@ -1,9 +1,0 @@
-﻿{
-    "name":  "301-static-vs-ninja-plain-configure",
-    "command_file":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\301-static-vs-ninja-plain-configure.command.cmd",
-    "exit_code":  -1,
-    "timed_out":  false,
-    "timeout_seconds":  180,
-    "stdout":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\301-static-vs-ninja-plain-configure.stdout.txt",
-    "stderr":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\301-static-vs-ninja-plain-configure.stderr.txt"
-}

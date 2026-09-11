@@ -13,7 +13,7 @@
 - `_MSVC_STL_VERSION=145`
 - `_MSVC_STL_UPDATE=202604L`
 
-已保存的本机头文件指纹在 [local-msvc-stl-inputs-20260909.md](validation/capabilities/local-msvc-stl-inputs-20260909.md)。这些 SHA 只绑定本机安装头文件，不等同于某个 GitHub 提交。若正文做源码导读，应另行固定上游仓库链接或发行版本，并说明与本机头文件的关系。
+本机头文件指纹只绑定当前安装内容，不等同于某个 GitHub 提交。若正文做源码导读，应另行固定上游仓库链接或发行版本，并说明与本机头文件的关系。
 
 ## 设施状态表
 
@@ -45,5 +45,4 @@
 
 ## F01 能力探测规则
 
-[F01_frontier](../exercises/F01_frontier/README.md) 长期保存每个设施的独立源码。叶级验证使用 `exercises/F01_frontier/build/author-frontier`，原始 JSON 保存在 `validation/capabilities/author-frontier-*.json`。开启 `TYPE_STUDY_ENABLE_FRONTIER=ON` 后，每个测试先打印头文件/宏状态；缺宏或缺版本时返回 77，且只由该 capability 测试设置 `SKIP_RETURN_CODE 77`。一旦实现提供宏，源码会实例化真实标准接口、链接并运行；编译或运行失败即为 FAIL，不转成 SKIP。Contracts 当前只验证合法调用路径的语法/链接/运行入口，不触发 violation，不声称检查模式已验证。
-
+[F01_frontier](../exercises/F01_frontier/README.md) 长期保存每个设施的独立源码。开启 `TYPE_STUDY_ENABLE_FRONTIER=ON` 后，每个测试先打印头文件/宏状态；缺宏或缺版本时返回 77，且只由该 capability 测试设置 `SKIP_RETURN_CODE 77`。一旦实现提供宏，源码会实例化真实标准接口、链接并运行；编译或运行失败即为 FAIL，不转成 SKIP。Contracts 当前只验证合法调用路径的语法/链接/运行入口，不触发 violation，不声称检查模式已验证。

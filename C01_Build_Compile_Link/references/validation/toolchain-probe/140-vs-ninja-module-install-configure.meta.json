@@ -1,9 +1,0 @@
-﻿{
-    "name":  "140-vs-ninja-module-install-configure",
-    "command":  "call \"D:\\VisualStudio2026\\Installed\\Common7\\Tools\\VsDevCmd.bat\" -arch=x64 \u003enul \u0026\u0026 \"D:\\cmake\\install\\bin\\cmake.exe\" -S \"F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\toolchain-probe\\msvc-module-install\\library\" -B \"F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\toolchain-probe\\out\\vs-ninja-module-install\" -G Ninja -DCMAKE_MAKE_PROGRAM=\"D:\\VisualStudio2026\\Installed\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja\\ninja.exe\" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=\"F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\toolchain-probe\\out\\vs-ninja-module-package\"",
-    "exit_code":  null,
-    "timed_out":  true,
-    "timeout_seconds":  180,
-    "stdout":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\140-vs-ninja-module-install-configure.stdout.txt",
-    "stderr":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\140-vs-ninja-module-install-configure.stderr.txt"
-}

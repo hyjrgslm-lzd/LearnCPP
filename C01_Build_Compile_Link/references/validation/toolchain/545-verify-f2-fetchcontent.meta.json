@@ -1,6 +1,0 @@
-{
-  "command": "cmd.exe /d /c Engineering_Study\\references\\validation\\toolchain\\545-verify-f2-fetchcontent.command.cmd > Engineering_Study\\references\\validation\\toolchain\\545-verify-f2-fetchcontent.stdout.txt 2> Engineering_Study\\references\\validation\\toolchain\\545-verify-f2-fetchcontent.stderr.txt",
-  "exit_code": 0,
-  "execution_surface": "require_escalated normal local process",
-  "claim": "fresh default F2_DEPENDENCY_MODE=fetchcontent uses offline FETCHCONTENT_SOURCE_DIR_F2_PROVIDER_FIXTURE, builds provider from provider_fixture under _deps, links reference, and passes CTest"
-}

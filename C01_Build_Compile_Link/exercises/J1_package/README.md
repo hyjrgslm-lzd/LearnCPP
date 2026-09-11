@@ -64,4 +64,4 @@ target_link_libraries(package_consumer PRIVATE LessonPackage::lesson_shared)
 
 ## ELF 边界
 
-代码保留 ELF shared library 的安装位置和 `LD_LIBRARY_PATH` 分支，但本轮 Windows/MSVC 是主验收。未运行的 ELF 路径不得写成通过。
+代码保留 ELF shared library 的安装位置和 `LD_LIBRARY_PATH` 分支。未运行的 ELF 路径不得写成通过。

@@ -1,69 +1,36 @@
-# 练习 6：结构化并发流水线
+# 练习 6：有界记录流水线
 
 ## 目标
 
-在一个小型 CPU 数据流水线里同时练习"多分支并发 + 显式调度 + 显式合流"，建立对实际工程图形状的直觉。
+构造一次性同步流水线：输入记录被分成三条逻辑分支，每条分支处理一批记录，阶段为 `parse -> enrich`，最后在 merge scheduler 上收束成 `Report`。
 
-## 前置理解
+## Part 1：输入边界
 
-- 你已经做完前两题。
-- 你知道如何把一段工作拆成多个阶段。
-- 你接受本题的重点是图结构，不是业务真实性。
+`run_pipeline(records, max_records)` 支持 0 到 `max_records` 条记录。超过上限立即抛 `std::invalid_argument`，表示本函数拒绝新 work。
 
-## 必做任务
+记录语法为 `name,nonnegative_decimal`：`name` 以字母或 `_` 开头，后续允许字母、数字、`_`；数值只能是十进制非负整数，范围 `0..1'000'000`。解析溢出、负数、超出计算边界、多逗号或格式错误都记为 invalid record，不进入 enrich。
 
-1. 设计一个小型数据流水线，固定为三阶段：`parse -> enrich -> merge`。
-2. 输入至少准备三份原始记录，例如三段文本、三条简化日志、或三份 CSV 行集合。
-3. 对每份原始记录都构造一条独立 sender 分支：
-   - `parse`：把原始记录转成结构化对象
-   - `enrich`：补充派生字段
-   - `merge`：把多个分支结果汇总成总报告
-4. `parse` 与 `enrich` 至少放在同一个线程池上显式启动一次。
-5. 多个分支之间用 `when_all` 合流。
-6. 总报告至少包含三项字段，例如：总条数、有效条数、聚合得分。
-7. 用图画出三条并列分支如何汇入最终报告。
+## Part 2：三条逻辑分支
 
-## 进阶任务
+输入按 round-robin 分进三批。即使输入少于三条，也仍构造三条 branch；空 branch 也要完成。每个 branch 复制自己要处理的字符串，因此跨 scheduler 边界不持有调用者局部 `string_view`、`span` 或引用。
 
-- 再增加一个"过滤异常记录"的子阶段，但不要引入错误处理，先把它做成纯 value path 练习。
-- 把 `merge` 再拆成"汇总统计"和"生成展示对象"两阶段，比较图形状是否更清楚。
-- 把三条固定分支升级为可扩展的 N 条分支，先在设计层面写出你会如何组织它们，不必追求一开始就写成完全泛化版本。
+## Part 3：真实 enrich 计算
 
-## 验收点
+`run_pipeline(records, max_records, EnrichHook)` 允许 checker 注入 score 函数。实现必须在 enrich 阶段调用该 hook，并使用 hook 返回值进入 merge。默认 overload 只提供普通演示 score；checker 使用自己的 hook 记录实际 thread id 和调用次数，防止把 score 预先写死在 parse 阶段。
 
-- sender 图清楚展示了三条独立分支与一个最终合流点。
-- 你没有让多个分支去并发写同一个报告对象。
-- 你能说明每个阶段的输入输出值形状。
-- 你能指出哪一段是调度边界，哪一段是纯值转换。
+## Part 4：执行资源证据
 
-## 观察点
+`Report` 记录：
 
-- sender 图可以很自然地表现"局部处理 -> 并列执行 -> 汇总收束"的结构。
-- 只要你坚持"阶段产出值、合流点组装值"，整个设计会比共享状态模式更稳。
-- 这类流水线题是后面错误处理和作用域管理的最好前置素材。
+- caller thread；
+- 每个 parse/enrich stage 的 thread id；
+- merge thread；
+- `completed_batches == 3`。
 
-## 常见坑
+checker 要求 parse 与 enrich 的 thread id 集合互不重叠，且 enrich hook 的 thread id 出现在 recorded enrich stages 中。单 scheduler 假完成体会编译通过，但作为 bad 回归必须 exit 1。
 
-- 一开始就设计过于真实的业务模型，导致心智负担全在业务细节上。
-- 三个阶段职责边界不清，最后所有逻辑都堆进 `enrich`。
-- 为了省事，把最终报告作为共享对象在多个分支里直接写字段。
-- 看到 `when_all` 就以为必须开很多线程；其实这里首先是图组合问题。
+## Part 5：收束边界
 
-## 提示
+本题是同步一次性函数，`sync_wait` 返回就是收束边界：三个已接受 batch 都完成，merge 已生成最终 report，局部 buckets 和记录副本可安全销毁。普通解析失败不会展开异常，而是计入 invalid；超限输入在提交任何 branch 前拒绝。
 
-- 原始记录越小越好，甚至可以手写几条字符串常量。
-- `parse` 阶段尽量产出干净的数据结构，不要掺杂汇总逻辑。
-- `merge` 阶段只做最终整合，不要再反向依赖某个分支的内部细节。
-- 这题适合作为后面模块 C 和结课项目的代码底座。
-
-## 复盘问题
-
-- sender 图在这题里最大的价值是什么：并发、组合、还是生命周期可见性？
-- 如果未来要加一个新分支 `audit`，你会在图的哪一层改？
-- 为什么"分支返回值"比"分支写共享状态"更利于后面加入 `upon_error`？
-- 这题里的哪几个地方已经在预告你后面会遇到作用域与生命周期问题？
-
-## 对应官方参考
-
-- `stdexec/examples/hello_world.cpp`
-- `NVIDIA/stdexec` README 的 `when_all` 与 `starts_on` 基础模式
+本题不实现通用 close/reject 对象，不声称覆盖 shutdown 后拒绝新提交或已接受 work drain 的完整运行时协议。那些由 H1 run_loop 和 P1 pipeline 项目主讲；本题只给它们准备“有界输入、已接受工作必须在返回前收束”的前置模型。

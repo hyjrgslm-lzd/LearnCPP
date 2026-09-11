@@ -1,3 +1,0 @@
-usage: verify_fuzz.py [-h] --output OUTPUT [--timeout TIMEOUT] [--clang CLANG]
-                      [--source SOURCE]
-verify_fuzz.py: error: output already exists: F:\CPPTrain\LearnCPP\Engineering_Study\references\validation\toolchain\g1-r4-fuzz-strict-marker

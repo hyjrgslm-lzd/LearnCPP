@@ -95,7 +95,7 @@ auto result = parse_user_id(text)
 
 `expected` 的可复制、可移动能力由 `T` 与 `E` 决定。`expected<std::unique_ptr<T>, Error>` 可移动不可复制；链式操作要用 `std::move(e).and_then(...)` 才能把成功值移入下一步。对 `const expected<T,E>&` 调用时，回调看到的是 `const T&` 或 `const E&`；不能从中移动资源。
 
-C++23 `std::expected<T, E>` 禁止 `T` 是引用类型，`std::expected<int&, Error>` 是 ill-formed。非作者审查已保留本机负例：`references/validation/reviews/states-independent-evidence/expected-ref-negative/expected_ref_negative.cpp` 和 `expected-ref-negative-build-r2.json` 证明 MSVC 按 N4950 拒绝 `std::expected<int&, Error>`。
+C++23 `std::expected<T, E>` 禁止 `T` 是引用类型，`std::expected<int&, Error>` 是 ill-formed。需要借用时，用指针、`std::reference_wrapper<T>` 或显式 observer 类型表达“可能没有值但不拥有对象”。
 
 C++23 主线若要表达“成功时借用一个已有对象，失败时返回错误”，可用 `std::expected<std::reference_wrapper<T>, E>`、指针、迭代器或回调访问。`reference_wrapper<T>` 只是一个可复制的引用包装，不延长被引用对象生命期；容器重分配、删除元素或被借用对象析构后，包装仍会悬垂。
 

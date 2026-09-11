@@ -1,7 +1,0 @@
-{
-  "exit_code": 0,
-  "timed_out": false,
-  "expected_failure": false,
-  "stdout": "Engineering_Study\\references\\validation\\odr\\review-fix-10-symbol-missing-configure.stdout.txt",
-  "stderr": "Engineering_Study\\references\\validation\\odr\\review-fix-10-symbol-missing-configure.stderr.txt"
-}

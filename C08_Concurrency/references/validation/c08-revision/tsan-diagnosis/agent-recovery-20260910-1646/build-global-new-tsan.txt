@@ -1,5 +1,0 @@
-/usr/bin/ld: /tmp/global_new_probe-34e856.o: in function `operator new(unsigned long)':
-/mnt/f/CPPTrain/LearnCPP/global_new_probe.cpp:4: multiple definition of `operator new(unsigned long)'; /usr/lib/llvm-18/lib/clang/18/lib/linux/libclang_rt.tsan_cxx-x86_64.a(tsan_new_delete.cpp.o):(.text._Znwm+0x0): first defined here
-/usr/bin/ld: /tmp/global_new_probe-34e856.o: in function `operator delete(void*)':
-/mnt/f/CPPTrain/LearnCPP/global_new_probe.cpp:5: multiple definition of `operator delete(void*)'; /usr/lib/llvm-18/lib/clang/18/lib/linux/libclang_rt.tsan_cxx-x86_64.a(tsan_new_delete.cpp.o):(.text._ZdlPv+0x0): first defined here
-clang++-18: error: linker command failed with exit code 1 (use -v to see invocation)

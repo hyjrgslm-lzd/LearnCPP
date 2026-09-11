@@ -70,7 +70,7 @@ if(BUILD_TESTING AND COROUTINE_STUDY_BUILD_REFERENCE)
         tests/rpc_student_test.cpp
         good/client.cpp
         good/server.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/../../references/validation/c09-refresh/authors/rpc/good_protocol_alt.cpp
+        good/protocol_alt.cpp
     )
     target_include_directories(Capstone4_rpc_framework_protocol_good_check PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/include
@@ -87,7 +87,7 @@ if(BUILD_TESTING AND COROUTINE_STUDY_BUILD_REFERENCE)
         tests/rpc_student_test.cpp
         good/client.cpp
         good/server.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/../../references/validation/c09-refresh/authors/rpc/bad_newline_protocol.cpp
+        bad/protocol_newline.cpp
     )
     target_include_directories(Capstone4_rpc_framework_bad_newline_check PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/include

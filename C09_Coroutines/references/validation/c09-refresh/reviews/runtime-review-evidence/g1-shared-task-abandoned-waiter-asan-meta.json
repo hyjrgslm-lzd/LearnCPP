@@ -1,6 +1,0 @@
-{
-  "exit_code": 1,
-  "source_sha256": "0fad2bd9270a642126805b95eb3f8b5a967478ed09d1916dfb64251b2b637df4",
-  "command_file": "C09_Coroutines\\references\\validation\\c09-refresh\\reviews\\runtime-review-evidence\\g1-shared-task-abandoned-waiter-asan-command.txt",
-  "output_file": "C09_Coroutines\\references\\validation\\c09-refresh\\reviews\\runtime-review-evidence\\g1-shared-task-abandoned-waiter-asan-output.txt"
-}

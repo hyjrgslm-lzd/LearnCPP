@@ -1,1 +1,0 @@
-﻿"call "D:\VisualStudio2026\Installed\Common7\Tools\VsDevCmd.bat" -arch=x64 >nul && "F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\toolchain-probe\out\msvc-named-modules\named_modules_probe.exe""

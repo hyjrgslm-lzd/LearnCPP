@@ -69,7 +69,6 @@
 
 ## 对应参考
 
-- `references/implementation-spec.md`
 - `references/source-reading.md`
 - P2502R2：`std::generator`
 - P2278R4：`basic_const_iterator`

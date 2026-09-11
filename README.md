@@ -14,7 +14,7 @@
 - **GPU 计算**：对象与资源基础、必要数值和性能知识 → C14；无需先读完整个异步课程组。
 - **引擎开发**：构建与对象基础 → C15，再按模块补齐并发、渲染和网络知识。
 
-目录采用 `C编号_具体主题`，按全局课程版图排序。编号提供默认阅读次序，实际硬先修以章节说明为准；空号留给尚未建设的课程，不创建占位目录。C03 提供类型、不变量、错误与接口设计的公共基础；C05 补充数据表达与常用设施；C04 提供泛型、编译期编程与反射主讲；C07 承接操作系统、内存与 I/O。各课的实际验证和未覆盖环境见质量报告，不能把目录排序当成所有先修已全部齐备。
+目录采用 `C编号_具体主题`，按全局课程版图排序。编号提供默认阅读次序，实际硬先修以章节说明为准；空号留给尚未建设的课程，不创建占位目录。C03 提供类型、不变量、错误与接口设计的公共基础；C05 补充数据表达与常用设施；C04 提供泛型、编译期编程与反射主讲；C07 承接操作系统、内存与 I/O。各课的工具链要求、能力限制和运行方法见其构建说明，不能把目录排序当成所有先修已全部齐备。
 
 ## 已有课程
 
@@ -22,20 +22,20 @@
 |---|---|---|
 | 公共基础 | [C01_Build_Compile_Link](C01_Build_Compile_Link/README.md) | 构建与调试、编译链接、ABI、CMake、Modules、依赖与包交付；11章/13练习 |
 | 公共基础 | [C02_Objects_Lifetime_Ownership](C02_Objects_Lifetime_Ownership/README.md) | 初始化、表达式、对象模型、生命周期、所有权、智能指针、存储复用；16章/15练习单元 |
-| 公共基础 | [C03_Type_Modeling_Interface_Design](C03_Type_Modeling_Interface_Design/README.md) | 类型/值/状态、错误与异常安全、多态与擦除、包装/契约、接口演进；18章、15专题练习＋综合项目与前沿单元；状态见质量报告 |
-| 公共基础 | [C04_Generic_CompileTime_Reflection](C04_Generic_CompileTime_Reflection/README.md) | 泛型、查找/约束、类型计算、常量求值、反射与编译成本；25章/21单元，含进阶机制、Mp11/Hana及编译成本实验；验证与未测边界见质量报告 |
-| 公共基础 | [C05_Data_Representation_Standard_Facilities](C05_Data_Representation_Standard_Facilities/README.md) | 字节/编码、解析格式化、时间/时区、路径配置、schema与资源清单包；21章/20单元，含fmt/spdlog同步前端；验证与审查见质量报告 |
-| 公共基础与专题进阶 | [C06_Ranges](C06_Ranges/README.md) | 数据结构、容器、算法、Ranges与迭代器实现；保留C++26默认，标准/实现及验证状态见课程质量报告 |
-| 系统与异步基础 | [C07_OS_Memory_System_IO](C07_OS_Memory_System_IO/README.md) | 进程/线程、句柄、虚拟内存/映射、allocator/pmr/池、IPC/装载、readiness/completion；19章/11单元，Windows与WSL验证及证据边界见质量报告 |
-| 专题进阶 | [C08_Concurrency](C08_Concurrency/README.md) | 线程、同步、内存模型与回收；53题及独立原生主体，新增异步日志与C++29专题；Windows/WSL验证和未测边界见本轮报告，CPU性能资产兼作C13入口 |
-| 专题进阶 | [C09_Coroutines](C09_Coroutines/README.md) | 协程协议、控制流、帧与生命周期、取消组合、I/O 与 RPC；[37 单元审计与验证](C09_Coroutines/references/quality-report.md) |
-| 专题进阶 | [C10_Execution](C10_Execution/README.md) | sender/receiver、scheduler、工作组合、完成通道与运行时 |
+| 公共基础 | [C03_Type_Modeling_Interface_Design](C03_Type_Modeling_Interface_Design/README.md) | 类型/值/状态、错误与异常安全、多态与擦除、包装/契约、接口演进；18章、15专题练习＋综合项目与前沿单元 |
+| 公共基础 | [C04_Generic_CompileTime_Reflection](C04_Generic_CompileTime_Reflection/README.md) | 泛型、查找/约束、类型计算、常量求值、反射与编译成本；25章/21单元，含进阶机制、Mp11/Hana及编译成本实验 |
+| 公共基础 | [C05_Data_Representation_Standard_Facilities](C05_Data_Representation_Standard_Facilities/README.md) | 字节/编码、解析格式化、时间/时区、路径配置、schema与资源清单包；21章/20单元，含fmt/spdlog同步前端 |
+| 公共基础与专题进阶 | [C06_Ranges](C06_Ranges/README.md) | 数据结构、容器、算法、Ranges与迭代器实现；保留C++26默认，标准及实现边界见课内说明 |
+| 系统与异步基础 | [C07_OS_Memory_System_IO](C07_OS_Memory_System_IO/README.md) | 进程/线程、句柄、虚拟内存/映射、allocator/pmr/池、IPC/装载、readiness/completion；19章/11单元，提供Windows与Linux路径 |
+| 专题进阶 | [C08_Concurrency](C08_Concurrency/README.md) | 线程、同步、内存模型与回收；53题及独立原生主体，新增异步日志与C++29专题；CPU性能资产兼作C13入口 |
+| 专题进阶 | [C09_Coroutines](C09_Coroutines/README.md) | 协程协议、控制流、帧与生命周期、取消组合、I/O 与 RPC；37个单元 |
+| 专题进阶 | [C10_Execution](C10_Execution/README.md) | sender/receiver、scheduler、完成通道、task/scope、原生 I/O 与异构执行；包含组合与实现练习 |
 | 领域应用 | [C14_GPU](C14_GPU/README.md) | CUDA、设备执行与内存层级、GPU 性能和算子实现 |
 | 领域应用 | [C15_Unreal_Engine](C15_Unreal_Engine/README.md) | Unreal Engine 对象、资源、任务、渲染及网络架构；当前覆盖 C15 中的 UE 专题 |
 
-各课独立配置和构建。进入课内 README 的阅读路线与构建指南后，再按目标阅读正文、做练习。实际验证、独立审查和环境限制，以对应课程的质量报告为准。
+各课独立配置和构建。进入课内 README 的阅读路线与构建指南后，再按目标阅读正文、做练习。工具链要求、能力探测与运行方法见各课构建说明。
 
-全局范围、先修与进度见 [LEARNCPP_GLOBAL_PLAN](LEARNCPP_GLOBAL_PLAN.md)；教学、实验和审查标准见 [CONTENT_REFACTORING_GUIDE](CONTENT_REFACTORING_GUIDE.md)。
+全局范围、先修与目标见 [LEARNCPP_GLOBAL_PLAN](LEARNCPP_GLOBAL_PLAN.md)；教学、实验和审查标准见 [CONTENT_REFACTORING_GUIDE](CONTENT_REFACTORING_GUIDE.md)。
 
 ## 目录迁移与旧记录
 
@@ -52,6 +52,10 @@
 | `GPU_Study` | `C14_GPU` |
 | `UELearn` | `C15_Unreal_Engine` |
 
-旧日志、测量结果和冻结 SHA 清单保留当时的原文；查找其中的文件时，先按上表换算课程路径。历史 SHA 绑定当时版本，迁移中更新过路径的文件以新的验证记录为准。迁移验证与文件保留核对见[目录迁移记录](C02_Objects_Lifetime_Ownership/references/directory-migration.md)。
+旧目录名仅用于阅读导航；旧构建缓存包含本机绝对路径，迁移后应重新配置。
 
 旧 CMake 缓存包含绝对路径，迁移后请使用新构建目录重新配置；原缓存和构建产物保留在本地，不纳入 Git。各课顶层 CMake project 与生成的 VS solution 使用课程目录名；单题 target 保留题号。Unreal 宿主项目、主模块及 Game/Editor Target 同步为 `C15_Unreal_Engine` 系列名称，原 `UELearn.uproject` 改为 `C15_Unreal_Engine.uproject`。
+
+## 提交范围
+
+Git只收录项目源码、课程文档、可复用构建/测试/基准脚本及必要固定测试输入。运行日志、测量样本、性能结果、审查和执行过程记录、交付清单及构建产物留在本机忽略目录，不提交远端。`exercises/**/validation/good`、`bad`等真实测试源码属于项目内容，不与运行输出混淆。

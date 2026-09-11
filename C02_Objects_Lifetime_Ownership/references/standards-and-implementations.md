@@ -26,7 +26,7 @@
 
 ## 已执行的前置能力调查
 
-[完整probe源码与结果](validation/author-storage-probes/results-20260908.md)记录：本机MSVC的C++23配置实际报告 `__cplusplus=202400`、`_MSVC_LANG=202400`；Clang `-std=c++23`报告202302。两者都报告implicit move和range-for对应宏，但本次range-for probe只检查宏，不能据此代替正文的行为实验。
+能力探测应同时记录编译器、标准模式、feature-test 宏和最小行为样例。宏存在不能代替正文的行为实验；同一设施在 MSVC、Clang 和标准库实现之间也可能有不同支持边界。
 
 MSVC的 `start_lifetime_as` 样例实际完成编译、链接与运行；Clang22.1.3配合当前MSVC STL未提供对应宏，探针在明确的能力检查处拒绝编译。它是当前前端与库组合的限制，不是用另一API写一份样例就能填成PASS的分支。
 
@@ -34,8 +34,8 @@ MSVC的 `start_lifetime_as` 样例实际完成编译、链接与运行；Clang22
 
 ## 标准库源码导读输入
 
-本机MSVC头文件标识为 `_MSVC_STL_VERSION=145`、`_MSVC_STL_UPDATE=202604L`，固定的 `memory/vector/xmemory/xutility/utility/yvals_core.h` 输入SHA见[local-stl-inputs](validation/local-stl-inputs.json)。这是本次本地源码指纹，不承诺与某个在线上游提交字节相同。各章若采用固定上游版本，应另外写明提交、路径和阅读问题。
+本机 STL 头文件标识和源码指纹只能说明当前安装内容，不承诺与某个在线上游提交字节相同。各章若采用固定上游版本，应另外写明提交、路径和阅读问题。
 
 08/09/10沿 `unique_ptr`、`_Ptr_base`、控制块的增减引用与销毁入口追踪对象/控制块两种责任；12从显式生命期接口追到前端builtin边界；15对照容器分配保护与迁移的提交时机。源码阅读要解释成功、失败和清理路径，不能只贴仓库首页或从某个私有字段名推导标准要求。
 
-最终整课验证必须另绑定实际完成的正文、练习和二进制；本页前置probe不能自动覆盖后续修改。当前各批次仍以[质量报告](quality-report.md)列出的独立审查范围为准。
+整课验证必须另绑定实际完成的正文、练习和二进制；前置 probe 不能自动覆盖后续修改。运行记录和本机指纹属于过程产物，不作为稳定课程文档提交。

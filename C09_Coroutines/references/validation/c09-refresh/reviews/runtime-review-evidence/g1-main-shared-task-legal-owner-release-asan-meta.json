@@ -1,6 +1,0 @@
-{
-  "exit_code": 0,
-  "source_sha256": "199c99b013db74854a0d4f8099257643a628e76c33c4babfbf69ba4ecc68463b",
-  "command_file": "C09_Coroutines\\references\\validation\\c09-refresh\\reviews\\runtime-review-evidence\\g1-main-shared-task-legal-owner-release-asan-command.txt",
-  "output_file": "C09_Coroutines\\references\\validation\\c09-refresh\\reviews\\runtime-review-evidence\\g1-main-shared-task-legal-owner-release-asan-output.txt"
-}

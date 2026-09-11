@@ -34,8 +34,8 @@ arena、pool、standard pmr resource 的差异要结合 stage 时间和 counters
 
 ## 输出之后再分析
 
-正式输出是 `result.json` 和 `samples/*.json`。`result.json` 只有在所有 case 都有 5 个正式 valid 样本、fingerprint 前后一致时才标记 `phase_valid: true`。`samples` 保留每个子进程的 stdout/stderr/exit/timeout/cleanup/parsed 数据。
+正式输出是 `result.json` 和 `samples/*.json`。`result.json` 只有在所有 case 都有 5 个正式 valid 样本、fingerprint 前后一致时才标记 `phase_valid: true`。`samples` 保留每个子进程的 stdout/stderr/exit/timeout/cleanup/parsed 数据。它们是本机实验产物，应留在本地输出目录或单独归档，不提交进课程源码。
 
-正式结果已经冻结在 [`references/measurements/cost-analysis.md`](../references/measurements/cost-analysis.md)。这份分析只按 Windows 与 WSL/Linux 分别解释，不跨系统排名；同一系统内也先看输入规模、stage、counter 和离散度，再给结论。
+分析报告只按 Windows 与 WSL/Linux 分别解释，不跨系统排名；同一系统内也先看输入规模、stage、counter 和离散度，再给结论。
 
 本轮最有教学价值的结果不是“哪个 API 更快”，而是几个反直觉边界：mapped 能把课程层面的 `read_calls` 降到 0，但仍要物化 owned chunks；completion 能证明 IOCP/io_uring 路径真的产生 completion 与 depth，但端到端仍受 sink 阶段支配；allocation 里减少 upstream 调用也可能换来 setup、cleanup 或 peak bytes。数字能支持机制判断，不能替代实验边界说明。

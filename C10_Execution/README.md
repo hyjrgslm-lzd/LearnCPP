@@ -1,276 +1,42 @@
 # C10：Execution 与运行时设计
 
-## 这套文档要解决什么问题
+本课面向有现代C++基础、尚未系统掌握sender/receiver的工程师。从对象、执行与完成协议出发，逐步理解组合、调度、环境、取消和收束，再亲手实现adaptor与运行时，接入真实I/O和异构执行。采用记录处理流水线贯穿，局部机制用小实验展开；正文主讲知识，练习验证知识。
 
-这不是一套"背 API"的笔记，而是一套"通过亲手编码理解框架设计"的练习包。
+先读[课程地图](chapters/00-course-map.md)和[构建指南](exercises/BUILD_GUIDE.md)。目录、题号或旧测试通过都不单独代表完成；实际验证记录留在本机 build/validation 目录，不作为课程源码提交。
 
-截至 2026-03-31，在 Visual Studio 2026 / MSVC 的公开资料里，标准库 `<execution>` 仍主要对应 C++17 并行算法执行策略，如 `seq`、`par`、`par_unseq`；如果你要练的是 C++26 / P2300 的 sender-receiver 模型，那么本地最现实的主线是用 `stdexec` 来学习 `std::execution` 的设计思想。
+## 阅读路线
 
-因此，这套文档采取两层定位：
+| 阶段 | 正文 | 实践入口 |
+|---|---|---|
+| 建立执行模型 | [01 五对象与生命周期](chapters/01-execution-model.md)、[02 惰性与组合](chapters/02-composition.md) | A1–A3；D11/D12回看底层协议 |
+| 工作在哪里执行 | [03 调度器与上下文](chapters/03-schedulers.md) | B4–B6，starts_on/continues_on/on及真实执行位置 |
+| 完成与上下文 | [04 error/stopped](chapters/04-channels.md)、[05 environment/scope](chapters/05-environments-and-scopes.md) | C1/C2、D11–D13 |
+| 从使用进入实现 | [06 定制点](chapters/06-customization.md)、[07 完成签名](chapters/07-completion-signatures.md)、[08 adaptor](chapters/08-adaptor.md) | E1–F3、G1–G3；G1为已审复杂样章 |
+| 构建运行时 | [09 run_loop](chapters/09-runtime.md)、[10 task/scope](chapters/10-task-and-scope.md) | H1–H3、D14、R1；语言协程先修来自C09 |
+| 真实平台桥接 | [11 Native I/O](chapters/11-native-io.md)、[12 异构执行](chapters/12-heterogeneous.md) | I1、B02、V1；分别接C07/C14 |
+| 综合与源码 | [13 记录流水线](chapters/13-pipeline.md)、[14 两级源码阅读](chapters/14-source-reading.md)、[15 mini execution](chapters/15-mini-execution.md) | P1、S1/S2、P2 |
+| 成本与前沿 | [16 可归因测量](chapters/16-measurement.md)、[规范和实现索引](references/standards-and-implementations.md) | B01、F01原生标准设施探针与主体 |
 
-- 热身层：理解现有 MSVC `<execution>` 与并行算法执行策略。
-- 主线层：用 `stdexec` 练 sender、receiver、scheduler、operation_state、environment 这套模型。
+原26题保留稳定题号，允许改写题面与实现；原四个结课项目分别由P1、S1、S2、P2承接。逐知识去向和下游反查见[覆盖表](references/coverage.md)。
 
-## 你会得到什么
+## 本课的技术边界
 
-这套练习包分为两个阶段：
+核心优先最新可用标准：MSVC采用/std:c++latest，现有GCC13主路径C++23，Clang18按设施能力使用C++26。接受某个模式不代表完整支持该标准库；nvc++同样分别检查语言、宿主库和GPU能力。
 
-### 第一阶段：框架使用与概念理解
+规范固定N5050/N5054；代码使用固定stdexec `nvhpc-26.05`，SHA `6d7ad689f4d4831c5136e4abe1c601f9a3b64e43`。stdexec::是参考实现，exec::是扩展，nvexec::是NVIDIA异构路径；F01才检查工具链原生std::execution。具体差异、来源和日期见标准索引。
 
-- 1 份心智模型总说明。
-- 4 个模块（A/B/C1/C2/D），共约 15 道练习题。
-- 1 个结课项目 + 1 条源码阅读路线。
-- 每题统一的复盘框架。
+Windows使用真实IOCP，WSL/Linux使用已有liburing的io_uring路径。配置默认不联网、不安装依赖。Linux完整I/O验证需显式启用C10_STUDY_ENABLE_IO_URING并提供固定前缀；关闭时标NOT_ENABLED，不能当作能力通过。当前无nvc++时V1单/多GPU各自SKIP，仍保留完整正文、源码、构建与实验规格。
 
-### 第二阶段：实现技巧与架构设计
+## 怎样做题
 
-- 4 个模块（E/F/G/H），共 12 道练习题。
-- 2 个结课项目（实现级源码对照 + mini std::execution 子集实现）。
-- 覆盖 tag_invoke/CPO、类型级计算、sender adaptor 实现、run_loop、协程桥接实现等核心技术。
+实现型题目在src/student/solution.hpp完成自己的操作，main.cpp/检查器不随学生实现改条件。Reference和独立good是不同依据，bad证明检查能拒绝指定错误；不要靠改变完成标志、预填结果或调用Reference获得通过。
 
-### 总计
+运行型Student初态以UNFINISHED/exit2拒绝；纯类型题可按题面登记的精确类型检查以exit1拒绝。崩溃、超时和清理失败不是预期拒绝。观察型R1/S1/S2/B01/B02及能力单元则保留完整可运行程序，程序通过不代替读者的预测、对象图、源码分析和扩展任务。
 
-- **~27 道练习题 + 4 个结课项目**
+每个单元都要能回答：谁拥有值和op-state，何时connect/start，实际在哪里执行，三条通道怎样传播，停止与关闭之后谁负责收束。对性能结论还要给出原始数据与归因，不能只给一个总耗时或“看起来更快”。
 
-## 阅读顺序
+## 先修与跨课责任
 
-### 第一阶段
+[C02](../C02_Objects_Lifetime_Ownership/README.md)讲对象、借用与移动；[C03](../C03_Type_Modeling_Interface_Design/README.md)讲错误载荷和接口；[C04](../C04_Generic_CompileTime_Reflection/README.md)讲泛型/CPO/类型计算。它们不替代本课的具体完成协议。
 
-1. `01-心智模型.md`
-2. `02-模块A-惰性与组合.md`
-3. `03-模块B-调度与执行上下文.md`
-4. `04-模块C1-错误与取消.md`
-5. `05-模块C2-环境与作用域.md`
-6. `06-模块D-自定义sender与协程桥接.md`
-7. `07-结课项目与源码阅读路线.md`（第一阶段结课）
-
-### 第二阶段
-
-8. `08-模块E-定制化机制.md`
-9. `09-模块F-类型级技术.md`
-10. `10-模块G-sender-adaptor实现.md`
-11. `11-模块H-高级实现模式.md`
-12. `12-结课项目2-实现级源码阅读.md`（第二阶段结课）
-
-## 统一技术基线
-
-本练习包默认你已经具备本地编码条件，因此这里不写安装和工程搭建，只固定练习边界。
-
-- 语言基线：`C++20`
-- 学习主线：`stdexec`
-- 练习范围：CPU 场景
-- 常用头文件：`<stdexec/execution.hpp>`、`<exec/static_thread_pool.hpp>`、`<exec/async_scope.hpp>`
-- 排除范围：GPU、`nvexec`、`io_uring`、Linux-only 例子
-- 线程要求：除非题目特别说明，不要手写 `std::thread`
-
-## 两个阶段的定位差异
-
-### 第一阶段：你学的是"怎么用"
-
-- 理解 sender-receiver 的五个核心对象
-- 掌握 just/then/when_all/let_value/upon_error 等组合器
-- 理解惰性、显式调度、结构化并发、三条 completion channel
-- 能手写最小 sender/receiver/operation_state
-- 能阅读官方示例并理解对象关系
-
-### 第二阶段：你学的是"怎么做"
-
-- 理解 tag_invoke/CPO/niebloid 这套定制化机制及其演进
-- 理解 completion_signatures 的类型级计算和传播
-- 能实现 sender adaptor（inner receiver + channel 拦截模式）
-- 能实现 pipe 语法、retry 组合器
-- 能实现 run_loop、自定义 query、environment 组合器
-- 能实现 coroutine promise_type 与 sender 的桥接
-- 能阅读 stdexec 源码并指出实现模式
-
-## 你要始终记住的定位
-
-### 1. `std::execution` 有两个容易混淆的层面
-
-- 你在 MSVC 文档里看到的 `<execution>`，当前主要是并行算法执行策略。
-- 你真正想学的 P2300 `std::execution`，是 sender-receiver 异步执行框架。
-
-这两者有关联，但不是一回事。前者更像"给算法一个执行策略标签"；后者更像"用类型系统描述一张异步工作图"。
-
-### 2. 本地练习时，代码命名会分成两层
-
-- 标准概念层：写作 `std::execution`
-- 参考实现层：代码使用 `stdexec::` 与 `exec::`
-
-### 3. 这套文档不追求"最短可运行代码"
-
-它追求的是：
-
-- 你能把异步工作拆成图
-- 你能说清值、错误、停止三个 completion channel
-- 你能说清调度器、operation_state、作用域对象分别负责什么
-- 你能从官方示例里读出抽象对象，而不是只看语法糖
-- （第二阶段）你能解释框架的实现选择，并能实现其中的关键子集
-
-## 每题统一交付物
-
-每完成一道题，至少留下四样东西：
-
-1. 一份可运行代码。
-2. 一张 sender graph 草图。
-3. 一段 5 到 10 行的观察记录。
-4. 一段复盘结论：这一题到底让你理解了什么设计点。
-
-## 每题统一模板
-
-所有练习题都按同一模板组织：
-
-- 目标
-- 前置理解
-- 必做任务
-- 进阶任务
-- 验收点
-- 观察点
-- 常见坑
-- 提示
-- 复盘问题
-- 对应官方参考
-
-你做题时也尽量按这个模板留笔记。这样你后面回看时，会非常容易发现自己到底卡在"概念没懂"，还是"API 没用熟"，还是"实现模式没理解"。
-
-## 建议节奏
-
-### 方案 A：第一阶段 6-8 天
-
-- 第 1 天：`01` + 模块 A
-- 第 2 天：模块 B 前两题
-- 第 3 天：模块 B 第三题 + 模块 C1 第一题
-- 第 4 天：模块 C1 第二题 + 模块 C2 第一题
-- 第 5 天：模块 C2 第二题 + 模块 D 前两题
-- 第 6 天：模块 D 后两题
-- 第 7-8 天：结课项目
-
-### 方案 B：第二阶段 8-10 天
-
-- 第 1-2 天：模块 E（定制化机制）
-- 第 3-4 天：模块 F（类型级技术）
-- 第 5-6 天：模块 G（sender adaptor 实现）
-- 第 7-8 天：模块 H（高级实现模式）
-- 第 9-10 天：结课项目
-
-### 方案 C：慢练，全程 20 天
-
-- 每天只做 1-2 题
-- 每两题安排一次源码回看
-- 结课项目各预留 2 天
-
-## 统一判定标准
-
-如果你做完一道题，只是"代码跑了"，那还不够。至少再检查下面四件事：
-
-- 你能指出真正开始执行的时刻在哪里。
-- 你能指出谁拥有这次执行的生命周期。
-- 你能指出值是怎么流动的，错误和停止又会怎么流动。
-- 你能指出这道题里 scheduler 到底有没有显式出现，如果出现了，它承担了什么角色。
-
-第二阶段额外检查：
-
-- 你能指出这道题涉及了哪种 C++ 实现技术（CPO/tag_invoke/类型计算/inner receiver 等）。
-- 你能指出这种技术解决了什么问题，以及它的替代方案是什么。
-
-## 术语速查
-
-| 术语 | 你在练习里会看到什么 | 你应该问自己的问题 |
-| --- | --- | --- |
-| sender | `just(...)`、`schedule(sch)`、`when_all(...)` 的结果对象 | 它是在描述工作，还是已经开始工作？ |
-| receiver | 自定义 logging receiver、`sync_wait` 内部消费端 | 结果最终交给谁？ |
-| operation_state | `connect(sender, receiver)` 的结果 | 哪个对象真正代表"一次执行实例"？ |
-| scheduler | `pool.get_scheduler()` | 它代表线程，还是代表一类可调度能力？ |
-| environment | `get_scheduler()`、`get_stop_token()` 的查询来源 | 这些上下文是谁往下传的？ |
-| completion_signatures | `completion_signatures<set_value_t(int), ...>` | 这个 sender 在编译期承诺了哪些完成方式？ |
-| value / error / stopped | `then`、`upon_error`、`upon_stopped` | 这次完成究竟走了哪条通道？ |
-| CPO | `connect`、`set_value` 等全局函数对象 | 这个"函数"为什么是对象而不是函数模板？ |
-| tag_invoke | `friend tag_invoke(connect_t, ...)` | 为什么所有定制都走同一个 ADL 入口？ |
-| inner receiver | sender adaptor 内部包装的 receiver | 它拦截了哪个 channel，其余如何转发？ |
-
-## 统一编码约束
-
-- 每题先写最小可观察版本，再做"进阶任务"。
-- 优先记录线程 ID、阶段名、输入输出值形状。
-- 不要过早追求通用库封装，先把对象关系画清楚。
-- 不要把共享可变状态当作默认方案，优先让值沿 sender 图流动。
-- 不要为了"像并行 STL"而把 sender 图写成一大团 lambda；sender 图的目标是显式组合，不是隐藏步骤。
-
-## 一个非常重要的现实提醒
-
-`stdexec` 是参考实现，而且是实验性质项目。你本地固定的 commit 与未来版本可能存在 API 细节差异。所以如果某个练习里的写法在你固定版本上略有出入，优先保持"设计意图一致"，不要把精力浪费在追求字面拼写完全相同上。
-
-最典型的差异是：某些适配器既可能支持管道写法，也可能更适合函数式调用。比如 `let_value`，如果你本地版本的管道形式编译体验不好，就直接改成函数式调用。
-
-同样，`tag_invoke` 与 member-function dispatch 在不同版本中的支持程度可能不同。第二阶段的练习以理解设计意图为主，不纠结于某个特定 commit 的 API 形式。
-
-## 推荐做题方法
-
-每题都按下面的顺序推进：
-
-1. 先用一句话写出你认为这题在训练什么。
-2. 先画 sender graph，再落代码。
-3. 先做"必做任务"，不要一开始就追进阶。
-4. 跑通后，不马上进入下一题，先回答复盘问题。
-5. 每做完一个模块，回去重读一次 `01-心智模型.md`。
-
-## 做完整套之后你应该达到什么水平
-
-### 第一阶段完成后
-
-- 解释为什么 sender 是"工作描述对象"而不是"工作线程"。
-- 解释为什么 operation_state 是 sender/receiver 模型里必须单独存在的一层。
-- 解释为什么 scheduler 必须显式成为图的一部分，而不是隐藏在库内部。
-- 解释为什么 environment/query 能比手动层层传参更适合异步框架。
-- 解释为什么 `stopped` 不能简单等同于 `error`。
-- 看懂 `hello_world`、`scope`、`hello_coro` 这种示例背后的对象关系。
-
-### 第二阶段完成后
-
-- 解释 tag_invoke / CPO / niebloid 的设计意图和演进历史。
-- 实现一个 sender adaptor（inner receiver + channel 拦截 + 签名变换）。
-- 实现 completion_signatures 的编译期计算和变换。
-- 实现 run_loop 和 intrusive data structure。
-- 实现 coroutine promise_type 与 sender-receiver 的桥接。
-- 阅读 stdexec 源码时能指出实现模式。
-- 从零实现一个 mini std::execution 子集。
-
-## 参考资料入口
-
-做题过程中，建议反复对照下面这些资料的"概念定位"，而不是一上来通读全文：
-
-- Microsoft Learn: `<execution>`
-- Microsoft Learn: `/std` 编译开关说明
-- `NVIDIA/stdexec` README
-- `stdexec/examples/hello_world.cpp`
-- `stdexec/examples/scope.cpp`
-- `stdexec/examples/hello_coro.cpp`
-- P2300R10 `std::execution`
-- P3090R0 `std::execution Introduction`
-- P3143R0 `An in-depth walk-through of the example in P3090R0`
-- P1895R0 `tag_invoke: A general pattern for supporting customisable functions`
-- P2855 (member-function-based customization direction)
-
-## 最后一句提醒
-
-不要把这套练习当成"我要赶快会写多少个算法"。
-
-把它当成两层训练：第一层是框架使用训练——你在学习一种把异步工作表示、组合、启动、收束、传播上下文的方式。第二层是框架实现训练——你在学习用什么 C++ 技术来构建这种框架。
-
-两层都练透，你对 C++ 异步编程的理解就不再停留在"能用"，而是到达"能设计"。
-
-## C02 对象归属先修
-
-理解 operation state 与 receiver 的存活责任，可先读 [C02 构造与展开](../C02_Objects_Lifetime_Ownership/chapters/04-construction-and-unwinding.md)、[移动与返回](../C02_Objects_Lifetime_Ownership/chapters/06-move-and-return.md)和[RAII 与所有权](../C02_Objects_Lifetime_Ownership/chapters/07-raii-and-ownership.md)。C02 解释对象及资源怎样成立和转交，本课继续规定 start、完成信号、scope 与完成后收束的执行协议。
-
-## C03 完成状态与可调用对象衔接
-
-[C03 variant/错误通道](../C03_Type_Modeling_Interface_Design/chapters/05-expected-and-error-channels.md)、[类型擦除](../C03_Type_Modeling_Interface_Design/chapters/11-type-erasure.md)和[可调用包装](../C03_Type_Modeling_Interface_Design/chapters/12-callable-objects-and-type-erasure.md)提供完成载荷、动态操作与复制/借用的基础。value/error/stopped的协议含义、实际执行位置与收束责任继续由本课主讲，不能由同步包装器测试推断运行时正确。
-
-## C04 泛型与编译期桥接
-
-[进入C04课程](../C04_Generic_CompileTime_Reflection/README.md)。completion signatures与G1 my_then可回访C04的类型列表变换、表达式约束和异常规格；CPO/环境查询的具体规则仍须以本课所采用的stdexec版本为准，教学read_value不是通用sender协议。
-
-## C07 系统完成源桥接
-
-[C07 I/O 模型](../C07_OS_Memory_System_IO/chapters/11-readiness.md)、[取消与关闭](../C07_OS_Memory_System_IO/chapters/14-cancellation-shutdown.md)及[有界文件处理器](../C07_OS_Memory_System_IO/chapters/16-file-pipeline.md)提供实际系统资源与完成责任。本课继续规定 sender、receiver、operation_state 和 scope 的协议；把一个 OS completion 映射成完成信号，并不自动证明操作状态可提前销毁。
+[C07](../C07_OS_Memory_System_IO/README.md)提供系统完成源，[C08](../C08_Concurrency/README.md)提供同步和发布基础，[C09](../C09_Coroutines/README.md)提供promise/await语言协议，[C14](../C14_GPU/README.md)提供设备/stream/内存模型。基础sender组合不要求先学完整协程库；跨课桥接只在两侧必要基础之后进入。

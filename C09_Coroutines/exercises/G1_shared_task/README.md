@@ -6,7 +6,7 @@
 
 **本题基线契约：** 示例在同一线程上登记与恢复；每个已登记 waiter 的 owner 必须活到 producer 完成，不能提前销毁。`resume()` 只用于本题受控的 `suspend_always` 观察点，不是任意异步任务的驱动入口。Reference 本轮验证 `int`，不把这些结果推广成所有 T、任意线程或取消协议。
 
-非作者已验证：满足上述 owner 顺序的释放路径通过 ASan；先销毁登记 waiter 再恢复 producer 会产生 UAF。后者是本基线不支持的输入，保留在[审查证据](../../references/validation/c09-refresh/reviews/runtime-review.md)中，不进入默认运行。需要支持等待者放弃时，继续到 Capstone5 的弱登记/phase 实现；这是契约扩展，不是宣称当前基线已支持注销。
+满足上述 owner 顺序的释放路径应能通过 ASan；先销毁登记 waiter 再恢复 producer 会产生 UAF。后者是本基线不支持的输入，不进入默认运行。需要支持等待者放弃时，继续到 Capstone5 的弱登记/phase 实现；这是契约扩展，不是宣称当前基线已支持注销。
 
 ## Part 1：对象关系
 

@@ -1,7 +1,0 @@
-{
-  "change": "replace C2/C3 elapsed checks with gated start/release checks; clarify partial PASS semantics",
-  "build": "C2_when_all_when_any C3_async_scope C2_when_all_when_any_reference C3_async_scope_reference exit=0",
-  "starter_r2": "starter-runs-r2.json",
-  "c2_c3_gated": "starter-runs-c2-c3-gated-r2.json",
-  "reference": "C2/C3 reference ctest 2/2 passed"
-}

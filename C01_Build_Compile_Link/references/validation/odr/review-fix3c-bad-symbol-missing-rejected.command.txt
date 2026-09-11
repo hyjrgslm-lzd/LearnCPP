@@ -1,1 +1,0 @@
-call "D:\VisualStudio2026\Installed\Common7\Tools\VsDevCmd.bat" -arch=x64 >nul && "D:\cmake\install\bin\cmake.exe" -DBINARY_DIR="F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\sample-odr-review-fix3c-bad\symbol_missing" -DDUMPBIN=dumpbin -P "F:\CPPTrain\LearnCPP\Engineering_Study\exercises\C1_odr\cmake\observe_symbols.cmake"

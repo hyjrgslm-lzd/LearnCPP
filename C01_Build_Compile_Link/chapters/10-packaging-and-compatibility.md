@@ -39,7 +39,7 @@ target_link_libraries(app PRIVATE LessonPackage::lesson_static)
 
 Windows 上 consumer 链接 shared target 时，链接阶段使用导入库；运行阶段还要找到 DLL。J1 的 shared consumer 用子进程 `PATH` 临时加入 `prefix_B/bin`，不修改系统 PATH。缺 DLL 负例只删除 stage 副本里的 DLL，再运行已构建的 consumer，要求失败来自运行时装载，而不是 configure 或 build。
 
-ELF 平台通常涉及 rpath、`LD_LIBRARY_PATH` 和 loader cache。本课保留条件路径，但本轮不把未运行的 ELF 路径写成通过。
+ELF 平台通常涉及 rpath、`LD_LIBRARY_PATH` 和 loader cache。本课保留条件路径，但不能把未运行的 ELF 路径写成通过。
 
 ## 失败对照
 

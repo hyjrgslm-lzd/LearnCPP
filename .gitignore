@@ -108,3 +108,33 @@ Thumbs.db
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
+
+# ── 本机运行记录与过程材料（不属于课程交付）────────────
+# 课程保留源码、构建/测试脚本、固定测试输入和教材；运行输出留本地。
+/C*/references/validation/
+/C*/references/measurements/
+/C*/references/benchmarks/
+/C*/references/reviews/
+/C*/references/implementation-spec*
+/C*/references/quality-report*
+/C*/references/delivery*
+/C*/references/revision-plan*
+/C*/references/revision-audit*
+/C*/references/revision-quality-report*
+/C*/references/revision-delivery*
+/C*/references/progress*
+/C*/references/changes.md
+/C*/references/changed-files*
+/C*/references/evidence-index*
+/C*/references/wsl-validation*
+/C*/references/directory-migration*
+/C10_Execution/references/coverage.csv
+/C06_Ranges/validation/
+/C08_Concurrency/IMPLEMENTATION.md
+/C08_Concurrency/topics/reclamation/student-paths.sha256
+/C08_Concurrency/exercises/U01_async_logging/validation/evidence-*.json
+**/.claude/settings.local.json
+
+/C*/exercises/**/notes/author-validation*.md
+/C08_Concurrency/topics/*/VALIDATION.md
+/C08_Concurrency/topics/performance/c08-revision-queue-evidence.md

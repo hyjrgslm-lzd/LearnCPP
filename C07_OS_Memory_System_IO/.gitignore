@@ -1,2 +1,2 @@
-# Preserve verification transcripts; build directories stay ignored by the repository.
-!references/validation/**/*-LastTest.log
+# Runtime outputs are local; project sources and fixed test fixtures remain tracked.
+references/validation/

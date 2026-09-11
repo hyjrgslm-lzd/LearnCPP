@@ -51,6 +51,5 @@
 
 ## 对应参考
 
-- `references/implementation-spec.md`
 - `references/standards.md`
 - N5047 LWG Poll 13 / P3725R3：受限 `filter_view const begin/end` 分支。

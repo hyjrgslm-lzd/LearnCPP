@@ -18,7 +18,7 @@ ctest --preset verify-core
 
 核心路径不下载第三方依赖。完整环境、单题构建、C++26 探测、基准运行和平台限制见[构建指南](exercises/BUILD_GUIDE.md)。
 
-通用构建、编译链接、符号、ABI 和工具能力探测的连续讲解见 [C01 工程课程](../C01_Build_Compile_Link/README.md)。本课在全局版图中主讲 C08：共享状态、同步、发布和安全回收；现有 CPU 性能、SIMD 与 NUMA 实验同时是 C13 的可复用输入，不代表完整 C13 已交付。各专项先修和未验证边界仍以本课[覆盖表](references/coverage.md)与[质量报告](references/quality-report.md)为准。
+通用构建、编译链接、符号、ABI 和工具能力探测的连续讲解见 [C01 工程课程](../C01_Build_Compile_Link/README.md)。本课在全局版图中主讲 C08：共享状态、同步、发布和安全回收；现有 CPU 性能、SIMD 与 NUMA 实验同时是 C13 的可复用输入，不代表完整 C13 已交付。各专项先修和未验证边界见本课[覆盖表](references/coverage.md)和[标准与实现状态](references/standards-and-implementations.md)。
 
 ## 学习路线
 
@@ -70,13 +70,13 @@ SIMD 由第 15 章连接完整演进系列，NUMA 从[拓扑与亲和性练习](
 
 [原生设施单元](exercises/F03_native_facilities/README.md)连接标准 HP、RCU、sender 的独立主体。标准版本、是否请求、工具链能力和实际运行状态分别看待；模型通过不能补成原生 PASS。
 
-队列的新增定位入口见[演进证据](topics/performance/c08-revision-queue-evidence.md)。[本轮实施规格](references/revision-plan-20260910.md)与[审计清单](references/revision-audit-20260910.md)记录补全范围；当前结果以[本轮质量报告](references/revision-quality-report-20260910.md)为准。旧报告和样本保留其历史版本含义。
+队列的新增定位入口见[队列验证与基准](topics/queues/08-validation-and-benchmark.md)。它记录诊断口径、可复现实验命令和结论边界；旧报告和样本只保留其历史版本含义，不作为当前源码的提交内容。
 
 ## 版本、证据与覆盖
 
 课程默认构建 C++23；常用并发设施分别来自 C++11/17/20。C++26 的 SIMD、sender/receiver、回收设施与新原子操作按实际头文件、特性宏、实例化和链接探测。标准、TS、第三方 API 的差异见[标准与实现状态](references/standards-and-implementations.md)。
 
-[知识覆盖与迁移表](references/coverage.md)对应知识点、正文、练习和验证。[质量与验证报告](references/quality-report.md)记录实际工具链、测试、独立 review 和未验证项。历史文件名、项目 ID 仅用于稳定导航，不决定算法实际具备什么保证。
+[知识覆盖与迁移表](references/coverage.md)对应知识点、正文、练习和验证口径。[标准与实现状态](references/standards-and-implementations.md)记录规范、工具链能力和第三方版本。历史文件名、项目 ID 仅用于稳定导航，不决定算法实际具备什么保证。
 
 ## C02 对象生命期先修
 
@@ -85,3 +85,7 @@ SIMD 由第 15 章连接完整演进系列，NUMA 从[拓扑与亲和性练习](
 ## C07 系统与内存基础桥接
 
 [C07 系统模型](../C07_OS_Memory_System_IO/chapters/01-system-model.md)、[虚拟内存](../C07_OS_Memory_System_IO/chapters/04-virtual-memory.md)、[pmr 与池](../C07_OS_Memory_System_IO/chapters/07-pmr.md)补齐线程所处地址空间、页与分配责任；[IPC 与文件锁](../C07_OS_Memory_System_IO/chapters/10-ipc.md)说明跨进程资源边界。共享地址不等于同步，跨进程信号也不能直接替换本课的 C++ 内存模型与回收协议。
+
+## C10 执行协议桥接
+
+[C10 run_loop 与环境](../C10_Execution/chapters/09-runtime.md)把 mutex/CV、发布和关闭协议用于异步执行运行时；[task/scope](../C10_Execution/chapters/10-task-and-scope.md)进一步说明完成、停止与对象收束。sender 图不替代本课的同步证明。

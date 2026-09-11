@@ -1,2 +1,0 @@
-D:\cmake\install\bin\ctest.exe --test-dir Coroutine_Study/exercises/build/full-windows -C Release -R mini_as_awaitable_test --output-on-failure
-timeout_seconds=120

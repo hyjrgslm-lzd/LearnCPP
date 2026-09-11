@@ -1,9 +1,0 @@
-snapshot=/root/learncpp-c08-src/final-20260910-173010-d5356576
-file_count=1601
-size_bytes=16861902
-
-hidden_dirs:
-
-build_dirs:
-
-forbidden_files:

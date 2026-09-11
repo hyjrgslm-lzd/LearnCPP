@@ -18,11 +18,11 @@ ICU 扩展默认关闭；只有显式启用 `DATA_STUDY_ENABLE_ICU` 或手动运
 .\C05_Data_Representation_Standard_Facilities\exercises\tools\prepare_icu.ps1
 ```
 
-脚本只写入本课隔离前缀和 `references/validation/icu-prepare-*` 证据目录；不会全局安装 ICU、修改 `PATH`、改注册表、调用 vcpkg/conan、提交或推送。
+脚本只写入本课隔离前缀；运行记录留在本地未跟踪目录。它不会全局安装 ICU、修改 `PATH`、改注册表、调用 vcpkg/conan、提交或推送。
 
 ## 构建策略
 
-脚本复用 C02 `record_process.py` 记录所有外部命令，超时和进程树清理由 C01 `process_runner.py` 负责。源码获取使用 sparse checkout，只取 `icu4c`，避免 ICU4J 测试资源在 Windows 上触发长路径问题。
+脚本复用 C02 `record_process.py` 记录所有外部命令，超时和进程树清理由 C01 `process_runner.py` 负责；这些记录不属于课程源码提交。源码获取使用 sparse checkout，只取 `icu4c`，避免 ICU4J 测试资源在 Windows 上触发长路径问题。
 
 脚本按官方 ICU4C Windows 命令行构建方式调用：
 
@@ -47,4 +47,4 @@ find_package(ICU 77.1 EXACT REQUIRED COMPONENTS uc i18n data)
 
 探针会分别 Debug/Release 构建并运行，运行时把本课 `bin64` 临时加到子进程 `PATH`。程序断言 `u_getVersion` 为 77.1、`u_getUnicodeVersion` 为 16.0，并执行一个 NFC 归一化烟测。
 
-最终证据在最新 `references/validation/icu-prepare-*/summary.json`，其中记录提交、命令 exit、输出文件、库/DLL SHA256、license SHA256、Debug/Release 探针结果。`summary.json` 为 `PASS` 只表示 ICU 77.1 依赖准备完成，不表示完整 C05 ICU 课程验收完成。
+探针通过只表示 ICU 77.1 依赖准备完成，不表示完整 C05 ICU 课程验收完成。需要发布结论时，只把固定版本、准备命令和探针范围写回课程文档。

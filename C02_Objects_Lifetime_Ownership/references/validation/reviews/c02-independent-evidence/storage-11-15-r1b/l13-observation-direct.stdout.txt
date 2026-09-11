@@ -1,3 +1,0 @@
-bit_pattern_1_0f=0x3f800000
-L13_aliasing_observation OK
-

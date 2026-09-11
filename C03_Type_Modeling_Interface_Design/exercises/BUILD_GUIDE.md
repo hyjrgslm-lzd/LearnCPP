@@ -55,9 +55,9 @@ Windows ASan使用MSVC RelWithDebInfo，构建时从当前cl目录复制匹配�
 使用现有 [record_process.py](../../C02_Objects_Lifetime_Ownership/exercises/tools/record_process.py) 记录有界子进程。其底层 [process_runner.py](../../C01_Build_Compile_Link/exercises/tools/process_runner.py) 只管理自己启动的进程；现有文件拒绝被覆盖，重跑使用新证据名。
 
 ```powershell
-python ../../C02_Objects_Lifetime_Ownership/exercises/tools/record_process.py --output ../references/validation/my-release.json --timeout 180 -- ctest --preset verify-core
+python ../../C02_Objects_Lifetime_Ownership/exercises/tools/record_process.py --output ../../build/local-records/c03-release.json --timeout 180 -- ctest --preset verify-core
 ```
 
 测试一般外部超时30秒，编译/构建驱动外部超时180秒或记录的有界上限。负例必须匹配预期阶段、退出码和诊断，超时、缺DLL、启动/清理失败都是真失败。校验函数复用 [check.hpp](../../C01_Build_Compile_Link/exercises/include/check.hpp)，Release下仍执行。
 
-Student接线复用 [audit_student.py](../../C02_Objects_Lifetime_Ownership/exercises/tools/audit_student.py)：配置前请求CMake codemodel-v2，记录所有Student目标的 `--clean-first` `/showIncludes` 构建，再按配置审计。最终命令、SHA和结果见课程质量报告，历史报告不能代替当前版本重跑。
+Student接线复用 [audit_student.py](../../C02_Objects_Lifetime_Ownership/exercises/tools/audit_student.py)：配置前请求CMake codemodel-v2，记录所有Student目标的 `--clean-first` `/showIncludes` 构建，再按配置审计。历史运行记录不能代替当前版本重跑。

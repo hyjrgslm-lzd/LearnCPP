@@ -1,2 +1,0 @@
-preflight PASS; starting student workers
-I3 student PASS: 8000 reads, 65 destructions, bounded retirement

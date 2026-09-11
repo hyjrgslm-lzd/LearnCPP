@@ -33,7 +33,7 @@ Windows 还有一个容易混淆的文件：导入库。导入库通常也是 `.
 
 动态库里的函数不一定自动成为外部消费者可见的 API。Windows 通常用 `__declspec(dllexport)` 标记生产 DLL 时导出，用 `__declspec(dllimport)` 标记消费 DLL 时导入。静态库消费不能带 `dllimport`，因为没有 DLL 导入表，函数定义在静态链接阶段进入程序。
 
-ELF 平台常用默认可见性或 `__attribute__((visibility("default")))` 控制导出。本课保留 ELF 条件分支和命令，但本轮主验收只跑 Windows/MSVC。
+ELF 平台常用默认可见性或 `__attribute__((visibility("default")))` 控制导出。本课保留 ELF 条件分支和命令；未在当前机器运行的平台路径不能写成已通过。
 
 D1 使用自己的简单宏，只证明“导出符号能被链接和显式查找”。E/J 使用更完整的 `lesson_api.h`，其中 `LESSON_STATIC` 让静态消费时 `LESSON_API` 为空，shared producer 使用 `dllexport`，shared consumer 使用 `dllimport`。
 

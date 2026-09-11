@@ -1,1 +1,0 @@
-python C09_Coroutines/exercises/F3_halo_diagnose/sample_f3.py C09_Coroutines/exercises/build/c09-author-mechanisms/F3_halo_diagnose/Release/F3_halo_diagnose.exe

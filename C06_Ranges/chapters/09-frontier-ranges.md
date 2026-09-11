@@ -2,7 +2,7 @@
 
 先修是原有view、sentinel、borrowed、const与单遍/多遍迭代。这里不按年份堆API名，而是对照前面已经遇到的问题，说明新能力改变了哪条契约、留下什么责任。
 
-规范取[标准索引](../references/standards.md)中的采纳记录；特性宏来自[固定草案快照](../references/validation/standard-snapshot.json)。默认`/std:c++latest`只选择语言模式，不能让缺失的库实现出现。F01每个源文件包含真实主体，能力不足返回77；主体通过则必须确实实例化、链接并运行检查。
+规范取[标准索引](../references/standards.md)中的采纳记录；特性宏以当前工具链真实声明为准。默认`/std:c++latest`只选择语言模式，不能让缺失的库实现出现。F01每个源文件包含真实主体，能力不足返回77；主体通过则必须确实实例化、链接并运行检查。
 
 ## concat：把几个范围接成一个范围
 
@@ -56,7 +56,7 @@ C03主讲optional的状态与对象模型；此处只承接其range协议。[opt
 
 ## C++29：边界检查与不插入的查找
 
-N5055已将两项直接影响本课的能力纳入N5054工作草案。它们是已入稿内容，但不是本机已实现内容；[C++29宏快照](../references/validation/standard-snapshot-cpp29.json)与真实主体分别记录这两条状态轴。
+N5055已将两项直接影响本课的能力纳入N5054工作草案。它们是已入稿内容，但不是本机已实现内容；宏声明与真实主体分别记录这两条状态轴。
 
 `view_interface::at`要求random-access并且sized：前者提供按偏移访问，后者提供可检查的边界。负数和达到size的下标会抛`out_of_range`；有random access却没有size的范围不能自动获得这个成员。[view_interface_at.cpp](../exercises/F01_frontier/view_interface_at.cpp)检查合法下标、两个边界和const view仍可借用可变元素。filter降级后不满足相同访问条件，也在类型检查中明确拒绝。
 
@@ -71,4 +71,4 @@ N5055已将两项直接影响本课的能力纳入N5054工作草案。它们是�
 3. 对const filter和reserve_hint先写出预期类型约束，再运行主体。解析分别是input而非forward的const重载前提，以及提示值与实际元素数分离。
 4. 查看SKIP记录。解析应写清缺的是头、宏/版本、const重载，还是仅关闭了选项。构建已进入真实主体后出现编译、链接或运行错误属于FAIL，不能把异常包起来当SKIP。
 
-本机初次作者验证为1个普通观察通过、8个前沿能力跳过，随后追加两项C++29主体；扩展后的结果另存r2及全课最终记录。跳过主体在该环境没有被实例化和运行；教材与静态审查不能替代这些实测。完整上游环境路线和命令见[F01说明](../exercises/F01_frontier/README.md)，不要求安装新编译器来掩盖限制。
+跳过主体在当前环境没有被实例化和运行；教材与静态审查不能替代这些实测。完整上游环境路线和命令见[F01说明](../exercises/F01_frontier/README.md)，不要求安装新编译器来掩盖限制。

@@ -1,6 +1,0 @@
-{
-  "command": "cmake -DEXECUTABLE=<fake-slot-unrelated.cmd> -DEXPECTED_TEXT=slot -P Core_Study/exercises/L12_storage/checks/expect_failure.cmake",
-  "exit": 0,
-  "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1b\\l12-negative-weak-match-probe.stdout.txt",
-  "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r1b\\l12-negative-weak-match-probe.stderr.txt"
-}

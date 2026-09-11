@@ -1,4 +1,0 @@
-lld-link: error: /failifmismatch: mismatch detected for 'annotate_string':
->>> clang_rt.fuzzer-x86_64.lib(FuzzerCrossOver.cpp.obj) has value 0
->>> C:\Users\zhidan.li\AppData\Local\Temp\fuzz_parse-c545d3.o has value 1
-clang++: error: linker command failed with exit code 1 (use -v to see invocation)

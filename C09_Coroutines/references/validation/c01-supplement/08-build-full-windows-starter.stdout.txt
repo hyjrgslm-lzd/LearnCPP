@@ -1,5 +1,0 @@
-适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
-
-  Checking File Globs
-  as_awaitable_test.cpp
-  mini_as_awaitable_test.vcxproj -> F:\CPPTrain\LearnCPP\Coroutine_Study\exercises\build\full-windows\Capstone5_mini_corolib\Release\mini_as_awaitable_test.exe

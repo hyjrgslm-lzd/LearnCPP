@@ -1,64 +1,19 @@
-# 练习 2：值通道与惰性
+# A2 value channel and laziness
 
-## 目标
+本题看 `just -> then -> sync_wait`。sender 构造阶段只保存描述；`sync_wait` 连接最终 receiver 并启动 operation state 后，value 才沿图移动。
 
-用最小 sender 链条观察"值是如何沿图流动的"，并用日志或断点证明：在被消费之前，图只是图。
+## Part 1: int 值链
 
-## 前置理解
+构造 `just(5) | then(+1) | then(*2)`。日志必须显示：构造 sender 后，两个 `then` body 还没有执行；到 `sync_wait` 后才出现 `plus_one` 和 `times_two`。
 
-- 你知道 `just` 可以构造一个最简单的 sender。
-- 你理解 `then` 表示"在 value completion 上继续做转换"。
-- 你知道 `sync_wait` 会把 sender 消费掉并同步等待结果。
+## Part 2: 结构体值
 
-## 必做任务
+把 `TaskInput{10,"hello"}` 送入 value channel。第一阶段产出新结构体并加后缀，第二阶段只改变数值。不要用全局共享对象传中间结果。
 
-1. 构造一条最小链路：`just(5) -> then(+1) -> then(*2) -> sync_wait`。
-2. 在每个 `then` 的 lambda 里打印阶段名和输入值。
-3. 在 `sync_wait` 前后分别打印一条主线程日志。
-4. 运行程序并记录日志顺序，证明各阶段不是在定义 sender 时立刻执行。
-5. 把输入值从 `int` 换成一个自定义结构体，例如 `TaskInput { int base; std::string label; }`。
-6. 再做一次日志观察，确认值仍然是沿 value channel 流动，而不是靠外部共享状态传播。
+## Part 3: `void` value 形状
 
-## 进阶任务
+一个 `then` 返回 `void` 后，下游收到的是空 value，不是“带一个假值”。因此下一阶段 lambda 必须无参，并显式生成新值。
 
-- 插入一个返回 `void` 的 `then` 阶段，再在后续阶段重新生成新值，观察 value channel 形状如何变化。
-- 额外做一个版本：让其中一个阶段只记录日志但不修改值，再比较"有副作用的透传"和"真正变换值"的区别。
-- 在断点模式下逐步观察 `sync_wait` 前后的调用栈变化。
+## Part 4: move-only 值
 
-## 验收点
-
-- 你能用一段清晰的日志证明惰性。
-- 你能解释 value channel 里每一阶段的输入输出分别是什么。
-- 你没有依赖外部全局变量来传递中间结果。
-- 你知道把一个阶段改成 `void` 返回后，下游签名会发生什么变化。
-
-## 观察点
-
-- `then` 的重点不是"又调了一个函数"，而是"把上游 value completion 接到下游变换上"。
-- 只要没有显式调度切换，这些阶段更像是一条纯数据流，而不是线程跳来跳去的并发图。
-- `sync_wait` 在这里同时扮演了"最终 receiver"与"同步边界"的角色。
-
-## 常见坑
-
-- 在构造 sender 时就调用了某个带副作用的普通函数，导致误以为 sender 本身不惰性。
-- 日志打得过粗，只看到"开始/结束"，却看不到每个阶段的真实顺序。
-- 结构体值通过引用在多个地方被改写，结果看不清 value flow。
-- 对 `void` 阶段的下游参数个数没有预期，编译错误后以为是库不稳定。
-
-## 提示
-
-- 给每个阶段一个固定名字，比如 `stage_1_prepare`、`stage_2_transform`、`stage_3_finalize`。
-- 你可以给每条日志加一个递增序号，避免多行输出时顺序感不清。
-- 如果你引入了结构体，优先让每个阶段返回新值，而不是原地修改共享对象。
-- 观察"谁在打印日志"比"日志写了什么"更重要。
-
-## 复盘问题
-
-- 如果把 `sync_wait` 换成别的 receiver，sender 图本身需要变吗？
-- 为什么说 sender 更像"描述工作"，而不是"包装一个立即执行的函数对象"？
-- 当某个阶段返回 `void` 时，下游为什么会感觉像进入了一条新的 value channel 形状？
-- 为什么这题里几乎不需要谈线程，但仍然能学到异步框架的核心设计？
-
-## 对应官方参考
-
-- `NVIDIA/stdexec` README 中 `just / then / sync_wait` 的基本形状
+`std::unique_ptr<int>` 只能移动。实现若复制参数，会在编译或运行中暴露。value channel 保留值类别，这是后续 adaptor 实现的基本功。

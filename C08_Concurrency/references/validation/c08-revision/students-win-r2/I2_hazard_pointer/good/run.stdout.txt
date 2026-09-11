@@ -1,2 +1,0 @@
-preflight PASS; starting student workers
-I2 student PASS: 4000 unique IDs, LIFO, protection and cleanup

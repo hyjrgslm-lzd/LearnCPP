@@ -1,87 +1,195 @@
 {
-    "version": 6,
-    "cmakeMinimumRequired": { "major": 3, "minor": 25, "patch": 0 },
-    "configurePresets": [
-        {
-            "name": "default",
-            "displayName": "Default (auto-detect generator)",
-            "description": "让 CMake 自动检测本地可用的编译器和生成器",
-            "binaryDir": "${sourceDir}/build",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release"
-            }
-        },
-        {
-            "name": "debug",
-            "displayName": "Debug (auto-detect generator)",
-            "binaryDir": "${sourceDir}/build-debug",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug"
-            }
-        },
-        {
-            "name": "ninja",
-            "displayName": "Ninja",
-            "binaryDir": "${sourceDir}/build-ninja",
-            "generator": "Ninja",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release"
-            }
-        },
-        {
-            "name": "ninja-debug",
-            "displayName": "Ninja (Debug)",
-            "binaryDir": "${sourceDir}/build-ninja-debug",
-            "generator": "Ninja",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug"
-            }
-        },
-        {
-            "name": "vs2026",
-            "displayName": "Visual Studio 18 2026",
-            "binaryDir": "${sourceDir}/build-vs2026",
-            "generator": "Visual Studio 18 2026",
-            "condition": {
-                "type": "equals",
-                "lhs": "${hostSystemName}",
-                "rhs": "Windows"
-            }
-        },
-        {
-            "name": "vs2022",
-            "displayName": "Visual Studio 17 2022",
-            "binaryDir": "${sourceDir}/build-vs2022",
-            "generator": "Visual Studio 17 2022",
-            "condition": {
-                "type": "equals",
-                "lhs": "${hostSystemName}",
-                "rhs": "Windows"
-            }
-        }
-    ],
-    "buildPresets": [
-        {
-            "name": "default",
-            "configurePreset": "default"
-        },
-        {
-            "name": "debug",
-            "configurePreset": "debug"
-        },
-        {
-            "name": "ninja",
-            "configurePreset": "ninja"
-        },
-        {
-            "name": "vs2026",
-            "configurePreset": "vs2026",
-            "configuration": "Release"
-        },
-        {
-            "name": "vs2022",
-            "configurePreset": "vs2022",
-            "configuration": "Release"
-        }
-    ]
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 28,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "base",
+      "hidden": true,
+      "cacheVariables": {
+        "FETCHCONTENT_SOURCE_DIR_STDEXEC": "$env{STDEXEC_ROOT}",
+        "C10_STUDY_BUILD_REFERENCE": "ON"
+      }
+    },
+    {
+      "name": "windows",
+      "inherits": "base",
+      "generator": "Visual Studio 18 2026",
+      "architecture": "x64",
+      "binaryDir": "${sourceDir}/build/windows",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      }
+    },
+    {
+      "name": "linux",
+      "inherits": "base",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/linux",
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER": "g++",
+        "CMAKE_BUILD_TYPE": "Release",
+        "C10_CXX_STANDARD": "23"
+      }
+    },
+    {
+      "name": "linux-debug",
+      "inherits": "linux",
+      "binaryDir": "${sourceDir}/build/linux-debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "clang26",
+      "inherits": "linux",
+      "binaryDir": "${sourceDir}/build/clang26",
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER": "clang++-18",
+        "C10_CXX_STANDARD": "26"
+      }
+    },
+    {
+      "name": "asan-windows",
+      "inherits": "windows",
+      "binaryDir": "${sourceDir}/build/asan-windows",
+      "cacheVariables": {
+        "C10_STUDY_ENABLE_ASAN": "ON"
+      }
+    },
+    {
+      "name": "asan-linux",
+      "inherits": "linux",
+      "binaryDir": "${sourceDir}/build/asan-linux",
+      "cacheVariables": {
+        "C10_STUDY_ENABLE_ASAN": "ON",
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "tsan-linux",
+      "inherits": "linux",
+      "binaryDir": "${sourceDir}/build/tsan-linux",
+      "cacheVariables": {
+        "C10_STUDY_ENABLE_TSAN": "ON",
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "windows-debug",
+      "configurePreset": "windows",
+      "configuration": "Debug"
+    },
+    {
+      "name": "windows-release",
+      "configurePreset": "windows",
+      "configuration": "Release"
+    },
+    {
+      "name": "linux",
+      "configurePreset": "linux"
+    },
+    {
+      "name": "linux-debug",
+      "configurePreset": "linux-debug"
+    },
+    {
+      "name": "clang26",
+      "configurePreset": "clang26"
+    },
+    {
+      "name": "asan-windows-debug",
+      "configurePreset": "asan-windows",
+      "configuration": "Debug"
+    },
+    {
+      "name": "asan-windows-release",
+      "configurePreset": "asan-windows",
+      "configuration": "Release"
+    },
+    {
+      "name": "asan-linux",
+      "configurePreset": "asan-linux"
+    },
+    {
+      "name": "tsan-linux",
+      "configurePreset": "tsan-linux"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "windows-debug",
+      "configurePreset": "windows",
+      "output": {
+        "outputOnFailure": true
+      },
+      "configuration": "Debug"
+    },
+    {
+      "name": "windows-release",
+      "configurePreset": "windows",
+      "output": {
+        "outputOnFailure": true
+      },
+      "configuration": "Release"
+    },
+    {
+      "name": "linux",
+      "configurePreset": "linux",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "linux-debug",
+      "configurePreset": "linux-debug",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "clang26",
+      "configurePreset": "clang26",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "asan-windows-debug",
+      "configurePreset": "asan-windows",
+      "output": {
+        "outputOnFailure": true
+      },
+      "configuration": "Debug"
+    },
+    {
+      "name": "asan-windows-release",
+      "configurePreset": "asan-windows",
+      "output": {
+        "outputOnFailure": true
+      },
+      "configuration": "Release"
+    },
+    {
+      "name": "asan-linux",
+      "configurePreset": "asan-linux",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "tsan-linux",
+      "configurePreset": "tsan-linux",
+      "output": {
+        "outputOnFailure": true
+      }
+    }
+  ]
 }

@@ -1,9 +1,0 @@
-﻿{
-    "name":  "153-vs-ninja-plain-static-only-configure",
-    "command":  "call \"D:\\VisualStudio2026\\Installed\\Common7\\Tools\\VsDevCmd.bat\" -arch=x64 \u003enul \u0026\u0026 \"D:\\cmake\\install\\bin\\cmake.exe\" -S \"F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\toolchain-probe\\cmake-plain\" -B \"F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\toolchain-probe\\out\\diag-vs-ninja-static-only\" -G Ninja -DCMAKE_MAKE_PROGRAM=\"D:\\VisualStudio2026\\Installed\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja\\ninja.exe\" -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=cl.exe -DCMAKE_TRY_COMPILE_TARGET_TYPE=STATIC_LIBRARY",
-    "exit_code":  null,
-    "timed_out":  true,
-    "timeout_seconds":  90,
-    "stdout":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\153-vs-ninja-plain-static-only-configure.stdout.txt",
-    "stderr":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\153-vs-ninja-plain-static-only-configure.stderr.txt"
-}

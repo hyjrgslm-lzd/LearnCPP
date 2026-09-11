@@ -1,10 +1,10 @@
 # C04 构建与验证
 
-在完整LearnCPP checkout内使用。各题可以独立配置，仍可引用同一仓库的C01检查器和C02证据工具；“独立构建”不表示必须把每题复制成脱离仓库的发行包。
+在完整LearnCPP checkout内使用。各题可以独立配置，仍可引用同一仓库的C01检查器和C02工具；“独立构建”不表示必须把每题复制成脱离仓库的发行包。
 
 ## 环境与入口
 
-核心C++23。CMake脚本最低3.28；Windows预设使用Visual Studio 18 2026，需要CMake4.2以上。本轮只读确认CMake4.2.3、MSVC19.51.36256、工具集14.51.36231、STL更新202604、Python3.10.11。VS附带clang-cl22.1.3用于局部编译成本观测，不是反射支持证明。
+核心C++23。CMake脚本最低3.28；Windows预设使用Visual Studio 18 2026，需要CMake4.2以上。VS附带clang-cl可用于局部编译成本观测，不是反射支持证明。
 
 从仓库根目录进入 `C04_Generic_CompileTime_Reflection/exercises`：
 
@@ -17,10 +17,11 @@ cmake --build --preset verify-debug
 ctest --preset verify-debug
 ```
 
-实际自动运行还必须经外部超时包装；上述命令是被包装的操作。例：在仓库根目录记录一次配置，不覆盖旧证据：
+批量复现建议经外部超时包装；上述命令是被包装的操作。例：在仓库根目录记录一次配置，输出到本地未跟踪目录：
 
 ```powershell
-python C02_Objects_Lifetime_Ownership/exercises/tools/record_process.py --output C04_Generic_CompileTime_Reflection/references/validation/configure-core-01.json --timeout 180 -- cmake --preset verify-core -S C04_Generic_CompileTime_Reflection/exercises
+New-Item -ItemType Directory -Force build/local-records/C04 | Out-Null
+python C02_Objects_Lifetime_Ownership/exercises/tools/record_process.py --output build/local-records/C04/configure-core.json --timeout 180 -- cmake --preset verify-core -S C04_Generic_CompileTime_Reflection/exercises
 ```
 
 整课配置上限180秒，构建900秒，普通程序由CTest覆盖运行与退出的30秒上限。编译诊断的配置控制60秒、正例和负例各180秒，外层CTest总上限420秒。外部整批CTest另设有限总时长并记录。超时、无法确认清理、缺DLL或启动失败都是真实FAIL，不计为“预期拒绝”。
@@ -41,13 +42,15 @@ ctest --test-dir L11_customization/build/local -C Release --output-on-failure
 
 Student隔离审计复用C02 `audit_student.py`：在student-only配置生成CMake File API codemodel，使用当前进程的`CL=/showIncludes`、`VSLANG=1033`重建所有`*_student`目标，保存命令与include trace，再核对没有Reference目标、include路径或链接依赖。变量只作用于本次子进程，不写机器配置。
 
-以下在本课`exercises`目录执行，输出用新tag避免覆盖旧证据：
+以下在本课`exercises`目录执行，输出到本地未跟踪目录：
 
 ```powershell
 $c04AuditTag = Get-Date -Format yyyyMMdd-HHmmss
+$c04RecordRoot = "../../build/local-records/C04/$c04AuditTag"
+New-Item -ItemType Directory -Force $c04RecordRoot | Out-Null
 New-Item -ItemType Directory -Force build/student/.cmake/api/v1/query | Out-Null
 New-Item -ItemType File -Force build/student/.cmake/api/v1/query/codemodel-v2 | Out-Null
-python ../../C02_Objects_Lifetime_Ownership/exercises/tools/record_process.py --output "../references/validation/include-configure-$c04AuditTag.json" --timeout 180 -- cmake --preset student
+python ../../C02_Objects_Lifetime_Ownership/exercises/tools/record_process.py --output "$c04RecordRoot/include-configure.json" --timeout 180 -- cmake --preset student
 if ($LASTEXITCODE -ne 0) { throw 'Student configuration failed' }
 $c04StudentTargets = @('L01_templates','L02_deduction','L03_forwarding','L04_lookup',
     'L05_overload','L06_constraints','L07_packs','L08_type_lists','L09_tuple',
@@ -59,13 +62,13 @@ $c04PreviousVsLang = $env:VSLANG
 try {
     $env:CL = "$c04PreviousCl /showIncludes"
     $env:VSLANG = '1033'
-    python ../../C02_Objects_Lifetime_Ownership/exercises/tools/record_process.py --output "../references/validation/include-$c04AuditTag.json" --timeout 900 -- cmake --build build/student --config Release --clean-first --target $c04StudentTargets
+    python ../../C02_Objects_Lifetime_Ownership/exercises/tools/record_process.py --output "$c04RecordRoot/include.json" --timeout 900 -- cmake --build build/student --config Release --clean-first --target $c04StudentTargets
     if ($LASTEXITCODE -ne 0) { throw 'Student include-trace build failed' }
 } finally {
     $env:CL = $c04PreviousCl
     $env:VSLANG = $c04PreviousVsLang
 }
-python ../../C02_Objects_Lifetime_Ownership/exercises/tools/audit_student.py --build build/student --config Release --trace "../references/validation/include-$c04AuditTag.json" --output "../references/validation/audit-$c04AuditTag.json"
+python ../../C02_Objects_Lifetime_Ownership/exercises/tools/audit_student.py --build build/student --config Release --trace "$c04RecordRoot/include.json" --output "$c04RecordRoot/audit.json"
 ```
 
 `--clean-first --target`这里只重建Student，若随后运行整套Student预设，先普通`cmake --build --preset student`补齐观察/诊断目标。初始Student的CTest非零是预期，仍要逐项确认只有这些Student因其checker失败，不能把任意崩溃/缺exe都当作作业状态。
@@ -105,8 +108,8 @@ python tools/audit_good.py --build build/meta-libs --config Release --trace <本
 
 负编译案例经`tools/compile_case.py`先编译正控，再验证对应语义错误。Windows子构建放在`exercises/build/_diag/<父构建与用例标识哈希>/<配置>`，避免深路径FileTracker失败，并隔离不同父构建。记录含源文件/辅助脚本SHA与实际仓库内头文件include SHA。`SETUP`只用于可信课程CMake配置，使control与subject使用实际依赖；缺头、链接/工具链错误、ICE、超时都不能作为语义拒绝通过。空平台参数用`--platform=`传递。
 
-## 证据保存
+## 本地复现记录
 
-复用进程记录器保存命令、exit、stdout/stderr、耗时、timeout及清理状态；它的PASS只针对声明的进程结果。成本测量另存输入/环境/编译模式、所有独立样本、trace、对象节与符号数据，不能从总耗时直接推出根因。
+复用进程记录器保存命令、exit、stdout/stderr、耗时、timeout及清理状态；它的PASS只针对声明的进程结果。成本测量应另存输入/环境/编译模式、所有独立样本、trace、对象节与符号数据，不能从总耗时直接推出根因。
 
-`build/`是本机构建树，不随课程交付。交付报告要引用`references/validation`和`references/benchmarks`中的文本/JSON证据；本地二进制只记录哈希与路径。文件指纹绑定审查版本，修订后重新验证受影响的结论，旧记录保留原义。
+`build/`是本机构建树，不随课程提交。本地记录、测量样本和二进制都保存在未跟踪目录；需要发布结论时，只把稳定的方法、边界和可复现命令写回课程文档。

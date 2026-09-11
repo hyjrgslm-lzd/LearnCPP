@@ -1,2 +1,0 @@
-CMakeCXXCompilerABI.cpp
-注意: 包含文件:  D:\cmake\install\share\cmake-4.2\Modules\CMakeCompilerABI.h

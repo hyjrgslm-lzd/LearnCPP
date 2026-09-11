@@ -1,8 +1,0 @@
-stamp=20260910T150538Z
-snapshot=/root/learncpp-c07/snapshots/final-linux-debug-r1
-config=Release
-uring=/root/learncpp-c07/deps/install-liburing-2.15
-cmake version 3.28.3
-ctest version 3.28.3
-Python 3.12.3
-Linux lizhidan-p02 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux

@@ -1,9 +1,0 @@
-﻿{
-    "name":  "72-direct-clang-libfuzzer-build",
-    "command":  "call \"D:\\VisualStudio2026\\Installed\\Common7\\Tools\\VsDevCmd.bat\" -arch=x64 \u003enul \u0026\u0026 \"D:\\VisualStudio2026\\Installed\\VC\\Tools\\Llvm\\x64\\bin\\clang++.exe\" -std=c++23 -fsanitize=fuzzer,address \"F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\toolchain-probe\\clang-tools\\fuzz.cpp\" -o \"F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\toolchain-probe\\out\\direct\\clang\\fuzz_probe.exe\"",
-    "exit_code":  0,
-    "timed_out":  false,
-    "timeout_seconds":  45,
-    "stdout":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\72-direct-clang-libfuzzer-build.stdout.txt",
-    "stderr":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\72-direct-clang-libfuzzer-build.stderr.txt"
-}

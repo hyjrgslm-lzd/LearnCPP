@@ -1,9 +1,0 @@
-﻿{
-    "name":  "10-msvc-named-modules-configure",
-    "command":  "\"call \"D:\\VisualStudio2026\\Installed\\Common7\\Tools\\VsDevCmd.bat\" -arch=x64 \u003enul \u0026\u0026 \"D:\\cmake\\install\\bin\\cmake.exe\" -S \"F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\toolchain-probe\\msvc-named-modules\" -B \"F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\toolchain-probe\\out\\msvc-named-modules\" -G Ninja -DCMAKE_MAKE_PROGRAM=\"D:\\Perl\\c\\bin\\ninja.exe\" -DCMAKE_BUILD_TYPE=Release\"",
-    "exit_code":  null,
-    "timed_out":  true,
-    "timeout_seconds":  120,
-    "stdout":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\10-msvc-named-modules-configure.stdout.txt",
-    "stderr":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\10-msvc-named-modules-configure.stderr.txt"
-}

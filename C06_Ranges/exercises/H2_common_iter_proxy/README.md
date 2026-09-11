@@ -51,7 +51,6 @@
 
 ## 对应参考
 
-- `references/implementation-spec.md`
 - P0896R4：`common_iterator`
 - P2321R2：`zip_view` 的 `iter_move` / `iter_swap`
 - cppreference：`std::common_iterator`、`std::ranges::iter_move`、`std::ranges::iter_swap`

@@ -1,17 +1,8 @@
-cmake_minimum_required(VERSION 3.25)
+cmake_minimum_required(VERSION 3.28)
 project(F1_type_list LANGUAGES CXX)
-
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
-
-if(MSVC)
-    add_compile_options(/Zc:__cplusplus /utf-8)
-endif()
-
-# 引入 stdexec —— 无论作为子项目还是独立打开都能工作
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../cmake")
-include(StdexecSetup)
-
-add_executable(F1_type_list main.cpp)
-target_link_libraries(F1_type_list PRIVATE stdexec::stdexec)
+include(StudySetup)
+c10_add_exercise(NAME F1_type_list HEADER solution.hpp CHECK main.cpp
+                 STUDENT_EXPECT_EXIT 1
+                 STUDENT_DIAGNOSTIC "concat joins lists"
+                 BAD_DIAGNOSTIC "unique preserves first occurrence order")

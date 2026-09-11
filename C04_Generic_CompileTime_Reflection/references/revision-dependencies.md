@@ -11,7 +11,7 @@
 ./tools/prepare_meta_libraries.ps1
 ```
 
-脚本只下载到 `exercises/build/_deps`，证据写入 `references/validation/revision-20260910/dependencies-meta-*`。已有 checkout 必须 remote、commit、工作区状态匹配；脏输入、错误 remote、错误 commit 都会失败，不覆盖本地内容。脚本记录 remote URL、固定 commit、license marker、license SHA-256、源码路径和头文件 marker。
+脚本只下载到 `exercises/build/_deps`。已有 checkout 必须 remote、commit、工作区状态匹配；脏输入、错误 remote、错误 commit 都会失败，不覆盖本地内容。脚本记录 remote URL、固定 commit、license marker、license SHA-256、源码路径和头文件 marker；运行记录留在本地未跟踪目录。
 
 CMake 接线会在配置期重新核对 marker、源码路径边界、本地 `git rev-parse HEAD` 和 tracked dirty 状态；不联网，也不 fallback 到系统 Boost。
 

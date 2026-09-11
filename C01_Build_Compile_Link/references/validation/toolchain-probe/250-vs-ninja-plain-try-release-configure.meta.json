@@ -1,9 +1,0 @@
-﻿{
-    "name":  "250-vs-ninja-plain-try-release-configure",
-    "command_file":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\250-vs-ninja-plain-try-release-configure.command.cmd",
-    "exit_code":  -1,
-    "timed_out":  false,
-    "timeout_seconds":  120,
-    "stdout":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\250-vs-ninja-plain-try-release-configure.stdout.txt",
-    "stderr":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\250-vs-ninja-plain-try-release-configure.stderr.txt"
-}

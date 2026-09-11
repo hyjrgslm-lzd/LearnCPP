@@ -1,1 +1,0 @@
-value=9 stop_requested=1

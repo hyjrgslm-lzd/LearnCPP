@@ -1,4 +1,0 @@
-C09_Coroutines/references/validation/c09-refresh/reviews/runtime-review-evidence/when_any_error_cancel_probe.cpp: In function ‘mini_ref::task<int> wait_for_stop(std::stop_token)’:
-C09_Coroutines/references/validation/c09-refresh/reviews/runtime-review-evidence/when_any_error_cancel_probe.cpp:32:32: warning: missing initializer for member ‘stop_awaiter::callback’ [-Wmissing-field-initializers]
-   32 |     co_await stop_awaiter{token};
-      |                                ^

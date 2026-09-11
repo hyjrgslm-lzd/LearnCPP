@@ -1,8 +1,0 @@
-{
-  "command": "cmd.exe /d /c Engineering_Study\\references\\validation\\toolchain\\520-verify-clang-tools.command.cmd > Engineering_Study\\references\\validation\\toolchain\\520-verify-clang-tools.stdout.txt 2> Engineering_Study\\references\\validation\\toolchain\\520-verify-clang-tools.stderr.txt",
-  "exit_code": 0,
-  "execution_surface": "require_escalated normal local process",
-  "clang": "D:/VisualStudio2026/Installed/VC/Tools/Llvm/x64/bin/clang++.exe",
-  "runtime_path_prefix": "D:/VisualStudio2026/Installed/VC/Tools/Llvm/x64/lib/clang/22/lib/windows",
-  "claims": ["ASan safe parser build/run exits 0", "ASan unsafe fault exits nonzero with heap-buffer-overflow report", "libFuzzer runs 8 finite iterations with max_total_time=5", "-ftime-trace emits JSON files for G2 alpha/beta/gamma/common/main translation units"]
-}

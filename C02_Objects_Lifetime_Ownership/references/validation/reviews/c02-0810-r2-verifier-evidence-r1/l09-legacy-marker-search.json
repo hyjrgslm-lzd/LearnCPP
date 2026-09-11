@@ -1,5 +1,0 @@
-{
-  "command": "rg legacy L09 markers/interfaces",
-  "exit_code": 1,
-  "output": ""
-}

@@ -1,9 +1,0 @@
-{
-  "command": "cmd.exe /d /c Engineering_Study\\references\\validation\\toolchain\\555-verify-g2-driver-preflight.command.cmd > Engineering_Study\\references\\validation\\toolchain\\555-verify-g2-driver-preflight.stdout.txt 2> Engineering_Study\\references\\validation\\toolchain\\555-verify-g2-driver-preflight.stderr.txt",
-  "exit_code": 0,
-  "execution_surface": "require_escalated normal local process",
-  "output": "Engineering_Study/references/validation/toolchain/g2-preflight-author-r2",
-  "work_root": "Engineering_Study/exercises/build/g2-preflight-author-r2-work",
-  "claims": ["1 warmup + 1 sample full matrix completed: 3 variants x 4 scenarios x 2 phases = 24 rounds", "report status PASS", "noop timed build records no compiled sources and ninja no work", "implementation mutation records common.cpp rebuild plus link", "public-header mutation records alpha/beta/gamma/common/main rebuild plus link", "clean records configure plus build phases separately"],
-  "supersedes": "Engineering_Study/references/validation/toolchain/g2-preflight-author"
-}

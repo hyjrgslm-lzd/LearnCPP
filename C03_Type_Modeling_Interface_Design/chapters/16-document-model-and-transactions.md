@@ -70,7 +70,7 @@ copy constructor复制全部Element；copy assignment先准备独立副本再swa
 
 先运行正确批事务，测得此输入实际发生的普通分配次数；再重建原始文档，逐分配点抛bad_alloc。每一轮比较原值、再次成功执行同一批并检查最终结果；复制赋值的失败另作检查。测量次数只安排该实现当前路径，不是文档接口承诺，也不支持时间性能排名。
 
-初版全局注入触发了MSVC Debug string的noexcept代理分配，导致真实abort。课程保留[最小复现与根因](../references/validation/p1-debug-allocation/diagnosis.md)：正常Debug现在维持完整迭代器检查，普通分配注入使用独立IDL0实验目标。同源码分两种明确环境验证，不把关闭诊断或SKIP假装成修复。
+曾经的全局分配注入会触发 MSVC Debug string 的 noexcept 代理分配并导致 abort。课程采用的边界是：正常 Debug 维持完整迭代器检查，普通分配注入使用独立的诊断实验目标。同源码分两种明确环境验证，不把关闭诊断或跳过检查假装成修复。
 
 从课程exercises目录复现：
 

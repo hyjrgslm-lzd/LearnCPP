@@ -1,7 +1,0 @@
-{
-  "exit_code": 8,
-  "timed_out": false,
-  "expected_failure": true,
-  "stdout": "Engineering_Study\\references\\validation\\odr\\08-msvc-ctest-student-starter-after-checker.stdout.txt",
-  "stderr": "Engineering_Study\\references\\validation\\odr\\08-msvc-ctest-student-starter-after-checker.stderr.txt"
-}

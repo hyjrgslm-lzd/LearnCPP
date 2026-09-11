@@ -36,4 +36,4 @@
 
 ## 验证入口
 
-本题注册 Reference、good、bad、observation 和一个编译诊断 case。Student 初始实现能编译，但应被 checker 拒绝。正式构建窗口开启前不要运行本题；作者证据写入 `references/validation/lookup-author/`。
+本题注册 Reference、good、bad、observation 和一个编译诊断 case。Student 初始实现能编译，但应被 checker 拒绝。过程记录写入本地未跟踪目录，不随课程源码提交。

@@ -46,20 +46,20 @@ compare phase：
 以下 Windows 命令从仓库根执行。先按[构建指南](../BUILD_GUIDE.md)构建 `verify-core`，再使用同一个 Release 二进制；输出目录必须全新。先读 baseline 的阶段/计数并记录待验证假设，再执行 compare。
 
 ```powershell
-python C07_OS_Memory_System_IO/exercises/B01_costs/tools/sample_benchmarks.py --phase baseline --exe C07_OS_Memory_System_IO/exercises/build/verify-core/B01_costs/Release/B01_costs_benchmark.exe --output C07_OS_Memory_System_IO/references/measurements/my-windows-baseline
+python C07_OS_Memory_System_IO/exercises/B01_costs/tools/sample_benchmarks.py --phase baseline --exe C07_OS_Memory_System_IO/exercises/build/verify-core/B01_costs/Release/B01_costs_benchmark.exe --output C07_OS_Memory_System_IO/exercises/build/measurements/my-windows-baseline
 ```
 
 Windows compare：
 
 ```powershell
-python C07_OS_Memory_System_IO/exercises/B01_costs/tools/sample_benchmarks.py --phase compare --exe C07_OS_Memory_System_IO/exercises/build/verify-core/B01_costs/Release/B01_costs_benchmark.exe --baseline-result C07_OS_Memory_System_IO/references/measurements/my-windows-baseline/result.json --output C07_OS_Memory_System_IO/references/measurements/my-windows-compare
+python C07_OS_Memory_System_IO/exercises/B01_costs/tools/sample_benchmarks.py --phase compare --exe C07_OS_Memory_System_IO/exercises/build/verify-core/B01_costs/Release/B01_costs_benchmark.exe --baseline-result C07_OS_Memory_System_IO/exercises/build/measurements/my-windows-baseline/result.json --output C07_OS_Memory_System_IO/exercises/build/measurements/my-windows-compare
 ```
 
 Linux/WSL 从已构建 `linux-uring` 的原生 ext4 **快照仓库根**执行，不用 `/mnt/f` 工作树。未启用 io_uring 时不能把完整 compare 当已完成：
 
 ```bash
-python3 C07_OS_Memory_System_IO/exercises/B01_costs/tools/sample_benchmarks.py --phase baseline --exe C07_OS_Memory_System_IO/exercises/build/linux-uring/B01_costs/B01_costs_benchmark --output C07_OS_Memory_System_IO/references/measurements/my-linux-baseline
-python3 C07_OS_Memory_System_IO/exercises/B01_costs/tools/sample_benchmarks.py --phase compare --exe C07_OS_Memory_System_IO/exercises/build/linux-uring/B01_costs/B01_costs_benchmark --baseline-result C07_OS_Memory_System_IO/references/measurements/my-linux-baseline/result.json --output C07_OS_Memory_System_IO/references/measurements/my-linux-compare
+python3 C07_OS_Memory_System_IO/exercises/B01_costs/tools/sample_benchmarks.py --phase baseline --exe C07_OS_Memory_System_IO/exercises/build/linux-uring/B01_costs/B01_costs_benchmark --output C07_OS_Memory_System_IO/exercises/build/measurements/my-linux-baseline
+python3 C07_OS_Memory_System_IO/exercises/B01_costs/tools/sample_benchmarks.py --phase compare --exe C07_OS_Memory_System_IO/exercises/build/linux-uring/B01_costs/B01_costs_benchmark --baseline-result C07_OS_Memory_System_IO/exercises/build/measurements/my-linux-baseline/result.json --output C07_OS_Memory_System_IO/exercises/build/measurements/my-linux-compare
 ```
 
 自检只验证采样器规则，不跑真实 benchmark：
@@ -68,4 +68,4 @@ python3 C07_OS_Memory_System_IO/exercises/B01_costs/tools/sample_benchmarks.py -
 python C07_OS_Memory_System_IO/exercises/B01_costs/tools/sample_benchmarks.py --self-check
 ```
 
-正式采样结果冻结后，再写 `references/measurements/cost-analysis.md`。不要在只有协议和控制测试时提前写性能结论。
+正式采样结果冻结后，再写本机分析报告；报告和原始样本属于运行产物，不作为课程源码提交。不要在只有协议和控制测试时提前写性能结论。

@@ -1,3 +1,0 @@
-status-windows-build-targets.txt=0
-status-windows-configure.txt=0
-status-windows-ctest-targets.txt=0

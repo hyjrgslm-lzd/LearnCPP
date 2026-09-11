@@ -19,13 +19,16 @@
 
 正文给出背景、机制推导和解释，练习检验你能否应用这些规则。实现型 Student 的未完成状态应明确失败；运行一个观察程序并不等于完成预测、解释与扩展作业。每个练习的 Reference、独立 good、行为型 bad 和 checker 分别说明责任。
 
-## 构建与交付证据
+## 构建与课程边界
 
 核心 C++23，Windows/MSVC 与 Linux/GCC 分别验证。系统机制使用各自原生 API，不能把 epoll 的就绪通知当作 IOCP 的完成通知。Linux io_uring 需要明确启用固定版本 liburing，并按实际 kernel/opcode 探测，不因头文件存在就宣称可用。
 
 - [构建与验证](exercises/BUILD_GUIDE.md)：整课、单题、Student-only、检测器和 WSL 入口。
-- [实施规格](references/implementation-spec.md)、[知识覆盖与下游反查](references/coverage.md)、[规范与实现索引](references/standards-and-implementations.md)。
-- [质量报告](references/quality-report.md)：约定本机验证、独立审查、版本对应和未验证边界。
-- [成本分析与原始数据](references/measurements/cost-analysis.md)：两平台 220 个正式样本及阶段归因；[交付指纹](references/delivery-manifest-r2.json)列出逐文件 SHA256。
+- [知识覆盖与下游反查](references/coverage.md)、[规范与实现索引](references/standards-and-implementations.md)。
+- [成本测量](chapters/18-measurement.md)：采样协议、阶段归因和结论边界。正式采样输出属于本机实验产物，不作为课程源码提交。
 
 本课实验只操作自有临时资源，不运行无界负载或自动修改机器配置。进程外超时是兜底机制，超时及清理失败是真实失败，不是正常取消结果。
+
+## C10 执行协议桥接
+
+[C10 原生 I/O 桥接](../C10_Execution/chapters/11-native-io.md)把本课的请求、buffer、完成与取消收束接入 sender/receiver；[记录流水线](../C10_Execution/chapters/13-pipeline.md)在真实完成后继续 CPU 阶段。系统完成语义仍以本课为基础。

@@ -1,9 +1,0 @@
-﻿{
-    "name":  "172-vs-ninja-cmake-scratch-dry-run",
-    "command":  "call \"D:\\VisualStudio2026\\Installed\\Common7\\Tools\\VsDevCmd.bat\" -arch=x64 \u003enul \u0026\u0026 cd /d \"F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\toolchain-probe\\out\\vs-ninja-plain\\CMakeFiles\\CMakeScratch\\TryCompile-olcdr1\" \u0026\u0026 \"D:\\VisualStudio2026\\Installed\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja\\ninja.exe\" -n -v cmTC_3bf1e",
-    "exit_code":  null,
-    "timed_out":  false,
-    "timeout_seconds":  45,
-    "stdout":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\172-vs-ninja-cmake-scratch-dry-run.stdout.txt",
-    "stderr":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\172-vs-ninja-cmake-scratch-dry-run.stderr.txt"
-}

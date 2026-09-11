@@ -1,2 +1,0 @@
-D:\cmake\install\bin\cmake.exe -S Coroutine_Study/exercises -B Coroutine_Study/exercises/build/full-windows -DCOROUTINE_STUDY_TEST_STARTERS=ON
-timeout_seconds=180

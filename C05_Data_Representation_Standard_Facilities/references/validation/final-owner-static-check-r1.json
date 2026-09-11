@@ -1,9 +1,0 @@
-{
-  "verdict": "PASS",
-  "content_hashes_checked": 144,
-  "navigation_hashes_checked": 5,
-  "untracked_deliverable_files": 455,
-  "compiled_artifacts_visible_to_git": [],
-  "git_diff_check_exit": 0,
-  "authored_trailing_whitespace": []
-}

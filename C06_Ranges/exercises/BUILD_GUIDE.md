@@ -64,13 +64,13 @@ cmake --build --preset vs2026-student --parallel 2
 ctest --preset students
 ```
 
-此配置关闭Reference与good/bad，启用Student测试；未完成初态会让CTest返回失败，这是单独记录的拒绝证据。B01依赖教师Reference，随Reference选项关闭，不能将B01未运行计为通过。include跟踪由此预设的`/showIncludes`与局部`VSLANG=1033`提供；完整审计还需CMake file-api和全Student显式重编记录，最终命令见质量报告。
+此配置关闭Reference与good/bad，启用Student测试；未完成初态会让CTest返回失败，这是单独记录的拒绝边界。B01依赖教师Reference，随Reference选项关闭，不能将B01未运行计为通过。include跟踪由此预设的`/showIncludes`与局部`VSLANG=1033`提供；完整审计还需CMake file-api和全Student显式重编记录，输出留在本地未跟踪目录。
 
 ## 可复现证据与性能
 
-复用C02的`exercises/tools/record_process.py`保存每条命令、cwd、输出、退出码、进程外超时和清理状态；记录文件名必须新建，不能覆盖旧失败。C02的`audit_student.py`复核file-api、真实includes和源接线；C06的`references/validation/check_navigation.py`复核本课链接和根C06导航，均不代替教学审查。
+复用C02的`exercises/tools/record_process.py`保存每条命令、cwd、输出、退出码、进程外超时和清理状态；记录文件名必须新建并放在本地未跟踪目录。C02的`audit_student.py`复核file-api、真实includes和源接线；链接复核可以使用本地脚本或普通Markdown链接检查，均不代替教学审查。
 
-正式性能实验见[B01协议](../references/benchmarks/README.md)。先通过正确性快测和诊断，再在所有构建停止、源码与exe冻结时运行一次预热加五次独立进程采样。不能拿作者smoke样本或与并行编译重叠的结果作正式排名。
+正式性能实验见[B01题面](B01_cost/README.md)。先通过正确性快测和诊断，再在所有构建停止、源码与exe冻结时运行一次预热加五次独立进程采样。不能拿作者smoke样本或与并行编译重叠的结果作正式排名。
 
 ## 常见判断错误
 

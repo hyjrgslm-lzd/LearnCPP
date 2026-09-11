@@ -1,6 +1,0 @@
-[1/6] Building CXX object CMakeFiles\C1_odr_student_impl.dir\caller_a.cpp.obj
-[2/6] Building CXX object CMakeFiles\C1_odr_student_impl.dir\caller_b.cpp.obj
-[3/6] Building CXX object CMakeFiles\C1_odr_student_impl.dir\lesson.cpp.obj
-[4/6] Linking CXX static library C1_odr_student_impl.lib
-[5/6] Building CXX object CMakeFiles\C1_odr_student.dir\F_\CPPTrain\LearnCPP\Engineering_Study\exercises\C1_odr\checks\student_check.cpp.obj
-[6/6] Linking CXX executable C1_odr_student.exe

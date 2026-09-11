@@ -1,1 +1,0 @@
-call D:\VisualStudio2026\Installed\Common7\Tools\VsDevCmd.bat -arch=x64 >nul && D:\cmake\install\bin\ctest.exe --test-dir Engineering_Study\exercises\build\review-fix2-symbol-missing -R C1_odr_observation_symbols -V

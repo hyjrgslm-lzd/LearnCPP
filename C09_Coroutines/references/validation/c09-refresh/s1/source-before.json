@@ -1,7 +1,0 @@
-{
-  "source_commit": "75028ff2d312a4f1047e7bafd6cf4101f771a2ec",
-  "files": {
-    "exercises/include/coroutine_study/lazy_task.hpp": "45ecbd1bac6a9e368c8c72586afadd5d7b940d98f220398d779c32a8fa1f3998",
-    "exercises/runtime_tests/await_resume_exception_test.cpp": "c728e5af9f6368da273458765f36a859cd0c62d12d846dffdadc02c4e7763c92"
-  }
-}

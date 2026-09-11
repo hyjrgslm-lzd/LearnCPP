@@ -1,6 +1,6 @@
 # 构建、运行与复现实验
 
-所有相对命令默认在 `C08_Concurrency/exercises` 执行。先运行正确性检查，再运行性能实验；测试通过的范围和未验证平台见[质量报告](../references/quality-report.md)。
+所有相对命令默认在 `C08_Concurrency/exercises` 执行。先运行正确性检查，再运行性能实验；测试通过的范围和未验证平台由本机运行记录说明，不随课程源码提交。
 
 ## 1. 工具链与核心构建
 
@@ -165,7 +165,7 @@ CSV 的 threads 为正数时表示程序报告的线程数；0 明确表示后�
 
 回收专题提供了[独立验证说明](../topics/reclamation/06-validation.md)，包括优化构建与 ASan 的实际范围。其他平台和工具的可用性以本机配置为准，未运行的检查不会被记录为通过。
 
-## 7. 本轮 Windows 与 WSL 验证矩阵
+## 7. Windows 与 WSL 验证矩阵
 
 | 入口 | 环境与作用 |
 |---|---|
@@ -193,7 +193,7 @@ cmake --build --preset linux-core --parallel 4
 ctest --preset linux-core
 ```
 
-其余Linux预设使用同样三步。专用镜像、快照、实际工具版本和TSan正常/竞争控制见[WSL验证指南](../references/wsl-validation.md)。能力控制失败时先诊断环境；能够运行检测器之后出现的主体报告是失败，不能通过更改全局安全设置、压制报告或缩小源码快照来制造通过。多NUMA节点实验仍取决于实际拓扑；WSL不替代裸机性能证据。
+其余Linux预设使用同样三步。专用镜像、快照、实际工具版本和TSan正常/竞争控制应记录在本机验证目录，不提交为课程文档。能力控制失败时先诊断环境；能够运行检测器之后出现的主体报告是失败，不能通过更改全局安全设置、压制报告或缩小源码快照来制造通过。多NUMA节点实验仍取决于实际拓扑；WSL不替代裸机性能证据。
 
 新增日志单元默认关闭。打开时沿用已固定的fmt/spdlog源码；Windows可使用C05已有下载，Linux必须指定guest实际源码路径，不能直接复用Windows marker：
 
@@ -208,6 +208,6 @@ ctest --test-dir build/u01 -C Release -R U01_async_logging --output-on-failure
 
 完整操作、Student作业位置与good/bad判分见[U01](U01_async_logging/README.md)。两个库的完整编译输入必须匹配固定commit且无跟踪修改；不能只校验头文件而允许src/CMake漂移。扩展不新增日志全局注册或机器级依赖。
 
-队列计数是单独的`queue_diagnostics`目标，仅它带`CS_QUEUE_DIAGNOSTICS=1`。正式`queue_bench`不启用计数，诊断结果不能当成计时结果。运行入口与正式测量窗口约束见[队列修订证据](../topics/performance/c08-revision-queue-evidence.md)。
+队列计数是单独的`queue_diagnostics`目标，仅它带`CS_QUEUE_DIAGNOSTICS=1`。正式`queue_bench`不启用计数，诊断结果不能当成计时结果。运行入口与正式测量窗口约束见[队列验证与基准](../topics/queues/08-validation-and-benchmark.md)。
 
 返回[课程入口](../README.md)。

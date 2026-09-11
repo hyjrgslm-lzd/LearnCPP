@@ -1,47 +1,29 @@
-# 练习 9：environment 不是普通参数
+# C2_9 environment 不是 payload
 
-## 目标
+payload 是业务数据；environment 是 receiver 侧提供的执行上下文。本题要求 sender 图通过 `stdexec::read_env` 读取上下文，而不是把 scheduler、stop token 或 task id 当普通参数层层传。
 
-用 `get_scheduler()` 与 `get_stop_token()` 直接练 environment 查询，建立"执行上下文是从 receiver 一侧传下来的"这件事的直觉。
+## 知识
 
-## 前置理解
+sender/adaptor 连接 receiver 后，上游可以通过 environment 查询 scheduler、stop token、allocator 或自定义属性。包装 receiver 的 adaptor 必须转发 `get_env`，否则上游看到的上下文会丢失。
 
-- 你已经做完模块 B，知道 scheduler 可以显式进入图。
-- 你知道 `get_scheduler()`、`get_stop_token()` 不是普通函数调用结果，而是 query sender。
-- 你接受本题的重点是"上下文怎么被查询"，不是"取消机制细节全覆盖"。
+## 机制
 
-## 必做任务
+checker 用 `write_env` 注入三类上下文：
 
-1. 创建一个线程池，并准备一个最小 payload，例如 `task_id`、计数值或请求编号。
-2. 让一段 sender 在该线程池上开始执行。
-3. 在这段图中显式读取当前 environment，至少读取两项：
-   - `get_scheduler()`
-   - `get_stop_token()`
-4. 把 payload、当前 scheduler 查询结果、stop token 查询结果汇总成一个你自己定义的结构体，例如 `RuntimeContextSnapshot`。
-5. 再利用查询到的 scheduler，继续构造一小段新 sender，让它在"当前 scheduler"上追加一段日志或处理。
-6. 最终同步等待并输出快照信息。
+- 自定义 query `get_task_id`；
+- 标准 query `stdexec::get_stop_token`；
+- 标准 query `stdexec::get_scheduler`。
 
-## 进阶任务
+正确实现返回的 sender 图必须用 `read_env(get_task_id)`、`read_env(get_stop_token)` 和 `read_env(get_scheduler)` 真正读取这些值，并用查询到的 scheduler 执行一次 follow-up work，记录 follow-up thread id。checker 覆盖 `stop_requested=false/true`；follow-up 子图用 `never_stop_token` 避免测试自身被取消，stop 状态仍必须来自外层 environment。payload 只用于 `snapshot.payload`，不能携带 scheduler 或 stop 状态。
 
-- 把读取 environment 的逻辑封装成一个独立函数，返回 sender，再在主流程中组合它。
-- 如果你固定的 `stdexec` 版本支持更明显的 stoppable 场景，额外实验 stop token 的可观察状态。
-- 再做一个反例版本：把 scheduler 和 token 都当普通参数层层手动传，比较接口噪音。
+## 必做
 
-## 验收点
+1. 定义 `runtime_context_snapshot` 和 `get_task_id` query。
+2. `read_runtime_context(payload)` 返回 sender 图。
+3. sender 图用 `read_env` 读取 task id、stop token 和 scheduler。
+4. follow-up 必须通过查询到的 scheduler 执行。
+5. snapshot 中区分 payload、task id、stop 状态、start thread 和 follow-up thread。
 
-- 你能运行出包含 scheduler 与 stop token 查询痕迹的结果。
-- 你能解释这些值不是业务 payload，而是执行上下文。
-- 你能说明为什么 environment 查询比手动逐层传参数更适合异步框架。
-- 你能指出查询结果是在 sender 图的哪个阶段进入后续逻辑的。
+## 答案解释
 
-## 常见坑
-
-- 把 scheduler/token 直接写成外部捕获变量，结果没练到 query 模型。
-- 把 query sender 当成立即求值的普通函数，导致心智模型混乱。
-- 让快照结构体承担太多业务字段，反而看不清 environment 本身。
-- 把停止语义理解成"肯定等于异常"。
-
-## 对应官方参考
-
-- `stdexec/examples/hello_world.cpp`
-- `NVIDIA/stdexec` README 中 `get_scheduler` / `get_stop_token` 的示意
+Reference 不在 `start` 里手动拷贝 fake env 字段，而是返回标准 sender 组合：`when_all(read_env(...), read_env(get_scheduler) | let_value(schedule(...))) | then(...)`。bad 版本能编译，但 follow-up 留在 caller thread，检查器按行为拒绝。

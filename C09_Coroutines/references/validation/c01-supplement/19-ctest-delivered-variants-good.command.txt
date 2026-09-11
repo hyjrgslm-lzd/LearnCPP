@@ -1,1 +1,0 @@
-D:\cmake\install\bin\ctest.exe --test-dir F:\CPPTrain\LearnCPP\Coroutine_Study\exercises\build\c01-supplement-validation-variants-replay -C Release -R ^good_ --output-on-failure

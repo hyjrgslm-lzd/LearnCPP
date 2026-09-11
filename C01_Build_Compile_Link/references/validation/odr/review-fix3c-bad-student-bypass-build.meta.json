@@ -1,9 +1,0 @@
-{
-  "name": "bad-student-bypass-build",
-  "exit_code": 0,
-  "expected": [
-    0
-  ],
-  "ok": true,
-  "command": "call \"D:\\VisualStudio2026\\Installed\\Common7\\Tools\\VsDevCmd.bat\" -arch=x64 >nul && \"D:\\cmake\\install\\bin\\cmake.exe\" --build \"F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\sample-odr-review-fix3c-bad\\student_bypass\" --config Release"
-}

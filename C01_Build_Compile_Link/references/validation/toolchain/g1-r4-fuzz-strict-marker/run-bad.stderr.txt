@@ -1,8 +1,0 @@
-INFO: Running with entropic power schedule (0xFF, 100).
-INFO: Seed: 20260908
-INFO: Loaded 1 modules   (50 inline 8-bit counters): 50 [00007FF76DC06588, 00007FF76DC065BA), 
-INFO: Loaded 1 PC tables (50 PCs): 50 [00007FF76DBE8E20,00007FF76DBE9140), 
-INFO:        4 files found in F:\CPPTrain\LearnCPP\Engineering_Study\references\validation\toolchain\g1-r4-fuzz-strict-marker\input-corpus-bad
-INFO: -max_len is not provided; libFuzzer will not generate inputs larger than 4096 bytes
-G1_ORACLE_MISMATCH:invalid-accepted
-==30836== ERROR: libFuzzer: deadly signal

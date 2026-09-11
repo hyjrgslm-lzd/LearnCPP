@@ -1,53 +1,32 @@
-# 练习 10：作用域和生命周期
+# C2_10 scope 与生命周期
 
-## 目标
+本题讲 scope 的核心责任：接受异步工作、拥有 operation state、等待已接受工作完成，再释放父作用域。`exec::async_scope` 是 stdexec 扩展；标准 task/counting scope 的接口由后续 `10-task-and-scope.md` 主讲。
 
-用 `async_scope` 或同类作用域对象管理一组异步工作，真正回答"这些 operation_state 到底归谁拥有、谁来等它们收尾"。同时通过对比 `start_detached`，理解为什么结构化并发比 fire-and-forget 更安全。
+## 知识
 
-## 前置理解
+sender 是描述，不拥有一次执行。`operation_state` 才是 connect 后的执行实例。启动后如果没有 scope 或 future 持有它，就很难证明它何时结束，也无法安全销毁执行资源。
 
-- 你已经知道 sender 不是执行实例，`operation_state` 才是一次具体执行。
-- 你已经接触过并列分支与显式调度。
-- 你理解这题的重点是结构化并发，不是"如何最快启动更多任务"。
+`scope.on_empty()` 代表 rendezvous 点：不再有已接受工作存活。关闭后拒绝新工作、已接受工作 drain，是结构化并发的底线。
 
-## 必做任务
+## 机制
 
-1. 创建一个线程池和一个 `async_scope`。
-2. 构造至少 5 个独立 sender，每个 sender 都带任务编号，并在池上执行一小段可观察工作。
-3. 至少做两类任务：
-   - 一类只需要完成即可
-   - 一类需要返回结果给主流程
-4. 对前者使用 `scope.spawn(...)` 一类接口，对后者使用 `scope.spawn_future(...)` 一类接口。
-5. 在准备销毁线程池之前，显式等待 scope 为空，例如等待 `scope.on_empty()` 或同类收束点。
-6. 记录并画出：scope、线程池、sender、operation_state 之间的拥有关系。
-7. 做一个对比实验：如果你的版本支持 `start_detached`，用它替换 `scope.spawn()` 启动同一批任务。观察：
-   - 谁拥有这些 operation_state 的生命周期？
-   - 你还能等待它们全部完成吗？
-   - 如果提前销毁线程池会怎样？
-   - 对比之后写下：`start_detached` 为什么是"fire-and-forget"，为什么在结构化并发里应该避免使用它。
+可运行检查直接使用 `exec::async_scope` 验证同一组不变量：`spawn` 接受 3 个 fire-and-forget 工作；`on_empty()` 等三个工作都完成后才标记可释放；`spawn_future` 的结果汇总为 30；子任务错误 `"child failed"` 被保存。
 
-## 进阶任务
+bad 版本只完成 1 个已接受工作就报告释放，检查器拒绝。
 
-- 让返回结果的那部分任务形成一个小型结果汇总。
-- 再做一个故意写坏的版本：提前销毁线程池或跳过等待，观察为什么结构上不安全。
-- 如果你愿意，再试一次把前面模块 B 的流水线放进 scope 中，感受"图"和"拥有者"如何配合。
+## 必做
 
-## 验收点
+1. 区分 sender、operation state、scope、执行资源。
+2. 记录 accepted work 数量。
+3. 等全部 accepted work 完成后再释放父作用域。
+4. 保存 result-returning work 的结果。
+5. 保存 error path，不能只统计成功。
 
-- 你能保证所有任务在执行资源销毁前被收束。
-- 你能清楚区分"启动工作"和"拥有工作生命周期"是两件不同的事。
-- 你能解释 `spawn` 与 `spawn_future` 在语义上的差异。
-- 你能指出作用域对象解决的是哪类 bug 风险。
-- 你能说明 `start_detached` 与 `scope.spawn` 的核心差异：前者无人拥有生命周期，后者被 scope 收束。
+## 进阶
 
-## 常见坑
+- 对比 `scope.spawn(...)` 与 `scope.spawn_future(...)`：前者只交给 scope 拥有，后者还给调用方一个可等待的 future sender。
+- 对比 `start_detached`：它没有调用者可等待的生命周期边界。
 
-- 把 sender 构好就以为生命周期问题已经解决了。
-- 线程池先析构，scope 还没空，结果留下悬挂工作。
-- 只关注 `spawn` 的便捷，而不去区分有没有结果需要回收。
-- 把 scope 当成"另一个线程池"，概念上完全错位。
-- 认为 `start_detached` 只是 `scope.spawn` 的简写——它们在生命周期保证上完全不同。
+## 答案解释
 
-## 对应官方参考
-
-- `stdexec/examples/scope.cpp`
+Reference 使用真实 `exec::async_scope`、`exec::static_thread_pool`、`spawn`、`spawn_future` 与 `on_empty()`。核心不变量是：父 scope 收束之前，子 operation state 不能释放；错误不会被成功计数吞掉。

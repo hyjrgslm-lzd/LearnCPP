@@ -1,1 +1,0 @@
-﻿call "D:\VisualStudio2026\Installed\Common7\Tools\VsDevCmd.bat" -arch=x64 >nul && "D:\VisualStudio2026\Installed\VC\Tools\Llvm\x64\bin\clang++.exe" -std=c++23 -ftime-trace "F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\toolchain-probe\clang-tools\trace.cpp" -o "F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\toolchain-probe\out\direct\clang\trace_probe.exe"

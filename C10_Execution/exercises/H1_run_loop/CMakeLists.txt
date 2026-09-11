@@ -1,17 +1,11 @@
-cmake_minimum_required(VERSION 3.25)
+cmake_minimum_required(VERSION 3.28)
 project(H1_run_loop LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
-
-if(MSVC)
-    add_compile_options(/Zc:__cplusplus /utf-8)
-endif()
-
-# 引入 stdexec —— 无论作为子项目还是独立打开都能工作
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../cmake")
-include(StdexecSetup)
+include(StudySetup)
 
-add_executable(H1_run_loop main.cpp)
-target_link_libraries(H1_run_loop PRIVATE stdexec::stdexec)
+c10_add_exercise(
+  NAME H1_run_loop
+  HEADER solution.hpp
+  CHECK main.cpp
+  BAD_DIAGNOSTIC "completion runs on loop thread")

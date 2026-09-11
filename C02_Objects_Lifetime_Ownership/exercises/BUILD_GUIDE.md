@@ -6,7 +6,7 @@
 
 核心要求 C++23、CMake 3.28 或更新版本。各题既可由本课顶层一起配置，也能在完整 LearnCPP checkout 内作为叶级工程独立配置。公共检查头只读复用 C01，因此不能把单个题目录复制到没有其余仓库文件的位置后声称仍是相同构建入口。
 
-本轮机器已有 CMake 4.2.3、Visual Studio 18.9/MSVC 14.51、Clang 22.1.3。这些是环境记录，不是所有 C++23/26/29 能力都可用的保证。默认不下载依赖、不安装组件、不改系统配置。实际标准模式、特性宏、编译/链接和运行分别记录；MSVC 预览模式与 ISO 固定文本之间也需要区分。
+课程示例按 CMake 4.x、Visual Studio/MSVC 和 Clang 等现代工具链组织。这些是环境要求提示，不是所有 C++23/26/29 能力都可用的保证。默认不下载依赖、不安装组件、不改系统配置。实际标准模式、特性宏、编译/链接和运行分别记录；MSVC 预览模式与 ISO 固定文本之间也需要区分。
 
 下列普通命令在 `C02_Objects_Lifetime_Ownership/exercises` 目录运行。Visual Studio 生成器可自动发现安装，普通 PowerShell 没有 `cl` 不等于没有 MSVC。机器安装的生成器名不同时使用对应名称，不在共享 preset 中写个人工具路径。
 
@@ -22,7 +22,7 @@ cmake --build --preset verify-debug
 ctest --preset verify-debug
 ```
 
-VS 是多配置生成器，build/test preset 的 `configuration` 决定实际 Debug 或 Release；仅设置 `CMAKE_BUILD_TYPE` 不能代替它。两组目录独立，以便把当前源与实际配置匹配，避免把历史二进制误当本轮结果。
+VS 是多配置生成器，build/test preset 的 `configuration` 决定实际 Debug 或 Release；仅设置 `CMAKE_BUILD_TYPE` 不能代替它。两组目录独立，以便把当前源与实际配置匹配，避免把历史二进制误当当前结果。
 
 Windows 嵌套编译负例应采用较短的 build 路径。过深的目录可能使 MSBuild 先因项目路径失败；这属于工具/路径失败，不能算命中题目期望的 C++ 诊断。原始失败应保留，另选短路径复验。
 
@@ -62,7 +62,7 @@ ctest --preset asan
 
 默认 `CORE_STUDY_ENABLE_UNSAFE_DEMOS=OFF`。故意越界、释放后使用等程序只在明确启用的独立进程执行；正反诊断需要同时检查目标错误类别、源码位置和退出码。缺 DLL、启动失败、超时、无关崩溃不能当成检测到了预期错误。ASan 无报告也不证明程序没有所有种类的 UB。
 
-本机的独立工具链探测入口和原始失败/成功证据在[ASan探测目录](../references/validation/asan/)。其中记录脚本绑定本机工具路径；其他机器按自己的已安装工具设置子进程环境。探测程序通过不等于完整 C02 已通过 ASan，整课实际范围以质量报告为准。
+独立工具链探测应绑定当前机器的编译器、运行库路径和 sanitizer 选项；其他机器按自己的已安装工具设置子进程环境。探测程序通过不等于完整 C02 已通过 ASan，也不能把缺工具写成代码正确。
 
 ## 前沿能力与其他平台
 
@@ -88,7 +88,7 @@ ctest --test-dir build/c02-release --output-on-failure
 python C02_Objects_Lifetime_Ownership/exercises/tools/record_process.py --output build/learner-command-001.json -- cmake --version
 ```
 
-`--output` 必须是新文件；重跑使用新名字，不覆盖旧失败。预期失败还需 `--expect-exit` 和 `--contains` 指定精确退出与目标诊断。记录同时保留子进程原始状态和判定结果，不能把预期非零改写成子进程退出零。记录器自检在 [check_record_process.py](../references/validation/tools/check_record_process.py)。
+`--output` 必须是新文件；重跑使用新名字，不覆盖旧失败。预期失败还需 `--expect-exit` 和 `--contains` 指定精确退出与目标诊断。记录同时保留子进程原始状态和判定结果，不能把预期非零改写成子进程退出零。记录器脚本位于 `exercises/tools/record_process.py`，生成的运行记录属于本机产物，不提交到课程文档。
 
 Windows 记录器只为自身及继承的验证子进程设置错误模式，把加载/进程故障留在退出状态与日志中，避免系统错误弹窗打断用户操作；不改变机器级错误处理设置。它不会把加载失败变成成功，也不替代匹配运行库的部署。
 

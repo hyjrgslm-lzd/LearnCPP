@@ -1,6 +1,0 @@
-CMake Error at CMakeLists.txt:18 (message):
-  F2_PROVIDER_FIXTURE_SOURCE_DIR must point to the local F2 provider fixture
-  source tree:
-  F:/CPPTrain/LearnCPP/Engineering_Study/exercises/build/missing-f2-provider-fixture
-
-

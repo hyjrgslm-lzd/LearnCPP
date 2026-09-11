@@ -57,4 +57,4 @@ runner 的 PARTIAL_SKIP 默认返回 77；明确使用 `--allow-partial` 时才�
 
 答案：计时排除分配、初始化触页、一次预读、页查询和正确性检查，包含 reader 创建、affinity 设置、扫描和 join。它排除了显式初始 fault 阶段，未证明正式区间绝无 fault；前后页面快照也未证明期间没有迁移。小规模毫秒数不能当作 DRAM load latency。比较 local/remote 时不改变 CPU；比较 firsttouch/parallel-init 时不改变 reader 集合。
 
-作者实测记录见[专题验证记录](../../topics/scheduling/verification.md)。独立 review 在后续批次进行，本文不预先标记独立验收通过。
+复查时运行本题 Reference、J3 平台探针和 `numa_bench`。单节点机器只能得到本地页面证据；remote/interleaved 与跨节点 reader 需要真实多节点拓扑。

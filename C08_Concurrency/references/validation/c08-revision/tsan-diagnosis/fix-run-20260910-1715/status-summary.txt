@@ -1,9 +1,0 @@
-status-plain-build-targets.txt=0
-status-plain-configure.txt=0
-status-plain-ctest-targets.txt=0
-status-tsan-build-targets.txt=0
-status-tsan-configure.txt=0
-status-tsan-ctest-targets.txt=0
-status-tsan-direct-B3.txt=0
-status-tsan-direct-F3.txt=0
-status-tsan-direct-scheduling-allocation.txt=77

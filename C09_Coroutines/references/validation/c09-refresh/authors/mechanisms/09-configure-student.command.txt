@@ -1,1 +1,0 @@
-python C09_Coroutines/exercises/tools/configure_windows.py --build C09_Coroutines/exercises/build/c09-author-mechanisms-student --student

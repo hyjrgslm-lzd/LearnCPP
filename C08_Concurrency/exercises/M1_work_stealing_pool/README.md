@@ -4,9 +4,9 @@
 
 本题默认 C++23，无额外库依赖。它是每 worker 一条带锁 deque 的真实窃取池，没有实现 Chase–Lev，也不保证全局 FIFO、无锁进展或任意依赖图无死锁。
 
-## 本轮 TSan 边界
+## TSan 边界
 
-Clang18＋libstdc++13＋TSan组合下，工作线程释放最后一个任务共享状态时，检测器可能将主线程catch中的`e.what()`读取报告为竞争。修正版纯标准库例子使用`packaged_task`、`thread`、`future`，移走主线程持有者并控制worker最后释放，已稳定复现同形报告；值通道及plain/ASan对照通过。原始报告、第一次未复现时的持有者差异和修正版源码见[M1专项诊断](../../references/validation/c08-revision/tsan-diagnosis/m1-20260910-1815/diagnosis.md)。
+Clang18＋libstdc++13＋TSan组合下，工作线程释放最后一个任务共享状态时，检测器可能将主线程catch中的`e.what()`读取报告为竞争。课程保留这一检测器边界：值通道、plain 和 ASan 对照应分别核查；TSan 报告不能直接等同于本池 UAF，也不能用 suppression 或额外 join 掩盖协议问题。本机原始报告属于验证产物，不提交到课程源码。
 
 这不支持把池认定为UAF，也不意味着一般情况下必须在`future.get()`之前join。标准异常对象的寿命与`exception_ptr`引用关系仍成立；不能加额外join或检测器suppression来掩盖本例。Reference仅在上述已验证组合中检查异常类型、跳过消息文本断言，并继续检查递归、结果、排空、拒收和窃取，最后返回77明确记录PARTIAL_SKIP。其他组合仍执行完整消息断言；普通及ASan验证保留完整范围。调度并发的独立runtime测试不因这一消息断言被跳过。
 
@@ -63,4 +63,4 @@ Reference 最后使用两个 worker。root 在自己的队列提交 child，然�
 
 [scheduling_bench.cpp](../benchmarks/scheduling_bench.cpp) 接受 `--variant static|dynamic|stealing --size N --threads P`，一次只输出选中版本的统一 CSV。计时包含分配、线程构造、调度、计算和 join；逐项检查在计时后。用公共 runner 采样，不要求特定加速。
 
-作者已在 MSVC 19.51 Release 下运行 Reference 与 runtime；后续改动的验证记录见[专题验证记录](../../topics/scheduling/verification.md)。独立 review 由主线程另行组织，不把作者自查写成独立验收。
+复查时运行本题 Reference 与 scheduling runtime。结果只说明本题覆盖的递归、结果、排空、拒收和窃取场景，不写成独立验收。

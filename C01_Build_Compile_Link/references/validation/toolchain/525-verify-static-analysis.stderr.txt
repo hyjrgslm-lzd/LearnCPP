@@ -1,4 +1,0 @@
-F:\CPPTrain\LearnCPP\Engineering_Study\exercises\G1_diagnostics\static_analysis\null_state.cpp:3:12: warning: Dereference of null pointer (loaded from variable 'value') [core.NullDereference]
-    3 |     return *value;
-      |            ^~~~~~
-1 warning generated.

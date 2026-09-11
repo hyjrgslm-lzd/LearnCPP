@@ -1,7 +1,0 @@
-{
-  "exit_code": 8,
-  "timed_out": false,
-  "expected_failure": true,
-  "stdout": "Engineering_Study\\references\\validation\\odr\\review-fix2-32-student-bypass-rejected.stdout.txt",
-  "stderr": "Engineering_Study\\references\\validation\\odr\\review-fix2-32-student-bypass-rejected.stderr.txt"
-}

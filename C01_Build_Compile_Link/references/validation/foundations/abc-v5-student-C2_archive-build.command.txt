@@ -1,1 +1,0 @@
-call "D:\VisualStudio2026\Installed\Common7\Tools\VsDevCmd.bat" -arch=x64 >nul && "D:\cmake\install\bin\cmake.exe" --build "F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\abc-v5-ninja-student-C2_archive" --config Release

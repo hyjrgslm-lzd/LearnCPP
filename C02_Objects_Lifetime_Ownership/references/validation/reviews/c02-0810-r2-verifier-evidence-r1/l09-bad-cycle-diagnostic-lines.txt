@@ -1,5 +1,0 @@
-Core_Study/references/validation/author-owner-08-10-r2-report.md:61:- `author-owner-l09-r2-bad-cycle-debug.json`：PASS，expected exit 1，含 `parent weak expires after graph scope`。
-Core_Study/exercises/L09_shared/checks/owner_checks.hpp:70:    check(weak_parent.expired(), "parent weak expires after graph scope");
-Core_Study/exercises/L09_shared/CMakeLists.txt:35:    add_executable(L09_shared_validation_bad_cycle checks/validation_check.cpp)
-Core_Study/exercises/L09_shared/CMakeLists.txt:36:    target_include_directories(L09_shared_validation_bad_cycle PRIVATE checks/support validation/bad_cycle checks)
-Core_Study/exercises/L09_shared/CMakeLists.txt:37:    core_configure_target(L09_shared_validation_bad_cycle)

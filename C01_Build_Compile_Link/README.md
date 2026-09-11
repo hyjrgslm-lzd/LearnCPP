@@ -28,7 +28,7 @@
 
 构建入口见 [BUILD_GUIDE](exercises/BUILD_GUIDE.md)。核心默认离线、C++23；Modules、`import std` 和故意错误诊断有独立入口。每次错误都先说明期望在哪个阶段失败；超时、错误阶段不符或任意别的报错不能算负例验证通过。
 
-本次实现与验收约定见[实施规格](references/implementation-spec.md)。11章与13个练习单元已实现，Windows四配置与专项实验已完成验证；知识/练习对应、原始输出和非作者审查分别从[覆盖表](references/coverage.md)、[质量报告](references/quality-report.md)进入。G2另保留72轮正式测量及其适用边界。观察型实验成功不等于完成学习任务，未完成Student仍需自行实现。
+知识和练习对应见[覆盖表](references/coverage.md)。11章与13个练习单元覆盖构建、链接、运行时、CMake、诊断、Modules、`import std` 和包消费；观察型实验成功不等于完成学习任务，未完成 Student 仍需自行实现。性能类练习只提供可复现实验方法，不提交本机测量日志。
 
 ## 接入其他课程
 

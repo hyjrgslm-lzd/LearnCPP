@@ -1,9 +1,0 @@
-﻿{
-    "name":  "22-msvc-import-std-run",
-    "command":  "\"call \"D:\\VisualStudio2026\\Installed\\Common7\\Tools\\VsDevCmd.bat\" -arch=x64 \u003enul \u0026\u0026 \"F:\\CPPTrain\\LearnCPP\\Engineering_Study\\exercises\\build\\toolchain-probe\\out\\msvc-import-std\\import_std_probe.exe\"\"",
-    "exit_code":  null,
-    "timed_out":  false,
-    "timeout_seconds":  120,
-    "stdout":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\22-msvc-import-std-run.stdout.txt",
-    "stderr":  "F:\\CPPTrain\\LearnCPP\\Engineering_Study\\references\\validation\\toolchain-probe\\22-msvc-import-std-run.stderr.txt"
-}

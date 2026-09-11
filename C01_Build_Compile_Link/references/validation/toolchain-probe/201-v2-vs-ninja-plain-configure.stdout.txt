@@ -1,3 +1,0 @@
-﻿-- The CXX compiler identification is MSVC 19.51.36256.0
--- Detecting CXX compiler ABI info
-

@@ -86,4 +86,4 @@ Windows `asan` 用 MSVC AddressSanitizer 和对应运行库；Linux `linux-asan`
 
 性能入口与正确性入口分开，见 [B01](B01_costs/README.md)。先定位再改变，原始失败和旧样本不覆盖。默认一轮预热、五次独立进程采样；Windows 和 WSL 分开报告。并行写作/构建时不运行正式性能采样。
 
-最终验证必须用固定代码重新配置、构建并运行，而不是汇总过期作者日志。把本批运行器 JSON、CTest/JUnit、环境、include 审计和源文件 manifest 导回 `../references/validation/`；二进制、依赖和 CMake 缓存留在 build/guest。详细结果以 [质量报告](../references/quality-report.md) 为准。
+最终验证必须用固定代码重新配置、构建并运行，而不是汇总过期作者日志。本批运行器 JSON、CTest/JUnit、环境、include 审计和源文件 manifest 留在 build/guest 或单独归档；二进制、依赖和 CMake 缓存同样不提交。课程仓库只保留源码、题面、正文、覆盖表和稳定的规范说明。

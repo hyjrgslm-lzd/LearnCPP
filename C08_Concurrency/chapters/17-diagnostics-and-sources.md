@@ -92,7 +92,7 @@ python tools/run_diagnostic.py --timeout 5 -- ./build/diagnostic-B2/Release/B2_d
 | 编译器向量化诊断与汇编 | 某个具体构建生成了什么 | 不自动解释真实运行的瓶颈 |
 | profiler/硬件计数器 | 采样或计数口径下的热点与事件 | 依赖硬件、权限、采样和归因条件 |
 
-本机实际运行过的工具与范围写在[质量报告](../references/quality-report.md)。ASan 和 TSan 的构建应分别安排；Windows 上的某个 ASan 成功记录不能替代 Linux/其他平台的 TSan 记录。工具使用与限制以 [Clang ASan](https://clang.llvm.org/docs/AddressSanitizer.html)、[Clang TSan](https://clang.llvm.org/docs/ThreadSanitizer.html)、[MSVC ASan](https://learn.microsoft.com/en-us/cpp/sanitizers/asan)等官方说明为准。
+本机实际运行过的工具与范围应写入本机验证记录。ASan 和 TSan 的构建应分别安排；Windows 上的某个 ASan 成功记录不能替代 Linux/其他平台的 TSan 记录。工具使用与限制以 [Clang ASan](https://clang.llvm.org/docs/AddressSanitizer.html)、[Clang TSan](https://clang.llvm.org/docs/ThreadSanitizer.html)、[MSVC ASan](https://learn.microsoft.com/en-us/cpp/sanitizers/asan)等官方说明为准。
 
 ## 7. 检查“标量”代码是否已经向量化
 

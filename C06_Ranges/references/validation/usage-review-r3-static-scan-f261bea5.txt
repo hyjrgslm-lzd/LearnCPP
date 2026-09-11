@@ -1,2 +1,0 @@
-C06_Ranges/exercises/C2_3_ranges_to/main.cpp:42:    auto tokens = std::string_view{"alpha,beta,gamma"}
-C06_Ranges/exercises/C2_3_ranges_to/main.cpp:46:    check((tokens == std::vector<std::string>{"alpha", "beta", "gamma"}), "split subranges can be materialized into vector<string>");

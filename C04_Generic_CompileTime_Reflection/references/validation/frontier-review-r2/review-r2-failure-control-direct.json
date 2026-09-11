@@ -1,9 +1,0 @@
-{
-  "name": "review-r2-failure-control-direct",
-  "command": "F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/references/validation/frontier-review-r2/build-msvc-failure-control/Release/F01_declared_failure_control.exe",
-  "exit_code": 1,
-  "stdout_file": "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\references\\validation\\frontier-review-r2\\review-r2-failure-control-direct.stdout.txt",
-  "stderr_file": "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\references\\validation\\frontier-review-r2\\review-r2-failure-control-direct.stderr.txt",
-  "stdout": "probe=declared_failure_control header=na macro=1 body=1\r\nFAIL declared capability control reached the subject body\r\n",
-  "stderr": null
-}

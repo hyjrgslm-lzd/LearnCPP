@@ -1,8 +1,0 @@
-cmake_minimum_required(VERSION 3.28)
-project(c04_diagnostic LANGUAGES CXX)
-include("F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/cmake/StudySetup.cmake")
-add_executable(control "F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/A02_field_projection/validation/diagnostics/projection_control.cpp")
-add_executable(subject "F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/A02_field_projection/validation/diagnostics/trailing_component.cpp")
-c04_configure_target(control)
-c04_configure_target(subject)
-include("F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/exercises/A02_field_projection/validation/diagnostics/setup.cmake")

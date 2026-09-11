@@ -1,1 +1,0 @@
-Capstone1 student FAIL: task must run on a worker, not submitter

@@ -1,9 +1,0 @@
-{
-  "runId": "student-portability-20260910-175508-13ddcee8",
-  "snapshot": "\\\\wsl.localhost\\LearnCPP-C08-Ubuntu-24.04\\root\\learncpp-c08-src\\student-portability-20260910-175508-13ddcee8",
-  "copiedFileCount": 302,
-  "manifestSha256": "54b080a8d6358d88f43d7c0cae21254e6f8704bfdbd803a0d09d10b8c5da97b4",
-  "verifyStudentsSha256": "91565efd46583e8733385a3432c4eaa43e4374bcb0d86871f9dae7927622dcb2",
-  "start": "2026-09-10T17:55:47.263632+08:00",
-  "end": "2026-09-10T17:55:49.478184+08:00"
-}

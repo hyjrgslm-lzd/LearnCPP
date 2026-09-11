@@ -1,1 +1,0 @@
-ok exception-join-before-get rounds=300 owner=worker-last-task-ref cleanup=worker-thread gate=relaxed-atomic

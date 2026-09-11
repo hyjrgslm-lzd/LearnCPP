@@ -1,7 +1,0 @@
-work_dir=/root/learncpp-c08-builds/tsan-diagnosis-20260910-1658
-repo_src=/root/learncpp-c08-src/baseline-20260910-162842-fc6bb723
-tsan_build=/root/learncpp-c08-builds/baseline-20260910-162842-fc6bb723/linux-tsan
-Ubuntu clang version 18.1.3 (1ubuntu1)
-g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
-cmake version 3.28.3
-1.11.1

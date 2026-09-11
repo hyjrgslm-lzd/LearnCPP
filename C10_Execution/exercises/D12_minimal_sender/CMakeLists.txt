@@ -1,17 +1,11 @@
-cmake_minimum_required(VERSION 3.25)
+cmake_minimum_required(VERSION 3.28)
 project(D12_minimal_sender LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
-
-if(MSVC)
-    add_compile_options(/Zc:__cplusplus /utf-8)
-endif()
-
-# 引入 stdexec —— 无论作为子项目还是独立打开都能工作
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../cmake")
-include(StdexecSetup)
+include(StudySetup)
 
-add_executable(D12_minimal_sender main.cpp)
-target_link_libraries(D12_minimal_sender PRIVATE stdexec::stdexec)
+c10_add_exercise(
+  NAME D12_minimal_sender
+  HEADER solution.hpp
+  CHECK main.cpp
+  BAD_DIAGNOSTIC "error mode sends set_error")

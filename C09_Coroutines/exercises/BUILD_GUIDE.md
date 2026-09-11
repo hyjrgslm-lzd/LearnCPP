@@ -123,7 +123,7 @@ Windows 路线构建 Debug/Release 并运行完整已启用验证；Student 路�
 
 WSL 路线复用本机已有 liburing 2.15，运行 I/O 与可用 Reference。`<generator>` 独立实例化探针失败时，只排除相应四项；其他失败仍算 FAIL。标准 `std::execution::task` 的 H2 probe 与 stdexec 练习分离，缺能力返回 77/Skipped；probe 通过后主体错误不能降为 SKIP。
 
-原始命令、输出、超时/清理结果、源码指纹保存到 `references/validation/c09-refresh/final/` 的时间戳目录；历史失败不覆盖。监督器复用 C07 的 `run_test.py` 与 C01 的 `process_runner.py`。单题默认 30 秒、RPC 60 秒，bad wrapper 留出清理时间。Reference 关闭时不注册教学 runtime 的 reference 测试；它们仍可从 `runtime_tests` 独立构建。
+原始命令、输出、超时/清理结果、源码指纹保存到本机 build/validation 时间戳目录；历史失败不覆盖，且这些记录不提交到课程源码。监督器复用 C07 的 `run_test.py` 与 C01 的 `process_runner.py`。单题默认 30 秒、RPC 60 秒，bad wrapper 留出清理时间。Reference 关闭时不注册教学 runtime 的 reference 测试；它们仍可从 `runtime_tests` 独立构建。
 
 RPC 的 `answer_check` 是 public API 对应的 Reference-adapted 答版，`protocol_good_check` 仅在 protocol Part 使用独立实现。两者随 Reference 开关启用；学生起点不使用 WILL_FAIL。底层被检测的 bad 必须在规定退出码和具体诊断上被拒绝，超时、崩溃不算反例验收通过。
 

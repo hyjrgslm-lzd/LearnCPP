@@ -1,4 +1,0 @@
-D	icu4j/main/core/src/test/resources/com/ibm/icu/dev/test/serializable/data/ICU_74.1/com.ibm.icu.impl.number.LocalizedNumberFormatterAsFormat.dat
-D	icu4j/main/core/src/test/resources/com/ibm/icu/dev/test/serializable/data/ICU_75.1/com.ibm.icu.impl.number.LocalizedNumberFormatterAsFormat.dat
-D	icu4j/main/core/src/test/resources/com/ibm/icu/dev/test/serializable/data/ICU_76.1/com.ibm.icu.impl.number.LocalizedNumberFormatterAsFormat.dat
-D	icu4j/main/core/src/test/resources/com/ibm/icu/dev/test/serializable/data/ICU_77.1/com.ibm.icu.impl.number.LocalizedNumberFormatterAsFormat.dat

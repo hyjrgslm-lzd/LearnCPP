@@ -1,3 +1,0 @@
-exit_code=0
-timed_out=False
-timeout_seconds=300

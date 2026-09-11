@@ -1,8 +1,0 @@
-{
-  "phase": "post-blind technical review repair",
-  "author": "root",
-  "previous_sha256": "c72742879475cc8943ce71296aae59cc334986f9f942a9bcbd203a207085db77",
-  "sha256": "65ecb96a7bf05eb3c4f1ece4a06c2ff313299c9fe5a7c62d010c7fda3cf53077",
-  "reason": "if constexpr prevents forming invalid or overflowing next template argument; this revision is not claimed as blind writing",
-  "previous_source": "C04_Generic_CompileTime_Reflection/references/validation/revision-20260910/blind-core/L10/constexpr_tools.v2.hpp"
-}

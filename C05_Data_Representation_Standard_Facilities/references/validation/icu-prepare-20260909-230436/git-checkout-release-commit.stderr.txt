@@ -1,5 +1,0 @@
-error: unable to create file icu4j/main/core/src/test/resources/com/ibm/icu/dev/test/serializable/data/ICU_74.1/com.ibm.icu.impl.number.LocalizedNumberFormatterAsFormat.dat: Filename too long
-error: unable to create file icu4j/main/core/src/test/resources/com/ibm/icu/dev/test/serializable/data/ICU_75.1/com.ibm.icu.impl.number.LocalizedNumberFormatterAsFormat.dat: Filename too long
-error: unable to create file icu4j/main/core/src/test/resources/com/ibm/icu/dev/test/serializable/data/ICU_76.1/com.ibm.icu.impl.number.LocalizedNumberFormatterAsFormat.dat: Filename too long
-error: unable to create file icu4j/main/core/src/test/resources/com/ibm/icu/dev/test/serializable/data/ICU_77.1/com.ibm.icu.impl.number.LocalizedNumberFormatterAsFormat.dat: Filename too long
-HEAD is now at 457157a ICU-22923 Workaround for addLikelySubtags(und-Latn-RS) bug

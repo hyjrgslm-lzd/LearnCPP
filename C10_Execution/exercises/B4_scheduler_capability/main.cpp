@@ -1,72 +1,63 @@
-#include <stdexec/execution.hpp>
-#include <exec/static_thread_pool.hpp>
-#include <iostream>
+#include <c10/test.hpp>
+#include <solution.hpp>
+#include <algorithm>
+#include <array>
+#include <stdexcept>
 #include <thread>
-#include <sstream>
-#include <chrono>
 
-namespace ex = stdexec;
-
-// ── 辅助：线程安全打印 ───────────────────────────────
-void log_task(int task_id) {
-    std::ostringstream oss;
-    oss << "  [task " << task_id << "] thread_id = "
-        << std::this_thread::get_id() << "\n";
-    std::cout << oss.str();
+namespace {
+void check_probe(int threads, int tasks) {
+  auto result = c10_b4::run_scheduler_probe(threads, tasks);
+  c10::require(result.requested_threads == threads, "thread pool request recorded");
+  c10::require(result.completed_tasks == tasks, "all requested scheduled tasks complete");
+  c10::require(result.caller_thread_id == std::this_thread::get_id(), "caller thread is recorded");
+  if (tasks > 0) {
+    c10::require(!result.worker_thread_ids.empty(), "scheduled work observes worker context");
+    c10::require(std::none_of(result.worker_thread_ids.begin(), result.worker_thread_ids.end(),
+                              [&](auto id) { return id == result.caller_thread_id; }),
+                 "scheduled work does not run inline on caller thread");
+  } else {
+    c10::require(result.worker_thread_ids.empty(), "zero tasks do not invent worker observations");
+  }
+  c10::require(result.scheduler_copies_remain_usable, "scheduler copies can create later work");
 }
-
-// ══════════════════════════════════════════════════════
-// TODO [必做]: 实现 run_with_pool
-//   1. 创建 exec::static_thread_pool(thread_count)
-//   2. 获取 scheduler: auto sch = pool.get_scheduler();
-//   3. 构造 8 个独立 sender，每个从 ex::schedule(sch) 开始，
-//      在 then 中调用 log_task(task_id) 打印任务编号和线程 ID
-//   4. 用 ex::when_all(...) 汇合全部 sender
-//   5. 用 ex::sync_wait(...) 等待完成
-// ══════════════════════════════════════════════════════
-void run_with_pool(int thread_count) {
-    std::cout << "\n=== static_thread_pool(" << thread_count << ") ===\n";
-
-    // TODO [必做]: 创建线程池
-    // exec::static_thread_pool pool(thread_count);
-    // auto sch = pool.get_scheduler();
-
-    // TODO [必做]: 构造 8 个 sender 分支
-    //   提示：可以用辅助 lambda 批量创建
-    //
-    // auto make_task = [&](int task_id) {
-    //     return ex::schedule(sch)
-    //         | ex::then([task_id]() {
-    //             log_task(task_id);
-    //         });
-    // };
-    //
-    // auto all = ex::when_all(
-    //     make_task(0), make_task(1), make_task(2), make_task(3),
-    //     make_task(4), make_task(5), make_task(6), make_task(7)
-    // );
-
-    // TODO [必做]: 用 sync_wait 消费
-    // ex::sync_wait(std::move(all));
-
-    std::cout << "=== done ===\n";
-}
+} // namespace
 
 int main() {
-    std::cout << "主线程 thread_id = " << std::this_thread::get_id() << "\n";
-
-    // 先用 1 个工作线程跑一遍
-    run_with_pool(1);
-
-    // 再用 4 个工作线程跑一遍
-    run_with_pool(4);
-
-    // ══════════════════════════════════════════════════════
-    // TODO [进阶]: 在每个任务里加入极短的 sleep_for，
-    //   让线程分布更容易观察。
-    // TODO [进阶]: 用同一个 scheduler 连续创建两批任务，
-    //   观察 scheduler 可复制、可重复使用这一点。
-    // ══════════════════════════════════════════════════════
-
-    return 0;
+  return c10::test_main([] {
+    for (int repeat = 0; repeat < 2; ++repeat) {
+      for (int tasks : std::array{0, 1, 3, 8, 17}) {
+        check_probe(1, tasks);
+      }
+      check_probe(4, 17);
+    }
+    bool rejected = false;
+    try {
+      (void)c10_b4::run_scheduler_probe(0, 1);
+    } catch (const std::invalid_argument &) {
+      rejected = true;
+    }
+    c10::require(rejected, "thread_count lower bound is validated");
+    rejected = false;
+    try {
+      (void)c10_b4::run_scheduler_probe(65, 1);
+    } catch (const std::invalid_argument &) {
+      rejected = true;
+    }
+    c10::require(rejected, "thread_count upper bound is validated");
+    rejected = false;
+    try {
+      (void)c10_b4::run_scheduler_probe(1, -1);
+    } catch (const std::invalid_argument &) {
+      rejected = true;
+    }
+    c10::require(rejected, "task_count lower bound is validated");
+    rejected = false;
+    try {
+      (void)c10_b4::run_scheduler_probe(1, 1025);
+    } catch (const std::invalid_argument &) {
+      rejected = true;
+    }
+    c10::require(rejected, "task_count upper bound is validated");
+  });
 }

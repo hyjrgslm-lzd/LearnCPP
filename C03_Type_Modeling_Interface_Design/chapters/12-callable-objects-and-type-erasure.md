@@ -14,7 +14,7 @@ C++26 又把同一设计空间拆得更清楚。`std::copyable_function` 仍是�
 
 比较这些类型时先问三个问题：谁拥有 callable？包装器能否复制？空状态和失败语义是什么？`std::function` 适合保存可复制行为并需要空调用异常；`move_only_function` 适合保存 move-only 行为并把空状态作为调用前置条件；`copyable_function` 适合 C++26 后需要 copyable 且 const/ref/noexcept 约束准确的接口；`function_ref` 适合只在调用栈内借用行为。函数模板或 `auto` 参数仍是零成本首选，只有需要类型擦除、存储、ABI 边界或运行时组合时才使用包装器。
 
-MSVC STL 的源码导读入口固定在本机 `D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\include\functional`，头文件 SHA 在 `references/validation/capabilities/local-msvc-stl-inputs-20260909.md`。该文件中，`std::function` 路径可从 `_Func_class`、`_Func_impl_no_alloc`、`_Copy`、`_Delete_this` 和 `_Xbad_function_call` 读起：复制经 `_Copy`，销毁经 `_Delete_this`，空调用进入 `_Xbad_function_call`。`std::move_only_function` 路径可从 `_Function_storage_mode`、`_Function_base`、`_Function_call` 和 `move_only_function` 读起：小对象和大对象走不同存储模式，移动/销毁经表驱动分派。这里的 SBO 大小是实现细节，只能说本机 MSVC STL 以 `_Small_object_num_ptrs` 派生存储空间，不能硬断所有标准库实现都有相同阈值。
+阅读 MSVC STL 的 `<functional>` 时，可从 `std::function` 的 `_Func_class`、`_Func_impl_no_alloc`、`_Copy`、`_Delete_this` 和 `_Xbad_function_call` 读起：复制经 `_Copy`，销毁经 `_Delete_this`，空调用进入 `_Xbad_function_call`。`std::move_only_function` 可从 `_Function_storage_mode`、`_Function_base`、`_Function_call` 和 `move_only_function` 读起：小对象和大对象走不同存储模式，移动/销毁经表驱动分派。具体源码路径、头文件版本和 SBO 大小都是实现细节，不能硬断所有标准库实现都有相同阈值。
 
 练习 L12 是观察型。Part 1 用 `std::invoke` 调用成员函数、成员数据和函数对象，说明“可调用”不是单一语法。Part 2 用 `std::reference_wrapper` 修改原对象，说明它是显式借用而非复制。Part 3 比较 `std::function` 的空调用异常和 const 调用历史缺陷。Part 4 用 `std::move_only_function` 保存 move-only 捕获，并只在非空时调用。Part 5 使用真实标准类型检查 `std::move_only_function<int() &>` 只能由左值 wrapper 调用，并检查 `std::move_only_function<int() const noexcept>` 可从 `const&` 调用且满足 `std::is_nothrow_invocable_v`。C++26 的 `copyable_function/function_ref` 不在 L12 重复探测，统一链接到 F01 的真实前沿示例。
 

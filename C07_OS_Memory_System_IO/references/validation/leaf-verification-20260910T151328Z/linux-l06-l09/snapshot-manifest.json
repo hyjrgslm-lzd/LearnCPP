@@ -1,9 +1,0 @@
-{
-  "verdict": "PASS",
-  "snapshot_root": "/root/learncpp-c07/snapshots/leaf-delta-l06-l09-20260910T151158Z",
-  "source_root": "/mnt/f/CPPTrain/LearnCPP",
-  "scope": "C07 plus C01/C02 public include/tools; validation/build excluded",
-  "l06_good_sha256": "99ac3eb7a1308c757cbe451399dead4adbf1de419fbd06f5e45de358cf7bb320",
-  "l09_good_sha256": "d54fa11b2441ae8e1f2a9cf095f93ce92e73664275431aa9b86a5b2f3d423163",
-  "created_utc": "20260910T151158Z"
-}

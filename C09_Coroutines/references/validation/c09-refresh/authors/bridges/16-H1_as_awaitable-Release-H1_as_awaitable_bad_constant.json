@@ -1,8 +1,0 @@
-{
-  "args": [
-    "F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-author-h-checkers-r1\\H1_as_awaitable\\Release\\H1_as_awaitable_bad_constant.exe"
-  ],
-  "returncode": 1,
-  "stdout": "student check failed: value=42 started=0 completed=0, expected 42/2/2\n",
-  "stderr": ""
-}

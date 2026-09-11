@@ -1,8 +1,0 @@
-{
-  "rejected_existing_output": true,
-  "failed_command_status": "FAIL",
-  "failed_command_exit": 3,
-  "timeout_status": "FAIL",
-  "timeout_seen": true,
-  "passed": true
-}

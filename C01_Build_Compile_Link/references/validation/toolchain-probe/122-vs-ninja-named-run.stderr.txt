@@ -1,3 +1,0 @@
-﻿'"F:\CPPTrain\LearnCPP\Engineering_Study\exercises\build\toolchain-probe\out\vs-ninja-named\named_modules_probe.exe"' is not recognized as an internal or external command,
-operable program or batch file.
-

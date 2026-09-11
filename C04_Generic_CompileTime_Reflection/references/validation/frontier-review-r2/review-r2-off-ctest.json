@@ -1,9 +1,0 @@
-{
-  "name": "review-r2-off-ctest",
-  "command": "ctest --test-dir C04_Generic_CompileTime_Reflection/references/validation/frontier-review-r2/build-msvc-off -C Release --output-on-failure",
-  "exit_code": 0,
-  "stdout_file": "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\references\\validation\\frontier-review-r2\\review-r2-off-ctest.stdout.txt",
-  "stderr_file": "F:\\CPPTrain\\LearnCPP\\C04_Generic_CompileTime_Reflection\\references\\validation\\frontier-review-r2\\review-r2-off-ctest.stderr.txt",
-  "stdout": "Test project F:/CPPTrain/LearnCPP/C04_Generic_CompileTime_Reflection/references/validation/frontier-review-r2/build-msvc-off\n",
-  "stderr": "No tests were found!!!\n"
-}

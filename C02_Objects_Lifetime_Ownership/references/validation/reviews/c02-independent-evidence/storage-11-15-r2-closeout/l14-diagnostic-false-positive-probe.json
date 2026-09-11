@@ -1,6 +1,0 @@
-{
-  "command": "frontier_compile missing target with EXPECTED_FAILURE=assignment",
-  "exit": 1,
-  "stdout": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r2-closeout\\l14-diagnostic-false-positive-probe.stdout.txt",
-  "stderr": "Core_Study\\references\\validation\\reviews\\c02-independent-evidence\\storage-11-15-r2-closeout\\l14-diagnostic-false-positive-probe.stderr.txt"
-}

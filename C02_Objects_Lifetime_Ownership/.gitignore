@@ -1,5 +1,4 @@
-# Generated project/build files may occur in older isolated review trees.
-# Keep raw evidence JSON/TXT/XML and authored probe sources.
+# Generated builds and local execution outputs are not course sources.
 *.vcxproj
 *.slnx
 *.dir/
