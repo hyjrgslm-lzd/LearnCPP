@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C09_Coroutines/exercises/build/c09-review-mini/good_run_loop_test"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.00909887099999196,
+  "stdout": "run_loop: deferred continuation, one resume, empty stop checked\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-ix75aw_d",
+  "temporary_directory_removed": true,
+  "name": "good_run_loop",
+  "cwd": "/mnt/f/CPPTrain/LearnCPP",
+  "expected_exit": 0,
+  "required_text": "run_loop:",
+  "verdict": "PASS"
+}

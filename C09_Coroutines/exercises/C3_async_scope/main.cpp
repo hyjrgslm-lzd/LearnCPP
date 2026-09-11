@@ -12,8 +12,11 @@
 //   3. 结构化并发的核心是"拥有关系"而不是"启动技巧"。
 // =====================================================================
 #include "coroutine_study/lazy_task.hpp"
+#include "coroutine_study/exercise_check.hpp"
 
 #include <atomic>
+#include <exception>
+#include <array>
 #include <chrono>
 #include <condition_variable>
 #include <coroutine>
@@ -89,25 +92,72 @@ void detach(coroutine_study::lazy_task<void> task) {
     }).detach();
 }
 
-int main() {
+struct start_gate {
+    static constexpr int expected = 5;
+    std::atomic<int> started{0};
+    std::atomic<int> completed{0};
+    std::atomic<bool> released{false};
+    std::mutex mutex;
+    std::array<std::coroutine_handle<>, expected> handles{};
+};
+
+struct gated_awaitable {
+    start_gate& gate;
+    int index = 0;
+
+    bool await_ready() const noexcept { return false; }
+
+    bool await_suspend(std::coroutine_handle<> h) {
+        std::array<std::coroutine_handle<>, start_gate::expected> to_resume{};
+        int count = 0;
+        {
+            std::lock_guard lock(gate.mutex);
+            gate.handles[index] = h;
+            count = gate.started.fetch_add(1, std::memory_order_acq_rel) + 1;
+            if (count == start_gate::expected) {
+                gate.released.store(true, std::memory_order_release);
+                to_resume = gate.handles;
+            }
+        }
+        if (count == start_gate::expected) {
+            for (int i = 0; i < start_gate::expected; ++i) {
+                if (i != index && to_resume[i]) to_resume[i].resume();
+            }
+            return false;
+        }
+        return true;
+    }
+
+    void await_resume() const {
+        coroutine_study::check(gate.released.load(std::memory_order_acquire),
+                               "Part 1/2: task resumed before every spawned sibling reached the gate");
+        gate.completed.fetch_add(1, std::memory_order_acq_rel);
+    }
+};
+
+coroutine_study::lazy_task<void> gated_task(start_gate& gate, int index) {
+    co_await gated_awaitable{gate, index};
+}
+
+int main() try {
     std::println("===== 练习 C-3：async_scope =====\n");
 
     // ------------------ scope.spawn 演示 ------------------
     {
-        auto t0 = std::chrono::steady_clock::now();
+        start_gate gate;
         {
             async_scope scope;
-            for (int i = 0; i < 5; ++i) {
-                scope.spawn([](int id) -> coroutine_study::lazy_task<void> {
-                    co_await async_sleep{std::chrono::milliseconds{id * 50}};
-                    std::println("  [task {}] done", id);
-                }(i));
+            for (int i = 0; i < start_gate::expected; ++i) {
+                scope.spawn(gated_task(gate, i));
             }
             std::println("  scope 即将析构，开始等齐 ...");
         }
-        auto dt = std::chrono::steady_clock::now() - t0;
-        std::println("  scope 析构完成；总耗时 {}ms\n",
-                     std::chrono::duration_cast<std::chrono::milliseconds>(dt).count());
+        std::println("  scope 析构完成；started={} completed={}\n",
+                     gate.started.load(), gate.completed.load());
+        coroutine_study::check(gate.started == start_gate::expected,
+                               "Part 1: scope.spawn starts every child task");
+        coroutine_study::check(gate.released && gate.completed == start_gate::expected,
+                               "Part 2: scope waits until every gated child reaches completion");
     }
 
     // ------------------ detach 反例 ------------------
@@ -137,4 +187,12 @@ int main() {
 
     std::println("\n===== Done =====");
     return 0;
+}
+catch (const std::exception& e) {
+    std::cerr << "student check failed: " << e.what() << '\n';
+    return 1;
+}
+catch (...) {
+    std::cerr << "student check failed: unknown exception\n";
+    return 1;
 }

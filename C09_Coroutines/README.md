@@ -4,13 +4,15 @@
 
 课程包含 **34 道独立练习和 3 个项目，共 37 个学习单元**。34 道练习由 2 道预备练习和既有的 32 道普通练习组成；项目沿用 Capstone1、Capstone4、Capstone5 这三个稳定 ID。
 
+本轮增量补全的范围和门禁见[实施规格](references/implementation-spec.md)，逐单元去向见[覆盖表](references/coverage.md)，运行与非作者结论见[质量报告](references/quality-report.md)。实现型 Starter 现在会实际进入学生操作；未完成时明确失败，完成相关 Part 后再用同一检查验收。观察、学生作业、Reference 和独立 good/bad 分别统计。
+
 ## 从这里开始
 
 1. 阅读 [00 预备知识：执行模型与标准库](00-预备知识-执行模型与标准库.md)，分别完成 future 与 generator 的小实验。
 2. 阅读 [01 心智模型](01-心智模型.md)，把普通函数、保存的状态、协程返回对象和恢复动作联系起来。
 3. 进入模块 A。每个 Part 先读对应讲解，预测示例行为，再运行或补全练习，最后用观察结果解释前面的知识。
 
-正文代码块突出正在讲的机制；练习目录中的完整文件提供头文件、入口函数和可运行示例。`main.cpp` 是供你观察、修改和补全的 Starter，`solution.cpp` 是完整 Reference。项目采用各自的 `src/` 与 `reference/` 目录。你可以先运行已有日志建立直觉，再完成 TODO，并用参考实现核对自己的推理。
+正文代码块突出正在讲的机制；练习目录中的完整文件提供头文件、入口函数和可运行示例。`main.cpp` 是供你观察、修改和补全的 Starter，`solution.cpp` 是完整 Reference。H1–H3 的学生编辑入口为 `student.hpp`，`checks/` 保持固定；项目采用各自的 `src/` 与 `reference/` 目录。你可以先运行已有日志建立直觉，再完成 TODO，并用参考实现核对自己的推理。
 
 通用构建、链接、ABI 与工具能力的背景见 [C01 工程课程](../C01_Build_Compile_Link/README.md)，按当前练习需要选择阅读，不要求先学完整门工程课。[覆盖登记](references/coverage.md)与[质量报告](references/quality-report.md)记录37单元的入口、验证范围和非作者审查；Student 的 TODO 状态与 Reference 通过状态分别看待。
 

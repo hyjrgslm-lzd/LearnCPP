@@ -18,6 +18,9 @@
 #include <print>
 #include <stdexcept>
 #include <utility>
+#include "coroutine_study/exercise_check.hpp"
+
+using coroutine_study::check;
 
 // ---------------------------------------------------------------------
 // 两个版本的 task：
@@ -46,8 +49,7 @@ struct lazy_task_symmetric {
             //   —— 这是 symmetric transfer 的核心。
             std::coroutine_handle<>
             await_suspend(std::coroutine_handle<promise_type> h) noexcept {
-                if (h.promise().continuation)
-                    return h.promise().continuation;
+                (void)h;
                 return std::noop_coroutine();
             }
             void await_resume() noexcept {}
@@ -163,20 +165,24 @@ lazy_task_resume_chain<int> chain_naive(int n) {
     co_return v + 1;
 }
 
-int main() {
+int main() try {
     std::println("===== 练习 D-3：final_suspend symmetric transfer =====\n");
 
     // ------------------ 浅测试 ------------------
     {
         auto t = chain_sym(10);
-        std::println("[symmetric] chain_sym(10) = {} (期望 10)", t.get());
+        int r = t.get();
+        std::println("[symmetric] chain_sym(10) = {} (期望 10)", r);
+        check(r == 10, "TODO: final_suspend must return continuation when present");
     }
 
     // ------------------ 深嵌套 ------------------
     {
         // TODO [必做 3]：用 symmetric 版跑 1000 层应不爆栈。
         auto t = chain_sym(1000);
-        std::println("[symmetric] chain_sym(1000) = {} (期望 1000)", t.get());
+        int r = t.get();
+        std::println("[symmetric] chain_sym(1000) = {} (期望 1000)", r);
+        check(r == 1000, "symmetric transfer chain should reach the outer caller");
     }
 
     // ------------------ 反例（小心栈）------------------
@@ -184,7 +190,9 @@ int main() {
         // TODO [必做 4]：先用 N=10 验证语义，再尝试 N=1000 观察是否栈溢出。
         //   不同平台/编译器结果不一样；MSVC Debug 默认 1MB 栈通常 ~100 层就崩。
         auto t = chain_naive(10);
-        std::println("[resume-chain] chain_naive(10) = {} (期望 10)", t.get());
+        int r = t.get();
+        std::println("[resume-chain] chain_naive(10) = {} (期望 10)", r);
+        check(r == 10, "direct-resume comparison should still preserve shallow semantics");
     }
 
     // ------------------ 进阶 ------------------
@@ -195,4 +203,7 @@ int main() {
 
     std::println("\n===== Done =====");
     return 0;
+} catch (const std::exception& e) {
+    std::cerr << "starter check failed: " << e.what() << '\n';
+    return 1;
 }

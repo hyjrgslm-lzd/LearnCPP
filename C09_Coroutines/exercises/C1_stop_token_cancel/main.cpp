@@ -11,8 +11,10 @@
 //   3. 纯 CPU 循环若不检查 token，取消请求将被忽略。
 // =====================================================================
 #include "coroutine_study/lazy_task.hpp"
+#include "coroutine_study/exercise_check.hpp"
 
 #include <chrono>
+#include <exception>
 #include <coroutine>
 #include <iostream>
 #include <print>
@@ -88,7 +90,7 @@ batch_process_throwing(std::stop_token st, int total_batches) {
     co_return processed;
 }
 
-int main() {
+int main() try {
     std::println("===== 练习 C-1：stop_token 协作式取消 =====\n");
 
     // ------------------ 主流程 ------------------
@@ -113,6 +115,18 @@ int main() {
     });
     int done = coroutine_study::sync_wait(std::move(t));
     std::println("已处理批次：{} (含因取消停止)", done);
+    coroutine_study::check(done > 0 && done < 10, "Part 1/2/4: cancellation stops at a checkpoint and preserves partial progress");
+
+    std::stop_source throwing_src;
+    throwing_src.request_stop();
+    bool threw_cancelled = false;
+    try {
+        auto throwing = batch_process_throwing(throwing_src.get_token(), 10);
+        (void)coroutine_study::sync_wait(std::move(throwing));
+    } catch (const task_cancelled&) {
+        threw_cancelled = true;
+    }
+    coroutine_study::check(threw_cancelled, "Part 3: throwing cancellation path reaches sync_wait caller");
 
     // ------------------ 进阶任务 ------------------
     // TODO [进阶 1]：用 std::stop_callback 在 request_stop 时记录日志，
@@ -126,4 +140,12 @@ int main() {
 
     std::println("\n===== Done =====");
     return 0;
+}
+catch (const std::exception& e) {
+    std::cerr << "student check failed: " << e.what() << '\n';
+    return 1;
+}
+catch (...) {
+    std::cerr << "student check failed: unknown exception\n";
+    return 1;
 }

@@ -1,0 +1,9 @@
+{
+  "command": "cmake configure/build + move_url_repro.exe",
+  "source": "move_url_repro.cpp",
+  "expectation": "exit 7 demonstrates url was lost after std::move before catch",
+  "configureExit": 0,
+  "buildExit": 0,
+  "runExit": 7,
+  "stdout": "observed_url=''"
+}

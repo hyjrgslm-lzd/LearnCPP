@@ -63,3 +63,16 @@ fetch_user throws
 - 你能说明每个 `co_await` 是父协程的暂停点，也是值/异常回到父协程的位置。
 
   **答案解析：** 父协程执行到 `co_await child_task` 时保存当前局部状态并挂起；child 完成后恢复父协程。正常时 `await_resume()` 返回 child 的值，异常时它重新抛出 child 保存的异常。于是同一行代码既是离开父协程的位置，也是父协程继续或失败的位置。
+
+## Student 检查
+
+`main.cpp` 现在检查父 task 的实际返回字符串：
+
+| Part | 操作 | 本地检查 |
+| --- | --- | --- |
+| Part 1 | 三段 child task 返回 `User/Profile/ValidatedProfile` | 被 Part 2 的父 task 串联消费 |
+| Part 2 | `process_user` 按 fetch -> parse -> validate 顺序 `co_await` | 返回 `User 42 (alice_display) validated, score=88` |
+| Part 3 | 异常沿 `co_await` 链到 `sync_wait` | 当前 starter 保留异常演示入口；Reference 覆盖确定异常路径 |
+| Part 4 | 回调对照 | 保持文字/伪代码解析，不要求自动检查回调金字塔 |
+
+完成前：简写格式 `user=42 score=88` 会被检查拒绝

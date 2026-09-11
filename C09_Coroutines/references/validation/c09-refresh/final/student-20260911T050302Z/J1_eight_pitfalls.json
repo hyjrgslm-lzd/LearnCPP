@@ -1,0 +1,19 @@
+{
+  "command": [
+    "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-final-student/J1_eight_pitfalls/Release/J1_eight_pitfalls.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.046999999991385266,
+  "stdout": "===== Exercise J-1: Eight Coroutine Pitfalls =====\n[trap1] lambda capture by reference\n  [trap1][starter] bad path disabled\n  [trap1][good] lambda() = 42\n[trap2] awaiter stores pointer derived from temporary\n  [trap2][starter] bad path disabled\n  [trap2][good] len = 5\n[trap3] lock_guard crosses co_await\n  [trap3][starter] bad path disabled\n  [trap3][good] snapshot=0\n[trap4] initial_suspend throws -> cleanup path\n  [trap4][starter] bad path disabled\n[trap5] detached coroutine outlives creator\n  [trap5][starter] bad path disabled\n[trap6] consumer persists pointer past yield window\n  [trap6][starter] bad path disabled\n[trap7] promise destructor throws -> terminate\n  [trap7][starter] bad path disabled\n  [trap7][good] good_task frame released\n[trap8] custom generator persists string_view after yield\n  [trap8][starter] bad path disabled\n===== Done =====\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-nzq96_31",
+  "temporary_directory_removed": true,
+  "name": "J1_eight_pitfalls",
+  "expected_exit": 0,
+  "verdict": "PASS",
+  "expected_rejection": false
+}

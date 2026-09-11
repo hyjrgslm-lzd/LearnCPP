@@ -28,7 +28,7 @@
 | 公共基础与专题进阶 | [C06_Ranges](C06_Ranges/README.md) | 数据结构、容器、算法、Ranges与迭代器实现；保留C++26默认，标准/实现及验证状态见课程质量报告 |
 | 系统与异步基础 | [C07_OS_Memory_System_IO](C07_OS_Memory_System_IO/README.md) | 进程/线程、句柄、虚拟内存/映射、allocator/pmr/池、IPC/装载、readiness/completion；19章/11单元，Windows与WSL验证及证据边界见质量报告 |
 | 专题进阶 | [C08_Concurrency](C08_Concurrency/README.md) | 线程、同步、内存模型与回收；53题及独立原生主体，新增异步日志与C++29专题；Windows/WSL验证和未测边界见本轮报告，CPU性能资产兼作C13入口 |
-| 专题进阶 | [C09_Coroutines](C09_Coroutines/README.md) | 协程协议、控制流、帧与生命周期、取消组合、I/O 与 RPC 应用 |
+| 专题进阶 | [C09_Coroutines](C09_Coroutines/README.md) | 协程协议、控制流、帧与生命周期、取消组合、I/O 与 RPC；[37 单元审计与验证](C09_Coroutines/references/quality-report.md) |
 | 专题进阶 | [C10_Execution](C10_Execution/README.md) | sender/receiver、scheduler、工作组合、完成通道与运行时 |
 | 领域应用 | [C14_GPU](C14_GPU/README.md) | CUDA、设备执行与内存层级、GPU 性能和算子实现 |
 | 领域应用 | [C15_Unreal_Engine](C15_Unreal_Engine/README.md) | Unreal Engine 对象、资源、任务、渲染及网络架构；当前覆盖 C15 中的 UE 专题 |

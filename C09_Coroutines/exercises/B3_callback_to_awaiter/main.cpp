@@ -10,6 +10,8 @@
 //   - 看到协程恢复后的代码可能跑在异步回调线程上
 // =====================================================================
 
+#include <coroutine_study/exercise_check.hpp>
+#include <exception>
 #include <coroutine_study/lazy_task.hpp>
 
 #include <chrono>
@@ -139,7 +141,7 @@ lazy_task<int> compute_with_callback(worker_group& workers, int x, int y) {
 
 }  // namespace
 
-int main() {
+int main() try {
     log("main", "─── B-3：把回调 API 包成 awaiter ───");
 
     worker_group workers;
@@ -148,5 +150,14 @@ int main() {
     workers.join();
 
     log("main", "final = ", v, "  (期望 (7+5)*3 = 36)");
+    coroutine_study::check(v == 36, "Part 2/3: callback result flows through await_resume into the coroutine body");
     return 0;
+}
+catch (const std::exception& e) {
+    std::cerr << "student check failed: " << e.what() << '\n';
+    return 1;
+}
+catch (...) {
+    std::cerr << "student check failed: unknown exception\n";
+    return 1;
 }

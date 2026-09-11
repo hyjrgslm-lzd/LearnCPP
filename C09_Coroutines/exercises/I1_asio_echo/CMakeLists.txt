@@ -11,4 +11,5 @@ coroutine_study_add_exercise(
     SOURCES main.cpp
     REFERENCE_SOURCES solution.cpp
     LIBRARIES ${I1_LIBRARIES}
+    STUDENT_TEST
 )

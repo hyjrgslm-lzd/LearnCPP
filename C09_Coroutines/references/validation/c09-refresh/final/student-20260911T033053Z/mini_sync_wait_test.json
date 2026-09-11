@@ -1,0 +1,19 @@
+{
+  "command": [
+    "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-final-student/Capstone5_mini_corolib/Release/mini_sync_wait_test.exe"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.48399999999674037,
+  "stdout": "[test] mini::sync_wait basic\n",
+  "stderr": "starter check failed: TODO: implement mini::sync_wait(task<T>)\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-jnoc7jlg",
+  "temporary_directory_removed": true,
+  "name": "mini_sync_wait_test",
+  "expected_exit": 1,
+  "verdict": "PASS",
+  "expected_rejection": true
+}

@@ -1,0 +1,18 @@
+{
+  "command": [
+    "env",
+    "ASAN_OPTIONS=detect_leaks=1:halt_on_error=1",
+    "/mnt/f/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-final-diagnostics/address-capability"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.023174727999999867,
+  "stdout": "",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-n762ch9u",
+  "temporary_directory_removed": true,
+  "verdict": "PASS"
+}

@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C09_Coroutines/exercises/build/c09-review-mini-task-sender/Release/task_sender_bad_wrong_value.exe"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.46899999999732245,
+  "stdout": "",
+  "stderr": "starter check failed: TODO: implement mini::task sender metadata and member connect\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-nv1k2wcv",
+  "temporary_directory_removed": true,
+  "name": "task_sender_bad_wrong_value_rejected",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 1,
+  "required_text": "task sender value mismatch",
+  "verdict": "FAIL"
+}

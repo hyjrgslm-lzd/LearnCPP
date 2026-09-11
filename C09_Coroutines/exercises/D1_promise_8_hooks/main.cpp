@@ -21,8 +21,12 @@
 #include <new>
 #include <print>
 #include <stdexcept>
+#include <string_view>
 #include <type_traits>
 #include <utility>
+#include "coroutine_study/exercise_check.hpp"
+
+using coroutine_study::check;
 
 template <typename T>
 struct lazy_task {
@@ -67,7 +71,7 @@ struct lazy_task {
         // ---- 4. return_value ----
         void return_value(T value) {
             // TODO [必做 5]：保存 std::move(value) 到 result_value。
-            result_value = std::move(value);
+            (void)value;
         }
 
         // ---- 5. unhandled_exception ----
@@ -162,7 +166,7 @@ lazy_task<int> outer() {
     co_return v * 2;
 }
 
-int main() {
+int main() try {
     std::println("===== 练习 D-1：从零写 lazy_task<T> =====\n");
 
     // ------------------ 正常流程 ------------------
@@ -170,6 +174,7 @@ int main() {
         auto t = compute();
         int r = t.get();
         std::println("[normal] compute().get() = {} (期望 30)", r);
+        check(r == 30, "TODO: return_value must store the co_return value");
     }
 
     // ------------------ 异常流程 ------------------
@@ -180,6 +185,7 @@ int main() {
             std::println("[error] 未捕获到异常 —— 检查 unhandled_exception 实现");
         } catch (const std::runtime_error& e) {
             std::println("[error] 捕获到 \"{}\" —— 期望 \"boom\"", e.what());
+            check(std::string_view{e.what()} == "boom", "unhandled_exception must preserve the original error");
         }
     }
 
@@ -188,10 +194,11 @@ int main() {
         auto t = outer();
         int r = t.get();
         std::println("[nested] outer().get() = {} (期望 84)", r);
+        check(r == 84, "TODO: final_suspend must resume continuation for nested co_await");
     }
 
     // ------------------ 进阶 ------------------
-    // TODO [进阶 1]：用 -fdump-tree-coro / /d1reportSingleClassLayout
+    // TODO [进阶 1]：用 -fdump-tree-all / /d1reportSingleClassLayout
     //   打印 lazy_task<int> 的协程帧布局。
     // TODO [进阶 2]：把 result_value 改为 std::optional<T>，
     //   去除"T 必须默认可构造"的限制。
@@ -199,4 +206,7 @@ int main() {
 
     std::println("\n===== Done =====");
     return 0;
+} catch (const std::exception& e) {
+    std::cerr << "starter check failed: " << e.what() << '\n';
+    return 1;
 }

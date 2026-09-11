@@ -1,0 +1,19 @@
+{
+  "command": [
+    "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-final-student/D3_final_suspend_symmetric/Release/D3_final_suspend_symmetric.exe"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.062000000005355105,
+  "stdout": "===== \u7ec3\u4e60 D-3\uff1afinal_suspend symmetric transfer =====\n\n[symmetric] chain_sym(10) = 0 (\u671f\u671b 10)\n",
+  "stderr": "starter check failed: TODO: final_suspend must return continuation when present\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-pr9_qm0e",
+  "temporary_directory_removed": true,
+  "name": "D3_final_suspend_symmetric",
+  "expected_exit": 1,
+  "verdict": "PASS",
+  "expected_rejection": true
+}

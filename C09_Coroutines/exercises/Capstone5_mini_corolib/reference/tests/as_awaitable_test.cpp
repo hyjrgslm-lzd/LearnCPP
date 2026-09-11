@@ -37,9 +37,10 @@ struct worker_group {
 };
 
 struct async_control {
-    std::atomic_bool start_returned{false};
+    std::atomic_bool worker_started{false};
     std::atomic_bool release_completion{false};
     std::atomic_bool completed{false};
+    std::atomic_int body_resumes{0};
 };
 
 struct async_int_sender {
@@ -64,7 +65,7 @@ struct async_int_sender {
 
         void start() noexcept {
             workers->submit([control = control, value = value, receiver = std::move(receiver)]() mutable {
-                control->start_returned.store(true, std::memory_order_release);
+                control->worker_started.store(true, std::memory_order_release);
                 while (!control->release_completion.load(std::memory_order_acquire)) {
                     std::this_thread::yield();
                 }
@@ -85,21 +86,24 @@ static mini_ref::task<int> compute() {
     co_return x * 2;
 }
 
+static mini_ref::task<int> receive_async(std::shared_ptr<async_control> control,
+                                        worker_group& workers, int value) {
+    int x = co_await mini_ref::as_stdexec_awaitable(async_int_sender{control, &workers, value});
+    ++control->body_resumes;
+    co_return x + 1;
+}
+
 int main() {
     auto result = mini_ref::sync_wait(compute());
     if (!result || std::get<0>(*result) != 42) std::abort();
 
     auto control = std::make_shared<async_control>();
     worker_group workers;
-    auto async_compute = [control, &workers]() -> mini_ref::task<int> {
-        int x = co_await mini_ref::as_stdexec_awaitable(async_int_sender{control, &workers, 7});
-        co_return x + 1;
-    };
     std::optional<std::tuple<int>> async_result;
     std::thread waiter{[&] {
-        async_result = mini_ref::sync_wait(async_compute()).value();
+        async_result = mini_ref::sync_wait(receive_async(control, workers, 7)).value();
     }};
-    while (!control->start_returned.load(std::memory_order_acquire)) {
+    while (!control->worker_started.load(std::memory_order_acquire)) {
         std::this_thread::yield();
     }
     control->release_completion.store(true, std::memory_order_release);
@@ -107,21 +111,20 @@ int main() {
     workers.join();
     if (!async_result || std::get<0>(*async_result) != 8) std::abort();
     if (!control->completed.load(std::memory_order_acquire)) std::abort();
+    if (control->body_resumes != 1) std::abort();
 
     auto abandoned_control = std::make_shared<async_control>();
     {
-        auto abandoned = [abandoned_control, &workers]() -> mini_ref::task<int> {
-            co_return co_await mini_ref::as_stdexec_awaitable(
-                async_int_sender{abandoned_control, &workers, 9});
-        }();
+        auto abandoned = receive_async(abandoned_control, workers, 9);
         abandoned.start();
-        while (!abandoned_control->start_returned.load(std::memory_order_acquire)) {
+        while (!abandoned_control->worker_started.load(std::memory_order_acquire)) {
             std::this_thread::yield();
         }
     }
     abandoned_control->release_completion.store(true, std::memory_order_release);
     workers.join();
     if (!abandoned_control->completed.load(std::memory_order_acquire)) std::abort();
+    if (abandoned_control->body_resumes != 0) std::abort();
 
     bool error_seen = false;
     try {

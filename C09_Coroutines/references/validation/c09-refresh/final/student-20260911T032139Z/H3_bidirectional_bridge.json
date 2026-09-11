@@ -1,0 +1,19 @@
+{
+  "command": [
+    "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-final-student/H3_bidirectional_bridge/Release/H3_bidirectional_bridge.exe"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.46900000001187436,
+  "stdout": "student check failed: sender=42 awaitable=0 bridge=0, expected 42/20/43\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-0_26uexm",
+  "temporary_directory_removed": true,
+  "name": "H3_bidirectional_bridge",
+  "expected_exit": 1,
+  "verdict": "PASS",
+  "expected_rejection": true
+}

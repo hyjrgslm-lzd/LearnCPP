@@ -10,11 +10,11 @@
 - db：150ms，返回 200。
 - remote：300ms，返回 300。
 
-串行等待约等于三者相加。并发汇合应接近最慢那个任务。
+串行等待约等于三者相加；这个输入只用于观察现象。正确性检查不用耗时阈值，而是使用 gated child 证明所有分支先启动后释放。
 
 ## Part 2：`when_all`
 
-把串行占位改成并发驱动：为每个 task 起一条 `std::jthread`，在线程中调用 `coroutine_study::sync_wait(std::move(task))`，保存结果，join 三条线程后 `co_return std::make_tuple(...)`。
+把安全 TODO stub 改成真正组合器：先启动全部 child，再等待全部完成并 `co_return std::make_tuple(...)`。可以为每个 task 起 `std::jthread`，也可以用单线程事件循环/run loop fan-out；协程并发不等于多线程。
 
 异常路径要保存第一个异常，并通过同一个 `std::stop_source` 请求其它 task 停止。main 已示例把 `all_src.get_token()` 传给 cache/db/remote；你完成并发版时要把这个 source 接进失败路径。请求取消后仍要等齐线程，避免 loser 继续访问资源。
 
@@ -30,15 +30,15 @@ when_any(fetch_remote(), timeout_after(200ms))
 
 ## Part 4：改阈值观察
 
-先用 200ms，timeout 应先赢；再改成 400ms，remote 应先赢。解释变化时不要只看返回值，要指出 stop 请求和 join 发生在哪里。
+这组 200ms/400ms 输入只作为单独观察：timeout 和真实任务谁先完成。解释变化时不要只看返回值，要指出 stop 请求和 join 发生在哪里；不要把这组耗时观察当成当前 gated checker 的通过条件。
 
 **答案解析：** 200ms 阈值小于 remote 的 300ms 延迟，所以 timeout 分支先完成，组合器记录 timeout marker 后请求 stop，并等待 remote 在检查点收束。400ms 阈值大于 remote 延迟，remote 先返回 300，组合器再请求 stop 让 timeout 分支退出或收束。两次实验的关键差异是 winner 改变，收尾动作仍是“请求 stop + join loser”。
 
 ## 验收
 
-- `when_all` 返回 `(100, 200, 300)`，耗时接近 300ms。
+- `when_all` 返回 `(100, 200, 300)`，并且 gated child 全部启动后才释放。
 
-  **答案解析：** cache/db/remote 三条任务分别延迟 50ms、150ms、300ms。并发启动后总耗时由最慢的 remote 决定，所以应接近 300ms，而不是串行相加的约 500ms。返回 tuple 保持 `(cache, db, remote)` 的结果槽顺序，即 `(100, 200, 300)`。
+  **答案解析：** cache/db/remote 的结果槽顺序保持 `(100, 200, 300)`。正确性门禁不看 300ms/500ms 耗时，而看受控 gate：每个 child 到达挂起点后记录 started；只有三个 child 都到达后才释放并允许完成。这样能证明组合器先 fan-out，再收束。
 
 - `when_any` 能表达超时竞速。
 
@@ -51,3 +51,16 @@ when_any(fetch_remote(), timeout_after(200ms))
 - 子 task 抛异常时，整体传播异常，同时请求其它 task 停止。
 
   **答案解析：** `when_all` 中任一 child 失败时，组合器保存第一个异常，并通过共享 `stop_source` 通知其它 child 尽快停止。它不能立刻丢下其它线程或协程，因为 loser 可能还持有资源或 handle；必须 join 等齐后再把异常重新抛给父协程。这样异常传播和生命周期收束同时成立。
+
+## Student 检查
+
+`main.cpp` 现在用受控 gate 检查组合语义；耗时只保留为观察现象，不作为正确性判据：
+
+| Part | 操作 | 本地检查 |
+| --- | --- | --- |
+| Part 1 | 三个 fetch 返回固定槽位 | `when_all` 返回 `(100, 200, 300)` |
+| Part 2 | 并发 `when_all` | 三个 gated child 必须都到达挂起点后才释放；安全 TODO stub 会有限失败，避免旧串行占位挂死 |
+| Part 3 | `when_any` 双分支竞速 | 两个 gated branch 必须都启动后才允许选择 winner；不检查线程 ID |
+| Part 4 | 200ms/400ms 超时对照 | 作为单独观察输出保留，不能替代 gated 正确性检查 |
+
+完成前：`when_all/when_any` 的 TODO stub 会有限失败；学生实现后，同一个 gate 可以接受单线程事件循环或多线程 fan-out。

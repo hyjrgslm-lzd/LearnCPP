@@ -19,7 +19,7 @@
 任选一个工具链：
 
 ```powershell
-g++ -std=c++23 -fdump-tree-coro main.cpp
+g++ -std=c++23 -fdump-tree-all main.cpp
 cl /std:c++latest /d1reportSingleClassLayoutobserver_task::promise_type main.cpp
 clang++ -std=c++23 -Xclang -ast-dump -fsyntax-only main.cpp
 ```

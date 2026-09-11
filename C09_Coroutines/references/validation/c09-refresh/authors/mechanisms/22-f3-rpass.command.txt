@@ -1,0 +1,1 @@
+wsl /usr/lib/llvm-18/bin/clang++ -std=c++23 -O2 -DF3_UNINSTRUMENTED_HALO -I/mnt/f/CPPTrain/LearnCPP/C09_Coroutines/exercises/include -Rpass=coroutine-elide -Rpass-analysis=coroutine-elide /mnt/f/CPPTrain/LearnCPP/C09_Coroutines/exercises/F3_halo_diagnose/main.cpp -o /tmp/f3_halo_probe

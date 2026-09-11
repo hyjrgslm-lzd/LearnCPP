@@ -1,0 +1,19 @@
+{
+  "command": [
+    "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-final-student/H1_as_awaitable/Release/H1_as_awaitable.exe"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.4529999999940628,
+  "stdout": "student check failed: sender_awaitable returned -999, expected 52\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-763ocxeg",
+  "temporary_directory_removed": true,
+  "name": "H1_as_awaitable",
+  "expected_exit": 1,
+  "verdict": "PASS",
+  "expected_rejection": true
+}

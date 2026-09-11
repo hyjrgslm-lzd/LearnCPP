@@ -1,0 +1,27 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "C09_Coroutines\\exercises\\build\\c09-review-content\\h-review-r5",
+    "-C",
+    "Release",
+    "-R",
+    "^(H1_as_awaitable|H2_std_execution_task|H3_bidirectional_bridge)_(good|bad_constant_rejected)$",
+    "--output-on-failure"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.937000000005355,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-review-content/h-review-r5\n    Start 34: H1_as_awaitable_good\n1/6 Test #34: H1_as_awaitable_good ............................   Passed    0.42 sec\n    Start 35: H1_as_awaitable_bad_constant_rejected\n2/6 Test #35: H1_as_awaitable_bad_constant_rejected ...........   Passed    0.50 sec\n    Start 37: H2_std_execution_task_good\n3/6 Test #37: H2_std_execution_task_good ......................   Passed    0.44 sec\n    Start 38: H2_std_execution_task_bad_constant_rejected\n4/6 Test #38: H2_std_execution_task_bad_constant_rejected .....   Passed    0.54 sec\n    Start 41: H3_bidirectional_bridge_good\n5/6 Test #41: H3_bidirectional_bridge_good ....................   Passed    0.42 sec\n    Start 42: H3_bidirectional_bridge_bad_constant_rejected\n6/6 Test #42: H3_bidirectional_bridge_bad_constant_rejected ...   Passed    0.52 sec\n\n100% tests passed, 0 tests failed out of 6\n\nLabel Time Summary:\nbad        =   1.57 sec*proc (3 tests)\nchecker    =   2.85 sec*proc (6 tests)\ngood       =   1.29 sec*proc (3 tests)\nstdexec    =   2.85 sec*proc (6 tests)\n\nTotal Test time (real) =   2.88 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-4ktzek3e",
+  "temporary_directory_removed": true,
+  "name": "content_r5_ctest_h_variants",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": "100% tests passed",
+  "verdict": "PASS"
+}

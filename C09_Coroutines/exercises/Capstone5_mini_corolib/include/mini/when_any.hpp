@@ -16,11 +16,29 @@
 #include <coroutine>
 #include <variant>
 #include <utility>
+#include <stdexcept>
+#include <stop_token>
+#include "mini/task.hpp"
 
 namespace mini {
 
-template <typename... Awaitables>
-auto when_any(Awaitables&&... aws) {
+template <typename A, typename B>
+struct when_any_operation {
+    task<A> left;
+    task<B> right;
+    std::stop_source stop;
+    bool await_ready() const noexcept { return false; }
+    void await_suspend(std::coroutine_handle<>) {
+        // TODO: start both children, publish one winner, cancel and drain loser.
+        throw std::logic_error("TODO: implement mini::when_any start/winner/drain");
+    }
+    std::variant<A, B> await_resume() {
+        throw std::logic_error("TODO: implement mini::when_any result/error");
+    }
+};
+
+template <typename A, typename B>
+auto when_any(task<A> left, task<B> right, std::stop_source stop = {}) {
     // TODO[必做]: 完整实现：
     //   - 为每个子 awaitable 创建一个 receiver；
     //   - 第一个成功 set_value 的 receiver 抢占胜者；
@@ -31,8 +49,8 @@ auto when_any(Awaitables&&... aws) {
     //
     // 与 when_all 的不同：when_any 的 value 会竞争 winner；error 只在没有
     // 任何成功 value 时成为最终结果。两者都要等待全部分支收束。
-    static_assert(sizeof...(Awaitables) >= 2, "when_any needs >= 2 args");
-    return std::variant<int>{};  // 占位
+    // Mandatory contract is binary, non-void; variadic support is an extension.
+    return when_any_operation<A, B>{std::move(left), std::move(right), std::move(stop)};
 }
 
 } // namespace mini

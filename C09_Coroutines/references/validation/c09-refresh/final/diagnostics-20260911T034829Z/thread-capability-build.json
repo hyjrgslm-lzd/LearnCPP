@@ -1,0 +1,25 @@
+{
+  "command": [
+    "g++",
+    "-std=c++23",
+    "-g",
+    "-O1",
+    "-fno-omit-frame-pointer",
+    "-pthread",
+    "-fsanitize=thread",
+    "/mnt/f/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-final-diagnostics/sanitizer-capability.cpp",
+    "-o",
+    "/mnt/f/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-final-diagnostics/thread-capability"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.8214339569999964,
+  "stdout": "",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-ow8if4qv",
+  "temporary_directory_removed": true,
+  "verdict": "PASS"
+}

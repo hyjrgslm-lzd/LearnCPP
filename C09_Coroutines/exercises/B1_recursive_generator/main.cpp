@@ -13,11 +13,15 @@
 //   - 对比普通 `for (int v : inner) co_yield v;` 在退化树上的控制流和栈增长风险
 // =====================================================================
 
+#include <coroutine_study/exercise_check.hpp>
+#include <exception>
+
 #include <generator>
 #include <iostream>
 #include <memory>
 #include <ranges>
 #include <syncstream>
+#include <vector>
 
 namespace {
 
@@ -49,6 +53,13 @@ void delete_tree(Node* n) {
     delete_tree(n->left);
     delete_tree(n->right);
     delete n;
+}
+
+void collect_inorder(Node* root, std::vector<int>& out) {
+    if (!root) return;
+    collect_inorder(root->left, out);
+    out.push_back(root->value);
+    collect_inorder(root->right, out);
 }
 
 // ─────────────────────────────────────────────────────────────────────
@@ -94,22 +105,39 @@ std::generator<int> inorder_v2_for_yield(Node* root) {
 
 }  // namespace
 
-int main() {
+int main() try {
     log("main", "─── B-1：递归 generator 与栈 ───");
 
     int counter = 1;
     Node* root = build_full(/*depth=*/4, counter);
 
     log("main", "── 版本 A：elements_of (symmetric transfer)");
+    std::vector<int> v1;
     for (int v : inorder_v1_elements_of(root)) {
+        v1.push_back(v);
         log("v1", v);
     }
 
     log("main", "── 版本 B：for + co_yield (普通 resume 链)");
+    std::vector<int> v2;
     for (int v : inorder_v2_for_yield(root)) {
+        v2.push_back(v);
         log("v2", v);
     }
 
+    std::vector<int> expected;
+    collect_inorder(root, expected);
+    coroutine_study::check(v1 == expected, "Part 2/3: elements_of path yields the full inorder sequence");
+    coroutine_study::check(v2 == expected, "Part 2: recursive for+co_yield path yields the full inorder sequence");
+
     delete_tree(root);
     return 0;
+}
+catch (const std::exception& e) {
+    std::cerr << "student check failed: " << e.what() << '\n';
+    return 1;
+}
+catch (...) {
+    std::cerr << "student check failed: unknown exception\n";
+    return 1;
 }

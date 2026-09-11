@@ -1,0 +1,27 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "C09_Coroutines\\exercises\\build\\c09-author-bridges-r2",
+    "-C",
+    "Release",
+    "-R",
+    "^(H1_as_awaitable_reference|H2_std_execution_task_reference|H3_bidirectional_bridge_reference|I1_asio_echo_reference|I2_io_uring_iocp_reference|I5_cppcoro_patterns_reference)$",
+    "--output-on-failure"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.20299999999406282,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-bridges-r2\n    Start 33: H1_as_awaitable_reference\n1/6 Test #33: H1_as_awaitable_reference ...........   Passed    0.02 sec\n    Start 34: H2_std_execution_task_reference\n2/6 Test #34: H2_std_execution_task_reference .....   Passed    0.02 sec\n    Start 35: H3_bidirectional_bridge_reference\n3/6 Test #35: H3_bidirectional_bridge_reference ...   Passed    0.02 sec\n    Start 36: I1_asio_echo_reference\n4/6 Test #36: I1_asio_echo_reference ..............   Passed    0.02 sec\n    Start 38: I2_io_uring_iocp_reference\n5/6 Test #38: I2_io_uring_iocp_reference ..........   Passed    0.02 sec\n    Start 39: I5_cppcoro_patterns_reference\n6/6 Test #39: I5_cppcoro_patterns_reference .......   Passed    0.02 sec\n\n100% tests passed, 0 tests failed out of 6\n\nLabel Time Summary:\nreference    =   0.12 sec*proc (6 tests)\nstdexec      =   0.02 sec*proc (1 test)\n\nTotal Test time (real) =   0.14 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [
+    "100% tests passed"
+  ],
+  "verdict": "PASS"
+}

@@ -1,0 +1,9 @@
+{
+  "timestamp": "2026-09-11T02:31:55.9359265Z",
+  "command": "wsl.exe bash -lc \"cd /mnt/f/CPPTrain/LearnCPP && g++ -std=c++20 -pthread -Wall -Wextra -pedantic -I C09_Coroutines/exercises/Capstone5_mini_corolib/reference/include C09_Coroutines/references/validation/c09-refresh/reviews/runtime-review-evidence/when_any_error_cancel_probe.cpp -o C09_Coroutines/references/validation/c09-refresh/reviews/runtime-review-evidence/wsl-gpp/when_any_error_cancel_probe_current && timeout 5s C09_Coroutines/references/validation/c09-refresh/reviews/runtime-review-evidence/wsl-gpp/when_any_error_cancel_probe_current\"",
+  "exit_code": 124,
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "head": "75028ff2d312a4f1047e7bafd6cf4101f771a2ec",
+  "mini_sha256": "f6e35941658c1e1e5702b75b3721b8e2a6dbc94ba824a9d74168ff52edff3da4",
+  "probe_sha256": "94ed61c8858d475082679911ecada6652dfb2e0dfa690efed19e63d9808b8c9a"
+}

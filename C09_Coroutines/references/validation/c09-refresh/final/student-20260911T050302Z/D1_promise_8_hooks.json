@@ -1,0 +1,19 @@
+{
+  "command": [
+    "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-final-student/D1_promise_8_hooks/Release/D1_promise_8_hooks.exe"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.4529999999940628,
+  "stdout": "===== \u7ec3\u4e60 D-1\uff1a\u4ece\u96f6\u5199 lazy_task<T> =====\n\n[normal] compute().get() = 0 (\u671f\u671b 30)\n",
+  "stderr": "starter check failed: TODO: return_value must store the co_return value\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-y6szv7l9",
+  "temporary_directory_removed": true,
+  "name": "D1_promise_8_hooks",
+  "expected_exit": 1,
+  "verdict": "PASS",
+  "expected_rejection": true
+}

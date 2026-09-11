@@ -1,0 +1,4 @@
+F3 starter correctness OK
+instrumented generator allocations=2 deallocations=2
+Run sample_f3.py with this executable for 1 warmup + 5 independent processes.
+Use compiler remark/IR/assembly for HALO; timing alone is not proof.

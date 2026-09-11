@@ -10,14 +10,30 @@ if(MSVC)
 endif()
 
 if(COMMAND coroutine_study_add_exercise)
-    coroutine_study_add_exercise(
-        H3_bidirectional_bridge
-        SOURCES main.cpp
-        REFERENCE_SOURCES solution.cpp
-        LIBRARIES stdexec::stdexec
-    )
+    add_executable(H3_bidirectional_bridge checks/main.cpp)
+    target_compile_features(H3_bidirectional_bridge PRIVATE cxx_std_23)
+    target_include_directories(H3_bidirectional_bridge PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}" "${COROUTINE_STUDY_EXERCISES_DIR}/include")
+    target_link_libraries(H3_bidirectional_bridge PRIVATE stdexec::stdexec)
+    if(BUILD_TESTING AND COROUTINE_STUDY_TEST_STARTERS)
+        add_test(NAME H3_bidirectional_bridge COMMAND H3_bidirectional_bridge)
+        coroutine_study_set_test_defaults(H3_bidirectional_bridge starter 30)
+    endif()
+
+    coroutine_study_add_checker_variants(H3_bidirectional_bridge)
+
+    if(COROUTINE_STUDY_BUILD_REFERENCE)
+        add_executable(H3_bidirectional_bridge_reference solution.cpp)
+        target_compile_features(H3_bidirectional_bridge_reference PRIVATE cxx_std_23)
+        target_include_directories(H3_bidirectional_bridge_reference PRIVATE "${COROUTINE_STUDY_EXERCISES_DIR}/include")
+        target_link_libraries(H3_bidirectional_bridge_reference PRIVATE stdexec::stdexec)
+        if(BUILD_TESTING)
+            add_test(NAME H3_bidirectional_bridge_reference COMMAND H3_bidirectional_bridge_reference)
+            coroutine_study_set_test_defaults(H3_bidirectional_bridge_reference reference 30)
+        endif()
+    endif()
 else()
-    add_executable(H3_bidirectional_bridge main.cpp)
+    add_executable(H3_bidirectional_bridge checks/main.cpp)
+    target_include_directories(H3_bidirectional_bridge PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
     target_link_libraries(H3_bidirectional_bridge PRIVATE stdexec::stdexec)
     add_executable(H3_bidirectional_bridge_reference solution.cpp)
     target_link_libraries(H3_bidirectional_bridge_reference PRIVATE stdexec::stdexec)

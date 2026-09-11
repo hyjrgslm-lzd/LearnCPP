@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C09_Coroutines\\exercises\\build\\c09-review-content\\h1-fake-trace-build\\Release\\h1_fake_trace_counterexample.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.46799999999348074,
+  "stdout": "H1 student check passed.\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-jodbuzh5",
+  "temporary_directory_removed": true,
+  "name": "content_r3_h1_fake_trace_run",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": "H1 student check passed.",
+  "verdict": "PASS"
+}

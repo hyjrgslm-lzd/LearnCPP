@@ -49,7 +49,7 @@ auto both = co_await when_all(a(), b());
 
 这里 `source()` 只能执行一次。它完成后，结果要缓存起来，供 `a` 和 `b` 各自读取。由于多个消费者都要读，`await_resume()` 返回值通常是拷贝。
 
-最小结构可以这样理解：
+G1 的单线程基线让 control_block 共同拥有 producer frame，值和错误留在 promise；waiter owner 必须活到完成。下面展示 Capstone5 的独立缓存实现，它进一步支持已排序的等待者放弃，两者的字段图和线程保证不能混用：
 
 ```text
 shared_task<T>
@@ -61,12 +61,14 @@ shared_state<T>
   done
   optional<T> value
   exception_ptr error
-  vector<coroutine_handle<>> waiters
+  vector<weak_ptr<registration>> waiters
   optional<task<T>> source
-  runner task<void>
+
+producer coroutine parameter
+  -> shared_ptr<shared_state<T>>
 ```
 
-reference 选择 `shared_ptr<shared_state<T>>`。原因很直接：producer frame 最终会被销毁，但共享状态还要管理结果缓存、waiter 列表和 runner 生命周期。把共享状态放在独立控制块里，语义接近 `std::shared_ptr`。
+Capstone5 选择 `shared_ptr<shared_state<T>>`：producer frame 最终会被销毁，共享状态仍管理结果与 waiter。producer 按值持有 state 到 source 完成，state 不反向拥有 producer；这样不会形成状态和 runner 相互持有的环。
 
 ## 三、shared_task 的等待流程
 
@@ -76,9 +78,10 @@ reference 选择 `shared_ptr<shared_state<T>>`。原因很直接：producer fram
 co_await shared
   -> lock state
   -> done 已 true：不挂起，await_resume 直接读缓存
-  -> done 为 false：登记当前 coroutine_handle 到 waiters
-  -> 若 producer 还没启动，创建 runner 并 start
-  -> 当前协程挂起
+  -> done 为 false：登记弱 registration（保存当前 handle）
+  -> 若 producer 还没启动，启动持有 state 的 producer
+  -> registering -> suspended 成功：等待完成方恢复
+  -> 已同步 completed：返回 false，当前协程继续
 ```
 
 runner 的任务是等待原始 source：
@@ -93,9 +96,9 @@ runner
   -> resume 每个 waiter
 ```
 
-这里的 mutex 保护 `started/done/value/error/waiters`。教学 reference 简单地用 vector 保存 waiters，并在完成后逐个 `resume()`。生产实现还要处理 awaiter 提前销毁、并发插入与完成同时发生、最后一个引用释放时 source 尚未完成等窗口。
+Capstone5 的 mutex 保护登记和完成状态；value/error 由 producer 写入，再通过完成发布与读取路径建立可见性。完成方只恢复仍有效、从 suspended 转 completed 的登记；registering 阶段的同步完成交给 await_suspend 返回 false。awaiter 析构注销登记。完整代码、原 UAF 和修复证据在 14 章，不能用普通 CTest 通过替代生命周期分析。
 
-G-1 的重点是把这几条边画出来：shared_task 持有 shared_state，shared_state 持有 source 和 runner，waiter handle 指向等待者协程，完成后所有 waiter 都从 `await_resume()` 读同一个缓存值。
+G1 先画清 control_block、producer promise 和 waiter owner 的关系；再与 Capstone5 的独立缓存、弱登记和 producer 参数保活对照。G1 不支持登记 waiter 提前销毁；Capstone5 的注销也不意味着允许 owner 与 resume 并发操作同一帧。
 
 <a id="g2"></a>
 
@@ -210,6 +213,48 @@ sync_wait(task<T> t)
 
 完成通知来自 `final_suspend` 后续路径。这样无论协程同步完成、跨线程完成，还是通过中间 task 链完成，root 的完成都会落到同一个通知点。
 
+## 七点一、样章实验：完成不等于结果已经安全移出
+
+先修是 B2 的父子 task、D 的 final suspend，以及 C02 的移动构造与 RAII。场景是普通线程用 `sync_wait(parent())` 等父协程，父协程 `co_await child()` 取得一个只能移动的结果。约定 child 的 promise 保存结果，awaiter 消费一次；无论取值成功还是抛异常，已完成 child 的帧都必须被销毁。
+
+先跑正常基线：child 用整数直接构造结果，parent 取出值 7，退出后存活计数为 0。再只改变一个条件：结果从 promise 移出时，移动构造抛异常。这个异常不是 child 函数体内的异常，而发生在调用方执行 `await_resume()` 期间。父协程会沿自己的 `unhandled_exception`、final suspend 和 root 通知链，把错误交回 `sync_wait`。
+
+旧实现先把 `callee` 交换成空，再移动结果，最后手动 `destroy()`。取值抛出会跳过最后一步；此时 awaiter 已没有句柄，不能在析构中补救：
+
+```text
+child final suspend：帧内 result 仍存活
+await_resume：callee -> 局部裸 handle，callee 变空
+移动 result 抛异常 -> 跳过 destroy
+awaiter 析构：callee 为空 -> 帧与 result 遗留
+```
+
+[最小实验](exercises/runtime_tests/await_resume_exception_test.cpp)用 `tracked_value::alive` 记录实际结果对象的构造与析构。它先验证正常路径，再触发移动异常；检查在 Release 中仍有效。修复前记录为 `caught=1 alive_after_unwind=1`，不是依据一次耗时或 Sanitizer 无报告推断泄漏。
+
+修复复用 task 自己的 RAII 所有权，不增加另一个分配器或公共 guard：
+
+```cpp
+lazy_task owned{std::exchange(callee, {})};
+if (!owned.h_) throw std::bad_alloc{};
+auto& p = owned.h_.promise();
+if (p.exception) std::rethrow_exception(p.exception);
+if (!p.result) throw std::logic_error("lazy_task completed without a value");
+return std::move(*p.result);
+```
+
+返回对象先构造，随后 `owned` 销毁帧；如果构造抛出，栈展开同样销毁 `owned`。转移句柄后 awaiter 为空，避免双重销毁。这个 owner 只覆盖结果提取期间；它不赋予调用方在外部 I/O 尚未结束时随意销毁活跃任务的权限。跨线程发布与取消收束仍需各自协议。
+
+从仓库根目录复现：
+
+```powershell
+cmake -S C09_Coroutines/exercises -B C09_Coroutines/exercises/build/verify-core -DCOROUTINE_STUDY_BUILD_REFERENCE=ON
+cmake --build C09_Coroutines/exercises/build/verify-core --config Release --target runtime_await_resume_exception_test G3_sync_wait_impl_reference
+ctest --test-dir C09_Coroutines/exercises/build/verify-core -C Release -R "runtime_await_resume_exception_test|G3_sync_wait_impl_reference" --output-on-failure
+```
+
+修复后必须同时看到错误仍传播、存活计数回到 0、正常值与既有同步/异步完成检查仍成立。原始失败、工具命令和版本对应见 [S1 证据目录](references/validation/c09-refresh/s1)。独立审查还要核对：错误是在 child body、结果提取还是 root 消费阶段发生，哪个 owner 在该阶段负责帧；仅捕获了异常不等于资源已收束。
+
+**练习与解析：** 遮住上面的修复，先画出旧实现每一步的句柄持有者，再选择一个能覆盖抛出窗口的现有 owner。答案应保持“取值前转移一次所有权、返回对象构造期间 owner 仍存活、异常与正常路径都析构、awaiter 不再重复释放”四项。只在 catch 里补一次 destroy 容易漏掉新增失败路径；把 move 标成 noexcept 会改变类型契约，不能解决通用 T 的所有权问题。
+
 ## 八、同步完成窗口
 
 很多 awaiter 会在 `await_suspend` 内部立刻完成。例如 sender 的 `start()` 可能同步调用 `set_value`。这会产生一个窗口：
@@ -295,10 +340,10 @@ Reference 还验证：`task<void>`、异常重抛、跨线程完成、同步完�
    **答案解析：** 单 owner `task<T>` 拥有一个 coroutine frame，结果通常在 `await_resume()` 中被 move 出来并标记消费。两个消费者同时等待会让 continuation、启动状态和结果所有权互相覆盖；第一个消费者取走结果后，第二个消费者只能看到已消费状态。Capstone5 reference 因此禁 copy，并拒绝重复启动和重复消费。
 2. `shared_task<T>` 为什么需要独立 shared state 和结果缓存。
 
-   **答案解析：** producer frame 只应执行一次，但多个 awaiter 都要在不同时间读取同一个结果。独立 `shared_state` 用 `shared_ptr` 延长缓存、waiter 列表和 runner 的寿命，避免 producer frame 销毁后结果入口消失。G-1/reference 的 state 保存 `started/done/value/error/waiters/source/runner`。
+   **答案解析：** producer frame 只应执行一次，但多个 awaiter 都要在不同时间读取同一个结果。独立 `shared_state` 用 `shared_ptr` 延长缓存、waiter 列表和 runner 的寿命，避免 producer frame 销毁后结果入口消失。G1 Reference 的 control_block 保存 started/completed、waiters 和 producer handle；值与错误在 promise。Capstone5 则使用独立缓存与 producer 参数保活。
 3. 多 waiter 唤醒时如何避免重复 resume。
 
-   **答案解析：** 等待者登记到同一个受同步保护的列表，producer 完成后设置 `done=true`，取出列表并逐个恢复。完成路径取走 waiters 后列表清空，后续 awaiter 看到 done 直接走 ready 路径，不再入队。G-1 教学实现用 vector 保存 handle，reference 用 mutex 保护完成与登记的交界。
+   **答案解析：** 等待者登记到同一个受同步保护的列表，producer 完成后设置 `done=true`，取出列表并逐个恢复。完成路径取走 waiters 后列表清空，后续 awaiter 看到 done 直接走 ready 路径，不再入队。G1 Reference 在单线程中用 vector 保存 handle；Capstone5 才通过 mutex、弱登记和 phase 处理更宽的完成/注销边界。
 4. `when_all` 为什么是 barrier，为什么要先启动全部分支。
 
    **答案解析：** `when_all` 的语义是所有分支完成后才恢复父协程，所以它需要一个 remaining 计数作为 barrier。先启动全部分支能保证 fan-out；若先完整等待 left 再启动 right，只是顺序组合。G-2 reference 用 latch/barrier 证明两个分支先都启动，最后一个完成才恢复 parent。

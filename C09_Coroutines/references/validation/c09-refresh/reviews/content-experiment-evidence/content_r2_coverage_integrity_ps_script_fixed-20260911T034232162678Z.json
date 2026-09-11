@@ -1,0 +1,25 @@
+{
+  "command": [
+    "powershell",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C09_Coroutines\\exercises\\build\\c09-review-content\\scripts\\check_coverage_integrity.ps1"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.7190000000118744,
+  "stdout": "",
+  "stderr": "����λ�� F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-review-content\\scripts\\check_coverage_integrity.ps1:1 \n�ַ�: 35\n+ $ErrorActionPreference = Capstone5) \\\\|'StopCapstone5) \\\\|'\n+                                   ~\n����ʽ������а�������ı�ǡ�)����\n����λ�� F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-review-content\\scripts\\check_coverage_integrity.ps1:1 \n�ַ�: 40\n+ $ErrorActionPreference = Capstone5) \\\\|'StopCapstone5) \\\\|'\n+                                        ~~~~~~~~~~~~~~~~~~~~\nֻ����������ʽ��Ϊ�ܵ��ĵ�һ��Ԫ�ء�\n����λ�� F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-review-content\\scripts\\check_coverage_integrity.ps1:3 \n�ַ�: 14\n+   Capstone5) \\\\|'P1_future_basicsCapstone5) \\\\|',Capstone5) \\\\|'P2_ge ...\n+              ~~\n����ʽ������а�������ı�ǡ�\\\\����\n����λ�� F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-review-content\\scripts\\check_coverage_integrity.ps1:3 \n�ַ�: 50\n+   Capstone5) \\\\|'P1_future_basicsCapstone5) \\\\|',Capstone5) \\\\|'P2_ge ...\n+                                                  ~\n��,������ȱ�ٱ���ʽ��\n����λ�� F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-review-content\\scripts\\check_coverage_integrity.ps1:3 \n�ַ�: 17\n+   Capstone5) \\\\|'P1_future_basicsCapstone5) \\\\|',Capstone5) \\\\|'P2_ge ...\n+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nֻ����������ʽ��Ϊ�ܵ��ĵ�һ��Ԫ�ء�\n����λ�� F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-review-content\\scripts\\check_coverage_integrity.ps1:3 \n�ַ�: 50\n+   Capstone5) \\\\|'P1_future_basicsCapstone5) \\\\|',Capstone5) \\\\|'P2_ge ...\n+                                                  ~~~~~~~~~\n����ʽ������а�������ı�ǡ�Capstone5����\n����λ�� F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-review-content\\scripts\\check_coverage_integrity.ps1:3 \n�ַ�: 59\n+   Capstone5) \\\\|'P1_future_basicsCapstone5) \\\\|',Capstone5) \\\\|'P2_ge ...\n+                                                           ~\n����ʽ������а�������ı�ǡ�)����\n����λ�� F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-review-content\\scripts\\check_coverage_integrity.ps1:3 \n�ַ�: 100\n+ ... one5) \\\\|',Capstone5) \\\\|'P2_generator_basicsCapstone5) \\\\|',Capstone ...\n+                                                                  ~\n��,������ȱ�ٱ���ʽ��\n����λ�� F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-review-content\\scripts\\check_coverage_integrity.ps1:3 \n�ַ�: 64\n+ ... one5) \\\\|',Capstone5) \\\\|'P2_generator_basicsCapstone5) \\\\|',Capstone ...\n+                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nֻ����������ʽ��Ϊ�ܵ��ĵ�һ��Ԫ�ء�\n����λ�� F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-review-content\\scripts\\check_coverage_integrity.ps1:3 \n�ַ�: 100\n+ ... ',Capstone5) \\\\|'P2_generator_basicsCapstone5) \\\\|',Capstone5) \\\\|'A1 ...\n+                                                         ~~~~~~~~~\n����ʽ������а�������ı�ǡ�Capstone5����\n��δ�������з����������������Ĵ������ԡ�\n    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException\n    + FullyQualifiedErrorId : UnexpectedToken\n \n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-wd1efpxt",
+  "temporary_directory_removed": true,
+  "name": "content_r2_coverage_integrity_ps_script_fixed",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": "coverage_integrity: PASS rows=37 dirs=37 readmes=37",
+  "verdict": "FAIL"
+}

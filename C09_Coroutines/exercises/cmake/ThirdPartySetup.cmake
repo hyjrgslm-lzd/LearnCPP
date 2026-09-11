@@ -136,6 +136,28 @@ function(coroutine_study_setup_liburing)
         return()
     endif()
 
+    if(COROUTINE_STUDY_LIBURING_ROOT)
+        find_path(_uring_include liburing.h
+            PATHS "${COROUTINE_STUDY_LIBURING_ROOT}/include" NO_DEFAULT_PATH NO_CACHE REQUIRED)
+        find_library(_uring_library NAMES uring
+            PATHS "${COROUTINE_STUDY_LIBURING_ROOT}/lib" "${COROUTINE_STUDY_LIBURING_ROOT}/lib64"
+            NO_DEFAULT_PATH NO_CACHE REQUIRED)
+        file(READ "${_uring_include}/liburing/io_uring_version.h" _uring_version)
+        string(REGEX MATCH "IO_URING_VERSION_MAJOR[ \t]+([0-9]+)" _major_match "${_uring_version}")
+        set(_uring_major "${CMAKE_MATCH_1}")
+        string(REGEX MATCH "IO_URING_VERSION_MINOR[ \t]+([0-9]+)" _minor_match "${_uring_version}")
+        set(_uring_minor "${CMAKE_MATCH_1}")
+        if(NOT _major_match OR NOT _minor_match OR "${_uring_major}.${_uring_minor}" VERSION_LESS "2.15")
+            message(FATAL_ERROR "COROUTINE_STUDY_LIBURING_ROOT requires liburing >= 2.15")
+        endif()
+        add_library(liburing::liburing UNKNOWN IMPORTED)
+        set_target_properties(liburing::liburing PROPERTIES
+            IMPORTED_LOCATION "${_uring_library}"
+            INTERFACE_INCLUDE_DIRECTORIES "${_uring_include}")
+        message(STATUS "C09 liburing ${_uring_major}.${_uring_minor}: ${_uring_library}")
+        return()
+    endif()
+
     find_package(PkgConfig QUIET)
     if(PkgConfig_FOUND)
         pkg_check_modules(LIBURING QUIET IMPORTED_TARGET liburing>=2.15)

@@ -1,0 +1,25 @@
+{
+  "command": [
+    "cmake",
+    "-S",
+    "C09_Coroutines\\exercises\\build\\c09-review-content\\h2-constant-counterexample-src",
+    "-B",
+    "C09_Coroutines\\exercises\\build\\c09-review-content\\h2-constant-counterexample-build",
+    "-DCMAKE_BUILD_TYPE=Release"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 3.139999999999418,
+  "stdout": "-- Building for: Visual Studio 18 2026\n-- The CXX compiler identification is MSVC 19.51.36256.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: D:/VisualStudio2026/Installed/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring incomplete, errors occurred!\n",
+  "stderr": "CMake Error at F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/cmake/ThirdPartySetup.cmake:19 (message):\n  COROUTINE_STUDY_ENABLE_STDEXEC is enabled but stdexec::stdexec is\n  unavailable.  Install it, set CMAKE_PREFIX_PATH/pkg-config paths, set\n  FETCHCONTENT_SOURCE_DIR_*, or enable COROUTINE_STUDY_FETCH_DEPS for light\n  deps.\nCall Stack (most recent call first):\n  F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/cmake/ThirdPartySetup.cmake:51 (_coroutine_study_require)\n  CMakeLists.txt:12 (coroutine_study_setup_stdexec)\n\n\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-9b3uc355",
+  "temporary_directory_removed": true,
+  "name": "content_r2_h2_constant_counterexample_configure",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": "Build files have been written",
+  "verdict": "FAIL"
+}

@@ -1,0 +1,31 @@
+{
+  "command": [
+    "g++",
+    "-std=c++23",
+    "-g",
+    "-O1",
+    "-fsanitize=address,undefined",
+    "-fno-omit-frame-pointer",
+    "-pthread",
+    "-I",
+    "C09_Coroutines/exercises/Capstone5_mini_corolib/reference/include",
+    "C09_Coroutines/exercises/Capstone5_mini_corolib/reference/tests/run_loop_test.cpp",
+    "-o",
+    "C09_Coroutines/exercises/build/c09-final-diagnostics/run-loop-asan-before"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.3890694649999995,
+  "stdout": "",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-veb4jwg4",
+  "temporary_directory_removed": true,
+  "name": "run-loop-asan-before-build",
+  "cwd": "/mnt/f/CPPTrain/LearnCPP",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

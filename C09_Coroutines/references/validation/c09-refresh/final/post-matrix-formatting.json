@@ -1,0 +1,7 @@
+{
+  "path": "C09_Coroutines/exercises/H2_std_execution_task/CMakeLists.txt",
+  "before_sha256": "72480397818bcbd293f85545e8ffe250919c137bb71bb3b230b2f0712efee558",
+  "after_sha256": "482ace78f174d7730fd2aaca100edcfbeb803faebd2be640ee985fa9ced94f87",
+  "change": "Removed only trailing blank lines at EOF; all preceding bytes identical.",
+  "identical_without_trailing_newlines": true
+}

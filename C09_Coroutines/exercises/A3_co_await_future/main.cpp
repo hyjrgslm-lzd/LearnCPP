@@ -11,6 +11,8 @@
 //   - 在日志里看到"挂起的线程"和"resume 的线程"是不同的线程
 // =====================================================================
 
+#include <coroutine_study/exercise_check.hpp>
+#include <exception>
 #include <coroutine_study/lazy_task.hpp>
 
 #include <chrono>
@@ -41,13 +43,24 @@ void log(const char* tag, Args&&... args) {
 // ─────────────────────────────────────────────────────────────────────
 namespace coroutine_study_user {
 
+struct future_observation {
+    bool ready_path = false;
+    bool suspended = false;
+    std::thread::id suspend_thread{};
+    std::thread::id resume_thread{};
+};
+
+inline future_observation* active_observation = nullptr;
+
 template <class T>
 struct future_awaiter {
     std::future<T> fut_;
 
-    bool await_ready() const noexcept {
+    bool await_ready() {
         // TODO [必做]: return fut_.wait_for(0s) == std::future_status::ready;
-        return false;
+        bool ready = false;
+        if (active_observation) active_observation->ready_path = ready;
+        return ready;
     }
 
     void await_suspend(std::coroutine_handle<> h) {
@@ -56,12 +69,19 @@ struct future_awaiter {
         //   2) 把等待工作交给一个有明确 owner 的 worker，future ready 后 h.resume();
         //   3) worker 必须在协程帧销毁前 join；参考实现见 solution.cpp。
         //   骨架占位：同步等待后恢复，安全但看不到跨线程恢复。
+        if (active_observation) {
+            active_observation->suspended = true;
+            active_observation->suspend_thread = std::this_thread::get_id();
+        }
         fut_.wait();
         h.resume();
     }
 
     T await_resume() {
         // TODO [必做]: log 当前线程 id 后，return fut_.get();
+        if (active_observation) {
+            active_observation->resume_thread = std::this_thread::get_id();
+        }
         return fut_.get();
     }
 };
@@ -109,12 +129,30 @@ lazy_task<int> test_future_await() {
 
 }  // namespace
 
-int main() {
+int main() try {
     log("main", "─── A-3：co_await std::future ───");
 
+    coroutine_study_user::future_observation observation;
+    coroutine_study_user::active_observation = &observation;
     auto task = test_future_await();
     int v = coroutine_study::sync_wait(std::move(task));
+    coroutine_study_user::active_observation = nullptr;
 
     log("main", "final result = ", v, " (期望 84)");
+    coroutine_study::check(v == 84, "Part 1/2: co_await future returns the transformed value");
+    coroutine_study::check(observation.suspended, "Part 1: not-ready future enters await_suspend");
+    coroutine_study::check(!observation.ready_path, "Part 3: async future is observed on the suspended path");
+    coroutine_study::check(
+        observation.resume_thread != observation.suspend_thread,
+        "Part 3: not-ready future must resume from the worker path, not by blocking in await_suspend"
+    );
     return 0;
+}
+catch (const std::exception& e) {
+    std::cerr << "student check failed: " << e.what() << '\n';
+    return 1;
+}
+catch (...) {
+    std::cerr << "student check failed: unknown exception\n";
+    return 1;
 }

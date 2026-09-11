@@ -6,6 +6,8 @@
 
 这题让 `my_task<T>` 同时服务两种消费者：sender 消费者通过 `stdexec::connect/start` 启动它；协程消费者通过 `co_await my_task<T>` 等它。第三条路径是在 `my_task` 协程体内 `co_await stdexec::just(42)`，复用 H-1 的 sender -> awaitable 桥。
 
+学生入口只改 `student.hpp`。`checks/main.cpp` 是验收 fixture：它固定三条不可由学生改写的协程体，分别测试 `my_task` 被 sender `connect/start` 消费、外层 task `co_await` 内层 task、task 内部 `co_await` checker private fixture 提供的 traced sender。checker 使用 31、11、40 这些变化输入，并要求值 31/22/41 与六个计数全为 1；计数不作为可写参数传给学生实现。删除内部 await、伪造返回值，或尝试改写 bridge sender trace，会因为 child/sender 计数没发生或 private fixture 边界被拒绝。`validation/good/student.hpp` 和 `validation/bad_constant/student.hpp` 用同一个 checker 构建，分别证明真实双向桥和坏实现不能通过。
+
 三个链路要分开看：
 
 ```text

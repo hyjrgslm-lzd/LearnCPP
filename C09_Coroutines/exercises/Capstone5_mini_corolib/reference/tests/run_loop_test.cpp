@@ -7,14 +7,16 @@ static mini_ref::task<int> scheduled(mini_ref::run_loop& loop) {
     co_return 9;
 }
 
+static mini_ref::task<void> finish_scheduled(mini_ref::run_loop& loop, int& value, bool& done) {
+    value = co_await scheduled(loop);
+    done = true;
+}
+
 int main() {
     mini_ref::run_loop loop;
     bool done = false;
     int value = 0;
-    auto t = [&]() -> mini_ref::task<void> {
-        value = co_await scheduled(loop);
-        done = true;
-    }();
+    auto t = finish_scheduled(loop, value, done);
 
     t.start();
     if (done) std::abort();

@@ -1,0 +1,29 @@
+Test project F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-mechanisms
+    Start 13: D1_promise_8_hooks_reference
+1/4 Test #13: D1_promise_8_hooks_reference ...........   Passed    0.48 sec
+    Start 15: D3_final_suspend_symmetric_reference
+2/4 Test #15: D3_final_suspend_symmetric_reference ...   Passed    0.45 sec
+    Start 21: F3_halo_diagnose_reference
+3/4 Test #21: F3_halo_diagnose_reference .............   Passed    0.03 sec
+    Start 23: G2_when_all_impl_reference
+Could not find executable F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-mechanisms/G2_when_all_impl/Release/G2_when_all_impl_reference.exe
+Looked in the following places:
+F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-mechanisms/G2_when_all_impl/Release/G2_when_all_impl_reference.exe
+F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-mechanisms/G2_when_all_impl/Release/G2_when_all_impl_reference.exe.exe
+F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-mechanisms/G2_when_all_impl/Release/Release/G2_when_all_impl_reference.exe
+F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-mechanisms/G2_when_all_impl/Release/Release/G2_when_all_impl_reference.exe.exe
+Release/F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-mechanisms/G2_when_all_impl/Release/G2_when_all_impl_reference.exe
+Release/F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-mechanisms/G2_when_all_impl/Release/G2_when_all_impl_reference.exe.exe
+Unable to find executable: F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-mechanisms/G2_when_all_impl/Release/G2_when_all_impl_reference.exe
+4/4 Test #23: G2_when_all_impl_reference .............***Not Run   0.00 sec
+
+75% tests passed, 1 tests failed out of 4
+
+Label Time Summary:
+reference    =   0.96 sec*proc (4 tests)
+
+Total Test time (real) =   1.02 sec
+
+The following tests FAILED:
+	 23 - G2_when_all_impl_reference (Not Run)              reference
+Errors while running CTest

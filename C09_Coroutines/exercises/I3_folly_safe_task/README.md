@@ -6,6 +6,8 @@
 
 这题使用 Folly 的实际 API。普通 `folly::coro::Task<T>` 是 lazy task；safe coroutine 层在类型上限制参数、返回值和闭包捕获，减少协程挂起后引用悬空。
 
+starter 入口在 `main.cpp`。它用 17/25/5 这些变化输入和 `i3_trace` 检查协程体是否真实运行：`value_task_todo` 需要累计三次 value task，`now_task_todo` 两次，`cleanup_safe_todo` 一次。只返回固定 42/7 但不 await 内部链，会因为 trace 不匹配失败。本机缺 Folly heavy 环境时保留源码阅读和 Linux heavy 预设验证，不伪造本机通过。
+
 reference 覆盖：
 
 - `value_task<int>`：值语义参数和返回，预测结果 42。

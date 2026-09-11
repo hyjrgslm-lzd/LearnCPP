@@ -6,11 +6,11 @@
 // 设计约束（来自 14-mini §"设计约束"）：
 //   1. operation_state 等价物 non-movable —— start() 后 promise 与 frame 不能移动；
 //   2. completion_signatures 编译期可查询；
-//   3. HALO 在 sync_wait 入口可触发。
+//   3. HALO 是否发生须以当前工具链产物验证，不作正确性前提。
 //
 // 设计选择：
 //   - lazy（initial_suspend = suspend_always）；
-//   - final_suspend 走 symmetric transfer（决策 2 方案 B：栈安全）；
+//   - final_suspend 走 symmetric transfer；机器栈深度是实现观察项；
 //   - 禁 copy，move 后原 task 失效（决策 1 方案 B 简化版）；
 //   - operation_state 内联存储 —— 不堆分配，HALO 友好（决策 4 方案 A）。
 // =============================================================================
@@ -22,6 +22,7 @@
 #include <type_traits>
 #include <utility>
 #include <variant>
+#include <stdexcept>
 
 namespace mini {
 
@@ -30,6 +31,8 @@ struct task {
     struct promise_type {
         std::variant<std::monostate, T, std::exception_ptr> result_{};
         std::coroutine_handle<> continuation_{};
+        bool started_ = false;
+        bool consumed_ = false;
 
         task get_return_object() {
             return task{std::coroutine_handle<promise_type>::from_promise(*this)};
@@ -64,12 +67,22 @@ struct task {
     task& operator=(const task&) = delete;
     ~task() { if (h_) h_.destroy(); }
 
+    void start() {
+        if (!h_ || h_.done() || std::exchange(h_.promise().started_, true))
+            throw std::logic_error("task requires an unstarted frame");
+        h_.resume();
+    }
+
     bool await_ready() const noexcept { return false; }
     std::coroutine_handle<> await_suspend(std::coroutine_handle<> caller) {
+        if (!h_ || h_.done() || std::exchange(h_.promise().started_, true))
+            throw std::logic_error("task can only be awaited before start");
         h_.promise().continuation_ = caller;
         return h_;
     }
     T await_resume() requires (!std::is_void_v<T>) {
+        if (!h_ || !h_.done() || std::exchange(h_.promise().consumed_, true))
+            throw std::logic_error("task result requires completion and one consumption");
         auto& r = h_.promise().result_;
         if (r.index() == 2) std::rethrow_exception(std::get<2>(r));
         return std::move(std::get<1>(r));
@@ -85,6 +98,8 @@ struct task<void> {
     struct promise_type {
         std::exception_ptr error_{};
         std::coroutine_handle<> continuation_{};
+        bool started_ = false;
+        bool consumed_ = false;
 
         task get_return_object() {
             return task{std::coroutine_handle<promise_type>::from_promise(*this)};
@@ -111,12 +126,22 @@ struct task<void> {
     task(task&& o) noexcept : h_(std::exchange(o.h_, {})) {}
     ~task() { if (h_) h_.destroy(); }
 
+    void start() {
+        if (!h_ || h_.done() || std::exchange(h_.promise().started_, true))
+            throw std::logic_error("task requires an unstarted frame");
+        h_.resume();
+    }
+
     bool await_ready() const noexcept { return false; }
     std::coroutine_handle<> await_suspend(std::coroutine_handle<> caller) {
+        if (!h_ || h_.done() || std::exchange(h_.promise().started_, true))
+            throw std::logic_error("task can only be awaited before start");
         h_.promise().continuation_ = caller;
         return h_;
     }
     void await_resume() {
+        if (!h_ || !h_.done() || std::exchange(h_.promise().consumed_, true))
+            throw std::logic_error("task result requires completion and one consumption");
         if (h_.promise().error_) std::rethrow_exception(h_.promise().error_);
     }
 };

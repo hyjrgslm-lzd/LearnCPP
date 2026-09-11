@@ -1,0 +1,12 @@
+# Local executable copies retained for historical command readback, not delivery.
+**/wsl-gpp*/
+/reviews/runtime-review-evidence/g1-*-asan
+*.exe
+*.dll
+*.obj
+*.o
+*.pdb
+*.ilk
+*.lib
+*.a
+__pycache__/

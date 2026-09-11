@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C09_Coroutines/exercises/build/c09-review-rpc-student/Capstone4_rpc_framework/Release/Capstone4_rpc_framework_student_check.exe"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.48399999999674037,
+  "stdout": "",
+  "stderr": "check failed: uncaught exception from implementation\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-cnozek03",
+  "temporary_directory_removed": true,
+  "name": "rpc_student_expected_fail",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 1,
+  "required_text": "check failed: uncaught exception from implementation",
+  "verdict": "PASS"
+}

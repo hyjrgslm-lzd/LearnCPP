@@ -1,0 +1,176 @@
+{
+  "lane": "student",
+  "verdict": "PASS",
+  "records": [
+    {
+      "name": "cmake-version",
+      "verdict": "PASS",
+      "exit_code": 0
+    },
+    {
+      "name": "configure",
+      "verdict": "PASS",
+      "exit_code": 0
+    },
+    {
+      "name": "build-Release",
+      "verdict": "PASS",
+      "exit_code": 0
+    },
+    {
+      "name": "test-list",
+      "verdict": "PASS",
+      "exit_code": 0
+    },
+    {
+      "name": "A3_co_await_future",
+      "verdict": "PASS",
+      "exit_code": 1
+    },
+    {
+      "name": "B1_recursive_generator",
+      "verdict": "PASS",
+      "exit_code": 1
+    },
+    {
+      "name": "B2_task_sequential",
+      "verdict": "PASS",
+      "exit_code": 1
+    },
+    {
+      "name": "B3_callback_to_awaiter",
+      "verdict": "PASS",
+      "exit_code": 0
+    },
+    {
+      "name": "C1_stop_token_cancel",
+      "verdict": "PASS",
+      "exit_code": 0
+    },
+    {
+      "name": "C2_when_all_when_any",
+      "verdict": "PASS",
+      "exit_code": 1
+    },
+    {
+      "name": "C3_async_scope",
+      "verdict": "PASS",
+      "exit_code": 0
+    },
+    {
+      "name": "Capstone1_async_crawler",
+      "verdict": "PASS",
+      "exit_code": 1
+    },
+    {
+      "name": "D1_promise_8_hooks",
+      "verdict": "PASS",
+      "exit_code": 1
+    },
+    {
+      "name": "D3_final_suspend_symmetric",
+      "verdict": "PASS",
+      "exit_code": 1
+    },
+    {
+      "name": "G2_when_all_impl",
+      "verdict": "PASS",
+      "exit_code": 1
+    },
+    {
+      "name": "H1_as_awaitable",
+      "verdict": "PASS",
+      "exit_code": 1
+    },
+    {
+      "name": "H2_std_execution_task",
+      "verdict": "PASS",
+      "exit_code": 1
+    },
+    {
+      "name": "H3_bidirectional_bridge",
+      "verdict": "PASS",
+      "exit_code": 1
+    },
+    {
+      "name": "I1_asio_echo",
+      "verdict": "PASS",
+      "exit_code": 1
+    },
+    {
+      "name": "Capstone4_rpc_framework_student_check",
+      "verdict": "PASS",
+      "exit_code": 1
+    },
+    {
+      "name": "I2_io_uring_iocp",
+      "verdict": "PASS",
+      "exit_code": 1
+    },
+    {
+      "name": "I5_cppcoro_patterns",
+      "verdict": "PASS",
+      "exit_code": 1
+    },
+    {
+      "name": "J1_eight_pitfalls",
+      "verdict": "PASS",
+      "exit_code": 0
+    },
+    {
+      "name": "mini_task_test",
+      "verdict": "PASS",
+      "exit_code": 0
+    },
+    {
+      "name": "mini_generator_test",
+      "verdict": "PASS",
+      "exit_code": 0
+    },
+    {
+      "name": "mini_when_all_test",
+      "verdict": "PASS",
+      "exit_code": 1
+    },
+    {
+      "name": "mini_sync_wait_test",
+      "verdict": "PASS",
+      "exit_code": 1
+    },
+    {
+      "name": "mini_scope_test",
+      "verdict": "PASS",
+      "exit_code": 1
+    },
+    {
+      "name": "mini_when_any_test",
+      "verdict": "PASS",
+      "exit_code": 1
+    },
+    {
+      "name": "mini_shared_task_test",
+      "verdict": "PASS",
+      "exit_code": 1
+    },
+    {
+      "name": "mini_run_loop_test",
+      "verdict": "PASS",
+      "exit_code": 1
+    },
+    {
+      "name": "mini_stop_test",
+      "verdict": "PASS",
+      "exit_code": 0
+    },
+    {
+      "name": "mini_task_sender_test",
+      "verdict": "PASS",
+      "exit_code": 1
+    },
+    {
+      "name": "mini_as_awaitable_test",
+      "verdict": "PASS",
+      "exit_code": 1
+    }
+  ]
+}

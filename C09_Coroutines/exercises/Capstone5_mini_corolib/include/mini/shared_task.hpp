@@ -19,6 +19,7 @@
 #include <exception>
 #include <utility>
 #include <variant>
+#include <stdexcept>
 
 namespace mini {
 
@@ -82,6 +83,25 @@ struct shared_task {
     //   await_suspend: 把 caller 封装为 awaiter_node 推到 awaiters_ 链表
     //                  返回 noop_coroutine 或 h_（若尚未启动）
     //   await_resume: 取 result_，若是 exception_ptr 则 rethrow
+    struct awaiter {
+        std::coroutine_handle<promise_type> h_;
+        explicit awaiter(std::coroutine_handle<promise_type> h) : h_(h) {
+            if (!h_) throw std::logic_error("empty shared_task");
+            ++h_.promise().refcount_;
+        }
+        awaiter(const awaiter&) = delete;
+        awaiter(awaiter&& other) noexcept : h_(std::exchange(other.h_, {})) {}
+        ~awaiter() { if (h_ && --h_.promise().refcount_ == 0) h_.destroy(); }
+        bool await_ready() const noexcept { return false; }
+        void await_suspend(std::coroutine_handle<>) {
+            // Refcount is supplied; registration, start-once and completion are the exercise.
+            throw std::logic_error("TODO: implement mini::shared_task waiter registration");
+        }
+        T await_resume() {
+            throw std::logic_error("TODO: implement mini::shared_task cached result/error");
+        }
+    };
+    awaiter operator co_await() const { return awaiter{h_}; }
 };
 
 template <typename T>

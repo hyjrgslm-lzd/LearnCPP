@@ -4,46 +4,44 @@
 
 `task<T>` 是单 owner、单次消费。`shared_task<T>` 要让同一个 producer 执行一次，多个 awaiter 都读到同一个结果。本题重点是共享状态、结果缓存和多 waiter 唤醒。
 
+**本题基线契约：** 示例在同一线程上登记与恢复；每个已登记 waiter 的 owner 必须活到 producer 完成，不能提前销毁。`resume()` 只用于本题受控的 `suspend_always` 观察点，不是任意异步任务的驱动入口。Reference 本轮验证 `int`，不把这些结果推广成所有 T、任意线程或取消协议。
+
+非作者已验证：满足上述 owner 顺序的释放路径通过 ASan；先销毁登记 waiter 再恢复 producer 会产生 UAF。后者是本基线不支持的输入，保留在[审查证据](../../references/validation/c09-refresh/reviews/runtime-review.md)中，不进入默认运行。需要支持等待者放弃时，继续到 Capstone5 的弱登记/phase 实现；这是契约扩展，不是宣称当前基线已支持注销。
+
 ## Part 1：对象关系
 
 先画：
 
 ```text
 shared_task<T> copies
-  -> shared_ptr<shared_state<T>>
-       mutex
-       started/done
-       optional<T> value
-       exception_ptr error
-       waiters
-       source task
-       runner task
+  -> shared_ptr<control_block>
+       started/completed
+       vector<coroutine_handle<>> waiters
+       producer handle -> promise { value, error, weak owner }
 ```
 
-shared state 独立于 producer frame。producer 完成后，结果缓存在 state 中，后续 awaiter 可直接读取。
+本题 control_block 共同拥有 producer frame；结果留在 promise，后续 awaiter 仍可读取。Capstone5 则把缓存放进独立 shared_state，producer 按值持有它直到收束；state 不反向持有 producer，避免引用环。
 
 ## Part 2：首次等待启动 producer
 
 第一个 awaiter：
 
 ```text
-lock state
-done=false
+本题单线程：completed=false
 登记 caller 到 waiters
 started=false -> true
-创建 runner 并 start
-当前协程挂起
+返回 producer handle，转交执行
 ```
 
 第二个 awaiter 只登记 waiter，不重复启动 producer。
 
 ## Part 3：完成后唤醒全部 waiter
 
-runner `co_await source`，成功时保存 value，失败时保存 error，然后设置 done 并取出 waiters 逐个恢复。每个 waiter 在 `await_resume()` 中读取缓存。返回值要拷贝，不能 move。
+producer 成功时在 promise 保存 value，失败时保存 error；final awaiter 设置 completed 并取出 waiters。它恢复后面的等待者，再返回首个 handle 做控制转交。每个 waiter 在 `await_resume()` 中读取 promise 缓存。返回值要拷贝，不能让第一个消费者 move 走共享结果。
 
 ## 验收
 
-以下解析对应本目录的 [solution.cpp](solution.cpp)：`control_block` 共同拥有 producer frame，结果保存在该帧的 promise 中。前面介绍的独立 shared state 与 runner 形状，可在 [Capstone5 reference](../Capstone5_mini_corolib/reference/include/mini_ref/mini.hpp) 中对照；两种形状都把一次生产结果提供给多个消费者。
+以下解析对应本目录的 [solution.cpp](solution.cpp)：`control_block` 共同拥有 producer frame，结果保存在该帧的 promise 中。[Capstone5 reference](../Capstone5_mini_corolib/reference/include/mini_ref/mini.hpp) 提供独立缓存、弱 waiter 与 producer 自收束的对照，不能混用两者的字段图和线程/注销保证。
 
 - producer 只执行一次。
 

@@ -1,1 +1,1 @@
-coroutine_study_add_exercise(D3_final_suspend_symmetric REFERENCE_SOURCES solution.cpp)
+coroutine_study_add_exercise(D3_final_suspend_symmetric STUDENT_TEST REFERENCE_SOURCES solution.cpp)

@@ -127,6 +127,26 @@ ctest --test-dir C09_Coroutines/exercises/build/verify-core -C Release -R "mini_
 
 ## 各测试观察点
 
+### Student Part 与实际检查
+
+| Part | 独立编辑入口 | 检查入口 | 当前起点与解析 |
+|---|---|---|---|
+| task 基础 | task.hpp | mini_task_test | 已提供 owning task；值、重复 start/consume 拒绝。它不证明 sender TODO 完成。 |
+| task sender 扩展 | task.hpp 的 metadata/connect | mini_task_sender_test（stdexec） | 直接消费学生 member connect，排除库自动 awaitable fallback；先读 H3，connect 不启动，start 发一次 value/error。 |
+| generator | generator.hpp | mini_generator_test | 迭代观察；frame owner 必须覆盖 iterator 寿命。 |
+| sync_wait | sync_wait.hpp | mini_sync_wait_test | 起点抛 TODO；先 start 一次，再等待 final 通知，不能把缺结果当 stopped。 |
+| when_all | when_all.hpp | mini_when_all_test | 起点抛 TODO；前置 sync_wait 完成后检查结果和异常，完整并发场景另由 Reference 覆盖。 |
+| when_any | when_any.hpp | mini_when_any_test | 二元非 void 契约；两个 manual_event 先登记，右侧先释放必须获胜，同时 request_stop，左侧收束前 root 不返回。 |
+| shared_task | shared_task.hpp | mini_shared_task_test | 两个 awaiter 等同一事件，producer 只启动一次；完成后两者及晚到者都读到缓存。 |
+| executor | single_thread_executor.hpp | mini_run_loop_test | enqueue/run_one 已提供，schedule 留给学生；入队不能内联恢复，run_one 只恢复一次。阻塞 run 直到 stop，与 Reference 非阻塞 run 的驱动口径分开。 |
+| scope | async_scope.hpp | mini_scope_test | 实际消费非空工作，不能只检查空 scope；source 需要有限收束。 |
+| stop | stop_token.hpp | mini_stop_test | 标准别名已提供，观察已有/晚到回调及幂等请求；不证明 in-place 无分配扩展。 |
+| sender awaitable | as_awaitable.hpp | mini_as_awaitable_test（stdexec） | 检查 value/error/stopped 映射；任务未实现与 stopped 必须区分。 |
+
+这些检查会调用学生操作，未完成项保留普通非零失败，不使用 WILL_FAIL。参考值、void、错误、并发等完整测试仍由下列 Reference 列表承担，不能把参考结果套到 Student。独立可做性验证及行为型反例见 [mini Student 审查](../../references/validation/c09-refresh/reviews/mini-student-review.md)。
+
+首个错误不等于 when_any 完成：该组合保留 first-success 语义，只有成功 winner 请求 stop。没有成功值时，所有输入必须自行完成或响应外部取消；“一个 error 加一个永远等 stop 的输入”本身没有保证有限完成。不能为让这种输入自动退出而悄悄改成 first-error cancel。
+
 - `task_test.cpp`：返回值、重复启动拒绝、重复消费拒绝。
 - `generator_test.cpp`：range-for 推进、当前值保存、移动 owner。
 - `sync_wait_test.cpp`：值、void、异常、跨线程完成、frame 析构。

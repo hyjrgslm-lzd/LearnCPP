@@ -1,0 +1,9 @@
+{
+  "timestamp": "2026-09-11T02:16:42.6155028Z",
+  "command": "wsl.exe bash -lc \"cd /mnt/f/CPPTrain/LearnCPP && mkdir -p C09_Coroutines/references/validation/c09-refresh/reviews/s1-review-evidence/wsl-gpp && g++ -std=c++20 -Wall -Wextra -pedantic -I C09_Coroutines/exercises/include C09_Coroutines/exercises/runtime_tests/await_resume_exception_test.cpp -o C09_Coroutines/references/validation/c09-refresh/reviews/s1-review-evidence/wsl-gpp/runtime_await_resume_exception_test && C09_Coroutines/references/validation/c09-refresh/reviews/s1-review-evidence/wsl-gpp/runtime_await_resume_exception_test\"",
+  "exit_code": 0,
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "head": "75028ff2d312a4f1047e7bafd6cf4101f771a2ec",
+  "lazy_task_sha256": "30a0ad1b5da689f52f24eb10ea57751cafcf6a37564c5731983aaa58269be624",
+  "test_sha256": "e530448b72cbcabcc1744809c6b8a186a6f9da4f344d8e73e8bd2ad914eb41ba"
+}

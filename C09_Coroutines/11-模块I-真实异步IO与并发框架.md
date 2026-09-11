@@ -122,6 +122,13 @@ bool await_suspend(std::coroutine_handle<> h) noexcept {
 
 `user_data` 里放的是 awaiter 身份。业务结果来自 CQE 的 `res` 字段，event loop 写入 awaiter 后，协程才从 `await_resume` 读到字节数。
 
+I2 的四个 Part 要分清：
+
+- read/recv：`await_suspend` 保存 continuation、提交一次真实 OS 请求，并只在请求已经 pending 后让协程挂起。
+- complete：event loop 有有限 timeout，取 completion 后先复制 `res`、byte count 或 error，再消费 CQE/完成包。
+- resume：只有 complete 阶段写完结果后才能恢复 coroutine；危险回调不能在还没建立 buffer/awaiter 生命周期时盲目 `resume()`。
+- close：fd/socket、ring/port 和临时 buffer 都由外层 owner 活到 completion 之后；恢复后的协程可能立刻继续提交或退出，所以 close/drain 要发生在 pending 归零后。
+
 Windows IOCP reference：
 
 ```text
@@ -171,6 +178,8 @@ Safe coroutine 层把常见悬空引用问题变成类型约束。`SafeTask.h` �
 - `co_cleanup_safe_task<T>`：用于 cleanup/scope 期间可能运行的协程工作。
 
 I3 reference 只保留真实 Folly API 子集：`value_task<int>`、`now_task<int>`、executor-bound `Task`、`async_closure(bind::args{...}, ...)`、`co_cleanup_safe_task<int>`。预测结果分别是 42、7、worker thread 与 main 不同、closure 返回 6、cleanup 返回 9。本题在 Linux `heavy-folly-linux` 预设中启用；Windows 学习时沿 reference 源码阅读 API 和生命周期设计。
+
+本机若没有 Folly，I3 仍保留完整 starter/reference 和阅读入口，但验证状态只能写“未验证/依赖缺失”。不能用空程序输出 0 代表通过；启用 starter 检查时，TODO 版本会调用 `value_task_todo`、`now_task_todo` 和 `task_todo`，初态应有限失败。
 
 reference 中最值得读的片段：
 
@@ -228,6 +237,8 @@ cobalt::promise<std::vector<int>> consumer(cobalt::channel<int>& ch) {
 
 背压是 channel 的正常语义。channel 满时 producer 挂起并释放 executor；真正危险的是同步阻塞或 busy loop 占住唯一线程，让 consumer 没机会运行。
 
+本机若没有 Boost.Cobalt，I4 同样只登记未验证，不改写成“已通过”。starter 检查会实际进入 `gather(producer(ch), consumer(ch))`；TODO 版本没有 channel 操作，只能有限失败。完成 producer/consumer 后，再增加 race/timeout 观察。
+
 <a id="i5"></a>
 
 ## I-5：cppcoro patterns
@@ -259,6 +270,8 @@ co_await pool.schedule();
 `when_all` 让两个 task 在同一个组合点汇合；`shared_task` 说明结果可以缓存给多个 awaiter；`schedule()` 是显式调度切换点。每个 API 都能对应到你之前手写过的一个机制。
 
 cppcoro 文档中 `sync_wait` 的定位很清楚：它在当前线程创建顶层协程并阻塞等待结果，适合从 `main()` 进入 async 世界。做完 I5 后，你应该能把本仓库的 `lazy_task/sync_wait/when_all/shared_task` 和 cppcoro 的对应类型逐个对上。
+
+I1/I2/I5 的 starter 检查也消费真实实现：I1 做 250ms 有界 loopback echo；I2 要求 awaiter 不是 ready 快路径，后续 reference 再做真实 CQE/IOCP completion；I5 调用 generator/task/shared_task/cancel/scheduler TODO，初态观测值为 0 会被拒绝。观察型实验只声明它实际跑到的行为，不外推到生产库完整正确性。
 
 ## 模块 I 的闭环问题
 

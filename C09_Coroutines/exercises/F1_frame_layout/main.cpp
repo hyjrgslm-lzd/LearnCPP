@@ -1,7 +1,7 @@
 // F-1 观察协程帧布局
 // 文档参考：08-模块F-协程帧与allocator.md 「练习 F-1」
 // 官方参考：
-//   - GCC `-fdump-tree-coro` 文档
+//   - GCC `-fdump-tree-all` 文档
 //   - MSVC `/d1reportSingleClassLayout` 调试 flag
 //   - Clang `-Xclang -ast-dump`
 //   - Gor Nishanov "C++ Coroutines: Under the covers" CppCon 2016
@@ -41,7 +41,7 @@ struct observer_task {
 };
 
 // ========== 多 co_await 点 + 多类型局部变量的协程 ==========
-// TODO [必做]：用 GCC -fdump-tree-coro 编译该文件，
+// TODO [必做]：用 GCC -fdump-tree-all 编译该文件，
 //   找到生成的 .c.022t.coro（或同类）dump 文件，搜索 _Coro_frame / __frame，
 //   把 promise / param 副本 / resume_index / 局部变量 spill 的相对位置画下来。
 observer_task observed(int param_a, double param_b, std::string param_c)
@@ -96,7 +96,7 @@ int main()
     (void)t1; (void)t2; (void)t3;
 
     std::printf("\n[提示] 帧 dump 操作（任选其一）：\n");
-    std::printf("  GCC  : g++ -std=c++23 -fdump-tree-coro main.cpp\n");
+    std::printf("  GCC  : g++ -std=c++23 -fdump-tree-all main.cpp\n");
     std::printf("         查 .c.022t.coro 文件 → 搜索 _Coro_frame\n");
     std::printf("  MSVC : cl /std:c++latest /d1reportSingleClassLayout<name> main.cpp\n");
     std::printf("  Clang: clang++ -std=c++23 -Xclang -ast-dump -fsyntax-only main.cpp\n");

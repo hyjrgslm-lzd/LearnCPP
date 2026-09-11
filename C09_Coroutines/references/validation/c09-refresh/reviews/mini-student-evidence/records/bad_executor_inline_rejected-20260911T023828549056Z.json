@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C09_Coroutines/exercises/build/c09-review-mini/bad_executor_inline_test"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.0089572349999969,
+  "stdout": "",
+  "stderr": "starter check failed: schedule must queue, not resume inline\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "/tmp/c07-test-ik0rsw4d",
+  "temporary_directory_removed": true,
+  "name": "bad_executor_inline_rejected",
+  "cwd": "/mnt/f/CPPTrain/LearnCPP",
+  "expected_exit": 1,
+  "required_text": "schedule must queue, not resume inline",
+  "verdict": "PASS"
+}

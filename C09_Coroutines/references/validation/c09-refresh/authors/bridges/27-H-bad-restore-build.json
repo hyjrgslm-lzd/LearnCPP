@@ -1,0 +1,15 @@
+{
+  "output": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\r\n\r\n  Checking File Globs\r\n  正在扫描源以查找模块依赖项...\r\n  main.cpp\r\n  正在编译...\r\n  main.cpp\r\n  H1_as_awaitable_bad_constant.vcxproj -> F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-author-h-checkers-r3\\H1_as_awaitable\\Release\\H1_as_awaitable_bad_constant.exe\r\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\r\n\r\n  Checking File Globs\r\n  正在扫描源以查找模块依赖项...\r\n  main.cpp\r\n  正在编译...\r\n  main.cpp\r\n  H2_std_execution_task_bad_constant.vcxproj -> F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-author-h-checkers-r3\\H2_std_execution_task\\Release\\H2_std_execution_task_bad_constant.exe\r\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\r\n\r\n  Checking File Globs\r\n  正在扫描源以查找模块依赖项...\r\n  main.cpp\r\n  正在编译...\r\n  main.cpp\r\n  H3_bidirectional_bridge_bad_constant.vcxproj -> F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-author-h-checkers-r3\\H3_bidirectional_bridge\\Release\\H3_bidirectional_bridge_bad_constant.exe\r\n",
+  "returncode": 0,
+  "args": [
+    "cmake",
+    "--build",
+    "C09_Coroutines/exercises/build/c09-author-h-checkers-r3",
+    "--config",
+    "Release",
+    "--target",
+    "H1_as_awaitable_bad_constant",
+    "H2_std_execution_task_bad_constant",
+    "H3_bidirectional_bridge_bad_constant"
+  ]
+}

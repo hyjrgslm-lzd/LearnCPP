@@ -4,7 +4,9 @@
 
 对应主讲义：`10-模块H-协程与sender_receiver桥接.md` 的 H-2。
 
-这题的重点是观察 task 作为 sender 的工程语义。当前工作草案里的 `[exec.task]` 仍在演进；本仓库用 pinned NVIDIA/stdexec `nvhpc-26.05` 的 `stdexec::task` 跑同类行为。`H2_std_task_probe` 另用 CMake 真实编译 `std::execution::task<void>`，确认当前标准库支持状态。
+这题的重点是观察 task 作为 sender 的工程语义。当前工作草案里的 `[exec.task]` 仍在演进；本仓库用 pinned NVIDIA/stdexec `nvhpc-26.05` 的 `stdexec::task` 跑同类行为。`H2_std_task_probe` 另用 CMake 在 C++26 preview flag 下真实编译 `std::execution::task<int>` 协程体，并尝试用 `std::this_thread::sync_wait` 消费，确认当前标准库支持状态。
+
+学生入口只改 `student.hpp`。`checks/main.cpp` 是验收 fixture：它把 first sender、worker sender、运行时 stopped 的 `stdexec::task<int>`、实际查询 `get_stop_token` 的 `stdexec::task<bool>` 和 `exec::static_thread_pool` 交给 `run_task_observations`，再检查返回值和 checker 侧 counters。函数签名不再暴露 `task_trace*`；学生不能手动写 counter。只返回 `{19,42,true,true}` 会因为 `first_started / worker_ran / stopped_started / token_queries` 都是 0 被拒绝。`validation/good/student.hpp` 和 `validation/bad_constant/student.hpp` 用同一个 checker 构建，分别证明真实 `co_await sender`、`starts_on + when_all`、`stopped_as_optional`、token task 接线有效，以及常量观察值不能通过。
 
 reference 覆盖五个观察点：
 
@@ -31,4 +33,6 @@ ctest --test-dir C09_Coroutines/exercises/build-h-release -C Release -R H2_std_e
 
 如果使用 MinGW/GCC + Windows，CMake 会构建 starter 和 probe，但可能不会创建 `H2_std_execution_task_reference` target。这只说明 pinned stdexec task reference 在该工具链上未启用。
 
-**答案解析：** `H2_std_task_probe` 是标准库能力探针，负责实际编译 `std::execution::task<void>`；reference target 使用 pinned stdexec task 观察同类 sender/task 语义。两者回答的问题不同：probe 回答当前标准库是否提供标准类型，reference 回答本课程固定依赖下的 task、environment、`starts_on`、`when_all` 行为。
+`H2_std_task_probe` 注册为 `probe` 标签，缺 C++26 preview flag 或缺标准库 task 主体时返回 77，由 CTest 记为 SKIP。语言 preview 不可用说明编译器前端入口不足；preview 可用但 task 主体失败说明标准库 `<execution>` 尚未提供该设施，两者分开登记。
+
+**答案解析：** `H2_std_task_probe` 是标准库能力探针，负责实际编译 task 协程体并在能力存在时运行；reference target 使用 pinned stdexec task 观察同类 sender/task 语义。两者回答的问题不同：probe 回答当前标准库是否提供标准类型，reference 回答本课程固定依赖下的 task、environment、`starts_on`、`when_all` 行为。

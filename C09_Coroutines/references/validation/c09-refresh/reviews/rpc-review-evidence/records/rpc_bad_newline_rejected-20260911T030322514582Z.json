@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C09_Coroutines/exercises/build/c09-review-rpc-refon/Capstone4_rpc_framework/Release/Capstone4_rpc_framework_bad_newline_check.exe"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.5160000000032596,
+  "stdout": "",
+  "stderr": "check failed: frame header uses 8-byte decimal length\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-tm74_x6a",
+  "temporary_directory_removed": true,
+  "name": "rpc_bad_newline_rejected",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 1,
+  "required_text": "check failed: frame header uses 8-byte decimal length",
+  "verdict": "PASS"
+}

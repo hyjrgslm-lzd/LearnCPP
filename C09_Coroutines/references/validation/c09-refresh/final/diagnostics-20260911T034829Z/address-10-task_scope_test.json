@@ -1,0 +1,18 @@
+{
+  "command": [
+    "env",
+    "ASAN_OPTIONS=detect_leaks=1:halt_on_error=1",
+    "/mnt/f/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-final-diagnostics/address-10-task_scope_test"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.01436528199999998,
+  "stdout": "",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-65sv97g4",
+  "temporary_directory_removed": true,
+  "verdict": "PASS"
+}

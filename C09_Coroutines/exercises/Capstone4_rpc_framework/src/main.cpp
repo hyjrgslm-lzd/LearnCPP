@@ -1,34 +1,61 @@
-// =============================================================================
-// src/main.cpp —— RPC demo driver
-//
-// 对应文档：13-第三阶段结课-RPC框架.md  §"必做任务 7"
-//
-// 本文件是学生 starter，不冒充已完成实现。
-// 完整可运行答案在 reference/tests/rpc_reference_test.cpp。
-//
-// 设计验收：
-//   - 没有 detach；
-//   - 没有全局可变状态；
-//   - completion handler 成对维护计数，shutdown 调 wait_empty() 完成 drain；
-//   - cancellation token 从 client 超时到 server handler 的传播路径清晰。
-// =============================================================================
+#include "rpc/client.hpp"
+#include "rpc/server.hpp"
 
-#include "rpc/protocol.hpp"
-#include "rpc/scope.hpp"
-#include "rpc/task.hpp"
+#include <asio.hpp>
 
+#include <cstdlib>
+#include <exception>
+#include <future>
 #include <iostream>
+#include <memory>
+#include <thread>
+#include <utility>
 
-// #include "rpc/client.hpp"  // 上层暴露 RpcClient 接口
-// #include "rpc/server.hpp"  // 上层暴露 RpcServer 接口
+using namespace std::chrono_literals;
+
+template <class Fn>
+static void post_and_wait(asio::io_context& io, Fn&& fn) {
+    auto done = std::make_shared<std::promise<void>>();
+    auto future = done->get_future();
+    asio::post(io, [done, fn = std::forward<Fn>(fn)]() mutable {
+        try {
+            fn();
+            done->set_value();
+        } catch (...) {
+            done->set_exception(std::current_exception());
+        }
+    });
+    future.get();
+}
 
 int main() {
-    std::cout << "===== Capstone 4: mini RPC Framework demo =====\n";
-    std::cout << "starter skeleton: pure Asio awaitable RPC, not a completed implementation.\n";
-    std::cout << "exercise shape: 3 ok calls + timeout + server_error + unknown_method.\n";
-    std::cout << "ownership rule: every co_spawn has a completion handler or a stored future.\n";
-    std::cout << "drain rule: shutdown waits until client/server in_flight() is zero.\n";
-    std::cout << "reference check: build target Capstone4_rpc_framework_reference.\n";
-    std::cerr << "not implemented: this starter is compile-only until you complete src/.\n";
-    return 2;
+    try {
+        asio::io_context io;
+        auto guard = asio::make_work_guard(io);
+        rpc::RpcServer server{io};
+        server.start();
+
+        rpc::RpcClient client{io};
+        auto connect = asio::co_spawn(io, client.connect("127.0.0.1", server.port()), asio::use_future);
+        std::jthread runner{[&] { io.run(); }};
+        connect.get();
+
+        auto result = asio::co_spawn(io, client.call({0, "add", {1, 2, 3}, true}, 1s), asio::use_future).get();
+        post_and_wait(io, [&] {
+            client.shutdown();
+            server.stop();
+        });
+        guard.reset();
+        runner.join();
+
+        if (!result || result->result != 6 || client.in_flight() != 0 || server.in_flight() != 0) {
+            std::cerr << "Capstone4_rpc_framework: RPC smoke failed\n";
+            return 2;
+        }
+        std::cout << "Capstone4_rpc_framework: RPC smoke passed\n";
+        return 0;
+    } catch (const std::logic_error& ex) {
+        std::cerr << "Capstone4_rpc_framework: " << ex.what() << '\n';
+        return 2;
+    }
 }

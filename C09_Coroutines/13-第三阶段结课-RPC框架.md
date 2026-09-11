@@ -2,7 +2,7 @@
 
 这个结课项目把 H/I/J 串起来：用纯 Asio `awaitable` 写一个最小 RPC 框架，覆盖请求协议、client/server 协程、超时、取消帧、重试、连接断开和 shutdown drain。自写 `task<T>` 与 stdexec bridge 放在模块 H 和 Capstone5；本项目的 reference 只使用 Asio，减少模型混杂。
 
-仓库稳定 ID：`Capstone4_rpc_framework`。`src/` 是学生 starter，只保证 compile-only；`reference/` 是可运行答案。项目完成以 reference 行为和你补完后的 starter 行为为准。
+仓库稳定 ID：`Capstone4_rpc_framework`。`src/` 是学生 TODO 起点，public API 在 `include/rpc/protocol.hpp`、`include/rpc/client.hpp`、`include/rpc/server.hpp`；`good/` 是 reference-adapted answer，`reference/` 是隔离答案。项目完成以 `Capstone4_rpc_framework_student_check`、`Capstone4_rpc_framework_answer_check`、`Capstone4_rpc_framework_protocol_good_check` 和 `Capstone4_rpc_framework_reference` 的行为为准，不能通过直接包含 Reference、硬编码输出或完成标记通过。
 
 ## 1. 先看协议
 
@@ -16,7 +16,7 @@ reference 的 wire format 是 8 字节十进制长度头 + body：
 
 `Q` 是 request：`id | idempotent | method | args`。`C` 是 cancel frame：只带 request id。`R` 是 response：`id | result | status`。长度头让 TCP 粘包/拆包不影响解析；`request_id` 让同一连接上多个请求能够复用。
 
-关键代码：`reference/include/rpc_ref/rpc.hpp` 中的 `frame`、`encode(request)`、`encode_cancel`、`encode(response)`、`read_frame`、`parse_request`、`parse_response`。
+先写学生 `src/protocol.cpp` 中的 `frame`、`serialize(Request)`、`encode_cancel`、`serialize(Response)`、`read_frame`、`parse_request`、`parse_response`。Reference 的同名路径只用于最后对照，不是做题前提。
 
 预测协议检查：
 
@@ -120,12 +120,18 @@ shutdown 时 client 先 `fail_all(connection_lost)` 并 close socket，server cl
 ## 7. Reference 验收
 
 ```powershell
-cmake -S C09_Coroutines/exercises -B C09_Coroutines/exercises/build/capstone4-asio -DCOROUTINE_STUDY_ENABLE_ASIO=ON -DCOROUTINE_STUDY_BUILD_REFERENCE=ON -DCOROUTINE_STUDY_FETCH_DEPS=ON
-cmake --build C09_Coroutines/exercises/build/capstone4-asio --config Release --target Capstone4_rpc_framework_reference
+cmake -S C09_Coroutines/exercises -B C09_Coroutines/exercises/build/capstone4-asio -DCOROUTINE_STUDY_ENABLE_ASIO=ON -DCOROUTINE_STUDY_BUILD_REFERENCE=ON -DCOROUTINE_STUDY_TEST_STARTERS=ON -DCOROUTINE_STUDY_FETCH_DEPS=OFF -DASIO_INCLUDE_DIR=<cached-asio>/include
+cmake --build C09_Coroutines/exercises/build/capstone4-asio --config Release --target Capstone4_rpc_framework Capstone4_rpc_framework_student_check Capstone4_rpc_framework_answer_check Capstone4_rpc_framework_protocol_good_check Capstone4_rpc_framework_reference
 ctest --test-dir C09_Coroutines/exercises/build/capstone4-asio -C Release -R Capstone4_rpc_framework_reference --output-on-failure
 ```
 
-reference 发起 6 个并发请求：3 个 `add` 正常返回，1 个 `delay_add` 100ms 超时并可重试一次，1 个 `error_method` 返回 server error，1 个未知 method 返回 unknown method。测试还覆盖协议错误、连接断开 fail_all、编码过大失败和 in-flight 归零。
+同一个 semantic checker 会按链接目标消费不同实现：student 目标默认因为 TODO stub 真实 FAIL，不使用 `WILL_FAIL`；学生补完 `src/` 后应自然通过；answer 目标通过；独立 protocol good 目标只声明 protocol Part 独立，通过 answer client/server 驱动；bad newline/no-header 目标由 `run_test.py` 要求精确 exit 1 和 `check failed: frame header uses 8-byte decimal length`，超时或崩溃都不算通过；reference 目标独立通过。checker 发起 6 个并发请求：3 个 `add` 正常返回，1 个 `delay_add` 100ms 超时并可重试一次，1 个 `error_method` 返回 server error，1 个未知 method 返回 unknown method。checker 额外覆盖协议错误、非数字 header、连接断开 `fail_all`、超长编码失败、重复 `shutdown()`、幂等请求真实重试、late response 丢弃和 in-flight 归零。
+
+完整本题回归可直接筛 RPC：
+
+```powershell
+ctest --test-dir C09_Coroutines/exercises/build/capstone4-asio -C Release -R "Capstone4_rpc_framework" --output-on-failure
+```
 
 完成后你应该能从任意一个 request id 反向追踪：它何时分配，何时进入 pending，何时写出，response 或 timer 谁先到，pending 如何移除，server 侧 handler 是否收到 cancel，后台协程如何完成。
 

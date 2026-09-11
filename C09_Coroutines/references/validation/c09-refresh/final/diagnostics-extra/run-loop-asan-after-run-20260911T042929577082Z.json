@@ -1,0 +1,23 @@
+{
+  "command": [
+    "env",
+    "ASAN_OPTIONS=detect_leaks=1:halt_on_error=1",
+    "UBSAN_OPTIONS=halt_on_error=1",
+    "C09_Coroutines/exercises/build/c09-final-diagnostics/run-loop-asan-after"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.02557272700000013,
+  "stdout": "",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-gevoo0tz",
+  "temporary_directory_removed": true,
+  "name": "run-loop-asan-after-run",
+  "cwd": "/mnt/f/CPPTrain/LearnCPP",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

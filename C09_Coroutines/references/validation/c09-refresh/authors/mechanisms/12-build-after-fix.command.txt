@@ -1,0 +1,1 @@
+cmake --build C09_Coroutines/exercises/build/c09-author-mechanisms --config Release --target D1_promise_8_hooks D1_promise_8_hooks_reference D3_final_suspend_symmetric D3_final_suspend_symmetric_reference G2_when_all_impl G2_when_all_impl_reference F3_halo_diagnose F3_halo_diagnose_reference

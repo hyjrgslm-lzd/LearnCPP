@@ -1,0 +1,9 @@
+{
+  "reason": "GCC 13 libstdc++ lacks <generator>",
+  "targets": [
+    "A1_first_generator_reference",
+    "B1_recursive_generator_reference",
+    "Capstone1_async_crawler_reference",
+    "P2_generator_basics_reference"
+  ]
+}

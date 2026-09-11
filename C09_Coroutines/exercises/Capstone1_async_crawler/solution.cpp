@@ -35,6 +35,10 @@ struct worker_group {
     template <class Fn>
     void submit(Fn&& fn) {
         std::lock_guard lock(mutex);
+        if (fail_next_submit) {
+            fail_next_submit = false;
+            throw std::runtime_error("injected submit failure");
+        }
         workers.emplace_back(std::forward<Fn>(fn));
     }
     void join() {
@@ -50,6 +54,7 @@ struct worker_group {
     }
     std::mutex mutex;
     std::vector<std::jthread> workers;
+    bool fail_next_submit = false;
 };
 
 std::generator<capstone1::Record> parse_lines(std::string body) {
@@ -136,10 +141,11 @@ coroutine_study::lazy_task<void> fetch_into(
     std::vector<fetch_result>& out,
     std::size_t index
 ) {
+    std::string url = rec.url;
     try {
         out[index] = co_await fetch_one(workers, std::move(rec), st);
     } catch (...) {
-        out[index] = fetch_result{rec.url, "", fetch_status::error, 0ms};
+        out[index] = fetch_result{std::move(url), "", fetch_status::error, 0ms};
     }
 }
 
@@ -199,6 +205,23 @@ int main() {
     check(parsed[0].ok && parsed[0].name == "Alice" && parsed[0].score == 85, "parser reads name and score");
     check(!parsed[1].ok && !parsed[2].ok, "parser marks malformed rows");
     check(parsed[3].ok && parsed[3].name == "Bob" && parsed[3].score == 92, "parser resumes after malformed rows");
+
+    {
+        worker_group failing_workers;
+        failing_workers.fail_next_submit = true;
+        std::vector<fetch_result> out(1);
+        auto injected = fetch_into(
+            failing_workers,
+            capstone1::UrlRecord{"data/fail.csv", "name,score\n", 25ms},
+            {},
+            out,
+            0
+        );
+        coroutine_study::sync_wait(std::move(injected));
+        failing_workers.join();
+        check(out[0].status == fetch_status::error, "injected submit failure becomes an error result");
+        check(out[0].url == "data/fail.csv", "error path preserves URL before moving UrlRecord into fetch_one");
+    }
 
     worker_group workers;
     std::stop_source src;

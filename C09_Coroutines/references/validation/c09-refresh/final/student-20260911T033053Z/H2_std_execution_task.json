@@ -1,0 +1,19 @@
+{
+  "command": [
+    "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-final-student/H2_std_execution_task/Release/H2_std_execution_task.exe"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.046999999991385266,
+  "stdout": "student check failed: value=0 hop=0 sum=0 stopped_optional=0 stop_token=0\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-gjzdysa2",
+  "temporary_directory_removed": true,
+  "name": "H2_std_execution_task",
+  "expected_exit": 1,
+  "verdict": "PASS",
+  "expected_rejection": true
+}

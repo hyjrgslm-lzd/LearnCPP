@@ -1,0 +1,31 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "C09_Coroutines\\exercises\\build\\c09-review-content\\h-review-r5",
+    "--config",
+    "Release",
+    "--target",
+    "H1_as_awaitable_good",
+    "H1_as_awaitable_bad_constant",
+    "H2_std_execution_task_good",
+    "H2_std_execution_task_bad_constant",
+    "H3_bidirectional_bridge_good",
+    "H3_bidirectional_bridge_bad_constant"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 24.85899999999674,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  Checking File Globs\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/CMakeLists.txt\n  Building Custom Rule F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/H1_as_awaitable/CMakeLists.txt\n  正在扫描源以查找模块依赖项...\n  main.cpp\n  正在编译...\n  main.cpp\n  H1_as_awaitable_good.vcxproj -> F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-review-content\\h-review-r5\\H1_as_awaitable\\Release\\H1_as_awaitable_good.exe\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  Checking File Globs\n  Building Custom Rule F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/H1_as_awaitable/CMakeLists.txt\n  正在扫描源以查找模块依赖项...\n  main.cpp\n  正在编译...\n  main.cpp\n  H1_as_awaitable_bad_constant.vcxproj -> F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-review-content\\h-review-r5\\H1_as_awaitable\\Release\\H1_as_awaitable_bad_constant.exe\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  Checking File Globs\n  Building Custom Rule F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/H2_std_execution_task/CMakeLists.txt\n  正在扫描源以查找模块依赖项...\n  main.cpp\n  正在编译...\n  main.cpp\n  H2_std_execution_task_good.vcxproj -> F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-review-content\\h-review-r5\\H2_std_execution_task\\Release\\H2_std_execution_task_good.exe\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  Checking File Globs\n  Building Custom Rule F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/H2_std_execution_task/CMakeLists.txt\n  正在扫描源以查找模块依赖项...\n  main.cpp\n  正在编译...\n  main.cpp\n  H2_std_execution_task_bad_constant.vcxproj -> F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-review-content\\h-review-r5\\H2_std_execution_task\\Release\\H2_std_execution_task_bad_constant.exe\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  Checking File Globs\n  Building Custom Rule F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/H3_bidirectional_bridge/CMakeLists.txt\n  正在扫描源以查找模块依赖项...\n  main.cpp\n  正在编译...\n  main.cpp\n  H3_bidirectional_bridge_good.vcxproj -> F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-review-content\\h-review-r5\\H3_bidirectional_bridge\\Release\\H3_bidirectional_bridge_good.exe\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  Checking File Globs\n  Building Custom Rule F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/H3_bidirectional_bridge/CMakeLists.txt\n  正在扫描源以查找模块依赖项...\n  main.cpp\n  正在编译...\n  main.cpp\n  H3_bidirectional_bridge_bad_constant.vcxproj -> F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-review-content\\h-review-r5\\H3_bidirectional_bridge\\Release\\H3_bidirectional_bridge_bad_constant.exe\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-2u2vzxts",
+  "temporary_directory_removed": true,
+  "name": "content_r5_build_h_variants",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": "H3_bidirectional_bridge_bad_constant",
+  "verdict": "PASS"
+}

@@ -1,0 +1,28 @@
+{
+  "command": [
+    "python3",
+    "C09_Coroutines/exercises/F3_halo_diagnose/sample_f3.py",
+    "C09_Coroutines/exercises/build/c09-final-diagnostics/f3-uninstrumented",
+    "--n",
+    "32",
+    "--iterations",
+    "200000",
+    "--seed",
+    "20260911"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.17139269199999774,
+  "stdout": "# protocol seed=20260911 n=32 measured_iterations=200000 warmup_iterations=1000 samples=5\nwarmup,version=local,n=32,iterations=1000,ns_per_iter=2.760,sink=496000\nwarmup,version=escaped,n=32,iterations=1000,ns_per_iter=2.350,sink=496000\nsample=1,version=local,n=32,iterations=200000,ns_per_iter=2.660,sink=99200000\nsample=1,version=escaped,n=32,iterations=200000,ns_per_iter=2.237,sink=99200000\nsample=2,version=escaped,n=32,iterations=200000,ns_per_iter=2.246,sink=99200000\nsample=2,version=local,n=32,iterations=200000,ns_per_iter=2.599,sink=99200000\nsample=3,version=local,n=32,iterations=200000,ns_per_iter=2.747,sink=99200000\nsample=3,version=escaped,n=32,iterations=200000,ns_per_iter=2.558,sink=99200000\nsample=4,version=escaped,n=32,iterations=200000,ns_per_iter=2.227,sink=99200000\nsample=4,version=local,n=32,iterations=200000,ns_per_iter=2.593,sink=99200000\nsample=5,version=escaped,n=32,iterations=200000,ns_per_iter=2.217,sink=99200000\nsample=5,version=local,n=32,iterations=200000,ns_per_iter=2.673,sink=99200000\nsummary,version=local,median=2.660,min=2.593,max=2.747,samples=2.660;2.599;2.747;2.593;2.673\nsummary,version=escaped,median=2.237,min=2.217,max=2.558,samples=2.237;2.246;2.558;2.227;2.217\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-xhzyqbgc",
+  "temporary_directory_removed": true,
+  "name": "f3-final-n32",
+  "cwd": "/mnt/f/CPPTrain/LearnCPP",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

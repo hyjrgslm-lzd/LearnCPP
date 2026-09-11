@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C09_Coroutines/exercises/build/c09-review-mini/default_when_any_test"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.008718302999994876,
+  "stdout": "",
+  "stderr": "starter check failed: TODO: implement mini::when_any start/winner/drain\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "/tmp/c07-test-pyhctk54",
+  "temporary_directory_removed": true,
+  "name": "default_when_any_rejects",
+  "cwd": "/mnt/f/CPPTrain/LearnCPP",
+  "expected_exit": 1,
+  "required_text": "TODO: implement mini::when_any",
+  "verdict": "PASS"
+}

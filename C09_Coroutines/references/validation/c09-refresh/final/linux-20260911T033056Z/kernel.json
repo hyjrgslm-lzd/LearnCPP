@@ -1,0 +1,20 @@
+{
+  "command": [
+    "uname",
+    "-a"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.0011194360000672532,
+  "stdout": "Linux lizhidan-p02 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-724_bvrj",
+  "temporary_directory_removed": true,
+  "name": "kernel",
+  "expected_exit": 0,
+  "verdict": "PASS",
+  "expected_rejection": false
+}

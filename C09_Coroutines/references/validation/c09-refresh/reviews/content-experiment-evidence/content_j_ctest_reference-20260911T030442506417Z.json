@@ -1,0 +1,27 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "C09_Coroutines\\exercises\\build\\c09-review-content\\light-ref",
+    "-C",
+    "Release",
+    "-R",
+    "J1_eight_pitfalls_reference|J2_cross_compiler_abi_reference|J3_coroutine_tracing_reference",
+    "--output-on-failure"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 1.514999999999418,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-review-content/light-ref\n    Start 43: J1_eight_pitfalls_reference\n1/3 Test #43: J1_eight_pitfalls_reference .......   Passed    0.54 sec\n    Start 44: J2_cross_compiler_abi_reference\n2/3 Test #44: J2_cross_compiler_abi_reference ...   Passed    0.44 sec\n    Start 45: J3_coroutine_tracing_reference\n3/3 Test #45: J3_coroutine_tracing_reference ....   Passed    0.45 sec\n\n100% tests passed, 0 tests failed out of 3\n\nLabel Time Summary:\nreference    =   1.43 sec*proc (3 tests)\n\nTotal Test time (real) =   1.45 sec\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-fsus8er0",
+  "temporary_directory_removed": true,
+  "name": "content_j_ctest_reference",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": "100% tests passed",
+  "verdict": "PASS"
+}

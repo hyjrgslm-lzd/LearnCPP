@@ -10,6 +10,8 @@
 
 同步完成是本题最容易写错的点。`stdexec::just` 可以在 `start()` 调用栈内完成。协程进入 `await_suspend` 前已经挂起；`await_suspend` 发布 handle 后，同步或并发恢复都可能发生。reference 用原子握手让 completion 先写结果；如果 completion 早于 publication 完成，`await_suspend` 返回 `false`，协程经过挂起点后立即继续到 `await_resume`。这和 `await_ready(true)` 跳过挂起点不同。
 
+学生入口只改 `student.hpp`。`checks/main.cpp` 是验收 fixture：它提供 private fixture 里的 `traced_sender`，在 checker 自己的协程体里分别跑 19/23 和 21/4 两组输入，并逐个比较两次 `co_await` 的结果。`connect/start` 与 completion 计数只在 fixture 内部变化；只返回常量 42、21/21，或尝试改写 trace，都会被值检查或 private fixture 边界拒绝。`validation/good/student.hpp` 和 `validation/bad_constant/student.hpp` 用同一个 checker 构建，分别证明正确接线和常量绕过不能通过。
+
 运行：
 
 ```powershell

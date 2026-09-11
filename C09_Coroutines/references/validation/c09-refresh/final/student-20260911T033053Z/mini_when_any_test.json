@@ -1,0 +1,19 @@
+{
+  "command": [
+    "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-final-student/Capstone5_mini_corolib/Release/mini_when_any_test.exe"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.4529999999940628,
+  "stdout": "",
+  "stderr": "starter check failed: TODO: implement mini::when_any start/winner/drain\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-p98kmukw",
+  "temporary_directory_removed": true,
+  "name": "mini_when_any_test",
+  "expected_exit": 1,
+  "verdict": "PASS",
+  "expected_rejection": true
+}

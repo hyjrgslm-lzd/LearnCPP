@@ -1,0 +1,28 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "C09_Coroutines\\exercises\\build\\c09-review-content\\h-r4-legal-fakes-build",
+    "--config",
+    "Release",
+    "--target",
+    "h1_legal_no_start_fake",
+    "h2_legal_constant_fake",
+    "h3_legal_bridge_no_start_fake"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.4839999999967404,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  Checking File Globs\n  正在扫描源以查找模块依赖项...\n  h1_legal_no_start_fake.vcxproj -> F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-review-content\\h-r4-legal-fakes-build\\Release\\h1_legal_no_start_fake.exe\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  Checking File Globs\n  正在扫描源以查找模块依赖项...\n  h2_legal_constant_fake.vcxproj -> F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-review-content\\h-r4-legal-fakes-build\\Release\\h2_legal_constant_fake.exe\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  Checking File Globs\n  正在扫描源以查找模块依赖项...\n  h3_legal_bridge_no_start_fake.vcxproj -> F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-review-content\\h-r4-legal-fakes-build\\Release\\h3_legal_bridge_no_start_fake.exe\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-q12m9nfe",
+  "temporary_directory_removed": true,
+  "name": "content_r5_h_legal_fakes_rebuild",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": "h3_legal_bridge_no_start_fake",
+  "verdict": "PASS"
+}

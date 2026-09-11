@@ -1,0 +1,26 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "C09_Coroutines\\exercises\\build\\c09-review-content\\h3-receiver-slot-attack-build",
+    "--config",
+    "Release",
+    "--target",
+    "h3_receiver_slot_attack"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 2.563000000009197,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  Checking File Globs\n  正在扫描源以查找模块依赖项...\n  正在编译...\n  main.cpp\nF:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-review-content\\h3-receiver-slot-attack-src\\student.hpp(199,26): error C2039: \"value\": 不是 \"int_receiver\" 的成员 [F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-review-content\\h3-receiver-slot-attack-build\\h3_receiver_slot_attack.vcxproj]\n  (编译源文件“../../../H3_bidirectional_bridge/checks/main.cpp”)\n      F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\H3_bidirectional_bridge\\checks\\main.cpp(52,7):\n      参见“int_receiver”的声明\n      F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-review-content\\h3-receiver-slot-attack-src\\student.hpp(199,26):\n      模板实例化上下文(最早的实例化上下文)为\n          F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\H3_bidirectional_bridge\\checks\\main.cpp(108,24):\n          查看对正在编译的函数 模板 实例化“int run_inline_sender<my_task<int>>(Sender &&)”的引用\n          with\n          [\n              Sender=my_task<int>\n          ]\n          F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\H3_bidirectional_bridge\\checks\\main.cpp(88,19):\n          在编译 类 模板 成员函数“unknown-type stdexec::connect_t::operator ()(_Sender &&,_Receiver &&) noexcept(<expr>) const”时\n          F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\H3_bidirectional_bridge\\checks\\main.cpp(88,19):\n          处理“unknown-type stdexec::connect_t::operator ()(_Sender &&,_Receiver &&) noexcept(<expr>) const”的默认模板参数时\n          F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\H3_bidirectional_bridge\\checks\\main.cpp(86,1):\n          处理“unknown-type stdexec::connect_t::operator ()(_Sender &&,_Receiver &&) noexcept(<expr>) const”的默认模板参数时\n          F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\full-windows\\_deps\\stdexec-src\\include\\stdexec\\__detail\\__connect.hpp(231,42):\n          查看对正在编译的 别名 模板 实例化“stdexec::__connect::__connect_declfn_t<_Sender,_Receiver>”的引用\n          with\n          [\n              _Sender=my_task<int>,\n              _Receiver=int_receiver\n          ]\n          F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\full-windows\\_deps\\stdexec-src\\include\\stdexec\\__detail\\__connect.hpp(212,27):\n          查看对正在编译的函数 模板 实例化“my_task<int>::op_state<_Receiver> (__cdecl *stdexec::__connect::__connect_declfn<true>::__get<my_task<int>,_Receiver>(void) noexcept)(void) noexcept(false)”的引用\n          with\n          [\n              _Receiver=int_receiver\n          ]\n          F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\full-windows\\_deps\\stdexec-src\\include\\stdexec\\__detail\\__connect.hpp(156,28):\n          在评估概念“__with_member<my_task<int>,int_receiver>”时\n          F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\full-windows\\_deps\\stdexec-src\\include\\stdexec\\__detail\\__connect.hpp(44,18):\n          查看对正在编译的 类 模板 实例化“my_task<int>::op_state<_Receiver>”的引用\n          with\n          [\n              _Receiver=int_receiver\n          ]\n          F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-review-content\\h3-receiver-slot-attack-src\\student.hpp(192,14):\n          在编译 类 模板 成员函数“void my_task<int>::op_state<_Receiver>::start(void) noexcept”时\n          with\n          [\n              _Receiver=int_receiver\n          ]\n              F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\full-windows\\_deps\\stdexec-src\\include\\stdexec\\__detail\\__operation_states.hpp(48,17):\n              请参阅 \"stdexec::start_t::operator ()\" 中对 \"my_task<int>::op_state<_Receiver>::start\" 的第一个引用\n          with\n          [\n              _Receiver=int_receiver\n          ]\n              F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\H3_bidirectional_bridge\\checks\\main.cpp(90,9):\n              请参阅 \"run_inline_sender\" 中对 \"stdexec::start_t::operator ()\" 的第一个引用\n  \n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-if__xvp3",
+  "temporary_directory_removed": true,
+  "name": "content_r6_h3_receiver_slot_attack_compile_negative_exact",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 1,
+  "required_text": "C2039",
+  "verdict": "PASS"
+}

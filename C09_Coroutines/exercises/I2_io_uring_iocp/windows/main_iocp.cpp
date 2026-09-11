@@ -48,6 +48,10 @@ struct iocp_loop {
 
 int main()
 {
-    (void)sizeof(iocp_loop::recv_awaiter);
-    std::cout << "I2 Windows starter skeleton compiled. It posts no IO yet.\n";
+    iocp_loop::recv_awaiter awaiter;
+    if (awaiter.await_ready()) {
+        std::cout << "student check failed: recv_awaiter must suspend until IOCP completion arrives\n";
+        return 1;
+    }
+    std::cout << "I2 Windows starter structural check passed.\n";
 }

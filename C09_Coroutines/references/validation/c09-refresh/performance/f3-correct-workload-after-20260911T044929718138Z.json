@@ -1,0 +1,24 @@
+{
+  "command": [
+    "C09_Coroutines/exercises/build/c09-final-windows/F3_halo_diagnose/Release/F3_halo_diagnose.exe",
+    "--bench",
+    "local",
+    "32",
+    "2"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.45300000000861473,
+  "stdout": "version=local,n=32,iterations=2,ns_per_iter=200.000,sink=992\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-ayzeqh42",
+  "temporary_directory_removed": true,
+  "name": "f3-correct-workload-after",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

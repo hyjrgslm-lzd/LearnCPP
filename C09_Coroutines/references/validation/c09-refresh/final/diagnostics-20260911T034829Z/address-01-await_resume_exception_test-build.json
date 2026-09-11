@@ -1,0 +1,29 @@
+{
+  "command": [
+    "g++",
+    "-std=c++23",
+    "-g",
+    "-O1",
+    "-fno-omit-frame-pointer",
+    "-pthread",
+    "-fsanitize=address,undefined",
+    "-I",
+    "/mnt/f/CPPTrain/LearnCPP/C09_Coroutines/exercises/include",
+    "-I",
+    "/mnt/f/CPPTrain/LearnCPP/C09_Coroutines/exercises/Capstone5_mini_corolib/reference/include",
+    "/mnt/f/CPPTrain/LearnCPP/C09_Coroutines/exercises/runtime_tests/await_resume_exception_test.cpp",
+    "-o",
+    "/mnt/f/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-final-diagnostics/address-01-await_resume_exception_test"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.688754584,
+  "stdout": "",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-w4gzb7f_",
+  "temporary_directory_removed": true,
+  "verdict": "PASS"
+}

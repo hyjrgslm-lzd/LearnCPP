@@ -1,0 +1,304 @@
+### C09_Coroutines/exercises/include/coroutine_study/lazy_task.hpp
+--- 36-50 ---
+36:struct sync_wait_state {
+37:    std::mutex mutex;
+38:    std::condition_variable cv;
+39:    bool done = false;
+40:};
+41:
+42:inline void notify_sync_wait(void* p) noexcept {
+43:    auto& state = *static_cast<sync_wait_state*>(p);
+44:    std::lock_guard lock(state.mutex);
+45:    state.done = true;
+46:    // A spurious wake must not destroy this stack state before notify finishes.
+47:    state.cv.notify_one();
+48:}
+49:
+50:struct lazy_promise_base {
+
+--- 290-326 ---
+290:    lazy_task<T> owned = std::move(task);
+291:    if (!owned.h_) throw std::bad_alloc{};
+292:
+293:    detail::sync_wait_state state;
+294:    auto& p = owned.h_.promise();
+295:    if (p.started) throw std::logic_error("sync_wait requires an unstarted lazy_task");
+296:    p.completion_state = &state;
+297:    p.notify_completion = detail::notify_sync_wait;
+298:    owned.start();
+299:
+300:    std::unique_lock lock(state.mutex);
+301:    state.cv.wait(lock, [&] { return state.done; });
+302:    lock.unlock();
+303:
+304:    if (p.exception) std::rethrow_exception(p.exception);
+305:    if (!p.result) throw std::logic_error("lazy_task completed without a value");
+306:    return std::move(*p.result);
+307:}
+308:
+309:inline void sync_wait(lazy_task<void>&& task) {
+310:    lazy_task<void> owned = std::move(task);
+311:    if (!owned.h_) throw std::bad_alloc{};
+312:
+313:    detail::sync_wait_state state;
+314:    auto& p = owned.h_.promise();
+315:    if (p.started) throw std::logic_error("sync_wait requires an unstarted lazy_task");
+316:    p.completion_state = &state;
+317:    p.notify_completion = detail::notify_sync_wait;
+318:    owned.start();
+319:
+320:    std::unique_lock lock(state.mutex);
+321:    state.cv.wait(lock, [&] { return state.done; });
+322:    lock.unlock();
+323:
+324:    if (p.exception) std::rethrow_exception(p.exception);
+325:}
+326:
+
+### C09_Coroutines/exercises/Capstone5_mini_corolib/reference/include/mini_ref/mini.hpp
+--- 180-224 ---
+180:struct sync_wait_state {
+181:    std::mutex mutex;
+182:    std::condition_variable cv;
+183:    bool done{};
+184:
+185:    static std::coroutine_handle<> complete(void* context) noexcept {
+186:        auto& state = *static_cast<sync_wait_state*>(context);
+187:        std::lock_guard lock{state.mutex};
+188:        state.done = true;
+189:        // Keep the state alive through notify_one: the waiter needs this lock.
+190:        state.cv.notify_one();
+191:        return std::noop_coroutine();
+192:    }
+193:
+194:    void wait() {
+195:        std::unique_lock lock{mutex};
+196:        cv.wait(lock, [&] { return done; });
+197:    }
+198:};
+199:
+200:} // namespace detail
+201:
+202:template <typename T>
+203:std::optional<std::tuple<T>> sync_wait(task<T> t) {
+204:    if (!t.h_ || t.h_.promise().started) throw std::logic_error{"sync_wait requires an unstarted task"};
+205:    detail::sync_wait_state state;
+206:    auto& promise = t.h_.promise();
+207:    promise.completion_state = &state;
+208:    promise.on_completed = detail::sync_wait_state::complete;
+209:    t.start();
+210:    state.wait();
+211:    if (promise.error) std::rethrow_exception(promise.error);
+212:    return std::tuple<T>{std::move(*promise.value)};
+213:}
+214:
+215:inline std::optional<std::tuple<>> sync_wait(task<void> t) {
+216:    if (!t.h_ || t.h_.promise().started) throw std::logic_error{"sync_wait requires an unstarted task"};
+217:    detail::sync_wait_state state;
+218:    auto& promise = t.h_.promise();
+219:    promise.completion_state = &state;
+220:    promise.on_completed = detail::sync_wait_state::complete;
+221:    t.start();
+222:    state.wait();
+223:    if (promise.error) std::rethrow_exception(promise.error);
+224:    return std::tuple<>{};
+
+--- 290-402 ---
+290:template <typename T>
+291:struct shared_state {
+292:    struct registration {
+293:        enum class phase { registering, suspended, completed, cancelled };
+294:        std::atomic<phase> status{phase::registering};
+295:        std::coroutine_handle<> caller{};
+296:    };
+297:    std::mutex mutex;
+298:    bool started{};
+299:    bool done{};
+300:    std::optional<T> value;
+301:    std::exception_ptr error;
+302:    std::vector<std::weak_ptr<registration>> waiters;
+303:    std::optional<task<T>> source;
+304:};
+305:
+306:template <typename T>
+307:class shared_task {
+308:public:
+309:    explicit shared_task(task<T> source) : state_(std::make_shared<shared_state<T>>()) {
+310:        state_->source.emplace(std::move(source));
+311:    }
+312:
+313:    struct awaiter {
+314:        using registration = typename shared_state<T>::registration;
+315:        using phase = typename registration::phase;
+316:        std::shared_ptr<shared_state<T>> state;
+317:        std::shared_ptr<registration> node = std::make_shared<registration>();
+318:
+319:        explicit awaiter(std::shared_ptr<shared_state<T>> s) : state(std::move(s)) {}
+320:        awaiter(const awaiter&) = delete;
+321:        awaiter(awaiter&&) noexcept = default;
+322:        ~awaiter() { if (node) node->status.store(phase::cancelled, std::memory_order_release); }
+323:
+324:        bool await_ready() const {
+325:            std::lock_guard lock{state->mutex};
+326:            return state->done;
+327:        }
+328:        bool await_suspend(std::coroutine_handle<> caller) {
+329:            // Locals survive even if completion resumes and destroys this awaiter.
+330:            auto shared = state;
+331:            auto registration_node = node;
+332:            registration_node->caller = caller;
+333:            bool start = false;
+334:            {
+335:                std::lock_guard lock{shared->mutex};
+336:                if (shared->done) return false;
+337:                shared->waiters.push_back(registration_node);
+338:                start = !std::exchange(shared->started, true);
+339:            }
+340:            if (start) {
+341:                try { run(shared); }
+342:                catch (...) {
+343:                    shared->error = std::current_exception();
+344:                    publish(shared);
+345:                }
+346:            }
+347:            auto expected = phase::registering;
+348:            return registration_node->status.compare_exchange_strong(
+349:                expected, phase::suspended, std::memory_order_acq_rel);
+350:        }
+351:        T await_resume() const {
+352:            if (state->error) std::rethrow_exception(state->error);
+353:            return *state->value;
+354:        }
+355:
+356:        // The producer owns its state until source completion. No state/runner cycle.
+357:        struct producer {
+358:            struct promise_type {
+359:                producer get_return_object() noexcept { return {}; }
+360:                std::suspend_never initial_suspend() noexcept { return {}; }
+361:                std::suspend_never final_suspend() noexcept { return {}; }
+362:                void return_void() noexcept {}
+363:                void unhandled_exception() noexcept { std::terminate(); }
+364:            };
+365:        };
+366:
+367:        static producer run(std::shared_ptr<shared_state<T>> state) {
+368:            try {
+369:                state->value.emplace(co_await std::move(*state->source));
+370:            } catch (...) {
+371:                state->error = std::current_exception();
+372:            }
+373:            publish(state);
+374:        }
+375:
+376:        static void publish(const std::shared_ptr<shared_state<T>>& state) {
+377:            std::vector<std::weak_ptr<registration>> waiters;
+378:            {
+379:                std::lock_guard lock{state->mutex};
+380:                state->done = true;
+381:                waiters.swap(state->waiters);
+382:            }
+383:            // Lock one registration at a time: a resumed caller may destroy a later waiter.
+384:            for (auto& weak : waiters) {
+385:                if (auto node = weak.lock()) {
+386:                    if (node->status.exchange(phase::completed, std::memory_order_acq_rel) == phase::suspended) {
+387:                        node->caller.resume();
+388:                    }
+389:                }
+390:            }
+391:        }
+392:    };
+393:
+394:    awaiter operator co_await() const { return awaiter{state_}; }
+395:
+396:private:
+397:    std::shared_ptr<shared_state<T>> state_;
+398:};
+399:
+400:template <typename T>
+401:shared_task<T> share(task<T> source) {
+402:    return shared_task<T>{std::move(source)};
+
+### C09_Coroutines/exercises/Capstone5_mini_corolib/reference/tests/shared_task_abandon_test.cpp
+--- 1-220 ---
+1:#include "mini_ref/mini.hpp"
+2:#include <iostream>
+3:
+4:static std::coroutine_handle<> source_handle{};
+5:struct hold_source {
+6:    bool await_ready() const noexcept { return false; }
+7:    void await_suspend(std::coroutine_handle<> h) const noexcept { source_handle = h; }
+8:    void await_resume() const noexcept {}
+9:};
+10:mini_ref::task<int> source(std::shared_ptr<int> keepalive = {}) {
+11:    co_await hold_source{};
+12:    co_return keepalive ? *keepalive : 5;
+13:}
+14:mini_ref::task<void> waiter(mini_ref::shared_task<int> shared, int& out) { out = co_await shared; }
+15:mini_ref::task<void> destroy_later(mini_ref::shared_task<int> shared,
+16:                                  std::optional<mini_ref::task<void>>& later, int& out) {
+17:    out = co_await shared;
+18:    later.reset();
+19:}
+20:void release_source() {
+21:    if (!source_handle) throw std::runtime_error("source did not suspend");
+22:    std::exchange(source_handle, {}).resume();
+23:}
+24:int main() {
+25:    // Cancellation precedes completion. Concurrent destroy/resume is not permitted.
+26:    int abandoned = 0;
+27:    auto shared = mini_ref::share(source());
+28:    { auto gone = waiter(shared, abandoned); gone.start(); }
+29:    release_source();
+30:    if (abandoned != 0) return 1;
+31:    int cached = 0;
+32:    mini_ref::sync_wait(waiter(shared, cached));
+33:    if (cached != 5) return 1;
+34:
+35:    int first_value = 0, later_value = 0;
+36:    auto siblings = mini_ref::share(source());
+37:    std::optional<mini_ref::task<void>> later;
+38:    auto first = destroy_later(siblings, later, first_value);
+39:    first.start();
+40:    later.emplace(waiter(siblings, later_value));
+41:    later->start();
+42:    release_source();
+43:    if (first_value != 5 || later_value != 0 || later) return 1;
+44:
+45:    std::weak_ptr<int> lifetime;
+46:    {
+47:        auto marker = std::make_shared<int>(7);
+48:        lifetime = marker;
+49:        auto transient = mini_ref::share(source(marker));
+50:        auto gone = waiter(transient, abandoned);
+51:        gone.start();
+52:    }
+53:    if (lifetime.expired()) return 1;
+54:    release_source();
+55:    if (!lifetime.expired() || abandoned != 0) return 1;
+56:    std::cout << "shared_task: abandon, sibling destruction, cached read, owner-free completion checked\n";
+57:}
+
+### C09_Coroutines/exercises/Capstone5_mini_corolib/CMakeLists.txt
+--- 70-90 ---
+70:        target_include_directories(${target} PRIVATE
+71:            ${CMAKE_CURRENT_SOURCE_DIR}/reference/include
+72:        )
+73:        _mini_register_test(${target} reference 30)
+74:    endfunction()
+75:
+76:    _mini_add_reference_test(mini_reference_task        reference/tests/task_test.cpp)
+77:    _mini_add_reference_test(mini_reference_generator   reference/tests/generator_test.cpp)
+78:    _mini_add_reference_test(mini_reference_sync_wait   reference/tests/sync_wait_test.cpp)
+79:    _mini_add_reference_test(mini_reference_when_all    reference/tests/when_all_test.cpp)
+80:    _mini_add_reference_test(mini_reference_when_any    reference/tests/when_any_test.cpp)
+81:    _mini_add_reference_test(mini_reference_run_loop    reference/tests/run_loop_test.cpp)
+82:    _mini_add_reference_test(mini_reference_task_scope  reference/tests/task_scope_test.cpp)
+83:    _mini_add_reference_test(mini_reference_scope_spawn_failure reference/tests/scope_spawn_failure_test.cpp)
+84:    _mini_add_reference_test(mini_reference_stop        reference/tests/stop_test.cpp)
+85:    _mini_add_reference_test(mini_reference_shared_task reference/tests/shared_task_test.cpp)
+86:    _mini_add_reference_test(mini_reference_shared_task_abandon reference/tests/shared_task_abandon_test.cpp)
+87:    if(TARGET stdexec::stdexec)
+88:        _mini_add_reference_test(mini_reference_as_awaitable reference/tests/as_awaitable_test.cpp)
+89:        target_link_libraries(mini_reference_as_awaitable PRIVATE stdexec::stdexec)
+90:    endif()
+

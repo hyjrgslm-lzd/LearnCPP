@@ -3,27 +3,35 @@
 //
 // 对应文档：13-第三阶段结课-RPC框架.md  §"必做任务 2"
 //
-// 协议：固定为
-//   Request  : { req_id: uint32, method: string, args: [int] }
-//   Response : { req_id: uint32, result: int, status: string }
-//
-// 序列化格式（实现细节，本骨架不规定）：
-//   推荐 JSON 单行 + 长度前缀，便于 Asio async_read_until('\n')。
+// 协议：8 字节十进制长度头 + body。
+//   Request  : Q|id|idempotent|method|arg0,arg1
+//   Cancel   : C|id
+//   Response : R|id|result|status
 // =============================================================================
 
 #pragma once
 
+#include <asio.hpp>
+
 #include <cstdint>
+#include <cstddef>
 #include <expected>
+#include <memory>
 #include <string>
+#include <string_view>
 #include <vector>
 
 namespace rpc {
+
+using asio::ip::tcp;
+
+constexpr std::size_t max_frame_size = 4096;
 
 struct Request {
     std::uint32_t      req_id{};
     std::string        method;
     std::vector<int>   args;
+    bool               idempotent{};
 };
 
 struct Response {
@@ -40,21 +48,14 @@ enum class RpcError {
     SerializationError,
 };
 
-// TODO[必做]: serialize / deserialize
-// 推荐实现签名：
-//   std::string serialize(const Request&);
-//   std::string serialize(const Response&);
-//   std::expected<Request,  RpcError> parse_request (std::string_view wire);
-//   std::expected<Response, RpcError> parse_response(std::string_view wire);
-//
-// 实现层面：
-//   - 用 std::format 拼字符串；解析用 std::from_chars + std::string::find；
-//   - 不要拉 nlohmann/json —— 第三阶段结课要求只用标准库；
-//   - 帧分隔用 '\n'，body 含 '\n' 时先做转义或用长度前缀。
-
 std::string serialize(const Request& req);
 std::string serialize(const Response& resp);
+std::expected<std::string, RpcError> frame(std::string body);
+std::expected<std::string, RpcError> encode_cancel(std::uint32_t req_id);
+asio::awaitable<std::expected<std::string, RpcError>> read_frame(std::shared_ptr<tcp::socket> socket);
+
 std::expected<Request,  RpcError> parse_request (std::string_view wire);
 std::expected<Response, RpcError> parse_response(std::string_view wire);
+std::expected<std::uint32_t, RpcError> parse_cancel(std::string_view wire);
 
 } // namespace rpc

@@ -1,0 +1,41 @@
+Test project F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-mechanisms-student
+    Start  9: D1_promise_8_hooks
+1/3 Test  #9: D1_promise_8_hooks ...............***Failed    0.03 sec
+===== 练习 D-1：从零写 lazy_task<T> =====
+
+[normal] compute().get() = 0 (期望 30)
+starter check failed: TODO: return_value must store the co_return value
+
+    Start 10: D3_final_suspend_symmetric
+2/3 Test #10: D3_final_suspend_symmetric .......***Failed    0.03 sec
+===== 练习 D-3：final_suspend symmetric transfer =====
+
+[symmetric] chain_sym(10) = 0 (期望 10)
+starter check failed: TODO: final_suspend must return continuation when present
+
+    Start 11: G2_when_all_impl
+3/3 Test #11: G2_when_all_impl .................***Failed    0.02 sec
+===== G-2: when_all =====
+
+--- 测试 1：when_all_2 成功路径 ---
+[when_all_2] got int=10 string="hello"
+
+--- 测试 2：when_all_2 错误路径（fail-delay）---
+[when_all_2_err] caught: intentional
+
+--- 测试 3：starter fan-out 检查 ---
+starter check failed: TODO: when_all_2 must start both child tasks before draining either one
+
+
+0% tests passed, 3 tests failed out of 3
+
+Label Time Summary:
+starter    =   0.08 sec*proc (3 tests)
+
+Total Test time (real) =   0.10 sec
+
+The following tests FAILED:
+	  9 - D1_promise_8_hooks (Failed)                       starter
+	 10 - D3_final_suspend_symmetric (Failed)               starter
+	 11 - G2_when_all_impl (Failed)                         starter
+Errors while running CTest

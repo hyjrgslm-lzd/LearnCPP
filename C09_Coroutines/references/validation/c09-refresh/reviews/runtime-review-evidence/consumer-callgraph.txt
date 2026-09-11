@@ -1,0 +1,219 @@
+C09_Coroutines/exercises\A2_co_return_lazy_task\main.cpp:20:using coroutine_study::lazy_task;
+C09_Coroutines/exercises\A2_co_return_lazy_task\main.cpp:87:    int result = coroutine_study::sync_wait(std::move(task));
+C09_Coroutines/exercises\B3_callback_to_awaiter\solution.cpp:2:#include "coroutine_study/lazy_task.hpp"
+C09_Coroutines/exercises\B3_callback_to_awaiter\solution.cpp:79:coroutine_study::lazy_task<int> compute(worker_group& workers, callback_state& state, int a, int b) {
+C09_Coroutines/exercises\B3_callback_to_awaiter\solution.cpp:90:    coroutine_study::check(coroutine_study::sync_wait(std::move(task)) == 36, "callback awaiter result");
+C09_Coroutines/exercises\A2_co_return_lazy_task\README.md:5:本题验证：调用协程函数只创建 `lazy_task` 和协程状态；`coroutine_study::sync_wait(std::move(task))` 才启动 root 协程；`co_return` 的值先进入 promise，再由消费者取走。
+C09_Coroutines/exercises\B2_task_sequential\solution.cpp:2:#include "coroutine_study/lazy_task.hpp"
+C09_Coroutines/exercises\B2_task_sequential\solution.cpp:17:coroutine_study::lazy_task<User> fetch_user(int id) {
+C09_Coroutines/exercises\B2_task_sequential\solution.cpp:23:coroutine_study::lazy_task<Profile> parse_profile(User user) {
+C09_Coroutines/exercises\B2_task_sequential\solution.cpp:28:coroutine_study::lazy_task<ValidatedProfile> validate_profile(Profile profile) {
+C09_Coroutines/exercises\B2_task_sequential\solution.cpp:33:coroutine_study::lazy_task<std::string> process_user(int id) {
+C09_Coroutines/exercises\B2_task_sequential\solution.cpp:46:    auto text = coroutine_study::sync_wait(process_user(42));
+C09_Coroutines/exercises\B2_task_sequential\solution.cpp:52:        (void)coroutine_study::sync_wait(process_user(-1));
+C09_Coroutines/exercises\B2_task_sequential\main.cpp:29:using coroutine_study::lazy_task;
+C09_Coroutines/exercises\B2_task_sequential\main.cpp:128:        s = coroutine_study::sync_wait(std::move(t));
+C09_Coroutines/exercises\B3_callback_to_awaiter\main.cpp:26:using coroutine_study::lazy_task;
+C09_Coroutines/exercises\B3_callback_to_awaiter\main.cpp:148:    int v = coroutine_study::sync_wait(std::move(t));
+C09_Coroutines/exercises\A2_co_return_lazy_task\solution.cpp:2:#include "coroutine_study/lazy_task.hpp"
+C09_Coroutines/exercises\A2_co_return_lazy_task\solution.cpp:11:coroutine_study::lazy_task<int> compute_async(int x) {
+C09_Coroutines/exercises\A2_co_return_lazy_task\solution.cpp:34:    check(coroutine_study::sync_wait(std::move(task)) == 25, "co_return result");
+C09_Coroutines/exercises\A3_co_await_future\solution.cpp:2:#include "coroutine_study/lazy_task.hpp"
+C09_Coroutines/exercises\A3_co_await_future\solution.cpp:101:coroutine_study::lazy_task<int> ok_path(worker_group& workers, future_state<int>& state) {
+C09_Coroutines/exercises\A3_co_await_future\solution.cpp:110:coroutine_study::lazy_task<int> ready_path(worker_group& workers, future_state<int>& state) {
+C09_Coroutines/exercises\A3_co_await_future\solution.cpp:117:coroutine_study::lazy_task<void> exception_path(worker_group& workers, future_state<int>& state) {
+C09_Coroutines/exercises\A3_co_await_future\solution.cpp:132:    check(coroutine_study::sync_wait(std::move(task)) == 84, "future awaiter returns 84");
+C09_Coroutines/exercises\A3_co_await_future\solution.cpp:140:    check(coroutine_study::sync_wait(std::move(immediate)) == 84, "ready future returns without suspend");
+C09_Coroutines/exercises\A3_co_await_future\solution.cpp:147:        coroutine_study::sync_wait(std::move(failing));
+C09_Coroutines/exercises\C2_when_all_when_any\README.md:17:把串行占位改成并发驱动：为每个 task 起一条 `std::jthread`，在线程中调用 `coroutine_study::sync_wait(std::move(task))`，保存结果，join 三条线程后 `co_return std::make_tuple(...)`。
+C09_Coroutines/exercises\C2_when_all_when_any\README.md:29:当前 starter 的 `when_any(stop_source, ta, tb)` 已把 source 参数摆到接口上；占位实现只等待第一条任务。完成时需要并行驱动两条任务，winner 写结果后调用 `stop_source.request_stop()`，再 join loser。本仓库共享 [runtime.hpp](../include/coroutine_study/runtime.hpp) 已提供二选一 helper `coroutine_study::when_any_cancel_join(stop_source, first, second)`，可先用它观察 winner/loser 收束。
+C09_Coroutines/exercises\C2_when_all_when_any\main.cpp:13:#include "coroutine_study/lazy_task.hpp"
+C09_Coroutines/exercises\C2_when_all_when_any\main.cpp:49:coroutine_study::lazy_task<int> fetch_cache(std::stop_token st = {}) {
+C09_Coroutines/exercises\C2_when_all_when_any\main.cpp:54:coroutine_study::lazy_task<int> fetch_db(std::stop_token st = {}) {
+C09_Coroutines/exercises\C2_when_all_when_any\main.cpp:59:coroutine_study::lazy_task<int> fetch_remote(std::stop_token st = {}) {
+C09_Coroutines/exercises\C2_when_all_when_any\main.cpp:70:coroutine_study::lazy_task<std::tuple<int, int, int>>
+C09_Coroutines/exercises\C2_when_all_when_any\main.cpp:77:    int r1 = coroutine_study::sync_wait(std::move(t1));
+C09_Coroutines/exercises\C2_when_all_when_any\main.cpp:78:    int r2 = coroutine_study::sync_wait(std::move(t2));
+C09_Coroutines/exercises\C2_when_all_when_any\main.cpp:79:    int r3 = coroutine_study::sync_wait(std::move(t3));
+C09_Coroutines/exercises\C2_when_all_when_any\main.cpp:87:coroutine_study::lazy_task<int> timeout_after(std::chrono::milliseconds d, std::stop_token st = {}) {
+C09_Coroutines/exercises\C2_when_all_when_any\main.cpp:93:coroutine_study::lazy_task<int> when_any(std::stop_source& stop_source, TA ta, TB tb) {
+C09_Coroutines/exercises\C2_when_all_when_any\main.cpp:100:    int v = coroutine_study::sync_wait(std::move(ta));
+C09_Coroutines/exercises\C2_when_all_when_any\main.cpp:116:        auto [a, b, c] = coroutine_study::sync_wait(std::move(t));
+C09_Coroutines/exercises\C2_when_all_when_any\main.cpp:139:        int v = coroutine_study::sync_wait(std::move(t));
+C09_Coroutines/exercises\C2_when_all_when_any\main.cpp:152:        int slower_timeout_value = coroutine_study::sync_wait(std::move(slower_timeout));
+C09_Coroutines/exercises\C2_when_all_when_any\solution.cpp:2:#include "coroutine_study/lazy_task.hpp"
+C09_Coroutines/exercises\C2_when_all_when_any\solution.cpp:3:#include "coroutine_study/runtime.hpp"
+C09_Coroutines/exercises\C2_when_all_when_any\solution.cpp:59:coroutine_study::lazy_task<int> delayed(
+C09_Coroutines/exercises\C2_when_all_when_any\solution.cpp:71:coroutine_study::lazy_task<std::tuple<int, int, int>> when_all3(
+C09_Coroutines/exercises\C2_when_all_when_any\solution.cpp:72:    coroutine_study::lazy_task<int> a,
+C09_Coroutines/exercises\C2_when_all_when_any\solution.cpp:73:    coroutine_study::lazy_task<int> b,
+C09_Coroutines/exercises\C2_when_all_when_any\solution.cpp:74:    coroutine_study::lazy_task<int> c,
+C09_Coroutines/exercises\C2_when_all_when_any\solution.cpp:83:            out = coroutine_study::sync_wait(std::move(task));
+C09_Coroutines/exercises\C2_when_all_when_any\solution.cpp:109:    auto [a, b, c] = coroutine_study::sync_wait(
+C09_Coroutines/exercises\C2_when_all_when_any\solution.cpp:120:    auto any = coroutine_study::when_any_cancel_join(
+C09_Coroutines/exercises\C2_when_all_when_any\solution.cpp:131:        (void)coroutine_study::sync_wait(
+C09_Coroutines/exercises\A3_co_await_future\main.cpp:25:using coroutine_study::lazy_task;
+C09_Coroutines/exercises\A3_co_await_future\main.cpp:137:    int v = coroutine_study::sync_wait(std::move(task));
+C09_Coroutines/exercises\C1_stop_token_cancel\solution.cpp:2:#include "coroutine_study/lazy_task.hpp"
+C09_Coroutines/exercises\C1_stop_token_cancel\solution.cpp:59:coroutine_study::lazy_task<int> batch_process(worker_group& workers, std::stop_token st, int total) {
+C09_Coroutines/exercises\C1_stop_token_cancel\solution.cpp:70:coroutine_study::lazy_task<int> batch_process_throwing(worker_group& workers, std::stop_token st, int total) {
+C09_Coroutines/exercises\C1_stop_token_cancel\solution.cpp:93:    int done = coroutine_study::sync_wait(std::move(t));
+C09_Coroutines/exercises\C1_stop_token_cancel\solution.cpp:105:        (void)coroutine_study::sync_wait(std::move(throwing));
+C09_Coroutines/exercises\C1_stop_token_cancel\main.cpp:13:#include "coroutine_study/lazy_task.hpp"
+C09_Coroutines/exercises\C1_stop_token_cancel\main.cpp:44:coroutine_study::lazy_task<int>
+C09_Coroutines/exercises\C1_stop_token_cancel\main.cpp:78:coroutine_study::lazy_task<int>
+C09_Coroutines/exercises\C1_stop_token_cancel\main.cpp:115:    int done = coroutine_study::sync_wait(std::move(t));
+C09_Coroutines/exercises\C1_stop_token_cancel\main.cpp:124:        (void)coroutine_study::sync_wait(std::move(throwing));
+C09_Coroutines/exercises\G3_sync_wait_impl\solution.cpp:4:#include "coroutine_study/lazy_task.hpp"
+C09_Coroutines/exercises\G3_sync_wait_impl\solution.cpp:7:using coroutine_study::lazy_task;
+C09_Coroutines/exercises\G3_sync_wait_impl\solution.cpp:8:using coroutine_study::sync_wait;
+C09_Coroutines/exercises\G3_sync_wait_impl\README.md:32:异常存放在 promise 中，`sync_wait` 醒来后重新抛出。本题复用的 `coroutine_study::sync_wait(lazy_task<void>&&)` 返回 `void`；不要与某些 sender 同步消费者的 optional/tuple 返回协议混淆。
+C09_Coroutines/exercises\runtime_tests\await_resume_exception_test.cpp:1:#include "coroutine_study/lazy_task.hpp"
+C09_Coroutines/exercises\runtime_tests\await_resume_exception_test.cpp:19:coroutine_study::lazy_task<tracked_value> child_value() { co_return 7; }
+C09_Coroutines/exercises\runtime_tests\await_resume_exception_test.cpp:20:coroutine_study::lazy_task<int> consume_value() {
+C09_Coroutines/exercises\runtime_tests\await_resume_exception_test.cpp:26:    if (coroutine_study::sync_wait(consume_value()) != 7 || tracked_value::alive != 0) return 1;
+C09_Coroutines/exercises\runtime_tests\await_resume_exception_test.cpp:29:    try { (void)coroutine_study::sync_wait(consume_value()); }
+C09_Coroutines/exercises\runtime_tests\lazy_task_reference_test.cpp:1:#include "coroutine_study/lazy_task.hpp"
+C09_Coroutines/exercises\runtime_tests\lazy_task_reference_test.cpp:7:using coroutine_study::lazy_task;
+C09_Coroutines/exercises\runtime_tests\lazy_task_reference_test.cpp:8:using coroutine_study::sync_wait;
+C09_Coroutines/exercises\runtime_tests\lazy_task_reference_test.cpp:52:    coroutine_study::lazy_task_fail_next_allocation = true;
+C09_Coroutines/exercises\runtime_tests\run_loop_reference_test.cpp:1:#include "coroutine_study/runtime.hpp"
+C09_Coroutines/exercises\runtime_tests\allocator_reference_test.cpp:1:#include "coroutine_study/lazy_task.hpp"
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\when_any_test.cpp:1:#include "mini_ref/mini.hpp"
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\when_any_test.cpp:12:static mini_ref::task<int> value(int v) {
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\when_any_test.cpp:16:static mini_ref::task<int> delayed(mini_ref_test::async_threads& threads,
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\when_any_test.cpp:30:static mini_ref::task<int> before_suspend_returns(mini_ref_test::async_threads& threads, int v) {
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\when_any_test.cpp:35:static mini_ref::task<int> delayed_fail(mini_ref_test::async_threads& threads,
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\when_any_test.cpp:43:static mini_ref::task<int> simultaneous_value(mini_ref_test::async_threads& threads,
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\when_any_test.cpp:51:static mini_ref::task<int> parent_resume_counter(mini_ref_test::async_threads& threads,
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\when_any_test.cpp:56:    auto winner = co_await mini_ref::when_any(simultaneous_value(threads, started, finish, 1),
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\when_any_test.cpp:64:    auto result = mini_ref::sync_wait(mini_ref::when_any(value(11), value(22)));
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\when_any_test.cpp:70:    auto early = mini_ref::sync_wait(mini_ref::when_any(before_suspend_returns(threads, 31),
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\when_any_test.cpp:83:        simultaneous = mini_ref::sync_wait(parent_resume_counter(threads,
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\when_any_test.cpp:106:        reversed = mini_ref::sync_wait(
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\when_any_test.cpp:107:            mini_ref::when_any(delayed(threads, left_started, left_release, 1, stop.get_token(), loser_seen_cancel),
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\when_any_test.cpp:128:        race = mini_ref::sync_wait(mini_ref::when_any(delayed_fail(threads, race_started, race_release),
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\when_any_test.cpp:145:            (void)mini_ref::sync_wait(mini_ref::when_any(delayed_fail(threads, both_fail_started, both_fail_release),
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\run_loop_test.cpp:1:#include "mini_ref/mini.hpp"
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\run_loop_test.cpp:5:static mini_ref::task<int> scheduled(mini_ref::run_loop& loop) {
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\run_loop_test.cpp:11:    mini_ref::run_loop loop;
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\run_loop_test.cpp:14:    auto t = [&]() -> mini_ref::task<void> {
+C09_Coroutines/exercises\include\coroutine_study\runtime.hpp:5:#include "coroutine_study/lazy_task.hpp"
+C09_Coroutines/exercises\runtime_tests\sync_completion_reference_test.cpp:1:#include "coroutine_study/lazy_task.hpp"
+C09_Coroutines/exercises\runtime_tests\sync_completion_reference_test.cpp:6:using coroutine_study::lazy_task;
+C09_Coroutines/exercises\runtime_tests\sync_completion_reference_test.cpp:7:using coroutine_study::sync_wait;
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\when_all_test.cpp:1:#include "mini_ref/mini.hpp"
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\when_all_test.cpp:12:static mini_ref::task<int> add(int a, int b) {
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\when_all_test.cpp:16:static mini_ref::task<int> delayed(mini_ref_test::async_threads& threads,
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\when_all_test.cpp:24:static mini_ref::task<int> before_suspend_returns(mini_ref_test::async_threads& threads, int v) {
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\when_all_test.cpp:29:static mini_ref::task<int> simultaneous(mini_ref_test::async_threads& threads,
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\when_all_test.cpp:37:static mini_ref::task<int> fail() {
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\when_all_test.cpp:42:static mini_ref::task<int> delayed_fail(mini_ref_test::async_threads& threads,
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\when_all_test.cpp:50:static mini_ref::task<int> parent_resume_counter(mini_ref_test::async_threads& threads,
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\when_all_test.cpp:54:    auto both = co_await mini_ref::when_all(simultaneous(threads, started, finish, 3),
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\when_all_test.cpp:63:                  mini_ref::when_all_result<mini_ref::task<int>, mini_ref::task<int>>::completion_signatures,
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\when_all_test.cpp:66:    auto result = mini_ref::sync_wait(mini_ref::when_all(add(2, 3), add(2, 4)));
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\when_all_test.cpp:71:    auto early = mini_ref::sync_wait(mini_ref::when_all(before_suspend_returns(threads, 7),
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\when_all_test.cpp:81:        delayed_result = mini_ref::sync_wait(
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\when_all_test.cpp:82:            mini_ref::when_all(delayed(threads, started, release, 1),
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\when_all_test.cpp:98:        simultaneous_result = mini_ref::sync_wait(
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\when_all_test.cpp:109:        (void)mini_ref::sync_wait(mini_ref::when_all(fail(), add(1, 1)));
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\when_all_test.cpp:121:            (void)mini_ref::sync_wait(mini_ref::when_all(delayed_fail(threads, fail_started, fail_release),
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\generator_test.cpp:1:#include "mini_ref/mini.hpp"
+C09_Coroutines/exercises\include\coroutine_study\lazy_task.hpp:137:    T sync_wait() && { return coroutine_study::sync_wait(std::move(*this)); }
+C09_Coroutines/exercises\include\coroutine_study\lazy_task.hpp:138:    T get() && { return coroutine_study::sync_wait(std::move(*this)); }
+C09_Coroutines/exercises\include\coroutine_study\lazy_task.hpp:232:    void sync_wait() && { coroutine_study::sync_wait(std::move(*this)); }
+C09_Coroutines/exercises\include\coroutine_study\lazy_task.hpp:233:    void get() && { coroutine_study::sync_wait(std::move(*this)); }
+C09_Coroutines/exercises\runtime_tests\sync_wait_reference_test.cpp:1:#include "coroutine_study/runtime.hpp"
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\as_awaitable_test.cpp:1:#include "mini_ref/stdexec_awaitable.hpp"
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\as_awaitable_test.cpp:83:static mini_ref::task<int> compute() {
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\as_awaitable_test.cpp:84:    int x = co_await mini_ref::as_stdexec_awaitable(stdexec::just(21));
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\as_awaitable_test.cpp:89:    auto result = mini_ref::sync_wait(compute());
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\as_awaitable_test.cpp:94:    auto async_compute = [control, &workers]() -> mini_ref::task<int> {
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\as_awaitable_test.cpp:95:        int x = co_await mini_ref::as_stdexec_awaitable(async_int_sender{control, &workers, 7});
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\as_awaitable_test.cpp:100:        async_result = mini_ref::sync_wait(async_compute()).value();
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\as_awaitable_test.cpp:113:        auto abandoned = [abandoned_control, &workers]() -> mini_ref::task<int> {
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\as_awaitable_test.cpp:114:            co_return co_await mini_ref::as_stdexec_awaitable(
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\as_awaitable_test.cpp:128:        auto failing = []() -> mini_ref::task<int> {
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\as_awaitable_test.cpp:129:            co_return co_await mini_ref::as_stdexec_awaitable(
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\as_awaitable_test.cpp:132:        (void)mini_ref::sync_wait(failing());
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\as_awaitable_test.cpp:140:        auto stopped = []() -> mini_ref::task<int> {
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\as_awaitable_test.cpp:141:            co_return co_await mini_ref::as_stdexec_awaitable(stdexec::just_stopped());
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\as_awaitable_test.cpp:143:        (void)mini_ref::sync_wait(stopped());
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\task_test.cpp:1:#include "mini_ref/mini.hpp"
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\task_test.cpp:8:static mini_ref::task<int> compute() {
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\task_test.cpp:12:static mini_ref::task<std::unique_ptr<int>> owned_value() {
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\task_test.cpp:16:static mini_ref::task<void> no_value() { co_return; }
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\task_test.cpp:18:static mini_ref::task<void> consume_once() {
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\task_test.cpp:36:    static_assert(!std::is_copy_constructible_v<mini_ref::task<int>>);
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\task_test.cpp:38:                  mini_ref::task<int>::completion_signatures,
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\task_test.cpp:40:    auto result = mini_ref::sync_wait(compute());
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\task_test.cpp:58:    (void)mini_ref::sync_wait(consume_once());
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\task_scope_test.cpp:1:#include "mini_ref/mini.hpp"
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\task_scope_test.cpp:6:static mini_ref::task<void> inc(std::atomic<int>& count) {
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\task_scope_test.cpp:14:        mini_ref::task_scope scope;
+C09_Coroutines/exercises\runtime_tests\task_scope_reference_test.cpp:1:#include "coroutine_study/runtime.hpp"
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\sync_wait_test.cpp:1:#include "mini_ref/mini.hpp"
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\sync_wait_test.cpp:11:static mini_ref::task<int> value() {
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\sync_wait_test.cpp:15:static mini_ref::task<void> done_void(bool& reached) {
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\sync_wait_test.cpp:20:static mini_ref::task<int> fail() {
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\sync_wait_test.cpp:25:static mini_ref::task<void> fail_void() {
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\sync_wait_test.cpp:30:static mini_ref::task<int> cross_thread_before_suspend_returns(mini_ref_test::async_threads& threads) {
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\sync_wait_test.cpp:35:static mini_ref::task<int> delayed_value(mini_ref_test::async_threads& threads,
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\sync_wait_test.cpp:42:static mini_ref::task<void> delayed_void(mini_ref_test::async_threads& threads,
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\sync_wait_test.cpp:51:static mini_ref::task<int> counted_start(std::atomic<int>& starts) {
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\sync_wait_test.cpp:56:static mini_ref::task<int> counted_start_suspended(mini_ref::run_loop& loop, std::atomic<int>& starts) {
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\sync_wait_test.cpp:69:static mini_ref::task<void> mark_frame_destroyed(std::unique_ptr<frame_probe> probe) {
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\sync_wait_test.cpp:75:    auto ok = mini_ref::sync_wait(value());
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\sync_wait_test.cpp:79:    auto void_ok = mini_ref::sync_wait(done_void(reached));
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\sync_wait_test.cpp:84:        (void)mini_ref::sync_wait(fail());
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\sync_wait_test.cpp:92:        (void)mini_ref::sync_wait(fail_void());
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\sync_wait_test.cpp:99:    auto inline_resume = mini_ref::sync_wait(cross_thread_before_suspend_returns(threads));
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\sync_wait_test.cpp:107:        delayed_int = mini_ref::sync_wait(delayed_value(threads, value_started, value_release)).value();
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\sync_wait_test.cpp:120:        (void)mini_ref::sync_wait(delayed_void(threads, void_started, void_release, delayed_void_reached));
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\sync_wait_test.cpp:129:    auto once_result = mini_ref::sync_wait(counted_start(starts));
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\sync_wait_test.cpp:132:    mini_ref::run_loop loop;
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\sync_wait_test.cpp:148:    (void)mini_ref::sync_wait(mark_frame_destroyed(std::make_unique<frame_probe>(destroyed)));
+C09_Coroutines/exercises\C3_async_scope\solution.cpp:2:#include "coroutine_study/lazy_task.hpp"
+C09_Coroutines/exercises\C3_async_scope\solution.cpp:3:#include "coroutine_study/runtime.hpp"
+C09_Coroutines/exercises\C3_async_scope\solution.cpp:53:coroutine_study::lazy_task<void> worker(worker_group& workers, std::atomic<int>& completed, int delay_ms) {
+C09_Coroutines/exercises\C3_async_scope\solution.cpp:58:coroutine_study::lazy_task<void> failing(worker_group& workers) {
+C09_Coroutines/exercises\C3_async_scope\solution.cpp:71:        coroutine_study::task_scope scope;
+C09_Coroutines/exercises\C3_async_scope\solution.cpp:80:        coroutine_study::task_scope scope;
+C09_Coroutines/exercises\runtime_tests\when_any_cancel_join_reference_test.cpp:1:#include "coroutine_study/runtime.hpp"
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\stop_test.cpp:1:#include "mini_ref/mini.hpp"
+C09_Coroutines/exercises\Capstone1_async_crawler\solution.cpp:2:#include "coroutine_study/lazy_task.hpp"
+C09_Coroutines/exercises\Capstone1_async_crawler\solution.cpp:3:#include "coroutine_study/runtime.hpp"
+C09_Coroutines/exercises\Capstone1_async_crawler\solution.cpp:128:coroutine_study::lazy_task<fetch_result> fetch_one(worker_group& workers, capstone1::UrlRecord rec, std::stop_token st) {
+C09_Coroutines/exercises\Capstone1_async_crawler\solution.cpp:137:coroutine_study::lazy_task<void> fetch_into(
+C09_Coroutines/exercises\Capstone1_async_crawler\solution.cpp:152:coroutine_study::lazy_task<std::vector<fetch_result>> when_all_fetch(
+C09_Coroutines/exercises\Capstone1_async_crawler\solution.cpp:158:    coroutine_study::task_scope scope;
+C09_Coroutines/exercises\Capstone1_async_crawler\solution.cpp:166:coroutine_study::lazy_task<report> aggregate(worker_group& workers, std::vector<capstone1::UrlRecord> recs, std::stop_token st) {
+C09_Coroutines/exercises\Capstone1_async_crawler\solution.cpp:220:        coroutine_study::sync_wait(std::move(injected));
+C09_Coroutines/exercises\Capstone1_async_crawler\solution.cpp:233:    auto rep = coroutine_study::sync_wait(std::move(task));
+C09_Coroutines/exercises\C3_async_scope\README.md:3:先读 [模块 C 的 scope 章节](../../04-模块C-取消与组合.md#c3)。本题先使用共享 `coroutine_study::task_scope` 的参考语义；自写完整 `async_scope` 留到模块 G/Capstone5。
+C09_Coroutines/exercises\C3_async_scope\main.cpp:14:#include "coroutine_study/lazy_task.hpp"
+C09_Coroutines/exercises\C3_async_scope\main.cpp:53:    void spawn(coroutine_study::lazy_task<void> task) {
+C09_Coroutines/exercises\C3_async_scope\main.cpp:57:                coroutine_study::sync_wait(std::move(t));
+C09_Coroutines/exercises\C3_async_scope\main.cpp:87:void detach(coroutine_study::lazy_task<void> task) {
+C09_Coroutines/exercises\C3_async_scope\main.cpp:89:        try { coroutine_study::sync_wait(std::move(t)); } catch (...) {}
+C09_Coroutines/exercises\C3_async_scope\main.cpp:103:                scope.spawn([](int id, std::atomic<int>& completed) -> coroutine_study::lazy_task<void> {
+C09_Coroutines/exercises\C3_async_scope\main.cpp:126:    //       detach([](int id) -> coroutine_study::lazy_task<void> {
+C09_Coroutines/exercises\Capstone1_async_crawler\main.cpp:26:#include "coroutine_study/lazy_task.hpp"
+C09_Coroutines/exercises\Capstone1_async_crawler\main.cpp:27:#include "coroutine_study/runtime.hpp"
+C09_Coroutines/exercises\Capstone1_async_crawler\main.cpp:46:using coroutine_study::lazy_task;
+C09_Coroutines/exercises\Capstone1_async_crawler\main.cpp:141:    // TODO [必做 4]：先把 out 调整到 recs.size()，再创建 coroutine_study::task_scope。
+C09_Coroutines/exercises\Capstone1_async_crawler\main.cpp:147:        out.push_back(coroutine_study::sync_wait(std::move(task))); // 占位：串行。请并行化。
+C09_Coroutines/exercises\Capstone1_async_crawler\main.cpp:252:    Report rep = coroutine_study::sync_wait(std::move(task));
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\scope_spawn_failure_test.cpp:15:#include "mini_ref/mini.hpp"
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\scope_spawn_failure_test.cpp:17:mini_ref::task<void> work(int& starts) { ++starts; co_return; }
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\scope_spawn_failure_test.cpp:20:    mini_ref::task_scope scope;
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\include\mini_ref\stdexec_awaitable.hpp:3:#include "mini_ref/mini.hpp"
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\shared_task_test.cpp:1:#include "mini_ref/mini.hpp"
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\shared_task_test.cpp:7:static mini_ref::task<int> source() {
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\shared_task_test.cpp:12:static mini_ref::task<int> use_twice(mini_ref::shared_task<int> shared) {
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\shared_task_test.cpp:19:    auto result = mini_ref::sync_wait(use_twice(mini_ref::share(source())));
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\shared_task_test.cpp:22:    auto shared = mini_ref::share(source());
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\shared_task_test.cpp:23:    auto first = [shared]() -> mini_ref::task<int> { co_return co_await shared; };
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\shared_task_test.cpp:24:    auto second = [shared]() -> mini_ref::task<int> { co_return co_await shared; };
+C09_Coroutines/exercises\Capstone5_mini_corolib\reference\tests\shared_task_test.cpp:25:    auto both = mini_ref::sync_wait(mini_ref::when_all(first(), second()));

@@ -1,0 +1,28 @@
+{
+  "command": [
+    "probe\\",
+    "--",
+    "ctest",
+    "--test-dir",
+    "C09_Coroutines\\exercises\\build\\c09-author-h2-probe-r1",
+    "-C",
+    "Release",
+    "--show-only=json-v1"
+  ],
+  "exit_code": null,
+  "timeout": false,
+  "process_seconds": 0.014999999999417923,
+  "stdout": "",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "launch failed: [WinError 2] 系统找不到指定的文件。",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 0,
+  "required_text": [
+    "H2_std_task_probe",
+    "\\"
+  ],
+  "verdict": "FAIL"
+}

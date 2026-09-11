@@ -55,3 +55,16 @@ leaf generator -> co_yield leaf.value
 - 你能解释显式栈 reference 为什么能避免递归调用栈增长。
 
   **答案解析：** 显式栈版本把待访问节点放进 `std::vector` 或 `std::stack`，用循环推进状态，不再通过函数递归或递归 generator 形成一层层调用/等待链。树越深，增长的是容器里的节点记录，而不是 C++ 调用栈深度。它仍有 O(height) 存储成本，但这个成本由显式数据结构承载。
+
+## Student 检查
+
+`main.cpp` 会把两种 generator 输出收集成 `std::vector<int>`，再和同步中序遍历结果比较：
+
+| Part | 操作 | 本地检查 |
+| --- | --- | --- |
+| Part 1 | 构造小树并确认中序顺序 | `collect_inorder(root, expected)` 生成基准序列 |
+| Part 2 | `for + co_yield` 递归 generator | `v2 == expected` |
+| Part 3 | `elements_of` / symmetric-transfer 路径 | `v1 == expected` |
+| Part 4 | 嵌套图 | 仍作为文字解析；不把图形作业伪装成自动测试 |
+
+完成前：只 yield 当前节点的占位实现会因为序列不完整而失败

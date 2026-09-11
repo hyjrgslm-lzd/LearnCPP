@@ -66,3 +66,16 @@ starter 里单独保留 `async_add_immediate` 作为同步立即完成观察点�
 - 你能指出 awaiter 位于协程帧中，回调保存的 handle 是非拥有句柄。
 
   **答案解析：** `co_await async_add_awaiter{...}` 的 awaiter 需要跨挂起点存活，因此对象存放在当前协程帧里。回调捕获的 `h` 只是指向该帧的非拥有控制句柄，不能负责销毁帧。帧 owner 来自 task/`sync_wait` 契约；后台线程 owner 来自外层 `worker_group`。当前回调写 result、调用 `h.resume()` 后不再访问 awaiter，线程退出再由 `worker_group.join()` 收束。
+
+## Student 检查
+
+`main.cpp` 会运行 `compute_with_callback(workers, 7, 5)` 并检查结果：
+
+| Part | 操作 | 本地检查 |
+| --- | --- | --- |
+| Part 1 | `async_add` 后台完成并调用 callback | 被 awaiter 的 `await_suspend` 调用 |
+| Part 2 | awaiter 先写 result、后 resume | `co_await` 后继续计算得到 36 |
+| Part 3 | 同步完成窗口 | 保持分析题；生产形状由答案解析说明 |
+| Part 4 | 结果同步与异常 | 本地检查值流；异常扩展仍属进阶 |
+
+完成前：result 没有通过 `await_resume()` 回到协程体时，最终值不会是 36。当前 Student PASS 只证明 Part 1/2/4 的值流和 owner 收束；Part 3 同步立即完成窗口仍是观察/解析题，没有把生产级 ready/return-false 处理计入实现 PASS。

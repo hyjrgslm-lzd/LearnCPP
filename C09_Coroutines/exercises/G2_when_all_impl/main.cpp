@@ -16,12 +16,16 @@
 #include <coroutine>
 #include <cstdio>
 #include <exception>
+#include <iostream>
 #include <optional>
 #include <stdexcept>
 #include <string>
 #include <tuple>
 #include <type_traits>
 #include <utility>
+#include "coroutine_study/exercise_check.hpp"
+
+using coroutine_study::check;
 
 // ============ 复用 lazy_task<T> ============
 template <typename T>
@@ -132,6 +136,31 @@ lazy_task<int>         fetch_fails()  {
     co_return 0;   // unreachable
 }
 
+struct saved_suspend {
+    int id;
+    static inline std::coroutine_handle<> handles[2]{};
+    bool await_ready() const noexcept { return false; }
+    void await_suspend(std::coroutine_handle<> h) const noexcept { handles[id] = h; }
+    void await_resume() const noexcept {}
+};
+
+static inline int probe_started = 0;
+static inline int probe_completed = 0;
+static inline bool first_completed_before_second_started = false;
+
+lazy_task<int> probe_branch(int id) {
+    ++probe_started;
+    co_await saved_suspend{id};
+    if (id == 0 && probe_started < 2) first_completed_before_second_started = true;
+    ++probe_completed;
+    co_return id + 1;
+}
+
+lazy_task<int> probe_parent() {
+    auto [a, b] = co_await when_all_2(probe_branch(0), probe_branch(1));
+    co_return a + b;
+}
+
 // 注：本题内自定义 lazy_task 的 promise 用 T result_value{} + return_value(T)，
 // 对 T=void 不合法。此处用 lazy_task<int> + co_return 0 规避 void 实例化。
 lazy_task<int> demo_when_all_2() {
@@ -150,7 +179,7 @@ lazy_task<int> demo_when_all_2_with_error() {
     co_return 0;
 }
 
-int main()
+int main() try
 {
     std::printf("===== G-2: when_all =====\n\n");
 
@@ -168,6 +197,20 @@ int main()
         while (!t.done()) t.h_.resume();
     }
 
+    {
+        std::printf("\n--- 测试 3：starter fan-out 检查 ---\n");
+        auto t = probe_parent();
+        t.resume();
+        check(!first_completed_before_second_started,
+              "TODO: when_all_2 must start both child tasks before draining either one");
+        check(probe_started == 2, "TODO: when_all_2 must fan out both branches");
+        if (saved_suspend::handles[0]) saved_suspend::handles[0].resume();
+        if (saved_suspend::handles[1]) saved_suspend::handles[1].resume();
+        check(t.done(), "last child completion must resume the parent");
+        check(t.await_resume() == 3 && probe_completed == 2,
+              "when_all_2 must collect both child results after the barrier");
+    }
+
     // TODO [必做]：在笔记中画 when_all 的状态转换图：
     //   remaining=N → 每个分支完成时 -1 → remaining=0 → waiter.resume() → await_resume 返回 tuple
     // TODO [必做]：列出三种错误合并策略（fail-fast / fail-delay / aggregation）
@@ -178,4 +221,7 @@ int main()
 
     std::printf("\n===== Done =====\n");
     return 0;
+} catch (const std::exception& e) {
+    std::cerr << "starter check failed: " << e.what() << '\n';
+    return 1;
 }

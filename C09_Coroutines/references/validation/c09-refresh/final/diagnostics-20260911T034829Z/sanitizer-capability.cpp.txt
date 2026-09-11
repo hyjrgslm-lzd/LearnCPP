@@ -1,0 +1,3 @@
+#include <atomic>
+#include <thread>
+int main(){std::atomic<int> n{0};{std::jthread t([&]{++n;});}return n==1?0:1;}

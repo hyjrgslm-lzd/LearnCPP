@@ -1,0 +1,25 @@
+{
+  "command": [
+    "powershell",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C09_Coroutines\\exercises\\build\\c09-review-content\\scripts\\check_coverage_integrity.ps1"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 1.0939999999973224,
+  "stdout": "",
+  "stderr": "= : �޷�����=����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ������һ\n�Ρ�\n����λ�� F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-review-content\\scripts\\check_coverage_integrity.ps1:21\n �ַ�: 2\n+  = '^\\| (?:P1|P2|A1|A2|A3|B1|B2|B3|C1|C2|C3|Capstone1|D1|D2|D3|E1|E2| ...\n+  ~\n    + CategoryInfo          : ObjectNotFound: (=:String) [], ParentContainsErrorRecordException\n    + FullyQualifiedErrorId : CommandNotFoundException\n \n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-uqp9s4hl",
+  "temporary_directory_removed": true,
+  "name": "content_r2_coverage_integrity_ps_script_clean2",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": "coverage_integrity: PASS rows=37 dirs=37 readmes=37",
+  "verdict": "FAIL"
+}

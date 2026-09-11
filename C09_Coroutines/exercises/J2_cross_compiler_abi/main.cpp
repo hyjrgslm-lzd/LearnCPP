@@ -17,13 +17,13 @@
 //   - GDB 14+ coroutine support
 //     https://sourceware.org/gdb/onlinedocs/gdb/Coroutines.html
 //   - Clang `-Rpass=coroutine-elide`
-//   - GCC `-fdump-tree-coro`
+//   - GCC `-fdump-tree-all`
 //   - P0912R5 Merge Coroutines TS into C++20 working draft
 //
 // 当前 CMakeLists 注入的诊断/调试 flag：
 //   - MSVC : /Zc:__cplusplus /utf-8 /await:strict /Zi
 //   - Clang: -Rpass=coroutine-elide -Rpass-missed=coroutine-elide
-//   - GCC  : -fdump-tree-coro
+//   - GCC  : -fdump-tree-all
 //
 // 更细的帧布局 dump 可在本地临时命令额外加入：
 //   - MSVC : /d1reportSingleClassLayout...
@@ -172,7 +172,7 @@ inline void print_size_report() {
 // 备注：
 //   - MSVC 当前保留 /Zi 调试信息，可用 Parallel Stacks 观察协程；
 //   - Clang HALO：编译时若看见 coroutine-elide remark 即触发；
-//   - GCC lowering：读取 -fdump-tree-coro 生成的 dump。
+//   - GCC lowering：读取 -fdump-tree-all 生成的 dump。
 // =============================================================================
 
 int main() {

@@ -229,11 +229,13 @@ HALO 关注另一件事：整个 coroutine state 的动态分配是否消失。�
 [练习 F-3](exercises/F3_halo_diagnose/README.md) 有两个版本：
 
 - 版本 A：局部创建并消费 generator，返回对象和 handle 不逃逸。
-- 版本 B：把对象地址写到全局，制造逃逸路径。
+- 版本 B：把对象地址写到全局，制造候选逃逸路径；它不保证阻止分配消除。
 
 先跑程序确认两版功能结果一致，再用编译器证据看动态分配是否被省略。Clang 用 `-Rpass=coroutine-elide`，GCC 看 coro dump 或分配调用，MSVC 在 Release 下查反汇编中的分配点。
 
-微基准只能辅助判断。若 A/B 时间差很大，说明优化可能发生；若差异很小，说明可能两边都未 elide。最终结论仍要靠 remark、IR、dump 或汇编。
+微基准只能辅助判断。时间接近可能是两边都 elide、都未 elide，或成本被其他工作掩盖；时间差大也可能来自循环化简等其他优化。应沿实际 consumer 调用路径检查 remark、IR、dump 或汇编，不能搜索全模块分配符号就下结论。
+
+本轮 Clang 18.1.3、`-O2` 无插桩输出中，两个 consumer 均没有动态分配并已化简为求和循环，独立导出的 `range_values` 却仍分配 48 字节。没有 elide remark；这证明实际路径消除了动态分配，但不指定优化 pass，也不能将两版耗时差归因于 HALO 有无。完整证据与干扰边界见[F3 最终实验判读](references/validation/c09-refresh/performance/final/analysis.md)。
 
 ## 本模块完成后应能说清楚
 

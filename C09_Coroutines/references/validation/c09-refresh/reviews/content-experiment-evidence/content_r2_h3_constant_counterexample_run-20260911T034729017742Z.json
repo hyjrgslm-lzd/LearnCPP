@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C09_Coroutines\\exercises\\build\\c09-review-content\\h2-constant-counterexample-build\\Release\\h3_constant_counterexample.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.45300000000861473,
+  "stdout": "H3 student check passed.\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-01t7vqel",
+  "temporary_directory_removed": true,
+  "name": "content_r2_h3_constant_counterexample_run",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": "H3 student check passed.",
+  "verdict": "PASS"
+}

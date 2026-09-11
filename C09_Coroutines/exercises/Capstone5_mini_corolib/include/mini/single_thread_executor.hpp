@@ -17,6 +17,8 @@
 #include <functional>
 #include <mutex>
 #include <queue>
+#include <coroutine>
+#include <stdexcept>
 
 namespace mini {
 
@@ -27,6 +29,30 @@ class single_thread_executor {
     std::atomic<bool>                   stop_{false};
 
 public:
+    // Non-blocking driver used by deterministic Student checks.
+    bool run_one() {
+        std::function<void()> job;
+        {
+            std::lock_guard lock(mtx_);
+            if (q_.empty()) return false;
+            job = std::move(q_.front());
+            q_.pop();
+        }
+        job();
+        return true;
+    }
+
+    struct schedule_awaiter {
+        single_thread_executor& executor;
+        bool await_ready() const noexcept { return false; }
+        void await_suspend(std::coroutine_handle<>) {
+            // TODO: enqueue the continuation; do not resume inline.
+            throw std::logic_error("TODO: implement mini executor schedule");
+        }
+        void await_resume() const noexcept {}
+    };
+    schedule_awaiter schedule() { return {*this}; }
+
     // 提交一个 callable
     void enqueue(std::function<void()> f) {
         {

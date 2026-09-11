@@ -1,0 +1,26 @@
+{
+  "command": [
+    "cmake",
+    "-S",
+    "C09_Coroutines/exercises",
+    "-B",
+    "C09_Coroutines/exercises/build/c09-plan-baseline",
+    "-DCOROUTINE_STUDY_BUILD_REFERENCE=ON",
+    "-DCOROUTINE_STUDY_FETCH_DEPS=OFF"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 1.4220000000059372,
+  "stdout": "-- Configuring done (0.2s)\n-- Generating done (1.1s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-plan-baseline\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-jm_lx1fc",
+  "temporary_directory_removed": true,
+  "name": "s1-configure-before",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

@@ -6,4 +6,5 @@ coroutine_study_add_exercise(
     SOURCES main.cpp
     REFERENCE_SOURCES solution.cpp
     LIBRARIES Boost::cobalt
+    STUDENT_TEST
 )

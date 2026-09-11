@@ -1,0 +1,1 @@
+ctest --test-dir C09_Coroutines/exercises/build/c09-author-mechanisms -C Release -R "D1_promise_8_hooks_reference|D3_final_suspend_symmetric_reference|G2_when_all_impl_reference|F3_halo_diagnose_reference" --output-on-failure

@@ -12,6 +12,8 @@
 //   - 与回调金字塔对比错误处理与值流的差异
 // =====================================================================
 
+#include <coroutine_study/exercise_check.hpp>
+#include <exception>
 #include <coroutine_study/lazy_task.hpp>
 
 #include <chrono>
@@ -118,17 +120,31 @@ lazy_task<std::string> process_user(int user_id) {
 
 }  // namespace
 
-int main() {
+int main() try {
     log("main", "─── B-2：task 顺序异步组合 ───");
 
+    std::string s;
     try {
         auto t = process_user(/*user_id=*/42);
-        std::string s = coroutine_study::sync_wait(std::move(t));
+        s = coroutine_study::sync_wait(std::move(t));
         log("main", "result = ", s);
     } catch (const std::exception& e) {
         log("main", "[exception] ", e.what(),
             "  —— 验证：异常沿 co_await 链传到了 sync_wait");
+        return 1;
     }
+    coroutine_study::check(
+        s == "User 42 (alice_display) validated, score=88",
+        "Part 2: process_user must co_await fetch -> parse -> validate and format the final value"
+    );
 
     return 0;
+}
+catch (const std::exception& e) {
+    std::cerr << "student check failed: " << e.what() << '\n';
+    return 1;
+}
+catch (...) {
+    std::cerr << "student check failed: unknown exception\n";
+    return 1;
 }

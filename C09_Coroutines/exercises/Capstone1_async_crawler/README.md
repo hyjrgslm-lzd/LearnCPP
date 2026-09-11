@@ -87,3 +87,17 @@ watchdog 在 200ms 后 `request_stop()`。三条 URL 中，100ms 和 150ms 的 f
 完成后，能不看代码讲清：stop token 如何从 main 传到 fetch，scope 在哪里等齐，parser generator 何时推进，超时 URL 为什么不覆盖成功 URL 的报告。
 
 **答案解析：** main 创建 stop source 和 watchdog，把 token 传给 aggregate，aggregate 传给 when_all_fetch，再传到每个 fetch_one。when_all_fetch 用 scope 启动所有 fetch_into，并在 `scope.join()` 等齐；aggregate 之后只遍历 `Ok` body，逐行推进 `parse_lines(std::string body)`。超时只让未完成的 slow 返回 `Stopped`，已完成 fetch 的结果槽已经写好并按状态被 aggregate 保留。
+
+## Student 检查
+
+`main.cpp` 现在先检查 parser，再检查整条爬虫流水线：
+
+| Part | 操作 | 本地检查 |
+| --- | --- | --- |
+| Part 1 | 调用图和 owner | 仍是文字作业，答案解析给出完整拓扑 |
+| Part 2 | `fetch_one` 两次 stop 检查 | 200ms watchdog 后 slow URL 必须为 `Stopped` |
+| Part 3 | `parse_lines(std::string body)` | 跳过 header，解析 `Alice,85`/`Bob,92`，坏行 `ok=false` 后继续 |
+| Part 4 | `when_all_fetch` 并发+scope | 总耗时必须低于 350ms，证明不是 550ms 串行抓取 |
+| Part 5 | `aggregate` 汇总 | total=3、ok=2、stopped=1、err=0、lines=4、score=343 |
+
+完成前：当前 parser 分数占位、串行抓取或漏 stop 检查都会被本地检查拒绝

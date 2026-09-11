@@ -46,6 +46,22 @@ cppcoro::task<void> scheduler_todo(cppcoro::static_thread_pool& pool)
 int main()
 {
     cppcoro::cancellation_source source;
-    (void)source;
-    std::cout << "I5 cppcoro starter skeleton compiled. Implement TODOs, then compare with reference.\n";
+    cppcoro::static_thread_pool pool{1};
+
+    int generated_sum = 0;
+    for (int value : generator_todo()) generated_sum += value;
+
+    source.request_cancellation();
+    int task_value = cppcoro::sync_wait(task_todo());
+    int shared_value = cppcoro::sync_wait(shared_task_todo());
+    cppcoro::sync_wait(cancellation_todo(source.token()));
+    cppcoro::sync_wait(scheduler_todo(pool));
+
+    if (generated_sum != 6 || task_value != 42 || shared_value != 42) {
+        std::cout << "student check failed: generator/task/shared_task observed "
+                  << generated_sum << "/" << task_value << "/" << shared_value
+                  << ", expected 6/42/42\n";
+        return 1;
+    }
+    std::cout << "I5 student check passed.\n";
 }

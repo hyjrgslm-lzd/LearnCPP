@@ -1,0 +1,12 @@
+[
+  {
+    "target": "C2_when_all_when_any",
+    "exit": 1,
+    "output": "===== 练习 C-2：when_all / when_any =====\n\nstudent check failed: TODO[必做 1]: implement when_all by starting all child tasks before waiting"
+  },
+  {
+    "target": "C3_async_scope",
+    "exit": 0,
+    "output": "===== 练习 C-3：async_scope =====\n\n  scope 即将析构，开始等齐 ...\n  scope 析构完成；started=5 completed=5\n\n\n===== Done ====="
+  }
+]

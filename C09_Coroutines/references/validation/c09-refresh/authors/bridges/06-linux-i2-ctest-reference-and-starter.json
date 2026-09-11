@@ -1,0 +1,28 @@
+{
+  "command": [
+    "wsl",
+    "-d",
+    "LearnCPP-C08-Ubuntu-24.04",
+    "--",
+    "bash",
+    "-lc",
+    "cd /mnt/f/CPPTrain/LearnCPP && ctest --test-dir C09_Coroutines/exercises/build/c09-author-bridges-linux -R '^I2_io_uring_iocp' --output-on-failure"
+  ],
+  "exit_code": 8,
+  "timeout": false,
+  "process_seconds": 0.3899999999994179,
+  "stdout": "Internal ctest changing into directory: /mnt/f/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-bridges-linux\nTest project /mnt/f/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-bridges-linux\n    Start 44: I2_io_uring_iocp\n1/2 Test #44: I2_io_uring_iocp .................***Failed    0.00 sec\nstudent check failed: read_awaiter must suspend until CQE arrives\n\n    Start 45: I2_io_uring_iocp_reference\n2/2 Test #45: I2_io_uring_iocp_reference .......   Passed    0.00 sec\n\n50% tests passed, 1 tests failed out of 2\n\nLabel Time Summary:\nreference    =   0.00 sec*proc (1 test)\nstarter      =   0.00 sec*proc (1 test)\n\nTotal Test time (real) =   0.20 sec\n\nThe following tests FAILED:\n\t 44 - I2_io_uring_iocp (Failed)\n",
+  "stderr": "Errors while running CTest\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "inherited_windows_error_mode": 32771,
+  "expected_exit": 1,
+  "required_text": [
+    "I2_io_uring_iocp_reference",
+    "Passed",
+    "student check failed"
+  ],
+  "verdict": "FAIL"
+}

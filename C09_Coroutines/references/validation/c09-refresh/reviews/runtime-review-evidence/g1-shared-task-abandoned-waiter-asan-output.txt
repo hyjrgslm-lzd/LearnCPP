@@ -1,0 +1,68 @@
+In file included from C09_Coroutines/references/validation/c09-refresh/reviews/runtime-review-evidence/g1-shared-task-abandoned-waiter-asan.cpp:2:
+C09_Coroutines/references/validation/c09-refresh/reviews/runtime-review-evidence/../../../../../exercises/G1_shared_task/solution.cpp: In function ‘int g1_solution_original_main()’:
+C09_Coroutines/references/validation/c09-refresh/reviews/runtime-review-evidence/../../../../../exercises/G1_shared_task/solution.cpp:116:1: warning: no return statement in function returning non-void [-Wreturn-type]
+  116 | }
+      | ^
+=================================================================
+==391==ERROR: AddressSanitizer: heap-use-after-free on address 0x508000000020 at pc 0x55c44867d0a1 bp 0x7fff7ecae740 sp 0x7fff7ecae730
+READ of size 8 at 0x508000000020 thread T0
+    #0 0x55c44867d0a0 in externally_completed_shared C09_Coroutines/references/validation/c09-refresh/reviews/runtime-review-evidence/g1-shared-task-abandoned-waiter-asan.cpp:14
+    #1 0x55c44867f451 in std::__n4861::coroutine_handle<void>::resume() const /usr/include/c++/13/coroutine:135
+    #2 0x55c44867f061 in main C09_Coroutines/references/validation/c09-refresh/reviews/runtime-review-evidence/g1-shared-task-abandoned-waiter-asan.cpp:30
+    #3 0x73897242a1c9  (/lib/x86_64-linux-gnu/libc.so.6+0x2a1c9) (BuildId: 328820b908de8ea1ef79afa8995e302e819163d7)
+    #4 0x73897242a28a in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2a28a) (BuildId: 328820b908de8ea1ef79afa8995e302e819163d7)
+    #5 0x55c448678684 in _start (/mnt/f/CPPTrain/LearnCPP/C09_Coroutines/references/validation/c09-refresh/reviews/runtime-review-evidence/g1-shared-task-abandoned-waiter-asan+0x2b684) (BuildId: 88a09c760cdeb808f6cd7c5b01e3adeeccea16fe)
+
+0x508000000020 is located 0 bytes inside of 88-byte region [0x508000000020,0x508000000078)
+freed by thread T0 here:
+    #0 0x7389734ff0a8 in operator delete(void*) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:152
+    #1 0x55c44867ea63 in consume C09_Coroutines/references/validation/c09-refresh/reviews/runtime-review-evidence/g1-shared-task-abandoned-waiter-asan.cpp:21
+    #2 0x55c44867ee97 in consume C09_Coroutines/references/validation/c09-refresh/reviews/runtime-review-evidence/g1-shared-task-abandoned-waiter-asan.cpp:19
+    #3 0x55c4486837d9 in std::__n4861::coroutine_handle<void_task::promise_type>::destroy() const /usr/include/c++/13/coroutine:242
+    #4 0x55c448681a7e in void_task::~void_task() C09_Coroutines/references/validation/c09-refresh/reviews/runtime-review-evidence/../../../../../exercises/G1_shared_task/solution.cpp:22
+    #5 0x55c44867f041 in main C09_Coroutines/references/validation/c09-refresh/reviews/runtime-review-evidence/g1-shared-task-abandoned-waiter-asan.cpp:29
+    #6 0x73897242a1c9  (/lib/x86_64-linux-gnu/libc.so.6+0x2a1c9) (BuildId: 328820b908de8ea1ef79afa8995e302e819163d7)
+    #7 0x73897242a28a in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2a28a) (BuildId: 328820b908de8ea1ef79afa8995e302e819163d7)
+    #8 0x55c448678684 in _start (/mnt/f/CPPTrain/LearnCPP/C09_Coroutines/references/validation/c09-refresh/reviews/runtime-review-evidence/g1-shared-task-abandoned-waiter-asan+0x2b684) (BuildId: 88a09c760cdeb808f6cd7c5b01e3adeeccea16fe)
+
+previously allocated by thread T0 here:
+    #0 0x7389734fe548 in operator new(unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:95
+    #1 0x55c44867d3db in consume(shared_task<int>, int&) C09_Coroutines/references/validation/c09-refresh/reviews/runtime-review-evidence/g1-shared-task-abandoned-waiter-asan.cpp:21
+    #2 0x55c44867f00a in main C09_Coroutines/references/validation/c09-refresh/reviews/runtime-review-evidence/g1-shared-task-abandoned-waiter-asan.cpp:27
+    #3 0x73897242a1c9  (/lib/x86_64-linux-gnu/libc.so.6+0x2a1c9) (BuildId: 328820b908de8ea1ef79afa8995e302e819163d7)
+    #4 0x73897242a28a in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2a28a) (BuildId: 328820b908de8ea1ef79afa8995e302e819163d7)
+    #5 0x55c448678684 in _start (/mnt/f/CPPTrain/LearnCPP/C09_Coroutines/references/validation/c09-refresh/reviews/runtime-review-evidence/g1-shared-task-abandoned-waiter-asan+0x2b684) (BuildId: 88a09c760cdeb808f6cd7c5b01e3adeeccea16fe)
+
+SUMMARY: AddressSanitizer: heap-use-after-free C09_Coroutines/references/validation/c09-refresh/reviews/runtime-review-evidence/g1-shared-task-abandoned-waiter-asan.cpp:14 in externally_completed_shared
+Shadow bytes around the buggy address:
+  0x507ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x507ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x507ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x507fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x507fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x508000000000: fa fa fa fa[fd]fd fd fd fd fd fd fd fd fd fd fa
+  0x508000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x508000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x508000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x508000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x508000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==391==ABORTING

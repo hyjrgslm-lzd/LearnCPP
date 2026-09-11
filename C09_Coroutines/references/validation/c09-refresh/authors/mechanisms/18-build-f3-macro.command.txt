@@ -1,0 +1,1 @@
+cmake --build C09_Coroutines/exercises/build/c09-author-mechanisms --config Release --target F3_halo_diagnose

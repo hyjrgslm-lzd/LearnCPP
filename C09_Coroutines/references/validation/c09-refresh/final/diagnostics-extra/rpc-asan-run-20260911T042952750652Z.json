@@ -1,0 +1,23 @@
+{
+  "command": [
+    "env",
+    "ASAN_OPTIONS=detect_leaks=1:halt_on_error=1",
+    "UBSAN_OPTIONS=halt_on_error=1:print_stacktrace=1",
+    "C09_Coroutines/exercises/build/c09-final-diagnostics/rpc-asan"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.29193628599999855,
+  "stdout": "",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-wa7ws8f_",
+  "temporary_directory_removed": true,
+  "name": "rpc-asan-run",
+  "cwd": "/mnt/f/CPPTrain/LearnCPP",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

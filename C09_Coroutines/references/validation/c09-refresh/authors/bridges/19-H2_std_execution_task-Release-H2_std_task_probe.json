@@ -1,0 +1,8 @@
+{
+  "args": [
+    "F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-author-h-checkers-r1\\H2_std_execution_task\\Release\\H2_std_task_probe.exe"
+  ],
+  "returncode": 77,
+  "stdout": "SKIP: std::execution::task coroutine body + sync_wait did not compile in the C++26 preview probe.\n",
+  "stderr": ""
+}

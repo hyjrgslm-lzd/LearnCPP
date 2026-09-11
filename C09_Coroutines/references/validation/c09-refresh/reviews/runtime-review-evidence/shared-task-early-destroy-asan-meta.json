@@ -1,0 +1,9 @@
+{
+  "timestamp": "2026-09-11T02:31:04.3140004Z",
+  "command": "wsl.exe bash -lc \"cd /mnt/f/CPPTrain/LearnCPP && mkdir -p C09_Coroutines/references/validation/c09-refresh/reviews/runtime-review-evidence/wsl-gpp && g++ -std=c++20 -pthread -fsanitize=address -fno-omit-frame-pointer -g -Wall -Wextra -pedantic -I C09_Coroutines/exercises/Capstone5_mini_corolib/reference/include C09_Coroutines/references/validation/c09-refresh/reviews/runtime-review-evidence/shared-task-early-destroy-asan.cpp -o C09_Coroutines/references/validation/c09-refresh/reviews/runtime-review-evidence/wsl-gpp/shared_task_early_destroy_asan && timeout 10s C09_Coroutines/references/validation/c09-refresh/reviews/runtime-review-evidence/wsl-gpp/shared_task_early_destroy_asan\"",
+  "exit_code": 1,
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "head": "75028ff2d312a4f1047e7bafd6cf4101f771a2ec",
+  "mini_sha256": "f6e35941658c1e1e5702b75b3721b8e2a6dbc94ba824a9d74168ff52edff3da4",
+  "probe_sha256": "bd84bc69492c6f7bbf859aa6cce1774c6baed1ed4c9fdb53d09e3e56d27172e5"
+}

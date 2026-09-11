@@ -1,0 +1,29 @@
+适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
+
+  1>Checking Build System
+  Building Custom Rule F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/D1_promise_8_hooks/CMakeLists.txt
+  正在扫描源以查找模块依赖项...
+  main.cpp
+  正在编译...
+  main.cpp
+  D1_promise_8_hooks.vcxproj -> F:\CPPTrain\LearnCPP\C09_Coroutines\exercises\build\c09-author-mechanisms-student\D1_promise_8_hooks\Release\D1_promise_8_hooks.exe
+适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
+
+  Building Custom Rule F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/D3_final_suspend_symmetric/CMakeLists.txt
+  正在扫描源以查找模块依赖项...
+  main.cpp
+  正在编译...
+  main.cpp
+  D3_final_suspend_symmetric.vcxproj -> F:\CPPTrain\LearnCPP\C09_Coroutines\exercises\build\c09-author-mechanisms-student\D3_final_suspend_symmetric\Release\D3_final_suspend_symmetric.exe
+适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
+
+  Building Custom Rule F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/G2_when_all_impl/CMakeLists.txt
+  正在扫描源以查找模块依赖项...
+  main.cpp
+  正在编译...
+  main.cpp
+F:\CPPTrain\LearnCPP\C09_Coroutines\exercises\G2_when_all_impl\main.cpp(224,10): error C2039: "cerr": 不是 "std" 的成员 [F:\CPPTrain\LearnCPP\C09_Coroutines\exercises\build\c09-author-mechanisms-student\G2_when_all_impl\G2_when_all_impl.vcxproj]
+      D:\VisualStudio2026\Installed\VC\Tools\MSVC\14.51.36231\include\string(23,1):
+      参见“std”的声明
+  
+F:\CPPTrain\LearnCPP\C09_Coroutines\exercises\G2_when_all_impl\main.cpp(224,10): error C2065: “cerr”: 未声明的标识符 [F:\CPPTrain\LearnCPP\C09_Coroutines\exercises\build\c09-author-mechanisms-student\G2_when_all_impl\G2_when_all_impl.vcxproj]

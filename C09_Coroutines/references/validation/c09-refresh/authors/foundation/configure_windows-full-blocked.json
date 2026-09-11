@@ -1,0 +1,6 @@
+{
+  "command": "python C09_Coroutines/exercises/tools/configure_windows.py --build C09_Coroutines/exercises/build/c09-author-foundation",
+  "exitCode": 1,
+  "blocker": "unowned F3_halo_diagnose CMake expects main.cpp",
+  "decision": "do not edit F3; use slice configure for owned foundation targets"
+}

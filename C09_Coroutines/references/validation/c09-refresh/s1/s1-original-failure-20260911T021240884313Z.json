@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C09_Coroutines/exercises/build/c09-plan-baseline/runtime_tests/Release/runtime_await_resume_exception_test.exe"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.8289999999979045,
+  "stdout": "caught=1 alive_after_unwind=1\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-ul7kk9ng",
+  "temporary_directory_removed": true,
+  "name": "s1-original-failure",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "FAIL"
+}

@@ -26,10 +26,17 @@ static void run() {
     //   coroutine_study::check(opt && std::get<0>(*opt) == 42, "task value mismatch");
     //
     // 当前用最朴素的方式跑：直接 resume，再读 promise.result_。
-    t.h_.resume();
+    t.start();
     auto& r = t.h_.promise().result_;
     coroutine_study::check(r.index() == 1, "task did not store a value");
     coroutine_study::check(std::get<1>(r) == 42, "task value mismatch");
+    bool duplicate_start = false;
+    try { t.start(); } catch (const std::logic_error&) { duplicate_start = true; }
+    coroutine_study::check(duplicate_start, "task accepted duplicate start");
+    coroutine_study::check(t.await_resume() == 42, "task consumption mismatch");
+    bool duplicate_consume = false;
+    try { (void)t.await_resume(); } catch (const std::logic_error&) { duplicate_consume = true; }
+    coroutine_study::check(duplicate_consume, "task accepted duplicate consumption");
     std::cout << "  ok: result = 42\n";
 }
 

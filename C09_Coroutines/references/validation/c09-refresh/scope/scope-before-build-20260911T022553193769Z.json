@@ -1,0 +1,30 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "C09_Coroutines/exercises/build/c09-plan-baseline",
+    "--config",
+    "Release",
+    "--target",
+    "mini_reference_scope_spawn_failure",
+    "--",
+    "/m:1",
+    "/nr:false",
+    "/verbosity:minimal"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.937000000005355,
+  "stdout": "CMake is re-running because F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-plan-baseline/CMakeFiles/generate.stamp is out-of-date.\n  the file 'F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/CMakeLists.txt'\n  is newer than 'F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-plan-baseline/CMakeFiles/generate.stamp.depend'\n  result='-1'\n-- Configuring done (0.2s)\n-- Generating done (0.9s)\n-- Build files have been written to: F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-plan-baseline\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  Building Custom Rule F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/Capstone5_mini_corolib/CMakeLists.txt\n  scope_spawn_failure_test.cpp\n  mini_reference_scope_spawn_failure.vcxproj -> F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-plan-baseline\\Capstone5_mini_corolib\\Release\\mini_reference_scope_spawn_failure.exe\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-2i0z0dy5",
+  "temporary_directory_removed": true,
+  "name": "scope-before-build",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

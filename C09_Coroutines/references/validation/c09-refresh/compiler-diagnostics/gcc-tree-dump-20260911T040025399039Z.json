@@ -1,0 +1,29 @@
+{
+  "command": [
+    "g++",
+    "-std=c++23",
+    "-O1",
+    "-fdump-tree-all",
+    "-I",
+    "C09_Coroutines/exercises/include",
+    "-c",
+    "C09_Coroutines/exercises/J2_cross_compiler_abi/solution.cpp",
+    "-o",
+    "C09_Coroutines/exercises/build/c09-gcc-dump/j2.o"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 56.776818801999994,
+  "stdout": "",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-ozh8z5kv",
+  "temporary_directory_removed": true,
+  "name": "gcc-tree-dump",
+  "cwd": "/mnt/f/CPPTrain/LearnCPP",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

@@ -1,0 +1,23 @@
+{
+  "command": [
+    "rg",
+    "-n",
+    "H[123].*(good|bad_constant|reference)|H2_std_execution_task_reference|_answer",
+    "C09_Coroutines\\references\\validation\\c09-refresh\\reviews\\content-experiment-evidence\\content_r3_ctest_list_student_no_h_variants-*.json"
+  ],
+  "exit_code": 2,
+  "timeout": false,
+  "process_seconds": 0.0629999999946449,
+  "stdout": "",
+  "stderr": "rg: C09_Coroutines\\references\\validation\\c09-refresh\\reviews\\content-experiment-evidence\\content_r3_ctest_list_student_no_h_variants-*.json: IO error for operation on C09_Coroutines\\references\\validation\\c09-refresh\\reviews\\content-experiment-evidence\\content_r3_ctest_list_student_no_h_variants-*.json: 文件名、目录名或卷标语法不正确。 (os error 123)\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-_5lyud3j",
+  "temporary_directory_removed": true,
+  "name": "content_r3_student_list_no_h_good_bad_reference",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 1,
+  "required_text": "",
+  "verdict": "FAIL"
+}

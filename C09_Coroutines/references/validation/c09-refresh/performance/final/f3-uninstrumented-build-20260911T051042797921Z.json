@@ -1,0 +1,29 @@
+{
+  "command": [
+    "/usr/lib/llvm-18/bin/clang++",
+    "-std=c++23",
+    "-O2",
+    "-DF3_UNINSTRUMENTED_HALO",
+    "-Rpass=coroutine-elide",
+    "-I",
+    "C09_Coroutines/exercises/include",
+    "C09_Coroutines/exercises/F3_halo_diagnose/main.cpp",
+    "-o",
+    "C09_Coroutines/exercises/build/c09-final-diagnostics/f3-uninstrumented"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 1.5385816660000002,
+  "stdout": "",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-v6g27c4v",
+  "temporary_directory_removed": true,
+  "name": "f3-uninstrumented-build",
+  "cwd": "/mnt/f/CPPTrain/LearnCPP",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

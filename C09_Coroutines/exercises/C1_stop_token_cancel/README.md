@@ -52,3 +52,15 @@ if (st.stop_requested()) co_return processed;
 - 你能说明 CPU 长循环如果不检查 token，就不会响应取消。
 
   **答案解析：** stop token 只是可查询的共享状态，CPU 长循环如果一直做计算、不 `co_await`、也不读取 `stop_requested()`，就没有机会观察取消请求。线程会继续跑到循环自然结束。要让取消及时生效，必须在循环边界或固定批次后加检查点。
+
+## Student 检查
+
+`main.cpp` 现在同时消费普通 stopped 路径和异常路径：
+
+| Part | 操作 | 本地检查 |
+| --- | --- | --- |
+| Part 1 | `stop_source`/`stop_token` 共享状态 | 取消线程请求 stop 后，结果必须小于总批次数 |
+| Part 2 | `co_await` 前后检查点 | 已处理批次数必须大于 0 且小于 10 |
+| Part 3 | throwing 版本 | 预先 request_stop 后，`sync_wait` 必须抛 `task_cancelled` |
+
+完成前：忽略 token 的实现会处理完 10 批或不抛异常，从而失败。当前 Student PASS 证明 Part 1/2/3 的两种取消通道被消费；CPU 长循环不检查 token 属观察/解析点，没有用自动 checker 伪装成实现完成。

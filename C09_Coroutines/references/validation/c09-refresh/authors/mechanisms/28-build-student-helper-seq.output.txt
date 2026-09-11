@@ -1,0 +1,12 @@
+适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
+
+  正在扫描源以查找模块依赖项...
+  D1_promise_8_hooks.vcxproj -> F:\CPPTrain\LearnCPP\C09_Coroutines\exercises\build\c09-author-mechanisms-student\D1_promise_8_hooks\Release\D1_promise_8_hooks.exe
+适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
+
+  正在扫描源以查找模块依赖项...
+  D3_final_suspend_symmetric.vcxproj -> F:\CPPTrain\LearnCPP\C09_Coroutines\exercises\build\c09-author-mechanisms-student\D3_final_suspend_symmetric\Release\D3_final_suspend_symmetric.exe
+适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
+
+  正在扫描源以查找模块依赖项...
+  G2_when_all_impl.vcxproj -> F:\CPPTrain\LearnCPP\C09_Coroutines\exercises\build\c09-author-mechanisms-student\G2_when_all_impl\Release\G2_when_all_impl.exe

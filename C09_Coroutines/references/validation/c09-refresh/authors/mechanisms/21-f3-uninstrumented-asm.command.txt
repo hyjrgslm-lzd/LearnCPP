@@ -1,0 +1,1 @@
+wsl /usr/lib/llvm-18/bin/clang++ -std=c++23 -O2 -DF3_UNINSTRUMENTED_HALO -I/mnt/f/CPPTrain/LearnCPP/C09_Coroutines/exercises/include -S /mnt/f/CPPTrain/LearnCPP/C09_Coroutines/exercises/F3_halo_diagnose/main.cpp -o /mnt/f/CPPTrain/LearnCPP/C09_Coroutines/references/validation/c09-refresh/authors/mechanisms/f3-uninstrumented.s

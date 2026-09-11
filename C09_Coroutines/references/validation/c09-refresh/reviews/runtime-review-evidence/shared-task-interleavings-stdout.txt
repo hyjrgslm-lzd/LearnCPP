@@ -1,0 +1,1 @@
+shared_task interleavings: sync value, sync error, cross-thread value checked

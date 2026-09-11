@@ -1,0 +1,143 @@
+{
+  "records": [
+    {
+      "name": "compiler",
+      "verdict": "PASS"
+    },
+    {
+      "name": "address-capability-build",
+      "verdict": "PASS"
+    },
+    {
+      "name": "address-capability-run",
+      "verdict": "PASS"
+    },
+    {
+      "name": "address-00-lazy_task_reference_test-build",
+      "verdict": "PASS"
+    },
+    {
+      "name": "address-00-lazy_task_reference_test",
+      "verdict": "PASS"
+    },
+    {
+      "name": "address-01-await_resume_exception_test-build",
+      "verdict": "PASS"
+    },
+    {
+      "name": "address-01-await_resume_exception_test",
+      "verdict": "PASS"
+    },
+    {
+      "name": "address-02-sync_wait_reference_test-build",
+      "verdict": "PASS"
+    },
+    {
+      "name": "address-02-sync_wait_reference_test",
+      "verdict": "PASS"
+    },
+    {
+      "name": "address-03-task_scope_reference_test-build",
+      "verdict": "PASS"
+    },
+    {
+      "name": "address-03-task_scope_reference_test",
+      "verdict": "PASS"
+    },
+    {
+      "name": "address-04-when_any_cancel_join_reference_test-build",
+      "verdict": "PASS"
+    },
+    {
+      "name": "address-04-when_any_cancel_join_reference_test",
+      "verdict": "PASS"
+    },
+    {
+      "name": "address-05-sync_completion_reference_test-build",
+      "verdict": "PASS"
+    },
+    {
+      "name": "address-05-sync_completion_reference_test",
+      "verdict": "PASS"
+    },
+    {
+      "name": "address-06-task_test-build",
+      "verdict": "PASS"
+    },
+    {
+      "name": "address-06-task_test",
+      "verdict": "PASS"
+    },
+    {
+      "name": "address-07-sync_wait_test-build",
+      "verdict": "PASS"
+    },
+    {
+      "name": "address-07-sync_wait_test",
+      "verdict": "PASS"
+    },
+    {
+      "name": "address-08-when_all_test-build",
+      "verdict": "PASS"
+    },
+    {
+      "name": "address-08-when_all_test",
+      "verdict": "PASS"
+    },
+    {
+      "name": "address-09-when_any_test-build",
+      "verdict": "PASS"
+    },
+    {
+      "name": "address-09-when_any_test",
+      "verdict": "PASS"
+    },
+    {
+      "name": "address-10-task_scope_test-build",
+      "verdict": "PASS"
+    },
+    {
+      "name": "address-10-task_scope_test",
+      "verdict": "PASS"
+    },
+    {
+      "name": "address-11-shared_task_test-build",
+      "verdict": "PASS"
+    },
+    {
+      "name": "address-11-shared_task_test",
+      "verdict": "PASS"
+    },
+    {
+      "name": "address-12-shared_task_abandon_test-build",
+      "verdict": "PASS"
+    },
+    {
+      "name": "address-12-shared_task_abandon_test",
+      "verdict": "PASS"
+    },
+    {
+      "name": "thread-capability-build",
+      "verdict": "PASS"
+    },
+    {
+      "name": "thread-capability-run",
+      "verdict": "SKIP"
+    }
+  ],
+  "sources": {
+    "C09_Coroutines/exercises/runtime_tests/lazy_task_reference_test.cpp": "17925950520af58c2fa60b663b50413e11733420d9f62e6494fc2c7c193fe872",
+    "C09_Coroutines/exercises/runtime_tests/await_resume_exception_test.cpp": "e530448b72cbcabcc1744809c6b8a186a6f9da4f344d8e73e8bd2ad914eb41ba",
+    "C09_Coroutines/exercises/runtime_tests/sync_wait_reference_test.cpp": "9c4e3c42a2254873c7376137db2eef9984538dc2987d1ed913bf7d469afed4d5",
+    "C09_Coroutines/exercises/runtime_tests/task_scope_reference_test.cpp": "bb9ad761a131371b0b5f73ee0bb9948f2640816c9275e2c4026a111aaa94aa51",
+    "C09_Coroutines/exercises/runtime_tests/when_any_cancel_join_reference_test.cpp": "8d884356c442da549cba0d8b83f355e1aaeb8068b2d0c019803cc75011b9c35a",
+    "C09_Coroutines/exercises/runtime_tests/sync_completion_reference_test.cpp": "2d36332724f6c2d7223f59ed30f17b64b2ae2428376814d596c7fe24924d60ac",
+    "C09_Coroutines/exercises/Capstone5_mini_corolib/reference/tests/task_test.cpp": "8c3ab6fb26f17c27d6f5eefd73b1b378994ddab79b5bbe6921b6a3a91dbde84b",
+    "C09_Coroutines/exercises/Capstone5_mini_corolib/reference/tests/sync_wait_test.cpp": "5b30896f0da178c7a141ffe1a5a728c87b09c0314d7cd0777a5282a40095921a",
+    "C09_Coroutines/exercises/Capstone5_mini_corolib/reference/tests/when_all_test.cpp": "0a72750b2dfb0a4500b233730604c512313238e99a8779c1cf2dc50251299e5c",
+    "C09_Coroutines/exercises/Capstone5_mini_corolib/reference/tests/when_any_test.cpp": "13993e44a39359d84b831d7793065daef5bda9336c3ba37958adae997ee241a8",
+    "C09_Coroutines/exercises/Capstone5_mini_corolib/reference/tests/task_scope_test.cpp": "0b4f1c5d433c8c7b842663aa726f3a78eb060148bf2bb9c80fca8e576672fe13",
+    "C09_Coroutines/exercises/Capstone5_mini_corolib/reference/tests/shared_task_test.cpp": "3134ae67c6b05bb96cc9735b072d00066340eca6d3d2e3476a84583fd3e2f433",
+    "C09_Coroutines/exercises/Capstone5_mini_corolib/reference/tests/shared_task_abandon_test.cpp": "058e5fce5f6cbbfe2a040fe7454d2054e13363c8b8bd590e1f721db82e412324"
+  }
+}

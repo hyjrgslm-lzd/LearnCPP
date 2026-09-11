@@ -15,7 +15,7 @@
 //
 // HALO 验证：
 //   - sync_wait(just(42)) 路径下，frame 地址永不逃逸；
-//   - 用 Clang -Rpass=coroutine-elide 编译应见 "coroutine frame elided"。
+//   - 用 Clang remark/IR 实测是否消除分配，不保证任何特定结果。
 // =============================================================================
 
 #pragma once
@@ -89,7 +89,7 @@ public:
 //   - state.wait() 阻塞至 done，按 set_value/set_error/set_stopped 分流。
 // 在补全前，依赖本 sync_wait 的测试必须明确失败，不能以 nullopt 冒充 stopped。
 template <typename T>
-[[noreturn]] inline std::optional<std::tuple<T>> sync_wait(/* sender */ auto&& s) {
+inline std::optional<std::tuple<T>> sync_wait(/* sender */ auto&& s) {
     // TODO[必做]: 完整实现：
     //   - 构造 sync_wait_receiver<T>；
     //   - connect(s, receiver) -> op_state；
@@ -97,9 +97,9 @@ template <typename T>
     //   - state.wait() 阻塞至 done。
     //
     // 简化路径（仅 awaitable）：
-    //   把 s 作为 await 操作放到一个 lambda 协程里执行：
-    //     auto inner = [&]() -> task<T> { co_return co_await std::move(s); }();
-    //     直接 inner.h_.resume()，等 done 后取 promise.result_。
+    //   使用命名协程把操作按值放入 frame，接 final-suspend 完成通知。
+    //   不要立即调用捕获型 lazy coroutine lambda：闭包可能先于恢复销毁。
+    //   启动 root 一次；外部 awaiter 负责后续恢复，禁止循环盲目 resume。
     //
     // 本骨架明确失败，避免把 stopped/nullopt 伪装成通过。
     (void)s;

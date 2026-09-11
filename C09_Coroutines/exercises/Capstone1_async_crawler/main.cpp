@@ -25,10 +25,12 @@
 // =====================================================================
 #include "coroutine_study/lazy_task.hpp"
 #include "coroutine_study/runtime.hpp"
+#include "coroutine_study/exercise_check.hpp"
 #include "url_table.hpp"
 #include "parser.hpp"
 
 #include <chrono>
+#include <exception>
 #include <coroutine>
 #include <generator>
 #include <iostream>
@@ -215,10 +217,24 @@ void print_report(const Report& r) {
     }
 }
 
-int main() {
+int main() try {
     std::println("===== Capstone 1：异步小爬虫 =====\n");
 
     auto recs = capstone1::url_table();
+    std::vector<capstone1::Record> parser_probe;
+    for (auto row : capstone1::parse_lines(std::string{"name,score\nAlice,85\nbad\nBob,92\n"})) {
+        parser_probe.push_back(std::move(row));
+    }
+    coroutine_study::check(parser_probe.size() == 3, "Part 3/6: parser skips header and yields each non-empty data row");
+    coroutine_study::check(
+        parser_probe[0].ok && parser_probe[0].name == "Alice" && parser_probe[0].score == 85,
+        "Part 3/6: parser extracts a valid name and numeric score"
+    );
+    coroutine_study::check(!parser_probe[1].ok, "Part 3/6: parser marks malformed rows but keeps scanning");
+    coroutine_study::check(
+        parser_probe[2].ok && parser_probe[2].name == "Bob" && parser_probe[2].score == 92,
+        "Part 3/6: parser resumes after a malformed row"
+    );
 
     // ------------------ 整体超时 ------------------
     std::stop_source src;
@@ -237,6 +253,13 @@ int main() {
     Report rep = coroutine_study::sync_wait(std::move(task));
     workers.join();
     print_report(rep);
+    coroutine_study::check(rep.total == static_cast<int>(recs.size()), "Part 1/5: report accounts for every input URL");
+    coroutine_study::check(rep.ok_count == 2, "Part 2/4/5: two fast URLs complete before watchdog timeout");
+    coroutine_study::check(rep.stopped == 1, "Part 2/7: slow URL observes stop_token and reports Stopped");
+    coroutine_study::check(rep.err == 0, "Part 5: valid sample data should not produce fetch or parse errors");
+    coroutine_study::check(rep.total_lines == 4, "Part 3/5/6: aggregate counts four valid parsed rows");
+    coroutine_study::check(rep.total_score == 343, "Part 3/5/6: aggregate sums parsed scores");
+    coroutine_study::check(rep.elapsed < 350ms, "Part 4/7: fetches run concurrently under the 200ms watchdog");
 
     // ------------------ 进阶任务 ------------------
     // TODO [进阶 1]：优雅降级——超时的 URL 不影响其它结果汇总。
@@ -248,4 +271,12 @@ int main() {
 
     std::println("\n===== Done =====");
     return 0;
+}
+catch (const std::exception& e) {
+    std::cerr << "student check failed: " << e.what() << '\n';
+    return 1;
+}
+catch (...) {
+    std::cerr << "student check failed: unknown exception\n";
+    return 1;
 }

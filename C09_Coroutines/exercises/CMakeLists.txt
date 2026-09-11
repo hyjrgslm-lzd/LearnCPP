@@ -22,6 +22,7 @@ option(COROUTINE_STUDY_ENABLE_STDEXEC "Enable stdexec-based H exercises and caps
 option(COROUTINE_STUDY_ENABLE_ASIO "Enable standalone Asio exercises." OFF)
 option(COROUTINE_STUDY_ENABLE_CPPCORO "Enable cppcoro exercises if present." OFF)
 option(COROUTINE_STUDY_ENABLE_IO_URING "Enable Linux io_uring exercises." OFF)
+set(COROUTINE_STUDY_LIBURING_ROOT "" CACHE PATH "Existing liburing >= 2.15 installation prefix; no system changes.")
 option(COROUTINE_STUDY_ENABLE_IOCP "Enable Windows IOCP exercises." OFF)
 option(COROUTINE_STUDY_ENABLE_FOLLY "Enable Folly coroutine exercises." OFF)
 option(COROUTINE_STUDY_ENABLE_COBALT "Enable Boost.Cobalt coroutine exercises." OFF)
@@ -85,7 +86,7 @@ add_subdirectory(G1_shared_task)
 add_subdirectory(G2_when_all_impl)
 add_subdirectory(G3_sync_wait_impl)
 
-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/runtime_tests/CMakeLists.txt")
+if(COROUTINE_STUDY_BUILD_REFERENCE AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/runtime_tests/CMakeLists.txt")
     add_subdirectory(runtime_tests)
 endif()
 

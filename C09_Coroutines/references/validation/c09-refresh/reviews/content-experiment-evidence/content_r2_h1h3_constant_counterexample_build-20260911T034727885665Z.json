@@ -1,0 +1,27 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "C09_Coroutines\\exercises\\build\\c09-review-content\\h2-constant-counterexample-build",
+    "--config",
+    "Release",
+    "--target",
+    "h1_constant_counterexample",
+    "h3_constant_counterexample"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 7.578000000008615,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  Checking File Globs\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/CMakeLists.txt\n  Building Custom Rule F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-review-content/h2-constant-counterexample-src/CMakeLists.txt\n  正在扫描源以查找模块依赖项...\n  h1_constant.cpp\n  正在编译...\n  h1_constant.cpp\n  h1_constant_counterexample.vcxproj -> F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-review-content\\h2-constant-counterexample-build\\Release\\h1_constant_counterexample.exe\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  Checking File Globs\n  Building Custom Rule F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-review-content/h2-constant-counterexample-src/CMakeLists.txt\n  正在扫描源以查找模块依赖项...\n  h3_constant.cpp\n  正在编译...\n  h3_constant.cpp\n  h3_constant_counterexample.vcxproj -> F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-review-content\\h2-constant-counterexample-build\\Release\\h3_constant_counterexample.exe\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-stb9ylsk",
+  "temporary_directory_removed": true,
+  "name": "content_r2_h1h3_constant_counterexample_build",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": "h3_constant_counterexample.vcxproj",
+  "verdict": "PASS"
+}

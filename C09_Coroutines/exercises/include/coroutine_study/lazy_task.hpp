@@ -41,10 +41,9 @@ struct sync_wait_state {
 
 inline void notify_sync_wait(void* p) noexcept {
     auto& state = *static_cast<sync_wait_state*>(p);
-    {
-        std::lock_guard lock(state.mutex);
-        state.done = true;
-    }
+    std::lock_guard lock(state.mutex);
+    state.done = true;
+    // A spurious wake must not destroy this stack state before notify finishes.
     state.cv.notify_one();
 }
 
@@ -161,18 +160,12 @@ struct lazy_task {
         }
 
         T await_resume() {
-            auto h = std::exchange(callee, {});
-            if (!h) throw std::bad_alloc{};
-            auto& p = h.promise();
-            if (p.exception) {
-                auto ex = p.exception;
-                h.destroy();
-                std::rethrow_exception(ex);
-            }
+            lazy_task owned{std::exchange(callee, {})};
+            if (!owned.h_) throw std::bad_alloc{};
+            auto& p = owned.h_.promise();
+            if (p.exception) std::rethrow_exception(p.exception);
             if (!p.result) throw std::logic_error("lazy_task completed without a value");
-            T out = std::move(*p.result);
-            h.destroy();
-            return out;
+            return std::move(*p.result);
         }
     };
 

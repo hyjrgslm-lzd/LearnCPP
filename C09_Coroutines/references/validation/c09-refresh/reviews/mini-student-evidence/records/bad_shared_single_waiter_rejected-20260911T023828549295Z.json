@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C09_Coroutines/exercises/build/c09-review-mini/bad_shared_single_waiter_test"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.01027607900002181,
+  "stdout": "",
+  "stderr": "starter check failed: all shared waiters must resume\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "/tmp/c07-test-lg70eek2",
+  "temporary_directory_removed": true,
+  "name": "bad_shared_single_waiter_rejected",
+  "cwd": "/mnt/f/CPPTrain/LearnCPP",
+  "expected_exit": 1,
+  "required_text": "all shared waiters must resume",
+  "verdict": "PASS"
+}

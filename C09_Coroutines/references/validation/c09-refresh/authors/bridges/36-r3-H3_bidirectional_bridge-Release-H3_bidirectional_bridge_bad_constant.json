@@ -1,0 +1,8 @@
+{
+  "args": [
+    "F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-author-h-checkers-r3\\H3_bidirectional_bridge\\Release\\H3_bidirectional_bridge_bad_constant.exe"
+  ],
+  "returncode": 1,
+  "stdout": "student check failed: values=31/22/41 trace=1/0/1/0/0/1, expected 31/22/41 and 1/1/1/1/1/1\n",
+  "stderr": ""
+}

@@ -1,0 +1,14 @@
+{
+  "returncode": 0,
+  "args": [
+    "ctest",
+    "--test-dir",
+    "C09_Coroutines/exercises/build/c09-author-h-checkers-r3",
+    "-C",
+    "Release",
+    "-R",
+    "^(H1_as_awaitable_good|H1_as_awaitable_bad_constant_rejected|H2_std_execution_task_good|H2_std_execution_task_bad_constant_rejected|H3_bidirectional_bridge_good|H3_bidirectional_bridge_bad_constant_rejected)$",
+    "--output-on-failure"
+  ],
+  "output": "Test project F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r3\r\n    Start 34: H1_as_awaitable_good\r\n1/6 Test #34: H1_as_awaitable_good ............................   Passed    0.01 sec\r\n    Start 35: H1_as_awaitable_bad_constant_rejected\r\n2/6 Test #35: H1_as_awaitable_bad_constant_rejected ...........   Passed    0.09 sec\r\n    Start 37: H2_std_execution_task_good\r\n3/6 Test #37: H2_std_execution_task_good ......................   Passed    0.02 sec\r\n    Start 38: H2_std_execution_task_bad_constant_rejected\r\n4/6 Test #38: H2_std_execution_task_bad_constant_rejected .....   Passed    0.09 sec\r\n    Start 41: H3_bidirectional_bridge_good\r\n5/6 Test #41: H3_bidirectional_bridge_good ....................   Passed    0.01 sec\r\n    Start 42: H3_bidirectional_bridge_bad_constant_rejected\r\n6/6 Test #42: H3_bidirectional_bridge_bad_constant_rejected ...   Passed    0.09 sec\r\n\r\n100% tests passed, 0 tests failed out of 6\r\n\r\nLabel Time Summary:\r\nbad        =   0.27 sec*proc (3 tests)\r\nchecker    =   0.31 sec*proc (6 tests)\r\ngood       =   0.04 sec*proc (3 tests)\r\nstdexec    =   0.31 sec*proc (6 tests)\r\n\r\nTotal Test time (real) =   0.35 sec\r\n"
+}

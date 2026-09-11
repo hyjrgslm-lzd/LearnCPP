@@ -289,14 +289,18 @@ private:
 
 template <typename T>
 struct shared_state {
+    struct registration {
+        enum class phase { registering, suspended, completed, cancelled };
+        std::atomic<phase> status{phase::registering};
+        std::coroutine_handle<> caller{};
+    };
     std::mutex mutex;
     bool started{};
     bool done{};
     std::optional<T> value;
     std::exception_ptr error;
-    std::vector<std::coroutine_handle<>> waiters;
+    std::vector<std::weak_ptr<registration>> waiters;
     std::optional<task<T>> source;
-    std::shared_ptr<task<void>> runner;
 };
 
 template <typename T>
@@ -307,46 +311,83 @@ public:
     }
 
     struct awaiter {
+        using registration = typename shared_state<T>::registration;
+        using phase = typename registration::phase;
         std::shared_ptr<shared_state<T>> state;
+        std::shared_ptr<registration> node = std::make_shared<registration>();
+
+        explicit awaiter(std::shared_ptr<shared_state<T>> s) : state(std::move(s)) {}
+        awaiter(const awaiter&) = delete;
+        awaiter(awaiter&&) noexcept = default;
+        ~awaiter() { if (node) node->status.store(phase::cancelled, std::memory_order_release); }
 
         bool await_ready() const {
             std::lock_guard lock{state->mutex};
             return state->done;
         }
         bool await_suspend(std::coroutine_handle<> caller) {
+            // Locals survive even if completion resumes and destroys this awaiter.
+            auto shared = state;
+            auto registration_node = node;
+            registration_node->caller = caller;
             bool start = false;
             {
-                std::lock_guard lock{state->mutex};
-                if (state->done) return false;
-                state->waiters.push_back(caller);
-                start = !std::exchange(state->started, true);
+                std::lock_guard lock{shared->mutex};
+                if (shared->done) return false;
+                shared->waiters.push_back(registration_node);
+                start = !std::exchange(shared->started, true);
             }
             if (start) {
-                state->runner = std::make_shared<task<void>>(run(std::weak_ptr<shared_state<T>>{state}));
-                state->runner->start();
+                try { run(shared); }
+                catch (...) {
+                    shared->error = std::current_exception();
+                    publish(shared);
+                }
             }
-            return true;
+            auto expected = phase::registering;
+            return registration_node->status.compare_exchange_strong(
+                expected, phase::suspended, std::memory_order_acq_rel);
         }
         T await_resume() const {
             if (state->error) std::rethrow_exception(state->error);
             return *state->value;
         }
 
-        static task<void> run(std::weak_ptr<shared_state<T>> weak) {
-            auto state = weak.lock();
-            if (!state) co_return;
+        // The producer owns its state until source completion. No state/runner cycle.
+        struct producer {
+            struct promise_type {
+                producer get_return_object() noexcept { return {}; }
+                std::suspend_never initial_suspend() noexcept { return {}; }
+                std::suspend_never final_suspend() noexcept { return {}; }
+                void return_void() noexcept {}
+                void unhandled_exception() noexcept { std::terminate(); }
+            };
+        };
+
+        static producer run(std::shared_ptr<shared_state<T>> state) {
             try {
                 state->value.emplace(co_await std::move(*state->source));
             } catch (...) {
                 state->error = std::current_exception();
             }
-            std::vector<std::coroutine_handle<>> waiters;
+            publish(state);
+        }
+
+        static void publish(const std::shared_ptr<shared_state<T>>& state) {
+            std::vector<std::weak_ptr<registration>> waiters;
             {
                 std::lock_guard lock{state->mutex};
                 state->done = true;
                 waiters.swap(state->waiters);
             }
-            for (auto h : waiters) h.resume();
+            // Lock one registration at a time: a resumed caller may destroy a later waiter.
+            for (auto& weak : waiters) {
+                if (auto node = weak.lock()) {
+                    if (node->status.exchange(phase::completed, std::memory_order_acq_rel) == phase::suspended) {
+                        node->caller.resume();
+                    }
+                }
+            }
         }
     };
 
@@ -581,19 +622,28 @@ public:
             std::lock_guard lock{mutex_};
             ++in_flight_;
         }
-        threads_.emplace_back([this, task = std::move(t)]() mutable {
-            try {
-                (void)sync_wait(std::move(task));
-            } catch (...) {
-                std::lock_guard lock{mutex_};
-                if (!error_) error_ = std::current_exception();
-            }
+        try {
+            threads_.emplace_back([this, task = std::move(t)]() mutable {
+                try {
+                    (void)sync_wait(std::move(task));
+                } catch (...) {
+                    std::lock_guard lock{mutex_};
+                    if (!error_) error_ = std::current_exception();
+                }
+                {
+                    std::lock_guard lock{mutex_};
+                    --in_flight_;
+                }
+                cv_.notify_all();
+            });
+        } catch (...) {
             {
                 std::lock_guard lock{mutex_};
                 --in_flight_;
             }
             cv_.notify_all();
-        });
+            throw;
+        }
     }
 
     void wait_empty() {

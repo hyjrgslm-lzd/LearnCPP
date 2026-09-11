@@ -59,3 +59,16 @@ scope 能等齐任务，但不能修复错误捕获。需要跨挂起点使用�
 - 你能说明 detach 断开了哪条所有权链。
 
   **答案解析：** `detach(task)` 后，上层代码没有可见 owner 持有这个 task，也没有必经 `join()` 点等待它完成。异常没有统一回传位置，取消也没有可靠收束点；如果后台任务还访问资源，shutdown 时调用侧无法知道是否安全。断开的就是“创建者 -> scope owner -> join/drain”的任务生命周期链。
+
+## Student 检查
+
+`main.cpp` 现在用受控 gate 检查 scope 是否真的消费 spawned task；不再用耗时阈值证明并发：
+
+| Part | 操作 | 本地检查 |
+| --- | --- | --- |
+| Part 1 | `spawn` 接管 5 个 task | 5 个 gated task 必须都进入挂起点；不要求不同线程 |
+| Part 2 | 析构/join 等齐 | 只有全部 task 到达 gate 后才释放；scope 离开后 `started == 5 && completed == 5` |
+| Part 3 | 悬挂引用时间线 | 观察/文字分析，不运行 UB，也不计入实现 PASS |
+| Part 4 | detach 对照 | 观察/文字分析，不把非确定日志当自动测试 |
+
+完成前：漏启动或不等齐的实现会有限失败；PASS 只代表 Part 1/2 的 gate 检查通过，不代表 detach/悬挂引用观察题已实现。

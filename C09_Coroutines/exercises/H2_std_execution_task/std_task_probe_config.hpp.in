@@ -1,3 +1,4 @@
 #pragma once
 
+#cmakedefine01 H2_HAS_CXX26_PREVIEW_FLAG
 #cmakedefine01 H2_HAS_STD_EXECUTION_TASK

@@ -1,0 +1,25 @@
+{
+  "command": [
+    "powershell",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C09_Coroutines\\exercises\\build\\c09-review-content\\scripts\\check_coverage_integrity_unique.ps1"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.7339999999967404,
+  "stdout": "coverage_integrity: PASS unique_rows=37 dirs=37 readmes=37\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-vtwnv28n",
+  "temporary_directory_removed": true,
+  "name": "content_r6_coverage_integrity_unique",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": "coverage_integrity: PASS unique_rows=37 dirs=37 readmes=37",
+  "verdict": "PASS"
+}

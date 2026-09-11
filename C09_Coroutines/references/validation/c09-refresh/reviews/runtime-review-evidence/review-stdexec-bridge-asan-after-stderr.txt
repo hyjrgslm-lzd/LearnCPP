@@ -1,0 +1,295 @@
+In file included from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/execution.hpp:23,
+                 from C09_Coroutines/exercises/Capstone5_mini_corolib/reference/include/mini_ref/stdexec_awaitable.hpp:5,
+                 from C09_Coroutines/exercises/Capstone5_mini_corolib/reference/tests/as_awaitable_test.cpp:1:
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__associate.hpp:257:8: warning: extra ‘;’ [-Wpedantic]
+  257 |       };
+      |        ^
+      |        -
+In file included from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/execution.hpp:25:
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__bulk.hpp:290:8: warning: extra ‘;’ [-Wpedantic]
+  290 |       };
+      |        ^
+      |        -
+In file included from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__counting_scopes.hpp:28,
+                 from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/execution.hpp:29:
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__stop_when.hpp:77:8: warning: extra ‘;’ [-Wpedantic]
+   77 |       };
+      |        ^
+      |        -
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__counting_scopes.hpp:114:8: warning: extra ‘;’ [-Wpedantic]
+  114 |       };
+      |        ^
+      |        -
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__counting_scopes.hpp:134:12: warning: extra ‘;’ [-Wpedantic]
+  134 |           };
+      |            ^
+      |            -
+In file included from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/execution.hpp:35:
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__into_variant.hpp:108:8: warning: extra ‘;’ [-Wpedantic]
+  108 |       };
+      |        ^
+      |        -
+In file included from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__on.hpp:32,
+                 from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/execution.hpp:41:
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__starts_on.hpp:157:6: warning: extra ‘;’ [-Wpedantic]
+  157 |     };
+      |      ^
+      |      -
+In file included from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/execution.hpp:44:
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__read_env.hpp:123:8: warning: extra ‘;’ [-Wpedantic]
+  123 |       };
+      |        ^
+      |        -
+In file included from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/execution.hpp:54:
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__spawn_future.hpp:748:8: warning: extra ‘;’ [-Wpedantic]
+  748 |       };
+      |        ^
+      |        -
+In file included from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/execution.hpp:57:
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__stopped_as_optional.hpp:93:8: warning: extra ‘;’ [-Wpedantic]
+   93 |       };
+      |        ^
+      |        -
+In file included from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__affine.hpp:20,
+                 from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__task.hpp:19,
+                 from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/execution.hpp:60:
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__finally.hpp: In function ‘consteval auto stdexec::__final::__get_completion_signatures()’:
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__finally.hpp:294:15: warning: typedef ‘using __initial_completions_t = decltype (__initial_completions)’ locally defined but not used [-Wunused-local-typedefs]
+  294 |         using __initial_completions_t = decltype(__initial_completions);
+      |               ^~~~~~~~~~~~~~~~~~~~~~~
+In file included from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/execution.hpp:62:
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__then.hpp: At global scope:
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__then.hpp:60:8: warning: extra ‘;’ [-Wpedantic]
+   60 |       };
+      |        ^
+      |        -
+In file included from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/execution.hpp:63:
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__transfer_just.hpp:101:6: warning: extra ‘;’ [-Wpedantic]
+  101 |     };
+      |      ^
+      |      -
+In file included from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/execution.hpp:68:
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__upon_error.hpp:54:8: warning: extra ‘;’ [-Wpedantic]
+   54 |       };
+      |        ^
+      |        -
+In file included from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/execution.hpp:69:
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__upon_stopped.hpp:55:8: warning: extra ‘;’ [-Wpedantic]
+   55 |       };
+      |        ^
+      |        -
+In file included from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/execution.hpp:71:
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__when_all.hpp:585:8: warning: extra ‘;’ [-Wpedantic]
+  585 |       };
+      |        ^
+      |        -
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__when_all.hpp:605:8: warning: extra ‘;’ [-Wpedantic]
+  605 |       };
+      |        ^
+      |        -
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__when_all.hpp:626:8: warning: extra ‘;’ [-Wpedantic]
+  626 |       };
+      |        ^
+      |        -
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/include/mini_ref/stdexec_awaitable.hpp:53:83: warning: ‘using stdexec::empty_env = struct stdexec::env<>’ is deprecated: empty_env is now spelled stdexec::env<> [-Wdeprecated-declarations]
+   53 |         friend stdexec::empty_env tag_invoke(stdexec::get_env_t, const receiver&) noexcept {
+      |                                                                                   ^~~~~~~~
+In file included from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/execution.hpp:81:
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__deprecations.hpp:31:9: note: declared here
+   31 |   using empty_env
+      |         ^~~~~~~~~
+In file included from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__as_awaitable.hpp:26,
+                 from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/execution.hpp:22:
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__connect.hpp: In instantiation of ‘constexpr stdexec::__call_result_t<_DeclFn> stdexec::connect_t::operator()(_Sender&&, _Receiver&&) const [with _Sender = stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()>; _Receiver = mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver; _DeclFn = stdexec::__just::__opstate<stdexec::set_value_t, stdexec::__tup::__tuple<int>, mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver> (*)() noexcept; stdexec::__call_result_t<_DeclFn> = stdexec::__just::__opstate<stdexec::set_value_t, stdexec::__tup::__tuple<int>, mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver>]’:
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/include/mini_ref/stdexec_awaitable.hpp:100:50:   required from ‘bool mini_ref::stdexec_awaitable<Sender>::await_suspend(std::__n4861::coroutine_handle<void>) [with Sender = stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()>]’
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/tests/as_awaitable_test.cpp:85:70:   required from here
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__connect.hpp:237:91: warning: ‘constexpr stdexec::__dispatch::__tag_invoke_result_t<stdexec::get_env_t, const _EnvProvider&> stdexec::get_env_t::operator()(const _EnvProvider&) const [with _EnvProvider = mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver; stdexec::__dispatch::__tag_invoke_result_t<stdexec::get_env_t, const _EnvProvider&> = stdexec::env<>]’ is deprecated: the use of tag_invoke for get_env is deprecated [-Wdeprecated-declarations]
+  237 |       decltype(auto) __new_sndr = transform_sender(static_cast<_Sender&&>(__sndr), get_env(__rcvr));
+      |                                                                                    ~~~~~~~^~~~~~~~
+In file included from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__debug.hpp:22,
+                 from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__completion_signatures_of.hpp:21,
+                 from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__as_awaitable.hpp:24:
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__env.hpp:280:22: note: declared here
+  280 |       constexpr auto operator()(_EnvProvider const &__env_provider) const noexcept
+      |                      ^~~~~~~~
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__connect.hpp: In instantiation of ‘constexpr stdexec::__call_result_t<_DeclFn> stdexec::connect_t::operator()(_Sender&&, _Receiver&&) const [with _Sender = async_int_sender; _Receiver = mini_ref::stdexec_awaitable<async_int_sender>::receiver; _DeclFn = async_int_sender::op<mini_ref::stdexec_awaitable<async_int_sender>::receiver> (*)(); stdexec::__call_result_t<_DeclFn> = async_int_sender::op<mini_ref::stdexec_awaitable<async_int_sender>::receiver>]’:
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/include/mini_ref/stdexec_awaitable.hpp:100:50:   required from ‘bool mini_ref::stdexec_awaitable<Sender>::await_suspend(std::__n4861::coroutine_handle<void>) [with Sender = async_int_sender]’
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/tests/as_awaitable_test.cpp:91:95:   required from here
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__connect.hpp:237:91: warning: ‘constexpr stdexec::__dispatch::__tag_invoke_result_t<stdexec::get_env_t, const _EnvProvider&> stdexec::get_env_t::operator()(const _EnvProvider&) const [with _EnvProvider = mini_ref::stdexec_awaitable<async_int_sender>::receiver; stdexec::__dispatch::__tag_invoke_result_t<stdexec::get_env_t, const _EnvProvider&> = stdexec::env<>]’ is deprecated: the use of tag_invoke for get_env is deprecated [-Wdeprecated-declarations]
+  237 |       decltype(auto) __new_sndr = transform_sender(static_cast<_Sender&&>(__sndr), get_env(__rcvr));
+      |                                                                                    ~~~~~~~^~~~~~~~
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__env.hpp:280:22: note: declared here
+  280 |       constexpr auto operator()(_EnvProvider const &__env_provider) const noexcept
+      |                      ^~~~~~~~
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__connect.hpp:257:28: warning: ‘constexpr stdexec::__dispatch::__tag_invoke_result_t<_Tag, _Args ...> stdexec::__dispatch::__tag_invoke_t::operator()(_Tag, _Args&& ...) const [with _Tag = stdexec::connect_t; _Args = {async_int_sender, mini_ref::stdexec_awaitable<async_int_sender>::receiver}; stdexec::__dispatch::__tag_invoke_result_t<_Tag, _Args ...> = async_int_sender::op<mini_ref::stdexec_awaitable<async_int_sender>::receiver>]’ is deprecated: The use of tag_invoke as a means of customization is deprecated. Please use member functions instead. [-Wdeprecated-declarations]
+  257 |         return __tag_invoke(*this,
+      |                ~~~~~~~~~~~~^~~~~~~
+  258 |                             static_cast<__new_sndr_t&&>(__new_sndr),
+      |                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  259 |                             static_cast<_Receiver&&>(__rcvr));
+      |                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__query.hpp:23,
+                 from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__env.hpp:22:
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__tag_invoke.hpp:75:7: note: declared here
+   75 |       operator()(_Tag __tag, _Args &&...__args) const
+      |       ^~~~~~~~
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__connect.hpp: In instantiation of ‘constexpr stdexec::__call_result_t<_DeclFn> stdexec::connect_t::operator()(_Sender&&, _Receiver&&) const [with _Sender = stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()>; _Receiver = mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver; _DeclFn = stdexec::__just::__opstate<stdexec::set_error_t, stdexec::__tup::__tuple<std::__exception_ptr::exception_ptr>, mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver> (*)() noexcept; stdexec::__call_result_t<_DeclFn> = stdexec::__just::__opstate<stdexec::set_error_t, stdexec::__tup::__tuple<std::__exception_ptr::exception_ptr>, mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver>]’:
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/include/mini_ref/stdexec_awaitable.hpp:100:50:   required from ‘bool mini_ref::stdexec_awaitable<Sender>::await_suspend(std::__n4861::coroutine_handle<void>) [with Sender = stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()>]’
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/tests/as_awaitable_test.cpp:133:89:   required from here
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__connect.hpp:237:91: warning: ‘constexpr stdexec::__dispatch::__tag_invoke_result_t<stdexec::get_env_t, const _EnvProvider&> stdexec::get_env_t::operator()(const _EnvProvider&) const [with _EnvProvider = mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver; stdexec::__dispatch::__tag_invoke_result_t<stdexec::get_env_t, const _EnvProvider&> = stdexec::env<>]’ is deprecated: the use of tag_invoke for get_env is deprecated [-Wdeprecated-declarations]
+  237 |       decltype(auto) __new_sndr = transform_sender(static_cast<_Sender&&>(__sndr), get_env(__rcvr));
+      |                                                                                    ~~~~~~~^~~~~~~~
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__env.hpp:280:22: note: declared here
+  280 |       constexpr auto operator()(_EnvProvider const &__env_provider) const noexcept
+      |                      ^~~~~~~~
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__connect.hpp: In instantiation of ‘constexpr stdexec::__call_result_t<_DeclFn> stdexec::connect_t::operator()(_Sender&&, _Receiver&&) const [with _Sender = stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()>; _Receiver = mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver; _DeclFn = stdexec::__just::__opstate<stdexec::set_stopped_t, stdexec::__tup::__tuple<>, mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver> (*)() noexcept; stdexec::__call_result_t<_DeclFn> = stdexec::__just::__opstate<stdexec::set_stopped_t, stdexec::__tup::__tuple<>, mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver>]’:
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/include/mini_ref/stdexec_awaitable.hpp:100:50:   required from ‘bool mini_ref::stdexec_awaitable<Sender>::await_suspend(std::__n4861::coroutine_handle<void>) [with Sender = stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()>]’
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/tests/as_awaitable_test.cpp:144:86:   required from here
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__connect.hpp:237:91: warning: ‘constexpr stdexec::__dispatch::__tag_invoke_result_t<stdexec::get_env_t, const _EnvProvider&> stdexec::get_env_t::operator()(const _EnvProvider&) const [with _EnvProvider = mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver; stdexec::__dispatch::__tag_invoke_result_t<stdexec::get_env_t, const _EnvProvider&> = stdexec::env<>]’ is deprecated: the use of tag_invoke for get_env is deprecated [-Wdeprecated-declarations]
+  237 |       decltype(auto) __new_sndr = transform_sender(static_cast<_Sender&&>(__sndr), get_env(__rcvr));
+      |                                                                                    ~~~~~~~^~~~~~~~
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__env.hpp:280:22: note: declared here
+  280 |       constexpr auto operator()(_EnvProvider const &__env_provider) const noexcept
+      |                      ^~~~~~~~
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__env.hpp: In instantiation of ‘constexpr stdexec::__dispatch::__tag_invoke_result_t<stdexec::get_env_t, const _EnvProvider&> stdexec::get_env_t::operator()(const _EnvProvider&) const [with _EnvProvider = mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver; stdexec::__dispatch::__tag_invoke_result_t<stdexec::get_env_t, const _EnvProvider&> = stdexec::env<>]’:
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__connect.hpp:237:91:   required from ‘constexpr stdexec::__call_result_t<_DeclFn> stdexec::connect_t::operator()(_Sender&&, _Receiver&&) const [with _Sender = stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()>; _Receiver = mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver; _DeclFn = stdexec::__just::__opstate<stdexec::set_value_t, stdexec::__tup::__tuple<int>, mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver> (*)() noexcept; stdexec::__call_result_t<_DeclFn> = stdexec::__just::__opstate<stdexec::set_value_t, stdexec::__tup::__tuple<int>, mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver>]’
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/include/mini_ref/stdexec_awaitable.hpp:100:50:   required from ‘bool mini_ref::stdexec_awaitable<Sender>::await_suspend(std::__n4861::coroutine_handle<void>) [with Sender = stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()>]’
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/tests/as_awaitable_test.cpp:85:70:   required from here
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__env.hpp:285:26: warning: ‘constexpr stdexec::__dispatch::__tag_invoke_result_t<_Tag, _Args ...> stdexec::__dispatch::__tag_invoke_t::operator()(_Tag, _Args&& ...) const [with _Tag = stdexec::get_env_t; _Args = {const mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver&}; stdexec::__dispatch::__tag_invoke_result_t<_Tag, _Args ...> = stdexec::env<>]’ is deprecated: The use of tag_invoke as a means of customization is deprecated. Please use member functions instead. [-Wdeprecated-declarations]
+  285 |       return __tag_invoke(*this, __env_provider);
+      |              ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__tag_invoke.hpp:75:7: note: declared here
+   75 |       operator()(_Tag __tag, _Args &&...__args) const
+      |       ^~~~~~~~
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__env.hpp: In instantiation of ‘constexpr stdexec::__dispatch::__tag_invoke_result_t<stdexec::get_env_t, const _EnvProvider&> stdexec::get_env_t::operator()(const _EnvProvider&) const [with _EnvProvider = mini_ref::stdexec_awaitable<async_int_sender>::receiver; stdexec::__dispatch::__tag_invoke_result_t<stdexec::get_env_t, const _EnvProvider&> = stdexec::env<>]’:
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__connect.hpp:237:91:   required from ‘constexpr stdexec::__call_result_t<_DeclFn> stdexec::connect_t::operator()(_Sender&&, _Receiver&&) const [with _Sender = async_int_sender; _Receiver = mini_ref::stdexec_awaitable<async_int_sender>::receiver; _DeclFn = async_int_sender::op<mini_ref::stdexec_awaitable<async_int_sender>::receiver> (*)(); stdexec::__call_result_t<_DeclFn> = async_int_sender::op<mini_ref::stdexec_awaitable<async_int_sender>::receiver>]’
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/include/mini_ref/stdexec_awaitable.hpp:100:50:   required from ‘bool mini_ref::stdexec_awaitable<Sender>::await_suspend(std::__n4861::coroutine_handle<void>) [with Sender = async_int_sender]’
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/tests/as_awaitable_test.cpp:91:95:   required from here
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__env.hpp:285:26: warning: ‘constexpr stdexec::__dispatch::__tag_invoke_result_t<_Tag, _Args ...> stdexec::__dispatch::__tag_invoke_t::operator()(_Tag, _Args&& ...) const [with _Tag = stdexec::get_env_t; _Args = {const mini_ref::stdexec_awaitable<async_int_sender>::receiver&}; stdexec::__dispatch::__tag_invoke_result_t<_Tag, _Args ...> = stdexec::env<>]’ is deprecated: The use of tag_invoke as a means of customization is deprecated. Please use member functions instead. [-Wdeprecated-declarations]
+  285 |       return __tag_invoke(*this, __env_provider);
+      |              ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__tag_invoke.hpp:75:7: note: declared here
+   75 |       operator()(_Tag __tag, _Args &&...__args) const
+      |       ^~~~~~~~
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/tests/as_awaitable_test.cpp: In instantiation of ‘void async_int_sender::op<Receiver>::start() [with Receiver = mini_ref::stdexec_awaitable<async_int_sender>::receiver]’:
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__operation_states.hpp:48:17:   required from ‘constexpr void stdexec::start_t::operator()(_Op&) const [with _Op = async_int_sender::op<mini_ref::stdexec_awaitable<async_int_sender>::receiver>]’
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/include/mini_ref/stdexec_awaitable.hpp:101:23:   required from ‘bool mini_ref::stdexec_awaitable<Sender>::await_suspend(std::__n4861::coroutine_handle<void>) [with Sender = async_int_sender]’
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/tests/as_awaitable_test.cpp:91:95:   required from here
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/tests/as_awaitable_test.cpp:72:35: warning: ‘constexpr void stdexec::set_value_t::operator()(_Receiver&&, _As&& ...) const [with _Receiver = mini_ref::stdexec_awaitable<async_int_sender>::receiver; _As = {int&}]’ is deprecated: the use of tag_invoke for set_value is deprecated [-Wdeprecated-declarations]
+   72 |                 stdexec::set_value(std::move(receiver), value);
+      |                 ~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__connect_awaitable.hpp:26,
+                 from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__get_completion_signatures.hpp:24,
+                 from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__sender_concepts.hpp:25,
+                 from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__debug.hpp:25:
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__receivers.hpp:80:22: note: declared here
+   80 |       constexpr void operator()(_Receiver &&__rcvr, _As &&...__as) const noexcept
+      |                      ^~~~~~~~
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__env.hpp: In instantiation of ‘constexpr stdexec::__dispatch::__tag_invoke_result_t<stdexec::get_env_t, const _EnvProvider&> stdexec::get_env_t::operator()(const _EnvProvider&) const [with _EnvProvider = mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver; stdexec::__dispatch::__tag_invoke_result_t<stdexec::get_env_t, const _EnvProvider&> = stdexec::env<>]’:
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__connect.hpp:237:91:   required from ‘constexpr stdexec::__call_result_t<_DeclFn> stdexec::connect_t::operator()(_Sender&&, _Receiver&&) const [with _Sender = stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()>; _Receiver = mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver; _DeclFn = stdexec::__just::__opstate<stdexec::set_error_t, stdexec::__tup::__tuple<std::__exception_ptr::exception_ptr>, mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver> (*)() noexcept; stdexec::__call_result_t<_DeclFn> = stdexec::__just::__opstate<stdexec::set_error_t, stdexec::__tup::__tuple<std::__exception_ptr::exception_ptr>, mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver>]’
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/include/mini_ref/stdexec_awaitable.hpp:100:50:   required from ‘bool mini_ref::stdexec_awaitable<Sender>::await_suspend(std::__n4861::coroutine_handle<void>) [with Sender = stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()>]’
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/tests/as_awaitable_test.cpp:133:89:   required from here
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__env.hpp:285:26: warning: ‘constexpr stdexec::__dispatch::__tag_invoke_result_t<_Tag, _Args ...> stdexec::__dispatch::__tag_invoke_t::operator()(_Tag, _Args&& ...) const [with _Tag = stdexec::get_env_t; _Args = {const mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver&}; stdexec::__dispatch::__tag_invoke_result_t<_Tag, _Args ...> = stdexec::env<>]’ is deprecated: The use of tag_invoke as a means of customization is deprecated. Please use member functions instead. [-Wdeprecated-declarations]
+  285 |       return __tag_invoke(*this, __env_provider);
+      |              ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__tag_invoke.hpp:75:7: note: declared here
+   75 |       operator()(_Tag __tag, _Args &&...__args) const
+      |       ^~~~~~~~
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__env.hpp: In instantiation of ‘constexpr stdexec::__dispatch::__tag_invoke_result_t<stdexec::get_env_t, const _EnvProvider&> stdexec::get_env_t::operator()(const _EnvProvider&) const [with _EnvProvider = mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver; stdexec::__dispatch::__tag_invoke_result_t<stdexec::get_env_t, const _EnvProvider&> = stdexec::env<>]’:
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__connect.hpp:237:91:   required from ‘constexpr stdexec::__call_result_t<_DeclFn> stdexec::connect_t::operator()(_Sender&&, _Receiver&&) const [with _Sender = stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()>; _Receiver = mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver; _DeclFn = stdexec::__just::__opstate<stdexec::set_stopped_t, stdexec::__tup::__tuple<>, mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver> (*)() noexcept; stdexec::__call_result_t<_DeclFn> = stdexec::__just::__opstate<stdexec::set_stopped_t, stdexec::__tup::__tuple<>, mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver>]’
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/include/mini_ref/stdexec_awaitable.hpp:100:50:   required from ‘bool mini_ref::stdexec_awaitable<Sender>::await_suspend(std::__n4861::coroutine_handle<void>) [with Sender = stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()>]’
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/tests/as_awaitable_test.cpp:144:86:   required from here
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__env.hpp:285:26: warning: ‘constexpr stdexec::__dispatch::__tag_invoke_result_t<_Tag, _Args ...> stdexec::__dispatch::__tag_invoke_t::operator()(_Tag, _Args&& ...) const [with _Tag = stdexec::get_env_t; _Args = {const mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver&}; stdexec::__dispatch::__tag_invoke_result_t<_Tag, _Args ...> = stdexec::env<>]’ is deprecated: The use of tag_invoke as a means of customization is deprecated. Please use member functions instead. [-Wdeprecated-declarations]
+  285 |       return __tag_invoke(*this, __env_provider);
+      |              ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__tag_invoke.hpp:75:7: note: declared here
+   75 |       operator()(_Tag __tag, _Args &&...__args) const
+      |       ^~~~~~~~
+In file included from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/../__detail/../functional.hpp:19,
+                 from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/../__detail/__awaitable.hpp:18,
+                 from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/../coroutine.hpp:19,
+                 from C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__as_awaitable.hpp:20:
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/../__detail/../__detail/__tuple.hpp: In instantiation of ‘constexpr stdexec::__call_result_t<stdexec::__tup::__apply_t::__impl<decltype (__cpcvr<_Tuple>)>, _Fn, _Tuple, _Us ...> stdexec::__tup::__apply_t::operator()(_Fn&&, _Tuple&&, _Us&& ...) const [with _Fn = stdexec::set_value_t; _Tuple = stdexec::__tup::__tuple<int>; _Us = {mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver}; stdexec::__call_result_t<__impl<decltype (__cpcvr<_Tuple>)>, _Fn, _Tuple, _Us ...> = void; decltype (__cpcvr<_Tuple>) = stdexec::__cp]’:
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__just.hpp:52:16:   required from ‘constexpr void stdexec::__just::__opstate<_SetTag, _Tuple, _Receiver>::start() [with _SetTag = stdexec::set_value_t; _Tuple = stdexec::__tup::__tuple<int>; _Receiver = mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver]’
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__operation_states.hpp:48:17:   required from ‘constexpr void stdexec::start_t::operator()(_Op&) const [with _Op = stdexec::__just::__opstate<stdexec::set_value_t, stdexec::__tup::__tuple<int>, mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver>]’
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/include/mini_ref/stdexec_awaitable.hpp:101:23:   required from ‘bool mini_ref::stdexec_awaitable<Sender>::await_suspend(std::__n4861::coroutine_handle<void>) [with Sender = stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()>]’
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/tests/as_awaitable_test.cpp:85:70:   required from here
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/../__detail/../__detail/__tuple.hpp:264:42: warning: ‘constexpr void stdexec::set_value_t::operator()(_Receiver&&, _As&& ...) const [with _Receiver = mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver; _As = {int}]’ is deprecated: the use of tag_invoke for set_value is deprecated [-Wdeprecated-declarations]
+  264 |           return static_cast<_Fn&&>(__fn)(
+      |                  ~~~~~~~~~~~~~~~~~~~~~~~~^
+  265 |             static_cast<_Us&&>(__us)... STDEXEC_PP_REPEAT(1, STDEXEC_TUPLE_GET));
+      |             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__receivers.hpp:80:22: note: declared here
+   80 |       constexpr void operator()(_Receiver &&__rcvr, _As &&...__as) const noexcept
+      |                      ^~~~~~~~
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__receivers.hpp: In instantiation of ‘constexpr void stdexec::set_value_t::operator()(_Receiver&&, _As&& ...) const [with _Receiver = mini_ref::stdexec_awaitable<async_int_sender>::receiver; _As = {int&}]’:
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/tests/as_awaitable_test.cpp:72:35:   required from ‘void async_int_sender::op<Receiver>::start() [with Receiver = mini_ref::stdexec_awaitable<async_int_sender>::receiver]’
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__operation_states.hpp:48:17:   required from ‘constexpr void stdexec::start_t::operator()(_Op&) const [with _Op = async_int_sender::op<mini_ref::stdexec_awaitable<async_int_sender>::receiver>]’
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/include/mini_ref/stdexec_awaitable.hpp:101:23:   required from ‘bool mini_ref::stdexec_awaitable<Sender>::await_suspend(std::__n4861::coroutine_handle<void>) [with Sender = async_int_sender]’
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/tests/as_awaitable_test.cpp:91:95:   required from here
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__receivers.hpp:83:26: warning: ‘constexpr stdexec::__dispatch::__tag_invoke_result_t<_Tag, _Args ...> stdexec::__dispatch::__tag_invoke_t::operator()(_Tag, _Args&& ...) const [with _Tag = stdexec::set_value_t; _Args = {mini_ref::stdexec_awaitable<async_int_sender>::receiver, int&}; stdexec::__dispatch::__tag_invoke_result_t<_Tag, _Args ...> = void]’ is deprecated: The use of tag_invoke as a means of customization is deprecated. Please use member functions instead. [-Wdeprecated-declarations]
+   83 |       (void) __tag_invoke(*this, static_cast<_Receiver &&>(__rcvr), static_cast<_As &&>(__as)...);
+      |              ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__tag_invoke.hpp:75:7: note: declared here
+   75 |       operator()(_Tag __tag, _Args &&...__args) const
+      |       ^~~~~~~~
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/../__detail/../__detail/__tuple.hpp: In instantiation of ‘constexpr stdexec::__call_result_t<stdexec::__tup::__apply_t::__impl<decltype (__cpcvr<_Tuple>)>, _Fn, _Tuple, _Us ...> stdexec::__tup::__apply_t::operator()(_Fn&&, _Tuple&&, _Us&& ...) const [with _Fn = stdexec::set_error_t; _Tuple = stdexec::__tup::__tuple<std::__exception_ptr::exception_ptr>; _Us = {mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver}; stdexec::__call_result_t<__impl<decltype (__cpcvr<_Tuple>)>, _Fn, _Tuple, _Us ...> = void; decltype (__cpcvr<_Tuple>) = stdexec::__cp]’:
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__just.hpp:52:16:   required from ‘constexpr void stdexec::__just::__opstate<_SetTag, _Tuple, _Receiver>::start() [with _SetTag = stdexec::set_error_t; _Tuple = stdexec::__tup::__tuple<std::__exception_ptr::exception_ptr>; _Receiver = mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver]’
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__operation_states.hpp:48:17:   required from ‘constexpr void stdexec::start_t::operator()(_Op&) const [with _Op = stdexec::__just::__opstate<stdexec::set_error_t, stdexec::__tup::__tuple<std::__exception_ptr::exception_ptr>, mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver>]’
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/include/mini_ref/stdexec_awaitable.hpp:101:23:   required from ‘bool mini_ref::stdexec_awaitable<Sender>::await_suspend(std::__n4861::coroutine_handle<void>) [with Sender = stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()>]’
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/tests/as_awaitable_test.cpp:133:89:   required from here
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/../__detail/../__detail/__tuple.hpp:264:42: warning: ‘constexpr void stdexec::set_error_t::operator()(_Receiver&&, _Error&&) const [with _Receiver = mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver; _Error = std::__exception_ptr::exception_ptr]’ is deprecated: the use of tag_invoke for set_error is deprecated [-Wdeprecated-declarations]
+  264 |           return static_cast<_Fn&&>(__fn)(
+      |                  ~~~~~~~~~~~~~~~~~~~~~~~~^
+  265 |             static_cast<_Us&&>(__us)... STDEXEC_PP_REPEAT(1, STDEXEC_TUPLE_GET));
+      |             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__receivers.hpp:118:22: note: declared here
+  118 |       constexpr void operator()(_Receiver &&__rcvr, _Error &&__err) const noexcept
+      |                      ^~~~~~~~
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/../__detail/../__detail/__tuple.hpp: In instantiation of ‘constexpr stdexec::__call_result_t<stdexec::__tup::__apply_t::__impl<decltype (__cpcvr<_Tuple>)>, _Fn, _Tuple, _Us ...> stdexec::__tup::__apply_t::operator()(_Fn&&, _Tuple&&, _Us&& ...) const [with _Fn = stdexec::set_stopped_t; _Tuple = stdexec::__tup::__tuple<>; _Us = {mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver}; stdexec::__call_result_t<__impl<decltype (__cpcvr<_Tuple>)>, _Fn, _Tuple, _Us ...> = void; decltype (__cpcvr<_Tuple>) = stdexec::__cp]’:
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__just.hpp:52:16:   required from ‘constexpr void stdexec::__just::__opstate<_SetTag, _Tuple, _Receiver>::start() [with _SetTag = stdexec::set_stopped_t; _Tuple = stdexec::__tup::__tuple<>; _Receiver = mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver]’
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__operation_states.hpp:48:17:   required from ‘constexpr void stdexec::start_t::operator()(_Op&) const [with _Op = stdexec::__just::__opstate<stdexec::set_stopped_t, stdexec::__tup::__tuple<>, mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver>]’
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/include/mini_ref/stdexec_awaitable.hpp:101:23:   required from ‘bool mini_ref::stdexec_awaitable<Sender>::await_suspend(std::__n4861::coroutine_handle<void>) [with Sender = stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()>]’
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/tests/as_awaitable_test.cpp:144:86:   required from here
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/../__detail/../__detail/__tuple.hpp:260:42: warning: ‘constexpr void stdexec::set_stopped_t::operator()(_Receiver&&) const [with _Receiver = mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver]’ is deprecated: the use of tag_invoke for set_stopped is deprecated [-Wdeprecated-declarations]
+  260 |           return static_cast<_Fn&&>(__fn)(static_cast<_Us&&>(__us)...);
+      |                  ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__receivers.hpp:152:22: note: declared here
+  152 |       constexpr void operator()(_Receiver &&__rcvr) const noexcept
+      |                      ^~~~~~~~
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__receivers.hpp: In instantiation of ‘constexpr void stdexec::set_value_t::operator()(_Receiver&&, _As&& ...) const [with _Receiver = mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver; _As = {int}]’:
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/../__detail/../__detail/__tuple.hpp:264:42:   required from ‘constexpr stdexec::__call_result_t<stdexec::__tup::__apply_t::__impl<decltype (__cpcvr<_Tuple>)>, _Fn, _Tuple, _Us ...> stdexec::__tup::__apply_t::operator()(_Fn&&, _Tuple&&, _Us&& ...) const [with _Fn = stdexec::set_value_t; _Tuple = stdexec::__tup::__tuple<int>; _Us = {mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver}; stdexec::__call_result_t<__impl<decltype (__cpcvr<_Tuple>)>, _Fn, _Tuple, _Us ...> = void; decltype (__cpcvr<_Tuple>) = stdexec::__cp]’
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__just.hpp:52:16:   required from ‘constexpr void stdexec::__just::__opstate<_SetTag, _Tuple, _Receiver>::start() [with _SetTag = stdexec::set_value_t; _Tuple = stdexec::__tup::__tuple<int>; _Receiver = mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver]’
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__operation_states.hpp:48:17:   required from ‘constexpr void stdexec::start_t::operator()(_Op&) const [with _Op = stdexec::__just::__opstate<stdexec::set_value_t, stdexec::__tup::__tuple<int>, mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver>]’
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/include/mini_ref/stdexec_awaitable.hpp:101:23:   required from ‘bool mini_ref::stdexec_awaitable<Sender>::await_suspend(std::__n4861::coroutine_handle<void>) [with Sender = stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()>]’
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/tests/as_awaitable_test.cpp:85:70:   required from here
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__receivers.hpp:83:26: warning: ‘constexpr stdexec::__dispatch::__tag_invoke_result_t<_Tag, _Args ...> stdexec::__dispatch::__tag_invoke_t::operator()(_Tag, _Args&& ...) const [with _Tag = stdexec::set_value_t; _Args = {mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver, int}; stdexec::__dispatch::__tag_invoke_result_t<_Tag, _Args ...> = void]’ is deprecated: The use of tag_invoke as a means of customization is deprecated. Please use member functions instead. [-Wdeprecated-declarations]
+   83 |       (void) __tag_invoke(*this, static_cast<_Receiver &&>(__rcvr), static_cast<_As &&>(__as)...);
+      |              ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__tag_invoke.hpp:75:7: note: declared here
+   75 |       operator()(_Tag __tag, _Args &&...__args) const
+      |       ^~~~~~~~
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__receivers.hpp: In instantiation of ‘constexpr void stdexec::set_error_t::operator()(_Receiver&&, _Error&&) const [with _Receiver = mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver; _Error = std::__exception_ptr::exception_ptr]’:
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/../__detail/../__detail/__tuple.hpp:264:42:   required from ‘constexpr stdexec::__call_result_t<stdexec::__tup::__apply_t::__impl<decltype (__cpcvr<_Tuple>)>, _Fn, _Tuple, _Us ...> stdexec::__tup::__apply_t::operator()(_Fn&&, _Tuple&&, _Us&& ...) const [with _Fn = stdexec::set_error_t; _Tuple = stdexec::__tup::__tuple<std::__exception_ptr::exception_ptr>; _Us = {mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver}; stdexec::__call_result_t<__impl<decltype (__cpcvr<_Tuple>)>, _Fn, _Tuple, _Us ...> = void; decltype (__cpcvr<_Tuple>) = stdexec::__cp]’
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__just.hpp:52:16:   required from ‘constexpr void stdexec::__just::__opstate<_SetTag, _Tuple, _Receiver>::start() [with _SetTag = stdexec::set_error_t; _Tuple = stdexec::__tup::__tuple<std::__exception_ptr::exception_ptr>; _Receiver = mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver]’
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__operation_states.hpp:48:17:   required from ‘constexpr void stdexec::start_t::operator()(_Op&) const [with _Op = stdexec::__just::__opstate<stdexec::set_error_t, stdexec::__tup::__tuple<std::__exception_ptr::exception_ptr>, mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver>]’
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/include/mini_ref/stdexec_awaitable.hpp:101:23:   required from ‘bool mini_ref::stdexec_awaitable<Sender>::await_suspend(std::__n4861::coroutine_handle<void>) [with Sender = stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()>]’
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/tests/as_awaitable_test.cpp:133:89:   required from here
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__receivers.hpp:121:26: warning: ‘constexpr stdexec::__dispatch::__tag_invoke_result_t<_Tag, _Args ...> stdexec::__dispatch::__tag_invoke_t::operator()(_Tag, _Args&& ...) const [with _Tag = stdexec::set_error_t; _Args = {mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver, std::__exception_ptr::exception_ptr}; stdexec::__dispatch::__tag_invoke_result_t<_Tag, _Args ...> = void]’ is deprecated: The use of tag_invoke as a means of customization is deprecated. Please use member functions instead. [-Wdeprecated-declarations]
+  121 |       (void) __tag_invoke(*this, static_cast<_Receiver &&>(__rcvr), static_cast<_Error &&>(__err));
+      |              ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__tag_invoke.hpp:75:7: note: declared here
+   75 |       operator()(_Tag __tag, _Args &&...__args) const
+      |       ^~~~~~~~
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__receivers.hpp: In instantiation of ‘constexpr void stdexec::set_stopped_t::operator()(_Receiver&&) const [with _Receiver = mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver]’:
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/../__detail/../__detail/__tuple.hpp:260:42:   required from ‘constexpr stdexec::__call_result_t<stdexec::__tup::__apply_t::__impl<decltype (__cpcvr<_Tuple>)>, _Fn, _Tuple, _Us ...> stdexec::__tup::__apply_t::operator()(_Fn&&, _Tuple&&, _Us&& ...) const [with _Fn = stdexec::set_stopped_t; _Tuple = stdexec::__tup::__tuple<>; _Us = {mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver}; stdexec::__call_result_t<__impl<decltype (__cpcvr<_Tuple>)>, _Fn, _Tuple, _Us ...> = void; decltype (__cpcvr<_Tuple>) = stdexec::__cp]’
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__just.hpp:52:16:   required from ‘constexpr void stdexec::__just::__opstate<_SetTag, _Tuple, _Receiver>::start() [with _SetTag = stdexec::set_stopped_t; _Tuple = stdexec::__tup::__tuple<>; _Receiver = mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver]’
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__operation_states.hpp:48:17:   required from ‘constexpr void stdexec::start_t::operator()(_Op&) const [with _Op = stdexec::__just::__opstate<stdexec::set_stopped_t, stdexec::__tup::__tuple<>, mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver>]’
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/include/mini_ref/stdexec_awaitable.hpp:101:23:   required from ‘bool mini_ref::stdexec_awaitable<Sender>::await_suspend(std::__n4861::coroutine_handle<void>) [with Sender = stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()>]’
+C09_Coroutines/exercises/Capstone5_mini_corolib/reference/tests/as_awaitable_test.cpp:144:86:   required from here
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__receivers.hpp:155:26: warning: ‘constexpr stdexec::__dispatch::__tag_invoke_result_t<_Tag, _Args ...> stdexec::__dispatch::__tag_invoke_t::operator()(_Tag, _Args&& ...) const [with _Tag = stdexec::set_stopped_t; _Args = {mini_ref::stdexec_awaitable<stdexec::{anonymous}::__sexpr<<lambda closure object>stdexec::<lambda()>()> >::receiver}; stdexec::__dispatch::__tag_invoke_result_t<_Tag, _Args ...> = void]’ is deprecated: The use of tag_invoke as a means of customization is deprecated. Please use member functions instead. [-Wdeprecated-declarations]
+  155 |       (void) __tag_invoke(*this, static_cast<_Receiver &&>(__rcvr));
+      |              ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/include/stdexec/__detail/__tag_invoke.hpp:75:7: note: declared here
+   75 |       operator()(_Tag __tag, _Args &&...__args) const
+      |       ^~~~~~~~

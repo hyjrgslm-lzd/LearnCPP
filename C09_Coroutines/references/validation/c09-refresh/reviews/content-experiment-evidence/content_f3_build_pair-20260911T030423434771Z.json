@@ -1,0 +1,27 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "C09_Coroutines\\exercises\\build\\c09-review-content\\light-ref",
+    "--config",
+    "Release",
+    "--target",
+    "F3_halo_diagnose",
+    "F3_halo_diagnose_reference"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 5.437000000005355,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  Checking File Globs\n  正在扫描源以查找模块依赖项...\n  正在编译...\n  main.cpp\n  F3_halo_diagnose.vcxproj -> F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-review-content\\light-ref\\F3_halo_diagnose\\Release\\F3_halo_diagnose.exe\n适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  Checking File Globs\n  Building Custom Rule F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/F3_halo_diagnose/CMakeLists.txt\n  正在扫描源以查找模块依赖项...\n  solution.cpp\n  正在编译...\n  solution.cpp\n  F3_halo_diagnose_reference.vcxproj -> F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-review-content\\light-ref\\F3_halo_diagnose\\Release\\F3_halo_diagnose_reference.exe\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-c837z58r",
+  "temporary_directory_removed": true,
+  "name": "content_f3_build_pair",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": "F3_halo_diagnose_reference",
+  "verdict": "PASS"
+}

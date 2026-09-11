@@ -1,0 +1,27 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "C09_Coroutines\\exercises\\build\\c09-review-content\\h-review-r6-student",
+    "-C",
+    "Release",
+    "-R",
+    "^(H1_as_awaitable|H2_std_execution_task|H2_std_task_probe|H3_bidirectional_bridge)$",
+    "--output-on-failure"
+  ],
+  "exit_code": 8,
+  "timeout": false,
+  "process_seconds": 1.812000000005355,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-review-content/h-review-r6-student\n    Start 13: H1_as_awaitable\n1/4 Test #13: H1_as_awaitable ..................***Failed    0.43 sec\nstudent check failed: inputs=19/23 values=-999/-999 started=0 completed=0, expected values match inputs and trace 2/2\n\n    Start 14: H2_std_execution_task\n2/4 Test #14: H2_std_execution_task ............***Failed    0.44 sec\nstudent check failed: value=0 sum=0 stopped=0 stop=0 counters=0/0/0/0, expected 19/42/1/1 and 1/1/1/1\n\n    Start 15: H2_std_task_probe\n3/4 Test #15: H2_std_task_probe ................***Skipped   0.42 sec\n    Start 16: H3_bidirectional_bridge\n4/4 Test #16: H3_bidirectional_bridge ..........***Failed    0.42 sec\nstudent check failed: values=31/0/0 trace=1/0/0/0/0/0, expected 31/22/41 and 1/1/1/1/1/1\n\n\n25% tests passed, 3 tests failed out of 4\n\nLabel Time Summary:\nprobe      =   0.42 sec*proc (1 test)\nstarter    =   1.29 sec*proc (3 tests)\n\nTotal Test time (real) =   1.74 sec\n\nThe following tests did not run:\n\t 15 - H2_std_task_probe (Skipped)\n\nThe following tests FAILED:\n\t 13 - H1_as_awaitable (Failed)                          starter\n\t 14 - H2_std_execution_task (Failed)                    starter\n\t 16 - H3_bidirectional_bridge (Failed)                  starter\n",
+  "stderr": "Errors while running CTest\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-edjzzuke",
+  "temporary_directory_removed": true,
+  "name": "content_r6_ctest_h_student_expected_failures",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 8,
+  "required_text": "student check failed",
+  "verdict": "PASS"
+}

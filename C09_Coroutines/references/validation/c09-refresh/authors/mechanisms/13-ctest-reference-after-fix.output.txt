@@ -1,0 +1,16 @@
+Test project F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-mechanisms
+    Start 13: D1_promise_8_hooks_reference
+1/4 Test #13: D1_promise_8_hooks_reference ...........   Passed    0.04 sec
+    Start 15: D3_final_suspend_symmetric_reference
+2/4 Test #15: D3_final_suspend_symmetric_reference ...   Passed    0.07 sec
+    Start 21: F3_halo_diagnose_reference
+3/4 Test #21: F3_halo_diagnose_reference .............   Passed    0.02 sec
+    Start 23: G2_when_all_impl_reference
+4/4 Test #23: G2_when_all_impl_reference .............   Passed    0.46 sec
+
+100% tests passed, 0 tests failed out of 4
+
+Label Time Summary:
+reference    =   0.59 sec*proc (4 tests)
+
+Total Test time (real) =   0.63 sec

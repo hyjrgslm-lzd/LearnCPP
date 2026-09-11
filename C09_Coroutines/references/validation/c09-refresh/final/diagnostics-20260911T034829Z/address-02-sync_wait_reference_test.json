@@ -1,0 +1,18 @@
+{
+  "command": [
+    "env",
+    "ASAN_OPTIONS=detect_leaks=1:halt_on_error=1",
+    "/mnt/f/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-final-diagnostics/address-02-sync_wait_reference_test"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.016339198999999027,
+  "stdout": "",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-zyf6fuxw",
+  "temporary_directory_removed": true,
+  "verdict": "PASS"
+}

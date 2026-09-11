@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C09_Coroutines/exercises/build/c09-review-mini-rerun/good_when_any_test"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.013344283000009227,
+  "stdout": "when_any: fan-out, right winner, stop, loser drain checked\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-ztj_nj6z",
+  "temporary_directory_removed": true,
+  "name": "rerun_good_when_any",
+  "cwd": "/mnt/f/CPPTrain/LearnCPP",
+  "expected_exit": 0,
+  "required_text": "when_any:",
+  "verdict": "PASS"
+}

@@ -1,0 +1,19 @@
+{
+  "command": [
+    "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-final-student/B2_task_sequential/Release/B2_task_sequential.exe"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.15599999998812564,
+  "stdout": "[main] \u2500\u2500\u2500 B-2\uff1atask \u987a\u5e8f\u5f02\u6b65\u7ec4\u5408 \u2500\u2500\u2500  (tid=31132)\n[fetch_user] begin id=42  (tid=31132)\n[fetch_user] done  (tid=31132)\n[parse_profile] begin id=42  (tid=31132)\n[parse_profile] done  (tid=31132)\n[validate_profile] begin id=42  (tid=31132)\n[validate_profile] done  (tid=31132)\n[main] result = user=42 score=88  (tid=31132)\n",
+  "stderr": "student check failed: Part 2: process_user must co_await fetch -> parse -> validate and format the final value\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-ktxxfetw",
+  "temporary_directory_removed": true,
+  "name": "B2_task_sequential",
+  "expected_exit": 1,
+  "verdict": "PASS",
+  "expected_rejection": true
+}

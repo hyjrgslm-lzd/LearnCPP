@@ -1,0 +1,30 @@
+{
+  "command": [
+    "g++",
+    "-std=c++20",
+    "-g",
+    "-fsanitize=address,undefined",
+    "-fno-omit-frame-pointer",
+    "-pthread",
+    "-I",
+    "C09_Coroutines/exercises/Capstone5_mini_corolib/reference/include",
+    "C09_Coroutines/exercises/Capstone5_mini_corolib/reference/tests/shared_task_abandon_test.cpp",
+    "-o",
+    "C09_Coroutines/exercises/build/c09-plan-baseline/shared-abandon-asan"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 2.766323711,
+  "stdout": "",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-ktfhk6kt",
+  "temporary_directory_removed": true,
+  "name": "shared-abandon-asan-build",
+  "cwd": "/mnt/f/CPPTrain/LearnCPP",
+  "expected_exit": 0,
+  "required_text": "",
+  "verdict": "PASS"
+}

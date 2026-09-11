@@ -39,6 +39,10 @@ struct uring_loop {
 
 int main()
 {
-    (void)sizeof(uring_loop::read_awaiter);
-    std::cout << "I2 Linux starter skeleton compiled. It posts no IO yet.\n";
+    uring_loop::read_awaiter awaiter;
+    if (awaiter.await_ready()) {
+        std::cout << "student check failed: read_awaiter must suspend until CQE arrives\n";
+        return 1;
+    }
+    std::cout << "I2 Linux starter structural check passed.\n";
 }

@@ -1,1 +1,1 @@
-coroutine_study_add_exercise(D1_promise_8_hooks REFERENCE_SOURCES solution.cpp)
+coroutine_study_add_exercise(D1_promise_8_hooks STUDENT_TEST REFERENCE_SOURCES solution.cpp)

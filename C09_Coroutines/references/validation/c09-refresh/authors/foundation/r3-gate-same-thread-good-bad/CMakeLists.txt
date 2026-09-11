@@ -1,0 +1,4 @@
+cmake_minimum_required(VERSION 3.26)
+project(r3_gate_same_thread_good_bad LANGUAGES CXX)
+add_executable(r3_gate_same_thread_good_bad main.cpp)
+target_compile_features(r3_gate_same_thread_good_bad PRIVATE cxx_std_23)

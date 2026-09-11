@@ -1,0 +1,9 @@
+{
+  "timestamp": "2026-09-11T03:00:05.7443471Z",
+  "command": "wsl.exe bash -lc \"cd /mnt/f/CPPTrain/LearnCPP && g++ -std=c++20 -pthread -fsanitize=address,undefined -fno-omit-frame-pointer -g -Wall -Wextra -pedantic -I C09_Coroutines/exercises/Capstone5_mini_corolib/reference/include C09_Coroutines/references/validation/c09-refresh/reviews/runtime-review-evidence/shared-task-interleavings.cpp -o C09_Coroutines/references/validation/c09-refresh/reviews/runtime-review-evidence/wsl-gpp-fixes/shared-task-interleavings && ASAN_OPTIONS=detect_leaks=1 timeout 10s C09_Coroutines/references/validation/c09-refresh/reviews/runtime-review-evidence/wsl-gpp-fixes/shared-task-interleavings\"",
+  "exit_code": 0,
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "head": "75028ff2d312a4f1047e7bafd6cf4101f771a2ec",
+  "mini_sha256": "4fcb231be03f6a88353a7a0cfdab8a85a1fc087720e5405f9dfe445bd12f6bb2",
+  "probe_sha256": "00888f1b227362d43bba9e30c1e933fd00d5ef8186511f4a26d9f2e1141e91de"
+}

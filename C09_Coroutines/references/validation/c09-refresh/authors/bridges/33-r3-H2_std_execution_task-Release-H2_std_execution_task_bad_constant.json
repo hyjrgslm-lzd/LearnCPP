@@ -1,0 +1,8 @@
+{
+  "args": [
+    "F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-author-h-checkers-r3\\H2_std_execution_task\\Release\\H2_std_execution_task_bad_constant.exe"
+  ],
+  "returncode": 1,
+  "stdout": "student check failed: value=19 sum=42 stopped=1 stop=1 counters=0/0/0/0, expected 19/42/1/1 and 1/1/1/1\n",
+  "stderr": ""
+}

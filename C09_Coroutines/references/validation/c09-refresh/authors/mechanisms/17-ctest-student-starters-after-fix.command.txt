@@ -1,0 +1,1 @@
+ctest --test-dir C09_Coroutines/exercises/build/c09-author-mechanisms-student -C Release -R "D1_promise_8_hooks|D3_final_suspend_symmetric|G2_when_all_impl" --output-on-failure

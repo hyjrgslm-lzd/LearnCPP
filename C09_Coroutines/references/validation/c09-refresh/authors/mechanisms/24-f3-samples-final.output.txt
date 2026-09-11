@@ -1,0 +1,15 @@
+# warmup seed=20260911 n=32 iterations=200000
+warmup,version=local,n=32,iterations=1000,ns_per_iter=112.400,sink=992000
+warmup,version=escaped,n=32,iterations=1000,ns_per_iter=111.600,sink=992000
+sample=1,version=local,n=32,iterations=200000,ns_per_iter=118.218,sink=99696000
+sample=1,version=escaped,n=32,iterations=200000,ns_per_iter=150.264,sink=99696000
+sample=2,version=escaped,n=32,iterations=200000,ns_per_iter=116.156,sink=99696000
+sample=2,version=local,n=32,iterations=200000,ns_per_iter=108.407,sink=99696000
+sample=3,version=local,n=32,iterations=200000,ns_per_iter=115.037,sink=99696000
+sample=3,version=escaped,n=32,iterations=200000,ns_per_iter=120.058,sink=99696000
+sample=4,version=escaped,n=32,iterations=200000,ns_per_iter=125.183,sink=99696000
+sample=4,version=local,n=32,iterations=200000,ns_per_iter=121.706,sink=99696000
+sample=5,version=escaped,n=32,iterations=200000,ns_per_iter=140.282,sink=99696000
+sample=5,version=local,n=32,iterations=200000,ns_per_iter=112.345,sink=99696000
+summary,version=local,median=115.037,min=108.407,max=121.706,samples=118.218;108.407;115.037;121.706;112.345
+summary,version=escaped,median=125.183,min=116.156,max=150.264,samples=150.264;116.156;120.058;125.183;140.282

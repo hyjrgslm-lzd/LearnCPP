@@ -1,0 +1,49 @@
+{
+  "slice": "foundation R3 C2/C3 gate correction",
+  "date": "2026-09-11",
+  "changed": [
+    "C09_Coroutines/exercises/C2_when_all_when_any/main.cpp: removed driver_thread identity rejection; when_all/when_any starter bodies are finite TODO stubs; gate checks fan-out by started/released/completed only",
+    "C09_Coroutines/exercises/C3_async_scope/main.cpp: removed driver_thread identity rejection from gate",
+    "C09_Coroutines/exercises/C2_when_all_when_any/README.md: states timing is observation only and gate accepts single-thread or multi-thread fan-out",
+    "C09_Coroutines/exercises/C3_async_scope/README.md: states gate does not require different threads",
+    "C09_Coroutines/04-模块C-取消与组合.md: removes timing-as-correctness wording; explains coroutine concurrency is not thread identity",
+    "C09_Coroutines/references/validation/c09-refresh/authors/foundation/*r3*: fresh R3 records"
+  ],
+  "validation": [
+    {
+      "command": "cmake --build C09_Coroutines/exercises/build/c09-author-foundation-slice --config Release --target C2_when_all_when_any C3_async_scope C2_when_all_when_any_reference C3_async_scope_reference",
+      "result": "exit=0"
+    },
+    {
+      "command": "direct run C2_when_all_when_any.exe",
+      "result": "exit=1; finite TODO[必做 1] diagnostic; no hang/no timeout-as-pass"
+    },
+    {
+      "command": "direct run C3_async_scope.exe",
+      "result": "exit=0; started=5 completed=5"
+    },
+    {
+      "command": "ctest --test-dir C09_Coroutines/exercises/build/c09-author-foundation-slice -C Release -R \"C2_when_all_when_any_reference|C3_async_scope_reference\" --output-on-failure",
+      "result": "2/2 passed"
+    },
+    {
+      "command": "ctest --test-dir C09_Coroutines/exercises/build/c09-author-foundation-slice -C Release -L reference --output-on-failure",
+      "result": "12/12 passed"
+    },
+    {
+      "command": "r3-gate-same-thread-good-bad independent CMake build/run",
+      "result": "runExit=0; good_same_thread=true; bad_missing_slot_detected=true; bad_wrong_result_detected=true"
+    }
+  ],
+  "records": [
+    "starter-runs-r3.json",
+    "r3-gate-same-thread-good-bad.json",
+    "validation-summary-r3.json",
+    "audit.md R3 section"
+  ],
+  "notes": [
+    "R2 caller-thread rejection is superseded: C2/C3 gate no longer requires a worker/different thread.",
+    "C2 starter is intentionally a safe implementation TODO fail until students implement when_all/when_any; checker still consumes the real student operation path.",
+    "Bad evidence is finite lost-slot/result-slot detection, not sleep threshold or timeout-as-pass."
+  ]
+}

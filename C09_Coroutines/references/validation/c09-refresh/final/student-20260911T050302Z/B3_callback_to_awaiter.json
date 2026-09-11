@@ -1,0 +1,19 @@
+{
+  "command": [
+    "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-final-student/B3_callback_to_awaiter/Release/B3_callback_to_awaiter.exe"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.15600000000267755,
+  "stdout": "[main] \u2500\u2500\u2500 B-3\uff1a\u628a\u56de\u8c03 API \u5305\u6210 awaiter \u2500\u2500\u2500  (tid=95008)\n[coro] before co_await  (tid=95008)\n[await_suspend] schedule async_add(7,5)  (tid=95008)\n[async_add] compute 7 + 5  (tid=95008)\n[coro] after co_await, sum=12  (tid=90024)\n[main] final = 36  (\u671f\u671b (7+5)*3 = 36)  (tid=95008)\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-23j98lkz",
+  "temporary_directory_removed": true,
+  "name": "B3_callback_to_awaiter",
+  "expected_exit": 0,
+  "verdict": "PASS",
+  "expected_rejection": false
+}

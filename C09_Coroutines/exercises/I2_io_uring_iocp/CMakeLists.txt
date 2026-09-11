@@ -16,4 +16,5 @@ coroutine_study_add_exercise(
     SOURCES ${I2_SOURCES}
     REFERENCE_SOURCES ${I2_REFERENCE_SOURCES}
     LIBRARIES ${I2_LIBRARIES}
+    STUDENT_TEST
 )

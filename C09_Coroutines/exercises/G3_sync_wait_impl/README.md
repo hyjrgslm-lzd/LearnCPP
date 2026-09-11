@@ -2,7 +2,7 @@
 
 对应正文：[09 模块 G](../../09-模块G-symmetric_transfer与高级task.md#g3)。
 
-`sync_wait` 是普通线程进入协程世界的入口。最终实现应启动 root task 一次，然后等待 final completion 通知；手动循环 resume 只适合受控演示。
+`sync_wait` 是普通线程进入协程世界的入口。最终实现应启动 root task 一次，然后等待 final completion 通知；手动循环 resume 只适合受控演示。结果提取时的帧所有权与异常实验见正文“七点一”：完成通知、结果消费和销毁是三个不同责任。
 
 ## Part 1：理解 blind-resume 的边界
 
@@ -29,7 +29,7 @@ callback 设置 done=true 并 notify
 sync_wait 醒来读取 value/error
 ```
 
-异常存放在 promise 中，`sync_wait` 醒来后重新抛出。`task<void>` 返回空 tuple。
+异常存放在 promise 中，`sync_wait` 醒来后重新抛出。本题复用的 `coroutine_study::sync_wait(lazy_task<void>&&)` 返回 `void`；不要与某些 sender 同步消费者的 optional/tuple 返回协议混淆。
 
 ## Part 3：回答 main 为什么不能是协程
 

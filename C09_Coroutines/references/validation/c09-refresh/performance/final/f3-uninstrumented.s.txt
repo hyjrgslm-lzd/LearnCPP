@@ -1,0 +1,1384 @@
+	.text
+	.file	"main.cpp"
+	.globl	_Z12range_valuesi               # -- Begin function _Z12range_valuesi
+	.p2align	4, 0x90
+	.type	_Z12range_valuesi,@function
+_Z12range_valuesi:                      # @_Z12range_valuesi
+	.cfi_startproc
+# %bb.0:
+	pushq	%r14
+	.cfi_def_cfa_offset 16
+	pushq	%rbx
+	.cfi_def_cfa_offset 24
+	pushq	%rax
+	.cfi_def_cfa_offset 32
+	.cfi_offset %rbx, -24
+	.cfi_offset %r14, -16
+	movl	%esi, %ebx
+	movq	%rdi, %r14
+	movl	$48, %edi
+	callq	_Znwm@PLT
+	leaq	_Z12range_valuesi.resume(%rip), %rcx
+	movq	%rcx, (%rax)
+	leaq	_Z12range_valuesi.destroy(%rip), %rcx
+	movq	%rcx, 8(%rax)
+	movl	%ebx, 32(%rax)
+	movl	%ebx, 16(%rax)
+	movq	$0, 24(%rax)
+	movq	%rax, (%r14)
+	movb	$0, 40(%rax)
+	movq	%r14, %rax
+	addq	$8, %rsp
+	.cfi_def_cfa_offset 24
+	popq	%rbx
+	.cfi_def_cfa_offset 16
+	popq	%r14
+	.cfi_def_cfa_offset 8
+	retq
+.Lfunc_end0:
+	.size	_Z12range_valuesi, .Lfunc_end0-_Z12range_valuesi
+	.cfi_endproc
+                                        # -- End function
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13local_consumei
+.LCPI1_0:
+	.long	1                               # 0x1
+	.long	2                               # 0x2
+	.zero	4
+	.zero	4
+.LCPI1_1:
+	.long	2                               # 0x2
+	.long	2                               # 0x2
+	.zero	4
+	.zero	4
+.LCPI1_2:
+	.long	4                               # 0x4
+	.long	4                               # 0x4
+	.zero	4
+	.zero	4
+	.text
+	.globl	_Z13local_consumei
+	.p2align	4, 0x90
+	.type	_Z13local_consumei,@function
+_Z13local_consumei:                     # @_Z13local_consumei
+	.cfi_startproc
+# %bb.0:
+                                        # kill: def $edi killed $edi def $rdi
+	cmpl	$2, %edi
+	jge	.LBB1_3
+# %bb.1:
+	xorl	%eax, %eax
+	retq
+.LBB1_3:
+	cmpl	$5, %edi
+	jae	.LBB1_5
+# %bb.4:
+	movl	$1, %ecx
+	xorl	%eax, %eax
+	jmp	.LBB1_8
+.LBB1_5:
+	leal	-1(%rdi), %edx
+	movl	%edx, %esi
+	andl	$-4, %esi
+	leal	1(%rsi), %ecx
+	pxor	%xmm0, %xmm0
+	movdqa	.LCPI1_0(%rip), %xmm1           # xmm1 = [1,2,u,u]
+	movdqa	.LCPI1_1(%rip), %xmm3           # xmm3 = [2,2,u,u]
+	movdqa	.LCPI1_2(%rip), %xmm4           # xmm4 = [4,4,u,u]
+	movl	%esi, %eax
+	pxor	%xmm5, %xmm5
+	pxor	%xmm2, %xmm2
+	.p2align	4, 0x90
+.LBB1_6:                                # =>This Inner Loop Header: Depth=1
+	movdqa	%xmm1, %xmm6
+	paddd	%xmm3, %xmm6
+	movdqa	%xmm1, %xmm7
+	punpckldq	%xmm0, %xmm7            # xmm7 = xmm7[0],xmm0[0],xmm7[1],xmm0[1]
+	paddq	%xmm7, %xmm5
+	punpckldq	%xmm0, %xmm6            # xmm6 = xmm6[0],xmm0[0],xmm6[1],xmm0[1]
+	paddq	%xmm6, %xmm2
+	paddd	%xmm4, %xmm1
+	addl	$-4, %eax
+	jne	.LBB1_6
+# %bb.7:
+	paddq	%xmm5, %xmm2
+	pshufd	$238, %xmm2, %xmm0              # xmm0 = xmm2[2,3,2,3]
+	paddq	%xmm2, %xmm0
+	movq	%xmm0, %rax
+	cmpl	%esi, %edx
+	je	.LBB1_2
+.LBB1_8:
+	movl	%ecx, %ecx
+	movl	%edi, %edx
+	.p2align	4, 0x90
+.LBB1_9:                                # =>This Inner Loop Header: Depth=1
+	addq	%rcx, %rax
+	incq	%rcx
+	cmpl	%ecx, %edx
+	jne	.LBB1_9
+.LBB1_2:
+	retq
+.Lfunc_end1:
+	.size	_Z13local_consumei, .Lfunc_end1-_Z13local_consumei
+	.cfi_endproc
+                                        # -- End function
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z15escaped_consumei
+.LCPI2_0:
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	1                               # 0x1
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+.LCPI2_1:
+	.quad	2                               # 0x2
+	.quad	2                               # 0x2
+.LCPI2_2:
+	.quad	4                               # 0x4
+	.quad	4                               # 0x4
+	.text
+	.globl	_Z15escaped_consumei
+	.p2align	4, 0x90
+	.type	_Z15escaped_consumei,@function
+_Z15escaped_consumei:                   # @_Z15escaped_consumei
+	.cfi_startproc
+# %bb.0:
+	leaq	-8(%rsp), %rax
+	movq	%rax, _ZL17escaped_generator(%rip)
+	testl	%edi, %edi
+	jle	.LBB2_1
+# %bb.2:
+	movl	%edi, %ecx
+	cmpl	$4, %edi
+	jae	.LBB2_4
+# %bb.3:
+	xorl	%edx, %edx
+	xorl	%eax, %eax
+	jmp	.LBB2_7
+.LBB2_1:
+	xorl	%eax, %eax
+	retq
+.LBB2_4:
+	movl	%ecx, %edx
+	andl	$2147483644, %edx               # imm = 0x7FFFFFFC
+	pxor	%xmm0, %xmm0
+	movdqa	.LCPI2_0(%rip), %xmm1           # xmm1 = [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0]
+	movdqa	.LCPI2_1(%rip), %xmm3           # xmm3 = [2,2]
+	movdqa	.LCPI2_2(%rip), %xmm4           # xmm4 = [4,4]
+	movq	%rdx, %rax
+	pxor	%xmm2, %xmm2
+	.p2align	4, 0x90
+.LBB2_5:                                # =>This Inner Loop Header: Depth=1
+	paddq	%xmm1, %xmm2
+	paddq	%xmm3, %xmm2
+	paddq	%xmm1, %xmm0
+	paddq	%xmm4, %xmm1
+	addq	$-4, %rax
+	jne	.LBB2_5
+# %bb.6:
+	paddq	%xmm0, %xmm2
+	pshufd	$238, %xmm2, %xmm0              # xmm0 = xmm2[2,3,2,3]
+	paddq	%xmm2, %xmm0
+	movq	%xmm0, %rax
+	cmpq	%rcx, %rdx
+	je	.LBB2_8
+	.p2align	4, 0x90
+.LBB2_7:                                # =>This Inner Loop Header: Depth=1
+	addq	%rdx, %rax
+	incq	%rdx
+	cmpq	%rdx, %rcx
+	jne	.LBB2_7
+.LBB2_8:
+	retq
+.Lfunc_end2:
+	.size	_Z15escaped_consumei, .Lfunc_end2-_Z15escaped_consumei
+	.cfi_endproc
+                                        # -- End function
+	.globl	_Z8bench_nsPFliEii              # -- Begin function _Z8bench_nsPFliEii
+	.p2align	4, 0x90
+	.type	_Z8bench_nsPFliEii,@function
+_Z8bench_nsPFliEii:                     # @_Z8bench_nsPFliEii
+.Lfunc_begin0:
+	.cfi_startproc
+	.cfi_personality 155, DW.ref.__gxx_personality_v0
+	.cfi_lsda 27, .Lexception0
+# %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	pushq	%r15
+	.cfi_def_cfa_offset 24
+	pushq	%r14
+	.cfi_def_cfa_offset 32
+	pushq	%r13
+	.cfi_def_cfa_offset 40
+	pushq	%r12
+	.cfi_def_cfa_offset 48
+	pushq	%rbx
+	.cfi_def_cfa_offset 56
+	subq	$56, %rsp
+	.cfi_def_cfa_offset 112
+	.cfi_offset %rbx, -56
+	.cfi_offset %r12, -48
+	.cfi_offset %r13, -40
+	.cfi_offset %r14, -32
+	.cfi_offset %r15, -24
+	.cfi_offset %rbp, -16
+	movl	%edx, %ebx
+	movl	%esi, %r15d
+	movq	%rdi, %r12
+	callq	_ZNSt6chrono3_V212steady_clock3nowEv@PLT
+	movq	%rax, %r14
+	xorl	%r13d, %r13d
+	testl	%ebx, %ebx
+	jle	.LBB3_1
+# %bb.13:
+	movl	%ebx, %ebp
+	.p2align	4, 0x90
+.LBB3_14:                               # =>This Inner Loop Header: Depth=1
+	movl	%r15d, %edi
+	callq	*%r12
+	addq	%rax, %r13
+	decl	%ebp
+	jne	.LBB3_14
+.LBB3_1:
+	callq	_ZNSt6chrono3_V212steady_clock3nowEv@PLT
+	leal	-1(%r15), %ecx
+	movslq	%ecx, %rcx
+	movslq	%r15d, %rdx
+	imulq	%rcx, %rdx
+	movq	%rdx, %rcx
+	shrq	$63, %rcx
+	addq	%rdx, %rcx
+	sarq	%rcx
+	movslq	%ebx, %rdx
+	imulq	%rcx, %rdx
+	movq	$32, 8(%rsp)
+	leaq	.L.str(%rip), %rcx
+	movq	%rcx, 16(%rsp)
+	cmpq	%rdx, %r13
+	jne	.LBB3_2
+# %bb.12:
+	addq	%r13, _ZL4sink(%rip)
+	subq	%r14, %rax
+	cvtsi2sd	%rax, %xmm0
+	cvtsi2sd	%ebx, %xmm1
+	divsd	%xmm1, %xmm0
+	addq	$56, %rsp
+	.cfi_def_cfa_offset 56
+	popq	%rbx
+	.cfi_def_cfa_offset 48
+	popq	%r12
+	.cfi_def_cfa_offset 40
+	popq	%r13
+	.cfi_def_cfa_offset 32
+	popq	%r14
+	.cfi_def_cfa_offset 24
+	popq	%r15
+	.cfi_def_cfa_offset 16
+	popq	%rbp
+	.cfi_def_cfa_offset 8
+	retq
+.LBB3_2:
+	.cfi_def_cfa_offset 112
+	movl	$16, %edi
+	callq	__cxa_allocate_exception@PLT
+	movq	%rax, %rbx
+.Ltmp0:
+	leaq	24(%rsp), %rdi
+	leaq	8(%rsp), %rsi
+	leaq	7(%rsp), %rdx
+	callq	_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ISt17basic_string_viewIcS2_EvEERKT_RKS3_
+.Ltmp1:
+# %bb.3:
+	movb	$1, %bpl
+.Ltmp3:
+	leaq	24(%rsp), %rsi
+	movq	%rbx, %rdi
+	callq	_ZNSt13runtime_errorC1ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE@PLT
+.Ltmp4:
+# %bb.4:
+	xorl	%ebp, %ebp
+.Ltmp5:
+	movq	_ZTISt13runtime_error@GOTPCREL(%rip), %rsi
+	movq	_ZNSt13runtime_errorD1Ev@GOTPCREL(%rip), %rdx
+	movq	%rbx, %rdi
+	callq	__cxa_throw@PLT
+.Ltmp6:
+# %bb.11:
+.LBB3_6:
+.Ltmp7:
+	movq	%rax, %r14
+	movq	24(%rsp), %rdi
+	leaq	40(%rsp), %rax
+	cmpq	%rax, %rdi
+	jne	.LBB3_7
+# %bb.8:
+	testb	%bpl, %bpl
+	jne	.LBB3_9
+.LBB3_10:
+	movq	%r14, %rdi
+	callq	_Unwind_Resume@PLT
+.LBB3_7:
+	callq	_ZdlPv@PLT
+	testb	%bpl, %bpl
+	je	.LBB3_10
+	jmp	.LBB3_9
+.LBB3_5:
+.Ltmp2:
+	movq	%rax, %r14
+.LBB3_9:
+	movq	%rbx, %rdi
+	callq	__cxa_free_exception@PLT
+	movq	%r14, %rdi
+	callq	_Unwind_Resume@PLT
+.Lfunc_end3:
+	.size	_Z8bench_nsPFliEii, .Lfunc_end3-_Z8bench_nsPFliEii
+	.cfi_endproc
+	.section	.gcc_except_table,"a",@progbits
+	.p2align	2, 0x0
+GCC_except_table3:
+.Lexception0:
+	.byte	255                             # @LPStart Encoding = omit
+	.byte	255                             # @TType Encoding = omit
+	.byte	1                               # Call site Encoding = uleb128
+	.uleb128 .Lcst_end0-.Lcst_begin0
+.Lcst_begin0:
+	.uleb128 .Lfunc_begin0-.Lfunc_begin0    # >> Call Site 1 <<
+	.uleb128 .Ltmp0-.Lfunc_begin0           #   Call between .Lfunc_begin0 and .Ltmp0
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp0-.Lfunc_begin0           # >> Call Site 2 <<
+	.uleb128 .Ltmp1-.Ltmp0                  #   Call between .Ltmp0 and .Ltmp1
+	.uleb128 .Ltmp2-.Lfunc_begin0           #     jumps to .Ltmp2
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp3-.Lfunc_begin0           # >> Call Site 3 <<
+	.uleb128 .Ltmp6-.Ltmp3                  #   Call between .Ltmp3 and .Ltmp6
+	.uleb128 .Ltmp7-.Lfunc_begin0           #     jumps to .Ltmp7
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp6-.Lfunc_begin0           # >> Call Site 4 <<
+	.uleb128 .Lfunc_end3-.Ltmp6             #   Call between .Ltmp6 and .Lfunc_end3
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+.Lcst_end0:
+	.p2align	2, 0x0
+                                        # -- End function
+	.text
+	.globl	_Z14select_versionSt17basic_string_viewIcSt11char_traitsIcEE # -- Begin function _Z14select_versionSt17basic_string_viewIcSt11char_traitsIcEE
+	.p2align	4, 0x90
+	.type	_Z14select_versionSt17basic_string_viewIcSt11char_traitsIcEE,@function
+_Z14select_versionSt17basic_string_viewIcSt11char_traitsIcEE: # @_Z14select_versionSt17basic_string_viewIcSt11char_traitsIcEE
+	.cfi_startproc
+# %bb.0:
+	cmpq	$7, %rdi
+	je	.LBB4_4
+# %bb.1:
+	cmpq	$5, %rdi
+	jne	.LBB4_6
+# %bb.2:
+	movl	$1633906540, %eax               # imm = 0x61636F6C
+	xorl	(%rsi), %eax
+	movzbl	4(%rsi), %ecx
+	xorl	$108, %ecx
+	orl	%eax, %ecx
+	jne	.LBB4_6
+# %bb.3:
+	leaq	_Z13local_consumei(%rip), %rax
+	retq
+.LBB4_4:
+	movl	$1633907557, %eax               # imm = 0x61637365
+	xorl	(%rsi), %eax
+	movl	$1684369505, %ecx               # imm = 0x64657061
+	xorl	3(%rsi), %ecx
+	orl	%eax, %ecx
+	je	.LBB4_5
+.LBB4_6:
+	xorl	%eax, %eax
+	retq
+.LBB4_5:
+	leaq	_Z15escaped_consumei(%rip), %rax
+	retq
+.Lfunc_end4:
+	.size	_Z14select_versionSt17basic_string_viewIcSt11char_traitsIcEE, .Lfunc_end4-_Z14select_versionSt17basic_string_viewIcSt11char_traitsIcEE
+	.cfi_endproc
+                                        # -- End function
+	.globl	_Z7run_oneSt17basic_string_viewIcSt11char_traitsIcEEii # -- Begin function _Z7run_oneSt17basic_string_viewIcSt11char_traitsIcEEii
+	.p2align	4, 0x90
+	.type	_Z7run_oneSt17basic_string_viewIcSt11char_traitsIcEEii,@function
+_Z7run_oneSt17basic_string_viewIcSt11char_traitsIcEEii: # @_Z7run_oneSt17basic_string_viewIcSt11char_traitsIcEEii
+.Lfunc_begin1:
+	.cfi_startproc
+	.cfi_personality 155, DW.ref.__gxx_personality_v0
+	.cfi_lsda 27, .Lexception1
+# %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	pushq	%r15
+	.cfi_def_cfa_offset 24
+	pushq	%r14
+	.cfi_def_cfa_offset 32
+	pushq	%r13
+	.cfi_def_cfa_offset 40
+	pushq	%r12
+	.cfi_def_cfa_offset 48
+	pushq	%rbx
+	.cfi_def_cfa_offset 56
+	subq	$56, %rsp
+	.cfi_def_cfa_offset 112
+	.cfi_offset %rbx, -56
+	.cfi_offset %r12, -48
+	.cfi_offset %r13, -40
+	.cfi_offset %r14, -32
+	.cfi_offset %r15, -24
+	.cfi_offset %rbp, -16
+	movl	%ecx, %ebx
+	movl	%edx, %r14d
+	movq	%rsi, %r15
+	movq	%rdi, %r12
+	cmpq	$7, %rdi
+	je	.LBB5_4
+# %bb.1:
+	cmpq	$5, %r12
+	jne	.LBB5_8
+# %bb.2:
+	movl	$1633906540, %eax               # imm = 0x61636F6C
+	xorl	(%r15), %eax
+	movzbl	4(%r15), %ecx
+	xorl	$108, %ecx
+	orl	%eax, %ecx
+	jne	.LBB5_8
+# %bb.3:
+	leaq	_Z13local_consumei(%rip), %r13
+	jmp	.LBB5_6
+.LBB5_4:
+	movl	$1633907557, %eax               # imm = 0x61637365
+	xorl	(%r15), %eax
+	movl	$1684369505, %ecx               # imm = 0x64657061
+	xorl	3(%r15), %ecx
+	orl	%eax, %ecx
+	jne	.LBB5_8
+# %bb.5:
+	leaq	_Z15escaped_consumei(%rip), %r13
+.LBB5_6:
+	leal	-1(%r14), %eax
+	cltq
+	movslq	%r14d, %rdi
+	imulq	%rdi, %rax
+	movq	%rax, %rbp
+	shrq	$63, %rbp
+	addq	%rax, %rbp
+	sarq	%rbp
+                                        # kill: def $edi killed $edi killed $rdi
+	callq	*%r13
+	movq	$42, 8(%rsp)
+	leaq	.L.str.4(%rip), %rcx
+	movq	%rcx, 16(%rsp)
+	cmpq	%rbp, %rax
+	jne	.LBB5_12
+# %bb.7:
+	movq	%r13, %rdi
+	movl	%r14d, %esi
+	movl	%ebx, %edx
+	callq	_Z8bench_nsPFliEii
+	movq	_ZL4sink(%rip), %r9
+	leaq	.L.str.5(%rip), %rdi
+	movl	%r12d, %esi
+	movq	%r15, %rdx
+	movl	%r14d, %ecx
+	movl	%ebx, %r8d
+	movb	$1, %al
+	callq	printf@PLT
+	xorl	%eax, %eax
+	addq	$56, %rsp
+	.cfi_def_cfa_offset 56
+	popq	%rbx
+	.cfi_def_cfa_offset 48
+	popq	%r12
+	.cfi_def_cfa_offset 40
+	popq	%r13
+	.cfi_def_cfa_offset 32
+	popq	%r14
+	.cfi_def_cfa_offset 24
+	popq	%r15
+	.cfi_def_cfa_offset 16
+	popq	%rbp
+	.cfi_def_cfa_offset 8
+	retq
+.LBB5_8:
+	.cfi_def_cfa_offset 112
+	movq	$32, 8(%rsp)
+	leaq	.L.str.3(%rip), %rax
+	movq	%rax, 16(%rsp)
+	movl	$16, %edi
+	callq	__cxa_allocate_exception@PLT
+	movq	%rax, %rbx
+.Ltmp16:
+	leaq	24(%rsp), %rdi
+	leaq	8(%rsp), %rsi
+	leaq	7(%rsp), %rdx
+	callq	_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ISt17basic_string_viewIcS2_EvEERKT_RKS3_
+.Ltmp17:
+# %bb.9:
+	movb	$1, %bpl
+.Ltmp19:
+	leaq	24(%rsp), %rsi
+	movq	%rbx, %rdi
+	callq	_ZNSt13runtime_errorC1ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE@PLT
+.Ltmp20:
+# %bb.10:
+	xorl	%ebp, %ebp
+.Ltmp21:
+	movq	_ZTISt13runtime_error@GOTPCREL(%rip), %rsi
+	movq	_ZNSt13runtime_errorD1Ev@GOTPCREL(%rip), %rdx
+	movq	%rbx, %rdi
+	callq	__cxa_throw@PLT
+.Ltmp22:
+# %bb.11:
+.LBB5_12:
+	movl	$16, %edi
+	callq	__cxa_allocate_exception@PLT
+	movq	%rax, %rbx
+.Ltmp8:
+	leaq	24(%rsp), %rdi
+	leaq	8(%rsp), %rsi
+	leaq	7(%rsp), %rdx
+	callq	_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ISt17basic_string_viewIcS2_EvEERKT_RKS3_
+.Ltmp9:
+# %bb.13:
+	movb	$1, %bpl
+.Ltmp11:
+	leaq	24(%rsp), %rsi
+	movq	%rbx, %rdi
+	callq	_ZNSt13runtime_errorC1ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE@PLT
+.Ltmp12:
+# %bb.14:
+	xorl	%ebp, %ebp
+.Ltmp13:
+	movq	_ZTISt13runtime_error@GOTPCREL(%rip), %rsi
+	movq	_ZNSt13runtime_errorD1Ev@GOTPCREL(%rip), %rdx
+	movq	%rbx, %rdi
+	callq	__cxa_throw@PLT
+.Ltmp14:
+# %bb.15:
+.LBB5_16:
+.Ltmp15:
+	jmp	.LBB5_19
+.LBB5_17:
+.Ltmp10:
+	jmp	.LBB5_24
+.LBB5_18:
+.Ltmp23:
+.LBB5_19:
+	movq	%rax, %r14
+	movq	24(%rsp), %rdi
+	leaq	40(%rsp), %rax
+	cmpq	%rax, %rdi
+	jne	.LBB5_22
+# %bb.20:
+	testb	%bpl, %bpl
+	jne	.LBB5_25
+	jmp	.LBB5_21
+.LBB5_22:
+	callq	_ZdlPv@PLT
+	testb	%bpl, %bpl
+	jne	.LBB5_25
+.LBB5_21:
+	movq	%r14, %rdi
+	callq	_Unwind_Resume@PLT
+.LBB5_23:
+.Ltmp18:
+.LBB5_24:
+	movq	%rax, %r14
+.LBB5_25:
+	movq	%rbx, %rdi
+	callq	__cxa_free_exception@PLT
+	movq	%r14, %rdi
+	callq	_Unwind_Resume@PLT
+.Lfunc_end5:
+	.size	_Z7run_oneSt17basic_string_viewIcSt11char_traitsIcEEii, .Lfunc_end5-_Z7run_oneSt17basic_string_viewIcSt11char_traitsIcEEii
+	.cfi_endproc
+	.section	.gcc_except_table,"a",@progbits
+	.p2align	2, 0x0
+GCC_except_table5:
+.Lexception1:
+	.byte	255                             # @LPStart Encoding = omit
+	.byte	255                             # @TType Encoding = omit
+	.byte	1                               # Call site Encoding = uleb128
+	.uleb128 .Lcst_end1-.Lcst_begin1
+.Lcst_begin1:
+	.uleb128 .Lfunc_begin1-.Lfunc_begin1    # >> Call Site 1 <<
+	.uleb128 .Ltmp16-.Lfunc_begin1          #   Call between .Lfunc_begin1 and .Ltmp16
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp16-.Lfunc_begin1          # >> Call Site 2 <<
+	.uleb128 .Ltmp17-.Ltmp16                #   Call between .Ltmp16 and .Ltmp17
+	.uleb128 .Ltmp18-.Lfunc_begin1          #     jumps to .Ltmp18
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp19-.Lfunc_begin1          # >> Call Site 3 <<
+	.uleb128 .Ltmp22-.Ltmp19                #   Call between .Ltmp19 and .Ltmp22
+	.uleb128 .Ltmp23-.Lfunc_begin1          #     jumps to .Ltmp23
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp22-.Lfunc_begin1          # >> Call Site 4 <<
+	.uleb128 .Ltmp8-.Ltmp22                 #   Call between .Ltmp22 and .Ltmp8
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp8-.Lfunc_begin1           # >> Call Site 5 <<
+	.uleb128 .Ltmp9-.Ltmp8                  #   Call between .Ltmp8 and .Ltmp9
+	.uleb128 .Ltmp10-.Lfunc_begin1          #     jumps to .Ltmp10
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp11-.Lfunc_begin1          # >> Call Site 6 <<
+	.uleb128 .Ltmp14-.Ltmp11                #   Call between .Ltmp11 and .Ltmp14
+	.uleb128 .Ltmp15-.Lfunc_begin1          #     jumps to .Ltmp15
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp14-.Lfunc_begin1          # >> Call Site 7 <<
+	.uleb128 .Lfunc_end5-.Ltmp14            #   Call between .Ltmp14 and .Lfunc_end5
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+.Lcst_end1:
+	.p2align	2, 0x0
+                                        # -- End function
+	.text
+	.globl	_Z17positive_argumentSt17basic_string_viewIcSt11char_traitsIcEEi # -- Begin function _Z17positive_argumentSt17basic_string_viewIcSt11char_traitsIcEEi
+	.p2align	4, 0x90
+	.type	_Z17positive_argumentSt17basic_string_viewIcSt11char_traitsIcEEi,@function
+_Z17positive_argumentSt17basic_string_viewIcSt11char_traitsIcEEi: # @_Z17positive_argumentSt17basic_string_viewIcSt11char_traitsIcEEi
+.Lfunc_begin2:
+	.cfi_startproc
+	.cfi_personality 155, DW.ref.__gxx_personality_v0
+	.cfi_lsda 27, .Lexception2
+# %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	pushq	%r14
+	.cfi_def_cfa_offset 24
+	pushq	%rbx
+	.cfi_def_cfa_offset 32
+	subq	$64, %rsp
+	.cfi_def_cfa_offset 96
+	.cfi_offset %rbx, -32
+	.cfi_offset %r14, -24
+	.cfi_offset %rbp, -16
+	testq	%rdi, %rdi
+	je	.LBB6_12
+# %bb.1:
+	movzbl	(%rsi), %r8d
+	xorl	%ecx, %ecx
+	cmpb	$45, %r8b
+	sete	%cl
+	cmpq	%rdi, %rcx
+	je	.LBB6_12
+# %bb.2:
+	leaq	(%rsi,%rdi), %r9
+	addq	%rcx, %rsi
+	xorl	%eax, %eax
+	movl	$28, %r11d
+	movl	$10, %ebx
+	movq	%rsi, %r10
+	.p2align	4, 0x90
+.LBB6_3:                                # =>This Inner Loop Header: Depth=1
+	movzbl	(%r10), %ebp
+	addb	$-48, %bpl
+	cmpb	$9, %bpl
+	ja	.LBB6_10
+# %bb.4:                                #   in Loop: Header=BB6_3 Depth=1
+	movzbl	%bpl, %r14d
+	testl	%r11d, %r11d
+	js	.LBB6_6
+# %bb.5:                                #   in Loop: Header=BB6_3 Depth=1
+	leal	(%rax,%rax,4), %eax
+	leal	(%r14,%rax,2), %eax
+.LBB6_8:                                #   in Loop: Header=BB6_3 Depth=1
+	incq	%r10
+	decq	%rdi
+	addl	$-4, %r11d
+	cmpq	%rdi, %rcx
+	jne	.LBB6_3
+	jmp	.LBB6_9
+.LBB6_6:                                #   in Loop: Header=BB6_3 Depth=1
+                                        # kill: def $eax killed $eax killed $rax
+	movl	%edx, %ebp
+	mull	%ebx
+                                        # kill: def $eax killed $eax def $rax
+	jo	.LBB6_12
+# %bb.7:                                #   in Loop: Header=BB6_3 Depth=1
+	movl	%ebp, %edx
+	addl	%r14d, %eax
+	jae	.LBB6_8
+	jmp	.LBB6_12
+.LBB6_9:
+	movq	%r9, %r10
+.LBB6_10:
+	cmpq	%rsi, %r10
+	je	.LBB6_12
+# %bb.11:
+	addl	$2147483647, %ecx               # imm = 0x7FFFFFFF
+	cmpl	%ecx, %eax
+	jbe	.LBB6_13
+.LBB6_12:
+	movq	$53, 16(%rsp)
+	leaq	.L.str.6(%rip), %rax
+	movq	%rax, 24(%rsp)
+.LBB6_16:
+	movl	$16, %edi
+	callq	__cxa_allocate_exception@PLT
+	movq	%rax, %rbx
+.Ltmp24:
+	leaq	32(%rsp), %rdi
+	leaq	16(%rsp), %rsi
+	leaq	15(%rsp), %rdx
+	callq	_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ISt17basic_string_viewIcS2_EvEERKT_RKS3_
+.Ltmp25:
+# %bb.17:
+	movb	$1, %bpl
+.Ltmp27:
+	leaq	32(%rsp), %rsi
+	movq	%rbx, %rdi
+	callq	_ZNSt13runtime_errorC1ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE@PLT
+.Ltmp28:
+# %bb.18:
+	xorl	%ebp, %ebp
+.Ltmp29:
+	movq	_ZTISt13runtime_error@GOTPCREL(%rip), %rsi
+	movq	_ZNSt13runtime_errorD1Ev@GOTPCREL(%rip), %rdx
+	movq	%rbx, %rdi
+	callq	__cxa_throw@PLT
+.Ltmp30:
+# %bb.25:
+.LBB6_13:
+	movl	%eax, %ecx
+	negl	%ecx
+	cmpb	$45, %r8b
+	cmovnel	%eax, %ecx
+	movq	$53, 16(%rsp)
+	leaq	.L.str.6(%rip), %rax
+	movq	%rax, 24(%rsp)
+	cmpq	%r9, %r10
+	jne	.LBB6_16
+# %bb.14:
+	testl	%ecx, %ecx
+	jle	.LBB6_16
+# %bb.15:
+	cmpl	%edx, %ecx
+	jg	.LBB6_16
+# %bb.26:
+	movl	%ecx, %eax
+	addq	$64, %rsp
+	.cfi_def_cfa_offset 32
+	popq	%rbx
+	.cfi_def_cfa_offset 24
+	popq	%r14
+	.cfi_def_cfa_offset 16
+	popq	%rbp
+	.cfi_def_cfa_offset 8
+	retq
+.LBB6_20:
+	.cfi_def_cfa_offset 96
+.Ltmp31:
+	movq	%rax, %r14
+	movq	32(%rsp), %rdi
+	leaq	48(%rsp), %rax
+	cmpq	%rax, %rdi
+	jne	.LBB6_21
+# %bb.22:
+	testb	%bpl, %bpl
+	jne	.LBB6_23
+.LBB6_24:
+	movq	%r14, %rdi
+	callq	_Unwind_Resume@PLT
+.LBB6_21:
+	callq	_ZdlPv@PLT
+	testb	%bpl, %bpl
+	je	.LBB6_24
+	jmp	.LBB6_23
+.LBB6_19:
+.Ltmp26:
+	movq	%rax, %r14
+.LBB6_23:
+	movq	%rbx, %rdi
+	callq	__cxa_free_exception@PLT
+	movq	%r14, %rdi
+	callq	_Unwind_Resume@PLT
+.Lfunc_end6:
+	.size	_Z17positive_argumentSt17basic_string_viewIcSt11char_traitsIcEEi, .Lfunc_end6-_Z17positive_argumentSt17basic_string_viewIcSt11char_traitsIcEEi
+	.cfi_endproc
+	.section	.gcc_except_table,"a",@progbits
+	.p2align	2, 0x0
+GCC_except_table6:
+.Lexception2:
+	.byte	255                             # @LPStart Encoding = omit
+	.byte	255                             # @TType Encoding = omit
+	.byte	1                               # Call site Encoding = uleb128
+	.uleb128 .Lcst_end2-.Lcst_begin2
+.Lcst_begin2:
+	.uleb128 .Lfunc_begin2-.Lfunc_begin2    # >> Call Site 1 <<
+	.uleb128 .Ltmp24-.Lfunc_begin2          #   Call between .Lfunc_begin2 and .Ltmp24
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp24-.Lfunc_begin2          # >> Call Site 2 <<
+	.uleb128 .Ltmp25-.Ltmp24                #   Call between .Ltmp24 and .Ltmp25
+	.uleb128 .Ltmp26-.Lfunc_begin2          #     jumps to .Ltmp26
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp27-.Lfunc_begin2          # >> Call Site 3 <<
+	.uleb128 .Ltmp30-.Ltmp27                #   Call between .Ltmp27 and .Ltmp30
+	.uleb128 .Ltmp31-.Lfunc_begin2          #     jumps to .Ltmp31
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp30-.Lfunc_begin2          # >> Call Site 4 <<
+	.uleb128 .Lfunc_end6-.Ltmp30            #   Call between .Ltmp30 and .Lfunc_end6
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+.Lcst_end2:
+	.p2align	2, 0x0
+                                        # -- End function
+	.text
+	.globl	main                            # -- Begin function main
+	.p2align	4, 0x90
+	.type	main,@function
+main:                                   # @main
+.Lfunc_begin3:
+	.cfi_startproc
+	.cfi_personality 155, DW.ref.__gxx_personality_v0
+	.cfi_lsda 27, .Lexception3
+# %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	pushq	%r15
+	.cfi_def_cfa_offset 24
+	pushq	%r14
+	.cfi_def_cfa_offset 32
+	pushq	%r12
+	.cfi_def_cfa_offset 40
+	pushq	%rbx
+	.cfi_def_cfa_offset 48
+	subq	$64, %rsp
+	.cfi_def_cfa_offset 112
+	.cfi_offset %rbx, -48
+	.cfi_offset %r12, -40
+	.cfi_offset %r14, -32
+	.cfi_offset %r15, -24
+	.cfi_offset %rbp, -16
+	cmpl	$5, %edi
+	jne	.LBB7_19
+# %bb.1:
+	movq	%rsi, %r15
+	movq	8(%rsi), %rbx
+	movq	%rbx, %rdi
+	callq	strlen@PLT
+	cmpq	$7, %rax
+	jne	.LBB7_18
+# %bb.2:
+	movl	$1700932909, %eax               # imm = 0x65622D2D
+	xorl	(%rbx), %eax
+	movl	$1751346789, %ecx               # imm = 0x68636E65
+	xorl	3(%rbx), %ecx
+	orl	%eax, %ecx
+	jne	.LBB7_18
+# %bb.3:
+	movq	16(%r15), %rbx
+	movq	%rbx, %rdi
+	callq	strlen@PLT
+	movq	%rax, %r14
+	movq	24(%r15), %r12
+	movq	%r12, %rdi
+	callq	strlen@PLT
+.Ltmp40:
+	movq	%rax, %rdi
+	movq	%r12, %rsi
+	movl	$4096, %edx                     # imm = 0x1000
+	callq	_Z17positive_argumentSt17basic_string_viewIcSt11char_traitsIcEEi
+.Ltmp41:
+# %bb.4:
+	movl	%eax, %ebp
+	movq	32(%r15), %r15
+	movq	%r15, %rdi
+	callq	strlen@PLT
+.Ltmp42:
+	movq	%rax, %rdi
+	movq	%r15, %rsi
+	movl	$10000000, %edx                 # imm = 0x989680
+	callq	_Z17positive_argumentSt17basic_string_viewIcSt11char_traitsIcEEi
+.Ltmp43:
+# %bb.5:
+	movslq	%ebp, %rcx
+	movslq	%eax, %rdx
+	imulq	%rcx, %rdx
+	movq	$57, 16(%rsp)
+	leaq	.L.str.8(%rip), %rcx
+	movq	%rcx, 24(%rsp)
+	cmpq	$100000001, %rdx                # imm = 0x5F5E101
+	jge	.LBB7_6
+# %bb.17:
+	xorl	%r15d, %r15d
+.Ltmp52:
+	movq	%r14, %rdi
+	movq	%rbx, %rsi
+	movl	%ebp, %edx
+	movl	%eax, %ecx
+	callq	_Z7run_oneSt17basic_string_viewIcSt11char_traitsIcEEii
+.Ltmp53:
+	jmp	.LBB7_30
+.LBB7_19:
+	movq	$60, 16(%rsp)
+	leaq	.L.str.9(%rip), %rax
+	movq	%rax, 24(%rsp)
+	cmpl	$1, %edi
+	jne	.LBB7_20
+# %bb.26:
+	leaq	32(%rsp), %rax
+	movq	%rax, _ZL17escaped_generator(%rip)
+	leaq	.Lstr(%rip), %rdi
+	callq	puts@PLT
+	leaq	.Lstr.18(%rip), %rdi
+	callq	puts@PLT
+	leaq	.Lstr.19(%rip), %rdi
+	callq	puts@PLT
+	xorl	%r15d, %r15d
+.LBB7_30:
+	movl	%r15d, %eax
+	addq	$64, %rsp
+	.cfi_def_cfa_offset 48
+	popq	%rbx
+	.cfi_def_cfa_offset 40
+	popq	%r12
+	.cfi_def_cfa_offset 32
+	popq	%r14
+	.cfi_def_cfa_offset 24
+	popq	%r15
+	.cfi_def_cfa_offset 16
+	popq	%rbp
+	.cfi_def_cfa_offset 8
+	retq
+.LBB7_18:
+	.cfi_def_cfa_offset 112
+	movq	$60, 16(%rsp)
+	leaq	.L.str.9(%rip), %rax
+	movq	%rax, 24(%rsp)
+.LBB7_20:
+	movl	$16, %edi
+	callq	__cxa_allocate_exception@PLT
+	movq	%rax, %r15
+.Ltmp32:
+	leaq	32(%rsp), %rdi
+	leaq	16(%rsp), %rsi
+	leaq	15(%rsp), %rdx
+	callq	_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ISt17basic_string_viewIcS2_EvEERKT_RKS3_
+.Ltmp33:
+# %bb.21:
+	movb	$1, %bpl
+.Ltmp35:
+	leaq	32(%rsp), %rsi
+	movq	%r15, %rdi
+	callq	_ZNSt13runtime_errorC1ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE@PLT
+.Ltmp36:
+# %bb.22:
+	xorl	%ebp, %ebp
+.Ltmp37:
+	movq	_ZTISt13runtime_error@GOTPCREL(%rip), %rsi
+	movq	_ZNSt13runtime_errorD1Ev@GOTPCREL(%rip), %rdx
+	movq	%r15, %rdi
+	callq	__cxa_throw@PLT
+.Ltmp38:
+# %bb.25:
+.LBB7_6:
+	movl	$16, %edi
+	callq	__cxa_allocate_exception@PLT
+	movq	%rax, %r15
+.Ltmp44:
+	leaq	32(%rsp), %rdi
+	leaq	16(%rsp), %rsi
+	leaq	15(%rsp), %rdx
+	callq	_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ISt17basic_string_viewIcS2_EvEERKT_RKS3_
+.Ltmp45:
+# %bb.7:
+	movb	$1, %bpl
+.Ltmp47:
+	leaq	32(%rsp), %rsi
+	movq	%r15, %rdi
+	callq	_ZNSt13runtime_errorC1ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE@PLT
+.Ltmp48:
+# %bb.8:
+	xorl	%ebp, %ebp
+.Ltmp49:
+	movq	_ZTISt13runtime_error@GOTPCREL(%rip), %rsi
+	movq	_ZNSt13runtime_errorD1Ev@GOTPCREL(%rip), %rdx
+	movq	%r15, %rdi
+	callq	__cxa_throw@PLT
+.Ltmp50:
+# %bb.16:
+.LBB7_11:
+.Ltmp51:
+	jmp	.LBB7_12
+.LBB7_9:
+.Ltmp46:
+	jmp	.LBB7_10
+.LBB7_24:
+.Ltmp39:
+.LBB7_12:
+	movq	%rdx, %r14
+	movq	%rax, %rbx
+	movq	32(%rsp), %rdi
+	leaq	48(%rsp), %rax
+	cmpq	%rax, %rdi
+	je	.LBB7_14
+# %bb.13:
+	callq	_ZdlPv@PLT
+.LBB7_14:
+	testb	%bpl, %bpl
+	jne	.LBB7_15
+	jmp	.LBB7_28
+.LBB7_23:
+.Ltmp34:
+.LBB7_10:
+	movq	%rdx, %r14
+	movq	%rax, %rbx
+.LBB7_15:
+	movq	%r15, %rdi
+	callq	__cxa_free_exception@PLT
+	jmp	.LBB7_28
+.LBB7_27:
+.Ltmp54:
+	movq	%rdx, %r14
+	movq	%rax, %rbx
+.LBB7_28:
+	movq	%rbx, %rdi
+	cmpl	$1, %r14d
+	jne	.LBB7_31
+# %bb.29:
+	callq	__cxa_begin_catch@PLT
+	movq	stderr@GOTPCREL(%rip), %rcx
+	movq	(%rcx), %rbx
+	movq	(%rax), %rcx
+	movq	%rax, %rdi
+	callq	*16(%rcx)
+	leaq	.L.str.15(%rip), %rsi
+	movq	%rbx, %rdi
+	movq	%rax, %rdx
+	xorl	%eax, %eax
+	callq	fprintf@PLT
+	callq	__cxa_end_catch@PLT
+	movl	$1, %r15d
+	jmp	.LBB7_30
+.LBB7_31:
+	callq	_Unwind_Resume@PLT
+.Lfunc_end7:
+	.size	main, .Lfunc_end7-main
+	.cfi_endproc
+	.section	.gcc_except_table,"a",@progbits
+	.p2align	2, 0x0
+GCC_except_table7:
+.Lexception3:
+	.byte	255                             # @LPStart Encoding = omit
+	.byte	155                             # @TType Encoding = indirect pcrel sdata4
+	.uleb128 .Lttbase0-.Lttbaseref0
+.Lttbaseref0:
+	.byte	1                               # Call site Encoding = uleb128
+	.uleb128 .Lcst_end3-.Lcst_begin3
+.Lcst_begin3:
+	.uleb128 .Ltmp40-.Lfunc_begin3          # >> Call Site 1 <<
+	.uleb128 .Ltmp53-.Ltmp40                #   Call between .Ltmp40 and .Ltmp53
+	.uleb128 .Ltmp54-.Lfunc_begin3          #     jumps to .Ltmp54
+	.byte	3                               #   On action: 2
+	.uleb128 .Ltmp53-.Lfunc_begin3          # >> Call Site 2 <<
+	.uleb128 .Ltmp32-.Ltmp53                #   Call between .Ltmp53 and .Ltmp32
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp32-.Lfunc_begin3          # >> Call Site 3 <<
+	.uleb128 .Ltmp33-.Ltmp32                #   Call between .Ltmp32 and .Ltmp33
+	.uleb128 .Ltmp34-.Lfunc_begin3          #     jumps to .Ltmp34
+	.byte	3                               #   On action: 2
+	.uleb128 .Ltmp35-.Lfunc_begin3          # >> Call Site 4 <<
+	.uleb128 .Ltmp38-.Ltmp35                #   Call between .Ltmp35 and .Ltmp38
+	.uleb128 .Ltmp39-.Lfunc_begin3          #     jumps to .Ltmp39
+	.byte	3                               #   On action: 2
+	.uleb128 .Ltmp38-.Lfunc_begin3          # >> Call Site 5 <<
+	.uleb128 .Ltmp44-.Ltmp38                #   Call between .Ltmp38 and .Ltmp44
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp44-.Lfunc_begin3          # >> Call Site 6 <<
+	.uleb128 .Ltmp45-.Ltmp44                #   Call between .Ltmp44 and .Ltmp45
+	.uleb128 .Ltmp46-.Lfunc_begin3          #     jumps to .Ltmp46
+	.byte	3                               #   On action: 2
+	.uleb128 .Ltmp47-.Lfunc_begin3          # >> Call Site 7 <<
+	.uleb128 .Ltmp50-.Ltmp47                #   Call between .Ltmp47 and .Ltmp50
+	.uleb128 .Ltmp51-.Lfunc_begin3          #     jumps to .Ltmp51
+	.byte	3                               #   On action: 2
+	.uleb128 .Ltmp50-.Lfunc_begin3          # >> Call Site 8 <<
+	.uleb128 .Lfunc_end7-.Ltmp50            #   Call between .Ltmp50 and .Lfunc_end7
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+.Lcst_end3:
+	.byte	0                               # >> Action Record 1 <<
+                                        #   Cleanup
+	.byte	0                               #   No further actions
+	.byte	1                               # >> Action Record 2 <<
+                                        #   Catch TypeInfo 1
+	.byte	125                             #   Continue to action 1
+	.p2align	2, 0x0
+                                        # >> Catch TypeInfos <<
+.Ltmp55:                                # TypeInfo 1
+	.long	.L_ZTISt9exception.DW.stub-.Ltmp55
+.Lttbase0:
+	.p2align	2, 0x0
+                                        # -- End function
+	.section	.text._ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ISt17basic_string_viewIcS2_EvEERKT_RKS3_,"axG",@progbits,_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ISt17basic_string_viewIcS2_EvEERKT_RKS3_,comdat
+	.weak	_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ISt17basic_string_viewIcS2_EvEERKT_RKS3_ # -- Begin function _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ISt17basic_string_viewIcS2_EvEERKT_RKS3_
+	.p2align	4, 0x90
+	.type	_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ISt17basic_string_viewIcS2_EvEERKT_RKS3_,@function
+_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ISt17basic_string_viewIcS2_EvEERKT_RKS3_: # @_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ISt17basic_string_viewIcS2_EvEERKT_RKS3_
+	.cfi_startproc
+# %bb.0:
+	pushq	%r15
+	.cfi_def_cfa_offset 16
+	pushq	%r14
+	.cfi_def_cfa_offset 24
+	pushq	%r12
+	.cfi_def_cfa_offset 32
+	pushq	%rbx
+	.cfi_def_cfa_offset 40
+	pushq	%rax
+	.cfi_def_cfa_offset 48
+	.cfi_offset %rbx, -40
+	.cfi_offset %r12, -32
+	.cfi_offset %r14, -24
+	.cfi_offset %r15, -16
+	movq	%rdi, %r14
+	movq	(%rsi), %rbx
+	movq	8(%rsi), %r15
+	leaq	16(%rdi), %r12
+	movq	%r12, (%rdi)
+	testq	%rbx, %rbx
+	je	.LBB8_2
+# %bb.1:
+	testq	%r15, %r15
+	je	.LBB8_11
+.LBB8_2:
+	cmpq	$16, %rbx
+	jb	.LBB8_6
+# %bb.3:
+	testq	%rbx, %rbx
+	js	.LBB8_12
+# %bb.4:
+	movq	%rbx, %rdi
+	incq	%rdi
+	js	.LBB8_13
+# %bb.5:
+	callq	_Znwm@PLT
+	movq	%rax, %r12
+	movq	%rax, (%r14)
+	movq	%rbx, 16(%r14)
+.LBB8_6:
+	testq	%rbx, %rbx
+	je	.LBB8_10
+# %bb.7:
+	cmpq	$1, %rbx
+	jne	.LBB8_9
+# %bb.8:
+	movzbl	(%r15), %eax
+	movb	%al, (%r12)
+	jmp	.LBB8_10
+.LBB8_9:
+	movq	%r12, %rdi
+	movq	%r15, %rsi
+	movq	%rbx, %rdx
+	callq	memcpy@PLT
+.LBB8_10:
+	movq	%rbx, 8(%r14)
+	movb	$0, (%r12,%rbx)
+	addq	$8, %rsp
+	.cfi_def_cfa_offset 40
+	popq	%rbx
+	.cfi_def_cfa_offset 32
+	popq	%r12
+	.cfi_def_cfa_offset 24
+	popq	%r14
+	.cfi_def_cfa_offset 16
+	popq	%r15
+	.cfi_def_cfa_offset 8
+	retq
+.LBB8_13:
+	.cfi_def_cfa_offset 48
+	callq	_ZSt17__throw_bad_allocv@PLT
+.LBB8_11:
+	leaq	.L.str.16(%rip), %rdi
+	callq	_ZSt19__throw_logic_errorPKc@PLT
+.LBB8_12:
+	leaq	.L.str.17(%rip), %rdi
+	callq	_ZSt20__throw_length_errorPKc@PLT
+.Lfunc_end8:
+	.size	_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ISt17basic_string_viewIcS2_EvEERKT_RKS3_, .Lfunc_end8-_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ISt17basic_string_viewIcS2_EvEERKT_RKS3_
+	.cfi_endproc
+                                        # -- End function
+	.text
+	.p2align	4, 0x90                         # -- Begin function _Z12range_valuesi.resume
+	.type	_Z12range_valuesi.resume,@function
+_Z12range_valuesi.resume:               # @_Z12range_valuesi.resume
+	.cfi_startproc
+# %bb.0:
+	cmpb	$0, 40(%rdi)
+	je	.LBB9_1
+# %bb.3:
+	movl	36(%rdi), %eax
+	incl	%eax
+	cmpl	32(%rdi), %eax
+	jne	.LBB9_2
+.LBB9_4:
+	movq	$0, (%rdi)
+	retq
+.LBB9_1:
+	xorl	%eax, %eax
+	cmpl	$0, 32(%rdi)
+	jle	.LBB9_4
+.LBB9_2:
+	movl	%eax, 36(%rdi)
+	movl	%eax, 16(%rdi)
+	movb	$1, 40(%rdi)
+	retq
+.Lfunc_end9:
+	.size	_Z12range_valuesi.resume, .Lfunc_end9-_Z12range_valuesi.resume
+	.cfi_endproc
+                                        # -- End function
+	.p2align	4, 0x90                         # -- Begin function _Z12range_valuesi.destroy
+	.type	_Z12range_valuesi.destroy,@function
+_Z12range_valuesi.destroy:              # @_Z12range_valuesi.destroy
+	.cfi_startproc
+# %bb.0:
+	cmpq	$0, 24(%rdi)
+	je	_ZdlPv@PLT                      # TAILCALL
+# %bb.1:
+	pushq	%rbx
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbx, -16
+	leaq	24(%rdi), %rax
+	movq	%rdi, %rbx
+	movq	%rax, %rdi
+	callq	_ZNSt15__exception_ptr13exception_ptr10_M_releaseEv@PLT
+	movq	%rbx, %rdi
+	popq	%rbx
+	.cfi_def_cfa_offset 8
+	.cfi_restore %rbx
+	jmp	_ZdlPv@PLT                      # TAILCALL
+.Lfunc_end10:
+	.size	_Z12range_valuesi.destroy, .Lfunc_end10-_Z12range_valuesi.destroy
+	.cfi_endproc
+                                        # -- End function
+	.type	_ZL17escaped_generator,@object  # @_ZL17escaped_generator
+	.local	_ZL17escaped_generator
+	.comm	_ZL17escaped_generator,8,8
+	.type	.L.str,@object                  # @.str
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.L.str:
+	.asciz	"timed workload checksum mismatch"
+	.size	.L.str, 33
+
+	.type	_ZL4sink,@object                # @_ZL4sink
+	.local	_ZL4sink
+	.comm	_ZL4sink,8,8
+	.type	.L.str.1,@object                # @.str.1
+.L.str.1:
+	.asciz	"local"
+	.size	.L.str.1, 6
+
+	.type	.L.str.2,@object                # @.str.2
+.L.str.2:
+	.asciz	"escaped"
+	.size	.L.str.2, 8
+
+	.type	.L.str.3,@object                # @.str.3
+.L.str.3:
+	.asciz	"version must be local or escaped"
+	.size	.L.str.3, 33
+
+	.type	.L.str.4,@object                # @.str.4
+.L.str.4:
+	.asciz	"selected version must compute the same sum"
+	.size	.L.str.4, 43
+
+	.type	.L.str.5,@object                # @.str.5
+.L.str.5:
+	.asciz	"version=%.*s,n=%d,iterations=%d,ns_per_iter=%.3f,sink=%lld\n"
+	.size	.L.str.5, 60
+
+	.type	.L.str.6,@object                # @.str.6
+.L.str.6:
+	.asciz	"benchmark arguments must be bounded positive integers"
+	.size	.L.str.6, 54
+
+	.type	.L.str.7,@object                # @.str.7
+.L.str.7:
+	.asciz	"--bench"
+	.size	.L.str.7, 8
+
+	.type	.L.str.8,@object                # @.str.8
+.L.str.8:
+	.asciz	"benchmark workload exceeds the 100 million element budget"
+	.size	.L.str.8, 58
+
+	.type	.L.str.9,@object                # @.str.9
+.L.str.9:
+	.asciz	"usage: F3_halo_diagnose [--bench local|escaped n iterations]"
+	.size	.L.str.9, 61
+
+	.type	.L.str.15,@object               # @.str.15
+.L.str.15:
+	.asciz	"starter check failed: %s\n"
+	.size	.L.str.15, 26
+
+	.type	.L.str.16,@object               # @.str.16
+.L.str.16:
+	.asciz	"basic_string: construction from null is not valid"
+	.size	.L.str.16, 50
+
+	.type	.L.str.17,@object               # @.str.17
+.L.str.17:
+	.asciz	"basic_string::_M_create"
+	.size	.L.str.17, 24
+
+	.type	.Lstr,@object                   # @str
+.Lstr:
+	.asciz	"F3 starter correctness OK"
+	.size	.Lstr, 26
+
+	.type	.Lstr.18,@object                # @str.18
+.Lstr.18:
+	.asciz	"Run sample_f3.py with this executable for 1 warmup + 5 independent processes."
+	.size	.Lstr.18, 78
+
+	.type	.Lstr.19,@object                # @str.19
+.Lstr.19:
+	.asciz	"Use compiler remark/IR/assembly for HALO; timing alone is not proof."
+	.size	.Lstr.19, 69
+
+	.section	".linker-options","e",@llvm_linker_options
+	.data
+	.p2align	3, 0x0
+.L_ZTISt9exception.DW.stub:
+	.quad	_ZTISt9exception
+	.hidden	DW.ref.__gxx_personality_v0
+	.weak	DW.ref.__gxx_personality_v0
+	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat
+	.p2align	3, 0x0
+	.type	DW.ref.__gxx_personality_v0,@object
+	.size	DW.ref.__gxx_personality_v0, 8
+DW.ref.__gxx_personality_v0:
+	.quad	__gxx_personality_v0
+	.ident	"Ubuntu clang version 18.1.3 (1ubuntu1)"
+	.section	".note.GNU-stack","",@progbits
+	.addrsig
+	.addrsig_sym _Z13local_consumei
+	.addrsig_sym __gxx_personality_v0
+	.addrsig_sym _Z15escaped_consumei
+	.addrsig_sym _Z12range_valuesi.resume
+	.addrsig_sym _Z12range_valuesi.destroy
+	.addrsig_sym _Unwind_Resume
+	.addrsig_sym _ZL4sink
+	.addrsig_sym _ZTISt9exception
+	.addrsig_sym _ZTISt13runtime_error

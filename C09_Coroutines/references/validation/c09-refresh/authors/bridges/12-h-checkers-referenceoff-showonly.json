@@ -1,0 +1,1212 @@
+{
+  "backtraceGraph" : 
+  {
+    "commands" : 
+    [
+      "add_test",
+      "coroutine_study_add_exercise",
+      "_mini_register_test"
+    ],
+    "files" : 
+    [
+      "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/cmake/AddExercise.cmake",
+      "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/A3_co_await_future/CMakeLists.txt",
+      "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/B1_recursive_generator/CMakeLists.txt",
+      "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/B2_task_sequential/CMakeLists.txt",
+      "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/B3_callback_to_awaiter/CMakeLists.txt",
+      "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/C1_stop_token_cancel/CMakeLists.txt",
+      "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/C2_when_all_when_any/CMakeLists.txt",
+      "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/C3_async_scope/CMakeLists.txt",
+      "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/Capstone1_async_crawler/CMakeLists.txt",
+      "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/D1_promise_8_hooks/CMakeLists.txt",
+      "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/D3_final_suspend_symmetric/CMakeLists.txt",
+      "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/G2_when_all_impl/CMakeLists.txt",
+      "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/H1_as_awaitable/CMakeLists.txt",
+      "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/H2_std_execution_task/CMakeLists.txt",
+      "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/H3_bidirectional_bridge/CMakeLists.txt",
+      "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/I1_asio_echo/CMakeLists.txt",
+      "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/Capstone4_rpc_framework/CMakeLists.txt",
+      "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/I2_io_uring_iocp/CMakeLists.txt",
+      "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/I5_cppcoro_patterns/CMakeLists.txt",
+      "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/J1_eight_pitfalls/CMakeLists.txt",
+      "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/Capstone5_mini_corolib/CMakeLists.txt"
+    ],
+    "nodes" : 
+    [
+      {
+        "file" : 1
+      },
+      {
+        "command" : 1,
+        "file" : 1,
+        "line" : 2,
+        "parent" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 47,
+        "parent" : 1
+      },
+      {
+        "file" : 2
+      },
+      {
+        "command" : 1,
+        "file" : 2,
+        "line" : 1,
+        "parent" : 3
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 47,
+        "parent" : 4
+      },
+      {
+        "file" : 3
+      },
+      {
+        "command" : 1,
+        "file" : 3,
+        "line" : 1,
+        "parent" : 6
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 47,
+        "parent" : 7
+      },
+      {
+        "file" : 4
+      },
+      {
+        "command" : 1,
+        "file" : 4,
+        "line" : 2,
+        "parent" : 9
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 47,
+        "parent" : 10
+      },
+      {
+        "file" : 5
+      },
+      {
+        "command" : 1,
+        "file" : 5,
+        "line" : 1,
+        "parent" : 12
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 47,
+        "parent" : 13
+      },
+      {
+        "file" : 6
+      },
+      {
+        "command" : 1,
+        "file" : 6,
+        "line" : 1,
+        "parent" : 15
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 47,
+        "parent" : 16
+      },
+      {
+        "file" : 7
+      },
+      {
+        "command" : 1,
+        "file" : 7,
+        "line" : 1,
+        "parent" : 18
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 47,
+        "parent" : 19
+      },
+      {
+        "file" : 8
+      },
+      {
+        "command" : 1,
+        "file" : 8,
+        "line" : 1,
+        "parent" : 21
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 47,
+        "parent" : 22
+      },
+      {
+        "file" : 9
+      },
+      {
+        "command" : 1,
+        "file" : 9,
+        "line" : 1,
+        "parent" : 24
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 47,
+        "parent" : 25
+      },
+      {
+        "file" : 10
+      },
+      {
+        "command" : 1,
+        "file" : 10,
+        "line" : 1,
+        "parent" : 27
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 47,
+        "parent" : 28
+      },
+      {
+        "file" : 11
+      },
+      {
+        "command" : 1,
+        "file" : 11,
+        "line" : 1,
+        "parent" : 30
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 47,
+        "parent" : 31
+      },
+      {
+        "file" : 12
+      },
+      {
+        "command" : 0,
+        "file" : 12,
+        "line" : 18,
+        "parent" : 33
+      },
+      {
+        "file" : 13
+      },
+      {
+        "command" : 0,
+        "file" : 13,
+        "line" : 74,
+        "parent" : 35
+      },
+      {
+        "file" : 13
+      },
+      {
+        "command" : 0,
+        "file" : 13,
+        "line" : 98,
+        "parent" : 37
+      },
+      {
+        "file" : 14
+      },
+      {
+        "command" : 0,
+        "file" : 14,
+        "line" : 18,
+        "parent" : 39
+      },
+      {
+        "file" : 15
+      },
+      {
+        "command" : 1,
+        "file" : 15,
+        "line" : 9,
+        "parent" : 41
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 47,
+        "parent" : 42
+      },
+      {
+        "file" : 16
+      },
+      {
+        "command" : 0,
+        "file" : 16,
+        "line" : 44,
+        "parent" : 44
+      },
+      {
+        "file" : 17
+      },
+      {
+        "command" : 1,
+        "file" : 17,
+        "line" : 14,
+        "parent" : 46
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 47,
+        "parent" : 47
+      },
+      {
+        "file" : 18
+      },
+      {
+        "command" : 1,
+        "file" : 18,
+        "line" : 4,
+        "parent" : 49
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 47,
+        "parent" : 50
+      },
+      {
+        "file" : 19
+      },
+      {
+        "command" : 0,
+        "file" : 19,
+        "line" : 16,
+        "parent" : 52
+      },
+      {
+        "file" : 20
+      },
+      {
+        "command" : 2,
+        "file" : 20,
+        "line" : 49,
+        "parent" : 54
+      },
+      {
+        "command" : 0,
+        "file" : 20,
+        "line" : 27,
+        "parent" : 55
+      },
+      {
+        "file" : 20
+      },
+      {
+        "command" : 2,
+        "file" : 20,
+        "line" : 50,
+        "parent" : 57
+      },
+      {
+        "command" : 0,
+        "file" : 20,
+        "line" : 27,
+        "parent" : 58
+      },
+      {
+        "file" : 20
+      },
+      {
+        "command" : 2,
+        "file" : 20,
+        "line" : 51,
+        "parent" : 60
+      },
+      {
+        "command" : 0,
+        "file" : 20,
+        "line" : 27,
+        "parent" : 61
+      },
+      {
+        "file" : 20
+      },
+      {
+        "command" : 2,
+        "file" : 20,
+        "line" : 52,
+        "parent" : 63
+      },
+      {
+        "command" : 0,
+        "file" : 20,
+        "line" : 27,
+        "parent" : 64
+      },
+      {
+        "file" : 20
+      },
+      {
+        "command" : 2,
+        "file" : 20,
+        "line" : 53,
+        "parent" : 66
+      },
+      {
+        "command" : 0,
+        "file" : 20,
+        "line" : 27,
+        "parent" : 67
+      },
+      {
+        "file" : 20
+      },
+      {
+        "command" : 2,
+        "file" : 20,
+        "line" : 54,
+        "parent" : 69
+      },
+      {
+        "command" : 0,
+        "file" : 20,
+        "line" : 27,
+        "parent" : 70
+      },
+      {
+        "file" : 20
+      },
+      {
+        "command" : 2,
+        "file" : 20,
+        "line" : 55,
+        "parent" : 72
+      },
+      {
+        "command" : 0,
+        "file" : 20,
+        "line" : 27,
+        "parent" : 73
+      },
+      {
+        "file" : 20
+      },
+      {
+        "command" : 2,
+        "file" : 20,
+        "line" : 56,
+        "parent" : 75
+      },
+      {
+        "command" : 0,
+        "file" : 20,
+        "line" : 27,
+        "parent" : 76
+      },
+      {
+        "file" : 20
+      },
+      {
+        "command" : 2,
+        "file" : 20,
+        "line" : 57,
+        "parent" : 78
+      },
+      {
+        "command" : 0,
+        "file" : 20,
+        "line" : 27,
+        "parent" : 79
+      },
+      {
+        "file" : 20
+      },
+      {
+        "command" : 2,
+        "file" : 20,
+        "line" : 65,
+        "parent" : 81
+      },
+      {
+        "command" : 0,
+        "file" : 20,
+        "line" : 27,
+        "parent" : 82
+      },
+      {
+        "file" : 20
+      },
+      {
+        "command" : 2,
+        "file" : 20,
+        "line" : 66,
+        "parent" : 84
+      },
+      {
+        "command" : 0,
+        "file" : 20,
+        "line" : 27,
+        "parent" : 85
+      }
+    ]
+  },
+  "kind" : "ctestInfo",
+  "tests" : 
+  [
+    {
+      "backtrace" : 2,
+      "config" : "Release",
+      "name" : "A3_co_await_future",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "starter"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/A3_co_await_future"
+        }
+      ]
+    },
+    {
+      "backtrace" : 5,
+      "config" : "Release",
+      "name" : "B1_recursive_generator",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "starter"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/B1_recursive_generator"
+        }
+      ]
+    },
+    {
+      "backtrace" : 8,
+      "config" : "Release",
+      "name" : "B2_task_sequential",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "starter"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/B2_task_sequential"
+        }
+      ]
+    },
+    {
+      "backtrace" : 11,
+      "config" : "Release",
+      "name" : "B3_callback_to_awaiter",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "starter"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/B3_callback_to_awaiter"
+        }
+      ]
+    },
+    {
+      "backtrace" : 14,
+      "config" : "Release",
+      "name" : "C1_stop_token_cancel",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "starter"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/C1_stop_token_cancel"
+        }
+      ]
+    },
+    {
+      "backtrace" : 17,
+      "config" : "Release",
+      "name" : "C2_when_all_when_any",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "starter"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/C2_when_all_when_any"
+        }
+      ]
+    },
+    {
+      "backtrace" : 20,
+      "config" : "Release",
+      "name" : "C3_async_scope",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "starter"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/C3_async_scope"
+        }
+      ]
+    },
+    {
+      "backtrace" : 23,
+      "config" : "Release",
+      "name" : "Capstone1_async_crawler",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "starter"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/Capstone1_async_crawler"
+        }
+      ]
+    },
+    {
+      "backtrace" : 26,
+      "config" : "Release",
+      "name" : "D1_promise_8_hooks",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "starter"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/D1_promise_8_hooks"
+        }
+      ]
+    },
+    {
+      "backtrace" : 29,
+      "config" : "Release",
+      "name" : "D3_final_suspend_symmetric",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "starter"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/D3_final_suspend_symmetric"
+        }
+      ]
+    },
+    {
+      "backtrace" : 32,
+      "config" : "Release",
+      "name" : "G2_when_all_impl",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "starter"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 5.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/G2_when_all_impl"
+        }
+      ]
+    },
+    {
+      "backtrace" : 34,
+      "command" : 
+      [
+        "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/H1_as_awaitable/Release/H1_as_awaitable.exe"
+      ],
+      "config" : "Release",
+      "name" : "H1_as_awaitable",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "starter"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/H1_as_awaitable"
+        }
+      ]
+    },
+    {
+      "backtrace" : 36,
+      "command" : 
+      [
+        "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/H2_std_execution_task/Release/H2_std_execution_task.exe"
+      ],
+      "config" : "Release",
+      "name" : "H2_std_execution_task",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "starter"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/H2_std_execution_task"
+        }
+      ]
+    },
+    {
+      "backtrace" : 38,
+      "command" : 
+      [
+        "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/H2_std_execution_task/Release/H2_std_task_probe.exe"
+      ],
+      "config" : "Release",
+      "name" : "H2_std_task_probe",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "probe"
+          ]
+        },
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/H2_std_execution_task"
+        }
+      ]
+    },
+    {
+      "backtrace" : 40,
+      "command" : 
+      [
+        "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/H3_bidirectional_bridge/Release/H3_bidirectional_bridge.exe"
+      ],
+      "config" : "Release",
+      "name" : "H3_bidirectional_bridge",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "starter"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/H3_bidirectional_bridge"
+        }
+      ]
+    },
+    {
+      "backtrace" : 43,
+      "config" : "Release",
+      "name" : "I1_asio_echo",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "starter"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/I1_asio_echo"
+        }
+      ]
+    },
+    {
+      "backtrace" : 45,
+      "config" : "Release",
+      "name" : "Capstone4_rpc_framework_student_check",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "rpc",
+            "starter"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 60.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/Capstone4_rpc_framework"
+        }
+      ]
+    },
+    {
+      "backtrace" : 48,
+      "config" : "Release",
+      "name" : "I2_io_uring_iocp",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "starter"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/I2_io_uring_iocp"
+        }
+      ]
+    },
+    {
+      "backtrace" : 51,
+      "config" : "Release",
+      "name" : "I5_cppcoro_patterns",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "starter"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/I5_cppcoro_patterns"
+        }
+      ]
+    },
+    {
+      "backtrace" : 53,
+      "config" : "Release",
+      "name" : "J1_eight_pitfalls",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "starter"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/J1_eight_pitfalls"
+        }
+      ]
+    },
+    {
+      "backtrace" : 56,
+      "config" : "Release",
+      "name" : "mini_task_test",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "starter"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/Capstone5_mini_corolib"
+        }
+      ]
+    },
+    {
+      "backtrace" : 59,
+      "config" : "Release",
+      "name" : "mini_generator_test",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "starter"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/Capstone5_mini_corolib"
+        }
+      ]
+    },
+    {
+      "backtrace" : 62,
+      "config" : "Release",
+      "name" : "mini_when_all_test",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "starter"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/Capstone5_mini_corolib"
+        }
+      ]
+    },
+    {
+      "backtrace" : 65,
+      "config" : "Release",
+      "name" : "mini_sync_wait_test",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "starter"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/Capstone5_mini_corolib"
+        }
+      ]
+    },
+    {
+      "backtrace" : 68,
+      "config" : "Release",
+      "name" : "mini_scope_test",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "starter"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/Capstone5_mini_corolib"
+        }
+      ]
+    },
+    {
+      "backtrace" : 71,
+      "config" : "Release",
+      "name" : "mini_when_any_test",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "starter"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/Capstone5_mini_corolib"
+        }
+      ]
+    },
+    {
+      "backtrace" : 74,
+      "config" : "Release",
+      "name" : "mini_shared_task_test",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "starter"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/Capstone5_mini_corolib"
+        }
+      ]
+    },
+    {
+      "backtrace" : 77,
+      "config" : "Release",
+      "name" : "mini_run_loop_test",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "starter"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/Capstone5_mini_corolib"
+        }
+      ]
+    },
+    {
+      "backtrace" : 80,
+      "config" : "Release",
+      "name" : "mini_stop_test",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "observation",
+            "starter"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/Capstone5_mini_corolib"
+        }
+      ]
+    },
+    {
+      "backtrace" : 83,
+      "config" : "Release",
+      "name" : "mini_task_sender_test",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "starter",
+            "stdexec"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/Capstone5_mini_corolib"
+        }
+      ]
+    },
+    {
+      "backtrace" : 86,
+      "config" : "Release",
+      "name" : "mini_as_awaitable_test",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "starter"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-author-h-checkers-r1/Capstone5_mini_corolib"
+        }
+      ]
+    }
+  ],
+  "version" : 
+  {
+    "major" : 1,
+    "minor" : 0
+  }
+}

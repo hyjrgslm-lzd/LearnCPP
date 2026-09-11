@@ -146,16 +146,28 @@ shared_state<T>
   started/done
   optional<T> value
   exception_ptr error
-  vector<coroutine_handle<>> waiters
+  vector<weak_ptr<registration>> waiters
   optional<task<T>> source
-  shared_ptr<task<void>> runner
+
+producer coroutine parameter
+  -> shared_ptr<shared_state<T>>  // source 收束之前保活
 ```
 
-第一次 await 时，state 登记 waiter，并启动 runner。runner `co_await source`，把结果或异常存进 state，再唤醒所有 waiter。后续 await 如果 state 已 done，直接走 ready 路径，从缓存读结果。
+第一次 await 时，state 登记 waiter 并启动 producer。producer 按值持有 state，`co_await source`，缓存值或异常；它在 final suspend 不挂起，完成后自行释放帧。state 不再拥有 producer，避免二者相互持有。后续 await 如果 state 已 done，直接从缓存读结果。
 
 `await_resume()` 返回拷贝。共享语义要求每个消费者都能读到值；若第一个消费者 move 走结果，第二个消费者就只能看到被移动后的对象。
 
-当前 reference 采用 mutex + vector，足够说明教学目标。生产级 `shared_task` 还要处理 waiter 协程提前销毁、并发插入与完成同时发生、最后引用释放时 source 未完成等更难窗口。
+裸 handle 列表无法表达等待者是否还活着。本轮最小 ASan 复现是：启动 waiter，让 source 挂起，销毁 waiter，再恢复 source；旧代码恢复已经释放的 waiter 帧。当前实现让 awaiter 拥有 registration，列表只持有弱引用。awaiter 析构注销登记，完成路径逐个取得仍存活的登记；前一个恢复动作即使销毁了后一个等待者，后者也不会被恢复。
+
+| 登记阶段 | producer 完成时 | await_suspend 的责任 |
+|---|---|---|
+| registering | 标 completed，不 resume | CAS 失败，返回 false 继续 |
+| suspended | 改 completed，恢复一次 | 已把恢复责任交给完成方 |
+| cancelled | 不恢复 | 等待者已经放弃 |
+
+在成功发布 suspended 后，`await_suspend` 只使用自己的局部 shared_ptr，不再访问可能已销毁的 awaiter。创建 producer 失败同样发布 error+done，不能留下 started=true 且无人完成的状态。弱登记只解决已排序的提前销毁；同一个 coroutine frame 的 owner 销毁与 resume 仍必须由调用方序列化，不能从原子 phase 推导任意并发 destroy 安全。
+
+`shared_task_abandon_test.cpp` 实测提前销毁、一个 callback 销毁另一 waiter、晚到缓存读取及所有外部 owner 消失后的 source 收束。source 必须有限完成，或外部取消能使它完成；让一个永不完成的 source 自行持有状态不会自动变成资源有界。
 
 ## 七、`when_all` 是二元 barrier
 
@@ -217,6 +229,12 @@ co_await loop.schedule()
 
 `task_scope` 是结构化并发的教学版本。它接收 task，在线程中 `sync_wait`，维护 `in_flight` 计数，`wait_empty()` 等计数归零并 join 线程。析构会尝试等待完成并吞掉异常，显式 `wait_empty()` 会重新抛出保存的首个异常。
 
+run_loop 的队列保存非拥有 handle：调用方必须保持对应 task owner，直到队列中的恢复操作执行并收束。它不自动注销已排队任务；销毁 owner 与队列恢复不能并发。不要把 shared_task 的弱登记取消保证套到所有 awaiter。
+
+计数预留与线程启动是一笔事务。必须先递增，避免短任务在线程构造返回前完成而把计数减成负数；但 emplace 或线程创建失败时要回滚预留，再通知等待方并把启动错误抛给调用者。`scope_spawn_failure_test.cpp` 只注入下一次分配失败，不真实耗尽线程；旧版实测 caught=1、in_flight=1、starts=0 后等待超时，修复后归零且 scope 还能接受下一项任务。spawn、wait_empty 和析构由同一个 owner 排序；计数锁不代表 vector 操作可以任意并发。
+
+同样要看完成状态本身的寿命。栈上 sync_wait_state 的通知必须在持锁期间完成；否则一次允许的虚假唤醒可能使等待线程在 done=true 后先销毁状态，通知方随后才访问 cv。这里是标准允许交错的生命周期推导，不是声称已经实测到某次 CV 崩溃。
+
 `stop_token` 当前直接使用 `std::stop_token` / `std::stop_source`。它在 `when_any` loser 场景中体现：winner 请求停止，支持 token 的 loser 在恢复后检查 `stop_requested()` 并尽快返回。
 
 ## 十、stdexec `as_awaitable` 是可选桥接层
@@ -243,7 +261,7 @@ receiver.set_value/error/stopped
 
 当前 `task<T>` 没有独立 stopped 完成通道，所以 Reference 把 stdexec `set_stopped` 映射为 `await_resume()` 中的 `runtime_error`。这和 P2300 `sync_wait(sender)` 的 stopped 返回空 optional 不是同一层契约；若以后要让 core task 支持 stopped，需要同时扩展 task、sync_wait、Reference、正文和测试。
 
-本章保留 H 模块的 sender 桥接入口，但不要把它写成 Capstone5 core 的必需依赖。核心 9 个 reference target 应该在没有 stdexec 时照常构建。
+本章保留 H 模块的 sender 桥接入口，但不要把它写成 Capstone5 core 的必需依赖。核心 reference targets 应该在没有 stdexec 时照常构建。
 
 ## 十一、建议实现顺序
 
@@ -262,6 +280,8 @@ receiver.set_value/error/stopped
 每层的验证都已有 reference test。学生 starter 可以先补最小 int 版本，再泛化到模板。不要新增第三方依赖；核心路径只用标准库。
 
 学生 `tests/` 会实际调用 `include/mini` 中的当前实现。未完成时应明确失败，而不是打印 skip 后返回 0；补完后同一检查覆盖 value、void、error、scope 非空 drain 和组合错误传播；可选 stdexec 桥接检查 stopped 映射异常。默认核心验证不注册学生 starter；要检查 TODO，用 `student` preset 或 `COROUTINE_STUDY_TEST_STARTERS=ON`。Reference 测试用 `mini_reference_` 前缀和 `reference` 标签独立筛选，不能用 starter 的预期失败冒充答案通过。
+
+测试本身也要满足这些前提。本轮 ASan 在 bridge 的 abandoned case 与 run_loop 测试中发现临时捕获型 coroutine lambda 的 stack-use-after-scope：普通 CTest 曾通过，却在真正观察待测行为前就用了已销毁闭包。现改为命名协程，shared_ptr 按值进入 frame，借用的 loop/结果/worker 由 main 保持到任务收束；原失败和修后验证见质量报告的 diagnostics-extra。不能用一个生命周期错误的测试证明另一个组件安全。
 
 ## 十二、Reference 验收入口
 

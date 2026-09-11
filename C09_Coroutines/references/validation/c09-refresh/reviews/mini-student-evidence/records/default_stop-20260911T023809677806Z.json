@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C09_Coroutines/exercises/build/c09-review-mini/default_stop_test"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 0.009256804000017382,
+  "stdout": "provided stop_token aliases: idempotence and callbacks checked\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "/tmp/c07-test-r1h03yr0",
+  "temporary_directory_removed": true,
+  "name": "default_stop",
+  "cwd": "/mnt/f/CPPTrain/LearnCPP",
+  "expected_exit": 0,
+  "required_text": "provided stop_token aliases",
+  "verdict": "PASS"
+}

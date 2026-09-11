@@ -1,93 +1,66 @@
-# C09_Coroutines 质量报告
+# C09 质量报告
 
-> 2026-09-09目录与顶层项目名已迁移；本报告原验证结论及SHA绑定当时版本。新路径验证、项目命名与历史记录格式边界见[目录迁移记录](../../C02_Objects_Lifetime_Ownership/references/directory-migration.md)。
+更新日期：2026-09-11。当前状态：**实现与本机验证完成**。37 单元覆盖、独立审查、Student/Reference 分离及最终编译输入指纹均记录在下述证据中；受限环境单列。
 
-本批定点补修已获[非作者独立 APPROVE](validation/c01-independent-review.md)。审查先关闭默认测试混入Student、Release检查失效、假stopped类型、桥接完成语义冲突，再从随仓库交付的变体源重建复验。核心43项、RPC/bridge两项及Student正反验证的范围如下；没有将有限检查扩大为所有生命周期或平台的正确性证明。本段为审查后的状态回填，审查记录保留其被审原快照指纹。
+## 范围与交付口径
 
-核对日期：2026-09-08。范围：本轮只补 `C09_Coroutines` 内 Capstone4/Capstone5 starter 检查、CTest 接线、覆盖登记与说明文档；未修改根目录、`.omx/` 或用户本地已改的 `exercises/P2_generator_basics/main.cpp`。
+依据[实施规格](implementation-spec.md)，37 单元全审计、按缺口增量修改。[覆盖表](coverage.md)登记每题入口、处置与下游反查；学生 TODO 保留，观察程序通过、学生起点拒绝、Reference 通过和独立 good/bad 分开。没有提交、推送、系统安装或 CI 增补；并行 C10 修改不属于本课。
 
-## 本轮修复
+正文沿执行背景、使用、语言机制、真实 I/O、RPC 和 mini 库推进。复杂样章先经非作者审查后才展开其余批次；[S0 规格](validation/c09-refresh/reviews/s0-spec-review.md)、[S1 样章](validation/c09-refresh/reviews/s1-review.md)记录对应版本。
 
-| 问题 | 修复 | 证据边界 |
-| --- | --- | --- |
-| `mini::sync_wait` 返回 `nullopt`，把未完成伪装成 stopped | `sync_wait(task<T>)`、`sync_wait(task<void>)` 和显式 sender 占位改为抛 `logic_error` | starter 未完成时明确失败；完整语义仍由学生实现和 Reference 验证 |
-| `mini::async_scope::spawn` 先递增 `in_flight_`，析构可能永久等待 | 未完成时在修改计数前抛 `logic_error` | 避免危险挂起；不代写 spawn 答案 |
-| `when_all` 空 tuple 占位可能绕过学生实现 | 保留二元练习形状，运行时明确抛未实现 | 只保证检查能触达接口 |
-| `as_awaitable` 占位挂起后无人恢复 | `await_suspend` 改为抛 `logic_error` | 避免测试卡死；完整 phase 语义仍看 Reference |
-| Capstone5 学生测试打印 skip 后返回 0 | 测试改为实际调用 value、void、error、when_all 和非空 scope 路径；可选 stdexec bridge stopped 按 Reference 检查异常；检查使用 Release 有效的 `coroutine_study::check` | 未完成 starter 失败不标 `WILL_FAIL` |
-| `sync_wait` starter 用空 `stopped_sender` 假覆盖 | 删除无协议 dummy sender；core `task` 只测 value/void/error | 直接 sender stopped 需以后定义真实 sender 协议后再测 |
-| `as_awaitable` stopped 期望与 Reference 冲突 | `just_stopped()` 改为期望 `runtime_error`，与 `mini_ref/stdexec_awaitable.hpp` 和 Reference 测试一致 | 不改 Reference 契约 |
-| Capstone4 starter driver 返回 0 | 改为返回 2 并打印未完成说明 | 该 target 仍可编译；行为验收看 Reference |
-| CTest 缺少外部超时和标签 | 普通 Reference/runtime/Capstone5 默认 30 秒，RPC 60 秒，G2 既有 5 秒保留 | 超时是进程外保护，不替代协议正确性 |
-| 默认 `verify-core` 被未完成 starter 污染 | 新增 `COROUTINE_STUDY_TEST_STARTERS`，默认 OFF，`student` preset 显式 ON | 默认 core 只跑 Reference/runtime；学生检查单独打开 |
+## 修复与原证据
 
-## 构建与测试口径
+| 问题 | 根因与处理 | 证据 |
+|---|---|---|
+| task 结果移动异常泄漏 | 提取期间保持既有 RAII owner；异常仍传播，帧必释放 | [S1](validation/c09-refresh/s1/)，原 alive=1、修复后 alive=0 |
+| scope 启动失败后不能排空 | 预留 in_flight 后创建失败没有回滚；现在回滚并通知 | [scope](validation/c09-refresh/scope/)，原 in_flight=1/starts=0 后超时 |
+| sync_wait 栈状态通知窗口 | 持锁完成 done 与 notify，等待方不能提前销毁 cv | [runtime 审查](validation/c09-refresh/reviews/runtime-review.md)；静态生命周期推导，不宣称实测 CV 崩溃 |
+| shared_task 等待者提前销毁 UAF | 弱登记、phase、注销和逐个恢复；producer 按值保活，消除引用环 | [runtime 审查](validation/c09-refresh/reviews/runtime-review.md)，原 ASan UAF、修复复验通过 |
+| 爬虫错误丢失 URL | 移动请求后 catch 读取已移动字段；保留移动前 URL | [基础审计](validation/c09-refresh/authors/foundation/audit.md)，故障注入前后对照 |
+| H1/H2/H3 常量蒙混 | 将学生操作与检查体分开，变化输入，真实操作 trace、私有检查状态、互斥且恰好一次完成；独立正反例已复验 | [教学/实验审查](validation/c09-refresh/reviews/content-experiment-review.md) |
+| RPC 学生入口与答案契约不同 | 统一 8 字节长度头/4096/QCR，公开接口、逐阶段安全 stub 与同一 semantic checker | [RPC 审查](validation/c09-refresh/reviews/rpc-review.md) |
+| 测试自身捕获型 coroutine lambda UAF | bridge/run_loop 的临时闭包先死；改为命名协程、参数显式保活 | [额外诊断](validation/c09-refresh/final/diagnostics-extra/)；原 stack-use-after-scope，修复后作者与非作者复验均通过 |
+| GCC 无效 dump 参数 | 正常目标不再强制 -fdump-tree-coro；显式诊断改为实际支持的 pass/tree dump | [编译器诊断](validation/c09-refresh/compiler-diagnostics/) |
 
-- `reference` 标签：完整答案或课程运行时检查，应通过。
-- `starter` 标签：学生起点检查；未完成时失败是有效信号，不作为课程通过证据；只有 `COROUTINE_STUDY_TEST_STARTERS=ON` 时注册。
-- `runtime`、`rpc`、`stdexec` 标签：说明依赖或覆盖方向。
-- 核心 Reference 不依赖 stdexec；stdexec bridge 只在 `stdexec::stdexec` target 存在时构建。
+when_any 的一次审查曾建议首 error 即 cancel，已撤回。该课使用 first-success：成功 winner 才请求停止；没有成功时输入需要有限完成或外部取消。保留原 timeout 与 error-first/later-success 对照，不改变契约来制造通过。
 
-## 可复验命令
+## 验证矩阵
 
-本轮实际运行：
+最终冻结矩阵（其后只清理 H2 CMake 文件末尾空行，另有文档/证据更新）：
 
-```powershell
-D:\cmake\install\bin\cmake.exe -S C09_Coroutines/exercises -B C09_Coroutines/exercises/build/c01-supplement -DCOROUTINE_STUDY_BUILD_REFERENCE=ON -DCOROUTINE_STUDY_FETCH_DEPS=OFF -DCOROUTINE_STUDY_TEST_STARTERS=OFF
-D:\cmake\install\bin\cmake.exe --build C09_Coroutines/exercises/build/c01-supplement --config Release
-D:\cmake\install\bin\ctest.exe --test-dir C09_Coroutines/exercises/build/c01-supplement -C Release --output-on-failure
-```
+| 路线 | 阶段结果 | 原记录 |
+|---|---|---|
+| Windows Release/Debug | 各 64 PASS、1 原生 task probe SKIP | [Windows](validation/c09-refresh/final/windows-20260911T050301Z/summary.json) |
+| Student Reference=OFF | 30 项中 7 提供实现/观察通过、23 起点明确拒绝 | [Student](validation/c09-refresh/final/student-20260911T050302Z/summary.json) |
+| WSL Release | 50 PASS，四个 generator 相关目标由独立能力探针排除 | [Linux](validation/c09-refresh/final/linux-20260911T050306Z/summary.json) |
+| ASan/UBSan/LSan | 16 个主体通过：原 13 项，加修复后的 run_loop/bridge 及 RPC | [核心诊断](validation/c09-refresh/final/diagnostics-20260911T034829Z/summary.json)、[补充诊断](validation/c09-refresh/final/diagnostics-extra/) |
+| TSan | 干净能力探针 exit 66：unexpected memory mapping；本环境 SKIP | [能力探针](validation/c09-refresh/final/diagnostics-20260911T034829Z/thread-capability-run.json) |
+| 独立 mini good/bad | when_any/shared_task/executor 与 task sender 同一检查器正反例通过；默认作业仍未实现 | [mini Student 审查](validation/c09-refresh/reviews/mini-student-review.md) |
+| RPC | Student 真实 FAIL；答版、独立 protocol good、精确 bad 拒绝、Reference 分开通过 | [RPC 审查](validation/c09-refresh/reviews/rpc-review.md) |
 
-结果：
+Student 隔离检查读取 CMake 活动源文件和编译器依赖记录：51 个课程源文件，33 份源报告、21 份依赖日志，无缺失源文件、无 Reference 输入；[隔离结果](validation/c09-refresh/final/student-20260911T050302Z/isolation.json)。7 项通过仅证明当前提供的实现/观察，不能推断整题所有 Part 完成。
 
-- configure：通过，VS 2026 / MSVC 19.51.36256.0。
-- build：默认 core 完整构建通过。
-- `ctest --test-dir C09_Coroutines/exercises/build/c01-supplement -C Release --output-on-failure`：43/43 passed；标签汇总只有 `reference` 和 `runtime`，没有 Capstone5 starter。
-- 直接运行 `Capstone4_rpc_framework.exe`：打印 compile-only/starter 说明并返回非零。
+使用 MSVC 19.51 / VS 18 2026、GCC 13.3 与已有 Clang 18。liburing 2.15 的真实 queue_init 成功，I2/WSL 已实测。固定依赖 SHA 由本课离线配置脚本回读；实际命令、编译选项、源文件和进程结果保存在各记录中。
 
-显式 starter 检查：
+## 性能与能力边界
 
-```powershell
-D:\cmake\install\bin\cmake.exe -S C09_Coroutines/exercises -B C09_Coroutines/exercises/build/c01-supplement-starters -G "Visual Studio 18 2026" -DCOROUTINE_STUDY_BUILD_REFERENCE=OFF -DCOROUTINE_STUDY_FETCH_DEPS=OFF -DCOROUTINE_STUDY_TEST_STARTERS=ON
-D:\cmake\install\bin\cmake.exe --build C09_Coroutines/exercises/build/c01-supplement-starters --config Release --target mini_task_test mini_generator_test mini_sync_wait_test mini_when_all_test mini_scope_test J1_eight_pitfalls
-D:\cmake\install\bin\ctest.exe --test-dir C09_Coroutines/exercises/build/c01-supplement-starters -C Release -L starter --output-on-failure
-```
+F3 使用同契约 A/B、单调时钟、每版 1 预热和 5 独立进程样本；计数与无插桩诊断分开。Clang 18.1.3 的两条实际 consumer 路径都没有动态分配，均化简为求和循环；独立导出的 range_values 仍分配 48 字节。没有 elide remark。旧作者报告把全模块存在分配调用解释为“未观察 HALO”，现按真实调用路径更正。
 
-结果：配置和编译通过；`ctest -L starter` 返回 8，6 项中 `J1_eight_pitfalls`、`mini_task_test`、`mini_generator_test` 通过，`mini_when_all_test`、`mini_sync_wait_test`、`mini_scope_test` 清晰打印 `starter check failed: TODO...` 后失败。
+本轮 n=32 的 local/escaped median 为 2.660/2.237 ns，n=256 为 34.714/26.161 ns。两版循环代码不同，不能把耗时差归因于只有一版 HALO。Windows 前后快照存在其他构建进程，干扰未排除；不做普适排名或倍率结论。见[完整实验判读、原始样本与 IR/汇编](validation/c09-refresh/performance/final/analysis.md)。
 
-可选 Windows 全量轻依赖入口：
+- 本机标准库缺 std::execution::task，原生 probe 与 stdexec 参考实现分列。
+- GCC 13 缺 generator/print，只影响相应能力；不是整个 Linux 课程通过或失败的替代说明。
+- Folly/Cobalt 保留正文、练习、Reference 与步骤，当前未构建运行。
+- G1 保留单线程有限教学基线，waiter owner 必须活到 producer 完成；提前销毁 waiter 的 ASan 失败已保留，不声称 G1 支持此操作。mini_ref shared_task 支持已排序的等待者放弃；同一帧 destroy 与 resume 仍需调用方序列化。run_loop 中的排队 handle 不拥有帧，owner 必须保持任务直到队列消费/排空。
+- RPC good/ 是 public API 对应的 Reference-adapted 答版，不能称独立 good；独立 protocol good 只证明协议 Part。
+- 测试和工具无报告不穷尽全部交错、平台与输入。所有异常、超时或清理失败保留为真实失败；受限能力单列。
 
-```powershell
-D:\cmake\install\bin\cmake.exe -S C09_Coroutines/exercises -B C09_Coroutines/exercises/build/full-windows -DCOROUTINE_STUDY_TEST_STARTERS=ON
-D:\cmake\install\bin\cmake.exe --build C09_Coroutines/exercises/build/full-windows --config Release --target Capstone4_rpc_framework Capstone4_rpc_framework_reference mini_reference_as_awaitable mini_as_awaitable_test
-D:\cmake\install\bin\ctest.exe --test-dir C09_Coroutines/exercises/build/full-windows -C Release -R "Capstone4_rpc_framework_reference|mini_reference_as_awaitable" --output-on-failure
-D:\cmake\install\bin\ctest.exe --test-dir C09_Coroutines/exercises/build/full-windows -C Release -R "mini_as_awaitable_test" --output-on-failure
-```
+## 独立复核
 
-结果：
+[runtime 审查](validation/c09-refresh/reviews/runtime-review.md)、[H 与实验审查](validation/c09-refresh/reviews/content-experiment-review.md)、[mini Student 审查](validation/c09-refresh/reviews/mini-student-review.md)、[RPC 审查](validation/c09-refresh/reviews/rpc-review.md)分别保留审查对象、发现、修复复验及 APPROVE/COMMENT 边界。最终文件一致性与证据回读见[集成验收](validation/c09-refresh/reviews/final-integration-review.md)。逐文件改动说明见[文件明细](changes.md)。
 
-- build：`Capstone4_rpc_framework`、`Capstone4_rpc_framework_reference`、`mini_reference_as_awaitable`、`mini_as_awaitable_test` 通过。CMake 重新生成时仅出现 stdexec 依赖内部 FetchContent deprecation dev warning。
-- `ctest -R "Capstone4_rpc_framework_reference|mini_reference_as_awaitable"`：2/2 passed。
-- `ctest -R "mini_as_awaitable_test"`：1/1 failed，`starter` 标签，约 0.29 秒内正常非零返回，清晰打印 `starter check failed: TODO: implement mini::sync_wait(task<T>)`；不把崩溃或超时当成这种教学失败信号。
-- CTestfile 回读：G2 Reference `TIMEOUT "5"`；Capstone5 starter/reference `TIMEOUT "30"`；RPC Reference `LABELS "reference;rpc"`、`TIMEOUT "60"`。
+## 复现与版本
 
-临时检查器自证源码随 repo 放在 `C09_Coroutines/references/validation/c01-supplement/validation_variants`，只使用 shadow `mini` 头，不调用 `mini_ref` 或实际学生 TODO。CMake 通过相对路径默认定位课程根；如在非标准位置复验，也可显式传入 `-DCOROUTINE_STUDY_ROOT=<path-to-C09_Coroutines>`。构建产物仍放在 `C09_Coroutines/exercises/build/c01-supplement-validation-variants-replay`。
+从仓库根目录使用[构建指南](../exercises/BUILD_GUIDE.md)中的 run_matrix.py；诊断在已有 WSL 运行 run_diagnostics.py。单题优先 CMake target 与 CTest 名称。三套最终矩阵各 196 个编译相关输入中，195 个与当前 SHA-256 一致；H2 CMake 文件仅去掉末尾空行，先前所有内容未变，见[格式变更前后指纹](validation/c09-refresh/final/post-matrix-formatting.json)。随后 Windows RefON/RefOFF 配置均通过，见[RefON](validation/c09-refresh/final/post-format-configure-windows.json)、[RefOFF](validation/c09-refresh/final/post-format-configure-student.json)及[源文件回读](validation/c09-refresh/final/final-source-readback.json)。源码/文档/数据最终指纹由 [delivery manifest](validation/c09-refresh/delivery-manifest.json)记录，导航/37 单元由 [audit](validation/c09-refresh/delivery-audit.json)检查。
 
-```powershell
-D:\cmake\install\bin\cmake.exe -S C09_Coroutines/references/validation/c01-supplement/validation_variants -B C09_Coroutines/exercises/build/c01-supplement-validation-variants-replay -G "Visual Studio 18 2026"
-D:\cmake\install\bin\cmake.exe --build C09_Coroutines/exercises/build/c01-supplement-validation-variants-replay --config Release
-D:\cmake\install\bin\ctest.exe --test-dir C09_Coroutines/exercises/build/c01-supplement-validation-variants-replay -C Release -R "^good_" --output-on-failure
-D:\cmake\install\bin\ctest.exe --test-dir C09_Coroutines/exercises/build/c01-supplement-validation-variants-replay -C Release -R "bad|nullopt|noop|error_channel|stopped_value" --output-on-failure
-```
-
-追加复验结果：`good_sync_wait`、`good_when_all`、`good_scope`、`good_bridge` 4/4 passed；`sync_wait_bad_nullopt`、`sync_wait_bad_error_channel`、`scope_bad_noop`、`when_all_bad_error`、`bridge_bad_stopped_value` 5/5 failed，分别拒绝恒定 nullopt、错误通道吞掉、noop spawn、when_all 吞错误、bridge stopped 返回值而非抛 `runtime_error`。
-
-原始证据保存位置：`references/validation/c01-supplement/*.command.txt`、`*.stdout.txt`、`*.stderr.txt`、`*.result.txt`、`*.summary.txt`。
-
-## 未验证边界
-
-- 本轮不声明学生 TODO 已完成；starter 失败是预期的未完成信号。
-- 本轮不新增依赖、不下载第三方、不提交、不推送。
-- C01工程内容与本课协程协议分别主讲，README与覆盖表提供按需入口；全局课程建设状态另看根计划。
-- 本批独立审查已通过，见文首记录；后续跨课导航和汇总报告仍纳入最终集成复验。
-- 本轮运行了既有生命周期runtime/Reference检查，未运行ASan；有限测试不等于所有生命周期或并发交错的证明。Linux/io_uring/Folly/Cobalt依赖路径未验证。
+[旧质量报告原件](validation/c09-refresh/history-quality-report-20260908.txt)和旧 validation 保留。历史 Coroutine_Study 路径只作历史证据；当前构建使用 C09_Coroutines 的新目录。编译产物和本机可执行副本不进入交付清单。部分工具本地化输出由公共监督器按 UTF-8 解码，测试的英文诊断、退出码、超时与清理状态另有结构化字段。

@@ -11,8 +11,11 @@
 //   3. 超时模式 = when_any(real_task, timeout_after(Nms))。
 // =====================================================================
 #include "coroutine_study/lazy_task.hpp"
+#include "coroutine_study/exercise_check.hpp"
 
 #include <atomic>
+#include <exception>
+#include <array>
 #include <chrono>
 #include <coroutine>
 #include <iostream>
@@ -61,6 +64,54 @@ coroutine_study::lazy_task<int> fetch_remote(std::stop_token st = {}) {
     co_return 300;
 }
 
+struct start_gate {
+    int expected = 0;
+    std::atomic<int> started{0};
+    std::atomic<int> completed{0};
+    std::atomic<bool> released{false};
+    std::mutex mutex;
+    std::array<std::coroutine_handle<>, 3> handles{};
+};
+
+struct gated_awaitable {
+    start_gate& gate;
+    int index = 0;
+
+    bool await_ready() const noexcept { return false; }
+
+    bool await_suspend(std::coroutine_handle<> h) {
+        std::array<std::coroutine_handle<>, 3> to_resume{};
+        int count = 0;
+        {
+            std::lock_guard lock(gate.mutex);
+            gate.handles[index] = h;
+            count = gate.started.fetch_add(1, std::memory_order_acq_rel) + 1;
+            if (count == gate.expected) {
+                gate.released.store(true, std::memory_order_release);
+                to_resume = gate.handles;
+            }
+        }
+        if (count == gate.expected) {
+            for (int i = 0; i < gate.expected; ++i) {
+                if (i != index && to_resume[i]) to_resume[i].resume();
+            }
+            return false;
+        }
+        return true;
+    }
+
+    void await_resume() const {
+        coroutine_study::check(gate.released.load(std::memory_order_acquire),
+                               "Part 2: gated child resumed before all siblings reached the gate");
+        gate.completed.fetch_add(1, std::memory_order_acq_rel);
+    }
+};
+
+coroutine_study::lazy_task<int> gated_fetch(start_gate& gate, int index, int value) {
+    co_await gated_awaitable{gate, index};
+    co_return value;
+}
+
 // ---------------------------------------------------------------------
 // 简化版 when_all：接受 3 个 lazy_task<int>，返回 tuple<int,int,int>。
 // 重点是"语义"而非"高性能实现"。
@@ -72,11 +123,13 @@ when_all(T1 t1, T2 t2, T3 t3) {
     //   分别 .get()，再用 atomic 计数 + 条件变量等齐结果），
     //   最后 co_return std::make_tuple(r1, r2, r3)。
     //
-    //   骨架占位：当前直接顺序 sync_wait，请改为并行版本。
-    int r1 = coroutine_study::sync_wait(std::move(t1));
-    int r2 = coroutine_study::sync_wait(std::move(t2));
-    int r3 = coroutine_study::sync_wait(std::move(t3));
-    co_return std::make_tuple(r1, r2, r3);
+    //   也可以用单线程 run_loop 先启动所有 child，再由事件循环逐个恢复。
+    //   未完成时必须有限失败，不能保留串行 sync_wait 占位，否则 gated child 会挂住。
+    (void)t1;
+    (void)t2;
+    (void)t3;
+    throw std::logic_error{"TODO[必做 1]: implement when_all by starting all child tasks before waiting"};
+    co_return std::tuple<int, int, int>{};
 }
 
 // ---------------------------------------------------------------------
@@ -95,46 +148,63 @@ coroutine_study::lazy_task<int> when_any(std::stop_source& stop_source, TA ta, T
     //   并调用 stop_source.request_stop() 通知另一方在下一个检查点停止。
     //   最后 join loser，确保资源收束。
     //
-    //   骨架占位：直接等待 ta，请改写为真正竞速并收束 loser。
-    int v = coroutine_study::sync_wait(std::move(ta));
-    stop_source.request_stop();
-    (void)tb; // unused in skeleton
-    co_return v;
+    //   也可以用单线程事件循环实现竞速；正确性来自先启动双方和收束 loser，
+    //   不是来自线程 ID 或 sleep 耗时。
+    (void)stop_source;
+    (void)ta;
+    (void)tb;
+    throw std::logic_error{"TODO[必做 2]: implement when_any by starting both branches before selecting the winner"};
+    co_return 0;
 }
 
-int main() {
+int main() try {
     std::println("===== 练习 C-2：when_all / when_any =====\n");
 
     // ------------------ when_all 汇合 ------------------
     {
-        auto start = std::chrono::steady_clock::now();
+        start_gate gate;
+        gate.expected = 3;
         std::stop_source all_src;
-        auto t = when_all(fetch_cache(all_src.get_token()),
-                          fetch_db(all_src.get_token()),
-                          fetch_remote(all_src.get_token()));
+        auto t = when_all(gated_fetch(gate, 0, 100),
+                          gated_fetch(gate, 1, 200),
+                          gated_fetch(gate, 2, 300));
         auto [a, b, c] = coroutine_study::sync_wait(std::move(t));
-        auto dur = std::chrono::steady_clock::now() - start;
-        std::println("[when_all] cache={} db={} remote={} 总耗时 {}ms",
-                     a, b, c,
-                     std::chrono::duration_cast<std::chrono::milliseconds>(dur).count());
-        // TODO [必做 3]：并行版应在 ~300ms 内完成；
-        //   骨架的串行版本会接近 50+150+300=500ms。
+        std::println("[when_all] cache={} db={} remote={} gated_started={} gated_completed={}",
+                     a, b, c, gate.started.load(), gate.completed.load());
+        // Part 4 观察入口：50/150/300ms 可用于手工观察串行与 fan-out 的差异；
+        //   当前学生检查只用 gate 证明“先启动全部子任务，再释放完成”。
+        coroutine_study::check(
+            std::make_tuple(a, b, c) == std::make_tuple(100, 200, 300),
+            "Part 1/2: when_all preserves cache/db/remote result slots"
+        );
+        coroutine_study::check(gate.started == 3 && gate.completed == 3 && gate.released,
+                               "Part 2/3: when_all must start all children before releasing any child");
     }
 
     // ------------------ when_any 超时 ------------------
     {
         std::stop_source any_src;
+        start_gate gate;
+        gate.expected = 2;
         auto t = when_any(any_src,
-                          fetch_remote(any_src.get_token()),
-                          timeout_after(200ms, any_src.get_token()));
+                          gated_fetch(gate, 0, 300),
+                          gated_fetch(gate, 1, timeout_marker::value));
         int v = coroutine_study::sync_wait(std::move(t));
         if (v == timeout_marker::value) {
-            std::println("[when_any] 超时（remote 在 200ms 内未完成）");
+            std::println("[when_any] timeout branch won after both gated branches started");
         } else {
             std::println("[when_any] remote 先完成 = {}", v);
         }
+        coroutine_study::check(gate.started == 2 && gate.released,
+                               "Part 3: when_any must start both branches before selecting a winner");
         // TODO [必做 4]：把 200ms 改成 400ms，重跑一次，
         //   观察"超时优先" -> "数据优先"的切换。
+        std::stop_source slower_timeout_src;
+        auto observation = when_any(slower_timeout_src,
+                                    fetch_remote(slower_timeout_src.get_token()),
+                                    timeout_after(400ms, slower_timeout_src.get_token()));
+        int observation_value = coroutine_study::sync_wait(std::move(observation));
+        std::println("[when_any] 400ms observation value = {}", observation_value);
     }
 
     // ------------------ 进阶 ------------------
@@ -146,4 +216,12 @@ int main() {
 
     std::println("\n===== Done =====");
     return 0;
+}
+catch (const std::exception& e) {
+    std::cerr << "student check failed: " << e.what() << '\n';
+    return 1;
+}
+catch (...) {
+    std::cerr << "student check failed: unknown exception\n";
+    return 1;
 }

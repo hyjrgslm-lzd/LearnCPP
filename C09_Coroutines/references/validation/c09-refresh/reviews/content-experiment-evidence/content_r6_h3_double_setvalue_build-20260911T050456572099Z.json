@@ -1,0 +1,26 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "C09_Coroutines\\exercises\\build\\c09-review-content\\h3-double-setvalue-build",
+    "--config",
+    "Release",
+    "--target",
+    "h3_double_setvalue_attack"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 4.0310000000026776,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  Checking File Globs\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/CMakeLists.txt\n  Building Custom Rule F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-review-content/h3-double-setvalue-src/CMakeLists.txt\n  正在扫描源以查找模块依赖项...\n  main.cpp\n  正在编译...\n  main.cpp\n  h3_double_setvalue_attack.vcxproj -> F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-review-content\\h3-double-setvalue-build\\Release\\h3_double_setvalue_attack.exe\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-mc04lhyj",
+  "temporary_directory_removed": true,
+  "name": "content_r6_h3_double_setvalue_build",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": "h3_double_setvalue_attack",
+  "verdict": "PASS"
+}

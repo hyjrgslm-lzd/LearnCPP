@@ -2,9 +2,19 @@
 
 对应主讲义：`13-第三阶段结课-RPC框架.md`。
 
-这个项目用纯 Asio `awaitable` 实现最小 RPC reference。`src/` 是学生 starter，只保证 compile-only；`reference/` 是可运行答案。先读 reference，再补 starter；完成状态以真实请求结果和 drain 断言为准。
+这个项目用纯 Asio `awaitable` 实现最小 RPC。`src/` 是学生 TODO 起点，公开头文件在 `include/rpc/`；`good/` 是作者提供的完整可运行实现，`reference/` 是隔离答案。不要依赖 Reference 才开始做题：先按本文件的阶段契约实现 protocol，再接 client/server，最后用 checker 验证真实请求结果和 drain 断言。
 
-`Capstone4_rpc_framework` starter 可执行文件运行时返回 2，表示 `src/` 尚未完成；不要把它当作行为验收。`Capstone4_rpc_framework_reference` 才是当前可运行检查，CTest 标签为 `reference;rpc`，超时 60 秒。
+`Capstone4_rpc_framework` 是 student demo smoke。默认 TODO 起点会输出 `TODO: ...` 并返回 2；学生逐步补完 `src/` 后，同一个 demo 会自然返回 0。`Capstone4_rpc_framework_student_check` 链接 `src/`，默认 CTest 真实 FAIL，不用 `WILL_FAIL` 把原失败改成绿灯；`Capstone4_rpc_framework_answer_check` 链接 `good/` 的 reference-adapted answer 并必须通过同一 checker；`Capstone4_rpc_framework_protocol_good_check` 用独立 protocol good + answer client/server 覆盖 protocol Part；`Capstone4_rpc_framework_reference` 独立检查 Reference。开启 `COROUTINE_STUDY_TEST_STARTERS=ON` 时，CTest 会注册 student/answer/protocol-good/bad/reference 检查，超时 60 秒。
+
+## Public API
+
+学生主要编辑 `src/`，public headers 固定接口：
+
+- `src/protocol.cpp`：`Request/Response/RpcError`、8 字节长度帧、`Q/C/R` body、`parse_*`。
+- `src/client.cpp`：`RpcClient::connect/call/shutdown/in_flight`，pending map、timer、read loop、重试。
+- `src/server.cpp`：`RpcServer::start/stop/in_flight`，accept loop、connection loop、handler、cancel map。
+
+保留的类型名：`rpc::Request`、`rpc::Response`、`rpc::RpcError`。`Request::idempotent` 默认 `false`；`RpcClient::call(req, timeout, retries = 0)` 保持旧的两参数调用可用。
 
 ## 项目链路
 
@@ -89,6 +99,12 @@ ctest --test-dir C09_Coroutines/exercises/build/capstone4-asio -C Release -R Cap
 5. `server::accept_loop/handle_connection/handle_request`：看后台协程 ownership 和 cancel map。
 6. `reference/tests/rpc_reference_test.cpp`：看 6 请求分布和 drain 断言。
 
-实现 starter 时先跑通单请求，再加 pending map，再加超时，再加 cancel frame 和 retry。每加一步都回读 `in_flight()` 是否还能归零。
+实现时按五阶段推进：
+
+1. 编码/分帧/单请求：先替换 `src/protocol.cpp` 的 TODO，令 `serialize(Request)` 产出 8 位长度头，`parse_request/parse_response` 拒绝坏字段和超长 body。
+2. pending 并发：每个 `call()` 分配新 id，read loop 用 response id 唤醒正确 pending。
+3. timeout/cancel：timer 先到就 erase pending，发送 `C|id`，server handler 在检查点观察 cancel flag。
+4. 幂等 retry：只有 `Request::idempotent == true` 且 `attempt < retries` 才重试，并使用新 request id。
+5. close/drain：`shutdown()` 可重复调用，断连唤醒全部 pending，最终 client/server `in_flight()` 都为 0。
 
 **答案解析：** 单请求先验证协议和 dispatch；pending map 加入后验证 response 能按 id 回到正确 call；timeout 加入后验证 timer 能唤醒等待者；cancel frame 和 retry 加入后验证 loser handler 能协作停止。每一步都检查 in-flight，能及时发现 writer loop、read loop 或 handler 没有收束。

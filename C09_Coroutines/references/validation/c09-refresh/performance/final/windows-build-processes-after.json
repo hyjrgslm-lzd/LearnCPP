@@ -1,0 +1,12 @@
+[
+  {
+    "Id": 78072,
+    "ProcessName": "cmake",
+    "CPU": 0.03125
+  },
+  {
+    "Id": 97920,
+    "ProcessName": "MSBuild",
+    "CPU": 0.078125
+  }
+]

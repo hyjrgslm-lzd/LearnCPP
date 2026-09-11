@@ -32,6 +32,18 @@ Visual Studio 默认构建目录中的运行入口：
 
 ## Part 2：解释每个观测值
 
+GCC 13.3 不接受旧材料中的 `-fdump-tree-coro`，该选项曾使正常 Reference 构建直接失败。现在常规构建不强制生成 dump。按 [GCC 官方说明](https://gcc.gnu.org/onlinedocs/gcc/Developer-Options.html)，诊断时先列出当前 pass，或显式生成 tree dumps；pass 名称和数字后缀不是跨版本 ABI。
+
+在本题目录中，可用不依赖 `<print>` 的 Reference 做 GCC 诊断：
+
+```bash
+mkdir -p ../build/j2-gcc-dump
+g++ -std=c++23 -O1 -I../include -fdump-passes -c solution.cpp -o ../build/j2-gcc-dump/pass-list.o
+g++ -std=c++23 -O1 -I../include -fdump-tree-all -c solution.cpp -o ../build/j2-gcc-dump/j2.o
+```
+
+从生成文件里寻找 coroutine lowering 对应阶段，并标注工具链、优化选项和函数名。dump 只描述该实现；不要把字段顺序或状态编号推广为标准要求。输出留在 build 内；提交证据时只保留有解释的片段和命令。
+
 记录本机编译器、标准库、构建配置和程序输出：
 
 | 观测项 | 它实际说明什么 | 本机记录 |
@@ -57,7 +69,7 @@ task 包装对象在本例中保存一个 handle；协程帧保存 promise、执
 | --- | --- |
 | MSVC | `/Zc:__cplusplus /utf-8 /await:strict /Zi` |
 | Clang | `-Rpass=coroutine-elide -Rpass-missed=coroutine-elide` |
-| GCC | `-fdump-tree-coro` |
+| GCC | 显式 `-fdump-passes` 列出当前 pass；`-fdump-tree-all` 获取 tree dumps |
 
 分析时先阅读本机实际产生的诊断和构建命令。不同工具链的布局输出格式随实现变化，具体使用方式应对照所用版本的编译器文档。
 

@@ -1,0 +1,6 @@
+In file included from C09_Coroutines/references/validation/c09-refresh/reviews/runtime-review-evidence/g1-shared-task-legal-owner-release-asan.cpp:2:
+C09_Coroutines/references/validation/c09-refresh/reviews/runtime-review-evidence/../../../../../exercises/G1_shared_task/solution.cpp: In function ‘int g1_solution_original_main()’:
+C09_Coroutines/references/validation/c09-refresh/reviews/runtime-review-evidence/../../../../../exercises/G1_shared_task/solution.cpp:116:1: warning: no return statement in function returning non-void [-Wreturn-type]
+  116 | }
+      | ^
+g1 legal owner release paths checked

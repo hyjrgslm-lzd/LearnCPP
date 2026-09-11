@@ -1,0 +1,17 @@
+适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
+
+  1>Checking Build System
+  Building Custom Rule F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/F3_halo_diagnose/CMakeLists.txt
+  正在扫描源以查找模块依赖项...
+  main.cpp
+  正在编译...
+  main.cpp
+  F3_halo_diagnose.vcxproj -> F:\CPPTrain\LearnCPP\C09_Coroutines\exercises\build\c09-author-mechanisms\F3_halo_diagnose\Release\F3_halo_diagnose.exe
+适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525
+
+  Building Custom Rule F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/F3_halo_diagnose/CMakeLists.txt
+  正在扫描源以查找模块依赖项...
+  solution.cpp
+  正在编译...
+  solution.cpp
+  F3_halo_diagnose_reference.vcxproj -> F:\CPPTrain\LearnCPP\C09_Coroutines\exercises\build\c09-author-mechanisms\F3_halo_diagnose\Release\F3_halo_diagnose_reference.exe

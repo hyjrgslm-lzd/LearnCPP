@@ -6,6 +6,8 @@
 
 这题用 Boost.Cobalt 观察协程间通信。`channel<int>{0u}` 是零缓冲通道：没有 reader 时 writer 挂起，没有 writer 时 reader 挂起；双方匹配时能直接交接控制。这里能看到背压和 symmetric transfer 的实际形状。
 
+starter 入口在 `main.cpp`。它使用 `channel<int>{0u}` 和 `channel_trace` 检查真实写读：producer 应写入变化值，consumer 应读满固定次数，最终 trace 要求 `writes=3`、`reads=3`、`sum=63`。只打印成功或直接返回 0 会因为 trace 不匹配失败。本机缺 Boost.Cobalt heavy 环境时保留源码阅读和 Linux heavy 预设验证，不伪造本机通过。
+
 reference 链路：
 
 ```text

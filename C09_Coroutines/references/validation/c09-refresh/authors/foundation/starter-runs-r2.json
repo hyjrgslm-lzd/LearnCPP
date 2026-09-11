@@ -1,0 +1,50 @@
+[
+  {
+    "target": "A3_co_await_future",
+    "exitCode": 1,
+    "elapsedMs": 179,
+    "output": "[main] ─── A-3：co_await std::future ───  (tid=31316)\r\n[coro] test_future_await begin  (tid=31316)\r\n[worker] sleeping 100ms  (tid=67856)\r\n[coro] after co_await, result = 42  (tid=31316)\r\n[main] final result = 84 (期望 84)  (tid=31316)\r\nstudent check failed: Part 3: not-ready future must resume from the worker path, not by blocking in await_suspend"
+  },
+  {
+    "target": "B1_recursive_generator",
+    "exitCode": 1,
+    "elapsedMs": 25,
+    "output": "[main] ─── B-1：递归 generator 与栈 ───\r\n[main] ── 版本 A：elements_of (symmetric transfer)\r\n[v1] 1\r\n[main] ── 版本 B：for + co_yield (普通 resume 链)\r\n[v2] 1\r\nstudent check failed: Part 2/3: elements_of path yields the full inorder sequence"
+  },
+  {
+    "target": "B2_task_sequential",
+    "exitCode": 1,
+    "elapsedMs": 152,
+    "output": "[main] ─── B-2：task 顺序异步组合 ───  (tid=21936)\r\n[fetch_user] begin id=42  (tid=21936)\r\n[fetch_user] done  (tid=21936)\r\n[parse_profile] begin id=42  (tid=21936)\r\n[parse_profile] done  (tid=21936)\r\n[validate_profile] begin id=42  (tid=21936)\r\n[validate_profile] done  (tid=21936)\r\n[main] result = user=42 score=88  (tid=21936)\r\nstudent check failed: Part 2: process_user must co_await fetch -> parse -> validate and format the final value"
+  },
+  {
+    "target": "B3_callback_to_awaiter",
+    "exitCode": 0,
+    "elapsedMs": 132,
+    "output": "[main] ─── B-3：把回调 API 包成 awaiter ───  (tid=65340)\r\n[coro] before co_await  (tid=65340)\r\n[await_suspend] schedule async_add(7,5)  (tid=65340)\r\n[async_add] compute 7 + 5  (tid=65340)\r\n[coro] after co_await, sum=12  (tid=2940)\r\n[main] final = 36  (期望 (7+5)*3 = 36)  (tid=65340)"
+  },
+  {
+    "target": "C1_stop_token_cancel",
+    "exitCode": 0,
+    "elapsedMs": 198,
+    "output": "===== 练习 C-1：stop_token 协作式取消 =====\r\n\r\n  [batch_process] 完成第 1 批\r\n  [batch_process] 完成第 2 批\r\n已处理批次：2 (含因取消停止)\r\n\r\n===== Done ====="
+  },
+  {
+    "target": "C2_when_all_when_any",
+    "exitCode": 1,
+    "elapsedMs": 23,
+    "output": "===== 练习 C-2：when_all / when_any =====\r\n\r\nstudent check failed: Part 2: when_all/when_any must drive child tasks outside the caller thread, not serial sync_wait"
+  },
+  {
+    "target": "C3_async_scope",
+    "exitCode": 0,
+    "elapsedMs": 19,
+    "output": "===== 练习 C-3：async_scope =====\r\n\r\n  scope 即将析构，开始等齐 ...\r\n  scope 析构完成；started=5 completed=5\r\n\r\n\r\n===== Done ====="
+  },
+  {
+    "target": "Capstone1_async_crawler",
+    "exitCode": 1,
+    "elapsedMs": 32,
+    "output": "===== Capstone 1：异步小爬虫 =====\r\n\r\nstudent check failed: Part 3/6: parser extracts a valid name and numeric score"
+  }
+]

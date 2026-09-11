@@ -1,0 +1,180 @@
+--- C09_Coroutines/exercises/Capstone5_mini_corolib/reference/include/mini_ref/mini.hpp:220-289 ---
+0220:     promise.on_completed = detail::sync_wait_state::complete;
+0221:     t.start();
+0222:     state.wait();
+0223:     if (promise.error) std::rethrow_exception(promise.error);
+0224:     return std::tuple<>{};
+0225: }
+0226: 
+0227: template <typename T>
+0228: class generator {
+0229: public:
+0230:     struct promise_type {
+0231:         std::optional<T> current;
+0232:         std::exception_ptr error;
+0233:         generator get_return_object() noexcept {
+0234:             return generator{std::coroutine_handle<promise_type>::from_promise(*this)};
+0235:         }
+0236:         std::suspend_always initial_suspend() noexcept { return {}; }
+0237:         std::suspend_always final_suspend() noexcept { return {}; }
+0238:         template <typename U>
+0239:         std::suspend_always yield_value(U&& value) {
+0240:             current.emplace(std::forward<U>(value));
+0241:             return {};
+0242:         }
+0243:         void return_void() noexcept {}
+0244:         void unhandled_exception() noexcept { error = std::current_exception(); }
+0245:     };
+0246: 
+0247:     class iterator {
+0248:     public:
+0249:         using iterator_category = std::input_iterator_tag;
+0250:         using value_type = T;
+0251:         using difference_type = std::ptrdiff_t;
+0252: 
+0253:         iterator() = default;
+0254:         explicit iterator(std::coroutine_handle<promise_type> h) : h_(h) {}
+0255:         iterator& operator++() {
+0256:             h_.resume();
+0257:             if (h_.done()) {
+0258:                 if (h_.promise().error) std::rethrow_exception(h_.promise().error);
+0259:                 h_ = {};
+0260:             }
+0261:             return *this;
+0262:         }
+0263:         const T& operator*() const noexcept { return *h_.promise().current; }
+0264:         bool operator==(std::default_sentinel_t) const noexcept { return !h_; }
+0265: 
+0266:     private:
+0267:         std::coroutine_handle<promise_type> h_;
+0268:     };
+0269: 
+0270:     explicit generator(std::coroutine_handle<promise_type> h = {}) : h_(h) {}
+0271:     generator(generator&& other) noexcept : h_(std::exchange(other.h_, {})) {}
+0272:     generator(const generator&) = delete;
+0273:     ~generator() { if (h_) h_.destroy(); }
+0274: 
+0275:     iterator begin() {
+0276:         if (!h_) return {};
+0277:         h_.resume();
+0278:         if (h_.done()) {
+0279:             if (h_.promise().error) std::rethrow_exception(h_.promise().error);
+0280:             return {};
+0281:         }
+0282:         return iterator{h_};
+0283:     }
+0284:     std::default_sentinel_t end() noexcept { return {}; }
+0285: 
+0286: private:
+0287:     std::coroutine_handle<promise_type> h_;
+0288: };
+0289: 
+--- C09_Coroutines/exercises/Capstone5_mini_corolib/reference/include/mini_ref/mini.hpp:533-640 ---
+0533: class run_loop {
+0534: public:
+0535:     auto schedule() {
+0536:         struct awaiter {
+0537:             run_loop* loop;
+0538:             bool await_ready() noexcept { return false; }
+0539:             void await_suspend(std::coroutine_handle<> h) {
+0540:                 std::lock_guard lock{loop->mutex_};
+0541:                 loop->queue_.push_back(h);
+0542:             }
+0543:             void await_resume() noexcept {}
+0544:         };
+0545:         return awaiter{this};
+0546:     }
+0547: 
+0548:     bool run_one() {
+0549:         std::coroutine_handle<> h;
+0550:         {
+0551:             std::lock_guard lock{mutex_};
+0552:             if (queue_.empty()) return false;
+0553:             h = queue_.front();
+0554:             queue_.pop_front();
+0555:         }
+0556:         h.resume();
+0557:         return true;
+0558:     }
+0559: 
+0560:     void run() {
+0561:         while (run_one()) {}
+0562:     }
+0563: 
+0564: private:
+0565:     std::mutex mutex_;
+0566:     std::deque<std::coroutine_handle<>> queue_;
+0567: };
+0568: 
+0569: using stop_token = std::stop_token;
+0570: using stop_source = std::stop_source;
+0571: 
+0572: class task_scope {
+0573: public:
+0574:     task_scope() = default;
+0575:     task_scope(const task_scope&) = delete;
+0576:     task_scope& operator=(const task_scope&) = delete;
+0577: 
+0578:     template <typename T>
+0579:     void spawn(task<T> t) {
+0580:         {
+0581:             std::lock_guard lock{mutex_};
+0582:             ++in_flight_;
+0583:         }
+0584:         try {
+0585:             threads_.emplace_back([this, task = std::move(t)]() mutable {
+0586:             try {
+0587:                 (void)sync_wait(std::move(task));
+0588:             } catch (...) {
+0589:                 std::lock_guard lock{mutex_};
+0590:                 if (!error_) error_ = std::current_exception();
+0591:             }
+0592:             {
+0593:                 std::lock_guard lock{mutex_};
+0594:                 --in_flight_;
+0595:             }
+0596:             cv_.notify_all();
+0597:             });
+0598:         } catch (...) {
+0599:             {
+0600:                 std::lock_guard lock{mutex_};
+0601:                 --in_flight_;
+0602:             }
+0603:             cv_.notify_all();
+0604:             throw;
+0605:         }
+0606:     }
+0607: 
+0608:     void wait_empty() {
+0609:         {
+0610:             std::unique_lock lock{mutex_};
+0611:             cv_.wait(lock, [&] { return in_flight_ == 0; });
+0612:         }
+0613:         for (auto& thread : threads_) {
+0614:             if (thread.joinable()) thread.join();
+0615:         }
+0616:         threads_.clear();
+0617:         if (error_) std::rethrow_exception(error_);
+0618:     }
+0619: 
+0620:     int in_flight() const {
+0621:         std::lock_guard lock{mutex_};
+0622:         return in_flight_;
+0623:     }
+0624: 
+0625:     ~task_scope() noexcept {
+0626:         try {
+0627:             wait_empty();
+0628:         } catch (...) {
+0629:         }
+0630:     }
+0631: 
+0632: private:
+0633:     mutable std::mutex mutex_;
+0634:     std::condition_variable cv_;
+0635:     int in_flight_{};
+0636:     std::exception_ptr error_;
+0637:     std::vector<std::thread> threads_;
+0638: };
+0639: 
+0640: template <typename T>

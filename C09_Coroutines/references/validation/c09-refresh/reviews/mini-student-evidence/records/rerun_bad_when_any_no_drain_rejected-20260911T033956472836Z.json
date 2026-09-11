@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C09_Coroutines/exercises/build/c09-review-mini-rerun/bad_when_any_no_drain_test"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.008217731000002004,
+  "stdout": "",
+  "stderr": "starter check failed: winner must cancel and wait for loser\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "/tmp/c07-test-lo5iamdq",
+  "temporary_directory_removed": true,
+  "name": "rerun_bad_when_any_no_drain_rejected",
+  "cwd": "/mnt/f/CPPTrain/LearnCPP",
+  "expected_exit": 1,
+  "required_text": "winner must cancel and wait for loser",
+  "verdict": "PASS"
+}

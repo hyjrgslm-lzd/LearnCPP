@@ -187,7 +187,9 @@ N5051（2026-06-01）说明 N5050 是 C++26 最终草案及 DIS 的基础；N505
 
 交接应足以让下一位 AI 从当前状态继续：提供精确文件/接口与版本、已完成和未完成项、命令与原始结果位置、失败复现及剩余问题。公共修改由指定负责人集成并复验消费者，审查者不批准自己创作的同一内容。
 
-### 7.2 当前实施切片（更新于2026-09-10）
+### 7.2 当前实施切片（更新于2026-09-11）
+
+2026-09-11，C09 按 37 单元全审计、按缺口增量补全，采用 Windows 与已有 WSL 的本机验证。实施范围和门禁见 [C09 规格](C09_Coroutines/references/implementation-spec.md)，逐单元去向见 [C09 覆盖表](C09_Coroutines/references/coverage.md)，实际测试、原失败、独立审查与未验证边界见 [C09 质量报告](C09_Coroutines/references/quality-report.md)。Student 保持独立可做的作业起点，Reference/观察/good/bad/能力探针分别验收；不修改并行 C10 实现。
 
 C07 已获完整建设授权，采用资源文件处理贯穿与局部机制实验，复用 C08 已建 WSL2 环境。规格见 [C07 实施规格](C07_OS_Memory_System_IO/references/implementation-spec.md)，本课的双平台验证、标准库观察差异及非作者复验见 [C07 质量报告](C07_OS_Memory_System_IO/references/quality-report.md)。该切片保留 C08 并行工作，只为 C08/C09/C10 增加系统基础导航，不改旧课实现。
 

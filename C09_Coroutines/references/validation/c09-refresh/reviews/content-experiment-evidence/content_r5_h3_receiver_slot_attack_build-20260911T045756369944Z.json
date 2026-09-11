@@ -1,0 +1,26 @@
+{
+  "command": [
+    "cmake",
+    "--build",
+    "C09_Coroutines\\exercises\\build\\c09-review-content\\h3-receiver-slot-attack-build",
+    "--config",
+    "Release",
+    "--target",
+    "h3_receiver_slot_attack"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "process_seconds": 3.5,
+  "stdout": "适用于 .NET Framework MSBuild 版本 18.9.1+a81b43525\n\n  Checking File Globs\n  1>Checking Build System\n  Building Custom Rule F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/full-windows/_deps/stdexec-src/CMakeLists.txt\n  Building Custom Rule F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-review-content/h3-receiver-slot-attack-src/CMakeLists.txt\n  正在扫描源以查找模块依赖项...\n  main.cpp\n  正在编译...\n  main.cpp\n  h3_receiver_slot_attack.vcxproj -> F:\\CPPTrain\\LearnCPP\\C09_Coroutines\\exercises\\build\\c09-review-content\\h3-receiver-slot-attack-build\\Release\\h3_receiver_slot_attack.exe\n",
+  "stderr": "",
+  "cleanup_error": "",
+  "error": "",
+  "status": "PASS",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-gnt3vb62",
+  "temporary_directory_removed": true,
+  "name": "content_r5_h3_receiver_slot_attack_build",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 0,
+  "required_text": "h3_receiver_slot_attack",
+  "verdict": "PASS"
+}

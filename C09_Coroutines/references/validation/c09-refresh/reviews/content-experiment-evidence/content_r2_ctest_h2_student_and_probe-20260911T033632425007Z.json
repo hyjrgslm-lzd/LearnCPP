@@ -1,0 +1,27 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "C09_Coroutines\\exercises\\build\\c09-review-content\\student-r2",
+    "-C",
+    "Release",
+    "-R",
+    "^(H2_std_execution_task|H2_std_task_probe)$",
+    "--output-on-failure"
+  ],
+  "exit_code": 8,
+  "timeout": false,
+  "process_seconds": 1.0,
+  "stdout": "Test project F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-review-content/student-r2\n    Start 13: H2_std_execution_task\n1/2 Test #13: H2_std_execution_task ............***Failed    0.46 sec\nstudent check failed: value=0 hop=0 sum=0 stopped_optional=0 stop_token=0\n\n    Start 14: H2_std_task_probe\n2/2 Test #14: H2_std_task_probe ................***Skipped   0.44 sec\n\n50% tests passed, 1 tests failed out of 2\n\nLabel Time Summary:\nprobe      =   0.44 sec*proc (1 test)\nstarter    =   0.46 sec*proc (1 test)\n\nTotal Test time (real) =   0.93 sec\n\nThe following tests did not run:\n\t 14 - H2_std_task_probe (Skipped)\n\nThe following tests FAILED:\n\t 13 - H2_std_execution_task (Failed)                    starter\n",
+  "stderr": "Errors while running CTest\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-iehf157h",
+  "temporary_directory_removed": true,
+  "name": "content_r2_ctest_h2_student_and_probe",
+  "cwd": "F:\\CPPTrain\\LearnCPP",
+  "expected_exit": 8,
+  "required_text": "H2_std_task_probe",
+  "verdict": "PASS"
+}

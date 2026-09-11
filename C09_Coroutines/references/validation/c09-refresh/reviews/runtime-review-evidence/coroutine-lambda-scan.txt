@@ -1,0 +1,4 @@
+C09_Coroutines\exercises\Capstone5_mini_corolib\reference\tests\as_awaitable_test.cpp:131:        auto failing = []() -> mini_ref::task<int> {
+C09_Coroutines\exercises\Capstone5_mini_corolib\reference\tests\as_awaitable_test.cpp:143:        auto stopped = []() -> mini_ref::task<int> {
+C09_Coroutines\exercises\Capstone5_mini_corolib\reference\tests\shared_task_test.cpp:23:    auto first = [shared]() -> mini_ref::task<int> { co_return co_await shared; };
+C09_Coroutines\exercises\Capstone5_mini_corolib\reference\tests\shared_task_test.cpp:24:    auto second = [shared]() -> mini_ref::task<int> { co_return co_await shared; };

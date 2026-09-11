@@ -58,3 +58,15 @@ int result = co_await await_future(std::move(fut));
 - 异常能从 `future.get()` 经 `co_await` 传播到调用侧。
 
   **答案解析：** future 共享状态里保存异常时，`future.get()` 会重新抛出。awaiter 把这个异常带到 `await_resume()`，协程体在 `co_await await_future(...)` 这一行看到异常；若父协程不捕获，lazy task 的 promise 保存它，最后 `sync_wait` 再抛给 main。异常路径没有单独绕开协程结果通道。
+
+## Student 检查
+
+`main.cpp` 现在会消费学生实现，未完成时以有限非零失败指出缺口：
+
+| Part | 操作 | 本地检查 |
+| --- | --- | --- |
+| Part 1 | `future_awaiter` 三方法 | 检查正常路径返回 84、未 ready future 进入 `await_suspend`、恢复线程来自 worker 路径 |
+| Part 2 | `await_future(std::future<T>)` 包装入口 | 通过 `test_future_await()` 的 `co_await await_future(...)` 消费包装入口 |
+| Part 3 | 三条路径分析 | starter 检查跨线程恢复；ready/异常完整路径仍由 `solution.cpp` 独立验证 |
+
+完成前：当前同步等待占位会失败在“worker path resume”检查

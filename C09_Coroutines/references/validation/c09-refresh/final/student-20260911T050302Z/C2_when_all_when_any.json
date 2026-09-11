@@ -1,0 +1,19 @@
+{
+  "command": [
+    "F:/CPPTrain/LearnCPP/C09_Coroutines/exercises/build/c09-final-student/C2_when_all_when_any/Release/C2_when_all_when_any.exe"
+  ],
+  "exit_code": 1,
+  "timeout": false,
+  "process_seconds": 0.031000000002677552,
+  "stdout": "===== \u7ec3\u4e60 C-2\uff1awhen_all / when_any =====\n\n",
+  "stderr": "student check failed: TODO[\u5fc5\u505a 1]: implement when_all by starting all child tasks before waiting\n",
+  "cleanup_error": "",
+  "error": "",
+  "status": "FAIL",
+  "temporary_directory": "C:\\Users\\zhidan.li\\AppData\\Local\\Temp\\c07-test-_9l50n1u",
+  "temporary_directory_removed": true,
+  "name": "C2_when_all_when_any",
+  "expected_exit": 1,
+  "verdict": "PASS",
+  "expected_rejection": true
+}

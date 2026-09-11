@@ -4,7 +4,7 @@
 
 sender/receiver 的强项是描述异步操作图。它能把“在哪里运行、如何组合、如何完成、如何取消、环境从哪里来”放进一个统一协议。协程的强项是描述局部控制流。它让一次请求、一段业务逻辑、一次 pipeline 的多个等待点仍然按顺序阅读。桥接层的任务就是把 sender 的三条 completion channel 映射成协程里的返回、异常和停止，再把协程函数本身包装成 sender，让它能被 `sync_wait`、`when_all`、`starts_on` 等组合器消费。
 
-本模块使用 pinned NVIDIA/stdexec `nvhpc-26.05`。它是 P2300/P3552 路线的实现之一，不等同于已经发布的 `std::execution::task` 标准库类型。CMake 中的 `H2_std_task_probe` 会真实编译 `std::execution::task<void>` 来观察当前工具链是否已经提供标准 task；H2 的 reference 则使用 stdexec 的 task 实现来观察同类语义。
+本模块使用 pinned NVIDIA/stdexec `nvhpc-26.05`。它是 P2300/P3552 路线的实现之一，不等同于已经发布的标准库类型。2026-09-11 核对的 WG21 编辑报告里，N5050 是 C++26 DIS 基础，N5054 是 C++29 工作草案；`execution::task`、`execution::as_awaitable` 属于当前工作草案的 execution 章节学习入口。代码里必须按真实命名空间写 `stdexec::` 或 `exec::`，不能把它改名成未来的 `std::execution`。CMake 中的 `H2_std_task_probe` 会在 C++26 preview flag 下真实编译 `std::execution::task<int>` 协程体并尝试 `std::this_thread::sync_wait` 消费，用来观察当前工具链是否已经提供标准 task；H2 的 reference 使用 pinned stdexec task 观察同类语义。
 
 有用的上游入口：
 
@@ -237,6 +237,8 @@ H-3 的三个预期值：
 
 如果某条路径卡住，按出口查：sender 路径查 `external_receiver` 是否设置和 completion signatures 是否匹配；awaitable 路径查 continuation 是否被保存并从 `final_suspend` 返回；内部 sender 路径查 H-1 的同步完成握手。
 
+H1-H3 的 starter 不是“打印 smoke 就算完成”。打开 `COROUTINE_STUDY_TEST_STARTERS=ON` 后，测试会实际消费学生实现，并且 checker 与学生入口分离：学生只改各题 `student.hpp`，`checks/main.cpp` 提供不可改的输入、协程体和 private counters。H1 在 checker 协程体里 `co_await` private fixture 提供的 traced sender，逐个比较多组输入输出，并要求 `connect/start/completion` 计数发生；H2 把真实 sender、scheduler、stopped task、token task 交给学生函数，counter 保留在 checker 闭包/协程体内，要求 value、线程 hop、`when_all`、`stopped_as_optional`、stop token 查询都来自实际执行；H3 用 checker 固定的三条链验证 `my_task` sender 消费、嵌套 `co_await my_task` 和 task 内部 `co_await sender`，task-body 和 bridge sender 计数不作为可写参数暴露。未完成 starter 会有限返回非 0；完成 TODO 后用同一测试自然转绿，不需要完成标记。各题 `validation/good` 与 `validation/bad_constant` 用同一 checker 编译，证明 reference 隔离和常量/删 await 反例不能通过。
+
 ## 构建与运行
 
 ```powershell
@@ -252,6 +254,16 @@ cmake -S C09_Coroutines/exercises -B C09_Coroutines/exercises/build-h-release -G
 cmake --build C09_Coroutines/exercises/build-h-release --config Release --target H2_std_task_probe H2_std_execution_task_reference
 ctest --test-dir C09_Coroutines/exercises/build-h-release -C Release -R H2_std_execution_task_reference --output-on-failure
 ```
+
+检查 starter：
+
+```powershell
+python C09_Coroutines/exercises/tools/configure_windows.py --build C09_Coroutines/exercises/build/h-student --light --student
+cmake --build C09_Coroutines/exercises/build/h-student --config Release --target H1_as_awaitable H2_std_execution_task H3_bidirectional_bridge
+ctest --test-dir C09_Coroutines/exercises/build/h-student -C Release -R "^(H1_as_awaitable|H2_std_execution_task|H3_bidirectional_bridge)$" --output-on-failure
+```
+
+初始 TODO 版本预期失败，失败文本应来自对应行为检查。不要把这组失败当环境坏；它证明 checker 真在调用学生实现。
 
 学完本模块，你应该能画出一条完整链：`co_await sender -> receiver completion -> coroutine resume`，也能反向说明一个协程 task 如何变成 sender 被外部组合器启动。
 
