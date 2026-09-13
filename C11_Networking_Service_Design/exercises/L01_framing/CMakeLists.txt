@@ -1,0 +1,11 @@
+cmake_minimum_required(VERSION 3.28)
+project(C11_L01_framing LANGUAGES CXX)
+include(../cmake/StudySetup.cmake)
+c11_exercise(C11_L01 "oversized length rejected")
+if(C11_BUILD_REFERENCE)
+  add_executable(C11_L01_bad_high_digits checks.cpp)
+  c11_target(C11_L01_bad_high_digits)
+  target_include_directories(C11_L01_bad_high_digits PRIVATE bad_high_digits)
+  c11_test(C11_L01_bad_high_digits_rejected C11_L01_bad_high_digits EXIT 1
+    DIAGNOSTIC "high-order length digits cannot be discarded" LABEL checker)
+endif()

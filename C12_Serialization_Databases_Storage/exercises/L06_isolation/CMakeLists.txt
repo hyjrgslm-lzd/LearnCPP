@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.25)
+project(C12_L06_isolation LANGUAGES C CXX)
+include(../cmake/StudySetup.cmake)
+if(C12_ENABLE_SQLITE AND C12_BUILD_REFERENCE)
+  c12_observation(C12_L06_sqlite sqlite.cpp)
+  target_link_libraries(C12_L06_sqlite PRIVATE c12_sqlite)
+endif()

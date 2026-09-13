@@ -287,6 +287,9 @@ inline std::expected<Manifest, DataError> decode_manifest(std::span<const std::b
 
         while (cursor < record_end) {
             const auto field_start = cursor;
+            if (record_end - cursor < 6) {
+                return std::unexpected(c05::DataError{c05::Errc::incomplete_input, cursor, c05::OffsetUnit::byte, "field"});
+            }
             auto tag = read_be<std::uint16_t>(input, cursor);
             auto len = read_be<std::uint32_t>(input, cursor);
             if (!tag || !len) {

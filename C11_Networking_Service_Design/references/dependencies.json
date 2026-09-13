@@ -1,0 +1,46 @@
+{
+  "boost": {
+    "tag": "boost-1.92.0",
+    "commit": "afdfa32505af73e3d208144b3f623f0096cb62b6",
+    "url": "https://archives.boost.io/release/1.92.0/source/boost_1_92_0.tar.gz",
+    "sha256": "c4a3b310ddd2472416e091067166b0713be97c63f38c212c484ada022fd296ce",
+    "directory": "boost_1_92_0"
+  },
+  "openssl": {
+    "tag": "openssl-3.5.8",
+    "commit": "f4dc4d58b48d346a8270183f89acf826d459b0ca",
+    "repository": "https://github.com/openssl/openssl.git"
+  },
+  "nghttp2": {
+    "tag": "v1.70.0",
+    "commit": "85e300c79fb6dbcfa9c1013215c8710c1c2cd3d2",
+    "repository": "https://github.com/nghttp2/nghttp2.git"
+  },
+  "msquic": {
+    "tag": "v2.6.1",
+    "commit": "a01333cf7c2659cce0ff03ef3f21e1ff15bb5b83",
+    "repository": "https://github.com/microsoft/msquic.git",
+    "submodules": ["submodules/openssl", "submodules/xdp-for-windows"]
+  },
+  "grpc": {
+    "tag": "v1.84.0",
+    "commit": "3252a89f10d8e92997862167ca7d095ecda85973",
+    "repository": "https://github.com/grpc/grpc.git",
+    "submodules": ["third_party/abseil-cpp", "third_party/boringssl-with-bazel", "third_party/cares/cares", "third_party/protobuf", "third_party/re2", "third_party/zlib", "third_party/grpc-proto"]
+  },
+  "asio": {
+    "tag": "asio-1-38-2",
+    "commit": "8806a6803cde7054c3049d3666d3ec36786568c5",
+    "repository": "https://github.com/chriskohlhoff/asio.git"
+  },
+  "stdexec": {
+    "tag": "nvhpc-26.05",
+    "commit": "6d7ad689f4d4831c5136e4abe1c601f9a3b64e43",
+    "repository": "https://github.com/NVIDIA/stdexec.git"
+  },
+  "liburing": {
+    "tag": "liburing-2.15",
+    "commit": "d41bf9220ec39277ff235379e9089d9e0fd6c2a5",
+    "repository": "https://github.com/axboe/liburing.git"
+  }
+}

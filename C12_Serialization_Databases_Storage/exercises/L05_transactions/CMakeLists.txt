@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 3.25)
+project(C12_L05_transactions LANGUAGES C CXX)
+include(../cmake/StudySetup.cmake)
+if(C12_ENABLE_SQLITE)
+  c12_exercise(C12_L05 "failed transfer preserves both rows")
+  foreach(variant student reference good bad)
+    if(TARGET C12_L05_${variant})
+      target_link_libraries(C12_L05_${variant} PRIVATE c12_sqlite)
+    endif()
+  endforeach()
+endif()
+
+if(C12_ENABLE_SQLITE AND C12_BUILD_REFERENCE)
+  c12_observation(C12_L05_migrations migrations.cpp)
+  target_link_libraries(C12_L05_migrations PRIVATE c12_sqlite)
+  c12_test(C12_L05_migration_crash COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/migration_crash.py"
+    "$<TARGET_FILE:C12_L05_migrations>" TIMEOUT 90 LABELS recovery)
+endif()

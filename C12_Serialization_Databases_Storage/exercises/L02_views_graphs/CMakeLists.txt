@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.25)
+project(C12_L02_views_graphs LANGUAGES CXX)
+include(../cmake/StudySetup.cmake)
+if(C12_BUILD_REFERENCE)
+  c12_observation(C12_L02 main.cpp)
+endif()

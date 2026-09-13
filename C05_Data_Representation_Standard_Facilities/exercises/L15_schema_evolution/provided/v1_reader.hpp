@@ -49,6 +49,9 @@ inline std::expected<c05::Manifest, c05::DataError> decode_manifest_v1(std::span
         std::unordered_set<std::uint16_t> unknown;
         while (cursor < end) {
             const auto field_start = cursor;
+            if (end - cursor < 6) {
+                return std::unexpected(c05::DataError{c05::Errc::incomplete_input, cursor, c05::OffsetUnit::byte, "field"});
+            }
             auto tag = c05::read_be<std::uint16_t>(input, cursor);
             auto len = c05::read_be<std::uint32_t>(input, cursor);
             if (!tag || !len || end - cursor < *len) {

@@ -1,0 +1,12 @@
+syntax = "proto3";
+package c12.pb.v2;
+message Resource {
+  optional uint32 id = 1;
+  optional string name = 2;
+  optional string path = 3;
+  optional uint64 byte_size = 4;
+  optional sint64 modified_at_ms = 5;
+  optional string note = 6;
+  reserved 7 to 15;
+}
+message Manifest { repeated Resource records = 1; }

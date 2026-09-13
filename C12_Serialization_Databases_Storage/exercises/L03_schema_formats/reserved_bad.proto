@@ -1,0 +1,5 @@
+syntax = "proto3";
+message BadReservation {
+  reserved 6;
+  string note = 6;
+}

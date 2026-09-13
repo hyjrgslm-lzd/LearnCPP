@@ -32,3 +32,7 @@
 ## C10 执行协议桥接
 
 [C10 原生 I/O 桥接](../C10_Execution/chapters/11-native-io.md)把本课的请求、buffer、完成与取消收束接入 sender/receiver；[记录流水线](../C10_Execution/chapters/13-pipeline.md)在真实完成后继续 CPU 阶段。系统完成语义仍以本课为基础。
+
+## C11 网络服务衔接
+
+系统 readiness/completion 之后，可进入连接、分帧、背压与协议状态机。进入 [C11 网络编程与服务设计](../C11_Networking_Service_Design/README.md)。

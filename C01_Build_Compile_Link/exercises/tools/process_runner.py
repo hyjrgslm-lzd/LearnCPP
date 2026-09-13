@@ -12,7 +12,7 @@ import time
 from typing import Any
 
 
-def run_process(command: list[str], timeout: float) -> dict[str, Any]:
+def run_process(command: list[str], timeout: float, *, env: dict[str, str] | None = None) -> dict[str, Any]:
     if not command or not math.isfinite(timeout) or timeout <= 0:
         raise ValueError("a command and a finite positive timeout are required before launch")
     settings: dict[str, Any]
@@ -23,7 +23,7 @@ def run_process(command: list[str], timeout: float) -> dict[str, Any]:
     started = time.monotonic()
     try:
         process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                                   text=True, encoding="utf-8", errors="replace", **settings)
+                                   text=True, encoding="utf-8", errors="replace", env=env, **settings)
     except OSError as error:
         return {"command": command, "exit_code": None, "timeout": False,
                 "process_seconds": time.monotonic() - started, "stdout": "", "stderr": "",

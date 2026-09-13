@@ -30,6 +30,7 @@
 | 专题进阶 | [C08_Concurrency](C08_Concurrency/README.md) | 线程、同步、内存模型与回收；53题及独立原生主体，新增异步日志与C++29专题；CPU性能资产兼作C13入口 |
 | 专题进阶 | [C09_Coroutines](C09_Coroutines/README.md) | 协程协议、控制流、帧与生命周期、取消组合、I/O 与 RPC；37个单元 |
 | 专题进阶 | [C10_Execution](C10_Execution/README.md) | sender/receiver、scheduler、完成通道、task/scope、原生 I/O 与异构执行；包含组合与实现练习 |
+| 网络与服务 | [C11_Networking_Service_Design](C11_Networking_Service_Design/README.md) | TCP/UDP/DNS、连接状态、Reactor/Proactor、TLS、HTTP/WS/HTTP2/QUIC、RPC/gRPC、有界任务服务与跨课桥接 |
 | 领域应用 | [C14_GPU](C14_GPU/README.md) | CUDA、设备执行与内存层级、GPU 性能和算子实现 |
 | 领域应用 | [C15_Unreal_Engine](C15_Unreal_Engine/README.md) | Unreal Engine 对象、资源、任务、渲染及网络架构；当前覆盖 C15 中的 UE 专题 |
 

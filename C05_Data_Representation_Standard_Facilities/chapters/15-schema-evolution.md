@@ -29,7 +29,9 @@ id、name、path、size、mtime 是必需字段。缺任意一个都不能发布
 
 `validate_manifest` 先检查内存对象：最多 1024 条记录，id 非零且唯一，timestamp 在公历 0001-9999 对应的 Unix 毫秒范围内，name/path 非空且是严格 UTF-8，不含 NUL；note 可空但同样必须是严格 UTF-8 且不含 NUL。path 规则由公共 `validate_resource_path` 负责；本章不复制另一套路径判断。
 
-decode 时也执行同一组规则。wire 文本先按 length 取出拥有型 `string`，再严格 UTF-8 验证，再检查 NUL/空值。错误 offset 用整个 packet 的 byte 坐标。UTF-16 code unit offset 只属于 UTF-16 输入转换，不属于本章 wire decoder。
+decode 时也执行同一组规则。每次读取 tag/length 前，还必须确认当前记录内至少剩余 6 字节；整包里仍有字节不代表当前记录允许读取它们。否则字段头越过 record_end 后，无符号减法可能下溢，将超大 payload 长度错误放行。检查器分别覆盖记录尾落在字段头内部和跨界字段头声明超大长度，并同时检查旧读者。
+
+decode 的文本路径中，wire 文本先按 length 取出拥有型 `string`，再严格 UTF-8 验证，再检查 NUL/空值。错误 offset 用整个 packet 的 byte 坐标。UTF-16 code unit offset 只属于 UTF-16 输入转换，不属于本章 wire decoder。
 
 ## 4. v1/v2 兼容实验
 

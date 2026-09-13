@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 3.25)
+project(C12_L04_sqlite_client LANGUAGES C CXX)
+include(../cmake/StudySetup.cmake)
+if(C12_ENABLE_SQLITE AND C12_BUILD_REFERENCE)
+  c12_observation(C12_L04 main.cpp)
+  target_link_libraries(C12_L04 PRIVATE c12_sqlite)
+endif()
+
+if(C12_ENABLE_SQLITE AND C12_BUILD_REFERENCE)
+  c12_observation(C12_L04_rollback_fault rollback_fault.cpp)
+  target_link_libraries(C12_L04_rollback_fault PRIVATE c12_sqlite)
+endif()

@@ -121,3 +121,7 @@ RPC长度头、数字完整消费、UTF与基础schema的先修见[C05 数据表
 ## C10 执行协议桥接
 
 [C10 task 桥接](../C10_Execution/chapters/10-task-and-scope.md)在本课 promise/await/final_suspend 基础上实现 sender await、环境传播与 task-as-sender；[G1 adaptor](../C10_Execution/chapters/08-adaptor.md)则从非协程完成协议推导组合。先修按具体单元进入，不要求先读完两课。
+
+## C11 网络服务衔接
+
+原 RPC 的 API、wire 与 Student 保留；C11 L11 以未修改客户端验证真实互操作，网络与服务策略由 C11 主讲。进入 [C11 网络编程与服务设计](../C11_Networking_Service_Design/README.md)。

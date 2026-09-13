@@ -40,3 +40,7 @@ Windows使用真实IOCP，WSL/Linux使用已有liburing的io_uring路径。配�
 [C02](../C02_Objects_Lifetime_Ownership/README.md)讲对象、借用与移动；[C03](../C03_Type_Modeling_Interface_Design/README.md)讲错误载荷和接口；[C04](../C04_Generic_CompileTime_Reflection/README.md)讲泛型/CPO/类型计算。它们不替代本课的具体完成协议。
 
 [C07](../C07_OS_Memory_System_IO/README.md)提供系统完成源，[C08](../C08_Concurrency/README.md)提供同步和发布基础，[C09](../C09_Coroutines/README.md)提供promise/await语言协议，[C14](../C14_GPU/README.md)提供设备/stream/内存模型。基础sender组合不要求先学完整协程库；跨课桥接只在两侧必要基础之后进入。
+
+## C11 网络服务衔接
+
+完成通道、环境与 operation state 之后，C11 L11 提供真实 socket receive sender，补充网络取消与缓冲收束。进入 [C11 网络编程与服务设计](../C11_Networking_Service_Design/README.md)。

@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 3.28)
+project(C11_P2_grpc LANGUAGES CXX)
+include(../cmake/StudySetup.cmake)
+if(C11_ENABLE_GRPC AND C11_ENABLE_BOOST AND C11_BUILD_REFERENCE)
+  set(generated "${CMAKE_CURRENT_BINARY_DIR}/generated")
+  file(MAKE_DIRECTORY "${generated}")
+  add_custom_command(OUTPUT "${generated}/tasks.pb.cc" "${generated}/tasks.pb.h" "${generated}/tasks.grpc.pb.cc" "${generated}/tasks.grpc.pb.h"
+    COMMAND $<TARGET_FILE:protoc> --proto_path=${CMAKE_CURRENT_SOURCE_DIR}
+      --cpp_out=${generated} --grpc_out=${generated} --plugin=protoc-gen-grpc=$<TARGET_FILE:grpc_cpp_plugin>
+      "${CMAKE_CURRENT_SOURCE_DIR}/tasks.proto"
+    DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/tasks.proto" protoc grpc_cpp_plugin VERBATIM)
+  add_executable(C11_P2_grpc main.cpp "${generated}/tasks.pb.cc" "${generated}/tasks.grpc.pb.cc")
+  c11_target(C11_P2_grpc)
+  target_include_directories(C11_P2_grpc PRIVATE "${generated}")
+  target_link_libraries(C11_P2_grpc PRIVATE grpc++ libprotobuf c11_boost)
+  c11_test(C11_P2_grpc C11_P2_grpc LABEL reference TIMEOUT 40)
+elseif(C11_ENABLE_GRPC AND NOT C11_ENABLE_BOOST)
+  message(FATAL_ERROR "gRPC task facade uses the shared Asio owner; also enable C11_ENABLE_BOOST")
+else()
+  message(STATUS "C11 gRPC: NOT_ENABLED")
+endif()

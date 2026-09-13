@@ -1,0 +1,46 @@
+{
+  "sqlite": {
+    "version": "3.53.4",
+    "url": "https://www.sqlite.org/2026/sqlite-amalgamation-3530400.zip",
+    "sha3_256": "628a44cfe82c66aed1ccbbe85a562d2e33ebe64b3288981ed76285612227934e",
+    "size": 2946650,
+    "directory": "sqlite-amalgamation-3530400",
+    "sqlite_c_sha3_256": "67f423e9ebbbdc473cbc4772c872ee6b89f31fde4ed0279a5c25d5f65c043a16"
+  },
+  "sqlite_source": {
+    "version": "3.53.4",
+    "url": "https://www.sqlite.org/2026/sqlite-src-3530400.zip",
+    "sha3_256": "b834d474b9b393d85a9e3ee4cc11f1329e007e9376a424ee740796f5c4bda3a8",
+    "size": 14557315,
+    "directory": "sqlite-src-3530400"
+  },
+  "postgres": {
+    "version": "18.6-3",
+    "url": "https://get.enterprisedb.com/postgresql/postgresql-18.6-3-windows-x64-binaries.zip",
+    "size": 344414106,
+    "directory": "pgsql",
+    "upstream_checksum": null,
+    "checksum_note": "Publisher checksum was not available; local SHA256 is an observed download fingerprint, not publisher authentication.",
+    "sha256": "59f8ce701c63c2ed623c665a5e51b3ef6f2e37ccf837b68ffeed0742d0ae6abd",
+    "checksum_source": "Local fingerprint of the fixed HTTPS vendor archive; not a publisher-provided digest"
+  },
+  "protobuf": {
+    "version": "35.1.0",
+    "repository": "https://github.com/protocolbuffers/protobuf",
+    "commit": "35cd01f9fe9afbeea38cc7b979a3b6bfcde82c03"
+  },
+  "abseil": {
+    "repository": "https://github.com/abseil/abseil-cpp",
+    "commit": "76bb24329e8bf5f39704eb10d21b9a80befa7c81"
+  },
+  "boost": {
+    "version": "1.92.0",
+    "url": "https://archives.boost.io/release/1.92.0/source/boost_1_92_0.tar.gz",
+    "sha256": "c4a3b310ddd2472416e091067166b0713be97c63f38c212c484ada022fd296ce"
+  },
+  "leveldb_reading": {
+    "version": "1.23",
+    "repository": "https://github.com/google/leveldb",
+    "commit": "99b3c03b3284f5886f9ef9a4ef703d57373e61be"
+  }
+}

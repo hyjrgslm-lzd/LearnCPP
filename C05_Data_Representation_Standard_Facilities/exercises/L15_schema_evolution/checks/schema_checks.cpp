@@ -121,6 +121,28 @@ int main()
         expect_decode_fail(std::vector<std::byte>(v2_empty_note.begin(), v2_empty_note.begin() + static_cast<std::ptrdiff_t>(n)), "rejects every truncate point");
     }
 
+    // Field headers must fit inside their record, even when the full packet has more bytes.
+    auto split_rejected = [](const std::vector<std::byte>& packet) {
+        auto current = c05_ex::decode_manifest(packet);
+        auto old = c05_l15::decode_manifest_v1(packet);
+        check(!current && current.error().code == c05::Errc::incomplete_input,
+              "record boundary rejects split field header");
+        check(!old && old.error().code == c05::Errc::incomplete_input,
+              "old reader respects record boundary");
+    };
+    const auto final_field = v1.size() - 14; // independent fixture: mtime tag/length plus 8-byte value
+    for (std::size_t remainder = 1; remainder != 6; ++remainder) {
+        auto split = v1;
+        put_u32(split, 12, static_cast<std::uint32_t>(final_field + remainder - 16));
+        split_rejected(split);
+    }
+    auto huge_split = v1;
+    huge_split.resize(16);
+    put_u32(huge_split, 12, 1);
+    huge_split.insert(huge_split.end(), {std::byte{0}, std::byte{77}, std::byte{0xff},
+        std::byte{0xff}, std::byte{0xff}, std::byte{0xff}});
+    split_rejected(huge_split);
+
     auto trailing = v1;
     trailing.push_back(std::byte{0});
     expect_decode_fail(trailing, "rejects trailing package data");

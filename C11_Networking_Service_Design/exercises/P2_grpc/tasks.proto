@@ -1,0 +1,24 @@
+syntax = "proto3";
+package c11.rpc;
+message SubmitRequest {
+  string idempotency_key = 1;
+  optional sint32 left = 2;
+  optional sint32 right = 3;
+  uint32 steps = 4;
+  optional uint32 budget_ms = 5;
+}
+message TaskId { uint64 id = 1; }
+message TaskSnapshot {
+  uint64 id = 1;
+  string state = 2;
+  optional sint64 result = 3;
+  uint32 progress = 4;
+  uint32 revision = 5;
+  bool stop_requested = 6;
+}
+service Tasks {
+  rpc Submit(SubmitRequest) returns (TaskSnapshot);
+  rpc Get(TaskId) returns (TaskSnapshot);
+  rpc Cancel(TaskId) returns (TaskSnapshot);
+  rpc Watch(TaskId) returns (stream TaskSnapshot);
+}

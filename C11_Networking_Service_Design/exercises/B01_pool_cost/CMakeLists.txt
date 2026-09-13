@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.28)
+project(C11_B01_pool_cost LANGUAGES CXX)
+include(../cmake/StudySetup.cmake)
+add_executable(C11_B01_pool_cost EXCLUDE_FROM_ALL main.cpp)
+c11_target(C11_B01_pool_cost)
