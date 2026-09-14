@@ -1,0 +1,11 @@
+{
+  "checked_on": "2026-09-14",
+  "storage": "CMake build tree _deps; never installed globally or committed",
+  "dependencies": [
+    {"name":"mp-units","version":"2.5.0","commit":"27d2def9082ce00d7eb4f75695dbead4a748f23f","repository":"https://github.com/mpusz/mp-units","license":"MIT","consumer":"c13_units","cmake":"src; modules OFF; std::format ON; GSL-LITE contracts"},
+    {"name":"gsl-lite","version":"1.0.1","commit":"56dab5ce071c4ca17d3e0dbbda9a94bd5a1cbca1","repository":"https://github.com/gsl-lite/gsl-lite","license":"MIT","consumer":"mp-units contracts"},
+    {"name":"xsimd","version":"13.2.0","commit":"1f8dd9c8e162968d9b4ff0251c56d431b8777f36","repository":"https://github.com/xtensor-stack/xsimd","license":"BSD-3-Clause","consumer":"C13_L07_simd_parallel via existing C08 SSE2 backend"},
+    {"name":"stdBLAS","version":"fixed source snapshot","commit":"146f4743a953e51d7319156f50d932bca7a6507f","repository":"https://github.com/kokkos/stdBLAS","license":"Apache-2.0 WITH LLVM-exception","consumer":"c13_stdblas","cmake":"upstream config header template; BLAS/TBB/Kokkos backends OFF"},
+    {"name":"Kokkos mdspan","version":"fixed source snapshot","commit":"8989f70749e28f337e6f7aa210db88659dba6f2f","repository":"https://github.com/kokkos/mdspan","license":"Apache-2.0 WITH LLVM-exception","consumer":"c13_stdblas only; isolated from native std::mdspan"}
+  ]
+}

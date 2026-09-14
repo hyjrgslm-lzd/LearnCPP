@@ -1,0 +1,8 @@
+execute_process(COMMAND "${PROGRAM}" RESULT_VARIABLE result OUTPUT_VARIABLE out ERROR_VARIABLE err TIMEOUT 15)
+if(NOT "${result}" STREQUAL "1" OR NOT "${out}${err}" MATCHES "check failed:")
+  message(FATAL_ERROR "Expected checker rejection (exit 1), received ${result}: ${out}${err}")
+endif()
+if(EXPECT_TEXT AND NOT "${out}${err}" MATCHES "${EXPECT_TEXT}")
+  message(FATAL_ERROR "Wrong rejection: expected ${EXPECT_TEXT}, received ${out}${err}")
+endif()
+message(STATUS "Checker rejected the deliberately wrong implementation")

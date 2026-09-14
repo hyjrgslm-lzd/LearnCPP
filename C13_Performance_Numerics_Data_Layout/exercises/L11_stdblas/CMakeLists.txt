@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.28)
+project(C13_L11_stdblas LANGUAGES CXX)
+include(../cmake/StudySetup.cmake)
+if(NOT C13_ENABLE_THIRD_PARTY)
+  message(FATAL_ERROR "L11 requires C13_ENABLE_THIRD_PARTY=ON and pinned dependencies")
+endif()
+c13_observation(c13_stdblas main.cpp)
+target_link_libraries(c13_stdblas PRIVATE c13_stdblas_headers)

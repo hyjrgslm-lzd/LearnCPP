@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.28)
+project(C13_L04_particle_pipeline LANGUAGES CXX)
+include(../cmake/StudySetup.cmake)
+c13_exercise(C13_L04_pipeline "pipeline position")
+add_executable(c13_pipeline main.cpp)
+c13_target(c13_pipeline)
+c13_test(c13_pipeline_smoke TARGET c13_pipeline ARGS --size 17 LABELS observation)

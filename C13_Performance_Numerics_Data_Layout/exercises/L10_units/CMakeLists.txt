@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.28)
+project(C13_L10_units LANGUAGES CXX)
+include(../cmake/StudySetup.cmake)
+if(NOT C13_ENABLE_THIRD_PARTY)
+  message(FATAL_ERROR "L10 requires C13_ENABLE_THIRD_PARTY=ON and pinned dependencies")
+endif()
+c13_observation(c13_units main.cpp)
+target_link_libraries(c13_units PRIVATE mp-units::mp-units)

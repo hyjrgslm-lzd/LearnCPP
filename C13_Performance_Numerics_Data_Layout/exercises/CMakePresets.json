@@ -1,0 +1,45 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {"major": 3, "minor": 28, "patch": 0},
+  "configurePresets": [
+    {
+      "name": "core",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/../build/${presetName}",
+      "environment": {"VSLANG": "1033"},
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_TRY_COMPILE_CONFIGURATION": "Release",
+        "C13_BUILD_REFERENCE": "ON",
+        "C13_ENABLE_THIRD_PARTY": "OFF",
+        "C13_FETCH_DEPS": "OFF",
+        "C13_ENABLE_FRONTIER": "OFF"
+      }
+    },
+    {
+      "name": "full-windows",
+      "inherits": "core",
+      "generator": "NMake Makefiles",
+      "condition": {"type": "equals", "lhs": "${hostSystemName}", "rhs": "Windows"},
+      "cacheVariables": {
+        "C13_ENABLE_THIRD_PARTY": "ON",
+        "C13_FETCH_DEPS": "ON",
+        "C13_ENABLE_FRONTIER": "ON"
+      }
+    },
+    {
+      "name": "student",
+      "inherits": "core",
+      "cacheVariables": {"C13_BUILD_REFERENCE": "OFF", "BUILD_TESTING": "OFF"}
+    }
+  ],
+  "buildPresets": [
+    {"name": "core", "configurePreset": "core"},
+    {"name": "full-windows", "configurePreset": "full-windows"},
+    {"name": "student", "configurePreset": "student"}
+  ],
+  "testPresets": [
+    {"name": "core", "configurePreset": "core", "output": {"outputOnFailure": true}},
+    {"name": "full-windows", "configurePreset": "full-windows", "output": {"outputOnFailure": true}}
+  ]
+}

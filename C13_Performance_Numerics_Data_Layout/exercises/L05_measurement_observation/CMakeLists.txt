@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.25)
+project(C13_L05_measurement_observation LANGUAGES CXX)
+include(../cmake/StudySetup.cmake)
+c13_observation(C13_L05_measurement main.cpp)
+c13_observation(c13_costs costs.cpp)
