@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="/C16QuickBridge">
+    <file>Main.qml</file>
+  </qresource>
+</RCC>

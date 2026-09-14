@@ -1,0 +1,40 @@
+#pragma once
+#include <QObject>
+#include <QString>
+#include <QThread>
+#include <vector>
+
+namespace c16_l03 {
+struct FrameRecord {
+    QString media_id;
+    int frame = 0;
+    Qt::HANDLE receiver_thread = nullptr;
+};
+
+class MediaSource : public QObject {
+    Q_OBJECT
+public:
+    void publish(QString id, int n) { emit frameReady(id, n); }
+signals:
+    void frameReady(QString, int);
+};
+
+class FrameSink : public QObject {
+    Q_OBJECT
+public:
+    std::vector<FrameRecord> frames;
+    void store(const QString& id, int n)
+    {
+        frames.push_back({id, n, QThread::currentThreadId()});
+        emit received();
+    }
+signals:
+    void received();
+};
+
+inline QMetaObject::Connection connectFrames(MediaSource* source, FrameSink* sink)
+{
+    return QObject::connect(source, &MediaSource::frameReady, sink,
+        [sink](QString id, int frame) { sink->store(id, frame); });
+}
+}

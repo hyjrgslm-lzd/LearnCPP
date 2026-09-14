@@ -13,6 +13,7 @@
 - **并发与异步**：C02 → C08 基础同步 → C09 协程或 C10 Execution；协程与 sender 的组合放在两侧基础之后。C09 不是使用 C10 的硬先修。
 - **高性能计算**：对象与资源基础 → C13 数值、布局与 CPU 性能 → C14 GPU；无需先读完整个异步课程组。
 - **引擎开发**：构建与对象基础 → C15，再按模块补齐并发、渲染和网络知识。
+- **桌面与媒体**：构建、对象与错误处理基础 → [C16](C16_Desktop_Multimedia/README.md) 的 Qt 对象/事件/模型 → 媒体管线与同步 → 本地审阅工具和 Quick 桥接；线程部分按需补 C08。
 
 目录采用 `C编号_具体主题`，按全局课程版图排序。编号提供默认阅读次序，实际硬先修以章节说明为准；空号留给尚未建设的课程，不创建占位目录。C03 提供类型、不变量、错误与接口设计的公共基础；C05 补充数据表达与常用设施；C04 提供泛型、编译期编程与反射主讲；C07 承接操作系统、内存与 I/O。各课的工具链要求、能力限制和运行方法见其构建说明，不能把目录排序当成所有先修已全部齐备。
 
@@ -34,6 +35,7 @@
 | 性能与数值 | [C13_Performance_Numerics_Data_Layout](C13_Performance_Numerics_Data_Layout/README.md) | profiling、浮点误差、随机数、量纲、span/mdspan、AoS/SoA、矩阵分块、SIMD/并行/NUMA 与端到端粒子管线 |
 | 领域应用 | [C14_GPU](C14_GPU/README.md) | CUDA、设备执行与内存层级、GPU 性能和算子实现 |
 | 领域应用 | [C15_Unreal_Engine](C15_Unreal_Engine/README.md) | Unreal Engine 对象、资源、任务、渲染及网络架构；当前覆盖 C15 中的 UE 专题 |
+| 领域应用 | [C16_Desktop_Multimedia](C16_Desktop_Multimedia/README.md) | Qt Widgets 对象、事件、线程、模型/视图、生命周期与可访问性；音视频表示、处理、同步、响应性实验及 MediaWorkbench/Quick 桥接 |
 
 各课独立配置和构建。进入课内 README 的阅读路线与构建指南后，再按目标阅读正文、做练习。工具链要求、能力探测与运行方法见各课构建说明。
 
