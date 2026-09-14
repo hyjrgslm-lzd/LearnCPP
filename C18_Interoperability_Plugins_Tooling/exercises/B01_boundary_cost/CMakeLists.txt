@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.24)
+project(C18_B01 LANGUAGES C CXX)
+include(../cmake/StudySetup.cmake)
+add_executable(c18_boundary_cost baseline.cpp)
+c18_target(c18_boundary_cost)
+c18_add_test(c18_boundary_cost_correctness c18_boundary_cost ARGS 16 1024 2 LABELS "observation;benchmark-correctness")
+c18_add_test(c18_boundary_cost_batch c18_boundary_cost ARGS 16 1024 2 batch LABELS "observation;benchmark-correctness")
+c18_add_test(c18_boundary_cost_copy c18_boundary_cost ARGS 16 1024 2 copy_batch LABELS "observation;benchmark-correctness")
