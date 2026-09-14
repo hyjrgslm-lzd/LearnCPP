@@ -2,7 +2,15 @@
 
 本练习验证预处理是每个翻译单元各自发生的文本转换。`macro_a.cpp` 和 `macro_b.cpp` 包含同一个 `generated_value.hpp`，但在包含前定义不同 `B1_LOCAL_OFFSET`。头里的演示函数使用 `static inline`，保证每个翻译单元得到内部 linkage 定义；如果写成外部 `inline`，两个不同函数体会违反 ODR。
 
-学生只修改 `src/student/student_value.cpp`。starter 默认不注册测试；打开 student 测试后会失败。
+学生只修改 `src/student/student_value.cpp`。普通默认配置不注册学生测试；`vs-study` 和 `student` 预设会注册，未完成的 starter 应失败。
+
+## VS 日常入口
+
+先按[总构建指南](../BUILD_GUIDE.md)生成并构建 `vs-study`，打开整章解决方案并选择 `Debug | x64`。本节命令从 `C01_Build_Compile_Link/exercises` 目录执行。
+
+将 `B1_preprocessor_student` 设为启动项目，在 `Student` 中编辑 [student_value.cpp](src/student/student_value.cpp)；`student_value.hpp`、`Checks/student_check.cpp` 和 `Common/check.hpp` 都已列入同一项目。参考项目位于本题的 `Reference`，其中两个宏示例仍分别编译为独立翻译单元。
+
+除明确标注的独立工具步骤外，下文命令也从 `exercises` 目录执行，使用已构建的 `vs-study`。
 
 ## Part 1：两个翻译单元的宏状态
 
@@ -33,13 +41,13 @@ Reference 检查：
 运行：
 
 ```powershell
-ctest --test-dir build/b1 --tests-regex B1_preprocessor_preprocess --output-on-failure
+ctest --preset vs-study -R '^B1_preprocessor_preprocess$'
 ```
 
 测试会调用当前 C++ 编译器预处理两个源文件，并保存：
 
-- `build/b1/evidence/preprocess_macro_a.txt`
-- `build/b1/evidence/preprocess_macro_b.txt`
+- `build/vs-study/B1_preprocessor/evidence/preprocess_macro_a.txt`
+- `build/vs-study/B1_preprocessor/evidence/preprocess_macro_b.txt`
 
 期望文本分别包含 `return ((100) + 11)` 和 `return ((100) + 22)`。
 
@@ -53,12 +61,11 @@ ctest --test-dir build/b1 --tests-regex B1_preprocessor_preprocess --output-on-f
 
 ## Part 4：Student
 
-打开 student 测试：
+`vs-study` 已注册学生检查；修改实现后重新构建并运行：
 
 ```powershell
-cmake -S B1_preprocessor -B build/b1-student -G Ninja -DENGINEERING_STUDY_TEST_STUDENTS=ON
-cmake --build build/b1-student
-ctest --test-dir build/b1-student -L student --output-on-failure
+cmake --build --preset vs-study --target B1_preprocessor_student
+ctest --preset vs-study -R '^B1_preprocessor_student$'
 ```
 
 starter 应失败。完成条件：`b1_student::configured_value() == 123`。

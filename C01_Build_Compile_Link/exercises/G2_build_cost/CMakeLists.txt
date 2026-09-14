@@ -15,6 +15,7 @@ function(g2_add_variant name)
     add_executable(${name} ${G2_SOURCES})
     target_include_directories(${name} PRIVATE reference/include)
     engineering_configure_target(${name})
+    target_sources(${name} PRIVATE reference/include/g2_common/common.hpp reference/include/g2_common/heavy.hpp)
 endfunction()
 
 g2_add_variant(G2_build_cost_baseline)
@@ -31,3 +32,9 @@ foreach(target IN ITEMS G2_build_cost_baseline G2_build_cost_pch G2_build_cost_l
         TIMEOUT 30
     )
 endforeach()
+
+engineering_setup_ide(G2_build_cost_baseline
+    FILES
+        scripts/measure_build.ps1
+        scripts/measure_build.py
+)

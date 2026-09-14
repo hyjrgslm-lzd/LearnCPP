@@ -1,6 +1,19 @@
 # 练习 F1：沿 target 图追踪使用要求
 
-先读[06 CMake 与依赖](../../chapters/06-cmake-and-dependencies.md)。本题包含构建观察和一个独立实现任务。以下命令从 **LearnCPP 根目录的 x64 Native Tools 环境**运行；Ninja使用Release，换Visual Studio生成器时构建/CTest要加`--config Release`/`-C Release`。
+先读[06 CMake 与依赖](../../chapters/06-cmake-and-dependencies.md)。本题包含构建观察和一个独立实现任务。下方各 Part 的独立构建命令从 **LearnCPP 根目录的 x64 Native Tools 环境**运行；Ninja使用Release，换Visual Studio生成器时构建/CTest要加`--config Release`/`-C Release`。
+
+## VS 日常入口
+
+先按[总构建指南](../BUILD_GUIDE.md)生成并构建 `vs-study`，打开整章解决方案并选择 `Debug | x64`。本节命令从 `C01_Build_Compile_Link/exercises` 目录执行。
+
+将 `F1_cmake_targets_student` 设为启动项目；在 `Support/F1_student_impl` 的 `Student` 中编辑 [student.cpp](src/student/student.cpp)。库和消费者保留分离，才能继续观察 PUBLIC/PRIVATE/INTERFACE 使用要求；头文件已列入库与消费者工程。`F1_warning_policy` 是 INTERFACE 目标，可在学生项目的 `Docs/CMakeLists.txt` 中查看其定义与依赖关系。
+
+~~~powershell
+cmake --build --preset vs-study --target F1_cmake_targets_student
+ctest --preset vs-study -R '^F1_cmake_targets_student$'
+~~~
+
+本题后续 Part 的独立工具链命令仍从 LearnCPP 根目录执行。
 
 ## Part 1：谁接收到哪些要求
 

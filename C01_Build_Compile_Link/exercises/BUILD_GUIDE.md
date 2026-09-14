@@ -1,5 +1,61 @@
 # 构建、运行与复现实验
 
+## Visual Studio 日常练习入口
+
+从本目录生成整章学习解决方案（CMake 4.2+、Visual Studio 2026 C++ 工具链）：
+
+~~~powershell
+cmake --preset vs-study
+cmake --build --preset vs-study --parallel 4
+~~~
+
+打开 `build/vs-study/C01_Build_Compile_Link.slnx`，选择 `Debug | x64`。首次打开默认启动 `A1_build_debug_student`；换题时右键对应的 `_student` 项目，选择“设为启动项目”，再按 F5 调试或 Ctrl+F5 运行。VS 会保存后续选择。J1 是打包实验，以下面的 CTest 命令运行，不将库项目作为可执行程序启动。
+
+每题根节点保留学生入口；参考答案在 `Reference`，必要库和额外检查在 `Support`，观察变体在 `Experiments`。`_CMake` 收纳构建、安装与整章测试目标。普通练习的学生实现、头文件和检查入口位于同一个项目；库边界练习的实现仍在同题的库项目中。学生代码在 `Student`，检查入口在 `Checks`，公共检查头在 `Common`，说明和脚本在 `Docs`。独立负例源码在 `Experiments` 中仅供浏览，由原有隔离子工程编译。
+
+D1 的 `D1_loader_reference` 已配置 DLL 构建依赖及调试参数，设为启动项目即可运行；构建依赖不会使加载器静态链接这个 DLL。J1 的 `Common/E1` 直接关联 E1 源文件，编辑会影响两题。
+
+新建源码或头文件时，把文件加入所属目标的 `add_executable` / `add_library` / `target_sources(... PRIVATE ...)` 清单并重新生成。独立实验源码只有在不参与本目录任何正常目标编译时，才可加入 `engineering_setup_ide` 的 `BROWSE` 清单。
+
+只检查当前练习：
+
+~~~powershell
+cmake --build --preset vs-study --target B1_preprocessor_student
+ctest --preset vs-study -R '^B1_preprocessor_student$'
+# 构建整章后，检查所有已注册的 B1 实验：
+ctest --preset vs-study -R '^B1_preprocessor_'
+# 打包及重定位实验：
+ctest --preset vs-study -R '^J1_package_roundtrip$'
+# 回归参考答案、观察和负例，排除尚未完成的学生作业：
+ctest --preset vs-study -LE student
+# 检查生成工程的分组、文件归属和调试设置：
+pwsh -File tools/verify_vs_layout.ps1
+~~~
+
+`vs-study` 默认同时显示参考答案与观察实验，并注册学生检查。整章 `RUN_TESTS` 会包含未完成作业，因此出现学生检查失败是正常的。A1/B1/C1/E1/F2/G1 的可选参考答案由 `ENGINEERING_STUDY_BUILD_REFERENCE` 同时控制目标和检查；C2/D1/F1/G2 的教学实验保留原有入口，J1 与模块实验保留原有开关。`ENGINEERING_STUDY_TEST_STUDENTS` 只控制学生检查注册，E1 学生项目也始终可编辑和构建。
+
+旧的 `verify-core`、`verify-debug`、`student` 与专项预设继续可用；`vs-study` 使用独立构建目录，避免与旧生成器或旧工程混用。Modules、`import std` 和故意错误诊断默认关闭，启用方法见后文。
+
+### 各题入口速查
+
+以下位置均相对于解决方案中的练习节点；完整步骤见各题 README。编辑源文件后先重新构建当前目标，再运行对应检查。
+
+| 练习 | 启动或运行入口 | 编辑或观察位置 |
+|---|---|---|
+| [A1 构建与调试](A1_build_debug/README.md) | `A1_build_debug_student` | 主项目的 `Student/debug_story.cpp` |
+| [B1 预处理](B1_preprocessor/README.md) | `B1_preprocessor_student` | 主项目的 `Student/student_value.cpp`；宏示例在参考项目 |
+| [C1 ODR](C1_odr/README.md) | `C1_odr_student` | 主项目的 `Student/lesson.cpp`；caller 与检查入口也在同项目 |
+| [C2 静态归档](C2_archive/README.md) | `C2_archive_student` | 主项目的 `Student/archive_value.cpp`；真实归档库在 `Support` |
+| [D1 动态库](D1_shared_library/README.md) | `D1_shared_reference` 或 `D1_loader_reference` | `Support` 中的静态库、DLL；本题没有学生占位项目 |
+| [E1 ABI](E1_abi/README.md) | `E1_abi_student` | `Support/E1_lesson_student_static` 项目的 `Student/lesson_api.cpp` |
+| [F1 目标依赖](F1_cmake_targets/README.md) | `F1_cmake_targets_student` | `Support/F1_student_impl` 项目的 `Student/student.cpp` |
+| [F2 依赖消费](F2_dependencies/README.md) | `F2_dependencies_student`，另运行 `F2_dependencies_student_delegation` | 主项目的 `Student/student.cpp`；真实及 spy provider 分别验证 |
+| [G1 诊断](G1_diagnostics/README.md) | `G1_diagnostics_student` | 主项目的 `Student/parser.cpp`；fuzz 和静态分析保留专项步骤 |
+| [G2 构建成本](G2_build_cost/README.md) | `G2_build_cost_baseline` | 其余变体在 `Experiments`；正式采样使用独立 driver |
+| [H1 Modules](H1_modules/README.md) | `modules-msvc-ninja` 专项预设 | `vs-study` 默认不包含本题 |
+| [I1 import std](I1_import_std/README.md) | `import-std-msvc-ninja` 专项预设 | `vs-study` 默认不包含本题，继续遵守固定版本门控 |
+| [J1 包消费](J1_package/README.md) | `J1_package_roundtrip`（CTest） | 共享 E1 文件在 `Common/E1`，包脚本在 `Docs` |
+
 ## 1. 先区分四个动作
 
 `cmake` 配置并生成构建系统；`cmake --build` 调用实际构建工具；可执行文件运行程序；`ctest` 运行已注册检查。配置成功没有证明所有源文件能编译，构建成功没有证明运行时 DLL 能找到，CTest 成功也只覆盖实际执行的检查。

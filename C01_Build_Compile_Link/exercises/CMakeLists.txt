@@ -13,6 +13,9 @@ include(cmake/StudySetup.cmake)
 
 add_executable(engineering_check_selftest cmake/check_selftest.cpp)
 engineering_configure_target(engineering_check_selftest)
+set_property(TARGET engineering_check_selftest PROPERTY FOLDER "_CMake/Checks")
+target_sources(engineering_check_selftest PRIVATE BUILD_GUIDE.md cmake/StudySetup.cmake tools/verify_vs_layout.ps1)
+source_group("Docs" FILES BUILD_GUIDE.md cmake/StudySetup.cmake tools/verify_vs_layout.ps1)
 engineering_add_test(engineering_check_success COMMAND engineering_check_selftest LABELS tooling)
 engineering_add_test(engineering_check_failure
     COMMAND ${CMAKE_COMMAND} -DPROGRAM=$<TARGET_FILE:engineering_check_selftest>
@@ -30,6 +33,8 @@ endif()
 if(ENGINEERING_STUDY_ENABLE_IMPORT_STD)
     add_subdirectory(I1_import_std)
 endif()
+
+set_property(DIRECTORY PROPERTY VS_STARTUP_PROJECT A1_build_debug_student)
 
 message(STATUS "C01 named modules requested: ${ENGINEERING_STUDY_ENABLE_MODULES}")
 message(STATUS "C01 import std requested: ${ENGINEERING_STUDY_ENABLE_IMPORT_STD}")

@@ -2,7 +2,20 @@
 
 先读[06 CMake 与依赖](../../chapters/06-cmake-and-dependencies.md)。本题用仓库内的`F2Provider 1.0.0`作为离线fixture，导出target是`F2Provider::provider`；不是第三方真实发布包，也不依赖后续J1。源码与[许可证](provider_fixture/LICENSE.txt)可直接检查，具体文件版本由课程指纹绑定，版本号本身不能证明字节没变。
 
-以下命令从LearnCPP根目录的x64 Native Tools环境运行。源码状态、依赖消费方式与运行结果分别记录。
+下方各 Part 的独立构建命令从LearnCPP根目录的x64 Native Tools环境运行。源码状态、依赖消费方式与运行结果分别记录。
+
+## VS 日常入口
+
+先按[总构建指南](../BUILD_GUIDE.md)生成并构建 `vs-study`，打开整章解决方案并选择 `Debug | x64`。本节命令从 `C01_Build_Compile_Link/exercises` 目录执行。
+
+将 `F2_dependencies_student` 设为启动项目，在同项目的 `Student` 中编辑 [student.cpp](src/student/student.cpp)，头文件和检查入口也在工程内。默认 FetchContent 模式的真实 provider 位于 `Support/f2_provider_fixture`；`Support/F2_dependencies_student_delegation` 保留使用 spy provider 的独立检查。仅运行学生主程序不会执行 delegation 检查，两者都应运行。
+
+可选参考程序由 `ENGINEERING_STUDY_BUILD_REFERENCE` 控制。下面先构建两个学生检查目标；后续 Part 的独立依赖消费命令继续从 LearnCPP 根目录执行。
+
+~~~powershell
+cmake --build --preset vs-study --target F2_dependencies_student F2_dependencies_student_delegation
+ctest --preset vs-study -R '^F2_dependencies_student'
+~~~
 
 ## Part 1：通过 FetchContent 取用本地源码
 

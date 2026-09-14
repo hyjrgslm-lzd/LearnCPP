@@ -17,6 +17,7 @@ target_include_directories(lesson_static
 )
 target_compile_definitions(lesson_static PUBLIC LESSON_STATIC)
 engineering_configure_target(lesson_static)
+target_sources(lesson_static PRIVATE "${_lesson_api_dir}/lesson_api.h")
 
 add_library(lesson_shared SHARED "${_lesson_api_src}")
 target_include_directories(lesson_shared
@@ -26,6 +27,7 @@ target_include_directories(lesson_shared
 )
 target_compile_definitions(lesson_shared PRIVATE LESSON_BUILD_SHARED)
 engineering_configure_target(lesson_shared)
+target_sources(lesson_shared PRIVATE "${_lesson_api_dir}/lesson_api.h")
 
 install(TARGETS lesson_static lesson_shared
     EXPORT LessonPackageTargets
@@ -72,3 +74,13 @@ if(ENGINEERING_STUDY_BUILD_REFERENCE)
         TIMEOUT 180
     )
 endif()
+
+engineering_setup_ide(lesson_shared
+    FILES
+        cmake/LessonPackageConfig.cmake.in
+        cmake/run_package_roundtrip.cmake
+        consumer/CMakeLists.txt
+    BROWSE
+        consumer/main.cpp
+)
+source_group("Common/E1" FILES "${_lesson_api_src}" "${_lesson_api_dir}/lesson_api.h")

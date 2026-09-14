@@ -2,6 +2,12 @@
 
 先读[09 import std](../../chapters/09-import-std.md)。本题是观察/工具集成实验：提供完整Reference，不需要为运行而填TODO。你要说明每层证据能证明什么，而不是只看到输出10。下面从LearnCPP根目录的x64 Native Tools环境执行。
 
+## 与 VS 学习入口的关系
+
+普通 `vs-study` 默认关闭 `ENGINEERING_STUDY_ENABLE_IMPORT_STD`，不生成本题项目。本题保留[总构建指南](../BUILD_GUIDE.md)中的 `import-std-msvc-ninja` 专项预设：使用现有的 CMake 4.2.3 实验门控和 x64 Native Tools 环境，Ninja 入口不生成 VS 解决方案文件。
+
+本题没有 `_student` 项目，运行目标仍是 `I1_import_std_reference`，源码为 [reference/main.cpp](reference/main.cpp)。工程编排没有改变 `import std`、扫描或标准库模块的构建要求。下文仍从 LearnCPP 根目录执行单题验证命令。
+
 ## Part 1：CMake 集成路径
 
 本次固定CMake4.2.3。实验gate必须在首次`project()`启用CXX前设置；随后确认`CMAKE_CXX_COMPILER_IMPORT_STD`包含23，并启用target的`CXX_MODULE_STD`。本题独立配置也实现了这些步骤。

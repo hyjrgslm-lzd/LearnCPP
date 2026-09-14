@@ -6,48 +6,56 @@ include("${CMAKE_CURRENT_LIST_DIR}/../cmake/StudySetup.cmake")
 
 function(e1_configure_lesson_library target)
     target_include_directories(${target} PUBLIC include)
+    target_sources(${target} PRIVATE include/lesson_api.h)
     engineering_configure_target(${target})
 endfunction()
 
-add_library(E1_lesson_reference_static STATIC src/reference/lesson_api.cpp)
-target_compile_definitions(E1_lesson_reference_static PUBLIC LESSON_STATIC)
-e1_configure_lesson_library(E1_lesson_reference_static)
+if(ENGINEERING_STUDY_BUILD_REFERENCE)
+    add_library(E1_lesson_reference_static STATIC src/reference/lesson_api.cpp)
+    target_compile_definitions(E1_lesson_reference_static PUBLIC LESSON_STATIC)
+    e1_configure_lesson_library(E1_lesson_reference_static)
 
-add_library(E1_lesson_reference_shared SHARED src/reference/lesson_api.cpp)
-target_compile_definitions(E1_lesson_reference_shared PRIVATE LESSON_BUILD_SHARED)
-e1_configure_lesson_library(E1_lesson_reference_shared)
+    add_library(E1_lesson_reference_shared SHARED src/reference/lesson_api.cpp)
+    target_compile_definitions(E1_lesson_reference_shared PRIVATE LESSON_BUILD_SHARED)
+    e1_configure_lesson_library(E1_lesson_reference_shared)
 
-add_library(E1_lesson_bad_alloc_static STATIC src/reference/lesson_api.cpp)
-target_compile_definitions(E1_lesson_bad_alloc_static PUBLIC LESSON_STATIC PRIVATE LESSON_FORCE_BAD_ALLOC)
-e1_configure_lesson_library(E1_lesson_bad_alloc_static)
+    add_library(E1_lesson_bad_alloc_static STATIC src/reference/lesson_api.cpp)
+    target_compile_definitions(E1_lesson_bad_alloc_static PUBLIC LESSON_STATIC PRIVATE LESSON_FORCE_BAD_ALLOC)
+    e1_configure_lesson_library(E1_lesson_bad_alloc_static)
 
-add_executable(E1_abi_reference_static checks/abi_contract_check.cpp)
-target_link_libraries(E1_abi_reference_static PRIVATE E1_lesson_reference_static)
-engineering_configure_target(E1_abi_reference_static)
+    add_executable(E1_abi_reference_static checks/abi_contract_check.cpp)
+    target_link_libraries(E1_abi_reference_static PRIVATE E1_lesson_reference_static)
+    engineering_configure_target(E1_abi_reference_static)
+    target_sources(E1_abi_reference_static PRIVATE include/lesson_api.h)
 
-add_executable(E1_abi_reference_shared checks/abi_contract_check.cpp)
-target_link_libraries(E1_abi_reference_shared PRIVATE E1_lesson_reference_shared)
-engineering_configure_target(E1_abi_reference_shared)
+    add_executable(E1_abi_reference_shared checks/abi_contract_check.cpp)
+    target_link_libraries(E1_abi_reference_shared PRIVATE E1_lesson_reference_shared)
+    engineering_configure_target(E1_abi_reference_shared)
+    target_sources(E1_abi_reference_shared PRIVATE include/lesson_api.h)
 
-add_executable(E1_abi_bad_alloc checks/bad_alloc_check.cpp)
-target_link_libraries(E1_abi_bad_alloc PRIVATE E1_lesson_bad_alloc_static)
-engineering_configure_target(E1_abi_bad_alloc)
+    add_executable(E1_abi_bad_alloc checks/bad_alloc_check.cpp)
+    target_link_libraries(E1_abi_bad_alloc PRIVATE E1_lesson_bad_alloc_static)
+    engineering_configure_target(E1_abi_bad_alloc)
+    target_sources(E1_abi_bad_alloc PRIVATE include/lesson_api.h)
 
-add_executable(E1_abi_c_consumer c_consumer/main.c)
-target_link_libraries(E1_abi_c_consumer PRIVATE E1_lesson_reference_shared)
+    add_executable(E1_abi_c_consumer c_consumer/main.c)
+    target_link_libraries(E1_abi_c_consumer PRIVATE E1_lesson_reference_shared)
+    target_sources(E1_abi_c_consumer PRIVATE include/lesson_api.h)
+endif()
 
 add_executable(E1_abi_observation_layout observation/layout.cpp)
 engineering_configure_target(E1_abi_observation_layout)
 
+add_library(E1_lesson_student_static STATIC src/student/lesson_api.cpp)
+target_compile_definitions(E1_lesson_student_static PUBLIC LESSON_STATIC)
+e1_configure_lesson_library(E1_lesson_student_static)
+
+add_executable(E1_abi_student checks/abi_contract_check.cpp)
+target_link_libraries(E1_abi_student PRIVATE E1_lesson_student_static)
+engineering_configure_target(E1_abi_student)
+target_sources(E1_abi_student PRIVATE include/lesson_api.h)
+
 if(ENGINEERING_STUDY_TEST_STUDENTS)
-    add_library(E1_lesson_student_static STATIC src/student/lesson_api.cpp)
-    target_compile_definitions(E1_lesson_student_static PUBLIC LESSON_STATIC)
-    e1_configure_lesson_library(E1_lesson_student_static)
-
-    add_executable(E1_abi_student checks/abi_contract_check.cpp)
-    target_link_libraries(E1_abi_student PRIVATE E1_lesson_student_static)
-    engineering_configure_target(E1_abi_student)
-
     engineering_add_test(E1_abi_student
         COMMAND E1_abi_student student
         LABELS student
@@ -83,3 +91,5 @@ engineering_add_test(E1_abi_observation_layout
     LABELS observation
     TIMEOUT 30
 )
+
+engineering_setup_ide(E1_abi_student)

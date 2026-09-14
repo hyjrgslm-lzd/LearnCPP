@@ -4,6 +4,21 @@
 
 `parse_two_digits`只接受恰好两个ASCII十进制数字，返回0到99；其他输入抛`std::invalid_argument`。本题不是通用Unicode/任意长度整数解析器。
 
+## VS 日常入口
+
+先按[总构建指南](../BUILD_GUIDE.md)生成并构建 `vs-study`，打开整章解决方案并选择 `Debug | x64`。本节命令从 `C01_Build_Compile_Link/exercises` 目录执行。
+
+将 `G1_diagnostics_student` 设为启动项目，在 `Student` 中编辑 [parser.cpp](src/student/parser.cpp)；同项目包含学生头文件和 `Checks/parser_contract.hpp`。可选参考程序在 `Reference`，由 `ENGINEERING_STUDY_BUILD_REFERENCE` 控制。
+
+学生项目的 `Docs/scripts` 可打开 fuzz 驱动，`Experiments` 可浏览静态分析与 fuzz 输入源码；它们不会自动加入正常编译。F5 运行的是安全 parser 契约检查。ASan、libFuzzer 仍按后续专项步骤选择工具链和运行时。
+
+~~~powershell
+cmake --build --preset vs-study --target G1_diagnostics_student
+ctest --preset vs-study -R '^G1_diagnostics_student$'
+~~~
+
+本题后续 Part 的独立工具链命令仍从 LearnCPP 根目录执行。
+
 ## Part 1：完成独立的安全 Student
 
 只编辑[src/student/parser.cpp](src/student/parser.cpp)。初始安全占位返回-1，位于合法结果域之外，首个checker会正常失败；它不索引空输入，也不把未实现伪装成有效解析。Reference在[reference/parser.cpp](reference/parser.cpp)，学生修改不会改变它。Reference和Student使用同一份契约检查：枚举全部100个两位ASCII数字，并覆盖空串、短输入、长输入、非数字、空白、符号和非ASCII数字样文本，拒绝只返回42的实现。

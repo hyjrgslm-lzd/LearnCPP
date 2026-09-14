@@ -26,3 +26,8 @@ engineering_add_test(I1_import_std_reference
     LABELS reference
     TIMEOUT 30
 )
+
+engineering_setup_ide(I1_import_std_reference
+    FILES
+        direct-cl/direct_import_std.cmd
+)

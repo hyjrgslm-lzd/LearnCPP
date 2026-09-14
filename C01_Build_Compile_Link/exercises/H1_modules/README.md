@@ -2,6 +2,12 @@
 
 先读[08 Modules](../../chapters/08-modules.md)。本题是完整可运行的观察/实验起点，不把修改Reference当成学生完成。先预测，再运行、检查产物、解释；需要扩展时使用下方独立工作区。命令从LearnCPP根目录的x64 Native Tools环境运行，使用本机已有MSVC、CMake与Ninja。
 
+## 与 VS 学习入口的关系
+
+普通 `vs-study` 默认关闭 `ENGINEERING_STUDY_ENABLE_MODULES`，因此整章解决方案默认不显示本题。本题保留[总构建指南](../BUILD_GUIDE.md)中的 `modules-msvc-ninja` 专项预设，以及下文从 LearnCPP 根目录执行的单题 Ninja 命令；Ninja 入口不生成 VS 解决方案文件。
+
+接口和分区仍通过 `FILE_SET CXX_MODULES` 参与构建。使用支持本题的 VS 生成器启用本题时，主要入口为 `H1_modules_reference`；接口与实现位于 `Reference` 文件节点，包脚本位于 `Docs`，独立 package 源码位于 `Experiments/package`，只供浏览。`H1_hidden_type_negative` 仍是需要显式构建的负例目标。
+
 ## Part 1：建立可比较基线
 
 `header_baseline/`给出同一行为的头文件版本；`reference/geometry.ixx`、`geometry.partition.ixx`、`geometry.cpp`分别承担primary interface、导出partition和implementation unit。

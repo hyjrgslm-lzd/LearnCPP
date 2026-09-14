@@ -8,18 +8,20 @@ add_library(C2_archive_library STATIC
 )
 target_include_directories(C2_archive_library PUBLIC src/reference)
 engineering_configure_target(C2_archive_library)
+target_sources(C2_archive_library PRIVATE src/reference/archive_value.hpp)
 
 add_executable(C2_archive_reference checks/reference_check.cpp)
 target_link_libraries(C2_archive_reference PRIVATE C2_archive_library)
 engineering_configure_target(C2_archive_reference)
+target_sources(C2_archive_reference PRIVATE src/reference/archive_value.hpp)
 
-add_library(C2_archive_student_impl src/student/archive_value.cpp)
-target_include_directories(C2_archive_student_impl PUBLIC src/student)
-engineering_configure_target(C2_archive_student_impl)
-
-add_executable(C2_archive_student checks/student_check.cpp)
-target_link_libraries(C2_archive_student PRIVATE C2_archive_student_impl)
+add_executable(C2_archive_student
+    checks/student_check.cpp
+    src/student/archive_value.cpp
+)
+target_include_directories(C2_archive_student PRIVATE src/student)
 engineering_configure_target(C2_archive_student)
+target_sources(C2_archive_student PRIVATE src/student/archive_value.hpp)
 
 get_filename_component(_c2_compiler_dir "${CMAKE_CXX_COMPILER}" DIRECTORY)
 find_program(C2_DUMPBIN dumpbin HINTS "${_c2_compiler_dir}")
@@ -72,3 +74,17 @@ engineering_add_test(C2_archive_negative_direct_objects
 if(ENGINEERING_STUDY_TEST_STUDENTS)
     engineering_add_test(C2_archive_student COMMAND C2_archive_student LABELS student TIMEOUT 30)
 endif()
+
+engineering_setup_ide(C2_archive_student
+    FILES
+        cmake/check_symbols.cmake
+        cmake/expect_link_failure.cmake
+        negative/direct_objects/CMakeLists.txt
+        negative/missing_definition/CMakeLists.txt
+    BROWSE
+        negative/direct_objects/main.cpp
+        negative/direct_objects/unused_member.cpp
+        negative/direct_objects/used_member.cpp
+        negative/missing_definition/caller.cpp
+        negative/missing_definition/main.cpp
+)

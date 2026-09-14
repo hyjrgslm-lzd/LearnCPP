@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 3.28)
 project(F2Provider VERSION 1.0.0 LANGUAGES CXX)
 
-add_library(f2_provider_fixture src/provider.cpp)
+add_library(f2_provider_fixture src/provider.cpp include/f2_provider/provider.hpp)
+source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}" FILES src/provider.cpp include/f2_provider/provider.hpp)
 add_library(F2Provider::provider ALIAS f2_provider_fixture)
 
 target_include_directories(f2_provider_fixture

@@ -8,12 +8,20 @@ int lesson_value();
 
 最终 `lesson_value()` 和两个调用路径都必须返回 `42`。检查器和调用者不属于学生编辑区；学生只改 `src/student/lesson.cpp`。这样可以防止把 `main` 或 caller 改成直接成功，而没有修复真实实现。
 
+## VS 日常入口
+
+先按[总构建指南](../BUILD_GUIDE.md)生成并构建 `vs-study`，打开整章解决方案并选择 `Debug | x64`。本节命令从 `C01_Build_Compile_Link/exercises` 目录执行。
+
+将 `C1_odr_student` 设为启动项目，在 `Student` 中编辑 [lesson.cpp](src/student/lesson.cpp)。同项目还包含 `lesson.hpp`、`Support` 下两个 caller，以及 `Checks/student_check.cpp`；四个 `.cpp` 仍独立编译，没有合成一个翻译单元。两种答案在 `Reference`，符号观察的 OBJECT 库在 `Support`。学生项目的 `Experiments/negative` 和 `Experiments/review_variants` 只展示独立实验源码，负例由 CTest 的子构建执行。
+
+除明确标注的独立工具步骤外，下文命令也从 `exercises` 目录执行，使用已构建的 `vs-study`。
+
 ## Part 1：观察单消费者头文件定义
 
 构建后运行：
 
 ```powershell
-ctest --test-dir build --tests-regex C1_odr_observation_single --output-on-failure
+ctest --preset vs-study -R '^C1_odr_observation_single$'
 ```
 
 这个程序只有一个 `.cpp` 包含头文件函数定义，应该输出：
@@ -29,7 +37,7 @@ single consumer header definition: 42
 负例不进入默认 build。用 CTest 触发嵌套构建：
 
 ```powershell
-ctest --test-dir build --tests-regex C1_odr_negative --output-on-failure
+ctest --preset vs-study -R '^C1_odr_negative_'
 ```
 
 两个负例都必须“构建失败才算通过测试”：
@@ -44,7 +52,7 @@ ctest --test-dir build --tests-regex C1_odr_negative --output-on-failure
 运行：
 
 ```powershell
-ctest --test-dir build --tests-regex C1_odr_observation_ --output-on-failure
+ctest --preset vs-study -R '^C1_odr_observation_'
 ```
 
 `C1_odr_observation_preprocess` 会调用当前 C++ 编译器预处理 `observer_a.cpp`，验证输出里确实有 `int lesson_value()` 的函数体。`C1_odr_observation_symbols` 会构建两个 object 文件，并用 Windows `dumpbin /symbols` 或 ELF `nm -C` 验证两个 object 都含有 `lesson_value` 定义。
@@ -88,7 +96,8 @@ inline int lesson_value()
 完成后运行：
 
 ```powershell
-ctest --test-dir build --tests-regex C1_odr_student --output-on-failure
+cmake --build --preset vs-study --target C1_odr_student
+ctest --preset vs-study -R '^C1_odr_student$'
 ```
 
 **解析：** 检查器会直接调用 `lesson_value()`，再分别调用 `call_lesson_from_a()` 和 `call_lesson_from_b()`。直接实现和两条路径都必须返回 `42`，总和必须是 `84`。只让 caller 直接 `return 42`、只改输出文字、只在检查器里硬编码，都不能通过真实检查。
@@ -103,20 +112,22 @@ Reference 提供两种独立正确修复：
 运行：
 
 ```powershell
-ctest --test-dir build --tests-regex C1_odr_reference --output-on-failure
+ctest --preset vs-study -R '^C1_odr_reference'
 ```
 
 两者都应通过。
 
 ## 独立构建
 
+这一节从 **LearnCPP 根目录的 x64 Native Tools 环境**运行；显式开启学生测试，以观察未完成 starter 的失败。
+
 ```powershell
-cmake -S C01_Build_Compile_Link/exercises/C1_odr -B C01_Build_Compile_Link/exercises/build/sample-odr -G Ninja
+cmake -S C01_Build_Compile_Link/exercises/C1_odr -B C01_Build_Compile_Link/exercises/build/sample-odr -G Ninja -DCMAKE_BUILD_TYPE=Debug -DENGINEERING_STUDY_TEST_STUDENTS=ON
 cmake --build C01_Build_Compile_Link/exercises/build/sample-odr
 ctest --test-dir C01_Build_Compile_Link/exercises/build/sample-odr --output-on-failure
 ```
 
-当前 Starter 的完整 `ctest` 会因为 `C1_odr_student` 失败而返回非零，这是预期的学生未完成状态。作者验收应分别确认：
+按上述命令注册学生检查后，未完成 Starter 的完整 `ctest` 会因为 `C1_odr_student` 失败而返回非零，这是预期的学生未完成状态。作者验收应分别确认：
 
 - reference 通过。
 - observation 通过。

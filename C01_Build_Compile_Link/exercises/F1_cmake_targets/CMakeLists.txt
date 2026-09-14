@@ -11,19 +11,23 @@ target_include_directories(F1_math_public PUBLIC reference/include)
 target_link_libraries(F1_math_public PUBLIC F1_warning_policy)
 target_compile_definitions(F1_math_public PRIVATE F1_BUILDING_MATH=1)
 engineering_configure_target(F1_math_public)
+target_sources(F1_math_public PRIVATE reference/include/f1_math/math.hpp)
 
 add_executable(F1_cmake_targets_reference checks/reference_check.cpp)
 target_link_libraries(F1_cmake_targets_reference PRIVATE F1_math_public)
 engineering_configure_target(F1_cmake_targets_reference)
+target_sources(F1_cmake_targets_reference PRIVATE reference/include/f1_math/math.hpp)
 
 add_library(F1_student_impl src/student/student.cpp)
 target_include_directories(F1_student_impl PUBLIC src/student)
 target_link_libraries(F1_student_impl PUBLIC F1_warning_policy)
 engineering_configure_target(F1_student_impl)
+target_sources(F1_student_impl PRIVATE src/student/student.hpp)
 
 add_executable(F1_cmake_targets_student checks/student_check.cpp)
 target_link_libraries(F1_cmake_targets_student PRIVATE F1_student_impl)
 engineering_configure_target(F1_cmake_targets_student)
+target_sources(F1_cmake_targets_student PRIVATE src/student/student.hpp)
 
 engineering_add_test(F1_cmake_targets_reference
     COMMAND F1_cmake_targets_reference
@@ -38,3 +42,5 @@ if(ENGINEERING_STUDY_TEST_STUDENTS)
         TIMEOUT 30
     )
 endif()
+
+engineering_setup_ide(F1_cmake_targets_student)

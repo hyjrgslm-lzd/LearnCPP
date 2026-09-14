@@ -8,12 +8,22 @@ extern "C" int lesson_runtime_value();
 
 这里还不引入 opaque handle。目标是先分清静态库、动态库、Windows 导入库、导出符号、装载失败和运行时初始化退出。
 
+## VS 日常入口
+
+先按[总构建指南](../BUILD_GUIDE.md)生成并构建 `vs-study`，打开整章解决方案并选择 `Debug | x64`。本节命令从 `C01_Build_Compile_Link/exercises` 目录执行。
+
+本题是观察实验，没有 `_student` 项目。可将本题根节点的 `D1_shared_reference` 设为启动项目；`Reference` 中还有 `D1_static_reference` 与 `D1_loader_reference`。静态库和 DLL 位于 `Support`，共用 [runtime.cpp](src/runtime.cpp)；[d1_runtime.h](include/d1_runtime.h) 已列入库与链接消费者的工程。
+
+`D1_loader_reference` 已配置 DLL 构建依赖、绝对 DLL 路径、导出名和退出记录路径，可单独构建后启动。这个依赖只安排构建顺序，加载器仍通过运行时 API 打开 DLL。
+
+除明确标注的独立工具步骤外，下文命令也从 `exercises` 目录执行，使用已构建的 `vs-study`。
+
 ## Part 1：静态库链接
 
 运行：
 
 ```powershell
-ctest --test-dir build --tests-regex D1_static_reference --output-on-failure
+ctest --preset vs-study -R '^D1_static_reference$'
 ```
 
 **解析：** 静态库在链接阶段把所需对象代码放进 exe。运行时不需要再找到 `.lib`。这个测试检查 `lesson_runtime_value()` 返回 `7`，并确认库内全局初始化已经发生。
@@ -23,7 +33,7 @@ ctest --test-dir build --tests-regex D1_static_reference --output-on-failure
 运行：
 
 ```powershell
-ctest --test-dir build --tests-regex D1_shared_reference --output-on-failure
+ctest --preset vs-study -R '^D1_shared_reference$'
 ```
 
 **解析：** Windows shared 目标会产出 DLL 和导入库。exe 链接导入库，但运行时还要找到 DLL。链接成功不等于启动成功。
@@ -33,7 +43,7 @@ ctest --test-dir build --tests-regex D1_shared_reference --output-on-failure
 运行：
 
 ```powershell
-ctest --test-dir build --tests-regex D1_loader_reference --output-on-failure
+ctest --preset vs-study -R '^D1_loader_reference$'
 ```
 
 loader 用绝对路径打开动态库，查找 `lesson_runtime_value`，再记录卸载时的退出文件。
@@ -45,7 +55,7 @@ loader 用绝对路径打开动态库，查找 `lesson_runtime_value`，再记�
 运行：
 
 ```powershell
-ctest --test-dir build --tests-regex D1_negative --output-on-failure
+ctest --preset vs-study -R '^D1_negative_'
 ```
 
 - `D1_negative_missing_dll` 只把 exe 复制到没有 DLL 的专用目录运行，期望它在进入程序逻辑前失败。

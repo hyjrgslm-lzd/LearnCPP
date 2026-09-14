@@ -5,6 +5,7 @@ include("${CMAKE_CURRENT_LIST_DIR}/../cmake/StudySetup.cmake")
 
 add_executable(H1_header_baseline header_baseline/main.cpp)
 engineering_configure_target(H1_header_baseline)
+target_sources(H1_header_baseline PRIVATE header_baseline/geometry.hpp)
 
 add_executable(H1_modules_reference)
 target_sources(H1_modules_reference
@@ -91,4 +92,15 @@ engineering_add_test(H1_modules_package_consumer
         -P ${CMAKE_CURRENT_SOURCE_DIR}/cmake/run_package_consumer.cmake
     LABELS reference
     TIMEOUT 180
+)
+
+engineering_setup_ide(H1_modules_reference
+    FILES
+        cmake/run_package_consumer.cmake
+        package/consumer/CMakeLists.txt
+        package/library/CMakeLists.txt
+        package/library/cmake/h1_geometry_moduleConfig.cmake.in
+    BROWSE
+        package/consumer/src/main.cpp
+        package/library/src/h1_geometry.ixx
 )

@@ -7,20 +7,24 @@ include("${CMAKE_CURRENT_LIST_DIR}/../cmake/StudySetup.cmake")
 add_library(D1_runtime_static STATIC src/runtime.cpp)
 target_include_directories(D1_runtime_static PUBLIC include)
 engineering_configure_target(D1_runtime_static)
+target_sources(D1_runtime_static PRIVATE include/d1_runtime.h)
 
 add_library(D1_runtime_shared SHARED src/runtime.cpp)
 target_include_directories(D1_runtime_shared PUBLIC include)
 target_compile_definitions(D1_runtime_shared PRIVATE D1_RUNTIME_BUILD_SHARED)
 engineering_configure_target(D1_runtime_shared)
+target_sources(D1_runtime_shared PRIVATE include/d1_runtime.h)
 
 add_executable(D1_static_reference checks/linked_check.cpp)
 target_link_libraries(D1_static_reference PRIVATE D1_runtime_static)
 engineering_configure_target(D1_static_reference)
+target_sources(D1_static_reference PRIVATE include/d1_runtime.h)
 
 add_executable(D1_shared_reference checks/linked_check.cpp)
 target_link_libraries(D1_shared_reference PRIVATE D1_runtime_shared)
 target_compile_definitions(D1_shared_reference PRIVATE D1_RUNTIME_USE_SHARED)
 engineering_configure_target(D1_shared_reference)
+target_sources(D1_shared_reference PRIVATE include/d1_runtime.h)
 
 add_executable(D1_loader_reference checks/loader_check.cpp)
 engineering_configure_target(D1_loader_reference)
@@ -62,4 +66,15 @@ engineering_add_test(D1_negative_missing_export
         -P ${CMAKE_CURRENT_SOURCE_DIR}/cmake/expect_loader_failure.cmake
     LABELS negative
     TIMEOUT 30
+)
+
+# Runtime loading needs the DLL built, without linking the loader against it.
+add_dependencies(D1_loader_reference D1_runtime_shared)
+set_property(TARGET D1_loader_reference PROPERTY VS_DEBUGGER_COMMAND_ARGUMENTS
+    [=["$<TARGET_FILE:D1_runtime_shared>" lesson_runtime_value "$<TARGET_FILE_DIR:D1_loader_reference>/loader-exit.txt"]=])
+
+engineering_setup_ide(D1_shared_reference
+    FILES
+        cmake/expect_loader_failure.cmake
+        cmake/run_missing_dll.cmake
 )

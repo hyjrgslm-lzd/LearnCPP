@@ -27,14 +27,17 @@ else()
     message(FATAL_ERROR "F2_DEPENDENCY_MODE must be fetchcontent or find_package")
 endif()
 
-add_executable(F2_dependencies_reference checks/reference_check.cpp)
-target_link_libraries(F2_dependencies_reference PRIVATE F2Provider::provider)
-engineering_configure_target(F2_dependencies_reference)
+if(ENGINEERING_STUDY_BUILD_REFERENCE)
+    add_executable(F2_dependencies_reference checks/reference_check.cpp)
+    target_link_libraries(F2_dependencies_reference PRIVATE F2Provider::provider)
+    engineering_configure_target(F2_dependencies_reference)
+endif()
 
 add_executable(F2_dependencies_student checks/student_check.cpp src/student/student.cpp)
 target_include_directories(F2_dependencies_student PRIVATE src/student)
 target_link_libraries(F2_dependencies_student PRIVATE F2Provider::provider)
 engineering_configure_target(F2_dependencies_student)
+target_sources(F2_dependencies_student PRIVATE src/student/student.hpp)
 
 add_executable(F2_dependencies_student_delegation
     checks/delegation_check.cpp
@@ -48,12 +51,15 @@ target_include_directories(F2_dependencies_student_delegation
         checks/spy_provider/include
 )
 engineering_configure_target(F2_dependencies_student_delegation)
+target_sources(F2_dependencies_student_delegation PRIVATE src/student/student.hpp checks/spy_provider/spy_provider.hpp checks/spy_provider/include/f2_provider/provider.hpp)
 
-engineering_add_test(F2_dependencies_reference
-    COMMAND F2_dependencies_reference
-    LABELS reference
-    TIMEOUT 30
-)
+if(ENGINEERING_STUDY_BUILD_REFERENCE)
+    engineering_add_test(F2_dependencies_reference
+        COMMAND F2_dependencies_reference
+        LABELS reference
+        TIMEOUT 30
+    )
+endif()
 
 if(ENGINEERING_STUDY_TEST_STUDENTS)
     engineering_add_test(F2_dependencies_student
@@ -67,3 +73,14 @@ if(ENGINEERING_STUDY_TEST_STUDENTS)
         TIMEOUT 30
     )
 endif()
+
+if(TARGET f2_provider_fixture)
+    set_property(TARGET f2_provider_fixture PROPERTY FOLDER "F2_dependencies/Support")
+endif()
+
+engineering_setup_ide(F2_dependencies_student
+    FILES
+        provider_fixture/CMakeLists.txt
+        provider_fixture/LICENSE.txt
+        provider_fixture/cmake/F2ProviderConfig.cmake.in
+)

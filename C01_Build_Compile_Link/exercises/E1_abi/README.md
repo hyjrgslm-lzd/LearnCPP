@@ -10,12 +10,22 @@ void lesson_destroy(lesson_engine* engine);
 
 规则：ABI 版本为 `1`；`seed` 和 `input` 都在 `[-1000, 1000]`；成功时 `eval = seed + input`；失败时用 status 返回，不抛异常跨边界。
 
+## VS 日常入口
+
+先按[总构建指南](../BUILD_GUIDE.md)生成并构建 `vs-study`，打开整章解决方案并选择 `Debug | x64`。本节命令从 `C01_Build_Compile_Link/exercises` 目录执行。
+
+将 `E1_abi_student` 设为启动项目；学生实现位于 `Support/E1_lesson_student_static` 的 `Student` 节点：[lesson_api.cpp](src/student/lesson_api.cpp)。学生库与检查程序保留分离，以维持 API 边界；两者均显示 [lesson_api.h](include/lesson_api.h)。
+
+学生库与学生运行项目始终生成，`ENGINEERING_STUDY_TEST_STUDENTS` 只控制 CTest 注册。可选参考实现及对应检查由 `ENGINEERING_STUDY_BUILD_REFERENCE` 控制，`vs-study` 默认同时启用这两个开关。
+
+除明确标注的独立工具步骤外，下文命令也从 `exercises` 目录执行，使用已构建的 `vs-study`。
+
 ## Part 1：Reference 契约
 
 运行：
 
 ```powershell
-ctest --test-dir build --tests-regex E1_abi_reference --output-on-failure
+ctest --preset vs-study -R '^E1_abi_reference'
 ```
 
 Reference 同时检查 static 和 shared 两种链接方式。
@@ -27,7 +37,7 @@ Reference 同时检查 static 和 shared 两种链接方式。
 运行：
 
 ```powershell
-ctest --test-dir build --tests-regex E1_abi_bad_alloc --output-on-failure
+ctest --preset vs-study -R '^E1_abi_bad_alloc$'
 ```
 
 **解析：** 这是私有测试编译变体：同一 reference 实现用 private compile definition 控制 `seed == 999` 时抛 `std::bad_alloc`。检查器要求返回 `LESSON_INTERNAL_ERROR` 且 handle 仍为 null。不耗尽系统内存，也不暴露生产故障注入 API。
@@ -37,7 +47,7 @@ ctest --test-dir build --tests-regex E1_abi_bad_alloc --output-on-failure
 运行：
 
 ```powershell
-ctest --test-dir build --tests-regex E1_abi_c_consumer --output-on-failure
+ctest --preset vs-study -R '^E1_abi_c_consumer$'
 ```
 
 **解析：** C 程序包含 `lesson_api.h`，调用 create/eval/destroy 并得到 `42`。这证明当前边界是 C 可消费的函数 API；不证明 C 能处理 C++ 类、重载、异常或 STL。
@@ -47,7 +57,7 @@ ctest --test-dir build --tests-regex E1_abi_c_consumer --output-on-failure
 运行：
 
 ```powershell
-ctest --test-dir build --tests-regex E1_abi_observation_layout --output-on-failure
+ctest --preset vs-study -R '^E1_abi_observation_layout$'
 ```
 
 **解析：** 程序打印两个普通结构体的 size/alignment，说明字段顺序和对齐会进入布局。`lesson_engine` 在公共头里是不完整类型，所以这些内部布局变化不会泄露成 ABI 承诺。
@@ -59,7 +69,8 @@ ctest --test-dir build --tests-regex E1_abi_observation_layout --output-on-failu
 运行：
 
 ```powershell
-ctest --test-dir build --tests-regex E1_abi_student --output-on-failure
+cmake --build --preset vs-study --target E1_abi_student
+ctest --preset vs-study -R '^E1_abi_student$'
 ```
 
 完成实现时，必须保持：

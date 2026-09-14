@@ -11,12 +11,21 @@ LessonPackage::lesson_shared
 
 没有 `LessonPackage::lesson` alias。这样 consumer 必须明确选择静态或动态消费。
 
+## VS 日常入口
+
+先按[总构建指南](../BUILD_GUIDE.md)生成并构建 `vs-study`。本题是打包实验，没有 `_student` 项目：本题根节点显示 `lesson_shared`，`Support` 中显示 `lesson_static`。库项目用于构建和安装，包消费通过 CTest 运行。
+
+`lesson_shared` 的 `Common/E1` 直接关联 E1 的实现与公共头，编辑会同时影响 E1 和 J1。`Docs` 包含包配置与安装验证脚本；`Experiments/consumer/main.cpp` 仅供浏览，由安装后的独立 consumer 工程编译。共享头以 PRIVATE 工程文件展示，不会把源码路径作为使用要求导出。
+
+下文命令从 `C01_Build_Compile_Link/exercises` 目录运行。`vs-study` 默认开启 `ENGINEERING_STUDY_BUILD_REFERENCE`，从而注册 `J1_package_roundtrip`；单题独立配置时也需保留该开关。
+
 ## Part 1：安装到 prefix_A，复制到 prefix_B
 
 运行：
 
 ```powershell
-ctest --test-dir build --tests-regex J1_package_roundtrip --output-on-failure
+cmake --build --preset vs-study --target lesson_static lesson_shared
+ctest --preset vs-study -R '^J1_package_roundtrip$'
 ```
 
 脚本先执行：

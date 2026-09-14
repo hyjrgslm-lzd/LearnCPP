@@ -1,8 +1,16 @@
 # A1_build_debug
 
-本练习把“源码 → 配置 → 构建 → 运行 → 调试”拆成可验证链路。Reference 与 Observation 默认注册；Student 默认不注册，只有显式打开 `ENGINEERING_STUDY_TEST_STUDENTS=ON` 才检查未完成 starter。
+本练习把“源码 → 配置 → 构建 → 运行 → 调试”拆成可验证链路。普通默认配置注册 Reference 与 Observation，Student 的测试注册由 `ENGINEERING_STUDY_TEST_STUDENTS` 控制；`vs-study` 和 `student` 预设已将其打开。
 
 学生只修改 `src/student/debug_story.cpp`。不要改检查器、Reference 或 CMake 来绕过结果。
+
+## VS 日常入口
+
+先按[总构建指南](../BUILD_GUIDE.md)生成并构建 `vs-study`，打开整章解决方案并选择 `Debug | x64`。本节命令从 `C01_Build_Compile_Link/exercises` 目录执行。
+
+将 `A1_build_debug_student` 设为启动项目，在其 `Student` 中编辑 [debug_story.cpp](src/student/debug_story.cpp)，可直接查看同项目的头文件与 `Checks/student_check.cpp`。学生和参考实现分别直接编入各自的可执行目标；`Reference` 中保留独立答案，`Experiments` 中保留配置观察程序。GDB 示例位于学生项目的 `Experiments/debugger`，仅供浏览，按 Part 1 单独编译。
+
+除明确标注的独立工具步骤外，下文命令也从 `exercises` 目录执行，使用已构建的 `vs-study`。
 
 ## Part 1：单文件编译与运行
 
@@ -11,7 +19,7 @@
 Windows MinGW 路径可运行：
 
 ```powershell
-g++ -std=c++23 -g -O0 debugger/gdb_lesson.cpp -o build/a1-gdb.exe
+g++ -std=c++23 -g -O0 A1_build_debug/debugger/gdb_lesson.cpp -o build/a1-gdb.exe
 .\build\a1-gdb.exe
 ```
 
@@ -21,7 +29,7 @@ g++ -std=c++23 -g -O0 debugger/gdb_lesson.cpp -o build/a1-gdb.exe
 
 ## Part 2：CMake 配置、构建与 CTest
 
-独立配置：
+以下两组独立配置命令从 `exercises` 目录运行；Ninja 使用已设置编译器环境的终端：
 
 ```powershell
 cmake -S A1_build_debug -B build/a1 -G Ninja -DCMAKE_BUILD_TYPE=Release
@@ -74,12 +82,11 @@ info locals
 
 ## Part 5：Student
 
-打开 student 测试：
+`vs-study` 已注册学生检查；修改实现后重新构建并运行：
 
 ```powershell
-cmake -S A1_build_debug -B build/a1-student -G Ninja -DENGINEERING_STUDY_TEST_STUDENTS=ON
-cmake --build build/a1-student
-ctest --test-dir build/a1-student -L student --output-on-failure
+cmake --build --preset vs-study --target A1_build_debug_student
+ctest --preset vs-study -R '^A1_build_debug_student$'
 ```
 
 starter 应失败。完成条件：`compute_answer(19) == 42` 且 `compute_answer(20) == 44`。

@@ -4,34 +4,26 @@ project(C1_odr LANGUAGES CXX)
 
 include("${CMAKE_CURRENT_LIST_DIR}/../cmake/StudySetup.cmake")
 
-add_library(C1_odr_student_impl
+add_executable(C1_odr_student
+    checks/student_check.cpp
     support/student_callers/caller_a.cpp
     support/student_callers/caller_b.cpp
     src/student/lesson.cpp
 )
-target_include_directories(C1_odr_student_impl PUBLIC src/student)
-engineering_configure_target(C1_odr_student_impl)
-
-add_executable(C1_odr_student
-    checks/student_check.cpp
-)
-target_link_libraries(C1_odr_student PRIVATE C1_odr_student_impl)
+target_include_directories(C1_odr_student PRIVATE src/student)
 engineering_configure_target(C1_odr_student)
+target_sources(C1_odr_student PRIVATE src/student/lesson.hpp)
 
 if(ENGINEERING_STUDY_BUILD_REFERENCE)
-    add_library(C1_odr_reference_impl
+    add_executable(C1_odr_reference
+        checks/reference_check.cpp
         reference/split_definition/caller_a.cpp
         reference/split_definition/caller_b.cpp
         reference/split_definition/lesson.cpp
     )
-    target_include_directories(C1_odr_reference_impl PUBLIC reference/split_definition)
-    engineering_configure_target(C1_odr_reference_impl)
-
-    add_executable(C1_odr_reference
-        checks/reference_check.cpp
-    )
-    target_link_libraries(C1_odr_reference PRIVATE C1_odr_reference_impl)
+    target_include_directories(C1_odr_reference PRIVATE reference/split_definition)
     engineering_configure_target(C1_odr_reference)
+    target_sources(C1_odr_reference PRIVATE reference/split_definition/lesson.hpp)
 
     add_executable(C1_odr_reference_inline
         reference/inline_definition/main.cpp
@@ -40,6 +32,7 @@ if(ENGINEERING_STUDY_BUILD_REFERENCE)
     )
     target_include_directories(C1_odr_reference_inline PRIVATE reference/inline_definition)
     engineering_configure_target(C1_odr_reference_inline)
+    target_sources(C1_odr_reference_inline PRIVATE reference/inline_definition/lesson.hpp)
 endif()
 
 add_executable(C1_odr_observation_single
@@ -47,6 +40,7 @@ add_executable(C1_odr_observation_single
 )
 target_include_directories(C1_odr_observation_single PRIVATE observation/single_consumer)
 engineering_configure_target(C1_odr_observation_single)
+target_sources(C1_odr_observation_single PRIVATE observation/single_consumer/lesson.hpp)
 
 add_library(C1_odr_observation_objects OBJECT
     observation/two_tu_symbols/observer_a.cpp
@@ -54,6 +48,7 @@ add_library(C1_odr_observation_objects OBJECT
 )
 target_include_directories(C1_odr_observation_objects PRIVATE observation/two_tu_symbols)
 engineering_configure_target(C1_odr_observation_objects)
+target_sources(C1_odr_observation_objects PRIVATE observation/two_tu_symbols/lesson.hpp)
 
 if(ENGINEERING_STUDY_BUILD_REFERENCE)
     engineering_add_test(C1_odr_reference
@@ -146,4 +141,41 @@ engineering_add_test(C1_odr_negative_include_guard_same_failure
         -P ${CMAKE_CURRENT_SOURCE_DIR}/cmake/expect_build_failure.cmake
     LABELS negative
     TIMEOUT 180
+)
+
+engineering_setup_ide(C1_odr_student
+    FILES
+        cmake/expect_build_failure.cmake
+        cmake/observe_preprocess.cmake
+        cmake/observe_symbols.cmake
+        negative/duplicate_header_definition/CMakeLists.txt
+        negative/include_guard_same_failure/CMakeLists.txt
+        review_variants/negative_compile/CMakeLists.txt
+        review_variants/negative_missing_symbol/CMakeLists.txt
+        review_variants/student_bypass/CMakeLists.txt
+        review_variants/symbol_missing/CMakeLists.txt
+    BROWSE
+        negative/duplicate_header_definition/caller_a.cpp
+        negative/duplicate_header_definition/caller_b.cpp
+        negative/duplicate_header_definition/lesson.hpp
+        negative/duplicate_header_definition/main.cpp
+        negative/include_guard_same_failure/caller_a.cpp
+        negative/include_guard_same_failure/caller_b.cpp
+        negative/include_guard_same_failure/lesson.hpp
+        negative/include_guard_same_failure/main.cpp
+        review_variants/negative_compile/caller_a.cpp
+        review_variants/negative_compile/caller_b.cpp
+        review_variants/negative_compile/lesson.hpp
+        review_variants/negative_compile/main.cpp
+        review_variants/negative_missing_symbol/caller_a.cpp
+        review_variants/negative_missing_symbol/caller_b.cpp
+        review_variants/negative_missing_symbol/lesson.hpp
+        review_variants/negative_missing_symbol/main.cpp
+        review_variants/student_bypass/caller_a.cpp
+        review_variants/student_bypass/caller_b.cpp
+        review_variants/student_bypass/lesson.cpp
+        review_variants/student_bypass/lesson.hpp
+        review_variants/symbol_missing/lesson.hpp
+        review_variants/symbol_missing/observer_a.cpp
+        review_variants/symbol_missing/observer_b.cpp
 )

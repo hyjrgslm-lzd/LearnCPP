@@ -4,6 +4,14 @@
 
 学生只修改 `src/student/archive_value.cpp`。GCC/ELF 的 `nm`/`ar` 路径保留在代码和正文中；未在当前机器运行的平台路径不能写成已运行。
 
+## VS 日常入口
+
+先按[总构建指南](../BUILD_GUIDE.md)生成并构建 `vs-study`，打开整章解决方案并选择 `Debug | x64`。本节命令从 `C01_Build_Compile_Link/exercises` 目录执行。
+
+将 `C2_archive_student` 设为启动项目，在 `Student` 中编辑 [archive_value.cpp](src/student/archive_value.cpp)，其头文件和检查入口已归入同一项目。`Support/C2_archive_library` 保留真实静态库，`Reference/C2_archive_reference` 保留消费者，用于观察归档成员按需抽取；学生入口的合并不改变这个实验边界。学生项目中的 `Experiments/negative` 源码仅供浏览。
+
+除明确标注的独立工具步骤外，下文命令也从 `exercises` 目录执行，使用已构建的 `vs-study`。
+
 ## Part 1：静态库正常消费者
 
 `C2_archive_library` 包含两个成员：
@@ -14,8 +22,8 @@
 `C2_archive_reference` 只调用 `archive_value()`：
 
 ```powershell
-cmake --build build/c2 --target C2_archive_reference --config Release
-ctest --test-dir build/c2 --tests-regex C2_archive_reference --output-on-failure
+cmake --build --preset vs-study --target C2_archive_reference
+ctest --preset vs-study -R '^C2_archive_reference$'
 ```
 
 期望通过。
@@ -27,10 +35,10 @@ ctest --test-dir build/c2 --tests-regex C2_archive_reference --output-on-failure
 运行：
 
 ```powershell
-ctest --test-dir build/c2 --tests-regex C2_archive_symbols --output-on-failure
+ctest --preset vs-study -R '^C2_archive_symbols$'
 ```
 
-Windows/MSVC 路径使用：
+Windows/MSVC 的符号工具命令示意（将文件名替换为实际 object/lib 路径；可从构建输出及 `build/vs-study/C2_archive/evidence/symbols.txt` 定位）：
 
 ```powershell
 dumpbin /symbols used_member.obj
@@ -69,12 +77,11 @@ GNU/ELF 常见左到右扫描静态库，库顺序可能影响解析；MSVC/COFF
 
 ## Part 6：Student
 
-打开 student 测试：
+`vs-study` 已注册学生检查；修改实现后重新构建并运行：
 
 ```powershell
-cmake -S C2_archive -B build/c2-student -G Ninja -DENGINEERING_STUDY_TEST_STUDENTS=ON
-cmake --build build/c2-student
-ctest --test-dir build/c2-student -L student --output-on-failure
+cmake --build --preset vs-study --target C2_archive_student
+ctest --preset vs-study -R '^C2_archive_student$'
 ```
 
 starter 应失败。完成条件：学生提供 `archive_value()` 的唯一定义并返回 42。

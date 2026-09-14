@@ -2,6 +2,21 @@
 
 先读[07 诊断与成本](../../chapters/07-diagnostics-and-build-cost.md)。本题是可运行实验驱动，不要求修改Reference来完成作业。所有改变发生在driver创建的独立源码副本中；原fixture保持不变。
 
+## VS 日常入口
+
+先按[总构建指南](../BUILD_GUIDE.md)生成并构建 `vs-study`，打开整章解决方案并选择 `Debug | x64`。本节命令从 `C01_Build_Compile_Link/exercises` 目录执行。
+
+本题没有 `_student` 项目。本题根节点的 `G2_build_cost_baseline` 可设为启动项目；`G2_build_cost_pch`、`G2_build_cost_lto` 位于 `Experiments`。三个项目各自编译五个翻译单元，公共头文件已显示在工程中；测量脚本位于 baseline 项目的 `Docs/scripts`。
+
+`vs-study` 的 Debug 入口用于调试和功能检查；LTO 配置只在 Release 启用。正式测量仍使用后文的独立副本与 Ninja driver，保留预热、样本数和隔离要求。
+
+~~~powershell
+cmake --build --preset vs-study --target G2_build_cost_baseline G2_build_cost_pch G2_build_cost_lto
+ctest --preset vs-study -R '^G2_build_cost_'
+~~~
+
+本题后续 Part 的独立构建和测量命令仍从 LearnCPP 根目录执行。
+
 ## Part 1：先证明三种配置做同一件事
 
 baseline、PCH、LTO各自独立编译`alpha.cpp`、`beta.cpp`、`gamma.cpp`、`common.cpp`、`main.cpp`。这些TU都实际包含同一heavy public header；没有共享一个已编译库来偷换工作量。PCH作用于真正重复包含的头；Release LTO覆盖fixture所有TU。

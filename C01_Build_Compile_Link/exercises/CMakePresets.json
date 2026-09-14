@@ -17,6 +17,17 @@
         "ENGINEERING_STUDY_ENABLE_UNSAFE_DEMOS": "OFF"
       }
     },
+    {
+      "name": "vs-study", "inherits": "base",
+      "displayName": "Visual Studio 2026 study workspace (Debug)",
+      "generator": "Visual Studio 18 2026",
+      "architecture": "x64",
+      "condition": {"type": "equals", "lhs": "${hostSystemName}", "rhs": "Windows"},
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": null,
+        "ENGINEERING_STUDY_TEST_STUDENTS": "ON"
+      }
+    },
     {"name": "verify-core", "inherits": "base", "displayName": "Offline core and independent references"},
     {"name": "verify-debug", "inherits": "base", "cacheVariables": {"CMAKE_BUILD_TYPE": "Debug"}},
     {
@@ -34,6 +45,7 @@
     }
   ],
   "buildPresets": [
+    {"name": "vs-study", "configurePreset": "vs-study", "configuration": "Debug"},
     {"name": "verify-core", "configurePreset": "verify-core", "configuration": "Release"},
     {"name": "verify-debug", "configurePreset": "verify-debug", "configuration": "Debug"},
     {"name": "student", "configurePreset": "student", "configuration": "Release"},
@@ -41,6 +53,7 @@
     {"name": "import-std-msvc-ninja", "configurePreset": "import-std-msvc-ninja"}
   ],
   "testPresets": [
+    {"name": "vs-study", "configurePreset": "vs-study", "configuration": "Debug", "output": {"outputOnFailure": true}},
     {"name": "verify-core", "configurePreset": "verify-core", "configuration": "Release", "output": {"outputOnFailure": true}},
     {"name": "verify-debug", "configurePreset": "verify-debug", "configuration": "Debug", "output": {"outputOnFailure": true}},
     {"name": "student", "configurePreset": "student", "configuration": "Release", "output": {"outputOnFailure": true}},
