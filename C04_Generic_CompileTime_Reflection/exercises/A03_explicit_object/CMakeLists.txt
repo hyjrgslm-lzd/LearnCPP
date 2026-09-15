@@ -16,3 +16,5 @@ c04_add_compile_case(
     PATTERN "(cannot move from const slot|deleted|已删除)"
     SETUP validation/diagnostics/setup.cmake
 )
+
+learncpp_setup_ide(A03_explicit_object_student)

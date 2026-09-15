@@ -19,3 +19,11 @@ c10_add_exercise(
   BAD_DIAGNOSTIC "invalid records recovered"
   LIBRARIES ${extra_libs}
   ALLOW_SKIP)
+
+foreach(variant student reference validation_good validation_bad)
+  if(TARGET P1_pipeline_${variant})
+    target_sources(P1_pipeline_${variant} PRIVATE
+      "${C10_REPO}/C07_OS_Memory_System_IO/exercises/include/c07/os.hpp"
+      "${C10_EXERCISES}/include/c10/native_io.hpp")
+  endif()
+endforeach()

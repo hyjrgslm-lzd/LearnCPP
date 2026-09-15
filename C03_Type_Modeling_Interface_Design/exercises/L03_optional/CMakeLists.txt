@@ -3,3 +3,5 @@ project(L03_optional LANGUAGES CXX)
 include(../cmake/StudySetup.cmake)
 
 c03_add_observation(L03_optional_observation observation/optional_observation.cpp)
+
+learncpp_setup_ide(L03_optional_observation)

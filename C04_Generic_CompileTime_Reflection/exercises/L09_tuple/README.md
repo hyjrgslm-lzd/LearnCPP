@@ -25,3 +25,10 @@ callback 对象应被复用，不要为每个元素复制一个。
 callback 抛异常时停止后续访问，异常传播给调用者；已经发生的副作用不回滚。
 
 解析：这是普通异常语义。遍历工具不提供事务。
+
+
+## IDE 入口
+
+从本课 `exercises` 根目录或本题目录生成 Visual Studio 18 2026 x64 工程。主项目是 `L09_tuple_student`；默认学生测试关闭时仍生成该项目，但它是 `EXCLUDE_FROM_ALL`，需显式构建。
+学生只编辑：`src/student/tuple_for_each.hpp`。 `checks/`、`validation/`、`src/reference/`、diagnostic、support 目标是只读对照/验证/实验入口，保留在题目分组内。
+修改 Student 后先重新构建对应目标，再运行 CTest 或 README 中列出的检查命令。

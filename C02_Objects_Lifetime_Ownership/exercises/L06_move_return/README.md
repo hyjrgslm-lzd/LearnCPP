@@ -20,3 +20,9 @@ ctest --test-dir C02_Objects_Lifetime_Ownership/exercises/L06_move_return/build/
 
 解析：`return T{}` 是 C++17 起的同类型 prvalue 必然消除；`return local` 的 NRVO 是可选优化，程序仍需要可用 copy/move。`std::move` 只转值类别，`const` 对象移动会得到 `const T&&`，不能调用通常的 `T(T&&)`。本题只用自定义 `Tracked` 计数观察真实构造调用，不用 type trait 或标准库 moved-from 状态代替行为证据。
 
+
+## IDE 入口
+
+从本课 `exercises` 根目录或本题目录生成 Visual Studio 18 2026 x64 工程。主项目是 `L06_move_return_observation`，可直接设为启动项运行观察或专项入口。
+没有 Student 编辑入口；运行/阅读：`checks/`、`negative/`。这些入口保留在题目分组内，作为观察、探测或负例诊断。
+构建主项目后运行 CTest 或 README 中列出的检查命令；负例/探测入口只读，用于观察诊断。

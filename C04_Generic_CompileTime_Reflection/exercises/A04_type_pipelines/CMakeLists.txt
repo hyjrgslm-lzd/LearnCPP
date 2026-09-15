@@ -15,3 +15,5 @@ c04_add_compile_case(NAME A04_diag_flatten SOURCE validation/diagnostics/flatten
 c04_add_compile_case(NAME A04_diag_eager SOURCE validation/diagnostics/eager_lazy.cpp
     CONTROL validation/diagnostics/control.cpp PATTERN "Explosive|type"
     SETUP validation/diagnostics/setup.cmake)
+
+learncpp_setup_ide(A04_type_pipelines_student)

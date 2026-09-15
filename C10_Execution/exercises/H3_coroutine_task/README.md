@@ -63,3 +63,6 @@ ctest --test-dir build/c10-h3-completion-asan -C Debug --output-on-failure
 Student 初态应输出 `UNFINISHED: H3 task: implement sync_wait` 并返回 exit 2。
 
 教学支持域：awaited sender有零或一个拥有值、error载荷为std::exception_ptr；task支持T和void。环境传播支持inplace_stop_token及unstoppable token，其他token需显式callback桥接；scheduler须能转换到本题使用的type-erased scheduler。并不宣称实现标准task的全部属性与完成签名组合。
+## IDE 工程入口
+
+VS solution 中本题主入口是 `H3_coroutine_task_student`。学生只编辑 `src/student/solution.hpp`；`main.cpp` 是共同检查器，Reference 在 `src/reference/solution.hpp`，good/bad 控制在 `validation` 下。`H3_coroutine_task` 聚合目标只负责显式构建学生目标，收在 Support；Reference 与控制目标保留为独立项目，用来区分答案、正确对照和错误拒绝。单题可用 `cmake -S <本目录> -B <build>` 独立生成。

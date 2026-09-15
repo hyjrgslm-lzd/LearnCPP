@@ -21,3 +21,10 @@ Part 4：观察 `value_or()`。默认实参会先求值；对右值 `optional` �
 Part 5：观察 C++23 monadic 操作。`and_then` 返回 `optional`，`transform` 包装返回值，`or_else` 只在空状态运行；回调抛异常会传播。
 
 解析：`optional` 只适合表达正常缺失。它拥有内部对象，所以可安全返回值快照；C++23 没有 `std::optional<T&>`。C++26 的引用 optional 与 0/1 range 由 F01 探测，不用本练习伪造支持。
+
+
+## IDE 入口
+
+从本课 `exercises` 根目录或本题目录生成 Visual Studio 18 2026 x64 工程。主项目是 `L03_optional_observation`，可直接设为启动项运行观察或专项入口。
+没有 Student 编辑入口；运行/阅读：`checks/`、`observation/`、`validation/`。这些入口保留在题目分组内，作为观察、探测或负例诊断。
+构建主项目后运行 CTest 或 README 中列出的检查命令；负例/探测入口只读，用于观察诊断。

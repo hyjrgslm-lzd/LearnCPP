@@ -7,3 +7,6 @@ c05_add_exercise(
     HEADER checked_int.hpp
     CHECK checks/checked_int_checks.cpp
     BAD_DIAGNOSTIC "rejects one-past u32 max")
+
+
+learncpp_setup_ide(L03_integer_boundaries_student)

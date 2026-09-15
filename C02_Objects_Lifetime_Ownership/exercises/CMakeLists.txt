@@ -8,3 +8,5 @@ foreach(lesson IN ITEMS
     L10_control_block L11_layout L12_storage L13_aliasing L14_ub P1_object_buffer)
     add_subdirectory(${lesson})
 endforeach()
+
+learncpp_setup_ide("")

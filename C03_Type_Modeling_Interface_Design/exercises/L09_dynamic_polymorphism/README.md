@@ -32,3 +32,9 @@ ctest --test-dir build/c03-l09 -C Debug --output-on-failure
 
 解析：动态多态的核心不是共享字段，而是通过基类契约替换调用。`override` 让签名错误在编译期暴露；虚析构让拥有基类指针能正确释放派生部分；`clone()` 负责把动态类型复制出来，避免切片和别名。
 
+
+## IDE 入口
+
+从本课 `exercises` 根目录或本题目录生成 Visual Studio 18 2026 x64 工程。主项目是 `L09_dynamic_polymorphism_student`；默认学生测试关闭时仍生成该项目，但它是 `EXCLUDE_FROM_ALL`，需显式构建。
+学生只编辑：`src/student/shape.hpp`。 `checks/`、`validation/`、`src/reference/`、diagnostic、support 目标是只读对照/验证/实验入口，保留在题目分组内。
+修改 Student 后先重新构建对应目标，再运行 CTest 或 README 中列出的检查命令。

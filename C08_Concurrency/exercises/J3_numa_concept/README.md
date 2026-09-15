@@ -33,3 +33,13 @@ Windows 由统一配置链接 Psapi。Linux 分支使用 sched_getaffinity、sys
 作者本次探测得到 group 0、32 个逻辑 CPU、16 组 SMT 核心关系、一个 node、4096 字节基础页。J3 的四个目标 CPU 均通过前后观测。这是本次证据，不是所有桌面的固定结果。
 
 答案：单节点仍能验证拓扑过滤、亲和、异常回传和页查询；它不能给出 remote 时间。J3 不把 CPU 检查冒充页面检查，后者在 [N1](../N1_numa_placement/README.md) 完成。后续改变 reader 数时优先明确选择不同 core 还是 SMT 兄弟，再解释结果。
+
+## IDE 与工程入口
+
+Visual Studio 方案中，主入口目标是 `J3_numa_concept`，位于本题节点顶层；单题独立配置时它是启动目标。`J3_numa_concept_reference` 在 `Reference` 分组。
+
+学生/观察入口：`main.cpp` 是观察/实验入口，用来预测、运行和记录现象；本题不声明待填学生实现。
+
+Reference 与检查：`solution.cpp` 是 Reference/检查路径，只读对照。
+
+单题命令：从 `C08_Concurrency/exercises` 可独立配置：`cmake -S J3_numa_concept -B build/J3_numa_concept-ide -G "Visual Studio 18 2026" -A x64`，再构建 `J3_numa_concept` 和 `J3_numa_concept_reference`；CTest 过滤 `^J3_numa_concept_reference$`。

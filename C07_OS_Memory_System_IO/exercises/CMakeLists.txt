@@ -15,3 +15,6 @@ endforeach()
 get_property(students GLOBAL PROPERTY C07_STUDENT_TARGETS)
 add_custom_target(c07_students DEPENDS ${students})
 file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/student-targets-$<CONFIG>.txt" CONTENT "$<JOIN:${students},\n>\n")
+
+
+learncpp_setup_ide("")

@@ -9,8 +9,11 @@ if(BUILD_TESTING)
         set(_cs_simd_sources "${CONCURRENCY_STUDY_EXERCISES_DIR}/../topics/simd")
         add_library(numeric_fast_kernel OBJECT "${_cs_simd_sources}/fast_math_kernel.cpp")
         cs_configure_target(numeric_fast_kernel)
+        cs_add_visible_files(numeric_fast_kernel "${_cs_simd_sources}/fast_math_api.hpp")
         add_executable(numeric_fast_check "${_cs_simd_sources}/fast_math_check.cpp")
         cs_configure_target(numeric_fast_check)
+        cs_add_visible_files(numeric_fast_check "${_cs_simd_sources}/fast_math_api.hpp"
+            "${_cs_simd_sources}/fast-math-build.md")
         target_link_libraries(numeric_fast_check PRIVATE numeric_fast_kernel)
         set_target_properties(numeric_fast_kernel numeric_fast_check PROPERTIES INTERPROCEDURAL_OPTIMIZATION FALSE)
         foreach(config IN LISTS CMAKE_CONFIGURATION_TYPES CMAKE_BUILD_TYPE)
@@ -35,12 +38,34 @@ if(BUILD_TESTING)
         get_filename_component(stem "${source}" NAME_WE)
         add_executable(runtime_${stem} "${source}")
         cs_configure_target(runtime_${stem})
+        set(_cs_runtime_headers)
+        if(stem STREQUAL "numeric_test")
+            list(APPEND _cs_runtime_headers
+                "${CONCURRENCY_STUDY_EXERCISES_DIR}/J1_false_sharing/reference.hpp")
+        elseif(stem STREQUAL "reclamation_test")
+            list(APPEND _cs_runtime_headers
+                "${CONCURRENCY_STUDY_EXERCISES_DIR}/../topics/reclamation/experiment_support.hpp"
+                "${CONCURRENCY_STUDY_EXERCISES_DIR}/I2_hazard_pointer/reference.hpp"
+                "${CONCURRENCY_STUDY_EXERCISES_DIR}/I3_rcu/reference.hpp"
+                "${CONCURRENCY_STUDY_EXERCISES_DIR}/R1_epoch_reclamation/reference.hpp"
+                "${CONCURRENCY_STUDY_EXERCISES_DIR}/R2_qsbr/reference.hpp")
+        elseif(stem STREQUAL "thread_pool_test")
+            list(APPEND _cs_runtime_headers
+                "${CONCURRENCY_STUDY_EXERCISES_DIR}/Capstone1_thread_pool/checks.hpp"
+                "${CONCURRENCY_STUDY_EXERCISES_DIR}/tools/test_tools.py"
+                "${CONCURRENCY_STUDY_EXERCISES_DIR}/tools/verify_materials.py"
+                "${CONCURRENCY_STUDY_EXERCISES_DIR}/tools/verify_students.py"
+                "${CONCURRENCY_STUDY_EXERCISES_DIR}/validation/README.md")
+        endif()
+        cs_add_visible_files(runtime_${stem} ${_cs_runtime_headers})
         add_test(NAME runtime_${stem} COMMAND runtime_${stem})
         set_tests_properties(runtime_${stem} PROPERTIES TIMEOUT ${CS_TEST_TIMEOUT} LABELS "runtime" SKIP_RETURN_CODE 77)
     endforeach()
     if(EXISTS "${CONCURRENCY_STUDY_EXERCISES_DIR}/../topics/reclamation/lifetime_reference.cpp")
         add_executable(runtime_lifetime_reference "${CONCURRENCY_STUDY_EXERCISES_DIR}/../topics/reclamation/lifetime_reference.cpp")
         cs_configure_target(runtime_lifetime_reference)
+        cs_add_visible_files(runtime_lifetime_reference
+            "${CONCURRENCY_STUDY_EXERCISES_DIR}/../topics/reclamation/experiment_support.hpp")
         add_test(NAME runtime_lifetime_reference COMMAND runtime_lifetime_reference)
         set_tests_properties(runtime_lifetime_reference PROPERTIES TIMEOUT ${CS_TEST_TIMEOUT} LABELS "runtime")
     endif()
@@ -52,4 +77,7 @@ if(BUILD_TESTING)
     add_test(NAME runtime_materials COMMAND ${Python3_EXECUTABLE}
         "${CONCURRENCY_STUDY_EXERCISES_DIR}/tools/verify_materials.py")
     set_tests_properties(runtime_materials PROPERTIES TIMEOUT 30 LABELS "tools")
+endif()
+if(COMMAND learncpp_setup_ide)
+    learncpp_setup_ide("")
 endif()

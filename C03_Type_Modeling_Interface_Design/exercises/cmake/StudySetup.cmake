@@ -1,5 +1,6 @@
 include_guard(GLOBAL)
 include(CTest)
+include("${CMAKE_CURRENT_LIST_DIR}/../../../cmake/ExerciseIde.cmake")
 
 option(TYPE_STUDY_BUILD_REFERENCE "Build independent solutions and checker controls" ON)
 option(TYPE_STUDY_TEST_STUDENTS "Register unfinished student implementations" OFF)
@@ -10,8 +11,10 @@ option(TYPE_STUDY_ENABLE_UNSAFE_DEMOS "Enable isolated intentional diagnostic fa
 function(c03_configure_target target)
     target_compile_features(${target} PRIVATE cxx_std_23)
     set_target_properties(${target} PROPERTIES CXX_EXTENSIONS OFF CXX_SCAN_FOR_MODULES OFF)
+    set(_c03_check_header "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../../../C01_Build_Compile_Link/exercises/include/check.hpp")
     target_include_directories(${target} PRIVATE
         "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../../../C01_Build_Compile_Link/exercises/include")
+    target_sources(${target} PRIVATE "${_c03_check_header}")
     if(MSVC)
         target_compile_options(${target} PRIVATE /utf-8 /EHsc /W4 /permissive- /Zc:__cplusplus)
     else()
@@ -39,6 +42,20 @@ function(c03_configure_target target)
         else()
             message(FATAL_ERROR "Use the documented MSVC Windows or Clang/GCC Unix ASan profile")
         endif()
+    endif()
+endfunction()
+
+function(c03_add_ide_headers target)
+    cmake_parse_arguments(ARG "" "" "DIRS;FILES" ${ARGN})
+    set(_c03_headers ${ARG_FILES})
+    foreach(_c03_dir IN LISTS ARG_DIRS)
+        file(GLOB _c03_dir_headers CONFIGURE_DEPENDS
+            "${_c03_dir}/*.h" "${_c03_dir}/*.hpp" "${_c03_dir}/*.hxx")
+        list(APPEND _c03_headers ${_c03_dir_headers})
+    endforeach()
+    if(_c03_headers)
+        list(REMOVE_DUPLICATES _c03_headers)
+        target_sources(${target} PRIVATE ${_c03_headers})
     endif()
 endfunction()
 
@@ -89,6 +106,9 @@ function(c03_add_exercise)
         c03_configure_target(${target})
         target_include_directories(${target} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/${impl}"
             "${CMAKE_CURRENT_SOURCE_DIR}/checks")
+        c03_add_ide_headers(${target}
+            FILES "${CMAKE_CURRENT_SOURCE_DIR}/${impl}/${ARG_HEADER}"
+            DIRS "${CMAKE_CURRENT_SOURCE_DIR}/checks" "${CMAKE_CURRENT_SOURCE_DIR}/checks/support")
         if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/${impl}/${ARG_HEADER}")
             message(FATAL_ERROR "Missing independent implementation: ${impl}/${ARG_HEADER}")
         endif()

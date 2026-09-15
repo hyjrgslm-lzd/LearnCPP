@@ -57,3 +57,15 @@
 - C10讲完成通道与执行协议，本课讲类型集合、CPO与异常规格推导；教学CPO不冒充标准或某版stdexec的全部定制规则。
 - C14讲设备与布局的具体含义，本课讲NTTP、traits、特化和编译成本。
 - C15讲UHT、UObject及GC，本课讲语言静态反射；语言元信息不会自动产生引擎的运行时注册与对象追踪。
+
+## IDE 工程入口
+
+本课 Visual Studio 入口统一从 `C04_Generic_CompileTime_Reflection/exercises` 或单题目录生成：
+
+```powershell
+cmake -S C04_Generic_CompileTime_Reflection/exercises -B C04_Generic_CompileTime_Reflection/exercises/build/ide-refactor -G "Visual Studio 18 2026" -A x64 -DBUILD_TESTING=ON
+cmake --build C04_Generic_CompileTime_Reflection/exercises/build/ide-refactor --config Debug --target <目标名>
+ctest --test-dir C04_Generic_CompileTime_Reflection/exercises/build/ide-refactor -C Debug -R <测试名> --output-on-failure
+```
+
+默认 Reference/validation/observation 目标用于教学对照；Student 目标在学生测试关闭时仍出现在工程中，但不会进入默认全量构建。每题 README 的“IDE 入口”列出启动目标、编辑目录和保留辅助目标原因。

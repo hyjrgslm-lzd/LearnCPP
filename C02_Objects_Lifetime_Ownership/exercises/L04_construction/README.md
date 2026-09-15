@@ -34,3 +34,10 @@ L04-2 的 owner 是本章最小 RAII 单元。构造函数从 checker 持有的 
 L04-3 正常路径中，两个成员 owner 都构造完成。最外层对象作用域内 checker 看到 `live == 2`；离开作用域时先析构第二个成员，再析构第一个成员，最终 `live == 0`。
 
 L04-4 中第二个资源获取抛异常。第二个 owner 没有完成构造，所以它的析构函数不运行；第一个 owner 已经完成构造，所以异常展开会析构第一个 owner 并释放资源。最外层对象没有完成构造，所以它自己的析构函数不运行。检查器用 `live == 0` 防止“只在最外层析构释放”的错误写法漏掉失败路径。
+
+
+## IDE 入口
+
+从本课 `exercises` 根目录或本题目录生成 Visual Studio 18 2026 x64 工程。主项目是 `L04_construction_student`；默认学生测试关闭时仍生成该项目，但它是 `EXCLUDE_FROM_ALL`，需显式构建。
+学生只编辑：`src/student/construction_lab.cpp`、`src/student/construction_lab.hpp`。 `checks/`、`validation/`、diagnostic、support 目标是只读对照/验证/实验入口，保留在题目分组内。
+修改 Student 后先重新构建对应目标，再运行 CTest 或 README 中列出的检查命令。

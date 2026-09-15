@@ -7,3 +7,6 @@ c05_add_exercise(
     HEADER text_parse.hpp
     CHECK checks/parse_checks.cpp
     BAD_DIAGNOSTIC "rejects trailing characters")
+
+
+learncpp_setup_ide(L08_parsing_student)

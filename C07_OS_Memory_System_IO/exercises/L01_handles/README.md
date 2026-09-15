@@ -54,5 +54,16 @@ cmake -S L01_handles -B build/L01_handles-student -G "Visual Studio 18 2026" -A 
 cmake --build build/L01_handles-student --config Debug --target L01_handles_student
 ctest --test-dir build/L01_handles-student -C Debug -R student --output-on-failure
 ```
+## IDE 项目
 
+生成 Visual Studio 工程后，启动项目是 `L01_handles_student`。
 
+本题是实现题。学习者只改 Student 入口；Reference、validation 和 checks 只用于对照与验证。
+- Student 入口：`src/student/handles.hpp`。
+- Checker 入口：`checks/handles_checks.cpp`、`checks/ownership_observation.cpp`、`checks/thread_process_observation.cpp`。
+- Reference 对照：`src/reference/handles.hpp`。
+- validation/good 对照：`validation/good/handles.hpp`。
+- validation/bad 反例：`validation/bad/handles.hpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target L01_handles_student。
+修改后先重建 `L01_handles_student`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

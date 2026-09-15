@@ -27,3 +27,6 @@ Reference：[reference/solution.hpp](reference/solution.hpp)接入公共正确�
 原字段只消费到第一次指针后两字节，展开路径继续追踪指向位置；嵌套引用不额外吃掉答案 TYPE 字节。长度验证应先于构造输出，环检查和长度上限解决不同问题。parse_a 保存首个候选后仍遍历剩余 sections，因此坏尾部不会被成功 A 掩盖。zero UDP datagram 与 TCP EOF 不共享判断。源码里用于说明交付缺口的序号模型，不证明真实网络随机丢包。
 
 本课只支持有界 ASCII hostname A 查询；IDNA、递归 CNAME、DNSSEC 不是隐藏在测试通过后的保证。
+## IDE 工程入口
+
+VS solution 中本题主入口是 `C11_L03_student`。学生只编辑 `student/solution.hpp`；`checks.cpp` 是共同检查器，Reference/good/bad 和额外 bad 控制保持独立项目，用来区分答案、正确对照和错误拒绝。单题可用 `cmake -S <本目录> -B <build>` 独立生成，`C11_TEST_STUDENTS` 只控制是否把未完成 Student 注册进 CTest。

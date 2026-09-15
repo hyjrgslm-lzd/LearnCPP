@@ -90,3 +90,13 @@ if ($LASTEXITCODE -ne 0) { throw '排序采样失败；保留报告' }
 每个进程只运行指定 variant 一轮。不要使用 all 给外部 runner；不能把 main 的学生程序路径赋给 $exe。输出目录必须是新的；保存五个样本、中位数和范围，不把初始化/复制边界不同的 suite 混排。缺 ISA/库能力仅跳过相应专项。
 
 **C：解释结果与限制。** 分块可能改善连续访问和复用，但块大小、工作集与环境决定效果；小 GEMM 的启动成本可能超过可分摊计算；SSE2 不保证四倍。一般浮点矩阵另由 numeric_test 使用每输出误差界验证，默认整数数据的严格相等不是对任意 float 的承诺。开发样本若处于集成构建未空闲环境，不能当作冻结版本正式结论。正式组由稳定源码的新构建运行。
+
+## IDE 与工程入口
+
+Visual Studio 方案中，主入口目标是 `Capstone3_parallel_compute`，位于本题节点顶层；单题独立配置时它是启动目标。`Capstone3_parallel_compute_reference` 在 `Reference` 分组。 `Capstone3_parallel_compute_benchmark` 只在 `CONCURRENCY_STUDY_BUILD_BENCHMARKS=ON` 时生成，归实验/benchmark 入口；先跑 Reference，再做测量。
+
+学生/观察入口：`main.cpp` 中 README 指定的 TODO。
+
+Reference 与检查：`solution.cpp`、`reference.hpp`、`checks.hpp` 是 Reference/检查路径，只读对照。
+
+单题命令：从 `C08_Concurrency/exercises` 可独立配置：`cmake -S Capstone3_parallel_compute -B build/Capstone3_parallel_compute-ide -G "Visual Studio 18 2026" -A x64`，再构建 `Capstone3_parallel_compute` 或 `Capstone3_parallel_compute_reference`；要注册学生 CTest，按总 BUILD_GUIDE 的 student 模板加 `-DCONCURRENCY_STUDY_TEST_STARTERS=ON`。

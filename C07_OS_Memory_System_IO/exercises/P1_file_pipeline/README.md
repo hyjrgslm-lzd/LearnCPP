@@ -46,3 +46,16 @@ ctest --test-dir build/pipeline-author -C Debug --output-on-failure
 参数非法返回 2；输出路径已存在也返回 2。Windows 入口使用 `wmain`，路径经 `std::filesystem::path` 保留 Unicode。
 
 本项目验证的是同步 sink 和有界 materialization 的正确性。它不预设 mapped 或 completion 更快；不同后端的开销要用后续独立 benchmark 归因。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `P1_file_pipeline_student`。
+
+本题是实现题。学习者只改 Student 入口；Reference、validation 和 checks 只用于对照与验证。
+- Student 入口：`src/student/pipeline.hpp`。
+- Checker 入口：`checks/native_failure_checks.cpp`、`checks/pipeline_checks.cpp`、`checks/pipeline_demo.cpp`。
+- Reference 对照：`src/reference/pipeline.hpp`。
+- validation/good 对照：`validation/good/pipeline.hpp`。
+- validation/bad 反例：`validation/bad/pipeline.hpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target P1_file_pipeline_student。
+修改后先重建 `P1_file_pipeline_student`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

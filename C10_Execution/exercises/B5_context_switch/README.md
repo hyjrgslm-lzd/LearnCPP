@@ -23,3 +23,6 @@
 ## 边界
 
 `distinct_pools_observed` 必须从实际 parse/compute thread id 推导；不能写常量 true。线程 ID 是观察证据，不是 scheduler 身份本身。
+## IDE 工程入口
+
+VS solution 中本题主入口是 `B5_context_switch_student`。学生只编辑 `src/student/solution.hpp`；`main.cpp` 是共同检查器，Reference 在 `src/reference/solution.hpp`，good/bad 控制在 `validation` 下。`B5_context_switch` 聚合目标只负责显式构建学生目标，收在 Support；Reference 与控制目标保留为独立项目，用来区分答案、正确对照和错误拒绝。单题可用 `cmake -S <本目录> -B <build>` 独立生成。

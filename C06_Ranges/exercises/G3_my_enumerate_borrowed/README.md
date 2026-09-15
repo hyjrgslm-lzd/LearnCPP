@@ -168,3 +168,16 @@ constexpr auto operator()(R&& r) const {
 本题已迁移到统一四路径验证：`checks/main.cpp` 消费 `c06_g3::my_enumerate` 和 `c06_g3::my_enumerate_view`。Reference 与 good 各自实现；bad 是安全运行时错误实现，故意不转发 `enable_borrowed_range`；Student 可编译但索引从 1 开始。
 
 checker 覆盖 C++23 风格 enumerate 的索引/元素 proxy、通过结构化绑定写回底层元素、`iter_move` 返回 `(index, element&&)`、与 `std::views::transform` 管道组合、`istream_view` 这类 input/non-common/move-only iterator 的空输入/短输入/单遍后置++，以及 borrowed 条件：`std::string_view` 正向转发，右值 `std::vector` 经 owning view 后保持 non-borrowed。proxy pair 的能力用实际 concept 与实际读写操作检查，避免只声明 typedef 而不可消费。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `G3_my_enumerate_borrowed_student`。
+
+本题是实现题。学习者只改 Student 入口；Reference、validation 和 checks 只用于对照与验证。
+- Student 入口：`src/student/my_enumerate_view.hpp`。
+- Checker 入口：`main.cpp`。
+- Reference 对照：`src/reference/my_enumerate_view.hpp`。
+- validation/good 对照：`validation/good/my_enumerate_view.hpp`。
+- validation/bad 反例：`validation/bad/my_enumerate_view.hpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target G3_my_enumerate_borrowed_student。
+修改后先重建 `G3_my_enumerate_borrowed_student`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

@@ -39,3 +39,13 @@ cl /nologo /std:c++23preview /EHsc /utf-8 /O2 /DNDEBUG /I include Q1_mpsc_queue/
 ```
 
 基准 variant=mpsc，consumers 必须为 1；可与相同参数的 mpmc 比较单消费者裁剪成本。该分支不支持 SPMC。
+
+## IDE 与工程入口
+
+Visual Studio 方案中，主入口目标是 `Q1_mpsc_queue`，位于本题节点顶层；单题独立配置时它是启动目标。`Q1_mpsc_queue_reference` 在 `Reference` 分组。
+
+学生/观察入口：`main.cpp` 是观察/实验入口，用来预测、运行和记录现象；本题不声明待填学生实现。
+
+Reference 与检查：`solution.cpp` 是 Reference/检查路径，只读对照。
+
+单题命令：从 `C08_Concurrency/exercises` 可独立配置：`cmake -S Q1_mpsc_queue -B build/Q1_mpsc_queue-ide -G "Visual Studio 18 2026" -A x64`，再构建 `Q1_mpsc_queue` 和 `Q1_mpsc_queue_reference`；CTest 过滤 `^Q1_mpsc_queue_reference$`。

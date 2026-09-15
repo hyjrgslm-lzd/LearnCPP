@@ -18,6 +18,8 @@ ctest --preset verify-core
 
 核心路径不下载第三方依赖。完整环境、单题构建、C++26 探测、基准运行和平台限制见[构建指南](exercises/BUILD_GUIDE.md)。
 
+Visual Studio 方案由 CMake 生成。练习主目标在各题节点顶层，Reference、检查、实验和课程级 benchmark/runtime 工具按角色收纳；不要手工修改生成工程。打开某题后，先看该题 README 和主目标，编辑 `main.cpp` 或 README 指定的学生头，再构建主目标或对应 Reference/check 目标。
+
 通用构建、编译链接、符号、ABI 和工具能力探测的连续讲解见 [C01 工程课程](../C01_Build_Compile_Link/README.md)。本课在全局版图中主讲 C08：共享状态、同步、发布和安全回收；现有 CPU 性能、SIMD 与 NUMA 实验同时是 C13 的可复用输入，不代表完整 C13 已交付。各专项先修和未验证边界见本课[覆盖表](references/coverage.md)和[标准与实现状态](references/standards-and-implementations.md)。
 
 ## 学习路线

@@ -69,3 +69,13 @@ python C07_OS_Memory_System_IO/exercises/B01_costs/tools/sample_benchmarks.py --
 ```
 
 正式采样结果冻结后，再写本机分析报告；报告和原始样本属于运行产物，不作为课程源码提交。不要在只有协议和控制测试时提前写性能结论。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `B01_costs_benchmark`。
+
+本题是benchmark / 观察项目，没有本题内 `src/student/`、`src/reference/` 或 `validation/` 变体。
+- 源码入口：`benchmark.cpp`、`source_observation.cpp`。
+- 诊断或辅助入口：`tools/sample_benchmarks.py`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target B01_costs_benchmark。
+修改后先重建 `B01_costs_benchmark`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

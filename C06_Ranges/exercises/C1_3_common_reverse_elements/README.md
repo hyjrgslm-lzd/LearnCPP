@@ -115,3 +115,12 @@
 预测：`common` 把 iter/sentinel 异型 range 包成 common_range；`reverse` 要求 bidirectional，且 iterator_concept 跟随底层；`elements` / `keys` / `values` 只投影 tuple-like 元素，不改变底层 borrowed 语义。
 
 当前程序验证 common 化、vector reverse 保留 random_access、forward_list 不能 reverse、keys/values 输出，以及右值 map 参与返回迭代器算法时得到 dangling。扩展问题答案：右值 map 的元素生命周期随 map 销毁，borrowed_range 不能凭 values_view 自动获得。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `C1_3_common_reverse_elements`。
+
+本题是观察题，没有本题内 `src/student/`、`src/reference/` 或 `validation/` 变体。
+- 源码入口：`main.cpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target C1_3_common_reverse_elements。
+修改后先重建 `C1_3_common_reverse_elements`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

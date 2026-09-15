@@ -33,3 +33,14 @@ ctest --test-dir build/coroutine-i2 -R I2_io_uring_iocp_reference --output-on-fa
 回读代码时只追一条链：`await_suspend` 提交请求，loop 取 completion，awaiter 保存结果，`await_resume` 返回字节数。
 
 **答案解析：** 这条链回答所有权和数据流：awaiter 由协程帧拥有，OS 只保存能找回 awaiter 的身份 token，event loop 是写结果和恢复 handle 的执行者。先写结果再 resume，能保证业务代码从 `await_resume()` 看到完整 completion 状态。
+
+## IDE 与单题构建
+
+Visual Studio 中主启动目标是 `I2_io_uring_iocp`；Reference、Checks、Support 目标保留在同题分组中。学生编辑入口和本题 README/CMake 文件会显示在目标文件树里。
+
+```powershell
+cmake -S . -B build/vs -G "Visual Studio 18 2026" -A x64 -DCOROUTINE_STUDY_BUILD_REFERENCE=ON -DCOROUTINE_STUDY_ENABLE_IOCP=ON
+cmake --build build/vs --config Debug --target I2_io_uring_iocp
+```
+
+本题单独配置需要 `-DCOROUTINE_STUDY_ENABLE_IOCP=ON`，并提前准备 Windows IOCP。Windows 直接使用 IOCP，命令使用 COROUTINE_STUDY_ENABLE_IOCP=ON。Linux 改用 -DCOROUTINE_STUDY_ENABLE_IO_URING=ON，并通过 -DCOROUTINE_STUDY_LIBURING_ROOT=<existing-liburing-root> 或 pkg-config 提供 liburing；不要联网准备依赖。 缺依赖时配置阶段直接失败，不生成空工程。 `BUILD_TESTING=OFF` 只关闭测试注册，不删除本题可执行目标；不要手工编辑生成的 `.sln` 或 `.vcxproj`。

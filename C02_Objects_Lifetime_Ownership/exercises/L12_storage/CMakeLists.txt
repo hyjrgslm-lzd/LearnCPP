@@ -31,6 +31,8 @@ if(CORE_STUDY_BUILD_REFERENCE)
         PROPERTIES SKIP_REGULAR_EXPRESSION "SKIP: __cpp_lib_start_lifetime_as not defined")
 
     l12_configure(L12_storage_validation_good validation/good)
+    target_sources(L12_storage_validation_good PRIVATE
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/reference/storage_slot.hpp")
     core_add_test(L12_storage_validation_good COMMAND L12_storage_validation_good LABELS validation TIMEOUT 30)
 
     l12_configure(L12_storage_validation_bad_noop validation/bad_noop)
@@ -41,3 +43,5 @@ if(CORE_STUDY_BUILD_REFERENCE)
             -P ${CMAKE_CURRENT_LIST_DIR}/checks/expect_failure.cmake)
     set_tests_properties(L12_storage_validation_bad_noop_check PROPERTIES TIMEOUT 30 LABELS negative)
 endif()
+
+learncpp_setup_ide(L12_storage_student)

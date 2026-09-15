@@ -32,3 +32,10 @@ F01的CMake只用最小正例决定是否开启无官方宏或实现可能滞后
 - P3670R4 Template-name pack indexing: https://wg21.link/p3670r4
 - P4101R1 Consteval-only values: https://wg21.link/p4101r1
 - P3385R8 Attributes reflection proposal: https://wg21.link/p3385r8
+
+
+## IDE 入口
+
+从本课 `exercises` 根目录或本题目录生成 Visual Studio 18 2026 x64 工程。本题只有专项/能力探测目标；打开 solution 后按目标名运行对应探测。
+没有 Student 编辑入口；运行/阅读：`probes/`。这些入口保留在题目分组内，作为观察、探测或负例诊断。
+构建主项目后运行 CTest 或 README 中列出的检查命令；负例/探测入口只读，用于观察诊断。

@@ -101,3 +101,14 @@ watchdog 在 200ms 后 `request_stop()`。三条 URL 中，100ms 和 150ms 的 f
 | Part 5 | `aggregate` 汇总 | total=3、ok=2、stopped=1、err=0、lines=4、score=343 |
 
 完成前：当前 parser 分数占位、串行抓取或漏 stop 检查都会被本地检查拒绝
+
+## IDE 与单题构建
+
+Visual Studio 中主启动目标是 `Capstone1_async_crawler`；Reference、Checks、Support 目标保留在同题分组中。学生编辑入口和本题 README/CMake 文件会显示在目标文件树里。
+
+```powershell
+cmake -S . -B build/vs -G "Visual Studio 18 2026" -A x64 -DCOROUTINE_STUDY_BUILD_REFERENCE=ON
+cmake --build build/vs --config Debug --target Capstone1_async_crawler
+```
+
+普通题不需要额外依赖；Reference 由 `COROUTINE_STUDY_BUILD_REFERENCE` 控制。 `BUILD_TESTING=OFF` 只关闭测试注册，不删除本题可执行目标；不要手工编辑生成的 `.sln` 或 `.vcxproj`。

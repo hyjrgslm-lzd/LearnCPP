@@ -8,3 +8,6 @@ ranges_add_exercise(
     CHECK main.cpp
     BAD_DIAGNOSTIC "negative count is rejected"
 )
+
+
+learncpp_setup_ide(G1_my_take_view_student)

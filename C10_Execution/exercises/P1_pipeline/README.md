@@ -23,3 +23,6 @@ file、buffer、context及两个pool都由run_pipeline的局部拥有者持有�
 ## 怎样提交与复盘
 
 按[构建指南](../BUILD_GUIDE.md)独立配置P1目录；Linux需要明确启用固定io_uring前缀。Student初态exit2，Reference/Good为0，Bad按题目诊断退出1。正文[记录流水线](../../chapters/13-pipeline.md)提供每个Part的状态/所有权分析。画出两个图之间的拥有值交接，解释为何磁盘完成不等于CPU统计完成，再说明每个计数实际观察了什么。性能判断另用B01，不能从这里的阶段计数宣称加速。
+## IDE 工程入口
+
+VS solution 中本题主入口是 `P1_pipeline_student`。学生只编辑 `src/student/solution.hpp`；`main.cpp` 是共同检查器，Reference 在 `src/reference/solution.hpp`，good/bad 控制在 `validation` 下。`P1_pipeline` 聚合目标只负责显式构建学生目标，收在 Support；Reference 与控制目标保留为独立项目，用来区分答案、正确对照和错误拒绝。单题可用 `cmake -S <本目录> -B <build>` 独立生成。

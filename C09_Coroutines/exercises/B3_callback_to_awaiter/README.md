@@ -79,3 +79,14 @@ starter 里单独保留 `async_add_immediate` 作为同步立即完成观察点�
 | Part 4 | 结果同步与异常 | 本地检查值流；异常扩展仍属进阶 |
 
 完成前：result 没有通过 `await_resume()` 回到协程体时，最终值不会是 36。当前 Student PASS 只证明 Part 1/2/4 的值流和 owner 收束；Part 3 同步立即完成窗口仍是观察/解析题，没有把生产级 ready/return-false 处理计入实现 PASS。
+
+## IDE 与单题构建
+
+Visual Studio 中主启动目标是 `B3_callback_to_awaiter`；Reference、Checks、Support 目标保留在同题分组中。学生编辑入口和本题 README/CMake 文件会显示在目标文件树里。
+
+```powershell
+cmake -S . -B build/vs -G "Visual Studio 18 2026" -A x64 -DCOROUTINE_STUDY_BUILD_REFERENCE=ON
+cmake --build build/vs --config Debug --target B3_callback_to_awaiter
+```
+
+普通题不需要额外依赖；Reference 由 `COROUTINE_STUDY_BUILD_REFERENCE` 控制。 `BUILD_TESTING=OFF` 只关闭测试注册，不删除本题可执行目标；不要手工编辑生成的 `.sln` 或 `.vcxproj`。

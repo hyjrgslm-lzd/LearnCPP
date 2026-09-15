@@ -25,3 +25,5 @@ endfunction()
 
 l02_negative(bind_rvalue_to_nonconst_lvalue "C2440")
 l02_negative(forward_lvalue_to_rvalue "C2664")
+
+learncpp_setup_ide(L02_value_categories_observation)

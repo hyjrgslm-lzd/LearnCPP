@@ -30,3 +30,6 @@ bad 版本漏掉 during-work stopped，检查器拒绝。
 ## 答案解释
 
 before/during 都在完成前观察到请求，所以发 stopped；after 在完成后才请求，不能碰 opstate，也不能把 value 改成 stopped。检查器的 after-completion 请求放在 `start` 返回后，避免用真实 UB 当实验。
+## IDE 工程入口
+
+VS solution 中本题主入口是 `C1_8_cancellation_student`。学生只编辑 `src/student/solution.hpp`；`main.cpp` 是共同检查器，Reference 在 `src/reference/solution.hpp`，good/bad 控制在 `validation` 下。`C1_8_cancellation` 聚合目标只负责显式构建学生目标，收在 Support；Reference 与控制目标保留为独立项目，用来区分答案、正确对照和错误拒绝。单题可用 `cmake -S <本目录> -B <build>` 独立生成。

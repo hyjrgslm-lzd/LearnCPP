@@ -33,3 +33,14 @@ Visual Studio 默认构建目录中的运行方式：
 Part 3 的路径是 `producer.set_exception(...) → 就绪的异常状态 → result.get() → main 的 catch`。这里异常已经在调用 get 前存入共享状态，所以 get 直接重新抛出；如果提供方稍后才设置异常，get 会先等待状态就绪。成功取值和重抛已保存异常都会完成这一次 future 消费，随后 `valid()` 为 false。
 
 接着学习 [P2 generator 基础](../P2_generator_basics/README.md)，后续 [A3](../A3_co_await_future/README.md) 将使用这些知识适配协程等待。
+
+## IDE 与单题构建
+
+Visual Studio 中主启动目标是 `P1_future_basics`；Reference、Checks、Support 目标保留在同题分组中。学生编辑入口和本题 README/CMake 文件会显示在目标文件树里。
+
+```powershell
+cmake -S . -B build/vs -G "Visual Studio 18 2026" -A x64 -DCOROUTINE_STUDY_BUILD_REFERENCE=ON
+cmake --build build/vs --config Debug --target P1_future_basics
+```
+
+普通题不需要额外依赖；Reference 由 `COROUTINE_STUDY_BUILD_REFERENCE` 控制。 `BUILD_TESTING=OFF` 只关闭测试注册，不删除本题可执行目标；不要手工编辑生成的 `.sln` 或 `.vcxproj`。

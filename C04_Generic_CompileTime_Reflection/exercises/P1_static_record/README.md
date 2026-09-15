@@ -49,3 +49,10 @@ ctest --test-dir C04_Generic_CompileTime_Reflection/exercises/P1_static_record/b
 ```
 
 自动验证使用[有界进程与证据方式](../../references/BUILD_GUIDE.md)。学生配置另加`-DGENERIC_STUDY_BUILD_REFERENCE=OFF -DGENERIC_STUDY_TEST_STUDENTS=ON`；初始Student有意失败，Reference/good应通过，bad被精确诊断拒绝。只有真实完成Student操作后，其结果才代表作业完成。
+
+
+## IDE 入口
+
+从本课 `exercises` 根目录或本题目录生成 Visual Studio 18 2026 x64 工程。主项目是 `P1_static_record_student`；默认学生测试关闭时仍生成该项目，但它是 `EXCLUDE_FROM_ALL`，需显式构建。
+学生只编辑：`src/student/record_ops.hpp`。 `checks/`、`validation/`、`src/reference/`、diagnostic、support 目标是只读对照/验证/实验入口，保留在题目分组内。
+修改 Student 后先重新构建对应目标，再运行 CTest 或 README 中列出的检查命令。

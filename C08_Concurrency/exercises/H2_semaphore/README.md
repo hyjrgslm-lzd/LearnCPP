@@ -62,3 +62,13 @@ python tools/run_diagnostic.py --timeout 5 -- ./build/student-H2_semaphore/Relea
 ```
 
 成功只说明本次输入与实际交错通过相应检查；文字推导、一般交错、未测平台仍须单独核验。规范和完整答案见正文；不要求特定加速。
+
+## IDE 与工程入口
+
+Visual Studio 方案中，主入口目标是 `H2_semaphore`，位于本题节点顶层；单题独立配置时它是启动目标。`H2_semaphore_reference` 在 `Reference` 分组。
+
+学生/观察入口：`main.cpp` 中 README 指定的 TODO。
+
+Reference 与检查：`solution.cpp` 是 Reference/检查路径，只读对照。
+
+单题命令：从 `C08_Concurrency/exercises` 可独立配置：`cmake -S H2_semaphore -B build/H2_semaphore-ide -G "Visual Studio 18 2026" -A x64`，再构建 `H2_semaphore` 或 `H2_semaphore_reference`；要注册学生 CTest，按总 BUILD_GUIDE 的 student 模板加 `-DCONCURRENCY_STUDY_TEST_STARTERS=ON`。

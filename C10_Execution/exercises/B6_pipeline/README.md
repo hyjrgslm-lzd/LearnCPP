@@ -34,3 +34,6 @@ checker 要求 parse 与 enrich 的 thread id 集合互不重叠，且 enrich ho
 本题是同步一次性函数，`sync_wait` 返回就是收束边界：三个已接受 batch 都完成，merge 已生成最终 report，局部 buckets 和记录副本可安全销毁。普通解析失败不会展开异常，而是计入 invalid；超限输入在提交任何 branch 前拒绝。
 
 本题不实现通用 close/reject 对象，不声称覆盖 shutdown 后拒绝新提交或已接受 work drain 的完整运行时协议。那些由 H1 run_loop 和 P1 pipeline 项目主讲；本题只给它们准备“有界输入、已接受工作必须在返回前收束”的前置模型。
+## IDE 工程入口
+
+VS solution 中本题主入口是 `B6_pipeline_student`。学生只编辑 `src/student/solution.hpp`；`main.cpp` 是共同检查器，Reference 在 `src/reference/solution.hpp`，good/bad 控制在 `validation` 下。`B6_pipeline` 聚合目标只负责显式构建学生目标，收在 Support；Reference 与控制目标保留为独立项目，用来区分答案、正确对照和错误拒绝。单题可用 `cmake -S <本目录> -B <build>` 独立生成。

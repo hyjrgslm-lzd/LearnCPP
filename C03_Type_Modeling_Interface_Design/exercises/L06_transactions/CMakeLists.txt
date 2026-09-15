@@ -14,6 +14,9 @@ if(TYPE_STUDY_BUILD_REFERENCE)
     target_include_directories(L06_transactions_validation_bad_prefix PRIVATE
         "${CMAKE_CURRENT_SOURCE_DIR}/validation/bad_prefix"
         "${CMAKE_CURRENT_SOURCE_DIR}/checks")
+    target_sources(L06_transactions_validation_bad_prefix PRIVATE
+        "${CMAKE_CURRENT_SOURCE_DIR}/validation/bad_prefix/table.hpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/checks/tracked_value.hpp")
     c03_add_test(L06_transactions_validation_bad_prefix_rejected
         COMMAND ${CMAKE_COMMAND}
             "-DEXECUTABLE=$<TARGET_FILE:L06_transactions_validation_bad_prefix>"
@@ -21,3 +24,5 @@ if(TYPE_STUDY_BUILD_REFERENCE)
             -P "${CMAKE_CURRENT_SOURCE_DIR}/../cmake/expect_failure.cmake"
         LABELS negative)
 endif()
+
+learncpp_setup_ide(L06_transactions_student)

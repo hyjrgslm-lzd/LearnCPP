@@ -90,3 +90,17 @@ auto v = my::views::iota(1, 11)
 
 - `notes/architecture_diagram.md`：六层架构图和每层职责。
 - `notes/design_doc.md`：关键设计选择、支持范围和简化边界。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `CAPSTONE4_mini_ranges_student`。
+
+本题是实现题。学习者只改 Student 入口；Reference、validation 和 checks 只用于对照与验证。
+- Student 入口：`src/student/my_ranges/01_cpo.hpp`、`src/student/my_ranges/02_concepts.hpp`、`src/student/my_ranges/03_interface.hpp`、`src/student/my_ranges/04_factories.hpp`、`src/student/my_ranges/05_adaptors.hpp`、`src/student/my_ranges/06_consumers.hpp`。
+- Checker 入口：`main.cpp`。
+- Reference 对照：`src/reference/my_ranges/01_cpo.hpp`、`src/reference/my_ranges/02_concepts.hpp`、`src/reference/my_ranges/03_interface.hpp`、`src/reference/my_ranges/04_factories.hpp`、`src/reference/my_ranges/05_adaptors.hpp`、`src/reference/my_ranges/06_consumers.hpp`。
+- validation/good 对照：`validation/good/my_ranges/01_cpo.hpp`、`validation/good/my_ranges/02_concepts.hpp`、`validation/good/my_ranges/03_interface.hpp`、`validation/good/my_ranges/04_factories.hpp`、`validation/good/my_ranges/05_adaptors.hpp`、`validation/good/my_ranges/06_consumers.hpp`。
+- validation/bad 反例：`validation/bad/my_ranges/01_cpo.hpp`、`validation/bad/my_ranges/02_concepts.hpp`、`validation/bad/my_ranges/03_interface.hpp`、`validation/bad/my_ranges/04_factories.hpp`、`validation/bad/my_ranges/05_adaptors.hpp`、`validation/bad/my_ranges/06_consumers.hpp`。
+- 导读或设计材料：`notes/architecture_diagram.md`、`notes/design_doc.md`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target CAPSTONE4_mini_ranges_student。
+修改后先重建 `CAPSTONE4_mini_ranges_student`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

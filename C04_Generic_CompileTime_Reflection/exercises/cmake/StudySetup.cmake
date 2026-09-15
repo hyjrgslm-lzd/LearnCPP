@@ -1,5 +1,6 @@
 include_guard(GLOBAL)
 include(CTest)
+include("${CMAKE_CURRENT_LIST_DIR}/../../../cmake/ExerciseIde.cmake")
 find_package(Python3 3.10 REQUIRED COMPONENTS Interpreter)
 
 option(GENERIC_STUDY_BUILD_REFERENCE "Build independent solutions and checker controls" ON)
@@ -11,8 +12,10 @@ option(GENERIC_STUDY_ENABLE_META_LIBS "Build the pinned Mp11 and Hana teaching u
 function(c04_configure_target target)
     target_compile_features(${target} PRIVATE cxx_std_23)
     set_target_properties(${target} PROPERTIES CXX_EXTENSIONS OFF CXX_SCAN_FOR_MODULES OFF)
+    set(_c04_check_header "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../../../C01_Build_Compile_Link/exercises/include/check.hpp")
     target_include_directories(${target} PRIVATE
         "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../../../C01_Build_Compile_Link/exercises/include")
+    target_sources(${target} PRIVATE "${_c04_check_header}")
     if(MSVC)
         target_compile_options(${target} PRIVATE /utf-8 /EHsc /W4 /permissive- /Zc:__cplusplus)
     else()
@@ -74,6 +77,20 @@ function(c04_add_compile_case)
     endif()
 endfunction()
 
+function(c04_add_ide_headers target)
+    cmake_parse_arguments(ARG "" "" "DIRS;FILES" ${ARGN})
+    set(_c04_headers ${ARG_FILES})
+    foreach(_c04_dir IN LISTS ARG_DIRS)
+        file(GLOB _c04_dir_headers CONFIGURE_DEPENDS
+            "${_c04_dir}/*.h" "${_c04_dir}/*.hpp" "${_c04_dir}/*.hxx")
+        list(APPEND _c04_headers ${_c04_dir_headers})
+    endforeach()
+    if(_c04_headers)
+        list(REMOVE_DUPLICATES _c04_headers)
+        target_sources(${target} PRIVATE ${_c04_headers})
+    endif()
+endfunction()
+
 function(c04_add_test name)
     cmake_parse_arguments(ARG "" "TIMEOUT" "COMMAND;LABELS" ${ARGN})
     if(NOT BUILD_TESTING)
@@ -121,6 +138,9 @@ function(c04_add_exercise)
         c04_configure_target(${target})
         target_include_directories(${target} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/${impl}"
             "${CMAKE_CURRENT_SOURCE_DIR}/checks")
+        c04_add_ide_headers(${target}
+            FILES "${CMAKE_CURRENT_SOURCE_DIR}/${impl}/${ARG_HEADER}"
+            DIRS "${CMAKE_CURRENT_SOURCE_DIR}/checks" "${CMAKE_CURRENT_SOURCE_DIR}/checks/support")
         if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/${impl}/${ARG_HEADER}")
             message(FATAL_ERROR "Missing independent implementation: ${impl}/${ARG_HEADER}")
         endif()

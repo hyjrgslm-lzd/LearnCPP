@@ -52,8 +52,12 @@ if(C10_NVEXEC_NVCXX)
                 "${CMAKE_CURRENT_SOURCE_DIR}/pipeline_multi_gpu.cu" -o "${multi_exe}"
         DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/pipeline_multi_gpu.cu"
         VERBATIM)
-    add_custom_target(V1_nvexec_single_gpu_build ALL DEPENDS "${single_exe}")
-    add_custom_target(V1_nvexec_multi_gpu_build ALL DEPENDS "${multi_exe}")
+    add_custom_target(V1_nvexec_single_gpu_build ALL
+        DEPENDS "${single_exe}"
+        SOURCES pipeline_single_gpu.cu)
+    add_custom_target(V1_nvexec_multi_gpu_build ALL
+        DEPENDS "${multi_exe}"
+        SOURCES pipeline_multi_gpu.cu)
 
     c10_add_test(V1_nvexec_single_gpu COMMAND "${single_exe}" LABELS nvexec gpu)
     c10_add_test(V1_nvexec_multi_gpu COMMAND "${multi_exe}" LABELS nvexec gpu ALLOW_SKIP)
@@ -63,3 +67,4 @@ else()
     c10_add_observation(V1_nvexec_single_gpu skip_single.cpp ALLOW_SKIP LABELS nvexec gpu)
     c10_add_observation(V1_nvexec_multi_gpu skip_multi.cpp ALLOW_SKIP LABELS nvexec gpu)
 endif()
+learncpp_setup_ide("")

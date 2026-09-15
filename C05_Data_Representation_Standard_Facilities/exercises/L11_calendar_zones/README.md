@@ -17,3 +17,12 @@ ctest --test-dir build/leaf-L11 -C Release --output-on-failure
 ```
 
 解析：UTC测试必须通过。tzdb测试返回 77 表示当前标准库或运行环境没有可用时区数据库；这只影响本地时区观察，不影响 UTC 毫秒范围、日历合法性和 `format_timestamp(..., "UTC")`。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `L11_calendar_zones_utc`。
+
+本题是观察题，没有本题内 `src/student/`、`src/reference/` 或 `validation/` 变体。
+- 源码入口：`tzdb_observation.cpp`、`utc_observation.cpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target L11_calendar_zones_utc。
+修改后先重建 `L11_calendar_zones_utc`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

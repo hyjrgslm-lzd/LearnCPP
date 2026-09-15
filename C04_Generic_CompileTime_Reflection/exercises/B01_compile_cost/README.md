@@ -15,3 +15,10 @@
 扩展组比较手写递归 type map 查找与 Boost.Mp11 `mp_map_find`。规模为 32、128、256 个键；查询最后一项和缺失项；manual/Mp11 共 12 组。manual 与 Mp11 源文件使用同一个 `source_map`、同一个 `entry_value` 输出适配、同一 Boost.Mp11 头依赖、同一 include path、同一编译选项，只隔离查找机制。依赖必须由 `../build/_deps/mp11-boost-1.91.0/.learncpp-dependency.cmake` 指向 Boost.Mp11 commit `b94b089d4ec83cd397f20958f34edf25bc3e06f4`，Git HEAD 必须相同且工作树必须干净，否则 driver 失败。
 
 扩展组正式成本实验必须等独占测量窗口。计时应使用单调高分辨率时钟包装有界runner；计时包含脚本、进程创建、编译和等待返回，源码/产物哈希在计时外记录。
+
+
+## IDE 入口
+
+从本课 `exercises` 根目录或本题目录生成 Visual Studio 18 2026 x64 工程。主项目是 `B01_compile_cost_contracts`，可直接设为启动项运行观察或专项入口。
+没有 Student 编辑入口；运行/阅读：`observations/`。这些入口保留在题目分组内，作为观察、探测或负例诊断。
+构建主项目后运行 CTest 或 README 中列出的检查命令；负例/探测入口只读，用于观察诊断。

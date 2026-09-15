@@ -68,3 +68,13 @@ foreach ($workload in 'light','heavy') {
 **C：解释完整样本。** 保留全部五个值、中位数和范围，比较同一负载同一规模的不同策略，再观察随规模变化。小任务中固定开销可能占主导；较大 heavy 更可能摊薄调度，light 可能受数据搬运限制。新进程仍可能包含自己的首次线程池初始化。出现加速不是验收条件，范围重叠也应如实记录。
 
 **D：写清证据边界。** 正式报告应使用稳定源码的新构建及新输出目录；一次成功运行或 Reference 通过不能证明全部调度历史、真实 worker 数或峰值带宽。处于集成构建未空闲环境的样本只能作为方法学观察。
+
+## IDE 与工程入口
+
+Visual Studio 方案中，主入口目标是 `L3_par_vs_seq_bench`，位于本题节点顶层；单题独立配置时它是启动目标。`L3_par_vs_seq_bench_reference` 在 `Reference` 分组。 `L3_par_vs_seq_bench_benchmark` 只在 `CONCURRENCY_STUDY_BUILD_BENCHMARKS=ON` 时生成，归实验/benchmark 入口；先跑 Reference，再做测量。
+
+学生/观察入口：`main.cpp` 中 README 指定的 TODO。
+
+Reference 与检查：`solution.cpp`、`reference.hpp`、`checks.hpp` 是 Reference/检查路径，只读对照。
+
+单题命令：从 `C08_Concurrency/exercises` 可独立配置：`cmake -S L3_par_vs_seq_bench -B build/L3_par_vs_seq_bench-ide -G "Visual Studio 18 2026" -A x64`，再构建 `L3_par_vs_seq_bench` 或 `L3_par_vs_seq_bench_reference`；要注册学生 CTest，按总 BUILD_GUIDE 的 student 模板加 `-DCONCURRENCY_STUDY_TEST_STARTERS=ON`。

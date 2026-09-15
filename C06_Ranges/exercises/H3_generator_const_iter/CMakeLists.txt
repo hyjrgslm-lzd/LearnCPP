@@ -8,3 +8,5 @@ ranges_add_exercise(
     CHECK main.cpp
     BAD_DIAGNOSTIC "move assignment must destroy the old coroutine frame"
 )
+
+learncpp_setup_ide(H3_generator_const_iter_student)

@@ -29,5 +29,16 @@ checker 持有真实 DLL/SO fixture 的 observer handle，并读取模块导出�
 cmake --build C07_OS_Memory_System_IO/exercises/build/process-author-debug --config Debug --target L09_dynamic_loading_reference
 ctest --test-dir C07_OS_Memory_System_IO/exercises/build/process-author-debug -C Debug -R L09_dynamic_loading
 ```
+## IDE 项目
 
+生成 Visual Studio 工程后，启动项目是 `L09_dynamic_loading_student`。
 
+本题是实现题。学习者只改 Student 入口；Reference、validation 和 checks 只用于对照与验证。
+- Student 入口：`src/student/dynamic_loading.hpp`。
+- Checker 入口：`checks/dynamic_loading_checks.cpp`、`checks/include/dynamic_loading_contract.hpp`、`checks/module.cpp`。
+- Reference 对照：`src/reference/dynamic_loading.hpp`。
+- validation/good 对照：`validation/good/dynamic_loading.hpp`。
+- validation/bad 反例：`validation/bad/dynamic_loading.hpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target L09_dynamic_loading_student。
+修改后先重建 `L09_dynamic_loading_student`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

@@ -32,3 +32,13 @@ ctest --test-dir build/F2_relaxed_counter -C Release --output-on-failure
 ```
 
 VS2026 生成器需要 CMake 4.2 或更新版。CTest 运行 `F2_relaxed_counter_reference` 并设进程超时；cs::check 在 Release 仍有效。通过表示本次检查成功，不替代正文中的协议证明。规范链接与版本说明见对应正文。
+
+## IDE 与工程入口
+
+Visual Studio 方案中，主入口目标是 `F2_relaxed_counter`，位于本题节点顶层；单题独立配置时它是启动目标。`F2_relaxed_counter_reference` 在 `Reference` 分组。
+
+学生/观察入口：`main.cpp` 是观察/实验入口，用来预测、运行和记录现象；本题不声明待填学生实现。
+
+Reference 与检查：`solution.cpp` 是 Reference/检查路径，只读对照。
+
+单题命令：从 `C08_Concurrency/exercises` 可独立配置：`cmake -S F2_relaxed_counter -B build/F2_relaxed_counter-ide -G "Visual Studio 18 2026" -A x64`，再构建 `F2_relaxed_counter` 和 `F2_relaxed_counter_reference`；CTest 过滤 `^F2_relaxed_counter_reference$`。

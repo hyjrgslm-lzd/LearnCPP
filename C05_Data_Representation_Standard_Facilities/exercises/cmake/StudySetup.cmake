@@ -1,5 +1,6 @@
 include_guard(GLOBAL)
 include(CTest)
+include("${CMAKE_CURRENT_LIST_DIR}/../../../cmake/ExerciseIde.cmake")
 
 option(DATA_STUDY_BUILD_REFERENCE "Build independent solutions and checker controls" ON)
 option(DATA_STUDY_TEST_STUDENTS "Register unfinished student implementations" OFF)
@@ -8,6 +9,16 @@ option(DATA_STUDY_ENABLE_FRONTIER "Probe and run draft-standard examples separat
 option(DATA_STUDY_ENABLE_FORMAT_LIBS "Build the pinned fmt and spdlog teaching units" OFF)
 set(DATA_STUDY_SPDLOG_BACKEND "fmt" CACHE STRING "Formatting backend for the spdlog experiment: fmt or std")
 set_property(CACHE DATA_STUDY_SPDLOG_BACKEND PROPERTY STRINGS fmt std)
+set(C05_COMMON_HEADERS
+    "${CMAKE_CURRENT_LIST_DIR}/../include/c05/bytes.hpp"
+    "${CMAKE_CURRENT_LIST_DIR}/../include/c05/config.hpp"
+    "${CMAKE_CURRENT_LIST_DIR}/../include/c05/manifest.hpp"
+    "${CMAKE_CURRENT_LIST_DIR}/../include/c05/model.hpp"
+    "${CMAKE_CURRENT_LIST_DIR}/../include/c05/paths.hpp"
+    "${CMAKE_CURRENT_LIST_DIR}/../include/c05/text.hpp"
+    "${CMAKE_CURRENT_LIST_DIR}/../include/c05/time.hpp"
+    "${CMAKE_CURRENT_LIST_DIR}/../include/c05/types.hpp"
+    "${CMAKE_CURRENT_LIST_DIR}/../include/c05/utf.hpp")
 
 function(c05_configure_target target)
     target_compile_features(${target} PRIVATE cxx_std_23)
@@ -15,6 +26,8 @@ function(c05_configure_target target)
     target_include_directories(${target} PRIVATE
         "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../../../C01_Build_Compile_Link/exercises/include"
         "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../include")
+    target_sources(${target} PRIVATE ${C05_COMMON_HEADERS}
+        "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../../../C01_Build_Compile_Link/exercises/include/check.hpp")
     if(MSVC)
         target_compile_options(${target} PRIVATE /utf-8 /EHsc /W4 /permissive- /Zc:__cplusplus)
     else()
@@ -92,6 +105,8 @@ function(c05_add_exercise)
         c05_configure_target(${target})
         target_include_directories(${target} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/${impl}"
             "${CMAKE_CURRENT_SOURCE_DIR}/checks")
+        target_sources(${target} PRIVATE
+            "${CMAKE_CURRENT_SOURCE_DIR}/${impl}/${ARG_HEADER}")
         if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/${impl}/${ARG_HEADER}")
             message(FATAL_ERROR "Missing independent implementation: ${impl}/${ARG_HEADER}")
         endif()

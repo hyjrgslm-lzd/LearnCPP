@@ -22,3 +22,6 @@ ctest --test-dir build/c11-bridges -C Release --output-on-failure
 解析：connect 拥有 operation，start 接上 executor，内部 shared state 活到所有 completion 收束；value 给拥有的 string，普通错误进 error，只有停止导致的实际 canceled completion 进 stopped。晚到停止不能把 EOF/普通错误改成 stopped。stop callback 仅设原子标记，owner timer 才调用 socket.cancel；该操作独占 socket 的取消责任，并要求单个 io.run owner 或 strand 串行执行 timer/read handler。最终信号前取消/消费 timer、注销 stop callback，最终信号之后不访问 operation。
 
 本桥接不复用 C10 的文件 read_at 后端，不混用 Boost 和 standalone Asio 类型，也不声称 stdexec 扩展是标准网络 API。
+## IDE 工程入口
+
+VS solution 中本题主入口是 `C11_L11_sender`。本单元是观察/专项入口，没有学生占位；源码、README、协议文件或脚本显示在同一项目中，依赖目标保留为独立项目。程序通过只证明本驱动运行，不代替 README 要求的预测、解释或专项依赖准备。单题可用 `cmake -S <本目录> -B <build>` 独立生成。

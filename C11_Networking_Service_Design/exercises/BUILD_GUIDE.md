@@ -14,6 +14,8 @@ ctest --test-dir build/c11-windows -C Release --output-on-failure
 
 默认包含 L01/L02/L03/L04/L05/L10。Reference/good 和故意错误控制属于不同结果类型；bad 必须以指定退出码和诊断被拒绝。检查使用 Release 下仍生效的 check.hpp，不靠会消失的 assert。网络使用回环临时端口，不要求外部服务。
 
+生成的 VS solution 按 L/P/B 单元分组。实现题的启动项目是 `C11_Lxx_student`；观察题和专项题以真实可执行目标为启动项目。Reference、good/bad、额外 bad 控制和观察子目标保留为独立项目，收在同题分组下，便于单独构建和调试。项目文件清单包含 README、CMakeLists、实际源码、学生/参考/控制头；P2 gRPC 还显示 `tasks.proto` 与生成的 `.pb.h/.grpc.pb.h`。
+
 若宿主同时传入 PATH 和 Path，MSBuild 可能报告环境字典重复键。仅对当前命令规范化，不修改机器配置：
 
 ```powershell

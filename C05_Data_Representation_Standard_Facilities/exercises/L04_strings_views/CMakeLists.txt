@@ -3,3 +3,6 @@ project(L04_strings_views LANGUAGES CXX)
 include(../cmake/StudySetup.cmake)
 
 c05_add_observation(L04_strings_views_observation observation.cpp)
+
+
+learncpp_setup_ide(L04_strings_views_observation)

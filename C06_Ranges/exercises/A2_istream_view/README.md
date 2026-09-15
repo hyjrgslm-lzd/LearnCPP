@@ -106,3 +106,12 @@
 预测：`istream_view<int>` 是 input_range，不是 forward/sized/common；迭代器不可复制，读一次会推进底层流，不能重新遍历。
 
 当前程序先读取首元素，再沿同一个输入迭代器继续读剩余元素，随后确认流已耗尽，并用 `ranges::to<vector>` 物化第二个流。扩展时要牢记：一旦要多次遍历或随机访问，应先物化；不要把 input view 传给需要 multi-pass 的算法。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `A2_istream_view`。
+
+本题是观察题，没有本题内 `src/student/`、`src/reference/` 或 `validation/` 变体。
+- 源码入口：`main.cpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target A2_istream_view。
+修改后先重建 `A2_istream_view`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

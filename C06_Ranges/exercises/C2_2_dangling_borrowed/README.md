@@ -120,3 +120,12 @@
 预测：右值非 borrowed range 调返回迭代器的算法会得到 `ranges::dangling`；`string_view`、`span`、`iota_view` 是 borrowed，因为迭代器指向外部或值语义位置，不依赖 view 对象本身。borrowed 不负责持有拥有者生命周期。
 
 当前程序验证右值 vector 的 dangling、string_view 的真实迭代器、自定义 span 包装通过 `enable_borrowed_range` 获得 borrowed，以及 `borrowed_iterator_t` / `borrowed_subrange_t` 的类型结果。扩展时不要把 borrowed 当 GC 或 shared ownership。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `C2_2_dangling_borrowed`。
+
+本题是观察题，没有本题内 `src/student/`、`src/reference/` 或 `validation/` 变体。
+- 源码入口：`main.cpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target C2_2_dangling_borrowed。
+修改后先重建 `C2_2_dangling_borrowed`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

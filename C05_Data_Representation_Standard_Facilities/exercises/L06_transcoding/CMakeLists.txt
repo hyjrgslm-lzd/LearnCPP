@@ -7,3 +7,6 @@ c05_add_exercise(
     HEADER utf_transcode.hpp
     CHECK checks/transcode_checks.cpp
     BAD_DIAGNOSTIC "rejects overlong slash")
+
+
+learncpp_setup_ide(L06_transcoding_student)

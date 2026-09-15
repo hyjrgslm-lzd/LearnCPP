@@ -34,7 +34,8 @@ def main() -> int:
         f'include("{cmake.as_posix()}")\n'
         f'add_executable(subject "{(source / "missing_provider_main.cpp").as_posix()}")\n'
         "c04_configure_target(subject)\n"
-        f'target_include_directories(subject PRIVATE "{source.as_posix()}")\n',
+        f'target_include_directories(subject PRIVATE "{source.as_posix()}")\n'
+        f'target_sources(subject PRIVATE "{(source / "twice.hpp").as_posix()}")\n',
         encoding="utf-8",
     )
 

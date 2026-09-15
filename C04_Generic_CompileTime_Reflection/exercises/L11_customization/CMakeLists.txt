@@ -11,3 +11,5 @@ c04_add_exercise(
 
 c04_add_observation(L11_customization_baseline observations/baseline.cpp)
 c04_add_observation(L11_customization_counterexamples observations/counterexamples.cpp)
+
+learncpp_setup_ide(L11_customization_student)

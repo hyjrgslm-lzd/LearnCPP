@@ -21,3 +21,10 @@ Part 4：观察 `visit`。单个 `variant` 要覆盖每个替代项；两个 `va
 Part 5：观察异常边界。`emplace` 构造新替代项失败时，当前实现会留下 `valueless_by_exception`；这是允许行为，不能推广成所有操作都会这样。
 
 解析：`variant` 适合封闭状态集合。它不是手写 tag 的语法糖，而是把非法组合从类型空间里删除。开放扩展、插件和跨 ABI 多态另由后续章节讲。
+
+
+## IDE 入口
+
+从本课 `exercises` 根目录或本题目录生成 Visual Studio 18 2026 x64 工程。主项目是 `L04_variant_observation`，可直接设为启动项运行观察或专项入口。
+没有 Student 编辑入口；运行/阅读：`checks/`、`observation/`、`validation/`。这些入口保留在题目分组内，作为观察、探测或负例诊断。
+构建主项目后运行 CTest 或 README 中列出的检查命令；负例/探测入口只读，用于观察诊断。

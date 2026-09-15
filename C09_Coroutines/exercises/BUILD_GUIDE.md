@@ -34,6 +34,29 @@ cmake --build --preset student
 
 现有的 `default`、`debug`、`ninja`、`ninja-debug`、`vs2022`、`vs2026` 入口仍可使用。首次配置一个构建目录时，选择本机已安装的 CMake 生成器；后续沿用该目录的生成器配置。
 
+## Visual Studio 工程结构
+
+生成 `.sln` 后，默认启动项目是课程中第一个可运行题目 `P1_future_basics`。每个练习按目录聚合到同名 Solution Folder；主 Starter 在题目顶层，Reference、Checks、Experiments、Support 目标收在题内子分组，CMake 自动目标收在 `_CMake`。不要手工编辑生成的 `.sln` 或 `.vcxproj`，改 `CMakeLists.txt` 后重新配置。
+
+每个主目标都显式列出本题的 `README.md`、`CMakeLists.txt`、学生源和相关头文件。公共头仍链接到原始文件；编辑 `exercises/include/` 会影响多个题目。`COROUTINE_STUDY_TEST_STARTERS=OFF` 只是不注册未完成学生检查，Starter 目标仍会生成，方便打开、构建和调试。
+
+Debug/Release 都使用生成器的配置名选择输出目录。Visual Studio 调试工作目录默认为目标 exe 所在目录；需要参数或专项依赖的题目在各自 CMake 中保留独立目标，不靠手工改工程属性。
+
+## 单题独立构建
+
+37 个学习单元都支持从题目目录直接配置。普通题可直接打开题目目录：
+
+```powershell
+cd C09_Coroutines/exercises/A1_first_generator
+cmake -S . -B build/vs -G "Visual Studio 18 2026" -A x64 -DCOROUTINE_STUDY_BUILD_REFERENCE=ON
+cmake --build build/vs --config Debug --target A1_first_generator A1_first_generator_reference
+ctest --test-dir build/vs -C Debug --output-on-failure
+```
+
+缺依赖的专项题不会生成空工程：H1-H3 需要 `-DCOROUTINE_STUDY_ENABLE_STDEXEC=ON`，I1 与 Capstone4 需要 `-DCOROUTINE_STUDY_ENABLE_ASIO=ON`，I2 在 Windows 需要 `-DCOROUTINE_STUDY_ENABLE_IOCP=ON`、Linux 需要 `-DCOROUTINE_STUDY_ENABLE_IO_URING=ON`，I3/I4/I5 分别需要 Folly、Boost.Cobalt、cppcoro 选项。依赖缺失时 CMake 在配置阶段报错；按下节提供本地安装、缓存或固定源码。
+
+`BUILD_TESTING=OFF` 会关闭 CTest 注册，但不删除可执行目标。`COROUTINE_STUDY_BUILD_REFERENCE=OFF` 不创建 Reference 目标；`COROUTINE_STUDY_TEST_STARTERS=ON` 才注册会消费学生实现的 starter 检查。
+
 ## 找到并运行程序
 
 Visual Studio 使用多配置输出目录。默认 Release 构建的 P1 程序位于：
@@ -130,3 +153,31 @@ RPC 的 `answer_check` 是 public API 对应的 Reference-adapted 答版，`prot
 性能取证在其他构建/压力负载结束后单独运行 F3 的 `sample_f3.py`。耗时、计数与无插桩编译器诊断分别解释，不预设 HALO 或加速比。
 
 返回 [课程入口](../README.md)。
+
+## stdexec 单题的离线缓存入口
+
+从仓库根执行。先按本指南准备并校验完整的 `C09_Coroutines/exercises/build/full-windows` 本地缓存；以下步骤只引用已有源码并复制 bootstrap 文件。`$unit` 可选择 H1、H2、H3 对应的完整题目录名。没有完整缓存时，使用已安装的 stdexec 包及 `CMAKE_PREFIX_PATH`。
+
+```powershell
+$unit = 'H1_as_awaitable'
+$cache = (Resolve-Path 'C09_Coroutines/exercises/build/full-windows').Path
+$build = Join-Path (Get-Location) "C09_Coroutines/exercises/build/standalone-$unit"
+foreach ($relative in @('_deps/stdexec-build/RAPIDS.cmake', '_deps/stdexec-build/execution.bs', 'cmake/CPM_0.38.5.cmake')) {
+    $target = Join-Path $build $relative
+    New-Item -ItemType Directory -Force -Path (Split-Path -Parent $target) | Out-Null
+    Copy-Item -LiteralPath (Join-Path $cache $relative) -Destination $target
+}
+$stdexecArgs = @('-S', "C09_Coroutines/exercises/$unit", '-B', $build,
+    '-G', 'Visual Studio 18 2026', '-A', 'x64',
+    '-DCOROUTINE_STUDY_BUILD_REFERENCE=ON', '-DCOROUTINE_STUDY_ENABLE_STDEXEC=ON',
+    '-DCOROUTINE_STUDY_FETCH_DEPS=ON', '-DFETCHCONTENT_FULLY_DISCONNECTED=ON')
+foreach ($dependency in @('stdexec', 'icm', 'rapids-cmake')) {
+    $source = Join-Path $cache "_deps/$dependency-src"
+    $stdexecArgs += "-DFETCHCONTENT_SOURCE_DIR_$($dependency.ToUpper())=$source"
+}
+cmake @stdexecArgs
+cmake --build $build --config Debug
+ctest --test-dir $build -C Debug --output-on-failure
+```
+
+仅设置 `FETCHCONTENT_SOURCE_DIR_STDEXEC` 不足以复用全部上游构建设施；ICM、RAPIDS 及 bootstrap 文件也要来自完整缓存。H2 的原生标准库探测继续独立报告支持或跳过，不能由 stdexec 编译结果代替。

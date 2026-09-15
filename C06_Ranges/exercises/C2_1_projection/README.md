@@ -110,3 +110,12 @@
 预测：ranges 算法的 projection 在比较前执行，因此可以用成员指针或 lambda 按字段比较；富返回类型（如 `minmax_result`）用命名成员表达多个结果。
 
 当前程序用 `sort` 的 projection 按分数排序，用 `minmax_element` 找年龄边界，用 `max` 找最高分，并验证 `minmax_result<int>` 的 `.min/.max` 成员。扩展时优先把“比较逻辑”和“取字段逻辑”分开，projection 负责后者。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `C2_1_projection`。
+
+本题是观察题，没有本题内 `src/student/`、`src/reference/` 或 `validation/` 变体。
+- 源码入口：`main.cpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target C2_1_projection。
+修改后先重建 `C2_1_projection`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

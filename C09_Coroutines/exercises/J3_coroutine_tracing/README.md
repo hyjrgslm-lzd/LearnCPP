@@ -38,3 +38,14 @@ ctest --test-dir build/coroutine-j3 -R J3_coroutine_tracing_reference --output-o
 调试器实验：MSVC 用 Parallel Stacks 的 Tasks 视图；GDB 14+ 用 `info coroutines`。日志告诉你发生过什么，调试器告诉你暂停瞬间停在哪里。
 
 **答案解析：** trace 日志是时间线证据，适合复盘已经发生的 await 链和耗时阶段。调试器是现场证据，适合在断点处查看当前 coroutine frame、continuation 和线程栈；两者结合能把逻辑调用链和物理执行线程分开。
+
+## IDE 与单题构建
+
+Visual Studio 中主启动目标是 `J3_coroutine_tracing`；Reference、Checks、Support 目标保留在同题分组中。学生编辑入口和本题 README/CMake 文件会显示在目标文件树里。
+
+```powershell
+cmake -S . -B build/vs -G "Visual Studio 18 2026" -A x64 -DCOROUTINE_STUDY_BUILD_REFERENCE=ON
+cmake --build build/vs --config Debug --target J3_coroutine_tracing
+```
+
+普通题不需要额外依赖；Reference 由 `COROUTINE_STUDY_BUILD_REFERENCE` 控制。 `BUILD_TESTING=OFF` 只关闭测试注册，不删除本题可执行目标；不要手工编辑生成的 `.sln` 或 `.vcxproj`。

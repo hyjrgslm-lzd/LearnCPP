@@ -48,3 +48,13 @@ ctest --test-dir build/cap2 -C Release --output-on-failure
 ```
 
 Release 的 cs::check 与 worker 异常传播均有效。原子 is_lock_free 为实测值，不能替代进展证明。全 SC 不会代替尚未发生的数据发布，简单加 atomic_wait 也不自动提供正确的关闭/通知协议。
+
+## IDE 与工程入口
+
+Visual Studio 方案中，主入口目标是 `Capstone2_lockfree_queue`，位于本题节点顶层；单题独立配置时它是启动目标。`Capstone2_lockfree_queue_reference` 在 `Reference` 分组。
+
+学生/观察入口：`main.cpp` 是观察/实验入口，用来预测、运行和记录现象；本题不声明待填学生实现。
+
+Reference 与检查：`solution.cpp` 是 Reference/检查路径，只读对照。
+
+单题命令：从 `C08_Concurrency/exercises` 可独立配置：`cmake -S Capstone2_lockfree_queue -B build/Capstone2_lockfree_queue-ide -G "Visual Studio 18 2026" -A x64`，再构建 `Capstone2_lockfree_queue` 和 `Capstone2_lockfree_queue_reference`；CTest 过滤 `^Capstone2_lockfree_queue_reference$`。

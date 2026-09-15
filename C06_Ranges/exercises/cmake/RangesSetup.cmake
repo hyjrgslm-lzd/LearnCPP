@@ -1,5 +1,6 @@
 include_guard(GLOBAL)
 include(CTest)
+include("${CMAKE_CURRENT_LIST_DIR}/../../../cmake/ExerciseIde.cmake")
 
 option(RANGES_BUILD_REFERENCE "Build independent solutions and checker controls" ON)
 option(RANGES_TEST_STUDENTS "Register unfinished student implementations" OFF)
@@ -24,6 +25,8 @@ function(ranges_configure_target target)
         "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../../../C01_Build_Compile_Link/exercises/include"
         "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../include"
         "${CMAKE_CURRENT_SOURCE_DIR}/include")
+    target_sources(${target} PRIVATE
+        "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../../../C01_Build_Compile_Link/exercises/include/check.hpp")
     if(MSVC)
         target_compile_options(${target} PRIVATE /utf-8 /EHsc /permissive- /Zc:__cplusplus)
     endif()
@@ -110,6 +113,8 @@ function(ranges_add_exercise)
         ranges_configure_target(${target})
         target_include_directories(${target} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/${impl}"
             "${CMAKE_CURRENT_SOURCE_DIR}/checks")
+        target_sources(${target} PRIVATE
+            "${CMAKE_CURRENT_SOURCE_DIR}/${impl}/${ARG_HEADER}")
         if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/${impl}/${ARG_HEADER}")
             message(FATAL_ERROR "Missing independent implementation: ${impl}/${ARG_HEADER}")
         endif()
@@ -130,4 +135,5 @@ function(ranges_add_exercise)
     endforeach()
     # Old build entry now selects the independent student driver.
     add_custom_target(${ARG_NAME} DEPENDS ${ARG_NAME}_student)
+    source_group("Support" FILES "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/${ARG_NAME}")
 endfunction()

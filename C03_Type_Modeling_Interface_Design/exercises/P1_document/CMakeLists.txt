@@ -16,6 +16,9 @@ if(TYPE_STUDY_BUILD_REFERENCE)
         endif()
         target_include_directories(${target} PRIVATE
             "${CMAKE_CURRENT_SOURCE_DIR}/${implementation}" "${CMAKE_CURRENT_SOURCE_DIR}/checks")
+        target_sources(${target} PRIVATE
+            "${CMAKE_CURRENT_SOURCE_DIR}/${implementation}/document.hpp"
+            "${CMAKE_CURRENT_SOURCE_DIR}/checks/document_types.hpp")
         target_compile_definitions(${target} PRIVATE C03_ALLOCATION_INJECTION=1)
         if(MSVC)
             # Global allocation failure must not hit noexcept Debug STL proxy bookkeeping.
@@ -25,3 +28,5 @@ if(TYPE_STUDY_BUILD_REFERENCE)
         c03_add_test(${target} LABELS allocation)
     endforeach()
 endif()
+
+learncpp_setup_ide(P1_document_student)

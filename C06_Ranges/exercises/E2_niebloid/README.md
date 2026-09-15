@@ -65,3 +65,12 @@
 本题是观察型练习，CMake 使用 `ranges_add_observation(E2_niebloid main.cpp)`。当前 `main.cpp` 是完整可运行对照：`std::ranges::sort` 可赋给 `auto`、可作为 `template<auto Algo>` 参数、可携带 projection；`std::sort` 只能通过显式实例化或 lambda 包装变成具体 callable。
 
 术语上需要区分历史：C++20/23 ranges 算法 niebloid 已以函数对象形式提供 ADL 隔离、约束和 projection；C++26 P3136 进一步讨论更多 algorithm function objects 的一等值能力。不要把算法对象一概称为用户可定制 CPO，也不要把 C++26 能力倒灌回 C++20/23 解释。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `E2_niebloid`。
+
+本题是观察题，没有本题内 `src/student/`、`src/reference/` 或 `validation/` 变体。
+- 源码入口：`main.cpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target E2_niebloid。
+修改后先重建 `E2_niebloid`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

@@ -64,3 +64,6 @@ local relative files: examples/algorithms/then.hpp, include/stdexec/__detail/__t
 ```
 
 本题 Reference 没有调用 `stdexec::then`。它使用固定版本支持的成员函数 dispatch（`receiver.set_value/error/stopped/get_env`、`op.start`、`sender.connect`）和三对象教学骨架，并用小型自写 meta 函数变换 `stdexec::completion_signatures<...>`，补上 `void`、多值、异常和环境相关签名路径。
+## IDE 工程入口
+
+VS solution 中本题主入口是 `G1_my_then_student`。学生只编辑 `src/student/solution.hpp`；`main.cpp` 是共同检查器，Reference 在 `src/reference/solution.hpp`，good/bad 控制在 `validation` 下。`G1_my_then` 聚合目标只负责显式构建学生目标，收在 Support；Reference 与控制目标保留为独立项目，用来区分答案、正确对照和错误拒绝。单题可用 `cmake -S <本目录> -B <build>` 独立生成。

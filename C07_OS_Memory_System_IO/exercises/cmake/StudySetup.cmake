@@ -1,5 +1,6 @@
 include_guard(GLOBAL)
 include(CTest)
+include("${CMAKE_CURRENT_LIST_DIR}/../../../cmake/ExerciseIde.cmake")
 find_package(Python3 3.10 REQUIRED COMPONENTS Interpreter)
 find_package(Threads REQUIRED)
 get_filename_component(C07_EXERCISES "${CMAKE_CURRENT_LIST_DIR}/.." ABSOLUTE)
@@ -10,6 +11,12 @@ option(C07_STUDY_ENABLE_ASAN "Instrument safe paths (Linux also UBSan)" OFF)
 option(C07_STUDY_ENABLE_IO_URING "Use isolated pinned liburing 2.15 on Linux" OFF)
 option(C07_STUDY_TRACE_INCLUDES "Capture actual includes for Student audit" OFF)
 set(C07_LIBURING_ROOT "" CACHE PATH "Isolated prefix created by prepare_uring.sh")
+set(C07_COMMON_HEADERS
+    "${C07_EXERCISES}/include/c07/completion_io.hpp"
+    "${C07_EXERCISES}/include/c07/file_pipeline_io.hpp"
+    "${C07_EXERCISES}/include/c07/file_pipeline_types.hpp"
+    "${C07_EXERCISES}/include/c07/memory.hpp"
+    "${C07_EXERCISES}/include/c07/os.hpp")
 if(C07_STUDY_ENABLE_IO_URING)
     if(NOT CMAKE_SYSTEM_NAME STREQUAL "Linux")
         message(FATAL_ERROR "io_uring is Linux-only")
@@ -41,6 +48,8 @@ function(c07_configure_target target)
     target_include_directories(${target} PRIVATE "${C07_EXERCISES}/include"
         "${C07_REPO}/C01_Build_Compile_Link/exercises/include")
     target_link_libraries(${target} PRIVATE Threads::Threads)
+    target_sources(${target} PRIVATE ${C07_COMMON_HEADERS}
+        "${C07_REPO}/C01_Build_Compile_Link/exercises/include/check.hpp")
     if(MSVC)
         target_compile_options(${target} PRIVATE /utf-8 /EHsc /W4 /permissive- /Zc:__cplusplus)
         if(C07_STUDY_TRACE_INCLUDES)
@@ -152,6 +161,8 @@ function(c07_add_exercise)
         c07_configure_target(${target} ${config_args})
         target_include_directories(${target} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/${impl}"
             "${CMAKE_CURRENT_SOURCE_DIR}/checks")
+        target_sources(${target} PRIVATE
+            "${CMAKE_CURRENT_SOURCE_DIR}/${impl}/${ARG_HEADER}")
         if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/${impl}/${ARG_HEADER}")
             message(FATAL_ERROR "Missing independent implementation: ${impl}/${ARG_HEADER}")
         endif()

@@ -104,3 +104,12 @@
 预测：`vector`、`string_view`、`array` 是 range，`int` 不是；`string_view`、`span`、`iota_view` 是 view，`vector` 不是 view。无界 `iota_view` 的 end 是 `unreachable_sentinel_t`，所以不是 common_range；右值 `vector` 传给返回迭代器的 ranges 算法得到 `ranges::dangling`，因为 borrowed_range 不负责延长所有者生命周期。
 
 当前 `main.cpp` 的完整程序已经把这些预测写成 `static_assert` 和 `check`：它同时验证 span 迭代器仍指向原数组、`find` 对右值 vector 返回 dangling、对 borrowed `string_view` 返回真实迭代器。扩展时可以加入 `owning_view<vector<int>>`，观察 view 可以拥有元素，但 borrowed 语义仍不等于持有临时对象生命周期。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `01_mental_model_warmup`。
+
+本题是观察题，没有本题内 `src/student/`、`src/reference/` 或 `validation/` 变体。
+- 源码入口：`main.cpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target 01_mental_model_warmup。
+修改后先重建 `01_mental_model_warmup`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

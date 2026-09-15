@@ -31,3 +31,5 @@ if(TYPE_STUDY_ENABLE_FRONTIER)
     f01_capability(F01_hardening_info hardening_info.cpp)
     f01_capability(F01_proposal_tracking proposal_tracking.cpp)
 endif()
+
+learncpp_setup_ide("")

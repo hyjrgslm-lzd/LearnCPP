@@ -11,3 +11,6 @@ Part:
 5. bad 版本提供 fallback，看似能调用，实际没有走 tag_invoke。
 
 学生只改 `src/student/solution.hpp`。初态 concept 合法，但运行时抛 `c10::unfinished`。
+## IDE 工程入口
+
+VS solution 中本题主入口是 `E2_tag_invoke_student`。学生只编辑 `src/student/solution.hpp`；`main.cpp` 是共同检查器，Reference 在 `src/reference/solution.hpp`，good/bad 控制在 `validation` 下。`E2_tag_invoke` 聚合目标只负责显式构建学生目标，收在 Support；Reference 与控制目标保留为独立项目，用来区分答案、正确对照和错误拒绝。单题可用 `cmake -S <本目录> -B <build>` 独立生成。

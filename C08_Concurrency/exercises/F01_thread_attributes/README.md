@@ -26,3 +26,13 @@ ctest --test-dir C08_Concurrency/exercises/build/c08-frontier-author/f01 -C Rele
 属性是构造函数参数前缀；第一个非属性参数才是可调用对象。同一属性类型不能重复。`name_hint<char>` 借用字符序列，不把名字存在 `thread` 对象里；临时 string 只保证完整表达式内构造可读，跨语句保存 hint/view 会悬垂。`stack_size_hint` 是平台建议，0 表示忽略；创建失败仍是 `system_error`。`jthread` 的 stop token、异常和自动 join 语义不因属性改变。
 
 一手来源：[N5055](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2026/n5055.html)、[P2019R9](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2026/p2019r9.pdf)。
+
+## IDE 与工程入口
+
+Visual Studio 方案中，主入口目标是 `F01_thread_attributes`，位于本题节点顶层；单题独立配置时它是启动目标。`F01_thread_attributes_reference` 在 `Reference` 分组。
+
+学生/观察入口：`main.cpp` 是观察/实验入口，用来预测、运行和记录现象；本题不声明待填学生实现。
+
+Reference 与检查：`solution.cpp` 是 Reference/检查路径，只读对照。
+
+单题命令：从 `C08_Concurrency/exercises` 可独立配置：`cmake -S F01_thread_attributes -B build/F01_thread_attributes-ide -G "Visual Studio 18 2026" -A x64`，再构建 `F01_thread_attributes` 和 `F01_thread_attributes_reference`；CTest 过滤 `^F01_thread_attributes_reference$`。

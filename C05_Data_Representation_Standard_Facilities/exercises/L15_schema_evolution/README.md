@@ -15,3 +15,17 @@ Part 5：兼容实验。v2 reader 读 v1 后 note 是 absent；独立 v1 reader 
 检查目标：`L15_schema_evolution_reference`、`L15_schema_evolution_validation_good`、`L15_schema_evolution_validation_bad_rejected`；开启 student preset 后学生占位应失败。Reference 在 `src/reference/schema_evolution.hpp`，公共实现为 `../include/c05/manifest.hpp`。`validation/bad` 只犯一个 schema 错误：v1 写出时静默丢 note，检查器用 `v1 writer rejects note` 拒绝。
 
 解析正文见 [15：schema 演进不是多加一个字段](../../chapters/15-schema-evolution.md)。黄金输入来自 `../fixtures/golden.hpp`，由手写 octet 预检，不由 writer 生成 expected。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `L15_schema_evolution_student`。
+
+本题是实现题。学习者只改 Student 入口；Reference、validation 和 checks 只用于对照与验证。
+- Student 入口：`src/student/schema_evolution.hpp`。
+- Checker 入口：`checks/schema_checks.cpp`。
+- Reference 对照：`src/reference/schema_evolution.hpp`。
+- validation/good 对照：`validation/good/schema_evolution.hpp`。
+- validation/bad 反例：`validation/bad/schema_evolution.hpp`。
+- 提供的公共契约：`provided/v1_reader.hpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target L15_schema_evolution_student。
+修改后先重建 `L15_schema_evolution_student`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

@@ -29,3 +29,14 @@ ctest --test-dir build/coroutine-i1 -R I1_asio_echo_reference --output-on-failur
 回读代码时按这个顺序看：`main()` 的 future ownership，`listener()` 的 cancellation slot，`echo_session()` 的 `(read_ec, n)` 和 `(write_ec, written)`，最后看 client 为什么能安全关闭 socket 并取消 accept。
 
 **答案解析：** `main()` 保存 listener/client/session future，因此 shutdown 不依赖 detached 后台路径。`listener()` 把 cancellation slot 绑定到 accept 操作，取消后 error_code 作为普通返回值处理；`echo_session()` 用 `as_tuple` 把 EOF/read/write 错误纳入循环出口。client 关闭自己的 socket 后再取消 acceptor，所有协程都有可观察完成点。
+
+## IDE 与单题构建
+
+Visual Studio 中主启动目标是 `I1_asio_echo`；Reference、Checks、Support 目标保留在同题分组中。学生编辑入口和本题 README/CMake 文件会显示在目标文件树里。
+
+```powershell
+cmake -S . -B build/vs -G "Visual Studio 18 2026" -A x64 -DCOROUTINE_STUDY_BUILD_REFERENCE=ON -DCOROUTINE_STUDY_ENABLE_ASIO=ON -DCOROUTINE_STUDY_FETCH_DEPS=ON -DFETCHCONTENT_FULLY_DISCONNECTED=ON -DFETCHCONTENT_SOURCE_DIR_ASIO=<existing-asio-src>
+cmake --build build/vs --config Debug --target I1_asio_echo
+```
+
+本题单独配置需要 `-DCOROUTINE_STUDY_ENABLE_ASIO=ON`，并提前准备 Asio。Asio 可来自系统 include 路径、ASIO_INCLUDE_DIR，或已有 FetchContent 源码缓存。示例里的 <existing-asio-src> 指已有 asio 源码目录；不要让配置阶段联网下载。 缺依赖时配置阶段直接失败，不生成空工程。 `BUILD_TESTING=OFF` 只关闭测试注册，不删除本题可执行目标；不要手工编辑生成的 `.sln` 或 `.vcxproj`。

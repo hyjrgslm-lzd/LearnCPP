@@ -27,3 +27,6 @@ sender 保存文件共享所有权、offset和借用buffer；connect 为每次�
 ## 验证入口
 
 先按[构建指南](../BUILD_GUIDE.md)配置本目录。Windows使用IOCP；Linux传入固定liburing前缀并启用io_uring。检查器覆盖真实offset/短读/空读、多在途、pre-stop与取消竞态，并让终结receiver直接删除operation以检查早完成。Student初态为UNFINISHED/exit2；Reference与Good为exit0；Bad必须命中特定行为失败，崩溃或timeout不算成功拒绝。完整推导、平台差异及异常边界见[正文11](../../chapters/11-native-io.md)。
+## IDE 工程入口
+
+VS solution 中本题主入口是 `I1_native_io_student`。学生只编辑 `src/student/solution.hpp`；`main.cpp` 是共同检查器，Reference 在 `src/reference/solution.hpp`，good/bad 控制在 `validation` 下。`I1_native_io` 聚合目标只负责显式构建学生目标，收在 Support；Reference 与控制目标保留为独立项目，用来区分答案、正确对照和错误拒绝。单题可用 `cmake -S <本目录> -B <build>` 独立生成。

@@ -44,3 +44,5 @@ if(L09_SHARED_BUILD_VALIDATION_VARIANTS)
     target_include_directories(L09_shared_validation_bad_weak_resurrect PRIVATE checks/support validation/bad_weak_resurrect checks)
     core_configure_target(L09_shared_validation_bad_weak_resurrect)
 endif()
+
+learncpp_setup_ide(L09_shared_student)

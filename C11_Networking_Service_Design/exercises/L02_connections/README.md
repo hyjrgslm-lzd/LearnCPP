@@ -29,3 +29,6 @@ ctest --test-dir build/c11-l02 -C Release --output-on-failure
 ```
 
 Student 初始打印 UNFINISHED 并返回2。Reference、独立good和bad校准属于实现验证；states/loopback运行成功不代替你对 Part C 的预测和解释。
+## IDE 工程入口
+
+VS solution 中本题主入口是 `C11_L02_student`。学生只编辑 `student/solution.hpp`；`checks.cpp` 是共同检查器，Reference/good/bad 和额外 bad 控制保持独立项目，用来区分答案、正确对照和错误拒绝。单题可用 `cmake -S <本目录> -B <build>` 独立生成，`C11_TEST_STUDENTS` 只控制是否把未完成 Student 注册进 CTest。

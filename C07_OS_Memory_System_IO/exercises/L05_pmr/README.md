@@ -21,3 +21,16 @@
 ## 解析
 
 `allocator_traits::construct` 负责在 allocator 给出的 storage 上开始对象生命期；`memory_resource::allocate` 只返回字节 storage。`monotonic_buffer_resource` 的关键代价是单次 deallocate 不回收，直到 `release()` 或析构才整体释放。`unsynchronized_pool_resource` 管理多个尺寸池，但线程安全由名字直接说明：没有外部同步时不能跨线程共享。`run_allocation_probe(size_t)` 是本题的观察与 checker 控制入口，不是正式性能采样入口。B01 直接复用上述真实 resource，先用 `alloc heap ITEMS` 的上游计数和分阶段时间定位基线成本，再评估 arena/pool 等同契约对照；本题不预先声明性能收益。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `L05_pmr_student`。
+
+本题是实现题。学习者只改 Student 入口；Reference、validation 和 checks 只用于对照与验证。
+- Student 入口：`src/student/pmr_lab.hpp`。
+- Checker 入口：`checks/pmr_checks.cpp`。
+- Reference 对照：`src/reference/pmr_lab.hpp`。
+- validation/good 对照：`validation/good/pmr_lab.hpp`。
+- validation/bad 反例：`validation/bad/pmr_lab.hpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target L05_pmr_student。
+修改后先重建 `L05_pmr_student`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

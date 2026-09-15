@@ -106,3 +106,12 @@ iterator_concept 由底层 range 决定的机制，以及空积语义（P2540R1�
 预测：无界 `repeat(7)` 不 sized、不 common，但可随机访问；有界 `repeat(3, 4)` 是 sized，四个元素都读到同一个逻辑值。零参数 `cartesian_product()` 有一个空 tuple；普通乘积的 size 等于各输入 size 的乘积。
 
 当前程序覆盖无界 repeat 的前缀、repeat_n 式有界范围、零参数 product，以及字符/数字乘积求和。扩展检查对象身份时用 `check(&*it == &*std::next(it), ...)`，避免把 `assert` 当唯一验证。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `A3_repeat_cartesian`。
+
+本题是观察题，没有本题内 `src/student/`、`src/reference/` 或 `validation/` 变体。
+- 源码入口：`main.cpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target A3_repeat_cartesian。
+修改后先重建 `A3_repeat_cartesian`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

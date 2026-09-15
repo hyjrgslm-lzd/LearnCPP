@@ -30,3 +30,13 @@ ctest --test-dir build/K1_simd_basics -C Release --output-on-failure
 ```
 
 C++ 默认 23，cs::check 在 Release 中保持有效。可选能力缺失不阻止普通基线；平台及标准事实的官方链接、完整推导见本题对应正文。
+
+## IDE 与工程入口
+
+Visual Studio 方案中，主入口目标是 `K1_simd_basics`，位于本题节点顶层；单题独立配置时它是启动目标。`K1_simd_basics_reference` 在 `Reference` 分组。
+
+学生/观察入口：`main.cpp` 是观察/实验入口，用来预测、运行和记录现象；本题不声明待填学生实现。
+
+Reference 与检查：`solution.cpp` 是 Reference/检查路径，只读对照。
+
+单题命令：从 `C08_Concurrency/exercises` 可独立配置：`cmake -S K1_simd_basics -B build/K1_simd_basics-ide -G "Visual Studio 18 2026" -A x64`，再构建 `K1_simd_basics` 和 `K1_simd_basics_reference`；CTest 过滤 `^K1_simd_basics_reference$`。

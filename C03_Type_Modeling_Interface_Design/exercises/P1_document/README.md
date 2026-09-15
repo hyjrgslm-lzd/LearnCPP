@@ -56,3 +56,10 @@ ctest --test-dir build/local -C Release --output-on-failure
 普通Reference/good/Student目标保留默认MSVC Debug迭代器检查，未替换全局new。`P1_document_allocation_reference`与`P1_document_allocation_good`是独立实验：仅它们替换普通new/delete，并将MSVC迭代器调试设为0。这样故障注入针对可恢复的文档分配路径，不误伤标准库noexcept移动中的Debug代理分配。两者使用同一份对应实现源码，不是删掉失败测试。
 
 这一区分来自 Debug allocator 实验的边界：注入只覆盖该输入实际经过的普通分配，未证明 aligned allocation、线程并发、真实系统 OOM 或所有库内部失败路径。失败时禁用注入后才检查 snapshot，避免检查器自己的分配混入被测窗口。ASan 无报告也不构成一般正确性证明。
+
+
+## IDE 入口
+
+从本课 `exercises` 根目录或本题目录生成 Visual Studio 18 2026 x64 工程。主项目是 `P1_document_student`；默认学生测试关闭时仍生成该项目，但它是 `EXCLUDE_FROM_ALL`，需显式构建。
+学生只编辑：`src/student/document.hpp`。 `checks/`、`validation/`、`src/reference/`、diagnostic、support 目标是只读对照/验证/实验入口，保留在题目分组内。
+修改 Student 后先重新构建对应目标，再运行 CTest 或 README 中列出的检查命令。

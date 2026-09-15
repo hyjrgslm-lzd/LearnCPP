@@ -8,3 +8,5 @@ ranges_add_exercise(
     CHECK main.cpp
     BAD_DIAGNOSTIC "copy must rescan after non-propagating cache reset"
 )
+
+learncpp_setup_ide(H1_non_propagating_cache_student)

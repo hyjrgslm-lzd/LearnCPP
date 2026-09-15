@@ -22,3 +22,6 @@ ctest --test-dir build/c11-asio -C Release -R '^C11_L08_http2$' --output-on-fail
 ## Part C：源码
 
 从 mem_recv2 跟踪 header、stream 与 window，从 submit_response2 跟踪 provider、DATA、END_STREAM。正文和来源索引给出固定源码入口。本驱动是有限少量请求的协议实验；SETTINGS 的字段列表建议值不等于完整不可信连接的内存硬限制，TLS/ALPN 不在此目标。
+## IDE 工程入口
+
+VS solution 中本题主入口是 `C11_L08_http2`。本单元是观察/专项入口，没有学生占位；源码、README、协议文件或脚本显示在同一项目中，依赖目标保留为独立项目。程序通过只证明本驱动运行，不代替 README 要求的预测、解释或专项依赖准备。单题可用 `cmake -S <本目录> -B <build>` 独立生成。

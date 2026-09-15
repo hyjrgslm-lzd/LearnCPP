@@ -27,3 +27,10 @@
 实现 `lazy_type_t<ChooseThen, ThenProvider, ElseProvider>`。provider 是带 `using type = ...` 的类型。`ChooseThen == true` 时只取 `ThenProvider::type`，不实例化 `ElseProvider::type`。
 
 解析：checker 会用没有 `type` 的 `ExplosiveProvider` 做未选分支。diagnostic case 会单独编译 eager 反例，证明同时访问两边会在预期边界失败。
+
+
+## IDE 入口
+
+从本课 `exercises` 根目录或本题目录生成 Visual Studio 18 2026 x64 工程。主项目是 `L08_type_lists_student`；默认学生测试关闭时仍生成该项目，但它是 `EXCLUDE_FROM_ALL`，需显式构建。
+学生只编辑：`src/student/type_list_tools.hpp`。 `checks/`、`validation/`、`src/reference/`、diagnostic、support 目标是只读对照/验证/实验入口，保留在题目分组内。
+修改 Student 后先重新构建对应目标，再运行 CTest 或 README 中列出的检查命令。

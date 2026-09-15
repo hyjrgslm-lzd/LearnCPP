@@ -4,3 +4,4 @@ include(../cmake/StudySetup.cmake)
 
 c03_add_observation(L10_static_polymorphism_observation observation/static_polymorphism_observation.cpp)
 
+learncpp_setup_ide(L10_static_polymorphism_observation)

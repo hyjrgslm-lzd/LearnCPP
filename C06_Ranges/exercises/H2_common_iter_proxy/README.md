@@ -54,3 +54,16 @@
 - P0896R4：`common_iterator`
 - P2321R2：`zip_view` 的 `iter_move` / `iter_swap`
 - cppreference：`std::common_iterator`、`std::ranges::iter_move`、`std::ranges::iter_swap`
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `H2_common_iter_proxy_student`。
+
+本题是实现题。学习者只改 Student 入口；Reference、validation 和 checks 只用于对照与验证。
+- Student 入口：`src/student/common_proxy.hpp`。
+- Checker 入口：`main.cpp`。
+- Reference 对照：`src/reference/common_proxy.hpp`。
+- validation/good 对照：`validation/good/common_proxy.hpp`。
+- validation/bad 反例：`validation/bad/common_proxy.hpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target H2_common_iter_proxy_student。
+修改后先重建 `H2_common_iter_proxy_student`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

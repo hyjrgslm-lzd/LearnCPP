@@ -40,3 +40,5 @@ c04_add_compile_case(
     PATTERN "(literal key|constant expression|不是常量表达式|不是常数|not a constant expression)"
     SETUP validation/diagnostics/setup.cmake
 )
+
+learncpp_setup_ide(A01_compiletime_values_student)

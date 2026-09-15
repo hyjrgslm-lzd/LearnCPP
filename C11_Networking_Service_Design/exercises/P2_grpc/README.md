@@ -22,3 +22,6 @@ ctest --test-dir build/c11-grpc -C Release -R '^C11_P2_grpc$' --output-on-failur
 把领域 invalid/conflict/not_found/overloaded 映射到 INVALID_ARGUMENT/ALREADY_EXISTS/NOT_FOUND/RESOURCE_EXHAUSTED，与 P1 HTTP 码对照。解析：业务错误保留含义，传输 EOF 不应伪装成任务 failed；服务 stopping 用 UNAVAILABLE，deadline 与 CANCELLED 也不能当幂等重试许可。
 
 Reference 为本目录三份源与共享 runtime。BoringSSL 随固定 gRPC 构建，与 P1/L07 OpenSSL 和 MsQuic TLS 保持不同可执行程序，避免把同名加密符号混链。应用4KiB消息上限、128调用、32订阅与 transport quota 各有边界，不能声称 quota 等于进程 RSS 硬上限。
+## IDE 工程入口
+
+VS solution 中本题主入口是 `C11_P2_grpc`。本单元是观察/专项入口，没有学生占位；源码、README、协议文件或脚本显示在同一项目中，依赖目标保留为独立项目。程序通过只证明本驱动运行，不代替 README 要求的预测、解释或专项依赖准备。单题可用 `cmake -S <本目录> -B <build>` 独立生成。

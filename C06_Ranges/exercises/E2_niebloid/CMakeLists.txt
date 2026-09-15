@@ -3,3 +3,6 @@ project(E2_niebloid LANGUAGES CXX)
 include(../cmake/RangesSetup.cmake)
 
 ranges_add_observation(E2_niebloid main.cpp)
+
+
+learncpp_setup_ide(E2_niebloid)

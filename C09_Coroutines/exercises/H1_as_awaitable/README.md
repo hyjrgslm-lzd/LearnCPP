@@ -23,3 +23,16 @@ ctest --test-dir C09_Coroutines/exercises/build-h -R H1_as_awaitable_reference -
 观察到 `value=52 error=-1 stopped=-2` 后，回到代码看三处：`bridge_receiver::set_value` 如何写入 result，`await_suspend` 如何保存 operation state，`await_resume` 如何把三条 completion channel 映射回协程世界。
 
 **答案解析：** `value=52` 来自两次 `just` 同步 `set_value`，bridge receiver 依次写入 42 和 10，两个 `await_resume()` 把它们还原成普通整数再相加。`error=-1` 来自 `just_error` 写入 `exception_ptr`，`await_resume()` 在 `co_await` 位置重新抛出并被 demo 捕获；`stopped=-2` 来自 `just_stopped` 写入 stopped tag，再由教学 `stopped_error` 映射到 catch 分支。operation state 必须保存在 awaitable 成员里，因为异步 completion 到来前它仍代表已连接的 sender/receiver 状态。
+
+## IDE 与单题构建
+
+Visual Studio 中主启动目标是 `H1_as_awaitable`；Reference、Checks、Support 目标保留在同题分组中。学生编辑入口和本题 README/CMake 文件会显示在目标文件树里。
+
+```powershell
+cmake -S . -B build/vs -G "Visual Studio 18 2026" -A x64 -DCOROUTINE_STUDY_BUILD_REFERENCE=ON -DCOROUTINE_STUDY_ENABLE_STDEXEC=ON "-DCMAKE_PREFIX_PATH=<existing-stdexec-install>"
+cmake --build build/vs --config Debug --target H1_as_awaitable
+```
+
+上述命令要求将 `<existing-stdexec-install>` 替换为已安装 stdexec 的前缀。只有源码缓存时，使用[构建指南的 stdexec 单题离线步骤](../BUILD_GUIDE.md#stdexec-单题的离线缓存入口)，并将 `$unit` 设为 `H1_as_awaitable`。
+
+本题单独配置需要 `-DCOROUTINE_STUDY_ENABLE_STDEXEC=ON`，并提前准备 stdexec。stdexec 必须来自已安装包、CMAKE_PREFIX_PATH，或完整本地 FetchContent 源码缓存。若走本地源码缓存，还需要该缓存自带 RAPIDS/CPM bootstrap 文件；不要让配置阶段联网下载。 缺依赖时配置阶段直接失败，不生成空工程。 `BUILD_TESTING=OFF` 只关闭测试注册，不删除本题可执行目标；不要手工编辑生成的 `.sln` 或 `.vcxproj`。

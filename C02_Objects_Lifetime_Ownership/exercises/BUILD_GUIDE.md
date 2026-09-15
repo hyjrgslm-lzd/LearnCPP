@@ -99,3 +99,15 @@ Windows 记录器只为自身及继承的验证子进程设置错误模式，把
 对象构造/移动/分配计数说明当前类型、当前输入的操作路径。计数本身不能推出耗时加速；带日志的类型也不能直接代表平凡类型的优化结果。NRVO、具体布局、未指定求值顺序只检查允许结果，不硬编码某一次观察。
 
 只有进入性能收益或方案取舍实验时，才按通用指引先建立可归因基线，再一轮预热、五次独立进程采样，保存全部输入、样本、版本和无收益结果。不得用不完整采样、失败样本或不可比契约计算加速比。
+
+## IDE 工程入口
+
+本课 Visual Studio 入口统一从 `C02_Objects_Lifetime_Ownership/exercises` 或单题目录生成：
+
+```powershell
+cmake -S C02_Objects_Lifetime_Ownership/exercises -B C02_Objects_Lifetime_Ownership/exercises/build/ide-refactor -G "Visual Studio 18 2026" -A x64 -DBUILD_TESTING=ON
+cmake --build C02_Objects_Lifetime_Ownership/exercises/build/ide-refactor --config Debug --target <目标名>
+ctest --test-dir C02_Objects_Lifetime_Ownership/exercises/build/ide-refactor -C Debug -R <测试名> --output-on-failure
+```
+
+默认 Reference/validation/observation 目标用于教学对照；Student 目标在学生测试关闭时仍出现在工程中，但不会进入默认全量构建。每题 README 的“IDE 入口”列出启动目标、编辑目录和保留辅助目标原因。

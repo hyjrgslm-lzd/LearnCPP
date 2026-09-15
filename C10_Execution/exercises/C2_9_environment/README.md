@@ -27,3 +27,6 @@ checker 用 `write_env` 注入三类上下文：
 ## 答案解释
 
 Reference 不在 `start` 里手动拷贝 fake env 字段，而是返回标准 sender 组合：`when_all(read_env(...), read_env(get_scheduler) | let_value(schedule(...))) | then(...)`。bad 版本能编译，但 follow-up 留在 caller thread，检查器按行为拒绝。
+## IDE 工程入口
+
+VS solution 中本题主入口是 `C2_9_environment_student`。学生只编辑 `src/student/solution.hpp`；`main.cpp` 是共同检查器，Reference 在 `src/reference/solution.hpp`，good/bad 控制在 `validation` 下。`C2_9_environment` 聚合目标只负责显式构建学生目标，收在 Support；Reference 与控制目标保留为独立项目，用来区分答案、正确对照和错误拒绝。单题可用 `cmake -S <本目录> -B <build>` 独立生成。

@@ -46,3 +46,9 @@ ctest --test-dir build/c03-l11 -C Debug --output-on-failure
 
 解析：`AnyShape` 不是继承层次，也不是模板容器。它用一张操作表把具体类型的 clone/destroy/name/dimensions 藏起来，对外提供一个可复制、可移动、可为空的值类型。固定 heap-only 是本题边界；不要加小对象优化或 allocator 框架。
 
+
+## IDE 入口
+
+从本课 `exercises` 根目录或本题目录生成 Visual Studio 18 2026 x64 工程。主项目是 `L11_type_erasure_student`；默认学生测试关闭时仍生成该项目，但它是 `EXCLUDE_FROM_ALL`，需显式构建。
+学生只编辑：`src/student/any_shape.hpp`。 `checks/`、`validation/`、`src/reference/`、diagnostic、support 目标是只读对照/验证/实验入口，保留在题目分组内。
+修改 Student 后先重新构建对应目标，再运行 CTest 或 README 中列出的检查命令。

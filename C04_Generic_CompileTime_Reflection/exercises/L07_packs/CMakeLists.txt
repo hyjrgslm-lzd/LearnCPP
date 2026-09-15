@@ -10,3 +10,5 @@ c04_add_exercise(
 )
 
 c04_add_observation(L07_packs_observation observations/packs_observation.cpp)
+
+learncpp_setup_ide(L07_packs_student)

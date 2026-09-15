@@ -8,3 +8,6 @@ ranges_add_exercise(
     CHECK main.cpp
     BAD_DIAGNOSTIC "member path wins over ADL begin"
 )
+
+
+learncpp_setup_ide(E1_my_begin_cpo_student)

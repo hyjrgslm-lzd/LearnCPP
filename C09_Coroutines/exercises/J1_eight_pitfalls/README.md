@@ -42,3 +42,14 @@ ctest --test-dir build/coroutine-j1 -R J1_eight_pitfalls_reference --output-on-f
 **答案解析：** `traps` 表回答“这类 bug 是什么、症状是什么、怎么修”。三个 good 示例分别把最常见的引用、临时对象和同步锁问题改成可维护生命周期；分配/释放计数则证明安全路径没有把协程帧遗留到 owner 之外。
 
 观察 UB 时一次只打开一个陷阱，配 ASan/TSan 或 MSVC 运行时检查记录症状。陷阱 3/5 常常不会被 ASan 抓到，需要线程调度或静态分析证据。
+
+## IDE 与单题构建
+
+Visual Studio 中主启动目标是 `J1_eight_pitfalls`；Reference、Checks、Support 目标保留在同题分组中。学生编辑入口和本题 README/CMake 文件会显示在目标文件树里。
+
+```powershell
+cmake -S . -B build/vs -G "Visual Studio 18 2026" -A x64 -DCOROUTINE_STUDY_BUILD_REFERENCE=ON
+cmake --build build/vs --config Debug --target J1_eight_pitfalls
+```
+
+普通题不需要额外依赖；Reference 由 `COROUTINE_STUDY_BUILD_REFERENCE` 控制。 `BUILD_TESTING=OFF` 只关闭测试注册，不删除本题可执行目标；不要手工编辑生成的 `.sln` 或 `.vcxproj`。

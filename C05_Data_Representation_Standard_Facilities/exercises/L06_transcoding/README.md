@@ -13,3 +13,16 @@ Part 4：实现对称预算。UTF-8 输入最多 `c05::max_package_bytes`；UTF-
 检查目标：`L06_transcoding_reference`、`L06_transcoding_validation_good`、`L06_transcoding_validation_bad_rejected`；开启 student preset 后还会运行学生占位。
 
 Reference 可复用公共 `c05/utf.hpp`。`validation/good` 独立实现同一规则；`validation/bad` 漏掉 UTF-8 验证，检查器会拒绝。解析重点：NUL 和 BOM 是可保留的码点；非法编码不能替换成 U+FFFD 后继续成功。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `L06_transcoding_student`。
+
+本题是实现题。学习者只改 Student 入口；Reference、validation 和 checks 只用于对照与验证。
+- Student 入口：`src/student/utf_transcode.hpp`。
+- Checker 入口：`checks/transcode_checks.cpp`。
+- Reference 对照：`src/reference/utf_transcode.hpp`。
+- validation/good 对照：`validation/good/utf_transcode.hpp`。
+- validation/bad 反例：`validation/bad/utf_transcode.hpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target L06_transcoding_student。
+修改后先重建 `L06_transcoding_student`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

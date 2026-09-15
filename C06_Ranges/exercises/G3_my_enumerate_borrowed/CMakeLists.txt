@@ -8,3 +8,6 @@ ranges_add_exercise(
     CHECK main.cpp
     BAD_DIAGNOSTIC "borrowed range is forwarded"
 )
+
+
+learncpp_setup_ide(G3_my_enumerate_borrowed_student)

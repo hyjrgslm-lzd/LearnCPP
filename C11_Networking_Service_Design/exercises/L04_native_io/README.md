@@ -27,3 +27,6 @@ ctest --test-dir build/c11-l04 -C Release --output-on-failure
 [uring.cpp](uring.cpp)是独立单次 socket recv/cancel，显式 C11_ENABLE_URING=ON 才查找 liburing 头和库。先提交 recv，再提交带另一 user_data 的 cancel，收齐两条 CQE。只对 ENOSYS/EPERM 返回能力 SKIP，其他错误保留失败。推荐按来源索引的 liburing2.15 在 Linux 原生文件系统准备；本次 Windows 不构建或执行此分支，不需要 WSL。
 
 解析：取消 SQE 的 CQE 和目标 recv 的 CQE 是不同操作；缓冲在目标完成前不得复用。单次示例不覆盖 multishot、注册缓冲或 zero-copy 通知生命周期。
+## IDE 工程入口
+
+VS solution 中本题主入口是 `C11_L04_reactor`。本单元是观察/专项入口，没有学生占位；源码、README、协议文件或脚本显示在同一项目中，依赖目标保留为独立项目。程序通过只证明本驱动运行，不代替 README 要求的预测、解释或专项依赖准备。单题可用 `cmake -S <本目录> -B <build>` 独立生成。

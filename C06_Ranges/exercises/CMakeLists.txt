@@ -76,3 +76,6 @@ add_subdirectory(L07_chained_hash)
 add_subdirectory(L08_avl_tree)
 add_subdirectory(F01_frontier)
 add_subdirectory(B01_cost)
+
+
+learncpp_setup_ide("")

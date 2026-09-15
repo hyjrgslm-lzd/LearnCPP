@@ -64,3 +64,14 @@ if (st.stop_requested()) co_return processed;
 | Part 3 | throwing 版本 | 预先 request_stop 后，`sync_wait` 必须抛 `task_cancelled` |
 
 完成前：忽略 token 的实现会处理完 10 批或不抛异常，从而失败。当前 Student PASS 证明 Part 1/2/3 的两种取消通道被消费；CPU 长循环不检查 token 属观察/解析点，没有用自动 checker 伪装成实现完成。
+
+## IDE 与单题构建
+
+Visual Studio 中主启动目标是 `C1_stop_token_cancel`；Reference、Checks、Support 目标保留在同题分组中。学生编辑入口和本题 README/CMake 文件会显示在目标文件树里。
+
+```powershell
+cmake -S . -B build/vs -G "Visual Studio 18 2026" -A x64 -DCOROUTINE_STUDY_BUILD_REFERENCE=ON
+cmake --build build/vs --config Debug --target C1_stop_token_cancel
+```
+
+普通题不需要额外依赖；Reference 由 `COROUTINE_STUDY_BUILD_REFERENCE` 控制。 `BUILD_TESTING=OFF` 只关闭测试注册，不删除本题可执行目标；不要手工编辑生成的 `.sln` 或 `.vcxproj`。

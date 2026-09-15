@@ -17,3 +17,5 @@ c04_add_compile_case(
     CONTROL validation/diagnostics/lazy_type_control.cpp
     PATTERN "missing_type|C2039"
 )
+
+learncpp_setup_ide(L08_type_lists_student)

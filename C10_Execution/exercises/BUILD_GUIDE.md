@@ -25,6 +25,8 @@ cmake --build build/c10 --config Debug --target G1_my_then
 
 可执行文件的精确位置见build根unit-manifest.json中的target名称及CMake File API实际artifact，VS通常放在对应单元的Debug/Release目录。完成前返回2是正常的作业初态，不是Reference通过。
 
+生成的 VS solution 按练习目录分组。每题的默认启动项目是 `<题号>_student` 或该观察单元的实际可执行目标；Reference、validation_good、validation_bad 和旧聚合目标收在同题的 Reference/Checks/Support 下。项目文件清单显示 `README.md`、`CMakeLists.txt`、实际 `main.cpp` 和被编译的 `solution.hpp`；设置 `C10_STUDY_STUDENT_ROOT` 时，VS 显示该外部目录中的真实学生文件，不复制到仓库。
+
 单题也可以作为独立工程：
 
 ```powershell

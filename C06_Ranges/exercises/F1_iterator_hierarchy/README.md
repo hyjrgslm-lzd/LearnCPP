@@ -73,3 +73,16 @@
 本题已迁移到统一四路径验证：`checks/main.cpp` 只依赖 `#include <iterator_hierarchy.hpp>` 暴露的 `c06_f1::forward_range`、`bidirectional_range`、`random_access_range`、`contiguous_range` 和 `move_only_input_iterator`。Reference 与 good 各自独立实现；bad 是可编译、可安全运行的错误实现，故意让 random access distance 多 1；Student 可编译但 begin 偏移，不能被 checker 标记通过。
 
 checker 不只看 typedef 名字，而是实际消费接口：遍历 forward、反向走 bidirectional、使用 random-access `[]` / `+` / `-`、用 `std::to_address` 验证 contiguous，并验证 move-only iterator 满足 input 而非 forward。声明了某个 iterator concept，就必须提供该 concept 对应的真实操作。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `F1_iterator_hierarchy_student`。
+
+本题是实现题。学习者只改 Student 入口；Reference、validation 和 checks 只用于对照与验证。
+- Student 入口：`src/student/iterator_hierarchy.hpp`。
+- Checker 入口：`main.cpp`。
+- Reference 对照：`src/reference/iterator_hierarchy.hpp`。
+- validation/good 对照：`validation/good/iterator_hierarchy.hpp`。
+- validation/bad 反例：`validation/bad/iterator_hierarchy.hpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target F1_iterator_hierarchy_student。
+修改后先重建 `F1_iterator_hierarchy_student`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

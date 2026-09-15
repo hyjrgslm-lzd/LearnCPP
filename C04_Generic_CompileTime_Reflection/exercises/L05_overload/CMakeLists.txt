@@ -24,3 +24,5 @@ c04_add_compile_case(
     CONTROL validation/diagnostics/sfinae_immediate_context_control.cpp
     PATTERN "error C2039"
 )
+
+learncpp_setup_ide(L05_overload_student)

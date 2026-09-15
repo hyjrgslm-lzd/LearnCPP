@@ -12,7 +12,11 @@ c04_add_exercise(
 c04_add_observation(A02_known_projection_baseline observations/known_projection_baseline.cpp)
 c04_add_observation(A02_projection_counterexamples observations/projection_counterexamples.cpp)
 target_include_directories(A02_known_projection_baseline PRIVATE checks)
+target_sources(A02_known_projection_baseline PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/checks/projection_schema.hpp")
 target_include_directories(A02_projection_counterexamples PRIVATE checks)
+target_sources(A02_projection_counterexamples PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/checks/projection_schema.hpp")
 
 c04_add_compile_case(
     NAME A02_diag_unknown
@@ -63,3 +67,5 @@ c04_add_compile_case(
     PATTERN "projection field name must be an ASCII identifier"
     SETUP validation/diagnostics/setup.cmake
 )
+
+learncpp_setup_ide(A02_field_projection_student)

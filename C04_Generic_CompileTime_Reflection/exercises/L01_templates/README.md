@@ -17,3 +17,10 @@ Part 5：`add_same_unit` 只接受同单位，返回同单位 quantity，值为�
 `validation/bad` 会把不同单位也当成可加，必须被 checker 拒绝。`observations/instantiation.cpp` 展示按需实例化：模板里有只对指针合法的成员，不调用它时 `lazy_probe<int>` 仍可使用。
 
 `L01_templates_extern_template` 是多翻译单元 observation：`twice.hpp` 只声明函数模板和 `extern template int twice<int>(int)`，`twice_instantiation.cpp` 提供模板定义和显式实例化，两个 use TU 只调用 `twice<int>`。`L01_templates_missing_extern_provider` 是隔离链接负例，证明漏掉显式实例化提供者时不是语法错误，而是链接边界缺失。ODR 不一致的跨 TU 坏例不作为必然诊断检查，因为这类程序可能属于 ill-formed, no diagnostic required。
+
+
+## IDE 入口
+
+从本课 `exercises` 根目录或本题目录生成 Visual Studio 18 2026 x64 工程。主项目是 `L01_templates_student`；默认学生测试关闭时仍生成该项目，但它是 `EXCLUDE_FROM_ALL`，需显式构建。
+学生只编辑：`src/student/quantity_templates.hpp`。 `checks/`、`validation/`、`src/reference/`、diagnostic、support 目标是只读对照/验证/实验入口，保留在题目分组内。
+修改 Student 后先重新构建对应目标，再运行 CTest 或 README 中列出的检查命令。

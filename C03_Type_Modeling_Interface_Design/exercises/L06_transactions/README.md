@@ -30,3 +30,10 @@ ctest --test-dir build/c03-l06 -C Debug --output-on-failure
 ```
 
 解析：basic guarantee 允许部分效果，但失败后对象必须仍可析构、可读取、可继续更新。strong prefix 与 basic prefix 的成功语义相同，只加强失败语义；prepare 可以复制整表再改副本，也可以构建最终序列。checker 覆盖 k = 1..5：若该点实际抛出，旧表必须不变；若该点超过实现实际复制次数，操作必须完整成功。strong all 把所有可能失败的复制放在临时对象里；只有 `swap` 是提交点。实验中的第 k 次复制失败来自 checker fixture，只证明受控元素复制失败路径，不证明真实系统内存耗尽。
+
+
+## IDE 入口
+
+从本课 `exercises` 根目录或本题目录生成 Visual Studio 18 2026 x64 工程。主项目是 `L06_transactions_student`；默认学生测试关闭时仍生成该项目，但它是 `EXCLUDE_FROM_ALL`，需显式构建。
+学生只编辑：`src/student/table.hpp`。 `checks/`、`validation/`、`src/reference/`、diagnostic、support 目标是只读对照/验证/实验入口，保留在题目分组内。
+修改 Student 后先重新构建对应目标，再运行 CTest 或 README 中列出的检查命令。

@@ -60,3 +60,10 @@ checker 覆盖：空/边界/growth、自身 const view 元素追加、无增长 
 - `validation/good` 应通过同一 checker。
 - `validation/bad_noop` 应被拒绝，证明 checker 不只看程序退出。
 - `validation/bad_early_commit` 应在新尾失败时被拒绝，证明 checker 能抓早提交 capacity。
+
+
+## IDE 入口
+
+从本课 `exercises` 根目录或本题目录生成 Visual Studio 18 2026 x64 工程。主项目是 `P1_object_buffer_student`；默认学生测试关闭时仍生成该项目，但它是 `EXCLUDE_FROM_ALL`，需显式构建。
+学生只编辑：`src/student/object_buffer.hpp`。 `checks/`、`validation/`、`src/reference/`、diagnostic、support 目标是只读对照/验证/实验入口，保留在题目分组内。
+修改 Student 后先重新构建对应目标，再运行 CTest 或 README 中列出的检查命令。

@@ -176,3 +176,5 @@ f01_add_capability(F01_attributes_reflection_proposal probes/attributes_reflecti
 if(GENERIC_STUDY_FRONTIER_ENABLE_FAILURE_CONTROL)
     f01_add_capability(F01_declared_failure_control probes/declared_failure_control_probe.cpp)
 endif()
+
+learncpp_setup_ide("")

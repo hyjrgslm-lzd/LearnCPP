@@ -29,3 +29,6 @@ ctest --test-dir build/c11-l01 -C Debug --output-on-failure
 ```
 
 初始 Student 输出 UNFINISHED 并返回2；这是明确的未完成状态。完成后相同检查自然通过。关闭 `C11_BUILD_REFERENCE` 后仍可单独构建 `C11_L01_student`，不会链接答案。`bad_high_digits` 只解析低四位，必须被高位非零的大长度输入拒绝，不能将 `10000000` 当成空帧。
+## IDE 工程入口
+
+VS solution 中本题主入口是 `C11_L01_student`。学生只编辑 `student/solution.hpp`；`checks.cpp` 是共同检查器，Reference/good/bad 和额外 bad 控制保持独立项目，用来区分答案、正确对照和错误拒绝。单题可用 `cmake -S <本目录> -B <build>` 独立生成，`C11_TEST_STUDENTS` 只控制是否把未完成 Student 注册进 CTest。

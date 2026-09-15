@@ -63,3 +63,14 @@ cmake -S . -B build/dg-lane -DCOROUTINE_STUDY_BUILD_REFERENCE=ON
 cmake --build build/dg-lane --config Release --target D2_eager_vs_lazy D2_eager_vs_lazy_reference
 ctest --test-dir build/dg-lane -C Release -R D2_eager_vs_lazy_reference
 ```
+
+## IDE 与单题构建
+
+Visual Studio 中主启动目标是 `D2_eager_vs_lazy`；Reference、Checks、Support 目标保留在同题分组中。学生编辑入口和本题 README/CMake 文件会显示在目标文件树里。
+
+```powershell
+cmake -S . -B build/vs -G "Visual Studio 18 2026" -A x64 -DCOROUTINE_STUDY_BUILD_REFERENCE=ON
+cmake --build build/vs --config Debug --target D2_eager_vs_lazy
+```
+
+普通题不需要额外依赖；Reference 由 `COROUTINE_STUDY_BUILD_REFERENCE` 控制。 `BUILD_TESTING=OFF` 只关闭测试注册，不删除本题可执行目标；不要手工编辑生成的 `.sln` 或 `.vcxproj`。

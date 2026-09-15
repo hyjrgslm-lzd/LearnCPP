@@ -113,3 +113,15 @@ python tools/audit_good.py --build build/meta-libs --config Release --trace <本
 复用进程记录器保存命令、exit、stdout/stderr、耗时、timeout及清理状态；它的PASS只针对声明的进程结果。成本测量应另存输入/环境/编译模式、所有独立样本、trace、对象节与符号数据，不能从总耗时直接推出根因。
 
 `build/`是本机构建树，不随课程提交。本地记录、测量样本和二进制都保存在未跟踪目录；需要发布结论时，只把稳定的方法、边界和可复现命令写回课程文档。
+
+## IDE 工程入口
+
+本课 Visual Studio 入口统一从 `C04_Generic_CompileTime_Reflection/exercises` 或单题目录生成：
+
+```powershell
+cmake -S C04_Generic_CompileTime_Reflection/exercises -B C04_Generic_CompileTime_Reflection/exercises/build/ide-refactor -G "Visual Studio 18 2026" -A x64 -DBUILD_TESTING=ON
+cmake --build C04_Generic_CompileTime_Reflection/exercises/build/ide-refactor --config Debug --target <目标名>
+ctest --test-dir C04_Generic_CompileTime_Reflection/exercises/build/ide-refactor -C Debug -R <测试名> --output-on-failure
+```
+
+默认 Reference/validation/observation 目标用于教学对照；Student 目标在学生测试关闭时仍出现在工程中，但不会进入默认全量构建。每题 README 的“IDE 入口”列出启动目标、编辑目录和保留辅助目标原因。

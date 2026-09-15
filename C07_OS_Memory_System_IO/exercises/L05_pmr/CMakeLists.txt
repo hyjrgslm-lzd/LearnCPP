@@ -4,3 +4,6 @@ include(../cmake/StudySetup.cmake)
 c07_add_exercise(NAME L05_pmr HEADER pmr_lab.hpp
     CHECK checks/pmr_checks.cpp
     BAD_DIAGNOSTIC "fixed pool reuses freed blocks")
+
+
+learncpp_setup_ide(L05_pmr_student)

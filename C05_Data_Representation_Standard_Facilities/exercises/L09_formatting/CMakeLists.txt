@@ -10,3 +10,6 @@ c05_add_test(L09_formatting_bad_truncation_rejected COMMAND ${CMAKE_COMMAND}
     "-DEXECUTABLE=$<TARGET_FILE:L09_formatting_bad_truncation>"
     "-DEXPECTED_TEXT=format_to_n reports truncation"
     -P "${CMAKE_CURRENT_LIST_DIR}/../cmake/expect_failure.cmake" LABELS negative)
+
+
+learncpp_setup_ide(L09_formatting_observation)

@@ -4,3 +4,6 @@ include(../cmake/StudySetup.cmake)
 c07_add_exercise(NAME L03_virtual_memory HEADER virtual_memory_lab.hpp
     CHECK checks/virtual_memory_checks.cpp
     BAD_DIAGNOSTIC "committed page keeps written bytes")
+
+
+learncpp_setup_ide(L03_virtual_memory_student)

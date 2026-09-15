@@ -36,3 +36,16 @@ ctest --test-dir C09_Coroutines/exercises/build-h-release -C Release -R H2_std_e
 `H2_std_task_probe` 注册为 `probe` 标签，缺 C++26 preview flag 或缺标准库 task 主体时返回 77，由 CTest 记为 SKIP。语言 preview 不可用说明编译器前端入口不足；preview 可用但 task 主体失败说明标准库 `<execution>` 尚未提供该设施，两者分开登记。
 
 **答案解析：** `H2_std_task_probe` 是标准库能力探针，负责实际编译 task 协程体并在能力存在时运行；reference target 使用 pinned stdexec task 观察同类 sender/task 语义。两者回答的问题不同：probe 回答当前标准库是否提供标准类型，reference 回答本课程固定依赖下的 task、environment、`starts_on`、`when_all` 行为。
+
+## IDE 与单题构建
+
+Visual Studio 中主启动目标是 `H2_std_execution_task`；Reference、Checks、Support 目标保留在同题分组中。学生编辑入口和本题 README/CMake 文件会显示在目标文件树里。
+
+```powershell
+cmake -S . -B build/vs -G "Visual Studio 18 2026" -A x64 -DCOROUTINE_STUDY_BUILD_REFERENCE=ON -DCOROUTINE_STUDY_ENABLE_STDEXEC=ON "-DCMAKE_PREFIX_PATH=<existing-stdexec-install>"
+cmake --build build/vs --config Debug --target H2_std_execution_task
+```
+
+上述命令要求将 `<existing-stdexec-install>` 替换为已安装 stdexec 的前缀。只有源码缓存时，使用[构建指南的 stdexec 单题离线步骤](../BUILD_GUIDE.md#stdexec-单题的离线缓存入口)，并将 `$unit` 设为 `H2_std_execution_task`。
+
+本题单独配置需要 `-DCOROUTINE_STUDY_ENABLE_STDEXEC=ON`，并提前准备 stdexec。stdexec 必须来自已安装包、CMAKE_PREFIX_PATH，或完整本地 FetchContent 源码缓存。若走本地源码缓存，还需要该缓存自带 RAPIDS/CPM bootstrap 文件；不要让配置阶段联网下载。 缺依赖时配置阶段直接失败，不生成空工程。 `BUILD_TESTING=OFF` 只关闭测试注册，不删除本题可执行目标；不要手工编辑生成的 `.sln` 或 `.vcxproj`。

@@ -21,3 +21,16 @@ cmake -S C06_Ranges\exercises\L05_dynamic_array -B C06_Ranges\exercises\L05_dyna
 cmake --build C06_Ranges\exercises\L05_dynamic_array\build-author --config Release --parallel 2
 ctest --test-dir C06_Ranges\exercises\L05_dynamic_array\build-author -C Release --output-on-failure
 ```
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `L05_dynamic_array_student`。
+
+本题是实现题。学习者只改 Student 入口；Reference、validation 和 checks 只用于对照与验证。
+- Student 入口：`src/student/dynamic_array.hpp`。
+- Checker 入口：`main.cpp`。
+- Reference 对照：`src/reference/dynamic_array.hpp`。
+- validation/good 对照：`validation/good/dynamic_array.hpp`。
+- validation/bad 反例：`validation/bad/dynamic_array.hpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target L05_dynamic_array_student。
+修改后先重建 `L05_dynamic_array_student`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

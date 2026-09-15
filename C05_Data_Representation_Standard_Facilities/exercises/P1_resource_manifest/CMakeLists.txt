@@ -6,5 +6,12 @@ c05_add_exercise(NAME P1_resource_manifest HEADER pipeline.hpp CHECK checks/pipe
 foreach(variant student reference validation_good validation_bad)
     if(TARGET P1_resource_manifest_${variant})
         target_include_directories(P1_resource_manifest_${variant} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/provided")
+        target_sources(P1_resource_manifest_${variant} PRIVATE
+            "${CMAKE_CURRENT_SOURCE_DIR}/../fixtures/golden.hpp"
+            "${CMAKE_CURRENT_SOURCE_DIR}/provided/contract.hpp"
+            "${CMAKE_CURRENT_SOURCE_DIR}/provided/operations.hpp")
     endif()
 endforeach()
+
+
+learncpp_setup_ide(P1_resource_manifest_student)

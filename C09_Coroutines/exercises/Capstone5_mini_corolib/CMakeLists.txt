@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.25)
 project(Capstone5_mini_corolib LANGUAGES CXX)
 
+if(NOT COMMAND coroutine_study_add_exercise)
+    include("${CMAKE_CURRENT_LIST_DIR}/../cmake/StudySetup.cmake")
+endif()
+
 include(CTest)
 
 set(CMAKE_CXX_STANDARD 23)
@@ -13,13 +17,18 @@ endif()
 
 function(_mini_add_executable target source)
     add_executable(${target} ${source})
+    coroutine_study_add_ide_files(${target})
     target_include_directories(${target} PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/include
-        ${CMAKE_SOURCE_DIR}/include
+        ${COROUTINE_STUDY_EXERCISES_DIR}/include
     )
     if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/../include")
         target_include_directories(${target} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../include)
     endif()
+endfunction()
+
+function(_mini_sources target)
+    target_sources(${target} PRIVATE ${ARGN})
 endfunction()
 
 function(_mini_register_test target label timeout)
@@ -34,6 +43,18 @@ endfunction()
 
 # 主 demo
 _mini_add_executable(Capstone5_mini_corolib src/main.cpp)
+target_sources(Capstone5_mini_corolib PRIVATE
+    include/mini/as_awaitable.hpp
+    include/mini/async_scope.hpp
+    include/mini/generator.hpp
+    include/mini/shared_task.hpp
+    include/mini/single_thread_executor.hpp
+    include/mini/stop_token.hpp
+    include/mini/sync_wait.hpp
+    include/mini/task.hpp
+    include/mini/when_all.hpp
+    include/mini/when_any.hpp
+)
 
 # 测试可执行（每组件一个 TU）
 _mini_add_executable(mini_task_test       tests/task_test.cpp)
@@ -45,6 +66,53 @@ _mini_add_executable(mini_when_any_test   tests/when_any_test.cpp)
 _mini_add_executable(mini_shared_task_test tests/shared_task_test.cpp)
 _mini_add_executable(mini_run_loop_test   tests/run_loop_test.cpp)
 _mini_add_executable(mini_stop_test       tests/stop_test.cpp)
+_mini_sources(mini_task_test
+    include/mini/task.hpp
+    ${COROUTINE_STUDY_EXERCISES_DIR}/include/coroutine_study/exercise_check.hpp
+)
+_mini_sources(mini_generator_test
+    include/mini/generator.hpp
+    ${COROUTINE_STUDY_EXERCISES_DIR}/include/coroutine_study/exercise_check.hpp
+)
+_mini_sources(mini_when_all_test
+    include/mini/sync_wait.hpp
+    include/mini/task.hpp
+    include/mini/when_all.hpp
+    ${COROUTINE_STUDY_EXERCISES_DIR}/include/coroutine_study/exercise_check.hpp
+)
+_mini_sources(mini_sync_wait_test
+    include/mini/sync_wait.hpp
+    include/mini/task.hpp
+    ${COROUTINE_STUDY_EXERCISES_DIR}/include/coroutine_study/exercise_check.hpp
+)
+_mini_sources(mini_scope_test
+    include/mini/async_scope.hpp
+    include/mini/single_thread_executor.hpp
+    include/mini/stop_token.hpp
+    include/mini/task.hpp
+    ${COROUTINE_STUDY_EXERCISES_DIR}/include/coroutine_study/exercise_check.hpp
+)
+_mini_sources(mini_when_any_test
+    include/mini/task.hpp
+    include/mini/when_any.hpp
+    tests/manual_event.hpp
+    ${COROUTINE_STUDY_EXERCISES_DIR}/include/coroutine_study/exercise_check.hpp
+)
+_mini_sources(mini_shared_task_test
+    include/mini/shared_task.hpp
+    include/mini/task.hpp
+    tests/manual_event.hpp
+    ${COROUTINE_STUDY_EXERCISES_DIR}/include/coroutine_study/exercise_check.hpp
+)
+_mini_sources(mini_run_loop_test
+    include/mini/single_thread_executor.hpp
+    include/mini/task.hpp
+    ${COROUTINE_STUDY_EXERCISES_DIR}/include/coroutine_study/exercise_check.hpp
+)
+_mini_sources(mini_stop_test
+    include/mini/stop_token.hpp
+    ${COROUTINE_STUDY_EXERCISES_DIR}/include/coroutine_study/exercise_check.hpp
+)
 if(COROUTINE_STUDY_TEST_STARTERS)
     _mini_register_test(mini_task_test starter 30)
     _mini_register_test(mini_generator_test starter 30)
@@ -70,6 +138,8 @@ endif()
 if(COROUTINE_STUDY_BUILD_REFERENCE)
     function(_mini_add_reference_test target source)
         add_executable(${target} ${source})
+        coroutine_study_add_ide_files(${target})
+        target_sources(${target} PRIVATE reference/include/mini_ref/mini.hpp)
         target_include_directories(${target} PRIVATE
             ${CMAKE_CURRENT_SOURCE_DIR}/reference/include
         )
@@ -81,6 +151,9 @@ if(COROUTINE_STUDY_BUILD_REFERENCE)
     _mini_add_reference_test(mini_reference_sync_wait   reference/tests/sync_wait_test.cpp)
     _mini_add_reference_test(mini_reference_when_all    reference/tests/when_all_test.cpp)
     _mini_add_reference_test(mini_reference_when_any    reference/tests/when_any_test.cpp)
+    target_sources(mini_reference_sync_wait PRIVATE reference/tests/async_test_helpers.hpp)
+    target_sources(mini_reference_when_all PRIVATE reference/tests/async_test_helpers.hpp)
+    target_sources(mini_reference_when_any PRIVATE reference/tests/async_test_helpers.hpp)
     _mini_add_reference_test(mini_reference_run_loop    reference/tests/run_loop_test.cpp)
     _mini_add_reference_test(mini_reference_task_scope  reference/tests/task_scope_test.cpp)
     _mini_add_reference_test(mini_reference_scope_spawn_failure reference/tests/scope_spawn_failure_test.cpp)
@@ -100,3 +173,5 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
         -Rpass-missed=coroutine-elide
     )
 endif()
+
+learncpp_setup_ide("Capstone5_mini_corolib")

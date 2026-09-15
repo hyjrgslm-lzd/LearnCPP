@@ -40,3 +40,10 @@ Pattern matching 和 quantities/units 当前只做提案跟踪说明，不声明
 | `c29_virtual_contracts.cpp` | C++29 virtual contracts 增量语法 |
 | `hardening_info.cpp` | STL hardening 宏状态；信息观察，不是 facility 完成证明 |
 | `proposal_tracking.cpp` | pattern matching 与 quantities/units 提案边界；信息观察，不是 facility 完成证明 |
+
+
+## IDE 入口
+
+从本课 `exercises` 根目录或本题目录生成 Visual Studio 18 2026 x64 工程。本题只有专项/能力探测目标；打开 solution 后按目标名运行对应探测。
+没有 Student 编辑入口；运行/阅读：`capabilities/`。这些入口保留在题目分组内，作为观察、探测或负例诊断。
+构建主项目后运行 CTest 或 README 中列出的检查命令；负例/探测入口只读，用于观察诊断。

@@ -13,3 +13,5 @@ get_property(students GLOBAL PROPERTY C04_STUDENT_TARGETS)
 add_custom_target(c04_students DEPENDS ${students})
 c04_add_test(C04_diagnostic_message_controls COMMAND "${Python3_EXECUTABLE}"
     "${CMAKE_CURRENT_SOURCE_DIR}/tools/check_diagnostic_messages.py" LABELS validation)
+
+learncpp_setup_ide("")

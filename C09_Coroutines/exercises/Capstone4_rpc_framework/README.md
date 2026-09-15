@@ -108,3 +108,14 @@ ctest --test-dir C09_Coroutines/exercises/build/capstone4-asio -C Release -R Cap
 5. close/drain：`shutdown()` 可重复调用，断连唤醒全部 pending，最终 client/server `in_flight()` 都为 0。
 
 **答案解析：** 单请求先验证协议和 dispatch；pending map 加入后验证 response 能按 id 回到正确 call；timeout 加入后验证 timer 能唤醒等待者；cancel frame 和 retry 加入后验证 loser handler 能协作停止。每一步都检查 in-flight，能及时发现 writer loop、read loop 或 handler 没有收束。
+
+## IDE 与单题构建
+
+Visual Studio 中主启动目标是 `Capstone4_rpc_framework`；Reference、Checks、Support 目标保留在同题分组中。学生编辑入口和本题 README/CMake 文件会显示在目标文件树里。
+
+```powershell
+cmake -S . -B build/vs -G "Visual Studio 18 2026" -A x64 -DCOROUTINE_STUDY_BUILD_REFERENCE=ON -DCOROUTINE_STUDY_ENABLE_ASIO=ON -DCOROUTINE_STUDY_FETCH_DEPS=ON -DFETCHCONTENT_FULLY_DISCONNECTED=ON -DFETCHCONTENT_SOURCE_DIR_ASIO=<existing-asio-src>
+cmake --build build/vs --config Debug --target Capstone4_rpc_framework
+```
+
+本题单独配置需要 `-DCOROUTINE_STUDY_ENABLE_ASIO=ON`，并提前准备 Asio。Asio 可来自系统 include 路径、ASIO_INCLUDE_DIR，或已有 FetchContent 源码缓存。示例里的 <existing-asio-src> 指已有 asio 源码目录；不要让配置阶段联网下载。 缺依赖时配置阶段直接失败，不生成空工程。 `BUILD_TESTING=OFF` 只关闭测试注册，不删除本题可执行目标；不要手工编辑生成的 `.sln` 或 `.vcxproj`。

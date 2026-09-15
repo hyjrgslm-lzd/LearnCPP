@@ -81,3 +81,12 @@
 预测：`zip_view` 的能力依赖所有底层 range；底层都 random_access 时可 random_access，但 proxy reference 会让 `iterator_category` 与 `iterator_concept` 分离。`adjacent<N>` 产生 N 元窗口，`chunk` 分块，`stride` 跳步。
 
 当前程序验证 zip 求和、adjacent<3> 的 tuple size 和窗口和、chunk 分组、stride 输出，以及 list 底层 stride 不具备 random_access。扩展时先看最弱底层 range，再推导组合 view 的能力。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `D1_zip_adjacent_chunk`。
+
+本题是观察题，没有本题内 `src/student/`、`src/reference/` 或 `validation/` 变体。
+- 源码入口：`main.cpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target D1_zip_adjacent_chunk。
+修改后先重建 `D1_zip_adjacent_chunk`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

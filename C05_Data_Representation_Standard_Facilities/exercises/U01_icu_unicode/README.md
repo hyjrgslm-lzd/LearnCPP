@@ -23,3 +23,13 @@ Part 3：`NormalizationTest.txt` 按 Unicode 16.0 官方数据全量驱动。每
 Part 4：`GraphemeBreakTest.txt` 使用 root `UBreakIterator` 验证 UAX #29 默认字素边界。程序把 ICU 返回的 UTF-16 code unit offset 映射回 UTF-8 byte offset，证明展示边界、UTF-16 坐标和存储字节坐标是三层不同信息。
 
 Part 5：casefold 与 locale case mapping 分开展示。`foldCase` 可用于派生搜索索引；土耳其语 `I` 的 lower-case 显示要带 locale。两者都不改变 Manifest 的原始 UTF-8 字节身份规则。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `U01_icu_unicode_check`。
+
+本题是观察题，没有本题内 `src/student/`、`src/reference/` 或 `validation/` 变体。
+- 源码入口：`checks/icu_unicode_checks.cpp`。
+- 诊断或辅助入口：`data/UNICODE-LICENSE.txt`、`data/unicode-16.0-data-manifest.json`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target U01_icu_unicode_check。
+修改后先重建 `U01_icu_unicode_check`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

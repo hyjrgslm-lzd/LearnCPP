@@ -59,3 +59,10 @@ cmake --build build/c02-owner-l09 --config Debug
 ```
 
 `validation/good` 应输出 `L09_shared_validation_contract OK`。bad hardcoded noop 应在真实节点连边检查处失败；bad cycle 应被 alive 计数拒绝；bad weak resurrect 应被 expired/lock 契约拒绝。
+
+
+## IDE 入口
+
+从本课 `exercises` 根目录或本题目录生成 Visual Studio 18 2026 x64 工程。主项目是 `L09_shared_student`；默认学生测试关闭时仍生成该项目，但它是 `EXCLUDE_FROM_ALL`，需显式构建。
+学生只编辑：`src/student/owner.hpp`。 `checks/`、`validation/`、`src/reference/`、diagnostic、support 目标是只读对照/验证/实验入口，保留在题目分组内。
+修改 Student 后先重新构建对应目标，再运行 CTest 或 README 中列出的检查命令。

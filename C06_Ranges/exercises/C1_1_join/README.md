@@ -97,3 +97,12 @@
 预测：二维 vector 经 `join` 后能拍平，但最高只到 bidirectional，不保留 random_access，因为迭代器要维护外层和内层两层状态。`join_with` 在子范围之间插入分隔符；外层 transform 若产出 prvalue 内层 range，会触发缓存并进一步影响 concept。
 
 当前程序验证 stored `vector<vector<int>> | join` 是 common_range、拍平结果正确；另用 `iota | filter | take` 单列 non-common iter/sentinel 例子，避免把 common 问题误归因给 join；同时验证 `join_with` 分隔结果和 prvalue 内层时仍能安全遍历。扩展问题答案：达到 bidirectional 需要外层 bidirectional、外层 reference 是左值引用、内层 common + bidirectional；random access 无法由 join 合成。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `C1_1_join`。
+
+本题是观察题，没有本题内 `src/student/`、`src/reference/` 或 `validation/` 变体。
+- 源码入口：`main.cpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target C1_1_join。
+修改后先重建 `C1_1_join`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

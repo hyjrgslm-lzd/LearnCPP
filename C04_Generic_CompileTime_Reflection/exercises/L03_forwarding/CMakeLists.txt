@@ -10,3 +10,5 @@ c04_add_exercise(
 )
 
 c04_add_observation(L03_forwarding_counterexamples observations/counterexamples.cpp)
+
+learncpp_setup_ide(L03_forwarding_student)

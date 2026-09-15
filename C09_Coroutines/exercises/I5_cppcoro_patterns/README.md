@@ -28,3 +28,14 @@ ctest --test-dir build/coroutine-i5 -R I5_cppcoro_patterns_reference --output-on
 回读代码按 API 对照：先看 `generator` 如何喂给 `sum_range`，再看 `when_all` 如何同时启动两个 `task`，然后看 `shared_task` 的复用、`schedule()` 的线程切换和 cancellation registration 的回调。
 
 **答案解析：** 这些 API 分别对应本课程前面手写的机制：generator 是 pull 序列，task 是 lazy 单消费者结果，when_all 是 fan-out/fan-in，shared_task 是多 awaiter 共享结果，schedule 是恢复位置切换，cancellation registration 是停止请求回调。逐个映射后，就能把库 API 行为落回 promise、awaiter、shared state 和 scheduler 这些对象关系。
+
+## IDE 与单题构建
+
+Visual Studio 中主启动目标是 `I5_cppcoro_patterns`；Reference、Checks、Support 目标保留在同题分组中。学生编辑入口和本题 README/CMake 文件会显示在目标文件树里。
+
+```powershell
+cmake -S . -B build/vs -G "Visual Studio 18 2026" -A x64 -DCOROUTINE_STUDY_BUILD_REFERENCE=ON -DCOROUTINE_STUDY_ENABLE_CPPCORO=ON -DCOROUTINE_STUDY_FETCH_DEPS=ON -DFETCHCONTENT_FULLY_DISCONNECTED=ON -DFETCHCONTENT_SOURCE_DIR_CPPCORO=<existing-cppcoro-src>
+cmake --build build/vs --config Debug --target I5_cppcoro_patterns
+```
+
+本题单独配置需要 `-DCOROUTINE_STUDY_ENABLE_CPPCORO=ON`，并提前准备 cppcoro。cppcoro 可来自已安装包、CMAKE_PREFIX_PATH，或已有 FetchContent 源码缓存。示例里的 <existing-cppcoro-src> 指已有 cppcoro 源码目录；不要让配置阶段联网下载。 缺依赖时配置阶段直接失败，不生成空工程。 `BUILD_TESTING=OFF` 只关闭测试注册，不删除本题可执行目标；不要手工编辑生成的 `.sln` 或 `.vcxproj`。

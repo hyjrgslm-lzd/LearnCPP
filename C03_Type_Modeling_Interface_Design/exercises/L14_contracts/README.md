@@ -19,3 +19,10 @@ ctest --test-dir build/author-c-l14 -C Release --output-on-failure
 ```
 
 解析：外部输入错误走错误通道；断言和 contracts 表达程序员责任；library hardening 是标准库实现策略。C++26/C++29 真实语法能力统一看 F01，不在本练习重复造 probe 框架。
+
+
+## IDE 入口
+
+从本课 `exercises` 根目录或本题目录生成 Visual Studio 18 2026 x64 工程。主项目是 `L14_contracts_observation`，可直接设为启动项运行观察或专项入口。
+没有 Student 编辑入口；运行/阅读：`contracts_observation.cpp`。这些入口保留在题目分组内，作为观察、探测或负例诊断。
+构建主项目后运行 CTest 或 README 中列出的检查命令；负例/探测入口只读，用于观察诊断。

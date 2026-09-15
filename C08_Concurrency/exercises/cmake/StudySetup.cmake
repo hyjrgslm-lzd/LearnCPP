@@ -1,5 +1,6 @@
 include_guard(GLOBAL)
 get_filename_component(CONCURRENCY_STUDY_EXERCISES_DIR "${CMAKE_CURRENT_LIST_DIR}/.." ABSOLUTE)
+include("${CMAKE_CURRENT_LIST_DIR}/../../../cmake/ExerciseIde.cmake" OPTIONAL)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
@@ -55,6 +56,66 @@ endif()
 
 include("${CMAKE_CURRENT_LIST_DIR}/NativeFeatures.cmake")
 
+function(cs_add_visible_files target)
+    set(_cs_files ${ARGN})
+    foreach(_cs_file IN ITEMS
+        "${CONCURRENCY_STUDY_EXERCISES_DIR}/BUILD_GUIDE.md"
+        "${CONCURRENCY_STUDY_EXERCISES_DIR}/CMakePresets.json"
+        "${CONCURRENCY_STUDY_EXERCISES_DIR}/third_party/README.md"
+        "${CONCURRENCY_STUDY_EXERCISES_DIR}/include/concurrency_study/benchmark.hpp"
+        "${CONCURRENCY_STUDY_EXERCISES_DIR}/include/concurrency_study/bounded_channel.hpp"
+        "${CONCURRENCY_STUDY_EXERCISES_DIR}/include/concurrency_study/epoch.hpp"
+        "${CONCURRENCY_STUDY_EXERCISES_DIR}/include/concurrency_study/exercise_check.hpp"
+        "${CONCURRENCY_STUDY_EXERCISES_DIR}/include/concurrency_study/hazard_pointer.hpp"
+        "${CONCURRENCY_STUDY_EXERCISES_DIR}/include/concurrency_study/log.hpp"
+        "${CONCURRENCY_STUDY_EXERCISES_DIR}/include/concurrency_study/numa.hpp"
+        "${CONCURRENCY_STUDY_EXERCISES_DIR}/include/concurrency_study/numeric_kernels.hpp"
+        "${CONCURRENCY_STUDY_EXERCISES_DIR}/include/concurrency_study/queue_baseline.hpp"
+        "${CONCURRENCY_STUDY_EXERCISES_DIR}/include/concurrency_study/queue_checks.hpp"
+        "${CONCURRENCY_STUDY_EXERCISES_DIR}/include/concurrency_study/queue_linked.hpp"
+        "${CONCURRENCY_STUDY_EXERCISES_DIR}/include/concurrency_study/queue_versions.hpp"
+        "${CONCURRENCY_STUDY_EXERCISES_DIR}/include/concurrency_study/rcu.hpp"
+        "${CONCURRENCY_STUDY_EXERCISES_DIR}/include/concurrency_study/simd_kernels.hpp"
+        "${CONCURRENCY_STUDY_EXERCISES_DIR}/include/concurrency_study/thread_pool.hpp"
+        "${CONCURRENCY_STUDY_EXERCISES_DIR}/include/concurrency_study/work_stealing_pool.hpp")
+        if(EXISTS "${_cs_file}")
+            list(APPEND _cs_files "${_cs_file}")
+        endif()
+    endforeach()
+    foreach(_cs_file IN LISTS _cs_files)
+        if(EXISTS "${_cs_file}")
+            list(APPEND _cs_existing "${_cs_file}")
+        endif()
+    endforeach()
+    if(_cs_existing)
+        target_sources(${target} PRIVATE ${_cs_existing})
+    endif()
+endfunction()
+
+function(cs_exercise_local_files name role out_var)
+    set(_cs_files "${CMAKE_CURRENT_SOURCE_DIR}/checks.hpp")
+    if(name MATCHES "^(I3_rcu|R1_epoch_reclamation|R2_qsbr)$")
+        list(APPEND _cs_files "${CONCURRENCY_STUDY_EXERCISES_DIR}/../topics/reclamation/experiment_support.hpp")
+    endif()
+    if(role STREQUAL "MAIN")
+        list(APPEND _cs_files "${CMAKE_CURRENT_SOURCE_DIR}/student.hpp")
+        if(name MATCHES "^(G2_aba_problem|J1_false_sharing|J2_interference_size)$")
+            list(APPEND _cs_files "${CMAKE_CURRENT_SOURCE_DIR}/reference.hpp")
+        endif()
+        if(name STREQUAL "J2_interference_size")
+            list(APPEND _cs_files "${CONCURRENCY_STUDY_EXERCISES_DIR}/J1_false_sharing/reference.hpp")
+        endif()
+    elseif(role STREQUAL "REFERENCE")
+        list(APPEND _cs_files "${CMAKE_CURRENT_SOURCE_DIR}/reference.hpp")
+        if(name STREQUAL "J2_interference_size")
+            list(APPEND _cs_files "${CONCURRENCY_STUDY_EXERCISES_DIR}/J1_false_sharing/reference.hpp")
+        endif()
+    elseif(role STREQUAL "BENCHMARK")
+        list(APPEND _cs_files "${CMAKE_CURRENT_SOURCE_DIR}/reference.hpp")
+    endif()
+    set(${out_var} ${_cs_files} PARENT_SCOPE)
+endfunction()
+
 function(cs_configure_target target)
     target_compile_features(${target} PRIVATE cxx_std_23)
     cs_enable_sanitizer(${target})
@@ -109,6 +170,8 @@ function(cs_add_exercise name kind)
     endif()
     add_executable(${name} main.cpp)
     cs_configure_target(${name})
+    cs_exercise_local_files(${name} MAIN _cs_main_files)
+    cs_add_visible_files(${name} ${_cs_main_files})
     if(BUILD_TESTING AND CONCURRENCY_STUDY_TEST_STARTERS)
         if(kind STREQUAL "IMPLEMENTATION")
             set(_cs_role student)
@@ -126,10 +189,14 @@ function(cs_add_exercise name kind)
     if(CONCURRENCY_STUDY_BUILD_BENCHMARKS AND _cs_benchmark)
         add_executable(${name}_benchmark benchmark.cpp)
         cs_configure_target(${name}_benchmark)
+        cs_exercise_local_files(${name} BENCHMARK _cs_benchmark_files)
+        cs_add_visible_files(${name}_benchmark ${_cs_benchmark_files})
     endif()
     if(CONCURRENCY_STUDY_BUILD_REFERENCE AND _cs_reference)
         add_executable(${name}_reference solution.cpp)
         cs_configure_target(${name}_reference)
+        cs_exercise_local_files(${name} REFERENCE _cs_reference_files)
+        cs_add_visible_files(${name}_reference ${_cs_reference_files})
         if(WIN32 AND name MATCHES "^(J3_numa_concept|N1_numa_placement)$")
             target_link_libraries(${name}_reference PRIVATE Psapi)
         endif()
@@ -137,5 +204,8 @@ function(cs_add_exercise name kind)
             add_test(NAME ${name}_reference COMMAND ${name}_reference)
             set_tests_properties(${name}_reference PROPERTIES TIMEOUT ${CS_TEST_TIMEOUT} SKIP_RETURN_CODE 77 LABELS "reference")
         endif()
+    endif()
+    if(COMMAND learncpp_setup_ide)
+        learncpp_setup_ide(${name})
     endif()
 endfunction()

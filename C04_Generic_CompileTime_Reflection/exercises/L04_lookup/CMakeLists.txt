@@ -17,3 +17,5 @@ c04_add_compile_case(
     CONTROL validation/diagnostics/missing_typename_control.cpp
     PATTERN "error C7510"
 )
+
+learncpp_setup_ide(L04_lookup_student)

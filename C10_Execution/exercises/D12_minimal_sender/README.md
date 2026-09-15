@@ -30,3 +30,6 @@ bad 版本把所有模式都伪造成 value，检查器在 error mode 拒绝。
 ## 答案解释
 
 正确答案的核心是所有权：sender 可复制描述；operation state 独占一次执行；receiver 被移动进 completion。两个 connect 分别 start，应该得到两条独立 value 事件。
+## IDE 工程入口
+
+VS solution 中本题主入口是 `D12_minimal_sender_student`。学生只编辑 `src/student/solution.hpp`；`main.cpp` 是共同检查器，Reference 在 `src/reference/solution.hpp`，good/bad 控制在 `validation` 下。`D12_minimal_sender` 聚合目标只负责显式构建学生目标，收在 Support；Reference 与控制目标保留为独立项目，用来区分答案、正确对照和错误拒绝。单题可用 `cmake -S <本目录> -B <build>` 独立生成。

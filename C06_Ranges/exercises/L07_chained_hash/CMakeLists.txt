@@ -8,3 +8,6 @@ ranges_add_exercise(
     CHECK checks/hash_checks.cpp
     BAD_DIAGNOSTIC "rehash keeps colliding keys"
 )
+
+
+learncpp_setup_ide(L07_chained_hash_student)

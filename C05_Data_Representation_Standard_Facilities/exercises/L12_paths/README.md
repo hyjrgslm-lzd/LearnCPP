@@ -17,3 +17,12 @@ ctest --test-dir build/leaf-L12 -C Release --output-on-failure
 ```
 
 解析：这不是 sandbox 校验。它只保证包内元数据 path 是可移植的相对 generic路径；真正写文件时仍要把目标限定在自己创建的临时目录，并处理 `error_code` 或异常。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `L12_paths_observation`。
+
+本题是观察题，没有本题内 `src/student/`、`src/reference/` 或 `validation/` 变体。
+- 源码入口：`observation.cpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target L12_paths_observation。
+修改后先重建 `L12_paths_observation`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

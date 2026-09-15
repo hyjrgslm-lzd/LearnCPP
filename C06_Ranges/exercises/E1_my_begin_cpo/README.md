@@ -68,3 +68,16 @@
 本题已迁移到统一四路径验证：`checks/main.cpp` 只消费 `#include <my_begin.hpp>` 暴露的 `c06_e1::my_begin`，不会包含 Reference。`src/reference` 是教学自写参考；`validation/good` 是独立正确实现；`validation/bad` 是安全运行时错误实现，故意让 ADL begin 抢在成员 begin 之前；`src/student` 是可编译但会被 checker 拒绝的学生边界。
 
 当前 checker 覆盖：成员 begin、ADL begin、成员优先于 ADL、数组 begin、右值 `std::string_view` 作为 borrowed range 允许、右值 `std::vector` 作为非 borrowed range 拒绝、无 begin 类型拒绝，以及 `noexcept` 传播。数组和 borrowed 过滤是 `ranges::begin` 的关键边界，不应把本题泛化成“任意对象上找个 begin 就行”。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `E1_my_begin_cpo_student`。
+
+本题是实现题。学习者只改 Student 入口；Reference、validation 和 checks 只用于对照与验证。
+- Student 入口：`src/student/my_begin.hpp`。
+- Checker 入口：`main.cpp`。
+- Reference 对照：`src/reference/my_begin.hpp`。
+- validation/good 对照：`validation/good/my_begin.hpp`。
+- validation/bad 反例：`validation/bad/my_begin.hpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target E1_my_begin_cpo_student。
+修改后先重建 `E1_my_begin_cpo_student`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

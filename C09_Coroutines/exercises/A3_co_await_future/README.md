@@ -70,3 +70,14 @@ int result = co_await await_future(std::move(fut));
 | Part 3 | 三条路径分析 | starter 检查跨线程恢复；ready/异常完整路径仍由 `solution.cpp` 独立验证 |
 
 完成前：当前同步等待占位会失败在“worker path resume”检查
+
+## IDE 与单题构建
+
+Visual Studio 中主启动目标是 `A3_co_await_future`；Reference、Checks、Support 目标保留在同题分组中。学生编辑入口和本题 README/CMake 文件会显示在目标文件树里。
+
+```powershell
+cmake -S . -B build/vs -G "Visual Studio 18 2026" -A x64 -DCOROUTINE_STUDY_BUILD_REFERENCE=ON
+cmake --build build/vs --config Debug --target A3_co_await_future
+```
+
+普通题不需要额外依赖；Reference 由 `COROUTINE_STUDY_BUILD_REFERENCE` 控制。 `BUILD_TESTING=OFF` 只关闭测试注册，不删除本题可执行目标；不要手工编辑生成的 `.sln` 或 `.vcxproj`。

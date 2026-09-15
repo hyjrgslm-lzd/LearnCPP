@@ -37,3 +37,13 @@ ctest --test-dir C06_Ranges/exercises/F01_frontier/build-local -C Release --outp
 - Part D：记录每个缺失项及下一环境所需的真实标准库版本；不把另一个库或自己实现的类型重命名为std接口。
 
 CTest输出的“100% tests passed”可能包含SKIP，不能改写成所有前沿主体通过。其他平台和前沿主体运行未复验时，按未验证处理。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `F01_flat_containers`。
+
+本题是观察题，没有本题内 `src/student/`、`src/reference/` 或 `validation/` 变体。
+- 源码入口：`as_input.cpp`、`cache_latest.cpp`、`concat.cpp`、`const_input_filter.cpp`、`flat_containers.cpp`、`hive.cpp`、`inplace_vector.cpp`、`map_lookup.cpp`、`optional_range.cpp`、`reserve_hint.cpp`、`view_interface_at.cpp`。
+- 诊断或辅助入口：`include/frontier_status.hpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target F01_flat_containers。
+修改后先重建 `F01_flat_containers`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

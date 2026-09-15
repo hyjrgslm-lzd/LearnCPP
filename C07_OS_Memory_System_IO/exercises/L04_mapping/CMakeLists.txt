@@ -4,3 +4,6 @@ include(../cmake/StudySetup.cmake)
 c07_add_exercise(NAME L04_mapping HEADER mapping_lab.hpp
     CHECK checks/mapping_checks.cpp
     BAD_DIAGNOSTIC "readonly mapping aligns view offset down")
+
+
+learncpp_setup_ide(L04_mapping_student)

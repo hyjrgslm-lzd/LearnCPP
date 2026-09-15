@@ -101,3 +101,5 @@ if(CORE_STUDY_BUILD_REFERENCE)
         "check failed: completed first member should release during unwinding"
     )
 endif()
+
+learncpp_setup_ide(L04_construction_student)

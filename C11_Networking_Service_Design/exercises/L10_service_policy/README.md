@@ -23,3 +23,6 @@ ctest --test-dir build/c11-l10 -C Release -R '^C11_L10_student$' --output-on-fai
 [pool.cpp](pool.cpp)复用同一 loopback endpoint，观察两次请求只建一个连接、空闲到期替换、有限等待队列、等待超时和 close。运行 C11_L10_pool。
 
 解析：只有完整响应校验成功才 reusable；租约默认丢弃。close 唤醒等待者但保留借出的 socket，最后租约归还后才能完全关闭。等待状态由通知确认，TTL 用显式维护时间注入，不靠 sleep 猜测。性能比较另在 B01，不从功能通过宣称池更快。
+## IDE 工程入口
+
+VS solution 中本题主入口是 `C11_L10_student`。学生只编辑 `student/solution.hpp`；`checks.cpp` 是共同检查器，Reference/good/bad 和额外 bad 控制保持独立项目，用来区分答案、正确对照和错误拒绝。单题可用 `cmake -S <本目录> -B <build>` 独立生成，`C11_TEST_STUDENTS` 只控制是否把未完成 Student 注册进 CTest。

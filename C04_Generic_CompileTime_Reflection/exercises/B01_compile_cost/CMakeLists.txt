@@ -3,3 +3,5 @@ project(B01_compile_cost LANGUAGES CXX)
 include(../cmake/StudySetup.cmake)
 
 c04_add_observation(B01_compile_cost_contracts observations/contracts.cpp)
+
+learncpp_setup_ide(B01_compile_cost_contracts)

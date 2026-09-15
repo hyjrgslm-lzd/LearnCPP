@@ -24,3 +24,10 @@ ctest --test-dir build/c02-l14 -C Debug --output-on-failure
 - provenance / invalid pointer / lifetime-end 相关 DR 只提供 compile-only review model，不声称 runtime 支持。
 
 UNSAFE 入口也默认关闭。只有同时启用 `CORE_STUDY_ENABLE_ASAN=ON` 和 `CORE_STUDY_ENABLE_UNSAFE_DEMOS=ON` 时，才构建并注册 `L14_ub_asan_uaf_diagnostic`。它是独立诊断进程，期望非零退出并匹配 `heap-use-after-free` 与 `asan_uaf_probe.cpp`；正常课程 preset 不运行真实 UB。
+
+
+## IDE 入口
+
+从本课 `exercises` 根目录或本题目录生成 Visual Studio 18 2026 x64 工程。主项目是 `L14_ub_observation`，可直接设为启动项运行观察或专项入口。
+没有 Student 编辑入口；运行/阅读：`checks/`。这些入口保留在题目分组内，作为观察、探测或负例诊断。
+构建主项目后运行 CTest 或 README 中列出的检查命令；负例/探测入口只读，用于观察诊断。

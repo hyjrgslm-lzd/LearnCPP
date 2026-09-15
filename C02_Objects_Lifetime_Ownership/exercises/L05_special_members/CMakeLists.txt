@@ -51,3 +51,5 @@ if(CORE_STUDY_BUILD_REFERENCE)
             "check failed: move assignment should release old target storage")
     endif()
 endif()
+
+learncpp_setup_ide(L05_special_members_student)

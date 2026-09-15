@@ -63,3 +63,13 @@ cl /nologo /std:c++23preview /EHsc /utf-8 /W4 /O2 /DNDEBUG /I../include solution
 ```
 
 直接运行没有 CTest 的进程超时；本题是有限单线程检查。
+
+## IDE 与工程入口
+
+Visual Studio 方案中，主入口目标是 `P1_object_lifetime`，位于本题节点顶层；单题独立配置时它是启动目标。`P1_object_lifetime_reference` 在 `Reference` 分组。
+
+学生/观察入口：`main.cpp` 是观察/实验入口，用来预测、运行和记录现象；本题不声明待填学生实现。
+
+Reference 与检查：`solution.cpp` 是 Reference/检查路径，只读对照。
+
+单题命令：从 `C08_Concurrency/exercises` 可独立配置：`cmake -S P1_object_lifetime -B build/P1_object_lifetime-ide -G "Visual Studio 18 2026" -A x64`，再构建 `P1_object_lifetime` 和 `P1_object_lifetime_reference`；CTest 过滤 `^P1_object_lifetime_reference$`。

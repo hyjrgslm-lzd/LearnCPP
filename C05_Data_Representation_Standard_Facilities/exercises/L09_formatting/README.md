@@ -11,3 +11,12 @@ Part 3：动态格式串在 C++23 中应通过 `std::vformat` 和 `std::make_for
 Part 4：`std::print`/`std::println` 是输出便利设施，不是机器可逆协议。`iostream` 受 locale 影响，适合面向人类的展示；机器字段用 `to_chars/from_chars` 或显式格式。非 ASCII 文本的字节数、code point 数、grapheme cluster 数和终端列宽也不是一回事，格式化库不会替你完成完整排版语义。
 
 编辑位置：无，本题是观察题和负例控制题。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `L09_formatting_observation`。
+
+本题是观察题，没有本题内 `src/student/`、`src/reference/` 或 `validation/` 变体。
+- 源码入口：`observation.cpp`、`validation/bad_truncation.cpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target L09_formatting_observation。
+修改后先重建 `L09_formatting_observation`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

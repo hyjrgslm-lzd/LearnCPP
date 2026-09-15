@@ -10,3 +10,6 @@ c05_add_test(L07_text_semantics_bad_identity_rejected COMMAND ${CMAKE_COMMAND}
     "-DEXECUTABLE=$<TARGET_FILE:L07_text_semantics_bad_identity>"
     "-DEXPECTED_TEXT=canonical-equivalence is not byte identity"
     -P "${CMAKE_CURRENT_LIST_DIR}/../cmake/expect_failure.cmake" LABELS negative)
+
+
+learncpp_setup_ide(L07_text_semantics_observation)

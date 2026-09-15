@@ -3,3 +3,6 @@ project(E3_cpo_tagdispatch_compare LANGUAGES CXX)
 include(../cmake/RangesSetup.cmake)
 
 ranges_add_observation(E3_cpo_tagdispatch_compare main.cpp)
+
+
+learncpp_setup_ide(E3_cpo_tagdispatch_compare)

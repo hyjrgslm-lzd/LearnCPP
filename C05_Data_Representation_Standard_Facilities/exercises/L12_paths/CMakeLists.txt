@@ -3,3 +3,6 @@ project(L12_paths LANGUAGES CXX)
 include(../cmake/StudySetup.cmake)
 
 c05_add_observation(L12_paths_observation observation.cpp)
+
+
+learncpp_setup_ide(L12_paths_observation)

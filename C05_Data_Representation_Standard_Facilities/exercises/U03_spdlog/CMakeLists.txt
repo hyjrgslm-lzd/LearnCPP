@@ -39,3 +39,6 @@ c05_add_test(U03_spdlog_bad_compile_format_rejected COMMAND "${Python3_EXECUTABL
     --config "$<CONFIG>" --compiler "${CMAKE_CXX_COMPILER}" --setup "${_diag_setup}"
     LABELS diagnostic TIMEOUT 420)
 set_tests_properties(U03_spdlog_bad_compile_format_rejected PROPERTIES RUN_SERIAL TRUE)
+
+
+learncpp_setup_ide(U03_spdlog_DEBUG BROWSE diagnostics/good_compile_format.cpp diagnostics/bad_compile_format.cpp)

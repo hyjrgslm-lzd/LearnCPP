@@ -41,6 +41,8 @@ cmake --build --preset student --parallel 4
 cmake --preset vs2026 -DCMAKE_GENERATOR_INSTANCE="实际安装目录"
 ```
 
+生成的 Visual Studio 方案按练习目录分组：主入口目标在题目节点顶层，`*_reference` 在 `Reference`，good/bad/check/test 入口在 `Checks`，benchmark、fast-math、native 和 runtime 工具在 `_Course` 对应节点。`README.md`、`CMakeLists.txt`、本题 `checks.hpp` / `student.hpp` / `reference.hpp` 和公共 `include/concurrency_study/*.hpp` 只作为原路径文件加入目标，方便定位与调试；实际编译仍由各目标原本的 `main.cpp`、`solution.cpp`、`benchmark.cpp` 或检查入口决定。不要手工编辑生成的 `.sln`、`.vcxproj` 或 `.slnx`，重新运行 CMake 会覆盖它们。
+
 ## 2. 单题运行
 
 以队列基线为例：
@@ -60,6 +62,8 @@ cmake -S Q0_queue_baseline -B build/q0 -G "Visual Studio 18 2026" -A x64
 cmake --build build/q0 --config Release
 ctest --test-dir build/q0 -C Release --output-on-failure
 ```
+
+单题独立配置后，Visual Studio 默认启动该题的主目标，例如 `Q0_queue_baseline`；整课方案默认启动课程顺序中第一个普通主目标。学生编辑入口仍是该题 `main.cpp` 以及 README 指定的学生头；Reference 入口仍是 `solution.cpp` 或本题 `reference.hpp`。IDE 中看到共享头表示“从原路径浏览和跳转”，不表示每题拥有一份复制文件。
 
 普通题的 Reference 使用 cs::check，Release 中不会因 NDEBUG 消失。程序仅编译成功或正常退出，不能自动说明全部学习目标已完成；应看该题实际检查的契约。
 

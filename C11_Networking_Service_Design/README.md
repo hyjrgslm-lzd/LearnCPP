@@ -29,6 +29,8 @@
 
 实现题 L01/L02/L03/L05/L10 的 `student/solution.hpp` 是独立编辑位置。Reference 与 good/bad 检查器控制保留；未完成 Student 明确失败。其余单元是完整观察驱动，需先预测再运行，完成 README 中的修改与解释题；程序通过不自动代表作业完成。
 
+VS 工程只由 CMake 生成。每个 L/P/B 单元在 solution 中自成分组；Student 或实际观察目标作为启动入口，额外 checker、协议实验和专项依赖目标保留为可单独运行的项目。不要通过移动生成工程文件来整理视图，改构建定义后重新生成。
+
 本次验证范围为 **Windows 编译与关键行为**。Linux 专属源代码及实验规格保留，并标记未在本次环境执行；无需安装 Linux、WSL 或虚拟机。功能检查使用回环临时端口、进程内测试 CA、有界资源和进程外超时。基准不是性能承诺，课程不发布从本机单次结果推导的通用加速比。
 
 知识点、实现与能力边界见 [覆盖索引](references/coverage.md)；规范和固定源码入口见 [来源索引](references/standards-and-implementations.md)。原 C09 RPC 的 API、wire 和 Student 保留；C07 继续主讲系统机制，C10 继续主讲执行组合。

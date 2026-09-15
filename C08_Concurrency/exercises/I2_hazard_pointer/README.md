@@ -43,3 +43,13 @@ $LASTEXITCODE
 默认 C++23，源指针全部使用 SC。回收库、读区协议、门闩异常传播及输入生成已提供，不要求重写公共算法。用户操作仍须遵守正文的同域、不可变载荷、一次退休和保护边界约束；完整操作不承诺 lock-free。空 TODO 的预检是安全入口约束，不是对任意错误学生代码的内存安全保证。错误实现应另用 ASan 和外部超时诊断。
 
 依赖：C++23 标准库、线程支持及 exercises/include；I3/R1/R2 的检查器复用 topics/reclamation/experiment_support.hpp。没有新链接库。main 与 solution 必须分别编译为独立程序，不能链接两个 main。
+
+## IDE 与工程入口
+
+Visual Studio 方案中，主入口目标是 `I2_hazard_pointer`，位于本题节点顶层；单题独立配置时它是启动目标。`I2_hazard_pointer_reference` 在 `Reference` 分组。
+
+学生/观察入口：`student.hpp` 和 `main.cpp` 中 README 指定的 TODO。
+
+Reference 与检查：`solution.cpp`、`reference.hpp`、`checks.hpp` 是 Reference/检查路径，只读对照。
+
+单题命令：从 `C08_Concurrency/exercises` 可独立配置：`cmake -S I2_hazard_pointer -B build/I2_hazard_pointer-ide -G "Visual Studio 18 2026" -A x64`，再构建 `I2_hazard_pointer` 或 `I2_hazard_pointer_reference`；要注册学生 CTest，按总 BUILD_GUIDE 的 student 模板加 `-DCONCURRENCY_STUDY_TEST_STARTERS=ON`。

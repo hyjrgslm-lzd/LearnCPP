@@ -49,3 +49,5 @@
 Manifest包含资源ID、UTF8名称与相对路径、字节数、UTC Unix毫秒以及可选备注。包格式明确大端与宽度，保留独立旧读者及[手写黄金输入](exercises/fixtures/README.md)。资源path只作元数据，P1只在自有临时目录读写新包，不打开资源目标、不覆盖既有文件。
 
 ICU规范化与大小写处理不改变Manifest的字节身份。C09 RPC可承接长度/解析基础，C11/C12继续网络和存储机制，C15保留UE专有对象、编码和资产责任。本课不把这些下游课程纳入完成声明。
+
+IDE 工程入口见 [构建与验证](exercises/BUILD_GUIDE.md#visual-studio-工程结构)；每题 README 标出启动 target 与编辑位置。

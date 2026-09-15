@@ -11,9 +11,12 @@ include(../cmake/MetaLibraries.cmake)
 
 c04_add_observation(U02_hana_record_observation observations/hana_record_observation.cpp)
 c04_add_observation(U02_hana_migration_solution observations/hana_migration_solution.cpp)
+target_sources(U02_hana_record_observation PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../A02_field_projection/checks/projection_schema.hpp")
 
 foreach(target U02_hana_record_observation U02_hana_migration_solution)
     c04_link_hana(${target})
     target_include_directories(${target} PRIVATE
         "${CMAKE_CURRENT_SOURCE_DIR}/../A02_field_projection/checks")
 endforeach()
+
+learncpp_setup_ide(U02_hana_record_observation)

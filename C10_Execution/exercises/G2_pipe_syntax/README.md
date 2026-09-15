@@ -17,3 +17,6 @@ ctest --test-dir build\c10-adaptor-author-g2 -C Debug --output-on-failure
 ```
 
 完整解析见 `../../chapters/08-adaptor.md` 的 G2 小节。
+## IDE 工程入口
+
+VS solution 中本题主入口是 `G2_pipe_syntax_student`。学生只编辑 `src/student/solution.hpp`；`main.cpp` 是共同检查器，Reference 在 `src/reference/solution.hpp`，good/bad 控制在 `validation` 下。`G2_pipe_syntax` 聚合目标只负责显式构建学生目标，收在 Support；Reference 与控制目标保留为独立项目，用来区分答案、正确对照和错误拒绝。单题可用 `cmake -S <本目录> -B <build>` 独立生成。

@@ -26,3 +26,13 @@ ctest --test-dir C08_Concurrency/exercises/build/c08-frontier-author/f02 -C Rele
 `make_hazard_pointer_batch` 不是“循环申请”的教学替身；它只填 empty 元素，已有非空 HP 连同 protection 保持不变，关键是整批失败时保持调用前状态。`clear_hazard_pointer_batch` 销毁 span 中非空元素拥有的 HP，并让元素 empty；它不是 `hp.reset_protection()`。`reset_protection()` 只解除当前保护，HP 对象仍拥有槽。clear 也不释放被保护业务对象，不等于回收域已经排空。算法仍要先 protect、验证结构关系，再 retire；batch 不生成一致快照。
 
 一手来源：[N5055](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2026/n5055.html)、[P3428R4](https://wg21.link/P3428R4)。
+
+## IDE 与工程入口
+
+Visual Studio 方案中，主入口目标是 `F02_hazard_pointer_batches`，位于本题节点顶层；单题独立配置时它是启动目标。`F02_hazard_pointer_batches_reference` 在 `Reference` 分组。
+
+学生/观察入口：`main.cpp` 是观察/实验入口，用来预测、运行和记录现象；本题不声明待填学生实现。
+
+Reference 与检查：`solution.cpp` 是 Reference/检查路径，只读对照。
+
+单题命令：从 `C08_Concurrency/exercises` 可独立配置：`cmake -S F02_hazard_pointer_batches -B build/F02_hazard_pointer_batches-ide -G "Visual Studio 18 2026" -A x64`，再构建 `F02_hazard_pointer_batches` 和 `F02_hazard_pointer_batches_reference`；CTest 过滤 `^F02_hazard_pointer_batches_reference$`。

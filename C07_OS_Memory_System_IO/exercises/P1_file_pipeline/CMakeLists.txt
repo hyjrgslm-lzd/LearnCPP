@@ -19,6 +19,8 @@ if(C07_STUDY_BUILD_REFERENCE)
     add_executable(P1_file_pipeline_demo checks/pipeline_demo.cpp)
     c07_configure_target(P1_file_pipeline_demo)
     target_include_directories(P1_file_pipeline_demo PRIVATE src/reference checks)
+    target_sources(P1_file_pipeline_demo PRIVATE
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/reference/pipeline.hpp")
     if(c07_p1_libs)
         target_link_libraries(P1_file_pipeline_demo PRIVATE ${c07_p1_libs})
     endif()
@@ -60,3 +62,6 @@ if(C07_STUDY_BUILD_REFERENCE)
         message(STATUS "P1_file_pipeline completion backend tests NOT_ENABLED")
     endif()
 endif()
+
+
+learncpp_setup_ide(P1_file_pipeline_student)

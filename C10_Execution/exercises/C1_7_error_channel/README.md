@@ -19,3 +19,6 @@
 ## 构建与判定
 
 按[构建指南](../BUILD_GUIDE.md)设置STDEXEC_ROOT后，单独配置本目录或root选择C1_7_error_channel。构建reference/validation_good/validation_bad并运行CTest；Student原名目标构建其_student实现，初态必须UNFINISHED/exit2。Reference OFF+STUDENT_ROOT注入good仍须通过。bad必须在`let_error returns fallback sender`处返回1，不能拿编译失败或崩溃当作正确拒绝。
+## IDE 工程入口
+
+VS solution 中本题主入口是 `C1_7_error_channel_student`。学生只编辑 `src/student/solution.hpp`；`main.cpp` 是共同检查器，Reference 在 `src/reference/solution.hpp`，good/bad 控制在 `validation` 下。`C1_7_error_channel` 聚合目标只负责显式构建学生目标，收在 Support；Reference 与控制目标保留为独立项目，用来区分答案、正确对照和错误拒绝。单题可用 `cmake -S <本目录> -B <build>` 独立生成。

@@ -78,3 +78,12 @@
 预测：`std::generator<T>` 是 move-only view/input_range，不是 forward_range；第一次 `begin()` 才启动协程执行，之后每次 `++` 推进到下一个 `co_yield`。`elements_of` 可以把另一个 range 或 generator 委托展开。
 
 当前程序用日志验证 begin 首次启动、递增继续执行，验证 generator 的 concept，并用真实 `std::generator` + `elements_of` 展平两个 vector。扩展时不要复制手写 generator；标准库缺能力时应 SKIP，有能力时主体失败就是 FAIL。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `D3_std_generator`。
+
+本题是观察题，没有本题内 `src/student/`、`src/reference/` 或 `validation/` 变体。
+- 源码入口：`main.cpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target D3_std_generator。
+修改后先重建 `D3_std_generator`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

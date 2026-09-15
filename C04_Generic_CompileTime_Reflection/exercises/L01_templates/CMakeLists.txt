@@ -18,6 +18,8 @@ add_executable(L01_templates_extern_template
     observations/extern_template/twice_instantiation.cpp)
 c04_configure_target(L01_templates_extern_template)
 target_include_directories(L01_templates_extern_template PRIVATE observations/extern_template)
+target_sources(L01_templates_extern_template PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/observations/extern_template/twice.hpp")
 c04_add_test(L01_templates_extern_template LABELS observation)
 
 c04_add_test(L01_templates_missing_extern_provider
@@ -27,3 +29,5 @@ c04_add_test(L01_templates_missing_extern_provider
         --generator "${CMAKE_GENERATOR}" --platform "${CMAKE_GENERATOR_PLATFORM}"
         --config "$<CONFIG>" --compiler "${CMAKE_CXX_COMPILER}"
     LABELS diagnostic TIMEOUT 420)
+
+learncpp_setup_ide(L01_templates_student)

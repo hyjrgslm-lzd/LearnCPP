@@ -19,3 +19,10 @@ ctest --test-dir C02_Objects_Lifetime_Ownership/exercises/L02_value_categories/b
 ```
 
 解析：`std::move` 只把表达式变成 xvalue；有名字的 `value` 在函数体里仍是 lvalue，所以错误 forward 版本无法传给只接受 `int&&` 的函数。`decltype(auto)` 保留引用，能修改原对象；普通 `auto` 复制值。
+
+
+## IDE 入口
+
+从本课 `exercises` 根目录或本题目录生成 Visual Studio 18 2026 x64 工程。主项目是 `L02_value_categories_observation`，可直接设为启动项运行观察或专项入口。
+没有 Student 编辑入口；运行/阅读：`checks/`、`negative/`。这些入口保留在题目分组内，作为观察、探测或负例诊断。
+构建主项目后运行 CTest 或 README 中列出的检查命令；负例/探测入口只读，用于观察诊断。

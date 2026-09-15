@@ -31,3 +31,10 @@
 实现 `constant<V>`、`fixed_string`、`named_value<Name, V>` 和 `apply_unary_template<F, T>`。
 
 解析：`auto` NTTP 让值类型从实参推导；`fixed_string` 让字符串字面量进入类型身份；模板模板参数接收“从类型到类型”的模板。
+
+
+## IDE 入口
+
+从本课 `exercises` 根目录或本题目录生成 Visual Studio 18 2026 x64 工程。主项目是 `L07_packs_student`；默认学生测试关闭时仍生成该项目，但它是 `EXCLUDE_FROM_ALL`，需显式构建。
+学生只编辑：`src/student/pack_tools.hpp`。 `checks/`、`validation/`、`src/reference/`、diagnostic、support 目标是只读对照/验证/实验入口，保留在题目分组内。
+修改 Student 后先重新构建对应目标，再运行 CTest 或 README 中列出的检查命令。

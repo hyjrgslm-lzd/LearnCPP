@@ -8,3 +8,4 @@ c03_add_exercise(
     CHECK checks/invariant_checks.cpp
     BAD_DIAGNOSTIC "constructor rejects values outside range")
 
+learncpp_setup_ide(L01_invariants_student)

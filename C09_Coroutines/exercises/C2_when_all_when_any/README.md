@@ -64,3 +64,14 @@ when_any(fetch_remote(), timeout_after(200ms))
 | Part 4 | 200ms/400ms 超时对照 | 作为单独观察输出保留，不能替代 gated 正确性检查 |
 
 完成前：`when_all/when_any` 的 TODO stub 会有限失败；学生实现后，同一个 gate 可以接受单线程事件循环或多线程 fan-out。
+
+## IDE 与单题构建
+
+Visual Studio 中主启动目标是 `C2_when_all_when_any`；Reference、Checks、Support 目标保留在同题分组中。学生编辑入口和本题 README/CMake 文件会显示在目标文件树里。
+
+```powershell
+cmake -S . -B build/vs -G "Visual Studio 18 2026" -A x64 -DCOROUTINE_STUDY_BUILD_REFERENCE=ON
+cmake --build build/vs --config Debug --target C2_when_all_when_any
+```
+
+普通题不需要额外依赖；Reference 由 `COROUTINE_STUDY_BUILD_REFERENCE` 控制。 `BUILD_TESTING=OFF` 只关闭测试注册，不删除本题可执行目标；不要手工编辑生成的 `.sln` 或 `.vcxproj`。

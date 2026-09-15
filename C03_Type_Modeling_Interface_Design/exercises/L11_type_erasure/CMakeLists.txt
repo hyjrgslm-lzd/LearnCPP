@@ -14,6 +14,9 @@ if(TYPE_STUDY_BUILD_REFERENCE)
     target_include_directories(L11_type_erasure_validation_bad_empty PRIVATE
         "${CMAKE_CURRENT_SOURCE_DIR}/validation/bad_empty"
         "${CMAKE_CURRENT_SOURCE_DIR}/checks")
+    target_sources(L11_type_erasure_validation_bad_empty PRIVATE
+        "${CMAKE_CURRENT_SOURCE_DIR}/validation/bad_empty/any_shape.hpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/checks/shape_types.hpp")
     c03_add_test(L11_type_erasure_validation_bad_empty_rejected
         COMMAND ${CMAKE_COMMAND}
             "-DEXECUTABLE=$<TARGET_FILE:L11_type_erasure_validation_bad_empty>"
@@ -22,3 +25,4 @@ if(TYPE_STUDY_BUILD_REFERENCE)
         LABELS negative)
 endif()
 
+learncpp_setup_ide(L11_type_erasure_student)

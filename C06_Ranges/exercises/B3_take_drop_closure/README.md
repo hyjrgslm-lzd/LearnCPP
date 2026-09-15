@@ -121,3 +121,12 @@ take_while 是前缀截断，filter 是全局跳过式筛选，两者根本不�
 预测：对 sized/random_access 底层，`take` / `drop` 常能保留 sized 和 random_access；对 list 底层只能保留 bidirectional；对无界 iota 截断后的 common/sized 状态由具体适配器决定。`take_while` 由谓词决定停止点，通常不能保持 sized。
 
 当前程序检查 take/drop/drop_while/take_while 的输出，并验证预组合 closure 与直接管道类型一致。扩展时把观察项落实成实际 `static_assert` + `check`，完成标准是行为和类型都被观察到。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `B3_take_drop_closure`。
+
+本题是观察题，没有本题内 `src/student/`、`src/reference/` 或 `validation/` 变体。
+- 源码入口：`main.cpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target B3_take_drop_closure。
+修改后先重建 `B3_take_drop_closure`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

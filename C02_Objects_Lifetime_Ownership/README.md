@@ -50,3 +50,15 @@
 ## C04 泛型与编译期桥接
 
 [进入C04课程](../C04_Generic_CompileTime_Reflection/README.md)。C04展开推导、引用折叠、转发、泛型约束和常量求值。对象存活、借用与存储仍由本课主讲；模板包装能保留值类别，不会自动延长对象生命期。
+
+## IDE 工程入口
+
+本课 Visual Studio 入口统一从 `C02_Objects_Lifetime_Ownership/exercises` 或单题目录生成：
+
+```powershell
+cmake -S C02_Objects_Lifetime_Ownership/exercises -B C02_Objects_Lifetime_Ownership/exercises/build/ide-refactor -G "Visual Studio 18 2026" -A x64 -DBUILD_TESTING=ON
+cmake --build C02_Objects_Lifetime_Ownership/exercises/build/ide-refactor --config Debug --target <目标名>
+ctest --test-dir C02_Objects_Lifetime_Ownership/exercises/build/ide-refactor -C Debug -R <测试名> --output-on-failure
+```
+
+默认 Reference/validation/observation 目标用于教学对照；Student 目标在学生测试关闭时仍出现在工程中，但不会进入默认全量构建。每题 README 的“IDE 入口”列出启动目标、编辑目录和保留辅助目标原因。

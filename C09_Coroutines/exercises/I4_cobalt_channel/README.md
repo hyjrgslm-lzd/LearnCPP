@@ -35,3 +35,14 @@ ctest --test-dir build/heavy-cobalt-linux -R I4_cobalt_channel_reference --outpu
 回读代码时看 `producer` 的三次 `write` 与 `consumer` 的三次 `read` 如何交替推进，再看 `gather` 等两个 awaitable 完成、`race` 只返回最先完成者。
 
 **答案解析：** 背压发生在 `ch.write` 的 await 点：没有 reader 时 producer 挂起并释放 executor。`gather(producer, delay)` 等两条 awaitable 都完成后才继续，随后 `co_await c` 读取 consumer 的结果；`race` 则在第一个 awaitable 完成时返回 winner index。
+
+## IDE 与单题构建
+
+Visual Studio 中主启动目标是 `I4_cobalt_channel`；Reference、Checks、Support 目标保留在同题分组中。学生编辑入口和本题 README/CMake 文件会显示在目标文件树里。
+
+```powershell
+cmake -S . -B build/vs -G "Visual Studio 18 2026" -A x64 -DCOROUTINE_STUDY_BUILD_REFERENCE=ON -DCOROUTINE_STUDY_ENABLE_COBALT=ON -DCMAKE_PREFIX_PATH=<existing-boost-prefix>
+cmake --build build/vs --config Debug --target I4_cobalt_channel
+```
+
+本题单独配置需要 `-DCOROUTINE_STUDY_ENABLE_COBALT=ON`，并提前准备 Boost.Cobalt。Boost.Cobalt 需要本机已有 Boost 1.92+ 安装，通过 CMAKE_PREFIX_PATH 指向；本配置不负责下载或安装 Boost。 缺依赖时配置阶段直接失败，不生成空工程。 `BUILD_TESTING=OFF` 只关闭测试注册，不删除本题可执行目标；不要手工编辑生成的 `.sln` 或 `.vcxproj`。

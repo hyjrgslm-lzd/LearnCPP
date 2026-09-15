@@ -41,3 +41,4 @@ if(L08_UNIQUE_BUILD_VALIDATION_VARIANTS)
     core_configure_target(L08_unique_validation_bad_release_keeps_owner)
 endif()
 
+learncpp_setup_ide(L08_unique_student)

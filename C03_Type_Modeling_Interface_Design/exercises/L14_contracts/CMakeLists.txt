@@ -3,3 +3,5 @@ project(L14_contracts LANGUAGES CXX)
 include(../cmake/StudySetup.cmake)
 
 c03_add_observation(L14_contracts_observation contracts_observation.cpp)
+
+learncpp_setup_ide(L14_contracts_observation)

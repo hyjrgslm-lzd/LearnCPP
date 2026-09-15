@@ -17,3 +17,5 @@ c04_add_compile_case(
     CONTROL validation/diagnostics/non_dependent_error_control.cpp
     PATTERN "error C3861"
 )
+
+learncpp_setup_ide(L06_constraints_student)

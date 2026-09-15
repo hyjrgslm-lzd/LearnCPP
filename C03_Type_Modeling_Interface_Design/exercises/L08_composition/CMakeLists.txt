@@ -4,3 +4,4 @@ include(../cmake/StudySetup.cmake)
 
 c03_add_observation(L08_composition_observation observation/composition_observation.cpp)
 
+learncpp_setup_ide(L08_composition_observation)

@@ -17,3 +17,16 @@
 ## 解析
 
 映射不是把整个文件复制进内存。view 背后仍有页、保护位、文件偏移和平台对象寿命。关闭 fd/HANDLE 不等于 view 立刻失效，但 owner 设计要让这些事实有单一释放顺序。学生代码若用普通 `ifstream` 截字符串、只返回 bool 或忽略 offset 对齐，checker 会在规划字段、真实 owner 字节和 shared/private 文件状态处拒绝。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `L04_mapping_student`。
+
+本题是实现题。学习者只改 Student 入口；Reference、validation 和 checks 只用于对照与验证。
+- Student 入口：`src/student/mapping_lab.hpp`。
+- Checker 入口：`checks/mapping_checks.cpp`。
+- Reference 对照：`src/reference/mapping_lab.hpp`。
+- validation/good 对照：`validation/good/mapping_lab.hpp`。
+- validation/bad 反例：`validation/bad/mapping_lab.hpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target L04_mapping_student。
+修改后先重建 `L04_mapping_student`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

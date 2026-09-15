@@ -29,6 +29,8 @@ if(TYPE_STUDY_BUILD_REFERENCE)
     target_include_directories(L07_interfaces_validation_bad_rvalue PRIVATE
         "${CMAKE_CURRENT_SOURCE_DIR}/validation/bad_rvalue"
         "${CMAKE_CURRENT_SOURCE_DIR}/checks")
+    target_sources(L07_interfaces_validation_bad_rvalue PRIVATE
+        "${CMAKE_CURRENT_SOURCE_DIR}/validation/bad_rvalue/owner.hpp")
     c03_add_test(L07_interfaces_validation_bad_rvalue_rejected
         COMMAND ${CMAKE_COMMAND}
             "-DEXECUTABLE=$<TARGET_FILE:L07_interfaces_validation_bad_rvalue>"
@@ -37,3 +39,5 @@ if(TYPE_STUDY_BUILD_REFERENCE)
         LABELS negative
         TIMEOUT 30)
 endif()
+
+learncpp_setup_ide(L07_interfaces_student)

@@ -69,3 +69,13 @@ ctest --test-dir build/c08-logging-author -C Release -R U01_async_logging --outp
 ```
 
 预期结果：`U01_async_logging_reference` 和 `U01_async_logging_good` 通过；两个 bad variant 被 `expect_failure.cmake` 成功拒绝。Starter 只有显式设置 `CONCURRENCY_STUDY_TEST_STARTERS=ON` 时才注册，初始状态会失败，提示 Part 1-4 未完成。
+
+## IDE 与工程入口
+
+Visual Studio 方案中，主入口目标是 `U01_async_logging`，位于本题节点顶层；单题独立配置时它是启动目标。`U01_async_logging_reference` 在 `Reference` 分组。
+
+学生/观察入口：`src/student/async_logging_submission.hpp`；`main.cpp` 是运行入口。
+
+Reference 与检查：`src/reference/async_logging_submission.hpp`、`validation/good`、`validation/bad_*`、`checks.hpp` 与 `expect_failure.cmake` 是答案/检查/负例路径，只读对照。
+
+单题命令：专项构建使用本 README 下方 U01 命令：打开 `CONCURRENCY_STUDY_ENABLE_SPDLOG=ON`，构建 `U01_async_logging_checked`，再用 `ctest -R U01_async_logging` 运行 good/bad 判分。

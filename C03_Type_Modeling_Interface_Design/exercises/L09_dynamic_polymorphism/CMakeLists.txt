@@ -14,6 +14,8 @@ if(TYPE_STUDY_BUILD_REFERENCE)
     target_include_directories(L09_dynamic_polymorphism_validation_bad_alias PRIVATE
         "${CMAKE_CURRENT_SOURCE_DIR}/validation/bad_alias"
         "${CMAKE_CURRENT_SOURCE_DIR}/checks")
+    target_sources(L09_dynamic_polymorphism_validation_bad_alias PRIVATE
+        "${CMAKE_CURRENT_SOURCE_DIR}/validation/bad_alias/shape.hpp")
     c03_add_test(L09_dynamic_polymorphism_validation_bad_alias_rejected
         COMMAND ${CMAKE_COMMAND}
             "-DEXECUTABLE=$<TARGET_FILE:L09_dynamic_polymorphism_validation_bad_alias>"
@@ -26,6 +28,8 @@ if(TYPE_STUDY_BUILD_REFERENCE)
     target_include_directories(L09_dynamic_polymorphism_validation_bad_wrong_value PRIVATE
         "${CMAKE_CURRENT_SOURCE_DIR}/validation/bad_wrong_value"
         "${CMAKE_CURRENT_SOURCE_DIR}/checks")
+    target_sources(L09_dynamic_polymorphism_validation_bad_wrong_value PRIVATE
+        "${CMAKE_CURRENT_SOURCE_DIR}/validation/bad_wrong_value/shape.hpp")
     c03_add_test(L09_dynamic_polymorphism_validation_bad_wrong_value_rejected
         COMMAND ${CMAKE_COMMAND}
             "-DEXECUTABLE=$<TARGET_FILE:L09_dynamic_polymorphism_validation_bad_wrong_value>"
@@ -33,3 +37,5 @@ if(TYPE_STUDY_BUILD_REFERENCE)
             -P "${CMAKE_CURRENT_SOURCE_DIR}/../cmake/expect_failure.cmake"
         LABELS negative)
 endif()
+
+learncpp_setup_ide(L09_dynamic_polymorphism_student)

@@ -184,3 +184,14 @@ ctest --test-dir C09_Coroutines/exercises/build/verify-core -C Release -R "mini_
    **答案解析：** stdexec sender 的 `start()` 可以同步调用 receiver completion，也可能异步完成，还可能在等待协程销毁后才完成。atomic phase 把 `starting/suspended/completed/abandoned` 四种状态分开：同步完成时 `await_suspend` 返回 false，异步完成时 completion 恢复 caller，abandoned 时避免恢复已销毁 caller。reference 的 `stdexec_awaitable.hpp` 正是为这个窗口写的。
 
 本项目完成后，再读 cppcoro、folly coro 或 stdexec task 时，可以把它们的复杂代码映射回这些小组件。
+
+## IDE 与单题构建
+
+Visual Studio 中主启动目标是 `Capstone5_mini_corolib`；Reference、Checks、Support 目标保留在同题分组中。学生编辑入口和本题 README/CMake 文件会显示在目标文件树里。
+
+```powershell
+cmake -S . -B build/vs -G "Visual Studio 18 2026" -A x64 -DCOROUTINE_STUDY_BUILD_REFERENCE=ON
+cmake --build build/vs --config Debug --target Capstone5_mini_corolib
+```
+
+普通题不需要额外依赖；Reference 由 `COROUTINE_STUDY_BUILD_REFERENCE` 控制。 `BUILD_TESTING=OFF` 只关闭测试注册，不删除本题可执行目标；不要手工编辑生成的 `.sln` 或 `.vcxproj`。

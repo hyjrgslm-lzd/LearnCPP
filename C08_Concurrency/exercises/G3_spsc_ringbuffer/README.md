@@ -32,3 +32,13 @@ ctest --test-dir build/g3 -C Release --output-on-failure
 ```
 
 基准 variant 为 spsc 和 spsc-cached，必须 --producers 1 --consumers 1；可用容量与基线一致，具体外部采样见[验证与基准](../../topics/queues/08-validation-and-benchmark.md)。
+
+## IDE 与工程入口
+
+Visual Studio 方案中，主入口目标是 `G3_spsc_ringbuffer`，位于本题节点顶层；单题独立配置时它是启动目标。`G3_spsc_ringbuffer_reference` 在 `Reference` 分组。
+
+学生/观察入口：`main.cpp` 是观察/实验入口，用来预测、运行和记录现象；本题不声明待填学生实现。
+
+Reference 与检查：`solution.cpp` 是 Reference/检查路径，只读对照。
+
+单题命令：从 `C08_Concurrency/exercises` 可独立配置：`cmake -S G3_spsc_ringbuffer -B build/G3_spsc_ringbuffer-ide -G "Visual Studio 18 2026" -A x64`，再构建 `G3_spsc_ringbuffer` 和 `G3_spsc_ringbuffer_reference`；CTest 过滤 `^G3_spsc_ringbuffer_reference$`。

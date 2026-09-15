@@ -4,12 +4,26 @@ include(../cmake/StudySetup.cmake)
 if(C11_BUILD_REFERENCE)
   add_executable(C11_L04_reactor reactor.cpp)
   c11_target(C11_L04_reactor)
+  target_sources(C11_L04_reactor PRIVATE
+    "${C11_EXERCISES}/include/c11/connection.hpp"
+    "${C11_EXERCISES}/include/c11/frame.hpp"
+    "${C11_EXERCISES}/include/c11/frame_contract.hpp"
+    "${C11_EXERCISES}/include/c11/reactor.hpp"
+    "${C11_EXERCISES}/include/c11/socket.hpp"
+    "${C11_EXERCISES}/include/c11/write_queue.hpp")
   c11_test(C11_L04_reactor C11_L04_reactor LABEL reference TIMEOUT 30)
   if(WIN32)
     add_executable(C11_L04_iocp iocp.cpp)
     c11_target(C11_L04_iocp)
+    target_sources(C11_L04_iocp PRIVATE "${C11_EXERCISES}/include/c11/socket.hpp")
     c11_test(C11_L04_iocp C11_L04_iocp LABEL reference)
   endif()
+endif()
+
+if(TARGET C11_L04_reactor)
+  learncpp_setup_ide("C11_L04_reactor")
+else()
+  learncpp_setup_ide("")
 endif()
 
 if(C11_BUILD_REFERENCE AND CMAKE_SYSTEM_NAME STREQUAL "Linux")

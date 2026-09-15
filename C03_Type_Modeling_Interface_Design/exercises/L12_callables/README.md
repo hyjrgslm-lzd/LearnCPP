@@ -21,3 +21,10 @@ ctest --test-dir build/author-c-l12 -C Release --output-on-failure
 ```
 
 解析：如果只是立即调用，模板参数加 `std::invoke` 通常比类型擦除更简单。需要保存可复制行为时用 `std::function`，需要保存 move-only 行为时用 `std::move_only_function`。`move_only_function` 的函数类型不是装饰文字：`&` 会进入可调用性约束，`const noexcept` 会进入 const 调用和不抛调用契约。C++26 `std::copyable_function` 和 `std::function_ref` 的真实标准接口由 `F01_frontier` 单独探测。
+
+
+## IDE 入口
+
+从本课 `exercises` 根目录或本题目录生成 Visual Studio 18 2026 x64 工程。主项目是 `L12_callables_observation`，可直接设为启动项运行观察或专项入口。
+没有 Student 编辑入口；运行/阅读：`callables_observation.cpp`。这些入口保留在题目分组内，作为观察、探测或负例诊断。
+构建主项目后运行 CTest 或 README 中列出的检查命令；负例/探测入口只读，用于观察诊断。

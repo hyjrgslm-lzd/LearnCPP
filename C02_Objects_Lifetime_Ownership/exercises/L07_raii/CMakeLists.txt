@@ -48,3 +48,5 @@ if(L07_RAII_BUILD_VALIDATION_VARIANTS)
     target_include_directories(L07_raii_validation_bad_support_shadow PRIVATE checks/support validation/bad_support_shadow checks)
     core_configure_target(L07_raii_validation_bad_support_shadow)
 endif()
+
+learncpp_setup_ide(L07_raii_student)

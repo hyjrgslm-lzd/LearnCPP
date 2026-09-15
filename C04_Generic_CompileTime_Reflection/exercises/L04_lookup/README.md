@@ -37,3 +37,10 @@
 ## 验证入口
 
 本题注册 Reference、good、bad、observation 和一个编译诊断 case。Student 初始实现能编译，但应被 checker 拒绝。过程记录写入本地未跟踪目录，不随课程源码提交。
+
+
+## IDE 入口
+
+从本课 `exercises` 根目录或本题目录生成 Visual Studio 18 2026 x64 工程。主项目是 `L04_lookup_student`；默认学生测试关闭时仍生成该项目，但它是 `EXCLUDE_FROM_ALL`，需显式构建。
+学生只编辑：`src/student/lookup_probe.hpp`。 `checks/`、`validation/`、`src/reference/`、diagnostic、support 目标是只读对照/验证/实验入口，保留在题目分组内。
+修改 Student 后先重新构建对应目标，再运行 CTest 或 README 中列出的检查命令。

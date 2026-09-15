@@ -32,3 +32,6 @@ c05_add_test(U02_fmt_bad_compile_format_rejected COMMAND "${Python3_EXECUTABLE}"
     --config "$<CONFIG>" --compiler "${CMAKE_CXX_COMPILER}" --setup "${_diag_setup}"
     LABELS diagnostic TIMEOUT 420)
 set_tests_properties(U02_fmt_bad_compile_format_rejected PROPERTIES RUN_SERIAL TRUE)
+
+
+learncpp_setup_ide(U02_fmt_observation BROWSE diagnostics/good_compile_format.cpp diagnostics/bad_compile_format.cpp)

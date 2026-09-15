@@ -36,3 +36,5 @@
 ## C11 网络服务衔接
 
 系统 readiness/completion 之后，可进入连接、分帧、背压与协议状态机。进入 [C11 网络编程与服务设计](../C11_Networking_Service_Design/README.md)。
+
+IDE 工程入口见 [构建与验证](exercises/BUILD_GUIDE.md#visual-studio-工程结构)；每题 README 标出启动 target 与编辑位置，L09 保留运行时 DLL 参数。

@@ -48,3 +48,14 @@ Poll 14 / P3828R1 把前沿工具名从 `to_input` 改为 `as_input`。本项目
 - 四份 notes 都有实质解析，并能对应到固定源码入口。
 - 解释缓存、iterator 能力、borrowed、CPO 的原因，而不是只列符号。
 - 标准更新口径与 `references/standards.md` 一致。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `CAPSTONE3_impl_source_reading`。
+
+本题是观察题，没有本题内 `src/student/`、`src/reference/` 或 `validation/` 变体。
+- 源码入口：`main.cpp`。
+- 诊断或辅助入口：`notes/01_object_diagram.md`、`notes/02_pattern_table.md`、`notes/03_cpo_checklist.md`、`notes/04_reading_note.md`。
+- 导读或设计材料：`notes/01_object_diagram.md`、`notes/02_pattern_table.md`、`notes/03_cpo_checklist.md`、`notes/04_reading_note.md`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target CAPSTONE3_impl_source_reading。
+修改后先重建 `CAPSTONE3_impl_source_reading`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

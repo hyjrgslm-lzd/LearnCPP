@@ -8,3 +8,6 @@ ranges_add_exercise(
     CHECK main.cpp
     BAD_DIAGNOSTIC "push growth failure keeps old capacity"
 )
+
+
+learncpp_setup_ide(L05_dynamic_array_student)

@@ -10,3 +10,5 @@ c04_add_observation(A05_direct_write_bad observations/direct_write_bad.cpp)
 c04_add_compile_case(NAME A05_diag_size SOURCE validation/diagnostics/size_mismatch.cpp
     CONTROL validation/diagnostics/control.cpp PATTERN "C2676|C2672|constraints not satisfied|no matching"
     SETUP validation/diagnostics/setup.cmake)
+
+learncpp_setup_ide(A05_expression_templates_student)

@@ -104,3 +104,16 @@ ctest --test-dir /root/learncpp-c07/build-l08 -R "L08_completion" --output-on-fa
 ## 解析
 
 通过默认测试说明 ledger 校验能区分正常完成、取消竞态和代表性错误状态。通过 platform 测试说明当前平台驱动能产生一份被同一 ledger 校验接受的真实完成记录。两者合起来仍不证明通用异步框架完成，也不证明性能收益。它只证明本题有限 request_id、payload、取消和 drain 契约闭合。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `L08_completion_student`。
+
+本题是实现题。学习者只改 Student 入口；Reference、validation 和 checks 只用于对照与验证。
+- Student 入口：`src/student/completion.hpp`。
+- Checker 入口：`checks/completion_checks.cpp`。
+- Reference 对照：`src/reference/completion.hpp`。
+- validation/good 对照：`validation/good/completion.hpp`。
+- validation/bad 反例：`validation/bad/completion.hpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target L08_completion_student。
+修改后先重建 `L08_completion_student`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

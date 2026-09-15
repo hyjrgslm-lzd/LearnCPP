@@ -30,3 +30,13 @@ ctest --test-dir build/g2 -C Release --output-on-failure
 ```
 
 Reference 不靠 sleep 安排时序，future.get 回传 worker 异常。strong 能去掉伪失败，不能识别值的历史；全 SC 也无法消除这个合法逻辑交错。
+
+## IDE 与工程入口
+
+Visual Studio 方案中，主入口目标是 `G2_aba_problem`，位于本题节点顶层；单题独立配置时它是启动目标。`G2_aba_problem_reference` 在 `Reference` 分组。
+
+学生/观察入口：`main.cpp` 是观察/实验入口，用来预测、运行和记录现象；本题不声明待填学生实现。
+
+Reference 与检查：`solution.cpp`、`reference.hpp` 是 Reference/检查路径，只读对照。
+
+单题命令：从 `C08_Concurrency/exercises` 可独立配置：`cmake -S G2_aba_problem -B build/G2_aba_problem-ide -G "Visual Studio 18 2026" -A x64`，再构建 `G2_aba_problem` 和 `G2_aba_problem_reference`；CTest 过滤 `^G2_aba_problem_reference$`。

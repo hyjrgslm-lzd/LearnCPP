@@ -11,11 +11,17 @@ endif()
 cs_add_exercise(U01_async_logging IMPLEMENTATION)
 target_include_directories(U01_async_logging PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/src/student")
+target_sources(U01_async_logging PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/checks.hpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/student/async_logging_submission.hpp")
 cs_link_spdlog(U01_async_logging)
 
 if(CONCURRENCY_STUDY_BUILD_REFERENCE)
     target_include_directories(U01_async_logging_reference PRIVATE
         "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/src/reference")
+    target_sources(U01_async_logging_reference PRIVATE
+        "${CMAKE_CURRENT_SOURCE_DIR}/checks.hpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/reference/async_logging_submission.hpp")
     cs_link_spdlog(U01_async_logging_reference)
 
     foreach(case IN ITEMS good bad_overflow bad_flush)
@@ -24,6 +30,9 @@ if(CONCURRENCY_STUDY_BUILD_REFERENCE)
         cs_configure_target(${target})
         target_include_directories(${target} PRIVATE
             "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/validation/${case}")
+        cs_add_visible_files(${target}
+            "${CMAKE_CURRENT_SOURCE_DIR}/checks.hpp"
+            "${CMAKE_CURRENT_SOURCE_DIR}/validation/${case}/async_logging_submission.hpp")
         cs_link_spdlog(${target})
     endforeach()
 
@@ -48,4 +57,8 @@ if(CONCURRENCY_STUDY_BUILD_REFERENCE)
         set_tests_properties(U01_async_logging_bad_overflow_rejected PROPERTIES TIMEOUT ${CS_U01_EXPECT_FAILURE_CTEST_TIMEOUT} LABELS negative)
         set_tests_properties(U01_async_logging_bad_flush_rejected PROPERTIES TIMEOUT ${CS_U01_EXPECT_FAILURE_CTEST_TIMEOUT} LABELS negative)
     endif()
+endif()
+if(COMMAND learncpp_setup_ide)
+    learncpp_setup_ide(U01_async_logging FILES
+        "${CMAKE_CURRENT_SOURCE_DIR}/expect_failure.cmake")
 endif()

@@ -3,3 +3,6 @@ project(L02_sequence_containers LANGUAGES CXX)
 include(../cmake/RangesSetup.cmake)
 
 ranges_add_observation(L02_sequence_containers main.cpp)
+
+
+learncpp_setup_ide(L02_sequence_containers)

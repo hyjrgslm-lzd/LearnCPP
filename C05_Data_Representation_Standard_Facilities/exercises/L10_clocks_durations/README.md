@@ -17,3 +17,12 @@ ctest --test-dir build/leaf-L10 -C Release --output-on-failure
 ```
 
 解析：通过只说明这些检查在当前进程里成立；它不证明 `system_clock` 永不调整，也不把 `steady_clock` 的 epoch 变成可序列化数据。序列化时间请用显式 UTC Unix 毫秒，显示时再选时区。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `L10_clocks_durations_observation`。
+
+本题是观察题，没有本题内 `src/student/`、`src/reference/` 或 `validation/` 变体。
+- 源码入口：`observation.cpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target L10_clocks_durations_observation。
+修改后先重建 `L10_clocks_durations_observation`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

@@ -47,3 +47,13 @@ Reference 的 stopped_int 声明一个 int 成功签名及 stopped 签名，在 
 N5050 的标准 consumer 是 `std::this_thread::sync_wait`，不是 `std::execution::sync_wait`。本题运行的是 `stdexec::sync_wait`；`exec::static_thread_pool` 是具体库资源。二者不能仅凭相似名字认定逐字等价。源码与正文参考链接均固定版本，滚动 eel 不作为 C++26 定版证据。
 
 作者已运行固定依赖的 Release Reference，value/error/stopped/join/recovery 全部检查通过；依赖头自身有 MSVC 对齐及局部名称遮蔽警告。最新验证和不可测项见[记录](../../topics/scheduling/verification.md)。
+
+## IDE 与工程入口
+
+Visual Studio 方案中，主入口目标是 `M2_execution_bridge`，位于本题节点顶层；单题独立配置时它是启动目标。`M2_execution_bridge_reference` 在 `Reference` 分组。
+
+学生/观察入口：`main.cpp` 是观察/实验入口，用来预测、运行和记录现象；本题不声明待填学生实现。
+
+Reference 与检查：`solution.cpp` 是 Reference/检查路径，只读对照。
+
+单题命令：从 `C08_Concurrency/exercises` 可独立配置：`cmake -S M2_execution_bridge -B build/M2_execution_bridge-ide -G "Visual Studio 18 2026" -A x64`，再构建 `M2_execution_bridge` 和 `M2_execution_bridge_reference`；CTest 过滤 `^M2_execution_bridge_reference$`。

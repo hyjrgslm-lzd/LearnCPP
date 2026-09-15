@@ -23,3 +23,6 @@ ctest --test-dir build/c11-l05 -C Release -R '^C11_L05_student$' --output-on-fai
 在现有检查旁写出三条历史：满载时同键重试、running 取消后新接纳、终态 TTL 到期。预测 live/retained/snapshot，再运行 Reference 对照。
 
 解析：同键同 spec 不增 live，在满载时仍返回原身份；不同 spec 冲突。queued 取消无需等待 worker，running 取消只写 stop_requested 并保留 live，finish 才释放。records 包含终态保留项，TTL 从 ended 计时，不能淘汰 active。id 耗尽明确失败，不能回绕复用旧身份。订阅初始快照与登记同一 owner 操作完成，慢消费者关闭订阅且不取消任务。
+## IDE 工程入口
+
+VS solution 中本题主入口是 `C11_L05_student`。学生只编辑 `student/solution.hpp`；`checks.cpp` 是共同检查器，Reference/good/bad 和额外 bad 控制保持独立项目，用来区分答案、正确对照和错误拒绝。单题可用 `cmake -S <本目录> -B <build>` 独立生成，`C11_TEST_STUDENTS` 只控制是否把未完成 Student 注册进 CTest。

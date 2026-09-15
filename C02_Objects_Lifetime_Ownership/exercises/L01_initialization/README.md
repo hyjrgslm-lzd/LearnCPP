@@ -19,3 +19,10 @@ ctest --test-dir C02_Objects_Lifetime_Ownership/exercises/L01_initialization/bui
 ```
 
 解析：default-initialized 自动标量存在，但值未确定，本题不读取它。`int{}`、`Defaults{}` 和 `std::array{...}` 都走安全检查。窄化和 `constinit` 动态初始化是编译期反例；通过 CTest wrapper 匹配诊断文本，而不是运行错误程序。
+
+
+## IDE 入口
+
+从本课 `exercises` 根目录或本题目录生成 Visual Studio 18 2026 x64 工程。主项目是 `L01_initialization_observation`，可直接设为启动项运行观察或专项入口。
+没有 Student 编辑入口；运行/阅读：`checks/`、`negative/`。这些入口保留在题目分组内，作为观察、探测或负例诊断。
+构建主项目后运行 CTest 或 README 中列出的检查命令；负例/探测入口只读，用于观察诊断。

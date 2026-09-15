@@ -29,3 +29,10 @@ cmake -S C04_Generic_CompileTime_Reflection/exercises/U02_hana -B C04_Generic_Co
 cmake --build C04_Generic_CompileTime_Reflection/exercises/U02_hana/build/local --config Debug
 ctest --test-dir C04_Generic_CompileTime_Reflection/exercises/U02_hana/build/local -C Debug --output-on-failure
 ```
+
+
+## IDE 入口
+
+从本课 `exercises` 根目录或本题目录生成 Visual Studio 18 2026 x64 工程。主项目是 `U02_hana_record_observation`，可直接设为启动项运行观察或专项入口。
+没有 Student 编辑入口；运行/阅读：`observations/`。这些入口保留在题目分组内，作为观察、探测或负例诊断。
+构建主项目后运行 CTest 或 README 中列出的检查命令；负例/探测入口只读，用于观察诊断。

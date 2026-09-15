@@ -8,3 +8,6 @@ ranges_add_exercise(
     CHECK main.cpp
     BAD_DIAGNOSTIC "dereference does not copy the callable"
 )
+
+
+learncpp_setup_ide(G2_my_transform_closure_student)

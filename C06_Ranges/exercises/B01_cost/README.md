@@ -32,3 +32,13 @@ C06_Ranges\exercises\B01_cost\build-author\Release\B01_cost.exe --bench-one --ca
 ## 结果边界
 
 计数版和计时版分开运行。计数版记录 `parse_calls`、比较次数、hash 次数和 equal 次数；计时版记录同一算法函数在少插桩路径下的耗时，日志流水线的 `parse_calls` 为 0，避免把计数写入计时区间。计数能说明调用次数，不能推出 cache miss、分支预测或分配器根因。每次 `--bench-one` 都和本进程独立 oracle 比对，日志 checksum 覆盖 `timestamp`、`level`、`user_id`、`message`。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `B01_cost`。
+
+本题是观察题，没有本题内 `src/student/`、`src/reference/` 或 `validation/` 变体。
+- 源码入口：`main.cpp`。
+- 导读或设计材料：`notes/author-validation.md`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target B01_cost。
+修改后先重建 `B01_cost`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

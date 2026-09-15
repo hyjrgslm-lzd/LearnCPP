@@ -199,3 +199,16 @@ stateful表示对象保存了偏移量等参数，不表示调用时可以修改
 本题Stateful的operator()是纯`value + delta`。复制构造只记录外部诊断计数；记录view构造完成后的计数，再验证解引用没有额外复制，并且重复遍历得到相同结果。更改原始callable的delta后，view仍用自己的副本。bad仍是每次解引用复制callable，但不再用违反标准前提的“累加调用次数改变返回值”来检验它。
 
 一手依据：[regular_invocable](https://eel.is/c++draft/concept.regularinvocable)、[transform_view约束](https://eel.is/c++draft/range.transform.view)。修改前的最小语义复现是只调用普通函数即可让同一参数返回不同结果；不要把这种函数传给标准view运行，也不要用它判定标准`transform_view`语义。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `G2_my_transform_closure_student`。
+
+本题是实现题。学习者只改 Student 入口；Reference、validation 和 checks 只用于对照与验证。
+- Student 入口：`src/student/my_transform_view.hpp`。
+- Checker 入口：`main.cpp`。
+- Reference 对照：`src/reference/my_transform_view.hpp`。
+- validation/good 对照：`validation/good/my_transform_view.hpp`。
+- validation/bad 反例：`validation/bad/my_transform_view.hpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target G2_my_transform_closure_student。
+修改后先重建 `G2_my_transform_closure_student`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

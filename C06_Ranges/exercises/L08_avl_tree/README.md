@@ -24,3 +24,16 @@
 checker 不信 `is_balanced()` 自报，会沿 inspector 递归重算 BST 上下界、循环、节点数、实际高度、stored height 和每个节点平衡因子。
 
 解析：递归 `insert_node` 必须返回修复后的子树根，父节点或 `root_` 立刻接住这个返回值。`height(nullptr)=0`，`refresh(node)=max(left,right)+1`。右旋顺序是 `B=A.left; A.left=B.right; refresh(A); B.right=A; refresh(B); return B`，左旋对称。LR 是先左旋左孩子再右旋当前节点，RL 是先右旋右孩子再左旋当前节点。bad 控制体只处理单旋，不处理 LR/RL，会被 `lr rotation keeps sorted balanced tree` 拒绝；额外 fake vector 和 stale height 坏例分别验证 checker 真的看结构。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `L08_avl_tree_student`。
+
+本题是实现题。学习者只改 Student 入口；Reference、validation 和 checks 只用于对照与验证。
+- Student 入口：`src/student/avl_set.hpp`。
+- Checker 入口：`checks/avl_checks.cpp`。
+- Reference 对照：`src/reference/avl_set.hpp`。
+- validation/good 对照：`validation/good/avl_set.hpp`。
+- validation/bad 反例：`validation/bad/avl_set.hpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target L08_avl_tree_student。
+修改后先重建 `L08_avl_tree_student`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

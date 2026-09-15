@@ -12,5 +12,11 @@ ranges_configure_target(B01_cost)
 target_include_directories(B01_cost PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/../CAPSTONE1_log_pipeline/include"
     "${CMAKE_CURRENT_SOURCE_DIR}/../CAPSTONE1_log_pipeline/src/reference")
+target_sources(B01_cost PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/../CAPSTONE1_log_pipeline/include/log_pipeline_data.hpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../CAPSTONE1_log_pipeline/src/reference/log_pipeline.hpp")
 
 ranges_add_test(B01_cost_check COMMAND B01_cost --check LABELS benchmark TIMEOUT 30)
+
+
+learncpp_setup_ide(B01_cost)

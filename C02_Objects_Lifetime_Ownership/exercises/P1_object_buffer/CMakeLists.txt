@@ -31,6 +31,8 @@ if(CORE_STUDY_BUILD_REFERENCE)
     core_add_test(P1_object_buffer_reference COMMAND P1_object_buffer_reference LABELS reference TIMEOUT 30)
 
     p1_configure(P1_object_buffer_validation_good validation/good)
+    target_sources(P1_object_buffer_validation_good PRIVATE
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/reference/object_buffer.hpp")
     core_add_test(P1_object_buffer_validation_good COMMAND P1_object_buffer_validation_good LABELS validation TIMEOUT 30)
 
     p1_configure(P1_object_buffer_validation_bad_noop validation/bad_noop)
@@ -54,3 +56,5 @@ if(CORE_STUDY_BUILD_REFERENCE)
             -P ${CMAKE_CURRENT_LIST_DIR}/checks/expect_compile_failure.cmake)
     set_tests_properties(P1_object_buffer_reject_throwing_move_only_check PROPERTIES TIMEOUT 30 LABELS negative)
 endif()
+
+learncpp_setup_ide(P1_object_buffer_student)

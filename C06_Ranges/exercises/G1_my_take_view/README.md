@@ -151,3 +151,16 @@ my_take_view(R&&, std::ranges::range_difference_t<R>)
 本题已迁移到统一四路径验证：`checks/main.cpp` 消费 `c06_g1::my_take` 和 `c06_g1::my_take_view`。Reference 与 good 各自实现；bad 是安全运行时错误实现，故意接受负数；Student 可编译但会取错起点。
 
 本题自写接口选择把负 `count` 统一抛 `std::invalid_argument`，这是教学接口的安全约束；`std::views::take` 本身仍以非负计数作为前提，不应混为一谈。checker 覆盖 sized random-access、sized non-random-access、input non-common unsized、`n` 大于底层长度、`front/back/operator[]/size`，并要求 unsized end 同时检查“剩余计数为 0 或底层已到 end”，不能用裸 `counted_iterator + default_sentinel` 越过短输入。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `G1_my_take_view_student`。
+
+本题是实现题。学习者只改 Student 入口；Reference、validation 和 checks 只用于对照与验证。
+- Student 入口：`src/student/my_take_view.hpp`。
+- Checker 入口：`main.cpp`。
+- Reference 对照：`src/reference/my_take_view.hpp`。
+- validation/good 对照：`validation/good/my_take_view.hpp`。
+- validation/bad 反例：`validation/bad/my_take_view.hpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target G1_my_take_view_student。
+修改后先重建 `G1_my_take_view_student`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

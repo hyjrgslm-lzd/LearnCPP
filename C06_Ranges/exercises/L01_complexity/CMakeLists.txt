@@ -3,3 +3,6 @@ project(L01_complexity LANGUAGES CXX)
 include(../cmake/RangesSetup.cmake)
 
 ranges_add_observation(L01_complexity main.cpp)
+
+
+learncpp_setup_ide(L01_complexity)

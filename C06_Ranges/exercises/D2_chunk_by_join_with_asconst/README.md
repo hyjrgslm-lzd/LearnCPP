@@ -81,3 +81,12 @@
 预测：`chunk_by` 按相邻元素关系分组，不是按固定长度；`join_with` 在拍平时插入分隔符；`as_const` 改变元素引用的 const 性，不等于让所有 view 都具备 const begin；`as_rvalue` 把元素暴露为可移动引用。
 
 当前程序验证相邻相等游程分组、相邻非递减分组、字符串 join_with 分隔、as_const 的 `const int&` 引用类型，以及 as_rvalue 移出字符串。扩展时应分别观察“元素 const”和“view 对象 const 可迭代性”，两者不要混淆。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `D2_chunk_by_join_with_asconst`。
+
+本题是观察题，没有本题内 `src/student/`、`src/reference/` 或 `validation/` 变体。
+- 源码入口：`main.cpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target D2_chunk_by_join_with_asconst。
+修改后先重建 `D2_chunk_by_join_with_asconst`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

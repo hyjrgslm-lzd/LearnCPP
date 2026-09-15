@@ -11,3 +11,5 @@ foreach(lesson IN LISTS lessons)
 endforeach()
 get_property(students GLOBAL PROPERTY C03_STUDENT_TARGETS)
 add_custom_target(c03_students DEPENDS ${students})
+
+learncpp_setup_ide("")

@@ -25,3 +25,10 @@ Part 6：观察 move-only 成功值。`expected<std::unique_ptr<T>, E>` 可移�
 Part 7：观察 C++23 借用返回。`expected<T&, E>` 不合法；用 `expected<reference_wrapper<T>, E>` 表达可失败借用，并明确它不延长对象生命期。
 
 解析：`expected` 负责传递可处理错误，不负责自动回滚对象状态。业务拒绝进入错误类型；分配失败、程序错误和跨线程异常要按层级单独设计。
+
+
+## IDE 入口
+
+从本课 `exercises` 根目录或本题目录生成 Visual Studio 18 2026 x64 工程。主项目是 `L05_expected_observation`，可直接设为启动项运行观察或专项入口。
+没有 Student 编辑入口；运行/阅读：`checks/`、`observation/`、`validation/`。这些入口保留在题目分组内，作为观察、探测或负例诊断。
+构建主项目后运行 CTest 或 README 中列出的检查命令；负例/探测入口只读，用于观察诊断。

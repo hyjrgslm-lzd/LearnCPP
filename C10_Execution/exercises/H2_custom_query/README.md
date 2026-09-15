@@ -27,3 +27,6 @@ main.cpp 创建 `stdexec::run_loop::scheduler`，将 scheduler、父 trace 和�
 扩展时可添加 allocator 或优先级 query，无需修改组合器。若要借用外部环境，先说明谁保证其寿命，再选择 reference wrapper；本题不预埋全局状态或动态类型擦除。
 
 构建/运行沿[公共指南](../BUILD_GUIDE.md)，单题目录 `H2_custom_query`；检查为 `H2_custom_query_reference`、`H2_custom_query_validation_good`、`H2_custom_query_validation_bad_rejected`。Reference OFF 时仍可构建同一个 Student 接口。
+## IDE 工程入口
+
+VS solution 中本题主入口是 `H2_custom_query_student`。学生只编辑 `src/student/solution.hpp`；`main.cpp` 是共同检查器，Reference 在 `src/reference/solution.hpp`，good/bad 控制在 `validation` 下。`H2_custom_query` 聚合目标只负责显式构建学生目标，收在 Support；Reference 与控制目标保留为独立项目，用来区分答案、正确对照和错误拒绝。单题可用 `cmake -S <本目录> -B <build>` 独立生成。

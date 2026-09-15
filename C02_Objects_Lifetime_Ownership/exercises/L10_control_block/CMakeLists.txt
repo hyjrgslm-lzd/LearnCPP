@@ -41,3 +41,4 @@ if(L10_CONTROL_BLOCK_BUILD_VALIDATION_VARIANTS)
     core_configure_target(L10_control_block_validation_bad_weak_resurrect)
 endif()
 
+learncpp_setup_ide(L10_control_block_student)

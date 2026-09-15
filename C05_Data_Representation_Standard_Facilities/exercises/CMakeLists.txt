@@ -25,3 +25,5 @@ foreach(unit
 )
     add_subdirectory(${unit})
 endforeach()
+
+learncpp_setup_ide("")

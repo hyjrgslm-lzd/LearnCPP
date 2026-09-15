@@ -8,3 +8,6 @@ ranges_add_exercise(
     CHECK checks/heap_checks.cpp
     BAD_DIAGNOSTIC "pop returns descending order"
 )
+
+
+learncpp_setup_ide(L06_binary_heap_student)

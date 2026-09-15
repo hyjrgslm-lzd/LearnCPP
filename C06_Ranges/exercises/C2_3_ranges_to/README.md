@@ -113,3 +113,12 @@
 预测：C++23 `ranges::to` 会消费 range 并构造目标容器，可直接接在管道末尾；拥有容器物化后就脱离 view 生命周期。`from_range` 是容器构造协议，不是普通函数。
 
 当前程序把 filter/transform 管道直接 `to<vector>`，把字符串切分 `to<vector<string>>`，验证推导目标类型，并用 `from_range` 构造 vector。扩展时不要手写替代 `ranges::to` 模拟缺失标准 API；缺能力应 capability probe 后 SKIP。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `C2_3_ranges_to`。
+
+本题是观察题，没有本题内 `src/student/`、`src/reference/` 或 `validation/` 变体。
+- 源码入口：`main.cpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target C2_3_ranges_to。
+修改后先重建 `C2_3_ranges_to`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

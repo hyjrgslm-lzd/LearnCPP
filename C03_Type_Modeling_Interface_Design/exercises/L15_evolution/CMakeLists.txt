@@ -7,3 +7,5 @@ c03_add_exercise(
     HEADER compat_adapter.hpp
     CHECK checks/evolution_checks.cpp
     BAD_DIAGNOSTIC "v1 default timeout remains 1000")
+
+learncpp_setup_ide(L15_evolution_student)

@@ -11,3 +11,12 @@ Part 3：大小写不是 ASCII 的 `tolower`。case mapping 可以依赖 locale�
 Part 4：grapheme cluster 是用户感知的文本边界，可能由多个 code point 组成。ZWJ emoji、组合音标、区域旗帜都不能用“一个 code point 一个字符”切割。没有 ICU 时，本课只展示这个边界；完整 UAX #29 验证在 U01。
 
 负例 `L07_text_semantics_bad_identity` 故意把 canonical equivalence 当成 manifest 身份，应该被 `canonical-equivalence is not byte identity` 精确拒绝。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `L07_text_semantics_observation`。
+
+本题是观察题，没有本题内 `src/student/`、`src/reference/` 或 `validation/` 变体。
+- 源码入口：`observation.cpp`、`validation/bad_identity.cpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target L07_text_semantics_observation。
+修改后先重建 `L07_text_semantics_observation`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

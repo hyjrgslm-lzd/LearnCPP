@@ -68,3 +68,12 @@
 本题是观察型练习，CMake 使用 `ranges_add_observation(E3_cpo_tagdispatch_compare main.cpp)`。当前 `main.cpp` 给出 ranges 成员/ADL 风格与最小 `tag_invoke` 风格的完整可运行对照，保持 stdlib-only，不依赖 stdexec 实现库。
 
 版本桥接要说清：ranges CPO 是 C++20 标准库机制；`tag_invoke` 是 P1895/stdexec/libunifex 传播出的协议风格，不是 C++20/23 标准；C10 的 execution 内容会继续讨论 P2300 及后续 member customization 方向。本题只建立 C04/C10 之间的概念桥，不把历史 `tag_invoke` 当成当前 ranges 定制协议。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `E3_cpo_tagdispatch_compare`。
+
+本题是观察题，没有本题内 `src/student/`、`src/reference/` 或 `validation/` 变体。
+- 源码入口：`main.cpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target E3_cpo_tagdispatch_compare。
+修改后先重建 `E3_cpo_tagdispatch_compare`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

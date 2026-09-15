@@ -27,3 +27,11 @@ if(WIN32)
     endif()
   endforeach()
 endif()
+
+foreach(variant student reference validation_good validation_bad)
+  if(TARGET I1_native_io_${variant})
+    target_sources(I1_native_io_${variant} PRIVATE
+      "${C10_REPO}/C07_OS_Memory_System_IO/exercises/include/c07/os.hpp"
+      "${C10_EXERCISES}/include/c10/native_io.hpp")
+  endif()
+endforeach()

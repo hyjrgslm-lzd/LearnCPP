@@ -42,3 +42,5 @@ if(CORE_STUDY_BUILD_REFERENCE)
             "check failed: borrow must become invalid when owner lifetime ends")
     endif()
 endif()
+
+learncpp_setup_ide(L03_lifetimes_student)

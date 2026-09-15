@@ -73,3 +73,10 @@ cmake --build build/sample-author-r2 --config Debug --target L11_customization_c
 ```
 
 `observations/counterexamples.cpp` 安全观察四类错误：`auto` 丢引用、忘记 `std::forward` 改变右值调用、未隔离 ADL 导致无路径对象被 CPO 自己接受、写死 `noexcept` 谎报异常规格。它不会实际触发无限递归或 `std::terminate()`；递归路径用深度哨兵截断，`noexcept` 路径只检查编译期异常规格。
+
+
+## IDE 入口
+
+从本课 `exercises` 根目录或本题目录生成 Visual Studio 18 2026 x64 工程。主项目是 `L11_customization_student`；默认学生测试关闭时仍生成该项目，但它是 `EXCLUDE_FROM_ALL`，需显式构建。
+学生只编辑：`src/student/read_value.hpp`。 `checks/`、`validation/`、`src/reference/`、diagnostic、support 目标是只读对照/验证/实验入口，保留在题目分组内。
+修改 Student 后先重新构建对应目标，再运行 CTest 或 README 中列出的检查命令。

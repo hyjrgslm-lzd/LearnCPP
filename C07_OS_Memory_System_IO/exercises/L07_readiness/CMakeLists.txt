@@ -15,6 +15,8 @@ if(C07_STUDY_BUILD_REFERENCE)
     target_include_directories(L07_readiness_validation_scripted_bad PRIVATE
         "${CMAKE_CURRENT_SOURCE_DIR}/validation/scripted_bad"
         "${CMAKE_CURRENT_SOURCE_DIR}/checks")
+    target_sources(L07_readiness_validation_scripted_bad PRIVATE
+        "${CMAKE_CURRENT_SOURCE_DIR}/validation/scripted_bad/readiness.hpp")
     if(c07_l07_libs)
         target_link_libraries(L07_readiness_validation_scripted_bad PRIVATE ${c07_l07_libs})
     endif()
@@ -24,3 +26,5 @@ if(C07_STUDY_BUILD_REFERENCE)
         CONTAINS "runtime payload matches drained bytes"
         LABELS negative)
 endif()
+
+learncpp_setup_ide(L07_readiness_student)

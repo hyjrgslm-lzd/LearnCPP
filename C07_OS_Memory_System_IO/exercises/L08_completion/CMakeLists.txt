@@ -33,3 +33,6 @@ if(c07_l08_platform_enabled AND C07_STUDY_BUILD_REFERENCE)
 else()
     message(STATUS "L08_completion platform tests NOT_ENABLED")
 endif()
+
+
+learncpp_setup_ide(L08_completion_student)

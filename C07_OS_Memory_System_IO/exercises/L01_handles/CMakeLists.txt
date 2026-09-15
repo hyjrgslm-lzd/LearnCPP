@@ -6,3 +6,5 @@ c07_add_exercise(NAME L01_handles HEADER handles.hpp CHECK checks/handles_checks
 c07_add_observation(L01_handles_ownership checks/ownership_observation.cpp)
 c07_add_observation(L01_thread_process checks/thread_process_observation.cpp)
 
+
+learncpp_setup_ide(L01_handles_student)

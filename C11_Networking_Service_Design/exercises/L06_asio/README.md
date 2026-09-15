@@ -20,3 +20,6 @@ ctest --test-dir build/c11-asio -C Release -R 'C11_L06_' --output-on-failure
 strand 串行化 handler，不固定线程，也不保护绕过 executor 的直接调用。协程帧保留局部变量，但外部取消仍需等待完成才能销毁帧。固定两个 slot 使工作接纳后转交和结果回传不依赖再次分配；启动部分失败必须停止并 join 已创建线程，重试时重新设置 joined 状态。owner 迟到后发现 live 已空仍须检查原 drain deadline，不能把超时抹掉。
 
 所有 Part 的 Reference 为对应完整源码；观察通过不代表完成书面的拥有关系与失败路径解释。真实服务接线见 P1/P2。
+## IDE 工程入口
+
+VS solution 中本题主入口是 `C11_L06_asio`。本单元是观察/专项入口，没有学生占位；源码、README、协议文件或脚本显示在同一项目中，依赖目标保留为独立项目。程序通过只证明本驱动运行，不代替 README 要求的预测、解释或专项依赖准备。单题可用 `cmake -S <本目录> -B <build>` 独立生成。

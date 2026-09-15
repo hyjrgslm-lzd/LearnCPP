@@ -21,3 +21,6 @@ failure because no standard-mode result would be trustworthy.
 
 Raw compile output is written under the build directory at
 `F01_native/probe-output/*.log`.
+## IDE 工程入口
+
+启动目标是 F01_native_core/scheduler/task/scope/bulk 各观察目标；probes 只做能力探针。 本目录的 README/CMakeLists 和脚本显示在主项目中；观察程序通过只证明对应运行检查，不代替书面预测、源码阅读或性能归因。单题可用 `cmake -S <本目录> -B <build>` 独立生成。

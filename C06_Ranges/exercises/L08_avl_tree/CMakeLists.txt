@@ -17,6 +17,8 @@ if(RANGES_BUILD_REFERENCE)
         target_include_directories(${target} PRIVATE
             "${CMAKE_CURRENT_SOURCE_DIR}/validation/${extra_bad}"
             "${CMAKE_CURRENT_SOURCE_DIR}/checks")
+        target_sources(${target} PRIVATE
+            "${CMAKE_CURRENT_SOURCE_DIR}/validation/${extra_bad}/avl_set.hpp")
         if(extra_bad STREQUAL "bad_vector")
             set(expected_text "structural root is present")
         else()
@@ -29,3 +31,6 @@ if(RANGES_BUILD_REFERENCE)
             LABELS negative)
     endforeach()
 endif()
+
+
+learncpp_setup_ide(L08_avl_tree_student)

@@ -10,3 +10,5 @@ c04_add_exercise(
 )
 
 c04_add_observation(L02_deduction_decltype observations/decltype_rules.cpp)
+
+learncpp_setup_ide(L02_deduction_student)

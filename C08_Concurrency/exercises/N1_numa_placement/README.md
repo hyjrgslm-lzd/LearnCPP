@@ -58,3 +58,13 @@ runner 的 PARTIAL_SKIP 默认返回 77；明确使用 `--allow-partial` 时才�
 答案：计时排除分配、初始化触页、一次预读、页查询和正确性检查，包含 reader 创建、affinity 设置、扫描和 join。它排除了显式初始 fault 阶段，未证明正式区间绝无 fault；前后页面快照也未证明期间没有迁移。小规模毫秒数不能当作 DRAM load latency。比较 local/remote 时不改变 CPU；比较 firsttouch/parallel-init 时不改变 reader 集合。
 
 复查时运行本题 Reference、J3 平台探针和 `numa_bench`。单节点机器只能得到本地页面证据；remote/interleaved 与跨节点 reader 需要真实多节点拓扑。
+
+## IDE 与工程入口
+
+Visual Studio 方案中，主入口目标是 `N1_numa_placement`，位于本题节点顶层；单题独立配置时它是启动目标。`N1_numa_placement_reference` 在 `Reference` 分组。
+
+学生/观察入口：`main.cpp` 是观察/实验入口，用来预测、运行和记录现象；本题不声明待填学生实现。
+
+Reference 与检查：`solution.cpp` 是 Reference/检查路径，只读对照。
+
+单题命令：从 `C08_Concurrency/exercises` 可独立配置：`cmake -S N1_numa_placement -B build/N1_numa_placement-ide -G "Visual Studio 18 2026" -A x64`，再构建 `N1_numa_placement` 和 `N1_numa_placement_reference`；CTest 过滤 `^N1_numa_placement_reference$`。

@@ -14,7 +14,13 @@ c07_add_observation(B01_source_observation source_observation.cpp LABELS source_
 target_include_directories(B01_costs_benchmark PRIVATE
     "${C07_EXERCISES}/P1_file_pipeline/src/reference"
     "${C07_EXERCISES}/L05_pmr/src/reference")
+target_sources(B01_costs_benchmark PRIVATE
+    "${C07_EXERCISES}/L05_pmr/src/reference/pmr_lab.hpp"
+    "${C07_EXERCISES}/P1_file_pipeline/src/reference/pipeline.hpp")
 if(WIN32 OR TARGET c07_liburing)
     c07_add_test(B01_completion_control COMMAND "$<TARGET_FILE:B01_costs_benchmark>" --check-completion
         LABELS benchmark_control platform ALLOW_SKIP)
 endif()
+
+
+learncpp_setup_ide(B01_costs_benchmark FILES tools/sample_benchmarks.py)

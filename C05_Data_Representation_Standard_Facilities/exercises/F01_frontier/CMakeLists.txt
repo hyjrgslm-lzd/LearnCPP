@@ -57,3 +57,6 @@ if(C05_HAS_ERROR_CODE_FORMATTER)
 endif()
 c05_frontier_probe(F01_bitops_shift_c29 bitops_shift_c29.cpp)
 c05_frontier_probe(F01_bitops_permutation_c29 bitops_permutation_c29.cpp)
+
+
+learncpp_setup_ide(F01_text_encoding_locale)

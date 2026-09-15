@@ -10,3 +10,6 @@ Part:
 4. bad 版本先走裸 `greet`，会破坏 member-first 优先级。
 
 学生只改 `src/student/solution.hpp`。初态运行时报 `UNFINISHED`，不会调用 Reference。
+## IDE 工程入口
+
+VS solution 中本题主入口是 `E1_cpo_niebloid_student`。学生只编辑 `src/student/solution.hpp`；`main.cpp` 是共同检查器，Reference 在 `src/reference/solution.hpp`，good/bad 控制在 `validation` 下。`E1_cpo_niebloid` 聚合目标只负责显式构建学生目标，收在 Support；Reference 与控制目标保留为独立项目，用来区分答案、正确对照和错误拒绝。单题可用 `cmake -S <本目录> -B <build>` 独立生成。

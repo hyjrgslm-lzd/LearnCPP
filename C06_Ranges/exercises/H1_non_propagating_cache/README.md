@@ -53,3 +53,16 @@
 
 - `references/standards.md`
 - N5047 LWG Poll 13 / P3725R3：受限 `filter_view const begin/end` 分支。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `H1_non_propagating_cache_student`。
+
+本题是实现题。学习者只改 Student 入口；Reference、validation 和 checks 只用于对照与验证。
+- Student 入口：`src/student/filter_cache.hpp`。
+- Checker 入口：`main.cpp`。
+- Reference 对照：`src/reference/filter_cache.hpp`。
+- validation/good 对照：`validation/good/filter_cache.hpp`。
+- validation/bad 反例：`validation/bad/filter_cache.hpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target H1_non_propagating_cache_student。
+修改后先重建 `H1_non_propagating_cache_student`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

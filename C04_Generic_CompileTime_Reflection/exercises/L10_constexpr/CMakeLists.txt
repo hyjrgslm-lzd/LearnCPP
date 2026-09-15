@@ -59,3 +59,5 @@ c04_add_compile_case(
     CONTROL validation/diagnostics/parameter_constant_control.cpp
     PATTERN "constant|常量|常数"
 )
+
+learncpp_setup_ide(L10_constexpr_student)

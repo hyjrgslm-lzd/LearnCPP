@@ -19,3 +19,10 @@ ctest --test-dir build/author-c-l13 -C Release --output-on-failure
 ```
 
 解析：多态值解决的是“复制包装器时复制动态对象”。它不同于共享身份，也不同于独占句柄。C++26 标准设施的可用性看 `F01_frontier/c26_indirect_polymorphic.cpp`，不是看本教学类型。
+
+
+## IDE 入口
+
+从本课 `exercises` 根目录或本题目录生成 Visual Studio 18 2026 x64 工程。主项目是 `L13_indirect_values_observation`，可直接设为启动项运行观察或专项入口。
+没有 Student 编辑入口；运行/阅读：`indirect_values_observation.cpp`。这些入口保留在题目分组内，作为观察、探测或负例诊断。
+构建主项目后运行 CTest 或 README 中列出的检查命令；负例/探测入口只读，用于观察诊断。

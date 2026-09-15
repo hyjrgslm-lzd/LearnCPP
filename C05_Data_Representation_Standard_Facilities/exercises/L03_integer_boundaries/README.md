@@ -9,3 +9,16 @@ Part 2：成功时再窄化为 `std::uint32_t`。检查器会覆盖 0、最大�
 检查目标：`L03_integer_boundaries_reference`、`L03_integer_boundaries_validation_good`、`L03_integer_boundaries_validation_bad_rejected`；开启 student preset 后还会运行学生占位。
 
 Reference 在 `src/reference/checked_int.hpp`。`validation/good` 是独立可通过实现，`validation/bad` 演示“直接窄化会回绕”的常见错法。解析重点：边界判断必须发生在窄化前，否则 `max + 1` 已经变成 0，错误证据丢失。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `L03_integer_boundaries_student`。
+
+本题是实现题。学习者只改 Student 入口；Reference、validation 和 checks 只用于对照与验证。
+- Student 入口：`src/student/checked_int.hpp`。
+- Checker 入口：`checks/checked_int_checks.cpp`。
+- Reference 对照：`src/reference/checked_int.hpp`。
+- validation/good 对照：`validation/good/checked_int.hpp`。
+- validation/bad 反例：`validation/bad/checked_int.hpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target L03_integer_boundaries_student。
+修改后先重建 `L03_integer_boundaries_student`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

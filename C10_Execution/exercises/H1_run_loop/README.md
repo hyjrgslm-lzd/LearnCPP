@@ -45,3 +45,6 @@ ctest --test-dir build/c10-h1 -C Debug --output-on-failure
 ```
 
 Student 初态应该能编译，并通过 `c10::unfinished` 返回 exit 2。bad 应该编译成功但被行为测试拒绝。
+## IDE 工程入口
+
+VS solution 中本题主入口是 `H1_run_loop_student`。学生只编辑 `src/student/solution.hpp`；`main.cpp` 是共同检查器，Reference 在 `src/reference/solution.hpp`，good/bad 控制在 `validation` 下。`H1_run_loop` 聚合目标只负责显式构建学生目标，收在 Support；Reference 与控制目标保留为独立项目，用来区分答案、正确对照和错误拒绝。单题可用 `cmake -S <本目录> -B <build>` 独立生成。

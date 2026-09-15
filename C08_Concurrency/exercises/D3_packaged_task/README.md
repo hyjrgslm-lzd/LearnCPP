@@ -56,3 +56,13 @@ ctest --test-dir build/D3_packaged_task -C Release --output-on-failure
 ```
 
 统一构建注册的检查目标是 `D3_packaged_task_reference`，CTest 使用进程级超时。
+
+## IDE 与工程入口
+
+Visual Studio 方案中，主入口目标是 `D3_packaged_task`，位于本题节点顶层；单题独立配置时它是启动目标。`D3_packaged_task_reference` 在 `Reference` 分组。
+
+学生/观察入口：`main.cpp` 是观察/实验入口，用来预测、运行和记录现象；本题不声明待填学生实现。
+
+Reference 与检查：`solution.cpp` 是 Reference/检查路径，只读对照。
+
+单题命令：从 `C08_Concurrency/exercises` 可独立配置：`cmake -S D3_packaged_task -B build/D3_packaged_task-ide -G "Visual Studio 18 2026" -A x64`，再构建 `D3_packaged_task` 和 `D3_packaged_task_reference`；CTest 过滤 `^D3_packaged_task_reference$`。

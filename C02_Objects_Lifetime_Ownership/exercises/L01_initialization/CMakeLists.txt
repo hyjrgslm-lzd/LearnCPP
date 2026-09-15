@@ -25,3 +25,5 @@ endfunction()
 
 l01_negative(narrowing "narrowing")
 l01_negative(constinit_dynamic "constinit")
+
+learncpp_setup_ide(L01_initialization_observation)

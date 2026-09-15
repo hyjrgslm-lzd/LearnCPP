@@ -1,5 +1,9 @@
 cmake_minimum_required(VERSION 3.28)
 project(coroutine_study_runtime_tests LANGUAGES CXX)
+
+if(NOT COMMAND coroutine_study_add_exercise)
+    include("${CMAKE_CURRENT_LIST_DIR}/../cmake/StudySetup.cmake")
+endif()
 enable_testing()
 
 set(CMAKE_CXX_STANDARD 20)
@@ -24,3 +28,5 @@ add_runtime_test(runtime_when_any_cancel_join_reference_test when_any_cancel_joi
 add_runtime_test(runtime_sync_completion_reference_test sync_completion_reference_test.cpp)
 add_runtime_test(runtime_allocator_reference_test allocator_reference_test.cpp)
 add_runtime_test(runtime_await_resume_exception_test await_resume_exception_test.cpp)
+
+learncpp_setup_ide("")

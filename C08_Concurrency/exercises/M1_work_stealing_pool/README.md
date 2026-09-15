@@ -64,3 +64,13 @@ Reference 最后使用两个 worker。root 在自己的队列提交 child，然�
 [scheduling_bench.cpp](../benchmarks/scheduling_bench.cpp) 接受 `--variant static|dynamic|stealing --size N --threads P`，一次只输出选中版本的统一 CSV。计时包含分配、线程构造、调度、计算和 join；逐项检查在计时后。用公共 runner 采样，不要求特定加速。
 
 复查时运行本题 Reference 与 scheduling runtime。结果只说明本题覆盖的递归、结果、排空、拒收和窃取场景，不写成独立验收。
+
+## IDE 与工程入口
+
+Visual Studio 方案中，主入口目标是 `M1_work_stealing_pool`，位于本题节点顶层；单题独立配置时它是启动目标。`M1_work_stealing_pool_reference` 在 `Reference` 分组。
+
+学生/观察入口：`main.cpp` 是观察/实验入口，用来预测、运行和记录现象；本题不声明待填学生实现。
+
+Reference 与检查：`solution.cpp` 是 Reference/检查路径，只读对照。
+
+单题命令：从 `C08_Concurrency/exercises` 可独立配置：`cmake -S M1_work_stealing_pool -B build/M1_work_stealing_pool-ide -G "Visual Studio 18 2026" -A x64`，再构建 `M1_work_stealing_pool` 和 `M1_work_stealing_pool_reference`；CTest 过滤 `^M1_work_stealing_pool_reference$`。

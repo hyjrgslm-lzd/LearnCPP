@@ -25,3 +25,5 @@ endfunction()
 
 l06_negative(return_named_deleted "deleted")
 l06_negative(const_move_only "C2280")
+
+learncpp_setup_ide(L06_move_return_observation)

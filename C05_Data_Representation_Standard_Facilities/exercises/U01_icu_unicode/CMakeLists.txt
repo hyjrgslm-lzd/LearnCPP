@@ -15,3 +15,6 @@ c05_link_icu(U01_icu_unicode_check)
 target_compile_definitions(U01_icu_unicode_check PRIVATE
     C05_U01_DATA_DIR="${CMAKE_CURRENT_SOURCE_DIR}/data")
 c05_add_test(U01_icu_unicode_check TIMEOUT 180 LABELS icu)
+
+
+learncpp_setup_ide(U01_icu_unicode_check FILES data/unicode-16.0-data-manifest.json data/UNICODE-LICENSE.txt)

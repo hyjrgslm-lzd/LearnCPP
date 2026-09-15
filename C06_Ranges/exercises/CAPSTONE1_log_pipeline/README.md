@@ -91,3 +91,17 @@ lines | views::transform(parse)
 ```
 
 这个写法不会悬垂，只要解包按值返回；但它会在有效行上重复 dereference 上游 `transform_view`，从而重复解析。最小修复是先把 `optional<LogRecord>` 结果实体化到一个局部 `vector`，再对这个 `vector` 过滤和解包。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `CAPSTONE1_log_pipeline_student`。
+
+本题是实现题。学习者只改 Student 入口；Reference、validation 和 checks 只用于对照与验证。
+- Student 入口：`src/student/log_pipeline.hpp`。
+- Checker 入口：`main.cpp`。
+- Reference 对照：`src/reference/log_pipeline.hpp`。
+- validation/good 对照：`validation/good/log_pipeline.hpp`。
+- validation/bad 反例：`validation/bad/log_pipeline.hpp`。
+- 导读或设计材料：`notes/author-validation-r2.md`、`notes/author-validation.md`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target CAPSTONE1_log_pipeline_student。
+修改后先重建 `CAPSTONE1_log_pipeline_student`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

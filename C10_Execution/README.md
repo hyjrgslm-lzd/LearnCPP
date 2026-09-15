@@ -4,6 +4,8 @@
 
 先读[课程地图](chapters/00-course-map.md)和[构建指南](exercises/BUILD_GUIDE.md)。目录、题号或旧测试通过都不单独代表完成；实际验证记录留在本机 build/validation 目录，不作为课程源码提交。
 
+VS solution 由 CMake 重新生成，不手改 `.slnx`/`.vcxproj`。练习按题号分组，启动项目指向该题真实 Student 或观察可执行目标；答案、good/bad 控制和旧聚合命令收在同题子组。编辑位置仍以各题 `src/student/solution.hpp` 为准。
+
 ## 阅读路线
 
 | 阶段 | 正文 | 实践入口 |

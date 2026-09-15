@@ -21,3 +21,13 @@ VS2026 生成器需要 CMake 4.2 或更新版本；其他生成器可使用 CMak
 3. 复制这个接口时，把检查和修改放在同一个临界区。两个分别安全的 `empty()` 与 `pop()` 不能组成原子的检查后取出操作。Reference 的顺序小测试验证具体返回值；并发测试验证每个生产者的序号保持顺序以及所有 ID 恰好出现一次。
 
 这个测试还不覆盖多消费者的完整线性化历史；后续队列实验会增加专门的历史与暂停场景检查。
+
+## IDE 与工程入口
+
+Visual Studio 方案中，主入口目标是 `Q0_queue_baseline`，位于本题节点顶层；单题独立配置时它是启动目标。`Q0_queue_baseline_reference` 在 `Reference` 分组。
+
+学生/观察入口：`main.cpp` 是观察/实验入口，用来预测、运行和记录现象；本题不声明待填学生实现。
+
+Reference 与检查：`solution.cpp` 是 Reference/检查路径，只读对照。
+
+单题命令：从 `C08_Concurrency/exercises` 可独立配置：`cmake -S Q0_queue_baseline -B build/Q0_queue_baseline-ide -G "Visual Studio 18 2026" -A x64`，再构建 `Q0_queue_baseline` 和 `Q0_queue_baseline_reference`；CTest 过滤 `^Q0_queue_baseline_reference$`。

@@ -33,3 +33,16 @@ ctest --test-dir C09_Coroutines/exercises/build-h -R H3_bidirectional_bridge_ref
 观察到 `sender=42 awaitable=20 bridge=43` 后，重点复读 `my_task::op_state::start`、`promise_type::final_suspend` 和 `promise_type::await_transform(my_task&&)`。
 
 **答案解析：** `op_state::start` 是 sender 消费路径的启动点，它设置 `external_receiver` 并恢复 task。`final_suspend` 是两种消费路径的分叉点：有 external receiver 时发 completion channel，有 continuation 时把控制权还给父协程。`await_transform(my_task&&)` 把自家 task 限定为内部可 await，避免 stdexec 把 `my_task` 当普通 awaiter 而绕开 `connect`。
+
+## IDE 与单题构建
+
+Visual Studio 中主启动目标是 `H3_bidirectional_bridge`；Reference、Checks、Support 目标保留在同题分组中。学生编辑入口和本题 README/CMake 文件会显示在目标文件树里。
+
+```powershell
+cmake -S . -B build/vs -G "Visual Studio 18 2026" -A x64 -DCOROUTINE_STUDY_BUILD_REFERENCE=ON -DCOROUTINE_STUDY_ENABLE_STDEXEC=ON "-DCMAKE_PREFIX_PATH=<existing-stdexec-install>"
+cmake --build build/vs --config Debug --target H3_bidirectional_bridge
+```
+
+上述命令要求将 `<existing-stdexec-install>` 替换为已安装 stdexec 的前缀。只有源码缓存时，使用[构建指南的 stdexec 单题离线步骤](../BUILD_GUIDE.md#stdexec-单题的离线缓存入口)，并将 `$unit` 设为 `H3_bidirectional_bridge`。
+
+本题单独配置需要 `-DCOROUTINE_STUDY_ENABLE_STDEXEC=ON`，并提前准备 stdexec。stdexec 必须来自已安装包、CMAKE_PREFIX_PATH，或完整本地 FetchContent 源码缓存。若走本地源码缓存，还需要该缓存自带 RAPIDS/CPM bootstrap 文件；不要让配置阶段联网下载。 缺依赖时配置阶段直接失败，不生成空工程。 `BUILD_TESTING=OFF` 只关闭测试注册，不删除本题可执行目标；不要手工编辑生成的 `.sln` 或 `.vcxproj`。

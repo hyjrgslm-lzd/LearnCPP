@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 3.28)
 project(J2_cross_compiler_abi LANGUAGES CXX)
 
 if(NOT COMMAND coroutine_study_add_exercise)
+    include("${CMAKE_CURRENT_LIST_DIR}/../cmake/StudySetup.cmake")
+endif()
+
+if(NOT COMMAND coroutine_study_add_exercise)
     list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../cmake")
     include(AddExercise)
 endif()
@@ -19,3 +23,5 @@ foreach(target J2_cross_compiler_abi J2_cross_compiler_abi_reference)
         target_compile_options(${target} PRIVATE -Rpass=coroutine-elide -Rpass-missed=coroutine-elide)
     endif()
 endforeach()
+
+learncpp_setup_ide("J2_cross_compiler_abi")

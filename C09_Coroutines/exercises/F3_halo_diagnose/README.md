@@ -72,3 +72,14 @@ ctest --test-dir build/dg-lane -C Release -R F3_halo_diagnose_reference
 ## 观察边界
 
 Clang 18.1.3、`-O2` 无插桩 IR 中，local/escaped 两个 consumer 都没有动态分配，均被化简为求和循环；独立 `range_values` 仍分配 48 字节。没有 elide remark，不能指定优化 pass。两版循环代码不同，本机耗时差不能归因于“只有一版 HALO”。完整原始样本、IR/汇编、指纹及并行构建干扰说明属于本机运行产物。
+
+## IDE 与单题构建
+
+Visual Studio 中主启动目标是 `F3_halo_diagnose`；Reference、Checks、Support 目标保留在同题分组中。学生编辑入口和本题 README/CMake 文件会显示在目标文件树里。
+
+```powershell
+cmake -S . -B build/vs -G "Visual Studio 18 2026" -A x64 -DCOROUTINE_STUDY_BUILD_REFERENCE=ON
+cmake --build build/vs --config Debug --target F3_halo_diagnose
+```
+
+普通题不需要额外依赖；Reference 由 `COROUTINE_STUDY_BUILD_REFERENCE` 控制。 `BUILD_TESTING=OFF` 只关闭测试注册，不删除本题可执行目标；不要手工编辑生成的 `.sln` 或 `.vcxproj`。

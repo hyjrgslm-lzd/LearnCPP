@@ -16,3 +16,6 @@ Part：
 8. 下游 terminal receiver 可以在回调里销毁外层 op；发出 terminal 后实现不能再访问外层 op 成员。
 
 checker 覆盖同步失败、手动 pending、异步 error 后重试、跨线程 error、stop-before-start、pending cancel、terminal 回调销毁外层 op、receiver 只可 move-construct 不可 move-assign、factory/connect 抛异常、100 和 10000 次同步失败栈深度不增长。bad 版本故意在 `set_error` 中递归重试，并用 64 层预算受控失败；当前 checker 以 `recursive retry budget exceeded` 拒绝它。
+## IDE 工程入口
+
+VS solution 中本题主入口是 `G3_retry_student`。学生只编辑 `src/student/solution.hpp`；`main.cpp` 是共同检查器，Reference 在 `src/reference/solution.hpp`，good/bad 控制在 `validation` 下。`G3_retry` 聚合目标只负责显式构建学生目标，收在 Support；Reference 与控制目标保留为独立项目，用来区分答案、正确对照和错误拒绝。单题可用 `cmake -S <本目录> -B <build>` 独立生成。

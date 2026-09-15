@@ -28,3 +28,6 @@ bad 版本把 stopped 当 value 记录，检查器拒绝。
 ## 答案解释
 
 正确 receiver 不拥有执行，它只接收 completion。每个 completion 入口都移动 receiver，符合“一次执行一条终结信号”的模型。
+## IDE 工程入口
+
+VS solution 中本题主入口是 `D11_minimal_receiver_student`。学生只编辑 `src/student/solution.hpp`；`main.cpp` 是共同检查器，Reference 在 `src/reference/solution.hpp`，good/bad 控制在 `validation` 下。`D11_minimal_receiver` 聚合目标只负责显式构建学生目标，收在 Support；Reference 与控制目标保留为独立项目，用来区分答案、正确对照和错误拒绝。单题可用 `cmake -S <本目录> -B <build>` 独立生成。

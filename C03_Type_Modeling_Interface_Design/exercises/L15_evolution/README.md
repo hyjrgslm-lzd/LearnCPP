@@ -43,3 +43,10 @@ ctest --test-dir build/author-c-l15-student -C Debug --output-on-failure
 ```
 
 解析：默认实参绑定在调用点。兼容适配器要把旧默认值写进旧入口实现，而不是继续暴露 v2 默认值。validation_bad 只犯这一类错误：`fetch(name)` 直接调用 `engine.fetch(name)`，checker 用 `v1 default timeout remains 1000` 精确拒绝。ABI 部分只做公开布局变化模型；跨编译器、旧二进制加载和真实动态库边界仍标为未验证。
+
+
+## IDE 入口
+
+从本课 `exercises` 根目录或本题目录生成 Visual Studio 18 2026 x64 工程。主项目是 `L15_evolution_student`；默认学生测试关闭时仍生成该项目，但它是 `EXCLUDE_FROM_ALL`，需显式构建。
+学生只编辑：`src/student/compat_adapter.hpp`。 `checks/`、`validation/`、`src/reference/`、diagnostic、support 目标是只读对照/验证/实验入口，保留在题目分组内。
+修改 Student 后先重新构建对应目标，再运行 CTest 或 README 中列出的检查命令。

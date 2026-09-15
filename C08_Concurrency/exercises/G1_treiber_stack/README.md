@@ -33,3 +33,13 @@ ctest --test-dir build/g1 -C Release --output-on-failure
 ```
 
 默认 C++23，Release 使用 cs::check，CTest 由公共配置设置超时。核心指针协议与整个含回收操作的进展保证见正文，原子属性由运行程序实测输出。
+
+## IDE 与工程入口
+
+Visual Studio 方案中，主入口目标是 `G1_treiber_stack`，位于本题节点顶层；单题独立配置时它是启动目标。`G1_treiber_stack_reference` 在 `Reference` 分组。
+
+学生/观察入口：`main.cpp` 是观察/实验入口，用来预测、运行和记录现象；本题不声明待填学生实现。
+
+Reference 与检查：`solution.cpp` 是 Reference/检查路径，只读对照。
+
+单题命令：从 `C08_Concurrency/exercises` 可独立配置：`cmake -S G1_treiber_stack -B build/G1_treiber_stack-ide -G "Visual Studio 18 2026" -A x64`，再构建 `G1_treiber_stack` 和 `G1_treiber_stack_reference`；CTest 过滤 `^G1_treiber_stack_reference$`。

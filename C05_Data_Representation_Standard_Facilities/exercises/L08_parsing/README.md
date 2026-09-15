@@ -9,3 +9,16 @@ Part 2：错误分类要能定位输入边界。空串、前导空格、符号�
 Part 3：浮点解析仍然不是“随便能表示就行”。课程 API 名为 `parse_finite_double`，所以 `inf`、`nan` 或溢出结果不能进入模型。可解析的有限数值返回成功；非有限值返回 `invalid_value` 或范围错误。格式化回写和 roundtrip 是协议层策略，不在本函数里偷偷完成。
 
 编辑位置：`src/student/text_parse.hpp`。Reference 直接转发公共 `c05/text.hpp`；`validation/good` 是独立完成体；`validation/bad` 故意漏掉完整消费检查，普通数值先通过，再被 `"42x"` 精确拒绝。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `L08_parsing_student`。
+
+本题是实现题。学习者只改 Student 入口；Reference、validation 和 checks 只用于对照与验证。
+- Student 入口：`src/student/text_parse.hpp`。
+- Checker 入口：`checks/parse_checks.cpp`。
+- Reference 对照：`src/reference/text_parse.hpp`。
+- validation/good 对照：`validation/good/text_parse.hpp`。
+- validation/bad 反例：`validation/bad/text_parse.hpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target L08_parsing_student。
+修改后先重建 `L08_parsing_student`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

@@ -19,6 +19,7 @@ c04_add_exercise(
 foreach(target U01_mp11_student U01_mp11_reference U01_mp11_validation_good U01_mp11_validation_bad)
     if(TARGET ${target})
         c04_link_mp11(${target})
+        target_sources(${target} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../A02_field_projection/checks/projection_schema.hpp")
         target_include_directories(${target} PRIVATE
             "${CMAKE_CURRENT_SOURCE_DIR}/checks"
             "${CMAKE_CURRENT_SOURCE_DIR}/../A02_field_projection/checks")
@@ -32,3 +33,5 @@ c04_add_compile_case(
     PATTERN "mp11 map key not found"
     SETUP validation/diagnostics/setup.cmake
 )
+
+learncpp_setup_ide(U01_mp11_student)

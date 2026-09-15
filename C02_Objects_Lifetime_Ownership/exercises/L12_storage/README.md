@@ -28,3 +28,10 @@ ctest --test-dir build/c02-l12 -C Debug --output-on-failure
 - 不用 `construct_at` 或其他替代实现伪装为 capability PASS。
 
 注意口径：普通 allocation 不调用构造函数；C++20 起某些操作可为 implicit-lifetime 类型隐式开始对象生命期；`std::allocator<T>::allocate(n)` 开始的是 `T[n]` 数组对象边界，不是 `n` 个元素对象生命期。
+
+
+## IDE 入口
+
+从本课 `exercises` 根目录或本题目录生成 Visual Studio 18 2026 x64 工程。主项目是 `L12_storage_student`；默认学生测试关闭时仍生成该项目，但它是 `EXCLUDE_FROM_ALL`，需显式构建。
+学生只编辑：`src/student/storage_slot.hpp`。 `checks/`、`validation/`、`src/reference/`、diagnostic、support 目标是只读对照/验证/实验入口，保留在题目分组内。
+修改 Student 后先重新构建对应目标，再运行 CTest 或 README 中列出的检查命令。

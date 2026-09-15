@@ -8,3 +8,6 @@ ranges_add_exercise(
     CHECK main.cpp
     BAD_DIAGNOSTIC "random access distance matches"
 )
+
+
+learncpp_setup_ide(F1_iterator_hierarchy_student)

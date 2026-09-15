@@ -44,3 +44,13 @@ ctest --test-dir build/E3-native -C Release --output-on-failure
 ```
 
 默认 OFF 时，能力宏为 0 表示本次构建没有请求原生探测，不能据此判断标准库是否支持。ON 时会实际编译和链接指定接口；若宏仍为 0，查看 `build/E3-native/capabilities/CS_HAS_ATOMIC_MIN_MAX.log` 中的原因。Reference 的 SKIP 信息只说明该专项没有启用已验证的原生路径，前两部分的 CAS 检查仍执行。缺少预览语言选项与缺少库接口也应根据配置/探测日志分别判断。
+
+## IDE 与工程入口
+
+Visual Studio 方案中，主入口目标是 `E3_cas_loop`，位于本题节点顶层；单题独立配置时它是启动目标。`E3_cas_loop_reference` 在 `Reference` 分组。
+
+学生/观察入口：`main.cpp` 是观察/实验入口，用来预测、运行和记录现象；本题不声明待填学生实现。
+
+Reference 与检查：`solution.cpp` 是 Reference/检查路径，只读对照。
+
+单题命令：从 `C08_Concurrency/exercises` 可独立配置：`cmake -S E3_cas_loop -B build/E3_cas_loop-ide -G "Visual Studio 18 2026" -A x64`，再构建 `E3_cas_loop` 和 `E3_cas_loop_reference`；CTest 过滤 `^E3_cas_loop_reference$`。

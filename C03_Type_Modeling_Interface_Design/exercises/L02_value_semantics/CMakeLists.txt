@@ -8,3 +8,4 @@ c03_add_exercise(
     CHECK checks/money_checks.cpp
     BAD_DIAGNOSTIC "different currencies cannot be added")
 
+learncpp_setup_ide(L02_value_semantics_student)

@@ -7,3 +7,6 @@ c05_add_exercise(
     HEADER bounded_field.hpp
     CHECK checks/field_checks.cpp
     BAD_DIAGNOSTIC "truncated payload keeps cursor")
+
+
+learncpp_setup_ide(L14_binary_fields_student)

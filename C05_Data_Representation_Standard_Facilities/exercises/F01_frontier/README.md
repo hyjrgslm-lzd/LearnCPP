@@ -21,3 +21,12 @@ ctest --test-dir C05_Data_Representation_Standard_Facilities/exercises/build/f01
 ```
 
 本机 MSVC 14.51 / STL145 update202604 预期：ON 时多数项目 SKIP。OFF 是 DISABLED，没有能力结论；SKIP 只说明显式探测时此工具链没有声明该标准设施，或没有到达对应 feature-test macro 阈值。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `F01_text_encoding_locale`。
+
+本题是观察题，没有本题内 `src/student/`、`src/reference/` 或 `validation/` 变体。
+- 源码入口：`bitops_permutation_c29.cpp`、`bitops_shift_c29.cpp`、`charconv_result_bool.cpp`、`error_code_formatter_c29.cpp`、`format_float_c29.cpp`、`path_formatter.cpp`、`runtime_format.cpp`、`text_encoding_locale.cpp`、`to_string_semantics.cpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target F01_text_encoding_locale。
+修改后先重建 `F01_text_encoding_locale`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

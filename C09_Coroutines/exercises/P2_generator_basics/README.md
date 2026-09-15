@@ -33,3 +33,14 @@ Visual Studio 默认构建目录中的运行方式：
 Part 2 只读取首值就离开作用域，日志顺序为进入生产者、第一次 `before yield`、局部对象析构，yield 后的语句保持未执行。Part 3 收集元素时完整推进一次生产者；随后两次遍历 vector 使用的是保存的值，两次求和均为 6。Starter 初始值是三个 0，而且 Part 1 尚未补完递增动作；先按 TODO 完成对应步骤，再对照这些完成版结果，可以准确定位观察差异来自哪项改动。
 
 接着读 [01 心智模型](../../01-心智模型.md)，再到 [A1](../A1_first_generator/README.md) 把三值生成器扩展为 Fibonacci 和文本序列。
+
+## IDE 与单题构建
+
+Visual Studio 中主启动目标是 `P2_generator_basics`；Reference、Checks、Support 目标保留在同题分组中。学生编辑入口和本题 README/CMake 文件会显示在目标文件树里。
+
+```powershell
+cmake -S . -B build/vs -G "Visual Studio 18 2026" -A x64 -DCOROUTINE_STUDY_BUILD_REFERENCE=ON
+cmake --build build/vs --config Debug --target P2_generator_basics
+```
+
+普通题不需要额外依赖；Reference 由 `COROUTINE_STUDY_BUILD_REFERENCE` 控制。 `BUILD_TESTING=OFF` 只关闭测试注册，不删除本题可执行目标；不要手工编辑生成的 `.sln` 或 `.vcxproj`。

@@ -17,3 +17,16 @@ checker 把第一页改成只读并确认仍可读；不要故意写只读页。
 ## 解析
 
 危险反例不能放进主 checker：写未提交页或只读页在真实系统上可能让进程收到访问违例/SIGSEGV，有限测试不能把崩溃形状当成标准结论。本题检查真实 owner、平台页状态和已提交写入的可见性。对象生命期仍由 C02 的 `construct_at` / `destroy_at` 规则决定，不能因为地址可写就把任意 `T*` 当作活跃对象。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `L03_virtual_memory_student`。
+
+本题是实现题。学习者只改 Student 入口；Reference、validation 和 checks 只用于对照与验证。
+- Student 入口：`src/student/virtual_memory_lab.hpp`。
+- Checker 入口：`checks/virtual_memory_checks.cpp`。
+- Reference 对照：`src/reference/virtual_memory_lab.hpp`。
+- validation/good 对照：`validation/good/virtual_memory_lab.hpp`。
+- validation/bad 反例：`validation/bad/virtual_memory_lab.hpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target L03_virtual_memory_student。
+修改后先重建 `L03_virtual_memory_student`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

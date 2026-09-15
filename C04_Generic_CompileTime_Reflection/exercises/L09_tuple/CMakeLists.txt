@@ -10,3 +10,5 @@ c04_add_exercise(
 )
 
 c04_add_observation(L09_tuple_observation observations/tuple_observation.cpp)
+
+learncpp_setup_ide(L09_tuple_student)

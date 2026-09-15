@@ -99,3 +99,12 @@
 预测：P2210R2 已作为 C++20 DR 采纳，不能靠 `-std=c++20` 假定旧 split 行为。旧惰性设计由 `lazy_split` 承接；修订后 `split` 的子范围用底层真实迭代器，连续底层上可直接构造 `string_view`。
 
 当前程序同时观察 `lazy_split` 的 forward-only 代理子范围和修订后 `split` 的 contiguous 子范围，并把两者都物化成 token。扩展时要分清：`std::string(first,last)` 只需 input iterator；真正体现差异的是 `string_view` 构造需要 contiguous/sized。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `C1_2_split_evolution`。
+
+本题是观察题，没有本题内 `src/student/`、`src/reference/` 或 `validation/` 变体。
+- 源码入口：`main.cpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target C1_2_split_evolution。
+修改后先重建 `C1_2_split_evolution`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

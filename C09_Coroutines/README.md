@@ -23,6 +23,15 @@ cmake --preset verify-core
 cmake --build --preset verify-core
 ```
 
+也可以进入任一题目目录直接生成本题工程，例如：
+
+```powershell
+cd C09_Coroutines/exercises/A1_first_generator
+cmake -S . -B build/vs -G "Visual Studio 18 2026" -A x64 -DCOROUTINE_STUDY_BUILD_REFERENCE=ON
+```
+
+Visual Studio 中默认启动项目是 `P1_future_basics`；每题按目录分组，Starter、Reference、Checks 和 Support 分开展示。H/I/RPC 等专项题需要在单题配置时显式开启对应依赖选项，缺失时 CMake 会直接报错。
+
 ## 阅读路线
 
 | 阶段 | 正文 | 这一阶段逐步解决的问题 |

@@ -14,3 +14,6 @@ if(RANGES_ENABLE_FRONTIER)
         endif()
     endforeach()
 endif()
+
+
+learncpp_setup_ide(F01_flat_containers FILES include/frontier_status.hpp)

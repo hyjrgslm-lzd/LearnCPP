@@ -87,3 +87,13 @@ Windows `asan` 用 MSVC AddressSanitizer 和对应运行库；Linux `linux-asan`
 性能入口与正确性入口分开，见 [B01](B01_costs/README.md)。先定位再改变，原始失败和旧样本不覆盖。默认一轮预热、五次独立进程采样；Windows 和 WSL 分开报告。并行写作/构建时不运行正式性能采样。
 
 最终验证必须用固定代码重新配置、构建并运行，而不是汇总过期作者日志。本批运行器 JSON、CTest/JUnit、环境、include 审计和源文件 manifest 留在 build/guest 或单独归档；二进制、依赖和 CMake 缓存同样不提交。课程仓库只保留源码、题面、正文、覆盖表和稳定的规范说明。
+## Visual Studio 工程结构
+
+本课的 VS2026 工程由 CMake 生成，不手改 .slnx、.vcxproj 或 .filters。每道题调用公共 learncpp_setup_ide：启动项目放在题目根分组，Reference、Checks、Experiments、Support 分开；CMake/CTest 生成目标放在 _CMake。学生实现 target 即使学生测试关闭也会保留，可显式构建，例如：
+
+```powershell
+cmake --preset verify-debug
+cmake --build --preset verify-debug --target L09_dynamic_loading_student
+```
+
+每题 README 的“IDE 项目”段列出实际启动 target、编辑位置和单题 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64 命令。共享头文件以原路径出现在工程里，编辑会影响同课其他使用者；负例和外部诊断输入只作为浏览项或独立检查输入，不额外编入主程序。

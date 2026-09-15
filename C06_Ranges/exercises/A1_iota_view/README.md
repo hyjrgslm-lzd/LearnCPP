@@ -103,3 +103,12 @@
 预测：有界 `iota(0, 10)` 是 sized/common/random_access/borrowed；无界 `iota(0)` 仍是 random_access，但不是 sized/common，end 是 `unreachable_sentinel_t`。`subrange` 只是把现有迭代器和 sentinel 包成 range，不复制元素。
 
 当前程序检查了前三个值、`take(5)` 的物化结果，以及 `subrange` 对原数组的借用关系。扩展问题的答案是：无界 range 可以被 `take` 安全截断；`subrange` 的 borrowed 状态来自迭代器是否可在 range 对象销毁后继续表达同一段外部存储。
+## IDE 项目
+
+生成 Visual Studio 工程后，启动项目是 `A1_iota_view`。
+
+本题是观察题，没有本题内 `src/student/`、`src/reference/` 或 `validation/` 变体。
+- 源码入口：`main.cpp`。
+
+单题独立构建：从本目录运行 cmake -S . -B build/leaf -G "Visual Studio 18 2026" -A x64，然后 cmake --build build/leaf --config Debug --target A1_iota_view。
+修改后先重建 `A1_iota_view`，再按课程 `BUILD_GUIDE.md` 运行对应检查。

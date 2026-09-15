@@ -19,3 +19,10 @@
 实现 `phase_value(x)`：常量求值分支返回 `x + 1`，运行时分支返回 `x + 2`。
 
 解析：这证明同一个 `constexpr` 函数有两种执行上下文。`constexpr int y = phase_value(10)` 是 manifestly constant-evaluated；`int x = 10; phase_value(x)` 是运行时调用，即使优化器可能折叠它。这里用 `if consteval`，避免把 `std::is_constant_evaluated()` 在试探性常量初始化中的允许结果写成唯一输出。
+
+
+## IDE 入口
+
+从本课 `exercises` 根目录或本题目录生成 Visual Studio 18 2026 x64 工程。主项目是 `L10_constexpr_student`；默认学生测试关闭时仍生成该项目，但它是 `EXCLUDE_FROM_ALL`，需显式构建。
+学生只编辑：`src/student/constexpr_tools.hpp`。 `checks/`、`validation/`、`src/reference/`、diagnostic、support 目标是只读对照/验证/实验入口，保留在题目分组内。
+修改 Student 后先重新构建对应目标，再运行 CTest 或 README 中列出的检查命令。

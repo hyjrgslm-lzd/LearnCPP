@@ -19,3 +19,6 @@
 对象关系是 `pool -> scheduler -> sender -> operation_state`。sender 只是描述，operation state 才是一次已连接运行。后续 `starts_on/continues_on/on` 都是在图里放置这类调度边界。
 
 本题选择 `single_thread_context` 组，是为了保留 scheduler 能力目标，同时避开固定 `static_thread_pool` 在短生命周期场景下的已知不稳定边界。这里不宣称已定位或修复上游线程池的全部内部问题。
+## IDE 工程入口
+
+VS solution 中本题主入口是 `B4_scheduler_capability_student`。学生只编辑 `src/student/solution.hpp`；`main.cpp` 是共同检查器，Reference 在 `src/reference/solution.hpp`，good/bad 控制在 `validation` 下。`B4_scheduler_capability` 聚合目标只负责显式构建学生目标，收在 Support；Reference 与控制目标保留为独立项目，用来区分答案、正确对照和错误拒绝。单题可用 `cmake -S <本目录> -B <build>` 独立生成。

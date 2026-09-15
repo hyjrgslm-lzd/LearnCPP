@@ -43,3 +43,6 @@ each logical item must be doubled and marked by device code. The program prints
 `cuda_device_count`, `multi_gpu_logical_items`, and result totals. That is not a
 proof of physical device distribution. To prove which devices actually ran each
 slice, record a CUDA trace with Nsight Systems or CUPTI around the same binary.
+## IDE 工程入口
+
+启动目标是 V1_nvexec_single_gpu 或 V1_nvexec_multi_gpu；没有 nvc++ 时为 skip 可执行目标，GPU custom build 目标收在 Support。 本目录的 README/CMakeLists 和脚本显示在主项目中；观察程序通过只证明对应运行检查，不代替书面预测、源码阅读或性能归因。单题可用 `cmake -S <本目录> -B <build>` 独立生成。

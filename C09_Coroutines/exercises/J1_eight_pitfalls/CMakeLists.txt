@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 3.28)
 project(J1_eight_pitfalls LANGUAGES CXX)
 
 if(NOT COMMAND coroutine_study_add_exercise)
+    include("${CMAKE_CURRENT_LIST_DIR}/../cmake/StudySetup.cmake")
+endif()
+
+if(NOT COMMAND coroutine_study_add_exercise)
     list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../cmake")
     include(AddExercise)
 endif()
@@ -28,3 +32,5 @@ foreach(target J1_eight_pitfalls J1_eight_pitfalls_reference)
         target_compile_definitions(${target} PRIVATE COROUTINE_STUDY_ENABLE_UNSAFE_DEMOS=1)
     endif()
 endforeach()
+
+learncpp_setup_ide("J1_eight_pitfalls")

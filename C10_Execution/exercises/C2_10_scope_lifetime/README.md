@@ -30,3 +30,6 @@ bad 版本只完成 1 个已接受工作就报告释放，检查器拒绝。
 ## 答案解释
 
 Reference 使用真实 `exec::async_scope`、`exec::static_thread_pool`、`spawn`、`spawn_future` 与 `on_empty()`。核心不变量是：父 scope 收束之前，子 operation state 不能释放；错误不会被成功计数吞掉。
+## IDE 工程入口
+
+VS solution 中本题主入口是 `C2_10_scope_lifetime_student`。学生只编辑 `src/student/solution.hpp`；`main.cpp` 是共同检查器，Reference 在 `src/reference/solution.hpp`，good/bad 控制在 `validation` 下。`C2_10_scope_lifetime` 聚合目标只负责显式构建学生目标，收在 Support；Reference 与控制目标保留为独立项目，用来区分答案、正确对照和错误拒绝。单题可用 `cmake -S <本目录> -B <build>` 独立生成。

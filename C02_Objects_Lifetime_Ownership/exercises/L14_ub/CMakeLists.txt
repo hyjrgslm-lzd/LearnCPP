@@ -102,3 +102,5 @@ if(CORE_STUDY_ENABLE_ASAN AND CORE_STUDY_ENABLE_UNSAFE_DEMOS)
             -P ${CMAKE_CURRENT_LIST_DIR}/checks/expect_asan_failure.cmake)
     set_tests_properties(L14_ub_asan_uaf_diagnostic PROPERTIES TIMEOUT 30 LABELS "unsafe;asan")
 endif()
+
+learncpp_setup_ide(L14_ub_observation)

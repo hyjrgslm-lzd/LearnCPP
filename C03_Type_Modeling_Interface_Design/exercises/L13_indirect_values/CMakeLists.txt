@@ -3,3 +3,5 @@ project(L13_indirect_values LANGUAGES CXX)
 include(../cmake/StudySetup.cmake)
 
 c03_add_observation(L13_indirect_values_observation indirect_values_observation.cpp)
+
+learncpp_setup_ide(L13_indirect_values_observation)

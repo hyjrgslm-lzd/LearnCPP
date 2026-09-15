@@ -1,14 +1,14 @@
 cmake_minimum_required(VERSION 3.25)
 project(Capstone4_rpc_framework LANGUAGES CXX)
 
+if(NOT COMMAND coroutine_study_add_exercise)
+    include("${CMAKE_CURRENT_LIST_DIR}/../cmake/StudySetup.cmake")
+endif()
+
 include(CTest)
 find_package(Python3 REQUIRED COMPONENTS Interpreter)
 
-# 如本目录被独立打开（不通过顶层 add_subdirectory），跳过
-if(NOT TARGET asio::asio AND NOT COROUTINE_STUDY_STANDALONE)
-    message(WARNING "Capstone4_rpc_framework requires asio; configure via top-level CMakeLists.txt")
-    return()
-endif()
+coroutine_study_require_option(COROUTINE_STUDY_ENABLE_ASIO "Capstone4_rpc_framework")
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -23,22 +23,38 @@ set(CAPSTONE4_RPC_STUDENT_SOURCES
     src/server.cpp
     src/client.cpp
 )
-
-add_library(Capstone4_rpc_framework_student_lib STATIC ${CAPSTONE4_RPC_STUDENT_SOURCES})
-target_link_libraries(Capstone4_rpc_framework_student_lib PUBLIC asio::asio)
-
-target_include_directories(Capstone4_rpc_framework_student_lib PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/include
-    ${CMAKE_SOURCE_DIR}/include
+set(CAPSTONE4_RPC_HEADERS
+    include/rpc/client.hpp
+    include/rpc/protocol.hpp
+    include/rpc/scope.hpp
+    include/rpc/server.hpp
+    include/rpc/stop_token.hpp
+    include/rpc/task.hpp
 )
 
-add_executable(Capstone4_rpc_framework src/main.cpp)
-target_link_libraries(Capstone4_rpc_framework PRIVATE Capstone4_rpc_framework_student_lib)
+add_executable(Capstone4_rpc_framework
+    src/main.cpp
+    ${CAPSTONE4_RPC_STUDENT_SOURCES}
+)
+target_sources(Capstone4_rpc_framework PRIVATE ${CAPSTONE4_RPC_HEADERS})
+coroutine_study_add_ide_files(Capstone4_rpc_framework)
+target_link_libraries(Capstone4_rpc_framework PRIVATE asio::asio)
+target_include_directories(Capstone4_rpc_framework PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/include"
+    "${COROUTINE_STUDY_EXERCISES_DIR}/include"
+)
 
 add_executable(Capstone4_rpc_framework_student_check
     tests/rpc_student_test.cpp
+    ${CAPSTONE4_RPC_STUDENT_SOURCES}
 )
-target_link_libraries(Capstone4_rpc_framework_student_check PRIVATE Capstone4_rpc_framework_student_lib)
+target_sources(Capstone4_rpc_framework_student_check PRIVATE ${CAPSTONE4_RPC_HEADERS})
+coroutine_study_add_ide_files(Capstone4_rpc_framework_student_check)
+target_link_libraries(Capstone4_rpc_framework_student_check PRIVATE asio::asio)
+target_include_directories(Capstone4_rpc_framework_student_check PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/include"
+    "${COROUTINE_STUDY_EXERCISES_DIR}/include"
+)
 
 if(BUILD_TESTING AND COROUTINE_STUDY_TEST_STARTERS)
     add_test(NAME Capstone4_rpc_framework_student_check COMMAND Capstone4_rpc_framework_student_check)
@@ -55,9 +71,11 @@ if(BUILD_TESTING AND COROUTINE_STUDY_BUILD_REFERENCE)
         good/client.cpp
         good/server.cpp
     )
+    target_sources(Capstone4_rpc_framework_answer_check PRIVATE ${CAPSTONE4_RPC_HEADERS})
+    coroutine_study_add_ide_files(Capstone4_rpc_framework_answer_check)
     target_include_directories(Capstone4_rpc_framework_answer_check PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/include
-        ${CMAKE_SOURCE_DIR}/include
+        ${COROUTINE_STUDY_EXERCISES_DIR}/include
     )
     target_link_libraries(Capstone4_rpc_framework_answer_check PRIVATE asio::asio)
     add_test(NAME Capstone4_rpc_framework_answer_check COMMAND Capstone4_rpc_framework_answer_check)
@@ -72,9 +90,11 @@ if(BUILD_TESTING AND COROUTINE_STUDY_BUILD_REFERENCE)
         good/server.cpp
         good/protocol_alt.cpp
     )
+    target_sources(Capstone4_rpc_framework_protocol_good_check PRIVATE ${CAPSTONE4_RPC_HEADERS})
+    coroutine_study_add_ide_files(Capstone4_rpc_framework_protocol_good_check)
     target_include_directories(Capstone4_rpc_framework_protocol_good_check PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/include
-        ${CMAKE_SOURCE_DIR}/include
+        ${COROUTINE_STUDY_EXERCISES_DIR}/include
     )
     target_link_libraries(Capstone4_rpc_framework_protocol_good_check PRIVATE asio::asio)
     add_test(NAME Capstone4_rpc_framework_protocol_good_check COMMAND Capstone4_rpc_framework_protocol_good_check)
@@ -89,14 +109,16 @@ if(BUILD_TESTING AND COROUTINE_STUDY_BUILD_REFERENCE)
         good/server.cpp
         bad/protocol_newline.cpp
     )
+    target_sources(Capstone4_rpc_framework_bad_newline_check PRIVATE ${CAPSTONE4_RPC_HEADERS})
+    coroutine_study_add_ide_files(Capstone4_rpc_framework_bad_newline_check)
     target_include_directories(Capstone4_rpc_framework_bad_newline_check PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/include
-        ${CMAKE_SOURCE_DIR}/include
+        ${COROUTINE_STUDY_EXERCISES_DIR}/include
     )
     target_link_libraries(Capstone4_rpc_framework_bad_newline_check PRIVATE asio::asio)
     add_test(NAME Capstone4_rpc_framework_bad_newline_rejected
         COMMAND ${Python3_EXECUTABLE}
-            ${CMAKE_SOURCE_DIR}/../../C07_OS_Memory_System_IO/exercises/tools/run_test.py
+            ${COROUTINE_STUDY_REPO_ROOT}/C07_OS_Memory_System_IO/exercises/tools/run_test.py
             --name Capstone4_rpc_framework_bad_newline_rejected
             --records ${CMAKE_CURRENT_BINARY_DIR}/validation
             --timeout 50
@@ -114,6 +136,8 @@ if(COROUTINE_STUDY_BUILD_REFERENCE)
     add_executable(Capstone4_rpc_framework_reference
         reference/tests/rpc_reference_test.cpp
     )
+    target_sources(Capstone4_rpc_framework_reference PRIVATE reference/include/rpc_ref/rpc.hpp)
+    coroutine_study_add_ide_files(Capstone4_rpc_framework_reference)
     target_include_directories(Capstone4_rpc_framework_reference PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/reference/include
     )
@@ -124,3 +148,5 @@ if(COROUTINE_STUDY_BUILD_REFERENCE)
         TIMEOUT 60
     )
 endif()
+
+learncpp_setup_ide("Capstone4_rpc_framework")

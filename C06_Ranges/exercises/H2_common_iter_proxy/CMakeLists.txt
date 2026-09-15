@@ -8,3 +8,5 @@ ranges_add_exercise(
     CHECK main.cpp
     BAD_DIAGNOSTIC "iter_swap must exchange underlying elements"
 )
+
+learncpp_setup_ide(H2_common_iter_proxy_student)

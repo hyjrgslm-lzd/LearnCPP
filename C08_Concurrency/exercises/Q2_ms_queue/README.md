@@ -51,3 +51,13 @@ cl /nologo /std:c++23preview /EHsc /utf-8 /O2 /DNDEBUG /I include Q2_ms_queue/so
 ```
 
 基准 variant=ms，要显式 --capacity 0。无界组单列，计时含逐次节点分配和热路径 HP 回收，不含最终析构；没有“不回收版本”参与有效排名。
+
+## IDE 与工程入口
+
+Visual Studio 方案中，主入口目标是 `Q2_ms_queue`，位于本题节点顶层；单题独立配置时它是启动目标。`Q2_ms_queue_reference` 在 `Reference` 分组。
+
+学生/观察入口：`main.cpp` 是观察/实验入口，用来预测、运行和记录现象；本题不声明待填学生实现。
+
+Reference 与检查：`solution.cpp` 是 Reference/检查路径，只读对照。
+
+单题命令：从 `C08_Concurrency/exercises` 可独立配置：`cmake -S Q2_ms_queue -B build/Q2_ms_queue-ide -G "Visual Studio 18 2026" -A x64`，再构建 `Q2_ms_queue` 和 `Q2_ms_queue_reference`；CTest 过滤 `^Q2_ms_queue_reference$`。

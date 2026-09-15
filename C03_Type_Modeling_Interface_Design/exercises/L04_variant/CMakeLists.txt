@@ -3,3 +3,5 @@ project(L04_variant LANGUAGES CXX)
 include(../cmake/StudySetup.cmake)
 
 c03_add_observation(L04_variant_observation observation/variant_observation.cpp)
+
+learncpp_setup_ide(L04_variant_observation)

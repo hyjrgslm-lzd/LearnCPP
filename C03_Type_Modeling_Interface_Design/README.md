@@ -53,3 +53,15 @@
 ## C05 数据表达先修
 
 外部文本/字节进入本课类型工厂之前的编码、完整解析、整数范围和错误位置，由[C05 数据表达](../C05_Data_Representation_Standard_Facilities/README.md)主讲；本课继续负责值/不变量与错误接口。
+
+## IDE 工程入口
+
+本课 Visual Studio 入口统一从 `C03_Type_Modeling_Interface_Design/exercises` 或单题目录生成：
+
+```powershell
+cmake -S C03_Type_Modeling_Interface_Design/exercises -B C03_Type_Modeling_Interface_Design/exercises/build/ide-refactor -G "Visual Studio 18 2026" -A x64 -DBUILD_TESTING=ON
+cmake --build C03_Type_Modeling_Interface_Design/exercises/build/ide-refactor --config Debug --target <目标名>
+ctest --test-dir C03_Type_Modeling_Interface_Design/exercises/build/ide-refactor -C Debug -R <测试名> --output-on-failure
+```
+
+默认 Reference/validation/observation 目标用于教学对照；Student 目标在学生测试关闭时仍出现在工程中，但不会进入默认全量构建。每题 README 的“IDE 入口”列出启动目标、编辑目录和保留辅助目标原因。

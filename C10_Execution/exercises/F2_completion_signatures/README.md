@@ -14,3 +14,6 @@ Part:
 bad 版本永远把 value 改成 `std::string`，能骗过非 void 用例，但会被 void 用例拒绝。
 
 Student 初态以 `value channel signatures extracted` 作为首个实际类型检查失败，预期 exit 1；这表示类型结果错误，不使用完成 flag。
+## IDE 工程入口
+
+VS solution 中本题主入口是 `F2_completion_signatures_student`。学生只编辑 `src/student/solution.hpp`；`main.cpp` 是共同检查器，Reference 在 `src/reference/solution.hpp`，good/bad 控制在 `validation` 下。`F2_completion_signatures` 聚合目标只负责显式构建学生目标，收在 Support；Reference 与控制目标保留为独立项目，用来区分答案、正确对照和错误拒绝。单题可用 `cmake -S <本目录> -B <build>` 独立生成。

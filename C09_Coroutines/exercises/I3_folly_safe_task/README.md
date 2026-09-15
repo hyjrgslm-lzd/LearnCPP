@@ -33,3 +33,14 @@ ctest --test-dir build/heavy-folly-linux -R I3_folly_safe_task_reference --outpu
 读代码时先看 `add_values` 为什么能返回 `value_task<int>`，再看 `co_withExecutor` 如何绑定 executor，最后看 `async_closure` 如何把参数传入 closure task。`blocking_wait` 只作为测试入口使用。
 
 **答案解析：** `add_values` 的参数和值返回都满足 safe task 的值语义边界；`co_withExecutor` 解决恢复位置，和 safe task 解决生命周期是两条独立边。`blocking_wait` 把 async 世界接回测试 main，放进真实 executor 线程等待同一个 executor 时可能堵住 completion。
+
+## IDE 与单题构建
+
+Visual Studio 中主启动目标是 `I3_folly_safe_task`；Reference、Checks、Support 目标保留在同题分组中。学生编辑入口和本题 README/CMake 文件会显示在目标文件树里。
+
+```powershell
+cmake -S . -B build/vs -G "Visual Studio 18 2026" -A x64 -DCOROUTINE_STUDY_BUILD_REFERENCE=ON -DCOROUTINE_STUDY_ENABLE_FOLLY=ON -DCMAKE_PREFIX_PATH=<existing-folly-prefix>
+cmake --build build/vs --config Debug --target I3_folly_safe_task
+```
+
+本题单独配置需要 `-DCOROUTINE_STUDY_ENABLE_FOLLY=ON`，并提前准备 Folly。Folly 需要本机已有安装或包管理器生成的 prefix，通过 CMAKE_PREFIX_PATH 指向；本配置不负责下载或安装 Folly。 缺依赖时配置阶段直接失败，不生成空工程。 `BUILD_TESTING=OFF` 只关闭测试注册，不删除本题可执行目标；不要手工编辑生成的 `.sln` 或 `.vcxproj`。
